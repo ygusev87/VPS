@@ -148,7 +148,11 @@ export const FREE_PLAY: Level = {
   title: 'Свободно',
   task: 'Собирай что хочешь',
   icon: 'battery',
-  parts: [],
+  // A starter pair so the table is never empty; everything can be moved or thrown away.
+  parts: [
+    { kind: 'battery', fx: -0.4, fz: 0.15 },
+    { kind: 'bulb', fx: 0.4, fz: -0.1 },
+  ],
   tray: (['battery', 'bulb', 'fan', 'switch', 'led', 'buzzer'] as PartKind[]).map((kind) => ({ kind, count: Infinity })),
   chain: [],
   intro: 'free',

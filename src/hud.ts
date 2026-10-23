@@ -23,6 +23,7 @@ const ICON = {
   book: svg('<path d="M20 10.6c-3.3-2.4-8.2-3.2-14-3v21.2c5.8-.2 10.7.6 14 3 3.3-2.4 8.2-3.2 14-3V7.6c-5.8-.2-10.7.6-14 3zM20 10.6v21.2"/><path d="M3 11v21c6.3-.5 12.6.2 17 2.6 4.4-2.4 10.7-3.1 17-2.6V11"/>', 'icon book', '0 0 40 40'),
   bin: svg('<path d="M4.5 7h15M9.5 7V4.8h5V7M7 7l1 13.5h8L17 7M10.5 10.5v6.5M13.5 10.5v6.5"/>'),
   next: svg('<path d="M5 12h13M12.5 6.5 18 12l-5.5 5.5"/>'),
+  chevron: svg('<path d="m6.5 9.5 5.5 5.5 5.5-5.5"/>', 'icon chevron'),
   check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4 8-8.5"/></svg>',
   star: '<svg viewBox="0 0 64 64" class="star" aria-hidden="true"><path d="M32 5.5 40.2 22l18.3 2.7-13.2 12.9 3.1 18.2L32 47.2l-16.4 8.6 3.1-18.2L5.5 24.7 23.8 22z" fill="#f0a53a" stroke="#24304a" stroke-width="3" stroke-linejoin="round"/><path d="M24 26.5c2-1 4.5-1.2 6.5-.6" stroke="#fff6d6" stroke-width="3" stroke-linecap="round" fill="none"/></svg>',
   shortBadge: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M18 3 7 18h7l-2 11 13-16h-7.5z" fill="#e5533d" stroke="#24304a" stroke-width="2" stroke-linejoin="round"/></svg>',
@@ -115,15 +116,15 @@ export class Hud {
         <div class="mission-text"><h3></h3><p></p></div>
         <button class="speak" aria-label="Повторить задание">${ICON.speak}</button>
       </article>
-      <section class="status" aria-label="Прогресс">
+      <button class="status" aria-label="Задания" aria-expanded="false">
         ${ICON.book}
         <div class="progress-body">
           <span class="progress-label">Задания</span>
           <div class="progress-row"><span class="progress-track"><span class="progress-fill"></span></span><span class="progress-count"></span></div>
         </div>
-      </section>
+        ${ICON.chevron}
+      </button>
       <section class="lessons" aria-label="Задания">
-        <h2>Задания</h2>
         <ol class="lesson-list"></ol>
       </section>
       <div class="viewbar" role="toolbar" aria-label="Вид">
@@ -159,6 +160,8 @@ export class Hud {
     r.querySelector('[data-v="reset"]')!.addEventListener('click', () => this.hooks.onResetView());
     r.querySelector('[data-v="restart"]')!.addEventListener('click', () => this.hooks.onRestart());
     this.mission.querySelector('.speak')!.addEventListener('click', () => this.hooks.onReplay());
+    // Missions live in a drop-down under the progress card; free play is the main mode.
+    this.progress.addEventListener('click', () => this.toggleTasks());
     this.soundBtn.addEventListener('click', () => {
       const on = !this.soundBtn.classList.contains('is-on');
       this.setSound(on);
@@ -198,13 +201,20 @@ export class Hud {
 
   // ───────── Level, lessons, parts ─────────
 
+  toggleTasks(open = !this.root.querySelector('.lessons')!.classList.contains('is-open')) {
+    this.root.querySelector('.lessons')!.classList.toggle('is-open', open);
+    this.progress.classList.toggle('is-open', open);
+    this.progress.setAttribute('aria-expanded', String(open));
+  }
+
   setLevel(level: Level, done: Set<string>) {
     this.level = level;
     const img = this.mission.querySelector('img')!;
     img.src = thumb(level.icon, true);
     this.mission.querySelector('h3')!.textContent = level.task;
     const i = LEVELS.indexOf(level);
-    this.mission.querySelector('p')!.textContent = i >= 0 ? `Задание ${i + 1} из ${LEVELS.length}` : 'Свободная игра';
+    this.mission.querySelector('p')!.textContent = `Задание ${i + 1} из ${LEVELS.length}`;
+    this.mission.classList.toggle('is-hidden', level === FREE_PLAY);
 
     const n = LEVELS.filter((l) => done.has(l.id)).length;
     this.progress.querySelector<HTMLElement>('.progress-fill')!.style.width = `${(n / LEVELS.length) * 100}%`;
@@ -218,7 +228,7 @@ export class Hud {
         const cls = ['lesson', l === level ? 'is-active' : '', done.has(l.id) ? 'is-done' : '', l === next && l !== level ? 'is-next' : ''].join(' ');
         return `<li class="${cls}" role="button" tabindex="0" data-i="${free ? 'free' : idx}" aria-label="${l.title}">
           <img class="lesson-thumb" alt="" src="${thumb(l.icon, !free)}"/>
-          <span class="lesson-title">${free ? '' : `${idx + 1}. `}${l.title}</span>
+          <span class="lesson-title">${free ? 'Свободная игра' : `${idx + 1}. ${l.title}`}</span>
           <span class="lesson-done">${ICON.check}</span>
         </li>`;
       })
@@ -226,11 +236,10 @@ export class Hud {
     this.lessons.querySelectorAll<HTMLElement>('.lesson').forEach((el) =>
       el.addEventListener('click', () => {
         const d = el.dataset.i!;
+        this.toggleTasks(false);
         this.hooks.onPickLevel(d === 'free' ? FREE_PLAY : LEVELS[Number(d)]);
       }),
     );
-    // Keep the active card in view on narrow screens.
-    this.lessons.querySelector<HTMLElement>('.is-active')?.scrollIntoView({ block: 'nearest', inline: 'center' });
     this.layout();
   }
 
@@ -248,11 +257,11 @@ export class Hud {
   private layout() {
     const side = this.sidebar.getBoundingClientRect();
     const brand = this.root.querySelector('.brand')!.getBoundingClientRect();
-    const lessons = this.root.querySelector('.lessons')!.getBoundingClientRect();
+    const bar = this.root.querySelector('.viewbar')!.getBoundingClientRect();
     this.stage.setInsets({
       left: side.right,
       top: brand.bottom + 8,
-      bottom: Math.max(16, window.innerHeight - lessons.top + 8),
+      bottom: Math.max(16, window.innerHeight - bar.top + 8),
       right: 12,
     });
   }
@@ -407,7 +416,7 @@ export class Hud {
     const win = document.createElement('div');
     win.className = 'win';
     win.innerHTML = ICON.star;
-    const card = this.lessons.querySelector('.is-active')?.getBoundingClientRect();
+    const card = this.progress.getBoundingClientRect();
     const star = win.querySelector<SVGElement>('.star')!;
     const sx = this.stage.insets.left + (window.innerWidth - this.stage.insets.left) / 2;
     const sy = window.innerHeight * 0.42;

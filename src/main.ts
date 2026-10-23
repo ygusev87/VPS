@@ -119,6 +119,7 @@ function preplaced(kind: PartKind) {
 function trayLeft(kind: PartKind): number {
   const offer = level.tray.find((t) => t.kind === kind);
   if (!offer) return 0;
+  if (!Number.isFinite(offer.count)) return Infinity;
   const placed = world.parts.filter((p) => p.kind === kind).length - preplaced(kind);
   return offer.count - placed;
 }
@@ -140,7 +141,7 @@ function startLevel(l: Level, instant = false) {
   l.parts.forEach((p, i) => {
     // Layouts are drawn for landscape; on a tall screen lay them top-to-bottom.
     const [x, z] = stage.portrait ? [p.fz * 5.5, p.fx * 6.5] : [p.fx * 6.5, p.fz * 4.4];
-    const part = world.addPart(p.kind, x, z, { locked: true, closed: p.closed, appear: false });
+    const part = world.addPart(p.kind, x, z, { locked: l !== FREE_PLAY, closed: p.closed, appear: false });
     part.appear(0.12 + i * 0.14);
   });
   refreshTray();
@@ -295,8 +296,8 @@ function frame(now: number) {
   requestAnimationFrame(frame);
 }
 
-// Boot straight into the first unfinished mission.
-startLevel(LEVELS.find((l) => !progress.done.has(l.id)) ?? FREE_PLAY, true);
+// Free play is the main mode; missions wait in the drop-down.
+startLevel(FREE_PLAY, true);
 voice.stop();
 requestAnimationFrame((t) => {
   last = t;

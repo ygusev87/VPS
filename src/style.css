@@ -438,6 +438,14 @@ svg.icon .fill {
 .mission .speak:active {
   transform: translateY(1px);
 }
+.mission.is-hidden {
+  opacity: 0;
+  transform: translateY(-6px);
+  pointer-events: none !important;
+}
+.mission {
+  transition: opacity 0.3s, transform 0.4s var(--ease);
+}
 .mission.is-pop {
   animation: celebrate 0.7s var(--ease);
 }
@@ -447,27 +455,40 @@ svg.icon .fill {
   }
 }
 
-/* Progress (top right) */
+/* Progress (top right) — also the button that opens the missions drop-down */
 .status {
   position: absolute;
   top: calc(var(--safe-t) + 18px);
   right: calc(var(--safe-r) + 18px);
   display: flex;
   align-items: center;
-  gap: 14px;
-  width: 220px;
+  gap: 12px;
+  width: 240px;
   height: 58px;
-  padding: 0 14px 0 14px;
+  padding: 0 12px 0 14px;
   border: 1.5px solid var(--line);
   border-radius: 9px;
   background: var(--card-soft);
-  pointer-events: none !important;
+  text-align: left;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+.status:active,
+.status.is-open {
+  border-color: var(--teal-deep);
+  box-shadow: 0 0 0 1px #3f7f8e14;
 }
 .status svg.book {
   width: 30px;
   height: 30px;
   stroke-width: 1.8;
   flex: none;
+}
+.status svg.chevron {
+  flex: none;
+  transition: transform 0.3s var(--ease);
+}
+.status.is-open svg.chevron {
+  transform: rotate(180deg);
 }
 .progress-body {
   flex: 1;
@@ -510,59 +531,56 @@ svg.icon .fill {
   font-variant-numeric: tabular-nums;
 }
 
-/* Lessons strip (bottom) */
+/* Missions drop-down (a reference "flyout") */
 .lessons {
   position: absolute;
-  left: calc(var(--side-w) + var(--safe-l) + 22px);
-  right: 340px;
-  bottom: calc(var(--safe-b) + 16px);
+  top: calc(var(--safe-t) + 86px);
+  right: calc(var(--safe-r) + 18px);
+  width: 240px;
+  max-height: calc(100% - var(--safe-t) - 180px);
+  overflow-y: auto;
+  padding: 10px;
+  border: 1.5px solid var(--line);
+  border-radius: 12px;
+  background: #fbf6ecfa;
+  box-shadow: 0 18px 40px -22px #3c2d148c;
+  opacity: 0;
+  transform: translateY(-8px);
   pointer-events: none !important;
+  transition: opacity 0.22s, transform 0.3s var(--ease);
+  touch-action: pan-y;
 }
-.lessons h2 {
-  margin: 0 0 8px 1px;
-  font-size: 15px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  color: var(--navy);
+.lessons.is-open {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto !important;
 }
 .lesson-list {
   display: flex;
-  gap: 10px;
+  flex-direction: column;
+  gap: 8px;
   margin: 0;
-  padding: 10px 10px 4px 2px;
-  margin: -10px -10px -4px -2px;
+  padding: 0;
   list-style: none;
-  overflow-x: auto;
-  scrollbar-width: none;
-  pointer-events: auto;
-  mask-image: linear-gradient(90deg, #000 calc(100% - 40px), #0000);
-  -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 40px), #0000);
-  touch-action: pan-x;
-}
-.lesson-list::-webkit-scrollbar {
-  display: none;
 }
 .lesson {
   position: relative;
-  flex: none;
   display: flex;
   align-items: center;
-  gap: 4px;
-  height: 64px;
-  padding: 0 14px 0 6px;
+  gap: 6px;
+  height: 56px;
+  padding: 0 12px 0 4px;
   border: 1.5px solid var(--line);
   border-radius: 9px;
   background: var(--card-soft);
   cursor: pointer;
-  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s, background 0.25s;
+  transition: border-color 0.25s, box-shadow 0.25s, transform 0.25s;
 }
 .lesson:active {
   transform: translateY(1px);
 }
 .lesson.is-active {
   border: 2px solid var(--teal-deep);
-  box-shadow: 0 0 0 1px #3f7f8e14;
 }
 .lesson.is-next {
   animation: nudge 2.4s ease-in-out infinite;
@@ -574,14 +592,10 @@ svg.icon .fill {
   }
 }
 .lesson-thumb {
-  width: 54px;
-  height: 54px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
   flex: none;
-  transition: transform 0.25s var(--ease);
-}
-.lesson:active .lesson-thumb {
-  transform: scale(1.06) rotate(-2deg);
 }
 .lesson-title {
   font-size: 13.5px;
@@ -593,15 +607,15 @@ svg.icon .fill {
 }
 .lesson-done {
   position: absolute;
-  top: -8px;
-  right: -8px;
+  top: 50%;
+  right: 10px;
   width: 20px;
   height: 20px;
+  margin-top: -10px;
   border-radius: 50%;
   display: grid;
   place-items: center;
   background: var(--teal);
-  box-shadow: 0 0 0 2.5px var(--bg);
   opacity: 0;
   transform: scale(0.4);
   transition: opacity 0.3s, transform 0.4s var(--spring);
@@ -835,7 +849,7 @@ svg.icon .fill {
 .next {
   position: absolute;
   left: calc(var(--side-w) + (100% - var(--side-w)) / 2);
-  bottom: calc(var(--safe-b) + 128px);
+  bottom: calc(var(--safe-b) + 84px);
   transform: translateX(-50%);
   display: flex;
   align-items: center;
@@ -874,15 +888,6 @@ svg.icon .fill {
 }
 
 /* ───────── Narrow screens ───────── */
-@media (max-width: 900px) {
-  .lessons {
-    right: 18px;
-    bottom: calc(var(--safe-b) + 66px);
-  }
-  .lessons h2 {
-    display: none;
-  }
-}
 @media (max-width: 600px) {
   :root {
     --side-w: 62px;
@@ -954,20 +959,13 @@ svg.icon .fill {
     font-size: 12px;
   }
   .lessons {
+    top: calc(var(--safe-t) + 60px);
+    right: 12px;
     left: calc(var(--side-w) + var(--safe-l) + 12px);
-    right: 0;
-    bottom: calc(var(--safe-b) + 62px);
+    width: auto;
   }
-  .lesson {
-    height: 52px;
-    padding: 0 10px 0 4px;
-  }
-  .lesson-thumb {
-    width: 44px;
-    height: 44px;
-  }
-  .lesson-title {
-    font-size: 12px;
+  .status svg.chevron {
+    display: none;
   }
   .viewbar {
     right: 12px;
@@ -978,7 +976,7 @@ svg.icon .fill {
     height: 34px;
   }
   .next {
-    bottom: calc(var(--safe-b) + 132px);
+    bottom: calc(var(--safe-b) + 72px);
   }
 }
 
