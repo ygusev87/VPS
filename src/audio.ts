@@ -172,33 +172,61 @@ export class Sfx {
     }
   }
 
-  /** Music box: a little tune on bells while it plays; call every frame. */
+  /** Music box: its song on bells while it plays; call every frame. */
   private musicAt = 0;
   private musicStep = 0;
-  tickMusic(on: boolean) {
+  private musicSong = -1;
+  tickMusic(on: boolean, song = 0) {
     const ctx = this.ctx;
     if (!ctx || !this.master) return;
     if (!on) {
       this.musicAt = 0;
       return;
     }
-    if (!this.musicAt || this.musicAt < ctx.currentTime) {
-      // (Re)start from the top after a pause.
-      if (!this.musicAt) this.musicStep = 0;
+    // A new song (or a fresh start) begins from the top.
+    if (!this.musicAt || song !== this.musicSong) {
+      this.musicSong = song;
+      this.musicStep = 0;
       this.musicAt = ctx.currentTime + 0.05;
     }
+    if (this.musicAt < ctx.currentTime) this.musicAt = ctx.currentTime + 0.05;
+    const tune = SONGS[song % SONGS.length];
     while (this.musicAt < ctx.currentTime + 0.25) {
-      const [note, beats] = TUNE[this.musicStep % TUNE.length];
-      if (note) {
-        const f = 440 * 2 ** ((note - 69) / 12);
-        const at = this.musicAt - ctx.currentTime;
-        this.tone(f, 0.9, 'sine', 0.13, at);
-        this.tone(f * 2, 0.35, 'sine', 0.04, at);
-        this.tone(f * 3.01, 0.12, 'triangle', 0.015, at);
-      }
-      this.musicAt += beats * 0.32;
+      const [note, beats] = tune[this.musicStep % tune.length];
+      if (note) this.bell(note, this.musicAt - ctx.currentTime);
+      this.musicAt += beats * 0.3;
       this.musicStep++;
     }
+  }
+
+  private bell(note: number, at = 0, vol = 1) {
+    const f = 440 * 2 ** ((note - 69) / 12);
+    this.tone(f, 0.9, 'sine', 0.13 * vol, at);
+    this.tone(f * 2, 0.35, 'sine', 0.04 * vol, at);
+    this.tone(f * 3.01, 0.12, 'triangle', 0.015 * vol, at);
+  }
+
+  /** Xylophone bar: a woody "tok" with a bright ring. */
+  xylophone(note: number) {
+    const f = 440 * 2 ** ((note - 69) / 12);
+    this.tone(f, 1.1, 'sine', 0.22);
+    this.tone(f * 4, 0.18, 'sine', 0.05);
+    this.tone(f * 10.1, 0.05, 'sine', 0.02);
+    this.noise(0.02, 0.12, f * 2);
+  }
+
+  /** Snare drum hit: a thump plus a rattle. */
+  drum() {
+    this.tone(190, 0.18, 'sine', 0.4, 0, 90);
+    this.tone(330, 0.07, 'triangle', 0.12, 0, 180);
+    this.noise(0.22, 0.35, 2600);
+    this.noise(0.08, 0.25, 900);
+  }
+
+  /** A dull tap: the instrument has no power. */
+  noPower() {
+    this.tone(140, 0.09, 'sine', 0.2, 0, 110);
+    this.noise(0.03, 0.08, 500);
   }
 
   /** Soft clack of a push button. */
@@ -208,14 +236,71 @@ export class Sfx {
   }
 }
 
-// The public-domain "Twinkle, Twinkle" (Mozart's «Ah! vous dirai-je, maman»),
-// as [MIDI note, beats]; 0 is a rest.
-const TUNE: [number, number][] = [
+// Music box songs, all traditional / public domain, as [MIDI note, beats]
+// (0 is a rest). Order matches SONG_ICONS in parts/extra.ts.
+type Tune = [number, number][];
+const r = (n: Tune, times: number): Tune => Array.from({ length: times }, () => n).flat();
+
+const TWINKLE: Tune = [
   [72, 1], [72, 1], [79, 1], [79, 1], [81, 1], [81, 1], [79, 2],
   [77, 1], [77, 1], [76, 1], [76, 1], [74, 1], [74, 1], [72, 2],
-  [79, 1], [79, 1], [77, 1], [77, 1], [76, 1], [76, 1], [74, 2],
-  [79, 1], [79, 1], [77, 1], [77, 1], [76, 1], [76, 1], [74, 2],
+  ...r([[79, 1], [79, 1], [77, 1], [77, 1], [76, 1], [76, 1], [74, 2]], 2),
   [72, 1], [72, 1], [79, 1], [79, 1], [81, 1], [81, 1], [79, 2],
   [77, 1], [77, 1], [76, 1], [76, 1], [74, 1], [74, 1], [72, 2],
   [0, 2],
 ];
+
+const MARY: Tune = [
+  [76, 1], [74, 1], [72, 1], [74, 1], [76, 1], [76, 1], [76, 2],
+  [74, 1], [74, 1], [74, 2], [76, 1], [79, 1], [79, 2],
+  [76, 1], [74, 1], [72, 1], [74, 1], [76, 1], [76, 1], [76, 1], [76, 1],
+  [74, 1], [74, 1], [76, 1], [74, 1], [72, 4],
+  [0, 2],
+];
+
+const MACDONALD_LINE: Tune = [[72, 1], [72, 1], [72, 1], [67, 1], [69, 1], [69, 1], [67, 2], [76, 1], [76, 1], [74, 1], [74, 1], [72, 3]];
+const MACDONALD: Tune = [...MACDONALD_LINE, [67, 1], ...MACDONALD_LINE, [0, 1], [67, 0.5], [67, 0.5], [72, 1], [72, 1], [72, 1], [67, 0.5], [67, 0.5], [72, 1], [72, 1], [72, 2], [0, 2]];
+
+const ROW: Tune = [
+  [72, 1.5], [72, 1.5], [72, 1], [74, 0.5], [76, 1.5],
+  [76, 1], [74, 0.5], [76, 1], [77, 0.5], [79, 3],
+  ...r([[84, 0.5]], 3), ...r([[79, 0.5]], 3), ...r([[76, 0.5]], 3), ...r([[72, 0.5]], 3),
+  [79, 1], [77, 0.5], [76, 1], [74, 0.5], [72, 3],
+  [0, 1.5],
+];
+
+const LONDON: Tune = [
+  [79, 1.5], [81, 0.5], [79, 1], [77, 1], [76, 1], [77, 1], [79, 2],
+  [74, 1], [76, 1], [77, 2], [76, 1], [77, 1], [79, 2],
+  [79, 1.5], [81, 0.5], [79, 1], [77, 1], [76, 1], [77, 1], [79, 2],
+  [74, 2], [79, 2], [76, 1], [72, 3],
+  [0, 2],
+];
+
+const SPIDER: Tune = [
+  [67, 0.5], [72, 1], [72, 0.5], [72, 1], [74, 0.5], [76, 1.5],
+  [76, 1], [74, 0.5], [72, 1], [74, 0.5], [76, 1], [72, 2],
+  [76, 1.5], [76, 0.5], [77, 1], [79, 2],
+  [79, 1], [77, 0.5], [76, 1], [77, 0.5], [79, 1], [76, 2],
+  [72, 1.5], [72, 0.5], [74, 1], [76, 2],
+  [76, 1], [74, 0.5], [72, 1], [74, 0.5], [76, 1], [72, 2],
+  [0, 2],
+];
+
+const JINGLE_HALF: Tune = [[76, 1], [76, 1], [76, 2], [76, 1], [76, 1], [76, 2], [76, 1], [79, 1], [72, 1.5], [74, 0.5], [76, 4], [77, 1], [77, 1], [77, 1.5], [77, 0.5], [77, 1], [76, 1], [76, 1], [76, 0.5], [76, 0.5]];
+const JINGLE: Tune = [
+  ...JINGLE_HALF, [76, 1], [74, 1], [74, 1], [76, 1], [74, 2], [79, 2],
+  ...JINGLE_HALF, [79, 1], [79, 1], [77, 1], [74, 1], [72, 4],
+  [0, 2],
+];
+
+const JACQUES: Tune = [
+  ...r([[72, 1], [74, 1], [76, 1], [72, 1]], 2),
+  ...r([[76, 1], [77, 1], [79, 2]], 2),
+  ...r([[79, 0.5], [81, 0.5], [79, 0.5], [77, 0.5], [76, 1], [72, 1]], 2),
+  ...r([[72, 1], [67, 1], [72, 2]], 2),
+  [0, 2],
+];
+
+/** Twinkle Twinkle, Mary Had a Little Lamb, Old MacDonald, Row Your Boat, London Bridge, Itsy Bitsy Spider, Jingle Bells, Frère Jacques. */
+export const SONGS: Tune[] = [TWINKLE, MARY, MACDONALD, ROW, LONDON, SPIDER, JINGLE, JACQUES];

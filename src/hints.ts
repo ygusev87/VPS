@@ -4,10 +4,10 @@ import * as THREE from 'three';
 import type { Level } from './levels';
 import { PARAMS } from './circuit/solver';
 import type { Part, PartKind, Terminal } from './parts/base';
-import { PANEL_BUTTON_X } from './parts/extra';
+import { ButtonPanel } from './parts/extra';
 import type { PhraseId } from './voice';
 import type { Wire } from './wires';
-import { activeAt, type World } from './world';
+import { activeAt, partIdOf, type World } from './world';
 
 export type Problem = 'short' | 'reversed' | 'bypass';
 
@@ -41,10 +41,24 @@ export function isProblem(h: Hint | null): boolean {
   return h?.type === 'tapWire';
 }
 
-const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox'];
+const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum'];
 const POLAR: PartKind[] = ['led', 'buzzer', 'musicbox'];
 const isPolar = (p: Part) => POLAR.includes(p.kind);
 const isBattery = (p: Part) => p.kind === 'battery' || p.kind === 'bigBattery';
+
+/** Every place power comes from: a battery's two posts, or a clip pair of the panel. */
+interface Source {
+  part: Part;
+  plus: Terminal;
+  minus: Terminal;
+}
+function sources(world: World): Source[] {
+  return world.parts.flatMap((p): Source[] => {
+    if (isBattery(p)) return [{ part: p, plus: p.terminal('a'), minus: p.terminal('b') }];
+    if (p instanceof ButtonPanel) return p.outputs().map(([plus, minus]) => ({ part: p, plus, minus }));
+    return [];
+  });
+}
 const reversedPhrase = (p: Part): PhraseId => (p.kind === 'led' ? 'reversed' : p.kind === 'musicbox' ? 'musicReversed' : 'buzzerReversed');
 
 /**
@@ -59,7 +73,7 @@ export function problemHint(world: World): Hint | null {
 
   // 1. Short circuit: "+" and "−" of a battery joined with nothing in between.
   if (r.shorted.size) {
-    const battery = world.parts.find((p) => r.shorted.has(p.id)) ?? null;
+    const battery = world.parts.find((p) => [...r.shorted].some((id) => partIdOf(id) === p.id)) ?? null;
     const wire =
       world.latestCulprit((res) => res.shorted.size === 0) ??
       (battery ? touching(battery).at(-1) : undefined) ??
@@ -86,9 +100,9 @@ export function problemHint(world: World): Hint | null {
     const newest = (t: Terminal) => Math.max(-1, ...world.wiresAt(t).map((w) => world.wires.indexOf(w)));
     let wrong = newest(a) > newest(b) ? a : b;
     if (isPolar(p)) {
-      const bats = world.parts.filter(isBattery);
-      if (bats.some((q) => world.wired(a, q.terminal('a')))) wrong = b;
-      else if (bats.some((q) => world.wired(a, q.terminal('b')))) wrong = a;
+      const src = sources(world);
+      if (src.some((q) => world.wired(a, q.plus))) wrong = b;
+      else if (src.some((q) => world.wired(a, q.minus))) wrong = a;
     }
     const wire = world.wiresAt(wrong).at(-1);
     if (wire) return { type: 'tapWire', wire, at: p, problem: 'bypass', phrase: 'bypass', u: clearSpot(world, wire) };
@@ -99,8 +113,17 @@ export function problemHint(world: World): Hint | null {
   if (idle.length) {
     const strong = world.trial((e) => (e.kind === 'battery' ? { ...e, emf: (e.emf ?? PARAMS.battery.emf) * 2 } : e));
     if (idle.some((p) => activeAt(p.kind, strong.elements.get(p.id)?.level ?? 0))) {
-      const bats = world.parts.filter(isBattery);
-      const busiest = bats.reduce<Part | null>((b, q) => (!b || Math.abs(strong.elements.get(q.id)?.current ?? 0) > Math.abs(strong.elements.get(b.id)?.current ?? 0) ? q : b), null);
+      // The battery working hardest is the one to point at.
+      let best: string | null = null;
+      let bestI = 0;
+      for (const [id, e] of strong.elements) {
+        const el = world.elements().find((x) => x.id === id);
+        if (el?.kind === 'battery' && Math.abs(e.current) > bestI) {
+          best = partIdOf(id);
+          bestI = Math.abs(e.current);
+        }
+      }
+      const busiest = world.parts.find((q) => q.id === best);
       if (busiest) return { type: 'weak', part: busiest, phrase: 'weak' };
     }
   }
@@ -119,9 +142,9 @@ function switchHint(world: World): Hint | null {
       if (el.kind !== 'switch' || el.closed) continue;
       const r = world.trial((e) => (e.id === el.id ? { ...e, closed: true } : e));
       if (r.shorted.size || !idle.some((p) => activeAt(p.kind, r.elements.get(p.id)?.level ?? 0))) continue;
-      if (sw.kind === 'panel') {
+      if (sw instanceof ButtonPanel) {
         const i = Number(el.id.split('#')[1]);
-        return { type: 'tap', part: sw, phrase: 'tapPanel', local: new THREE.Vector3(PANEL_BUTTON_X[i], 0.75, -0.35) };
+        return { type: 'tap', part: sw, phrase: 'tapPanel', local: sw.buttonPoint(i) };
       }
       return { type: 'tap', part: sw, phrase: sw.kind === 'button' ? 'holdButton' : 'tapSwitch' };
     }
@@ -134,17 +157,15 @@ function switchHint(world: World): Hint | null {
  * that is half connected to a battery, so the hint finishes what they started.
  */
 export function sandboxHint(world: World): Hint | null {
-  const batteries = world.parts.filter(isBattery);
+  const srcs = sources(world);
   const loads = world.parts.filter((p) => LOADS.includes(p.kind));
-  if (!batteries.length) {
+  if (!srcs.length) {
     return loads.length ? { type: 'drag', kind: 'battery', to: freeSpot(world), phrase: 'needBattery' } : null;
   }
   for (let i = loads.length - 1; i >= 0; i--) {
     const p = loads[i];
     if (p.state.level !== 0 && Math.abs(p.state.level) > 0.05) continue;
-    for (const bat of batteries) {
-      const plus = bat.terminal('a');
-      const minus = bat.terminal('b');
+    for (const { part: src, plus, minus } of srcs) {
       for (const [on, off] of [
         [p.terminal('a'), p.terminal('b')],
         [p.terminal('b'), p.terminal('a')],
@@ -158,7 +179,8 @@ export function sandboxHint(world: World): Hint | null {
           const wire = world.wiresAt(on).at(-1);
           if (wire) return { type: 'tapWire', wire, at: p, problem: 'reversed', phrase: reversedPhrase(p), u: clearSpot(world, wire) };
         }
-        return { type: 'connect', from: off, to: toPlus ? minus : plus, phrase: toPlus ? 'toMinus' : 'toPlus' };
+        const phrase: PhraseId = src instanceof ButtonPanel ? 'toPair' : toPlus ? 'toMinus' : 'toPlus';
+        return { type: 'connect', from: off, to: toPlus ? minus : plus, phrase };
       }
     }
   }
@@ -224,6 +246,7 @@ export function levelHint(world: World, level: Level, trayLeft: (k: PartKind) =>
  */
 function clearSpot(world: World, wire: Wire): number {
   const others = world.wires.filter((w) => w !== wire && w.b).flatMap((w) => w.samples(20).map((p) => world.stage.project(p)));
+  const bodies = partsOnScreen(world);
   let best = 0.5;
   let bestScore = -Infinity;
   for (let i = 3; i <= 17; i++) {
@@ -231,13 +254,24 @@ function clearSpot(world: World, wire: Wire): number {
     const p = world.stage.project(wire.pointAt(u));
     let d = Infinity;
     for (const o of others) d = Math.min(d, Math.hypot(o.x - p.x, o.y - p.y));
-    const score = Math.min(d, 60) - Math.abs(u - 0.5) * 20;
+    // Away from other wires and off the parts themselves, so the finger lands on table.
+    let e = Infinity;
+    for (const b of bodies) e = Math.min(e, Math.hypot(b.x - p.x, b.y - p.y) - b.r);
+    const score = Math.min(d, 60) + Math.min(e, 50) * 1.2 - Math.abs(u - 0.5) * 20;
     if (score > bestScore) {
       bestScore = score;
       best = u;
     }
   }
   return best;
+}
+
+/** Each part as a circle on screen (centre and radius in pixels). */
+export function partsOnScreen(world: World): { x: number; y: number; r: number }[] {
+  return world.parts.map((p) => {
+    const c = world.stage.project(p.root.position);
+    return { x: c.x, y: c.y, r: p.radius * 0.85 * world.stage.pixelsPerUnit(p.root.position) };
+  });
 }
 
 /** An empty-looking place near the middle of the view for a new part. */

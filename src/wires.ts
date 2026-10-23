@@ -1,7 +1,7 @@
 // Flexible wires between terminals, with beads of "current" running along
 // them in the direction conventional current flows.
 import * as THREE from 'three';
-import type { Terminal } from './parts/base';
+import type { Footprint, Terminal } from './parts/base';
 import { C, WIRE_COLORS } from './theme';
 
 const RADIUS = 0.05;
@@ -19,6 +19,10 @@ export class Wire {
   static showFlow = true;
   /** While a hint singles out a wire, the others fade back. */
   static focus: Wire | null = null;
+  /** Bodies on the table (world rectangles, margin included) that wires go round. */
+  static obstacles: Footprint[] = [];
+  /** Changes whenever an obstacle moves, so wires re-route. */
+  static obstacleKey = '';
   readonly id = `w${nextWireId++}`;
   readonly group = new THREE.Group();
   readonly tube: THREE.Mesh;
@@ -133,21 +137,33 @@ export class Wire {
     const dir = d > 1e-4 ? flat.clone().divideScalar(d) : new THREE.Vector3(1, 0, 0);
     const side = new THREE.Vector3().crossVectors(dir, UP);
     const pts: THREE.Vector3[] = [p0.clone()];
-    const lift = (p: THREE.Vector3, along: number, y: number) => p.clone().addScaledVector(dir, along).setY(y);
+    const lift = (p: THREE.Vector3, to: THREE.Vector3, along: number, y: number) => {
+      const v = new THREE.Vector3(to.x - p.x, 0, to.z - p.z);
+      const n = v.length();
+      return p.clone().addScaledVector(n > 1e-4 ? v.divideScalar(n) : dir, Math.min(along, n * 0.4)).setY(y);
+    };
+    const corners = d < 1.8 ? [] : route(p0, p3, Wire.obstacles);
 
     if (d < 1.8) {
       pts.push(p0.clone().addScaledVector(UP, 0.25).addScaledVector(dir, d * 0.15));
       pts.push(p0.clone().lerp(p3, 0.5).setY(Math.max(p0.y, p3.y) + 0.3 + d * 0.1));
       pts.push(p3.clone().addScaledVector(UP, 0.25).addScaledVector(dir, -d * 0.15));
+    } else if (corners.length) {
+      // Round the bodies in the way: off the post, along the table past each corner, up again.
+      const first = new THREE.Vector3(corners[0].x, 0, corners[0].z);
+      const last = new THREE.Vector3(corners[corners.length - 1].x, 0, corners[corners.length - 1].z);
+      pts.push(lift(p0, first, 0.3, p0.y + 0.12));
+      for (const c of corners) pts.push(new THREE.Vector3(c.x, 0.1, c.z));
+      pts.push(lift(p3, last, 0.3, p3.y + 0.12));
     } else {
       // Rise off the post, drop to the table, lie there in a lazy curve, rise again.
       const bend = Math.min(0.7, d * 0.12) * this.lateral;
-      pts.push(lift(p0, 0.3, p0.y + 0.12));
-      pts.push(lift(p0, 0.85, 0.32));
+      pts.push(lift(p0, p3, 0.3, p0.y + 0.12));
+      pts.push(lift(p0, p3, 0.85, 0.32));
       const m = p0.clone().lerp(p3, 0.5).addScaledVector(side, bend).setY(d > 3 ? 0.08 : 0.2);
       pts.push(m);
-      pts.push(lift(p3, -0.85, 0.32));
-      pts.push(lift(p3, -0.3, p3.y + 0.12));
+      pts.push(lift(p3, p0, 0.85, 0.32));
+      pts.push(lift(p3, p0, 0.3, p3.y + 0.12));
     }
     pts.push(p3.clone());
 
@@ -182,7 +198,7 @@ export class Wire {
         return;
       }
     }
-    const key = `${this.p0.x.toFixed(3)},${this.p0.y.toFixed(3)},${this.p0.z.toFixed(3)}|${this.p3.x.toFixed(3)},${this.p3.y.toFixed(3)},${this.p3.z.toFixed(3)}|${this.grow}|${this.fade}|${this.alert}`;
+    const key = `${this.p0.x.toFixed(3)},${this.p0.y.toFixed(3)},${this.p0.z.toFixed(3)}|${this.p3.x.toFixed(3)},${this.p3.y.toFixed(3)},${this.p3.z.toFixed(3)}|${this.grow}|${this.fade}|${this.alert}|${Wire.obstacleKey}`;
     if (key !== this.lastKey) {
       this.lastKey = key;
       this.rebuild();
@@ -229,4 +245,108 @@ export class Wire {
     this.dots.count = n;
     this.dots.instanceMatrix.needsUpdate = true;
   }
+}
+
+type P2 = { x: number; z: number };
+
+/**
+ * A path on the table from a to b that goes round every rectangle in the
+ * way, as the corners to pass (a and b not included). Each crossing is
+ * replaced by the shorter way round that rectangle (the hull of the two
+ * ends and its corners); a few rounds settle chains of obstacles.
+ */
+function route(a: THREE.Vector3, b: THREE.Vector3, rects: Footprint[]): P2[] {
+  const path: P2[] = [
+    { x: a.x, z: a.z },
+    { x: b.x, z: b.z },
+  ];
+  // Bodies the ends sit in (or right against) are left alone.
+  const free = rects.filter((r) => !inside(path[0], r) && !inside(path[1], r));
+  for (let round = 0; round < 8; round++) {
+    let changed = false;
+    for (let i = 0; i < path.length - 1 && !changed; i++) {
+      const p = path[i];
+      const q = path[i + 1];
+      const hit = free
+        .map((r) => ({ r, t: crossing(p, q, r) }))
+        .filter((h) => h.t !== null)
+        .sort((u, v) => u.t! - v.t!)[0];
+      if (!hit) continue;
+      path.splice(i + 1, 0, ...detour(p, q, hit.r));
+      changed = true;
+    }
+    if (!changed) break;
+  }
+  return path.slice(1, -1);
+}
+
+function inside(p: P2, r: Footprint) {
+  return p.x > r.x0 && p.x < r.x1 && p.z > r.z0 && p.z < r.z1;
+}
+
+/** Where (0..1) segment p→q first enters rectangle r, or null if it misses. */
+function crossing(p: P2, q: P2, r: Footprint): number | null {
+  let t0 = 0;
+  let t1 = 1;
+  const dx = q.x - p.x;
+  const dz = q.z - p.z;
+  for (const [delta, lo, hi, start] of [
+    [dx, r.x0, r.x1, p.x],
+    [dz, r.z0, r.z1, p.z],
+  ]) {
+    if (Math.abs(delta) < 1e-9) {
+      if (start <= lo || start >= hi) return null;
+      continue;
+    }
+    let a = (lo - start) / delta;
+    let b = (hi - start) / delta;
+    if (a > b) [a, b] = [b, a];
+    t0 = Math.max(t0, a);
+    t1 = Math.min(t1, b);
+    if (t0 >= t1) return null;
+  }
+  return t1 - t0 > 1e-4 ? t0 : null;
+}
+
+/** The corners of r to pass going round it from p to q, the shorter way. */
+function detour(p: P2, q: P2, r: Footprint): P2[] {
+  const c: P2[] = [
+    { x: r.x0, z: r.z0 },
+    { x: r.x1, z: r.z0 },
+    { x: r.x1, z: r.z1 },
+    { x: r.x0, z: r.z1 },
+  ];
+  // Convex hull (monotone chain) of p, q and the four corners.
+  const all = [p, q, ...c].sort((u, v) => u.x - v.x || u.z - v.z);
+  const cross = (o: P2, u: P2, v: P2) => (u.x - o.x) * (v.z - o.z) - (u.z - o.z) * (v.x - o.x);
+  const half = (pts: P2[]) => {
+    const h: P2[] = [];
+    for (const pt of pts) {
+      while (h.length >= 2 && cross(h[h.length - 2], h[h.length - 1], pt) <= 0) h.pop();
+      h.push(pt);
+    }
+    h.pop();
+    return h;
+  };
+  const hull = [...half(all), ...half([...all].reverse())];
+  const ip = hull.indexOf(p);
+  const iq = hull.indexOf(q);
+  if (ip < 0 || iq < 0) return [];
+  const walk = (step: number) => {
+    const out: P2[] = [];
+    for (let i = (ip + step + hull.length) % hull.length; i !== iq; i = (i + step + hull.length) % hull.length) out.push(hull[i]);
+    return out;
+  };
+  const len = (chain: P2[]) => {
+    let s = 0;
+    let prev = p;
+    for (const pt of [...chain, q]) {
+      s += Math.hypot(pt.x - prev.x, pt.z - prev.z);
+      prev = pt;
+    }
+    return s;
+  };
+  const one = walk(1);
+  const two = walk(-1);
+  return len(one) <= len(two) ? one : two;
 }

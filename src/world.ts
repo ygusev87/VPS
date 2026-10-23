@@ -37,10 +37,18 @@ export function activeAt(kind: PartKind, l: number): boolean {
       return Math.abs(l) > 0.15;
     case 'buzzer':
     case 'musicbox':
+    case 'xylophone':
+    case 'drum':
       return l > 0.2;
     default:
       return false;
   }
+}
+
+/** The part an element belongs to: element ids are the part id, or `partId#name`. */
+export function partIdOf(elementId: string): string {
+  const i = elementId.indexOf('#');
+  return i < 0 ? elementId : elementId.slice(0, i);
 }
 
 export class World {
@@ -172,7 +180,8 @@ export class World {
     this.result = r;
     for (const p of this.parts) {
       const e = r.elements.get(p.id) ?? { level: 0, current: 0, voltage: 0, reversed: false };
-      p.state = { level: e.level, current: e.current, voltage: e.voltage, reversed: e.reversed, shorted: r.shorted.has(p.id) };
+      const shorted = [...r.shorted].some((id) => partIdOf(id) === p.id);
+      p.state = { level: e.level, current: e.current, voltage: e.voltage, reversed: e.reversed, shorted };
       p.onSolved(r);
       const now = isActive(p);
       if (now && !this.active.has(p)) {
@@ -211,12 +220,29 @@ export class World {
 
   update(dt: number) {
     if (this.dirty) this.solve();
+    this.updateObstacles();
     for (const p of this.parts) p.update(dt);
     for (const w of [...this.wires]) w.update(dt);
     for (const w of [...this.loose]) {
       w.update(dt);
       if (!w.group.parent) this.loose.delete(w);
     }
+  }
+
+  /** Hand wires the bodies to go round; re-route only when something moved. */
+  private updateObstacles() {
+    const M = 0.2;
+    const rects = [];
+    const key: string[] = [];
+    for (const p of this.parts) {
+      const f = p.footprint();
+      if (!f) continue;
+      const { x, z } = p.root.position;
+      rects.push({ x0: x + f.x0 - M, x1: x + f.x1 + M, z0: z + f.z0 - M, z1: z + f.z1 + M });
+      key.push(`${x.toFixed(2)},${z.toFixed(2)}`);
+    }
+    Wire.obstacles = rects;
+    Wire.obstacleKey = key.join(';');
   }
 
   /** Keep a part within reach on the endless table. */

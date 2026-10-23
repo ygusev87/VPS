@@ -13,6 +13,8 @@ export type PartKind =
   | 'windmill'
   | 'buzzer'
   | 'musicbox'
+  | 'xylophone'
+  | 'drum'
   | 'switch'
   | 'button'
   | 'panel';
@@ -134,6 +136,17 @@ export class Terminal {
 
 let nextId = 1;
 
+/** Something a part wants heard: a note, a drum hit, a dull "no power" tap. */
+export type PartSound = { kind: 'xylophone'; note: number } | { kind: 'drum' } | { kind: 'noPower' } | { kind: 'song'; song: number };
+
+/** Axis-aligned rectangle on the table (x/z), in world or part-local units. */
+export interface Footprint {
+  x0: number;
+  x1: number;
+  z0: number;
+  z1: number;
+}
+
 export abstract class Part {
   readonly id: string;
   /** Placed on the table; position.y stays 0. */
@@ -154,6 +167,10 @@ export abstract class Part {
   state: ElectricState = { level: 0, current: 0, voltage: 0, reversed: false, shorted: false };
   /** Bulbs and LEDs: current colour. */
   color: LightColor = 'warm';
+
+  /** Sounds asked for since the last frame; the game plays and clears them. */
+  readonly sounds: PartSound[] = [];
+  private foot: Footprint | null | undefined;
 
   private spring = 1;
   private springV = 0;
@@ -221,6 +238,9 @@ export abstract class Part {
   pressStart(_hit: THREE.Object3D | null, _point: THREE.Vector3 | null): boolean {
     return false;
   }
+
+  /** The held finger slid over the part (e.g. along xylophone bars). */
+  pressMove(_hit: THREE.Object3D | null, _point: THREE.Vector3 | null) {}
 
   pressEnd() {}
 
@@ -292,6 +312,38 @@ export abstract class Part {
 
   /** Per-part reaction to electric state. */
   protected abstract animate(dt: number): void;
+
+  /**
+   * Is this touch on something the child presses (a key, a button cap)?
+   * Such touches win over a wire lying across them.
+   */
+  controlAt(_hit: THREE.Object3D | null, _point: THREE.Vector3 | null): boolean {
+    return false;
+  }
+
+  /**
+   * The tall part of the body seen from above (not the flat plate or the
+   * terminal posts), in part-local units — wires are routed around it.
+   */
+  footprint(): Footprint | null {
+    if (this.foot !== undefined) return this.foot;
+    this.body.updateMatrixWorld(true);
+    const inv = new THREE.Matrix4().copy(this.body.matrixWorld).invert();
+    const posts = new Set<THREE.Object3D>();
+    for (const t of this.terminals) t.post.traverse((o) => posts.add(o));
+    const box = new THREE.Box3();
+    const one = new THREE.Box3();
+    this.body.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (!m.isMesh || posts.has(m) || !m.geometry) return;
+      if (!m.geometry.boundingBox) m.geometry.computeBoundingBox();
+      one.copy(m.geometry.boundingBox!).applyMatrix4(new THREE.Matrix4().multiplyMatrices(inv, m.matrixWorld));
+      // Plates, decals and light pools are flat; only what stands up counts.
+      if (one.max.y > PLATE_TOP + 0.25 && one.max.y - one.min.y > 0.12) box.union(one);
+    });
+    this.foot = box.isEmpty() ? null : { x0: box.min.x, x1: box.max.x, z0: box.min.z, z1: box.max.z };
+    return this.foot;
+  }
 
   /** Called when the part leaves the table for good. */
   dispose() {

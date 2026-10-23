@@ -1,7 +1,7 @@
 // Everything the child can take from the parts panel, grouped like drawers
 // in a kit box. A variant is a part kind plus, for lights, a colour.
 import type { LightColor, Part, PartKind } from './base';
-import { ButtonPanel, Carousel, MusicBox, PushButton, Windmill } from './extra';
+import { ButtonPanel, Carousel, Drum, MusicBox, PushButton, Windmill, Xylophone } from './extra';
 import { Battery, Bulb, Buzzer, Fan, Led, Switch } from './models';
 import type { PhraseId } from '../voice';
 
@@ -57,6 +57,8 @@ export const GROUPS: CatalogGroup[] = [
     items: [
       { kind: 'buzzer', name: 'Пищалка', say: 'buzzer' },
       { kind: 'musicbox', name: 'Музыкальная шкатулка', say: 'musicbox' },
+      { kind: 'xylophone', name: 'Ксилофон', say: 'xylophone' },
+      { kind: 'drum', name: 'Барабан', say: 'drum' },
     ],
   },
   {
@@ -108,6 +110,10 @@ function make(kind: PartKind): Part {
       return new Buzzer();
     case 'musicbox':
       return new MusicBox();
+    case 'xylophone':
+      return new Xylophone();
+    case 'drum':
+      return new Drum();
     case 'switch':
       return new Switch();
     case 'button':
@@ -118,4 +124,4 @@ function make(kind: PartKind): Part {
 }
 
 /** Model files the game loads at start. */
-export const MODEL_NAMES = ['battery', 'bigbattery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer', 'carousel', 'windmill', 'sails', 'musicbox', 'button', 'panel'];
+export const MODEL_NAMES = ['battery', 'bigbattery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer', 'carousel', 'windmill', 'sails', 'musicbox', 'button', 'panel', 'drum'];

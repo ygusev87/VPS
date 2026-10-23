@@ -47,6 +47,10 @@ export interface HudHooks {
   onPickLevel(level: Level): void;
   onNext(): void;
   onSpawn(item: CatalogItem, e: PointerEvent): void;
+  /** Parts as circles on screen, so hint badges can sit on empty table. */
+  bodiesOnScreen?(): { x: number; y: number; r: number }[];
+  /** Points along the wires on screen, likewise. */
+  wiresOnScreen?(): { x: number; y: number }[];
 }
 
 export class Hud {
@@ -403,6 +407,7 @@ export class Hud {
     this.hint = h;
     this.hintT = 0;
     this.hintScreen = null;
+    this.badgeAngle = null;
     this.badge.innerHTML = '';
     if (!h) return;
     const v = new THREE.Vector3();
@@ -467,14 +472,7 @@ export class Hud {
     } else this.trail.setAttribute('d', '');
 
     if (this.badge.innerHTML) {
-      const p = h.type === 'tapWire' && h.at ? this.stage.project(h.at.root.localToWorld(new THREE.Vector3(0, 1.6, 0))) : { ...A };
-      // Keep the badge clear of the spot the finger should press.
-      const gap = Math.hypot(p.x - A.x, p.y - A.y);
-      if (gap < 70) {
-        const dir = gap > 1 ? { x: (p.x - A.x) / gap, y: (p.y - A.y) / gap } : { x: 0, y: -1 };
-        p.x = A.x + dir.x * 70;
-        p.y = A.y + dir.y * 70;
-      }
+      const p = this.badgeSpot(A);
       // Positioned with left/top: its bobbing animation owns `transform`.
       this.badge.style.display = '';
       this.badge.style.left = `${p.x}px`;
@@ -511,6 +509,45 @@ export class Hud {
     // "Too weak" has nothing to press: just the halo and badge at the battery.
     this.hand.style.opacity = String(h.type === 'weak' ? 0 : alpha);
     this.hand.style.transform = `translate(${hx}px, ${hy + (1 - press) * -8}px) scale(${1 - press * 0.12}) rotate(-12deg)`;
+  }
+
+  private badgeAngle: number | null = null;
+  private badgeR = 76;
+
+  /**
+   * Where the problem badge goes: near the spot to press but on empty table —
+   * away from parts, off the hand (which hangs down-right of the spot) and
+   * inside the free part of the screen. Sticks to its place unless another
+   * is clearly better, so it does not hop around.
+   */
+  private badgeSpot(A: { x: number; y: number }) {
+    const bodies = this.hooks.bodiesOnScreen?.() ?? [];
+    const wires = this.hooks.wiresOnScreen?.() ?? [];
+    const ins = this.stage.insets;
+    const score = (ang: number, R: number) => {
+      const x = A.x + Math.cos(ang) * R;
+      const y = A.y + Math.sin(ang) * R;
+      let clear = 90;
+      for (const b of bodies) clear = Math.min(clear, Math.hypot(b.x - x, b.y - y) - b.r);
+      let free = 50;
+      for (const w of wires) free = Math.min(free, Math.hypot(w.x - x, w.y - y) - 18);
+      const off = x < ins.left + 30 || x > window.innerWidth - ins.right - 30 || y < ins.top + 30 || y > window.innerHeight - ins.bottom - 30;
+      const hand = Math.cos(ang - Math.PI / 4) > 0.5 ? 60 : 0;
+      return clear + free * 0.8 - (off ? 200 : 0) - hand - Math.sin(ang) * 8 - (R - 76) * 0.15;
+    };
+    let best = { ang: -Math.PI / 2, R: 76, s: -Infinity };
+    for (let i = 0; i < 16; i++) {
+      for (const R of [76, 120]) {
+        const ang = (i / 16) * Math.PI * 2;
+        const sc = score(ang, R);
+        if (sc > best.s) best = { ang, R, s: sc };
+      }
+    }
+    if (this.badgeAngle === null || best.s > score(this.badgeAngle, this.badgeR) + 12) {
+      this.badgeAngle = best.ang;
+      this.badgeR = best.R;
+    }
+    return { x: A.x + Math.cos(this.badgeAngle) * this.badgeR, y: A.y + Math.sin(this.badgeAngle) * this.badgeR };
   }
 
   // ───────── Celebration ─────────

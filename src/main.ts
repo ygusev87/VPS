@@ -1,11 +1,12 @@
 import * as THREE from 'three';
 import './style.css';
 import { Sfx } from './audio';
-import { freeSpot, hintKey, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
+import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Hud } from './hud';
 import { Input } from './input';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
-import type { PartKind, Terminal } from './parts/base';
+import type { PartKind, PartSound, Terminal } from './parts/base';
+import { MusicBox } from './parts/extra';
 import { loadModels } from './parts/assets';
 import { ALL_ITEMS, createPart, MODEL_NAMES } from './parts/catalog';
 import { Stage } from './stage';
@@ -103,6 +104,8 @@ const hud = new Hud(stage, {
     const i = LEVELS.indexOf(level);
     startLevel(i >= 0 && i < LEVELS.length - 1 ? LEVELS[i + 1] : FREE_PLAY);
   },
+  bodiesOnScreen: () => partsOnScreen(world),
+  wiresOnScreen: () => world.wires.flatMap((w) => w.samples(12).map((p) => stage.project(p))),
   onSpawn: (item, e) => {
     input.spawnFromTray(item.kind, e, item.color);
     voice.say(item.say, 3000);
@@ -247,11 +250,16 @@ world.on((e) => {
       break;
     case 'switch':
       if (e.part.kind === 'button') sfx.press(e.part.closed);
-      else sfx.click();
+      else if (e.part.kind !== 'xylophone' && e.part.kind !== 'drum') sfx.click();
       break;
     case 'activated':
       if (e.part.kind === 'bulb' || e.part.kind === 'led') sfx.ting();
       if (e.part.kind === 'fan' || e.part.kind === 'windmill' || e.part.kind === 'carousel') sfx.whir();
+      // The first time a music box plays, tell how to change the song.
+      if (e.part.kind === 'musicbox' && !songHintSaid) {
+        songHintSaid = true;
+        setTimeout(() => voice.say('tapSong', 0), 4000);
+      }
       break;
     case 'short':
       if (e.on) {
@@ -290,6 +298,27 @@ function hintVisible() {
   return isProblem(currentHint) || performance.now() - lastTouch > 1200;
 }
 
+// ───────── Part sounds ─────────
+
+let songHintSaid = false;
+function playPartSound(snd: PartSound) {
+  switch (snd.kind) {
+    case 'xylophone':
+      sfx.xylophone(snd.note);
+      break;
+    case 'drum':
+      sfx.drum();
+      break;
+    case 'noPower':
+      sfx.noPower();
+      voice.say('needPower', 10000);
+      break;
+    case 'song':
+      sfx.pop();
+      break;
+  }
+}
+
 // ───────── Main loop ─────────
 
 let last = performance.now();
@@ -316,14 +345,19 @@ function frame(now: number) {
   let fan = 0;
   let buzz = false;
   let music = false;
+  let song = 0;
   for (const p of world.parts) {
+    for (const snd of p.sounds.splice(0)) playPartSound(snd);
     if (p.kind === 'fan') fan += Math.abs(p.state.level);
     if (p.kind === 'windmill' || p.kind === 'carousel') fan += Math.abs(p.state.level) * 0.4;
     if (p.kind === 'buzzer' && isActive(p)) buzz = true;
-    if (p.kind === 'musicbox' && isActive(p)) music = true;
+    if (p instanceof MusicBox && isActive(p) && !music) {
+      music = true;
+      song = p.song;
+    }
   }
   sfx.setFan(fan);
-  sfx.tickMusic(music);
+  sfx.tickMusic(music, song);
   buzzerRefresh -= dt;
   if (buzz !== buzzerOn || (buzz && buzzerRefresh <= 0)) {
     buzzerOn = buzz;

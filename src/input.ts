@@ -120,10 +120,14 @@ export class Input {
       return;
     }
 
-    // Wires lie on top of parts, so they get the first look.
-    const wire = this.wireAt(x, y);
-    const hit = wire ? undefined : this.stage.raycast(x, y, this.world.parts.flatMap((p) => p.pickables))[0];
+    // Wires lie on top of parts, so they get the first look — except over a
+    // button or key, where the press goes to the part (unless a hint is
+    // pointing at that very wire).
+    const hit = this.stage.raycast(x, y, this.world.parts.flatMap((p) => p.pickables))[0];
     const part = hit?.object.userData.part as Part | undefined;
+    const control = !!part && part.controlAt(hit!.object, hit!.point);
+    let wire = this.wireAt(x, y);
+    if (wire && control && wire !== this.hooks.preferredWire?.()) wire = null;
     if (wire) this.mode = { kind: 'press-wire', wire, x, y };
     else if (part && part.pressStart(hit!.object, hit!.point)) {
       this.mode = { kind: 'hold-part', part };
@@ -202,6 +206,11 @@ export class Input {
     if (e.pointerId !== this.pointerId) return;
     const { clientX: x, clientY: y } = e;
     switch (m.kind) {
+      case 'hold-part': {
+        const hit = this.stage.raycast(x, y, m.part.pickables)[0];
+        if (hit) m.part.pressMove(hit.object, hit.point);
+        break;
+      }
       case 'pan':
         this.stage.panTo(m.anchor, x, y);
         this.hooks.onViewMoved?.();
