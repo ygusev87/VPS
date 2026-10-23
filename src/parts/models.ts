@@ -196,7 +196,9 @@ export class Bulb extends Part {
   }
 
   protected animate(dt: number) {
-    const target = Math.min(1.6, Math.max(0, this.state.level));
+    // Eyes judge brightness roughly by the square root of power, so two
+    // bulbs in series read as "dim but on" rather than "off".
+    const target = Math.min(1.5, Math.sqrt(Math.max(0, this.state.level)));
     // Filaments warm up fast and cool a little slower.
     this.shown = damp(this.shown, target, target > this.shown ? 9 : 5, dt);
     const b = this.shown;
