@@ -5,7 +5,8 @@ import { hintKey, levelHint, problemHint, type Hint } from './hints';
 import { Hud } from './hud';
 import { Input } from './input';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
-import type { PartKind } from './parts/base';
+import type { PartKind, Terminal } from './parts/base';
+import { loadModels } from './parts/assets';
 import { PART_KINDS } from './parts/models';
 import { Stage } from './stage';
 import { loadProgress, saveProgress } from './storage';
@@ -34,6 +35,8 @@ sfx.setMuted(!progress.sound);
 voice.enabled = progress.sound;
 setLoad(0.35);
 
+await loadModels(['battery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer']);
+setLoad(0.55);
 renderThumbs(PART_KINDS);
 setLoad(0.75);
 
@@ -307,4 +310,18 @@ requestAnimationFrame((t) => {
 });
 
 // Debug/test handle (used by the Playwright smoke tests).
-(window as unknown as { __game: unknown }).__game = { world, stage, startLevel, LEVELS, FREE_PLAY, input, hud };
+(window as unknown as { __game: unknown }).__game = {
+  world,
+  stage,
+  startLevel,
+  LEVELS,
+  FREE_PLAY,
+  input,
+  hud,
+  /** Wire two terminals directly, skipping the gesture. */
+  connect(a: Terminal, b: Terminal) {
+    const w = new Wire(a);
+    stage.world.add(w.group);
+    world.attachWire(w, b);
+  },
+};

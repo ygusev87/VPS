@@ -5,6 +5,7 @@ import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import type { ElementKind } from '../circuit/solver';
 import { C } from '../theme';
+import { centroid, model, sizeOf, tip } from './assets';
 import { Part, type PartKind } from './base';
 import { basePlate, damp, glowTexture, lightPool, mat, mesh, PLATE_TOP, raysTexture, roundedBox, signDecal, textDecal } from './kit';
 
@@ -23,6 +24,27 @@ const tex = {
   },
 };
 
+function materialsOf(o: THREE.Object3D): THREE.MeshStandardMaterial[] {
+  const out = new Set<THREE.MeshStandardMaterial>();
+  o.traverse((c) => {
+    const m = (c as THREE.Mesh).material as THREE.MeshStandardMaterial | undefined;
+    if (m && 'emissive' in m) out.add(m);
+  });
+  return [...out];
+}
+
+/** Materials of a sculpted model, set up to glow in their own colours. */
+function materialsOfMeshes(o: THREE.Object3D): THREE.MeshStandardMaterial[] {
+  const mats = materialsOf(o);
+  for (const m of mats) {
+    m.emissive.set('#ffffff');
+    m.emissiveMap = m.map;
+    m.emissiveIntensity = 0;
+    m.needsUpdate = true;
+  }
+  return mats;
+}
+
 function sprite(map: THREE.Texture, size: number): THREE.Sprite {
   const s = new THREE.Sprite(new THREE.SpriteMaterial({ map, transparent: true, depthWrite: false, opacity: 0 }));
   s.scale.setScalar(size);
@@ -37,13 +59,15 @@ export class Battery extends Part {
   readonly elementKind: ElementKind = 'battery';
   readonly radius = 1.55;
   private holderMat = mat(C.navy2, 0.5).clone();
+  private heat: THREE.MeshStandardMaterial[] = [];
+  private heatLevel = 0;
   private lamp: THREE.Mesh;
   private lampMat = new THREE.MeshStandardMaterial({ color: '#9a9fae', emissive: C.teal, emissiveIntensity: 0 });
   private steam: THREE.Sprite[] = [];
 
   constructor() {
     super();
-    const plate = basePlate(2.9, 1.8);
+    const plate = basePlate(2.9, 2.0);
     // Open tray with two AA cells, springs on the minus end and red/black leads
     // running to the posts, like the real battery box.
     const tray = new THREE.Group();
@@ -80,7 +104,10 @@ export class Battery extends Part {
       sp.rotation.y = x < 0 ? 0 : Math.PI;
       tray.add(sp);
     }
-    tray.position.set(0, PLATE_TOP, -0.22);
+    // Prefer the sculpted model; the code-built tray is the fallback.
+    const holder = model('battery', { width: 2.3 }) ?? tray;
+    holder.position.set(0, PLATE_TOP, -0.3);
+    this.heat = materialsOf(holder);
 
     // Leads from the holder to the posts.
     const lead = (color: string, from: THREE.Vector3, to: THREE.Vector3) => {
@@ -88,23 +115,23 @@ export class Battery extends Part {
       const curve = new THREE.CatmullRomCurve3([from, mid, to]);
       return mesh(new THREE.TubeGeometry(curve, 24, 0.035, 8), mat(color, 0.4));
     };
-    const leadR = lead(C.red, new THREE.Vector3(1.26, PLATE_TOP + 0.25, 0.1), new THREE.Vector3(1.0, PLATE_TOP + 0.12, 0.55));
-    const leadB = lead('#20242e', new THREE.Vector3(-1.26, PLATE_TOP + 0.25, -0.1), new THREE.Vector3(-1.0, PLATE_TOP + 0.12, 0.55));
+    const leadR = lead(C.red, new THREE.Vector3(1.2, PLATE_TOP + 0.25, 0.0), new THREE.Vector3(1.0, PLATE_TOP + 0.12, 0.7));
+    const leadB = lead('#20242e', new THREE.Vector3(-1.2, PLATE_TOP + 0.25, -0.2), new THREE.Vector3(-1.0, PLATE_TOP + 0.12, 0.7));
 
     this.lamp = mesh(new THREE.SphereGeometry(0.06, 16, 10), this.lampMat);
-    this.lamp.position.set(0, PLATE_TOP + 0.03, 0.62);
+    this.lamp.position.set(0, PLATE_TOP + 0.03, 0.72);
 
     const plus = signDecal('plus', C.red, 0.3);
-    plus.position.set(0.5, PLATE_TOP + 0.005, 0.6);
+    plus.position.set(0.5, PLATE_TOP + 0.005, 0.72);
     const minus = signDecal('minus', C.navy2, 0.3);
-    minus.position.set(-0.5, PLATE_TOP + 0.005, 0.6);
+    minus.position.set(-0.5, PLATE_TOP + 0.005, 0.72);
     const volts = textDecal('3 V', 0.5, 0.16);
-    volts.position.set(0, PLATE_TOP + 0.004, 0.76);
+    volts.position.set(0, PLATE_TOP + 0.004, 0.86);
 
-    this.body.add(plate, tray, leadR, leadB, this.lamp, plus, minus, volts);
-    this.addTerminal('a', 'plus', 1.0, 0.55);
-    this.addTerminal('b', 'minus', -1.0, 0.55);
-    this.pickable(plate, tray);
+    this.body.add(plate, holder, leadR, leadB, this.lamp, plus, minus, volts);
+    this.addTerminal('a', 'plus', 1.0, 0.7);
+    this.addTerminal('b', 'minus', -1.0, 0.7);
+    this.pickable(plate, holder);
 
     for (let i = 0; i < 4; i++) {
       const s = sprite(tex.warm, 0.5);
@@ -121,8 +148,11 @@ export class Battery extends Part {
     this.lampMat.emissiveIntensity = damp(this.lampMat.emissiveIntensity, working > 0.02 && !this.state.shorted ? 2.2 : 0, 8, dt);
     // Short circuit: the holder glows hot red and puffs of "steam" rise.
     const hot = this.state.shorted ? 0.6 + 0.4 * Math.sin(this.time * 9) : 0;
-    this.holderMat.emissive.set(C.red);
-    this.holderMat.emissiveIntensity = damp(this.holderMat.emissiveIntensity, hot * 0.9, 10, dt);
+    this.heatLevel = damp(this.heatLevel, hot, 10, dt);
+    for (const m of this.heat) {
+      m.emissive.set(C.red);
+      m.emissiveIntensity = this.heatLevel * 0.9;
+    }
     for (const s of this.steam) {
       s.userData.t = (s.userData.t + dt * 0.7) % 1;
       const t = s.userData.t as number;
@@ -203,8 +233,11 @@ export class Bulb extends Part {
   constructor() {
     super();
     const plate = basePlate(2.0, 1.55, 'лампа 3 в');
-    const socket = mesh(new THREE.CylinderGeometry(0.42, 0.48, 0.32, 28), mat(C.navy2, 0.5));
-    socket.position.set(0, PLATE_TOP + 0.16, -0.15);
+    const socketModel = model('socket', { width: 1.05 });
+    const socket = socketModel ?? mesh(new THREE.CylinderGeometry(0.42, 0.48, 0.32, 28), mat(C.navy2, 0.5));
+    socket.position.set(0, socketModel ? PLATE_TOP : PLATE_TOP + 0.16, -0.15);
+    // Where the glass starts: on the brass collar of the sculpted socket, or on the code-built screw.
+    const neck = socketModel ? PLATE_TOP + sizeOf(socketModel).y - 0.08 : PLATE_TOP + 0.66;
 
     const screwPts: THREE.Vector2[] = [];
     for (let i = 0; i <= 12; i++) {
@@ -213,6 +246,7 @@ export class Bulb extends Part {
     }
     const screw = mesh(new THREE.LatheGeometry(screwPts, 28), mat(C.metal, 0.3, 0.85));
     screw.position.set(0, PLATE_TOP + 0.32, -0.15);
+    screw.visible = !socketModel;
 
     const glassProfile = [
       [0.26, 0],
@@ -236,7 +270,7 @@ export class Bulb extends Part {
       side: THREE.DoubleSide,
     });
     const glass = mesh(new THREE.LatheGeometry(glassProfile, 40), this.glassMat, false);
-    glass.position.set(0, PLATE_TOP + 0.66, -0.15);
+    glass.position.set(0, neck, -0.15);
     glass.renderOrder = 5;
 
     this.filamentMat = new THREE.MeshStandardMaterial({ color: '#6b5236', emissive: '#ffb347', emissiveIntensity: 0, roughness: 0.5 });
@@ -254,10 +288,10 @@ export class Bulb extends Part {
       coil.push(new THREE.Vector3(-0.14 + t * 0.28, 0.56 + Math.sin(a) * 0.035 + Math.sin(t * Math.PI) * 0.06, Math.cos(a) * 0.035));
     }
     fil.add(mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(coil), 120, 0.014, 5), this.filamentMat, false));
-    fil.position.set(0, PLATE_TOP + 0.66, -0.15);
+    fil.position.set(0, neck, -0.15);
 
     this.glow = sprite(tex.warm, 3);
-    this.glow.position.set(0, PLATE_TOP + 1.25, -0.15);
+    this.glow.position.set(0, neck + 0.6, -0.15);
     this.rays = sprite(tex.rays, 3.6);
     this.rays.position.copy(this.glow.position);
     this.rays.renderOrder = 9;
@@ -297,7 +331,7 @@ export class Bulb extends Part {
 export class Fan extends Part {
   readonly kind: PartKind = 'fan';
   readonly elementKind: ElementKind = 'motor';
-  readonly radius = 1.2;
+  readonly radius = 1.45;
   private rotor = new THREE.Group();
   private blur: THREE.Mesh;
   private speed = 0;
@@ -305,40 +339,61 @@ export class Fan extends Part {
 
   constructor() {
     super();
-    const plate = basePlate(2.0, 1.7, 'мотор');
-    const stand = roundedBox(0.5, 1.15, 0.42, 0.1, C.navy2);
-    stand.position.set(0, PLATE_TOP + 0.575, -0.3);
-    const housing = mesh(new THREE.CylinderGeometry(0.36, 0.36, 0.72, 32), mat(C.metal, 0.3, 0.7));
-    housing.rotation.x = Math.PI / 2;
-    housing.position.set(0, PLATE_TOP + 1.42, -0.3);
-    const cap = mesh(new THREE.CylinderGeometry(0.37, 0.37, 0.12, 32), mat(C.red, 0.45));
-    cap.rotation.x = Math.PI / 2;
-    cap.position.set(0, PLATE_TOP + 1.42, -0.68);
-    const shaft = mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.3, 10), mat(C.metal, 0.3, 0.9));
-    shaft.rotation.x = Math.PI / 2;
-    shaft.position.set(0, PLATE_TOP + 1.42, 0.15);
-
-    const hub = mesh(new THREE.SphereGeometry(0.15, 20, 14), mat(C.red, 0.4));
-    hub.scale.z = 0.8;
-    this.rotor.add(hub);
-    const bladeGeo = new THREE.SphereGeometry(1, 24, 12);
-    for (let i = 0; i < 3; i++) {
-      const arm = new THREE.Group();
-      const blade = mesh(bladeGeo, mat(C.teal, 0.45));
-      blade.scale.set(0.24, 0.5, 0.04);
-      blade.position.y = 0.55;
-      blade.rotation.y = 0.45; // pitch
-      arm.add(blade);
-      arm.rotation.z = (i * Math.PI * 2) / 3;
-      this.rotor.add(arm);
+    const plate = basePlate(2.6, 2.1, 'мотор');
+    const motor = model('motor', { height: 1.3, rotateY: -Math.PI / 2 });
+    const frame = new THREE.Group();
+    let hubAt: THREE.Vector3;
+    if (motor) {
+      motor.position.set(0, PLATE_TOP, -0.35);
+      frame.add(motor);
+      // The shaft is the model's frontmost point.
+      hubAt = tip(motor, 'z', 1).add(motor.position);
+    } else {
+      const stand = roundedBox(0.5, 1.15, 0.42, 0.1, C.navy2);
+      stand.position.set(0, PLATE_TOP + 0.575, -0.3);
+      const housing = mesh(new THREE.CylinderGeometry(0.36, 0.36, 0.72, 32), mat(C.metal, 0.3, 0.7));
+      housing.rotation.x = Math.PI / 2;
+      housing.position.set(0, PLATE_TOP + 1.42, -0.3);
+      const cap = mesh(new THREE.CylinderGeometry(0.37, 0.37, 0.12, 32), mat(C.red, 0.45));
+      cap.rotation.x = Math.PI / 2;
+      cap.position.set(0, PLATE_TOP + 1.42, -0.68);
+      const shaft = mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.3, 10), mat(C.metal, 0.3, 0.9));
+      shaft.rotation.x = Math.PI / 2;
+      shaft.position.set(0, PLATE_TOP + 1.42, 0.15);
+      frame.add(stand, housing, cap, shaft);
+      hubAt = new THREE.Vector3(0, PLATE_TOP + 1.42, 0.3);
     }
-    this.rotor.position.set(0, PLATE_TOP + 1.42, 0.3);
+
+    const prop = model('propeller', { height: 1.6, rotateY: -Math.PI / 2 });
+    if (prop) {
+      // Spin about the blades' centre of mass, back face on the shaft tip.
+      const c = centroid(prop);
+      const back = new THREE.Box3().setFromObject(prop).min.z;
+      prop.position.set(-c.x, -c.y, -back - 0.02);
+      this.rotor.add(prop);
+    } else {
+      const hub = mesh(new THREE.SphereGeometry(0.15, 20, 14), mat(C.red, 0.4));
+      hub.scale.z = 0.8;
+      this.rotor.add(hub);
+      const bladeGeo = new THREE.SphereGeometry(1, 24, 12);
+      for (let i = 0; i < 3; i++) {
+        const arm = new THREE.Group();
+        const blade = mesh(bladeGeo, mat(C.teal, 0.45));
+        blade.scale.set(0.24, 0.5, 0.04);
+        blade.position.y = 0.55;
+        blade.rotation.y = 0.45; // pitch
+        arm.add(blade);
+        arm.rotation.z = (i * Math.PI * 2) / 3;
+        this.rotor.add(arm);
+      }
+    }
+    this.rotor.position.copy(hubAt);
 
     this.blur = new THREE.Mesh(
       new THREE.CircleGeometry(1.08, 48),
       new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0, depthWrite: false }),
     );
-    this.blur.position.copy(this.rotor.position).setZ(0.31);
+    this.blur.position.copy(this.rotor.position).setZ(this.rotor.position.z + 0.08);
 
     const gustGeo = new THREE.TorusGeometry(0.5, 0.025, 4, 24, Math.PI * 0.6);
     for (let i = 0; i < 6; i++) {
@@ -349,10 +404,10 @@ export class Fan extends Part {
       this.body.add(g);
     }
 
-    this.body.add(plate, stand, housing, cap, shaft, this.rotor, this.blur);
-    this.addTerminal('a', 'none', 0.66, 0.52);
-    this.addTerminal('b', 'none', -0.66, 0.52);
-    this.pickable(plate, stand, housing, cap, this.rotor);
+    this.body.add(plate, frame, this.rotor, this.blur);
+    this.addTerminal('a', 'none', 0.95, 0.78);
+    this.addTerminal('b', 'none', -0.95, 0.78);
+    this.pickable(plate, frame, this.rotor);
   }
 
   protected animate(dt: number) {
@@ -365,7 +420,7 @@ export class Fan extends Part {
       g.userData.t = (g.userData.t + dt * (0.6 + mag)) % 1;
       const t = g.userData.t as number;
       const a = g.userData.a as number;
-      g.position.set(Math.cos(a) * 0.35, PLATE_TOP + 1.42 + Math.sin(a) * 0.35, 0.5 + t * 2.4);
+      g.position.set(Math.cos(a) * 0.35, this.rotor.position.y + Math.sin(a) * 0.35, this.rotor.position.z + 0.2 + t * 2.4);
       g.rotation.z = a + this.time * 0.5;
       g.scale.setScalar(0.6 + t * 1.2);
       (g.material as THREE.MeshBasicMaterial).opacity = mag > 0.15 ? Math.sin(t * Math.PI) * 0.75 * Math.min(1, mag) : 0;
@@ -383,50 +438,82 @@ export class Fan extends Part {
 export class Switch extends Part {
   readonly kind: PartKind = 'switch';
   readonly elementKind: ElementKind = 'switch';
-  readonly radius = 1.1;
-  private lever = new THREE.Group();
-  private angle = 0.55;
+  readonly radius = 1.3;
+  /** Knife blade, hinged at +x; rotation.z < 0 lifts it open. */
+  private blade = new THREE.Group();
+  private angle = -0.95;
   private angleV = 0;
-  private indicatorMat = new THREE.MeshStandardMaterial({ color: '#9a9fae', emissive: C.teal, emissiveIntensity: 0, roughness: 0.4 });
+  private sparkMat = new THREE.MeshBasicMaterial({ color: '#fff3c4', transparent: true, opacity: 0, depthWrite: false });
 
   constructor() {
     super();
-    const plate = basePlate(2.0, 1.45, 'выключатель');
-    const housing = roundedBox(1.15, 0.38, 0.7, 0.12, C.navy2);
-    housing.position.set(0, PLATE_TOP + 0.19, -0.15);
-    const slotM = roundedBox(0.75, 0.05, 0.22, 0.02, C.navy, 0.8);
-    slotM.position.set(0, PLATE_TOP + 0.37, -0.15);
+    const plate = basePlate(2.5, 1.5, 'выключатель');
+    // Knife switch: ceramic base with a hinge clip at +x and a contact jaw at −x.
+    const base = model('knife', { width: 1.7, rotateY: Math.PI / 2 }) ?? fallbackKnifeBase();
+    base.position.set(0, PLATE_TOP, -0.15);
+    const h = sizeOf(base).y;
 
-    const stick = mesh(new THREE.CylinderGeometry(0.07, 0.09, 0.75, 14), mat(C.metal, 0.3, 0.8));
-    stick.position.y = 0.375;
-    const knob = mesh(new THREE.SphereGeometry(0.2, 24, 16), mat(C.red, 0.35));
-    knob.position.y = 0.8;
-    this.lever.add(stick, knob);
-    this.lever.position.set(0, PLATE_TOP + 0.36, -0.15);
+    // The blade: a flat copper strip from the hinge to past the jaw, with an
+    // insulated handle so it is obvious where to press.
+    const len = 1.55;
+    const copper = mat('#c7743e', 0.3, 0.75);
+    const strip = mesh(new RoundedBoxGeometry(len, 0.16, 0.05, 2, 0.02), copper);
+    strip.position.x = -len / 2 + 0.05;
+    const pin = mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.2, 16), mat(C.brass, 0.3, 0.85));
+    pin.rotation.x = Math.PI / 2;
+    const handle = mesh(new THREE.CapsuleGeometry(0.085, 0.3, 6, 18), mat(C.red, 0.35));
+    handle.rotation.z = Math.PI / 2;
+    handle.position.x = -len - 0.08;
+    const collar = mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.06, 18), mat(C.navy2, 0.4));
+    collar.rotation.z = Math.PI / 2;
+    collar.position.x = -len + 0.12;
+    this.blade.add(strip, pin, handle, collar);
+    this.blade.position.set(0.66, PLATE_TOP + h * 0.72, -0.15);
 
-    const indicator = mesh(new THREE.SphereGeometry(0.09, 16, 10), this.indicatorMat);
-    indicator.position.set(0.42, PLATE_TOP + 0.4, 0.1);
+    // Flash at the jaw when the blade drops in.
+    const spark = new THREE.Mesh(new THREE.SphereGeometry(0.14, 12, 8), this.sparkMat);
+    spark.position.set(-0.66, PLATE_TOP + h * 0.72, -0.15);
 
-    this.body.add(plate, housing, slotM, this.lever, indicator);
-    this.addTerminal('a', 'none', 0.66, 0.42);
-    this.addTerminal('b', 'none', -0.66, 0.42);
-    this.pickable(plate, housing, this.lever);
+    this.body.add(plate, base, this.blade, spark);
+    this.addTerminal('a', 'none', 0.95, 0.47);
+    this.addTerminal('b', 'none', -0.95, 0.47);
+    this.pickable(plate, base, this.blade);
   }
 
   tap(): boolean {
     this.closed = !this.closed;
-    this.angleV += this.closed ? -9 : 9;
+    this.angleV += this.closed ? 6 : -6;
     super.tap();
     return true;
   }
 
   protected animate(dt: number) {
-    const target = this.closed ? -0.55 : 0.55;
-    this.angleV += ((target - this.angle) * 260 - this.angleV * 16) * dt;
+    const target = this.closed ? 0 : -0.95;
+    // Stiff spring with a little bounce as the blade seats in the jaw.
+    this.angleV += ((target - this.angle) * 320 - this.angleV * 18) * dt;
     this.angle += this.angleV * dt;
-    this.lever.rotation.z = this.angle;
-    this.indicatorMat.emissiveIntensity = damp(this.indicatorMat.emissiveIntensity, this.closed ? 2.4 : 0, 10, dt);
+    if (this.closed && this.angle > 0) {
+      this.angle = 0;
+      if (this.angleV > 1) this.sparkMat.opacity = 1;
+      this.angleV *= -0.25;
+    }
+    this.blade.rotation.z = this.angle;
+    this.sparkMat.opacity = Math.max(0, this.sparkMat.opacity - dt * 5);
   }
+}
+
+/** Code-built stand-in for the knife switch base. */
+function fallbackKnifeBase(): THREE.Group {
+  const g = new THREE.Group();
+  const block = roundedBox(1.7, 0.18, 0.7, 0.06, '#f3ece0', 0.5);
+  const clipGeo = new RoundedBoxGeometry(0.22, 0.42, 0.3, 2, 0.03);
+  for (const x of [0.66, -0.66]) {
+    const clip = mesh(clipGeo, mat(C.brass, 0.3, 0.85));
+    clip.position.set(x, 0.3, 0);
+    g.add(clip);
+  }
+  g.add(block);
+  return g;
 }
 
 // ────────────────────────────── LED ────────────────────────────────
@@ -440,6 +527,8 @@ export class Led extends Part {
   private light: THREE.PointLight;
   private pool = lightPool(3.6, 'rgba(255,80,60,0.75)');
   private shown = 0;
+  /** Materials of the sculpted LED, lit through their own colour map. */
+  private ledMats: THREE.MeshStandardMaterial[] = [];
 
   constructor() {
     super();
@@ -453,24 +542,33 @@ export class Led extends Part {
       emissive: '#ff3b2a',
       emissiveIntensity: 0,
     });
+    const sculpt = model('led', { height: 1.6 });
     const dome = new THREE.Group();
-    const rim = mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.07, 28), this.domeMat);
-    rim.position.y = 0.035;
-    const barrel = mesh(new THREE.CylinderGeometry(0.25, 0.25, 0.36, 28), this.domeMat);
-    barrel.position.y = 0.25;
-    const top = mesh(new THREE.SphereGeometry(0.25, 28, 14, 0, Math.PI * 2, 0, Math.PI / 2), this.domeMat);
-    top.position.y = 0.43;
-    dome.add(rim, barrel, top);
-    dome.position.set(0, PLATE_TOP + 0.55, -0.2);
-
-    // Legs: the long one (+) on the right, like a real LED.
-    const legMat = mat(C.metal, 0.3, 0.85);
-    const legL = mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.55, 8), legMat);
-    legL.position.set(-0.1, PLATE_TOP + 0.27, -0.2);
-    const legR = mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.55, 8), legMat);
-    legR.position.set(0.1, PLATE_TOP + 0.27, -0.2);
-    const kink = mesh(new THREE.BoxGeometry(0.05, 0.05, 0.2), legMat);
-    kink.position.set(0.1, PLATE_TOP + 0.03, -0.1);
+    let domeTop: number;
+    if (sculpt) {
+      // Push the long legs into the board so only a short stretch shows.
+      sculpt.position.set(0, PLATE_TOP - 0.45, -0.2);
+      dome.add(sculpt);
+      this.ledMats = materialsOfMeshes(sculpt);
+      domeTop = PLATE_TOP - 0.45 + 1.6;
+    } else {
+      const rim = mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.07, 28), this.domeMat);
+      rim.position.y = 0.035;
+      const barrel = mesh(new THREE.CylinderGeometry(0.25, 0.25, 0.36, 28), this.domeMat);
+      barrel.position.y = 0.25;
+      const top = mesh(new THREE.SphereGeometry(0.25, 28, 14, 0, Math.PI * 2, 0, Math.PI / 2), this.domeMat);
+      top.position.y = 0.43;
+      dome.add(rim, barrel, top);
+      dome.position.set(0, PLATE_TOP + 0.55, -0.2);
+      // Legs: the long one (+) on the right, like a real LED.
+      const legMat = mat(C.metal, 0.3, 0.85);
+      const legL = mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.55, 8), legMat);
+      legL.position.set(-0.1, -0.28, 0);
+      const legR = mesh(new THREE.CylinderGeometry(0.025, 0.025, 0.55, 8), legMat);
+      legR.position.set(0.1, -0.28, 0);
+      dome.add(legL, legR);
+      domeTop = PLATE_TOP + 1.05;
+    }
 
     // Copper traces from legs to the posts.
     const traceMat = mat('#c98a4a', 0.4, 0.5);
@@ -485,12 +583,12 @@ export class Led extends Part {
     plus.position.set(0.55, PLATE_TOP + 0.005, -0.25);
 
     this.glow = sprite(tex.red, 2.4);
-    this.glow.position.set(0, PLATE_TOP + 0.85, -0.2);
+    this.glow.position.set(0, domeTop - 0.3, -0.2);
     this.light = new THREE.PointLight('#ff5a46', 0, 5, 1.7);
     this.light.position.copy(this.glow.position);
 
     this.pool.position.z = -0.2;
-    this.body.add(plate, dome, legL, legR, kink, tr, tl, plus, this.glow, this.light, this.pool);
+    this.body.add(plate, dome, tr, tl, plus, this.glow, this.light, this.pool);
     this.addTerminal('a', 'plus', 0.55, 0.42);
     this.addTerminal('b', 'minus', -0.55, 0.42);
     this.pickable(plate, dome);
@@ -501,6 +599,7 @@ export class Led extends Part {
     this.shown = damp(this.shown, target, 14, dt);
     const b = this.shown;
     this.domeMat.emissiveIntensity = b * 2.6;
+    for (const m of this.ledMats) m.emissiveIntensity = b * 1.8;
     this.glow.material.opacity = Math.min(0.95, b * 0.9);
     this.glow.scale.setScalar(1.6 + b * 1.2);
     this.light.intensity = b * 5;
@@ -521,6 +620,7 @@ export class Buzzer extends Part {
     super();
     const plate = basePlate(1.8, 1.45, 'зуммер');
     this.can = new THREE.Group();
+    const sculpt = model('buzzer', { width: 1.0 });
     const body = mesh(new THREE.CylinderGeometry(0.5, 0.52, 0.5, 36), mat(C.navy, 0.55));
     body.position.y = 0.25;
     const lip = mesh(new THREE.TorusGeometry(0.47, 0.04, 8, 36), mat(C.navy2, 0.5));
@@ -528,7 +628,11 @@ export class Buzzer extends Part {
     lip.position.y = 0.5;
     const hole = mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.02, 20), mat('#05070d', 0.9));
     hole.position.y = 0.51;
-    this.can.add(body, lip, hole);
+    if (sculpt) {
+      // Pins go into the board.
+      sculpt.position.y = -0.17;
+      this.can.add(sculpt);
+    } else this.can.add(body, lip, hole);
     this.can.position.set(0, PLATE_TOP, -0.2);
 
     const plus = signDecal('plus', C.red, 0.3);

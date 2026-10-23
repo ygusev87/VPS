@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Model viewer</title>
+    <style>
+      html, body { margin: 0; background: #f6eddd; font: 13px system-ui; }
+      #views { display: grid; grid-template-columns: repeat(2, 1fr); }
+      canvas { width: 100%; display: block; }
+      .label { position: absolute; padding: 4px 8px; background: #18213dcc; color: #fff; }
+    </style>
+  </head>
+  <body>
+    <div id="views"></div>
+    <script type="module" src="./viewer.ts"></script>
+  </body>
+</html>
