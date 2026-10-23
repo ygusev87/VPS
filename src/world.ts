@@ -1,7 +1,7 @@
 // What is on the table: parts, wires and the live circuit result.
 import { solveCircuit, type CircuitElement, type CircuitResult } from './circuit/solver';
-import type { Part, PartKind, Terminal } from './parts/base';
-import { createPart } from './parts/models';
+import type { LightColor, Part, PartKind, Terminal } from './parts/base';
+import { createPart } from './parts/catalog';
 import type { Stage } from './stage';
 import { Wire } from './wires';
 
@@ -21,15 +21,22 @@ export type WorldEvent =
   | { type: 'solved' };
 
 export function isActive(p: Part): boolean {
-  const l = p.state.level;
-  switch (p.kind) {
+  return activeAt(p.kind, p.state.level);
+}
+
+/** Would a part of this kind count as working at this level? */
+export function activeAt(kind: PartKind, l: number): boolean {
+  switch (kind) {
     case 'bulb':
       return l > 0.12;
     case 'led':
       return l > 0.3;
     case 'fan':
+    case 'carousel':
+    case 'windmill':
       return Math.abs(l) > 0.15;
     case 'buzzer':
+    case 'musicbox':
       return l > 0.2;
     default:
       return false;
@@ -57,8 +64,8 @@ export class World {
     for (const fn of this.listeners) fn(e);
   }
 
-  addPart(kind: PartKind, x: number, z: number, opts: { locked?: boolean; closed?: boolean; appear?: boolean } = {}): Part {
-    const part = createPart(kind);
+  addPart(kind: PartKind, x: number, z: number, opts: { locked?: boolean; closed?: boolean; appear?: boolean; color?: LightColor } = {}): Part {
+    const part = createPart(kind, opts.color);
     part.locked = !!opts.locked;
     part.closed = !!opts.closed;
     part.root.position.set(x, 0, z);
@@ -71,7 +78,7 @@ export class World {
   }
 
   removePart(part: Part) {
-    for (const w of [...this.wires]) if (w.touches(part.terminal('a')) || w.touches(part.terminal('b'))) this.removeWire(w);
+    for (const w of [...this.wires]) if (part.terminals.some((t) => w.touches(t))) this.removeWire(w);
     const i = this.parts.indexOf(part);
     if (i >= 0) this.parts.splice(i, 1);
     this.active.delete(part);
@@ -152,13 +159,7 @@ export class World {
   }
 
   elements(extra: { skipWire?: Wire } = {}): CircuitElement[] {
-    const els: CircuitElement[] = this.parts.map((p) => ({
-      id: p.id,
-      kind: p.elementKind,
-      a: p.terminal('a').id,
-      b: p.terminal('b').id,
-      closed: p.closed,
-    }));
+    const els: CircuitElement[] = this.parts.flatMap((p) => p.elements());
     for (const w of this.wires) {
       if (w.b && w !== extra.skipWire) els.push({ id: w.id, kind: 'wire', a: w.a.id, b: w.b.id });
     }
@@ -170,8 +171,9 @@ export class World {
     const r = solveCircuit(this.elements());
     this.result = r;
     for (const p of this.parts) {
-      const e = r.elements.get(p.id)!;
-      p.state = { level: e.level, current: e.current, reversed: e.reversed, shorted: r.shorted.has(p.id) };
+      const e = r.elements.get(p.id) ?? { level: 0, current: 0, voltage: 0, reversed: false };
+      p.state = { level: e.level, current: e.current, voltage: e.voltage, reversed: e.reversed, shorted: r.shorted.has(p.id) };
+      p.onSolved(r);
       const now = isActive(p);
       if (now && !this.active.has(p)) {
         this.active.add(p);
@@ -190,7 +192,11 @@ export class World {
     this.emit({ type: 'solved' });
   }
 
-  /** Wires whose removal alone would end the short circuit. */
+  /** Solve a what-if copy of the circuit, e.g. with every switch closed. */
+  trial(change: (e: CircuitElement) => CircuitElement): CircuitResult {
+    return solveCircuit(this.elements().map(change));
+  }
+
   /**
    * The newest wire whose removal alone makes `fixed` true — "undo the step
    * that broke it". Wires are kept in the order they were connected.

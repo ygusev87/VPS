@@ -6,7 +6,7 @@ import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeom
 import type { ElementKind } from '../circuit/solver';
 import { C } from '../theme';
 import { centroid, model, sizeOf, tip } from './assets';
-import { Part, type PartKind } from './base';
+import { Part, type LightColor, type PartKind } from './base';
 import { basePlate, damp, glowTexture, lightPool, mat, mesh, PLATE_TOP, raysTexture, roundedBox, signDecal, textDecal } from './kit';
 
 let warmGlow: THREE.Texture | null = null;
@@ -24,7 +24,7 @@ const tex = {
   },
 };
 
-function materialsOf(o: THREE.Object3D): THREE.MeshStandardMaterial[] {
+export function materialsOf(o: THREE.Object3D): THREE.MeshStandardMaterial[] {
   const out = new Set<THREE.MeshStandardMaterial>();
   o.traverse((c) => {
     const m = (c as THREE.Mesh).material as THREE.MeshStandardMaterial | undefined;
@@ -34,7 +34,7 @@ function materialsOf(o: THREE.Object3D): THREE.MeshStandardMaterial[] {
 }
 
 /** Materials of a sculpted model, set up to glow in their own colours. */
-function materialsOfMeshes(o: THREE.Object3D): THREE.MeshStandardMaterial[] {
+export function materialsOfMeshes(o: THREE.Object3D): THREE.MeshStandardMaterial[] {
   const mats = materialsOf(o);
   for (const m of mats) {
     m.emissive.set('#ffffff');
@@ -45,7 +45,50 @@ function materialsOfMeshes(o: THREE.Object3D): THREE.MeshStandardMaterial[] {
   return mats;
 }
 
-function sprite(map: THREE.Texture, size: number): THREE.Sprite {
+/** What each light colour looks like. `hue` turns the red LED model's colours (radians, YIQ: red→yellow is negative, red→blue positive). */
+export const LIGHT: Record<LightColor, { hex: string; glow: string; pool: string; hue: number }> = {
+  warm: { hex: '#ffb347', glow: 'rgba(255,200,90,0.95)', pool: 'rgba(255,196,96,0.85)', hue: 0.5 },
+  red: { hex: '#ff4a36', glow: 'rgba(255,90,70,0.9)', pool: 'rgba(255,80,60,0.75)', hue: 0 },
+  green: { hex: '#3fe07a', glow: 'rgba(80,230,120,0.9)', pool: 'rgba(70,220,110,0.7)', hue: -2.3 },
+  blue: { hex: '#4f9dff', glow: 'rgba(90,160,255,0.9)', pool: 'rgba(80,150,255,0.7)', hue: 2.0 },
+  yellow: { hex: '#ffd93d', glow: 'rgba(255,225,80,0.95)', pool: 'rgba(255,220,80,0.75)', hue: -1.15 },
+};
+
+const glowCache = new Map<string, THREE.Texture>();
+export function glowFor(rgba: string): THREE.Texture {
+  let t = glowCache.get(rgba);
+  if (!t) glowCache.set(rgba, (t = glowTexture(rgba)));
+  return t;
+}
+
+/**
+ * Rotate the hue of a material's colour and emissive maps in the shader, so
+ * one red LED model can be any colour. Grey metal parts stay grey.
+ */
+function hueShift(m: THREE.MeshStandardMaterial): { value: number } {
+  const uniform = { value: 0 };
+  m.onBeforeCompile = (shader) => {
+    shader.uniforms.uHue = uniform;
+    const fn = `
+      uniform float uHue;
+      vec3 hueRotate(vec3 c, float a) {
+        const mat3 toYIQ = mat3(0.299, 0.596, 0.211, 0.587, -0.274, -0.523, 0.114, -0.322, 0.312);
+        const mat3 toRGB = mat3(1.0, 1.0, 1.0, 0.956, -0.272, -1.106, 0.621, -0.647, 1.703);
+        vec3 yiq = toYIQ * c;
+        float h = atan(yiq.z, yiq.y) + a;
+        float ch = length(yiq.yz);
+        return toRGB * vec3(yiq.x, ch * cos(h), ch * sin(h));
+      }`;
+    shader.fragmentShader = shader.fragmentShader
+      .replace('#include <common>', '#include <common>' + fn)
+      .replace('#include <map_fragment>', '#include <map_fragment>\n diffuseColor.rgb = max(hueRotate(diffuseColor.rgb, uHue), 0.0);')
+      .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\n totalEmissiveRadiance = max(hueRotate(totalEmissiveRadiance, uHue), 0.0);');
+  };
+  m.customProgramCacheKey = () => 'hue-shift';
+  return uniform;
+}
+
+export function sprite(map: THREE.Texture, size: number): THREE.Sprite {
   const s = new THREE.Sprite(new THREE.SpriteMaterial({ map, transparent: true, depthWrite: false, opacity: 0 }));
   s.scale.setScalar(size);
   s.renderOrder = 10;
@@ -55,9 +98,9 @@ function sprite(map: THREE.Texture, size: number): THREE.Sprite {
 // ───────────────────────────── Battery ─────────────────────────────
 
 export class Battery extends Part {
-  readonly kind: PartKind = 'battery';
+  readonly kind: PartKind;
   readonly elementKind: ElementKind = 'battery';
-  readonly radius = 1.55;
+  readonly radius: number;
   private holderMat = mat(C.navy2, 0.5).clone();
   private heat: THREE.MeshStandardMaterial[] = [];
   private heatLevel = 0;
@@ -65,9 +108,12 @@ export class Battery extends Part {
   private lampMat = new THREE.MeshStandardMaterial({ color: '#9a9fae', emissive: C.teal, emissiveIntensity: 0 });
   private steam: THREE.Sprite[] = [];
 
-  constructor() {
+  /** big: the 4×AA pack, 6 V. */
+  constructor(private big = false) {
     super();
-    const plate = basePlate(2.9, 2.0);
+    this.kind = big ? 'bigBattery' : 'battery';
+    this.radius = big ? 1.75 : 1.55;
+    const plate = basePlate(big ? 3.2 : 2.9, big ? 2.6 : 2.0);
     // Open tray with two AA cells, springs on the minus end and red/black leads
     // running to the posts, like the real battery box.
     const tray = new THREE.Group();
@@ -105,8 +151,8 @@ export class Battery extends Part {
       tray.add(sp);
     }
     // Prefer the sculpted model; the code-built tray is the fallback.
-    const holder = model('battery', { width: 2.3 }) ?? tray;
-    holder.position.set(0, PLATE_TOP, -0.3);
+    const holder = (big ? model('bigbattery', { width: 2.4 }) : model('battery', { width: 2.3 })) ?? tray;
+    holder.position.set(0, PLATE_TOP, big ? -0.35 : -0.3);
     this.heat = materialsOf(holder);
 
     // Leads from the holder to the posts.
@@ -116,22 +162,23 @@ export class Battery extends Part {
       return mesh(new THREE.TubeGeometry(curve, 24, 0.035, 8), mat(color, 0.4));
     };
     // Leads leave the holder's end walls low and run along the board to the posts.
-    const leadR = lead(C.red, new THREE.Vector3(1.17, PLATE_TOP + 0.1, 0.05), new THREE.Vector3(1.0, PLATE_TOP + 0.06, 0.7));
-    const leadB = lead('#20242e', new THREE.Vector3(-1.17, PLATE_TOP + 0.1, -0.1), new THREE.Vector3(-1.0, PLATE_TOP + 0.06, 0.7));
+    const zt = big ? 1.0 : 0.7;
+    const leadR = lead(C.red, new THREE.Vector3(1.17, PLATE_TOP + 0.1, big ? 0.3 : 0.05), new THREE.Vector3(1.0, PLATE_TOP + 0.06, zt));
+    const leadB = lead('#20242e', new THREE.Vector3(-1.17, PLATE_TOP + 0.1, big ? 0.2 : -0.1), new THREE.Vector3(-1.0, PLATE_TOP + 0.06, zt));
 
     this.lamp = mesh(new THREE.SphereGeometry(0.06, 16, 10), this.lampMat);
-    this.lamp.position.set(0, PLATE_TOP + 0.03, 0.72);
+    this.lamp.position.set(0, PLATE_TOP + 0.03, zt + 0.02);
 
     const plus = signDecal('plus', C.red, 0.3);
-    plus.position.set(0.5, PLATE_TOP + 0.005, 0.72);
+    plus.position.set(0.5, PLATE_TOP + 0.005, zt + 0.02);
     const minus = signDecal('minus', C.navy2, 0.3);
-    minus.position.set(-0.5, PLATE_TOP + 0.005, 0.72);
-    const volts = textDecal('3 V', 0.5, 0.16);
-    volts.position.set(0, PLATE_TOP + 0.004, 0.86);
+    minus.position.set(-0.5, PLATE_TOP + 0.005, zt + 0.02);
+    const volts = textDecal(big ? '6 V' : '3 V', 0.5, 0.16);
+    volts.position.set(0, PLATE_TOP + 0.004, zt + 0.16);
 
     this.body.add(plate, holder, leadR, leadB, this.lamp, plus, minus, volts);
-    this.addTerminal('a', 'plus', 1.0, 0.7);
-    this.addTerminal('b', 'minus', -1.0, 0.7);
+    this.addTerminal('a', 'plus', 1.0, zt);
+    this.addTerminal('b', 'minus', -1.0, zt);
     this.pickable(plate, holder);
 
     for (let i = 0; i < 4; i++) {
@@ -142,6 +189,10 @@ export class Battery extends Part {
       this.steam.push(s);
       this.body.add(s);
     }
+  }
+
+  protected electrical() {
+    return this.big ? { emf: 6, r: 0.6 } : {};
   }
 
   protected animate(dt: number) {
@@ -232,6 +283,7 @@ export class Bulb extends Part {
 
   constructor() {
     super();
+    this.color = 'warm';
     const plate = basePlate(2.0, 1.55, 'лампа 3 в');
     const socketModel = model('socket', { width: 1.05 });
     const socket = socketModel ?? mesh(new THREE.CylinderGeometry(0.42, 0.48, 0.32, 28), mat(C.navy2, 0.5));
@@ -301,6 +353,25 @@ export class Bulb extends Part {
     this.addTerminal('a', 'none', 0.66, 0.48);
     this.addTerminal('b', 'none', -0.66, 0.48);
     this.pickable(plate, socket, screw, glass);
+  }
+
+  /** Tap a bulb to swap its colour. */
+  tap(): boolean {
+    super.tap();
+    const order: LightColor[] = ['warm', 'red', 'green', 'blue'];
+    this.setColor(order[(order.indexOf(this.color) + 1) % order.length]);
+    return true;
+  }
+
+  setColor(c: LightColor) {
+    this.color = c;
+    const l = LIGHT[c];
+    this.glassMat.color.set('#fffaf0').lerp(new THREE.Color(l.hex), c === 'warm' ? 0 : 0.45);
+    this.glassMat.emissive.set(c === 'warm' ? '#ffd27a' : l.hex);
+    this.filamentMat.emissive.set(l.hex);
+    this.glow.material.map = glowFor(l.glow);
+    (this.pool.material as THREE.MeshBasicMaterial).map = glowFor(l.pool);
+    this.rays.material.color.set(c === 'warm' ? '#ffffff' : l.hex);
   }
 
   protected animate(dt: number) {
@@ -525,9 +596,11 @@ export class Led extends Part {
   private shown = 0;
   /** Materials of the sculpted LED, lit through their own colour map. */
   private ledMats: THREE.MeshStandardMaterial[] = [];
+  private hue: { value: number }[] = [];
 
   constructor() {
     super();
+    this.color = 'red';
     const plate = basePlate(1.75, 1.45, 'светодиод');
     this.domeMat = new THREE.MeshPhysicalMaterial({
       color: C.red,
@@ -546,6 +619,7 @@ export class Led extends Part {
       sculpt.position.set(0, PLATE_TOP - 0.45, -0.2);
       dome.add(sculpt);
       this.ledMats = materialsOfMeshes(sculpt);
+      this.hue = this.ledMats.map(hueShift);
       domeTop = PLATE_TOP - 0.45 + 1.6;
     } else {
       const rim = mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.07, 28), this.domeMat);
@@ -586,6 +660,24 @@ export class Led extends Part {
     this.addTerminal('a', 'plus', 0.55, 0.42);
     this.addTerminal('b', 'minus', -0.55, 0.42);
     this.pickable(plate, dome);
+  }
+
+  /** Tap an LED to swap its colour. */
+  tap(): boolean {
+    super.tap();
+    const order: LightColor[] = ['red', 'green', 'blue', 'yellow'];
+    this.setColor(order[(order.indexOf(this.color) + 1) % order.length]);
+    return true;
+  }
+
+  setColor(c: LightColor) {
+    this.color = c;
+    const l = LIGHT[c];
+    for (const u of this.hue) u.value = l.hue;
+    this.domeMat.color.set(l.hex);
+    this.domeMat.emissive.set(l.hex);
+    this.glow.material.map = glowFor(l.glow);
+    (this.pool.material as THREE.MeshBasicMaterial).map = glowFor(l.pool);
   }
 
   protected animate(dt: number) {
@@ -663,22 +755,3 @@ export class Buzzer extends Part {
     }
   }
 }
-
-export function createPart(kind: PartKind): Part {
-  switch (kind) {
-    case 'battery':
-      return new Battery();
-    case 'bulb':
-      return new Bulb();
-    case 'fan':
-      return new Fan();
-    case 'switch':
-      return new Switch();
-    case 'led':
-      return new Led();
-    case 'buzzer':
-      return new Buzzer();
-  }
-}
-
-export const PART_KINDS: PartKind[] = ['battery', 'bulb', 'fan', 'switch', 'led', 'buzzer'];

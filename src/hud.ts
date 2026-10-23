@@ -5,7 +5,7 @@ import * as THREE from 'three';
 import type { Hint } from './hints';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
 import type { Part, PartKind } from './parts/base';
-import { PART_KINDS } from './parts/models';
+import { GROUPS, itemKey, itemOf, type CatalogGroup, type CatalogItem } from './parts/catalog';
 import type { Stage } from './stage';
 import { thumb } from './thumbs';
 
@@ -29,20 +29,12 @@ const ICON = {
   shortBadge: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M18 3 7 18h7l-2 11 13-16h-7.5z" fill="#e5533d" stroke="#24304a" stroke-width="2" stroke-linejoin="round"/></svg>',
   bypassBadge: '<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="#e5533d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20h22"/><path d="M9 20c0-7 4-11 7-11s7 4 7 11"/><path d="m20 6 3 3-3 3"/></svg>',
   swapBadge: '<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="#e5533d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h18M19 6l5 5-5 5M26 21H8M13 16l-5 5 5 5"/></svg>',
+  weakBadge: '<svg viewBox="0 0 32 32" aria-hidden="true"><rect x="4" y="9" width="21" height="14" rx="3" fill="#fffaf2" stroke="#24304a" stroke-width="2.4"/><rect x="25" y="13" width="3.5" height="6" rx="1" fill="#24304a"/><rect x="7" y="12" width="4.5" height="8" rx="1" fill="#e5533d"/></svg>',
   hand: `<svg class="hand" viewBox="0 0 64 80" aria-hidden="true">
     <path d="M26 4c4.4 0 7 3 7 7.5V30l9.3 1.6c6.8 1.2 10.7 5.6 10.2 12.6l-1.2 13.6C50.6 67 44.6 74 34.6 74h-5.2c-6.5 0-11.4-3.3-14.2-9.1L8.1 50.2c-1.7-3.5-.3-7 3.1-8.1 2.9-.9 5.4.4 7 3.1l.8 1.4V11.5C19 7 21.6 4 26 4z" fill="#fffaf2" stroke="#18213d" stroke-width="3" stroke-linejoin="round"/>
     <path d="M33 30v12M41.5 32v11" fill="none" stroke="#18213d" stroke-width="2.6" stroke-linecap="round"/>
   </svg>`,
   logo: '<svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true"><path d="M36 5 15 36h14l-4 23 23-33H34z"/></svg>',
-};
-
-export const PART_NAMES: Record<PartKind, string> = {
-  battery: 'Батарейки',
-  bulb: 'Лампочка',
-  fan: 'Вентилятор',
-  switch: 'Выключатель',
-  led: 'Светодиод',
-  buzzer: 'Пищалка',
 };
 
 export interface HudHooks {
@@ -54,7 +46,7 @@ export interface HudHooks {
   onReplay(): void;
   onPickLevel(level: Level): void;
   onNext(): void;
-  onSpawn(kind: PartKind, e: PointerEvent): void;
+  onSpawn(item: CatalogItem, e: PointerEvent): void;
 }
 
 export class Hud {
@@ -79,6 +71,10 @@ export class Hud {
   private hintScreen: { a: () => { x: number; y: number }; b?: () => { x: number; y: number } } | null = null;
   private confetti: Confetto[] = [];
   private level: Level = LEVELS[0];
+  private flyout!: HTMLElement;
+  private openGroup: CatalogGroup | null = null;
+  /** The variant each drawer shows on its face: the one taken last. */
+  private face = new Map<CatalogGroup, CatalogItem>(GROUPS.map((g) => [g, g.items[0]]));
   trayLeft: Partial<Record<PartKind, number>> = {};
 
   constructor(
@@ -100,13 +96,19 @@ export class Hud {
       <div class="tag"></div>
       <nav class="sidebar" aria-label="Детали">
         <div class="side-parts">
-          ${PART_KINDS.map(
-            (k) => `<button class="part-btn" data-kind="${k}" aria-label="${PART_NAMES[k]}" title="${PART_NAMES[k]}">
-              <img alt="" src="${thumb(k)}"/><span class="count"></span></button>`,
+          ${GROUPS.map(
+            (g) => `<div class="group" data-group="${g.id}">
+              <button class="part-btn" aria-label="${g.name}" aria-haspopup="true">
+                <img alt="" src="${thumb(itemKey(g.items[0]))}"/><span class="count"></span>
+                ${g.items.length > 1 ? '<span class="more" aria-hidden="true"><i></i><i></i><i></i></span>' : ''}
+              </button>
+              <span class="group-name">${g.name}</span>
+            </div>`,
           ).join('')}
         </div>
         <div class="bin">${ICON.bin}</div>
       </nav>
+      <div class="flyout" role="menu"></div>
       <header class="brand">
         ${ICON.logo}
         <span class="brand-rule" aria-hidden="true"></span>
@@ -141,6 +143,7 @@ export class Hud {
       <canvas class="fx"></canvas>
     `;
     this.sidebar = r.querySelector('.sidebar')!;
+    this.flyout = r.querySelector('.flyout')!;
     this.mission = r.querySelector('.mission')!;
     this.lessons = r.querySelector('.lesson-list')!;
     this.progress = r.querySelector('.status')!;
@@ -175,16 +178,39 @@ export class Hud {
       this.hooks.onFlow(on);
     });
 
-    this.sidebar.querySelectorAll<HTMLElement>('.part-btn').forEach((btn) => {
-      const kind = btn.dataset.kind as PartKind;
+    // A drawer: tap opens its variants, dragging takes the one on its face.
+    this.sidebar.querySelectorAll<HTMLElement>('.group').forEach((el) => {
+      const group = GROUPS.find((g) => g.id === el.dataset.group)!;
+      const btn = el.querySelector<HTMLElement>('.part-btn')!;
       btn.addEventListener('pointerdown', (e) => {
         e.preventDefault();
-        if ((this.trayLeft[kind] ?? 0) <= 0) {
-          btn.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(4px)' }, { transform: 'translateX(0)' }], 260);
-          return;
-        }
-        this.hooks.onSpawn(kind, e);
+        const x0 = e.clientX;
+        const y0 = e.clientY;
+        const move = (m: PointerEvent) => {
+          if (m.pointerId !== e.pointerId || Math.hypot(m.clientX - x0, m.clientY - y0) < 8) return;
+          done();
+          const item = this.offered(group).includes(this.face.get(group)!) ? this.face.get(group)! : this.offered(group)[0];
+          if (item) this.take(item, m, btn);
+        };
+        const up = (u: PointerEvent) => {
+          if (u.pointerId !== e.pointerId) return;
+          done();
+          this.toggleGroup(group);
+        };
+        const done = () => {
+          window.removeEventListener('pointermove', move);
+          window.removeEventListener('pointerup', up);
+          window.removeEventListener('pointercancel', done);
+        };
+        window.addEventListener('pointermove', move);
+        window.addEventListener('pointerup', up);
+        window.addEventListener('pointercancel', done);
       });
+    });
+    // Any touch outside the drawer and its variants closes it.
+    document.addEventListener('pointerdown', (e) => {
+      const t = e.target as Node;
+      if (this.openGroup && !this.flyout.contains(t) && !this.sidebar.contains(t)) this.toggleGroup(null);
     });
 
     window.addEventListener('resize', () => this.layout());
@@ -198,6 +224,53 @@ export class Hud {
     this.soundBtn.classList.toggle('is-on', on);
     this.soundBtn.setAttribute('aria-pressed', String(on));
     this.soundBtn.innerHTML = on ? ICON.soundOn : ICON.soundOff;
+  }
+
+  // ───────── Parts drawers ─────────
+
+  /** Variants of a drawer this level lets the child take. */
+  private offered(g: CatalogGroup): CatalogItem[] {
+    if (this.level === FREE_PLAY) return g.items;
+    // Missions offer plain kinds: the first variant of each.
+    return g.items.filter((it) => this.level.tray.some((t) => t.kind === it.kind) && g.items.find((o) => o.kind === it.kind) === it);
+  }
+
+  private take(item: CatalogItem, e: PointerEvent, el: HTMLElement) {
+    if ((this.trayLeft[item.kind] ?? 0) <= 0) {
+      el.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(4px)' }, { transform: 'translateX(0)' }], 260);
+      return;
+    }
+    const g = GROUPS.find((gr) => gr.items.includes(item))!;
+    this.face.set(g, item);
+    this.sidebar.querySelector<HTMLImageElement>(`.group[data-group="${g.id}"] img`)!.src = thumb(itemKey(item));
+    this.toggleGroup(null);
+    this.hooks.onSpawn(item, e);
+  }
+
+  toggleGroup(g: CatalogGroup | null = null) {
+    const open = g && g !== this.openGroup && this.offered(g).length > 1 ? g : null;
+    this.openGroup = open;
+    this.sidebar.querySelectorAll<HTMLElement>('.group').forEach((el) => el.classList.toggle('is-open', el.dataset.group === open?.id));
+    this.flyout.classList.toggle('is-open', !!open);
+    if (!open) return;
+    const items = this.offered(open);
+    this.flyout.innerHTML = `<p class="flyout-title">${open.name}</p><div class="flyout-items">${items
+      .map(
+        (it, i) => `<button class="part-btn variant" data-i="${i}" aria-label="${it.name}" title="${it.name}">
+          <img alt="" src="${thumb(itemKey(it), it.color !== undefined)}"/><span class="count"></span></button>`,
+      )
+      .join('')}</div>`;
+    const anchor = this.sidebar.querySelector<HTMLElement>(`.group[data-group="${open.id}"] .part-btn`)!.getBoundingClientRect();
+    const h = this.flyout.getBoundingClientRect().height;
+    this.flyout.style.top = `${Math.max(8, Math.min(window.innerHeight - h - 8, anchor.top + anchor.height / 2 - h / 2))}px`;
+    this.flyout.querySelectorAll<HTMLElement>('.variant').forEach((btn) => {
+      const item = items[Number(btn.dataset.i)];
+      btn.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        this.take(item, e, btn);
+      });
+    });
+    this.updateTray(this.trayLeft);
   }
 
   // ───────── Level, lessons, parts ─────────
@@ -246,13 +319,28 @@ export class Hud {
 
   updateTray(left: Partial<Record<PartKind, number>>) {
     this.trayLeft = left;
-    this.sidebar.querySelectorAll<HTMLElement>('.part-btn').forEach((btn) => {
-      const n = left[btn.dataset.kind as PartKind] ?? 0;
+    const paint = (btn: HTMLElement, kinds: PartKind[]) => {
+      const n = [...new Set(kinds)].reduce((sum, k) => sum + (left[k] ?? 0), 0);
       btn.classList.toggle('is-off', n <= 0);
       const c = btn.querySelector<HTMLElement>('.count')!;
       c.hidden = !(Number.isFinite(n) && n > 0);
       c.textContent = String(n);
+    };
+    this.sidebar.querySelectorAll<HTMLElement>('.group').forEach((el) => {
+      const g = GROUPS.find((gr) => gr.id === el.dataset.group)!;
+      const items = this.offered(g);
+      el.hidden = !items.length;
+      el.querySelector('.more')?.toggleAttribute('hidden', items.length < 2);
+      paint(el.querySelector('.part-btn')!, items.map((i) => i.kind));
+      if (!items.includes(this.face.get(g)!) && items[0]) {
+        this.face.set(g, items[0]);
+        el.querySelector('img')!.src = thumb(itemKey(items[0]));
+      }
     });
+    if (this.openGroup) {
+      const items = this.offered(this.openGroup);
+      this.flyout.querySelectorAll<HTMLElement>('.variant').forEach((btn) => paint(btn, [items[Number(btn.dataset.i)].kind]));
+    }
   }
 
   private layout() {
@@ -273,15 +361,24 @@ export class Hud {
 
   overTray(x: number, y: number) {
     const r = this.sidebar.getBoundingClientRect();
-    return x <= r.right + 10 && y >= r.top && y <= r.bottom;
+    if (x <= r.right + 10 && y >= r.top && y <= r.bottom) return true;
+    if (!this.openGroup) return false;
+    const f = this.flyout.getBoundingClientRect();
+    return x >= f.left && x <= f.right && y >= f.top && y <= f.bottom;
   }
 
   setTrash(on: boolean) {
     this.sidebar.classList.toggle('is-trash', on);
+    if (on) this.toggleGroup(null);
+  }
+
+  private groupOf(kind: PartKind) {
+    return GROUPS.find((g) => g.items.some((i) => i.kind === kind));
   }
 
   trayCardCenter(kind: PartKind): { x: number; y: number } | null {
-    const c = this.sidebar.querySelector<HTMLElement>(`.part-btn[data-kind="${kind}"]`);
+    const g = this.groupOf(kind);
+    const c = g && this.sidebar.querySelector<HTMLElement>(`.group[data-group="${g.id}"] .part-btn`);
     if (!c) return null;
     const r = c.getBoundingClientRect();
     return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
@@ -294,7 +391,7 @@ export class Hud {
       return;
     }
     const p = this.stage.project(part.root.localToWorld(new THREE.Vector3(0, 1.5, 0)));
-    this.tag.textContent = PART_NAMES[part.kind];
+    this.tag.textContent = itemOf(part).name;
     this.tag.style.transform = `translate(${p.x}px, ${p.y}px) translate(-50%, -100%)`;
     this.tag.classList.add('is-on');
   }
@@ -315,7 +412,11 @@ export class Hud {
         this.hintScreen = { a: at((o) => h.from.attachPoint(o)), b: at((o) => h.to.attachPoint(o)) };
         break;
       case 'tap':
-        this.hintScreen = { a: at((o) => h.part.root.localToWorld(o.set(0, 0.6, -0.15))) };
+        this.hintScreen = { a: at((o) => h.part.root.localToWorld(h.local ? o.copy(h.local) : o.set(0, 0.6, -0.15))) };
+        break;
+      case 'weak':
+        this.hintScreen = { a: at((o) => h.part.root.localToWorld(o.set(0, 0.5, -0.1))) };
+        this.badge.innerHTML = ICON.weakBadge;
         break;
       case 'tapWire':
         this.hintScreen = { a: at((o) => h.wire.pointAt(h.u, o)) };
@@ -338,7 +439,8 @@ export class Hud {
     const show = visible && !!h && !!this.hintScreen;
     const op = Number(this.hints.style.opacity || 0);
     this.hints.style.opacity = String(THREE.MathUtils.damp(op, show ? 1 : 0, 8, dt));
-    this.sidebar.querySelectorAll('.part-btn').forEach((c) => c.classList.toggle('is-pulse', show && h?.type === 'drag' && (c as HTMLElement).dataset.kind === h.kind));
+    const pulse = show && h?.type === 'drag' ? this.groupOf(h.kind)?.id : undefined;
+    this.sidebar.querySelectorAll<HTMLElement>('.group').forEach((c) => c.querySelector('.part-btn')!.classList.toggle('is-pulse', c.dataset.group === pulse));
     if (!h || !this.hintScreen) return;
     this.hintT += dt;
     const A = this.hintScreen.a();
@@ -350,6 +452,7 @@ export class Hud {
     const red = h.type === 'tapWire';
     this.haloA.classList.toggle('is-red', red);
     this.haloB.classList.toggle('is-red', red);
+    this.haloA.classList.toggle('is-weak', h.type === 'weak');
     place(this.haloA, h.type === 'drag' ? undefined : A);
     place(this.haloB, h.type === 'drag' ? undefined : B);
     this.trail.classList.toggle('is-red', red);
@@ -405,7 +508,8 @@ export class Hud {
       hx = A.x + 12;
       hy = A.y + 10;
     }
-    this.hand.style.opacity = String(alpha);
+    // "Too weak" has nothing to press: just the halo and badge at the battery.
+    this.hand.style.opacity = String(h.type === 'weak' ? 0 : alpha);
     this.hand.style.transform = `translate(${hx}px, ${hy + (1 - press) * -8}px) scale(${1 - press * 0.12}) rotate(-12deg)`;
   }
 

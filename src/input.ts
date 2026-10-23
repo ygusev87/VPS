@@ -5,15 +5,17 @@
 //  • tap a wire → it comes off
 //  • drag empty table → pan; two fingers → pinch-zoom; mouse wheel → zoom
 import * as THREE from 'three';
-import type { Part, PartKind, Terminal } from './parts/base';
+import type { LightColor, Part, PartKind, Terminal } from './parts/base';
 import type { Stage } from './stage';
 import { Wire } from './wires';
 import type { World } from './world';
 
 type Mode =
   | { kind: 'idle' }
-  | { kind: 'press-part'; part: Part; x: number; y: number; t: number }
-  | { kind: 'drag-part'; part: Part; offset: THREE.Vector3; spawned: boolean }
+  | { kind: 'press-part'; part: Part; x: number; y: number; t: number; hit: THREE.Intersection | undefined }
+  /** A part holding the finger itself, like a push button kept pressed. */
+  | { kind: 'hold-part'; part: Part }
+  | { kind: 'drag-part'; part: Part; offset: THREE.Vector3; spawned: boolean; x0: number; y0: number }
   | { kind: 'wire'; wire: Wire; from: Terminal; target: Terminal | null }
   | { kind: 'press-wire'; wire: Wire; x: number; y: number }
   | { kind: 'pan'; anchor: THREE.Vector3 }
@@ -32,6 +34,8 @@ export interface InputHooks {
   onViewMoved?(): void;
   /** A wire a hint is pointing at; taps near it pick it over neighbours. */
   preferredWire?(): Wire | null;
+  /** A part taken from the panel was released without being dragged out. */
+  onSpawnTap?(part: Part): void;
 }
 
 export class Input {
@@ -121,7 +125,11 @@ export class Input {
     const hit = wire ? undefined : this.stage.raycast(x, y, this.world.parts.flatMap((p) => p.pickables))[0];
     const part = hit?.object.userData.part as Part | undefined;
     if (wire) this.mode = { kind: 'press-wire', wire, x, y };
-    else if (part) this.mode = { kind: 'press-part', part, x, y, t: performance.now() };
+    else if (part && part.pressStart(hit!.object, hit!.point)) {
+      this.mode = { kind: 'hold-part', part };
+      this.world.markDirty();
+      this.world.emit({ type: 'switch', part });
+    } else if (part) this.mode = { kind: 'press-part', part, x, y, t: performance.now(), hit };
     else {
       const anchor = this.stage.screenToPlane(x, y);
       if (anchor) this.mode = { kind: 'pan', anchor };
@@ -165,16 +173,16 @@ export class Input {
   }
 
   /** Start dragging a brand-new part straight from the parts panel. */
-  spawnFromTray(kind: PartKind, e: PointerEvent) {
+  spawnFromTray(kind: PartKind, e: PointerEvent, color?: LightColor) {
     this.hooks.onTouch();
     if (!this.enabled || this.pointerId !== null) return;
     this.pointerId = e.pointerId;
     this.pointers.set(e.pointerId, { x: e.clientX, y: e.clientY });
     const at = this.stage.screenToPlane(e.clientX, e.clientY) ?? new THREE.Vector3();
-    const part = this.world.addPart(kind, at.x, at.z);
+    const part = this.world.addPart(kind, at.x, at.z, { color });
     part.setDragging(true);
     const offset = new THREE.Vector3(0, 0, 0.3);
-    this.mode = { kind: 'drag-part', part, offset, spawned: true };
+    this.mode = { kind: 'drag-part', part, offset, spawned: true, x0: e.clientX, y0: e.clientY };
     this.world.emit({ type: 'pickup', part });
     this.dragTo(part, e.clientX, e.clientY, offset);
   }
@@ -203,7 +211,7 @@ export class Input {
           const at = this.stage.screenToPlane(m.x, m.y) ?? new THREE.Vector3();
           const offset = m.part.root.position.clone().sub(at).setY(0);
           m.part.setDragging(true);
-          this.mode = { kind: 'drag-part', part: m.part, offset, spawned: false };
+          this.mode = { kind: 'drag-part', part: m.part, offset, spawned: false, x0: m.x, y0: m.y };
           this.world.emit({ type: 'pickup', part: m.part });
           this.dragTo(m.part, x, y, offset);
         }
@@ -237,7 +245,7 @@ export class Input {
             const at = this.stage.screenToPlane(m.x, m.y) ?? new THREE.Vector3();
             const offset = part.root.position.clone().sub(at).setY(0);
             part.setDragging(true);
-            this.mode = { kind: 'drag-part', part, offset, spawned: false };
+            this.mode = { kind: 'drag-part', part, offset, spawned: false, x0: m.x, y0: m.y };
             this.world.emit({ type: 'pickup', part });
             this.dragTo(part, x, y, offset);
           } else {
@@ -281,16 +289,24 @@ export class Input {
     switch (m.kind) {
       case 'press-part':
         if (!cancelled && performance.now() - m.t < TAP_TIME) {
-          if (m.part.tap()) {
+          if (m.part.tap(m.hit?.object, m.hit?.point)) {
             this.world.markDirty();
             this.world.emit({ type: 'switch', part: m.part });
           }
         }
         break;
+      case 'hold-part':
+        m.part.pressEnd();
+        this.world.markDirty();
+        this.world.emit({ type: 'switch', part: m.part });
+        break;
       case 'drag-part': {
         m.part.setDragging(false);
         this.hooks.onTrayHover(false);
-        if (!m.part.locked && this.hooks.overTray(x, y)) {
+        if (m.spawned && !cancelled && Math.hypot(x - m.x0, y - m.y0) < TAP_MOVE * 2 && this.hooks.onSpawnTap) {
+          this.hooks.onSpawnTap(m.part);
+          this.world.emit({ type: 'drop', part: m.part });
+        } else if (!m.part.locked && this.hooks.overTray(x, y)) {
           this.world.removePart(m.part);
         } else {
           this.world.clamp(m.part);

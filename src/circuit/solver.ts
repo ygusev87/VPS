@@ -15,6 +15,10 @@ export interface CircuitElement {
   b: string;
   /** Switches only. */
   closed?: boolean;
+  /** Battery voltage override (a bigger pack). */
+  emf?: number;
+  /** Resistance override: internal for batteries, body for loads. */
+  r?: number;
 }
 
 export interface ElementResult {
@@ -85,12 +89,14 @@ export function solveCircuit(elements: CircuitElement[]): CircuitResult {
 
   const stampFor = (e: CircuitElement): Stamp | null => {
     switch (e.kind) {
-      case 'battery':
-        return { g: 1 / PARAMS.battery.rInt, src: PARAMS.battery.emf / PARAMS.battery.rInt };
+      case 'battery': {
+        const r = e.r ?? PARAMS.battery.rInt;
+        return { g: 1 / r, src: (e.emf ?? PARAMS.battery.emf) / r };
+      }
       case 'bulb':
-        return { g: 1 / PARAMS.bulb.r, src: 0 };
+        return { g: 1 / (e.r ?? PARAMS.bulb.r), src: 0 };
       case 'motor':
-        return { g: 1 / PARAMS.motor.r, src: 0 };
+        return { g: 1 / (e.r ?? PARAMS.motor.r), src: 0 };
       case 'wire':
         return { g: 1 / PARAMS.wire.r, src: 0 };
       case 'switch':
@@ -158,7 +164,7 @@ export function solveCircuit(elements: CircuitElement[]): CircuitResult {
     let reversed = false;
     switch (e.kind) {
       case 'bulb':
-        level = (current * current * PARAMS.bulb.r) / NOMINAL.bulbPower;
+        level = (current * current * (e.r ?? PARAMS.bulb.r)) / NOMINAL.bulbPower;
         break;
       case 'motor':
         level = current / NOMINAL.motorCurrent; // signed: negative spins backwards

@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 # Build for hosts that serve only scripts/styles/images (the claude.ai preview):
-# models ship as JS modules with base64 GLB (no meshopt), see src/parts/assets.ts.
+# models and voice clips ship as JS modules with base64 data (no meshopt),
+# see src/parts/assets.ts and src/voice.ts.
 #   scripts/build-preview.sh [outdir]   (default dist-preview)
 set -euo pipefail
 cd "$(dirname "$0")/.."
@@ -16,4 +17,10 @@ for f in assets-src/models/*.glb; do
   printf 'export default "%s";\n' "$(base64 -w0 "$tmp/$n.glb")" > "$out/models/$n.js"
 done
 rm -rf "$tmp"
+# Voice clips the same way (see fetchClip in src/voice.ts).
+rm -rf "$out/voice"
+mkdir -p "$out/voice"
+for f in public/voice/*.mp3; do
+  printf 'export default "%s";\n' "$(base64 -w0 "$f")" > "$out/voice/$(basename "$f" .mp3).js"
+done
 ls -la "$out/models"

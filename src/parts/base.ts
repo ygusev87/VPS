@@ -1,15 +1,32 @@
 import * as THREE from 'three';
-import type { ElementKind } from '../circuit/solver';
+import type { CircuitElement, CircuitResult, ElementKind } from '../circuit/solver';
 import { C } from '../theme';
 import { mat, mesh, PLATE_TOP } from './kit';
 
-export type PartKind = 'battery' | 'bulb' | 'fan' | 'switch' | 'led' | 'buzzer';
+export type PartKind =
+  | 'battery'
+  | 'bigBattery'
+  | 'bulb'
+  | 'led'
+  | 'fan'
+  | 'carousel'
+  | 'windmill'
+  | 'buzzer'
+  | 'musicbox'
+  | 'switch'
+  | 'button'
+  | 'panel';
+
+/** Light colours a bulb or LED can take (tap to cycle). */
+export type LightColor = 'warm' | 'red' | 'green' | 'blue' | 'yellow';
 export type Polarity = 'plus' | 'minus' | 'none';
 
 export interface ElectricState {
   /** Normalised activity, see solver. Signed for motors. */
   level: number;
   current: number;
+  /** V(a) − V(b). */
+  voltage: number;
   reversed: boolean;
   shorted: boolean;
 }
@@ -59,23 +76,24 @@ export class Terminal {
 
   constructor(
     readonly part: Part,
-    readonly key: 'a' | 'b',
+    readonly key: string,
     readonly polarity: Polarity,
     local: THREE.Vector3,
+    collar?: string,
   ) {
     this.id = `${part.id}.${key}`;
-    const collarColor = polarity === 'plus' ? C.red : polarity === 'minus' ? C.navy2 : C.tealDeep;
+    const collarColor = collar ?? (polarity === 'plus' ? C.red : polarity === 'minus' ? C.navy2 : C.tealDeep);
     const nut = mesh(nutGeo, mat(C.metal, 0.35, 0.8));
     nut.position.y = 0.025;
-    const collar = mesh(collarGeo, mat(collarColor, 0.35));
-    collar.position.y = 0.09;
+    const ring = mesh(collarGeo, mat(collarColor, 0.35));
+    ring.position.y = 0.09;
     const stud = mesh(studGeo, mat(C.brass, 0.3, 0.8));
     stud.position.y = POST_H / 2;
     const thumb = mesh(thumbGeo, mat(C.brass, 0.28, 0.85));
     thumb.position.y = POST_H - 0.12;
     const dome = mesh(domeGeo, mat(C.brass, 0.25, 0.85), false);
     dome.position.y = POST_H;
-    this.post.add(nut, collar, stud, thumb, dome);
+    this.post.add(nut, ring, stud, thumb, dome);
 
     this.ringMat = new THREE.MeshBasicMaterial({ color: C.teal, transparent: true, opacity: 0, depthWrite: false });
     this.ring = new THREE.Mesh(ringGeo, this.ringMat);
@@ -133,7 +151,9 @@ export abstract class Part {
   locked = false;
   closed = false;
 
-  state: ElectricState = { level: 0, current: 0, reversed: false, shorted: false };
+  state: ElectricState = { level: 0, current: 0, voltage: 0, reversed: false, shorted: false };
+  /** Bulbs and LEDs: current colour. */
+  color: LightColor = 'warm';
 
   private spring = 1;
   private springV = 0;
@@ -150,8 +170,8 @@ export abstract class Part {
     this.root.userData.part = this;
   }
 
-  protected addTerminal(key: 'a' | 'b', polarity: Polarity, x: number, z: number) {
-    const t = new Terminal(this, key, polarity, new THREE.Vector3(x, 0, z));
+  protected addTerminal(key: string, polarity: Polarity, x: number, z: number, collar?: string) {
+    const t = new Terminal(this, key, polarity, new THREE.Vector3(x, 0, z), collar);
     this.terminals.push(t);
     this.body.add(t.post);
     return t;
@@ -169,9 +189,40 @@ export abstract class Part {
     }
   }
 
-  terminal(key: 'a' | 'b'): Terminal {
+  terminal(key: string): Terminal {
     return this.terminals.find((t) => t.key === key)!;
   }
+
+  /**
+   * The circuit elements inside this part. Most parts are one two-terminal
+   * element named after the part; a button panel holds several switches.
+   */
+  elements(): CircuitElement[] {
+    return [{ id: this.id, kind: this.elementKind, a: this.terminal('a').id, b: this.terminal('b').id, closed: this.closed, ...this.electrical() }];
+  }
+
+  /** Per-part overrides for the element (e.g. a bigger battery's voltage). */
+  protected electrical(): Partial<CircuitElement> {
+    return {};
+  }
+
+  /** Bulbs and LEDs repaint themselves; other parts ignore colours. */
+  setColor(c: LightColor) {
+    this.color = c;
+  }
+
+  /** After each solve, for parts that care about more than their main element. */
+  onSolved(_r: CircuitResult) {}
+
+  /**
+   * Finger down on the part. Return true to take over the press (a momentary
+   * button stays pressed until pressEnd); the press then never becomes a drag.
+   */
+  pressStart(_hit: THREE.Object3D | null, _point: THREE.Vector3 | null): boolean {
+    return false;
+  }
+
+  pressEnd() {}
 
   /** Pop in from nothing, optionally after a delay in seconds. */
   appear(delay = 0) {
@@ -198,7 +249,7 @@ export abstract class Part {
   }
 
   /** Returns true when the tap did something (e.g. toggled a switch). */
-  tap(): boolean {
+  tap(_hit?: THREE.Object3D | null, _point?: THREE.Vector3 | null): boolean {
     this.bump(0.15);
     return false;
   }

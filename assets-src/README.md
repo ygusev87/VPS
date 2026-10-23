@@ -20,3 +20,25 @@ face_limit=30000). Сырые `.glb` (5–10 МБ) в git не хранятся:
 | knife | основание рубильника без ножа | 3b43d43c-19e9-4fd0-aad3-353a13d50647 | 88233539-47b1-4677-8ed4-6f1ae84a2ed7 |
 | led | красный светодиод (гладкий купол) | afc228b0-108f-4340-9588-8ac54346baa9 | f6bec243-e1e4-46cd-ad5f-ee55dba42ad1 |
 | buzzer | пьезопищалка | 2c2e2294-51b3-4e21-9314-7f9c41ef3952 | 7f751ea4-ac23-4f36-a495-0af449137cd1 |
+| bigbattery | отсек 4×AA, бирюзовый («большая батарея 6 В») | 34f43e75-f71d-431e-8784-3641eb269dad | 16e5f4c1-3270-4e64-ae58-0eb20d9f93af |
+| carousel | карусель с лошадками | 896e30f6-ea6f-4289-a171-d6b770f0bf0b | c106eed0-c101-4a4c-8241-b26b7fec45dd (face_limit 40000) |
+| windmill | башня мельницы без крыльев (смотрит в +x, в коде `rotateY: -π/2`) | d8f5a2dd-526f-4765-8b18-4d5c3863e411 | 6f5bd53e-c88b-4dff-afc6-2a04266b4cb9 |
+| sails | крылья мельницы (плоскость YZ, `rotateY: -π/2`) | 988003df-fe9d-482f-baed-7c4c4e687ff0 | aa184479-160d-4ff4-832f-576b079ab0c4 |
+| musicbox | музыкальная шкатулка | e141a3c9-ceea-4659-99af-e80fc70499cf | 70eac3c3-3687-442c-b33d-575a74f919ed |
+| button | большая красная кнопка | df4e97d8-ca15-44bb-8ada-cdf643536349 | 72f5f4dd-40b7-462e-b647-f9ad9749d9f3 |
+| panel | пульт с тремя кнопками (вдоль z, `rotateY: -π/2`) | 219fefd8-45f6-4c14-ac68-5a91eaa2b382 | c8d656d7-a0d2-4e92-98fb-1ae19c5e46ab |
+
+## Голос
+
+Фразы из `src/voice.ts` (`PHRASES`) озвучены в Higgsfield: модель `text2speech_v2`, вариант
+`elevenlabs`, готовый голос «Elena» (`voice_id ca83ca7f-c186-493d-bd69-0d765fa861b2`), ~0,15 кредита
+за фразу. Сырые mp3 кладите в `assets-src/voice/<id>.mp3` (в git не хранятся), затем сожмите:
+
+```sh
+for f in assets-src/voice/*.mp3; do ffmpeg -v error -y -i "$f" \
+  -af "silenceremove=start_periods=1:start_threshold=-50dB,areverse,silenceremove=start_periods=1:start_threshold=-50dB,areverse" \
+  -ac 1 -b:a 64k "public/voice/$(basename "$f")"; done
+```
+
+Новая фраза: добавить в `PHRASES`, озвучить тем же голосом, положить клип. Пока клипа нет,
+фразу читает синтезатор браузера.

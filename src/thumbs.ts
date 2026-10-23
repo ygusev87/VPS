@@ -1,12 +1,12 @@
 // Card pictures are rendered from the same 3D models as the table, so the
 // tray and the level picker always match what the child will see.
 import * as THREE from 'three';
-import type { PartKind } from './parts/base';
-import { createPart } from './parts/models';
+import type { LightColor, PartKind } from './parts/base';
+import { createPart, itemKey } from './parts/catalog';
 
 const cache = new Map<string, string>();
 
-export function renderThumbs(kinds: PartKind[]): void {
+export function renderThumbs(items: { kind: PartKind; color?: LightColor }[]): void {
   const size = 256;
   const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true, preserveDrawingBuffer: true });
   renderer.setSize(size, size, false);
@@ -22,11 +22,12 @@ export function renderThumbs(kinds: PartKind[]): void {
   scene.add(sun);
   const camera = new THREE.PerspectiveCamera(28, 1, 0.1, 100);
 
-  for (const kind of kinds) {
+  for (const item of items) {
+    const key = itemKey(item);
     for (const lit of [false, true]) {
-      const part = createPart(kind);
+      const part = createPart(item.kind, item.color);
       if (lit) {
-        part.state = { level: 1, current: 0.3, reversed: false, shorted: false };
+        part.state = { level: 1, current: 0.3, voltage: 2, reversed: false, shorted: false };
         part.closed = true;
       }
       // Let springs and glows settle.
@@ -45,7 +46,10 @@ export function renderThumbs(kinds: PartKind[]): void {
       camera.position.copy(center).addScaledVector(dir, r / Math.sin(THREE.MathUtils.degToRad(14)) * 0.78);
       camera.lookAt(center);
       renderer.render(scene, camera);
-      cache.set(`${kind}:${lit}`, renderer.domElement.toDataURL('image/png'));
+      const url = renderer.domElement.toDataURL('image/png');
+      cache.set(`${key}|${lit}`, url);
+      // The first variant of a kind also answers for the plain kind.
+      if (!cache.has(`${item.kind}|${lit}`)) cache.set(`${item.kind}|${lit}`, url);
       part.root.removeFromParent();
     }
   }
@@ -53,6 +57,7 @@ export function renderThumbs(kinds: PartKind[]): void {
   renderer.forceContextLoss();
 }
 
-export function thumb(kind: PartKind, lit = false): string {
-  return cache.get(`${kind}:${lit}`) ?? '';
+/** Picture of a part kind or catalog item key (see itemKey). */
+export function thumb(key: string, lit = false): string {
+  return cache.get(`${key}|${lit}`) ?? '';
 }

@@ -4,3 +4,5 @@ dist
 .DS_Store
 assets-src/models/*.glb
 dist-preview
+voice-samples
+assets-src/voice/

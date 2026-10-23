@@ -7,6 +7,8 @@ export class Sfx {
   private fanNoise: { src: AudioBufferSourceNode; gain: GainNode; filter: BiquadFilterNode } | null = null;
   private buzz: { osc: OscillatorNode; gain: GainNode } | null = null;
   muted = false;
+  /** Called once the audio graph exists, e.g. to route the voice through it. */
+  onReady?: (ctx: AudioContext, out: AudioNode) => void;
 
   /** Must be called from a user gesture (iOS). */
   unlock() {
@@ -17,6 +19,7 @@ export class Sfx {
       this.master = this.ctx.createGain();
       this.master.gain.value = this.muted ? 0 : 0.8;
       this.master.connect(this.ctx.destination);
+      this.onReady?.(this.ctx, this.master);
     }
     if (this.ctx.state === 'suspended') void this.ctx.resume();
   }
@@ -168,4 +171,51 @@ export class Sfx {
       g.setValueAtTime(0, ctx.currentTime);
     }
   }
+
+  /** Music box: a little tune on bells while it plays; call every frame. */
+  private musicAt = 0;
+  private musicStep = 0;
+  tickMusic(on: boolean) {
+    const ctx = this.ctx;
+    if (!ctx || !this.master) return;
+    if (!on) {
+      this.musicAt = 0;
+      return;
+    }
+    if (!this.musicAt || this.musicAt < ctx.currentTime) {
+      // (Re)start from the top after a pause.
+      if (!this.musicAt) this.musicStep = 0;
+      this.musicAt = ctx.currentTime + 0.05;
+    }
+    while (this.musicAt < ctx.currentTime + 0.25) {
+      const [note, beats] = TUNE[this.musicStep % TUNE.length];
+      if (note) {
+        const f = 440 * 2 ** ((note - 69) / 12);
+        const at = this.musicAt - ctx.currentTime;
+        this.tone(f, 0.9, 'sine', 0.13, at);
+        this.tone(f * 2, 0.35, 'sine', 0.04, at);
+        this.tone(f * 3.01, 0.12, 'triangle', 0.015, at);
+      }
+      this.musicAt += beats * 0.32;
+      this.musicStep++;
+    }
+  }
+
+  /** Soft clack of a push button. */
+  press(down: boolean) {
+    this.noise(0.025, 0.3, down ? 1800 : 2600);
+    this.tone(down ? 900 : 1300, 0.03, 'square', 0.04);
+  }
 }
+
+// The public-domain "Twinkle, Twinkle" (Mozart's «Ah! vous dirai-je, maman»),
+// as [MIDI note, beats]; 0 is a rest.
+const TUNE: [number, number][] = [
+  [72, 1], [72, 1], [79, 1], [79, 1], [81, 1], [81, 1], [79, 2],
+  [77, 1], [77, 1], [76, 1], [76, 1], [74, 1], [74, 1], [72, 2],
+  [79, 1], [79, 1], [77, 1], [77, 1], [76, 1], [76, 1], [74, 2],
+  [79, 1], [79, 1], [77, 1], [77, 1], [76, 1], [76, 1], [74, 2],
+  [72, 1], [72, 1], [79, 1], [79, 1], [81, 1], [81, 1], [79, 2],
+  [77, 1], [77, 1], [76, 1], [76, 1], [74, 1], [74, 1], [72, 2],
+  [0, 2],
+];

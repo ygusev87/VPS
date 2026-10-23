@@ -1,13 +1,13 @@
 import * as THREE from 'three';
 import './style.css';
 import { Sfx } from './audio';
-import { hintKey, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
+import { freeSpot, hintKey, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Hud } from './hud';
 import { Input } from './input';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
 import type { PartKind, Terminal } from './parts/base';
 import { loadModels } from './parts/assets';
-import { createPart, PART_KINDS } from './parts/models';
+import { ALL_ITEMS, createPart, MODEL_NAMES } from './parts/catalog';
 import { Stage } from './stage';
 import { loadProgress, saveProgress } from './storage';
 import { renderThumbs } from './thumbs';
@@ -30,22 +30,24 @@ const stage = new Stage(canvas);
 const world = new World(stage);
 const sfx = new Sfx();
 const voice = new Voice();
+sfx.onReady = (ctx, out) => voice.attach(ctx, out);
 const progress = loadProgress();
 sfx.setMuted(!progress.sound);
 voice.enabled = progress.sound;
 setLoad(0.35);
 
-await loadModels(['battery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer']);
+await loadModels(MODEL_NAMES);
 setLoad(0.55);
-renderThumbs(PART_KINDS);
+renderThumbs(ALL_ITEMS);
 setLoad(0.75);
 // One of each part, lit and dark, so every shader variant is ready before play.
 stage.warmUp(
-  PART_KINDS.flatMap((k) => {
-    const on = createPart(k);
-    on.state = { level: 1, current: 0.3, reversed: false, shorted: false };
+  ALL_ITEMS.flatMap((it) => {
+    const on = createPart(it.kind, it.color);
+    on.state = { level: 1, current: 0.3, voltage: 2, reversed: false, shorted: false };
+    on.closed = true;
     on.update(0.1);
-    const off = createPart(k);
+    const off = createPart(it.kind, it.color);
     off.update(0.1);
     return [on.root, off.root];
   }),
@@ -101,7 +103,10 @@ const hud = new Hud(stage, {
     const i = LEVELS.indexOf(level);
     startLevel(i >= 0 && i < LEVELS.length - 1 ? LEVELS[i + 1] : FREE_PLAY);
   },
-  onSpawn: (kind, e) => input.spawnFromTray(kind, e),
+  onSpawn: (item, e) => {
+    input.spawnFromTray(item.kind, e, item.color);
+    voice.say(item.say, 3000);
+  },
 });
 hud.setSound(progress.sound);
 
@@ -113,6 +118,13 @@ const input = new Input(stage, world, {
     lastTouch = performance.now();
   },
   preferredWire: () => hintedWire(),
+  // A tap on a drawer item (no drag) puts the part in a free spot.
+  onSpawnTap: (part) => {
+    const at = freeSpot(world);
+    part.root.position.set(at.x, 0, at.z);
+    world.separate(part);
+    part.appear();
+  },
 });
 
 function frameParts(instant = false) {
@@ -234,11 +246,12 @@ world.on((e) => {
       if (e.type === 'partRemoved') sfx.pop();
       break;
     case 'switch':
-      sfx.click();
+      if (e.part.kind === 'button') sfx.press(e.part.closed);
+      else sfx.click();
       break;
     case 'activated':
       if (e.part.kind === 'bulb' || e.part.kind === 'led') sfx.ting();
-      if (e.part.kind === 'fan') sfx.whir();
+      if (e.part.kind === 'fan' || e.part.kind === 'windmill' || e.part.kind === 'carousel') sfx.whir();
       break;
     case 'short':
       if (e.on) {
@@ -302,11 +315,15 @@ function frame(now: number) {
 
   let fan = 0;
   let buzz = false;
+  let music = false;
   for (const p of world.parts) {
     if (p.kind === 'fan') fan += Math.abs(p.state.level);
+    if (p.kind === 'windmill' || p.kind === 'carousel') fan += Math.abs(p.state.level) * 0.4;
     if (p.kind === 'buzzer' && isActive(p)) buzz = true;
+    if (p.kind === 'musicbox' && isActive(p)) music = true;
   }
   sfx.setFan(fan);
+  sfx.tickMusic(music);
   buzzerRefresh -= dt;
   if (buzz !== buzzerOn || (buzz && buzzerRefresh <= 0)) {
     buzzerOn = buzz;

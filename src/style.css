@@ -295,6 +295,80 @@ svg.icon .fill {
     box-shadow: 0 0 0 4px #1aa3a140;
   }
 }
+.group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+.group[hidden] {
+  display: none;
+}
+.group-name {
+  font: 600 10px/1 var(--cond);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted);
+  pointer-events: none;
+}
+.part-btn .more {
+  position: absolute;
+  bottom: 3px;
+  right: 4px;
+  display: flex;
+  gap: 2px;
+  pointer-events: none;
+}
+.part-btn .more[hidden] {
+  display: none;
+}
+.part-btn .more i {
+  width: 3.5px;
+  height: 3.5px;
+  border-radius: 50%;
+  background: var(--teal-deep);
+}
+.group.is-open .part-btn {
+  border-color: var(--teal);
+  background: var(--card);
+  box-shadow: 0 0 0 3px #1aa3a133;
+}
+
+/* Variants of the open drawer, in a card beside the sidebar. */
+.flyout {
+  position: absolute;
+  left: calc(var(--side-w) + var(--safe-l) + 8px);
+  top: 0;
+  max-width: calc(100vw - var(--side-w) - var(--safe-l) - 24px);
+  padding: 8px 10px 10px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: var(--card-soft);
+  box-shadow: var(--shadow-deep);
+  opacity: 0;
+  transform: translateX(-10px) scale(0.96);
+  transform-origin: left center;
+  pointer-events: none !important;
+  transition: opacity 0.18s var(--ease), transform 0.25s var(--spring);
+  z-index: 3;
+}
+.flyout.is-open {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto !important;
+}
+.flyout-title {
+  margin: 0 0 6px 2px;
+  font: 700 11px/1 var(--cond);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--navy-2);
+}
+.flyout-items {
+  display: grid;
+  grid-template-columns: repeat(4, 56px);
+  gap: 8px;
+}
 .sidebar .bin {
   position: absolute;
   inset: 0;
@@ -762,6 +836,17 @@ svg.icon .fill {
 .halo.is-red::after {
   background: #e5533d2e;
 }
+/* "Battery too weak": a wide amber glow round the whole battery. */
+.halo.is-weak {
+  width: 74px;
+  height: 74px;
+  margin: -37px 0 0 -37px;
+  border-color: var(--amber);
+  background: #f0a53a1f;
+}
+.halo.is-weak::after {
+  background: #f0a53a40;
+}
 @keyframes halo {
   0% {
     opacity: 0.9;
@@ -887,6 +972,17 @@ svg.icon .fill {
   }
 }
 
+/* Short landscape phones: drop drawer captions to fit five drawers. */
+@media (max-height: 560px) {
+  .group-name {
+    display: none;
+  }
+  .side-parts {
+    margin-top: 56px;
+    gap: 6px;
+  }
+}
+
 /* ───────── Narrow screens ───────── */
 @media (max-width: 600px) {
   :root {
@@ -899,6 +995,9 @@ svg.icon .fill {
   .part-btn {
     width: 48px;
     height: 48px;
+  }
+  .flyout-items {
+    grid-template-columns: repeat(4, 48px);
   }
   .part-btn img {
     width: 44px;

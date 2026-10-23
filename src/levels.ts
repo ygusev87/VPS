@@ -2,6 +2,7 @@
 // screen shape. `chain` describes the loop the hints steer towards:
 // battery "+" → chain[0] → chain[1] → … → battery "−".
 import type { Part, PartKind } from './parts/base';
+import { ALL_KINDS } from './parts/catalog';
 import { isActive, type World } from './world';
 import type { PhraseId } from './voice';
 
@@ -153,7 +154,7 @@ export const FREE_PLAY: Level = {
     { kind: 'battery', fx: -0.4, fz: 0.15 },
     { kind: 'bulb', fx: 0.4, fz: -0.1 },
   ],
-  tray: (['battery', 'bulb', 'fan', 'switch', 'led', 'buzzer'] as PartKind[]).map((kind) => ({ kind, count: Infinity })),
+  tray: ALL_KINDS.map((kind) => ({ kind, count: Infinity })),
   chain: [],
   intro: 'free',
   winPhrase: 'win',
