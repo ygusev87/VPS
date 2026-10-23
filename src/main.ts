@@ -7,7 +7,7 @@ import { Input } from './input';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
 import type { PartKind, Terminal } from './parts/base';
 import { loadModels } from './parts/assets';
-import { PART_KINDS } from './parts/models';
+import { createPart, PART_KINDS } from './parts/models';
 import { Stage } from './stage';
 import { loadProgress, saveProgress } from './storage';
 import { renderThumbs } from './thumbs';
@@ -39,6 +39,17 @@ await loadModels(['battery', 'socket', 'motor', 'propeller', 'knife', 'led', 'bu
 setLoad(0.55);
 renderThumbs(PART_KINDS);
 setLoad(0.75);
+// One of each part, lit and dark, so every shader variant is ready before play.
+stage.warmUp(
+  PART_KINDS.flatMap((k) => {
+    const on = createPart(k);
+    on.state = { level: 1, current: 0.3, reversed: false, shorted: false };
+    on.update(0.1);
+    const off = createPart(k);
+    off.update(0.1);
+    return [on.root, off.root];
+  }),
+);
 
 const traces = document.getElementById('traces') as unknown as SVGSVGElement;
 drawTraces(traces);

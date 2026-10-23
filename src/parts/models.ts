@@ -227,7 +227,6 @@ export class Bulb extends Part {
   private filamentMat: THREE.MeshStandardMaterial;
   private glow: THREE.Sprite;
   private rays: THREE.Sprite;
-  private light: THREE.PointLight;
   private pool = lightPool(6, 'rgba(255,196,96,0.85)');
   private shown = 0;
 
@@ -296,11 +295,9 @@ export class Bulb extends Part {
     this.rays = sprite(tex.rays, 3.6);
     this.rays.position.copy(this.glow.position);
     this.rays.renderOrder = 9;
-    this.light = new THREE.PointLight('#ffc46b', 0, 7, 1.6);
-    this.light.position.copy(this.glow.position);
 
     this.pool.position.z = -0.15;
-    this.body.add(plate, socket, screw, fil, glass, this.glow, this.rays, this.light, this.pool);
+    this.body.add(plate, socket, screw, fil, glass, this.glow, this.rays, this.pool);
     this.addTerminal('a', 'none', 0.66, 0.48);
     this.addTerminal('b', 'none', -0.66, 0.48);
     this.pickable(plate, socket, screw, glass);
@@ -322,7 +319,6 @@ export class Bulb extends Part {
     this.rays.material.opacity = Math.min(0.45, Math.max(0, b - 0.25) * 0.6);
     this.rays.material.rotation += dt * 0.25;
     this.rays.scale.setScalar(2.3 + b * 0.7 + Math.sin(this.time * 2) * 0.08);
-    this.light.intensity = b * 9;
     (this.pool.material as THREE.MeshBasicMaterial).opacity = Math.min(0.8, b * 0.6);
   }
 }
@@ -525,7 +521,6 @@ export class Led extends Part {
   readonly radius = 1.0;
   private domeMat: THREE.MeshPhysicalMaterial;
   private glow: THREE.Sprite;
-  private light: THREE.PointLight;
   private pool = lightPool(3.6, 'rgba(255,80,60,0.75)');
   private shown = 0;
   /** Materials of the sculpted LED, lit through their own colour map. */
@@ -585,11 +580,9 @@ export class Led extends Part {
 
     this.glow = sprite(tex.red, 2.4);
     this.glow.position.set(0, domeTop - 0.3, -0.2);
-    this.light = new THREE.PointLight('#ff5a46', 0, 5, 1.7);
-    this.light.position.copy(this.glow.position);
 
     this.pool.position.z = -0.2;
-    this.body.add(plate, dome, tr, tl, plus, this.glow, this.light, this.pool);
+    this.body.add(plate, dome, tr, tl, plus, this.glow, this.pool);
     this.addTerminal('a', 'plus', 0.55, 0.42);
     this.addTerminal('b', 'minus', -0.55, 0.42);
     this.pickable(plate, dome);
@@ -603,7 +596,6 @@ export class Led extends Part {
     for (const m of this.ledMats) m.emissiveIntensity = b * 1.8;
     this.glow.material.opacity = Math.min(0.95, b * 0.9);
     this.glow.scale.setScalar(1.6 + b * 1.2);
-    this.light.intensity = b * 5;
     (this.pool.material as THREE.MeshBasicMaterial).opacity = Math.min(0.7, b * 0.55);
   }
 }

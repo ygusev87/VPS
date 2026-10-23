@@ -227,6 +227,20 @@ export class Stage {
     this.renderer.render(this.scene, this.camera);
   }
 
+  /**
+   * Compile shaders for these objects now (during the loading screen) so the
+   * first time one appears on the table doesn't stall a frame.
+   */
+  warmUp(objects: THREE.Object3D[]) {
+    const g = new THREE.Group();
+    for (const o of objects) g.add(o);
+    this.scene.add(g);
+    this.renderer.compile(this.scene, this.camera);
+    // A real draw also uploads textures and geometry.
+    this.render();
+    this.scene.remove(g);
+  }
+
   /** Screen point → point on the horizontal plane at height y. */
   screenToPlane(x: number, y: number, height = 0, out = new THREE.Vector3()): THREE.Vector3 | null {
     this.setRay(x, y);
