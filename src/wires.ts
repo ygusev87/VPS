@@ -8,6 +8,7 @@ const RADIUS = 0.05;
 const UP = new THREE.Vector3(0, 1, 0);
 const dotGeo = new THREE.SphereGeometry(0.052, 10, 8);
 const clipGeo = new THREE.CylinderGeometry(0.075, 0.06, 0.16, 16);
+const tipGeo = new THREE.CapsuleGeometry(0.085, 0.16, 6, 16);
 let colorCursor = 0;
 
 let nextWireId = 1;
@@ -30,6 +31,8 @@ export class Wire {
   private material: THREE.MeshStandardMaterial;
   private clipA: THREE.Mesh;
   private clipB: THREE.Mesh;
+  /** Plug head that follows the finger while the wire is being dragged. */
+  private tip: THREE.Mesh;
   private dots: THREE.InstancedMesh;
   private curve: THREE.CatmullRomCurve3 | null = null;
   private length = 1;
@@ -52,7 +55,9 @@ export class Wire {
     this.dots = new THREE.InstancedMesh(dotGeo, new THREE.MeshBasicMaterial({ color: '#fff6d6' }), 48);
     this.dots.count = 0;
     this.dots.frustumCulled = false;
-    this.group.add(this.tube, this.clipA, this.clipB, this.dots);
+    this.tip = new THREE.Mesh(tipGeo, this.material);
+    this.tip.castShadow = true;
+    this.group.add(this.tube, this.clipA, this.clipB, this.tip, this.dots);
     this.setColorFor(a, null);
   }
 
@@ -139,7 +144,11 @@ export class Wire {
     // Crimped ferrules sitting on the post tops.
     this.clipA.position.copy(p0).setY(p0.y + 0.03);
     this.clipB.position.copy(p3).setY(p3.y + 0.03);
-    this.clipB.visible = !!this.b;
+    // Free end: an insulated plug with a metal pin pointing down.
+    const free = !this.b;
+    this.tip.visible = free;
+    this.tip.position.copy(p3).setY(p3.y + 0.2);
+    this.clipB.position.y = free ? p3.y + 0.02 : p3.y + 0.03;
   }
 
   update(dt: number) {

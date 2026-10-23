@@ -17,6 +17,8 @@ const MIN_DIST = 7;
 const MAX_DIST = 46;
 /** How far from the origin the view may wander. */
 const LIMIT = 26;
+/** Largest on-screen scale `frame()` will choose, in CSS pixels per table unit. */
+const MAX_PPU = 64;
 
 export class Stage {
   readonly renderer: THREE.WebGLRenderer;
@@ -206,6 +208,13 @@ export class Stage {
       if (ok) hi = mid;
       else lo = mid;
     }
+    // On big monitors the free area is huge; don't blow the parts up past the
+    // reference's scale, leave the extra room as open table instead.
+    this.target.copy(center);
+    this.distance = hi;
+    this.placeCamera();
+    const ppu = this.pixelsPerUnit(center);
+    if (ppu > MAX_PPU) hi *= ppu / MAX_PPU;
     this.target.copy(saveT);
     this.distance = saveD;
     this.placeCamera();

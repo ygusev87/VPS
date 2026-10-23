@@ -39,6 +39,8 @@ export function isActive(p: Part): boolean {
 export class World {
   readonly parts: Part[] = [];
   readonly wires: Wire[] = [];
+  /** Wires not in the circuit that still animate: the one being dragged, and ones fading out. */
+  readonly loose = new Set<Wire>();
   result: CircuitResult | null = null;
   private dirty = true;
   private listeners: ((e: WorldEvent) => void)[] = [];
@@ -84,6 +86,7 @@ export class World {
     const dup = this.wires.some((w) => (w.a === wire.a && w.b === b) || (w.a === b && w.b === wire.a));
     if (dup) return false;
     wire.attach(b);
+    this.loose.delete(wire);
     this.wires.push(wire);
     this.dirty = true;
     this.emit({ type: 'wireAdded', wire });
@@ -94,11 +97,14 @@ export class World {
     const i = this.wires.indexOf(wire);
     if (i >= 0) this.wires.splice(i, 1);
     wire.remove();
+    this.loose.add(wire);
     this.dirty = true;
     this.emit({ type: 'wireRemoved', wire });
   }
 
   clear() {
+    for (const w of this.loose) w.group.removeFromParent();
+    this.loose.clear();
     for (const w of [...this.wires]) {
       this.wires.splice(this.wires.indexOf(w), 1);
       w.group.removeFromParent();
@@ -194,6 +200,10 @@ export class World {
     if (this.dirty) this.solve();
     for (const p of this.parts) p.update(dt);
     for (const w of [...this.wires]) w.update(dt);
+    for (const w of [...this.loose]) {
+      w.update(dt);
+      if (!w.group.parent) this.loose.delete(w);
+    }
   }
 
   /** Keep a part within reach on the endless table. */

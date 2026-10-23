@@ -107,6 +107,7 @@ export class Input {
       const wire = new Wire(t);
       wire.freeEnd = t.attachPoint();
       this.stage.world.add(wire.group);
+      this.world.loose.add(wire);
       this.mode = { kind: 'wire', wire, from: t, target: null };
       for (const o of this.world.terminals()) o.setHighlight(o === t ? 'target' : 'available');
       this.world.emit({ type: 'wireStart', terminal: t });
@@ -264,15 +265,9 @@ export class Input {
           target.snap();
           m.from.snap();
         } else {
+          // Still in world.loose, which animates it out.
           m.wire.remove();
           this.world.emit({ type: 'wireCancel' });
-          // Not in world.wires, so animate it out on our own.
-          const wire = m.wire;
-          const tick = () => {
-            wire.update(1 / 60);
-            if (wire.group.parent) requestAnimationFrame(tick);
-          };
-          requestAnimationFrame(tick);
         }
         break;
       }
