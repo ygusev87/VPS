@@ -7,11 +7,13 @@ import type { PhraseId } from './voice';
 import type { Wire } from './wires';
 import type { World } from './world';
 
+export type Problem = 'short' | 'reversed' | 'bypass';
+
 export type Hint =
   | { type: 'connect'; from: Terminal; to: Terminal; phrase: PhraseId }
   | { type: 'tap'; part: Part; phrase: PhraseId }
-  | { type: 'tapWire'; wire: Wire; battery: Part | null; phrase: PhraseId }
-  | { type: 'polarity'; part: Part; plus: Terminal; batteryPlus: Terminal; phrase: PhraseId }
+  /** Take this wire off: it is the newest step that caused the problem. */
+  | { type: 'tapWire'; wire: Wire; at: Part | null; problem: Problem; phrase: PhraseId; u: number }
   | { type: 'drag'; kind: PartKind; to: THREE.Vector3; phrase: PhraseId };
 
 export function hintKey(h: Hint | null): string {
@@ -22,33 +24,100 @@ export function hintKey(h: Hint | null): string {
     case 'tap':
       return `t:${h.part.id}`;
     case 'tapWire':
-      return `w:${h.wire.id}`;
-    case 'polarity':
-      return `p:${h.part.id}`;
+      return `w:${h.wire.id}:${h.problem}`;
     case 'drag':
       return `d:${h.kind}`;
   }
 }
 
-/** Problems worth interrupting for, in any mode. */
+export function isProblem(h: Hint | null): boolean {
+  return h?.type === 'tapWire';
+}
+
+const LOADS: PartKind[] = ['bulb', 'fan', 'led', 'buzzer'];
+const isPolar = (p: Part) => p.kind === 'led' || p.kind === 'buzzer';
+
+/**
+ * Things that are actually wrong, in any mode. Each points at the newest wire
+ * whose removal fixes it, so the fix reads as "undo that step"; once it is
+ * off, the regular hints show where that end should go instead.
+ */
 export function problemHint(world: World): Hint | null {
   const r = world.result;
   if (!r) return null;
+  const touching = (p: Part) => world.wires.filter((w) => w.touches(p.terminal('a')) || w.touches(p.terminal('b')));
+
+  // 1. Short circuit: "+" and "−" of a battery joined with nothing in between.
   if (r.shorted.size) {
     const battery = world.parts.find((p) => r.shorted.has(p.id)) ?? null;
-    const wire = world.shortingWires()[0] ?? (battery ? world.wiresAt(battery.terminal('a'))[0] : undefined);
-    if (wire) return { type: 'tapWire', wire, battery, phrase: 'short' };
+    const wire =
+      world.latestCulprit((res) => res.shorted.size === 0) ??
+      (battery ? touching(battery).at(-1) : undefined) ??
+      null;
+    if (wire) return { type: 'tapWire', wire, at: battery, problem: 'short', phrase: 'short', u: clearSpot(world, wire) };
   }
-  const rev = world.parts.find((p) => (p.kind === 'led' || p.kind === 'buzzer') && p.state.reversed);
-  const battery = world.parts.find((p) => p.kind === 'battery');
-  if (rev && battery) {
-    return {
-      type: 'polarity',
-      part: rev,
-      plus: rev.terminal('a'),
-      batteryPlus: battery.terminal('a'),
-      phrase: rev.kind === 'led' ? 'reversed' : 'buzzerReversed',
-    };
+
+  // 2. LED or buzzer the wrong way round inside a working loop.
+  for (const p of world.parts) {
+    if (!isPolar(p) || !p.state.reversed) continue;
+    const wire = world.latestCulprit((res) => !res.elements.get(p.id)?.reversed, touching(p)) ?? touching(p).at(-1);
+    if (wire) return { type: 'tapWire', wire, at: p, problem: 'reversed', phrase: p.kind === 'led' ? 'reversed' : 'buzzerReversed', u: clearSpot(world, wire) };
+  }
+
+  // 3. Both legs of a part joined by wires: current goes round it, it stays dark.
+  // The mistake is on the leg that was wired last — or, for an LED or buzzer,
+  // the leg that sits on the wrong pole — so point at that leg's newest wire.
+  for (let i = world.parts.length - 1; i >= 0; i--) {
+    const p = world.parts[i];
+    if (!LOADS.includes(p.kind)) continue;
+    const a = p.terminal('a');
+    const b = p.terminal('b');
+    if (!world.wired(a, b)) continue;
+    const newest = (t: Terminal) => Math.max(-1, ...world.wiresAt(t).map((w) => world.wires.indexOf(w)));
+    let wrong = newest(a) > newest(b) ? a : b;
+    if (isPolar(p)) {
+      const bats = world.parts.filter((q) => q.kind === 'battery');
+      if (bats.some((q) => world.wired(a, q.terminal('a')))) wrong = b;
+      else if (bats.some((q) => world.wired(a, q.terminal('b')))) wrong = a;
+    }
+    const wire = world.wiresAt(wrong).at(-1);
+    if (wire) return { type: 'tapWire', wire, at: p, problem: 'bypass', phrase: 'bypass', u: clearSpot(world, wire) };
+  }
+  return null;
+}
+
+/**
+ * Free play: gentle next-step nudges once the child pauses. Only for a part
+ * that is half connected to a battery, so the hint finishes what they started.
+ */
+export function sandboxHint(world: World): Hint | null {
+  const batteries = world.parts.filter((p) => p.kind === 'battery');
+  const loads = world.parts.filter((p) => LOADS.includes(p.kind));
+  if (!batteries.length) {
+    return loads.length ? { type: 'drag', kind: 'battery', to: freeSpot(world), phrase: 'needBattery' } : null;
+  }
+  for (let i = loads.length - 1; i >= 0; i--) {
+    const p = loads[i];
+    if (p.state.level !== 0 && Math.abs(p.state.level) > 0.05) continue;
+    for (const bat of batteries) {
+      const plus = bat.terminal('a');
+      const minus = bat.terminal('b');
+      for (const [on, off] of [
+        [p.terminal('a'), p.terminal('b')],
+        [p.terminal('b'), p.terminal('a')],
+      ] as const) {
+        if (world.wiresAt(off).length) continue;
+        const toPlus = world.wired(on, plus);
+        const toMinus = world.wired(on, minus);
+        if (toPlus === toMinus) continue;
+        // A polar part already started the wrong way: undo that wire first.
+        if (isPolar(p) && (on.key === 'a') !== toPlus) {
+          const wire = world.wiresAt(on).at(-1);
+          if (wire) return { type: 'tapWire', wire, at: p, problem: 'reversed', phrase: p.kind === 'led' ? 'reversed' : 'buzzerReversed', u: clearSpot(world, wire) };
+        }
+        return { type: 'connect', from: off, to: toPlus ? minus : plus, phrase: toPlus ? 'toMinus' : 'toPlus' };
+      }
+    }
   }
   return null;
 }
@@ -106,6 +175,28 @@ export function levelHint(world: World, level: Level, trayLeft: (k: PartKind) =>
   const sw = chain.find((p) => p.kind === 'switch' && !p.closed);
   if (sw) return { type: 'tap', part: sw, phrase: 'tapSwitch' };
   return null;
+}
+
+/**
+ * Where along a wire to point so the finger lands on it and not on a
+ * neighbour: the stretch farthest (on screen) from every other wire.
+ */
+function clearSpot(world: World, wire: Wire): number {
+  const others = world.wires.filter((w) => w !== wire && w.b).flatMap((w) => w.samples(20).map((p) => world.stage.project(p)));
+  let best = 0.5;
+  let bestScore = -Infinity;
+  for (let i = 3; i <= 17; i++) {
+    const u = i / 20;
+    const p = world.stage.project(wire.pointAt(u));
+    let d = Infinity;
+    for (const o of others) d = Math.min(d, Math.hypot(o.x - p.x, o.y - p.y));
+    const score = Math.min(d, 60) - Math.abs(u - 0.5) * 20;
+    if (score > bestScore) {
+      bestScore = score;
+      best = u;
+    }
+  }
+  return best;
 }
 
 /** An empty-looking place near the middle of the view for a new part. */

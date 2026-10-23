@@ -30,6 +30,8 @@ export interface InputHooks {
   onTouch(): void;
   /** The child moved the view by hand. */
   onViewMoved?(): void;
+  /** A wire a hint is pointing at; taps near it pick it over neighbours. */
+  preferredWire?(): Wire | null;
 }
 
 export class Input {
@@ -114,9 +116,9 @@ export class Input {
       return;
     }
 
-    const objs: THREE.Object3D[] = [...this.world.parts.flatMap((p) => p.pickables), ...this.world.wires.map((w) => w.tube)];
-    const hit = this.stage.raycast(x, y, objs)[0];
-    const wire = hit?.object.userData.wire as Wire | undefined;
+    // Wires lie on top of parts, so they get the first look.
+    const wire = this.wireAt(x, y);
+    const hit = wire ? undefined : this.stage.raycast(x, y, this.world.parts.flatMap((p) => p.pickables))[0];
     const part = hit?.object.userData.part as Part | undefined;
     if (wire) this.mode = { kind: 'press-wire', wire, x, y };
     else if (part) this.mode = { kind: 'press-part', part, x, y, t: performance.now() };
@@ -124,6 +126,33 @@ export class Input {
       const anchor = this.stage.screenToPlane(x, y);
       if (anchor) this.mode = { kind: 'pan', anchor };
     }
+  }
+
+  /**
+   * The wire under a finger, judged on screen: the closest one within reach,
+   * newest first on a tie. A wire a hint is pointing at wins whenever the
+   * finger is near it, even where other wires cross it.
+   */
+  wireAt(x: number, y: number): Wire | null {
+    const dist = (w: Wire) => {
+      const pts = w.samples(32).map((p) => this.stage.project(p));
+      let d = Infinity;
+      for (let i = 1; i < pts.length; i++) d = Math.min(d, segDist(x, y, pts[i - 1], pts[i]));
+      return d;
+    };
+    const preferred = this.hooks.preferredWire?.();
+    if (preferred && this.world.wires.includes(preferred) && dist(preferred) < 34) return preferred;
+    let best: Wire | null = null;
+    let bestD = 16;
+    for (let i = this.world.wires.length - 1; i >= 0; i--) {
+      const w = this.world.wires[i];
+      const d = dist(w);
+      if (d < bestD - 3) {
+        best = w;
+        bestD = d;
+      }
+    }
+    return best;
   }
 
   private startPinch() {
@@ -200,9 +229,21 @@ export class Input {
       }
       case 'press-wire':
         if (Math.hypot(x - m.x, y - m.y) > TAP_MOVE) {
-          // Treat it as a pan that started on top of a wire.
-          const anchor = this.stage.screenToPlane(m.x, m.y);
-          this.mode = anchor ? { kind: 'pan', anchor } : { kind: 'idle' };
+          // A drag that began on a wire lying over a part moves the part;
+          // over bare table it pans.
+          const hit = this.stage.raycast(m.x, m.y, this.world.parts.flatMap((p) => p.pickables))[0];
+          const part = hit?.object.userData.part as Part | undefined;
+          if (part) {
+            const at = this.stage.screenToPlane(m.x, m.y) ?? new THREE.Vector3();
+            const offset = part.root.position.clone().sub(at).setY(0);
+            part.setDragging(true);
+            this.mode = { kind: 'drag-part', part, offset, spawned: false };
+            this.world.emit({ type: 'pickup', part });
+            this.dragTo(part, x, y, offset);
+          } else {
+            const anchor = this.stage.screenToPlane(m.x, m.y);
+            this.mode = anchor ? { kind: 'pan', anchor } : { kind: 'idle' };
+          }
         }
         break;
     }
@@ -276,4 +317,13 @@ export class Input {
         break;
     }
   }
+}
+
+/** Distance from point (x, y) to the segment a–b, in pixels. */
+function segDist(x: number, y: number, a: { x: number; y: number }, b: { x: number; y: number }): number {
+  const dx = b.x - a.x;
+  const dy = b.y - a.y;
+  const len2 = dx * dx + dy * dy;
+  const t = len2 ? Math.max(0, Math.min(1, ((x - a.x) * dx + (y - a.y) * dy) / len2)) : 0;
+  return Math.hypot(x - (a.x + t * dx), y - (a.y + t * dy));
 }

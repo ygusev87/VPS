@@ -10,12 +10,15 @@ const dotGeo = new THREE.SphereGeometry(0.052, 10, 8);
 const clipGeo = new THREE.CylinderGeometry(0.075, 0.06, 0.16, 16);
 const tipGeo = new THREE.CapsuleGeometry(0.085, 0.16, 6, 16);
 let colorCursor = 0;
+const WHITE = new THREE.Color('#ffffff');
 
 let nextWireId = 1;
 
 export class Wire {
   /** View-bar toggle: show the beads of current running along wires. */
   static showFlow = true;
+  /** While a hint singles out a wire, the others fade back. */
+  static focus: Wire | null = null;
   readonly id = `w${nextWireId++}`;
   readonly group = new THREE.Group();
   readonly tube: THREE.Mesh;
@@ -25,6 +28,10 @@ export class Wire {
   /** Signed current a → b, amperes. */
   current = 0;
   dying = false;
+  /** Pulse red: this is the wire a hint asks to take off. */
+  alert = false;
+  private alertT = 0;
+  private baseColor = new THREE.Color();
   /** Called once the removal animation is over. */
   onGone?: () => void;
 
@@ -73,6 +80,7 @@ export class Wire {
     else color = WIRE_COLORS[colorCursor++ % WIRE_COLORS.length];
     this.material.color.set(color);
     this.material.emissive.set(color);
+    this.baseColor.set(color);
   }
 
   attach(b: Terminal) {
@@ -97,8 +105,18 @@ export class Wire {
 
   /** Point halfway along the wire, for pointing at it. */
   midpoint(out = new THREE.Vector3()): THREE.Vector3 {
-    if (this.curve) return this.curve.getPointAt(0.5, out);
-    return out.copy(this.p0).lerp(this.p3, 0.5);
+    return this.pointAt(0.5, out);
+  }
+
+  /** Point at fraction u (0..1) of the wire's length. */
+  pointAt(u: number, out = new THREE.Vector3()): THREE.Vector3 {
+    if (this.curve) return this.curve.getPointAt(u, out);
+    return out.copy(this.p0).lerp(this.p3, u);
+  }
+
+  /** Evenly spaced points along the wire, for screen-space hit tests. */
+  samples(n = 24): THREE.Vector3[] {
+    return Array.from({ length: n + 1 }, (_, i) => this.pointAt(i / n));
   }
 
   private endpoints() {
@@ -136,7 +154,7 @@ export class Wire {
     this.curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal');
     this.length = this.curve.getLength();
     const segs = Math.max(24, Math.min(110, Math.round(this.length * 14)));
-    const r = RADIUS * Math.min(1, this.grow) * (this.dying ? this.fade : 1);
+    const r = RADIUS * Math.min(1, this.grow) * (this.dying ? this.fade : 1) * (this.alert ? 1.7 : 1);
     const geo = new THREE.TubeGeometry(this.curve, segs, Math.max(0.005, r), 8, false);
     this.tube.geometry.dispose();
     this.tube.geometry = geo;
@@ -164,7 +182,7 @@ export class Wire {
         return;
       }
     }
-    const key = `${this.p0.x.toFixed(3)},${this.p0.y.toFixed(3)},${this.p0.z.toFixed(3)}|${this.p3.x.toFixed(3)},${this.p3.y.toFixed(3)},${this.p3.z.toFixed(3)}|${this.grow}|${this.fade}`;
+    const key = `${this.p0.x.toFixed(3)},${this.p0.y.toFixed(3)},${this.p0.z.toFixed(3)}|${this.p3.x.toFixed(3)},${this.p3.y.toFixed(3)},${this.p3.z.toFixed(3)}|${this.grow}|${this.fade}|${this.alert}`;
     if (key !== this.lastKey) {
       this.lastKey = key;
       this.rebuild();
@@ -172,7 +190,25 @@ export class Wire {
 
     const I = this.dying ? 0 : this.current;
     const mag = Math.abs(I);
-    this.material.emissiveIntensity = THREE.MathUtils.damp(this.material.emissiveIntensity, mag > 0.01 ? 0.28 : 0, 6, dt);
+    if (!this.dying) {
+      const faded = Wire.focus && Wire.focus !== this && !this.alert;
+      this.material.opacity = THREE.MathUtils.damp(this.material.opacity, faded ? 0.3 : 1, 8, dt);
+    }
+    if (this.alert) {
+      // Blink between red and white so it stands out even among red wires.
+      this.alertT += dt;
+      const pulse = 0.5 + 0.5 * Math.sin(this.alertT * 7);
+      this.material.color.set(C.red).lerp(WHITE, pulse * 0.85);
+      this.material.emissive.set(C.red);
+      this.material.emissiveIntensity = 0.25 + (1 - pulse) * 0.5;
+    } else {
+      if (this.alertT) {
+        this.alertT = 0;
+        this.material.emissive.copy(this.baseColor);
+        this.material.color.copy(this.baseColor);
+      }
+      this.material.emissiveIntensity = THREE.MathUtils.damp(this.material.emissiveIntensity, mag > 0.01 ? 0.28 : 0, 6, dt);
+    }
     if (!this.curve || mag < 0.01 || !Wire.showFlow) {
       this.dots.count = 0;
       return;

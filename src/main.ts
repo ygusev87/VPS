@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import './style.css';
 import { Sfx } from './audio';
-import { hintKey, levelHint, problemHint, type Hint } from './hints';
+import { hintKey, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Hud } from './hud';
 import { Input } from './input';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
@@ -101,6 +101,7 @@ const input = new Input(stage, world, {
     sfx.unlock();
     lastTouch = performance.now();
   },
+  preferredWire: () => hintedWire(),
 });
 
 function frameParts(instant = false) {
@@ -179,9 +180,17 @@ function win() {
 function setHint(h: Hint | null) {
   const key = hintKey(h);
   if (key === currentKey) return;
+  if (currentHint?.type === 'tapWire') currentHint.wire.alert = false;
   currentKey = key;
   currentHint = h;
+  if (h?.type === 'tapWire') h.wire.alert = true;
+  Wire.focus = h?.type === 'tapWire' ? h.wire : null;
   hud.setHint(h);
+}
+
+/** The wire a hint asks to remove, so a tap near it takes that one. */
+function hintedWire() {
+  return currentHint?.type === 'tapWire' ? currentHint.wire : null;
 }
 
 // ───────── World reactions ─────────
@@ -240,8 +249,9 @@ function updateHint(dt: number) {
   if (problem) return setHint(problem);
   if (won) return setHint(null);
   const idle = performance.now() - lastTouch;
-  const wait = hintShownOnce ? 6000 : 1600;
-  const h = levelHint(world, level, trayLeft);
+  // Free play is the child's own experiment: nudge later than in missions.
+  const wait = level === FREE_PLAY ? (hintShownOnce ? 9000 : 4000) : hintShownOnce ? 6000 : 1600;
+  const h = level === FREE_PLAY ? sandboxHint(world) : levelHint(world, level, trayLeft);
   if (!h) return setHint(null);
   // Keep showing a hint that is already up; new ones wait for the child to pause.
   if (currentHint && hintKey(currentHint) === hintKey(h)) return;
@@ -253,8 +263,7 @@ function updateHint(dt: number) {
 
 function hintVisible() {
   if (!currentHint || input.busy) return false;
-  const problem = currentHint.type === 'tapWire' || currentHint.type === 'polarity';
-  return problem || performance.now() - lastTouch > 1200;
+  return isProblem(currentHint) || performance.now() - lastTouch > 1200;
 }
 
 // ───────── Main loop ─────────
@@ -318,6 +327,7 @@ requestAnimationFrame((t) => {
   FREE_PLAY,
   input,
   hud,
+  hints: { problemHint, sandboxHint, levelHint },
   /** Wire two terminals directly, skipping the gesture. */
   connect(a: Terminal, b: Terminal) {
     const w = new Wire(a);

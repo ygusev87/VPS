@@ -132,14 +132,14 @@ export class World {
   }
 
   /** Are two terminals joined by wires alone (ignoring parts in between)? */
-  wired(t1: Terminal, t2: Terminal): boolean {
+  wired(t1: Terminal, t2: Terminal, without?: Wire): boolean {
     if (t1 === t2) return true;
     const seen = new Set<Terminal>([t1]);
     const stack = [t1];
     while (stack.length) {
       const t = stack.pop()!;
       for (const w of this.wires) {
-        if (!w.b) continue;
+        if (!w.b || w === without) continue;
         const o = w.a === t ? w.b : w.b === t ? w.a : null;
         if (o && !seen.has(o)) {
           if (o === t2) return true;
@@ -191,9 +191,16 @@ export class World {
   }
 
   /** Wires whose removal alone would end the short circuit. */
-  shortingWires(): Wire[] {
-    if (!this.result || this.result.shorted.size === 0) return [];
-    return this.wires.filter((w) => w.b && solveCircuit(this.elements({ skipWire: w })).shorted.size === 0);
+  /**
+   * The newest wire whose removal alone makes `fixed` true — "undo the step
+   * that broke it". Wires are kept in the order they were connected.
+   */
+  latestCulprit(fixed: (r: CircuitResult, without: Wire) => boolean, among: Wire[] = this.wires): Wire | null {
+    for (let i = among.length - 1; i >= 0; i--) {
+      const w = among[i];
+      if (w.b && fixed(solveCircuit(this.elements({ skipWire: w })), w)) return w;
+    }
+    return null;
   }
 
   update(dt: number) {

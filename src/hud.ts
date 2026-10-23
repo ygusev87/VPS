@@ -27,6 +27,7 @@ const ICON = {
   check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4 8-8.5"/></svg>',
   star: '<svg viewBox="0 0 64 64" class="star" aria-hidden="true"><path d="M32 5.5 40.2 22l18.3 2.7-13.2 12.9 3.1 18.2L32 47.2l-16.4 8.6 3.1-18.2L5.5 24.7 23.8 22z" fill="#f0a53a" stroke="#24304a" stroke-width="3" stroke-linejoin="round"/><path d="M24 26.5c2-1 4.5-1.2 6.5-.6" stroke="#fff6d6" stroke-width="3" stroke-linecap="round" fill="none"/></svg>',
   shortBadge: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M18 3 7 18h7l-2 11 13-16h-7.5z" fill="#e5533d" stroke="#24304a" stroke-width="2" stroke-linejoin="round"/></svg>',
+  bypassBadge: '<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="#e5533d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20h22"/><path d="M9 20c0-7 4-11 7-11s7 4 7 11"/><path d="m20 6 3 3-3 3"/></svg>',
   swapBadge: '<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="#e5533d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h18M19 6l5 5-5 5M26 21H8M13 16l-5 5 5 5"/></svg>',
   hand: `<svg class="hand" viewBox="0 0 64 80" aria-hidden="true">
     <path d="M26 4c4.4 0 7 3 7 7.5V30l9.3 1.6c6.8 1.2 10.7 5.6 10.2 12.6l-1.2 13.6C50.6 67 44.6 74 34.6 74h-5.2c-6.5 0-11.4-3.3-14.2-9.1L8.1 50.2c-1.7-3.5-.3-7 3.1-8.1 2.9-.9 5.4.4 7 3.1l.8 1.4V11.5C19 7 21.6 4 26 4z" fill="#fffaf2" stroke="#18213d" stroke-width="3" stroke-linejoin="round"/>
@@ -317,12 +318,8 @@ export class Hud {
         this.hintScreen = { a: at((o) => h.part.root.localToWorld(o.set(0, 0.6, -0.15))) };
         break;
       case 'tapWire':
-        this.hintScreen = { a: at((o) => h.wire.midpoint(o)) };
-        this.badge.innerHTML = ICON.shortBadge;
-        break;
-      case 'polarity':
-        this.hintScreen = { a: at((o) => h.plus.attachPoint(o)), b: at((o) => h.batteryPlus.attachPoint(o)) };
-        this.badge.innerHTML = ICON.swapBadge;
+        this.hintScreen = { a: at((o) => h.wire.pointAt(h.u, o)) };
+        this.badge.innerHTML = h.problem === 'short' ? ICON.shortBadge : h.problem === 'reversed' ? ICON.swapBadge : ICON.bypassBadge;
         break;
       case 'drag': {
         const to = h.to.clone();
@@ -350,7 +347,7 @@ export class Hud {
       el.style.display = p ? '' : 'none';
       if (p) el.style.transform = `translate(${p.x}px, ${p.y}px)`;
     };
-    const red = h.type === 'tapWire' || h.type === 'polarity';
+    const red = h.type === 'tapWire';
     this.haloA.classList.toggle('is-red', red);
     this.haloB.classList.toggle('is-red', red);
     place(this.haloA, h.type === 'drag' ? undefined : A);
@@ -367,12 +364,14 @@ export class Hud {
     } else this.trail.setAttribute('d', '');
 
     if (this.badge.innerHTML) {
-      const p =
-        h.type === 'tapWire' && h.battery
-          ? this.stage.project(h.battery.root.localToWorld(new THREE.Vector3(0, 1.4, 0)))
-          : h.type === 'polarity'
-            ? this.stage.project(h.part.root.localToWorld(new THREE.Vector3(0, 1.6, 0)))
-            : A;
+      const p = h.type === 'tapWire' && h.at ? this.stage.project(h.at.root.localToWorld(new THREE.Vector3(0, 1.6, 0))) : { ...A };
+      // Keep the badge clear of the spot the finger should press.
+      const gap = Math.hypot(p.x - A.x, p.y - A.y);
+      if (gap < 70) {
+        const dir = gap > 1 ? { x: (p.x - A.x) / gap, y: (p.y - A.y) / gap } : { x: 0, y: -1 };
+        p.x = A.x + dir.x * 70;
+        p.y = A.y + dir.y * 70;
+      }
       // Positioned with left/top: its bobbing animation owns `transform`.
       this.badge.style.display = '';
       this.badge.style.left = `${p.x}px`;
@@ -384,7 +383,7 @@ export class Hud {
     let hy = A.y;
     let press = 0;
     let alpha = 1;
-    if (B && h.type !== 'polarity') {
+    if (B) {
       const cycle = 2.6;
       const t = this.hintT % cycle;
       if (t < 0.35) press = t / 0.35;
