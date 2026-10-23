@@ -355,6 +355,7 @@ requestAnimationFrame((t) => {
   FREE_PLAY,
   input,
   hud,
+  voice,
   hints: { problemHint, sandboxHint, levelHint },
   /** Wire two terminals directly, skipping the gesture. */
   connect(a: Terminal, b: Terminal) {

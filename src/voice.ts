@@ -66,7 +66,7 @@ export class Voice {
   private ctx: AudioContext | null = null;
   private out: AudioNode | null = null;
   private raw = new Map<PhraseId, Promise<ArrayBuffer | null>>();
-  private clips = new Map<PhraseId, AudioBuffer>();
+  readonly clips = new Map<PhraseId, AudioBuffer>();
   private playing: AudioBufferSourceNode | null = null;
 
   constructor() {
@@ -139,7 +139,8 @@ async function fetchClip(id: PhraseId): Promise<ArrayBuffer | null> {
   try {
     if (import.meta.env.VITE_MODELS_AS_JS) {
       // Preview host: clips ship as JS modules holding base64.
-      const mod = (await import(/* @vite-ignore */ `${import.meta.env.BASE_URL}voice/${id}.js`)) as { default: string };
+      // Resolved against the page, not this module (which lives in assets/).
+      const mod = (await import(/* @vite-ignore */ new URL(`voice/${id}.js`, document.baseURI).href)) as { default: string };
       return Uint8Array.from(atob(mod.default), (c) => c.charCodeAt(0)).buffer;
     }
     const r = await fetch(`${import.meta.env.BASE_URL}voice/${id}.mp3`);
