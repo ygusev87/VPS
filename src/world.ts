@@ -1,5 +1,4 @@
 // What is on the table: parts, wires and the live circuit result.
-import * as THREE from 'three';
 import { solveCircuit, type CircuitElement, type CircuitResult } from './circuit/solver';
 import type { Part, PartKind, Terminal } from './parts/base';
 import { createPart } from './parts/models';
@@ -197,13 +196,12 @@ export class World {
     for (const w of [...this.wires]) w.update(dt);
   }
 
-  /** Keep a part on the mat. */
+  /** Keep a part within reach on the endless table. */
   clamp(part: Part) {
-    const { hx, hz } = this.stage.bounds;
     const p = part.root.position;
-    const m = part.radius * 0.75;
-    p.x = THREE.MathUtils.clamp(p.x, -hx + m, hx - m);
-    p.z = THREE.MathUtils.clamp(p.z, -hz + m * 0.8, hz - m * 0.6);
+    const len = Math.hypot(p.x, p.z);
+    if (len > 24) p.multiplyScalar(24 / len);
+    p.y = 0;
   }
 
   /** Nudge a dropped part out of its neighbours. */

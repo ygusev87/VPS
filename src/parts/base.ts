@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import type { ElementKind } from '../circuit/solver';
 import { C } from '../theme';
-import { mat, mesh } from './kit';
+import { mat, mesh, PLATE_TOP } from './kit';
 
 export type PartKind = 'battery' | 'bulb' | 'fan' | 'switch' | 'led' | 'buzzer';
 export type Polarity = 'plus' | 'minus' | 'none';
@@ -16,10 +16,37 @@ export interface ElectricState {
 
 export type Highlight = 'none' | 'available' | 'target' | 'warn';
 
-const POST_H = 0.36;
-const PLATE_TOP = 0.24;
+const POST_H = 0.3;
 
-const ringGeo = new THREE.TorusGeometry(0.3, 0.04, 8, 40);
+const ringGeo = new THREE.TorusGeometry(0.24, 0.025, 8, 40);
+// Shared terminal geometry: hex nut, coloured insulator, brass stud, knurled thumb nut.
+const nutGeo = new THREE.CylinderGeometry(0.15, 0.15, 0.05, 6);
+const collarGeo = new THREE.CylinderGeometry(0.15, 0.17, 0.08, 28);
+const studGeo = new THREE.CylinderGeometry(0.045, 0.045, POST_H, 12);
+const thumbGeo = knurledNut();
+const domeGeo = new THREE.SphereGeometry(0.06, 16, 8, 0, Math.PI * 2, 0, Math.PI / 2);
+
+function knurledNut(): THREE.BufferGeometry {
+  const pts: THREE.Vector2[] = [];
+  const r = 0.115;
+  pts.push(new THREE.Vector2(0.001, 0), new THREE.Vector2(r - 0.012, 0), new THREE.Vector2(r, 0.012));
+  pts.push(new THREE.Vector2(r, 0.078), new THREE.Vector2(r - 0.012, 0.09), new THREE.Vector2(0.001, 0.09));
+  const g = new THREE.LatheGeometry(pts, 36);
+  // Ridges around the rim.
+  const pos = g.attributes.position;
+  const v = new THREE.Vector3();
+  for (let i = 0; i < pos.count; i++) {
+    v.fromBufferAttribute(pos, i);
+    const rr = Math.hypot(v.x, v.z);
+    if (rr > r - 0.013) {
+      const a = Math.atan2(v.z, v.x);
+      const k = 1 + 0.06 * Math.cos(a * 18);
+      pos.setXYZ(i, v.x * k, v.y, v.z * k);
+    }
+  }
+  g.computeVertexNormals();
+  return g;
+}
 
 export class Terminal {
   readonly id: string;
@@ -38,20 +65,22 @@ export class Terminal {
   ) {
     this.id = `${part.id}.${key}`;
     const collarColor = polarity === 'plus' ? C.red : polarity === 'minus' ? C.navy2 : C.tealDeep;
-    const collar = mesh(new THREE.CylinderGeometry(0.22, 0.24, 0.1, 24), mat(collarColor, 0.45));
-    collar.position.y = 0.05;
-    const shaft = mesh(new THREE.CylinderGeometry(0.11, 0.11, POST_H, 16), mat(C.brass, 0.35, 0.6));
-    shaft.position.y = POST_H / 2;
-    const cap = mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.08, 20), mat(C.brass, 0.3, 0.7));
-    cap.position.y = POST_H;
-    const slot = mesh(new THREE.BoxGeometry(0.26, 0.03, 0.04), mat('#8a6a32', 0.5, 0.4), false);
-    slot.position.y = POST_H + 0.045;
-    this.post.add(collar, shaft, cap, slot);
+    const nut = mesh(nutGeo, mat(C.metal, 0.35, 0.8));
+    nut.position.y = 0.025;
+    const collar = mesh(collarGeo, mat(collarColor, 0.35));
+    collar.position.y = 0.09;
+    const stud = mesh(studGeo, mat(C.brass, 0.3, 0.8));
+    stud.position.y = POST_H / 2;
+    const thumb = mesh(thumbGeo, mat(C.brass, 0.28, 0.85));
+    thumb.position.y = POST_H - 0.12;
+    const dome = mesh(domeGeo, mat(C.brass, 0.25, 0.85), false);
+    dome.position.y = POST_H;
+    this.post.add(nut, collar, stud, thumb, dome);
 
     this.ringMat = new THREE.MeshBasicMaterial({ color: C.teal, transparent: true, opacity: 0, depthWrite: false });
     this.ring = new THREE.Mesh(ringGeo, this.ringMat);
     this.ring.rotation.x = Math.PI / 2;
-    this.ring.position.y = 0.1;
+    this.ring.position.y = 0.06;
     this.post.add(this.ring);
 
     this.post.position.copy(local).setY(PLATE_TOP);

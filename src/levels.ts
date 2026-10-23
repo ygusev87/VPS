@@ -14,6 +14,10 @@ export interface LevelPart {
 
 export interface Level {
   id: string;
+  /** Short name on the lesson card (for grown-ups; the child goes by the picture). */
+  title: string;
+  /** What to do, shown on the mission card. */
+  task: string;
   /** Part shown on the mission card and level picker. */
   icon: PartKind;
   parts: LevelPart[];
@@ -32,6 +36,8 @@ const switchInLoop = (w: World) => w.parts.some((p) => p.kind === 'switch' && ca
 export const LEVELS: Level[] = [
   {
     id: 'bulb',
+    title: 'Лампочка',
+    task: 'Зажги лампочку',
     icon: 'bulb',
     parts: [
       { kind: 'battery', fx: -0.45, fz: 0.15 },
@@ -45,6 +51,8 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'fan',
+    title: 'Вентилятор',
+    task: 'Включи вентилятор',
     icon: 'fan',
     parts: [
       { kind: 'battery', fx: -0.45, fz: 0.2 },
@@ -58,6 +66,8 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'switch',
+    title: 'Выключатель',
+    task: 'Включи свет выключателем',
     icon: 'switch',
     parts: [
       { kind: 'battery', fx: -0.5, fz: 0.35 },
@@ -72,6 +82,8 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'led',
+    title: 'Светодиод',
+    task: 'Зажги светодиод',
     icon: 'led',
     parts: [
       { kind: 'battery', fx: -0.45, fz: 0.2 },
@@ -85,6 +97,8 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'buzzer',
+    title: 'Пищалка',
+    task: 'Запусти пищалку',
     icon: 'buzzer',
     parts: [
       { kind: 'battery', fx: -0.5, fz: 0.35 },
@@ -99,6 +113,8 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'two-bulbs',
+    title: 'Две лампы',
+    task: 'Зажги две лампочки',
     icon: 'bulb',
     parts: [{ kind: 'battery', fx: -0.5, fz: 0.25 }],
     tray: [{ kind: 'bulb', count: 2 }],
@@ -109,6 +125,8 @@ export const LEVELS: Level[] = [
   },
   {
     id: 'fan-bulb',
+    title: 'Лампа и мотор',
+    task: 'Включи лампу и вентилятор',
     icon: 'fan',
     parts: [
       { kind: 'battery', fx: -0.55, fz: 0.35 },
@@ -127,6 +145,8 @@ export const LEVELS: Level[] = [
 
 export const FREE_PLAY: Level = {
   id: 'free',
+  title: 'Свободно',
+  task: 'Собирай что хочешь',
   icon: 'battery',
   parts: [],
   tray: (['battery', 'bulb', 'fan', 'switch', 'led', 'buzzer'] as PartKind[]).map((kind) => ({ kind, count: Infinity })),

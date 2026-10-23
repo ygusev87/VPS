@@ -108,20 +108,21 @@ export function levelHint(world: World, level: Level, trayLeft: (k: PartKind) =>
   return null;
 }
 
-/** An empty-looking place on the mat for a new part. */
+/** An empty-looking place near the middle of the view for a new part. */
 export function freeSpot(world: World): THREE.Vector3 {
-  const { hx, hz } = world.stage.bounds;
-  let best = new THREE.Vector3();
-  let bestD = -1;
-  for (let i = 0; i <= 6; i++) {
-    for (let j = 0; j <= 4; j++) {
-      const x = -hx * 0.7 + (i / 6) * hx * 1.4;
-      const z = -hz * 0.6 + (j / 4) * hz * 1.2;
+  const c = world.stage.viewCenter();
+  let best = c.clone();
+  let bestD = -Infinity;
+  for (let i = -3; i <= 3; i++) {
+    for (let j = -2; j <= 2; j++) {
+      const x = c.x + i * 1.5;
+      const z = c.z + j * 1.4;
       let d = Infinity;
       for (const p of world.parts) d = Math.min(d, Math.hypot(p.root.position.x - x, p.root.position.z - z) - p.radius);
-      if (world.parts.length === 0) d = -Math.hypot(x, z);
-      if (d > bestD) {
-        bestD = d;
+      // Prefer spots near the middle when several are free.
+      const score = Math.min(d, 2.5) - Math.hypot(i * 1.5, j * 1.4) * 0.15;
+      if (score > bestD) {
+        bestD = score;
         best = new THREE.Vector3(x, 0, z);
       }
     }

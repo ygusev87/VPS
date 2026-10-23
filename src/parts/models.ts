@@ -6,9 +6,7 @@ import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeom
 import type { ElementKind } from '../circuit/solver';
 import { C } from '../theme';
 import { Part, type PartKind } from './base';
-import { basePlate, damp, glowTexture, mat, mesh, raysTexture, roundedBox, signDecal } from './kit';
-
-const PLATE_TOP = 0.24;
+import { basePlate, damp, glowTexture, lightPool, mat, mesh, PLATE_TOP, raysTexture, roundedBox, signDecal, textDecal } from './kit';
 
 let warmGlow: THREE.Texture | null = null;
 let redGlow: THREE.Texture | null = null;
@@ -46,26 +44,67 @@ export class Battery extends Part {
   constructor() {
     super();
     const plate = basePlate(2.9, 1.8);
-    const holder = mesh(new RoundedBoxGeometry(2.5, 0.42, 1.05, 4, 0.12), this.holderMat);
-    holder.position.set(0, PLATE_TOP + 0.21, -0.25);
+    // Open tray with two AA cells, springs on the minus end and red/black leads
+    // running to the posts, like the real battery box.
+    const tray = new THREE.Group();
+    const floor = mesh(new RoundedBoxGeometry(2.5, 0.1, 1.12, 2, 0.04), this.holderMat);
+    floor.position.y = 0.05;
+    tray.add(floor);
+    const wallGeo = new RoundedBoxGeometry(2.5, 0.3, 0.07, 2, 0.03);
+    for (const z of [-0.525, 0.525]) {
+      const w = mesh(wallGeo, this.holderMat);
+      w.position.set(0, 0.15, z);
+      tray.add(w);
+    }
+    const endGeo = new RoundedBoxGeometry(0.09, 0.36, 1.12, 2, 0.03);
+    for (const x of [-1.21, 1.21]) {
+      const e = mesh(endGeo, this.holderMat);
+      e.position.set(x, 0.18, 0);
+      tray.add(e);
+    }
+    const divider = mesh(new THREE.BoxGeometry(2.3, 0.16, 0.04), this.holderMat);
+    divider.position.set(0, 0.08, 0);
+    tray.add(divider);
+    // Cells sit head-to-tail, as in a real series holder.
+    const c1 = aaCell(false);
+    c1.position.set(0, 0.32, -0.26);
+    const c2 = aaCell(true);
+    c2.position.set(0, 0.32, 0.26);
+    tray.add(c1, c2);
+    for (const [x, z] of [
+      [-1.1, -0.26],
+      [1.1, 0.26],
+    ]) {
+      const sp = spring();
+      sp.position.set(x, 0.32, z);
+      sp.rotation.y = x < 0 ? 0 : Math.PI;
+      tray.add(sp);
+    }
+    tray.position.set(0, PLATE_TOP, -0.22);
 
-    const cells = new THREE.Group();
-    for (const z of [-0.5, 0.0]) cells.add(aaCell(z));
-    cells.position.y = PLATE_TOP + 0.47;
-    cells.position.z = -0.25 + 0.25;
+    // Leads from the holder to the posts.
+    const lead = (color: string, from: THREE.Vector3, to: THREE.Vector3) => {
+      const mid = from.clone().lerp(to, 0.5).setY(PLATE_TOP + 0.12);
+      const curve = new THREE.CatmullRomCurve3([from, mid, to]);
+      return mesh(new THREE.TubeGeometry(curve, 24, 0.035, 8), mat(color, 0.4));
+    };
+    const leadR = lead(C.red, new THREE.Vector3(1.26, PLATE_TOP + 0.25, 0.1), new THREE.Vector3(1.0, PLATE_TOP + 0.12, 0.55));
+    const leadB = lead('#20242e', new THREE.Vector3(-1.26, PLATE_TOP + 0.25, -0.1), new THREE.Vector3(-1.0, PLATE_TOP + 0.12, 0.55));
 
-    this.lamp = mesh(new THREE.SphereGeometry(0.08, 16, 10), this.lampMat);
-    this.lamp.position.set(-1.05, PLATE_TOP + 0.44, 0.15);
+    this.lamp = mesh(new THREE.SphereGeometry(0.06, 16, 10), this.lampMat);
+    this.lamp.position.set(0, PLATE_TOP + 0.03, 0.62);
 
-    const plus = signDecal('plus', C.red, 0.36);
-    plus.position.set(0.45, PLATE_TOP + 0.005, 0.6);
-    const minus = signDecal('minus', C.navy2, 0.36);
-    minus.position.set(-0.45, PLATE_TOP + 0.005, 0.6);
+    const plus = signDecal('plus', C.red, 0.3);
+    plus.position.set(0.5, PLATE_TOP + 0.005, 0.6);
+    const minus = signDecal('minus', C.navy2, 0.3);
+    minus.position.set(-0.5, PLATE_TOP + 0.005, 0.6);
+    const volts = textDecal('3 V', 0.5, 0.16);
+    volts.position.set(0, PLATE_TOP + 0.004, 0.76);
 
-    this.body.add(plate, holder, cells, this.lamp, plus, minus);
+    this.body.add(plate, tray, leadR, leadB, this.lamp, plus, minus, volts);
     this.addTerminal('a', 'plus', 1.0, 0.55);
     this.addTerminal('b', 'minus', -1.0, 0.55);
-    this.pickable(plate, holder, cells);
+    this.pickable(plate, tray);
 
     for (let i = 0; i < 4; i++) {
       const s = sprite(tex.warm, 0.5);
@@ -87,29 +126,64 @@ export class Battery extends Part {
     for (const s of this.steam) {
       s.userData.t = (s.userData.t + dt * 0.7) % 1;
       const t = s.userData.t as number;
-      s.position.set(Math.sin(t * 9 + s.id) * 0.4, PLATE_TOP + 0.7 + t * 1.6, -0.25);
+      s.position.set(Math.sin(t * 9 + s.id) * 0.4, PLATE_TOP + 0.6 + t * 1.6, -0.22);
       s.scale.setScalar(0.4 + t * 0.9);
       s.material.opacity = this.state.shorted ? Math.sin(t * Math.PI) * 0.7 : damp(s.material.opacity, 0, 6, dt);
     }
   }
 }
 
-function aaCell(z: number): THREE.Group {
+let cellTex: THREE.Texture | null = null;
+
+/** AA cell lying along x; the printed wrap is a canvas texture. */
+function aaCell(flip: boolean): THREE.Group {
+  if (!cellTex) {
+    const c = document.createElement('canvas');
+    c.width = 256;
+    c.height = 512;
+    const ctx = c.getContext('2d')!;
+    ctx.fillStyle = C.amber;
+    ctx.fillRect(0, 0, 256, 512);
+    ctx.fillStyle = C.navy;
+    ctx.fillRect(0, 0, 256, 170);
+    ctx.fillStyle = '#fff6d6';
+    ctx.fillRect(0, 170, 256, 10);
+    ctx.fillStyle = 'rgba(24,33,61,0.85)';
+    ctx.font = '700 46px "Fira Sans Condensed", system-ui, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.save();
+    ctx.translate(128, 340);
+    ctx.rotate(Math.PI / 2);
+    ctx.fillText('1.5V  AA', 0, 16);
+    ctx.restore();
+    cellTex = new THREE.CanvasTexture(c);
+    cellTex.colorSpace = THREE.SRGBColorSpace;
+    cellTex.anisotropy = 8;
+  }
   const g = new THREE.Group();
-  const body = mesh(new THREE.CylinderGeometry(0.22, 0.22, 1.5, 28), mat(C.amber, 0.4, 0.1));
-  body.rotation.z = Math.PI / 2;
-  const band = mesh(new THREE.CylinderGeometry(0.225, 0.225, 0.5, 28), mat(C.navy, 0.45));
-  band.rotation.z = Math.PI / 2;
-  band.position.x = -0.5;
-  const nub = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.1, 16), mat(C.metal, 0.3, 0.8));
-  nub.rotation.z = Math.PI / 2;
-  nub.position.x = 0.8;
-  const spring = mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.08, 16), mat(C.metal, 0.3, 0.8));
-  spring.rotation.z = Math.PI / 2;
-  spring.position.x = -0.79;
-  g.add(body, band, nub, spring);
-  g.position.z = z;
-  return g;
+  const body = mesh(new THREE.CylinderGeometry(0.2, 0.2, 1.9, 40, 1, true), new THREE.MeshStandardMaterial({ map: cellTex, roughness: 0.35, metalness: 0.15 }));
+  const capGeo = new THREE.CylinderGeometry(0.2, 0.2, 0.04, 40);
+  const capA = mesh(capGeo, mat(C.metal, 0.25, 0.9));
+  capA.position.y = 0.97;
+  const capB = mesh(capGeo, mat(C.metal, 0.25, 0.9));
+  capB.position.y = -0.97;
+  const nub = mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.06, 20), mat(C.metal, 0.25, 0.9));
+  nub.position.y = 1.02;
+  g.add(body, capA, capB, nub);
+  g.rotation.z = flip ? Math.PI / 2 : -Math.PI / 2;
+  const holder = new THREE.Group();
+  holder.add(g);
+  return holder;
+}
+
+function spring(): THREE.Mesh {
+  const pts: THREE.Vector3[] = [];
+  for (let i = 0; i <= 90; i++) {
+    const t = i / 90;
+    const a = t * Math.PI * 2 * 5;
+    pts.push(new THREE.Vector3(t * 0.14, Math.sin(a) * 0.12, Math.cos(a) * 0.12));
+  }
+  return mesh(new THREE.TubeGeometry(new THREE.CatmullRomCurve3(pts), 160, 0.012, 5), mat(C.metal, 0.3, 0.9), false);
 }
 
 // ────────────────────────────── Bulb ───────────────────────────────
@@ -123,11 +197,12 @@ export class Bulb extends Part {
   private glow: THREE.Sprite;
   private rays: THREE.Sprite;
   private light: THREE.PointLight;
+  private pool = lightPool(6, 'rgba(255,196,96,0.85)');
   private shown = 0;
 
   constructor() {
     super();
-    const plate = basePlate(2.0, 1.55);
+    const plate = basePlate(2.0, 1.55, 'лампа 3 в');
     const socket = mesh(new THREE.CylinderGeometry(0.42, 0.48, 0.32, 28), mat(C.navy2, 0.5));
     socket.position.set(0, PLATE_TOP + 0.16, -0.15);
 
@@ -189,7 +264,8 @@ export class Bulb extends Part {
     this.light = new THREE.PointLight('#ffc46b', 0, 7, 1.6);
     this.light.position.copy(this.glow.position);
 
-    this.body.add(plate, socket, screw, fil, glass, this.glow, this.rays, this.light);
+    this.pool.position.z = -0.15;
+    this.body.add(plate, socket, screw, fil, glass, this.glow, this.rays, this.light, this.pool);
     this.addTerminal('a', 'none', 0.66, 0.48);
     this.addTerminal('b', 'none', -0.66, 0.48);
     this.pickable(plate, socket, screw, glass);
@@ -207,11 +283,12 @@ export class Bulb extends Part {
     this.glassMat.emissiveIntensity = b * 0.9;
     this.glassMat.opacity = 0.34 + b * 0.35;
     this.glow.material.opacity = Math.min(1, b * 0.95);
-    this.glow.scale.setScalar(2.2 + b * 1.6);
-    this.rays.material.opacity = Math.min(0.7, Math.max(0, b - 0.25) * 0.95);
+    this.glow.scale.setScalar(1.8 + b * 1.1);
+    this.rays.material.opacity = Math.min(0.45, Math.max(0, b - 0.25) * 0.6);
     this.rays.material.rotation += dt * 0.25;
-    this.rays.scale.setScalar(3 + b * 1.2 + Math.sin(this.time * 2) * 0.1);
+    this.rays.scale.setScalar(2.3 + b * 0.7 + Math.sin(this.time * 2) * 0.08);
     this.light.intensity = b * 9;
+    (this.pool.material as THREE.MeshBasicMaterial).opacity = Math.min(0.8, b * 0.6);
   }
 }
 
@@ -228,7 +305,7 @@ export class Fan extends Part {
 
   constructor() {
     super();
-    const plate = basePlate(2.0, 1.7);
+    const plate = basePlate(2.0, 1.7, 'мотор');
     const stand = roundedBox(0.5, 1.15, 0.42, 0.1, C.navy2);
     stand.position.set(0, PLATE_TOP + 0.575, -0.3);
     const housing = mesh(new THREE.CylinderGeometry(0.36, 0.36, 0.72, 32), mat(C.metal, 0.3, 0.7));
@@ -259,7 +336,7 @@ export class Fan extends Part {
 
     this.blur = new THREE.Mesh(
       new THREE.CircleGeometry(1.08, 48),
-      new THREE.MeshBasicMaterial({ color: C.teal, transparent: true, opacity: 0, depthWrite: false }),
+      new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0, depthWrite: false }),
     );
     this.blur.position.copy(this.rotor.position).setZ(0.31);
 
@@ -283,7 +360,7 @@ export class Fan extends Part {
     this.speed = damp(this.speed, target, Math.abs(target) > Math.abs(this.speed) ? 1.6 : 0.9, dt);
     this.rotor.rotation.z -= this.speed * dt;
     const mag = Math.abs(this.speed) / 22;
-    (this.blur.material as THREE.MeshBasicMaterial).opacity = Math.min(0.22, mag * 0.22);
+    (this.blur.material as THREE.MeshBasicMaterial).opacity = Math.min(0.35, mag * 0.35);
     for (const g of this.gusts) {
       g.userData.t = (g.userData.t + dt * (0.6 + mag)) % 1;
       const t = g.userData.t as number;
@@ -314,7 +391,7 @@ export class Switch extends Part {
 
   constructor() {
     super();
-    const plate = basePlate(2.0, 1.45);
+    const plate = basePlate(2.0, 1.45, 'выключатель');
     const housing = roundedBox(1.15, 0.38, 0.7, 0.12, C.navy2);
     housing.position.set(0, PLATE_TOP + 0.19, -0.15);
     const slotM = roundedBox(0.75, 0.05, 0.22, 0.02, C.navy, 0.8);
@@ -361,11 +438,12 @@ export class Led extends Part {
   private domeMat: THREE.MeshPhysicalMaterial;
   private glow: THREE.Sprite;
   private light: THREE.PointLight;
+  private pool = lightPool(3.6, 'rgba(255,80,60,0.75)');
   private shown = 0;
 
   constructor() {
     super();
-    const plate = basePlate(1.75, 1.45);
+    const plate = basePlate(1.75, 1.45, 'светодиод');
     this.domeMat = new THREE.MeshPhysicalMaterial({
       color: C.red,
       transparent: true,
@@ -411,7 +489,8 @@ export class Led extends Part {
     this.light = new THREE.PointLight('#ff5a46', 0, 5, 1.7);
     this.light.position.copy(this.glow.position);
 
-    this.body.add(plate, dome, legL, legR, kink, tr, tl, plus, this.glow, this.light);
+    this.pool.position.z = -0.2;
+    this.body.add(plate, dome, legL, legR, kink, tr, tl, plus, this.glow, this.light, this.pool);
     this.addTerminal('a', 'plus', 0.55, 0.42);
     this.addTerminal('b', 'minus', -0.55, 0.42);
     this.pickable(plate, dome);
@@ -425,6 +504,7 @@ export class Led extends Part {
     this.glow.material.opacity = Math.min(0.95, b * 0.9);
     this.glow.scale.setScalar(1.6 + b * 1.2);
     this.light.intensity = b * 5;
+    (this.pool.material as THREE.MeshBasicMaterial).opacity = Math.min(0.7, b * 0.55);
   }
 }
 
@@ -439,7 +519,7 @@ export class Buzzer extends Part {
 
   constructor() {
     super();
-    const plate = basePlate(1.8, 1.45);
+    const plate = basePlate(1.8, 1.45, 'зуммер');
     this.can = new THREE.Group();
     const body = mesh(new THREE.CylinderGeometry(0.5, 0.52, 0.5, 36), mat(C.navy, 0.55));
     body.position.y = 0.25;

@@ -4,15 +4,17 @@ import * as THREE from 'three';
 import type { Terminal } from './parts/base';
 import { C, WIRE_COLORS } from './theme';
 
-const RADIUS = 0.075;
+const RADIUS = 0.05;
 const UP = new THREE.Vector3(0, 1, 0);
-const dotGeo = new THREE.SphereGeometry(0.075, 10, 8);
-const clipGeo = new THREE.CylinderGeometry(0.15, 0.15, 0.09, 18);
+const dotGeo = new THREE.SphereGeometry(0.052, 10, 8);
+const clipGeo = new THREE.CylinderGeometry(0.075, 0.06, 0.16, 16);
 let colorCursor = 0;
 
 let nextWireId = 1;
 
 export class Wire {
+  /** View-bar toggle: show the beads of current running along wires. */
+  static showFlow = true;
   readonly id = `w${nextWireId++}`;
   readonly group = new THREE.Group();
   readonly tube: THREE.Mesh;
@@ -40,7 +42,7 @@ export class Wire {
   private readonly p3 = new THREE.Vector3();
 
   constructor(readonly a: Terminal) {
-    this.material = new THREE.MeshStandardMaterial({ color: C.teal, roughness: 0.45, transparent: true });
+    this.material = new THREE.MeshStandardMaterial({ color: C.teal, roughness: 0.38, transparent: true });
     this.tube = new THREE.Mesh(new THREE.BufferGeometry(), this.material);
     this.tube.castShadow = true;
     this.tube.userData.wire = this;
@@ -134,8 +136,9 @@ export class Wire {
     this.tube.geometry.dispose();
     this.tube.geometry = geo;
 
-    this.clipA.position.copy(p0).setY(p0.y - 0.02);
-    this.clipB.position.copy(p3).setY(p3.y - 0.02);
+    // Crimped ferrules sitting on the post tops.
+    this.clipA.position.copy(p0).setY(p0.y + 0.03);
+    this.clipB.position.copy(p3).setY(p3.y + 0.03);
     this.clipB.visible = !!this.b;
   }
 
@@ -161,13 +164,13 @@ export class Wire {
     const I = this.dying ? 0 : this.current;
     const mag = Math.abs(I);
     this.material.emissiveIntensity = THREE.MathUtils.damp(this.material.emissiveIntensity, mag > 0.01 ? 0.28 : 0, 6, dt);
-    if (!this.curve || mag < 0.01) {
+    if (!this.curve || mag < 0.01 || !Wire.showFlow) {
       this.dots.count = 0;
       return;
     }
     const speed = Math.min(3.2, 0.7 + mag * 5); // world units per second
     this.phase = (this.phase + (Math.sign(I) * speed * dt) / this.length + 1) % 1;
-    const n = Math.max(3, Math.min(48, Math.round(this.length * 2.6)));
+    const n = Math.max(3, Math.min(48, Math.round(this.length * 2.2)));
     const m = new THREE.Matrix4();
     const p = new THREE.Vector3();
     for (let i = 0; i < n; i++) {

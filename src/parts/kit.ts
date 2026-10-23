@@ -28,13 +28,105 @@ export function roundedBox(w: number, h: number, d: number, r: number, color: st
   return m;
 }
 
-/** The cream module board every part sits on, with a tan rim like the reference cards. */
-export function basePlate(w: number, d: number): THREE.Group {
+export const PLATE_TOP = 0.16;
+
+let shadowTex: THREE.Texture | null = null;
+
+/** Soft contact shadow so parts sit on the table instead of floating. */
+export function contactShadow(w: number, d: number): THREE.Mesh {
+  if (!shadowTex) {
+    const c = document.createElement('canvas');
+    c.width = c.height = 128;
+    const ctx = c.getContext('2d')!;
+    const g = ctx.createRadialGradient(64, 64, 10, 64, 64, 64);
+    g.addColorStop(0, 'rgba(60,45,20,0.55)');
+    g.addColorStop(0.55, 'rgba(60,45,20,0.25)');
+    g.addColorStop(1, 'rgba(60,45,20,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, 128, 128);
+    shadowTex = new THREE.CanvasTexture(c);
+  }
+  const m = new THREE.Mesh(
+    new THREE.PlaneGeometry(w * 1.25, d * 1.35),
+    new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false, toneMapped: false }),
+  );
+  m.rotation.x = -Math.PI / 2;
+  m.position.y = 0.004;
+  m.renderOrder = -1;
+  return m;
+}
+
+/**
+ * The module board every part sits on: a thin cream plate with a tan edge,
+ * corner screws and a printed label, like a component card from a kit.
+ */
+export function basePlate(w: number, d: number, label?: string): THREE.Group {
   const g = new THREE.Group();
-  const rim = roundedBox(w, 0.22, d, 0.1, C.line, 0.8);
-  const top = roundedBox(w - 0.1, 0.24, d - 0.1, 0.09, C.card, 0.75);
-  g.add(rim, top);
+  const rim = mesh(new RoundedBoxGeometry(w, PLATE_TOP - 0.02, d, 3, 0.06), mat('#d9cbb6', 0.8));
+  rim.position.y = (PLATE_TOP - 0.02) / 2;
+  const top = mesh(new RoundedBoxGeometry(w - 0.06, 0.04, d - 0.06, 2, 0.02), mat('#fbf6ec', 0.7));
+  top.position.y = PLATE_TOP - 0.02;
+  g.add(contactShadow(w, d), rim, top);
+  const screwGeo = new THREE.CylinderGeometry(0.055, 0.055, 0.02, 14);
+  const slotGeo = new THREE.BoxGeometry(0.08, 0.012, 0.016);
+  for (const [sx, sz] of [
+    [-1, -1],
+    [1, -1],
+    [-1, 1],
+    [1, 1],
+  ]) {
+    const screw = mesh(screwGeo, mat(C.metal, 0.35, 0.8), false);
+    screw.position.set(sx * (w / 2 - 0.13), PLATE_TOP + 0.005, sz * (d / 2 - 0.13));
+    const slot = mesh(slotGeo, mat('#6d727c', 0.5, 0.6), false);
+    slot.position.copy(screw.position).setY(PLATE_TOP + 0.016);
+    slot.rotation.y = 0.6;
+    g.add(screw, slot);
+  }
+  if (label) {
+    // Printed along the front edge, between the two posts.
+    const l = textDecal(label, Math.min(0.95, w - 1.0), 0.15);
+    l.position.set(0, PLATE_TOP + 0.003, d / 2 - 0.15);
+    g.add(l);
+  }
   return g;
+}
+
+/** Small printed caption lying on a surface, in the condensed label face. */
+export function textDecal(text: string, width: number, height: number, color: string = C.navy2): THREE.Mesh {
+  const ratio = width / height;
+  const ch = 64;
+  const cw = Math.round(ch * ratio);
+  const canvas = document.createElement('canvas');
+  canvas.width = cw;
+  canvas.height = ch;
+  const ctx = canvas.getContext('2d')!;
+  ctx.fillStyle = color;
+  ctx.textAlign = 'center';
+  ctx.textBaseline = 'middle';
+  ctx.font = `700 ${ch * 0.62}px "Fira Sans Condensed", system-ui, sans-serif`;
+  const spaced = text.toUpperCase().split('').join(String.fromCharCode(8202));
+  ctx.fillText(spaced, cw / 2, ch / 2 + 2, cw - 6);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  tex.anisotropy = 8;
+  const m = new THREE.Mesh(
+    new THREE.PlaneGeometry(width, height),
+    new THREE.MeshStandardMaterial({ map: tex, transparent: true, roughness: 0.8, depthWrite: false, opacity: 0.8 }),
+  );
+  m.rotation.x = -Math.PI / 2;
+  return m;
+}
+
+/** Warm pool of light on the table under a lit lamp. */
+export function lightPool(size: number, color: string): THREE.Mesh {
+  const m = new THREE.Mesh(
+    new THREE.PlaneGeometry(size, size),
+    new THREE.MeshBasicMaterial({ map: glowTexture(color), transparent: true, depthWrite: false, opacity: 0, toneMapped: false }),
+  );
+  m.rotation.x = -Math.PI / 2;
+  m.position.y = 0.006;
+  m.renderOrder = -1;
+  return m;
 }
 
 /** Flat sticker with a plus or minus sign, lying on a surface. */

@@ -1,23 +1,29 @@
-// Everything drawn in HTML over the 3D table: mission card, buttons, the
-// parts tray, the level picker, hint hand and the celebration.
+// Everything drawn in HTML over the 3D table, laid out like the reference:
+// a parts sidebar on the left, brand and mission card top-left, progress
+// top-right, a strip of lesson cards at the bottom and a small view bar.
 import * as THREE from 'three';
 import type { Hint } from './hints';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
-import type { PartKind } from './parts/base';
+import type { Part, PartKind } from './parts/base';
 import { PART_KINDS } from './parts/models';
 import type { Stage } from './stage';
 import { thumb } from './thumbs';
 
-const svg = (inner: string, cls = 'icon', vb = '0 0 32 32') => `<svg class="${cls}" viewBox="${vb}" aria-hidden="true">${inner}</svg>`;
+const svg = (inner: string, cls = 'icon', vb = '0 0 24 24') => `<svg class="${cls}" viewBox="${vb}" aria-hidden="true">${inner}</svg>`;
 
 const ICON = {
-  home: svg('<rect x="5" y="5" width="9.5" height="9.5" rx="2.4"/><rect x="17.5" y="5" width="9.5" height="9.5" rx="2.4"/><rect x="5" y="17.5" width="9.5" height="9.5" rx="2.4"/><rect x="17.5" y="17.5" width="9.5" height="9.5" rx="2.4" class="fill"/>'),
-  soundOn: svg('<path d="M5 12.5h4.5L16 7v18l-6.5-5.5H5z" class="fill"/><path d="M20.5 11.5a6 6 0 0 1 0 9M23.8 8a11 11 0 0 1 0 16"/>'),
-  soundOff: svg('<path d="M5 12.5h4.5L16 7v18l-6.5-5.5H5z" class="fill"/><path d="m21 12 7 8M28 12l-7 8"/>'),
-  reset: svg('<path d="M7.5 15.5A8.5 8.5 0 1 0 10 9.6"/><path d="M8.6 4.8 9.8 10l5.2-1.2"/>'),
-  next: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M7 16h17M17 8.5 24.5 16 17 23.5"/></svg>',
-  bin: svg('<path d="M6.5 9h19M13 9V6.5h6V9M9 9l1.3 17h11.4L23 9M13.5 13v9M18.5 13v9"/>'),
-  check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5.5 12.5 4.2 4.2 8.8-9"/></svg>',
+  out: svg('<path d="M5 12h14"/>'),
+  in: svg('<path d="M12 5v14M5 12h14"/>'),
+  compass: svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 5.2 14.2 12h-4.4z" class="fill"/><path d="M12 18.8 9.8 12h4.4z"/>'),
+  flow: svg('<path d="M2.5 15.5c4.2 0 5.3-7 9.5-7s5.3 7 9.5 7"/><circle cx="6.6" cy="13" r="1.7" class="fill"/><circle cx="12" cy="8.5" r="1.7" class="fill"/><circle cx="17.4" cy="13" r="1.7" class="fill"/>'),
+  soundOn: svg('<path d="M4 9.5h3.4L12 5.5v13l-4.6-4H4z" class="fill"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/>'),
+  soundOff: svg('<path d="M4 9.5h3.4L12 5.5v13l-4.6-4H4z" class="fill"/><path d="m16 9.5 5 5M21 9.5l-5 5"/>'),
+  restart: svg('<path d="M4.5 10.5A8 8 0 1 1 6 17"/><path d="M4 5v5.8h5.8"/>'),
+  speak: svg('<path d="M4 9.5h3.4L12 5.5v13l-4.6-4H4z" class="fill"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6"/>'),
+  book: svg('<path d="M20 10.6c-3.3-2.4-8.2-3.2-14-3v21.2c5.8-.2 10.7.6 14 3 3.3-2.4 8.2-3.2 14-3V7.6c-5.8-.2-10.7.6-14 3zM20 10.6v21.2"/><path d="M3 11v21c6.3-.5 12.6.2 17 2.6 4.4-2.4 10.7-3.1 17-2.6V11"/>', 'icon book', '0 0 40 40'),
+  bin: svg('<path d="M4.5 7h15M9.5 7V4.8h5V7M7 7l1 13.5h8L17 7M10.5 10.5v6.5M13.5 10.5v6.5"/>'),
+  next: svg('<path d="M5 12h13M12.5 6.5 18 12l-5.5 5.5"/>'),
+  check: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 12.5 4 4 8-8.5"/></svg>',
   star: '<svg viewBox="0 0 64 64" class="star" aria-hidden="true"><path d="M32 5.5 40.2 22l18.3 2.7-13.2 12.9 3.1 18.2L32 47.2l-16.4 8.6 3.1-18.2L5.5 24.7 23.8 22z" fill="#f0a53a" stroke="#24304a" stroke-width="3" stroke-linejoin="round"/><path d="M24 26.5c2-1 4.5-1.2 6.5-.6" stroke="#fff6d6" stroke-width="3" stroke-linecap="round" fill="none"/></svg>',
   shortBadge: '<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M18 3 7 18h7l-2 11 13-16h-7.5z" fill="#e5533d" stroke="#24304a" stroke-width="2" stroke-linejoin="round"/></svg>',
   swapBadge: '<svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="#e5533d" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 11h18M19 6l5 5-5 5M26 21H8M13 16l-5 5 5 5"/></svg>',
@@ -25,12 +31,25 @@ const ICON = {
     <path d="M26 4c4.4 0 7 3 7 7.5V30l9.3 1.6c6.8 1.2 10.7 5.6 10.2 12.6l-1.2 13.6C50.6 67 44.6 74 34.6 74h-5.2c-6.5 0-11.4-3.3-14.2-9.1L8.1 50.2c-1.7-3.5-.3-7 3.1-8.1 2.9-.9 5.4.4 7 3.1l.8 1.4V11.5C19 7 21.6 4 26 4z" fill="#fffaf2" stroke="#18213d" stroke-width="3" stroke-linejoin="round"/>
     <path d="M33 30v12M41.5 32v11" fill="none" stroke="#18213d" stroke-width="2.6" stroke-linecap="round"/>
   </svg>`,
+  logo: '<svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true"><path d="M36 5 15 36h14l-4 23 23-33H34z"/></svg>',
+};
+
+export const PART_NAMES: Record<PartKind, string> = {
+  battery: 'Батарейки',
+  bulb: 'Лампочка',
+  fan: 'Вентилятор',
+  switch: 'Выключатель',
+  led: 'Светодиод',
+  buzzer: 'Пищалка',
 };
 
 export interface HudHooks {
-  onHome(): void;
-  onReset(): void;
+  onRestart(): void;
   onSound(on: boolean): void;
+  onFlow(on: boolean): void;
+  onZoom(factor: number): void;
+  onResetView(): void;
+  onReplay(): void;
   onPickLevel(level: Level): void;
   onNext(): void;
   onSpawn(kind: PartKind, e: PointerEvent): void;
@@ -38,22 +57,26 @@ export interface HudHooks {
 
 export class Hud {
   private root = document.getElementById('hud')!;
+  private sidebar!: HTMLElement;
   private mission!: HTMLElement;
-  private tray!: HTMLElement;
-  private home!: HTMLElement;
+  private lessons!: HTMLElement;
+  private progress!: HTMLElement;
   private hints!: HTMLElement;
   private trail!: SVGPathElement;
   private hand!: HTMLElement;
   private haloA!: HTMLElement;
   private haloB!: HTMLElement;
   private badge!: HTMLElement;
+  private tag!: HTMLElement;
   private fx!: HTMLCanvasElement;
   private soundBtn!: HTMLButtonElement;
+  private flowBtn!: HTMLButtonElement;
   private nextBtn: HTMLElement | null = null;
   private hint: Hint | null = null;
   private hintT = 0;
   private hintScreen: { a: () => { x: number; y: number }; b?: () => { x: number; y: number } } | null = null;
   private confetti: Confetto[] = [];
+  private level: Level = LEVELS[0];
   trayLeft: Partial<Record<PartKind, number>> = {};
 
   constructor(
@@ -72,163 +95,198 @@ export class Hud {
         <div class="badge"></div>
         ${ICON.hand}
       </div>
-      <header class="top">
-        <div class="mission card" aria-label="Задание"><img alt=""/><div class="dots"></div></div>
-        <div class="actions">
-          <button class="btn card" data-act="reset" aria-label="Начать заново">${ICON.reset}</button>
-          <button class="btn card" data-act="sound" aria-label="Звук">${ICON.soundOn}</button>
-          <button class="btn card" data-act="home" aria-label="Все задания">${ICON.home}</button>
+      <div class="tag"></div>
+      <nav class="sidebar" aria-label="Детали">
+        <div class="side-parts">
+          ${PART_KINDS.map(
+            (k) => `<button class="part-btn" data-kind="${k}" aria-label="${PART_NAMES[k]}" title="${PART_NAMES[k]}">
+              <img alt="" src="${thumb(k)}"/><span class="count"></span></button>`,
+          ).join('')}
         </div>
+        <div class="bin">${ICON.bin}</div>
+      </nav>
+      <header class="brand">
+        ${ICON.logo}
+        <span class="brand-rule" aria-hidden="true"></span>
+        <div class="brand-text"><h1>Электро-стол</h1><p>Собери<i>·</i>Включи<i>·</i>Узнай</p></div>
       </header>
-      <nav class="tray is-hidden" aria-label="Детали"><div class="bin">${ICON.bin}</div></nav>
+      <article class="mission">
+        <img alt=""/>
+        <div class="mission-text"><h3></h3><p></p></div>
+        <button class="speak" aria-label="Повторить задание">${ICON.speak}</button>
+      </article>
+      <section class="status" aria-label="Прогресс">
+        ${ICON.book}
+        <div class="progress-body">
+          <span class="progress-label">Задания</span>
+          <div class="progress-row"><span class="progress-track"><span class="progress-fill"></span></span><span class="progress-count"></span></div>
+        </div>
+      </section>
+      <section class="lessons" aria-label="Задания">
+        <h2>Задания</h2>
+        <ol class="lesson-list"></ol>
+      </section>
+      <div class="viewbar" role="toolbar" aria-label="Вид">
+        <button data-v="out" aria-label="Отдалить">${ICON.out}</button>
+        <button data-v="in" aria-label="Приблизить">${ICON.in}</button>
+        <span class="sep"></span>
+        <button data-v="reset" class="compass" aria-label="Показать всё">${ICON.compass}</button>
+        <span class="sep"></span>
+        <button data-v="flow" class="toggle is-on" aria-label="Показывать ток" aria-pressed="true">${ICON.flow}</button>
+        <button data-v="sound" class="toggle is-on" aria-label="Звук" aria-pressed="true">${ICON.soundOn}</button>
+        <button data-v="restart" aria-label="Начать заново">${ICON.restart}</button>
+      </div>
       <canvas class="fx"></canvas>
-      <section class="home is-hidden" aria-label="Задания"></section>
     `;
+    this.sidebar = r.querySelector('.sidebar')!;
     this.mission = r.querySelector('.mission')!;
-    this.tray = r.querySelector('.tray')!;
-    this.home = r.querySelector('.home')!;
+    this.lessons = r.querySelector('.lesson-list')!;
+    this.progress = r.querySelector('.status')!;
     this.hints = r.querySelector('.hints')!;
     this.trail = r.querySelector('.trail path')!;
     this.hand = r.querySelector('.hand')!;
     this.haloA = r.querySelector('.halo.a')!;
     this.haloB = r.querySelector('.halo.b')!;
     this.badge = r.querySelector('.badge')!;
+    this.tag = r.querySelector('.tag')!;
     this.fx = r.querySelector('.fx')!;
-    this.soundBtn = r.querySelector('[data-act="sound"]')!;
+    this.soundBtn = r.querySelector('[data-v="sound"]')!;
+    this.flowBtn = r.querySelector('[data-v="flow"]')!;
     this.hints.style.opacity = '0';
 
-    r.querySelector('[data-act="home"]')!.addEventListener('click', () => this.hooks.onHome());
-    r.querySelector('[data-act="reset"]')!.addEventListener('click', () => this.hooks.onReset());
+    r.querySelector('[data-v="out"]')!.addEventListener('click', () => this.hooks.onZoom(1.25));
+    r.querySelector('[data-v="in"]')!.addEventListener('click', () => this.hooks.onZoom(0.8));
+    r.querySelector('[data-v="reset"]')!.addEventListener('click', () => this.hooks.onResetView());
+    r.querySelector('[data-v="restart"]')!.addEventListener('click', () => this.hooks.onRestart());
+    this.mission.querySelector('.speak')!.addEventListener('click', () => this.hooks.onReplay());
     this.soundBtn.addEventListener('click', () => {
-      const on = this.soundBtn.classList.contains('is-off');
+      const on = !this.soundBtn.classList.contains('is-on');
       this.setSound(on);
       this.hooks.onSound(on);
     });
+    this.flowBtn.addEventListener('click', () => {
+      const on = !this.flowBtn.classList.contains('is-on');
+      this.flowBtn.classList.toggle('is-on', on);
+      this.flowBtn.setAttribute('aria-pressed', String(on));
+      this.hooks.onFlow(on);
+    });
+
+    this.sidebar.querySelectorAll<HTMLElement>('.part-btn').forEach((btn) => {
+      const kind = btn.dataset.kind as PartKind;
+      btn.addEventListener('pointerdown', (e) => {
+        e.preventDefault();
+        if ((this.trayLeft[kind] ?? 0) <= 0) {
+          btn.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(4px)' }, { transform: 'translateX(0)' }], 260);
+          return;
+        }
+        this.hooks.onSpawn(kind, e);
+      });
+    });
+
     window.addEventListener('resize', () => this.layout());
-    // iOS: block pinch-zoom and double-tap zoom gestures over the HUD.
+    // iOS: block pinch-zoom of the page and double-tap zoom.
     document.addEventListener('gesturestart', (e) => e.preventDefault());
     document.addEventListener('dblclick', (e) => e.preventDefault());
     document.addEventListener('contextmenu', (e) => e.preventDefault());
   }
 
   setSound(on: boolean) {
-    this.soundBtn.classList.toggle('is-off', !on);
+    this.soundBtn.classList.toggle('is-on', on);
+    this.soundBtn.setAttribute('aria-pressed', String(on));
     this.soundBtn.innerHTML = on ? ICON.soundOn : ICON.soundOff;
   }
 
-  // ───────── Level & tray ─────────
+  // ───────── Level, lessons, parts ─────────
 
   setLevel(level: Level, done: Set<string>) {
+    this.level = level;
     const img = this.mission.querySelector('img')!;
     img.src = thumb(level.icon, true);
-    const dots = this.mission.querySelector('.dots')!;
-    if (level === FREE_PLAY) {
-      dots.innerHTML = '';
-    } else {
-      dots.innerHTML = LEVELS.map(
-        (l) => `<span class="dot${done.has(l.id) ? ' is-done' : ''}${l === level ? ' is-current' : ''}"></span>`,
-      ).join('');
-    }
+    this.mission.querySelector('h3')!.textContent = level.task;
+    const i = LEVELS.indexOf(level);
+    this.mission.querySelector('p')!.textContent = i >= 0 ? `Задание ${i + 1} из ${LEVELS.length}` : 'Свободная игра';
 
-    this.tray.querySelectorAll('.part-card').forEach((c) => c.remove());
-    for (const { kind } of level.tray) {
-      const card = document.createElement('button');
-      card.className = 'part-card';
-      card.dataset.kind = kind;
-      card.setAttribute('aria-label', kind);
-      card.innerHTML = `<img alt="" src="${thumb(kind)}"/><span class="count"></span>`;
-      card.addEventListener('pointerdown', (e) => {
-        e.preventDefault();
-        if ((this.trayLeft[kind] ?? 0) <= 0) {
-          card.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-6px)' }, { transform: 'translateX(6px)' }, { transform: 'translateX(0)' }], 300);
-          return;
-        }
-        this.hooks.onSpawn(kind, e);
-      });
-      this.tray.appendChild(card);
-    }
-    this.tray.classList.toggle('is-hidden', level.tray.length === 0);
+    const n = LEVELS.filter((l) => done.has(l.id)).length;
+    this.progress.querySelector<HTMLElement>('.progress-fill')!.style.width = `${(n / LEVELS.length) * 100}%`;
+    this.progress.querySelector('.progress-count')!.textContent = `${n}/${LEVELS.length}`;
+
+    const next = LEVELS.find((l) => !done.has(l.id));
+    const all = [...LEVELS, FREE_PLAY];
+    this.lessons.innerHTML = all
+      .map((l, idx) => {
+        const free = l === FREE_PLAY;
+        const cls = ['lesson', l === level ? 'is-active' : '', done.has(l.id) ? 'is-done' : '', l === next && l !== level ? 'is-next' : ''].join(' ');
+        return `<li class="${cls}" role="button" tabindex="0" data-i="${free ? 'free' : idx}" aria-label="${l.title}">
+          <img class="lesson-thumb" alt="" src="${thumb(l.icon, !free)}"/>
+          <span class="lesson-title">${free ? '' : `${idx + 1}. `}${l.title}</span>
+          <span class="lesson-done">${ICON.check}</span>
+        </li>`;
+      })
+      .join('');
+    this.lessons.querySelectorAll<HTMLElement>('.lesson').forEach((el) =>
+      el.addEventListener('click', () => {
+        const d = el.dataset.i!;
+        this.hooks.onPickLevel(d === 'free' ? FREE_PLAY : LEVELS[Number(d)]);
+      }),
+    );
+    // Keep the active card in view on narrow screens.
+    this.lessons.querySelector<HTMLElement>('.is-active')?.scrollIntoView({ block: 'nearest', inline: 'center' });
     this.layout();
   }
 
   updateTray(left: Partial<Record<PartKind, number>>) {
     this.trayLeft = left;
-    this.tray.querySelectorAll<HTMLElement>('.part-card').forEach((card) => {
-      const n = left[card.dataset.kind as PartKind] ?? 0;
-      card.classList.toggle('is-empty', n <= 0);
-      const c = card.querySelector<HTMLElement>('.count')!;
-      c.style.display = Number.isFinite(n) && n > 0 ? '' : 'none';
+    this.sidebar.querySelectorAll<HTMLElement>('.part-btn').forEach((btn) => {
+      const n = left[btn.dataset.kind as PartKind] ?? 0;
+      btn.classList.toggle('is-off', n <= 0);
+      const c = btn.querySelector<HTMLElement>('.count')!;
+      c.hidden = !(Number.isFinite(n) && n > 0);
       c.textContent = String(n);
     });
   }
 
   private layout() {
-    const cards = this.tray.querySelectorAll('.part-card').length;
-    if (cards) {
-      const avail = window.innerWidth - 24 - 16 - (cards - 1) * 8;
-      const size = Math.max(44, Math.min(96, Math.floor(avail / cards)));
-      this.tray.style.setProperty('--card-size', `${size}px`);
-    }
-    const top = this.root.querySelector('.top')!.getBoundingClientRect().bottom + 6;
-    // offsetHeight, not the rect: the tray may be mid-transition.
-    const safeB = parseFloat(getComputedStyle(this.tray).bottom) || 12;
-    const bottom = this.tray.classList.contains('is-hidden') ? 16 : this.tray.offsetHeight + safeB + 8;
-    this.stage.setInsets({ top, bottom, left: 10, right: 10 });
+    const side = this.sidebar.getBoundingClientRect();
+    const brand = this.root.querySelector('.brand')!.getBoundingClientRect();
+    const lessons = this.root.querySelector('.lessons')!.getBoundingClientRect();
+    this.stage.setInsets({
+      left: side.right,
+      top: brand.bottom + 8,
+      bottom: Math.max(16, window.innerHeight - lessons.top + 8),
+      right: 12,
+    });
+  }
+
+  relayout() {
+    this.layout();
   }
 
   overTray(x: number, y: number) {
-    if (this.tray.classList.contains('is-hidden')) return false;
-    const r = this.tray.getBoundingClientRect();
-    return x >= r.left - 20 && x <= r.right + 20 && y >= r.top - 24 && y <= r.bottom + 20;
+    const r = this.sidebar.getBoundingClientRect();
+    return x <= r.right + 10 && y >= r.top && y <= r.bottom;
   }
 
   setTrash(on: boolean) {
-    this.tray.classList.toggle('is-trash', on);
+    this.sidebar.classList.toggle('is-trash', on);
   }
 
   trayCardCenter(kind: PartKind): { x: number; y: number } | null {
-    const c = this.tray.querySelector<HTMLElement>(`.part-card[data-kind="${kind}"]`);
+    const c = this.sidebar.querySelector<HTMLElement>(`.part-btn[data-kind="${kind}"]`);
     if (!c) return null;
     const r = c.getBoundingClientRect();
     return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
   }
 
-  // ───────── Home ─────────
-
-  showHome(done: Set<string>) {
-    const next = LEVELS.find((l) => !done.has(l.id));
-    this.home.innerHTML = `
-      <div class="brand">
-        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true"><path class="logo-bolt" d="M36 6 16 36h14l-4 22 22-32H34z"/></svg>
-        <span class="brand-rule"></span>
-        <div><h1>Электро-стол</h1><p>Собери · Включи · Узнай</p></div>
-      </div>
-      <div class="levels">
-        ${LEVELS.map(
-          (l, i) => `<button class="level-card${l === next ? ' is-next' : ''}" data-i="${i}" aria-label="Задание ${i + 1}">
-            <img alt="" src="${thumb(l.icon, true)}"/><span class="num">${i + 1}</span>
-            ${done.has(l.id) ? `<span class="done">${ICON.check}</span>` : ''}
-          </button>`,
-        ).join('')}
-        <button class="level-card is-free" data-i="free" aria-label="Свободная игра">
-          ${PART_KINDS.map((k) => `<img alt="" src="${thumb(k, true)}"/>`).join('')}
-        </button>
-      </div>`;
-    this.home.querySelectorAll<HTMLElement>('.level-card').forEach((el) =>
-      el.addEventListener('click', () => {
-        const i = el.dataset.i!;
-        this.hooks.onPickLevel(i === 'free' ? FREE_PLAY : LEVELS[Number(i)]);
-      }),
-    );
-    this.home.classList.remove('is-hidden');
-  }
-
-  hideHome() {
-    this.home.classList.add('is-hidden');
-  }
-
-  get homeOpen() {
-    return !this.home.classList.contains('is-hidden');
+  /** Name tag over the part being carried, like the reference's labels. */
+  updateTag(part: Part | null) {
+    if (!part) {
+      this.tag.classList.remove('is-on');
+      return;
+    }
+    const p = this.stage.project(part.root.localToWorld(new THREE.Vector3(0, 1.5, 0)));
+    this.tag.textContent = PART_NAMES[part.kind];
+    this.tag.style.transform = `translate(${p.x}px, ${p.y}px) translate(-50%, -100%)`;
+    this.tag.classList.add('is-on');
   }
 
   // ───────── Hints ─────────
@@ -274,7 +332,7 @@ export class Hud {
     const show = visible && !!h && !!this.hintScreen;
     const op = Number(this.hints.style.opacity || 0);
     this.hints.style.opacity = String(THREE.MathUtils.damp(op, show ? 1 : 0, 8, dt));
-    this.tray.querySelectorAll('.part-card').forEach((c) => c.classList.toggle('is-pulse', show && h?.type === 'drag' && (c as HTMLElement).dataset.kind === h.kind));
+    this.sidebar.querySelectorAll('.part-btn').forEach((c) => c.classList.toggle('is-pulse', show && h?.type === 'drag' && (c as HTMLElement).dataset.kind === h.kind));
     if (!h || !this.hintScreen) return;
     this.hintT += dt;
     const A = this.hintScreen.a();
@@ -286,19 +344,26 @@ export class Hud {
     const red = h.type === 'tapWire' || h.type === 'polarity';
     this.haloA.classList.toggle('is-red', red);
     this.haloB.classList.toggle('is-red', red);
-    place(this.haloA, A);
+    place(this.haloA, h.type === 'drag' ? undefined : A);
     place(this.haloB, h.type === 'drag' ? undefined : B);
     this.trail.classList.toggle('is-red', red);
 
+    const bend = (P: { x: number; y: number }, Q: { x: number; y: number }) => ({
+      x: (P.x + Q.x) / 2,
+      y: Math.min(P.y, Q.y) - Math.abs(P.x - Q.x) * 0.12 - 20,
+    });
     if (B) {
-      const mx = (A.x + B.x) / 2;
-      const my = Math.min(A.y, B.y) - Math.abs(A.x - B.x) * 0.15 - 30;
-      this.trail.setAttribute('d', `M${A.x},${A.y} Q${mx},${my} ${B.x},${B.y}`);
+      const M = bend(A, B);
+      this.trail.setAttribute('d', `M${A.x},${A.y} Q${M.x},${M.y} ${B.x},${B.y}`);
     } else this.trail.setAttribute('d', '');
 
-    // Badge floats above the problem spot.
     if (this.badge.innerHTML) {
-      const p = h.type === 'tapWire' && h.battery ? this.stage.project(h.battery.root.localToWorld(new THREE.Vector3(0, 1.6, 0))) : h.type === 'polarity' ? this.stage.project(h.part.root.localToWorld(new THREE.Vector3(0, 1.8, 0))) : A;
+      const p =
+        h.type === 'tapWire' && h.battery
+          ? this.stage.project(h.battery.root.localToWorld(new THREE.Vector3(0, 1.4, 0)))
+          : h.type === 'polarity'
+            ? this.stage.project(h.part.root.localToWorld(new THREE.Vector3(0, 1.6, 0)))
+            : A;
       // Positioned with left/top: its bobbing animation owns `transform`.
       this.badge.style.display = '';
       this.badge.style.left = `${p.x}px`;
@@ -317,10 +382,9 @@ export class Hud {
       else if (t < 1.75) {
         press = 1;
         const u = easeInOut((t - 0.35) / 1.4);
-        const mx = (A.x + B.x) / 2;
-        const my = Math.min(A.y, B.y) - Math.abs(A.x - B.x) * 0.15 - 30;
-        hx = (1 - u) * (1 - u) * A.x + 2 * (1 - u) * u * mx + u * u * B.x;
-        hy = (1 - u) * (1 - u) * A.y + 2 * (1 - u) * u * my + u * u * B.y;
+        const M = bend(A, B);
+        hx = (1 - u) * (1 - u) * A.x + 2 * (1 - u) * u * M.x + u * u * B.x;
+        hy = (1 - u) * (1 - u) * A.y + 2 * (1 - u) * u * M.y + u * u * B.y;
       } else {
         hx = B.x;
         hy = B.y;
@@ -330,11 +394,11 @@ export class Hud {
     } else {
       const t = this.hintT % 1.1;
       press = t < 0.5 ? Math.sin((t / 0.5) * Math.PI) : 0;
-      hx = A.x + 18;
-      hy = A.y + 14;
+      hx = A.x + 12;
+      hy = A.y + 10;
     }
     this.hand.style.opacity = String(alpha);
-    this.hand.style.transform = `translate(${hx}px, ${hy + (1 - press) * -10}px) scale(${1 - press * 0.12}) rotate(-12deg)`;
+    this.hand.style.transform = `translate(${hx}px, ${hy + (1 - press) * -8}px) scale(${1 - press * 0.12}) rotate(-12deg)`;
   }
 
   // ───────── Celebration ─────────
@@ -343,18 +407,19 @@ export class Hud {
     const win = document.createElement('div');
     win.className = 'win';
     win.innerHTML = ICON.star;
-    const m = this.mission.getBoundingClientRect();
+    const card = this.lessons.querySelector('.is-active')?.getBoundingClientRect();
     const star = win.querySelector<SVGElement>('.star')!;
-    star.style.setProperty('--fly-x', `${m.left + 32 - window.innerWidth / 2}px`);
-    star.style.setProperty('--fly-y', `${m.top + 32 - window.innerHeight / 2}px`);
+    const sx = this.stage.insets.left + (window.innerWidth - this.stage.insets.left) / 2;
+    const sy = window.innerHeight * 0.42;
+    star.style.left = `${sx}px`;
+    star.style.top = `${sy}px`;
+    if (card) {
+      star.style.setProperty('--fly-x', `${card.left + card.width / 2 - sx}px`);
+      star.style.setProperty('--fly-y', `${card.top + card.height / 2 - sy}px`);
+    }
     this.root.appendChild(win);
-    setTimeout(() => {
-      win.remove();
-      this.mission.classList.remove('is-celebrating');
-      void this.mission.offsetWidth;
-      this.mission.classList.add('is-celebrating');
-    }, 1600);
-    this.burst(window.innerWidth / 2, window.innerHeight * 0.45, 140);
+    setTimeout(() => win.remove(), 1700);
+    this.burst(sx, sy, 90);
   }
 
   showNext(show: boolean) {
@@ -362,7 +427,7 @@ export class Hud {
       const b = document.createElement('button');
       b.className = 'next';
       b.setAttribute('aria-label', 'Дальше');
-      b.innerHTML = ICON.next;
+      b.innerHTML = `<span>Дальше</span>${ICON.next}`;
       b.addEventListener('click', () => this.hooks.onNext());
       this.root.appendChild(b);
       this.nextBtn = b;
@@ -376,28 +441,28 @@ export class Hud {
     const colors = ['#1aa3a1', '#f0a53a', '#e5533d', '#24304a', '#3f8a4f', '#ffcf6b'];
     for (let i = 0; i < n; i++) {
       const a = Math.random() * Math.PI * 2;
-      const s = 300 + Math.random() * 700;
+      const s = 220 + Math.random() * 520;
       this.confetti.push({
         x,
         y,
         vx: Math.cos(a) * s,
-        vy: Math.sin(a) * s - 500,
+        vy: Math.sin(a) * s - 380,
         r: Math.random() * Math.PI,
         vr: (Math.random() - 0.5) * 14,
-        w: 8 + Math.random() * 8,
-        h: 5 + Math.random() * 6,
+        w: 6 + Math.random() * 6,
+        h: 4 + Math.random() * 4,
         c: colors[i % colors.length],
-        life: 2.2 + Math.random() * 1.2,
+        life: 1.8 + Math.random() * 1,
       });
     }
   }
 
   /** Little sparks where a wire clips on. */
   sparks(p: { x: number; y: number }) {
-    for (let i = 0; i < 14; i++) {
+    for (let i = 0; i < 12; i++) {
       const a = Math.random() * Math.PI * 2;
-      const s = 120 + Math.random() * 220;
-      this.confetti.push({ x: p.x, y: p.y, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 120, r: 0, vr: 0, w: 5, h: 5, c: i % 2 ? '#ffcf6b' : '#1aa3a1', life: 0.45 + Math.random() * 0.3, round: true });
+      const s = 80 + Math.random() * 160;
+      this.confetti.push({ x: p.x, y: p.y, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 80, r: 0, vr: 0, w: 4, h: 4, c: i % 2 ? '#ffcf6b' : '#1aa3a1', life: 0.4 + Math.random() * 0.25, round: true });
     }
   }
 
@@ -415,7 +480,7 @@ export class Hud {
     ctx.clearRect(0, 0, W, H);
     this.confetti = this.confetti.filter((p) => (p.life -= dt) > 0);
     for (const p of this.confetti) {
-      p.vy += 1400 * dt;
+      p.vy += 1200 * dt;
       p.vx *= 1 - 1.2 * dt;
       p.x += p.vx * dt;
       p.y += p.vy * dt;
@@ -437,8 +502,8 @@ export class Hud {
     }
   }
 
-  relayout() {
-    this.layout();
+  get currentLevel() {
+    return this.level;
   }
 }
 

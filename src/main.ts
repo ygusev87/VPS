@@ -10,11 +10,19 @@ import { PART_KINDS } from './parts/models';
 import { Stage } from './stage';
 import { loadProgress, saveProgress } from './storage';
 import { renderThumbs } from './thumbs';
+import { drawTraces } from './traces';
 import { Voice } from './voice';
+import { Wire } from './wires';
 import { isActive, World } from './world';
 
 const loaderFill = document.querySelector<HTMLElement>('.loader-fill')!;
 const setLoad = (f: number) => (loaderFill.style.transform = `scaleX(${f})`);
+
+// Part labels are drawn with the UI face, so wait for it (but never for long).
+await Promise.race([
+  Promise.all([document.fonts.load('700 20px "Fira Sans Condensed"'), document.fonts.load('600 20px "Fira Sans Condensed"')]),
+  new Promise((r) => setTimeout(r, 1500)),
+]).catch(() => {});
 
 const canvas = document.getElementById('stage') as HTMLCanvasElement;
 const stage = new Stage(canvas);
@@ -29,6 +37,10 @@ setLoad(0.35);
 renderThumbs(PART_KINDS);
 setLoad(0.75);
 
+const traces = document.getElementById('traces') as unknown as SVGSVGElement;
+drawTraces(traces);
+window.addEventListener('resize', () => drawTraces(traces));
+
 let level: Level = LEVELS[0];
 let won = false;
 let goalHeld = 0;
@@ -42,12 +54,7 @@ let buzzerOn = false;
 let buzzerRefresh = 0;
 
 const hud = new Hud(stage, {
-  onHome: () => {
-    sfx.unlock();
-    sfx.pop();
-    hud.showHome(progress.done);
-  },
-  onReset: () => {
+  onRestart: () => {
     sfx.unlock();
     sfx.pop();
     startLevel(level);
@@ -60,21 +67,25 @@ const hud = new Hud(stage, {
     if (!on) voice.stop();
     saveProgress(progress);
   },
+  onFlow: (on) => {
+    Wire.showFlow = on;
+  },
+  onZoom: (f) => stage.zoomBy(f),
+  onResetView: () => frameParts(),
+  onReplay: () => {
+    sfx.unlock();
+    voice.say(level.intro, 0);
+  },
   onPickLevel: (l) => {
     sfx.unlock();
     sfx.pop();
-    hud.hideHome();
     startLevel(l);
   },
   onNext: () => {
     sfx.unlock();
     sfx.pop();
     const i = LEVELS.indexOf(level);
-    if (i >= 0 && i < LEVELS.length - 1) startLevel(LEVELS[i + 1]);
-    else {
-      hud.showNext(false);
-      hud.showHome(progress.done);
-    }
+    startLevel(i >= 0 && i < LEVELS.length - 1 ? LEVELS[i + 1] : FREE_PLAY);
   },
   onSpawn: (kind, e) => input.spawnFromTray(kind, e),
 });
@@ -89,9 +100,17 @@ const input = new Input(stage, world, {
   },
 });
 
-stage.onBoundsChange = () => {
-  for (const p of world.parts) world.clamp(p);
-};
+function frameParts(instant = false) {
+  const pts: THREE.Vector3[] = [];
+  for (const p of world.parts) {
+    const c = p.root.position;
+    pts.push(c.clone().add(new THREE.Vector3(-p.radius, 0, -p.radius * 0.8)), c.clone().add(new THREE.Vector3(p.radius, 0, p.radius * 0.8)));
+  }
+  // Leave room for parts that will come from the panel.
+  if (level.tray.length && level !== FREE_PLAY) pts.push(new THREE.Vector3(4, 0, -2), new THREE.Vector3(4, 0, 2));
+  if (!pts.length) pts.push(new THREE.Vector3(-5, 0, -3), new THREE.Vector3(5, 0, 3));
+  stage.frame(pts, instant);
+}
 
 function preplaced(kind: PartKind) {
   return level.parts.filter((p) => p.kind === kind).length;
@@ -110,7 +129,7 @@ function refreshTray() {
   hud.updateTray(left);
 }
 
-function startLevel(l: Level) {
+function startLevel(l: Level, instant = false) {
   level = l;
   won = false;
   goalHeld = 0;
@@ -118,15 +137,14 @@ function startLevel(l: Level) {
   world.clear();
   hud.showNext(false);
   hud.setLevel(l, progress.done);
-  const { hx, hz } = stage.bounds;
   l.parts.forEach((p, i) => {
-    // Layouts are drawn for landscape; on a tall screen swap the axes.
-    const [x, z] = stage.portrait ? [p.fz * hx * 1.4, p.fx * hz * 0.9] : [p.fx * hx, p.fz * hz];
+    // Layouts are drawn for landscape; on a tall screen lay them top-to-bottom.
+    const [x, z] = stage.portrait ? [p.fz * 5.5, p.fx * 6.5] : [p.fx * 6.5, p.fz * 4.4];
     const part = world.addPart(p.kind, x, z, { locked: true, closed: p.closed, appear: false });
-    world.clamp(part);
     part.appear(0.12 + i * 0.14);
   });
   refreshTray();
+  frameParts(instant);
   levelStart = performance.now();
   lastTouch = levelStart;
   setHint(null);
@@ -142,10 +160,12 @@ function win() {
   voice.say(level.winPhrase, 0);
   hud.celebrate();
   world.parts.forEach((p, i) => p.hop(0.15 * i));
-  hud.setLevel(level, progress.done);
-  refreshTray();
   setTimeout(() => {
-    if (won) {
+    hud.setLevel(level, progress.done);
+    refreshTray();
+  }, 1300);
+  setTimeout(() => {
+    if (won && level !== FREE_PLAY) {
       hud.showNext(true);
       setTimeout(() => won && voice.say('next', 20000), 1800);
     }
@@ -212,7 +232,6 @@ function updateHint(dt: number) {
   hintTimer -= dt;
   if (hintTimer > 0) return;
   hintTimer = 0.25;
-  if (hud.homeOpen) return setHint(null);
   const problem = problemHint(world);
   if (problem) return setHint(problem);
   if (won) return setHint(null);
@@ -229,7 +248,7 @@ function updateHint(dt: number) {
 }
 
 function hintVisible() {
-  if (!currentHint || input.busy || hud.homeOpen) return false;
+  if (!currentHint || input.busy) return false;
   const problem = currentHint.type === 'tapWire' || currentHint.type === 'polarity';
   return problem || performance.now() - lastTouch > 1200;
 }
@@ -240,9 +259,10 @@ let last = performance.now();
 function frame(now: number) {
   const dt = Math.min(0.05, (now - last) / 1000);
   last = now;
+  stage.update(dt);
   world.update(dt);
 
-  if (!won && level !== FREE_PLAY && !hud.homeOpen) {
+  if (!won && level !== FREE_PLAY) {
     goalHeld = level.goal(world) ? goalHeld + dt : 0;
     if (goalHeld > 0.5) win();
   }
@@ -250,6 +270,7 @@ function frame(now: number) {
   updateHint(dt);
   const vis = hintVisible();
   hud.updateHints(dt, vis);
+  hud.updateTag(input.carried);
   if (vis && currentHint && spokenKey !== currentKey) {
     spokenKey = currentKey;
     voice.say(currentHint.phrase, 9000);
@@ -261,8 +282,7 @@ function frame(now: number) {
     if (p.kind === 'fan') fan += Math.abs(p.state.level);
     if (p.kind === 'buzzer' && isActive(p)) buzz = true;
   }
-  sfx.setFan(hud.homeOpen ? 0 : fan);
-  if (hud.homeOpen) buzz = false;
+  sfx.setFan(fan);
   buzzerRefresh -= dt;
   if (buzz !== buzzerOn || (buzz && buzzerRefresh <= 0)) {
     buzzerOn = buzz;
@@ -275,10 +295,9 @@ function frame(now: number) {
   requestAnimationFrame(frame);
 }
 
-// Boot: level 1 sits behind the picker so the table is alive from the start.
-startLevel(LEVELS[0]);
+// Boot straight into the first unfinished mission.
+startLevel(LEVELS.find((l) => !progress.done.has(l.id)) ?? FREE_PLAY, true);
 voice.stop();
-hud.showHome(progress.done);
 requestAnimationFrame((t) => {
   last = t;
   frame(t);
@@ -286,5 +305,5 @@ requestAnimationFrame((t) => {
   setTimeout(() => document.getElementById('loader')!.classList.add('is-done'), 350);
 });
 
-// Debug/test handle (used by the Playwright smoke test).
+// Debug/test handle (used by the Playwright smoke tests).
 (window as unknown as { __game: unknown }).__game = { world, stage, startLevel, LEVELS, FREE_PLAY, input, hud };

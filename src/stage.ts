@@ -1,7 +1,8 @@
-// Renderer, camera, lights and the play mat. The camera is fixed (no orbit
-// controls) so every touch on a tablet means "grab", never "rotate".
+// Renderer, camera and the endless table. The camera never rotates: one
+// finger on empty table pans, two fingers pinch-zoom, so a touch on a part
+// always means "grab".
 import * as THREE from 'three';
-import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { C } from './theme';
 
 export interface Insets {
@@ -11,58 +12,84 @@ export interface Insets {
   right: number;
 }
 
-export interface Bounds {
-  hx: number;
-  hz: number;
-}
-
-const VIEW_DIR = new THREE.Vector3(0, 1, 0.82).normalize();
+const VIEW_DIR = new THREE.Vector3(0, 1, 0.78).normalize();
+const MIN_DIST = 7;
+const MAX_DIST = 46;
+/** How far from the origin the view may wander. */
+const LIMIT = 26;
 
 export class Stage {
   readonly renderer: THREE.WebGLRenderer;
   readonly scene = new THREE.Scene();
-  readonly camera = new THREE.PerspectiveCamera(30, 1, 0.5, 200);
+  readonly camera = new THREE.PerspectiveCamera(26, 1, 0.5, 300);
   readonly world = new THREE.Group();
-  bounds: Bounds = { hx: 6, hz: 4 };
-  insets: Insets = { top: 90, bottom: 130, left: 12, right: 12 };
+  insets: Insets = { top: 90, bottom: 130, left: 80, right: 12 };
+  /** Point on the table the camera looks at, and how far away it is. */
+  readonly target = new THREE.Vector3();
+  distance = 20;
+  private goalTarget = new THREE.Vector3();
+  private goalDistance = 20;
   private sun: THREE.DirectionalLight;
-  private mat: THREE.Group | null = null;
+  private ground: THREE.Mesh;
   private raycaster = new THREE.Raycaster();
   private plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
-  onBoundsChange?: (b: Bounds) => void;
+  private w = 1;
+  private h = 1;
 
   constructor(readonly canvas: HTMLCanvasElement) {
-    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, powerPreference: 'high-performance' });
+    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    this.renderer.setClearColor(0x000000, 0);
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.NeutralToneMapping;
-    this.renderer.toneMappingExposure = 1.0;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFShadowMap;
 
-    this.scene.background = new THREE.Color(C.bg);
+    // Soft studio reflections make plastic and brass read as real materials.
+    const pmrem = new THREE.PMREMGenerator(this.renderer);
+    this.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    this.scene.environmentIntensity = 0.45;
+    pmrem.dispose();
+
+    // The page background shows through; the grid fades into it with distance.
+    this.scene.fog = new THREE.Fog(C.bg, 30, 80);
     this.scene.add(this.world);
 
-    const hemi = new THREE.HemisphereLight('#fffaf0', '#d9c5ac', 1.6);
-    this.scene.add(hemi);
-    this.sun = new THREE.DirectionalLight('#fff3df', 2.3);
-    this.sun.position.set(-5, 12, 7);
+    this.scene.add(new THREE.HemisphereLight('#fffaf0', '#d9c5ac', 1.05));
+    this.sun = new THREE.DirectionalLight('#fff3df', 2.1);
     this.sun.castShadow = true;
     this.sun.shadow.mapSize.set(2048, 2048);
-    this.sun.shadow.bias = -0.0004;
-    this.sun.shadow.normalBias = 0.03;
-    this.sun.shadow.radius = 6;
+    this.sun.shadow.bias = -0.0003;
+    this.sun.shadow.normalBias = 0.02;
+    this.sun.shadow.radius = 5;
+    this.sun.shadow.blurSamples = 16;
     this.scene.add(this.sun, this.sun.target);
-    const fill = new THREE.DirectionalLight('#e6f3ff', 0.5);
-    fill.position.set(6, 5, -4);
+    const fill = new THREE.DirectionalLight('#e8f2ff', 0.45);
+    fill.position.set(8, 6, -6);
     this.scene.add(fill);
+
+    this.ground = new THREE.Mesh(
+      new THREE.PlaneGeometry(400, 400),
+      new THREE.MeshBasicMaterial({ map: gridTexture(), transparent: true, depthWrite: false, toneMapped: false }),
+    );
+    this.ground.rotation.x = -Math.PI / 2;
+    this.ground.renderOrder = -2;
+    const shadows = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.ShadowMaterial({ color: '#3c2d14', opacity: 0.2 }));
+    shadows.rotation.x = -Math.PI / 2;
+    shadows.position.y = 0.002;
+    shadows.receiveShadow = true;
+    shadows.renderOrder = -1;
+    this.scene.add(this.ground, shadows);
 
     window.addEventListener('resize', () => this.resize());
     this.resize();
   }
 
+  /** Tall screens lay level parts out top-to-bottom. */
   get portrait() {
-    return this.bounds.hz > this.bounds.hx * 1.15;
+    const sw = this.w - this.insets.left - this.insets.right;
+    const sh = this.h - this.insets.top - this.insets.bottom;
+    return sh > sw * 1.15;
   }
 
   setInsets(insets: Insets) {
@@ -71,115 +98,120 @@ export class Stage {
   }
 
   resize() {
-    const w = this.canvas.clientWidth || window.innerWidth;
-    const h = this.canvas.clientHeight || window.innerHeight;
-    this.renderer.setSize(w, h, false);
-    this.camera.aspect = w / h;
+    this.w = this.canvas.clientWidth || window.innerWidth;
+    this.h = this.canvas.clientHeight || window.innerHeight;
+    this.renderer.setSize(this.w, this.h, false);
+    this.camera.aspect = this.w / this.h;
+    // Put the optical centre in the middle of the free area between panels.
+    const { top, bottom, left, right } = this.insets;
+    const sx = left + (this.w - left - right) / 2;
+    const sy = top + (this.h - top - bottom) / 2;
+    this.camera.setViewOffset(this.w, this.h, this.w / 2 - sx, this.h / 2 - sy, this.w, this.h);
+    this.placeCamera();
+  }
 
-    const safeW = Math.max(100, w - this.insets.left - this.insets.right);
-    const safeH = Math.max(100, h - this.insets.top - this.insets.bottom);
-    // Shape the table like the free screen area; depth is foreshortened by the tilt.
-    const ratio = (safeW / safeH) * 0.8;
-    let hx: number;
-    let hz: number;
-    if (ratio >= 1) {
-      hz = 3.3;
-      hx = Math.max(3.6, Math.min(ratio * hz, 6.2));
-    } else {
-      // Portrait: a narrower, deeper table; levels lay their parts out top-to-bottom.
-      hx = ratio < 0.75 ? 2.5 : 3.3;
-      hz = Math.max(3.3, Math.min(hx / ratio, 5.6));
-    }
-    const changed = Math.abs(hx - this.bounds.hx) > 0.01 || Math.abs(hz - this.bounds.hz) > 0.01 || !this.mat;
-    this.bounds = { hx, hz };
-    if (changed) this.buildMat();
-    this.fitCamera(w, h);
-    if (changed) this.onBoundsChange?.(this.bounds);
-
+  private placeCamera() {
+    this.camera.position.copy(this.target).addScaledVector(VIEW_DIR, this.distance);
+    this.camera.lookAt(this.target);
+    this.camera.updateProjectionMatrix();
+    this.camera.updateMatrixWorld();
+    const f = this.scene.fog as THREE.Fog;
+    f.near = this.distance * 1.15;
+    f.far = this.distance * 3.4;
+    // Shadows follow the view.
     const s = this.sun.shadow.camera;
-    s.left = -hx - 3;
-    s.right = hx + 3;
-    s.top = hz + 4;
-    s.bottom = -hz - 4;
+    const r = this.distance * 0.75;
+    this.sun.position.copy(this.target).add(new THREE.Vector3(-6, 14, 8));
+    this.sun.target.position.copy(this.target);
+    s.left = -r;
+    s.right = r;
+    s.top = r;
+    s.bottom = -r;
     s.near = 1;
-    s.far = 40;
+    s.far = 60;
     s.updateProjectionMatrix();
   }
 
-  /** Move the camera back until the whole mat fits inside the safe rectangle. */
-  private fitCamera(w: number, h: number) {
-    const { hx, hz } = this.bounds;
-    const m = 0.45;
+  /** Ease toward the goal view (after framing or a button press). */
+  update(dt: number) {
+    if (this.target.distanceToSquared(this.goalTarget) < 1e-6 && Math.abs(this.distance - this.goalDistance) < 1e-3) return;
+    this.target.x = THREE.MathUtils.damp(this.target.x, this.goalTarget.x, 6, dt);
+    this.target.z = THREE.MathUtils.damp(this.target.z, this.goalTarget.z, 6, dt);
+    this.distance = THREE.MathUtils.damp(this.distance, this.goalDistance, 6, dt);
+    this.placeCamera();
+  }
+
+  /** Jump the view (used while a finger drives it). */
+  private setView(target: THREE.Vector3, distance: number) {
+    target.y = 0;
+    const len = Math.hypot(target.x, target.z);
+    if (len > LIMIT) target.multiplyScalar(LIMIT / len);
+    this.target.copy(target);
+    this.goalTarget.copy(target);
+    this.distance = this.goalDistance = THREE.MathUtils.clamp(distance, MIN_DIST, MAX_DIST);
+    this.placeCamera();
+  }
+
+  /** Keep the table point `anchor` under screen point (x, y). */
+  panTo(anchor: THREE.Vector3, x: number, y: number) {
+    const p = this.screenToPlane(x, y);
+    if (!p) return;
+    this.setView(this.target.clone().add(anchor).sub(p), this.distance);
+  }
+
+  /** Zoom by a factor around a screen point, keeping that point fixed. */
+  zoomAt(factor: number, x: number, y: number) {
+    const anchor = this.screenToPlane(x, y);
+    this.setView(this.target.clone(), this.distance * factor);
+    if (anchor) this.panTo(anchor, x, y);
+  }
+
+  /** Set zoom immediately (pinch); pair with panTo to keep the fingers' spot. */
+  setDistance(d: number) {
+    this.setView(this.target.clone(), d);
+  }
+
+  zoomBy(factor: number) {
+    this.goalDistance = THREE.MathUtils.clamp(this.goalDistance * factor, MIN_DIST, MAX_DIST);
+  }
+
+  /** Smoothly fit a set of table points into the free area. */
+  frame(points: THREE.Vector3[], instant = false) {
+    if (!points.length) points = [new THREE.Vector3()];
+    const box = new THREE.Box3().setFromPoints(points);
+    const center = box.getCenter(new THREE.Vector3()).setY(0);
     const corners = [
-      new THREE.Vector3(-hx - m, 0, -hz - m),
-      new THREE.Vector3(hx + m, 0, -hz - m),
-      new THREE.Vector3(-hx - m, 0, hz + m),
-      new THREE.Vector3(hx + m, 0, hz + m),
-      new THREE.Vector3(-hx, 1.8, -hz),
-      new THREE.Vector3(hx, 1.8, -hz),
+      new THREE.Vector3(box.min.x, 0, box.min.z),
+      new THREE.Vector3(box.max.x, 0, box.min.z),
+      new THREE.Vector3(box.min.x, 0, box.max.z),
+      new THREE.Vector3(box.max.x, 0, box.max.z),
+      new THREE.Vector3(box.min.x, 1.8, box.min.z),
+      new THREE.Vector3(box.max.x, 1.8, box.min.z),
     ];
     const { top, bottom, left, right } = this.insets;
-    const fits = (dist: number, cz: number) => {
-      this.placeCamera(dist, cz);
-      for (const c of corners) {
-        const p = c.clone().project(this.camera);
-        const x = ((p.x + 1) / 2) * w;
-        const y = ((1 - p.y) / 2) * h;
-        if (x < left || x > w - right || y < top || y > h - bottom) return false;
-      }
-      return true;
-    };
-    // Shift the look-at point so the mat centres in the safe area, then search distance.
-    const cz = ((bottom - top) / h) * hz * 0.9;
-    let lo = 4;
-    let hi = 120;
-    for (let i = 0; i < 40; i++) {
+    const pad = 28;
+    const saveT = this.target.clone();
+    const saveD = this.distance;
+    let lo = MIN_DIST;
+    let hi = MAX_DIST;
+    for (let i = 0; i < 30; i++) {
       const mid = (lo + hi) / 2;
-      if (fits(mid, cz)) hi = mid;
+      this.target.copy(center);
+      this.distance = mid;
+      this.placeCamera();
+      const ok = corners.every((c) => {
+        const p = this.project(c);
+        return p.x > left + pad && p.x < this.w - right - pad && p.y > top + pad && p.y < this.h - bottom - pad;
+      });
+      if (ok) hi = mid;
       else lo = mid;
     }
-    this.placeCamera(hi, cz);
-  }
-
-  private placeCamera(dist: number, cz: number) {
-    const target = new THREE.Vector3(0, 0, cz);
-    this.camera.position.copy(target).addScaledVector(VIEW_DIR, dist);
-    this.camera.lookAt(target);
-    this.camera.updateProjectionMatrix();
-    this.camera.updateMatrixWorld();
-  }
-
-  private buildMat() {
-    if (this.mat) {
-      this.mat.removeFromParent();
-      this.mat.traverse((o) => {
-        const m = o as THREE.Mesh;
-        if (m.isMesh) {
-          m.geometry.dispose();
-          const mm = m.material as THREE.MeshStandardMaterial;
-          mm.map?.dispose();
-          mm.dispose();
-        }
-      });
-    }
-    const { hx, hz } = this.bounds;
-    const W = hx * 2 + 1.2;
-    const D = hz * 2 + 1.2;
-    const g = new THREE.Group();
-    const rim = new THREE.Mesh(new RoundedBoxGeometry(W + 0.3, 0.3, D + 0.3, 4, 0.35), new THREE.MeshStandardMaterial({ color: C.line, roughness: 0.9 }));
-    rim.position.y = -0.17;
-    rim.receiveShadow = true;
-    const top = new THREE.Mesh(new THREE.PlaneGeometry(W, D), new THREE.MeshStandardMaterial({ map: matTexture(W, D), roughness: 0.92 }));
-    top.rotation.x = -Math.PI / 2;
-    top.position.y = -0.015;
-    top.receiveShadow = true;
-    const floor = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.ShadowMaterial({ opacity: 0.12 }));
-    floor.rotation.x = -Math.PI / 2;
-    floor.position.y = -0.33;
-    floor.receiveShadow = true;
-    g.add(rim, top, floor);
-    this.scene.add(g);
-    this.mat = g;
+    this.target.copy(saveT);
+    this.distance = saveD;
+    this.placeCamera();
+    this.goalTarget.copy(center);
+    this.goalDistance = THREE.MathUtils.clamp(hi, 11, MAX_DIST);
+    if (instant) this.setView(this.goalTarget.clone(), this.goalDistance);
   }
 
   render() {
@@ -217,79 +249,31 @@ export class Stage {
     const b = this.project(v.clone().add(new THREE.Vector3(1, 0, 0)));
     return Math.hypot(a.x - b.x, a.y - b.y);
   }
+
+  /** Table area currently in view (roughly), for placing new parts. */
+  viewCenter(): THREE.Vector3 {
+    return this.goalTarget.clone();
+  }
 }
 
-/** Cream mat with a fine grid and PCB-style traces around the edge. */
-function matTexture(W: number, D: number): THREE.Texture {
-  const ppu = 96;
-  const cw = Math.min(4096, Math.round(W * ppu));
-  const ch = Math.min(4096, Math.round(D * ppu));
-  const sx = cw / W;
-  const sy = ch / D;
+/** Transparent graph-paper tile: fine lines every 0.5 units, stronger every 2. */
+function gridTexture(): THREE.Texture {
+  const px = 512; // one tile = 4 units
   const canvas = document.createElement('canvas');
-  canvas.width = cw;
-  canvas.height = ch;
+  canvas.width = canvas.height = px;
   const ctx = canvas.getContext('2d')!;
-  ctx.fillStyle = '#faf4e9';
-  ctx.fillRect(0, 0, cw, ch);
-
-  // Soft spotlight in the middle, like the reference artboard.
-  const g = ctx.createRadialGradient(cw * 0.45, ch * 0.45, 0, cw * 0.45, ch * 0.45, Math.max(cw, ch) * 0.7);
-  g.addColorStop(0, 'rgba(255,250,240,0.9)');
-  g.addColorStop(1, 'rgba(239,227,209,0.6)');
-  ctx.fillStyle = g;
-  ctx.fillRect(0, 0, cw, ch);
-
-  const step = 0.5;
-  ctx.lineWidth = 1.5;
-  for (let x = 0, i = 0; x <= W + 1e-6; x += step, i++) {
-    ctx.strokeStyle = i % 4 === 0 ? 'rgba(206,192,173,0.55)' : 'rgba(206,192,173,0.28)';
-    ctx.beginPath();
-    ctx.moveTo(x * sx, 0);
-    ctx.lineTo(x * sx, ch);
-    ctx.stroke();
+  const step = px / 8;
+  for (let i = 0; i < 8; i++) {
+    const major = i % 4 === 0;
+    ctx.fillStyle = major ? 'rgba(196,178,152,0.38)' : 'rgba(206,192,173,0.2)';
+    const t = major ? 2 : 1.5;
+    ctx.fillRect(i * step, 0, t, px);
+    ctx.fillRect(0, i * step, px, t);
   }
-  for (let y = 0, i = 0; y <= D + 1e-6; y += step, i++) {
-    ctx.strokeStyle = i % 4 === 0 ? 'rgba(206,192,173,0.55)' : 'rgba(206,192,173,0.28)';
-    ctx.beginPath();
-    ctx.moveTo(0, y * sy);
-    ctx.lineTo(cw, y * sy);
-    ctx.stroke();
-  }
-
-  // Decorative traces with 45° bends hugging the edges.
-  ctx.strokeStyle = C.trace;
-  ctx.fillStyle = '#faf4e9';
-  ctx.lineWidth = 5;
-  ctx.lineCap = 'round';
-  ctx.lineJoin = 'round';
-  const u = sx;
-  const trace = (pts: [number, number][]) => {
-    ctx.beginPath();
-    pts.forEach(([x, y], i) => (i ? ctx.lineTo(x * u, y * u) : ctx.moveTo(x * u, y * u)));
-    ctx.stroke();
-    for (const [x, y] of [pts[0], pts[pts.length - 1]]) {
-      ctx.beginPath();
-      ctx.arc(x * u, y * u, 9, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.stroke();
-    }
-  };
-  const e = 0.28;
-  trace([[e, 1.2], [e, e + 0.5], [e + 0.5, e], [2.2, e]]);
-  trace([[e + 0.2, 1.8], [e + 0.2, 1.1], [e + 0.7, 0.6], [1.6, 0.6]]);
-  trace([[W - e, D - 1.2], [W - e, D - e - 0.5], [W - e - 0.5, D - e], [W - 2.2, D - e]]);
-  trace([[W - e - 0.2, D - 1.8], [W - e - 0.2, D - 1.1], [W - e - 0.7, D - 0.6], [W - 1.6, D - 0.6]]);
-  trace([[W - 2.6, e], [W - e - 0.5, e], [W - e, e + 0.5], [W - e, 1.5]]);
-  trace([[2.6, D - e], [e + 0.5, D - e], [e, D - e - 0.5], [e, D - 1.5]]);
-
-  // Little pixel blocks, like the reference's trace ornaments.
-  ctx.fillStyle = '#d9c5ac';
-  for (let i = 0; i < 4; i++) ctx.fillRect((W / 2 - 0.5 + i * 0.28) * u, (e - 0.07) * u, 0.14 * u, 0.14 * u);
-  for (let i = 0; i < 4; i++) ctx.fillRect((W / 2 - 0.5 + i * 0.28) * u, (D - e - 0.07) * u, 0.14 * u, 0.14 * u);
-
   const tex = new THREE.CanvasTexture(canvas);
   tex.colorSpace = THREE.SRGBColorSpace;
+  tex.wrapS = tex.wrapT = THREE.RepeatWrapping;
+  tex.repeat.set(100, 100);
   tex.anisotropy = 8;
   return tex;
 }
