@@ -1,0 +1,16 @@
+{
+  "name": "Электро-стол",
+  "short_name": "Электро-стол",
+  "description": "Соединяй батарейки, лампочки и вентиляторы проводами.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "fullscreen",
+  "orientation": "any",
+  "background_color": "#f6eddd",
+  "theme_color": "#f6eddd",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "apple-touch-icon.png", "sizes": "180x180", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

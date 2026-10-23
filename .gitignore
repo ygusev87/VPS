@@ -1,0 +1,8 @@
+node_modules
+dist
+*.log
+.DS_Store
+assets-src/models/*.glb
+dist-preview
+voice-samples
+assets-src/voice/

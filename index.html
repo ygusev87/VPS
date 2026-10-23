@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+    <title>Электро-стол</title>
+    <meta name="description" content="Детская игра: соединяй батарейки, лампочки, вентиляторы и выключатели проводами и смотри, что получится." />
+    <meta name="theme-color" content="#f6eddd" />
+    <meta name="color-scheme" content="light" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Электро-стол" />
+    <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+    <link rel="apple-touch-icon" href="./apple-touch-icon.png" />
+    <link rel="manifest" href="./manifest.webmanifest" />
+  </head>
+  <body>
+    <div class="loader" id="loader" role="status">
+      <div class="loader-inner">
+        <svg class="logo" viewBox="0 0 64 64" aria-hidden="true">
+          <path class="logo-bolt" d="M36 5 15 36h14l-4 23 23-33H34z" />
+        </svg>
+        <p class="loader-title">Электро-стол</p>
+        <div class="loader-track"><span class="loader-fill"></span><span class="loader-shine"></span></div>
+      </div>
+    </div>
+    <svg class="traces" id="traces" aria-hidden="true"></svg>
+    <canvas id="stage" aria-label="Стол с деталями"></canvas>
+    <div id="hud"></div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
