@@ -9,11 +9,12 @@ const cache = new Map<string, THREE.Object3D>();
 
 export async function loadModels(names: string[]): Promise<void> {
   const loader = new GLTFLoader();
-  loader.setMeshoptDecoder(MeshoptDecoder);
+  // The decoder compiles WebAssembly; preview hosts may forbid that and don't need it.
+  if (!import.meta.env.VITE_MODELS_AS_JS) loader.setMeshoptDecoder(MeshoptDecoder);
   await Promise.all(
     names.map(async (name) => {
       try {
-        const gltf = await loader.loadAsync(`${import.meta.env.BASE_URL}models/${name}.glb`);
+        const gltf = import.meta.env.VITE_MODELS_AS_JS ? await loadFromModule(loader, name) : await loader.loadAsync(`${import.meta.env.BASE_URL}models/${name}.glb`);
         gltf.scene.traverse((o) => {
           const m = o as THREE.Mesh;
           if (!m.isMesh) return;
@@ -29,6 +30,28 @@ export async function loadModels(names: string[]): Promise<void> {
       }
     }),
   );
+}
+
+/**
+ * For hosts that serve only scripts, styles, images and the like (the claude.ai
+ * preview): each model ships as `models/<name>.js` exporting the .glb bytes in
+ * base64, without meshopt, and textures decode through <img> rather than fetch.
+ */
+async function loadFromModule(loader: GLTFLoader, name: string): Promise<{ scene: THREE.Group }> {
+  const url = new URL(`models/${name}.js`, document.baseURI).href;
+  const mod = (await import(/* @vite-ignore */ url)) as { default: string };
+  const bin = Uint8Array.from(atob(mod.default), (c) => c.charCodeAt(0));
+  return new Promise((resolve, reject) => {
+    // GLTFLoader picks ImageBitmapLoader (fetch) when createImageBitmap exists and
+    // TextureLoader (<img>) otherwise; it decides synchronously inside parse().
+    const original = window.createImageBitmap;
+    (window as { createImageBitmap?: unknown }).createImageBitmap = undefined;
+    try {
+      loader.parse(bin.buffer, '', resolve, reject);
+    } finally {
+      window.createImageBitmap = original;
+    }
+  });
 }
 
 export interface Fit {

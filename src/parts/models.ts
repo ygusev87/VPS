@@ -111,12 +111,13 @@ export class Battery extends Part {
 
     // Leads from the holder to the posts.
     const lead = (color: string, from: THREE.Vector3, to: THREE.Vector3) => {
-      const mid = from.clone().lerp(to, 0.5).setY(PLATE_TOP + 0.12);
+      const mid = from.clone().lerp(to, 0.5).setY(PLATE_TOP + 0.05).add(new THREE.Vector3(Math.sign(from.x) * 0.12, 0, 0));
       const curve = new THREE.CatmullRomCurve3([from, mid, to]);
       return mesh(new THREE.TubeGeometry(curve, 24, 0.035, 8), mat(color, 0.4));
     };
-    const leadR = lead(C.red, new THREE.Vector3(1.2, PLATE_TOP + 0.25, 0.0), new THREE.Vector3(1.0, PLATE_TOP + 0.12, 0.7));
-    const leadB = lead('#20242e', new THREE.Vector3(-1.2, PLATE_TOP + 0.25, -0.2), new THREE.Vector3(-1.0, PLATE_TOP + 0.12, 0.7));
+    // Leads leave the holder's end walls low and run along the board to the posts.
+    const leadR = lead(C.red, new THREE.Vector3(1.17, PLATE_TOP + 0.1, 0.05), new THREE.Vector3(1.0, PLATE_TOP + 0.06, 0.7));
+    const leadB = lead('#20242e', new THREE.Vector3(-1.17, PLATE_TOP + 0.1, -0.1), new THREE.Vector3(-1.0, PLATE_TOP + 0.06, 0.7));
 
     this.lamp = mesh(new THREE.SphereGeometry(0.06, 16, 10), this.lampMat);
     this.lamp.position.set(0, PLATE_TOP + 0.03, 0.72);
