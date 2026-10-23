@@ -254,7 +254,7 @@ export class World {
   clamp(part: Part) {
     const p = part.root.position;
     const len = Math.hypot(p.x, p.z);
-    if (len > 24) p.multiplyScalar(24 / len);
+    if (len > 34) p.multiplyScalar(34 / len);
     p.y = 0;
   }
 

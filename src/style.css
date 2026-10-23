@@ -983,6 +983,81 @@ svg.icon .fill {
   }
 }
 
+/* ───────── Landscape: drawers dock at the bottom ─────────
+   The table gets the whole width; the drawers sit in a bar bottom-left, next
+   to the view bar, and their variants open upwards. Keep in sync with
+   Hud.docked. */
+@media (orientation: landscape) {
+  :root {
+    --side-w: 0px;
+  }
+  .sidebar {
+    top: auto;
+    bottom: calc(var(--safe-b) + 14px);
+    left: calc(var(--safe-l) + 16px);
+    width: auto;
+    padding: 7px 10px 5px;
+    border: 1.5px solid var(--line);
+    border-radius: 14px;
+    background: var(--card-soft);
+    box-shadow: var(--shadow-deep);
+    flex-direction: row;
+  }
+  .side-parts {
+    flex-direction: row;
+    margin-top: 0;
+    gap: 8px;
+  }
+  .sidebar .part-btn {
+    width: 52px;
+    height: 52px;
+  }
+  .sidebar .part-btn img {
+    width: 46px;
+    height: 46px;
+  }
+  .sidebar .bin {
+    border-radius: 14px;
+  }
+  .sidebar.is-trash {
+    background: #f2d5c9f2;
+  }
+  .flyout {
+    transform: translateY(10px) scale(0.96);
+    transform-origin: center bottom;
+  }
+  .flyout.is-open {
+    transform: none;
+  }
+  .part-btn.is-pulse {
+    animation-name: btn-pulse-up;
+  }
+  @keyframes btn-pulse-up {
+    50% {
+      transform: translateY(-4px);
+      box-shadow: 0 0 0 4px #1aa3a140;
+    }
+  }
+}
+/* Phones on their side: a slimmer dock without captions. */
+@media (orientation: landscape) and (max-height: 560px) {
+  .sidebar {
+    bottom: calc(var(--safe-b) + 10px);
+    padding: 5px 7px;
+  }
+  .side-parts {
+    gap: 6px;
+  }
+  .sidebar .part-btn {
+    width: 44px;
+    height: 44px;
+  }
+  .sidebar .part-btn img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 /* ───────── Narrow screens ───────── */
 @media (max-width: 600px) {
   :root {

@@ -258,7 +258,7 @@ export class Hud {
     this.flyout.classList.toggle('is-open', !!open);
     if (!open) return;
     const items = this.offered(open);
-    this.flyout.innerHTML = `<p class="flyout-title">${open.name}</p><div class="flyout-items">${items
+    this.flyout.innerHTML = `<p class="flyout-title">${open.name}</p><div class="flyout-items" style="grid-template-columns: repeat(${Math.min(4, items.length)}, auto)">${items
       .map(
         (it, i) => `<button class="part-btn variant" data-i="${i}" aria-label="${it.name}" title="${it.name}">
           <img alt="" src="${thumb(itemKey(it), it.color !== undefined)}"/><span class="count"></span></button>`,
@@ -266,7 +266,15 @@ export class Hud {
       .join('')}</div>`;
     const anchor = this.sidebar.querySelector<HTMLElement>(`.group[data-group="${open.id}"] .part-btn`)!.getBoundingClientRect();
     const h = this.flyout.getBoundingClientRect().height;
-    this.flyout.style.top = `${Math.max(8, Math.min(window.innerHeight - h - 8, anchor.top + anchor.height / 2 - h / 2))}px`;
+    if (this.docked) {
+      // Bottom dock: the variants open upwards, centred over their drawer.
+      const w = this.flyout.getBoundingClientRect().width;
+      this.flyout.style.left = `${Math.max(8, Math.min(window.innerWidth - w - 8, anchor.left + anchor.width / 2 - w / 2))}px`;
+      this.flyout.style.top = `${Math.max(8, this.sidebar.getBoundingClientRect().top - h - 10)}px`;
+    } else {
+      this.flyout.style.left = '';
+      this.flyout.style.top = `${Math.max(8, Math.min(window.innerHeight - h - 8, anchor.top + anchor.height / 2 - h / 2))}px`;
+    }
     this.flyout.querySelectorAll<HTMLElement>('.variant').forEach((btn) => {
       const item = items[Number(btn.dataset.i)];
       btn.addEventListener('pointerdown', (e) => {
@@ -347,16 +355,27 @@ export class Hud {
     }
   }
 
+  /**
+   * In landscape (how the tablet is held) the parts drawers sit in a bar along
+   * the bottom, so the table has the full width; portrait keeps the side panel.
+   * (Same rule as the media query in style.css.)
+   */
+  get docked() {
+    return window.matchMedia('(orientation: landscape)').matches;
+  }
+
   private layout() {
     const side = this.sidebar.getBoundingClientRect();
     const brand = this.root.querySelector('.brand')!.getBoundingClientRect();
     const bar = this.root.querySelector('.viewbar')!.getBoundingClientRect();
+    const low = this.docked ? Math.min(bar.top, side.top) : bar.top;
     this.stage.setInsets({
-      left: side.right,
+      left: this.docked ? 12 : side.right,
       top: brand.bottom + 8,
-      bottom: Math.max(16, window.innerHeight - bar.top + 8),
+      bottom: Math.max(16, window.innerHeight - low + 8),
       right: 12,
     });
+    if (this.openGroup) this.toggleGroup(null);
   }
 
   relayout() {
@@ -365,7 +384,7 @@ export class Hud {
 
   overTray(x: number, y: number) {
     const r = this.sidebar.getBoundingClientRect();
-    if (x <= r.right + 10 && y >= r.top && y <= r.bottom) return true;
+    if (x >= r.left - 10 && x <= r.right + 10 && y >= r.top - 10 && y <= r.bottom + 10) return true;
     if (!this.openGroup) return false;
     const f = this.flyout.getBoundingClientRect();
     return x >= f.left && x <= f.right && y >= f.top && y <= f.bottom;

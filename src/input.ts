@@ -74,7 +74,11 @@ export class Input {
     return this.mode.kind !== 'idle' && this.mode.kind !== 'pan' && this.mode.kind !== 'pinch';
   }
 
-  /** Nearest terminal to a screen point, within a finger-sized radius. */
+  /**
+   * Nearest terminal to a screen point, within a finger-sized radius. At small
+   * scales that radius reaches the middle of a little part, so a touch nearer
+   * the part's centre than the terminal itself means "move the part" instead.
+   */
   terminalAt(x: number, y: number, exclude?: Terminal): Terminal | null {
     let best: Terminal | null = null;
     let bestD = Infinity;
@@ -84,11 +88,15 @@ export class Input {
       t.attachPoint(v);
       const p = this.stage.project(v);
       const d = Math.hypot(p.x - x, p.y - y);
-      const radius = Math.max(24, this.stage.pixelsPerUnit(v) * 0.42);
-      if (d < radius && d < bestD) {
-        best = t;
-        bestD = d;
+      const ppu = this.stage.pixelsPerUnit(v);
+      const radius = Math.max(24, ppu * 0.42);
+      if (d >= radius || d >= bestD) continue;
+      if (!exclude && d > Math.max(12, ppu * 0.22)) {
+        const c = this.stage.project(t.part.root.position);
+        if (Math.hypot(x - c.x, y - c.y) < Math.hypot(p.x - c.x, p.y - c.y) * 0.75) continue;
       }
+      best = t;
+      bestD = d;
     }
     return best;
   }

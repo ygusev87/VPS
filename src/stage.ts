@@ -14,11 +14,11 @@ export interface Insets {
 
 const VIEW_DIR = new THREE.Vector3(0, 1, 0.78).normalize();
 const MIN_DIST = 7;
-const MAX_DIST = 46;
+const MAX_DIST = 64;
 /** How far from the origin the view may wander. */
-const LIMIT = 26;
+const LIMIT = 36;
 /** Largest on-screen scale `frame()` will choose, in CSS pixels per table unit. */
-const MAX_PPU = 64;
+const MAX_PPU = 46;
 
 export class Stage {
   readonly renderer: THREE.WebGLRenderer;
