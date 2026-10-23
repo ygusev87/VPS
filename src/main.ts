@@ -6,7 +6,8 @@ import { Hud } from './hud';
 import { Input } from './input';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
 import type { PartKind, PartSound, Terminal } from './parts/base';
-import { MusicBox } from './parts/extra';
+import { Drum, MusicBox } from './parts/extra';
+import { FireTruck, Helicopter, RaceTrack } from './parts/fun';
 import { loadModels } from './parts/assets';
 import { ALL_ITEMS, createPart, MODEL_NAMES } from './parts/catalog';
 import { Stage } from './stage';
@@ -238,6 +239,8 @@ world.on((e) => {
       break;
     case 'wireAdded':
       sfx.snap();
+      // The clips holding a laid cable click on one by one.
+      for (let i = 0; i < e.wire.clipCount; i++) setTimeout(() => sfx.clipOn(), 120 + i * 80);
       if (e.wire.b) hud.sparks(stage.project(e.wire.b.attachPoint(tmp)));
       break;
     case 'wireRemoved':
@@ -316,6 +319,37 @@ function playPartSound(snd: PartSound) {
     case 'song':
       sfx.pop();
       break;
+    case 'honk':
+      sfx.honk();
+      break;
+    case 'lap':
+      sfx.lap();
+      break;
+    case 'tick':
+      sfx.tick();
+      break;
+  }
+}
+
+// The drum plays along with the music box: it bounces on every beat.
+sfx.onBandBeat = () => {
+  for (const p of world.parts) if (p instanceof Drum && isActive(p)) p.thump();
+};
+
+let heliTipSaid = false;
+let heliFlySaid = false;
+function watchHelicopters() {
+  for (const p of world.parts) {
+    if (!(p instanceof Helicopter)) continue;
+    if (p.flying && !heliFlySaid) {
+      heliFlySaid = true;
+      voice.say('heliFly', 0);
+    }
+    // Spinning but stuck on the pad for a while: suggest more power, once.
+    if (p.grounded > 3 && !heliTipSaid && !p.flying) {
+      heliTipSaid = true;
+      voice.say('heliMore', 0);
+    }
   }
 }
 
@@ -346,10 +380,17 @@ function frame(now: number) {
   let buzz = false;
   let music = false;
   let song = 0;
+  let engine = 0;
+  let siren = false;
+  let band = false;
   for (const p of world.parts) {
     for (const snd of p.sounds.splice(0)) playPartSound(snd);
     if (p.kind === 'fan') fan += Math.abs(p.state.level);
-    if (p.kind === 'windmill' || p.kind === 'carousel') fan += Math.abs(p.state.level) * 0.4;
+    if (p.kind === 'windmill' || p.kind === 'carousel' || p.kind === 'disco') fan += Math.abs(p.state.level) * 0.4;
+    if (p instanceof Helicopter) fan += p.rotorSpeed * 0.8;
+    if (p instanceof RaceTrack) engine = Math.max(engine, p.carSpeed);
+    if (p instanceof FireTruck && p.powered && p.siren > 0) siren = true;
+    if (p instanceof Drum && isActive(p)) band = true;
     if (p.kind === 'buzzer' && isActive(p)) buzz = true;
     if (p instanceof MusicBox && isActive(p) && !music) {
       music = true;
@@ -357,7 +398,10 @@ function frame(now: number) {
     }
   }
   sfx.setFan(fan);
-  sfx.tickMusic(music, song);
+  sfx.tickMusic(music, song, band);
+  sfx.setEngine(engine);
+  sfx.setSiren(siren);
+  watchHelicopters();
   buzzerRefresh -= dt;
   if (buzz !== buzzerOn || (buzz && buzzerRefresh <= 0)) {
     buzzerOn = buzz;

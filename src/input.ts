@@ -7,7 +7,7 @@
 import * as THREE from 'three';
 import type { LightColor, Part, PartKind, Terminal } from './parts/base';
 import type { Stage } from './stage';
-import { Wire } from './wires';
+import { tidyRoute, Wire } from './wires';
 import type { World } from './world';
 
 type Mode =
@@ -241,6 +241,11 @@ export class Input {
         else {
           const p = this.stage.screenToPlane(x, y, 0.5);
           if (p) m.wire.freeEnd = p;
+          // Lay the cable where the finger goes.
+          const g = this.stage.screenToPlane(x, y);
+          const route = m.wire.route;
+          const last = route.at(-1) ?? m.from.attachPoint().setY(0);
+          if (g && g.distanceTo(last) > 0.4) route.push(g.setY(0));
         }
         break;
       }
@@ -327,6 +332,7 @@ export class Input {
       case 'wire': {
         for (const t of this.world.terminals()) t.setHighlight('none');
         const target = cancelled ? null : m.target;
+        if (target) m.wire.route = tidyRoute(m.from.attachPoint(), target.attachPoint(), m.wire.route);
         if (target && this.world.attachWire(m.wire, target)) {
           target.snap();
           m.from.snap();

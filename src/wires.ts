@@ -9,6 +9,11 @@ const UP = new THREE.Vector3(0, 1, 0);
 const dotGeo = new THREE.SphereGeometry(0.052, 10, 8);
 const clipGeo = new THREE.CylinderGeometry(0.075, 0.06, 0.16, 16);
 const tipGeo = new THREE.CapsuleGeometry(0.085, 0.16, 6, 16);
+// A cable clip: a little arch over the wire with two feet pressed into the table.
+const clipArchGeo = new THREE.TorusGeometry(0.1, 0.034, 8, 16, Math.PI);
+const clipFootGeo = new THREE.CylinderGeometry(0.045, 0.05, 0.035, 12);
+const clipMat = new THREE.MeshStandardMaterial({ color: '#24304a', roughness: 0.35 });
+const clipFootMat = new THREE.MeshStandardMaterial({ color: '#c9a45c', roughness: 0.3, metalness: 0.6 });
 let colorCursor = 0;
 const WHITE = new THREE.Color('#ffffff');
 
@@ -38,6 +43,12 @@ export class Wire {
   private baseColor = new THREE.Color();
   /** Called once the removal animation is over. */
   onGone?: () => void;
+  /**
+   * Where the child laid the cable with their finger (table points, world
+   * units). Empty: the wire finds its own way round the parts.
+   */
+  route: THREE.Vector3[] = [];
+  private clips: { g: THREE.Group; t: number }[] = [];
 
   private material: THREE.MeshStandardMaterial;
   private clipA: THREE.Mesh;
@@ -142,9 +153,9 @@ export class Wire {
       const n = v.length();
       return p.clone().addScaledVector(n > 1e-4 ? v.divideScalar(n) : dir, Math.min(along, n * 0.4)).setY(y);
     };
-    const corners = d < 1.8 ? [] : route(p0, p3, Wire.obstacles);
+    const corners = this.route.length ? laid(p0, p3, this.route, Wire.obstacles) : d < 1.8 ? [] : route(p0, p3, Wire.obstacles);
 
-    if (d < 1.8) {
+    if (d < 1.8 && !corners.length) {
       pts.push(p0.clone().addScaledVector(UP, 0.25).addScaledVector(dir, d * 0.15));
       pts.push(p0.clone().lerp(p3, 0.5).setY(Math.max(p0.y, p3.y) + 0.3 + d * 0.1));
       pts.push(p3.clone().addScaledVector(UP, 0.25).addScaledVector(dir, -d * 0.15));
@@ -183,6 +194,53 @@ export class Wire {
     this.tip.visible = free;
     this.tip.position.copy(p3).setY(p3.y + 0.2);
     this.clipB.position.y = free ? p3.y + 0.02 : p3.y + 0.03;
+    this.placeClips();
+  }
+
+  /** Fix the laid cable to the table: one clip per laid point, across the wire. */
+  private placeClips() {
+    const want = this.b ? this.route.length : 0;
+    while (this.clips.length > want) this.clips.pop()!.g.removeFromParent();
+    while (this.clips.length < want) {
+      const g = new THREE.Group();
+      const arch = new THREE.Mesh(clipArchGeo, clipMat);
+      arch.castShadow = true;
+      const f1 = new THREE.Mesh(clipFootGeo, clipFootMat);
+      const f2 = new THREE.Mesh(clipFootGeo, clipFootMat);
+      f1.position.x = -0.1;
+      f2.position.x = 0.1;
+      g.add(arch, f1, f2);
+      g.scale.setScalar(0.001);
+      // Clips snap on one after another, from the start of the cable.
+      this.clips.push({ g, t: -this.clips.length * 0.08 });
+      this.group.add(g);
+    }
+    if (!this.curve) return;
+    const pt = new THREE.Vector3();
+    const tan = new THREE.Vector3();
+    this.clips.forEach((c, i) => {
+      const r = this.route[i];
+      // Nearest spot on the cable to the laid point.
+      let best = 0;
+      let bestD = Infinity;
+      for (let k = 0; k <= 60; k++) {
+        this.curve!.getPointAt(k / 60, pt);
+        const dd = (pt.x - r.x) ** 2 + (pt.z - r.z) ** 2;
+        if (dd < bestD) {
+          bestD = dd;
+          best = k / 60;
+        }
+      }
+      this.curve!.getPointAt(best, pt);
+      this.curve!.getTangentAt(best, tan);
+      c.g.position.set(pt.x, Math.max(0.0, pt.y - 0.04), pt.z);
+      c.g.rotation.set(0, Math.atan2(-tan.x, -tan.z) + Math.PI / 2, 0);
+    });
+  }
+
+  /** How many clips are on (for the clicking sound as they snap). */
+  get clipCount() {
+    return this.route.length;
   }
 
   update(dt: number) {
@@ -198,11 +256,20 @@ export class Wire {
         return;
       }
     }
-    const key = `${this.p0.x.toFixed(3)},${this.p0.y.toFixed(3)},${this.p0.z.toFixed(3)}|${this.p3.x.toFixed(3)},${this.p3.y.toFixed(3)},${this.p3.z.toFixed(3)}|${this.grow}|${this.fade}|${this.alert}|${Wire.obstacleKey}`;
+    const key = `${this.p0.x.toFixed(3)},${this.p0.y.toFixed(3)},${this.p0.z.toFixed(3)}|${this.p3.x.toFixed(3)},${this.p3.y.toFixed(3)},${this.p3.z.toFixed(3)}|${this.grow}|${this.fade}|${this.alert}|${Wire.obstacleKey}|${this.route.length}`;
     if (key !== this.lastKey) {
       this.lastKey = key;
       this.rebuild();
     }
+
+    for (const c of this.clips) {
+      if (c.t >= 1) continue;
+      c.t = Math.min(1, c.t + dt * 4);
+      const k = Math.max(0, c.t);
+      // Overshoot a little, like a clip clicking into place.
+      c.g.scale.setScalar(Math.max(0.001, k < 0.7 ? (k / 0.7) * 1.25 : 1.25 - ((k - 0.7) / 0.3) * 0.25));
+    }
+    if (this.dying) for (const c of this.clips) c.g.scale.setScalar(Math.max(0.001, this.fade));
 
     const I = this.dying ? 0 : this.current;
     const mag = Math.abs(I);
@@ -349,4 +416,61 @@ function detour(p: P2, q: P2, r: Footprint): P2[] {
   const one = walk(1);
   const two = walk(-1);
   return len(one) <= len(two) ? one : two;
+}
+
+/**
+ * The child's laid route between the posts, as table points: the laid points
+ * themselves, with detours added wherever a stretch would cut through a part.
+ */
+function laid(a: THREE.Vector3, b: THREE.Vector3, pts: THREE.Vector3[], rects: Footprint[]): P2[] {
+  const way: P2[] = [{ x: a.x, z: a.z }, ...pts.map((p) => ({ x: p.x, z: p.z })), { x: b.x, z: b.z }];
+  const out: P2[] = [];
+  for (let i = 0; i < way.length - 1; i++) {
+    const from = new THREE.Vector3(way[i].x, 0, way[i].z);
+    const to = new THREE.Vector3(way[i + 1].x, 0, way[i + 1].z);
+    // Bodies a post sits next to are not "in the way" of the short hop off it.
+    out.push(...route(from, to, rects));
+    if (i + 1 < way.length - 1) out.push(way[i + 1]);
+  }
+  return out;
+}
+
+/**
+ * Tidy a finger's trail into a cable route: drop jitter (Ramer–Douglas–Peucker),
+ * keep clear of the posts, and add clips along long straight runs.
+ */
+export function tidyRoute(a: THREE.Vector3, b: THREE.Vector3, trail: THREE.Vector3[]): THREE.Vector3[] {
+  const all = [a.clone().setY(0), ...trail, b.clone().setY(0)];
+  const keep = new Array(all.length).fill(false);
+  keep[0] = keep[all.length - 1] = true;
+  const rdp = (i: number, j: number) => {
+    let far = -1;
+    let farD = 0.28;
+    const ax = all[i].x, az = all[i].z, bx = all[j].x, bz = all[j].z;
+    const len = Math.hypot(bx - ax, bz - az) || 1;
+    for (let k = i + 1; k < j; k++) {
+      const d = Math.abs((bx - ax) * (az - all[k].z) - (ax - all[k].x) * (bz - az)) / len;
+      if (d > farD) {
+        far = k;
+        farD = d;
+      }
+    }
+    if (far < 0) return;
+    keep[far] = true;
+    rdp(i, far);
+    rdp(far, j);
+  };
+  rdp(0, all.length - 1);
+  const bends = all.filter((_, i) => keep[i]);
+  // A straight pull means "just connect": let the wire find its own way.
+  if (bends.length <= 2) return [];
+  const out: THREE.Vector3[] = [];
+  for (let i = 0; i < bends.length - 1; i++) {
+    const p = bends[i];
+    const q = bends[i + 1];
+    if (i > 0) out.push(p.clone());
+    const n = Math.floor(p.distanceTo(q) / 2.2);
+    for (let k = 1; k <= n; k++) out.push(p.clone().lerp(q, k / (n + 1)));
+  }
+  return out.filter((p) => p.distanceTo(a.clone().setY(0)) > 0.6 && p.distanceTo(b.clone().setY(0)) > 0.6);
 }

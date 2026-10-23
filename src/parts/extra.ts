@@ -693,6 +693,11 @@ export class Drum extends Part {
     return false;
   }
 
+  /** Bounce without a sound of its own (the band beat is played by the music). */
+  thump() {
+    this.hit = Math.max(this.hit, 0.7);
+  }
+
   protected animate(dt: number) {
     this.hit = Math.max(0, this.hit - dt * 4);
     this.drum.scale.set(1 + this.hit * 0.05, 1 - this.hit * 0.08, 1 + this.hit * 0.05);

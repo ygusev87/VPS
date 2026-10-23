@@ -41,7 +41,7 @@ export function isProblem(h: Hint | null): boolean {
   return h?.type === 'tapWire';
 }
 
-const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum'];
+const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco'];
 const POLAR: PartKind[] = ['led', 'buzzer', 'musicbox'];
 const isPolar = (p: Part) => POLAR.includes(p.kind);
 const isBattery = (p: Part) => p.kind === 'battery' || p.kind === 'bigBattery';

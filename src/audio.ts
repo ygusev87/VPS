@@ -176,7 +176,11 @@ export class Sfx {
   private musicAt = 0;
   private musicStep = 0;
   private musicSong = -1;
-  tickMusic(on: boolean, song = 0) {
+  private beat = 0;
+  /** Called (on time) for each beat the band drum plays, to animate it. */
+  onBandBeat?: () => void;
+  /** Play the box's song; with `band`, a connected drum keeps the beat. */
+  tickMusic(on: boolean, song = 0, band = false) {
     const ctx = this.ctx;
     if (!ctx || !this.master) return;
     if (!on) {
@@ -187,6 +191,7 @@ export class Sfx {
     if (!this.musicAt || song !== this.musicSong) {
       this.musicSong = song;
       this.musicStep = 0;
+      this.beat = 0;
       this.musicAt = ctx.currentTime + 0.05;
     }
     if (this.musicAt < ctx.currentTime) this.musicAt = ctx.currentTime + 0.05;
@@ -194,6 +199,16 @@ export class Sfx {
     while (this.musicAt < ctx.currentTime + 0.25) {
       const [note, beats] = tune[this.musicStep % tune.length];
       if (note) this.bell(note, this.musicAt - ctx.currentTime);
+      if (band) {
+        // Every whole beat inside this note: boom on the strong ones, tap on the others.
+        for (let k = Math.ceil(this.beat - 1e-6); k < this.beat + beats - 1e-6; k++) {
+          const at = this.musicAt + (k - this.beat) * 0.3 - ctx.currentTime;
+          if (k % 2 === 0) this.kick(at);
+          else this.snareSoft(at);
+          setTimeout(() => this.onBandBeat?.(), Math.max(0, at * 1000));
+        }
+      }
+      this.beat += beats;
       this.musicAt += beats * 0.3;
       this.musicStep++;
     }
@@ -223,10 +238,93 @@ export class Sfx {
     this.noise(0.08, 0.25, 900);
   }
 
+  private kick(at: number) {
+    this.tone(150, 0.16, 'sine', 0.3, at, 70);
+    this.noise(0.05, 0.12, 700, at);
+  }
+
+  private snareSoft(at: number) {
+    this.noise(0.12, 0.18, 2800, at);
+    this.tone(300, 0.05, 'triangle', 0.06, at, 200);
+  }
+
+  /** Toy car horn: "beep-beep". */
+  honk() {
+    for (const at of [0, 0.18]) {
+      this.tone(520, 0.12, 'square', 0.07, at);
+      this.tone(660, 0.12, 'square', 0.05, at);
+    }
+  }
+
+  /** A lap done: a bright ding. */
+  lap() {
+    this.tone(1318.5, 0.25, 'sine', 0.1);
+    this.tone(1760, 0.35, 'sine', 0.08, 0.08);
+  }
+
+  /** Traffic light relay click. */
+  tick() {
+    this.noise(0.015, 0.2, 1800);
+  }
+
+  private engine: { osc: OscillatorNode; gain: GainNode; filter: BiquadFilterNode } | null = null;
+  /** Race car engine, 0..~1.6. */
+  setEngine(speed: number) {
+    const ctx = this.ctx;
+    if (!ctx || !this.master) return;
+    if (!this.engine) {
+      const osc = ctx.createOscillator();
+      osc.type = 'sawtooth';
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 500;
+      const gain = ctx.createGain();
+      gain.gain.value = 0;
+      osc.connect(filter).connect(gain).connect(this.master);
+      osc.start();
+      this.engine = { osc, gain, filter };
+    }
+    const v = Math.min(1.6, speed);
+    this.engine.osc.frequency.setTargetAtTime(55 + v * 70, ctx.currentTime, 0.1);
+    this.engine.filter.frequency.setTargetAtTime(300 + v * 500, ctx.currentTime, 0.1);
+    this.engine.gain.gain.setTargetAtTime(v > 0.05 ? 0.035 + v * 0.02 : 0, ctx.currentTime, 0.15);
+  }
+
+  private sirenNode: { osc: OscillatorNode; lfo: OscillatorNode; gain: GainNode } | null = null;
+  /** Fire truck siren: a wailing two-tone while on. */
+  setSiren(on: boolean) {
+    const ctx = this.ctx;
+    if (!ctx || !this.master) return;
+    if (!this.sirenNode) {
+      const osc = ctx.createOscillator();
+      osc.type = 'triangle';
+      osc.frequency.value = 750;
+      const lfo = ctx.createOscillator();
+      lfo.type = 'square';
+      lfo.frequency.value = 1.4;
+      const depth = ctx.createGain();
+      depth.gain.value = 160;
+      lfo.connect(depth).connect(osc.frequency);
+      const gain = ctx.createGain();
+      gain.gain.value = 0;
+      osc.connect(gain).connect(this.master);
+      osc.start();
+      lfo.start();
+      this.sirenNode = { osc, lfo, gain };
+    }
+    this.sirenNode.gain.gain.setTargetAtTime(on ? 0.06 : 0, ctx.currentTime, 0.08);
+  }
+
   /** A dull tap: the instrument has no power. */
   noPower() {
     this.tone(140, 0.09, 'sine', 0.2, 0, 110);
     this.noise(0.03, 0.08, 500);
+  }
+
+  /** A cable clip snapping onto the table. */
+  clipOn() {
+    this.noise(0.02, 0.22, 3200);
+    this.tone(2400, 0.025, 'triangle', 0.05);
   }
 
   /** Soft clack of a push button. */

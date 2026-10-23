@@ -15,6 +15,11 @@ export type PartKind =
   | 'musicbox'
   | 'xylophone'
   | 'drum'
+  | 'track'
+  | 'helicopter'
+  | 'firetruck'
+  | 'trafficLight'
+  | 'disco'
   | 'switch'
   | 'button'
   | 'panel';
@@ -137,7 +142,14 @@ export class Terminal {
 let nextId = 1;
 
 /** Something a part wants heard: a note, a drum hit, a dull "no power" tap. */
-export type PartSound = { kind: 'xylophone'; note: number } | { kind: 'drum' } | { kind: 'noPower' } | { kind: 'song'; song: number };
+export type PartSound =
+  | { kind: 'xylophone'; note: number }
+  | { kind: 'drum' }
+  | { kind: 'noPower' }
+  | { kind: 'song'; song: number }
+  | { kind: 'honk' }
+  | { kind: 'lap' }
+  | { kind: 'tick' };
 
 /** Axis-aligned rectangle on the table (x/z), in world or part-local units. */
 export interface Footprint {

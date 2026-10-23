@@ -2,6 +2,7 @@
 // in a kit box. A variant is a part kind plus, for lights, a colour.
 import type { LightColor, Part, PartKind } from './base';
 import { ButtonPanel, Carousel, Drum, MusicBox, PushButton, Windmill, Xylophone } from './extra';
+import { DiscoBall, FireTruck, Helicopter, RaceTrack, TrafficLight } from './fun';
 import { Battery, Bulb, Buzzer, Fan, Led, Switch } from './models';
 import type { PhraseId } from '../voice';
 
@@ -40,6 +41,8 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'led', color: 'green', name: 'Зелёный светодиод', say: 'ledGreen' },
       { kind: 'led', color: 'blue', name: 'Синий светодиод', say: 'ledBlue' },
       { kind: 'led', color: 'yellow', name: 'Жёлтый светодиод', say: 'ledYellow' },
+      { kind: 'trafficLight', name: 'Светофор', say: 'trafficLight' },
+      { kind: 'disco', name: 'Диско-шар', say: 'disco' },
     ],
   },
   {
@@ -49,6 +52,15 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'fan', name: 'Вентилятор', say: 'fan' },
       { kind: 'carousel', name: 'Карусель', say: 'carousel' },
       { kind: 'windmill', name: 'Мельница', say: 'windmill' },
+    ],
+  },
+  {
+    id: 'vehicles',
+    name: 'Машины',
+    items: [
+      { kind: 'track', name: 'Гоночная трасса', say: 'track' },
+      { kind: 'firetruck', name: 'Пожарная машина', say: 'firetruck' },
+      { kind: 'helicopter', name: 'Вертолёт', say: 'helicopter' },
     ],
   },
   {
@@ -114,6 +126,16 @@ function make(kind: PartKind): Part {
       return new Xylophone();
     case 'drum':
       return new Drum();
+    case 'track':
+      return new RaceTrack();
+    case 'helicopter':
+      return new Helicopter();
+    case 'firetruck':
+      return new FireTruck();
+    case 'trafficLight':
+      return new TrafficLight();
+    case 'disco':
+      return new DiscoBall();
     case 'switch':
       return new Switch();
     case 'button':
@@ -124,4 +146,4 @@ function make(kind: PartKind): Part {
 }
 
 /** Model files the game loads at start. */
-export const MODEL_NAMES = ['battery', 'bigbattery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer', 'carousel', 'windmill', 'sails', 'musicbox', 'button', 'panel', 'drum'];
+export const MODEL_NAMES = ['battery', 'bigbattery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer', 'carousel', 'windmill', 'sails', 'musicbox', 'button', 'panel', 'drum', 'racecar', 'helicopter', 'firetruck'];

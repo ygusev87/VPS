@@ -34,11 +34,16 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'fan':
     case 'carousel':
     case 'windmill':
+    case 'track':
+    case 'helicopter':
+    case 'disco':
       return Math.abs(l) > 0.15;
     case 'buzzer':
     case 'musicbox':
     case 'xylophone':
     case 'drum':
+    case 'firetruck':
+    case 'trafficLight':
       return l > 0.2;
     default:
       return false;
