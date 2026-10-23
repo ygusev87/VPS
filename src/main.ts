@@ -424,6 +424,12 @@ requestAnimationFrame((t) => {
   setTimeout(() => document.getElementById('loader')!.classList.add('is-done'), 350);
 });
 
+// Offline: the published game saves itself on the device (see scripts/sw-template.js).
+// Not in dev, and not in the claude.ai preview build, which cannot host a worker.
+if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker' in navigator) {
+  navigator.serviceWorker.register('./sw.js').catch(() => {});
+}
+
 // Debug/test handle (used by the Playwright smoke tests).
 (window as unknown as { __game: unknown }).__game = {
   world,
