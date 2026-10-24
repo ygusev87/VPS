@@ -295,7 +295,7 @@ export class PcFan extends Part implements Blower {
     // Feet holding it upright.
     for (const sx of [-0.45, 0.45]) {
       const foot = roundedBox(0.3, 0.14, 0.7, 0.05, C.navy2, 0.5);
-      foot.position.set(sx, PLATE_TOP, 0);
+      foot.position.set(sx, PLATE_TOP + 0.07, 0);
       frame.add(foot);
     }
     // Hub with a sticker, seven translucent blades.

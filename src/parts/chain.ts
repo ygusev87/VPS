@@ -8,6 +8,7 @@ import { C } from '../theme';
 import { Part, type PartKind } from './base';
 import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox } from './kit';
 import { glowFor, sprite } from './models';
+import { traceBeam, type BeamBox, type BeamDisc } from './beam';
 
 // ──────────────────────────── Wind turbine ────────────────────────────
 
@@ -130,7 +131,7 @@ export class LightSensor extends Part {
     super();
     const plate = basePlate(1.7, 1.5, 'фотодатчик');
     const housing = roundedBox(0.7, 0.32, 0.55, 0.08, C.navy2, 0.45);
-    housing.position.set(0, PLATE_TOP, -0.2);
+    housing.position.set(0, PLATE_TOP + 0.16, -0.2);
     // A small solar-cell window on top, and a glass eye.
     const cell = new THREE.Mesh(new THREE.PlaneGeometry(0.5, 0.36), new THREE.MeshStandardMaterial({ map: cellTexture(), roughness: 0.25, metalness: 0.3 }));
     cell.rotation.x = -Math.PI / 2;
@@ -374,7 +375,7 @@ export class Target extends Part {
     super();
     const plate = basePlate(1.7, 1.5, 'мишень');
     const stand = roundedBox(0.7, 0.14, 0.3, 0.05, C.navy2, 0.45);
-    stand.position.set(0, PLATE_TOP, -0.15);
+    stand.position.set(0, PLATE_TOP + 0.07, -0.15);
     const hinge = mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.6, 12), mat(C.brass, 0.3, 0.8));
     hinge.rotation.z = Math.PI / 2;
     hinge.position.set(0, PLATE_TOP + 0.18, -0.15);
@@ -456,7 +457,7 @@ export class Domino extends Part {
     super();
     const plate = basePlate(2.9, 1.3, 'домино');
     const rail = roundedBox(2.4, 0.04, 0.42, 0.02, '#e7dcc8', 0.6);
-    rail.position.set(-0.05, PLATE_TOP, -0.15);
+    rail.position.set(-0.05, PLATE_TOP + 0.02, -0.15);
     this.body.add(plate, rail);
     const geo = new THREE.BoxGeometry(D_W, D_H, 0.34);
     geo.translate(-D_W / 2, D_H / 2, 0);
@@ -556,10 +557,259 @@ export class Domino extends Part {
   }
 }
 
+// ─────────────────────────────── Laser ───────────────────────────────
+
+const BEAM_Y = PLATE_TOP + 0.32;
+const BEAM_SEGS = 16;
+const BEAM_COLOR = new THREE.Color('#ff2a1a').multiplyScalar(5);
+
+/** A laser pointer on a turret: with power it shines a thin red beam. Tap to turn it. */
+export class Laser extends Part {
+  readonly kind: PartKind = 'laser';
+  readonly elementKind: ElementKind = 'bulb';
+  readonly radius = 0.95;
+  /** 0..3: right, towards the viewer, left, away. */
+  aim = 0;
+  /** What the beam ends on now (set by `interact`). */
+  hit: Part | null = null;
+  private turret = new THREE.Group();
+  private turn = 0;
+  private lens: THREE.MeshStandardMaterial;
+  private beam = new THREE.Group();
+  private segs: THREE.Mesh[] = [];
+  private spot: THREE.Sprite;
+  private shown = 0;
+
+  constructor() {
+    super();
+    const plate = basePlate(1.7, 1.5, 'лазер');
+    const base = mesh(new THREE.CylinderGeometry(0.3, 0.36, 0.12, 28), mat(C.navy2, 0.45));
+    base.position.y = 0.06;
+    const body = roundedBox(0.62, 0.22, 0.26, 0.06, '#d9dde4', 0.3);
+    body.geometry.translate(0.06, 0, 0);
+    body.position.y = BEAM_Y - PLATE_TOP;
+    const stripe = roundedBox(0.2, 0.235, 0.27, 0.03, C.red, 0.4);
+    stripe.position.set(-0.12, BEAM_Y - PLATE_TOP, 0);
+    this.lens = new THREE.MeshStandardMaterial({ color: '#5a1010', emissive: '#ff2a1a', emissiveIntensity: 0, roughness: 0.15 });
+    const lens = mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.04, 20), this.lens);
+    lens.rotation.z = Math.PI / 2;
+    lens.position.set(0.39, BEAM_Y - PLATE_TOP, 0);
+    // A yellow warning triangle on the side.
+    const warn = mesh(new THREE.ConeGeometry(0.06, 0.02, 3), mat('#f2c230', 0.5), false);
+    warn.rotation.x = Math.PI / 2;
+    warn.position.set(0.12, BEAM_Y - PLATE_TOP, 0.135);
+    this.turret.add(base, body, stripe, lens, warn);
+    this.turret.position.set(0, PLATE_TOP, -0.15);
+    const segGeo = new THREE.CylinderGeometry(0.03, 0.03, 1, 8, 1, true);
+    segGeo.rotateZ(Math.PI / 2);
+    segGeo.translate(0.5, 0, 0);
+    for (let i = 0; i < BEAM_SEGS; i++) {
+      const m = new THREE.Mesh(segGeo, new THREE.MeshBasicMaterial({ color: BEAM_COLOR, transparent: true, opacity: 0.9, depthWrite: false }));
+      m.visible = false;
+      m.renderOrder = 6;
+      this.segs.push(m);
+      this.beam.add(m);
+    }
+    this.spot = sprite(glowFor('rgba(255,60,40,1)'), 0.7);
+    this.beam.add(this.spot);
+    this.body.add(plate, this.turret);
+    this.addTerminal('a', 'none', 0.6, 0.5);
+    this.addTerminal('b', 'none', -0.6, 0.5);
+    this.pickable(plate, this.turret);
+  }
+
+  protected electrical(): Partial<CircuitElement> {
+    return { r: 15 };
+  }
+
+  get powered() {
+    return this.state.level > 0.2;
+  }
+
+  direction(): [number, number] {
+    const a = AIMS[this.aim];
+    return [Math.cos(a), -Math.sin(a)];
+  }
+
+  /** Where the beam leaves the lens (world x/z). */
+  muzzle(): [number, number] {
+    const [dx, dz] = this.direction();
+    const p = this.root.position;
+    return [p.x + dx * 0.42, p.z - 0.15 + dz * 0.42];
+  }
+
+  tap(): boolean {
+    super.tap();
+    this.aim = (this.aim + 1) % 4;
+    this.sounds.push({ kind: 'tick' });
+    return false;
+  }
+
+  /** Draw the beam along these corners (world x/z), or hide it. */
+  show(pts: [number, number][] | null) {
+    if (!this.beam.parent && this.root.parent) this.root.parent.add(this.beam);
+    const on = !!pts && this.shown > 0.05;
+    this.segs.forEach((m, i) => {
+      const a = pts?.[i];
+      const b = pts?.[i + 1];
+      m.visible = on && !!a && !!b;
+      if (!m.visible || !a || !b) return;
+      const len = Math.hypot(b[0] - a[0], b[1] - a[1]);
+      m.position.set(a[0], BEAM_Y, a[1]);
+      m.scale.set(Math.max(0.001, len), 1, 1);
+      m.rotation.y = -Math.atan2(b[1] - a[1], b[0] - a[0]);
+      (m.material as THREE.MeshBasicMaterial).opacity = 0.9 * this.shown;
+    });
+    const end = pts?.at(-1);
+    this.spot.visible = on && !!end;
+    if (end) {
+      this.spot.position.set(end[0], BEAM_Y, end[1]);
+      this.spot.material.opacity = this.shown * (0.75 + Math.sin(this.time * 20) * 0.15);
+    }
+  }
+
+  /** The beam does not belong to the part's body: take it off the table too. */
+  dispose() {
+    this.beam.removeFromParent();
+    super.dispose();
+  }
+
+  protected animate(dt: number) {
+    const goal = AIMS[this.aim];
+    const diff = Math.atan2(Math.sin(goal - this.turn), Math.cos(goal - this.turn));
+    this.turn += diff * Math.min(1, dt * 10);
+    this.turret.rotation.y = this.turn;
+    this.shown = damp(this.shown, this.powered && Math.abs(diff) < 0.05 ? 1 : 0, 20, dt);
+    this.lens.emissiveIntensity = this.shown * 4;
+  }
+}
+
+/** A mirror on a stand: it turns a laser beam a quarter round. Tap to flip it. No wires. */
+export class Mirror extends Part {
+  readonly kind: PartKind = 'mirror';
+  readonly elementKind: ElementKind = 'wire';
+  readonly radius = 0.75;
+  /** 0: "/" seen from above, 1: "\". */
+  side: 0 | 1 = 0;
+  private pane = new THREE.Group();
+  private turn = Math.PI / 4;
+
+  constructor() {
+    super();
+    const plate = basePlate(1.3, 1.3);
+    const foot = mesh(new THREE.CylinderGeometry(0.22, 0.26, 0.08, 24), mat(C.navy2, 0.45));
+    foot.position.set(0, PLATE_TOP + 0.04, -0.1);
+    const glass = mesh(
+      new THREE.BoxGeometry(0.62, 0.6, 0.03),
+      new THREE.MeshStandardMaterial({ color: '#dfe9f2', roughness: 0.02, metalness: 1, envMapIntensity: 2 }),
+    );
+    glass.position.y = 0.36;
+    const frame = mesh(new THREE.BoxGeometry(0.68, 0.66, 0.025), mat(C.teal, 0.4));
+    frame.position.set(0, 0.36, -0.02);
+    this.pane.add(glass, frame);
+    this.pane.position.set(0, PLATE_TOP, -0.1);
+    this.body.add(plate, foot, this.pane);
+    this.pickable(plate, foot, this.pane);
+  }
+
+  elements(): CircuitElement[] {
+    return [];
+  }
+
+  /** The small square around the glass that turns a beam (world). */
+  beamBox(): BeamBox {
+    const { x, z } = this.root.position;
+    return { id: this.id, x0: x - 0.25, x1: x + 0.25, z0: z - 0.35, z1: z + 0.15, mirror: this.side };
+  }
+
+  tap(): boolean {
+    super.tap();
+    this.side = this.side === 0 ? 1 : 0;
+    this.sounds.push({ kind: 'tick' });
+    return false;
+  }
+
+  protected animate(dt: number) {
+    // The glass lies along "/" or "\" (seen from above).
+    const goal = this.side === 0 ? Math.PI / 4 : -Math.PI / 4;
+    this.turn = damp(this.turn, goal, 12, dt);
+    this.pane.rotation.y = this.turn;
+  }
+}
+
+/** Every beam on the table, and what each one lights up. */
+export function beams(parts: Part[]): Map<Part, number> {
+  const lit = new Map<Part, number>();
+  const lasers = parts.filter((p): p is Laser => p instanceof Laser);
+  if (!lasers.length) return lit;
+  const discs: BeamDisc[] = [];
+  for (const l of parts) if (l instanceof Launcher && l.ball) discs.push({ id: 'ball', x: l.ball.pos.x, z: l.ball.pos.z, r: BALL_R });
+  for (const laser of lasers) {
+    if (!laser.powered) {
+      laser.hit = null;
+      laser.show(null);
+      continue;
+    }
+    const path = tracePath(parts, laser, laser.aim, discs);
+    laser.hit = parts.find((p) => p.id === path.hit) ?? null;
+    if (laser.hit) lit.set(laser.hit, (lit.get(laser.hit) ?? 0) + 2);
+    laser.show(path.pts);
+  }
+  return lit;
+}
+
+/** The beam a laser would make with these mirror sides (default: as they stand). */
+export function tracePath(parts: Part[], laser: Laser, aim = laser.aim, discs: BeamDisc[] = [], sides?: Map<Mirror, 0 | 1>) {
+  const boxes: BeamBox[] = [];
+  for (const p of parts) {
+    if (p === laser) continue;
+    if (p instanceof Mirror) {
+      const b = p.beamBox();
+      if (sides?.has(p)) b.mirror = sides.get(p);
+      boxes.push(b);
+      continue;
+    }
+    const f = p.footprint();
+    if (!f) continue;
+    const { x, z } = p.root.position;
+    boxes.push({ id: p.id, x0: x + f.x0, x1: x + f.x1, z0: z + f.z0, z1: z + f.z1 });
+  }
+  const a = AIMS[aim];
+  const [ox, oz] = (() => {
+    const p = laser.root.position;
+    return [p.x + Math.cos(a) * 0.42, p.z - 0.15 - Math.sin(a) * 0.42];
+  })();
+  return traceBeam(ox, oz, Math.cos(a), -Math.sin(a), boxes, discs);
+}
+
+/**
+ * How to get a beam onto this sensor: the laser's aim and the mirror sides
+ * (only those that change), trying every combination. Null if no way.
+ */
+export function aimFor(parts: Part[], laser: Laser, target: Part): { aim: number; flip: Mirror[] } | null {
+  const mirrors = parts.filter((p): p is Mirror => p instanceof Mirror).slice(0, 6);
+  let best: { aim: number; flip: Mirror[] } | null = null;
+  for (let aim = 0; aim < 4; aim++) {
+    for (let mask = 0; mask < 1 << mirrors.length; mask++) {
+      const sides = new Map<Mirror, 0 | 1>();
+      const flip: Mirror[] = [];
+      mirrors.forEach((m, i) => {
+        const s = ((mask >> i) & 1) as 0 | 1;
+        sides.set(m, s);
+        if (s !== m.side) flip.push(m);
+      });
+      if (tracePath(parts, laser, aim, [], sides).hit !== target.id) continue;
+      const cost = flip.length + (aim === laser.aim ? 0 : 1);
+      if (!best || cost < best.flip.length + (best.aim === laser.aim ? 0 : 1)) best = { aim, flip };
+    }
+  }
+  return best;
+}
+
 // ─────────────────────────── The links ───────────────────────────
 
 /** Light falling on every light sensor from everything that shines. */
-function shine(parts: Part[]) {
+function shine(parts: Part[], laserLit: Map<Part, number>) {
   const sensors = parts.filter((p): p is LightSensor => p instanceof LightSensor);
   if (!sensors.length) return;
   const lights = parts.flatMap((p) => {
@@ -574,6 +824,7 @@ function shine(parts: Part[]) {
       const d = l.at.distanceTo(eye);
       lux += Math.min(1.5, l.power) * Math.max(0, 1 - d / 5) ** 1.5;
     }
+    lux += laserLit.get(s) ?? 0;
     s.sense(lux);
   }
 }
@@ -664,6 +915,6 @@ function roll(parts: Part[], dt: number) {
 
 /** Every link between parts that is not a wire: light, balls. (Wind is in wind.ts.) */
 export function interact(parts: Part[], dt: number) {
-  shine(parts);
+  shine(parts, beams(parts));
   roll(parts, dt);
 }

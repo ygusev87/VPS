@@ -386,6 +386,12 @@ export class Hud {
         el.querySelector('img')!.src = thumb(itemKey(items[0]));
       }
     });
+    // A mission with nothing to take: no empty panel left behind.
+    const any = [...this.sidebar.querySelectorAll<HTMLElement>('.group')].some((el) => !el.hidden);
+    if (this.sidebar.classList.contains('is-empty') === any) {
+      this.sidebar.classList.toggle('is-empty', !any);
+      this.layout();
+    }
     if (this.openGroup) {
       const items = this.offered(this.openGroup);
       this.flyout.querySelectorAll<HTMLElement>('.variant').forEach((btn) => paint(btn, [items[Number(btn.dataset.i)].kind]));
@@ -406,9 +412,11 @@ export class Hud {
     const side = this.sidebar.getBoundingClientRect();
     const brand = this.root.querySelector('.brand')!.getBoundingClientRect();
     const bar = this.root.querySelector('.viewbar')!.getBoundingClientRect();
-    const low = this.docked ? Math.min(bar.top, side.top) : bar.top;
+    // The panel may be hidden (a mission with nothing to take): then it takes no room.
+    const shown = side.width > 0;
+    const low = this.docked && shown ? Math.min(bar.top, side.top) : bar.top;
     this.stage.setInsets({
-      left: this.docked ? 12 : side.right,
+      left: this.docked || !shown ? 12 : side.right,
       top: brand.bottom + 8,
       bottom: Math.max(16, window.innerHeight - low + 8),
       right: 12,

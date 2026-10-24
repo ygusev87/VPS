@@ -48,6 +48,7 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'xylophone':
     case 'drum':
     case 'launcher':
+    case 'laser':
     case 'piano':
     case 'tuba':
     case 'maracas':

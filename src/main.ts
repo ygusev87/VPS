@@ -217,6 +217,8 @@ function startLevel(l: Level, instant = false) {
     // Layouts are drawn for landscape; on a tall screen lay them top-to-bottom.
     const [x, z] = stage.portrait && !l.fixed ? [p.fz * 5.5, p.fx * 6.5] : [p.fx * 6.5, p.fz * 4.4];
     const part = world.addPart(p.kind, x, z, { locked: l !== FREE_PLAY, closed: p.closed, appear: false });
+    if (p.aim !== undefined && 'aim' in part) (part as { aim: number }).aim = p.aim;
+    if (p.side !== undefined && 'side' in part) (part as { side: number }).side = p.side;
     part.appear(0.12 + i * 0.14);
   });
   refreshTray();

@@ -38,6 +38,8 @@ export type PartKind =
   | 'launcher'
   | 'target'
   | 'domino'
+  | 'laser'
+  | 'mirror'
   | 'switch'
   | 'button'
   | 'panel';

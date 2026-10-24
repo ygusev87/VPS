@@ -6,12 +6,12 @@ import { PARAMS } from './circuit/solver';
 import type { Part, PartKind, Terminal } from './parts/base';
 import { ButtonPanel } from './parts/extra';
 import { Dynamo } from './parts/more';
-import { WindGen } from './parts/chain';
+import { aimFor, Laser, LightSensor, WindGen } from './parts/chain';
 import type { PhraseId } from './voice';
 import type { Wire } from './wires';
 import { activeAt, partIdOf, type World } from './world';
 
-export type Problem = 'short' | 'reversed' | 'bypass' | 'useSwitch';
+export type Problem = 'short' | 'reversed' | 'bypass' | 'useSwitch' | 'beside';
 
 export type Hint =
   | { type: 'connect'; from: Terminal; to: Terminal; phrase: PhraseId }
@@ -43,7 +43,7 @@ export function isProblem(h: Hint | null): boolean {
   return h?.type === 'tapWire';
 }
 
-const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher'];
+const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher', 'laser'];
 const POLAR: PartKind[] = ['led', 'buzzer', 'musicbox'];
 const isPolar = (p: Part) => POLAR.includes(p.kind);
 const isBattery = (p: Part) => p.kind === 'battery' || p.kind === 'bigBattery';
@@ -108,6 +108,25 @@ export function problemHint(world: World): Hint | null {
     }
     const wire = world.wiresAt(wrong).at(-1);
     if (wire) return { type: 'tapWire', wire, at: p, problem: 'bypass', phrase: 'bypass', u: clearSpot(world, wire) };
+  }
+
+  // 3b. A switch (sensor, target, dominoes, button) wired beside a gadget instead of
+  // on the way to it: the gadget runs anyway, and closing the switch would short
+  // the battery. Point at the switch's newest wire.
+  if (!r.shorted.size) {
+    for (let i = world.parts.length - 1; i >= 0; i--) {
+      const sw = world.parts[i];
+      if (sw instanceof ButtonPanel) continue;
+      const el = sw.elements()[0];
+      if (!el || el.kind !== 'switch' || el.closed) continue;
+      if (!world.wiresAt(sw.terminal('a')).length || !world.wiresAt(sw.terminal('b')).length) continue;
+      const shut = world.trial((e) => (e.id === el.id ? { ...e, closed: true } : e));
+      if (!shut.shorted.size) continue;
+      const newest = (t: Terminal) => Math.max(-1, ...world.wiresAt(t).map((w) => world.wires.indexOf(w)));
+      const t = newest(sw.terminal('a')) > newest(sw.terminal('b')) ? sw.terminal('a') : sw.terminal('b');
+      const wire = world.wiresAt(t).at(-1);
+      if (wire) return { type: 'tapWire', wire, at: sw, problem: 'beside', phrase: 'switchBeside', u: clearSpot(world, wire) };
+    }
   }
 
   // 4. Wired right but too little power: with twice the battery it would work.
@@ -215,7 +234,29 @@ export function sandboxHint(world: World): Hint | null {
       }
     }
   }
-  return crankHint(world) ?? switchHint(world);
+  return crankHint(world) ?? beamHint(world) ?? switchHint(world);
+}
+
+/**
+ * A shining laser and a dark light sensor that would get a gadget going:
+ * point at what to turn — the laser itself or the first mirror to flip.
+ */
+function beamHint(world: World): Hint | null {
+  const idle = world.parts.filter((p) => LOADS.includes(p.kind) && !activeAt(p.kind, p.state.level));
+  if (!idle.length) return null;
+  for (const sensor of world.parts) {
+    if (!(sensor instanceof LightSensor) || sensor.closed) continue;
+    const r = world.trial((e) => (e.id === sensor.id ? { ...e, closed: true } : e));
+    if (r.shorted.size || !idle.some((p) => activeAt(p.kind, r.elements.get(p.id)?.level ?? 0))) continue;
+    for (const laser of world.parts) {
+      if (!(laser instanceof Laser) || !laser.powered) continue;
+      const plan = aimFor(world.parts, laser, sensor);
+      if (!plan) continue;
+      if (plan.aim !== laser.aim) return { type: 'tap', part: laser, phrase: 'laserTip' };
+      if (plan.flip.length) return { type: 'tap', part: plan.flip[0], phrase: 'mirrorTip' };
+    }
+  }
+  return null;
 }
 
 /** A still generator that would run an idle gadget if turned: point at its knob. */
@@ -269,7 +310,7 @@ export function levelHint(world: World, level: Level, trayLeft: (k: PartKind) =>
     const missing = loopPlan(world, src, chain).find(([a, b]) => !world.wired(a, b));
     if (missing) return { type: 'connect', from: missing[0], to: missing[1], phrase: 'connect' };
   }
-  return crankHint(world) ?? switchHint(world);
+  return crankHint(world) ?? beamHint(world) ?? switchHint(world);
 }
 
 /**

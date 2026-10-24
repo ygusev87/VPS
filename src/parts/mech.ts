@@ -425,7 +425,7 @@ export class WaterMill extends Machine {
     const { x0, x1, z0, z1, h } = POOL;
     const wall = (w: number, d: number, x: number, z: number) => {
       const m = roundedBox(w, h, d, 0.03, '#b8a48a', 0.8);
-      m.position.set(x, T, z);
+      m.position.set(x, T + h / 2, z);
       frame.add(m);
     };
     wall(x1 - x0, 0.08, (x0 + x1) / 2, z0);
@@ -514,7 +514,7 @@ export class WaterMill extends Machine {
 
     // Pump: a box with a turning impeller, a hose from the pool, the clear pipe up.
     const pump = roundedBox(0.5, 0.45, 0.5, 0.08, C.red, 0.45);
-    pump.position.set(PIPE[0].x, T, PIPE[0].z);
+    pump.position.set(PIPE[0].x, T + 0.225, PIPE[0].z);
     const pumpTop = mesh(new THREE.CylinderGeometry(0.17, 0.17, 0.12, 20), mat(C.navy2, 0.4));
     pumpTop.position.set(PIPE[0].x, T + 0.5, PIPE[0].z);
     for (let i = 0; i < 4; i++) {

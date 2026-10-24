@@ -11,6 +11,10 @@ export interface LevelPart {
   fx: number;
   fz: number;
   closed?: boolean;
+  /** Launcher or laser: which way it points at the start (0 right, 1 towards the viewer, 2 left, 3 away). */
+  aim?: number;
+  /** Mirror: 0 "/" or 1 "\\" seen from above. */
+  side?: 0 | 1;
 }
 
 export interface Level {
@@ -266,6 +270,53 @@ export const LEVELS: Level[] = [
     intro: 'l12',
     winPhrase: 'winChain',
     goal: (w) => active(w, 'bulb').length > 0 && through(w, 'target') && feeding(w, 'windGen'),
+  },
+  {
+    id: 'laser',
+    title: 'Лазер и зеркало',
+    task: 'Направь луч зеркалом на датчик',
+    icon: 'laser',
+    fixed: true,
+    parts: [
+      { kind: 'battery', fx: -0.9, fz: 0.42 },
+      { kind: 'laser', fx: -0.55, fz: -0.32, aim: 0 },
+      { kind: 'mirror', fx: 0.35, fz: -0.32, side: 0 },
+      { kind: 'lightSensor', fx: 0.35, fz: 0.45 },
+      { kind: 'bulb', fx: 0.85, fz: 0.15 },
+    ],
+    tray: [],
+    chain: [],
+    loops: [
+      ['battery', 'laser'],
+      ['battery', 'lightSensor', 'bulb'],
+    ],
+    intro: 'l13',
+    winPhrase: 'winChain',
+    goal: (w) => active(w, 'bulb').length > 0 && through(w, 'lightSensor'),
+  },
+  {
+    id: 'two-mirrors',
+    title: 'Два зеркала',
+    task: 'Проведи луч через два зеркала',
+    icon: 'mirror',
+    fixed: true,
+    parts: [
+      { kind: 'battery', fx: -0.95, fz: -0.05 },
+      { kind: 'laser', fx: -0.55, fz: -0.45, aim: 0 },
+      { kind: 'mirror', fx: 0.5, fz: -0.45, side: 0 },
+      { kind: 'mirror', fx: 0.5, fz: 0.45, side: 1 },
+      { kind: 'lightSensor', fx: -0.3, fz: 0.45 },
+      { kind: 'bulb', fx: 0.95, fz: 0.0 },
+    ],
+    tray: [],
+    chain: [],
+    loops: [
+      ['battery', 'laser'],
+      ['battery', 'lightSensor', 'bulb'],
+    ],
+    intro: 'l14',
+    winPhrase: 'winChain',
+    goal: (w) => active(w, 'bulb').length > 0 && through(w, 'lightSensor'),
   },
 ];
 

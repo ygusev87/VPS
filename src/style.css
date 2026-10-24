@@ -1221,3 +1221,8 @@ body.is-night .brand {
     animation-iteration-count: 1 !important;
   }
 }
+
+/* A mission that offers no parts: hide the empty panel. */
+.is-empty.is-empty {
+  display: none;
+}
