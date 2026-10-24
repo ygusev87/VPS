@@ -206,7 +206,30 @@ export class Wire {
     }
     pts.push(p3.clone());
 
+    // Runs along the table get evenly spaced points, so the smooth curve cannot
+    // sag below the table after a steep drop off a post (it would vanish there).
+    const dense: THREE.Vector3[] = [pts[0]];
+    for (let i = 1; i < pts.length; i++) {
+      const a = pts[i - 1];
+      const b = pts[i];
+      if (a.y < 0.15 && b.y < 0.15) {
+        const n = Math.floor(a.distanceTo(b) / 0.5);
+        for (let k = 1; k < n; k++) dense.push(a.clone().lerp(b, k / n));
+      }
+      dense.push(b);
+    }
+    pts.length = 0;
+    pts.push(...dense);
+
     this.curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal');
+    // And if a bend still dips, lift those points back onto the table.
+    for (let i = 0; i < 3; i++) {
+      let low = false;
+      for (let k = 0; k <= 80; k++) if (this.curve.getPoint(k / 80).y < 0.045) low = true;
+      if (!low) break;
+      for (const p of pts) if (p.y < 0.15) p.y += 0.04;
+      this.curve = new THREE.CatmullRomCurve3(pts, false, 'centripetal');
+    }
     this.length = this.curve.getLength();
     const segs = Math.max(24, Math.min(110, Math.round(this.length * 14)));
     const r = RADIUS * Math.min(1, this.grow) * (this.dying ? this.fade : 1) * (this.alert ? 1.7 : 1);
