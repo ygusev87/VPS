@@ -203,6 +203,8 @@ export abstract class Part {
   abstract readonly radius: number;
   abstract readonly kind: PartKind;
   abstract readonly elementKind: ElementKind;
+  /** Night table: glows can be softer, the dark does the work (set by the game). */
+  static night = false;
   /** Pre-placed by a level: can be moved but not thrown away. */
   locked = false;
   closed = false;

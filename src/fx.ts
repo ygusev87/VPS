@@ -258,7 +258,7 @@ export class Fx {
     glows.sort((a, b) => b.power - a.power);
     this.lamps.forEach((l, i) => {
       const g = glows[i];
-      const target = g ? Math.min(1.5, g.power) * (this.night ? 5 : 3) : 0;
+      const target = g ? Math.min(1.5, g.power) * (this.night ? 5 : 1) : 0;
       l.intensity = THREE.MathUtils.lerp(l.intensity, target, 0.25);
       if (g) {
         l.position.copy(g.at);

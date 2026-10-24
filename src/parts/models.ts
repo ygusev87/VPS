@@ -395,10 +395,10 @@ export class Bulb extends Part {
     // A real filament: dull red when barely fed, then orange, then near white.
     if (this.color === 'warm') this.filamentMat.emissive.copy(FIL_COLD).lerp(FIL_HOT, Math.min(1, b));
     this.filamentMat.emissiveIntensity = (0.5 + b * 9) * b * flicker;
-    this.glassMat.emissiveIntensity = b * 1.1;
+    this.glassMat.emissiveIntensity = b * (Part.night ? 1.1 : 2.6);
     this.glassMat.opacity = 0.34 + b * 0.35;
     // The bloom makes the halo now; the painted glow only softens it.
-    this.glow.material.opacity = Math.min(0.6, b * 0.55);
+    this.glow.material.opacity = Math.min(Part.night ? 0.6 : 0.9, b * (Part.night ? 0.55 : 0.85));
     this.glow.scale.setScalar(1.6 + b * 0.9);
     this.rays.material.opacity = Math.min(0.12, Math.max(0, b - 0.4) * 0.2);
     this.rays.material.rotation += dt * 0.25;

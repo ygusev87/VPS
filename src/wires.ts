@@ -38,7 +38,7 @@ export class Wire {
   /** Table cells each tidy wire runs along, so the next one picks a free lane. */
   static lanes = new Map<string, Set<number>>();
   /** Brightness of the current's light: higher by day so it reads against the paper. */
-  static glow = 2.2;
+  static glow = 1.4;
   /**
    * 0 at the battery's "+" (highest voltage), 1 at "−": how far down the loop
    * a wire sits, so the light front reaches it in order. Set after each solve.
@@ -137,7 +137,7 @@ export class Wire {
           float f = fract((along - uPhase) / ${PULSE.toFixed(2)});
           float comet = smoothstep(0.62, 0.97, f) * (1.0 - smoothstep(0.97, 1.0, f)) + 0.25 * pow(f, 2.0);
           float core = pow(max(dot(normal, vec3(0.0, 0.0, 1.0)), 0.0), 1.4);
-          vec3 glow = uFlowColor * uAmp * lit * (0.18 + 4.2 * comet) * (0.3 + 0.7 * core);
+          vec3 glow = uFlowColor * uAmp * lit * (0.15 + 3.4 * comet) * (0.3 + 0.7 * core);
           float edge = exp(-abs(along - uFront) * 7.0) * step(uFront, uLen + 0.3);
           glow += uFlowColor * uAmp * edge * 6.0 * core;
           // Far too much current: the wire heats up red-orange and shimmers.

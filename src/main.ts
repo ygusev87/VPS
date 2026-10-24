@@ -6,7 +6,7 @@ import { Fx } from './fx';
 import { Hud } from './hud';
 import { Input } from './input';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
-import type { Part, PartKind, PartSound, Terminal } from './parts/base';
+import { Part, type PartKind, type PartSound, type Terminal } from './parts/base';
 import type { BandVoice } from './audio';
 import { Bells, Maracas, Piano, Tuba } from './parts/band';
 import { Drum, MusicBox } from './parts/extra';
@@ -115,7 +115,8 @@ const hud = new Hud(stage, {
   onNight: (on) => {
     progress.night = on;
     stage.setNight(on);
-    Wire.glow = on ? 1 : 2.2;
+    Part.night = on;
+    Wire.glow = on ? 0.7 : 1.4;
     saveProgress(progress);
   },
   onZoom: (f) => stage.zoomBy(f),
@@ -147,7 +148,8 @@ hud.setNight(progress.night);
 hud.setNeat(progress.neat);
 Wire.neat = progress.neat;
 stage.setNight(progress.night);
-Wire.glow = progress.night ? 1 : 2.2;
+Part.night = progress.night;
+Wire.glow = progress.night ? 0.7 : 1.4;
 
 const input = new Input(stage, world, {
   overTray: (x, y) => hud.overTray(x, y),

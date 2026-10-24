@@ -40,15 +40,15 @@ export function contactShadow(w: number, d: number): THREE.Mesh {
     const ctx = c.getContext('2d')!;
     const g = ctx.createRadialGradient(64, 64, 10, 64, 64, 64);
     // Strong alphas: the scene blends in linear light, where a soft shadow needs more.
-    g.addColorStop(0, 'rgba(60,45,20,0.83)');
-    g.addColorStop(0.55, 'rgba(60,45,20,0.47)');
+    g.addColorStop(0, 'rgba(60,45,20,0.9)');
+    g.addColorStop(0.5, 'rgba(60,45,20,0.6)');
     g.addColorStop(1, 'rgba(60,45,20,0)');
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, 128, 128);
     shadowTex = new THREE.CanvasTexture(c);
   }
   const m = new THREE.Mesh(
-    new THREE.PlaneGeometry(w * 1.25, d * 1.35),
+    new THREE.PlaneGeometry(w * 1.4, d * 1.55),
     new THREE.MeshBasicMaterial({ map: shadowTex, transparent: true, depthWrite: false, toneMapped: false }),
   );
   m.rotation.x = -Math.PI / 2;

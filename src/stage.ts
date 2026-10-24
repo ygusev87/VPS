@@ -112,7 +112,7 @@ export class Stage {
     this.sun = new THREE.DirectionalLight('#fff3df', DAY.sun);
     this.sun.castShadow = true;
     this.sun.shadow.mapSize.set(2048, 2048);
-    this.sun.shadow.bias = -0.0003;
+    this.sun.shadow.bias = -0.0006;
     this.sun.shadow.normalBias = 0.02;
     this.sun.shadow.radius = 5;
     this.sun.shadow.blurSamples = 16;
@@ -180,7 +180,7 @@ export class Stage {
     composer.addPass(this.bloom);
     composer.addPass(new OutputPass());
     this.finish = new ShaderPass(FinishShader);
-    this.finish.uniforms.uVignette.value = 0.2;
+    this.finish.uniforms.uVignette.value = 0.12;
     composer.addPass(this.finish);
     composer.addPass(new SMAAPass());
     this.composer = composer;
@@ -242,7 +242,11 @@ export class Stage {
       this.bloom.radius = this.night ? 0.7 : 0.55;
       this.bloom.threshold = this.night ? 0.75 : 2.4;
     }
-    if (this.finish) this.finish.uniforms.uVignette.value = this.night ? 0.42 : 0.2;
+    if (this.finish) {
+      this.finish.uniforms.uVignette.value = this.night ? 0.42 : 0.12;
+      this.finish.uniforms.uVibrance.value = this.night ? 0.25 : 0.65;
+      this.finish.uniforms.uContrast.value = this.night ? 1.02 : 1.12;
+    }
   }
 
   /**
@@ -330,7 +334,7 @@ export class Stage {
     // Shadows follow the view.
     const s = this.sun.shadow.camera;
     const r = this.distance * 0.75;
-    this.sun.position.copy(this.target).add(new THREE.Vector3(-6, 14, 8));
+    this.sun.position.copy(this.target).add(new THREE.Vector3(-7, 12, 5));
     this.sun.target.position.copy(this.target);
     s.left = -r;
     s.right = r;
@@ -515,20 +519,28 @@ function gridTexture(): THREE.Texture {
 const BACK_GAIN = 2;
 
 /** Day lighting: soft fill, a warm key, a rim from behind, studio reflections. */
-const DAY = { hemi: 0.42, sun: 3.0, rim: 1.0, env: 0.7 };
+const DAY = { hemi: 0.4, sun: 3.0, rim: 1.1, env: 0.75 };
 
 /** Last touch after tone mapping: a soft vignette and a hint of warmth at the edges. */
 const FinishShader = {
-  uniforms: { tDiffuse: { value: null }, uVignette: { value: 0.2 } },
+  uniforms: { tDiffuse: { value: null }, uVignette: { value: 0.12 }, uVibrance: { value: 0.65 }, uContrast: { value: 1.12 } },
   vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
   fragmentShader: `
     uniform sampler2D tDiffuse;
-    uniform float uVignette;
+    uniform float uVignette, uVibrance, uContrast;
     varying vec2 vUv;
     void main() {
       vec4 c = texture2D(tDiffuse, vUv);
       vec2 p = vUv - 0.5;
       float v = smoothstep(0.35, 0.95, length(p * vec2(1.1, 1.0)));
+      // Colourful toys get richer, the pale paper stays as it is.
+      float hi = max(c.r, max(c.g, c.b));
+      float sat = hi > 0.0 ? (hi - min(c.r, min(c.g, c.b))) / hi : 0.0;
+      float lum = dot(c.rgb, vec3(0.2126, 0.7152, 0.0722));
+      c.rgb = lum + (c.rgb - lum) * (1.0 + uVibrance * sat);
+      // Contrast for the toys' mid-tones and shadows; light paper and plates keep their colour.
+      vec3 punchy = clamp((c.rgb - 0.45) * uContrast + 0.45, 0.0, 1.0);
+      c.rgb = mix(punchy, c.rgb, smoothstep(0.62, 0.86, lum));
       c.rgb *= 1.0 - v * uVignette;
       c.rgb = mix(c.rgb, c.rgb * vec3(1.02, 0.99, 0.95), v);
       gl_FragColor = c;
