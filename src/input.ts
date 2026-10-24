@@ -18,13 +18,15 @@ type Mode =
   | { kind: 'drag-part'; part: Part; offset: THREE.Vector3; spawned: boolean; x0: number; y0: number }
   | { kind: 'wire'; wire: Wire; from: Terminal; target: Terminal | null }
   | { kind: 'press-wire'; wire: Wire; x: number; y: number }
-  | { kind: 'pan'; anchor: THREE.Vector3 }
+  | { kind: 'pan'; anchor: THREE.Vector3; tap?: { x: number; y: number } }
   | { kind: 'pinch'; d0: number; dist0: number; anchor: THREE.Vector3 };
 
 const TAP_MOVE = 10;
 const TAP_TIME = 450;
 
 export interface InputHooks {
+  /** A tap on the table itself (not on a part or wire), e.g. on a map's animal. */
+  onTableTap?: (x: number, y: number) => void;
   /** Is this screen point over the parts panel (where parts get put away)? */
   overTray(x: number, y: number): boolean;
   onTrayHover(on: boolean): void;
@@ -144,7 +146,7 @@ export class Input {
     } else if (part) this.mode = { kind: 'press-part', part, x, y, t: performance.now(), hit };
     else {
       const anchor = this.stage.screenToPlane(x, y);
-      if (anchor) this.mode = { kind: 'pan', anchor };
+      if (anchor) this.mode = { kind: 'pan', anchor, tap: { x, y } };
     }
   }
 
@@ -229,6 +231,12 @@ export class Input {
         this.hooks.onViewMoved?.();
         break;
       case 'press-part': {
+        if (Math.hypot(x - m.x, y - m.y) > TAP_MOVE && m.part.pinned) {
+          // Built into the map: dragging it moves the view instead.
+          const anchor = this.stage.screenToPlane(m.x, m.y);
+          this.mode = anchor ? { kind: 'pan', anchor } : { kind: 'idle' };
+          break;
+        }
         if (Math.hypot(x - m.x, y - m.y) > TAP_MOVE) {
           const at = this.stage.screenToPlane(m.x, m.y) ?? new THREE.Vector3();
           const offset = m.part.root.position.clone().sub(at).setY(0);
@@ -268,7 +276,7 @@ export class Input {
           // over bare table it pans.
           const hit = this.stage.raycast(m.x, m.y, this.world.parts.flatMap((p) => p.pickables))[0];
           const part = hit?.object.userData.part as Part | undefined;
-          if (part) {
+          if (part && !part.pinned) {
             const at = this.stage.screenToPlane(m.x, m.y) ?? new THREE.Vector3();
             const offset = part.root.position.clone().sub(at).setY(0);
             part.setDragging(true);
@@ -360,6 +368,9 @@ export class Input {
       }
       case 'press-wire':
         if (!cancelled) this.world.removeWire(m.wire);
+        break;
+      case 'pan':
+        if (!cancelled && m.tap && Math.hypot(x - m.tap.x, y - m.tap.y) < TAP_MOVE) this.hooks.onTableTap?.(x, y);
         break;
     }
   }

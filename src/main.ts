@@ -3,6 +3,7 @@ import './style.css';
 import { Sfx } from './audio';
 import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Fx } from './fx';
+import { FARM_MODELS, FARM_TRAY, FarmMap } from './farm';
 import { Hud } from './hud';
 import { Input } from './input';
 import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
@@ -78,6 +79,22 @@ window.addEventListener('resize', () => {
 });
 
 let level: Level = LEVELS[0];
+/** The farm map while it is open (null on the workbench). */
+let farm: FarmMap | null = null;
+let farmScore = '';
+const FARM_LEVEL: Level = {
+  id: 'farm',
+  title: 'Ферма',
+  task: 'Помоги животным',
+  icon: 'pump',
+  parts: [],
+  tray: FARM_TRAY,
+  chain: [],
+  sandbox: true,
+  intro: 'farmIntro',
+  winPhrase: 'morning',
+  goal: () => false,
+};
 let won = false;
 let goalHeld = 0;
 let lastTouch = performance.now();
@@ -93,7 +110,8 @@ const hud = new Hud(stage, {
   onRestart: () => {
     sfx.unlock();
     sfx.pop();
-    startLevel(level);
+    if (farm) void startFarm();
+    else startLevel(level);
   },
   onSound: (on) => {
     sfx.unlock();
@@ -139,6 +157,14 @@ const hud = new Hud(stage, {
   },
   bodiesOnScreen: () => partsOnScreen(world),
   wiresOnScreen: () => world.wires.flatMap((w) => w.samples(12).map((p) => stage.project(p))),
+  onPickMap: (id) => {
+    sfx.unlock();
+    if (id === 'open') return voice.say('mapPick', 0);
+    sfx.pop();
+    if (id === 'farm') void startFarm();
+    else if (id === 'lab') startLevel(FREE_PLAY);
+    else voice.say('soon', 0);
+  },
   onSpawn: (item, e) => {
     input.spawnFromTray(item.kind, e, item.color);
     voice.say(item.say, 3000);
@@ -160,6 +186,9 @@ const input = new Input(stage, world, {
     lastTouch = performance.now();
   },
   preferredWire: () => hintedWire(),
+  onTableTap: (x, y) => {
+    farm?.tapAt(x, y);
+  },
   // A tap on a drawer item (no drag) puts the part in a free spot.
   onSpawnTap: (part) => {
     const at = freeSpot(world);
@@ -176,6 +205,7 @@ stage.onResize = (flipped) => {
 };
 
 function frameParts(instant = false) {
+  if (farm) return stage.frame(farm.bounds(), instant);
   const pts: THREE.Vector3[] = [];
   for (const p of world.parts) {
     const c = p.root.position;
@@ -205,7 +235,58 @@ function refreshTray() {
   hud.updateTray(left);
 }
 
+function leaveFarm() {
+  if (!farm) return;
+  farm.dispose();
+  farm = null;
+  hud.setMapMode(null);
+  stage.setNight(progress.night);
+  applyNight(progress.night);
+}
+
+/** Night look of glows, wires and effects (the stage's own light is set separately). */
+function applyNight(on: boolean) {
+  Part.night = on;
+  Wire.glow = on ? 0.7 : 1.4;
+}
+
+/** Open the farm map (loading its models the first time). */
+async function startFarm() {
+  await loadModels(FARM_MODELS);
+  leaveFarm();
+  level = FARM_LEVEL;
+  won = false;
+  goalHeld = 0;
+  hintShownOnce = false;
+  world.clear();
+  hud.showNext(false);
+  hud.setLevel(FARM_LEVEL, progress.done);
+  farm = new FarmMap(stage, world, {
+    say: (id) => voice.say(id, 0),
+    chime: () => sfx.star(),
+    cheer: (at) => {
+      const s = stage.project(at);
+      hud.burst(s.x, s.y, 50);
+    },
+    done: () => {
+      sfx.win();
+      hud.celebrate();
+      progress.done.add('farm');
+      saveProgress(progress);
+    },
+  });
+  farm.start();
+  farmScore = '';
+  refreshTray();
+  frameParts(true);
+  levelStart = performance.now();
+  lastTouch = levelStart;
+  setHint(null);
+  voice.say('farmIntro', 0);
+}
+
 function startLevel(l: Level, instant = false) {
+  leaveFarm();
   level = l;
   won = false;
   goalHeld = 0;
@@ -340,7 +421,7 @@ function updateHint(dt: number) {
   // Free play is the child's own experiment: nudge later than in missions.
   const free = level === FREE_PLAY || !!level.sandbox;
   const wait = free ? (hintShownOnce ? 9000 : 4000) : hintShownOnce ? 6000 : 1600;
-  const h = free ? sandboxHint(world) : levelHint(world, level, trayLeft);
+  const h = farm ? (farm.hint(trayLeft) ?? sandboxHint(world)) : free ? sandboxHint(world) : levelHint(world, level, trayLeft);
   if (!h) return setHint(null);
   // Keep showing a hint that is already up; new ones wait for the child to pause.
   if (currentHint && hintKey(currentHint) === hintKey(h)) return;
@@ -601,6 +682,18 @@ function frame(now: number) {
   const dt = Math.min(0.05, realDt);
   last = now;
   stage.update(dt);
+  if (farm) {
+    farm.update(dt);
+    const night = farm.nightAmount > 0.5;
+    if (night !== Part.night) applyNight(night);
+    fx.night = night;
+    const [n, of] = farm.score;
+    const score = `Помощь: ${n} из ${of}`;
+    if (score !== farmScore) {
+      farmScore = score;
+      hud.setMapMode('farm', 'Ферма', score);
+    }
+  }
   world.update(dt);
 
   if (!won && level !== FREE_PLAY) {
@@ -685,7 +778,7 @@ function frame(now: number) {
   watchShorts(dt);
   watchChains(dt);
   watchBelts();
-  fx.night = progress.night;
+  if (!farm) fx.night = progress.night;
   fx.shine(world.parts.flatMap((p) => p.glowLight() ?? []));
   fx.resize(stage.renderer.domElement.height, stage.camera.fov);
   fx.update(dt);
@@ -715,6 +808,10 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
   world,
   stage,
   sfx,
+  startFarm,
+  get farm() {
+    return farm;
+  },
   get won() {
     return won;
   },

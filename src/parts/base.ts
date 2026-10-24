@@ -42,6 +42,11 @@ export type PartKind =
   | 'mirror'
   | 'bell'
   | 'belt'
+  | 'pole'
+  | 'solar'
+  | 'pump'
+  | 'heater'
+  | 'gate'
   | 'switch'
   | 'button'
   | 'panel';
@@ -222,6 +227,8 @@ export abstract class Part {
   static night = false;
   /** Pre-placed by a level: can be moved but not thrown away. */
   locked = false;
+  /** Built into a map: cannot be moved at all (wires and taps still work). */
+  pinned = false;
   closed = false;
 
   state: ElectricState = { level: 0, current: 0, voltage: 0, reversed: false, shorted: false };

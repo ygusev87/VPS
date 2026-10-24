@@ -9,6 +9,7 @@ import { Part, type PartKind } from './base';
 import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox } from './kit';
 import { glowFor, sprite } from './models';
 import { traceBeam, type BeamBox, type BeamDisc } from './beam';
+import { AMBIENT } from './wind';
 
 // ──────────────────────────── Wind turbine ────────────────────────────
 
@@ -176,7 +177,7 @@ export class LightSensor extends Part {
 }
 
 let cellTex: THREE.Texture | null = null;
-function cellTexture(): THREE.Texture {
+export function cellTexture(): THREE.Texture {
   if (cellTex) return cellTex;
   const c = document.createElement('canvas');
   c.width = 128;
@@ -536,7 +537,8 @@ export class Domino extends Part {
   }
 
   protected animate(dt: number) {
-    if (this.wind > 0.35) this.push();
+    // A fan's gust, not the map's steady breeze.
+    if (this.wind - AMBIENT.strength > 0.35) this.push();
     this.resetting = Math.max(0, this.resetting - dt);
     this.pieces.forEach((p, i) => {
       const max = i === DOMINO_N - 1 ? D_LAST : D_HIT + 0.02 + (D_HIT * 0.2);

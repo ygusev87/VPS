@@ -9,6 +9,7 @@ import { Bells, Maracas, Piano, Tuba } from './band';
 import { Conveyor, MarbleRun, WaterMill } from './mech';
 import { FloorFan, PcFan, Pinwheel } from './wind';
 import { Bell, Belt, Domino, Laser, Launcher, LightSensor, Mirror, Target, WindGen } from './chain';
+import { Gate, Heater, Pole, Pump, Solar } from './farm';
 import type { PhraseId } from '../voice';
 
 export interface CatalogItem {
@@ -93,6 +94,14 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'mirror', name: 'Зеркало', say: 'mirror' },
       { kind: 'belt', name: 'Транспортёр', say: 'belt' },
       { kind: 'bell', name: 'Звонок', say: 'bell' },
+    ],
+  },
+  {
+    id: 'farm',
+    name: 'Ферма',
+    items: [
+      { kind: 'pump', name: 'Насос', say: 'pump' },
+      { kind: 'heater', name: 'Обогреватель', say: 'heater' },
     ],
   },
   {
@@ -193,6 +202,16 @@ function make(kind: PartKind): Part {
       return new Laser();
     case 'bell':
       return new Bell();
+    case 'pole':
+      return new Pole();
+    case 'solar':
+      return new Solar();
+    case 'pump':
+      return new Pump();
+    case 'heater':
+      return new Heater();
+    case 'gate':
+      return new Gate();
     case 'belt':
       return new Belt();
     case 'mirror':

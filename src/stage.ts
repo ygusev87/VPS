@@ -54,7 +54,8 @@ export class Stage {
   private plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   private w = 1;
   private h = 1;
-  private night = false;
+  private nightK = 0;
+  private bgK = -1;
   /** Screen-filling paper behind everything (see drawBackground). */
   private backdrop = new THREE.Mesh(
     new THREE.PlaneGeometry(2, 2),
@@ -227,30 +228,44 @@ export class Stage {
    * found), while everything that glows keeps its full brightness.
    */
   setNight(on: boolean) {
-    this.night = on;
-    this.hemi.intensity = on ? 0.22 : DAY.hemi;
-    this.hemi.color.set(on ? '#9fb2e6' : '#fffaf0');
-    this.hemi.groundColor.set(on ? '#2a3150' : '#d9c5ac');
-    this.sun.intensity = on ? 0.35 : DAY.sun;
-    this.sun.color.set(on ? '#b9c8ff' : '#fff3df');
-    this.fill.intensity = on ? 0.3 : DAY.rim;
-    this.scene.environmentIntensity = on ? 0.14 : DAY.env;
-    (this.ground.material as THREE.MeshBasicMaterial).color.set(on ? '#5b6687' : '#ffffff');
-    this.drawBackground();
+    this.setNightAmount(on ? 1 : 0);
+  }
+
+  /** 0 day .. 1 night, smoothly (a sunset on a map). */
+  setNightAmount(k: number) {
+    k = THREE.MathUtils.clamp(k, 0, 1);
+    this.nightK = k;
+    const L = THREE.MathUtils.lerp;
+    const mix = (a: string, b: string) => new THREE.Color(a).lerp(new THREE.Color(b), k);
+    this.hemi.intensity = L(DAY.hemi, 0.22, k);
+    this.hemi.color.copy(mix('#fffaf0', '#9fb2e6'));
+    this.hemi.groundColor.copy(mix('#d9c5ac', '#2a3150'));
+    this.sun.intensity = L(DAY.sun, 0.35, k);
+    // Through warm orange at dusk to cool moonlight.
+    this.sun.color.copy(k < 0.5 ? new THREE.Color('#fff3df').lerp(new THREE.Color('#ffb070'), k * 2) : new THREE.Color('#ffb070').lerp(new THREE.Color('#b9c8ff'), (k - 0.5) * 2));
+    this.fill.intensity = L(DAY.rim, 0.3, k);
+    this.scene.environmentIntensity = L(DAY.env, 0.14, k);
+    (this.ground.material as THREE.MeshBasicMaterial).color.copy(mix('#ffffff', '#5b6687'));
+    if (Math.abs(k - this.bgK) > 0.04 || k === 0 || k === 1) {
+      this.bgK = k;
+      this.drawBackground();
+    }
     this.setNightLook();
   }
 
   /** At night everything bright glows wider, like eyes used to the dark. */
   private setNightLook() {
     if (this.bloom) {
-      this.bloom.strength = this.night ? 1.05 : 0.7;
-      this.bloom.radius = this.night ? 0.7 : 0.55;
-      this.bloom.threshold = this.night ? 0.75 : 2.4;
+      const k = this.nightK;
+      this.bloom.strength = THREE.MathUtils.lerp(0.7, 1.05, k);
+      this.bloom.radius = THREE.MathUtils.lerp(0.55, 0.7, k);
+      this.bloom.threshold = THREE.MathUtils.lerp(2.4, 0.75, k);
     }
     if (this.finish) {
-      this.finish.uniforms.uVignette.value = this.night ? 0.42 : 0.12;
-      this.finish.uniforms.uVibrance.value = this.night ? 0.25 : 0.65;
-      this.finish.uniforms.uContrast.value = this.night ? 1.02 : 1.12;
+      const k = this.nightK;
+      this.finish.uniforms.uVignette.value = THREE.MathUtils.lerp(0.12, 0.42, k);
+      this.finish.uniforms.uVibrance.value = THREE.MathUtils.lerp(0.65, 0.25, k);
+      this.finish.uniforms.uContrast.value = THREE.MathUtils.lerp(1.12, 1.02, k);
     }
   }
 
@@ -265,14 +280,17 @@ export class Stage {
     canvas.width = w;
     canvas.height = h;
     const ctx = canvas.getContext('2d')!;
-    ctx.fillStyle = this.night ? C.night : C.bg;
+    const k = this.nightK;
+    ctx.fillStyle = '#' + new THREE.Color(C.bg).lerp(new THREE.Color(C.night), k).getHexString();
     ctx.fillRect(0, 0, w, h);
     ctx.save();
     ctx.translate(w * 0.5, h * 0.45);
     ctx.scale(1.2 * w, 0.9 * h);
     const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 0.6);
-    g.addColorStop(0, this.night ? 'rgba(42,51,82,0.65)' : 'rgba(255,250,240,0.55)');
-    g.addColorStop(1, this.night ? 'rgba(42,51,82,0)' : 'rgba(255,250,240,0)');
+    const glow = new THREE.Color('#fffaf0').lerp(new THREE.Color('#2a3352'), k);
+    const rgb = `${Math.round(glow.r * 255)},${Math.round(glow.g * 255)},${Math.round(glow.b * 255)}`;
+    g.addColorStop(0, `rgba(${rgb},${0.55 + 0.1 * k})`);
+    g.addColorStop(1, `rgba(${rgb},0)`);
     ctx.fillStyle = g;
     ctx.fillRect(-1, -1, 2, 2);
     ctx.restore();
@@ -296,9 +314,14 @@ export class Stage {
     const m = this.backdrop.material as THREE.ShaderMaterial;
     (m.uniforms.map.value as THREE.Texture | null)?.dispose();
     m.uniforms.map.value = tex;
-    const base = new THREE.Color(this.night ? C.night : C.bg);
+    const base = new THREE.Color(C.bg).lerp(new THREE.Color(C.night), k);
     const [r, gg, b] = untone(base.r, base.g, base.b);
     (this.scene.fog as THREE.Fog).color.setRGB(r, gg, b, THREE.LinearSRGBColorSpace);
+  }
+
+  /** How dark it is now (0 day .. 1 night). */
+  get nightAmount() {
+    return this.nightK;
   }
 
   /** Tall screens lay level parts out top-to-bottom. */

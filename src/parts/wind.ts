@@ -31,12 +31,15 @@ const isCatcher = (p: Part): p is Part & WindCatcher => (p as Partial<WindCatche
 export const WIND_RANGE = 7;
 
 /** Spread every fan's breeze over the parts in front of it. Call each frame. */
+/** Weather on a map: a breeze over the whole table (0 on the workbench). */
+export const AMBIENT = { strength: 0, dir: new THREE.Vector3(1, 0, 0) };
+
 export function blowWind(parts: Part[]) {
   const catchers = parts.filter(isCatcher);
   if (!catchers.length) return;
   for (const c of catchers) {
-    c.wind = 0;
-    c.windDir.set(0, 0, 0);
+    c.wind = AMBIENT.strength;
+    c.windDir.copy(AMBIENT.dir).multiplyScalar(AMBIENT.strength);
   }
   const v = new THREE.Vector3();
   for (const p of parts) {

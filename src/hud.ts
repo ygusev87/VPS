@@ -20,6 +20,8 @@ const ICON = {
   soundOff: svg('<path d="M4 9.5h3.4L12 5.5v13l-4.6-4H4z" class="fill"/><path d="m16 9.5 5 5M21 9.5l-5 5"/>'),
   restart: svg('<path d="M4.5 10.5A8 8 0 1 1 6 17"/><path d="M4 5v5.8h5.8"/>'),
   neat: svg('<path d="M3.5 17.5h6.5v-11h10.5"/><circle cx="3.5" cy="17.5" r="1.6" class="fill"/><circle cx="20.5" cy="6.5" r="1.6" class="fill"/>'),
+  map: svg('<path d="M3.5 6.5 9 4.5l6 2 5.5-2v13l-5.5 2-6-2-5.5 2z"/><path d="M9 4.5v13M15 6.5v13"/>'),
+  lock: svg('<rect x="5" y="10.5" width="14" height="10" rx="2.5" class="fill"/><path d="M8 10.5V8a4 4 0 0 1 8 0v2.5"/>'),
   moon: svg('<path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z" class="fill"/>'),
   sun: svg('<circle cx="12" cy="12" r="4.2" class="fill"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>'),
   trash: svg('<path d="M4.5 7h15M9.5 7V4.8h5V7M7 7l1 13.5h8L17 7M10.5 10.5v6.5M13.5 10.5v6.5"/>', 'icon trash-icon'),
@@ -41,6 +43,16 @@ const ICON = {
   logo: '<svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true"><path d="M36 5 15 36h14l-4 23 23-33H34z"/></svg>',
 };
 
+/** Places to play: the workbench and the maps (some still to come). */
+export type MapId = 'lab' | 'farm' | 'city' | 'factory' | 'open';
+const BASE = import.meta.env.BASE_URL;
+export const MAPS: { id: MapId; name: string; emoji: string; img: string; open: boolean }[] = [
+  { id: 'lab', name: 'Лаборатория', emoji: '🔬', img: `${BASE}maps/lab.webp`, open: true },
+  { id: 'farm', name: 'Ферма', emoji: '🐄', img: `${BASE}maps/farm.webp`, open: true },
+  { id: 'city', name: 'Город', emoji: '🏙️', img: `${BASE}maps/city.webp`, open: false },
+  { id: 'factory', name: 'Завод', emoji: '🏭', img: `${BASE}maps/factory.webp`, open: false },
+];
+
 export interface HudHooks {
   onRestart(): void;
   onSound(on: boolean): void;
@@ -53,6 +65,8 @@ export interface HudHooks {
   onPickLevel(level: Level): void;
   onNext(): void;
   onSpawn(item: CatalogItem, e: PointerEvent): void;
+  /** A place picked on the map screen. */
+  onPickMap?(id: MapId): void;
   /** Parts as circles on screen, so hint badges can sit on empty table. */
   bodiesOnScreen?(): { x: number; y: number; r: number }[];
   /** Points along the wires on screen, likewise. */
@@ -144,6 +158,8 @@ export class Hud {
         <ol class="lesson-list"></ol>
       </section>
       <div class="viewbar" role="toolbar" aria-label="Вид">
+        <button data-v="map" class="map-btn" aria-label="Карты">${ICON.map}<span>Карта</span></button>
+        <span class="sep"></span>
         <button data-v="out" aria-label="Отдалить">${ICON.out}</button>
         <button data-v="in" aria-label="Приблизить">${ICON.in}</button>
         <span class="sep"></span>
@@ -156,6 +172,20 @@ export class Hud {
         <button data-v="restart" aria-label="Начать заново">${ICON.restart}</button>
       </div>
       <div class="trash" aria-hidden="true">${ICON.trash}</div>
+      <section class="maps" aria-label="Карты" hidden>
+        <div class="maps-card">
+          <h2>Куда отправимся?</h2>
+          <div class="map-list">
+            ${MAPS.map(
+              (m) => `<button class="map-card${m.open ? '' : ' is-locked'}" data-map="${m.id}">
+                <span class="map-pic"><span class="map-emoji">${m.emoji}</span><img alt="" src="${m.img}" onerror="this.remove()"/></span>
+                <span class="map-name">${m.name}</span>
+                ${m.open ? '' : `<span class="map-soon">${ICON.lock}Скоро</span>`}
+              </button>`,
+            ).join('')}
+          </div>
+        </div>
+      </section>
       <canvas class="fx"></canvas>
     `;
     this.sidebar = r.querySelector('.sidebar')!;
@@ -192,6 +222,19 @@ export class Hud {
     r.querySelector('[data-v="in"]')!.addEventListener('click', () => this.hooks.onZoom(0.8));
     r.querySelector('[data-v="reset"]')!.addEventListener('click', () => this.hooks.onResetView());
     r.querySelector('[data-v="restart"]')!.addEventListener('click', () => this.hooks.onRestart());
+    const maps = r.querySelector<HTMLElement>('.maps')!;
+    r.querySelector('[data-v="map"]')!.addEventListener('click', () => {
+      maps.hidden = false;
+      this.hooks.onPickMap?.('open');
+    });
+    maps.addEventListener('click', (e) => {
+      const card = (e.target as HTMLElement).closest<HTMLElement>('.map-card');
+      if (!card && e.target === maps) maps.hidden = true;
+      if (!card) return;
+      const id = card.dataset.map as MapId;
+      if (MAPS.find((m) => m.id === id)?.open) maps.hidden = true;
+      this.hooks.onPickMap?.(id);
+    });
     this.mission.querySelector('.speak')!.addEventListener('click', () => this.hooks.onReplay());
     // Missions live in a drop-down under the progress card; free play is the main mode.
     this.progress.addEventListener('click', () => this.toggleTasks());
@@ -247,6 +290,19 @@ export class Hud {
     document.addEventListener('gesturestart', (e) => e.preventDefault());
     document.addEventListener('dblclick', (e) => e.preventDefault());
     document.addEventListener('contextmenu', (e) => e.preventDefault());
+  }
+
+  /**
+   * On a map: no level list or night switch (the map has its own day), and
+   * the mission card shows how many helpers are done.
+   */
+  setMapMode(map: MapId | null, title = '', sub = '', icon = '') {
+    document.body.classList.toggle('on-map', !!map);
+    if (!map) return;
+    this.mission.classList.remove('is-hidden');
+    this.mission.querySelector('h3')!.textContent = title;
+    this.mission.querySelector('p')!.textContent = sub;
+    if (icon) this.mission.querySelector('img')!.src = icon;
   }
 
   setNeat(on: boolean) {

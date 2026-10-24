@@ -7,6 +7,7 @@ import type { Part, PartKind, Terminal } from './parts/base';
 import { ButtonPanel } from './parts/extra';
 import { Dynamo } from './parts/more';
 import { aimFor, Laser, LightSensor, WindGen } from './parts/chain';
+import { Pole, Solar } from './parts/farm';
 import type { PhraseId } from './voice';
 import type { Wire } from './wires';
 import { activeAt, partIdOf, type World } from './world';
@@ -43,7 +44,7 @@ export function isProblem(h: Hint | null): boolean {
   return h?.type === 'tapWire';
 }
 
-const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher', 'laser', 'bell', 'belt'];
+const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher', 'laser', 'bell', 'belt', 'pump', 'heater', 'gate'];
 const POLAR: PartKind[] = ['led', 'buzzer', 'musicbox'];
 const isPolar = (p: Part) => POLAR.includes(p.kind);
 const isBattery = (p: Part) => p.kind === 'battery' || p.kind === 'bigBattery';
@@ -56,7 +57,7 @@ interface Source {
 }
 function sources(world: World): Source[] {
   return world.parts.flatMap((p): Source[] => {
-    if (isBattery(p) || p instanceof Dynamo || p instanceof WindGen) return [{ part: p, plus: p.terminal('a'), minus: p.terminal('b') }];
+    if (isBattery(p) || p instanceof Dynamo || p instanceof WindGen || p instanceof Pole || p instanceof Solar) return [{ part: p, plus: p.terminal('a'), minus: p.terminal('b') }];
     if (p instanceof ButtonPanel) return p.outputs().map(([plus, minus]) => ({ part: p, plus, minus }));
     return [];
   });
@@ -148,6 +149,7 @@ export function problemHint(world: World): Hint | null {
       // A hand generator is "weak" because it is turned too slowly (or not at all).
       if (busiest instanceof Dynamo) return { type: 'tap', part: busiest, phrase: 'crank', local: busiest.knobPoint() };
       if (busiest instanceof WindGen) return { type: 'tap', part: busiest, phrase: 'windTip' };
+      if (busiest instanceof Pole) return { type: 'weak', part: busiest, phrase: 'poleWeak' };
       if (busiest) return { type: 'weak', part: busiest, phrase: 'weak' };
     }
   }
