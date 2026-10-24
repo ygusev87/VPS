@@ -261,4 +261,4 @@ function make(kind: PartKind): Part {
 }
 
 /** Model files the game loads at start. */
-export const MODEL_NAMES = ['battery', 'bigbattery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer', 'carousel', 'windmill', 'sails', 'musicbox', 'button', 'panel', 'drum', 'racecar', 'helicopter', 'firetruck', 'dynamo', 'tuba', 'floorfan'];
+export const MODEL_NAMES = ['battery', 'bigbattery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer', 'carousel', 'windmill', 'sails', 'musicbox', 'button', 'panel', 'drum', 'racecar', 'helicopter', 'firetruck', 'dynamo', 'tuba', 'floorfan', 'windgen', 'mirror', 'heater'];

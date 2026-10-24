@@ -153,6 +153,15 @@ export function tip(holder: THREE.Object3D, axis: 'x' | 'y' | 'z', dir: 1 | -1, 
   return n ? sum.divideScalar(n) : sum;
 }
 
+/** Bounding box of the vertices `where` accepts, in the holder's space. */
+export function boundsWhere(holder: THREE.Object3D, where: (v: THREE.Vector3) => boolean): THREE.Box3 {
+  const box = new THREE.Box3();
+  eachVertex(holder, (v) => {
+    if (where(v)) box.expandByPoint(v);
+  });
+  return box;
+}
+
 export function sizeOf(o: THREE.Object3D): THREE.Vector3 {
   return new THREE.Box3().setFromObject(o).getSize(new THREE.Vector3());
 }

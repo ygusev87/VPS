@@ -7,7 +7,8 @@ import { C } from '../theme';
 import { Part, type PartKind } from './base';
 import { cellTexture } from './chain';
 import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox, signDecal } from './kit';
-import { glowFor, sprite } from './models';
+import { glowFor, materialsOf, sprite } from './models';
+import { model } from './assets';
 
 const wood = () => mat('#9a6a3e', 0.7);
 
@@ -201,15 +202,37 @@ export class Heater extends Part {
   readonly elementKind: ElementKind = 'bulb';
   readonly radius = 0.95;
   private coils: THREE.MeshStandardMaterial;
+  /** The sculpted radiator's materials: they blush orange when hot. */
+  private shell: THREE.MeshStandardMaterial[] = [];
   private waves: THREE.Sprite[] = [];
   private shown = 0;
 
   constructor() {
     super();
     const plate = basePlate(1.7, 1.4, 'обогрев');
+    this.coils = new THREE.MeshStandardMaterial({ color: '#5a3a2a', emissive: '#ff6a1a', emissiveIntensity: 0, roughness: 0.4 });
+    const sculpt = model('heater', { width: 1.15, rotateY: -Math.PI / 2 });
+    if (sculpt) {
+      sculpt.position.set(0, PLATE_TOP, -0.2);
+      this.shell = materialsOf(sculpt);
+      for (const m of this.shell) {
+        m.emissive.set('#ff5a1a');
+        m.emissiveIntensity = 0;
+      }
+      for (let i = 0; i < 3; i++) {
+        const w = sprite(glowFor('rgba(255,140,60,0.5)'), 0.6);
+        w.userData.t = i / 3;
+        this.waves.push(w);
+        this.body.add(w);
+      }
+      this.body.add(plate, sculpt);
+      this.addTerminal('a', 'none', 0.6, 0.45);
+      this.addTerminal('b', 'none', -0.6, 0.45);
+      this.pickable(plate, sculpt);
+      return;
+    }
     const box = roundedBox(0.95, 0.75, 0.42, 0.08, '#f6eddd', 0.45);
     box.position.set(0, PLATE_TOP + 0.4, -0.2);
-    this.coils = new THREE.MeshStandardMaterial({ color: '#5a3a2a', emissive: '#ff6a1a', emissiveIntensity: 0, roughness: 0.4 });
     for (let i = 0; i < 4; i++) {
       const coil = mesh(new THREE.CylinderGeometry(0.03, 0.03, 0.75, 8), this.coils);
       coil.rotation.z = Math.PI / 2;
@@ -256,6 +279,7 @@ export class Heater extends Part {
     // Coils warm up slowly and cool slowly, like real ones.
     this.shown = damp(this.shown, this.warm ? Math.min(1.3, this.state.level) : 0, 1.5, dt);
     this.coils.emissiveIntensity = this.shown * 3;
+    for (const m of this.shell) m.emissiveIntensity = this.shown * 0.4;
     for (const w of this.waves) {
       w.userData.t = (w.userData.t + dt * 0.5) % 1;
       const t = w.userData.t as number;

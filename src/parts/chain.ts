@@ -8,6 +8,7 @@ import { C } from '../theme';
 import { Part, type PartKind } from './base';
 import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox } from './kit';
 import { glowFor, sprite } from './models';
+import { boundsWhere, model, tip } from './assets';
 import { traceBeam, type BeamBox, type BeamDisc } from './beam';
 import { AMBIENT } from './wind';
 
@@ -57,9 +58,17 @@ export class WindGen extends Part {
       b.add(tipStripe);
       this.rotor.add(b);
     }
-    this.rotor.position.z = 0.17;
-    this.head.add(nacelle, this.rotor);
-    this.head.position.set(0, HUB_Y, -0.2);
+    // The sculpted tower turns as a whole (its foot is round); the rotor sits on its shaft.
+    const sculpt = model('windgen', { height: HUB_Y - PLATE_TOP + 0.25, rotateY: -Math.PI / 2 });
+    if (sculpt) {
+      this.rotor.position.copy(tip(sculpt, 'z', 1, 0.03)).add(new THREE.Vector3(0, 0, 0.05));
+      this.head.add(sculpt, this.rotor);
+      this.head.position.set(0, PLATE_TOP, -0.2);
+    } else {
+      this.rotor.position.z = 0.17;
+      this.head.add(nacelle, this.rotor);
+      this.head.position.set(0, HUB_Y, -0.2);
+    }
     // Lamps on the plate: how much electricity the wind makes.
     for (let i = 0; i < 4; i++) {
       const m = new THREE.MeshStandardMaterial({ color: '#9a9fae', emissive: i < 3 ? '#3fe07a' : '#ffc21a', emissiveIntensity: 0, roughness: 0.3 });
@@ -68,10 +77,12 @@ export class WindGen extends Part {
       this.lamps.push(m);
       this.body.add(lamp);
     }
-    this.body.add(plate, foot, tower, this.head);
+    this.body.add(plate, this.head);
+    if (!sculpt) this.body.add(foot, tower);
     this.addTerminal('a', 'plus', 0.8, 0.72);
     this.addTerminal('b', 'minus', -0.8, 0.72);
-    this.pickable(plate, foot, tower, this.head);
+    this.pickable(plate, this.head);
+    if (!sculpt) this.pickable(foot, tower);
   }
 
   protected electrical(): Partial<CircuitElement> {
@@ -710,6 +721,25 @@ export class Mirror extends Part {
   constructor() {
     super();
     const plate = basePlate(1.3, 1.3);
+    // The sculpted mirror turns on its round foot; the glass gets a real shine on top.
+    const sculpt = model('mirror', { height: 1.25, rotateY: -Math.PI / 2 });
+    if (sculpt) {
+      // The frame is everything above the post; the glass fills its middle.
+      const frame = boundsWhere(sculpt, (v) => v.y > 0.52);
+      const size = frame.getSize(new THREE.Vector3());
+      const c = frame.getCenter(new THREE.Vector3());
+      const glass = mesh(
+        new THREE.PlaneGeometry(size.x * 0.74, size.y * 0.74),
+        new THREE.MeshStandardMaterial({ color: '#e6eef5', roughness: 0.03, metalness: 1, envMapIntensity: 2.2 }),
+        false,
+      );
+      glass.position.set(c.x, c.y, frame.max.z + 0.004);
+      this.pane.add(sculpt, glass);
+      this.pane.position.set(0, PLATE_TOP, -0.1);
+      this.body.add(plate, this.pane);
+      this.pickable(plate, this.pane);
+      return;
+    }
     const foot = mesh(new THREE.CylinderGeometry(0.22, 0.26, 0.08, 24), mat(C.navy2, 0.45));
     foot.position.set(0, PLATE_TOP + 0.04, -0.1);
     const glass = mesh(
