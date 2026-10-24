@@ -404,6 +404,33 @@ export class Sfx {
     this.tone(500, 0.3, 'triangle', 0.05, 0.03, 1200);
   }
 
+  /** One strike of a bell's hammer: a bright metallic ring. */
+  gong(vol = 1) {
+    const f = 1180;
+    this.tone(f, 1.2, 'sine', 0.12 * vol);
+    this.tone(f * 2.76, 0.5, 'sine', 0.05 * vol);
+    this.tone(f * 5.4, 0.2, 'sine', 0.025 * vol);
+    this.noise(0.02, 0.15 * vol, 5000);
+  }
+
+  private bellAt = 0;
+  /** An electric bell ringing: fast hammer strikes while on; call every frame. */
+  tickBell(on: boolean) {
+    const ctx = this.ctx;
+    if (!ctx || !this.master || !on) {
+      this.bellAt = 0;
+      return;
+    }
+    if (this.bellAt < ctx.currentTime) this.bellAt = ctx.currentTime + 0.02;
+    while (this.bellAt < ctx.currentTime + 0.15) {
+      const at = this.bellAt - ctx.currentTime;
+      const f = 1180;
+      this.tone(f, 0.25, 'sine', 0.07, at);
+      this.tone(f * 2.76, 0.12, 'sine', 0.03, at);
+      this.bellAt += 0.065;
+    }
+  }
+
   /** A rolling ball bumps into something. */
   bonk() {
     this.tone(330 + Math.random() * 80, 0.12, 'sine', 0.25, 0, 180);

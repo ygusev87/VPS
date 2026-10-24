@@ -5,14 +5,14 @@ import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sa
 import { Fx } from './fx';
 import { Hud } from './hud';
 import { Input } from './input';
-import { FREE_PLAY, LEVELS, type Level } from './levels';
+import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
 import { Part, type PartKind, type PartSound, type Terminal } from './parts/base';
 import type { BandVoice } from './audio';
 import { Bells, Maracas, Piano, Tuba } from './parts/band';
 import { Drum, MusicBox } from './parts/extra';
 import { WaterMill } from './parts/mech';
 import { blowWind, Pinwheel } from './parts/wind';
-import { interact } from './parts/chain';
+import { Belt, interact, Launcher } from './parts/chain';
 import { FireTruck, Helicopter, RaceTrack, TrafficLight } from './parts/fun';
 import { Dynamo } from './parts/more';
 import { loadModels } from './parts/assets';
@@ -216,7 +216,7 @@ function startLevel(l: Level, instant = false) {
   l.parts.forEach((p, i) => {
     // Layouts are drawn for landscape; on a tall screen lay them top-to-bottom.
     const [x, z] = stage.portrait && !l.fixed ? [p.fz * 5.5, p.fx * 6.5] : [p.fx * 6.5, p.fz * 4.4];
-    const part = world.addPart(p.kind, x, z, { locked: l !== FREE_PLAY, closed: p.closed, appear: false });
+    const part = world.addPart(p.kind, x, z, { locked: l !== FREE_PLAY && !l.sandbox, closed: p.closed, appear: false });
     if (p.aim !== undefined && 'aim' in part) (part as { aim: number }).aim = p.aim;
     if (p.side !== undefined && 'side' in part) (part as { side: number }).side = p.side;
     part.appear(0.12 + i * 0.14);
@@ -338,8 +338,9 @@ function updateHint(dt: number) {
   if (won) return setHint(null);
   const idle = performance.now() - lastTouch;
   // Free play is the child's own experiment: nudge later than in missions.
-  const wait = level === FREE_PLAY ? (hintShownOnce ? 9000 : 4000) : hintShownOnce ? 6000 : 1600;
-  const h = level === FREE_PLAY ? sandboxHint(world) : levelHint(world, level, trayLeft);
+  const free = level === FREE_PLAY || !!level.sandbox;
+  const wait = free ? (hintShownOnce ? 9000 : 4000) : hintShownOnce ? 6000 : 1600;
+  const h = free ? sandboxHint(world) : levelHint(world, level, trayLeft);
   if (!h) return setHint(null);
   // Keep showing a hint that is already up; new ones wait for the child to pause.
   if (currentHint && hintKey(currentHint) === hintKey(h)) return;
@@ -429,6 +430,9 @@ function playPartSound(snd: PartSound, from?: Part) {
     case 'clack':
       sfx.clack();
       break;
+    case 'gong':
+      sfx.gong();
+      break;
     case 'missed':
       if (!aimSaid && !troubled()) {
         aimSaid = true;
@@ -481,6 +485,39 @@ function watchPinwheels() {
     pinwheelSaid = true;
     voice.say('pinwheelTip', 0);
   }
+}
+
+/** A running belt that no ball has reached while a launcher shoots: say where it goes, once. */
+let beltSaid = false;
+function watchBelts() {
+  if (beltSaid || troubled()) return;
+  const launching = world.parts.some((p) => p instanceof Launcher && p.powered);
+  if (launching && world.parts.some((p) => p instanceof Belt && !p.carried && p.running > 8)) {
+    beltSaid = true;
+    voice.say('beltTip', 0);
+  }
+}
+
+/** Free play: a chain the child built works by itself — cheer (not too often). */
+let chainHeld = 0;
+let chainWas = false;
+let chainCheerAt = -1e9;
+function watchChains(dt: number) {
+  if (level !== FREE_PLAY) return;
+  const on = chainWorks(world) && !troubled();
+  chainHeld = on ? chainHeld + dt : 0;
+  if (chainHeld > 0.6 && !chainWas && performance.now() - chainCheerAt > 30000) {
+    chainWas = true;
+    chainCheerAt = performance.now();
+    sfx.star();
+    voice.say('chainWow', 0);
+    const lit = world.parts.find((p) => p.kind !== 'launcher' && p.kind !== 'laser' && isActive(p));
+    if (lit) {
+      const s = stage.project(lit.root.localToWorld(new THREE.Vector3(0, 1.2, 0)));
+      hud.burst(s.x, s.y, 40);
+    }
+  }
+  if (!on) chainWas = false;
 }
 
 /** A shorted battery spits sparks at its posts and smokes. */
@@ -596,6 +633,7 @@ function frame(now: number) {
     for (const e of p.effects.splice(0)) {
       if (e.kind === 'sparks') fx.burst(e.at, e.n ?? 12, e.color);
       else if (e.kind === 'dust') fx.dust(e.at, e.radius);
+      else if (e.kind === 'trail') fx.trail(e.at, e.color);
       else fx.exhaust(e.at, e.dir);
     }
     if (p.kind === 'fan' || p.kind === 'floorFan') fan += Math.abs(p.state.level);
@@ -629,6 +667,7 @@ function frame(now: number) {
   sfx.setFan(fan);
   sfx.tickBand(band, music ? song : bandSong);
   sfx.setWater(water);
+  sfx.tickBell(world.parts.some((p) => p.kind === 'bell' && isActive(p)));
   watchBand(dt, players);
   watchPinwheels();
   sfx.setEngine(engine);
@@ -644,6 +683,8 @@ function frame(now: number) {
   }
 
   watchShorts(dt);
+  watchChains(dt);
+  watchBelts();
   fx.night = progress.night;
   fx.shine(world.parts.flatMap((p) => p.glowLight() ?? []));
   fx.resize(stage.renderer.domElement.height, stage.camera.fov);

@@ -34,6 +34,8 @@ export interface Level {
    * Overrides `chain` (which means one loop from the battery).
    */
   loops?: PartKind[][];
+  /** Free building with free-play hints (no fixed plan). */
+  sandbox?: boolean;
   /** Keep the layout as drawn on tall screens too (parts that face each other). */
   fixed?: boolean;
   intro: PhraseId;
@@ -46,6 +48,15 @@ const carries = (p: Part) => p.closed && Math.abs(p.state.current) > 0.01;
 const switchInLoop = (w: World) => w.parts.some((p) => p.kind === 'switch' && carries(p));
 /** A part of this kind is closed and current runs through it (a sensor, target, dominoes). */
 const through = (w: World, kind: PartKind) => w.parts.some((p) => p.kind === kind && carries(p));
+const TRIGGERS: PartKind[] = ['target', 'domino', 'lightSensor', 'button'];
+/**
+ * A chain works: something switched on by another part (a ball, light, wind),
+ * not by a finger, now powers a working gadget.
+ */
+export function chainWorks(w: World): boolean {
+  const fired = w.parts.some((p) => TRIGGERS.includes(p.kind) && p.triggered === 'world' && carries(p)) || feeding(w, 'windGen');
+  return fired && w.parts.some((p) => p.kind !== 'launcher' && p.kind !== 'laser' && isActive(p));
+}
 /** A generator of this kind is delivering current. */
 const feeding = (w: World, kind: PartKind) => w.parts.some((p) => p.kind === kind && Math.abs(p.state.current) > 0.01);
 
@@ -317,6 +328,50 @@ export const LEVELS: Level[] = [
     intro: 'l14',
     winPhrase: 'winChain',
     goal: (w) => active(w, 'bulb').length > 0 && through(w, 'lightSensor'),
+  },
+  {
+    id: 'belt',
+    title: 'Транспортёр',
+    task: 'Шарик, транспортёр, мишень и звонок',
+    icon: 'belt',
+    fixed: true,
+    parts: [
+      { kind: 'battery', fx: -0.95, fz: -0.45 },
+      { kind: 'launcher', fx: -0.45, fz: -0.5, aim: 1 },
+      { kind: 'belt', fx: -0.3, fz: 0.12 },
+      { kind: 'target', fx: 0.09, fz: 0.12 },
+      { kind: 'bell', fx: 0.65, fz: -0.4 },
+    ],
+    tray: [],
+    chain: [],
+    loops: [
+      ['battery', 'launcher'],
+      ['battery', 'belt'],
+      ['battery', 'target', 'bell'],
+    ],
+    intro: 'l15',
+    winPhrase: 'winChain',
+    goal: (w) => active(w, 'bell').length > 0 && through(w, 'target'),
+  },
+  {
+    id: 'workshop',
+    title: 'Мастерская цепочек',
+    task: 'Собери свою цепочку',
+    icon: 'domino',
+    sandbox: true,
+    parts: [
+      { kind: 'battery', fx: -0.6, fz: 0.3 },
+      { kind: 'launcher', fx: -0.55, fz: -0.35 },
+      { kind: 'domino', fx: 0.2, fz: -0.35 },
+      { kind: 'bell', fx: 0.6, fz: 0.3 },
+    ],
+    tray: [
+      ...(['battery', 'bigBattery', 'switch', 'bulb', 'led', 'fan', 'buzzer', 'windGen', 'lightSensor', 'launcher', 'target', 'domino', 'laser', 'mirror', 'belt', 'bell', 'drum', 'xylophone', 'pinwheel'] as PartKind[]).map((kind) => ({ kind, count: Infinity })),
+    ],
+    chain: [],
+    intro: 'l16',
+    winPhrase: 'chainWow',
+    goal: chainWorks,
   },
 ];
 

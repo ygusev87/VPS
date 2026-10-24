@@ -40,6 +40,8 @@ export type PartKind =
   | 'domino'
   | 'laser'
   | 'mirror'
+  | 'bell'
+  | 'belt'
   | 'switch'
   | 'button'
   | 'panel';
@@ -185,13 +187,15 @@ export type PartSound =
   | { kind: 'launch' }
   | { kind: 'bonk' }
   | { kind: 'clack' }
-  | { kind: 'missed' };
+  | { kind: 'missed' }
+  | { kind: 'gong' };
 
 /** A 3D effect a part asks for (drained by the game into fx.ts), at a world point. */
 export type PartEffect =
   | { kind: 'sparks'; at: THREE.Vector3; n?: number; color?: string }
   | { kind: 'dust'; at: THREE.Vector3; radius: number }
-  | { kind: 'exhaust'; at: THREE.Vector3; dir: THREE.Vector3 };
+  | { kind: 'exhaust'; at: THREE.Vector3; dir: THREE.Vector3 }
+  | { kind: 'trail'; at: THREE.Vector3; color: string };
 
 /** Axis-aligned rectangle on the table (x/z), in world or part-local units. */
 export interface Footprint {
@@ -410,6 +414,13 @@ export abstract class Part {
     this.foot = box.isEmpty() ? null : { x0: box.min.x, x1: box.max.x, z0: box.min.z, z1: box.max.z };
     return this.foot;
   }
+
+  /**
+   * Who last closed this trigger (target, dominoes, light sensor, button):
+   * another part ("world" — a ball, light, wind) or a finger. A chain counts
+   * only when the world did it.
+   */
+  triggered: 'world' | 'finger' | null = null;
 
   /** A rolling ball bumped into it (see chain.ts). Most parts just wobble. */
   ballHit() {

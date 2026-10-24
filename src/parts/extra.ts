@@ -353,6 +353,7 @@ export class PushButton extends Part {
     while (o && o !== this.cap) o = o.parent;
     if (!o) return false;
     this.closed = true;
+    this.triggered = 'finger';
     return true;
   }
 
@@ -364,6 +365,7 @@ export class PushButton extends Part {
   private ballHold = 0;
   ballHit() {
     this.closed = true;
+    this.triggered = 'world';
     this.ballHold = 0.8;
     this.wantsSolve = true;
     this.sounds.push({ kind: 'tick' });

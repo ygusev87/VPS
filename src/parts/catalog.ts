@@ -8,7 +8,7 @@ import { Crane, Dynamo, Lift } from './more';
 import { Bells, Maracas, Piano, Tuba } from './band';
 import { Conveyor, MarbleRun, WaterMill } from './mech';
 import { FloorFan, PcFan, Pinwheel } from './wind';
-import { Domino, Laser, Launcher, LightSensor, Mirror, Target, WindGen } from './chain';
+import { Bell, Belt, Domino, Laser, Launcher, LightSensor, Mirror, Target, WindGen } from './chain';
 import type { PhraseId } from '../voice';
 
 export interface CatalogItem {
@@ -91,6 +91,8 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'lightSensor', name: 'Фотодатчик', say: 'lightSensor' },
       { kind: 'laser', name: 'Лазер', say: 'laser' },
       { kind: 'mirror', name: 'Зеркало', say: 'mirror' },
+      { kind: 'belt', name: 'Транспортёр', say: 'belt' },
+      { kind: 'bell', name: 'Звонок', say: 'bell' },
     ],
   },
   {
@@ -189,6 +191,10 @@ function make(kind: PartKind): Part {
       return new Domino();
     case 'laser':
       return new Laser();
+    case 'bell':
+      return new Bell();
+    case 'belt':
+      return new Belt();
     case 'mirror':
       return new Mirror();
     case 'carousel':

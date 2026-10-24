@@ -161,6 +161,7 @@ export class LightSensor extends Part {
     const on = this.closed ? lux > 0.18 : lux > 0.28;
     if (on !== this.closed) {
       this.closed = on;
+      this.triggered = 'world';
       this.wantsSolve = true;
       this.sounds.push({ kind: 'tick' });
     }
@@ -211,6 +212,7 @@ export interface Ball {
   still: number;
   /** Parts it hit recently, so one bump counts once. */
   hits: Map<Part, number>;
+  color: string;
 }
 
 /** A little cannon: with power it shoots a ball, again and again. Tap to turn it. */
@@ -228,6 +230,7 @@ export class Launcher extends Part {
   private recoil = 0;
   private turn = 0;
   private misses = 0;
+  private nextColor = '#e5533d';
 
   constructor() {
     super();
@@ -290,16 +293,22 @@ export class Launcher extends Part {
     if (!table) return;
     const dir = this.direction();
     const pos = this.root.position.clone().add(new THREE.Vector3(0, BARREL_Y + 0.05, -0.15)).addScaledVector(dir, MOUTH);
-    const m = mesh(new THREE.SphereGeometry(BALL_R, 20, 14), mat(RAINBOW_BALL[Math.floor(Math.random() * RAINBOW_BALL.length)], 0.25, 0.1));
+    const color = this.nextColor;
+    const m = mesh(new THREE.SphereGeometry(BALL_R, 20, 14), mat(color, 0.25, 0.1));
     m.position.copy(pos);
     table.add(m);
     const speed = 3.6 + Math.min(1, this.state.level) * 1.6;
-    this.ball = { mesh: m, pos, vel: dir.multiplyScalar(speed), still: 0, hits: new Map() };
+    this.ball = { mesh: m, pos, vel: dir.multiplyScalar(speed), still: 0, hits: new Map(), color };
+    // Load the next ball in a new colour: the one in the barrel is the one that flies.
+    this.nextColor = RAINBOW_BALL[(RAINBOW_BALL.indexOf(color) + 1 + Math.floor(Math.random() * 4)) % RAINBOW_BALL.length];
+    this.loaded.material = mat(this.nextColor, 0.25, 0.1);
     this.loaded.visible = false;
     this.recoil = 1;
     this.sounds.push({ kind: 'launch' });
     this.effects.push({ kind: 'exhaust', at: pos.clone(), dir: this.direction() });
     this.effects.push({ kind: 'exhaust', at: pos.clone(), dir: this.direction() });
+    // A small flash at the muzzle.
+    this.effects.push({ kind: 'sparks', at: pos.clone(), n: 8, color: '#ffd36b' });
   }
 
   /** The ball has stopped and faded: load the next one. */
@@ -400,11 +409,12 @@ export class Target extends Part {
   }
 
   /** Hit: it falls back and latches the contact. */
-  ballHit() {
+  ballHit(by: 'world' | 'finger' = 'world') {
     if (this.closed) {
       this.angleV -= 3;
       return;
     }
+    this.triggered = by;
     this.closed = true;
     this.angleV = -9;
     this.wantsSolve = true;
@@ -417,7 +427,7 @@ export class Target extends Part {
     if (this.closed) {
       this.closed = false;
       this.angleV = 6;
-    } else this.ballHit();
+    } else this.ballHit('finger');
     return true;
   }
 
@@ -496,8 +506,9 @@ export class Domino extends Part {
   }
 
   /** Push the first domino. */
-  push() {
+  push(by: 'world' | 'finger' = 'world') {
     if (!this.standing || this.resetting > 0) return;
+    this.triggered = by;
     this.pieces[0].falling = true;
     this.pieces[0].v = 2.5;
   }
@@ -508,7 +519,7 @@ export class Domino extends Part {
 
   tap(): boolean {
     super.tap();
-    if (this.standing) this.push();
+    if (this.standing) this.push('finger');
     else if (this.pieces.every((p) => p.angle > 0.5)) {
       // All down: stand them up again.
       for (const p of this.pieces) {
@@ -806,6 +817,188 @@ export function aimFor(parts: Part[], laser: Laser, target: Part): { aim: number
   return best;
 }
 
+// ──────────────────────────── Electric bell ────────────────────────────
+
+/** A school bell: with power the little hammer drums on the dome. A ball makes it ring once. */
+export class Bell extends Part {
+  readonly kind: PartKind = 'bell';
+  readonly elementKind: ElementKind = 'bulb';
+  readonly radius = 0.95;
+  private hammer = new THREE.Group();
+  private dome = new THREE.Group();
+  private wobble = 0;
+
+  constructor() {
+    super();
+    const plate = basePlate(1.7, 1.5, 'звонок');
+    const board = roundedBox(0.9, 0.12, 0.5, 0.05, '#c98a4b', 0.6);
+    board.position.set(0, PLATE_TOP + 0.06, -0.15);
+    const post = mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.5, 10), mat(C.metal, 0.3, 0.8));
+    post.position.set(0.15, PLATE_TOP + 0.37, -0.15);
+    const pts: THREE.Vector2[] = [];
+    for (let i = 0; i <= 10; i++) {
+      const t = i / 10;
+      pts.push(new THREE.Vector2(0.36 * Math.sin((t * Math.PI) / 2) + 0.01, 0.3 * Math.cos((t * Math.PI) / 2)));
+    }
+    const domeMesh = mesh(new THREE.LatheGeometry(pts, 36), new THREE.MeshStandardMaterial({ color: '#e0b04a', roughness: 0.18, metalness: 0.9, side: THREE.DoubleSide }));
+    const knob = mesh(new THREE.SphereGeometry(0.05, 12, 8), mat(C.metal, 0.3, 0.8));
+    knob.position.y = 0.3;
+    this.dome.add(domeMesh, knob);
+    this.dome.position.set(0.15, PLATE_TOP + 0.62, -0.15);
+    this.dome.rotation.z = Math.PI;
+    // The coil box and the hammer arm reaching to the dome's rim.
+    const coil = roundedBox(0.24, 0.2, 0.24, 0.05, C.navy2, 0.45);
+    coil.position.set(-0.28, PLATE_TOP + 0.22, -0.15);
+    const arm = mesh(new THREE.CylinderGeometry(0.018, 0.018, 0.5, 8), mat(C.metal, 0.3, 0.8));
+    arm.position.y = 0.25;
+    const ball = mesh(new THREE.SphereGeometry(0.06, 14, 10), mat(C.red, 0.35));
+    ball.position.y = 0.5;
+    this.hammer.add(arm, ball);
+    this.hammer.position.set(-0.28, PLATE_TOP + 0.3, -0.15);
+    this.hammer.rotation.z = -0.35;
+    this.body.add(plate, board, post, this.dome, coil, this.hammer);
+    this.addTerminal('a', 'none', 0.6, 0.5);
+    this.addTerminal('b', 'none', -0.6, 0.5);
+    this.pickable(plate, board, this.dome, coil, this.hammer);
+  }
+
+  protected electrical(): Partial<CircuitElement> {
+    return { r: 15 };
+  }
+
+  get ringing() {
+    return this.state.level > 0.2;
+  }
+
+  ballHit() {
+    this.wobble = 1;
+    this.sounds.push({ kind: 'gong' });
+  }
+
+  tap(): boolean {
+    super.tap();
+    this.ballHit();
+    return false;
+  }
+
+  protected animate(dt: number) {
+    this.wobble = Math.max(0, this.wobble - dt * 2);
+    const buzz = this.ringing ? Math.abs(Math.sin(this.time * 70)) : 0;
+    this.hammer.rotation.z = -0.35 - buzz * 0.18 - this.wobble * Math.abs(Math.sin(this.time * 40)) * 0.15;
+    const sway = (this.ringing ? 0.03 : 0) + this.wobble * 0.06;
+    this.dome.rotation.x = Math.sin(this.time * 55) * sway;
+  }
+}
+
+// ─────────────────────────────── Belt ────────────────────────────────
+
+const BELT_W = 2.3;
+const BELT_D = 0.62;
+const BELT_TOP = PLATE_TOP + 0.1;
+
+function beltTexture(): THREE.Texture {
+  const c = document.createElement('canvas');
+  c.width = 128;
+  c.height = 32;
+  const ctx = c.getContext('2d')!;
+  ctx.fillStyle = '#2a3148';
+  ctx.fillRect(0, 0, 128, 32);
+  ctx.fillStyle = '#3a4566';
+  for (let x = 0; x < 128; x += 16) ctx.fillRect(x, 0, 6, 32);
+  ctx.fillStyle = '#f2c230';
+  // Chevrons show which way it runs.
+  for (let x = 4; x < 128; x += 32) {
+    ctx.beginPath();
+    ctx.moveTo(x, 8);
+    ctx.lineTo(x + 8, 16);
+    ctx.lineTo(x, 24);
+    ctx.lineTo(x + 3, 24);
+    ctx.lineTo(x + 11, 16);
+    ctx.lineTo(x + 3, 8);
+    ctx.fill();
+  }
+  const t = new THREE.CanvasTexture(c);
+  t.colorSpace = THREE.SRGBColorSpace;
+  t.wrapS = THREE.RepeatWrapping;
+  t.repeat.set(3, 1);
+  return t;
+}
+
+/** A low belt: with power it carries a ball that rolls onto it, left to right (wires swapped: back). */
+export class Belt extends Part {
+  readonly kind: PartKind = 'belt';
+  readonly elementKind: ElementKind = 'motor';
+  readonly radius = 1.45;
+  private tex = beltTexture();
+  private rollers: THREE.Mesh[] = [];
+  private flip: THREE.Mesh;
+  /** A ball has ridden it at least once. */
+  carried = false;
+  /** Seconds it has been running. */
+  running = 0;
+
+  constructor() {
+    super();
+    const plate = basePlate(2.9, 1.3, 'транспортёр');
+    const belt = mesh(new THREE.BoxGeometry(BELT_W, 0.05, BELT_D), [
+      mat('#2a3148', 0.6),
+      mat('#2a3148', 0.6),
+      new THREE.MeshStandardMaterial({ map: this.tex, roughness: 0.7 }),
+      mat('#2a3148', 0.6),
+      mat('#2a3148', 0.6),
+      mat('#2a3148', 0.6),
+    ] as unknown as THREE.Material);
+    belt.position.set(0, BELT_TOP - 0.025, -0.1);
+    this.body.add(plate, belt);
+    for (const x of [-BELT_W / 2, BELT_W / 2]) {
+      const r = mesh(new THREE.CylinderGeometry(0.06, 0.06, BELT_D + 0.06, 16), mat(C.metal, 0.3, 0.8));
+      r.rotation.x = Math.PI / 2;
+      r.position.set(x, BELT_TOP - 0.05, -0.1);
+      this.rollers.push(r);
+      this.body.add(r);
+    }
+    // Low side rails keep the ball on (tall enough to see, too low to stop a ball).
+    for (const z of [-0.1 - BELT_D / 2 - 0.04, -0.1 + BELT_D / 2 + 0.04]) {
+      const rail = roundedBox(BELT_W, 0.05, 0.04, 0.015, C.teal, 0.45);
+      rail.position.set(0, BELT_TOP + 0.03, z);
+      this.body.add(rail);
+    }
+    // A small motor at the end, with a stripe that spins.
+    const motor = mesh(new THREE.CylinderGeometry(0.09, 0.09, 0.16, 18), mat(C.red, 0.4));
+    motor.rotation.x = Math.PI / 2;
+    motor.position.set(-BELT_W / 2, BELT_TOP - 0.02, -0.1 - BELT_D / 2 - 0.14);
+    this.flip = mesh(new THREE.BoxGeometry(0.02, 0.16, 0.17), mat('#f2c230', 0.5), false);
+    this.flip.position.copy(motor.position);
+    this.body.add(motor, this.flip);
+    this.addTerminal('a', 'none', 1.2, 0.42);
+    this.addTerminal('b', 'none', -1.2, 0.42);
+    this.pickable(plate, belt, motor);
+  }
+
+  protected electrical(): Partial<CircuitElement> {
+    return { r: 9 };
+  }
+
+  /** Belt speed along +x (world units per second), signed by the current. */
+  get speed() {
+    const l = Math.max(-1.6, Math.min(1.6, this.state.level));
+    return Math.abs(l) > 0.15 ? l * 2 : 0;
+  }
+
+  /** The running surface (world rectangle). */
+  surface() {
+    const { x, z } = this.root.position;
+    return { x0: x - BELT_W / 2, x1: x + BELT_W / 2, z0: z - 0.1 - BELT_D / 2, z1: z - 0.1 + BELT_D / 2, y: BELT_TOP };
+  }
+
+  protected animate(dt: number) {
+    this.running = this.speed !== 0 ? this.running + dt : 0;
+    this.tex.offset.x -= (this.speed / BELT_W) * 3 * dt;
+    for (const r of this.rollers) r.rotation.y += (this.speed / 0.06) * dt;
+    this.flip.rotation.z -= this.speed * 8 * dt;
+  }
+}
+
 // ─────────────────────────── The links ───────────────────────────
 
 /** Light falling on every light sensor from everything that shines. */
@@ -893,6 +1086,22 @@ function roll(parts: Part[], dt: number) {
     for (const p of parts) {
       const r = plateHalf(p);
       if (b.pos.x > r.x0 && b.pos.x < r.x1 && b.pos.z > r.z0 && b.pos.z < r.z1) floor = PLATE_TOP + BALL_R;
+      // A running belt carries the ball along and keeps it in the middle.
+      if (p instanceof Belt) {
+        const s = p.surface();
+        if (b.pos.x > s.x0 && b.pos.x < s.x1 && b.pos.z > s.z0 && b.pos.z < s.z1) {
+          floor = s.y + BALL_R;
+          p.carried = true;
+          if (p.speed !== 0) {
+            const k = Math.min(1, dt * 6);
+            b.vel.x += (p.speed - b.vel.x) * k;
+            // The rails catch a ball dropping in from the side.
+            b.vel.z += (((s.z0 + s.z1) / 2 - b.pos.z) * 3 - b.vel.z) * Math.min(1, dt * 25);
+          } else {
+            b.vel.multiplyScalar(Math.max(0, 1 - dt * 4));
+          }
+        }
+      }
     }
     b.pos.y = b.pos.y > floor ? Math.max(floor, b.pos.y - dt * 3) : damp(b.pos.y, floor, 20, dt);
     const len = Math.hypot(b.pos.x, b.pos.z);
@@ -904,6 +1113,7 @@ function roll(parts: Part[], dt: number) {
       b.mesh.rotateOnWorldAxis(axis, (v * dt) / BALL_R);
     }
     b.mesh.position.copy(b.pos);
+    if (v > 1) l.effects.push({ kind: 'trail', at: b.pos.clone(), color: b.color });
     b.still = v < 0.12 ? b.still + dt : 0;
     if (b.still > 1.2) {
       const k = Math.max(0, 1 - (b.still - 1.2) / 0.4);

@@ -204,6 +204,22 @@ export class Fx {
     }
   }
 
+  /** A fading dot left behind a fast ball, so its path reads at a glance. */
+  trail(at: THREE.Vector3, color: string) {
+    const c = new THREE.Color(color).multiplyScalar(1.6);
+    this.sparks.add({
+      p: at.clone(),
+      v: new THREE.Vector3(),
+      max: 0.4,
+      size: 0.16,
+      grow: -0.8,
+      color: c,
+      gravity: 0,
+      drag: 0,
+      bounce: false,
+    });
+  }
+
   /** A little grey puff from an exhaust pipe. */
   exhaust(at: THREE.Vector3, dir: THREE.Vector3) {
     const g = 0.45 + Math.random() * 0.15;
