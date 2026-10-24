@@ -20,6 +20,9 @@ export type PartKind =
   | 'firetruck'
   | 'trafficLight'
   | 'disco'
+  | 'dynamo'
+  | 'lift'
+  | 'crane'
   | 'switch'
   | 'button'
   | 'panel';
@@ -149,7 +152,12 @@ export type PartSound =
   | { kind: 'song'; song: number }
   | { kind: 'honk' }
   | { kind: 'lap' }
-  | { kind: 'tick' };
+  | { kind: 'tick' }
+  | { kind: 'ding' }
+  | { kind: 'clank' }
+  | { kind: 'liftTop' }
+  | { kind: 'craneHold' }
+  | { kind: 'craneDone' };
 
 /** Axis-aligned rectangle on the table (x/z), in world or part-local units. */
 export interface Footprint {
@@ -182,6 +190,13 @@ export abstract class Part {
 
   /** Sounds asked for since the last frame; the game plays and clears them. */
   readonly sounds: PartSound[] = [];
+  /** Set when the part's own electrical values changed (e.g. a generator spun up); the world re-solves. */
+  wantsSolve = false;
+  /**
+   * For parts the finger turns while held (a crank, a crane): the height of the
+   * horizontal plane the finger is followed on, so moving off the part still counts.
+   */
+  holdPlane: number | null = null;
   private foot: Footprint | null | undefined;
 
   private spring = 1;

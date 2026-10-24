@@ -19,6 +19,9 @@ const ICON = {
   soundOn: svg('<path d="M4 9.5h3.4L12 5.5v13l-4.6-4H4z" class="fill"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/>'),
   soundOff: svg('<path d="M4 9.5h3.4L12 5.5v13l-4.6-4H4z" class="fill"/><path d="m16 9.5 5 5M21 9.5l-5 5"/>'),
   restart: svg('<path d="M4.5 10.5A8 8 0 1 1 6 17"/><path d="M4 5v5.8h5.8"/>'),
+  moon: svg('<path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z" class="fill"/>'),
+  sun: svg('<circle cx="12" cy="12" r="4.2" class="fill"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>'),
+  trash: svg('<path d="M4.5 7h15M9.5 7V4.8h5V7M7 7l1 13.5h8L17 7M10.5 10.5v6.5M13.5 10.5v6.5"/>', 'icon trash-icon'),
   speak: svg('<path d="M4 9.5h3.4L12 5.5v13l-4.6-4H4z" class="fill"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6"/>'),
   book: svg('<path d="M20 10.6c-3.3-2.4-8.2-3.2-14-3v21.2c5.8-.2 10.7.6 14 3 3.3-2.4 8.2-3.2 14-3V7.6c-5.8-.2-10.7.6-14 3zM20 10.6v21.2"/><path d="M3 11v21c6.3-.5 12.6.2 17 2.6 4.4-2.4 10.7-3.1 17-2.6V11"/>', 'icon book', '0 0 40 40'),
   bin: svg('<path d="M4.5 7h15M9.5 7V4.8h5V7M7 7l1 13.5h8L17 7M10.5 10.5v6.5M13.5 10.5v6.5"/>'),
@@ -41,6 +44,7 @@ export interface HudHooks {
   onRestart(): void;
   onSound(on: boolean): void;
   onFlow(on: boolean): void;
+  onNight(on: boolean): void;
   onZoom(factor: number): void;
   onResetView(): void;
   onReplay(): void;
@@ -69,6 +73,8 @@ export class Hud {
   private fx!: HTMLCanvasElement;
   private soundBtn!: HTMLButtonElement;
   private flowBtn!: HTMLButtonElement;
+  private nightBtn!: HTMLButtonElement;
+  private trash!: HTMLElement;
   private nextBtn: HTMLElement | null = null;
   private hint: Hint | null = null;
   private hintT = 0;
@@ -142,8 +148,10 @@ export class Hud {
         <span class="sep"></span>
         <button data-v="flow" class="toggle is-on" aria-label="Показывать ток" aria-pressed="true">${ICON.flow}</button>
         <button data-v="sound" class="toggle is-on" aria-label="Звук" aria-pressed="true">${ICON.soundOn}</button>
+        <button data-v="night" class="toggle" aria-label="Ночь" aria-pressed="false">${ICON.moon}</button>
         <button data-v="restart" aria-label="Начать заново">${ICON.restart}</button>
       </div>
+      <div class="trash" aria-hidden="true">${ICON.trash}</div>
       <canvas class="fx"></canvas>
     `;
     this.sidebar = r.querySelector('.sidebar')!;
@@ -161,6 +169,13 @@ export class Hud {
     this.fx = r.querySelector('.fx')!;
     this.soundBtn = r.querySelector('[data-v="sound"]')!;
     this.flowBtn = r.querySelector('[data-v="flow"]')!;
+    this.nightBtn = r.querySelector('[data-v="night"]')!;
+    this.trash = r.querySelector('.trash')!;
+    this.nightBtn.addEventListener('click', () => {
+      const on = !this.nightBtn.classList.contains('is-on');
+      this.setNight(on);
+      this.hooks.onNight(on);
+    });
     this.hints.style.opacity = '0';
 
     r.querySelector('[data-v="out"]')!.addEventListener('click', () => this.hooks.onZoom(1.25));
@@ -222,6 +237,13 @@ export class Hud {
     document.addEventListener('gesturestart', (e) => e.preventDefault());
     document.addEventListener('dblclick', (e) => e.preventDefault());
     document.addEventListener('contextmenu', (e) => e.preventDefault());
+  }
+
+  setNight(on: boolean) {
+    this.nightBtn.classList.toggle('is-on', on);
+    this.nightBtn.setAttribute('aria-pressed', String(on));
+    this.nightBtn.innerHTML = on ? ICON.sun : ICON.moon;
+    document.body.classList.toggle('is-night', on);
   }
 
   setSound(on: boolean) {
@@ -382,7 +404,16 @@ export class Hud {
     this.layout();
   }
 
+  /** Show the bin while a part that may be thrown away is being carried. */
+  showTrash(on: boolean) {
+    this.trash.classList.toggle('is-on', on);
+  }
+
   overTray(x: number, y: number) {
+    if (this.trash.classList.contains('is-on')) {
+      const t = this.trash.getBoundingClientRect();
+      if (Math.hypot(x - (t.left + t.width / 2), y - (t.top + t.height / 2)) < t.width / 2 + 24) return true;
+    }
     const r = this.sidebar.getBoundingClientRect();
     if (x >= r.left - 10 && x <= r.right + 10 && y >= r.top - 10 && y <= r.bottom + 10) return true;
     if (!this.openGroup) return false;
@@ -392,6 +423,7 @@ export class Hud {
 
   setTrash(on: boolean) {
     this.sidebar.classList.toggle('is-trash', on);
+    this.trash.classList.toggle('is-hot', on);
     if (on) this.toggleGroup(null);
   }
 

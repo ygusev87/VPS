@@ -2,6 +2,8 @@
 // site: cream paper, tan hairlines, navy ink, teal for interaction.
 export const C = {
   bg: '#f6eddd',
+  /** Night table background (also the fog colour then). */
+  night: '#1c2338',
   bgDeep: '#efe3d1',
   card: '#f9f2e5',
   line: '#cec0ad',

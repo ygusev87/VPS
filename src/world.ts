@@ -44,7 +44,10 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'drum':
     case 'firetruck':
     case 'trafficLight':
+    case 'crane':
       return l > 0.2;
+    case 'lift':
+      return Math.abs(l) > 0.15;
     default:
       return false;
   }
@@ -224,6 +227,12 @@ export class World {
   }
 
   update(dt: number) {
+    for (const p of this.parts) {
+      if (p.wantsSolve) {
+        p.wantsSolve = false;
+        this.dirty = true;
+      }
+    }
     if (this.dirty) this.solve();
     this.updateObstacles();
     for (const p of this.parts) p.update(dt);

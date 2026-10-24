@@ -983,6 +983,65 @@ svg.icon .fill {
   }
 }
 
+/* Bin: appears while a part is carried; drop the part on it to throw it away. */
+.trash {
+  position: absolute;
+  left: 50%;
+  bottom: calc(var(--safe-b) + 22px);
+  width: 76px;
+  height: 76px;
+  margin-left: -38px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: #fdf1ecf2;
+  border: 2.5px dashed #e5533d99;
+  box-shadow: var(--shadow-deep);
+  opacity: 0;
+  transform: translateY(24px) scale(0.8);
+  transition: opacity 0.18s var(--ease), transform 0.25s var(--spring), background 0.15s, border-color 0.15s;
+  pointer-events: none !important;
+  z-index: 4;
+}
+.trash svg {
+  width: 36px;
+  height: 36px;
+  stroke: var(--red);
+  transition: transform 0.2s var(--spring);
+}
+.trash.is-on {
+  opacity: 1;
+  transform: none;
+}
+.trash.is-hot {
+  background: var(--red);
+  border-style: solid;
+  border-color: #b8331f;
+  transform: scale(1.18);
+}
+.trash.is-hot svg {
+  stroke: #fff;
+  transform: rotate(-12deg) scale(1.1);
+}
+
+@media (orientation: portrait) {
+  /* The view bar sits bottom-right here; keep the bin clear of it. */
+  .trash {
+    bottom: calc(var(--safe-b) + 86px);
+  }
+}
+
+/* Night table: dark room; panels stay light so they can be found. */
+body.is-night {
+  background: radial-gradient(120% 90% at 50% 45%, #2a3352a6, transparent 65%), #1c2338;
+}
+body.is-night .traces {
+  opacity: 0.35;
+}
+body.is-night .brand {
+  filter: invert(0.92) hue-rotate(180deg);
+}
+
 /* ───────── Landscape: drawers dock at the bottom ─────────
    The table gets the whole width; the drawers sit in a bar bottom-left, next
    to the view bar, and their variants open upwards. Keep in sync with

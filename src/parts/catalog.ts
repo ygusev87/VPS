@@ -4,6 +4,7 @@ import type { LightColor, Part, PartKind } from './base';
 import { ButtonPanel, Carousel, Drum, MusicBox, PushButton, Windmill, Xylophone } from './extra';
 import { DiscoBall, FireTruck, Helicopter, RaceTrack, TrafficLight } from './fun';
 import { Battery, Bulb, Buzzer, Fan, Led, Switch } from './models';
+import { Crane, Dynamo, Lift } from './more';
 import type { PhraseId } from '../voice';
 
 export interface CatalogItem {
@@ -27,6 +28,7 @@ export const GROUPS: CatalogGroup[] = [
     items: [
       { kind: 'battery', name: 'Батарейки 3 В', say: 'battery' },
       { kind: 'bigBattery', name: 'Большая батарея 6 В', say: 'bigBattery' },
+      { kind: 'dynamo', name: 'Динамо-машина', say: 'dynamo' },
     ],
   },
   {
@@ -52,6 +54,8 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'fan', name: 'Вентилятор', say: 'fan' },
       { kind: 'carousel', name: 'Карусель', say: 'carousel' },
       { kind: 'windmill', name: 'Мельница', say: 'windmill' },
+      { kind: 'lift', name: 'Лифт', say: 'lift' },
+      { kind: 'crane', name: 'Подъёмный кран', say: 'crane' },
     ],
   },
   {
@@ -136,6 +140,12 @@ function make(kind: PartKind): Part {
       return new TrafficLight();
     case 'disco':
       return new DiscoBall();
+    case 'dynamo':
+      return new Dynamo();
+    case 'lift':
+      return new Lift();
+    case 'crane':
+      return new Crane();
     case 'switch':
       return new Switch();
     case 'button':
@@ -146,4 +156,4 @@ function make(kind: PartKind): Part {
 }
 
 /** Model files the game loads at start. */
-export const MODEL_NAMES = ['battery', 'bigbattery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer', 'carousel', 'windmill', 'sails', 'musicbox', 'button', 'panel', 'drum', 'racecar', 'helicopter', 'firetruck'];
+export const MODEL_NAMES = ['battery', 'bigbattery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer', 'carousel', 'windmill', 'sails', 'musicbox', 'button', 'panel', 'drum', 'racecar', 'helicopter', 'firetruck', 'dynamo'];

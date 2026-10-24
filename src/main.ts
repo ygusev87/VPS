@@ -5,9 +5,10 @@ import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sa
 import { Hud } from './hud';
 import { Input } from './input';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
-import type { PartKind, PartSound, Terminal } from './parts/base';
+import type { Part, PartKind, PartSound, Terminal } from './parts/base';
 import { Drum, MusicBox } from './parts/extra';
-import { FireTruck, Helicopter, RaceTrack } from './parts/fun';
+import { FireTruck, Helicopter, RaceTrack, TrafficLight } from './parts/fun';
+import { Dynamo } from './parts/more';
 import { loadModels } from './parts/assets';
 import { ALL_ITEMS, createPart, MODEL_NAMES } from './parts/catalog';
 import { Stage } from './stage';
@@ -88,6 +89,11 @@ const hud = new Hud(stage, {
   onFlow: (on) => {
     Wire.showFlow = on;
   },
+  onNight: (on) => {
+    progress.night = on;
+    stage.setNight(on);
+    saveProgress(progress);
+  },
   onZoom: (f) => stage.zoomBy(f),
   onResetView: () => frameParts(),
   onReplay: () => {
@@ -113,6 +119,8 @@ const hud = new Hud(stage, {
   },
 });
 hud.setSound(progress.sound);
+hud.setNight(progress.night);
+stage.setNight(progress.night);
 
 const input = new Input(stage, world, {
   overTray: (x, y) => hud.overTray(x, y),
@@ -304,7 +312,7 @@ function hintVisible() {
 // ───────── Part sounds ─────────
 
 let songHintSaid = false;
-function playPartSound(snd: PartSound) {
+function playPartSound(snd: PartSound, from?: Part) {
   switch (snd.kind) {
     case 'xylophone':
       sfx.xylophone(snd.note);
@@ -328,28 +336,95 @@ function playPartSound(snd: PartSound) {
     case 'tick':
       sfx.tick();
       break;
+    case 'ding':
+      sfx.lap();
+      break;
+    case 'clank':
+      sfx.clank();
+      break;
+    case 'liftTop':
+      if (!liftSaid && !troubled()) {
+        liftSaid = true;
+        setTimeout(() => voice.say('liftSwap', 0), 900);
+      }
+      break;
+    case 'craneHold':
+      if (!craneSaid) {
+        craneSaid = true;
+        voice.say('craneHold', 0);
+      }
+      break;
+    case 'craneDone':
+      sfx.win();
+      voice.say('craneDone', 0);
+      if (from) {
+        const p = stage.project(from.root.localToWorld(new THREE.Vector3(0, 1.5, 0)));
+        hud.burst(p.x, p.y, 60);
+      }
+      break;
   }
 }
+let liftSaid = false;
+let craneSaid = false;
 
 // The drum plays along with the music box: it bounces on every beat.
 sfx.onBandBeat = () => {
   for (const p of world.parts) if (p instanceof Drum && isActive(p)) p.thump();
 };
 
+/** Something is wrong on the table: cheers wait until it is fixed. */
+function troubled() {
+  return (world.result?.shorted.size ?? 0) > 0 || isProblem(currentHint);
+}
+
 let heliTipSaid = false;
 let heliFlySaid = false;
-function watchHelicopters() {
+const airborne = new Map<Helicopter, number>();
+function watchHelicopters(dt: number) {
   for (const p of world.parts) {
     if (!(p instanceof Helicopter)) continue;
-    if (p.flying && !heliFlySaid) {
+    // Cheer only for a real, steady flight with nothing wrong on the table.
+    const t = p.flying && !troubled() ? (airborne.get(p) ?? 0) + dt : 0;
+    airborne.set(p, t);
+    if (t > 1.2 && !heliFlySaid) {
       heliFlySaid = true;
       voice.say('heliFly', 0);
     }
     // Spinning but stuck on the pad for a while: suggest more power, once.
-    if (p.grounded > 3 && !heliTipSaid && !p.flying) {
+    if (p.grounded > 3 && !heliTipSaid && !p.flying && !troubled()) {
       heliTipSaid = true;
       voice.say('heliMore', 0);
     }
+  }
+}
+
+/** A powered traffic light next to a race track stops its car on red. */
+let trafficSaid = false;
+function linkTraffic() {
+  const lights = world.parts.filter((p): p is TrafficLight => p instanceof TrafficLight);
+  for (const p of world.parts) {
+    if (!(p instanceof RaceTrack)) continue;
+    const near = lights.filter((l) => l.root.position.distanceTo(p.root.position) < p.radius + l.radius + 2.5);
+    p.redLight = near.some((l) => l.powered) && near.filter((l) => l.powered).every((l) => l.stopsTraffic);
+    if (p.waiting && !trafficSaid) {
+      trafficSaid = true;
+      voice.say('trafficCar', 0);
+    }
+  }
+}
+
+/** The bin shows while a part that may be thrown away is carried. */
+let trashSaid = false;
+let carriedFor = 0;
+function watchCarry(dt: number) {
+  const part = input.carried;
+  const show = !!part && !part.locked;
+  hud.showTrash(show);
+  carriedFor = show ? carriedFor + dt : 0;
+  // The first long carry of the session: tell where the bin is.
+  if (carriedFor > 2.5 && !trashSaid) {
+    trashSaid = true;
+    voice.say('trash', 0);
   }
 }
 
@@ -384,10 +459,11 @@ function frame(now: number) {
   let siren = false;
   let band = false;
   for (const p of world.parts) {
-    for (const snd of p.sounds.splice(0)) playPartSound(snd);
+    for (const snd of p.sounds.splice(0)) playPartSound(snd, p);
     if (p.kind === 'fan') fan += Math.abs(p.state.level);
     if (p.kind === 'windmill' || p.kind === 'carousel' || p.kind === 'disco') fan += Math.abs(p.state.level) * 0.4;
     if (p instanceof Helicopter) fan += p.rotorSpeed * 0.8;
+    if (p instanceof Dynamo) fan += Math.min(1, Math.abs(p.omega) / 10) * 0.5;
     if (p instanceof RaceTrack) engine = Math.max(engine, p.carSpeed);
     if (p instanceof FireTruck && p.powered && p.siren > 0) siren = true;
     if (p instanceof Drum && isActive(p)) band = true;
@@ -401,7 +477,9 @@ function frame(now: number) {
   sfx.tickMusic(music, song, band);
   sfx.setEngine(engine);
   sfx.setSiren(siren);
-  watchHelicopters();
+  watchHelicopters(dt);
+  linkTraffic();
+  watchCarry(dt);
   buzzerRefresh -= dt;
   if (buzz !== buzzerOn || (buzz && buzzerRefresh <= 0)) {
     buzzerOn = buzz;

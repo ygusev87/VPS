@@ -32,6 +32,8 @@ export class Stage {
   private goalTarget = new THREE.Vector3();
   private goalDistance = 20;
   private sun: THREE.DirectionalLight;
+  private hemi: THREE.HemisphereLight;
+  private fill: THREE.DirectionalLight;
   private ground: THREE.Mesh;
   private raycaster = new THREE.Raycaster();
   private plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
@@ -57,7 +59,8 @@ export class Stage {
     this.scene.fog = new THREE.Fog(C.bg, 30, 80);
     this.scene.add(this.world);
 
-    this.scene.add(new THREE.HemisphereLight('#fffaf0', '#d9c5ac', 1.05));
+    this.hemi = new THREE.HemisphereLight('#fffaf0', '#d9c5ac', 1.05);
+    this.scene.add(this.hemi);
     this.sun = new THREE.DirectionalLight('#fff3df', 2.1);
     this.sun.castShadow = true;
     this.sun.shadow.mapSize.set(2048, 2048);
@@ -66,9 +69,9 @@ export class Stage {
     this.sun.shadow.radius = 5;
     this.sun.shadow.blurSamples = 16;
     this.scene.add(this.sun, this.sun.target);
-    const fill = new THREE.DirectionalLight('#e8f2ff', 0.45);
-    fill.position.set(8, 6, -6);
-    this.scene.add(fill);
+    this.fill = new THREE.DirectionalLight('#e8f2ff', 0.45);
+    this.fill.position.set(8, 6, -6);
+    this.scene.add(this.fill);
 
     this.ground = new THREE.Mesh(
       new THREE.PlaneGeometry(400, 400),
@@ -85,6 +88,22 @@ export class Stage {
 
     window.addEventListener('resize', () => this.resize());
     this.resize();
+  }
+
+  /**
+   * Night table: the room goes dark (a cool moonlight stays so parts can be
+   * found), while everything that glows keeps its full brightness.
+   */
+  setNight(on: boolean) {
+    this.hemi.intensity = on ? 0.22 : 1.05;
+    this.hemi.color.set(on ? '#9fb2e6' : '#fffaf0');
+    this.hemi.groundColor.set(on ? '#2a3150' : '#d9c5ac');
+    this.sun.intensity = on ? 0.35 : 2.1;
+    this.sun.color.set(on ? '#b9c8ff' : '#fff3df');
+    this.fill.intensity = on ? 0.12 : 0.45;
+    this.scene.environmentIntensity = on ? 0.14 : 0.45;
+    (this.scene.fog as THREE.Fog).color.set(on ? C.night : C.bg);
+    (this.ground.material as THREE.MeshBasicMaterial).color.set(on ? '#5b6687' : '#ffffff');
   }
 
   /** Tall screens lay level parts out top-to-bottom. */

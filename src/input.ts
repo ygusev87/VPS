@@ -215,8 +215,13 @@ export class Input {
     const { clientX: x, clientY: y } = e;
     switch (m.kind) {
       case 'hold-part': {
-        const hit = this.stage.raycast(x, y, m.part.pickables)[0];
-        if (hit) m.part.pressMove(hit.object, hit.point);
+        if (m.part.holdPlane !== null) {
+          const p = this.stage.screenToPlane(x, y, m.part.holdPlane);
+          if (p) m.part.pressMove(null, p);
+        } else {
+          const hit = this.stage.raycast(x, y, m.part.pickables)[0];
+          if (hit) m.part.pressMove(hit.object, hit.point);
+        }
         break;
       }
       case 'pan':

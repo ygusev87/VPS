@@ -262,6 +262,13 @@ export class Sfx {
     this.tone(1760, 0.35, 'sine', 0.08, 0.08);
   }
 
+  /** Steel ball snapping onto the magnet (or hitting the plate). */
+  clank() {
+    this.tone(1900, 0.08, 'triangle', 0.08);
+    this.tone(2850, 0.05, 'sine', 0.05);
+    this.noise(0.03, 0.15, 4200);
+  }
+
   /** Traffic light relay click. */
   tick() {
     this.noise(0.015, 0.2, 1800);

@@ -5,6 +5,7 @@ import type { Level } from './levels';
 import { PARAMS } from './circuit/solver';
 import type { Part, PartKind, Terminal } from './parts/base';
 import { ButtonPanel } from './parts/extra';
+import { Dynamo } from './parts/more';
 import type { PhraseId } from './voice';
 import type { Wire } from './wires';
 import { activeAt, partIdOf, type World } from './world';
@@ -41,7 +42,7 @@ export function isProblem(h: Hint | null): boolean {
   return h?.type === 'tapWire';
 }
 
-const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco'];
+const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane'];
 const POLAR: PartKind[] = ['led', 'buzzer', 'musicbox'];
 const isPolar = (p: Part) => POLAR.includes(p.kind);
 const isBattery = (p: Part) => p.kind === 'battery' || p.kind === 'bigBattery';
@@ -54,7 +55,7 @@ interface Source {
 }
 function sources(world: World): Source[] {
   return world.parts.flatMap((p): Source[] => {
-    if (isBattery(p)) return [{ part: p, plus: p.terminal('a'), minus: p.terminal('b') }];
+    if (isBattery(p) || p instanceof Dynamo) return [{ part: p, plus: p.terminal('a'), minus: p.terminal('b') }];
     if (p instanceof ButtonPanel) return p.outputs().map(([plus, minus]) => ({ part: p, plus, minus }));
     return [];
   });
@@ -124,6 +125,8 @@ export function problemHint(world: World): Hint | null {
         }
       }
       const busiest = world.parts.find((q) => q.id === best);
+      // A hand generator is "weak" because it is turned too slowly (or not at all).
+      if (busiest instanceof Dynamo) return { type: 'tap', part: busiest, phrase: 'crank', local: busiest.knobPoint() };
       if (busiest) return { type: 'weak', part: busiest, phrase: 'weak' };
     }
   }
@@ -184,7 +187,21 @@ export function sandboxHint(world: World): Hint | null {
       }
     }
   }
-  return switchHint(world);
+  return crankHint(world) ?? switchHint(world);
+}
+
+/** A still generator that would run an idle gadget if turned: point at its knob. */
+function crankHint(world: World): Hint | null {
+  const idle = world.parts.filter((p) => LOADS.includes(p.kind) && !activeAt(p.kind, p.state.level));
+  if (!idle.length) return null;
+  for (const d of world.parts) {
+    if (!(d instanceof Dynamo) || d.volts > 1) continue;
+    const r = world.trial((e) => (e.id === d.id ? { ...e, emf: 4 } : e));
+    if (!r.shorted.size && idle.some((p) => activeAt(p.kind, r.elements.get(p.id)?.level ?? 0))) {
+      return { type: 'tap', part: d, phrase: 'crank', local: d.knobPoint() };
+    }
+  }
+  return null;
 }
 
 export function levelHint(world: World, level: Level, trayLeft: (k: PartKind) => number): Hint | null {

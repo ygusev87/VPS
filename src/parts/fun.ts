@@ -24,6 +24,8 @@ function surfaceY(o: THREE.Object3D, x: number, z: number, fallback: number): nu
 // ──────────────────────────── Race track ───────────────────────────
 
 const RX = 1.65;
+/** Where the chequered line is on the oval (the car stops here on red). */
+const STOP_T = Math.PI / 2;
 const RZ = 0.92;
 const ROAD = 0.27;
 const TRACK_Z = -0.3;
@@ -62,6 +64,10 @@ export class RaceTrack extends Part {
   private t = Math.PI / 2;
   private speed = 0;
   private lap = 0;
+  /** Set each frame by the game: a powered traffic light beside the track says stop. */
+  redLight = false;
+  /** The car is standing at the line waiting for green. */
+  waiting = false;
 
   constructor() {
     super();
@@ -191,10 +197,20 @@ export class RaceTrack extends Part {
   }
 
   protected animate(dt: number) {
-    const target = Math.max(-1.6, Math.min(1.6, this.state.level)) * 2.2;
-    this.speed = damp(this.speed, target, 1.5, dt);
-    const before = Math.floor(this.t / (Math.PI * 2));
-    this.t += this.speed * dt;
+    let target = Math.max(-1.6, Math.min(1.6, this.state.level)) * 2.2;
+    // On red the car brakes smoothly to the chequered line and waits there.
+    const TAU = Math.PI * 2;
+    const dir = Math.sign(target || this.speed);
+    const ahead = dir > 0 ? (((STOP_T - this.t) % TAU) + TAU) % TAU : (((this.t - STOP_T) % TAU) + TAU) % TAU;
+    const braking = this.redLight && dir !== 0 && ahead < 1.1;
+    if (braking) target = dir * Math.min(Math.abs(target), ahead * 3);
+    this.speed = damp(this.speed, target, braking ? 6 : 1.5, dt);
+    const before = Math.floor(this.t / TAU);
+    let step = this.speed * dt;
+    if (braking && Math.abs(step) >= ahead) step = dir * ahead;
+    this.waiting = braking && ahead - Math.abs(step) < 0.02;
+    if (this.waiting) this.speed = 0;
+    this.t += step;
     const after = Math.floor(this.t / (Math.PI * 2));
     if (after !== before && Math.abs(this.speed) > 0.5) {
       this.lap++;
@@ -480,6 +496,11 @@ export class TrafficLight extends Part {
 
   get powered() {
     return this.state.level > 0.2;
+  }
+
+  /** Powered and not showing green: cars beside it should stop. */
+  get stopsTraffic() {
+    return this.powered && !PHASES[this.phase].lamps[2];
   }
 
   tap(hit?: THREE.Object3D | null, point?: THREE.Vector3 | null): boolean {
