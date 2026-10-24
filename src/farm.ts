@@ -10,7 +10,7 @@ import { model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
 import { PushButton } from './parts/extra';
 import { Gate, Pump, Solar } from './parts/farm';
-import { mat, mesh } from './parts/kit';
+import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import { AMBIENT } from './parts/wind';
 import type { Stage } from './stage';
@@ -277,17 +277,19 @@ export class FarmMap {
   }
 
   private buildPlaces() {
+    // Fences, trees, haystacks, hutch and kennel never move: built into one group and baked (few draw calls).
+    const still = new THREE.Group();
     // Barn (cows), coop (hens), hutch (rabbits), kennel (dog), pig pen with trough.
     this.add('barn', { width: 5, rotateY: -Math.PI / 2 }, -12, -8.2, () => boxHouse('#c84a3a', '#5a5f6a', 6, 4, 4.5));
     this.add('coop', { width: 2.7, rotateY: -Math.PI / 2 }, -3.2, 7.2, () => boxHouse('#f2c230', '#d8483c', 3.2, 2.2, 2.6));
-    this.scenery.add(hutch(-14, 6.6));
-    this.scenery.add(kennel(6.2, 8.4));
+    still.add(hutch(-14, 6.6));
+    still.add(kennel(6.2, 8.4));
     // Fences: the cow pen, the pig pen, the long fence before the field (with the gate), the sheep fold.
-    this.scenery.add(fence([v(-16, -5.2), v(-16, 0.8), v(-7, 0.8), v(-7, -5.2)]));
-    this.scenery.add(fence([v(-1.2, -9.5), v(-1.2, -3), v(5.5, -3), v(5.5, -9.5)]));
-    this.scenery.add(fence([v(9.5, 3), v(18.5, 3)]));
-    this.scenery.add(fence([v(4.5, 3), v(6.5, 3)]));
-    this.scenery.add(fence([v(-27, -9), v(-27, -17.5), v(-21.5, -17.5)]));
+    still.add(fence([v(-16, -5.2), v(-16, 0.8), v(-7, 0.8), v(-7, -5.2)]));
+    still.add(fence([v(-1.2, -9.5), v(-1.2, -3), v(5.5, -3), v(5.5, -9.5)]));
+    still.add(fence([v(9.5, 3), v(18.5, 3)]));
+    still.add(fence([v(4.5, 3), v(6.5, 3)]));
+    still.add(fence([v(-27, -9), v(-27, -17.5), v(-21.5, -17.5)]));
     // Trough in the pig pen: a wooden box with water that rises.
     const troughBox = mesh(new THREE.BoxGeometry(2, 0.45, 0.8), mat('#9a6a3e', 0.7));
     troughBox.position.set(TROUGH.x, 0.22, TROUGH.z);
@@ -296,7 +298,8 @@ export class FarmMap {
     this.trough = mesh(new THREE.BoxGeometry(1.78, 1, 0.58), new THREE.MeshStandardMaterial({ color: '#4fb3e8', roughness: 0.05, transparent: true, opacity: 0.85 }), false);
     this.trough.position.set(TROUGH.x, 0.08, TROUGH.z);
     this.trough.scale.y = 0.001;
-    this.scenery.add(troughBox, inner, this.trough);
+    still.add(troughBox, inner);
+    this.scenery.add(this.trough);
     // Flour sacks by the mill appear one by one while it turns.
     for (let i = 0; i < 3; i++) {
       const sack = flourSack();
@@ -324,10 +327,11 @@ export class FarmMap {
       [26.8, -6, 1.1], [26.6, 2.5, 1], [9.6, 13.5, 0.9], [0.8, 13, 0.8], [-9, 17.5, 1.1], [4, 17.6, 1], [26.6, 17.4, 1.2],
       [-14, -17.8, 1], [17, -17.6, 0.9], [-27, -4, 1.1], [-20.5, 3, 1],
     ];
-    for (const [x, z, s] of trees) this.scenery.add(tree(x, z, s));
+    for (const [x, z, s] of trees) still.add(tree(x, z, s));
     // Haystacks and sprouts in the field.
-    for (const [x, z] of [[-8.5, -9.5], [-6.6, -10.2], [16.5, 0.6], [-24.5, -15.8]]) this.scenery.add(haystack(x, z));
+    for (const [x, z] of [[-8.5, -9.5], [-6.6, -10.2], [16.5, 0.6], [-24.5, -15.8]]) still.add(haystack(x, z));
     this.scenery.add(sprouts());
+    this.scenery.add(bakeGroup(still));
     // The tractor waits on the road below the gate.
     this.tractor = <THREE.Group>this.add('tractor', { depth: 2.6, rotateY: Math.PI }, 8, 7.4, () => boxHouse('#3f8a4f', '#2a3148', 2.2, 1.2, 1.4), 0);
   }

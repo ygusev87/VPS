@@ -97,6 +97,7 @@ export class Hud {
   private hintT = 0;
   private hintScreen: { a: () => { x: number; y: number }; b?: () => { x: number; y: number } } | null = null;
   private confetti: Confetto[] = [];
+  private fxClear = false;
   private level: Level = LEVELS[0];
   private flyout!: HTMLElement;
   private openGroup: CatalogGroup | null = null;
@@ -748,6 +749,10 @@ export class Hud {
   }
 
   updateFx(dt: number) {
+    // An untouched canvas costs nothing; clearing a full-screen one every frame
+    // makes Safari re-composite it. Only draw while there is confetti (and once after).
+    if (!this.confetti.length && this.fxClear) return;
+    this.fxClear = !this.confetti.length;
     const c = this.fx;
     const dpr = Math.min(window.devicePixelRatio, 2);
     const W = window.innerWidth;

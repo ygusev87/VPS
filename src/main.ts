@@ -826,6 +826,7 @@ function frame(now: number) {
   const dt = Math.min(0.05, realDt);
   last = now;
   stage.update(dt);
+  stage.busy = input.busy;
   if (farm) {
     farm.update(dt);
     // The camera moves on to the next animal once the finger is off the table.

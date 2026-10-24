@@ -7,7 +7,6 @@ import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer
 import { GTAOPass } from 'three/examples/jsm/postprocessing/GTAOPass.js';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
 import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass.js';
 import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { C } from './theme';
@@ -74,7 +73,7 @@ export class Stage {
   );
   private composer: EffectComposer | null = null;
   private bloom: UnrealBloomPass | null = null;
-  private finish: ShaderPass | null = null;
+  private finish: FinishOutputPass | null = null;
   quality: Quality = 2;
   /**
    * The canvas changed size on its own (iPad rotation: Safari fires "resize"
@@ -85,6 +84,10 @@ export class Stage {
   private pinned = false;
   private slowFor = 0;
   private lastFrame = 0;
+  private shadowView = new THREE.Matrix4();
+  private shadowTick = 0;
+  /** Something is being dragged: keep shadows fresh every frame. */
+  busy = false;
   private sinceStart = 0;
 
   constructor(readonly canvas: HTMLCanvasElement) {
@@ -95,6 +98,7 @@ export class Stage {
     this.renderer.toneMapping = THREE.NeutralToneMapping;
     this.renderer.shadowMap.enabled = true;
     this.renderer.shadowMap.type = THREE.PCFShadowMap;
+    this.renderer.shadowMap.autoUpdate = false;
 
     // Soft studio reflections make plastic and brass read as real materials.
     const pmrem = new THREE.PMREMGenerator(this.renderer);
@@ -144,7 +148,6 @@ export class Stage {
     if (q === '0' || q === '1' || q === '2') {
       this.quality = +q as Quality;
       this.pinned = true;
-      if (this.quality < 2) this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
     }
     this.buildComposer();
     window.addEventListener('resize', () => this.resize());
@@ -152,13 +155,33 @@ export class Stage {
   }
 
   /** Catch size changes the resize event missed, before they stretch the picture. */
+  /**
+   * The canvas's place on the page, read once a frame. project() runs hundreds
+   * of times a frame (hint badges, wires on screen); asking the page each time
+   * makes Safari redo its layout after every HUD change.
+   */
+  private rect = { left: 0, top: 0, width: 1, height: 1 };
+
   private checkSize() {
+    const b = this.canvas.getBoundingClientRect();
+    this.rect = { left: b.left, top: b.top, width: b.width || 1, height: b.height || 1 };
     const w = this.canvas.clientWidth;
     const h = this.canvas.clientHeight;
     if (!w || !h || (w === this.w && h === this.h)) return;
     const wasWide = this.w > this.h;
     this.resize();
     this.onResize?.(wasWide !== w > h);
+  }
+
+  /**
+   * Retina sharpness within a pixel budget: every post pass touches each pixel,
+   * and a 12.9" iPad at 2× is 5.6 million of them. ~4 MP keeps the 11" iPad
+   * at almost 2× and the big one at ~1.7×, which SMAA makes look just as crisp.
+   */
+  private pixelRatio() {
+    const budget = this.quality === 2 ? 4.0e6 : this.quality === 1 ? 3.0e6 : 2.2e6;
+    const css = Math.max(1, this.w * this.h);
+    return Math.max(1, Math.min(window.devicePixelRatio, 2, Math.sqrt(budget / css)));
   }
 
   /** The post-processing chain for the current quality. */
@@ -183,10 +206,15 @@ export class Stage {
     if (this.quality >= 2) composer.addPass(new SoftShadows(this.scene, this.camera));
     // Only what is brighter than white glows: lit lamps, LEDs, the current.
     this.bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), 0.7, 0.55, 1.0);
+    // A glow is soft anyway: work at no more than ~1200 px across (it starts at half of that).
+    const bloomSize = this.bloom.setSize.bind(this.bloom);
+    this.bloom.setSize = (w: number, h: number) => {
+      const k = Math.min(1, AO_DIV / Math.max(w, h));
+      bloomSize(Math.max(1, Math.round(w * k)), Math.max(1, Math.round(h * k)));
+    };
     composer.addPass(this.bloom);
-    composer.addPass(new OutputPass());
-    this.finish = new ShaderPass(FinishShader);
-    this.finish.uniforms.uVignette.value = 0.12;
+    // Tone mapping, sRGB and the finishing touch in one full-screen pass.
+    this.finish = new FinishOutputPass();
     composer.addPass(this.finish);
     composer.addPass(new SMAAPass());
     this.composer = composer;
@@ -217,7 +245,6 @@ export class Stage {
       this.slowFor = 0;
       this.sinceStart = 2000;
       this.quality = (this.quality - 1) as Quality;
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.quality === 2 ? 2 : 1.5));
       this.buildComposer();
       this.resize();
     }
@@ -339,6 +366,9 @@ export class Stage {
   resize() {
     this.w = this.canvas.clientWidth || window.innerWidth;
     this.h = this.canvas.clientHeight || window.innerHeight;
+    this.renderer.setPixelRatio(this.pixelRatio());
+    const b = this.canvas.getBoundingClientRect();
+    this.rect = { left: b.left, top: b.top, width: b.width || this.w, height: b.height || this.h };
     this.renderer.setSize(this.w, this.h, false);
     this.sizeComposer();
     this.drawBackground();
@@ -474,7 +504,7 @@ export class Stage {
     const { top, bottom, left, right } = this.insets;
     const p = this.project(point);
     if (p.x > left + margin && p.x < this.w - right - margin && p.y > top + margin && p.y < this.h - bottom - margin) return false;
-    const r = this.canvas.getBoundingClientRect();
+    const r = this.rect;
     const c = this.screenToPlane(r.left + left + (this.w - left - right) / 2, r.top + top + (this.h - top - bottom) / 2);
     if (!c) return false;
     // Bring it most of the way in, not dead centre, so the view does not jump about.
@@ -488,6 +518,11 @@ export class Stage {
   render() {
     this.checkSize();
     this.watchSpeed();
+    // The sun's shadow map is a whole extra draw of the scene: redraw it every
+    // other frame, or every frame while the view (and so the shadow camera) moves.
+    const moved = !this.shadowView.equals(this.camera.matrixWorld);
+    this.shadowView.copy(this.camera.matrixWorld);
+    this.renderer.shadowMap.needsUpdate = moved || this.busy || ++this.shadowTick % 2 === 0;
     if (this.composer) this.composer.render();
     else this.renderer.render(this.scene, this.camera);
   }
@@ -519,14 +554,14 @@ export class Stage {
   }
 
   private setRay(x: number, y: number) {
-    const r = this.canvas.getBoundingClientRect();
+    const r = this.rect;
     const ndc = new THREE.Vector2(((x - r.left) / r.width) * 2 - 1, -((y - r.top) / r.height) * 2 + 1);
     this.raycaster.setFromCamera(ndc, this.camera);
   }
 
   /** World → CSS pixel coordinates relative to the viewport. */
   project(v: THREE.Vector3): { x: number; y: number } {
-    const r = this.canvas.getBoundingClientRect();
+    const r = this.rect;
     const p = v.clone().project(this.camera);
     return { x: r.left + ((p.x + 1) / 2) * r.width, y: r.top + ((1 - p.y) / 2) * r.height };
   }
@@ -602,6 +637,36 @@ class SoftShadows extends GTAOPass {
     };
   }
 
+  private sinceFresh = 0;
+  private lastView = new THREE.Matrix4();
+
+  /**
+   * The AO pass draws the whole scene again (depth and normals), as costly as
+   * the picture itself. While the view stands still, recompute it only every
+   * third frame and blend the last result in between: a spinning blade's
+   * shading lagging by two frames cannot be seen.
+   */
+  render(renderer: THREE.WebGLRenderer, writeBuffer: THREE.WebGLRenderTarget, readBuffer: THREE.WebGLRenderTarget, dt: number, mask: boolean) {
+    const view = this.camera.matrixWorld;
+    const moved = !this.lastView.equals(view);
+    if (moved || ++this.sinceFresh >= 3) {
+      this.sinceFresh = 0;
+      this.lastView.copy(view);
+      return super.render(renderer, writeBuffer, readBuffer, dt, mask);
+    }
+    const self = this as unknown as { _renderGBuffer: boolean; _renderPass: (...a: unknown[]) => void };
+    const pass = self._renderPass;
+    self._renderPass = (r: unknown, material: unknown, ...rest: unknown[]) => {
+      if (material === this.gtaoMaterial || material === this.pdMaterial) return;
+      pass.call(this, r, material, ...rest);
+    };
+    const gbuffer = self._renderGBuffer;
+    self._renderGBuffer = false;
+    super.render(renderer, writeBuffer, readBuffer, dt, mask);
+    self._renderGBuffer = gbuffer;
+    self._renderPass = pass;
+  }
+
   /** AO is soft by nature: at most ~1000 pixels across is plenty (and cheap on a retina iPad). */
   setSize(width: number, height: number) {
     const k = Math.min(1, AO_DIV / Math.max(width, height));
@@ -642,6 +707,27 @@ const FinishShader = {
       gl_FragColor = c;
     }`,
 };
+
+/**
+ * OutputPass (tone mapping and sRGB) with the FinishShader's touch folded into
+ * the same shader: one full-screen pass fewer, which counts at retina sizes.
+ */
+class FinishOutputPass extends OutputPass {
+  constructor() {
+    super();
+    const m = this.material as THREE.RawShaderMaterial;
+    m.uniforms.uVignette = { value: 0.12 };
+    m.uniforms.uVibrance = { value: 0.65 };
+    m.uniforms.uContrast = { value: 1.12 };
+    const body = FinishShader.fragmentShader;
+    const finish = body.slice(body.indexOf('vec2 p = vUv - 0.5;'), body.lastIndexOf('gl_FragColor = c;'));
+    const src = m.fragmentShader;
+    const end = src.lastIndexOf('}');
+    m.fragmentShader =
+      src.slice(0, end).replace('uniform sampler2D tDiffuse;', 'uniform sampler2D tDiffuse;\nuniform float uVignette, uVibrance, uContrast;') +
+      `\n{ vec4 c = gl_FragColor;\n${finish}\ngl_FragColor = c; }\n}`;
+  }
+}
 
 /** three.js's Neutral tone mapping (linear in, linear out). */
 function neutral(r: number, g: number, b: number): [number, number, number] {

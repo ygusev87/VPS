@@ -1,6 +1,7 @@
 // Shared building blocks for the toy-like part models.
 import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
+import { mergeGeometries } from 'three/examples/jsm/utils/BufferGeometryUtils.js';
 import { C } from '../theme';
 
 const matCache = new Map<string, THREE.MeshStandardMaterial>();
@@ -57,32 +58,127 @@ export function contactShadow(w: number, d: number): THREE.Mesh {
   return m;
 }
 
+/** A piece of a baked mesh: its geometry, where it sits, its colour. */
+export interface Piece {
+  geo: THREE.BufferGeometry;
+  color: string;
+  at?: THREE.Vector3;
+  rotY?: number;
+}
+
+/**
+ * Bake small static pieces into one geometry with vertex colours, so they
+ * cost one draw call instead of one each (Safari pays a lot per draw call).
+ */
+export function bake(pieces: Piece[]): THREE.BufferGeometry {
+  const m = new THREE.Matrix4();
+  const parts = pieces.map((p) => {
+    const g = (p.geo.index ? p.geo.toNonIndexed() : p.geo.clone()) as THREE.BufferGeometry;
+    for (const name of Object.keys(g.attributes)) if (name !== 'position' && name !== 'normal') g.deleteAttribute(name);
+    m.makeRotationY(p.rotY ?? 0).setPosition(p.at ?? new THREE.Vector3());
+    g.applyMatrix4(m);
+    const c = new THREE.Color(p.color);
+    const n = g.attributes.position.count;
+    const col = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) col.set([c.r, c.g, c.b], i * 3);
+    g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    return g;
+  });
+  const out = mergeGeometries(parts)!;
+  for (const g of parts) g.dispose();
+  return out;
+}
+
+/** Shared vertex-coloured materials for baked meshes (plastic, metal). */
+export const BAKED = {
+  plastic: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.68 }),
+  metal: new THREE.MeshStandardMaterial({ vertexColors: true, roughness: 0.3, metalness: 0.8 }),
+};
+
+/**
+ * Merge every plain (untextured, opaque) mesh under `src` into a few
+ * vertex-coloured meshes, one per kind of surface; textured or see-through
+ * meshes are kept as they are. For scenery that never moves.
+ */
+export function bakeGroup(src: THREE.Object3D): THREE.Group {
+  src.updateMatrixWorld(true);
+  const inv = src.matrixWorld.clone().invert();
+  const buckets = new Map<string, { rough: number; metal: number; cast: boolean; geos: THREE.BufferGeometry[] }>();
+  const keep: THREE.Mesh[] = [];
+  const rel = new THREE.Matrix4();
+  src.traverse((o) => {
+    const m = o as THREE.Mesh;
+    if (!m.isMesh || !m.visible) return;
+    const mt = m.material as THREE.MeshStandardMaterial;
+    if (Array.isArray(mt) || !mt.isMeshStandardMaterial || mt.transparent || mt.map || (m as THREE.InstancedMesh).isInstancedMesh) {
+      keep.push(m);
+      return;
+    }
+    rel.multiplyMatrices(inv, m.matrixWorld);
+    const g = (m.geometry.index ? m.geometry.toNonIndexed() : m.geometry.clone()) as THREE.BufferGeometry;
+    for (const name of Object.keys(g.attributes)) if (name !== 'position' && name !== 'normal') g.deleteAttribute(name);
+    g.applyMatrix4(rel);
+    const n = g.attributes.position.count;
+    const col = new Float32Array(n * 3);
+    for (let i = 0; i < n; i++) col.set([mt.color.r, mt.color.g, mt.color.b], i * 3);
+    g.setAttribute('color', new THREE.BufferAttribute(col, 3));
+    const key = `${mt.roughness.toFixed(2)}|${mt.metalness.toFixed(2)}|${m.castShadow}`;
+    let b = buckets.get(key);
+    if (!b) buckets.set(key, (b = { rough: mt.roughness, metal: mt.metalness, cast: m.castShadow, geos: [] }));
+    b.geos.push(g);
+  });
+  const out = new THREE.Group();
+  for (const b of buckets.values()) {
+    const merged = new THREE.Mesh(mergeGeometries(b.geos)!, new THREE.MeshStandardMaterial({ vertexColors: true, roughness: b.rough, metalness: b.metal }));
+    merged.castShadow = b.cast;
+    merged.receiveShadow = true;
+    out.add(merged);
+    for (const g of b.geos) g.dispose();
+  }
+  for (const m of keep) {
+    rel.multiplyMatrices(inv, m.matrixWorld);
+    m.removeFromParent();
+    rel.decompose(m.position, m.quaternion, m.scale);
+    out.add(m);
+  }
+  return out;
+}
+
+const plateCache = new Map<string, THREE.BufferGeometry>();
+
 /**
  * The module board every part sits on: a thin cream plate with a tan edge,
  * corner screws and a printed label, like a component card from a kit.
+ * Edge, top and screws are one baked mesh (shared by plates of a size).
  */
 export function basePlate(w: number, d: number, label?: string): THREE.Group {
   const g = new THREE.Group();
-  const rim = mesh(new RoundedBoxGeometry(w, PLATE_TOP - 0.02, d, 3, 0.06), mat('#d9cbb6', 0.8));
-  rim.position.y = (PLATE_TOP - 0.02) / 2;
-  const top = mesh(new RoundedBoxGeometry(w - 0.06, 0.04, d - 0.06, 2, 0.02), mat('#f3ebdc', 0.62));
-  top.position.y = PLATE_TOP - 0.02;
-  g.add(contactShadow(w, d), rim, top);
-  const screwGeo = new THREE.CylinderGeometry(0.055, 0.055, 0.02, 14);
-  const slotGeo = new THREE.BoxGeometry(0.08, 0.012, 0.016);
-  for (const [sx, sz] of [
-    [-1, -1],
-    [1, -1],
-    [-1, 1],
-    [1, 1],
-  ]) {
-    const screw = mesh(screwGeo, mat(C.metal, 0.35, 0.8), false);
-    screw.position.set(sx * (w / 2 - 0.13), PLATE_TOP + 0.005, sz * (d / 2 - 0.13));
-    const slot = mesh(slotGeo, mat('#6d727c', 0.5, 0.6), false);
-    slot.position.copy(screw.position).setY(PLATE_TOP + 0.016);
-    slot.rotation.y = 0.6;
-    g.add(screw, slot);
+  const key = `${w}x${d}`;
+  let geo = plateCache.get(key);
+  if (!geo) {
+    const pieces: Piece[] = [
+      { geo: new RoundedBoxGeometry(w, PLATE_TOP - 0.02, d, 3, 0.06), color: '#d9cbb6', at: new THREE.Vector3(0, (PLATE_TOP - 0.02) / 2, 0) },
+      { geo: new RoundedBoxGeometry(w - 0.06, 0.04, d - 0.06, 2, 0.02), color: '#f3ebdc', at: new THREE.Vector3(0, PLATE_TOP - 0.02, 0) },
+    ];
+    const screwGeo = new THREE.CylinderGeometry(0.055, 0.055, 0.02, 14);
+    const slotGeo = new THREE.BoxGeometry(0.08, 0.012, 0.016);
+    for (const [sx, sz] of [
+      [-1, -1],
+      [1, -1],
+      [-1, 1],
+      [1, 1],
+    ]) {
+      const at = new THREE.Vector3(sx * (w / 2 - 0.13), PLATE_TOP + 0.005, sz * (d / 2 - 0.13));
+      pieces.push({ geo: screwGeo, color: '#b9bec6', at }, { geo: slotGeo, color: '#6d727c', at: at.clone().setY(PLATE_TOP + 0.016), rotY: 0.6 });
+    }
+    geo = bake(pieces);
+    plateCache.set(key, geo);
   }
+  const board = new THREE.Mesh(geo, BAKED.plastic);
+  // The contact shadow already darkens the table under it.
+  board.receiveShadow = true;
+  board.userData.plate = true;
+  g.add(contactShadow(w, d), board);
   if (label) {
     // Printed along the front edge, between the two posts.
     const l = textDecal(label, Math.min(0.95, w - 1.0), 0.15);

@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import type { CircuitElement, CircuitResult, ElementKind } from '../circuit/solver';
 import { C } from '../theme';
-import { mat, mesh, PLATE_TOP } from './kit';
+import { BAKED, bake, mat, PLATE_TOP } from './kit';
 
 export type PartKind =
   | 'battery'
@@ -101,6 +101,24 @@ function knurledNut(): THREE.BufferGeometry {
   return g;
 }
 
+let metalGeo: THREE.BufferGeometry | null = null;
+function postMetal() {
+  metalGeo ??= bake([
+    { geo: nutGeo, color: C.metal, at: new THREE.Vector3(0, 0.025, 0) },
+    { geo: studGeo, color: C.brass, at: new THREE.Vector3(0, POST_H / 2, 0) },
+    { geo: thumbGeo, color: C.brass, at: new THREE.Vector3(0, POST_H - 0.12, 0) },
+    { geo: domeGeo, color: C.brass, at: new THREE.Vector3(0, POST_H, 0) },
+  ]);
+  return metalGeo;
+}
+
+const collarMats = new Map<string, THREE.MeshStandardMaterial>();
+function collarMat(color: string) {
+  let m = collarMats.get(color);
+  if (!m) collarMats.set(color, (m = mat(color, 0.35)));
+  return m;
+}
+
 export class Terminal {
   readonly id: string;
   readonly post = new THREE.Group();
@@ -119,19 +137,15 @@ export class Terminal {
   ) {
     this.id = `${part.id}.${key}`;
     const collarColor = collar ?? (polarity === 'plus' ? C.red : polarity === 'minus' ? C.navy2 : C.tealDeep);
-    const nut = mesh(nutGeo, mat(C.metal, 0.35, 0.8));
-    nut.position.y = 0.025;
-    const ring = mesh(collarGeo, mat(collarColor, 0.35));
+    // Two draw calls per post: the baked metal (nut, stud, thumb nut, dome) and the coloured collar.
+    const metal = new THREE.Mesh(postMetal(), BAKED.metal);
+    const ring = new THREE.Mesh(collarGeo, collarMat(collarColor));
     ring.position.y = 0.09;
-    const stud = mesh(studGeo, mat(C.brass, 0.3, 0.8));
-    stud.position.y = POST_H / 2;
-    const thumb = mesh(thumbGeo, mat(C.brass, 0.28, 0.85));
-    thumb.position.y = POST_H - 0.12;
-    const dome = mesh(domeGeo, mat(C.brass, 0.25, 0.85), false);
-    dome.position.y = POST_H;
-    this.post.add(nut, ring, stud, thumb, dome);
+    metal.receiveShadow = ring.receiveShadow = true;
+    this.post.add(metal, ring);
 
     this.ringMat = new THREE.MeshBasicMaterial({ color: C.teal, transparent: true, opacity: 0, depthWrite: false });
+    this.ringMat.visible = false;
     this.ring = new THREE.Mesh(ringGeo, this.ringMat);
     this.ring.rotation.x = Math.PI / 2;
     this.ring.position.y = 0.06;
@@ -163,6 +177,8 @@ export class Terminal {
     this.ringMat.color.set(color);
     const wave = h === 'none' ? 0 : 0.5 + 0.5 * Math.sin(this.pulse * (h === 'available' ? 4 : 7));
     this.ringMat.opacity = THREE.MathUtils.damp(this.ringMat.opacity, target * (0.55 + 0.45 * wave) + this.flash, 12, dt);
+    // An invisible ring still costs a draw call: skip it until it shows.
+    this.ringMat.visible = this.ringMat.opacity > 0.004;
     const s = 1 + (h === 'none' ? 0 : 0.18 * wave) + this.flash * 0.6;
     this.ring.scale.setScalar(s);
   }
@@ -449,7 +465,7 @@ export abstract class Part {
       if (!m.isMesh || !m.geometry || (m.material as THREE.Material).transparent) return;
       if (!m.geometry.boundingBox) m.geometry.computeBoundingBox();
       one.copy(m.geometry.boundingBox!).applyMatrix4(new THREE.Matrix4().multiplyMatrices(inv, m.matrixWorld));
-      if (one.max.y <= PLATE_TOP + 0.01 && one.min.y < 0.05 && one.max.x - one.min.x > 0.8) box.union(one);
+      if (m.userData.plate || (one.max.y <= PLATE_TOP + 0.01 && one.min.y < 0.05 && one.max.x - one.min.x > 0.8)) box.union(one);
     });
     const r = this.radius * 0.7;
     this.plate = box.isEmpty() ? { x0: -r, x1: r, z0: -r, z1: r } : { x0: box.min.x, x1: box.max.x, z0: box.min.z, z1: box.max.z };
@@ -459,6 +475,22 @@ export abstract class Part {
   /** A lit lamp's light for the room (see Fx.shine), or null. */
   glowLight(): { at: THREE.Vector3; color: THREE.Color; power: number } | null {
     return null;
+  }
+
+  /**
+   * Tiny details (knobs, screws, little lamps) cast shadows nobody can see but
+   * each costs a draw in the shadow pass: let only the bigger shapes cast.
+   */
+  trimShadows() {
+    this.root.updateMatrixWorld(true);
+    const s = new THREE.Vector3();
+    this.root.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (!m.isMesh || !m.castShadow || !m.geometry) return;
+      if (!m.geometry.boundingSphere) m.geometry.computeBoundingSphere();
+      m.getWorldScale(s);
+      if (m.geometry.boundingSphere!.radius * Math.max(s.x, s.y, s.z) < 0.12) m.castShadow = false;
+    });
   }
 
   /** Called when the part leaves the table for good. */

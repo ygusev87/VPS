@@ -227,16 +227,38 @@ export class Voice {
     if (this.ctx) return;
     this.ctx = ctx;
     this.out = out;
-    for (const [id, p] of this.raw) {
-      void p.then(async (buf) => {
-        if (!buf) return;
+    // Decode one clip at a time in the background: decoding all ~200 at once
+    // on the first touch made the first seconds of play stutter on an iPad.
+    const queue = [...this.raw.keys()];
+    const next = () => {
+      const id = queue.shift();
+      if (!id) return;
+      void this.decode(id).then(() => setTimeout(next, 15));
+    };
+    next();
+  }
+
+  private decoding = new Map<PhraseId, Promise<AudioBuffer | null>>();
+
+  /** Decode a clip (once); also used to jump the queue for a phrase that is wanted now. */
+  private decode(id: PhraseId): Promise<AudioBuffer | null> {
+    const ctx = this.ctx;
+    if (!ctx) return Promise.resolve(null);
+    let p = this.decoding.get(id);
+    if (!p) {
+      p = (this.raw.get(id) ?? Promise.resolve(null)).then(async (buf) => {
+        if (!buf) return null;
         try {
-          this.clips.set(id, await ctx.decodeAudioData(buf.slice(0)));
+          const clip = await ctx.decodeAudioData(buf.slice(0));
+          this.clips.set(id, clip);
+          return clip;
         } catch {
-          // Undecodable clip: synthesis covers it.
+          return null; // Undecodable clip: synthesis covers it.
         }
       });
+      this.decoding.set(id, p);
     }
+    return p;
   }
 
   /** Say a phrase; the same phrase is not repeated within `cooldown` ms. */
@@ -247,6 +269,18 @@ export class Voice {
     this.last = { id, at: now };
     this.stop();
     const clip = this.clips.get(id);
+    // Not decoded yet: decode it now and speak a moment later (better than the robot voice).
+    if (!clip && this.ctx && this.raw.has(id)) {
+      const asked = this.last;
+      void this.decode(id).then((c) => {
+        if (this.last !== asked) return; // Something else was said meanwhile.
+        if (c) {
+          this.last = null;
+          this.say(id, 0);
+        } else this.speak(id);
+      });
+      return;
+    }
     if (clip && this.ctx && this.out) {
       const src = this.ctx.createBufferSource();
       src.buffer = clip;
@@ -256,6 +290,11 @@ export class Voice {
       this.endsAt = now + clip.duration * 1000;
       return;
     }
+    this.speak(id);
+  }
+
+  /** The browser's own voice, for a phrase without a clip. */
+  private speak(id: PhraseId) {
     if (!('speechSynthesis' in window)) return;
     const u = new SpeechSynthesisUtterance(PHRASES[id]);
     u.lang = 'ru-RU';
