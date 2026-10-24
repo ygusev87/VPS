@@ -4,7 +4,7 @@
 // sneaks up and an alarm bell sends it away. Then the sun comes up.
 import * as THREE from 'three';
 import type { Hint } from './hints';
-import { model } from './parts/assets';
+import { model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
 import { PushButton } from './parts/extra';
 import { Gate, Pump, Solar } from './parts/farm';
@@ -158,7 +158,7 @@ export class FarmMap {
     this.scenery.add(rim);
   }
 
-  private add(name: string, fit: { width?: number; height?: number; rotateY?: number }, x: number, z: number, fallback: () => THREE.Object3D, rotY = 0) {
+  private add(name: string, fit: Fit, x: number, z: number, fallback: () => THREE.Object3D, rotY = 0) {
     const m = model(name, fit) ?? fallback();
     m.position.set(x, 0, z);
     m.rotation.y = rotY;
@@ -174,8 +174,8 @@ export class FarmMap {
 
   private buildPlaces() {
     // Barn (cows), coop (hens), hutch (rabbits), kennel (dog), pig pen with trough.
-    this.add('barn', { width: 6.5 }, -12, -8.2, () => boxHouse('#c84a3a', '#5a5f6a', 6, 4, 4.5));
-    this.add('coop', { width: 3.6 }, -3.2, 7.2, () => boxHouse('#f2c230', '#d8483c', 3.2, 2.2, 2.6));
+    this.add('barn', { width: 5, rotateY: -Math.PI / 2 }, -12, -8.2, () => boxHouse('#c84a3a', '#5a5f6a', 6, 4, 4.5));
+    this.add('coop', { width: 2.7, rotateY: -Math.PI / 2 }, -3.2, 7.2, () => boxHouse('#f2c230', '#d8483c', 3.2, 2.2, 2.6));
     this.scenery.add(hutch(-14, 6.6));
     this.scenery.add(kennel(6.2, 8.4));
     // Fences: the cow pen, the pig pen, and the long fence before the field (with the gate).
@@ -195,14 +195,14 @@ export class FarmMap {
     // Trees round the edges; a little wood in the bottom-left where the fox lives.
     const trees: [number, number, number][] = [
       [-17.5, -11.5, 1.2], [-15, -11.8, 1], [17.5, -11.5, 1.1], [17.6, 11.6, 1.2], [-17.6, 9.5, 1.3], [-16.4, 11.6, 1.1],
-      [-14.2, 12, 0.9], [-17.8, 6.6, 1], [12.5, 11.8, 0.9], [-6, -11.8, 0.9], [6.5, -11.6, 1], [0.8, 11.8, 0.8],
+      [-14.2, 12, 0.9], [-17.8, 6.6, 1], [9.6, 12, 0.9], [-6, -11.8, 0.9], [6.5, -11.6, 1], [0.8, 11.8, 0.8],
     ];
     for (const [x, z, s] of trees) this.scenery.add(tree(x, z, s));
     // Haystacks and sprouts in the field.
     for (const [x, z] of [[-8.5, -9.5], [-6.6, -10.2], [16.5, 0.6]]) this.scenery.add(haystack(x, z));
     this.scenery.add(sprouts());
     // The tractor waits on the road below the gate.
-    this.tractor = <THREE.Group>this.add('tractor', { width: 2.6, rotateY: Math.PI / 2 }, 8, 7.4, () => boxHouse('#3f8a4f', '#2a3148', 2.2, 1.2, 1.4), 0);
+    this.tractor = <THREE.Group>this.add('tractor', { depth: 2.6, rotateY: Math.PI }, 8, 7.4, () => boxHouse('#3f8a4f', '#2a3148', 2.2, 1.2, 1.4), 0);
   }
 
   /** The power sources and the gate are part of the map: they cannot be moved. */
@@ -214,13 +214,13 @@ export class FarmMap {
     };
     pin('pole', -4.2, -1.2);
     pin('solar', -6.6, -10);
-    pin('windGen', 14.5, 8.6);
+    pin('windGen', 15.6, 5.8);
     this.gate = pin('gate', 8, 3.2) as Gate;
   }
 
-  private critter(name: string, fit: { width?: number; height?: number; rotateY?: number }, x: number, z: number, height: number, face = 0): Critter {
+  private critter(name: string, fit: Fit, x: number, z: number, height: number, face = 0): Critter {
     const group = new THREE.Group();
-    const m = model(name, fit) ?? blob(name);
+    const m = model(name.replace(/\d+$/, ''), fit) ?? blob(name);
     m.traverse((o) => {
       if ((o as THREE.Mesh).isMesh) {
         o.castShadow = true;
@@ -252,10 +252,10 @@ export class FarmMap {
   private buildCritters() {
     this.critter('cow', { width: 2.4 }, -11, -2.4, 1.9, 0.25);
     this.critter('pig', { width: 1.7 }, 1.6, -6, 1.2, 0.3);
-    this.critter('hen', { height: 0.9 }, -0.8, 8.6, 0.9, -0.4);
-    this.critter('hen2', { height: 0.8 }, -1.9, 9.6, 0.8, 0.6);
-    this.critter('rabbit', { height: 0.95 }, -11.7, 7.6, 0.95, 0.2);
-    this.critter('dog', { height: 1.2 }, 4.4, 8.6, 1.2, -0.6);
+    this.critter('hen', { height: 1.25 }, -0.8, 8.6, 1.25, -0.4);
+    this.critter('hen2', { height: 1.1 }, -1.9, 9.6, 1.1, 0.6);
+    this.critter('rabbit', { height: 1.25 }, -11.7, 7.6, 1.25, 0.2);
+    this.critter('dog', { height: 1.5 }, 4.4, 8.6, 1.5, -0.6);
     this.fox = this.critter('fox', { width: 1.7 }, -17, 11.5, 1, 0);
     this.fox.group.visible = false;
     // The tractor speaks for the gate (its bubble floats above it).

@@ -1295,6 +1295,10 @@ body.is-night .brand {
 .map-card:active {
   transform: scale(0.97);
 }
+.map-card.is-current {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 2px var(--teal);
+}
 .map-pic {
   display: grid;
   place-items: center;

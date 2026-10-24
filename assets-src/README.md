@@ -34,6 +34,13 @@ face_limit=30000). Сырые `.glb` (5–10 МБ) в git не хранятся:
 | dynamo | корпус динамо-машины с циферблатом (циферблат в +x, `rotateY: -π/2`; ручка строится кодом) | 6e8a8f88-8b50-4ed3-b5fc-b27790f1fa51 | 5702c830-b24b-44ab-af00-54aaf9ab3381 |
 | tuba | латунная туба (в коде блеск: metalness 0.85, roughness 0.32) | 9176e509-e7b5-4d03-8b26-7ed5f68539ea | b16454a0-73b4-4c4f-a0ec-24dfd650e95c |
 | floorfan | подставка напольного вентилятора с мотором, без лопастей (ручка мотора в +x, `rotateY: -π/2`; лопасти и решётка — кодом) | 3130e2d7-25b8-4fbf-94de-6208f39ad438 | fbe260f5-8266-4ccf-8b1a-51f4b55bfc83 |
+| cow, pig, hen, rabbit, dog, fox | животные фермы (смотрят в +x; задачи — в истории Higgsfield за 24.10.2026) | — | — |
+| barn | красный амбар (двери в +x, на карте `rotateY: -π/2`) | — | 20d4f4b1-8701-40e5-ba66-574704f8a12a |
+| coop | курятник с лесенкой (дверца в +x, `rotateY: -π/2`) | — | 781be023-b76a-4184-a1b7-05d87066e757 |
+| tractor | зелёный трактор (нос в +z, на карте `rotateY: π`) | — | 86008a18-4f91-4e9f-9ce2-9bf7413a7503 |
+
+Картинки карт для выбора (`public/maps/*.webp`, 480 px) — `gpt_image_2_5`, 4:3, «cute cartoon isometric diorama …
+cream background #f6eddd, no text»; исходники `assets-src/concepts/map-*.png`.
 
 Лифт и кран строятся кодом целиком (`src/parts/more.ts`), как и компьютерный вентилятор, вертушка (`src/parts/wind.ts`), пианино, маракасы, колокольчики (`src/parts/band.ts`) и все механизмы (`src/parts/mech.ts`). Ксилофон, светофор, диско-шар и трасса (кроме машинки) строятся кодом целиком (`src/parts/extra.ts`, `src/parts/fun.ts`).
 

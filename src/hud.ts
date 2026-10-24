@@ -177,7 +177,7 @@ export class Hud {
           <h2>Куда отправимся?</h2>
           <div class="map-list">
             ${MAPS.map(
-              (m) => `<button class="map-card${m.open ? '' : ' is-locked'}" data-map="${m.id}">
+              (m) => `<button class="map-card${m.open ? '' : ' is-locked'}${m.id === 'lab' ? ' is-current' : ''}" data-map="${m.id}">
                 <span class="map-pic"><span class="map-emoji">${m.emoji}</span><img alt="" src="${m.img}" onerror="this.remove()"/></span>
                 <span class="map-name">${m.name}</span>
                 ${m.open ? '' : `<span class="map-soon">${ICON.lock}Скоро</span>`}
@@ -298,6 +298,7 @@ export class Hud {
    */
   setMapMode(map: MapId | null, title = '', sub = '', icon = '') {
     document.body.classList.toggle('on-map', !!map);
+    for (const c of document.querySelectorAll<HTMLElement>('.map-card')) c.classList.toggle('is-current', c.dataset.map === (map ?? 'lab'));
     if (!map) return;
     this.mission.classList.remove('is-hidden');
     this.mission.querySelector('h3')!.textContent = title;
