@@ -133,14 +133,19 @@ export function centroid(holder: THREE.Object3D): THREE.Vector3 {
   return n ? sum.divideScalar(n) : sum;
 }
 
-/** Average of the vertices within `eps` of the model's far end along an axis (e.g. a shaft tip). */
-export function tip(holder: THREE.Object3D, axis: 'x' | 'y' | 'z', dir: 1 | -1, eps = 0.03): THREE.Vector3 {
+/**
+ * Average of the vertices within `eps` of the model's far end along an axis
+ * (e.g. a shaft tip), optionally only among the vertices `where` accepts.
+ */
+export function tip(holder: THREE.Object3D, axis: 'x' | 'y' | 'z', dir: 1 | -1, eps = 0.03, where?: (v: THREE.Vector3) => boolean): THREE.Vector3 {
   let best = -Infinity;
-  eachVertex(holder, (v) => (best = Math.max(best, v[axis] * dir)));
+  eachVertex(holder, (v) => {
+    if (!where || where(v)) best = Math.max(best, v[axis] * dir);
+  });
   const sum = new THREE.Vector3();
   let n = 0;
   eachVertex(holder, (v) => {
-    if (v[axis] * dir > best - eps) {
+    if (v[axis] * dir > best - eps && (!where || where(v))) {
       sum.add(v);
       n++;
     }

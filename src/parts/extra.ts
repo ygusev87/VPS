@@ -88,6 +88,9 @@ export class Windmill extends Part {
   readonly radius = 1.5;
   private sails = new THREE.Group();
   private speed = 0;
+  /** A fan's breeze turns the sails too, even with no power (see wind.ts). */
+  wind = 0;
+  windDir = new THREE.Vector3();
 
   constructor() {
     super();
@@ -138,8 +141,12 @@ export class Windmill extends Part {
     return { r: 9 };
   }
 
+  windPoint(): THREE.Vector3 {
+    return this.root.position;
+  }
+
   protected animate(dt: number) {
-    const target = Math.max(-1.6, Math.min(1.6, this.state.level)) * 6;
+    const target = Math.max(-1.6, Math.min(1.6, this.state.level)) * 6 + Math.min(1.5, this.wind) * 5;
     this.speed = damp(this.speed, target, 1.0, dt);
     this.sails.rotation.z -= this.speed * dt;
   }
@@ -148,7 +155,7 @@ export class Windmill extends Part {
 // ──────────────────────────── Music box ────────────────────────────
 
 let noteTex: THREE.Texture | null = null;
-function noteTexture(): THREE.Texture {
+export function noteTexture(): THREE.Texture {
   if (noteTex) return noteTex;
   const c = document.createElement('canvas');
   c.width = c.height = 128;
@@ -476,14 +483,14 @@ export class ButtonPanel extends Part {
 // ──────────────────────────── Instruments ──────────────────────────
 
 /** Little green lamp on an instrument's plate: lit means "plugged in, play me". */
-function powerLamp(x: number, z: number) {
+export function powerLamp(x: number, z: number) {
   const m = new THREE.MeshStandardMaterial({ color: '#9a9fae', emissive: '#3fe07a', emissiveIntensity: 0, roughness: 0.3 });
   const lamp = mesh(new THREE.SphereGeometry(0.07, 16, 10), m);
   lamp.position.set(x, PLATE_TOP + 0.05, z);
   return { lamp, m };
 }
 
-const BAR_COLORS = ['#e5533d', '#f08a3a', '#f2c230', '#5cb85c', '#2bb3a8', '#3f86d6', '#6c5fc7', '#d45fa8'];
+export const BAR_COLORS = ['#e5533d', '#f08a3a', '#f2c230', '#5cb85c', '#2bb3a8', '#3f86d6', '#6c5fc7', '#d45fa8'];
 /** C major, C5 to C6 (MIDI). */
 const BAR_NOTES = [72, 74, 76, 77, 79, 81, 83, 84];
 

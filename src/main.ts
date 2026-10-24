@@ -6,7 +6,11 @@ import { Hud } from './hud';
 import { Input } from './input';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
 import type { Part, PartKind, PartSound, Terminal } from './parts/base';
+import type { BandVoice } from './audio';
+import { Bells, Maracas, Piano, Tuba } from './parts/band';
 import { Drum, MusicBox } from './parts/extra';
+import { WaterMill } from './parts/mech';
+import { blowWind, Pinwheel } from './parts/wind';
 import { FireTruck, Helicopter, RaceTrack, TrafficLight } from './parts/fun';
 import { Dynamo } from './parts/more';
 import { loadModels } from './parts/assets';
@@ -274,7 +278,7 @@ world.on((e) => {
       break;
     case 'activated':
       if (e.part.kind === 'bulb' || e.part.kind === 'led') sfx.ting();
-      if (e.part.kind === 'fan' || e.part.kind === 'windmill' || e.part.kind === 'carousel') sfx.whir();
+      if (['fan', 'floorFan', 'pcFan', 'windmill', 'carousel', 'marbleRun', 'waterMill', 'conveyor'].includes(e.part.kind)) sfx.whir();
       // The first time a music box plays, tell how to change the song.
       if (e.part.kind === 'musicbox' && !songHintSaid) {
         songHintSaid = true;
@@ -363,6 +367,27 @@ function playPartSound(snd: PartSound, from?: Part) {
         voice.say('craneHold', 0);
       }
       break;
+    case 'piano':
+      sfx.piano(snd.note);
+      break;
+    case 'tuba':
+      sfx.tuba(snd.note);
+      break;
+    case 'bell':
+      sfx.bellTap(snd.note);
+      break;
+    case 'shake':
+      sfx.shake();
+      break;
+    case 'marble':
+      sfx.marble();
+      break;
+    case 'stamp':
+      sfx.stamp();
+      break;
+    case 'paint':
+      sfx.paint();
+      break;
     case 'craneDone':
       sfx.win();
       voice.say('craneDone', 0);
@@ -376,10 +401,39 @@ function playPartSound(snd: PartSound, from?: Part) {
 let liftSaid = false;
 let craneSaid = false;
 
-// The drum plays along with the music box: it bounces on every beat.
-sfx.onBandBeat = () => {
-  for (const p of world.parts) if (p instanceof Drum && isActive(p)) p.thump();
+// The band: every instrument moves on the notes the conductor gives it.
+const BAND_PARTS: Record<BandVoice, (p: Part) => ((note: number) => void) | null> = {
+  drum: (p) => (p instanceof Drum ? () => p.thump() : null),
+  piano: (p) => (p instanceof Piano ? (n) => p.cue(n) : null),
+  tuba: (p) => (p instanceof Tuba ? (n) => p.cue(n) : null),
+  maracas: (p) => (p instanceof Maracas ? (n) => p.cue(n) : null),
+  bells: (p) => (p instanceof Bells ? (n) => p.cue(n) : null),
 };
+sfx.onBand = (who, note) => {
+  for (const p of world.parts) if (isActive(p)) BAND_PARTS[who](p)?.(note);
+};
+/** The song the band follows when no music box plays: the last one chosen. */
+let bandSong = 0;
+let bandTipSaid = false;
+let bandAlone = 0;
+/** Once one instrument plays by itself for a while, suggest joining more. */
+function watchBand(dt: number, players: number) {
+  bandAlone = players === 1 && !troubled() ? bandAlone + dt : 0;
+  if (bandAlone > 8 && !bandTipSaid) {
+    bandTipSaid = true;
+    voice.say('bandTip', 0);
+  }
+}
+
+/** A pinwheel left without wind: say where it should go, once. */
+let pinwheelSaid = false;
+function watchPinwheels() {
+  if (pinwheelSaid || troubled()) return;
+  if (world.parts.some((p) => p instanceof Pinwheel && p.calm > 7)) {
+    pinwheelSaid = true;
+    voice.say('pinwheelTip', 0);
+  }
+}
 
 /** Something is wrong on the table: cheers wait until it is fixed. */
 function troubled() {
@@ -466,24 +520,44 @@ function frame(now: number) {
   let song = 0;
   let engine = 0;
   let siren = false;
-  let band = false;
+  let water = 0;
+  const band = { melody: false, drum: false, piano: false, tuba: false, maracas: false, bells: false };
+  blowWind(world.parts);
   for (const p of world.parts) {
     for (const snd of p.sounds.splice(0)) playPartSound(snd, p);
-    if (p.kind === 'fan') fan += Math.abs(p.state.level);
+    if (p.kind === 'fan' || p.kind === 'floorFan') fan += Math.abs(p.state.level);
+    if (p.kind === 'pcFan') fan += Math.abs(p.state.level) * 0.5;
+    if (p.kind === 'marbleRun' || p.kind === 'conveyor') fan += Math.abs(p.state.level) * 0.3;
+    if (p instanceof WaterMill) {
+      water += p.pour * 8;
+      fan += Math.abs(p.state.level) * 0.25;
+    }
     if (p.kind === 'windmill' || p.kind === 'carousel' || p.kind === 'disco') fan += Math.abs(p.state.level) * 0.4;
     if (p instanceof Helicopter) fan += p.rotorSpeed * 0.8;
     if (p instanceof Dynamo) fan += Math.min(1, Math.abs(p.omega) / 10) * 0.5;
     if (p instanceof RaceTrack) engine = Math.max(engine, p.carSpeed);
     if (p instanceof FireTruck && p.powered && p.siren > 0) siren = true;
-    if (p instanceof Drum && isActive(p)) band = true;
+    if (isActive(p)) {
+      if (p instanceof Drum) band.drum = true;
+      if (p instanceof Piano) band.piano = true;
+      if (p instanceof Tuba) band.tuba = true;
+      if (p instanceof Maracas) band.maracas = true;
+      if (p instanceof Bells) band.bells = true;
+    }
     if (p.kind === 'buzzer' && isActive(p)) buzz = true;
     if (p instanceof MusicBox && isActive(p) && !music) {
       music = true;
       song = p.song;
+      bandSong = p.song;
     }
   }
+  band.melody = music;
+  const players = Object.values(band).filter(Boolean).length;
   sfx.setFan(fan);
-  sfx.tickMusic(music, song, band);
+  sfx.tickBand(band, music ? song : bandSong);
+  sfx.setWater(water);
+  watchBand(dt, players);
+  watchPinwheels();
   sfx.setEngine(engine);
   sfx.setSiren(siren);
   watchHelicopters(dt);
@@ -521,6 +595,7 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
 (window as unknown as { __game: unknown }).__game = {
   world,
   stage,
+  sfx,
   startLevel,
   LEVELS,
   FREE_PLAY,

@@ -1,6 +1,7 @@
 // Card pictures are rendered from the same 3D models as the table, so the
 // tray and the level picker always match what the child will see.
 import * as THREE from 'three';
+import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import type { LightColor, PartKind } from './parts/base';
 import { createPart, itemKey } from './parts/catalog';
 
@@ -16,6 +17,10 @@ export function renderThumbs(items: { kind: PartKind; color?: LightColor }[]): v
   renderer.setClearColor(0x000000, 0);
 
   const scene = new THREE.Scene();
+  // Same soft room reflections as the table, so brass and steel are not black.
+  const pmrem = new THREE.PMREMGenerator(renderer);
+  scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+  scene.environmentIntensity = 0.45;
   scene.add(new THREE.HemisphereLight('#fffaf0', '#d9c5ac', 1.8));
   const sun = new THREE.DirectionalLight('#fff3df', 2.4);
   sun.position.set(-4, 10, 6);
@@ -53,6 +58,7 @@ export function renderThumbs(items: { kind: PartKind; color?: LightColor }[]): v
       part.root.removeFromParent();
     }
   }
+  pmrem.dispose();
   renderer.dispose();
   renderer.forceContextLoss();
 }

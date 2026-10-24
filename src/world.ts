@@ -32,6 +32,11 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'led':
       return l > 0.3;
     case 'fan':
+    case 'floorFan':
+    case 'pcFan':
+    case 'marbleRun':
+    case 'waterMill':
+    case 'conveyor':
     case 'carousel':
     case 'windmill':
     case 'track':
@@ -42,6 +47,10 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'musicbox':
     case 'xylophone':
     case 'drum':
+    case 'piano':
+    case 'tuba':
+    case 'maracas':
+    case 'bells':
     case 'firetruck':
     case 'trafficLight':
     case 'crane':

@@ -18,7 +18,14 @@ export class Sfx {
       this.ctx = new AC();
       this.master = this.ctx.createGain();
       this.master.gain.value = this.muted ? 0 : 0.8;
-      this.master.connect(this.ctx.destination);
+      // A gentle limiter, so a whole band playing at once never distorts.
+      const limit = this.ctx.createDynamicsCompressor();
+      limit.threshold.value = -10;
+      limit.knee.value = 8;
+      limit.ratio.value = 6;
+      limit.attack.value = 0.005;
+      limit.release.value = 0.2;
+      this.master.connect(limit).connect(this.ctx.destination);
       this.onReady?.(this.ctx, this.master);
     }
     if (this.ctx.state === 'suspended') void this.ctx.resume();
@@ -172,46 +179,167 @@ export class Sfx {
     }
   }
 
-  /** Music box: its song on bells while it plays; call every frame. */
-  private musicAt = 0;
-  private musicStep = 0;
-  private musicSong = -1;
-  private beat = 0;
-  /** Called (on time) for each beat the band drum plays, to animate it. */
-  onBandBeat?: () => void;
-  /** Play the box's song; with `band`, a connected drum keeps the beat. */
-  tickMusic(on: boolean, song = 0, band = false) {
+  /**
+   * The band: one shared clock for every musical part. The music box plays the
+   * tune; the other instruments follow the chords worked out from that tune
+   * (see `SONG_CHORDS`), so together they make music instead of noise. Call
+   * every frame with who is playing.
+   */
+  private bandClock = { t0: 0, grid: 0, mel: 0, step: 0, song: -1, melody: false, running: false };
+  /** Called on time for each note a band part plays, to animate it. */
+  onBand?: (who: BandVoice, note: number) => void;
+  tickBand(on: BandParts, song = 0) {
     const ctx = this.ctx;
+    const s = this.bandClock;
     if (!ctx || !this.master) return;
-    if (!on) {
-      this.musicAt = 0;
+    const running = on.melody || on.tuba || on.maracas || on.bells;
+    if (!running) {
+      s.running = false;
       return;
     }
-    // A new song (or a fresh start) begins from the top.
-    if (!this.musicAt || song !== this.musicSong) {
-      this.musicSong = song;
-      this.musicStep = 0;
-      this.beat = 0;
-      this.musicAt = ctx.currentTime + 0.05;
+    const now = ctx.currentTime;
+    const n = song % SONGS.length;
+    // A new song, the music box starting, or a long pause: begin from the top.
+    if (!s.running || n !== s.song || (on.melody && !s.melody) || s.t0 + s.grid * BEAT < now - 0.5) {
+      Object.assign(s, { t0: now + 0.05, grid: 0, mel: 0, step: 0, song: n });
     }
-    if (this.musicAt < ctx.currentTime) this.musicAt = ctx.currentTime + 0.05;
-    const tune = SONGS[song % SONGS.length];
-    while (this.musicAt < ctx.currentTime + 0.25) {
-      const [note, beats] = tune[this.musicStep % tune.length];
-      if (note) this.bell(note, this.musicAt - ctx.currentTime);
-      if (band) {
-        // Every whole beat inside this note: boom on the strong ones, tap on the others.
-        for (let k = Math.ceil(this.beat - 1e-6); k < this.beat + beats - 1e-6; k++) {
-          const at = this.musicAt + (k - this.beat) * 0.3 - ctx.currentTime;
-          if (k % 2 === 0) this.kick(at);
-          else this.snareSoft(at);
-          setTimeout(() => this.onBandBeat?.(), Math.max(0, at * 1000));
+    s.running = true;
+    s.melody = on.melody;
+    const tune = SONGS[n];
+    const ahead = now + 0.25;
+    if (on.melody) {
+      while (s.t0 + s.mel * BEAT < ahead) {
+        const [note, beats] = tune[s.step % tune.length];
+        if (note) this.bell(note, s.t0 + s.mel * BEAT - now);
+        s.mel += beats;
+        s.step++;
+      }
+    }
+    const chords = SONG_CHORDS[n];
+    const win = SONG_WINDOW[n];
+    const len = SONG_BEATS[n];
+    const cue = (who: BandVoice, note: number, at: number) => {
+      if (this.onBand) setTimeout(() => this.onBand?.(who, note), Math.max(0, at * 1000));
+    };
+    while (s.t0 + s.grid * BEAT < ahead) {
+      const at = s.t0 + s.grid * BEAT - now;
+      const pos = s.grid % len;
+      const w = Math.floor(pos / win);
+      const inWin = pos - w * win;
+      const chord = CHORDS[chords[w % chords.length]];
+      const onBeat = Number.isInteger(s.grid);
+      const half = Math.round(s.grid * 2);
+      if (on.drum && onBeat) {
+        if (inWin === 0) this.kick(at);
+        else this.snareSoft(at);
+        cue('drum', 0, at);
+      }
+      if (on.tuba && (inWin === 0 || inWin === win - 1)) {
+        const pc = inWin === 0 ? chord.tones[0] : chord.tones[2];
+        const note = bassNote(pc);
+        this.tubaNote(note, at, BEAT * 0.9);
+        cue('tuba', note, at);
+      }
+      if (on.piano && onBeat) {
+        const first = inWin === 0;
+        for (const pc of chord.tones) {
+          this.pianoNote(chordNote(pc), at, first ? 0.55 : 0.32, first ? BEAT * win : BEAT);
+          cue('piano', chordNote(pc), at);
         }
       }
-      this.beat += beats;
-      this.musicAt += beats * 0.3;
-      this.musicStep++;
+      if (on.maracas) {
+        this.shaker(at, !onBeat);
+        cue('maracas', onBeat ? 0 : 1, at);
+      }
+      // Bells sparkle on the off-beats; without the music box they also take the beats.
+      if (on.bells && (!onBeat || !on.melody)) {
+        const k = half % 4;
+        const note = bellNote(chord.tones[[0, 1, 2, 1][k]]);
+        this.glock(note, at, onBeat ? 0.7 : 1);
+        cue('bells', note, at);
+      }
+      s.grid += 0.5;
     }
+  }
+
+  /** Piano key pressed by the child. */
+  piano(note: number) {
+    this.pianoNote(note, 0, 1, 1.2);
+  }
+
+  /** A bell of the bell tree, tapped. */
+  bellTap(note: number) {
+    this.glock(note, 0, 1.2);
+  }
+
+  /** Maracas shaken by hand. */
+  shake() {
+    this.shaker(0, true);
+    this.shaker(0.09, false);
+  }
+
+  /** Tuba blown by a tap. */
+  tuba(note: number) {
+    this.tubaNote(note, 0, 0.5);
+  }
+
+  private pianoNote(note: number, at: number, vol: number, dur: number) {
+    const f = 440 * 2 ** ((note - 69) / 12);
+    this.tone(f, Math.max(0.5, dur), 'triangle', 0.07 * vol, at);
+    this.tone(f * 2, 0.3, 'sine', 0.025 * vol, at);
+    this.tone(f * 3, 0.12, 'sine', 0.01 * vol, at);
+  }
+
+  private glock(note: number, at: number, vol: number) {
+    const f = 440 * 2 ** ((note - 69) / 12);
+    this.tone(f, 1.3, 'sine', 0.05 * vol, at);
+    this.tone(f * 2.76, 0.4, 'sine', 0.018 * vol, at);
+    this.tone(f * 5.4, 0.12, 'sine', 0.008 * vol, at);
+  }
+
+  private shaker(at: number, accent: boolean) {
+    const ctx = this.ctx;
+    if (!ctx || !this.master) return;
+    const t = ctx.currentTime + at;
+    const src = ctx.createBufferSource();
+    src.buffer = this.noiseBuffer(ctx);
+    const f = ctx.createBiquadFilter();
+    f.type = 'highpass';
+    f.frequency.value = 5200;
+    const g = ctx.createGain();
+    const v = accent ? 0.16 : 0.07;
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(v, t + 0.015);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + (accent ? 0.09 : 0.05));
+    src.connect(f).connect(g).connect(this.master);
+    src.start(t, Math.random());
+    src.stop(t + 0.12);
+  }
+
+  /** Round brassy bass: a filtered saw with a soft attack. */
+  private tubaNote(note: number, at: number, dur: number) {
+    const ctx = this.ctx;
+    if (!ctx || !this.master) return;
+    const t = ctx.currentTime + at;
+    const freq = 440 * 2 ** ((note - 69) / 12);
+    const o = ctx.createOscillator();
+    o.type = 'sawtooth';
+    o.frequency.setValueAtTime(freq * 0.97, t);
+    o.frequency.exponentialRampToValueAtTime(freq, t + 0.05);
+    const f = ctx.createBiquadFilter();
+    f.type = 'lowpass';
+    f.frequency.setValueAtTime(350, t);
+    f.frequency.exponentialRampToValueAtTime(900, t + 0.06);
+    f.frequency.exponentialRampToValueAtTime(450, t + dur);
+    const g = ctx.createGain();
+    g.gain.setValueAtTime(0.0001, t);
+    g.gain.exponentialRampToValueAtTime(0.16, t + 0.04);
+    g.gain.setTargetAtTime(0.1, t + 0.05, 0.1);
+    g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    o.connect(f).connect(g).connect(this.master);
+    o.start(t);
+    o.stop(t + dur + 0.05);
+    this.tone(freq, dur, 'sine', 0.12, at);
   }
 
   private bell(note: number, at = 0, vol = 1) {
@@ -267,6 +395,55 @@ export class Sfx {
     this.tone(1900, 0.08, 'triangle', 0.08);
     this.tone(2850, 0.05, 'sine', 0.05);
     this.noise(0.03, 0.15, 4200);
+  }
+
+  /** A marble rolling into the funnel or past the paddle wheel. */
+  marble() {
+    const f = 2600 + Math.random() * 900;
+    this.tone(f, 0.05, 'sine', 0.05);
+    this.tone(f * 1.5, 0.03, 'sine', 0.025, 0.02);
+  }
+
+  /** The conveyor press coming down on a box. */
+  stamp() {
+    this.tone(120, 0.12, 'sine', 0.25, 0, 70);
+    this.noise(0.05, 0.2, 900);
+    this.noise(0.03, 0.12, 3000, 0.02);
+  }
+
+  /** Fresh paint: a little sparkle. */
+  paint() {
+    this.tone(1760, 0.18, 'sine', 0.06, 0, 2640);
+    this.noise(0.12, 0.05, 6000);
+  }
+
+  private waterNode: { gain: GainNode; filter: BiquadFilterNode } | null = null;
+  /** Pouring water from the mill, 0..~1. */
+  setWater(level: number) {
+    const ctx = this.ctx;
+    if (!ctx || !this.master) return;
+    if (!this.waterNode) {
+      const src = ctx.createBufferSource();
+      src.buffer = this.noiseBuffer(ctx);
+      src.loop = true;
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.value = 1400;
+      filter.Q.value = 0.8;
+      // A slow wobble makes noise sound like running water.
+      const lfo = ctx.createOscillator();
+      lfo.frequency.value = 6.5;
+      const depth = ctx.createGain();
+      depth.gain.value = 500;
+      lfo.connect(depth).connect(filter.frequency);
+      const gain = ctx.createGain();
+      gain.gain.value = 0;
+      src.connect(filter).connect(gain).connect(this.master);
+      src.start();
+      lfo.start();
+      this.waterNode = { gain, filter };
+    }
+    this.waterNode.gain.gain.setTargetAtTime(Math.min(1, level) * 0.1, ctx.currentTime, 0.2);
   }
 
   /** Traffic light relay click. */
@@ -341,6 +518,20 @@ export class Sfx {
   }
 }
 
+/** Seconds per beat for every song. */
+const BEAT = 0.3;
+
+export interface BandParts {
+  /** A music box plays the tune. */
+  melody: boolean;
+  drum: boolean;
+  piano: boolean;
+  tuba: boolean;
+  maracas: boolean;
+  bells: boolean;
+}
+export type BandVoice = 'drum' | 'piano' | 'tuba' | 'maracas' | 'bells';
+
 // Music box songs, all traditional / public domain, as [MIDI note, beats]
 // (0 is a rest). Order matches SONG_ICONS in parts/extra.ts.
 type Tune = [number, number][];
@@ -409,3 +600,59 @@ const JACQUES: Tune = [
 
 /** Twinkle Twinkle, Mary Had a Little Lamb, Old MacDonald, Row Your Boat, London Bridge, Itsy Bitsy Spider, Jingle Bells, Frère Jacques. */
 export const SONGS: Tune[] = [TWINKLE, MARY, MACDONALD, ROW, LONDON, SPIDER, JINGLE, JACQUES];
+
+/** Beats per chord: two for most songs, three for the rocking Row Your Boat. */
+export const SONG_WINDOW = SONGS.map((t) => (t === ROW ? 3 : 2));
+export const SONG_BEATS = SONGS.map((t) => t.reduce((sum, [, b]) => sum + b, 0));
+
+/** The chords every song uses: C, F, G and A minor (pitch classes, root first). */
+export const CHORDS = [
+  { name: 'C', tones: [0, 4, 7] },
+  { name: 'F', tones: [5, 9, 0] },
+  { name: 'G', tones: [7, 11, 2] },
+  { name: 'Am', tones: [9, 0, 4] },
+];
+
+/**
+ * A chord for every window of the tune: the one whose notes the melody spends
+ * the most time on (the first note of a window counts double). Ties keep the
+ * previous chord, else go to the first in CHORDS order.
+ */
+export function chordsOf(tune: Tune, win: number): number[] {
+  const total = tune.reduce((sum, [, b]) => sum + b, 0);
+  const windows = Math.ceil(total / win - 1e-6);
+  const score = Array.from({ length: windows }, () => CHORDS.map(() => 0));
+  let beat = 0;
+  for (const [note, beats] of tune) {
+    if (note) {
+      // Spread the note over the windows it covers.
+      for (let b = beat; b < beat + beats - 1e-6; b += 0.5) {
+        const w = Math.floor(b / win + 1e-6);
+        const first = Math.abs(b - w * win) < 1e-6 ? 2 : 1;
+        CHORDS.forEach((c, i) => {
+          if (c.tones.includes(note % 12)) score[w][i] += 0.5 * first;
+        });
+      }
+    }
+    beat += beats;
+  }
+  const out: number[] = [];
+  let prev = 0;
+  for (let w = 0; w < windows; w++) {
+    const sc = score[w];
+    let best = prev;
+    for (let i = 0; i < CHORDS.length; i++) if (sc[i] > sc[best] + 1e-6) best = i;
+    out.push(best);
+    prev = best;
+  }
+  // Songs come home to C.
+  out[out.length - 1] = 0;
+  return out;
+}
+
+export const SONG_CHORDS = SONGS.map((t, i) => chordsOf(t, SONG_WINDOW[i]));
+
+/** Bass range G2–F#3, piano C4–B4, bells C6–B6. */
+const bassNote = (pc: number) => 43 + ((pc - 7 + 12) % 12);
+const chordNote = (pc: number) => 60 + pc;
+const bellNote = (pc: number) => 84 + pc;

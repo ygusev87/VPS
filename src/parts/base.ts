@@ -9,12 +9,22 @@ export type PartKind =
   | 'bulb'
   | 'led'
   | 'fan'
+  | 'floorFan'
+  | 'pcFan'
+  | 'pinwheel'
   | 'carousel'
   | 'windmill'
   | 'buzzer'
   | 'musicbox'
   | 'xylophone'
   | 'drum'
+  | 'piano'
+  | 'tuba'
+  | 'maracas'
+  | 'bells'
+  | 'marbleRun'
+  | 'waterMill'
+  | 'conveyor'
   | 'track'
   | 'helicopter'
   | 'firetruck'
@@ -157,7 +167,14 @@ export type PartSound =
   | { kind: 'clank' }
   | { kind: 'liftTop' }
   | { kind: 'craneHold' }
-  | { kind: 'craneDone' };
+  | { kind: 'craneDone' }
+  | { kind: 'piano'; note: number }
+  | { kind: 'tuba'; note: number }
+  | { kind: 'bell'; note: number }
+  | { kind: 'shake' }
+  | { kind: 'marble' }
+  | { kind: 'stamp' }
+  | { kind: 'paint' };
 
 /** Axis-aligned rectangle on the table (x/z), in world or part-local units. */
 export interface Footprint {

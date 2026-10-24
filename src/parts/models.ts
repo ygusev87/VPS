@@ -478,6 +478,15 @@ export class Fan extends Part {
     this.pickable(plate, frame, this.rotor);
   }
 
+  /** Its breeze, for pinwheels and windmills in front of it (see wind.ts). */
+  breeze() {
+    const strength = Math.abs(this.speed) / 22;
+    if (strength < 0.05) return null;
+    const origin = this.body.localToWorld(this.rotor.position.clone());
+    const dir = new THREE.Vector3(0, 0, 1).transformDirection(this.root.matrixWorld).setY(0).normalize();
+    return { origin, dir, strength };
+  }
+
   protected animate(dt: number) {
     const target = Math.max(-1.6, Math.min(1.6, this.state.level)) * 22;
     this.speed = damp(this.speed, target, Math.abs(target) > Math.abs(this.speed) ? 1.6 : 0.9, dt);

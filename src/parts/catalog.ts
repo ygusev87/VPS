@@ -5,6 +5,9 @@ import { ButtonPanel, Carousel, Drum, MusicBox, PushButton, Windmill, Xylophone 
 import { DiscoBall, FireTruck, Helicopter, RaceTrack, TrafficLight } from './fun';
 import { Battery, Bulb, Buzzer, Fan, Led, Switch } from './models';
 import { Crane, Dynamo, Lift } from './more';
+import { Bells, Maracas, Piano, Tuba } from './band';
+import { Conveyor, MarbleRun, WaterMill } from './mech';
+import { FloorFan, PcFan, Pinwheel } from './wind';
 import type { PhraseId } from '../voice';
 
 export interface CatalogItem {
@@ -48,14 +51,32 @@ export const GROUPS: CatalogGroup[] = [
     ],
   },
   {
+    id: 'wind',
+    name: 'Ветер',
+    items: [
+      { kind: 'fan', name: 'Вентилятор', say: 'fan' },
+      { kind: 'floorFan', name: 'Напольный вентилятор', say: 'floorFan' },
+      { kind: 'pcFan', name: 'Компьютерный вентилятор', say: 'pcFan' },
+      { kind: 'pinwheel', name: 'Вертушка', say: 'pinwheel' },
+      { kind: 'windmill', name: 'Мельница', say: 'windmill' },
+    ],
+  },
+  {
     id: 'motion',
     name: 'Движение',
     items: [
-      { kind: 'fan', name: 'Вентилятор', say: 'fan' },
       { kind: 'carousel', name: 'Карусель', say: 'carousel' },
-      { kind: 'windmill', name: 'Мельница', say: 'windmill' },
       { kind: 'lift', name: 'Лифт', say: 'lift' },
       { kind: 'crane', name: 'Подъёмный кран', say: 'crane' },
+    ],
+  },
+  {
+    id: 'mech',
+    name: 'Механизмы',
+    items: [
+      { kind: 'marbleRun', name: 'Шариковая горка', say: 'marbleRun' },
+      { kind: 'waterMill', name: 'Водяная мельница', say: 'waterMill' },
+      { kind: 'conveyor', name: 'Конвейер', say: 'conveyor' },
     ],
   },
   {
@@ -75,6 +96,10 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'musicbox', name: 'Музыкальная шкатулка', say: 'musicbox' },
       { kind: 'xylophone', name: 'Ксилофон', say: 'xylophone' },
       { kind: 'drum', name: 'Барабан', say: 'drum' },
+      { kind: 'piano', name: 'Пианино', say: 'piano' },
+      { kind: 'tuba', name: 'Туба', say: 'tuba' },
+      { kind: 'maracas', name: 'Маракасы', say: 'maracas' },
+      { kind: 'bells', name: 'Колокольчики', say: 'bells' },
     ],
   },
   {
@@ -118,6 +143,26 @@ function make(kind: PartKind): Part {
       return new Led();
     case 'fan':
       return new Fan();
+    case 'floorFan':
+      return new FloorFan();
+    case 'pcFan':
+      return new PcFan();
+    case 'pinwheel':
+      return new Pinwheel();
+    case 'piano':
+      return new Piano();
+    case 'tuba':
+      return new Tuba();
+    case 'maracas':
+      return new Maracas();
+    case 'bells':
+      return new Bells();
+    case 'marbleRun':
+      return new MarbleRun();
+    case 'waterMill':
+      return new WaterMill();
+    case 'conveyor':
+      return new Conveyor();
     case 'carousel':
       return new Carousel();
     case 'windmill':
@@ -156,4 +201,4 @@ function make(kind: PartKind): Part {
 }
 
 /** Model files the game loads at start. */
-export const MODEL_NAMES = ['battery', 'bigbattery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer', 'carousel', 'windmill', 'sails', 'musicbox', 'button', 'panel', 'drum', 'racecar', 'helicopter', 'firetruck', 'dynamo'];
+export const MODEL_NAMES = ['battery', 'bigbattery', 'socket', 'motor', 'propeller', 'knife', 'led', 'buzzer', 'carousel', 'windmill', 'sails', 'musicbox', 'button', 'panel', 'drum', 'racecar', 'helicopter', 'firetruck', 'dynamo', 'tuba', 'floorfan'];
