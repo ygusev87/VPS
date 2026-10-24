@@ -1,12 +1,17 @@
-// Flexible wires between terminals, with beads of "current" running along
-// them in the direction conventional current flows.
+// Flexible wires between terminals. Current shows as pulses of light running
+// inside the cable in the direction conventional current flows; when a circuit
+// closes, the light fills the wires from the battery's "+" round the loop.
 import * as THREE from 'three';
 import type { Footprint, Terminal } from './parts/base';
 import { C, WIRE_COLORS } from './theme';
 
 const RADIUS = 0.05;
 const UP = new THREE.Vector3(0, 1, 0);
-const dotGeo = new THREE.SphereGeometry(0.052, 10, 8);
+/** Spacing of the light pulses along a wire, world units. */
+const PULSE = 0.55;
+/** How fast the light front fills a wire when the circuit closes, units per second. */
+const FILL_SPEED = 9;
+const FLOW_COLOR = new THREE.Color('#ffe2a0');
 const clipGeo = new THREE.CylinderGeometry(0.075, 0.06, 0.16, 16);
 const tipGeo = new THREE.CapsuleGeometry(0.085, 0.16, 6, 16);
 // A cable clip: a little arch over the wire with two feet pressed into the table.
@@ -32,6 +37,13 @@ export class Wire {
   static neat = false;
   /** Table cells each tidy wire runs along, so the next one picks a free lane. */
   static lanes = new Map<string, Set<number>>();
+  /** Brightness of the current's light: higher by day so it reads against the paper. */
+  static glow = 2.2;
+  /**
+   * 0 at the battery's "+" (highest voltage), 1 at "−": how far down the loop
+   * a wire sits, so the light front reaches it in order. Set after each solve.
+   */
+  potential = 0;
   readonly id = `w${nextWireId++}`;
   readonly group = new THREE.Group();
   readonly tube: THREE.Mesh;
@@ -61,10 +73,20 @@ export class Wire {
   private clipB: THREE.Mesh;
   /** Plug head that follows the finger while the wire is being dragged. */
   private tip: THREE.Mesh;
-  private dots: THREE.InstancedMesh;
+  private flow = {
+    uLen: { value: 1 },
+    uPhase: { value: 0 },
+    uAmp: { value: 0 },
+    uDir: { value: 1 },
+    uFront: { value: 1e3 },
+    uHeat: { value: 0 },
+    uFlowColor: { value: FLOW_COLOR },
+  };
+  /** Seconds since the current started (negative while waiting for the front). */
+  private fillT = 0;
+  private flowing = false;
   private curve: THREE.CatmullRomCurve3 | null = null;
   private length = 1;
-  private phase = 0;
   private lateral = (Math.random() < 0.5 ? -1 : 1) * (0.4 + Math.random() * 0.6);
   private lastKey = '';
   private grow = 0;
@@ -73,20 +95,56 @@ export class Wire {
   private readonly p3 = new THREE.Vector3();
 
   constructor(readonly a: Terminal) {
-    this.material = new THREE.MeshStandardMaterial({ color: C.teal, roughness: 0.38, transparent: true });
+    this.material = new THREE.MeshStandardMaterial({ color: C.teal, roughness: 0.32, transparent: true });
+    this.material.onBeforeCompile = (shader) => this.injectFlow(shader);
+    this.material.customProgramCacheKey = () => 'wire-flow';
     this.tube = new THREE.Mesh(new THREE.BufferGeometry(), this.material);
     this.tube.castShadow = true;
     this.tube.userData.wire = this;
     const clipMat = new THREE.MeshStandardMaterial({ color: '#7d8590', metalness: 0.7, roughness: 0.3 });
     this.clipA = new THREE.Mesh(clipGeo, clipMat);
     this.clipB = new THREE.Mesh(clipGeo, clipMat);
-    this.dots = new THREE.InstancedMesh(dotGeo, new THREE.MeshBasicMaterial({ color: '#fff6d6' }), 48);
-    this.dots.count = 0;
-    this.dots.frustumCulled = false;
     this.tip = new THREE.Mesh(tipGeo, this.material);
     this.tip.castShadow = true;
-    this.group.add(this.tube, this.clipA, this.clipB, this.tip, this.dots);
+    this.group.add(this.tube, this.clipA, this.clipB, this.tip);
     this.setColorFor(a, null);
+  }
+
+  /**
+   * Light inside the cable: a faint glowing core plus bright comets moving
+   * with the current, brighter than white so the bloom makes them shine.
+   */
+  private injectFlow(shader: THREE.WebGLProgramParametersWithUniforms) {
+    Object.assign(shader.uniforms, this.flow);
+    shader.vertexShader = shader.vertexShader
+      .replace('#include <common>', '#include <common>\nattribute float wireU;\nvarying float vWireU;')
+      .replace('#include <begin_vertex>', '#include <begin_vertex>\nvWireU = wireU;');
+    shader.fragmentShader = shader.fragmentShader
+      .replace(
+        '#include <common>',
+        `#include <common>
+        varying float vWireU;
+        uniform float uLen, uPhase, uAmp, uDir, uFront, uHeat;
+        uniform vec3 uFlowColor;`,
+      )
+      .replace(
+        '#include <emissivemap_fragment>',
+        `#include <emissivemap_fragment>
+        {
+          float s = vWireU * uLen;
+          float along = uDir > 0.0 ? s : uLen - s;
+          float lit = smoothstep(uFront + 0.05, uFront - 0.15, along);
+          float f = fract((along - uPhase) / ${PULSE.toFixed(2)});
+          float comet = smoothstep(0.62, 0.97, f) * (1.0 - smoothstep(0.97, 1.0, f)) + 0.25 * pow(f, 2.0);
+          float core = pow(max(dot(normal, vec3(0.0, 0.0, 1.0)), 0.0), 1.4);
+          vec3 glow = uFlowColor * uAmp * lit * (0.18 + 4.2 * comet) * (0.3 + 0.7 * core);
+          float edge = exp(-abs(along - uFront) * 7.0) * step(uFront, uLen + 0.3);
+          glow += uFlowColor * uAmp * edge * 6.0 * core;
+          // Far too much current: the wire heats up red-orange and shimmers.
+          glow += vec3(1.0, 0.28, 0.06) * uHeat * (2.2 + 1.2 * sin(along * 9.0 + uPhase * 4.0));
+          totalEmissiveRadiance += glow;
+        }`,
+      );
   }
 
   /** Red for wires on "+", dark for "−", otherwise cycle a cheerful set. */
@@ -234,6 +292,12 @@ export class Wire {
     const segs = Math.max(24, Math.min(110, Math.round(this.length * 14)));
     const r = RADIUS * Math.min(1, this.grow) * (this.dying ? this.fade : 1) * (this.alert ? 1.7 : 1);
     const geo = new THREE.TubeGeometry(this.curve, segs, Math.max(0.005, r), 8, false);
+    // Distance along the wire (0..1) for the flow shader.
+    const uv = geo.attributes.uv;
+    const along = new Float32Array(uv.count);
+    for (let i = 0; i < uv.count; i++) along[i] = uv.getX(i);
+    geo.setAttribute('wireU', new THREE.BufferAttribute(along, 1));
+    this.flow.uLen.value = this.length;
     this.tube.geometry.dispose();
     this.tube.geometry = geo;
 
@@ -355,25 +419,20 @@ export class Wire {
       }
       this.material.emissiveIntensity = THREE.MathUtils.damp(this.material.emissiveIntensity, mag > 0.01 ? 0.28 : 0, 6, dt);
     }
-    if (!this.curve || mag < 0.01 || !Wire.showFlow) {
-      this.dots.count = 0;
-      return;
+    // The light: waits for its turn (wires nearer "+" light first), then fills the wire.
+    const on = !!this.curve && mag > 0.01 && Wire.showFlow;
+    if (on && !this.flowing) this.fillT = -this.potential * 0.45;
+    this.flowing = on;
+    if (on) this.fillT += dt;
+    const f = this.flow;
+    f.uFront.value = on ? Math.max(0, this.fillT) * FILL_SPEED : f.uFront.value;
+    f.uAmp.value = THREE.MathUtils.damp(f.uAmp.value, on ? Math.min(1, 0.35 + mag * 3) * Wire.glow : 0, on ? 10 : 4, dt);
+    f.uHeat.value = THREE.MathUtils.damp(f.uHeat.value, Math.min(1, Math.max(0, (mag - 1.2) / 1.5)), 3, dt);
+    if (on) {
+      f.uDir.value = Math.sign(I);
+      const speed = Math.min(3.2, 0.8 + mag * 5);
+      f.uPhase.value = (f.uPhase.value + speed * dt) % (PULSE * 1000);
     }
-    const speed = Math.min(3.2, 0.7 + mag * 5); // world units per second
-    this.phase = (this.phase + (Math.sign(I) * speed * dt) / this.length + 1) % 1;
-    const n = Math.max(3, Math.min(48, Math.round(this.length * 2.2)));
-    const m = new THREE.Matrix4();
-    const p = new THREE.Vector3();
-    for (let i = 0; i < n; i++) {
-      const u = (this.phase + i / n) % 1;
-      this.curve.getPointAt(u, p);
-      // Beads swell slightly in the middle of their run, so the flow reads as motion.
-      const s = 0.85 + 0.35 * Math.sin(u * Math.PI);
-      m.makeScale(s, s, s).setPosition(p);
-      this.dots.setMatrixAt(i, m);
-    }
-    this.dots.count = n;
-    this.dots.instanceMatrix.needsUpdate = true;
   }
 }
 

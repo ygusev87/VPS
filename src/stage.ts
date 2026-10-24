@@ -3,7 +3,20 @@
 // always means "grab".
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
+import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
+import { SMAAPass } from 'three/examples/jsm/postprocessing/SMAAPass.js';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass.js';
 import { C } from './theme';
+
+/**
+ * Picture quality. 2: glow and smoothing at full sharpness; 1: the same at a
+ * lower resolution; 0: plain render. The game starts high and steps down by
+ * itself when the device cannot keep up (`?q=0..2` forces one).
+ */
+export type Quality = 0 | 1 | 2;
 
 export interface Insets {
   top: number;
@@ -39,11 +52,37 @@ export class Stage {
   private plane = new THREE.Plane(new THREE.Vector3(0, 1, 0), 0);
   private w = 1;
   private h = 1;
+  private night = false;
+  /** Screen-filling paper behind everything (see drawBackground). */
+  private backdrop = new THREE.Mesh(
+    new THREE.PlaneGeometry(2, 2),
+    new THREE.ShaderMaterial({
+      uniforms: { map: { value: null as THREE.Texture | null }, gain: { value: BACK_GAIN } },
+      vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = vec4(position.xy, 0.99999, 1.0); }`,
+      fragmentShader: `uniform sampler2D map; uniform float gain; varying vec2 vUv;
+        void main() {
+          gl_FragColor = vec4(texture2D(map, vUv).rgb * gain, 1.0);
+          #include <tonemapping_fragment>
+          #include <colorspace_fragment>
+        }`,
+      depthWrite: false,
+      depthTest: false,
+    }),
+  );
+  private composer: EffectComposer | null = null;
+  private bloom: UnrealBloomPass | null = null;
+  private finish: ShaderPass | null = null;
+  quality: Quality = 2;
+  /** Set by `?q=`: never change quality on our own. */
+  private pinned = false;
+  private slowFor = 0;
+  private lastFrame = 0;
+  private sinceStart = 0;
 
   constructor(readonly canvas: HTMLCanvasElement) {
-    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true, powerPreference: 'high-performance' });
+    // No canvas antialiasing: every frame goes through the post chain (SMAA, or a multisampled target).
+    this.renderer = new THREE.WebGLRenderer({ canvas, antialias: false, powerPreference: 'high-performance' });
     this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    this.renderer.setClearColor(0x000000, 0);
     this.renderer.outputColorSpace = THREE.SRGBColorSpace;
     this.renderer.toneMapping = THREE.NeutralToneMapping;
     this.renderer.shadowMap.enabled = true;
@@ -52,16 +91,20 @@ export class Stage {
     // Soft studio reflections make plastic and brass read as real materials.
     const pmrem = new THREE.PMREMGenerator(this.renderer);
     this.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
-    this.scene.environmentIntensity = 0.45;
+    this.scene.environmentIntensity = DAY.env;
     pmrem.dispose();
 
-    // The page background shows through; the grid fades into it with distance.
+    // The paper background is drawn by the scene (so glow can spill over it);
+    // the grid fades into it with distance.
     this.scene.fog = new THREE.Fog(C.bg, 30, 80);
     this.scene.add(this.world);
+    this.backdrop.frustumCulled = false;
+    this.backdrop.renderOrder = -100;
+    this.scene.add(this.backdrop);
 
-    this.hemi = new THREE.HemisphereLight('#fffaf0', '#d9c5ac', 1.05);
+    this.hemi = new THREE.HemisphereLight('#fffaf0', '#d9c5ac', DAY.hemi);
     this.scene.add(this.hemi);
-    this.sun = new THREE.DirectionalLight('#fff3df', 2.1);
+    this.sun = new THREE.DirectionalLight('#fff3df', DAY.sun);
     this.sun.castShadow = true;
     this.sun.shadow.mapSize.set(2048, 2048);
     this.sun.shadow.bias = -0.0003;
@@ -69,7 +112,8 @@ export class Stage {
     this.sun.shadow.radius = 5;
     this.sun.shadow.blurSamples = 16;
     this.scene.add(this.sun, this.sun.target);
-    this.fill = new THREE.DirectionalLight('#e8f2ff', 0.45);
+    // A cool light from behind draws bright rims along the tops of the parts.
+    this.fill = new THREE.DirectionalLight('#e8f2ff', DAY.rim);
     this.fill.position.set(8, 6, -6);
     this.scene.add(this.fill);
 
@@ -79,15 +123,83 @@ export class Stage {
     );
     this.ground.rotation.x = -Math.PI / 2;
     this.ground.renderOrder = -2;
-    const shadows = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.ShadowMaterial({ color: '#3c2d14', opacity: 0.2 }));
+    const shadows = new THREE.Mesh(new THREE.PlaneGeometry(400, 400), new THREE.ShadowMaterial({ color: '#3c2d14', opacity: 0.55 }));
     shadows.rotation.x = -Math.PI / 2;
     shadows.position.y = 0.002;
     shadows.receiveShadow = true;
     shadows.renderOrder = -1;
     this.scene.add(this.ground, shadows);
 
+    const q = new URLSearchParams(location.search).get('q');
+    if (q === '0' || q === '1' || q === '2') {
+      this.quality = +q as Quality;
+      this.pinned = true;
+      if (this.quality < 2) this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.5));
+    }
+    this.buildComposer();
     window.addEventListener('resize', () => this.resize());
     this.resize();
+  }
+
+  /** The post-processing chain for the current quality. */
+  private buildComposer() {
+    this.composer?.dispose();
+    this.composer = null;
+    this.bloom = null;
+    this.finish = null;
+    const r = this.renderer;
+    // Always through a linear HDR target (so translucent layers look the same at
+    // every quality); the plain one uses the GPU's own antialiasing.
+    const target = new THREE.WebGLRenderTarget(1, 1, { type: THREE.HalfFloatType, depthBuffer: true, samples: this.quality === 0 ? 4 : 0 });
+    const composer = new EffectComposer(r, target);
+    if (this.quality === 0) {
+      composer.addPass(new RenderPass(this.scene, this.camera));
+      composer.addPass(new OutputPass());
+      this.composer = composer;
+      this.sizeComposer();
+      return;
+    }
+    composer.addPass(new RenderPass(this.scene, this.camera));
+    // Only what is brighter than white glows: lit lamps, LEDs, the current.
+    this.bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), 0.7, 0.55, 1.0);
+    composer.addPass(this.bloom);
+    composer.addPass(new OutputPass());
+    this.finish = new ShaderPass(FinishShader);
+    this.finish.uniforms.uVignette.value = 0.2;
+    composer.addPass(this.finish);
+    composer.addPass(new SMAAPass());
+    this.composer = composer;
+    this.setNightLook();
+    this.sizeComposer();
+  }
+
+  private sizeComposer() {
+    if (!this.composer) return;
+    this.composer.setPixelRatio(this.renderer.getPixelRatio());
+    this.composer.setSize(this.w, this.h);
+  }
+
+  /**
+   * Step quality down when frames stay slow (below ~40 per second for a few
+   * seconds), never back up, so it settles instead of flickering.
+   */
+  private watchSpeed() {
+    const now = performance.now();
+    const dt = this.lastFrame ? now - this.lastFrame : 16;
+    this.lastFrame = now;
+    // A long gap means the game was in the background, not that it is slow.
+    if (this.pinned || this.quality === 0 || document.hidden || dt > 1500) return;
+    this.sinceStart += dt;
+    if (this.sinceStart < 4000) return;
+    this.slowFor = dt > 25 ? this.slowFor + dt : Math.max(0, this.slowFor - dt * 2);
+    if (this.slowFor > 2500) {
+      this.slowFor = 0;
+      this.sinceStart = 2000;
+      this.quality = (this.quality - 1) as Quality;
+      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, this.quality === 2 ? 2 : 1.5));
+      this.buildComposer();
+      this.resize();
+    }
   }
 
   /**
@@ -95,15 +207,74 @@ export class Stage {
    * found), while everything that glows keeps its full brightness.
    */
   setNight(on: boolean) {
-    this.hemi.intensity = on ? 0.22 : 1.05;
+    this.night = on;
+    this.hemi.intensity = on ? 0.22 : DAY.hemi;
     this.hemi.color.set(on ? '#9fb2e6' : '#fffaf0');
     this.hemi.groundColor.set(on ? '#2a3150' : '#d9c5ac');
-    this.sun.intensity = on ? 0.35 : 2.1;
+    this.sun.intensity = on ? 0.35 : DAY.sun;
     this.sun.color.set(on ? '#b9c8ff' : '#fff3df');
-    this.fill.intensity = on ? 0.12 : 0.45;
-    this.scene.environmentIntensity = on ? 0.14 : 0.45;
-    (this.scene.fog as THREE.Fog).color.set(on ? C.night : C.bg);
+    this.fill.intensity = on ? 0.3 : DAY.rim;
+    this.scene.environmentIntensity = on ? 0.14 : DAY.env;
     (this.ground.material as THREE.MeshBasicMaterial).color.set(on ? '#5b6687' : '#ffffff');
+    this.drawBackground();
+    this.setNightLook();
+  }
+
+  /** At night everything bright glows wider, like eyes used to the dark. */
+  private setNightLook() {
+    if (this.bloom) {
+      this.bloom.strength = this.night ? 1.05 : 0.7;
+      this.bloom.radius = this.night ? 0.7 : 0.55;
+      this.bloom.threshold = this.night ? 0.75 : 2.4;
+    }
+    if (this.finish) this.finish.uniforms.uVignette.value = this.night ? 0.42 : 0.2;
+  }
+
+  /**
+   * The paper (or night) background as a screen-filling texture, with colours
+   * pre-compensated for tone mapping so it matches the page around the panels.
+   */
+  private drawBackground() {
+    const w = 256;
+    const h = Math.max(16, Math.round((256 * this.h) / Math.max(1, this.w)));
+    const canvas = document.createElement('canvas');
+    canvas.width = w;
+    canvas.height = h;
+    const ctx = canvas.getContext('2d')!;
+    ctx.fillStyle = this.night ? C.night : C.bg;
+    ctx.fillRect(0, 0, w, h);
+    ctx.save();
+    ctx.translate(w * 0.5, h * 0.45);
+    ctx.scale(1.2 * w, 0.9 * h);
+    const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 0.6);
+    g.addColorStop(0, this.night ? 'rgba(42,51,82,0.65)' : 'rgba(255,250,240,0.55)');
+    g.addColorStop(1, this.night ? 'rgba(42,51,82,0)' : 'rgba(255,250,240,0)');
+    ctx.fillStyle = g;
+    ctx.fillRect(-1, -1, 2, 2);
+    ctx.restore();
+    const img = ctx.getImageData(0, 0, w, h);
+    const d = img.data;
+    const cache = new Map<number, [number, number, number]>();
+    for (let i = 0; i < d.length; i += 4) {
+      const key = (d[i] << 16) | (d[i + 1] << 8) | d[i + 2];
+      let out = cache.get(key);
+      if (!out) {
+        out = untoneSrgb(d[i], d[i + 1], d[i + 2], BACK_GAIN);
+        cache.set(key, out);
+      }
+      d[i] = out[0];
+      d[i + 1] = out[1];
+      d[i + 2] = out[2];
+    }
+    ctx.putImageData(img, 0, 0);
+    const tex = new THREE.CanvasTexture(canvas);
+    tex.colorSpace = THREE.SRGBColorSpace;
+    const m = this.backdrop.material as THREE.ShaderMaterial;
+    (m.uniforms.map.value as THREE.Texture | null)?.dispose();
+    m.uniforms.map.value = tex;
+    const base = new THREE.Color(this.night ? C.night : C.bg);
+    const [r, gg, b] = untone(base.r, base.g, base.b);
+    (this.scene.fog as THREE.Fog).color.setRGB(r, gg, b, THREE.LinearSRGBColorSpace);
   }
 
   /** Tall screens lay level parts out top-to-bottom. */
@@ -122,6 +293,8 @@ export class Stage {
     this.w = this.canvas.clientWidth || window.innerWidth;
     this.h = this.canvas.clientHeight || window.innerHeight;
     this.renderer.setSize(this.w, this.h, false);
+    this.sizeComposer();
+    this.drawBackground();
     this.camera.aspect = this.w / this.h;
     // Put the optical centre in the middle of the free area between panels.
     const { top, bottom, left, right } = this.insets;
@@ -243,7 +416,9 @@ export class Stage {
   }
 
   render() {
-    this.renderer.render(this.scene, this.camera);
+    this.watchSpeed();
+    if (this.composer) this.composer.render();
+    else this.renderer.render(this.scene, this.camera);
   }
 
   /**
@@ -307,7 +482,7 @@ function gridTexture(): THREE.Texture {
   const step = px / 8;
   for (let i = 0; i < 8; i++) {
     const major = i % 4 === 0;
-    ctx.fillStyle = major ? 'rgba(196,178,152,0.38)' : 'rgba(206,192,173,0.2)';
+    ctx.fillStyle = major ? 'rgba(196,178,152,0.65)' : 'rgba(206,192,173,0.39)';
     const t = major ? 2 : 1.5;
     ctx.fillRect(i * step, 0, t, px);
     ctx.fillRect(0, i * step, px, t);
@@ -318,4 +493,65 @@ function gridTexture(): THREE.Texture {
   tex.repeat.set(100, 100);
   tex.anisotropy = 8;
   return tex;
+}
+
+/** The backdrop texture holds colours divided by this, so it can be brighter than white. */
+const BACK_GAIN = 2;
+
+/** Day lighting: soft fill, a warm key, a rim from behind, studio reflections. */
+const DAY = { hemi: 0.42, sun: 3.0, rim: 1.0, env: 0.7 };
+
+/** Last touch after tone mapping: a soft vignette and a hint of warmth at the edges. */
+const FinishShader = {
+  uniforms: { tDiffuse: { value: null }, uVignette: { value: 0.2 } },
+  vertexShader: `varying vec2 vUv; void main() { vUv = uv; gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0); }`,
+  fragmentShader: `
+    uniform sampler2D tDiffuse;
+    uniform float uVignette;
+    varying vec2 vUv;
+    void main() {
+      vec4 c = texture2D(tDiffuse, vUv);
+      vec2 p = vUv - 0.5;
+      float v = smoothstep(0.35, 0.95, length(p * vec2(1.1, 1.0)));
+      c.rgb *= 1.0 - v * uVignette;
+      c.rgb = mix(c.rgb, c.rgb * vec3(1.02, 0.99, 0.95), v);
+      gl_FragColor = c;
+    }`,
+};
+
+/** three.js's Neutral tone mapping (linear in, linear out). */
+function neutral(r: number, g: number, b: number): [number, number, number] {
+  const start = 0.8 - 0.04;
+  const x = Math.min(r, g, b);
+  const offset = x < 0.08 ? x - 6.25 * x * x : 0.04;
+  r -= offset;
+  g -= offset;
+  b -= offset;
+  const peak = Math.max(r, g, b);
+  if (peak < start) return [r, g, b];
+  const d = 1 - start;
+  const np = 1 - (d * d) / (peak + d - start);
+  const k = np / peak;
+  const t = 1 - 1 / (0.15 * (peak - np) + 1);
+  return [r * k * (1 - t) + np * t, g * k * (1 - t) + np * t, b * k * (1 - t) + np * t];
+}
+
+/** The linear colour that tone-maps to (r, g, b). */
+function untone(r: number, g: number, b: number): [number, number, number] {
+  let x: [number, number, number] = [r, g, b];
+  for (let i = 0; i < 40; i++) {
+    const y = neutral(...x);
+    x = [x[0] + (r - y[0]), x[1] + (g - y[1]), x[2] + (b - y[2])];
+  }
+  return x;
+}
+
+/** Pre-compensated colour for a texture the shader multiplies by `gain` (values may exceed 1). */
+function untoneSrgb(r: number, g: number, b: number, gain: number): [number, number, number] {
+  const c = new THREE.Color().setRGB(r / 255, g / 255, b / 255, THREE.SRGBColorSpace);
+  const [lr, lg, lb] = untone(c.r, c.g, c.b);
+  c.setRGB(lr / gain, lg / gain, lb / gain, THREE.LinearSRGBColorSpace);
+  const out = { r: 0, g: 0, b: 0 };
+  c.getRGB(out, THREE.SRGBColorSpace);
+  return [Math.round(Math.min(1, out.r) * 255), Math.round(Math.min(1, out.g) * 255), Math.round(Math.min(1, out.b) * 255)];
 }

@@ -2,6 +2,7 @@ import * as THREE from 'three';
 import './style.css';
 import { Sfx } from './audio';
 import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
+import { Fx } from './fx';
 import { Hud } from './hud';
 import { Input } from './input';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
@@ -21,6 +22,8 @@ import { renderThumbs } from './thumbs';
 import { drawTraces } from './traces';
 import { Voice } from './voice';
 import { Wire } from './wires';
+import { LIGHT } from './parts/models';
+import { C } from './theme';
 import { isActive, World } from './world';
 
 const loaderFill = document.querySelector<HTMLElement>('.loader-fill')!;
@@ -36,6 +39,8 @@ const canvas = document.getElementById('stage') as HTMLCanvasElement;
 const stage = new Stage(canvas);
 const world = new World(stage);
 const sfx = new Sfx();
+const fx = new Fx();
+stage.scene.add(fx.group);
 const voice = new Voice();
 sfx.onReady = (ctx, out) => voice.attach(ctx, out);
 const progress = loadProgress();
@@ -103,6 +108,7 @@ const hud = new Hud(stage, {
   onNight: (on) => {
     progress.night = on;
     stage.setNight(on);
+    Wire.glow = on ? 1 : 2.2;
     saveProgress(progress);
   },
   onZoom: (f) => stage.zoomBy(f),
@@ -134,6 +140,7 @@ hud.setNight(progress.night);
 hud.setNeat(progress.neat);
 Wire.neat = progress.neat;
 stage.setNight(progress.night);
+Wire.glow = progress.night ? 1 : 2.2;
 
 const input = new Input(stage, world, {
   overTray: (x, y) => hud.overTray(x, y),
@@ -262,7 +269,7 @@ world.on((e) => {
       sfx.snap();
       // The clips holding a laid cable click on one by one.
       for (let i = 0; i < e.wire.clipCount; i++) setTimeout(() => sfx.clipOn(), 120 + i * 80);
-      if (e.wire.b) hud.sparks(stage.project(e.wire.b.attachPoint(tmp)));
+      if (e.wire.b) fx.burst(e.wire.b.attachPoint(tmp).clone(), 16);
       break;
     case 'wireRemoved':
       sfx.unsnap();
@@ -276,7 +283,12 @@ world.on((e) => {
       if (e.part.kind === 'button') sfx.press(e.part.closed);
       else if (e.part.kind !== 'xylophone' && e.part.kind !== 'drum') sfx.click();
       break;
-    case 'activated':
+    case 'activated': {
+      // A ring of light and a few rising motes: "it's alive".
+      const at = e.part.root.position;
+      const c = e.part.kind === 'bulb' || e.part.kind === 'led' ? LIGHT[e.part.color].hex : C.teal;
+      fx.ring(at, c, e.part.radius * 1.6);
+      fx.sparkle(at, c, 10, e.part.radius * 0.7);
       if (e.part.kind === 'bulb' || e.part.kind === 'led') sfx.ting();
       if (['fan', 'floorFan', 'pcFan', 'windmill', 'carousel', 'marbleRun', 'waterMill', 'conveyor'].includes(e.part.kind)) sfx.whir();
       // The first time a music box plays, tell how to change the song.
@@ -285,6 +297,7 @@ world.on((e) => {
         setTimeout(() => voice.say('tapSong', 0), 4000);
       }
       break;
+    }
     case 'short':
       if (e.on) {
         sfx.alarm();
@@ -435,6 +448,23 @@ function watchPinwheels() {
   }
 }
 
+/** A shorted battery spits sparks at its posts and smokes. */
+let shortSparks = 0;
+let shortSmoke = 0;
+function watchShorts(dt: number) {
+  const ids = world.result?.shorted;
+  if (!ids?.size) return;
+  shortSparks -= dt;
+  shortSmoke -= dt;
+  for (const p of world.parts) {
+    if (![...ids].some((id) => id === p.id || id.startsWith(p.id + '#'))) continue;
+    if (shortSparks <= 0) for (const t of p.terminals.slice(0, 2)) fx.burst(t.attachPoint(new THREE.Vector3()), 5, '#ffb84a', 1.8);
+    if (shortSmoke <= 0) fx.puff(p.root.position.clone().setY(0.9));
+  }
+  if (shortSparks <= 0) shortSparks = 0.14;
+  if (shortSmoke <= 0) shortSmoke = 0.3;
+}
+
 /** Something is wrong on the table: cheers wait until it is fixed. */
 function troubled() {
   return (world.result?.shorted.size ?? 0) > 0 || isProblem(currentHint);
@@ -570,6 +600,11 @@ function frame(now: number) {
     sfx.setBuzzer(buzz);
   }
 
+  watchShorts(dt);
+  fx.night = progress.night;
+  fx.shine(world.parts.flatMap((p) => p.glowLight() ?? []));
+  fx.resize(stage.renderer.domElement.height, stage.camera.fov);
+  fx.update(dt);
   hud.updateFx(dt);
   stage.render();
   requestAnimationFrame(frame);

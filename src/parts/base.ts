@@ -389,6 +389,11 @@ export abstract class Part {
     return this.foot;
   }
 
+  /** A lit lamp's light for the room (see Fx.shine), or null. */
+  glowLight(): { at: THREE.Vector3; color: THREE.Color; power: number } | null {
+    return null;
+  }
+
   /** Called when the part leaves the table for good. */
   dispose() {
     this.root.removeFromParent();

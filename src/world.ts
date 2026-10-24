@@ -209,7 +209,13 @@ export class World {
         this.emit({ type: 'deactivated', part: p });
       }
     }
-    for (const w of this.wires) w.current = r.elements.get(w.id)?.current ?? 0;
+    let vmax = 0;
+    for (const v of r.nodeVoltage.values()) vmax = Math.max(vmax, v);
+    for (const w of this.wires) {
+      w.current = r.elements.get(w.id)?.current ?? 0;
+      const up = Math.max(r.nodeVoltage.get(w.a.id) ?? 0, w.b ? (r.nodeVoltage.get(w.b.id) ?? 0) : 0);
+      w.potential = vmax > 0 ? Math.min(1, Math.max(0, (vmax - up) / vmax)) : 0;
+    }
     const shorted = r.shorted.size > 0;
     if (shorted !== this.wasShorted) {
       this.wasShorted = shorted;

@@ -270,6 +270,9 @@ function spring(): THREE.Mesh {
 
 // ────────────────────────────── Bulb ───────────────────────────────
 
+const FIL_COLD = new THREE.Color('#ff3a10');
+const FIL_HOT = new THREE.Color('#ffe2b0');
+
 export class Bulb extends Part {
   readonly kind: PartKind = 'bulb';
   readonly elementKind: ElementKind = 'bulb';
@@ -372,6 +375,13 @@ export class Bulb extends Part {
     this.glow.material.map = glowFor(l.glow);
     (this.pool.material as THREE.MeshBasicMaterial).map = glowFor(l.pool);
     this.rays.material.color.set(c === 'warm' ? '#ffffff' : l.hex);
+    this.lightColor.set(c === 'warm' ? '#ffc98a' : l.hex);
+  }
+
+  private lightColor = new THREE.Color('#ffc98a');
+  glowLight() {
+    if (this.shown < 0.05) return null;
+    return { at: this.glow.getWorldPosition(new THREE.Vector3()), color: this.lightColor, power: this.shown };
   }
 
   protected animate(dt: number) {
@@ -382,12 +392,15 @@ export class Bulb extends Part {
     this.shown = damp(this.shown, target, target > this.shown ? 9 : 5, dt);
     const b = this.shown;
     const flicker = b > 0.05 ? 1 + Math.sin(this.time * 31) * 0.015 : 1;
-    this.filamentMat.emissiveIntensity = b * 6 * flicker;
-    this.glassMat.emissiveIntensity = b * 0.9;
+    // A real filament: dull red when barely fed, then orange, then near white.
+    if (this.color === 'warm') this.filamentMat.emissive.copy(FIL_COLD).lerp(FIL_HOT, Math.min(1, b));
+    this.filamentMat.emissiveIntensity = (0.5 + b * 9) * b * flicker;
+    this.glassMat.emissiveIntensity = b * 1.1;
     this.glassMat.opacity = 0.34 + b * 0.35;
-    this.glow.material.opacity = Math.min(1, b * 0.95);
-    this.glow.scale.setScalar(1.8 + b * 1.1);
-    this.rays.material.opacity = Math.min(0.45, Math.max(0, b - 0.25) * 0.6);
+    // The bloom makes the halo now; the painted glow only softens it.
+    this.glow.material.opacity = Math.min(0.6, b * 0.55);
+    this.glow.scale.setScalar(1.6 + b * 0.9);
+    this.rays.material.opacity = Math.min(0.12, Math.max(0, b - 0.4) * 0.2);
     this.rays.material.rotation += dt * 0.25;
     this.rays.scale.setScalar(2.3 + b * 0.7 + Math.sin(this.time * 2) * 0.08);
     (this.pool.material as THREE.MeshBasicMaterial).opacity = Math.min(0.8, b * 0.6);
@@ -685,17 +698,24 @@ export class Led extends Part {
     for (const u of this.hue) u.value = l.hue;
     this.domeMat.color.set(l.hex);
     this.domeMat.emissive.set(l.hex);
+    this.lightColor.set(l.hex);
     this.glow.material.map = glowFor(l.glow);
     (this.pool.material as THREE.MeshBasicMaterial).map = glowFor(l.pool);
+  }
+
+  private lightColor = new THREE.Color('#ff3b2a');
+  glowLight() {
+    if (this.shown < 0.05) return null;
+    return { at: this.glow.getWorldPosition(new THREE.Vector3()), color: this.lightColor, power: this.shown * 0.6 };
   }
 
   protected animate(dt: number) {
     const target = Math.min(1.4, this.state.level);
     this.shown = damp(this.shown, target, 14, dt);
     const b = this.shown;
-    this.domeMat.emissiveIntensity = b * 2.6;
-    for (const m of this.ledMats) m.emissiveIntensity = b * 1.8;
-    this.glow.material.opacity = Math.min(0.95, b * 0.9);
+    this.domeMat.emissiveIntensity = b * 4.5;
+    for (const m of this.ledMats) m.emissiveIntensity = b * 3.2;
+    this.glow.material.opacity = Math.min(0.7, b * 0.65);
     this.glow.scale.setScalar(1.6 + b * 1.2);
     (this.pool.material as THREE.MeshBasicMaterial).opacity = Math.min(0.7, b * 0.55);
   }

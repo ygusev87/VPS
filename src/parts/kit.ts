@@ -39,8 +39,9 @@ export function contactShadow(w: number, d: number): THREE.Mesh {
     c.width = c.height = 128;
     const ctx = c.getContext('2d')!;
     const g = ctx.createRadialGradient(64, 64, 10, 64, 64, 64);
-    g.addColorStop(0, 'rgba(60,45,20,0.55)');
-    g.addColorStop(0.55, 'rgba(60,45,20,0.25)');
+    // Strong alphas: the scene blends in linear light, where a soft shadow needs more.
+    g.addColorStop(0, 'rgba(60,45,20,0.83)');
+    g.addColorStop(0.55, 'rgba(60,45,20,0.47)');
     g.addColorStop(1, 'rgba(60,45,20,0)');
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, 128, 128);
@@ -64,7 +65,7 @@ export function basePlate(w: number, d: number, label?: string): THREE.Group {
   const g = new THREE.Group();
   const rim = mesh(new RoundedBoxGeometry(w, PLATE_TOP - 0.02, d, 3, 0.06), mat('#d9cbb6', 0.8));
   rim.position.y = (PLATE_TOP - 0.02) / 2;
-  const top = mesh(new RoundedBoxGeometry(w - 0.06, 0.04, d - 0.06, 2, 0.02), mat('#fbf6ec', 0.7));
+  const top = mesh(new RoundedBoxGeometry(w - 0.06, 0.04, d - 0.06, 2, 0.02), mat('#f3ebdc', 0.62));
   top.position.y = PLATE_TOP - 0.02;
   g.add(contactShadow(w, d), rim, top);
   const screwGeo = new THREE.CylinderGeometry(0.055, 0.055, 0.02, 14);
@@ -106,12 +107,16 @@ export function textDecal(text: string, width: number, height: number, color: st
   ctx.font = `700 ${ch * 0.62}px "Fira Sans Condensed", system-ui, sans-serif`;
   const spaced = text.toUpperCase().split('').join(String.fromCharCode(8202));
   ctx.fillText(spaced, cw / 2, ch / 2 + 2, cw - 6);
+  // A thin outline in the same ink thickens the letters, so small labels stay crisp.
+  ctx.strokeStyle = color;
+  ctx.lineWidth = ch * 0.035;
+  ctx.strokeText(spaced, cw / 2, ch / 2 + 2, cw - 6);
   const tex = new THREE.CanvasTexture(canvas);
   tex.colorSpace = THREE.SRGBColorSpace;
   tex.anisotropy = 8;
   const m = new THREE.Mesh(
     new THREE.PlaneGeometry(width, height),
-    new THREE.MeshStandardMaterial({ map: tex, transparent: true, roughness: 0.8, depthWrite: false, opacity: 0.8 }),
+    new THREE.MeshStandardMaterial({ map: tex, transparent: true, roughness: 0.8, depthWrite: false, opacity: 0.97 }),
   );
   m.rotation.x = -Math.PI / 2;
   return m;
