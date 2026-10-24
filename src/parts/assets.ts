@@ -14,7 +14,7 @@ export async function loadModels(names: string[]): Promise<void> {
   await Promise.all(
     names.map(async (name) => {
       try {
-        const gltf = import.meta.env.VITE_MODELS_AS_JS ? await loadFromModule(loader, name) : await loader.loadAsync(`${import.meta.env.BASE_URL}models/${name}.glb`);
+        const gltf = await parseWithImages(loader, import.meta.env.VITE_MODELS_AS_JS ? await moduleBytes(name) : await fileBytes(name));
         gltf.scene.traverse((o) => {
           const m = o as THREE.Mesh;
           if (!m.isMesh) return;
@@ -32,22 +32,36 @@ export async function loadModels(names: string[]): Promise<void> {
   );
 }
 
+async function fileBytes(name: string): Promise<ArrayBuffer> {
+  const r = await fetch(`${import.meta.env.BASE_URL}models/${name}.glb`);
+  if (!r.ok) throw new Error(`model ${name}: ${r.status}`);
+  return r.arrayBuffer();
+}
+
 /**
  * For hosts that serve only scripts, styles, images and the like (the claude.ai
  * preview): each model ships as `models/<name>.js` exporting the .glb bytes in
- * base64, without meshopt, and textures decode through <img> rather than fetch.
+ * base64, without meshopt.
  */
-async function loadFromModule(loader: GLTFLoader, name: string): Promise<{ scene: THREE.Group }> {
+async function moduleBytes(name: string): Promise<ArrayBuffer> {
   const url = new URL(`models/${name}.js`, document.baseURI).href;
   const mod = (await import(/* @vite-ignore */ url)) as { default: string };
-  const bin = Uint8Array.from(atob(mod.default), (c) => c.charCodeAt(0));
+  return Uint8Array.from(atob(mod.default), (c) => c.charCodeAt(0)).buffer;
+}
+
+/**
+ * Parse a .glb with its textures decoded through <img>. GLTFLoader prefers
+ * createImageBitmap when it exists, but on iPad/iPhone (Safari, and above all
+ * a game started from the Home Screen) WebP textures decoded that way come out
+ * black. The loader decides synchronously inside parse(), so hiding
+ * createImageBitmap for that call is enough.
+ */
+function parseWithImages(loader: GLTFLoader, bin: ArrayBuffer): Promise<{ scene: THREE.Group }> {
   return new Promise((resolve, reject) => {
-    // GLTFLoader picks ImageBitmapLoader (fetch) when createImageBitmap exists and
-    // TextureLoader (<img>) otherwise; it decides synchronously inside parse().
     const original = window.createImageBitmap;
     (window as { createImageBitmap?: unknown }).createImageBitmap = undefined;
     try {
-      loader.parse(bin.buffer, '', resolve, reject);
+      loader.parse(bin, '', resolve, reject);
     } finally {
       window.createImageBitmap = original;
     }
