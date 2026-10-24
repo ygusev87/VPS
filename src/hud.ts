@@ -401,7 +401,8 @@ export class Hud {
     return window.matchMedia('(orientation: landscape)').matches;
   }
 
-  private layout() {
+  /** Re-measure panels and tell the stage the free area (also after an iPad turn). */
+  layout() {
     const side = this.sidebar.getBoundingClientRect();
     const brand = this.root.querySelector('.brand')!.getBoundingClientRect();
     const bar = this.root.querySelector('.viewbar')!.getBoundingClientRect();

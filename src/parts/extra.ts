@@ -208,17 +208,41 @@ export class MusicBox extends Part {
   private notes: THREE.Sprite[] = [];
   private icon: THREE.Sprite;
   private iconPop = 0;
+  private dancer = new THREE.Group();
+  private lidY = PLATE_TOP + 0.75;
+  private rise = 0;
 
   constructor() {
     super();
     const plate = basePlate(2.0, 1.7, 'шкатулка');
     const sculpt = model('musicbox', { width: 1.25 });
-    if (sculpt) this.box.add(sculpt);
-    else {
+    let lidY = 0.75;
+    if (sculpt) {
+      this.box.add(sculpt);
+      lidY = sizeOf(sculpt).y;
+    } else {
       const b = roundedBox(1.1, 0.75, 0.85, 0.12, '#d79a4f', 0.5);
       this.box.add(b);
     }
     this.box.position.set(0, PLATE_TOP, -0.2);
+    // A little dancer that rises out of the lid and twirls while the tune plays.
+    const skirt = mesh(new THREE.ConeGeometry(0.16, 0.16, 20, 1, true), new THREE.MeshStandardMaterial({ color: '#ff9fc4', roughness: 0.5, side: THREE.DoubleSide }));
+    skirt.position.y = 0.16;
+    const torso = mesh(new THREE.CylinderGeometry(0.035, 0.05, 0.13, 12), mat('#ff9fc4', 0.5));
+    torso.position.y = 0.29;
+    const head = mesh(new THREE.SphereGeometry(0.05, 16, 12), mat('#f7d7b5', 0.6));
+    head.position.y = 0.4;
+    const bun = mesh(new THREE.SphereGeometry(0.028, 10, 8), mat('#5a3a22', 0.6));
+    bun.position.y = 0.455;
+    const arms = mesh(new THREE.TorusGeometry(0.07, 0.012, 6, 20, Math.PI), mat('#f7d7b5', 0.6));
+    arms.position.y = 0.34;
+    const leg = mesh(new THREE.CylinderGeometry(0.012, 0.012, 0.12, 6), mat('#f7d7b5', 0.6));
+    leg.position.y = 0.06;
+    const stand = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.02, 20), mat(C.brass, 0.3, 0.8));
+    this.dancer.add(stand, leg, skirt, torso, arms, head, bun);
+    this.dancer.position.set(0, PLATE_TOP + lidY - 0.02, -0.2);
+    this.dancer.scale.setScalar(0.001);
+    this.lidY = PLATE_TOP + lidY - 0.02;
     const plus = signDecal('plus', C.red, 0.3);
     plus.position.set(0.68, PLATE_TOP + 0.005, -0.3);
 
@@ -238,7 +262,7 @@ export class MusicBox extends Part {
     this.icon.material.opacity = 0;
     this.icon.position.set(0, PLATE_TOP + 1.45, -0.2);
 
-    this.body.add(plate, this.box, plus, this.icon);
+    this.body.add(plate, this.box, plus, this.icon, this.dancer);
     this.addTerminal('a', 'plus', 0.68, 0.55);
     this.addTerminal('b', 'minus', -0.68, 0.55);
     this.pickable(plate, this.box);
@@ -270,13 +294,19 @@ export class MusicBox extends Part {
     const show = this.iconPop > 0 ? 1 : on ? 0.9 : 0;
     this.icon.material.opacity = damp(this.icon.material.opacity, show, 8, dt);
     this.icon.scale.setScalar(0.55 + this.iconPop * 0.35 + (on ? Math.sin(this.time * 4) * 0.03 : 0));
-    this.icon.position.y = PLATE_TOP + 1.35 + this.iconPop * 0.3;
+    this.icon.position.y = PLATE_TOP + 2.15 + this.iconPop * 0.3;
     // The lid hops to the beat.
     this.box.scale.y = on ? 1 + Math.max(0, Math.sin(this.time * 9)) * 0.04 : damp(this.box.scale.y, 1, 10, dt);
+    // The dancer pops up, twirls, and sinks back when the music stops.
+    this.rise = damp(this.rise, on ? 1 : 0, on ? 4 : 6, dt);
+    this.dancer.scale.setScalar(Math.max(0.001, this.rise * 1.7));
+    this.dancer.position.y = this.lidY * this.box.scale.y + Math.max(0, Math.sin(this.time * 9)) * 0.02 * this.rise;
+    this.dancer.rotation.y += dt * 4 * this.rise;
+    this.dancer.rotation.z = Math.sin(this.time * 4.5) * 0.08 * this.rise;
     for (const n of this.notes) {
       n.userData.t = (n.userData.t + dt * 0.45) % 1;
       const t = n.userData.t as number;
-      n.position.set((n.userData.x as number) + Math.sin(t * 6 + n.id) * 0.2, PLATE_TOP + 1.0 + t * 1.6, -0.2);
+      n.position.set((n.userData.x as number) + Math.sin(t * 6 + n.id) * 0.2, PLATE_TOP + 1.6 + t * 1.6, -0.2);
       n.material.opacity = on ? Math.sin(t * Math.PI) : damp(n.material.opacity, 0, 6, dt);
       n.material.rotation = Math.sin(t * 5 + n.id) * 0.4;
     }
@@ -643,6 +673,9 @@ export class Drum extends Part {
   private ripple: THREE.Mesh;
   private rippleMat = new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0, depthWrite: false });
   private power: { lamp: THREE.Mesh; m: THREE.MeshStandardMaterial };
+  /** Two sticks over the head; they take turns striking. */
+  private sticks: { g: THREE.Group; hit: number }[] = [];
+  private nextStick = 0;
 
   constructor() {
     super();
@@ -664,6 +697,20 @@ export class Drum extends Part {
     this.ripple.rotation.x = -Math.PI / 2;
     this.ripple.position.set(0, this.top + 0.02, -0.2);
     this.power = powerLamp(-0.95, -0.85);
+    for (const side of [-1, 1]) {
+      const g = new THREE.Group();
+      const stick = mesh(new THREE.CylinderGeometry(0.025, 0.03, 0.9, 10), mat('#d9b07a', 0.5));
+      stick.rotation.z = Math.PI / 2;
+      stick.position.x = -side * 0.45;
+      const tipBall = mesh(new THREE.SphereGeometry(0.045, 12, 10), mat('#d9b07a', 0.5));
+      tipBall.position.x = -side * 0.9;
+      g.add(stick, tipBall);
+      // Held from the side, tips resting just over the head.
+      g.position.set(side * 1.0, this.top + 0.32, -0.2 + side * 0.12);
+      g.rotation.z = -side * 0.15;
+      this.sticks.push({ g, hit: 0 });
+      this.body.add(g);
+    }
     this.body.add(plate, this.drum, this.ripple, this.power.lamp);
     this.addTerminal('a', 'none', 0.78, 0.68);
     this.addTerminal('b', 'none', -0.78, 0.68);
@@ -690,6 +737,7 @@ export class Drum extends Part {
   pressStart(_hit: THREE.Object3D | null, point: THREE.Vector3 | null): boolean {
     if (!this.onHead(point) || !this.powered) return false;
     this.hit = 1;
+    this.strike();
     this.sounds.push({ kind: 'drum' });
     return true;
   }
@@ -703,6 +751,11 @@ export class Drum extends Part {
   /** Bounce without a sound of its own (the band beat is played by the music). */
   thump() {
     this.hit = Math.max(this.hit, 0.7);
+    this.strike();
+  }
+
+  private strike() {
+    this.sticks[this.nextStick++ % 2].hit = 1;
   }
 
   protected animate(dt: number) {
@@ -712,5 +765,13 @@ export class Drum extends Part {
     this.ripple.scale.setScalar(1 + t * 2.4);
     this.rippleMat.opacity = this.hit * 0.8;
     this.power.m.emissiveIntensity = damp(this.power.m.emissiveIntensity, this.powered ? 2.2 : 0, 8, dt);
+    // A stick swings down fast and lifts back slower; idle ones hover a little.
+    this.sticks.forEach((s, i) => {
+      s.hit = Math.max(0, s.hit - dt * 5);
+      const side = i === 0 ? -1 : 1;
+      const down = s.hit > 0.6 ? (1 - s.hit) / 0.4 : s.hit / 0.6;
+      // Rest: tips raised; a hit brings the tip down onto the head.
+      s.g.rotation.z = side * (-0.15 + down * 0.47 + (this.powered ? Math.sin(this.time * 3 + i) * 0.03 : 0));
+    });
   }
 }

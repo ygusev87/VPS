@@ -176,6 +176,75 @@ export function glowTexture(inner: string, outer = 'rgba(255,255,255,0)'): THREE
   return tex;
 }
 
+const streakCache = new Map<string, THREE.Texture>();
+/**
+ * Motion blur of a spinning rotor, seen face-on: each blade smears into a
+ * fading sweep behind it, like a fast propeller photographed.
+ */
+export function streakTexture(blades: number, color: string): THREE.Texture {
+  const key = `${blades}|${color}`;
+  const hit = streakCache.get(key);
+  if (hit) return hit;
+  const canvas = document.createElement('canvas');
+  canvas.width = canvas.height = 256;
+  const ctx = canvas.getContext('2d')!;
+  ctx.translate(128, 128);
+  const c = new THREE.Color(color);
+  const rgb = `${Math.round(c.r * 255)},${Math.round(c.g * 255)},${Math.round(c.b * 255)}`;
+  // A faint full disc, then the sweeps.
+  ctx.fillStyle = `rgba(${rgb},0.22)`;
+  ctx.beginPath();
+  ctx.arc(0, 0, 124, 0, Math.PI * 2);
+  ctx.fill();
+  const sweep = (Math.PI * 2) / blades;
+  const steps = 24;
+  for (let b = 0; b < blades; b++) {
+    for (let i = 0; i < steps; i++) {
+      const a0 = b * sweep + (i / steps) * sweep * 0.85;
+      const a1 = a0 + (sweep * 0.85) / steps + 0.01;
+      ctx.fillStyle = `rgba(${rgb},${(0.85 * (1 - i / steps) ** 1.3).toFixed(3)})`;
+      ctx.beginPath();
+      ctx.moveTo(0, 0);
+      ctx.arc(0, 0, 124, a0, a1);
+      ctx.closePath();
+      ctx.fill();
+    }
+  }
+  // Clear hub.
+  ctx.globalCompositeOperation = 'destination-out';
+  ctx.beginPath();
+  ctx.arc(0, 0, 18, 0, Math.PI * 2);
+  ctx.fill();
+  // Soft outer edge.
+  const edge = ctx.createRadialGradient(0, 0, 100, 0, 0, 128);
+  edge.addColorStop(0, 'rgba(0,0,0,0)');
+  edge.addColorStop(1, 'rgba(0,0,0,1)');
+  ctx.fillStyle = edge;
+  ctx.fillRect(-128, -128, 256, 256);
+  const tex = new THREE.CanvasTexture(canvas);
+  tex.colorSpace = THREE.SRGBColorSpace;
+  streakCache.set(key, tex);
+  return tex;
+}
+
+/** A see-through disc carrying the rotor's blur (faces +z; spin it about z). */
+export function rotorBlur(radius: number, blades: number, color: string): THREE.Mesh {
+  const m = new THREE.Mesh(
+    new THREE.CircleGeometry(radius, 48),
+    new THREE.MeshBasicMaterial({ map: streakTexture(blades, color), transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide }),
+  );
+  m.renderOrder = 4;
+  return m;
+}
+
+/**
+ * How solid the blades look and how strong the blur is at a given spin
+ * (radians per second): slow — crisp blades; fast — a sweeping blur.
+ */
+export function blurAmount(omega: number): number {
+  return THREE.MathUtils.smoothstep(Math.abs(omega), 6, 20);
+}
+
 /** Light rays texture for a lit bulb. */
 export function raysTexture(): THREE.Texture {
   const canvas = document.createElement('canvas');

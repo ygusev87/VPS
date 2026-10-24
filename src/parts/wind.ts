@@ -5,7 +5,7 @@ import type { CircuitElement, ElementKind } from '../circuit/solver';
 import { C } from '../theme';
 import { model, tip } from './assets';
 import { Part, type PartKind } from './base';
-import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox } from './kit';
+import { basePlate, blurAmount, damp, mat, mesh, PLATE_TOP, rotorBlur, roundedBox } from './kit';
 
 /** Something that makes a breeze: where from, which way (world, flat), how hard (0..~1.5). */
 export interface Breeze {
@@ -133,6 +133,7 @@ export class FloorFan extends Part implements Blower {
   private speed = 0;
   private phase = 0;
   private hub = new THREE.Vector3();
+  private bladeMat: THREE.MeshStandardMaterial;
 
   constructor() {
     super();
@@ -163,6 +164,7 @@ export class FloorFan extends Part implements Blower {
 
     // Blades and the wire guard in front of the motor.
     const bladeMat = new THREE.MeshStandardMaterial({ color: '#bfeee0', roughness: 0.35, transparent: true, opacity: 0.92, side: THREE.DoubleSide });
+    this.bladeMat = bladeMat;
     this.rotor.add(bladeRing(5, 0.62, 0.42, bladeMat, 0.5));
     const cap = mesh(new THREE.SphereGeometry(0.11, 18, 10, 0, Math.PI * 2, 0, Math.PI / 2), mat(C.teal, 0.4));
     cap.rotation.x = Math.PI / 2;
@@ -194,10 +196,7 @@ export class FloorFan extends Part implements Blower {
     badge.position.z = 0.14;
     guard.add(badge);
     guard.position.copy(hub);
-    this.blur = new THREE.Mesh(
-      new THREE.CircleGeometry(0.66, 40),
-      new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0, depthWrite: false }),
-    );
+    this.blur = rotorBlur(0.66, 5, '#9fe3cf');
     this.blur.position.copy(hub).setZ(hub.z + 0.04);
     this.swing.add(this.rotor, guard, this.blur);
     this.gusts = new Gusts(this.swing, hub, 0.55);
@@ -229,7 +228,10 @@ export class FloorFan extends Part implements Blower {
     // The head sweeps side to side while running, and stays where it stopped.
     this.phase += dt * 0.55 * Math.min(1, mag * 1.5);
     this.swing.rotation.y = Math.sin(this.phase) * OSC;
-    (this.blur.material as THREE.MeshBasicMaterial).opacity = Math.min(0.3, mag * 0.3);
+    const k = blurAmount(this.speed);
+    (this.blur.material as THREE.MeshBasicMaterial).opacity = k * 0.9;
+    this.blur.rotation.z = this.rotor.rotation.z;
+    this.bladeMat.opacity = 0.92 - k * 0.3;
     this.gusts.update(dt, mag, this.time);
   }
 }
@@ -314,10 +316,7 @@ export class PcFan extends Part implements Blower {
       strut.rotation.z = a - Math.PI / 2;
       frame.add(strut);
     }
-    this.blur = new THREE.Mesh(
-      new THREE.CircleGeometry(h - 0.1, 40),
-      new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0, depthWrite: false }),
-    );
+    this.blur = rotorBlur(h - 0.1, 7, '#e8eeff');
     this.blur.position.set(0, PC_Y, 0.11);
     this.gusts = new Gusts(this.body, new THREE.Vector3(0, PC_Y, 0.1), 0.45);
 
@@ -329,6 +328,13 @@ export class PcFan extends Part implements Blower {
 
   protected electrical(): Partial<CircuitElement> {
     return { r: 10 };
+  }
+
+  private glow = 0;
+  /** The rainbow ring tints the table around it. */
+  glowLight() {
+    if (this.glow < 0.1) return null;
+    return { at: this.root.localToWorld(new THREE.Vector3(0, PC_Y, 0.4)), color: new THREE.Color().setHSL(this.hue, 0.95, 0.55), power: this.glow * 0.45 };
   }
 
   breeze(): Breeze | null {
@@ -347,13 +353,20 @@ export class PcFan extends Part implements Blower {
     // The colours run round the rainbow faster the faster it spins.
     this.hue = (this.hue + dt * (0.08 + mag * 0.2)) % 1;
     const glow = Math.min(1, mag * 2);
+    this.glow = glow;
     for (const m of this.glowMats) {
       m.emissive.setHSL(this.hue, 0.95, 0.55);
       m.emissiveIntensity = glow * 2.2;
     }
     this.bladeMat.emissive.setHSL((this.hue + 0.5) % 1, 0.9, 0.55);
     this.bladeMat.emissiveIntensity = glow * 0.45;
-    (this.blur.material as THREE.MeshBasicMaterial).opacity = Math.min(0.25, mag * 0.25);
+    const k = blurAmount(this.speed);
+    const blurMat = this.blur.material as THREE.MeshBasicMaterial;
+    blurMat.opacity = k * 0.85;
+    // The blur takes on the light ring's colour.
+    blurMat.color.setHSL((this.hue + 0.5) % 1, 0.7, 0.75);
+    this.blur.rotation.z = this.rotor.rotation.z;
+    this.bladeMat.opacity = 0.85 - k * 0.6;
     this.gusts.update(dt, mag, this.time);
   }
 }

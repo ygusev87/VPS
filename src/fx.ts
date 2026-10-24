@@ -125,7 +125,7 @@ export class Fx {
   private sparks = new Points(true);
   private smoke = new Points(false);
   private rings: Ring[] = [];
-  private ringGeo = new THREE.RingGeometry(0.82, 1, 64);
+  private ringGeo = new THREE.RingGeometry(0.9, 1, 64);
   private lamps: THREE.PointLight[] = [];
   /** Night: lamps light the room much more. */
   night = false;
@@ -184,6 +184,42 @@ export class Fx {
     }
   }
 
+  /** Dust blown out over the table from under a rotor. */
+  dust(at: THREE.Vector3, radius: number) {
+    for (let i = 0; i < 3; i++) {
+      const a = Math.random() * Math.PI * 2;
+      const dir = new THREE.Vector3(Math.cos(a), 0, Math.sin(a));
+      const g = 0.75 + Math.random() * 0.15;
+      this.smoke.add({
+        p: at.clone().addScaledVector(dir, radius * (0.3 + Math.random() * 0.4)).setY(0.08),
+        v: dir.multiplyScalar(1.4 + Math.random()).setY(0.15),
+        max: 0.7 + Math.random() * 0.4,
+        size: 0.18,
+        grow: 1.6,
+        color: new THREE.Color(g, g * 0.9, g * 0.75),
+        gravity: 0,
+        drag: 1.5,
+        bounce: false,
+      });
+    }
+  }
+
+  /** A little grey puff from an exhaust pipe. */
+  exhaust(at: THREE.Vector3, dir: THREE.Vector3) {
+    const g = 0.45 + Math.random() * 0.15;
+    this.smoke.add({
+      p: at.clone(),
+      v: dir.clone().multiplyScalar(0.6).add(new THREE.Vector3(0, 0.35, 0)),
+      max: 0.6 + Math.random() * 0.3,
+      size: 0.09,
+      grow: 2.5,
+      color: new THREE.Color(g, g, g),
+      gravity: -0.1,
+      drag: 1,
+      bounce: false,
+    });
+  }
+
   /** Little floating motes of light rising from a part that just came alive. */
   sparkle(at: THREE.Vector3, color: string, n = 10, radius = 0.8) {
     const c = new THREE.Color(color).multiplyScalar(3.5);
@@ -208,7 +244,7 @@ export class Fx {
   ring(at: THREE.Vector3, color: string, size = 1.6) {
     const m = new THREE.Mesh(
       this.ringGeo,
-      new THREE.MeshBasicMaterial({ color: new THREE.Color(color).multiplyScalar(2.5), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }),
+      new THREE.MeshBasicMaterial({ color: new THREE.Color(color).multiplyScalar(this.night ? 0.7 : 2), transparent: true, depthWrite: false, blending: THREE.AdditiveBlending }),
     );
     m.rotation.x = -Math.PI / 2;
     m.position.copy(at).setY(0.03);

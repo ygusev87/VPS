@@ -7,7 +7,7 @@ import type { ElementKind } from '../circuit/solver';
 import { C } from '../theme';
 import { centroid, model, sizeOf, tip } from './assets';
 import { Part, type LightColor, type PartKind } from './base';
-import { basePlate, damp, glowTexture, lightPool, mat, mesh, PLATE_TOP, raysTexture, roundedBox, signDecal, textDecal } from './kit';
+import { basePlate, blurAmount, damp, glowTexture, lightPool, mat, mesh, PLATE_TOP, raysTexture, rotorBlur, roundedBox, signDecal, textDecal } from './kit';
 
 let warmGlow: THREE.Texture | null = null;
 let redGlow: THREE.Texture | null = null;
@@ -415,6 +415,7 @@ export class Fan extends Part {
   readonly radius = 1.45;
   private rotor = new THREE.Group();
   private blur: THREE.Mesh;
+  private bladeMats: THREE.MeshStandardMaterial[] = [];
   private speed = 0;
   private gusts: THREE.Mesh[] = [];
 
@@ -470,11 +471,16 @@ export class Fan extends Part {
     }
     this.rotor.position.copy(hubAt);
 
-    this.blur = new THREE.Mesh(
-      new THREE.CircleGeometry(1.08, 48),
-      new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0, depthWrite: false }),
-    );
+    // At speed the blades fade into a sweeping blur, like a real propeller.
+    this.blur = rotorBlur(1.08, 3, '#21b7b4');
     this.blur.position.copy(this.rotor.position).setZ(this.rotor.position.z + 0.08);
+    // Own copies: materials from the shared cache must not fade on other parts.
+    this.rotor.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (m.isMesh) m.material = (m.material as THREE.Material).clone();
+    });
+    this.bladeMats = materialsOf(this.rotor);
+    for (const m of this.bladeMats) m.transparent = true;
 
     const gustGeo = new THREE.TorusGeometry(0.5, 0.025, 4, 24, Math.PI * 0.6);
     for (let i = 0; i < 6; i++) {
@@ -505,7 +511,10 @@ export class Fan extends Part {
     this.speed = damp(this.speed, target, Math.abs(target) > Math.abs(this.speed) ? 1.6 : 0.9, dt);
     this.rotor.rotation.z -= this.speed * dt;
     const mag = Math.abs(this.speed) / 22;
-    (this.blur.material as THREE.MeshBasicMaterial).opacity = Math.min(0.35, mag * 0.35);
+    const k = blurAmount(this.speed);
+    (this.blur.material as THREE.MeshBasicMaterial).opacity = k * 0.95;
+    this.blur.rotation.z = this.rotor.rotation.z;
+    for (const m of this.bladeMats) m.opacity = 1 - k * 0.3;
     for (const g of this.gusts) {
       g.userData.t = (g.userData.t + dt * (0.6 + mag)) % 1;
       const t = g.userData.t as number;
@@ -533,7 +542,8 @@ export class Switch extends Part {
   private blade = new THREE.Group();
   private angle = -0.95;
   private angleV = 0;
-  private sparkMat = new THREE.MeshBasicMaterial({ color: '#fff3c4', transparent: true, opacity: 0, depthWrite: false });
+  private sparkMat = new THREE.MeshBasicMaterial({ color: new THREE.Color('#fff3c4').multiplyScalar(4), transparent: true, opacity: 0, depthWrite: false });
+  private spark!: THREE.Mesh;
 
   constructor() {
     super();
@@ -562,6 +572,7 @@ export class Switch extends Part {
 
     // Flash at the jaw when the blade drops in.
     const spark = new THREE.Mesh(new THREE.SphereGeometry(0.14, 12, 8), this.sparkMat);
+    this.spark = spark;
     spark.position.set(-0.66, PLATE_TOP + h * 0.72, -0.15);
 
     this.body.add(plate, base, this.blade, spark);
@@ -584,7 +595,10 @@ export class Switch extends Part {
     this.angle += this.angleV * dt;
     if (this.closed && this.angle > 0) {
       this.angle = 0;
-      if (this.angleV > 1) this.sparkMat.opacity = 1;
+      if (this.angleV > 1) {
+        this.sparkMat.opacity = 1;
+        this.effects.push({ kind: 'sparks', at: this.spark.getWorldPosition(new THREE.Vector3()), n: 10, color: '#ffe08a' });
+      }
       this.angleV *= -0.25;
     }
     this.blade.rotation.z = this.angle;
@@ -754,10 +768,11 @@ export class Buzzer extends Part {
 
     const waveGeo = new THREE.TorusGeometry(0.5, 0.03, 6, 48);
     for (let i = 0; i < 3; i++) {
-      const w = new THREE.Mesh(waveGeo, new THREE.MeshBasicMaterial({ color: C.amber, transparent: true, opacity: 0, depthWrite: false }));
+      // Brighter than white, so the rings glow.
+      const w = new THREE.Mesh(waveGeo, new THREE.MeshBasicMaterial({ color: new THREE.Color(C.amber).multiplyScalar(2.6), transparent: true, opacity: 0, depthWrite: false }));
       w.rotation.x = Math.PI / 2;
       w.position.set(0, PLATE_TOP + 0.6, -0.2);
-      w.userData.t = i / 3;
+      w.userData.t = 1 + i;
       this.waves.push(w);
       this.body.add(w);
     }
@@ -772,15 +787,26 @@ export class Buzzer extends Part {
     return this.state.level > 0.2;
   }
 
+  private beepT = 0;
+  private nextWave = 0;
+
   protected animate(dt: number) {
     const on = this.sounding;
-    this.can.scale.setScalar(on ? 1 + Math.sin(this.time * 90) * 0.02 : 1);
+    // In step with the sound: a 0.16 s beep every 0.3 s; each beep sends out a ring.
+    const prev = this.beepT;
+    this.beepT = on ? (this.beepT + dt) % 0.3 : 0;
+    const beeping = on && this.beepT < 0.16;
+    if (on && this.beepT < prev) {
+      const w = this.waves[this.nextWave++ % this.waves.length];
+      w.userData.t = 0;
+    }
+    this.can.scale.set(1 + (beeping ? Math.sin(this.time * 120) * 0.03 : 0), 1 - (beeping ? 0.04 : 0), 1 + (beeping ? Math.sin(this.time * 120) * 0.03 : 0));
     for (const w of this.waves) {
-      w.userData.t = (w.userData.t + dt * 1.2) % 1;
+      w.userData.t = Math.min(1, (w.userData.t as number) + dt * 1.4);
       const t = w.userData.t as number;
-      w.scale.setScalar(1 + t * 1.6);
-      w.position.y = PLATE_TOP + 0.6 + t * 0.4;
-      (w.material as THREE.MeshBasicMaterial).opacity = on ? (1 - t) * 0.85 : damp((w.material as THREE.MeshBasicMaterial).opacity, 0, 8, dt);
+      w.scale.setScalar(1 + t * 2);
+      w.position.y = PLATE_TOP + 0.6 + t * 0.35;
+      (w.material as THREE.MeshBasicMaterial).opacity = t < 1 ? (1 - t) ** 1.5 : 0;
     }
   }
 }

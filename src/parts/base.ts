@@ -176,6 +176,12 @@ export type PartSound =
   | { kind: 'stamp' }
   | { kind: 'paint' };
 
+/** A 3D effect a part asks for (drained by the game into fx.ts), at a world point. */
+export type PartEffect =
+  | { kind: 'sparks'; at: THREE.Vector3; n?: number; color?: string }
+  | { kind: 'dust'; at: THREE.Vector3; radius: number }
+  | { kind: 'exhaust'; at: THREE.Vector3; dir: THREE.Vector3 };
+
 /** Axis-aligned rectangle on the table (x/z), in world or part-local units. */
 export interface Footprint {
   x0: number;
@@ -207,6 +213,8 @@ export abstract class Part {
 
   /** Sounds asked for since the last frame; the game plays and clears them. */
   readonly sounds: PartSound[] = [];
+  /** Effects asked for since the last frame (sparks, dust, exhaust). */
+  readonly effects: PartEffect[] = [];
   /** Set when the part's own electrical values changed (e.g. a generator spun up); the world re-solves. */
   wantsSolve = false;
   /**

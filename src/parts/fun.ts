@@ -7,7 +7,7 @@ import type { CircuitElement, ElementKind } from '../circuit/solver';
 import { C } from '../theme';
 import { model, sizeOf, tip } from './assets';
 import { Part, type Footprint, type PartKind } from './base';
-import { basePlate, damp, lightPool, mat, mesh, PLATE_TOP, roundedBox } from './kit';
+import { basePlate, blurAmount, damp, lightPool, mat, mesh, PLATE_TOP, rotorBlur, roundedBox } from './kit';
 import { glowFor, sprite } from './models';
 
 /** Which way each vehicle model faces once loaded: turn so its nose points at +x. */
@@ -222,7 +222,19 @@ export class RaceTrack extends Part {
     this.body3.rotation.x = Math.sin(this.t * 2) * 0.05 * Math.min(1, v / 2) * Math.sign(this.speed);
     this.body3.position.y = Math.abs(Math.sin(this.time * 40)) * 0.01 * Math.min(1, v);
     for (const l of this.lamps) l.material.opacity = damp(l.material.opacity, v > 0.2 ? 0.9 : 0, 6, dt);
+    // Little puffs from the exhaust, more when it pulls away.
+    this.puffClock -= dt * (0.6 + Math.abs(this.speed - this.lastSpeed) * 20 + v * 0.4);
+    this.lastSpeed = this.speed;
+    if (v > 0.15 && this.puffClock <= 0) {
+      this.puffClock = 0.18;
+      const back = new THREE.Vector3(-0.36, 0.1, 0);
+      const at = this.car.localToWorld(back.clone());
+      const dir = this.car.localToWorld(back.clone().add(new THREE.Vector3(-1, 0, 0))).sub(at).normalize();
+      this.effects.push({ kind: 'exhaust', at, dir });
+    }
   }
+  private puffClock = 0;
+  private lastSpeed = 0;
 }
 
 // ──────────────────────────── Helicopter ───────────────────────────
@@ -261,6 +273,8 @@ export class Helicopter extends Part {
   private blur: THREE.Mesh;
   private spin = 0;
   private alt = 0;
+  private bladeMat: THREE.MeshStandardMaterial;
+  private dustClock = 0;
   /** Seconds the rotor has been turning without enough power to fly. */
   grounded = 0;
 
@@ -293,13 +307,15 @@ export class Helicopter extends Part {
     const hub = mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.08, 16), mat(C.metal, 0.3, 0.8));
     const blades = roundedBox(2.1, 0.025, 0.14, 0.012, C.navy2, 0.4);
     blades.position.y = 0.04;
+    this.bladeMat = (blades.material as THREE.MeshStandardMaterial).clone();
+    this.bladeMat.transparent = true;
+    blades.material = this.bladeMat;
     this.rotor.add(hub, blades);
     this.rotor.position.copy(top).add(new THREE.Vector3(0, 0.05, 0));
-    this.blur = new THREE.Mesh(
-      new THREE.CircleGeometry(1.05, 48),
-      new THREE.MeshBasicMaterial({ color: '#c9d3e6', transparent: true, opacity: 0, depthWrite: false, side: THREE.DoubleSide }),
-    );
+    this.blur = rotorBlur(1.05, 2, '#5d6c8c');
     this.blur.rotation.x = -Math.PI / 2;
+    // Mirrored so the sweep trails behind blades turning anticlockwise (seen from above).
+    this.blur.scale.x = -1;
     this.blur.position.copy(this.rotor.position).add(new THREE.Vector3(0, 0.05, 0));
     const tb = roundedBox(0.5, 0.02, 0.07, 0.01, C.navy2, 0.4);
     this.tail.add(tb);
@@ -332,7 +348,16 @@ export class Helicopter extends Part {
     this.spin = damp(this.spin, l * 30, 1.6, dt);
     this.rotor.rotation.y += this.spin * dt;
     this.tail.rotation.y += this.spin * 1.4 * dt;
-    (this.blur.material as THREE.MeshBasicMaterial).opacity = Math.min(0.35, Math.abs(this.spin) / 60);
+    const k = blurAmount(this.spin);
+    (this.blur.material as THREE.MeshBasicMaterial).opacity = k * 0.9;
+    this.blur.rotation.z = this.rotor.rotation.y;
+    this.bladeMat.opacity = 1 - k * 0.5;
+    // The downwash blows dust off the pad while the craft is low.
+    this.dustClock -= dt;
+    if (Math.abs(this.spin) > 14 && this.alt < 1.2 && this.dustClock <= 0) {
+      this.dustClock = 0.07;
+      this.effects.push({ kind: 'dust', at: this.root.localToWorld(new THREE.Vector3(0, 0, -0.2)), radius: 0.9 });
+    }
     // Lift needs about twice one battery: a 6 V pack or two in series.
     const lift = Math.max(0, Math.abs(l) - 1.35) * 2.6;
     this.alt = damp(this.alt, Math.min(1.6, lift), 1.1, dt);
@@ -435,6 +460,15 @@ export class FireTruck extends Part {
       (this.pools[i].material as THREE.MeshBasicMaterial).opacity = damp((this.pools[i].material as THREE.MeshBasicMaterial).opacity, lit ? 0.8 : 0, 30, dt);
     });
     for (const h of this.head) h.material.opacity = damp(h.material.opacity, on ? 0.9 : 0, 6, dt);
+    this.flash = on ? phase : -1;
+  }
+
+  /** The beacon that is lit lights the room red, then blue. */
+  private flash = -1;
+  glowLight() {
+    if (this.flash < 0) return null;
+    const b = this.beacons[this.flash];
+    return { at: b.s.getWorldPosition(new THREE.Vector3()), color: new THREE.Color(b.color), power: 0.9 };
   }
 }
 
@@ -519,6 +553,17 @@ export class TrafficLight extends Part {
     this.sounds.push({ kind: 'tick' });
   }
 
+  /** The lamp that is on lights the table in its colour. */
+  glowLight() {
+    let best = -1;
+    this.lenses.forEach((m, k) => {
+      if (m.emissiveIntensity > 1 && (best < 0 || m.emissiveIntensity > this.lenses[best].emissiveIntensity)) best = k;
+    });
+    if (best < 0) return null;
+    const at = this.root.localToWorld(new THREE.Vector3(0, PLATE_TOP + 1.65, 0.3));
+    return { at, color: new THREE.Color(LAMP_COLORS[best]), power: 0.6 };
+  }
+
   protected animate(dt: number) {
     const on = this.powered;
     if (on) {
@@ -594,5 +639,12 @@ export class DiscoBall extends Part {
       s.m.position.set(Math.cos(a) * s.r, 0.02, -0.2 + Math.sin(a) * s.r * 0.8);
       (s.m.material as THREE.MeshBasicMaterial).opacity = damp((s.m.material as THREE.MeshBasicMaterial).opacity, l > 0.15 ? 0.55 + 0.3 * Math.sin(this.time * 5 + s.r) : 0, 6, dt);
     }
+  }
+
+  /** The ball throws slowly changing coloured light around the room. */
+  glowLight() {
+    if (this.spin < 0.3) return null;
+    const color = new THREE.Color().setHSL((this.time * 0.15) % 1, 0.9, 0.6);
+    return { at: this.ball.getWorldPosition(new THREE.Vector3()).setY(1.2), color, power: Math.min(1, this.spin / 2) * 0.8 };
   }
 }

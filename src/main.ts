@@ -68,6 +68,13 @@ stage.warmUp(
 const traces = document.getElementById('traces') as unknown as SVGSVGElement;
 drawTraces(traces);
 window.addEventListener('resize', () => drawTraces(traces));
+// After the iPad turns, wait for the real new size, then lay out again and fit the parts to the new shape.
+let lastWide = innerWidth > innerHeight;
+window.addEventListener('resize', () => {
+  const wide = innerWidth > innerHeight;
+  if (wide !== lastWide) setTimeout(() => frameParts(), 350);
+  lastWide = wide;
+});
 
 let level: Level = LEVELS[0];
 let won = false;
@@ -158,6 +165,12 @@ const input = new Input(stage, world, {
     part.appear();
   },
 });
+
+stage.onResize = (flipped) => {
+  drawTraces(traces);
+  hud.layout();
+  if (flipped) frameParts();
+};
 
 function frameParts(instant = false) {
   const pts: THREE.Vector3[] = [];
@@ -288,6 +301,7 @@ world.on((e) => {
       const at = e.part.root.position;
       const c = e.part.kind === 'bulb' || e.part.kind === 'led' ? LIGHT[e.part.color].hex : C.teal;
       fx.ring(at, c, e.part.radius * 1.6);
+      e.part.bump(0.18);
       fx.sparkle(at, c, 10, e.part.radius * 0.7);
       if (e.part.kind === 'bulb' || e.part.kind === 'led') sfx.ting();
       if (['fan', 'floorFan', 'pcFan', 'windmill', 'carousel', 'marbleRun', 'waterMill', 'conveyor'].includes(e.part.kind)) sfx.whir();
@@ -555,6 +569,11 @@ function frame(now: number) {
   blowWind(world.parts);
   for (const p of world.parts) {
     for (const snd of p.sounds.splice(0)) playPartSound(snd, p);
+    for (const e of p.effects.splice(0)) {
+      if (e.kind === 'sparks') fx.burst(e.at, e.n ?? 12, e.color);
+      else if (e.kind === 'dust') fx.dust(e.at, e.radius);
+      else fx.exhaust(e.at, e.dir);
+    }
     if (p.kind === 'fan' || p.kind === 'floorFan') fan += Math.abs(p.state.level);
     if (p.kind === 'pcFan') fan += Math.abs(p.state.level) * 0.5;
     if (p.kind === 'marbleRun' || p.kind === 'conveyor') fan += Math.abs(p.state.level) * 0.3;

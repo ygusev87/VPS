@@ -73,6 +73,11 @@ export class Stage {
   private bloom: UnrealBloomPass | null = null;
   private finish: ShaderPass | null = null;
   quality: Quality = 2;
+  /**
+   * The canvas changed size on its own (iPad rotation: Safari fires "resize"
+   * before the layout has the new size). `flipped`: portrait ↔ landscape.
+   */
+  onResize?: (flipped: boolean) => void;
   /** Set by `?q=`: never change quality on our own. */
   private pinned = false;
   private slowFor = 0;
@@ -139,6 +144,16 @@ export class Stage {
     this.buildComposer();
     window.addEventListener('resize', () => this.resize());
     this.resize();
+  }
+
+  /** Catch size changes the resize event missed, before they stretch the picture. */
+  private checkSize() {
+    const w = this.canvas.clientWidth;
+    const h = this.canvas.clientHeight;
+    if (!w || !h || (w === this.w && h === this.h)) return;
+    const wasWide = this.w > this.h;
+    this.resize();
+    this.onResize?.(wasWide !== w > h);
   }
 
   /** The post-processing chain for the current quality. */
@@ -416,6 +431,7 @@ export class Stage {
   }
 
   render() {
+    this.checkSize();
     this.watchSpeed();
     if (this.composer) this.composer.render();
     else this.renderer.render(this.scene, this.camera);
