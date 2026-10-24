@@ -84,6 +84,11 @@ window.addEventListener('resize', () => {
 let level: Level = LEVELS[0];
 /** The farm map while it is open (null on the workbench). */
 let farm: FarmMap | null = null;
+/** On the farm the view comes in closer than on the workbench. */
+const FARM_PPU = 62;
+/** A close-up the farm asked for, shown once the finger is off the table. */
+let farmFocus: THREE.Vector3[] | null = null;
+let snapSaid = 0;
 let farmScore = '';
 const FARM_LEVEL: Level = {
   id: 'farm',
@@ -145,7 +150,8 @@ const hud = new Hud(stage, {
   onResetView: () => frameParts(),
   onReplay: () => {
     sfx.unlock();
-    voice.say(level.intro, 0);
+    if (farm) farm.replay();
+    else voice.say(level.intro, 0);
   },
   onPickLevel: (l) => {
     sfx.unlock();
@@ -286,7 +292,7 @@ const input = new Input(stage, world, {
   },
   // A tap on a drawer item (no drag) puts the part in a free spot.
   onSpawnTap: (part) => {
-    const at = freeSpot(world);
+    const at = farm?.spotFor(part) ?? freeSpot(world);
     part.root.position.set(at.x, 0, at.z);
     world.separate(part);
     part.appear();
@@ -296,7 +302,10 @@ const input = new Input(stage, world, {
 stage.onResize = (flipped) => {
   drawTraces(traces);
   hud.layout();
-  if (flipped) frameParts();
+  if (flipped) {
+    if (farm) farm.refocus(true);
+    else frameParts();
+  }
 };
 
 function frameParts(instant = false) {
@@ -371,11 +380,26 @@ async function startFarm() {
     },
     helped: (name, at) => setTimeout(() => earnSticker(`farm:${name}`, at), 1500),
     look: (at) => setTimeout(() => glance(at), 1200),
+    focus: (pts, instant) => {
+      if (instant) stage.frame(pts, true, FARM_PPU);
+      else farmFocus = pts;
+    },
+    placed: (at) => {
+      sfx.snap();
+      fx.ring(at, '#4fd27a', 1.4);
+      fx.sparkle(at, '#4fd27a', 12, 0.8);
+      if (snapSaid < 2 && !voice.busy) {
+        snapSaid++;
+        voice.say('snapOk', 0);
+      }
+    },
   });
   farm.start();
   farmScore = '';
+  // Once per visit: tell them the map moves under the finger.
+  setTimeout(() => farm && voice.say('farmMove', 0), 9000);
   refreshTray();
-  frameParts(true);
+  // The first animal close up (farm.start asked for it); the compass shows the whole farm.
   levelStart = performance.now();
   lastTouch = levelStart;
   setHint(null);
@@ -454,6 +478,7 @@ world.on((e) => {
       break;
     case 'drop':
       sfx.drop();
+      farm?.snap(e.part);
       break;
     case 'wireStart':
       sfx.wireStart();
@@ -803,6 +828,11 @@ function frame(now: number) {
   stage.update(dt);
   if (farm) {
     farm.update(dt);
+    // The camera moves on to the next animal once the finger is off the table.
+    if (farmFocus && performance.now() - lastTouch > 1200 && !input.busy) {
+      stage.frame(farmFocus, false, FARM_PPU);
+      farmFocus = null;
+    }
     const night = farm.nightAmount > 0.5;
     if (night !== Part.night) applyNight(night);
     fx.night = night;

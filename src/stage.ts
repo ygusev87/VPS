@@ -29,7 +29,7 @@ export interface Insets {
 
 const VIEW_DIR = new THREE.Vector3(0, 1, 0.78).normalize();
 const MIN_DIST = 7;
-const MAX_DIST = 64;
+const MAX_DIST = 95;
 /** How far from the origin the view may wander. */
 const LIMIT = 36;
 /** Largest on-screen scale `frame()` will choose, in CSS pixels per table unit. */
@@ -416,8 +416,11 @@ export class Stage {
     this.goalDistance = THREE.MathUtils.clamp(this.goalDistance * factor, MIN_DIST, MAX_DIST);
   }
 
-  /** Smoothly fit a set of table points into the free area. */
-  frame(points: THREE.Vector3[], instant = false) {
+  /**
+   * Smoothly fit a set of table points into the free area, no bigger than
+   * `maxPpu` screen pixels per table unit (the farm allows a closer look).
+   */
+  frame(points: THREE.Vector3[], instant = false, maxPpu = MAX_PPU) {
     if (!points.length) points = [new THREE.Vector3()];
     const box = new THREE.Box3().setFromPoints(points);
     const center = box.getCenter(new THREE.Vector3()).setY(0);
@@ -453,12 +456,12 @@ export class Stage {
     this.distance = hi;
     this.placeCamera();
     const ppu = this.pixelsPerUnit(center);
-    if (ppu > MAX_PPU) hi *= ppu / MAX_PPU;
+    if (ppu > maxPpu) hi *= ppu / maxPpu;
     this.target.copy(saveT);
     this.distance = saveD;
     this.placeCamera();
     this.goalTarget.copy(center);
-    this.goalDistance = THREE.MathUtils.clamp(hi, 11, MAX_DIST);
+    this.goalDistance = THREE.MathUtils.clamp(hi, Math.max(MIN_DIST, (11 * MAX_PPU) / maxPpu), MAX_DIST);
     if (instant) this.setView(this.goalTarget.clone(), this.goalDistance);
   }
 

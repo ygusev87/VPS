@@ -19,9 +19,11 @@ const SPECIAL: Sticker[] = [
   { id: 'farm:cow', say: 'stCow', emoji: '🐄' },
   { id: 'farm:pig', say: 'stPig', emoji: '🐷' },
   { id: 'farm:tractor', say: 'stTractor', emoji: '🚜' },
+  { id: 'farm:sheep', say: 'stSheep', emoji: '🐑' },
   { id: 'farm:hen', say: 'stHen', emoji: '🐔' },
   { id: 'farm:rabbit', say: 'stRabbit', emoji: '🐰' },
   { id: 'farm:fox', say: 'stFox', emoji: '🦊' },
+  { id: 'farm:duck', say: 'stDuck', emoji: '🦆' },
 ];
 
 export class Album {
