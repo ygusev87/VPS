@@ -289,6 +289,8 @@ export class Input {
     if (!p) return;
     part.root.position.set(p.x + offset.x, 0, p.z + offset.z);
     this.world.clamp(part);
+    // A cable laid by hand can't follow a moved part: its wires lay themselves again.
+    for (const w of this.world.wires) if (w.route.length && part.terminals.some((t) => w.touches(t))) w.route = [];
   }
 
   private up(e: PointerEvent, cancelled = false) {

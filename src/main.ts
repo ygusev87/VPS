@@ -89,6 +89,13 @@ const hud = new Hud(stage, {
   onFlow: (on) => {
     Wire.showFlow = on;
   },
+  onNeat: (on) => {
+    sfx.unlock();
+    sfx.click();
+    progress.neat = on;
+    Wire.neat = on;
+    saveProgress(progress);
+  },
   onNight: (on) => {
     progress.night = on;
     stage.setNight(on);
@@ -120,6 +127,8 @@ const hud = new Hud(stage, {
 });
 hud.setSound(progress.sound);
 hud.setNight(progress.night);
+hud.setNeat(progress.neat);
+Wire.neat = progress.neat;
 stage.setNight(progress.night);
 
 const input = new Input(stage, world, {

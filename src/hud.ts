@@ -19,6 +19,7 @@ const ICON = {
   soundOn: svg('<path d="M4 9.5h3.4L12 5.5v13l-4.6-4H4z" class="fill"/><path d="M15.5 9a4.5 4.5 0 0 1 0 6M18 6.5a8 8 0 0 1 0 11"/>'),
   soundOff: svg('<path d="M4 9.5h3.4L12 5.5v13l-4.6-4H4z" class="fill"/><path d="m16 9.5 5 5M21 9.5l-5 5"/>'),
   restart: svg('<path d="M4.5 10.5A8 8 0 1 1 6 17"/><path d="M4 5v5.8h5.8"/>'),
+  neat: svg('<path d="M3.5 17.5h6.5v-11h10.5"/><circle cx="3.5" cy="17.5" r="1.6" class="fill"/><circle cx="20.5" cy="6.5" r="1.6" class="fill"/>'),
   moon: svg('<path d="M19.5 14.5A8 8 0 0 1 9.5 4.5a8 8 0 1 0 10 10z" class="fill"/>'),
   sun: svg('<circle cx="12" cy="12" r="4.2" class="fill"/><path d="M12 2.5v2.6M12 18.9v2.6M2.5 12h2.6M18.9 12h2.6M5.3 5.3l1.8 1.8M16.9 16.9l1.8 1.8M5.3 18.7l1.8-1.8M16.9 7.1l1.8-1.8"/>'),
   trash: svg('<path d="M4.5 7h15M9.5 7V4.8h5V7M7 7l1 13.5h8L17 7M10.5 10.5v6.5M13.5 10.5v6.5"/>', 'icon trash-icon'),
@@ -45,6 +46,7 @@ export interface HudHooks {
   onSound(on: boolean): void;
   onFlow(on: boolean): void;
   onNight(on: boolean): void;
+  onNeat(on: boolean): void;
   onZoom(factor: number): void;
   onResetView(): void;
   onReplay(): void;
@@ -74,6 +76,7 @@ export class Hud {
   private soundBtn!: HTMLButtonElement;
   private flowBtn!: HTMLButtonElement;
   private nightBtn!: HTMLButtonElement;
+  private neatBtn!: HTMLButtonElement;
   private trash!: HTMLElement;
   private nextBtn: HTMLElement | null = null;
   private hint: Hint | null = null;
@@ -147,6 +150,7 @@ export class Hud {
         <button data-v="reset" class="compass" aria-label="Показать всё">${ICON.compass}</button>
         <span class="sep"></span>
         <button data-v="flow" class="toggle is-on" aria-label="Показывать ток" aria-pressed="true">${ICON.flow}</button>
+        <button data-v="neat" class="toggle" aria-label="Ровные провода" aria-pressed="false">${ICON.neat}</button>
         <button data-v="sound" class="toggle is-on" aria-label="Звук" aria-pressed="true">${ICON.soundOn}</button>
         <button data-v="night" class="toggle" aria-label="Ночь" aria-pressed="false">${ICON.moon}</button>
         <button data-v="restart" aria-label="Начать заново">${ICON.restart}</button>
@@ -170,6 +174,12 @@ export class Hud {
     this.soundBtn = r.querySelector('[data-v="sound"]')!;
     this.flowBtn = r.querySelector('[data-v="flow"]')!;
     this.nightBtn = r.querySelector('[data-v="night"]')!;
+    this.neatBtn = r.querySelector('[data-v="neat"]')!;
+    this.neatBtn.addEventListener('click', () => {
+      const on = !this.neatBtn.classList.contains('is-on');
+      this.setNeat(on);
+      this.hooks.onNeat(on);
+    });
     this.trash = r.querySelector('.trash')!;
     this.nightBtn.addEventListener('click', () => {
       const on = !this.nightBtn.classList.contains('is-on');
@@ -237,6 +247,11 @@ export class Hud {
     document.addEventListener('gesturestart', (e) => e.preventDefault());
     document.addEventListener('dblclick', (e) => e.preventDefault());
     document.addEventListener('contextmenu', (e) => e.preventDefault());
+  }
+
+  setNeat(on: boolean) {
+    this.neatBtn.classList.toggle('is-on', on);
+    this.neatBtn.setAttribute('aria-pressed', String(on));
   }
 
   setNight(on: boolean) {

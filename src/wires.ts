@@ -28,6 +28,10 @@ export class Wire {
   static obstacles: Footprint[] = [];
   /** Changes whenever an obstacle moves, so wires re-route. */
   static obstacleKey = '';
+  /** Tidy mode: wires lay themselves out in straight runs with right-angle bends. */
+  static neat = false;
+  /** Table cells each tidy wire runs along, so the next one picks a free lane. */
+  static lanes = new Map<string, Set<number>>();
   readonly id = `w${nextWireId++}`;
   readonly group = new THREE.Group();
   readonly tube: THREE.Mesh;
@@ -49,6 +53,8 @@ export class Wire {
    */
   route: THREE.Vector3[] = [];
   private clips: { g: THREE.Group; t: number }[] = [];
+  /** Where clips sit: the laid points, or the bends of a tidy wire. */
+  private clipAt: P2[] = [];
 
   private material: THREE.MeshStandardMaterial;
   private clipA: THREE.Mesh;
@@ -115,6 +121,7 @@ export class Wire {
 
   remove(onGone?: () => void) {
     this.dying = true;
+    Wire.lanes.delete(this.id);
     this.onGone = onGone;
   }
 
@@ -153,9 +160,30 @@ export class Wire {
       const n = v.length();
       return p.clone().addScaledVector(n > 1e-4 ? v.divideScalar(n) : dir, Math.min(along, n * 0.4)).setY(y);
     };
-    const corners = this.route.length ? laid(p0, p3, this.route, Wire.obstacles) : d < 1.8 ? [] : route(p0, p3, Wire.obstacles);
+    const tidy = Wire.neat && this.b ? neatRoute(p0, p3, Wire.obstacles, this.id) : null;
+    const corners = tidy ? [] : this.route.length ? laid(p0, p3, this.route, Wire.obstacles) : d < 1.8 ? [] : route(p0, p3, Wire.obstacles);
+    this.clipAt = tidy ? tidy.slice(1, -1) : this.route.map((r) => ({ x: r.x, z: r.z }));
 
-    if (d < 1.8 && !corners.length) {
+    if (tidy) {
+      // Straight runs on the table with tight rounded corners; each post is left
+      // towards the front, the way the posts face.
+      pts.push(new THREE.Vector3(p0.x, p0.y - 0.08, p0.z + 0.12));
+      pts.push(new THREE.Vector3(tidy[0].x, 0.07, tidy[0].z));
+      for (let i = 1; i < tidy.length - 1; i++) {
+        const c = tidy[i];
+        const prev = tidy[i - 1];
+        const next = tidy[i + 1];
+        const r = Math.min(0.16, Math.hypot(c.x - prev.x, c.z - prev.z) / 2.2, Math.hypot(next.x - c.x, next.z - c.z) / 2.2);
+        const towards = (a: P2, b: P2, t: number) => {
+          const n = Math.hypot(b.x - a.x, b.z - a.z) || 1;
+          return new THREE.Vector3(a.x + ((b.x - a.x) / n) * t, 0.07, a.z + ((b.z - a.z) / n) * t);
+        };
+        pts.push(towards(c, prev, r), towards(c, next, r));
+      }
+      const end = tidy[tidy.length - 1];
+      pts.push(new THREE.Vector3(end.x, 0.07, end.z));
+      pts.push(new THREE.Vector3(p3.x, p3.y - 0.08, p3.z + 0.12));
+    } else if (d < 1.8 && !corners.length) {
       pts.push(p0.clone().addScaledVector(UP, 0.25).addScaledVector(dir, d * 0.15));
       pts.push(p0.clone().lerp(p3, 0.5).setY(Math.max(p0.y, p3.y) + 0.3 + d * 0.1));
       pts.push(p3.clone().addScaledVector(UP, 0.25).addScaledVector(dir, -d * 0.15));
@@ -199,7 +227,7 @@ export class Wire {
 
   /** Fix the laid cable to the table: one clip per laid point, across the wire. */
   private placeClips() {
-    const want = this.b ? this.route.length : 0;
+    const want = this.b ? this.clipAt.length : 0;
     while (this.clips.length > want) this.clips.pop()!.g.removeFromParent();
     while (this.clips.length < want) {
       const g = new THREE.Group();
@@ -219,7 +247,7 @@ export class Wire {
     const pt = new THREE.Vector3();
     const tan = new THREE.Vector3();
     this.clips.forEach((c, i) => {
-      const r = this.route[i];
+      const r = this.clipAt[i];
       // Nearest spot on the cable to the laid point.
       let best = 0;
       let bestD = Infinity;
@@ -238,9 +266,21 @@ export class Wire {
     });
   }
 
+  /** The obstacles near this wire, as a string: it re-routes only when one of them moves. */
+  private nearbyObstacles(): string {
+    const M = 3;
+    const x0 = Math.min(this.p0.x, this.p3.x) - M;
+    const x1 = Math.max(this.p0.x, this.p3.x) + M;
+    const z0 = Math.min(this.p0.z, this.p3.z) - M;
+    const z1 = Math.max(this.p0.z, this.p3.z) + M;
+    let k = '';
+    for (const r of Wire.obstacles) if (r.x1 > x0 && r.x0 < x1 && r.z1 > z0 && r.z0 < z1) k += `${r.x0.toFixed(2)},${r.z0.toFixed(2)};`;
+    return k;
+  }
+
   /** How many clips are on (for the clicking sound as they snap). */
   get clipCount() {
-    return this.route.length;
+    return this.clipAt.length;
   }
 
   update(dt: number) {
@@ -256,7 +296,7 @@ export class Wire {
         return;
       }
     }
-    const key = `${this.p0.x.toFixed(3)},${this.p0.y.toFixed(3)},${this.p0.z.toFixed(3)}|${this.p3.x.toFixed(3)},${this.p3.y.toFixed(3)},${this.p3.z.toFixed(3)}|${this.grow}|${this.fade}|${this.alert}|${Wire.obstacleKey}|${this.route.length}`;
+    const key = `${this.p0.x.toFixed(3)},${this.p0.y.toFixed(3)},${this.p0.z.toFixed(3)}|${this.p3.x.toFixed(3)},${this.p3.y.toFixed(3)},${this.p3.z.toFixed(3)}|${this.grow}|${this.fade}|${this.alert}|${this.nearbyObstacles()}|${this.route.length}|${Wire.neat}`;
     if (key !== this.lastKey) {
       this.lastKey = key;
       this.rebuild();
@@ -473,4 +513,137 @@ export function tidyRoute(a: THREE.Vector3, b: THREE.Vector3, trail: THREE.Vecto
     for (let k = 1; k <= n; k++) out.push(p.clone().lerp(q, k / (n + 1)));
   }
   return out.filter((p) => p.distanceTo(a.clone().setY(0)) > 0.6 && p.distanceTo(b.clone().setY(0)) > 0.6);
+}
+
+/**
+ * A tidy route between two posts: straight runs along a grid with as few
+ * bends as possible, around every body, keeping off lanes other tidy wires
+ * already use. Both ends first step forward off their posts. Returns the
+ * points to pass (the two exits and every bend), or null if boxed in.
+ */
+function neatRoute(a: THREE.Vector3, b: THREE.Vector3, rects: Footprint[], id: string): P2[] | null {
+  const S = 0.3;
+  const ax = a.x;
+  const az = a.z + 0.4;
+  const bx = b.x;
+  const bz = b.z + 0.4;
+  const minX = Math.min(ax, bx) - 3;
+  const minZ = Math.min(az, bz) - 3;
+  const W = Math.ceil((Math.max(ax, bx) + 3 - minX) / S) + 1;
+  const H = Math.ceil((Math.max(az, bz) + 3 - minZ) / S) + 1;
+  if (W * H > 30000) return null;
+  const at = (x: number, z: number) => Math.round((x - minX) / S) + Math.round((z - minZ) / S) * W;
+  const gx = (i: number) => minX + (i % W) * S;
+  const gz = (i: number) => minZ + Math.floor(i / W) * S;
+  // Lanes are keyed on a shared table grid, so wires agree on what is taken.
+  const lane = (i: number) => Math.round(gx(i) / S) * 100003 + Math.round(gz(i) / S);
+
+  const blocked = new Uint8Array(W * H);
+  const exitA = { x: ax, z: az };
+  const exitB = { x: bx, z: bz };
+  for (const r of rects) {
+    if (inside(exitA, r) || inside(exitB, r)) continue;
+    const i0 = Math.max(0, Math.ceil((r.x0 - minX) / S));
+    const i1 = Math.min(W - 1, Math.floor((r.x1 - minX) / S));
+    const j0 = Math.max(0, Math.ceil((r.z0 - minZ) / S));
+    const j1 = Math.min(H - 1, Math.floor((r.z1 - minZ) / S));
+    for (let j = j0; j <= j1; j++) for (let i = i0; i <= i1; i++) blocked[i + j * W] = 1;
+  }
+  const taken = new Set<number>();
+  for (const [other, cells] of Wire.lanes) if (other !== id) for (const c of cells) taken.add(c);
+
+  const start = at(ax, az);
+  const goal = at(bx, bz);
+  blocked[start] = blocked[goal] = 0;
+  const DX = [1, 0, -1, 0];
+  const DZ = [0, 1, 0, -1];
+  const g = new Float32Array(W * H * 4).fill(Infinity);
+  const from = new Int32Array(W * H * 4).fill(-1);
+  const heap: [number, number][] = [];
+  const push = (f: number, n: number) => {
+    heap.push([f, n]);
+    let i = heap.length - 1;
+    while (i > 0) {
+      const p = (i - 1) >> 1;
+      if (heap[p][0] <= heap[i][0]) break;
+      [heap[p], heap[i]] = [heap[i], heap[p]];
+      i = p;
+    }
+  };
+  const pop = () => {
+    const top = heap[0];
+    const last = heap.pop()!;
+    if (heap.length) {
+      heap[0] = last;
+      let i = 0;
+      for (;;) {
+        const l = 2 * i + 1;
+        const r = l + 1;
+        let m = i;
+        if (l < heap.length && heap[l][0] < heap[m][0]) m = l;
+        if (r < heap.length && heap[r][0] < heap[m][0]) m = r;
+        if (m === i) break;
+        [heap[m], heap[i]] = [heap[i], heap[m]];
+        i = m;
+      }
+    }
+    return top;
+  };
+  const hx = goal % W;
+  const hz = Math.floor(goal / W);
+  const h = (i: number) => Math.abs((i % W) - hx) + Math.abs(Math.floor(i / W) - hz);
+  for (let d = 0; d < 4; d++) {
+    g[start * 4 + d] = 0;
+    push(h(start), start * 4 + d);
+  }
+  let end = -1;
+  while (heap.length) {
+    const [, node] = pop();
+    const cell = node >> 2;
+    const dir = node & 3;
+    if (cell === goal) {
+      end = node;
+      break;
+    }
+    const cx = cell % W;
+    const cz = Math.floor(cell / W);
+    for (let nd = 0; nd < 4; nd++) {
+      if (nd === ((dir + 2) & 3)) continue;
+      const nx = cx + DX[nd];
+      const nz = cz + DZ[nd];
+      if (nx < 0 || nz < 0 || nx >= W || nz >= H) continue;
+      const next = nx + nz * W;
+      if (blocked[next]) continue;
+      const cost = g[node] + 1 + (nd !== dir ? 3 : 0) + (taken.has(lane(next)) ? 2.5 : 0);
+      const nn = next * 4 + nd;
+      if (cost < g[nn]) {
+        g[nn] = cost;
+        from[nn] = node;
+        push(cost + h(next), nn);
+      }
+    }
+  }
+  if (end < 0) return null;
+  const cells: number[] = [];
+  const dirs: number[] = [];
+  for (let n = end; n >= 0; n = from[n]) {
+    cells.push(n >> 2);
+    dirs.push(n & 3);
+  }
+  cells.reverse();
+  dirs.reverse();
+  Wire.lanes.set(id, new Set(cells.map(lane)));
+  const out: P2[] = [exitA];
+  for (let i = 1; i < cells.length - 1; i++) if (dirs[i + 1] !== dirs[i]) out.push({ x: gx(cells[i]), z: gz(cells[i]) });
+  out.push(exitB);
+  // The grid start/end cells are rounded; pull the first and last bends onto the exits' lines.
+  if (out.length > 2) {
+    const s1 = out[1];
+    if (Math.abs(s1.x - ax) < S) s1.x = ax;
+    else s1.z = az;
+    const e1 = out[out.length - 2];
+    if (Math.abs(e1.x - bx) < S) e1.x = bx;
+    else e1.z = bz;
+  }
+  return out;
 }

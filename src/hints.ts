@@ -79,7 +79,7 @@ export function problemHint(world: World): Hint | null {
       world.latestCulprit((res) => res.shorted.size === 0) ??
       (battery ? touching(battery).at(-1) : undefined) ??
       null;
-    if (wire) return { type: 'tapWire', wire, at: battery, problem: 'short', phrase: 'short', u: clearSpot(world, wire) };
+    if (wire) return { type: 'tapWire', wire, at: battery, problem: 'short', phrase: batteriesFight(world) ? 'batteryFight' : 'short', u: clearSpot(world, wire) };
   }
 
   // 2. LED or buzzer the wrong way round inside a working loop.
@@ -131,6 +131,24 @@ export function problemHint(world: World): Hint | null {
     }
   }
   return null;
+}
+
+/**
+ * Two different batteries joined plus to plus and minus to minus: the bigger
+ * one pushes current straight into the smaller. (Equal ones side by side are
+ * fine and never show up as a short.)
+ */
+function batteriesFight(world: World): boolean {
+  const src = world.parts.filter((p) => isBattery(p) || p instanceof Dynamo);
+  const volts = (p: Part) => p.elements()[0].emf ?? PARAMS.battery.emf;
+  for (let i = 0; i < src.length; i++) {
+    for (let j = i + 1; j < src.length; j++) {
+      const [p, q] = [src[i], src[j]];
+      const side = world.wired(p.terminal('a'), q.terminal('a')) && world.wired(p.terminal('b'), q.terminal('b'));
+      if (side && Math.abs(volts(p) - volts(q)) > 0.5) return true;
+    }
+  }
+  return false;
 }
 
 /**
