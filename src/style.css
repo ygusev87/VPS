@@ -1208,8 +1208,258 @@ body.is-night .brand {
     width: 36px;
     height: 34px;
   }
+  /* Narrow phones: pinch zooms, the map button is just its icon. */
+  .viewbar [data-v='out'],
+  .viewbar [data-v='in'],
+  .viewbar [data-v='in'] + .sep,
+  .viewbar .map-btn span {
+    display: none;
+  }
+  .viewbar .map-btn.map-btn {
+    width: 36px;
+    padding: 0;
+    justify-content: center;
+  }
   .next {
     bottom: calc(var(--safe-b) + 72px);
+  }
+}
+
+/* Sticker album and "My inventions": two buttons under the progress card. */
+.shelf {
+  position: absolute;
+  top: calc(var(--safe-t) + 86px);
+  right: calc(var(--safe-r) + 18px);
+  display: flex;
+  gap: 8px;
+}
+.shelf-btn {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 46px;
+  height: 46px;
+  border: 1.5px solid var(--line);
+  border-radius: 9px;
+  background: var(--card-soft);
+  box-shadow: var(--shadow);
+  transition: transform 0.15s;
+}
+.shelf-btn:active {
+  transform: scale(0.94);
+}
+.shelf-btn .icon {
+  width: 26px;
+  height: 26px;
+}
+.album-btn .icon .fill {
+  fill: var(--amber);
+}
+.shelf-count {
+  position: absolute;
+  right: -6px;
+  top: -6px;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 5px;
+  border-radius: 99px;
+  background: var(--teal);
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 20px;
+  text-align: center;
+}
+.shelf-count:empty {
+  display: none;
+}
+.album-btn.is-bump {
+  animation: shelf-bump 0.5s var(--spring);
+}
+@keyframes shelf-bump {
+  40% {
+    transform: scale(1.25) rotate(-8deg);
+  }
+}
+body.on-map .inv-btn {
+  display: none;
+}
+.sheet .maps-card {
+  position: relative;
+}
+.sheet-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1.5px solid var(--line);
+  border-radius: 99px;
+  background: #fff;
+}
+.sheet-close .icon {
+  width: 18px;
+  height: 18px;
+}
+.sheet-sub {
+  margin-left: 8px;
+  font-size: 14px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+.sticker-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+  gap: 10px;
+}
+.sticker {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  border: 2px dashed var(--line);
+  border-radius: 50%;
+  background: #efe5d6;
+  padding: 0;
+}
+.sticker img {
+  width: 82%;
+  height: 82%;
+  object-fit: contain;
+  filter: grayscale(1) brightness(0.35) opacity(0.22);
+}
+.sticker .sticker-emoji {
+  font-size: 32px;
+  filter: grayscale(1) brightness(0.35) opacity(0.22);
+}
+.sticker.is-got {
+  border: 3px solid #fff;
+  background: radial-gradient(circle at 35% 30%, #fffdf8, #f3e7d3);
+  box-shadow: 0 3px 8px -3px #3c2d1466, 0 0 0 1.5px var(--line);
+}
+.sticker.is-got img,
+.sticker.is-got .sticker-emoji {
+  filter: none;
+}
+.sticker.is-wiggle {
+  animation: sticker-wiggle 0.45s var(--spring);
+}
+@keyframes sticker-wiggle {
+  30% {
+    transform: scale(1.15) rotate(-10deg);
+  }
+  60% {
+    transform: scale(1.08) rotate(6deg);
+  }
+}
+.sticker-fly {
+  position: fixed;
+  z-index: 80;
+  display: grid;
+  place-items: center;
+  width: 86px;
+  height: 86px;
+  border: 4px solid #fff;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 30%, #fffdf8, #f3e7d3);
+  box-shadow: 0 10px 24px -8px #3c2d1499;
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+}
+.sticker-fly img {
+  width: 80%;
+  height: 80%;
+  object-fit: contain;
+}
+.sticker-fly .sticker-emoji {
+  font-size: 44px;
+}
+.inv-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 12px;
+}
+.inv-new,
+.inv-card {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  padding: 0;
+}
+.inv-new {
+  display: grid;
+  place-items: center;
+  border: 2px dashed var(--teal);
+  background: #e7f3ef;
+}
+.inv-new .icon {
+  width: 44px;
+  height: 44px;
+  stroke: var(--teal);
+  stroke-width: 2.4;
+}
+.inv-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.inv-card:active,
+.inv-new:active {
+  transform: scale(0.97);
+}
+.inv-del {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  display: grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 99px;
+  border: 1.5px solid var(--line);
+  background: #fffaf2e6;
+}
+.inv-del .icon {
+  width: 16px;
+  height: 16px;
+}
+.inv-card.is-armed {
+  animation: inv-shake 0.4s;
+  border-color: var(--red);
+}
+.inv-card.is-armed .inv-del {
+  background: var(--red);
+  border-color: var(--red);
+}
+.inv-card.is-armed .inv-del .icon {
+  stroke: #fff;
+}
+@keyframes inv-shake {
+  25% {
+    transform: rotate(-2deg);
+  }
+  75% {
+    transform: rotate(2deg);
+  }
+}
+@media (max-width: 600px) {
+  .shelf {
+    top: calc(var(--safe-t) + 116px);
+    right: calc(var(--safe-r) + 12px);
+  }
+  .shelf-btn {
+    width: 40px;
+    height: 40px;
+  }
+  .shelf-btn .icon {
+    width: 22px;
+    height: 22px;
   }
 }
 

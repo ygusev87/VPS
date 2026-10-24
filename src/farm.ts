@@ -43,6 +43,10 @@ export interface FarmHooks {
   done(): void;
   /** A soft sound for a happy animal. */
   chime(): void;
+  /** Someone was helped (an animal's name, or 'fox' when it is chased off). */
+  helped?(name: string, at: THREE.Vector3): void;
+  /** Something worth seeing is happening here (the camera may glance at it). */
+  look?(at: THREE.Vector3): void;
 }
 
 /** Board size (world units) and where it lies. */
@@ -317,6 +321,7 @@ export class FarmMap {
     if (p === 'night') {
       this.foxT = 0;
       this.hooks.say('foxComes');
+      this.hooks.look?.(FOX_PATH[2].clone());
     }
     if (p === 'morning') this.hooks.say('morning');
   }
@@ -388,6 +393,7 @@ export class FarmMap {
         this.hooks.say(n.thanks);
         this.hooks.chime();
         this.hooks.cheer(n.critter.home.clone().setY(n.critter.height));
+        this.hooks.helped?.(n.critter.name, n.critter.home.clone().setY(n.critter.height));
         for (const h of n.critter.hearts) h.userData.t = Math.random() * -0.6;
         if (n.critter.name === 'tractor') this.tractorT = 0;
       }
@@ -482,6 +488,7 @@ export class FarmMap {
         this.hooks.say('foxScared');
         this.hooks.chime();
         this.hooks.cheer(at.clone().setY(1));
+        this.hooks.helped?.('fox', at.clone().setY(1));
         const dog = this.critters.get('dog')!;
         dog.hop = 1;
         return;

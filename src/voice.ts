@@ -135,6 +135,40 @@ export const PHRASES = {
   poleWeak: 'Столбу не хватает сил на всё сразу. Подключи что-нибудь к солнечной батарее или к ветряку!',
   placeHere: 'Поставь его на кружок рядом!',
   soon: 'Эта карта скоро откроется!',
+  album: 'Мои наклейки',
+  newSticker: 'Новая наклейка!',
+  albumIntro: 'Это твой альбом. Когда новая деталь заработает, ты получишь наклейку!',
+  stickerLocked: 'Эту наклейку ещё нужно заработать. Подключи такую деталь, и она заработает!',
+  albumFull: 'Ты собрал все наклейки! Ура!',
+  inventions: 'Мои изобретения',
+  saved: 'Сохранено! Твоё изобретение лежит в папке.',
+  loaded: 'Вот твоё изобретение!',
+  inventionsEmpty: 'Здесь пока пусто. Собери что-нибудь на столе и нажми на плюс, чтобы сохранить.',
+  deleteAgain: 'Нажми ещё раз, чтобы выбросить.',
+  tester: 'Тестер',
+  testerTip: 'Тестер показывает, сколько вольт. Подключи его к батарейке: плюс к плюсу, минус к минусу. Потом нажми на него!',
+  testerBack: 'Стрелка ушла назад: провода наоборот. Поменяй их местами!',
+  v0: 'Ноль вольт. Тока нет.',
+  v1: 'Один вольт',
+  v2: 'Два вольта',
+  v3: 'Три вольта',
+  v4: 'Четыре вольта',
+  v5: 'Пять вольт',
+  v6: 'Шесть вольт',
+  v7: 'Семь вольт',
+  v8: 'Восемь вольт',
+  v9: 'Девять вольт',
+  v10: 'Десять вольт',
+  v11: 'Одиннадцать вольт',
+  v12: 'Двенадцать вольт',
+  vMany: 'Очень много вольт!',
+  stCow: 'Корова',
+  stPig: 'Свинка',
+  stHen: 'Курочки',
+  stRabbit: 'Кролики',
+  stTractor: 'Трактор',
+  stFox: 'Лиса',
+  stChain: 'Цепочка',
   winBulb: 'Ура! Лампочка горит!',
   winFan: 'Ура! Вентилятор крутится!',
   winLed: 'Ура! Светодиод светится!',
@@ -159,6 +193,7 @@ export class Voice {
   private raw = new Map<PhraseId, Promise<ArrayBuffer | null>>();
   readonly clips = new Map<PhraseId, AudioBuffer>();
   private playing: AudioBufferSourceNode | null = null;
+  private endsAt = 0;
 
   constructor() {
     // Fetch every clip up front (about 1 MB) so they also work offline later.
@@ -204,6 +239,7 @@ export class Voice {
       src.connect(this.out);
       src.start();
       this.playing = src;
+      this.endsAt = now + clip.duration * 1000;
       return;
     }
     if (!('speechSynthesis' in window)) return;
@@ -213,6 +249,12 @@ export class Voice {
     u.rate = 0.95;
     u.pitch = 1.1;
     speechSynthesis.speak(u);
+  }
+
+  /** Still talking (a clip playing or the synthesiser speaking)? */
+  get busy() {
+    if (this.playing) return performance.now() < this.endsAt;
+    return 'speechSynthesis' in window && speechSynthesis.speaking;
   }
 
   stop() {

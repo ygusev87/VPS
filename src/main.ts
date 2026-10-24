@@ -13,16 +13,19 @@ import { Bells, Maracas, Piano, Tuba } from './parts/band';
 import { Drum, MusicBox } from './parts/extra';
 import { WaterMill } from './parts/mech';
 import { blowWind, Pinwheel } from './parts/wind';
-import { Belt, interact, Launcher } from './parts/chain';
+import { Belt, interact, Laser, Launcher, Mirror, tracePath } from './parts/chain';
+import { Album, type Sticker } from './album';
+import { Shelf } from './shelf';
+import { capture, deleteInvention, loadInventions, restore, saveInvention, snapshot } from './saves';
 import { FireTruck, Helicopter, RaceTrack, TrafficLight } from './parts/fun';
 import { Dynamo } from './parts/more';
 import { loadModels } from './parts/assets';
-import { ALL_ITEMS, createPart, MODEL_NAMES } from './parts/catalog';
+import { ALL_ITEMS, createPart, itemKey, itemOf, MODEL_NAMES } from './parts/catalog';
 import { Stage } from './stage';
 import { loadProgress, saveProgress } from './storage';
 import { renderThumbs } from './thumbs';
 import { drawTraces } from './traces';
-import { Voice } from './voice';
+import { Voice, type PhraseId } from './voice';
 import { Wire } from './wires';
 import { LIGHT } from './parts/models';
 import { C } from './theme';
@@ -170,6 +173,98 @@ const hud = new Hud(stage, {
     voice.say(item.say, 3000);
   },
 });
+const album = new Album();
+const shelf = new Shelf(album, {
+  onSticker: (st, got) => {
+    sfx.unlock();
+    sfx.pop();
+    voice.say(got ? st.say : 'stickerLocked', 0);
+  },
+  onAlbum: () => {
+    sfx.unlock();
+    sfx.pop();
+    voice.say(album.count === album.total ? 'albumFull' : album.count ? 'album' : 'albumIntro', 0);
+  },
+  onInventions: (empty) => {
+    sfx.unlock();
+    sfx.pop();
+    voice.say(empty ? 'inventionsEmpty' : 'inventions', 0);
+  },
+  onSave: () => {
+    sfx.unlock();
+    stage.render();
+    const box = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
+    for (const c of partsOnScreen(world)) {
+      box.x0 = Math.min(box.x0, c.x - c.r);
+      box.y0 = Math.min(box.y0, c.y - c.r * 1.5);
+      box.x1 = Math.max(box.x1, c.x + c.r);
+      box.y1 = Math.max(box.y1, c.y + c.r);
+    }
+    const inv = capture(world, snapshot(stage.renderer.domElement, Number.isFinite(box.x0) ? box : undefined));
+    if (!inv || !saveInvention(inv)) {
+      sfx.noPower();
+      voice.say('inventionsEmpty', 0);
+      return false;
+    }
+    sfx.star();
+    voice.say('saved', 0);
+    return true;
+  },
+  onLoad: (inv) => {
+    sfx.unlock();
+    sfx.pop();
+    startLevel(FREE_PLAY, false, false);
+    world.clear();
+    restore(world, inv);
+    frameParts();
+    voice.say('loaded', 0);
+  },
+  onDelete: (inv, sure) => {
+    sfx.unlock();
+    if (!sure) return voice.say('deleteAgain', 0);
+    sfx.pop();
+    deleteInvention(inv.id);
+  },
+  inventions: () => loadInventions(),
+});
+
+/** Give a sticker (once): it flies from the spot into the album. */
+function earnSticker(id: string, at: THREE.Vector3) {
+  const st: Sticker | null = album.earn(id);
+  if (!st) return;
+  const p = stage.project(at);
+  shelf.fly(st, p);
+  setTimeout(() => sfx.star(), 250);
+  if (!voice.busy) voice.say('newSticker', 0);
+}
+
+/** Is this part doing its job right now (for its sticker)? */
+function working(p: Part): boolean {
+  if (isActive(p) || p.triggered) return true;
+  if (p instanceof Mirror) return world.parts.some((l) => l instanceof Laser && isActive(l) && tracePath(world.parts, l).via.includes(p.id));
+  if (p instanceof Pinwheel) return p.wind > 0.3;
+  if (p.kind === 'tester') return Math.abs(p.state.voltage) > 0.5;
+  return Math.abs(p.state.current) > 0.02;
+}
+
+let stickerT = 0;
+function watchStickers(dt: number) {
+  stickerT -= dt;
+  if (stickerT > 0) return;
+  stickerT = 0.5;
+  for (const p of world.parts) {
+    if (p.pinned) continue;
+    const key = itemKey(itemOf(p));
+    if (!album.has(key) && working(p)) earnSticker(key, p.root.localToWorld(new THREE.Vector3(0, 1, 0)));
+  }
+}
+
+/** The camera operator glances at things that happen off screen, unless a finger is busy. */
+function glance(at: THREE.Vector3) {
+  if (performance.now() - lastTouch < 2500 || input.busy) return;
+  stage.glance(at);
+}
+
 hud.setSound(progress.sound);
 hud.setNight(progress.night);
 hud.setNeat(progress.neat);
@@ -274,6 +369,8 @@ async function startFarm() {
       progress.done.add('farm');
       saveProgress(progress);
     },
+    helped: (name, at) => setTimeout(() => earnSticker(`farm:${name}`, at), 1500),
+    look: (at) => setTimeout(() => glance(at), 1200),
   });
   farm.start();
   farmScore = '';
@@ -285,7 +382,7 @@ async function startFarm() {
   voice.say('farmIntro', 0);
 }
 
-function startLevel(l: Level, instant = false) {
+function startLevel(l: Level, instant = false, speak = true) {
   leaveFarm();
   level = l;
   won = false;
@@ -307,7 +404,7 @@ function startLevel(l: Level, instant = false) {
   levelStart = performance.now();
   lastTouch = levelStart;
   setHint(null);
-  voice.say(l.intro, 0);
+  if (speak) voice.say(l.intro, 0);
 }
 
 function win() {
@@ -385,6 +482,7 @@ world.on((e) => {
     case 'activated': {
       // A ring of light and a few rising motes: "it's alive".
       const at = e.part.root.position;
+      glance(at);
       const c = e.part.kind === 'bulb' || e.part.kind === 'led' ? LIGHT[e.part.color].hex : C.teal;
       fx.ring(at, c, e.part.radius * 1.6);
       e.part.bump(0.18);
@@ -439,6 +537,7 @@ function hintVisible() {
 // ───────── Part sounds ─────────
 
 let songHintSaid = false;
+let testerTipSaid = false;
 function playPartSound(snd: PartSound, from?: Part) {
   switch (snd.kind) {
     case 'xylophone':
@@ -514,6 +613,17 @@ function playPartSound(snd: PartSound, from?: Part) {
     case 'gong':
       sfx.gong();
       break;
+    case 'volts': {
+      const v = Math.round(Math.abs(snd.v));
+      if (snd.v < -0.5) voice.say('testerBack', 0);
+      else if (v > 12) voice.say('vMany', 0);
+      else voice.say(`v${v}` as PhraseId, 0);
+      if (!testerTipSaid && Math.abs(snd.v) < 0.1) {
+        testerTipSaid = true;
+        setTimeout(() => voice.say('testerTip', 0), 1800);
+      }
+      break;
+    }
     case 'missed':
       if (!aimSaid && !troubled()) {
         aimSaid = true;
@@ -584,6 +694,10 @@ let chainHeld = 0;
 let chainWas = false;
 let chainCheerAt = -1e9;
 function watchChains(dt: number) {
+  if (!farm && !album.has('chain') && chainWorks(world)) {
+    const lit = world.parts.find((p) => p.triggered === 'world') ?? world.parts[0];
+    if (lit) earnSticker('chain', lit.root.localToWorld(new THREE.Vector3(0, 1, 0)));
+  }
   if (level !== FREE_PLAY) return;
   const on = chainWorks(world) && !troubled();
   chainHeld = on ? chainHeld + dt : 0;
@@ -777,6 +891,7 @@ function frame(now: number) {
 
   watchShorts(dt);
   watchChains(dt);
+  watchStickers(dt);
   watchBelts();
   if (!farm) fx.night = progress.night;
   fx.shine(world.parts.flatMap((p) => p.glowLight() ?? []));
@@ -809,6 +924,8 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
   stage,
   sfx,
   startFarm,
+  album,
+  shelf,
   get farm() {
     return farm;
   },

@@ -462,6 +462,26 @@ export class Stage {
     if (instant) this.setView(this.goalTarget.clone(), this.goalDistance);
   }
 
+  /**
+   * The camera operator: if something happens off screen (a ball hits a far
+   * target, the fox comes), ease the view over so it can be seen.
+   * Returns true if the view moves.
+   */
+  glance(point: THREE.Vector3, margin = 50): boolean {
+    const { top, bottom, left, right } = this.insets;
+    const p = this.project(point);
+    if (p.x > left + margin && p.x < this.w - right - margin && p.y > top + margin && p.y < this.h - bottom - margin) return false;
+    const r = this.canvas.getBoundingClientRect();
+    const c = this.screenToPlane(r.left + left + (this.w - left - right) / 2, r.top + top + (this.h - top - bottom) / 2);
+    if (!c) return false;
+    // Bring it most of the way in, not dead centre, so the view does not jump about.
+    const goal = this.target.clone().addScaledVector(point.clone().setY(0).sub(c), 0.7);
+    const len = Math.hypot(goal.x, goal.z);
+    if (len > LIMIT) goal.multiplyScalar(LIMIT / len);
+    this.goalTarget.copy(goal).setY(0);
+    return true;
+  }
+
   render() {
     this.checkSize();
     this.watchSpeed();

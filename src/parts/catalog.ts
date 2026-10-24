@@ -1,5 +1,6 @@
 // Everything the child can take from the parts panel, grouped like drawers
 // in a kit box. A variant is a part kind plus, for lights, a colour.
+import { Tester } from './tester';
 import type { LightColor, Part, PartKind } from './base';
 import { ButtonPanel, Carousel, Drum, MusicBox, PushButton, Windmill, Xylophone } from './extra';
 import { DiscoBall, FireTruck, Helicopter, RaceTrack, TrafficLight } from './fun';
@@ -34,6 +35,7 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'battery', name: 'Батарейки 3 В', say: 'battery' },
       { kind: 'bigBattery', name: 'Большая батарея 6 В', say: 'bigBattery' },
       { kind: 'dynamo', name: 'Динамо-машина', say: 'dynamo' },
+      { kind: 'tester', name: 'Тестер', say: 'tester' },
     ],
   },
   {
@@ -250,6 +252,8 @@ function make(kind: PartKind): Part {
       return new PushButton();
     case 'panel':
       return new ButtonPanel();
+    case 'tester':
+      return new Tester();
   }
 }
 

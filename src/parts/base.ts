@@ -49,7 +49,8 @@ export type PartKind =
   | 'gate'
   | 'switch'
   | 'button'
-  | 'panel';
+  | 'panel'
+  | 'tester';
 
 /** Light colours a bulb or LED can take (tap to cycle). */
 export type LightColor = 'warm' | 'red' | 'green' | 'blue' | 'yellow';
@@ -193,7 +194,8 @@ export type PartSound =
   | { kind: 'bonk' }
   | { kind: 'clack' }
   | { kind: 'missed' }
-  | { kind: 'gong' };
+  | { kind: 'gong' }
+  | { kind: 'volts'; v: number };
 
 /** A 3D effect a part asks for (drained by the game into fx.ts), at a world point. */
 export type PartEffect =

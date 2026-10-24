@@ -172,7 +172,7 @@ export class Hud {
         <button data-v="restart" aria-label="Начать заново">${ICON.restart}</button>
       </div>
       <div class="trash" aria-hidden="true">${ICON.trash}</div>
-      <section class="maps" aria-label="Карты" hidden>
+      <section class="maps map-sheet" aria-label="Карты" hidden>
         <div class="maps-card">
           <h2>Куда отправимся?</h2>
           <div class="map-list">
@@ -222,7 +222,7 @@ export class Hud {
     r.querySelector('[data-v="in"]')!.addEventListener('click', () => this.hooks.onZoom(0.8));
     r.querySelector('[data-v="reset"]')!.addEventListener('click', () => this.hooks.onResetView());
     r.querySelector('[data-v="restart"]')!.addEventListener('click', () => this.hooks.onRestart());
-    const maps = r.querySelector<HTMLElement>('.maps')!;
+    const maps = r.querySelector<HTMLElement>('.map-sheet')!;
     r.querySelector('[data-v="map"]')!.addEventListener('click', () => {
       maps.hidden = false;
       this.hooks.onPickMap?.('open');
