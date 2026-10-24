@@ -6,7 +6,7 @@ import { PARAMS } from './circuit/solver';
 import type { Part, PartKind, Terminal } from './parts/base';
 import { ButtonPanel } from './parts/extra';
 import { Dynamo } from './parts/more';
-import { aimFor, Laser, LightSensor, WindGen } from './parts/chain';
+import { aimFor, Laser, LightSensor, Magnet, WindGen } from './parts/chain';
 import { Pole, Solar } from './parts/farm';
 import type { PhraseId } from './voice';
 import type { Wire } from './wires';
@@ -44,7 +44,7 @@ export function isProblem(h: Hint | null): boolean {
   return h?.type === 'tapWire';
 }
 
-const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher', 'laser', 'bell', 'belt', 'pump', 'heater', 'gate'];
+const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher', 'laser', 'bell', 'belt', 'pump', 'heater', 'gate', 'magnet'];
 const POLAR: PartKind[] = ['led', 'buzzer', 'musicbox'];
 const isPolar = (p: Part) => POLAR.includes(p.kind);
 const isBattery = (p: Part) => p.kind === 'battery' || p.kind === 'bigBattery';
@@ -179,6 +179,8 @@ function batteriesFight(world: World): boolean {
  * Panel buttons are tried one by one so the hint points at the right one.
  */
 function switchHint(world: World): Hint | null {
+  // A magnet holding a ball comes first (see magnetHint): no "hit the target" meanwhile.
+  if (world.parts.some((p) => p instanceof Magnet && p.caught)) return null;
   const idle = world.parts.filter((p) => LOADS.includes(p.kind) && !activeAt(p.kind, p.state.level));
   if (!idle.length) return null;
   for (const sw of world.parts) {
@@ -236,7 +238,7 @@ export function sandboxHint(world: World): Hint | null {
       }
     }
   }
-  return crankHint(world) ?? beamHint(world) ?? switchHint(world);
+  return magnetHint(world) ?? crankHint(world) ?? beamHint(world) ?? switchHint(world);
 }
 
 /**
@@ -259,6 +261,14 @@ function beamHint(world: World): Hint | null {
     }
   }
   return null;
+}
+
+/** A magnet has held its ball a while: show the switch that lets it go. */
+function magnetHint(world: World): Hint | null {
+  const m = world.parts.find((p): p is Magnet => p instanceof Magnet && p.heldFor > 1.5);
+  if (!m) return null;
+  const sw = world.parts.find((p) => p.kind === 'switch' && p.closed && Math.abs(p.state.current) > 0.01 && Math.abs(Math.abs(p.state.current) - Math.abs(m.state.current)) < 0.02);
+  return sw ? { type: 'tap', part: sw, phrase: 'magnetOff' } : null;
 }
 
 /** A still generator that would run an idle gadget if turned: point at its knob. */
@@ -312,7 +322,7 @@ export function levelHint(world: World, level: Level, trayLeft: (k: PartKind) =>
     const missing = loopPlan(world, src, chain).find(([a, b]) => !world.wired(a, b));
     if (missing) return { type: 'connect', from: missing[0], to: missing[1], phrase: 'connect' };
   }
-  return crankHint(world) ?? beamHint(world) ?? switchHint(world);
+  return magnetHint(world) ?? crankHint(world) ?? beamHint(world) ?? switchHint(world);
 }
 
 /**

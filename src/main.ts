@@ -13,7 +13,7 @@ import { Bells, Maracas, Piano, Tuba } from './parts/band';
 import { Drum, MusicBox } from './parts/extra';
 import { WaterMill } from './parts/mech';
 import { blowWind, Pinwheel } from './parts/wind';
-import { Belt, interact, Laser, Launcher, Mirror, tracePath } from './parts/chain';
+import { Belt, interact, Laser, Launcher, Magnet, Mirror, tracePath } from './parts/chain';
 import { Album, type Sticker } from './album';
 import { Shelf } from './shelf';
 import { capture, deleteInvention, loadInventions, restore, saveInvention, snapshot } from './saves';
@@ -538,6 +538,7 @@ function hintVisible() {
 
 let songHintSaid = false;
 let testerTipSaid = false;
+let magnetSaid = false;
 function playPartSound(snd: PartSound, from?: Part) {
   switch (snd.kind) {
     case 'xylophone':
@@ -609,6 +610,10 @@ function playPartSound(snd: PartSound, from?: Part) {
       break;
     case 'clack':
       sfx.clack();
+      if (from instanceof Magnet && !magnetSaid && !troubled()) {
+        magnetSaid = true;
+        setTimeout(() => voice.say('magnetTip', 0), 600);
+      }
       break;
     case 'gong':
       sfx.gong();

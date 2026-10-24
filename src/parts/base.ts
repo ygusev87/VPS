@@ -50,7 +50,8 @@ export type PartKind =
   | 'switch'
   | 'button'
   | 'panel'
-  | 'tester';
+  | 'tester'
+  | 'magnet';
 
 /** Light colours a bulb or LED can take (tap to cycle). */
 export type LightColor = 'warm' | 'red' | 'green' | 'blue' | 'yellow';

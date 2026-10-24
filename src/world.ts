@@ -61,6 +61,7 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'firetruck':
     case 'trafficLight':
     case 'crane':
+    case 'magnet':
       return l > 0.2;
     case 'lift':
       return Math.abs(l) > 0.15;

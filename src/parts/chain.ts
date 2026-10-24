@@ -892,6 +892,177 @@ export class Bell extends Part {
   }
 }
 
+// ───────────────────────────── Magnet ──────────────────────────────
+
+/** How far an electromagnet reaches for a ball, table units. */
+const MAGNET_RANGE = 3.6;
+
+/**
+ * A red horseshoe electromagnet: with current it pulls rolling balls in and
+ * holds them at its poles; switched off, the ball rolls on the way it came.
+ * Tap to turn it a quarter round, like the launcher.
+ */
+export class Magnet extends Part {
+  readonly kind: PartKind = 'magnet';
+  readonly elementKind: ElementKind = 'bulb';
+  readonly radius = 1.0;
+  aim = 0;
+  /** The ball it holds and how fast that ball was going. */
+  caught: { ball: Ball; vel: THREE.Vector3 } | null = null;
+  /** Each ball's velocity when it came into reach. */
+  readonly approach = new WeakMap<Ball, THREE.Vector3>();
+  /** Seconds the current ball has been held, and whether it ever caught one. */
+  heldFor = 0;
+  everCaught = false;
+  private head = new THREE.Group();
+  private field: THREE.Mesh[] = [];
+  private turn = 0;
+  private pull = 0;
+
+  constructor() {
+    super();
+    const plate = basePlate(1.8, 1.6, 'магнит');
+    // Horseshoe: half a torus, legs pointing at the poles (+x in the head's frame).
+    const red = mat('#d8483c', 0.4);
+    const bend = mesh(new THREE.TorusGeometry(0.3, 0.13, 14, 28, Math.PI), red);
+    bend.rotation.set(-Math.PI / 2, 0, Math.PI / 2);
+    bend.position.x = -0.1;
+    const legGeo = new THREE.CylinderGeometry(0.13, 0.13, 0.42, 18);
+    const steel = mat('#d9dde3', 0.25, 0.85);
+    const tipGeo = new THREE.CylinderGeometry(0.135, 0.135, 0.14, 18);
+    for (const z of [-0.3, 0.3]) {
+      const leg = mesh(legGeo, red);
+      leg.rotation.z = Math.PI / 2;
+      leg.position.set(0.11, 0, z);
+      const tip = mesh(tipGeo, steel);
+      tip.rotation.z = Math.PI / 2;
+      tip.position.set(0.39, 0, z);
+      this.head.add(leg, tip);
+    }
+    // Copper coil wound round the bend.
+    const copper = mat('#c98a4a', 0.35, 0.6);
+    for (let i = 0; i < 7; i++) {
+      const a = (i / 6) * Math.PI * 0.8 + Math.PI * 0.1;
+      const ring = mesh(new THREE.TorusGeometry(0.15, 0.025, 6, 18), copper);
+      ring.position.set(-0.1 - Math.sin(a) * 0.3, 0, -Math.cos(a) * 0.3);
+      ring.rotation.y = a;
+      this.head.add(ring);
+    }
+    this.head.add(bend);
+    // Field lines: faint arcs between the poles that brighten with current.
+    for (let i = 0; i < 3; i++) {
+      const arc = new THREE.Mesh(
+        new THREE.TorusGeometry(0.3 + i * 0.14, 0.012, 6, 32, Math.PI),
+        new THREE.MeshBasicMaterial({ color: new THREE.Color('#7fd6ff').multiplyScalar(2), transparent: true, opacity: 0, depthWrite: false }),
+      );
+      arc.rotation.set(-Math.PI / 2, 0, -Math.PI / 2);
+      arc.position.x = 0.46;
+      this.field.push(arc);
+      this.head.add(arc);
+    }
+    const stand = roundedBox(0.5, 0.22, 0.9, 0.06, C.navy2, 0.5);
+    stand.position.set(-0.2, PLATE_TOP + 0.11, -0.2);
+    this.head.position.set(0, PLATE_TOP + 0.36, -0.2);
+    this.body.add(plate, stand, this.head);
+    this.addTerminal('a', 'none', 0.62, 0.5);
+    this.addTerminal('b', 'none', -0.62, 0.5);
+    this.pickable(plate, stand, this.head);
+  }
+
+  protected electrical(): Partial<CircuitElement> {
+    return { r: 12 };
+  }
+
+  get on() {
+    return this.state.level > 0.2;
+  }
+
+  /** Where a ball sticks: just past the poles. */
+  pole(out = new THREE.Vector3()) {
+    const a = AIMS[this.aim];
+    return out.set(this.root.position.x + Math.cos(a) * 0.95, PLATE_TOP + 0.36, this.root.position.z - 0.2 - Math.sin(a) * 0.95);
+  }
+
+  tap(): boolean {
+    super.tap();
+    this.aim = (this.aim + 1) % 4;
+    this.sounds.push({ kind: 'tick' });
+    this.letGo();
+    return false;
+  }
+
+  /** Off: the ball rolls on as it was going. */
+  letGo() {
+    if (!this.caught) return;
+    this.caught.ball.vel.copy(this.caught.vel);
+    this.caught.ball.hits.delete(this);
+    this.caught = null;
+    this.sounds.push({ kind: 'marble' });
+  }
+
+  protected animate(dt: number) {
+    const goal = AIMS[this.aim];
+    const diff = Math.atan2(Math.sin(goal - this.turn), Math.cos(goal - this.turn));
+    this.turn += diff * Math.min(1, dt * 10);
+    this.head.rotation.y = this.turn;
+    this.pull = damp(this.pull, this.on ? 1 : 0, 6, dt);
+    this.field.forEach((f, i) => {
+      const t = (this.time * 1.6 + i / 3) % 1;
+      (f.material as THREE.MeshBasicMaterial).opacity = this.pull * (0.25 + 0.5 * Math.sin(t * Math.PI));
+      f.scale.setScalar(0.9 + t * 0.25);
+    });
+    this.heldFor = this.caught ? this.heldFor + dt : 0;
+    // A held ball trembles a little at the poles.
+    this.head.position.x = this.caught ? Math.sin(this.time * 60) * 0.006 : 0;
+    if (!this.on) this.letGo();
+  }
+}
+
+/** Magnets reach for balls; a ball that touches a live magnet's poles is held. */
+function attract(parts: Part[], b: Ball, dt: number): boolean {
+  for (const m of parts) {
+    if (!(m instanceof Magnet) || !m.on) continue;
+    if (m.caught?.ball === b) {
+      m.pole(b.pos);
+      b.vel.set(0, 0, 0);
+      b.still = 0;
+      return true;
+    }
+    if (m.caught) continue;
+    const p = m.pole(new THREE.Vector3());
+    const dx = p.x - b.pos.x;
+    const dz = p.z - b.pos.z;
+    const d = Math.hypot(dx, dz);
+    if (d > MAGNET_RANGE) continue;
+    // Remember how it was going before the pull, to send it on that way later.
+    if (!m.approach.has(b)) m.approach.set(b, b.vel.clone());
+    const speed = b.vel.length();
+    if (d < 0.45 || d - speed * dt < 0.45) {
+      const was = m.approach.get(b)!;
+      m.caught = { ball: b, vel: was.lengthSq() > 0.25 ? was : new THREE.Vector3(Math.cos(AIMS[m.aim]), 0, -Math.sin(AIMS[m.aim])).multiplyScalar(4) };
+      m.pole(b.pos);
+      m.everCaught = true;
+      b.vel.set(0, 0, 0);
+      b.hits.set(m, performance.now());
+      m.sounds.push({ kind: 'clack' });
+      return true;
+    }
+    const power = Math.min(1, m.state.level);
+    if (d < 1.7) {
+      // Close in: steer straight for the poles (no slingshot round them).
+      const want = Math.max(2.5, speed);
+      const k = Math.min(1, dt * 8 * power);
+      b.vel.x += ((dx / d) * want - b.vel.x) * k;
+      b.vel.z += ((dz / d) * want - b.vel.z) * k;
+    } else {
+      const a = (7 * power) / d ** 1.2;
+      b.vel.x += (dx / d) * a * dt;
+      b.vel.z += (dz / d) * a * dt;
+    }
+  }
+  return false;
+}
+
 // ─────────────────────────────── Belt ────────────────────────────────
 
 const BELT_W = 2.3;
@@ -1040,6 +1211,10 @@ function roll(parts: Part[], dt: number) {
   for (const l of parts) {
     if (!(l instanceof Launcher) || !l.ball) continue;
     const b = l.ball;
+    if (attract(parts, b, dt)) {
+      b.mesh.position.copy(b.pos);
+      continue;
+    }
     const steps = Math.ceil((b.vel.length() * dt) / 0.08) || 1;
     const h = dt / steps;
     for (let s = 0; s < steps; s++) {

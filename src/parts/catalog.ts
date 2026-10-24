@@ -9,7 +9,7 @@ import { Crane, Dynamo, Lift } from './more';
 import { Bells, Maracas, Piano, Tuba } from './band';
 import { Conveyor, MarbleRun, WaterMill } from './mech';
 import { FloorFan, PcFan, Pinwheel } from './wind';
-import { Bell, Belt, Domino, Laser, Launcher, LightSensor, Mirror, Target, WindGen } from './chain';
+import { Bell, Belt, Domino, Laser, Launcher, LightSensor, Magnet, Mirror, Target, WindGen } from './chain';
 import { Gate, Heater, Pole, Pump, Solar } from './farm';
 import type { PhraseId } from '../voice';
 
@@ -96,6 +96,7 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'mirror', name: 'Зеркало', say: 'mirror' },
       { kind: 'belt', name: 'Транспортёр', say: 'belt' },
       { kind: 'bell', name: 'Звонок', say: 'bell' },
+      { kind: 'magnet', name: 'Электромагнит', say: 'magnet' },
     ],
   },
   {
@@ -254,6 +255,8 @@ function make(kind: PartKind): Part {
       return new ButtonPanel();
     case 'tester':
       return new Tester();
+    case 'magnet':
+      return new Magnet();
   }
 }
 
