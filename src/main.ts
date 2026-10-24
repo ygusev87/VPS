@@ -12,6 +12,7 @@ import { Bells, Maracas, Piano, Tuba } from './parts/band';
 import { Drum, MusicBox } from './parts/extra';
 import { WaterMill } from './parts/mech';
 import { blowWind, Pinwheel } from './parts/wind';
+import { interact } from './parts/chain';
 import { FireTruck, Helicopter, RaceTrack, TrafficLight } from './parts/fun';
 import { Dynamo } from './parts/more';
 import { loadModels } from './parts/assets';
@@ -214,7 +215,7 @@ function startLevel(l: Level, instant = false) {
   hud.setLevel(l, progress.done);
   l.parts.forEach((p, i) => {
     // Layouts are drawn for landscape; on a tall screen lay them top-to-bottom.
-    const [x, z] = stage.portrait ? [p.fz * 5.5, p.fx * 6.5] : [p.fx * 6.5, p.fz * 4.4];
+    const [x, z] = stage.portrait && !l.fixed ? [p.fz * 5.5, p.fx * 6.5] : [p.fx * 6.5, p.fz * 4.4];
     const part = world.addPart(p.kind, x, z, { locked: l !== FREE_PLAY, closed: p.closed, appear: false });
     part.appear(0.12 + i * 0.14);
   });
@@ -417,6 +418,21 @@ function playPartSound(snd: PartSound, from?: Part) {
     case 'paint':
       sfx.paint();
       break;
+    case 'launch':
+      sfx.launch();
+      break;
+    case 'bonk':
+      sfx.bonk();
+      break;
+    case 'clack':
+      sfx.clack();
+      break;
+    case 'missed':
+      if (!aimSaid && !troubled()) {
+        aimSaid = true;
+        voice.say('aimTip', 0);
+      }
+      break;
     case 'craneDone':
       sfx.win();
       voice.say('craneDone', 0);
@@ -428,6 +444,7 @@ function playPartSound(snd: PartSound, from?: Part) {
   }
 }
 let liftSaid = false;
+let aimSaid = false;
 let craneSaid = false;
 
 // The band: every instrument moves on the notes the conductor gives it.
@@ -541,13 +558,15 @@ function watchCarry(dt: number) {
 
 let last = performance.now();
 function frame(now: number) {
-  const dt = Math.min(0.05, (now - last) / 1000);
+  const realDt = Math.min(0.5, (now - last) / 1000);
+  const dt = Math.min(0.05, realDt);
   last = now;
   stage.update(dt);
   world.update(dt);
 
   if (!won && level !== FREE_PLAY) {
-    goalHeld = level.goal(world) ? goalHeld + dt : 0;
+    // Real time, not the frame-capped dt: on a busy device a lit LED still counts after half a second.
+    goalHeld = level.goal(world) ? goalHeld + realDt : 0;
     if (goalHeld > 0.5) win();
   }
 
@@ -569,6 +588,7 @@ function frame(now: number) {
   let water = 0;
   const band = { melody: false, drum: false, piano: false, tuba: false, maracas: false, bells: false };
   blowWind(world.parts);
+  interact(world.parts, dt);
   for (const p of world.parts) {
     for (const snd of p.sounds.splice(0)) playPartSound(snd, p);
     for (const e of p.effects.splice(0)) {
@@ -652,6 +672,9 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
   world,
   stage,
   sfx,
+  get won() {
+    return won;
+  },
   startLevel,
   LEVELS,
   FREE_PLAY,
@@ -659,6 +682,19 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
   hud,
   voice,
   hints: { problemHint, sandboxHint, levelHint },
+  /** Run the table (wind, light, balls, circuits) n steps of 50 ms without drawing — for tests. */
+  step(n: number) {
+    for (let i = 0; i < n; i++) {
+      blowWind(world.parts);
+      interact(world.parts, 0.05);
+      world.update(0.05);
+      for (const p of world.parts) {
+        p.sounds.length = 0;
+        p.effects.length = 0;
+      }
+    }
+  },
+  levelGoal: () => level.goal(world),
   /** Wire two terminals directly, skipping the gesture. */
   connect(a: Terminal, b: Terminal) {
     const w = new Wire(a);

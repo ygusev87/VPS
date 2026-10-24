@@ -8,6 +8,7 @@ import { Crane, Dynamo, Lift } from './more';
 import { Bells, Maracas, Piano, Tuba } from './band';
 import { Conveyor, MarbleRun, WaterMill } from './mech';
 import { FloorFan, PcFan, Pinwheel } from './wind';
+import { Domino, Launcher, LightSensor, Target, WindGen } from './chain';
 import type { PhraseId } from '../voice';
 
 export interface CatalogItem {
@@ -77,6 +78,17 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'marbleRun', name: 'Шариковая горка', say: 'marbleRun' },
       { kind: 'waterMill', name: 'Водяная мельница', say: 'waterMill' },
       { kind: 'conveyor', name: 'Конвейер', say: 'conveyor' },
+    ],
+  },
+  {
+    id: 'chain',
+    name: 'Цепочки',
+    items: [
+      { kind: 'launcher', name: 'Пушка с шариком', say: 'launcher' },
+      { kind: 'target', name: 'Мишень', say: 'target' },
+      { kind: 'domino', name: 'Домино', say: 'domino' },
+      { kind: 'windGen', name: 'Ветряк', say: 'windGen' },
+      { kind: 'lightSensor', name: 'Фотодатчик', say: 'lightSensor' },
     ],
   },
   {
@@ -163,6 +175,16 @@ function make(kind: PartKind): Part {
       return new WaterMill();
     case 'conveyor':
       return new Conveyor();
+    case 'windGen':
+      return new WindGen();
+    case 'lightSensor':
+      return new LightSensor();
+    case 'launcher':
+      return new Launcher();
+    case 'target':
+      return new Target();
+    case 'domino':
+      return new Domino();
     case 'carousel':
       return new Carousel();
     case 'windmill':

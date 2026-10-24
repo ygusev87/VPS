@@ -6,11 +6,12 @@ import { PARAMS } from './circuit/solver';
 import type { Part, PartKind, Terminal } from './parts/base';
 import { ButtonPanel } from './parts/extra';
 import { Dynamo } from './parts/more';
+import { WindGen } from './parts/chain';
 import type { PhraseId } from './voice';
 import type { Wire } from './wires';
 import { activeAt, partIdOf, type World } from './world';
 
-export type Problem = 'short' | 'reversed' | 'bypass';
+export type Problem = 'short' | 'reversed' | 'bypass' | 'useSwitch';
 
 export type Hint =
   | { type: 'connect'; from: Terminal; to: Terminal; phrase: PhraseId }
@@ -42,7 +43,7 @@ export function isProblem(h: Hint | null): boolean {
   return h?.type === 'tapWire';
 }
 
-const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor'];
+const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher'];
 const POLAR: PartKind[] = ['led', 'buzzer', 'musicbox'];
 const isPolar = (p: Part) => POLAR.includes(p.kind);
 const isBattery = (p: Part) => p.kind === 'battery' || p.kind === 'bigBattery';
@@ -55,7 +56,7 @@ interface Source {
 }
 function sources(world: World): Source[] {
   return world.parts.flatMap((p): Source[] => {
-    if (isBattery(p) || p instanceof Dynamo) return [{ part: p, plus: p.terminal('a'), minus: p.terminal('b') }];
+    if (isBattery(p) || p instanceof Dynamo || p instanceof WindGen) return [{ part: p, plus: p.terminal('a'), minus: p.terminal('b') }];
     if (p instanceof ButtonPanel) return p.outputs().map(([plus, minus]) => ({ part: p, plus, minus }));
     return [];
   });
@@ -127,6 +128,7 @@ export function problemHint(world: World): Hint | null {
       const busiest = world.parts.find((q) => q.id === best);
       // A hand generator is "weak" because it is turned too slowly (or not at all).
       if (busiest instanceof Dynamo) return { type: 'tap', part: busiest, phrase: 'crank', local: busiest.knobPoint() };
+      if (busiest instanceof WindGen) return { type: 'tap', part: busiest, phrase: 'windTip' };
       if (busiest) return { type: 'weak', part: busiest, phrase: 'weak' };
     }
   }
@@ -167,11 +169,19 @@ function switchHint(world: World): Hint | null {
         const i = Number(el.id.split('#')[1]);
         return { type: 'tap', part: sw, phrase: 'tapPanel', local: sw.buttonPoint(i) };
       }
-      return { type: 'tap', part: sw, phrase: sw.kind === 'button' ? 'holdButton' : 'tapSwitch' };
+      return { type: 'tap', part: sw, phrase: SWITCH_PHRASE[sw.kind] ?? 'tapSwitch' };
     }
   }
   return null;
 }
+
+/** What to say about a switch-like part that would get things going. */
+const SWITCH_PHRASE: Partial<Record<PartKind, PhraseId>> = {
+  button: 'holdButton',
+  lightSensor: 'lightTip',
+  target: 'targetTip',
+  domino: 'dominoTip',
+};
 
 /**
  * Free play: gentle next-step nudges once the child pauses. Only for a part
@@ -213,9 +223,10 @@ function crankHint(world: World): Hint | null {
   const idle = world.parts.filter((p) => LOADS.includes(p.kind) && !activeAt(p.kind, p.state.level));
   if (!idle.length) return null;
   for (const d of world.parts) {
-    if (!(d instanceof Dynamo) || d.volts > 1) continue;
+    if (!(d instanceof Dynamo || d instanceof WindGen) || d.volts > 1) continue;
     const r = world.trial((e) => (e.id === d.id ? { ...e, emf: 4 } : e));
     if (!r.shorted.size && idle.some((p) => activeAt(p.kind, r.elements.get(p.id)?.level ?? 0))) {
+      if (d instanceof WindGen) return { type: 'tap', part: d, phrase: 'windTip' };
       return { type: 'tap', part: d, phrase: 'crank', local: d.knobPoint() };
     }
   }
@@ -223,56 +234,76 @@ function crankHint(world: World): Hint | null {
 }
 
 export function levelHint(world: World, level: Level, trayLeft: (k: PartKind) => number): Hint | null {
-  if (!level.chain.length || level.goal(world)) return null;
-  const battery = world.parts.find((p) => p.kind === 'battery');
-  if (!battery) return null;
+  if (level.goal(world)) return null;
+  const loops = level.loops ?? (level.chain.length ? [['battery' as PartKind, ...level.chain]] : []);
+  if (!loops.length) return null;
 
-  const used = new Set<Part>([battery]);
-  const chain: Part[] = [];
-  for (const kind of level.chain) {
-    const p = world.parts.find((q) => q.kind === kind && !used.has(q));
-    if (!p) {
-      if (trayLeft(kind) > 0) return { type: 'drag', kind, to: freeSpot(world), phrase: 'drag' };
-      return null;
+  // Every part of every loop on the table first (sources may serve several loops).
+  const used = new Set<Part>();
+  const plans: { src: Part; chain: Part[] }[] = [];
+  for (const [srcKind, ...kinds] of loops) {
+    const src = world.parts.find((q) => q.kind === srcKind);
+    if (!src) return trayLeft(srcKind) > 0 ? { type: 'drag', kind: srcKind, to: freeSpot(world), phrase: 'drag' } : null;
+    const chain: Part[] = [];
+    for (const kind of kinds) {
+      const p = world.parts.find((q) => q.kind === kind && !used.has(q));
+      if (!p) return trayLeft(kind) > 0 ? { type: 'drag', kind, to: freeSpot(world), phrase: 'drag' } : null;
+      used.add(p);
+      chain.push(p);
     }
-    used.add(p);
-    chain.push(p);
+    plans.push({ src, chain });
   }
 
-  // Try every orientation of the non-polar parts and follow the one that
-  // agrees most with what the child has already wired.
+  // A switch task where the lamp was wired straight to the battery: that wire goes.
+  for (const { src, chain } of plans) {
+    const sw = chain.find((p) => p.kind === 'switch');
+    if (!sw || (sw.closed && Math.abs(sw.state.current) > 0.01)) continue;
+    const lit = chain.find((p) => p !== sw && activeAt(p.kind, p.state.level));
+    if (!lit) continue;
+    const touching = world.wires.filter((w) => lit.terminals.some((t) => w.touches(t)));
+    const direct = touching.find((w) => src.terminals.some((t) => w.touches(t))) ?? touching.at(-1);
+    if (direct) return { type: 'tapWire', wire: direct, at: lit, problem: 'useSwitch', phrase: 'useSwitch', u: clearSpot(world, direct) };
+  }
+
+  for (const { src, chain } of plans) {
+    const missing = loopPlan(world, src, chain).find(([a, b]) => !world.wired(a, b));
+    if (missing) return { type: 'connect', from: missing[0], to: missing[1], phrase: 'connect' };
+  }
+  return crankHint(world) ?? switchHint(world);
+}
+
+/**
+ * The wires that close a loop source "+" → chain → source "−". Every
+ * orientation of the non-polar parts is tried and the one that agrees most
+ * with what the child has already wired wins.
+ */
+function loopPlan(world: World, src: Part, chain: Part[]): [Terminal, Terminal][] {
   const flexible = chain.map((p) => !isPolar(p));
   const n = chain.length;
-  let best: [Terminal, Terminal][] | null = null;
+  let best: [Terminal, Terminal][] = [];
   let bestScore = -1;
   for (let mask = 0; mask < 1 << n; mask++) {
     let ok = true;
     const pairs: [Terminal, Terminal][] = [];
-    let prev = battery.terminal('a');
+    let prev = src.terminal('a');
     for (let i = 0; i < n; i++) {
       const flip = (mask >> i) & 1;
       if (flip && !flexible[i]) {
         ok = false;
         break;
       }
-      const entry = chain[i].terminal(flip ? 'b' : 'a');
-      const exit = chain[i].terminal(flip ? 'a' : 'b');
-      pairs.push([prev, entry]);
-      prev = exit;
+      pairs.push([prev, chain[i].terminal(flip ? 'b' : 'a')]);
+      prev = chain[i].terminal(flip ? 'a' : 'b');
     }
     if (!ok) continue;
-    pairs.push([prev, battery.terminal('b')]);
+    pairs.push([prev, src.terminal('b')]);
     const score = pairs.filter(([a, b]) => world.wired(a, b)).length;
     if (score > bestScore) {
       bestScore = score;
       best = pairs;
     }
   }
-  if (!best) return null;
-  const missing = best.find(([a, b]) => !world.wired(a, b));
-  if (missing) return { type: 'connect', from: missing[0], to: missing[1], phrase: 'connect' };
-
-  return switchHint(world);
+  return best;
 }
 
 /**

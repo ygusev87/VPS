@@ -494,6 +494,17 @@ export class Bells extends BandPart {
     return false;
   }
 
+  /** A ball knocks the frame: every bell rings, one after another. */
+  ballHit() {
+    if (!this.powered) return super.ballHit();
+    BELL_PC.forEach((pc, i) =>
+      setTimeout(() => {
+        this.sounds.push({ kind: 'bell', note: 84 + pc });
+        this.ring(i, 1);
+      }, i * 110),
+    );
+  }
+
   cue(note: number) {
     // The bell closest in pitch swings.
     const pc = note % 12;

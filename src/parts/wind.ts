@@ -463,6 +463,11 @@ export class Pinwheel extends Part implements WindCatcher {
     return false;
   }
 
+  ballHit() {
+    super.ballHit();
+    this.omega += 14;
+  }
+
   get spinning() {
     return Math.abs(this.omega) > 2;
   }

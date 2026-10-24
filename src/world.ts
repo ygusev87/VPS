@@ -30,7 +30,7 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'bulb':
       return l > 0.12;
     case 'led':
-      return l > 0.3;
+      return l > 0.12;
     case 'fan':
     case 'floorFan':
     case 'pcFan':
@@ -47,6 +47,7 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'musicbox':
     case 'xylophone':
     case 'drum':
+    case 'launcher':
     case 'piano':
     case 'tuba':
     case 'maracas':

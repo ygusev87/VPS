@@ -25,14 +25,25 @@ export interface Level {
   /** Parts offered in the tray; Infinity for free play. */
   tray: { kind: PartKind; count: number }[];
   chain: PartKind[];
+  /**
+   * Several circuits, each from its own source: [source kind, ...series parts].
+   * Overrides `chain` (which means one loop from the battery).
+   */
+  loops?: PartKind[][];
+  /** Keep the layout as drawn on tall screens too (parts that face each other). */
+  fixed?: boolean;
   intro: PhraseId;
   winPhrase: PhraseId;
   goal(world: World): boolean;
 }
 
 const active = (w: World, kind: PartKind) => w.parts.filter((p) => p.kind === kind && isActive(p));
-const carries = (p: Part) => p.closed && Math.abs(p.state.current) > 0.05;
+const carries = (p: Part) => p.closed && Math.abs(p.state.current) > 0.01;
 const switchInLoop = (w: World) => w.parts.some((p) => p.kind === 'switch' && carries(p));
+/** A part of this kind is closed and current runs through it (a sensor, target, dominoes). */
+const through = (w: World, kind: PartKind) => w.parts.some((p) => p.kind === kind && carries(p));
+/** A generator of this kind is delivering current. */
+const feeding = (w: World, kind: PartKind) => w.parts.some((p) => p.kind === kind && Math.abs(p.state.current) > 0.01);
 
 export const LEVELS: Level[] = [
   {
@@ -110,7 +121,8 @@ export const LEVELS: Level[] = [
     chain: ['switch', 'buzzer'],
     intro: 'l5',
     winPhrase: 'winBuzz',
-    goal: (w) => active(w, 'buzzer').length > 0 && switchInLoop(w),
+    // The switch is there to try, but a buzzer that beeps is a buzzer that beeps.
+    goal: (w) => active(w, 'buzzer').length > 0,
   },
   {
     id: 'two-bulbs',
@@ -141,6 +153,119 @@ export const LEVELS: Level[] = [
     intro: 'l7',
     winPhrase: 'win',
     goal: (w) => active(w, 'bulb').length > 0 && active(w, 'fan').length > 0 && switchInLoop(w),
+  },
+  {
+    id: 'wind-gen',
+    title: 'Ветряк',
+    task: 'Ветер от вентилятора зажжёт светодиод',
+    icon: 'windGen',
+    fixed: true,
+    parts: [
+      { kind: 'battery', fx: -0.72, fz: -0.3 },
+      { kind: 'fan', fx: -0.22, fz: -0.32 },
+      { kind: 'windGen', fx: -0.22, fz: 0.3 },
+      { kind: 'led', fx: 0.45, fz: 0.3 },
+    ],
+    tray: [],
+    chain: [],
+    loops: [
+      ['battery', 'fan'],
+      ['windGen', 'led'],
+    ],
+    intro: 'l8',
+    winPhrase: 'winChain',
+    goal: (w) => active(w, 'led').length > 0 && feeding(w, 'windGen'),
+  },
+  {
+    id: 'light-sensor',
+    title: 'Фотодатчик',
+    task: 'Свет лампы включит вентилятор',
+    icon: 'lightSensor',
+    fixed: true,
+    parts: [
+      { kind: 'battery', fx: -0.68, fz: 0.15 },
+      { kind: 'bulb', fx: -0.1, fz: -0.38 },
+      { kind: 'lightSensor', fx: 0.25, fz: -0.38 },
+      { kind: 'fan', fx: 0.55, fz: 0.32 },
+    ],
+    tray: [],
+    chain: [],
+    loops: [
+      ['battery', 'bulb'],
+      ['battery', 'lightSensor', 'fan'],
+    ],
+    intro: 'l9',
+    winPhrase: 'winChain',
+    goal: (w) => active(w, 'fan').length > 0 && through(w, 'lightSensor'),
+  },
+  {
+    id: 'target',
+    title: 'Мишень',
+    task: 'Попади шариком в мишень',
+    icon: 'target',
+    fixed: true,
+    parts: [
+      { kind: 'battery', fx: -0.7, fz: 0.38 },
+      { kind: 'launcher', fx: -0.55, fz: -0.35 },
+      { kind: 'target', fx: 0.45, fz: -0.35 },
+      { kind: 'buzzer', fx: 0.55, fz: 0.4 },
+    ],
+    tray: [],
+    chain: [],
+    loops: [
+      ['battery', 'launcher'],
+      ['battery', 'target', 'buzzer'],
+    ],
+    intro: 'l10',
+    winPhrase: 'winChain',
+    goal: (w) => active(w, 'buzzer').length > 0 && through(w, 'target'),
+  },
+  {
+    id: 'domino',
+    title: 'Домино',
+    task: 'Шарик, домино и лампочка',
+    icon: 'domino',
+    fixed: true,
+    parts: [
+      { kind: 'battery', fx: -0.72, fz: 0.38 },
+      { kind: 'launcher', fx: -0.62, fz: -0.35 },
+      { kind: 'domino', fx: 0.25, fz: -0.35 },
+      { kind: 'bulb', fx: 0.55, fz: 0.38 },
+    ],
+    tray: [],
+    chain: [],
+    loops: [
+      ['battery', 'launcher'],
+      ['battery', 'domino', 'bulb'],
+    ],
+    intro: 'l11',
+    winPhrase: 'winChain',
+    goal: (w) => active(w, 'bulb').length > 0 && through(w, 'domino'),
+  },
+  {
+    id: 'big-chain',
+    title: 'Большая цепочка',
+    task: 'Ветер → ветряк → пушка → мишень → лампа',
+    icon: 'launcher',
+    fixed: true,
+    parts: [
+      { kind: 'battery', fx: -0.98, fz: -0.45 },
+      { kind: 'fan', fx: -0.5, fz: -0.5 },
+      { kind: 'windGen', fx: -0.5, fz: 0.2 },
+      { kind: 'launcher', fx: -0.1, fz: 0.56 },
+      { kind: 'target', fx: 0.75, fz: 0.56 },
+      { kind: 'bulb', fx: 0.7, fz: -0.42 },
+    ],
+    tray: [],
+    chain: [],
+    loops: [
+      ['battery', 'fan'],
+      ['windGen', 'launcher'],
+      ['battery', 'target', 'bulb'],
+    ],
+    intro: 'l12',
+    winPhrase: 'winChain',
+    goal: (w) => active(w, 'bulb').length > 0 && through(w, 'target') && feeding(w, 'windGen'),
   },
 ];
 

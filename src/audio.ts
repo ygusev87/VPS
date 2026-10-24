@@ -397,6 +397,25 @@ export class Sfx {
     this.noise(0.03, 0.15, 4200);
   }
 
+  /** The launcher fires: a soft "foomp" and a whoosh. */
+  launch() {
+    this.tone(220, 0.15, 'sine', 0.3, 0, 90);
+    this.noise(0.25, 0.25, 900);
+    this.tone(500, 0.3, 'triangle', 0.05, 0.03, 1200);
+  }
+
+  /** A rolling ball bumps into something. */
+  bonk() {
+    this.tone(330 + Math.random() * 80, 0.12, 'sine', 0.25, 0, 180);
+    this.noise(0.04, 0.2, 1500);
+  }
+
+  /** A domino tips onto the next one. */
+  clack() {
+    this.noise(0.03, 0.35, 2600 + Math.random() * 800);
+    this.tone(1400 + Math.random() * 300, 0.04, 'triangle', 0.06);
+  }
+
   /** A marble rolling into the funnel or past the paddle wheel. */
   marble() {
     const f = 2600 + Math.random() * 900;

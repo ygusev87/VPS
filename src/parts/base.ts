@@ -33,6 +33,11 @@ export type PartKind =
   | 'dynamo'
   | 'lift'
   | 'crane'
+  | 'windGen'
+  | 'lightSensor'
+  | 'launcher'
+  | 'target'
+  | 'domino'
   | 'switch'
   | 'button'
   | 'panel';
@@ -174,7 +179,11 @@ export type PartSound =
   | { kind: 'shake' }
   | { kind: 'marble' }
   | { kind: 'stamp' }
-  | { kind: 'paint' };
+  | { kind: 'paint' }
+  | { kind: 'launch' }
+  | { kind: 'bonk' }
+  | { kind: 'clack' }
+  | { kind: 'missed' };
 
 /** A 3D effect a part asks for (drained by the game into fx.ts), at a world point. */
 export type PartEffect =
@@ -225,6 +234,7 @@ export abstract class Part {
    */
   holdPlane: number | null = null;
   private foot: Footprint | null | undefined;
+  private plate: Footprint | undefined;
 
   private spring = 1;
   private springV = 0;
@@ -397,6 +407,30 @@ export abstract class Part {
     });
     this.foot = box.isEmpty() ? null : { x0: box.min.x, x1: box.max.x, z0: box.min.z, z1: box.max.z };
     return this.foot;
+  }
+
+  /** A rolling ball bumped into it (see chain.ts). Most parts just wobble. */
+  ballHit() {
+    this.bump(0.2);
+  }
+
+  /** The flat base plate seen from above, part-local (the lowest wide meshes). */
+  plateRect(): Footprint {
+    if (this.plate) return this.plate;
+    this.body.updateMatrixWorld(true);
+    const inv = new THREE.Matrix4().copy(this.body.matrixWorld).invert();
+    const box = new THREE.Box3();
+    const one = new THREE.Box3();
+    this.body.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (!m.isMesh || !m.geometry || (m.material as THREE.Material).transparent) return;
+      if (!m.geometry.boundingBox) m.geometry.computeBoundingBox();
+      one.copy(m.geometry.boundingBox!).applyMatrix4(new THREE.Matrix4().multiplyMatrices(inv, m.matrixWorld));
+      if (one.max.y <= PLATE_TOP + 0.01 && one.min.y < 0.05 && one.max.x - one.min.x > 0.8) box.union(one);
+    });
+    const r = this.radius * 0.7;
+    this.plate = box.isEmpty() ? { x0: -r, x1: r, z0: -r, z1: r } : { x0: box.min.x, x1: box.max.x, z0: box.min.z, z1: box.max.z };
+    return this.plate;
   }
 
   /** A lit lamp's light for the room (see Fx.shine), or null. */

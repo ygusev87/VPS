@@ -360,7 +360,23 @@ export class PushButton extends Part {
     this.closed = false;
   }
 
+  /** A ball rolls onto the big button: it clicks down for a moment. */
+  private ballHold = 0;
+  ballHit() {
+    this.closed = true;
+    this.ballHold = 0.8;
+    this.wantsSolve = true;
+    this.sounds.push({ kind: 'tick' });
+  }
+
   protected animate(dt: number) {
+    if (this.ballHold > 0) {
+      this.ballHold -= dt;
+      if (this.ballHold <= 0) {
+        this.closed = false;
+        this.wantsSolve = true;
+      }
+    }
     this.press = damp(this.press, this.closed ? 1 : 0, 25, dt);
     this.cap.scale.y = 1 - this.press * 0.18;
     this.ringMat.opacity = this.press * 0.8;
@@ -638,6 +654,13 @@ export class Xylophone extends Part {
     this.held = -1;
   }
 
+  /** A ball rolls into the xylophone: a little run of notes (with power). */
+  ballHit() {
+    if (!this.powered) return super.ballHit();
+    const start = Math.floor(Math.random() * 4);
+    for (let k = 0; k < 4; k++) setTimeout(() => this.strike(start + k), k * 90);
+  }
+
   tap(hit?: THREE.Object3D | null, point?: THREE.Vector3 | null): boolean {
     super.tap();
     if (!this.powered && this.barAt(point) >= 0) this.sounds.push({ kind: 'noPower' });
@@ -746,6 +769,14 @@ export class Drum extends Part {
     super.tap();
     if (!this.powered && this.onHead(point)) this.sounds.push({ kind: 'noPower' });
     return false;
+  }
+
+  /** A ball hits the drum: boom (with power). */
+  ballHit() {
+    if (!this.powered) return super.ballHit();
+    this.hit = 1;
+    this.strike();
+    this.sounds.push({ kind: 'drum' });
   }
 
   /** Bounce without a sound of its own (the band beat is played by the music). */
