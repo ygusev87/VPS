@@ -4,6 +4,7 @@
 import * as THREE from 'three';
 import { RoomEnvironment } from 'three/examples/jsm/environments/RoomEnvironment.js';
 import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer.js';
+import { GTAOPass } from 'three/examples/jsm/postprocessing/GTAOPass.js';
 import { OutputPass } from 'three/examples/jsm/postprocessing/OutputPass.js';
 import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass.js';
 import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass.js';
@@ -12,8 +13,9 @@ import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPa
 import { C } from './theme';
 
 /**
- * Picture quality. 2: glow and smoothing at full sharpness; 1: the same at a
- * lower resolution; 0: plain render. The game starts high and steps down by
+ * Picture quality. 2: soft shadows in corners and joints (ambient occlusion),
+ * glow and smoothing at full sharpness; 1: glow and smoothing at a lower
+ * resolution; 0: plain render. The game starts high and steps down by
  * itself when the device cannot keep up (`?q=0..2` forces one).
  */
 export type Quality = 0 | 1 | 2;
@@ -132,6 +134,8 @@ export class Stage {
     shadows.rotation.x = -Math.PI / 2;
     shadows.position.y = 0.002;
     shadows.receiveShadow = true;
+    // The table gets its darkening from contact shadows; AO is for the parts' own creases.
+    shadows.userData.noAO = true;
     shadows.renderOrder = -1;
     this.scene.add(this.ground, shadows);
 
@@ -175,6 +179,7 @@ export class Stage {
       return;
     }
     composer.addPass(new RenderPass(this.scene, this.camera));
+    if (this.quality >= 2) composer.addPass(new SoftShadows(this.scene, this.camera));
     // Only what is brighter than white glows: lit lamps, LEDs, the current.
     this.bloom = new UnrealBloomPass(new THREE.Vector2(256, 256), 0.7, 0.55, 1.0);
     composer.addPass(this.bloom);
@@ -514,6 +519,51 @@ function gridTexture(): THREE.Texture {
   tex.anisotropy = 8;
   return tex;
 }
+
+/**
+ * Ambient occlusion: darkens creases, joints and the table right next to the
+ * parts, at half resolution. Only solid things count: the screen backdrop,
+ * sprites, glows, decals and other layers that do not write depth are hidden
+ * while it draws its depth-and-normals picture.
+ */
+class SoftShadows extends GTAOPass {
+  private hidden: THREE.Object3D[] = [];
+
+  constructor(scene: THREE.Scene, camera: THREE.Camera) {
+    super(scene, camera, 256, 256);
+    this.updateGtaoMaterial({ radius: 0.7, distanceExponent: 1.2, thickness: 1.5, scale: 2.4, samples: 16 });
+    this.updatePdMaterial({ radius: 9, rings: 3, samples: 16, lumaPhi: 10, depthPhi: 2, normalPhi: 3 });
+    this.blendIntensity = 0.8;
+    // The pass's own (internal) hooks around its depth-and-normals render.
+    const self = this as unknown as Record<'_overrideVisibility' | '_restoreVisibility', () => void>;
+    const hide = self._overrideVisibility.bind(this);
+    const show = self._restoreVisibility.bind(this);
+    self._overrideVisibility = () => {
+      hide();
+      scene.traverse((o) => {
+        if (!o.visible) return;
+        const m = (o as THREE.Mesh).material as THREE.Material | undefined;
+        if ((o as THREE.Sprite).isSprite || (m && !Array.isArray(m) && m.depthWrite === false) || o.userData.noAO) {
+          o.visible = false;
+          this.hidden.push(o);
+        }
+      });
+    };
+    self._restoreVisibility = () => {
+      for (const o of this.hidden) o.visible = true;
+      this.hidden.length = 0;
+      show();
+    };
+  }
+
+  /** AO is soft by nature: at most ~1000 pixels across is plenty (and cheap on a retina iPad). */
+  setSize(width: number, height: number) {
+    const k = Math.min(1, AO_DIV / Math.max(width, height));
+    super.setSize(Math.max(1, Math.round(width * k)), Math.max(1, Math.round(height * k)));
+  }
+}
+
+let AO_DIV = 1200;
 
 /** The backdrop texture holds colours divided by this, so it can be brighter than white. */
 const BACK_GAIN = 2;
