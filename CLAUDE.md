@@ -75,8 +75,9 @@
 - Команды: `npm run dev`, `npm test` (vitest), `npm run build`, `npm run typecheck`.
 - Публикация: GitHub Pages через `.github/workflows/deploy.yml` при пуше в `main` —
   https://ygusev87.github.io/VPS/ (репозиторий публичный). На iPad: Safari → «На экран "Домой"» + Гид-доступ.
-  Работа идёт в ветке Claude, в `main` вливается по просьбе владельца («выкладывай»); при слиянии через GitHub
-  использовать rebase, чтобы в публичную историю не попадала личная почта (merge-коммиты подписываются почтой аккаунта).
+  Работа идёт в ветке Claude, в `main` вливается по просьбе владельца («выкладывай») перемоткой вперёд
+  (`git merge origin/main` в ветку, затем `git push origin <ветка>:main`): любые слияния на стороне GitHub
+  (merge/squash/rebase) подписываются почтой аккаунта, а она не должна попадать в публичную историю.
 
 ## Устройство кода
 - `src/circuit/solver.ts` — расчёт схемы (узловой анализ, диоды итерацией), покрыт тестами.
@@ -104,7 +105,8 @@
   перехватывает касание (`pressStart`/`pressEnd`), `tap(hit, point)` знает, куда попал палец.
 - `src/stage.ts` — рендерер (прозрачный фон, под ним CSS-градиент и `src/traces.ts`), бесконечная сетка с туманом,
   камера без вращения: `panTo`, `zoomAt`, `frame()` (вписать детали в свободную область между панелями через `setViewOffset`).
-- `src/parts/assets.ts` — загрузка GLB (meshopt), `model(name, fit)` вписывает модель по ширине/высоте,
+- `src/parts/assets.ts` — загрузка GLB (meshopt; текстуры через `<img>`, не `createImageBitmap` — иначе на iPad
+  WebP-текстуры чёрные), `model(name, fit)` вписывает модель по ширине/высоте,
   `tip()`/`centroid()` находят ось вала и центр вращения. Просмотр модели с осями: `npm run dev`, затем `/tools/viewer.html?m=motor`.
 - Отладка в браузере: `window.__game` (используется скриншот-тестами Playwright), `__game.connect(a, b)` — провод без жеста.
 - Headless Chromium рисует WebGL медленно (swiftshader), анимации там идут в замедленном времени — ждать дольше.
