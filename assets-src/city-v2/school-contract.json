@@ -1,5 +1,5 @@
 {
-  "status": "Image reference only; actual GLB measurements and review required",
+  "status": "GLB candidate measured; native depth4.9256 cannot match fixed door with center(11,-30). Placement proposal awaiting Claude.",
   "reference": "school-v1.png",
   "styleSource": "Approved city-v2 concept m0195, school next confirmed m0201",
   "placement": {
@@ -107,5 +107,13 @@
     "Prefer positive determinant transforms. If mirroring is required, bake reflection into vertices and reverse triangle winding/handle normals; inspect instanced result before delivery.",
     "No GLB order until reference review and price/budget confirmed; no public/models/school.glb until model measurement and review."
   ],
-  "tripoOrders": 0
+  "tripoOrders": 1,
+  "candidate": "school-3d/candidate/school.glb",
+  "measurements": "school-3d/measurements.json",
+  "proposal": {
+    "preferred": "Translate visual building only along Z by+2.496, center(11,-27.504); gameplay anchors remain fixed. Requires Claude decision before changing center contract.",
+    "alternative": "Depth scale×2.2455 at original center gives full depth11.0605 and visibly stretched side windows/roof; not recommended.",
+    "review": "school-3d/fit-review.html",
+    "notApplied": true
+  }
 }

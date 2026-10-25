@@ -1,0 +1,214 @@
+{
+  "status": "Proposed visual building offset only; Claude decision required",
+  "file": "candidate/school.glb",
+  "bytes": 147932,
+  "triangles": 7371,
+  "negativeMeshNodes": 0,
+  "runtimeFit": {
+    "width": 9,
+    "rotateY": -1.5707963267948966,
+    "centerXZ": [
+      11,
+      -27.504
+    ]
+  },
+  "referenceOriginXZ": [
+    11,
+    -30
+  ],
+  "proposedOffsetZ": 2.496,
+  "fittedSize": [
+    9,
+    6.1231,
+    4.9256
+  ],
+  "frontCenterProbes": [
+    {
+      "point": [
+        0,
+        0.05,
+        4.5
+      ],
+      "rgb": [
+        22,
+        80,
+        142
+      ]
+    },
+    {
+      "point": [
+        0,
+        0.2,
+        4.5007
+      ],
+      "rgb": [
+        14,
+        86,
+        144
+      ]
+    },
+    {
+      "point": [
+        0,
+        0.6,
+        4.5
+      ],
+      "rgb": [
+        20,
+        85,
+        147
+      ]
+    },
+    {
+      "point": [
+        0,
+        1,
+        4.5007
+      ],
+      "rgb": [
+        27,
+        85,
+        134
+      ]
+    },
+    {
+      "point": [
+        0,
+        1.5,
+        4.5021
+      ],
+      "rgb": [
+        18,
+        85,
+        151
+      ]
+    }
+  ],
+  "backCenterProbes": [
+    {
+      "point": [
+        0,
+        0.2,
+        0.4905
+      ],
+      "rgb": [
+        17,
+        85,
+        144
+      ]
+    },
+    {
+      "point": [
+        0,
+        0.6,
+        0.4895
+      ],
+      "rgb": [
+        13,
+        89,
+        141
+      ]
+    },
+    {
+      "point": [
+        0,
+        1,
+        0.4899
+      ],
+      "rgb": [
+        20,
+        86,
+        139
+      ]
+    }
+  ],
+  "lowestCenterSurface": {
+    "point": [
+      0,
+      0.01,
+      4.4823
+    ],
+    "rgb": [
+      33,
+      95,
+      149
+    ]
+  },
+  "doorZAtY0_6": 4.5,
+  "distanceFromFixedDoorTarget": 0,
+  "childrenPaths": [
+    {
+      "startXZ": [
+        -2,
+        8.5
+      ],
+      "endXZ": [
+        0,
+        4.5
+      ],
+      "rayHeight": 0.6,
+      "pathLength": 4.4721,
+      "firstHitDistance": 4.4721,
+      "hitBeforeEndpoint": false
+    },
+    {
+      "startXZ": [
+        -0.4,
+        8.5
+      ],
+      "endXZ": [
+        0,
+        4.5
+      ],
+      "rayHeight": 0.6,
+      "pathLength": 4.02,
+      "firstHitDistance": 4.0199,
+      "hitBeforeEndpoint": false
+    },
+    {
+      "startXZ": [
+        1.2,
+        8.5
+      ],
+      "endXZ": [
+        0,
+        4.5
+      ],
+      "rayHeight": 0.6,
+      "pathLength": 4.1761,
+      "firstHitDistance": 4.1761,
+      "hitBeforeEndpoint": false
+    }
+  ],
+  "laserProjection": [
+    {
+      "fromLocalXZ": [
+        6,
+        8
+      ],
+      "toLocalXZ": [
+        13,
+        8
+      ],
+      "clearanceToFullAABB": 3.391
+    },
+    {
+      "fromLocalXZ": [
+        13,
+        8
+      ],
+      "toLocalXZ": [
+        13,
+        13.5
+      ],
+      "clearanceToFullAABB": 9.0277
+    }
+  ],
+  "boardNorthMargin": 7.5332,
+  "limitations": [
+    "Door height/position estimates from central surface probes; inspect atlas and silhouette.",
+    "Beam checks conservative complete AABB projection, not gameplay traceBeam.",
+    "Child tests are center rays at y0.6, not swept collision volumes or full character animation.",
+    "Not an iPad, performance or full game test."
+  ]
+}

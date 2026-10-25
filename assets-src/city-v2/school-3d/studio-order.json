@@ -1,0 +1,39 @@
+{
+  "provider": "Tripo Studio",
+  "taskId": "4e297f77-2e7c-49fa-8143-5be5abe8ae48",
+  "url": "https://studio.tripo3d.ai/ru/workspace/generate/4e297f77-2e7c-49fa-8143-5be5abe8ae48",
+  "reference": "../school-v1.png",
+  "status": "Optimized and measured candidate; building placement decision pending",
+  "observedAtUTC": "2026-10-25T20:53:39.477453+00:00",
+  "settings": {
+    "model": "H3.1",
+    "mode": "HD image-to-model",
+    "polygonTarget": 8000,
+    "topology": "triangles",
+    "texture": "2K",
+    "delight": true,
+    "pbr": false,
+    "ultraMesh": false,
+    "aiEnhancement": false,
+    "segmentation": false,
+    "texture8K": false
+  },
+  "credits": {
+    "pool": "included Studio subscription",
+    "before": 5875,
+    "priceShown": 25,
+    "afterSubmission": 5850,
+    "additionalPurchase": false,
+    "apiCreditsUsed": 0
+  },
+  "approval": "Owner authorizes game assets with existing Tripo subscription; Claude approved reference, depth and height in m0210",
+  "note": "Candidate outside public until measured; include laser corridor and children paths in QA.",
+  "rawFile": "assets-src/raw/city-v2-2026-10-26/school.glb",
+  "rawBytes": 1140052,
+  "rawSha256": "6bd2aca04125efba33fff9852ad1ae31d42180435d1c91c7efb7f10129357ab9",
+  "downloadedAtUTC": "2026-10-25T20:54:58.747976+00:00",
+  "studioTriangles": 7371,
+  "studioVertices": 5379,
+  "candidate": "candidate/school.glb",
+  "candidateSha256": "698da0d29b21fbff9385b02b13195016eb18d9eaa9153f14d9b469413f5ab42c"
+}

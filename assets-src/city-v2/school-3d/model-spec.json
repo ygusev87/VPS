@@ -1,0 +1,6 @@
+{
+  "school": {
+    "yawDegrees": -90,
+    "note": "Chosen native -Z facade has clock and ground door; normalized to +X by yaw -90 for runtime yaw -90. Clock/entrance verified on game +Z in actual patched()/InstancedMesh. No negative mesh-node determinants."
+  }
+}
