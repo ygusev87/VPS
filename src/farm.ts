@@ -33,14 +33,16 @@ export const FARM_TRAY: { kind: PartKind; count: number }[] = [
   { kind: 'pump', count: 2 },
   { kind: 'windmill', count: 1 },
   { kind: 'bulb', count: 2 },
-  { kind: 'led', count: 3 },
+  { kind: 'led', count: 2 },
   { kind: 'heater', count: 1 },
   { kind: 'musicbox', count: 1 },
   { kind: 'button', count: 1 },
   { kind: 'bell', count: 1 },
   { kind: 'buzzer', count: 1 },
   { kind: 'switch', count: 2 },
-  // Day two.
+];
+/** Added to the drawers when the farm has its second day. */
+export const FARM_TRAY_TWO: { kind: PartKind; count: number }[] = [
   { kind: 'lift', count: 1 },
   { kind: 'carousel', count: 1 },
   { kind: 'launcher', count: 1 },
@@ -202,6 +204,11 @@ const GATE_POLE = v(10, 5.8);
 /** Day two needs these animals' models (see dayTwo). */
 const DAY_TWO_ANIMALS = ['kitten', 'goat', 'kid', 'puppy', 'goose', 'rooster', 'horse', 'chick'];
 
+/** Will the farm have its second day (once its models are loaded)? `?day2` forces it, for testing. */
+export function hasDayTwo() {
+  return DAY_TWO_ANIMALS.every(hasModel) || new URLSearchParams(location.search).has('day2');
+}
+
 export class FarmMap {
   readonly scenery = new THREE.Group();
   private critters = new Map<string, Critter>();
@@ -239,7 +246,7 @@ export class FarmMap {
    * The second day comes once its animals' models are there (stand-ins would
    * spoil the farm); `?day2` in the address turns it on anyway, for testing.
    */
-  private dayTwo = false;
+  dayTwo = false;
   /** Day two: the kitten up on the hay loft, riding the lift, or safe on the ground. */
   private kitten: 'stuck' | 'riding' | 'down' = 'stuck';
   /** How long the goat kids have been going round on the carousel. */
@@ -265,7 +272,7 @@ export class FarmMap {
   start() {
     this.stage.world.add(this.scenery);
     this.stage.showGrid(false);
-    this.dayTwo = DAY_TWO_ANIMALS.every(hasModel) || new URLSearchParams(location.search).has('day2');
+    this.dayTwo = hasDayTwo();
     this.buildBoard();
     this.buildPlaces();
     if (this.dayTwo) this.buildPlacesTwo();

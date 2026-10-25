@@ -3,7 +3,7 @@ import './style.css';
 import { Sfx } from './audio';
 import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Fx } from './fx';
-import { FARM_MODELS, FARM_TRAY, FarmMap, loadGround, type FarmProgress } from './farm';
+import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap, hasDayTwo, loadGround, type FarmProgress } from './farm';
 import { Hud } from './hud';
 import { Input } from './input';
 import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
@@ -366,6 +366,8 @@ async function startFarm(fresh = false) {
   hintShownOnce = false;
   world.clear();
   hud.showNext(false);
+  // The second day's parts come into the drawers with it (and one more LED for the geese).
+  FARM_LEVEL.tray = hasDayTwo() ? [...FARM_TRAY.map((t) => (t.kind === 'led' ? { ...t, count: t.count + 1 } : t)), ...FARM_TRAY_TWO] : FARM_TRAY;
   hud.setLevel(FARM_LEVEL, progress.done);
   farm = new FarmMap(stage, world, {
     say: (id) => voice.say(id, 0),
