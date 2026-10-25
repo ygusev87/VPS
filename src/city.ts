@@ -505,7 +505,7 @@ export class CityMap extends StoryMap {
       if (!look || drawn.has(g.model)) continue;
       for (const [x, z, yaw, s] of g.items) {
         const w = (g.fit.width ?? 5) * s;
-        const h = boxHouse(look[0], look[1], w, look[2] * s, w * 0.8);
+        const h = townHouse(look[0], look[1], w, look[2] * s, w * 0.8);
         h.position.set(x, 0, z);
         h.rotation.y = yaw;
         boxes.add(h);
@@ -1213,6 +1213,35 @@ function muddy(car: THREE.Group): THREE.Mesh[] {
 }
 
 /** Code-built stand-ins for the city's people and vehicles. */
+/** A painted house for a building not sculpted yet: walls and roof, a door, rows of windows, a chimney. */
+function townHouse(wall: string, roof: string, w: number, h: number, d: number): THREE.Group {
+  const g = boxHouse(wall, roof, w, h, d);
+  const glass = mat('#9fd0e8', 0.25);
+  const frame = mat('#ffffff', 0.6);
+  const floors = Math.max(1, Math.round(h / 1.6));
+  const across = Math.max(2, Math.round(w / 1.4));
+  for (let f = 0; f < floors; f++) {
+    for (let i = 0; i < across; i++) {
+      const x = -w / 2 + ((i + 0.5) * w) / across;
+      // The front door takes the middle of the ground floor.
+      if (f === 0 && i === Math.floor(across / 2)) continue;
+      const y = 0.9 + f * 1.5;
+      const win = mesh(new THREE.BoxGeometry(0.55, 0.65, 0.04), glass, false);
+      win.position.set(x, y, d / 2 + 0.02);
+      const sill = mesh(new THREE.BoxGeometry(0.7, 0.08, 0.1), frame, false);
+      sill.position.set(x, y - 0.38, d / 2 + 0.04);
+      g.add(win, sill);
+    }
+  }
+  const door = mesh(new THREE.BoxGeometry(0.75, 1.2, 0.06), mat('#7a4a2a', 0.7), false);
+  const dx = -w / 2 + ((Math.floor(across / 2) + 0.5) * w) / across;
+  door.position.set(dx, 0.6, d / 2 + 0.03);
+  const chimney = mesh(new THREE.BoxGeometry(0.4, 1, 0.4), mat('#9a6a4a', 0.8));
+  chimney.position.set(w * 0.25, h + 0.5, -d * 0.15);
+  g.add(door, chimney);
+  return g;
+}
+
 /** A little person: body, head and a hat or hair of their own colours. */
 function person(body: string, top: string, h = 1.1): THREE.Group {
   const g = new THREE.Group();
