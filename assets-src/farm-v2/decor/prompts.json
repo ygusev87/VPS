@@ -1,0 +1,51 @@
+[
+  {
+    "key": "fence",
+    "prompt": "Use case: stylized-concept. Asset type: isolated reference for a low-poly 3D decoration in a premium children's toy farm. Match smooth hand-sculpted painted wood/plastic toys, softly rounded robust shapes, matte finish, restrained warm natural colors, clean readable silhouette and subtle large-scale wood texture only. Whole object centered with generous margins on pure white seamless background. Three-quarter view slightly from above, soft neutral studio light, no cast shadow on background. No text, logo, people, animals, scenic base or extra props. One short straight cream-white wooden farm fence section: exactly two stout rounded square posts with gently domed caps, and exactly TWO thick horizontal rails joining the posts. Overall width to height ratio about 2.5:1 (2 units long, 0.8 units high); shallow depth. Broad rails with subtly uneven hand-sculpted edges and faint brushed wood grain; warm off-white paint with tiny honey-colored wear at corners only. Attractive minimal craftsmanship, no lattice, no wire mesh, no nails, no diagonal braces, no grass. All connected, simple strong construction with two clean open rectangular spaces. View both posts and rails clearly.",
+    "file": "fence-v1.png",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-d9df59a4-d9fd-4503-8f79-3f599b2ace9a.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "hutch",
+    "prompt": "Use case: stylized-concept. Asset type: isolated reference for a low-poly 3D decoration in a premium children's toy farm. Match smooth hand-sculpted painted wood/plastic toys, softly rounded robust shapes, matte finish, restrained warm natural colors, clean readable silhouette and subtle large-scale wood texture only. Whole object centered with generous margins on pure white seamless background. Three-quarter view slightly from above, soft neutral studio light, no cast shadow on background. No text, logo, people, animals, scenic base or extra props. One charming miniature rabbit hutch, warm honey-brown timber with cream trim, raised on four short chunky legs. Width 2.9, depth1.9,height1.7 proportions. A gently pitched muted teal-blue roof with rounded eaves. Front includes one dark open rounded doorway on the left, and one broad framed window opening on the right with exactly three sturdy widely spaced vertical wooden bars, no fine metal mesh or glass. Simple clean inset plank panels, friendly sturdy toy craft, no rabbit, no carrot, no straw outside, no base platform. Clearly an inviting small animal house, not a human cottage.",
+    "file": "hutch-v1.png",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-9c3753ab-1562-4a6e-9a80-6719a9eb6980.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "haystack",
+    "prompt": "Use case: stylized-concept. Asset type: isolated reference for a low-poly 3D decoration in a premium children's toy farm. Match smooth hand-sculpted painted wood/plastic toys, softly rounded robust shapes, matte finish, restrained warm natural colors, clean readable silhouette and subtle large-scale wood texture only. Whole object centered with generous margins on pure white seamless background. Three-quarter view slightly from above, soft neutral studio light, no cast shadow on background. No text, logo, people, animals, scenic base or extra props. One small golden straw haystack, soft compact domed mound with a slightly rounded pointed top and a broad flat bottom. Broad bundled hay ribbons and shallow curved grooves only, sculpted as ONE clean connected form, no individual thin strands. Warm muted ochre and wheat tones, subtle varied bands like a hand-carved painted wooden toy. About as wide as tall, slightly squat. No fork, no rope, no fencing, no stalks sticking out.",
+    "file": "haystack-v1.png",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-cd9d7af9-201d-4b70-9eff-8179daa94402.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "bush",
+    "prompt": "Use case: stylized-concept. Asset type: isolated reference for a low-poly 3D decoration in a premium children's toy farm. Match smooth hand-sculpted painted wood/plastic toys, softly rounded robust shapes, matte finish, restrained warm natural colors, clean readable silhouette and subtle large-scale wood texture only. Whole object centered with generous margins on pure white seamless background. Three-quarter view slightly from above, soft neutral studio light, no cast shadow on background. No text, logo, people, animals, scenic base or extra props. One small low broad green shrub cluster formed from three overlapping rounded leaf masses, the middle mass slightly taller; a few large softly sculpted leaves carved into the surface only. Calm medium sage and forest green palette, matte tactile finish. A tiny trunk mostly hidden inside foliage, flat bottom footprint. No flowers, no berries, no individual small leaves or thin branches. Ratio width:height about2:1. Simple chunky shapes readable from a bird's-eye game camera.",
+    "file": "bush-v1.png",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-1a063009-ea17-4840-9af1-35579eb3ca30.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "tree-pine",
+    "prompt": "Use case: stylized-concept. Asset type: isolated reference for a low-poly 3D decoration in a premium children's toy farm. Match smooth hand-sculpted painted wood/plastic toys, softly rounded robust shapes, matte finish, restrained warm natural colors, clean readable silhouette and subtle large-scale wood texture only. Whole object centered with generous margins on pure white seamless background. Three-quarter view slightly from above, soft neutral studio light, no cast shadow on background. No text, logo, people, animals, scenic base or extra props. One small friendly conifer tree made of three stacked rounded umbrella-like tiers of dense foliage, tapering upwards to a gently rounded tip. Muted natural forest green foliage with subtle broad sculpted contours, no needles, no individual leaves, no flat geometric triangles. Short sturdy walnut-brown trunk (#7a5232), visible and connected to foliage. Strong charming toy silhouette, about twice as tall as wide, 3D volume from every angle. No snow, no ornaments, no extra vegetation.",
+    "file": "tree-pine-v1.png",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-3d4d0bb2-c830-4259-8b16-58114a8ff346.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "fence-v2",
+    "prompt": "Edit this toy fence reference into a repeatable modular fence section. Keep the left vertical post and BOTH horizontal rails exactly in the same style, proportions, thickness, color and material. REMOVE ONLY THE RIGHT VERTICAL POST completely. Keep both horizontal rails reaching their original right-end positions, each terminating in a softly rounded clean painted wood end cap; do NOT add a replacement right post, diagonal support or any other piece. Result is one left upright with two rails projecting to its right, a single connected fork-like fence module. Pure white background, whole object centered, ample margin, no cast shadow, no text. The module will connect to the next identical left upright in a real 3D game, so the right post must be absent.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-22b3f0b4-abf1-4a94-a921-dc69b14ca199.png",
+    "file": "fence-v2.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "tree-pine-color-v2",
+    "prompt": "Edit this exact square UV color atlas for a 3D toy pine tree. Strict COLOR GRADING ONLY: keep every UV island boundary, location, outline and all painted surface details unchanged and pixel-aligned. Do not draw a tree, do not rearrange the texture. Change the orange/brown trunk areas to a darker neutral walnut brown, midtone near #7a5232, with much less orange/yellow saturation. Calm the green foliage to a slightly cooler, muted natural forest green (midtone near #49643b), retaining the current soft light/dark modeling and detail, not black. No new details, no text, no margins. Output the same full-bleed square atlas.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-85e7c0d7-4c8a-4927-8e45-beec5933f422.png",
+    "file": "tree-pine-color-v2.png",
+    "tool": "built-in image_gen"
+  }
+]

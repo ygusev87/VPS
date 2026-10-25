@@ -1,0 +1,459 @@
+{
+  "generatedAt": "2026-10-25T08:48:49.301Z",
+  "source": "/tmp/gameios-decor-normalized",
+  "output": "/tmp/gameios-decor-ready",
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 3969228,
+      "triangles": 13178,
+      "textureMiB": 114.66489664713541
+    },
+    "after": {
+      "bytes": 287164,
+      "triangles": 13178,
+      "textureMiB": 7.999999999999999
+    }
+  },
+  "models": [
+    {
+      "name": "hutch",
+      "sourceSha256": "a0b76f1f0fd2af9d4cc6de611c22264b11d2d15faa0e3920de5ef3485f89e35a",
+      "outputSha256": "1443f7d2942dc664b827e6cba7f14d4e44985f988ec2f533f86244443d6828ae",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 6000,
+      "before": {
+        "bytes": 700708,
+        "triangles": 4900,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 634338,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.3403424176763207,
+            -0.32093264564958646,
+            -0.5
+          ],
+          "max": [
+            0.3403424176763207,
+            0.32093264564958646,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 94512,
+        "triangles": 4900,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 28078,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.3403424176763207,
+            -0.32093264564958646,
+            -0.5
+          ],
+          "max": [
+            0.3403424176763207,
+            0.32093264564958646,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "tree-pine",
+      "sourceSha256": "885679ff1e151252ec9c495b843304fcd864eaef6d0dc0f5499140b7a51825c2",
+      "outputSha256": "ecd04591ef2e9b86b39119dd42b18509a9ca5588c746fb8db54c38043feb1d05",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 6000,
+      "before": {
+        "bytes": 1553140,
+        "triangles": 1686,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              1254,
+              1254
+            ],
+            "bytes": 1529584,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 7.99822998046875,
+        "bounds": {
+          "min": [
+            -0.2597125156407361,
+            -0.5,
+            -0.24715414899136326
+          ],
+          "max": [
+            0.2597125156407361,
+            0.5,
+            0.24715414899136326
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 32688,
+        "triangles": 1686,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 9066,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.2597125156407361,
+            -0.5,
+            -0.24715414899136326
+          ],
+          "max": [
+            0.2597125156407361,
+            0.5,
+            0.24715414899136326
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "bush",
+      "sourceSha256": "c77ecb5143a62a0d31e6d66514560c6abf5ee52f4965b6ce1ea4dd6c6295ad7d",
+      "outputSha256": "81ccc23cf76ab093a7fb521d362d3258994a18656ac4ec4161a1a2c54edc42a7",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 6000,
+      "before": {
+        "bytes": 423032,
+        "triangles": 1748,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 398131,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.21390423291726432,
+            -0.16188543351542709
+          ],
+          "max": [
+            0.5,
+            0.21390423291726432,
+            0.16188543351542717
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 37932,
+        "triangles": 1748,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 12964,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.21390423291726432,
+            -0.16188543351542709
+          ],
+          "max": [
+            0.5,
+            0.21390423291726432,
+            0.16188543351542717
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "haystack",
+      "sourceSha256": "aae7ebb5ee2b3bb0fc8cf3513804d1a9dd6355f6eeffbeb27ad31800b2591914",
+      "outputSha256": "d5c32fb689208f15fabdaebdd65d72fde8785a99c418c26fb03b105c7c2d1b56",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 6000,
+      "before": {
+        "bytes": 376380,
+        "triangles": 2816,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 340929,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.4991912594988861,
+            -0.32796716208380383,
+            -0.5
+          ],
+          "max": [
+            0.4991912594988861,
+            0.32796716208380383,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 47256,
+        "triangles": 2816,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 11742,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.4991912594988861,
+            -0.32796716208380383,
+            -0.5
+          ],
+          "max": [
+            0.4991912594988861,
+            0.32796716208380383,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "fence",
+      "sourceSha256": "7ddfa54dc591aafb766148ed3165b17851bfe2f682843ad9fdec6842111ab449",
+      "outputSha256": "ff6f1911b8d048c26088beac3ce290ae93823269e03a8e9c77360539a441f589",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 6000,
+      "before": {
+        "bytes": 454712,
+        "triangles": 1412,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 431594,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.13606078101350716,
+            0.0000044602167002527615,
+            -0.14602423625813335
+          ],
+          "max": [
+            2,
+            0.7999955397832998,
+            0.14602423625813338
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 34116,
+        "triangles": 1412,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 10930,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.13606078101350716,
+            0.0000044602167002527615,
+            -0.14602423625813335
+          ],
+          "max": [
+            2,
+            0.7999955397832998,
+            0.14602423625813338
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "fence-post",
+      "sourceSha256": "e3225494132602bb876fd976eb70724022205603b649f57550d7ceb9976e279e",
+      "outputSha256": "1f4ec22b2f0ca177160123e63bd10afdb7e48a3a2a673f641e55a6197604b5d3",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 6000,
+      "before": {
+        "bytes": 461256,
+        "triangles": 616,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 431594,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.1360642138938623,
+            0,
+            -0.14600905320638166
+          ],
+          "max": [
+            0.1629911306521443,
+            0.8,
+            0.14600905320638244
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 40660,
+        "triangles": 616,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 10930,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.1360642138938623,
+            0,
+            -0.14600905320638166
+          ],
+          "max": [
+            0.1629911306521443,
+            0.8,
+            0.14600905320638244
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ]
+}

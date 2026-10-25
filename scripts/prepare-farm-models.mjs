@@ -37,6 +37,22 @@ for (const name of names) {
       scene.removeChild(orient);fitted.addChild(orient);scene.addChild(fitted);
     }
   }
+  if(spec[name].module){
+    const m=spec[name].module;
+    for(const scene of root.listScenes()){
+      const b=getBounds(scene),sx=m.pitch/(b.max[0]-m.sourcePostCenterX),sy=m.height/(b.max[1]-b.min[1]);
+      const transform=doc.createNode('FarmModuleOrigin').setScale([sx,sy,sx]).setTranslation([-m.sourcePostCenterX*sx,-b.min[1]*sy,-(b.min[2]+b.max[2])/2*sx]);
+      for(const child of scene.listChildren()){scene.removeChild(child);transform.addChild(child);}scene.addChild(transform);
+      scene.setExtras({...scene.getExtras(),farmModule:{pitch:m.pitch,postAxisX:0,height:m.height,forward:'+x'}});
+    }
+  }
+  if(spec[name].placement){
+    const p=spec[name].placement;
+    for(const scene of root.listScenes()){
+      const transform=doc.createNode('FarmSharedOrigin').setScale(p.scale).setTranslation(p.translation);
+      for(const child of scene.listChildren()){scene.removeChild(child);transform.addChild(child);}scene.addChild(transform);
+    }
+  }
   await doc.transform(meshopt({encoder:MeshoptEncoder,level:'medium',quantizePosition:16}));
   await io.write(path.join(output,name+'.glb'),doc);
   console.log(JSON.stringify({name,yawDegrees:spec[name].yawDegrees??0,bounds:getBounds(root.listScenes()[0])}));

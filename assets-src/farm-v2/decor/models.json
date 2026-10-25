@@ -1,0 +1,111 @@
+{
+  "hutch": {
+    "yawDegrees": 0,
+    "taskId": "040b5c01-26d4-4af8-8976-acd8cef69a06",
+    "modelSeed": 25102050,
+    "faceLimit": 6000,
+    "creditsConsumed": 30,
+    "pbr": false,
+    "reference": "assets-src/farm-v2/decor/hutch-v1.png",
+    "rawSha256": "3bfbecdb7507593776dd5e162a9b39cec730759888e93168a122e143ee757d6b",
+    "outputSha256": "1443f7d2942dc664b827e6cba7f14d4e44985f988ec2f533f86244443d6828ae",
+    "generator": "Tripo H3.1",
+    "modelVersion": "v3.1-20260211",
+    "textureModelVersion": "v3.5-20260815",
+    "textureQuality": "standard",
+    "delight": true
+  },
+  "tree-pine": {
+    "yawDegrees": 0,
+    "baseColorPath": "assets-src/farm-v2/decor/tree-pine-color-v2.png",
+    "taskId": "10c816b1-1379-4e0a-8d95-784797cffbee",
+    "modelSeed": 25102051,
+    "faceLimit": 1800,
+    "creditsConsumed": 30,
+    "pbr": false,
+    "reference": "assets-src/farm-v2/decor/tree-pine-v1.png",
+    "rawSha256": "c33f2d7865eb647f69d19622df8c2351d204b32a0d84f8e1a0085db216847d1c",
+    "outputSha256": "ecd04591ef2e9b86b39119dd42b18509a9ca5588c746fb8db54c38043feb1d05",
+    "generator": "Tripo H3.1",
+    "modelVersion": "v3.1-20260211",
+    "textureModelVersion": "v3.5-20260815",
+    "textureQuality": "standard",
+    "delight": true
+  },
+  "bush": {
+    "yawDegrees": -90,
+    "taskId": "156801bc-41d3-4054-98b6-6e0de3e11dd0",
+    "modelSeed": 25102052,
+    "faceLimit": 1800,
+    "creditsConsumed": 30,
+    "pbr": false,
+    "reference": "assets-src/farm-v2/decor/bush-v1.png",
+    "rawSha256": "d510a4cd84586837358875ac1adced0d05479a7088594f1199406a0cfd2ab4e0",
+    "outputSha256": "81ccc23cf76ab093a7fb521d362d3258994a18656ac4ec4161a1a2c54edc42a7",
+    "generator": "Tripo H3.1",
+    "modelVersion": "v3.1-20260211",
+    "textureModelVersion": "v3.5-20260815",
+    "textureQuality": "standard",
+    "delight": true
+  },
+  "haystack": {
+    "yawDegrees": 0,
+    "taskId": "6e3b1f32-a985-41ee-9d94-4b20b3a1e5d6",
+    "modelSeed": 25102053,
+    "faceLimit": 3000,
+    "creditsConsumed": 30,
+    "pbr": false,
+    "reference": "assets-src/farm-v2/decor/haystack-v1.png",
+    "rawSha256": "0422de444957301f3b53cd8c33d5b268d3b2d221f171a5d2b21d486cce838baa",
+    "outputSha256": "d5c32fb689208f15fabdaebdd65d72fde8785a99c418c26fb03b105c7c2d1b56",
+    "generator": "Tripo H3.1",
+    "modelVersion": "v3.1-20260211",
+    "textureModelVersion": "v3.5-20260815",
+    "textureQuality": "standard",
+    "delight": true
+  },
+  "fence": {
+    "yawDegrees": -90,
+    "module": {
+      "pitch": 2,
+      "height": 0.8,
+      "sourcePostCenterX": -0.43630294501781464
+    },
+    "taskId": "55770d52-07b5-4ddc-9917-7e2108ed7f3b",
+    "modelSeed": 25102054,
+    "faceLimit": 1500,
+    "creditsConsumed": 30,
+    "pbr": false,
+    "reference": "assets-src/farm-v2/decor/fence-v2.png",
+    "rawSha256": "d0e4df2544915ed8b7e97bb8e86675b10fce94084571c6b96a5d1e057d143b1a",
+    "outputSha256": "ff6f1911b8d048c26088beac3ce290ae93823269e03a8e9c77360539a441f589",
+    "generator": "Tripo H3.1",
+    "modelVersion": "v3.1-20260211",
+    "textureModelVersion": "v3.5-20260815",
+    "textureQuality": "standard",
+    "delight": true
+  },
+  "fence-post": {
+    "yawDegrees": -90,
+    "placement": {
+      "scale": [
+        2.136060781013507,
+        1.9119845152559276,
+        2.136060781013507
+      ],
+      "translation": [
+        0.9319696094932463,
+        0.4,
+        1.9268468871274915e-16
+      ]
+    },
+    "derivedFrom": "fence",
+    "cutPlaneZ": 0.36,
+    "creditsConsumed": 0,
+    "pbr": false,
+    "reference": "assets-src/farm-v2/decor/fence-v2.png",
+    "rawSha256": "a1cfd028c68d9d0c1ada0b05a88c9a6484276ef8440cb974180a7b829c4a1625",
+    "outputSha256": "1f4ec22b2f0ca177160123e63bd10afdb7e48a3a2a673f641e55a6197604b5d3",
+    "generator": "derived locally from fence"
+  }
+}
