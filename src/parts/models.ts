@@ -572,6 +572,10 @@ export class Switch extends Part {
   readonly kind: PartKind = 'switch';
   readonly elementKind: ElementKind = 'switch';
   readonly radius = 1.3;
+  /** A tap on it is for it (it flips or turns), even where a wire lies over it. */
+  controlAt(): boolean {
+    return true;
+  }
   /** Knife blade, hinged at +x; rotation.z < 0 lifts it open. */
   private blade = new THREE.Group();
   private angle = -0.95;

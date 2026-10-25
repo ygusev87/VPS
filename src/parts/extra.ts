@@ -363,6 +363,13 @@ export class PushButton extends Part {
     this.pickable(plate, this.cap);
   }
 
+  /** Its cap is for pressing, even where a wire lies over it. */
+  controlAt(hit: THREE.Object3D | null): boolean {
+    let o = hit;
+    while (o && o !== this.cap) o = o.parent;
+    return !!o;
+  }
+
   /** Only the cap is a button; the plate still drags the part around. */
   pressStart(hit: THREE.Object3D | null): boolean {
     let o = hit;

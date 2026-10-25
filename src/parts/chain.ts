@@ -232,6 +232,10 @@ export class Launcher extends Part {
   readonly kind: PartKind = 'launcher';
   readonly elementKind: ElementKind = 'bulb';
   readonly radius = 1.05;
+  /** A tap on it is for it (it flips or turns), even where a wire lies over it. */
+  controlAt(): boolean {
+    return true;
+  }
   /** 0..3: right, towards the viewer, left, away. */
   aim = 0;
   ball: Ball | null = null;
@@ -495,6 +499,10 @@ export class Domino extends Part {
   readonly kind: PartKind = 'domino';
   readonly elementKind: ElementKind = 'switch';
   readonly radius = 1.45;
+  /** A tap on it is for it (it flips or turns), even where a wire lies over it. */
+  controlAt(): boolean {
+    return true;
+  }
   wind = 0;
   windDir = new THREE.Vector3();
   private pieces: { g: THREE.Group; angle: number; v: number; falling: boolean }[] = [];
@@ -623,6 +631,10 @@ export class Laser extends Part {
   readonly kind: PartKind = 'laser';
   readonly elementKind: ElementKind = 'bulb';
   readonly radius = 0.95;
+  /** A tap on it is for it (it flips or turns), even where a wire lies over it. */
+  controlAt(): boolean {
+    return true;
+  }
   /** 0..3: right, towards the viewer, left, away. */
   aim = 0;
   /** What the beam ends on now (set by `interact`). */
@@ -756,6 +768,10 @@ export class Mirror extends Part {
   readonly kind: PartKind = 'mirror';
   readonly elementKind: ElementKind = 'wire';
   readonly radius = 0.75;
+  /** A tap on it is for it (it flips or turns), even where a wire lies over it. */
+  controlAt(): boolean {
+    return true;
+  }
   /** 0: "/" seen from above, 1: "\". */
   side: 0 | 1 = 0;
   private pane = new THREE.Group();
