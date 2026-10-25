@@ -317,7 +317,8 @@ export class CityMap extends StoryMap {
     });
     this.tram = this.critter('tram', { width: 7 }, v(this.tramX, TRAM_Z), 2.4, 0);
     this.tram.roams = true;
-    this.critter('baker', { height: 1.6 }, BAKER, 1.6, 0.3);
+    // The model faces +x: turned to face the camera.
+    this.critter('baker', { height: 1.6 }, BAKER, 1.6, -Math.PI / 2 + 0.3);
     this.critter('pigeon', { height: 0.5 }, v(FOUNTAIN.x - 2.2, FOUNTAIN.z + 3.2), 0.5, 0.5);
     this.critter('pigeon2', { height: 0.45 }, v(FOUNTAIN.x - 3.4, FOUNTAIN.z + 2.4), 0.45, -0.4);
     const grandma = this.critter('grandma', { height: 1.5 }, GRANDMA, 1.5, 0.4);
