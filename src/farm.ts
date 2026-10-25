@@ -1213,6 +1213,20 @@ export class FarmMap {
     }
     const { at, dir } = pathAt(s);
     fox.group.position.copy(at);
+    // A button on its path: the fox climbs up onto it (and so presses it) instead of walking through it.
+    for (const p of this.world.parts) {
+      if (!(p instanceof PushButton)) continue;
+      const d = Math.hypot(p.root.position.x - at.x, p.root.position.z - at.z);
+      // The fox is long (its nose is a unit ahead): it starts climbing two units off.
+      if (d > 2) continue;
+      let top = buttonTops.get(p);
+      if (top === undefined) {
+        top = new THREE.Box3().setFromObject(p.body).max.y - p.root.position.y;
+        // A button just put down is still popping up: measure it again next time.
+        if (top > 0.5) buttonTops.set(p, top);
+      }
+      fox.group.position.y = Math.max(fox.group.position.y, top * (1 - THREE.MathUtils.smoothstep(d, 1.1, 2)));
+    }
     fox.group.rotation.y = Math.atan2(scared ? -dir.x : dir.x, scared ? -dir.z : dir.z) - Math.PI / 2;
     fox.home.copy(at);
     // The paws keep pace with the ground: quicker when it runs off, still while it waits at the coop.
@@ -1295,6 +1309,8 @@ export class FarmMap {
 // ───────────────────────── Fox path ─────────────────────────
 
 /** From the wood in the corner, below the rabbits, up to the coop. */
+/** How high each button's top is, for the fox stepping onto it. */
+const buttonTops = new WeakMap<Part, number>();
 /** Where the fox's button goes: on its path, a short walk out of the wood. */
 const FOX_BUTTON = G(-13.5, 15.6);
 const FOX_PATH = [G(-22.5, 19.5), G(-20.5, 17), FOX_BUTTON, G(-8, 14.4), at('hen', -4.8, 10.2)];
