@@ -21,6 +21,7 @@ import { FireTruck, Helicopter, RaceTrack, TrafficLight } from './parts/fun';
 import { Dynamo } from './parts/more';
 import { loadModels } from './parts/assets';
 import { ALL_ITEMS, createPart, itemKey, itemOf, MODEL_NAMES } from './parts/catalog';
+import { PerfMeter } from './perf';
 import { Stage } from './stage';
 import { loadProgress, saveProgress } from './storage';
 import { renderThumbs } from './thumbs';
@@ -278,6 +279,7 @@ Wire.neat = progress.neat;
 stage.setNight(progress.night);
 Part.night = progress.night;
 Wire.glow = progress.night ? 0.7 : 1.4;
+const perf = new PerfMeter(stage, document.querySelector('.brand')!);
 
 const input = new Input(stage, world, {
   overTray: (x, y) => hud.overTray(x, y),
@@ -987,6 +989,7 @@ function frame(now: number) {
   fx.update(dt);
   hud.updateFx(dt);
   stage.render();
+  perf.tick(now);
   requestAnimationFrame(frame);
 }
 
