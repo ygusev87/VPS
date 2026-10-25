@@ -104,10 +104,16 @@ export class Stage {
     this.renderer.shadowMap.autoUpdate = false;
 
     // Soft studio reflections make plastic and brass read as real materials.
-    const pmrem = new THREE.PMREMGenerator(this.renderer);
-    this.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    this.makeEnvironment();
     this.scene.environmentIntensity = DAY.env;
-    pmrem.dispose();
+    // An iPad may take the GPU away (memory pressure, the game put away) and give it back: three.js
+    // uploads textures and models again by itself, but the reflections were drawn on the GPU — redraw
+    // them, and the post-processing targets, or everything comes back dark.
+    this.renderer.domElement.addEventListener('webglcontextrestored', () => {
+      this.makeEnvironment();
+      this.buildComposer();
+      this.renderer.shadowMap.needsUpdate = true;
+    });
 
     // The paper background is drawn by the scene (so glow can spill over it);
     // the grid fades into it with distance.
@@ -185,6 +191,13 @@ export class Stage {
     const budget = this.quality === 2 ? 4.0e6 : this.quality === 1 ? 3.0e6 : 2.2e6;
     const css = Math.max(1, this.w * this.h);
     return Math.max(1, Math.min(window.devicePixelRatio, 2, Math.sqrt(budget / css)));
+  }
+
+  /** The studio reflections every material shows (drawn on the GPU, so redrawn after a lost context). */
+  private makeEnvironment() {
+    const pmrem = new THREE.PMREMGenerator(this.renderer);
+    this.scene.environment = pmrem.fromScene(new RoomEnvironment(), 0.04).texture;
+    pmrem.dispose();
   }
 
   /** The post-processing chain for the current quality. */
