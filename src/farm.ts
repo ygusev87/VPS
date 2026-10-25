@@ -25,7 +25,8 @@ import { isActive, type World } from './world';
 export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
   // Day two (each falls back to a stand-in until its model is made).
   'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'goose', 'rooster', 'horse', 'stable',
-  'tree-oak'];
+  // Scenery.
+  'tree-oak', 'tree-pine', 'bush', 'haystack', 'hutch'];
 /** Animals drawn with another one's model: the puppy is the dog, smaller. */
 const MODEL_OF: Record<string, string> = { puppy: 'dog' };
 
@@ -519,7 +520,12 @@ export class FarmMap {
     this.add('barn', { width: 5, rotateY: -Math.PI / 2 }, barn.x, barn.z, () => boxHouse('#c84a3a', '#5a5f6a', 6, 4, 4.5));
     const coop = at('hen', -3.2, 7.2);
     this.add('coop', { width: 2.7, rotateY: -Math.PI / 2 }, coop.x, coop.z, () => boxHouse('#f2c230', '#d8483c', 3.2, 2.2, 2.6));
-    still.add(hutch(at('rabbit', -14, 6.6)));
+    const hutchAt = at('rabbit', -14, 6.6);
+    const sculptedHutch = model('hutch', { width: 2.9, rotateY: -Math.PI / 2 });
+    if (sculptedHutch) {
+      sculptedHutch.position.set(hutchAt.x, 0, hutchAt.z);
+      this.scenery.add(sculptedHutch);
+    } else still.add(hutch(hutchAt));
     still.add(kennel(at('dog', 6.2, 8.4)));
     // Fences: the cow pen, the pig pen, the long fence before the field (with the gate), the sheep fold.
     still.add(fence([at('cow', -16, -5.2), at('cow', -16, 0.8), at('cow', -7, 0.8), at('cow', -7, -5.2)]));
@@ -557,14 +563,29 @@ export class FarmMap {
     const spout = mesh(new THREE.CylinderGeometry(0.25, 0.35, 0.3, 16), mat('#d9dde3', 0.4, 0.3));
     spout.position.set(POND.x, 0.1, POND.z);
     this.scenery.add(spout);
-    // Trees round the edges; a wood in the bottom-left where the fox lives.
-    const trees = treesFor(this.plan);
-    // The sculpted tree, drawn all at once (one instanced mesh); the code-built one without it.
-    const grove = treeModels(trees);
-    if (grove) this.scenery.add(grove);
-    else for (const [x, z, s] of trees) still.add(tree(x, z, s));
+    // Trees and bushes round the edges, a wood in the bottom-left where the fox lives, groves in the open:
+    // each kind is one sculpted model drawn all at once (instanced); code-built trees without the models.
+    const green = greeneryFor(this.plan);
+    for (const [name, fit, items] of [
+      ['tree-oak', { height: 3 }, green.oak],
+      ['tree-pine', { height: 3.6 }, green.pine],
+      ['bush', { width: 1.8 }, green.bush],
+    ] as const) {
+      const wood = instances(name, fit, items);
+      if (wood) this.scenery.add(wood);
+      else if (name !== 'bush') for (const [x, z, s] of items) still.add(tree(x, z, s));
+    }
     // Haystacks by the barn, in the field and on the hill.
-    for (const p of [at('cow', -8.5, -9.5), at('cow', -6.6, -10.2), at('field', 16.5, 0.6), at('sheep', -24.5, -15.8)]) still.add(haystack(p.x, p.z));
+    for (const p of [at('cow', -8.5, -9.5), at('cow', -6.6, -10.2), at('field', 16.5, 0.6), at('sheep', -24.5, -15.8)]) {
+      const stack = model('haystack', { width: 1.9 });
+      if (!stack) {
+        still.add(haystack(p.x, p.z));
+        continue;
+      }
+      stack.position.set(p.x, 0, p.z);
+      stack.rotation.y = p.x;
+      this.scenery.add(stack);
+    }
     this.scenery.add(sprouts(this.plan.field));
     this.scenery.add(bakeGroup(still));
     // The tractor waits on the road below the gate.
@@ -1413,29 +1434,42 @@ function fence(pts: THREE.Vector3[]): THREE.Group {
 }
 
 /**
- * Every tree from the one sculpted model: an instanced copy per tree, each
- * turned its own way, so the whole wood costs one draw (and one shadow draw).
+ * Many copies of one sculpted model (a kind of tree, a bush), each turned its
+ * own way. They are instanced in patches of the board: a patch costs one draw
+ * (and one shadow draw), and patches out of view are not drawn at all — so a
+ * close look at one yard does not pay for every tree on the farm.
  */
-function treeModels(trees: [number, number, number][]): THREE.Group | null {
-  const src = model('tree-oak', { height: 3 });
+function instances(name: string, fit: Fit, items: readonly [number, number, number][]): THREE.Group | null {
+  if (!items.length) return null;
+  const src = model(name, fit);
   if (!src) return null;
   src.updateMatrixWorld(true);
+  const PATCH = 42;
+  const patches = new Map<string, number[]>();
+  items.forEach(([x, z], i) => {
+    const key = `${Math.floor(x / PATCH)},${Math.floor(z / PATCH)}`;
+    patches.set(key, [...(patches.get(key) ?? []), i]);
+  });
   const out = new THREE.Group();
   const place = new THREE.Matrix4();
   const turn = new THREE.Quaternion();
+  const up = new THREE.Vector3(0, 1, 0);
   src.traverse((o) => {
     const m = o as THREE.Mesh;
     if (!m.isMesh) return;
-    const im = new THREE.InstancedMesh(m.geometry, m.material, trees.length);
-    trees.forEach(([x, z, s], i) => {
-      turn.setFromAxisAngle(new THREE.Vector3(0, 1, 0), (i * 2.39996) % (Math.PI * 2));
-      place.compose(new THREE.Vector3(x, 0, z), turn, new THREE.Vector3(s, s, s)).multiply(m.matrixWorld);
-      im.setMatrixAt(i, place);
-    });
-    im.castShadow = true;
-    im.receiveShadow = true;
-    im.computeBoundingSphere();
-    out.add(im);
+    for (const members of patches.values()) {
+      const im = new THREE.InstancedMesh(m.geometry, m.material, members.length);
+      members.forEach((i, k) => {
+        const [x, z, s] = items[i];
+        turn.setFromAxisAngle(up, (i * 2.39996) % (Math.PI * 2));
+        place.compose(new THREE.Vector3(x, 0, z), turn, new THREE.Vector3(s, s, s)).multiply(m.matrixWorld);
+        im.setMatrixAt(k, place);
+      });
+      im.castShadow = true;
+      im.receiveShadow = true;
+      im.computeBoundingSphere();
+      out.add(im);
+    }
   });
   return out;
 }
@@ -1575,11 +1609,12 @@ function sprouts(field: GroundPlan['field']): THREE.InstancedMesh {
 }
 
 /**
- * Where the trees grow: a wood in the bottom-left corner (the fox's), a ring
- * along the board's edge and a few small groves — never on a lane, in the
- * field or in a yard. Always the same trees (a fixed seed).
+ * Where the trees and bushes grow: a wood in the bottom-left corner (the
+ * fox's), a ring along the board's edge and small groves, oaks and pines mixed,
+ * with bushes between — never on a lane, in the field or in a yard. Always the
+ * same (a fixed seed).
  */
-function treesFor(plan: GroundPlan): [number, number, number][] {
+function greeneryFor(plan: GroundPlan) {
   let seed = 7;
   const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
   const clear: [THREE.Vector3, number][] = Object.entries(SITES).map(([name, [x, z]]) => [
@@ -1587,36 +1622,68 @@ function treesFor(plan: GroundPlan): [number, number, number][] {
     name === 'field' ? 20 : name === 'pond' || name === 'sheep' ? 15 : 11,
   ]);
   const f = plan.field;
-  const ok = (x: number, z: number, out: [number, number, number][]) =>
+  type Item = [number, number, number];
+  const all: Item[] = [];
+  const ok = (x: number, z: number, room: number, yard: number) =>
     Math.abs(x) < W / 2 - 1.5 &&
     Math.abs(z) < D / 2 - 1.5 &&
-    !onLane(plan, x, z, 2) &&
+    !onLane(plan, x, z, room) &&
     !(x > f.x0 - 3 && x < f.x1 + 3 && z > f.z0 - 3 && z < f.z1 + 3) &&
-    clear.every(([c, r]) => Math.hypot(x - c.x, z - c.z) > r) &&
-    out.every(([tx, tz]) => Math.hypot(x - tx, z - tz) > 2.6);
-  const out: [number, number, number][] = [];
-  const add = (x: number, z: number) => {
-    if (ok(x, z, out)) out.push([x, z, 0.85 + rnd() * 0.45]);
+    clear.every(([c, r]) => Math.hypot(x - c.x, z - c.z) > r - yard) &&
+    all.every(([tx, tz]) => Math.hypot(x - tx, z - tz) > room + 0.6);
+  const oak: Item[] = [];
+  const pine: Item[] = [];
+  const bush: Item[] = [];
+  const tree = (x: number, z: number, pines: number) => {
+    if (!ok(x, z, 2, 0)) return;
+    const it: Item = [x, z, 0.85 + rnd() * 0.45];
+    all.push(it);
+    (rnd() < pines ? pine : oak).push(it);
   };
-  // The fox's wood.
+  // The fox's wood: mostly pines.
   const wood = G(-25, 19.5);
-  for (let i = 0; i < 160; i++) add(wood.x + (rnd() - 0.5) * 30, wood.z + (rnd() - 0.5) * 16);
+  for (let i = 0; i < 160; i++) tree(wood.x + (rnd() - 0.5) * 30, wood.z + (rnd() - 0.5) * 16, 0.6);
   // Along the edges.
   for (let x = -W / 2 + 3; x < W / 2 - 2; x += 6) {
-    add(x + (rnd() - 0.5) * 3, -D / 2 + 2.5 + rnd() * 2);
-    add(x + (rnd() - 0.5) * 3, D / 2 - 2.5 - rnd() * 2);
+    tree(x + (rnd() - 0.5) * 3, -D / 2 + 2.5 + rnd() * 2, 0.4);
+    tree(x + (rnd() - 0.5) * 3, D / 2 - 2.5 - rnd() * 2, 0.4);
   }
   for (let z = -D / 2 + 6; z < D / 2 - 5; z += 6) {
-    add(-W / 2 + 2.5 + rnd() * 2, z + (rnd() - 0.5) * 3);
-    add(W / 2 - 2.5 - rnd() * 2, z + (rnd() - 0.5) * 3);
+    tree(-W / 2 + 2.5 + rnd() * 2, z + (rnd() - 0.5) * 3, 0.4);
+    tree(W / 2 - 2.5 - rnd() * 2, z + (rnd() - 0.5) * 3, 0.4);
   }
   // Small groves in the open.
   for (let g = 0; g < 14; g++) {
     const cx = (rnd() - 0.5) * (W - 16);
     const cz = (rnd() - 0.5) * (D - 12);
-    for (let i = 0; i < 5; i++) add(cx + (rnd() - 0.5) * 7, cz + (rnd() - 0.5) * 6);
+    for (let i = 0; i < 5; i++) tree(cx + (rnd() - 0.5) * 7, cz + (rnd() - 0.5) * 6, 0.3);
   }
-  return out;
+  // Bushes: at the feet of the trees and in twos and threes on the grass (they may come a little closer to the yards).
+  for (const [tx, tz] of [...all]) {
+    if (rnd() < 0.35) {
+      const a = rnd() * Math.PI * 2;
+      const x = tx + Math.cos(a) * 2.2;
+      const z = tz + Math.sin(a) * 2.2;
+      if (ok(x, z, 1, 2)) {
+        const it: Item = [x, z, 0.7 + rnd() * 0.5];
+        all.push(it);
+        bush.push(it);
+      }
+    }
+  }
+  for (let g = 0; g < 40; g++) {
+    const cx = (rnd() - 0.5) * (W - 8);
+    const cz = (rnd() - 0.5) * (D - 8);
+    for (let i = 0; i < 3; i++) {
+      const x = cx + (rnd() - 0.5) * 3;
+      const z = cz + (rnd() - 0.5) * 2;
+      if (!ok(x, z, 1, 2)) continue;
+      const it: Item = [x, z, 0.7 + rnd() * 0.5];
+      all.push(it);
+      bush.push(it);
+    }
+  }
+  return { oak, pine, bush };
 }
 
 /** A stand-in animal when its model did not load: a coloured rounded body. */
