@@ -112,8 +112,8 @@ add('stable',{'width':10,'rotateY':turn},[[42,-4,0,1]],'building')
 add('doghouse',{'width':3,'rotateY':turn},[[-38.5,-16.5,0,1]],'building')
 add('hutch',{'width':3,'rotateY':turn},[[-44,-14.5,0,1]],'building')
 # Missing models are deliberate slots; integration skips missing files without boxes.
-add('farmhouse',{'width':11,'rotateY':turn},[[-38.5,-25.5,0,1]],'future')
-add('silo',{'height':12},[[-5,-27,0,1]],'future')
+add('farmhouse',{'width':11,'rotateY':turn},[[-38.5,-25.5,0,1]],'building')
+add('silo',{'height':12},[[-7.6,-27,0,1]],'building')
 add('pigsty',{'width':10,'rotateY':turn},[[27,-25,0,1]],'future')
 add('tractor-shed',{'width':10,'rotateY':math.pi},[[43,26,0,1]],'future')
 add('well',{'width':2.8},[[-1.5,-3.2,0,1]],'future-toy')
@@ -140,7 +140,7 @@ def clear(p,radius):
     for e in ponds:
         if ((x-e['x'])/(e['rx']+radius+.35))**2+((z-e['z'])/(e['rz']+radius+.35))**2<1:return False
     # Authored buildings and future buildings retain their full footprint.
-    for cx,cz,w,d in [(-16,-27,10.5,11.686),(8,-23.5,4.6,7.682),(42,-4,10,12.75),(-38.5,-25.5,11,9),(-5,-27,5,5),(27,-25,10,6),(43,26,10,10)]:
+    for cx,cz,w,d in [(-16,-27,10.5,11.686),(8,-23.5,4.6,7.682),(42,-4,10,12.75),(-38.5,-25.5,11,9),(-7.6,-27,5.322,5.366),(27,-25,10,6),(43,26,10,10)]:
         if abs(x-cx)<w/2+radius+.35 and abs(z-cz)<d/2+radius+.35:return False
     return True
 

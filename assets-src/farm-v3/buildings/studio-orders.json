@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-25",
+  "provider": "Tripo Studio",
+  "model": "H3.1",
+  "settings": {
+    "triangles": 4000,
+    "texture": "2K",
+    "delight": true,
+    "pbr": false,
+    "ultra": false,
+    "aiEnhance": false
+  },
+  "credits": {
+    "before": 6050,
+    "after": 6000,
+    "spent": 50,
+    "perModel": 25
+  },
+  "models": [
+    {
+      "name": "farmhouse",
+      "id": "435c479d-5f76-4a10-aa7f-764f5488a6d5",
+      "reference": "farmhouse-v1.png"
+    },
+    {
+      "name": "silo",
+      "id": "3980dd55-178f-43f8-8818-8cb3abe1a19d",
+      "reference": "silo-v1.png"
+    }
+  ],
+  "rawDirectory": "assets-src/raw/farm-v3-2026-10-25",
+  "note": "Both succeeded first attempt. No API credits used."
+}

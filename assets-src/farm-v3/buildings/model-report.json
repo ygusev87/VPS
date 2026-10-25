@@ -1,0 +1,145 @@
+{
+  "models": [
+    {
+      "name": "farmhouse",
+      "sourceSha256": "1600a9a7eb82457cb54d952c5a4cf4559faf25ee233dd05a43dbb678eabc412c",
+      "outputSha256": "02e0ef29270a0488a07d686095de4d4485f9f16d6593e0b1fcad2883d488bb1d",
+      "target": 3000,
+      "error": 0.004,
+      "yawDegrees": 90,
+      "before": {
+        "bytes": 776436,
+        "triangles": 3455,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.5,
+            0,
+            -0.4034729301929474
+          ],
+          "max": [
+            0.5,
+            0.77587890625,
+            0.4034729301929474
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 634257
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 84820,
+        "triangles": 2999,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.4034699545274208,
+            0.000003419920861669201,
+            -0.5000000000000001
+          ],
+          "max": [
+            0.40346995452742096,
+            0.7758754863291384,
+            0.4999999999999999
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 36056
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "silo",
+      "sourceSha256": "922ab5529a5c3649a9a4703c9db12f6b80e179efc30dca76d16e2b6c790f7a2d",
+      "outputSha256": "5cc76b051100449ec6bb5c635a8e1bf4bed8333d3943660f609624ae17f8d506",
+      "target": 1000,
+      "error": 0.0015,
+      "yawDegrees": 0,
+      "before": {
+        "bytes": 647680,
+        "triangles": 3756,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.2217407375574112,
+            0,
+            -0.2235870510339737
+          ],
+          "max": [
+            0.2217407375574112,
+            1,
+            0.2235870510339737
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 518962
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 65788,
+        "triangles": 2949,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.2217474898525956,
+            0,
+            -0.22359385967589343
+          ],
+          "max": [
+            0.2217474898525956,
+            1,
+            0.22359385967589343
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 28440
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ],
+  "notes": [
+    "Static GLB, single 512px WebP color atlas, meshopt compression.",
+    "Oriented source comparisons in before/ are authoring QA only, not runtime assets.",
+    "Triangle count is an asset budget, not a measured GPU/FPS result."
+  ]
+}

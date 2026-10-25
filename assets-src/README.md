@@ -192,3 +192,19 @@ node scripts/build-farm-crops.mjs assets-src/raw/farm-v3-2026-10-25 /tmp/farm-cr
 отброшен из-за искажения реек. Воспроизведение: `node scripts/build-farm-fence-lite.mjs /tmp/fence-ready`.
 `farm-v3/fence-lite/qa-frame.html` сравнивает реальные соединения из `src/decor.ts`
 на ширине 1180/390, включая растянутые секции, угол и обратную сторону.
+
+Постройки farmhouse/silo: `farm-v3/buildings/` — Image-референсы, точные промпты,
+Studio-заказы, отчёты и точка дымовой трубы. H3.1/4000tri/2K/delight, без PBR/Ultra:
+2×25 Studio-кредитов, остаток6000; API215 не трогали. `build-farm-buildings.mjs`
+воспроизводит ориентацию, бережное упрощение, WebP512 и Meshopt. Дом2999tris/84820Б,
+силос2949tris/65788Б, вместе150608Б. Вариант силоса1437tris отклонён из-за угловатого
+основания. Полноразмерные канонически ориентированные GLB в `before/` — только для QA.
+Дом имеет фасад+X, при fit.width11/rotateY−PI/2 смотрит на юг. Положение(−38.5,−25.5),
+габариты11×8.535×8.876. Силос height12, фасад+Z, центр(−7.6,−27),
+габариты5.322×12×5.366; сдвинут от исходного x−5 ради свободной ограды курятника.
+Минимум между bbox зданий0.489; площадки и ограды не пересекаются.
+Труба дома в мире(−34.312,8.535,−25.961), передана Claude для привязки дыма.
+Воспроизведение: `node scripts/build-farm-buildings.mjs assets-src/raw/farm-v3-2026-10-25 /tmp/buildings-ready farmhouse silo`.
+Для `buildings/qa-frame.html` скопировать `/tmp/buildings-ready/before/*.glb` в
+игнорируемую `assets-src/raw/farm-v3-buildings-oriented/`. Сравнение1180/390 и3/4;
+валидатор0 ошибок/предупреждений. Геометрия этих двух экземпляров5948tris до проходов рендера.

@@ -66,6 +66,12 @@ for(const g of DECOR){
   }
  }
 }
+let minBuildingGap=Infinity;
+for(let i=0;i<buildingFootprints.length;i++)for(const b of buildingFootprints.slice(i+1)){
+ const a=buildingFootprints[i],dx=Math.max(a.x0-b.x1,b.x0-a.x1,0),dz=Math.max(a.z0-b.z1,b.z0-a.z1,0);
+ if(dx===0&&dz===0)buildingConflicts.push({models:[a.model,b.model]});
+ minBuildingGap=Math.min(minBuildingGap,Math.hypot(dx,dz));
+}
 assert.equal(buildingConflicts.length,0,JSON.stringify(buildingConflicts));
 // Every crop file was checked above. Field crops must also clear the actual
 // tractor loop with the same safety radius used by the integration (m0142).
@@ -106,7 +112,7 @@ for(const r of SOIL){board([r.x0,r.z0]);board([r.x1,r.z1]);assert(r.x1>r.x0&&r.z
 for(const e of [...PONDS,...MUD,...MEADOW]){board([e.x-e.rx,e.z-e.rz]);board([e.x+e.rx,e.z+e.rz]);}
 const report={status:'pass',roadComponents,paths:PATHS.length,fenceRuns:FENCES.length,minRoadClearance,minFoxClearance,minPoleClearance,workingPadFenceConflicts:padConflicts,
  gate:{root:[30,17],posts:[[28.4,16.4],[31.6,16.4]],exception:'Gate motor plate occupies the gate-side working square; static fences meet the existing gate posts.'},
- buildingFootprints,buildingConflicts,cropRouteClearance,gardenToyClearance,fieldCropInstances:fieldCrops.length,gardenCropInstances:gardenCropBoxes.length,gardenCropModels:[...gardenCropModels],inventory,instances:inventory.reduce((n,m)=>n+m.instances,0),trianglesBeforeIntegrationCulling:inventory.reduce((n,m)=>n+m.instances*(m.trianglesPerInstance??0),0),
+ buildingFootprints,buildingConflicts,minBuildingGap,cropRouteClearance,gardenToyClearance,fieldCropInstances:fieldCrops.length,gardenCropInstances:gardenCropBoxes.length,gardenCropModels:[...gardenCropModels],inventory,instances:inventory.reduce((n,m)=>n+m.instances,0),trianglesBeforeIntegrationCulling:inventory.reduce((n,m)=>n+m.instances*(m.trianglesPerInstance??0),0),
  notes:['Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.','farm.ts culls small instances near its interactive points.','Future groups are authoring data only until their GLBs exist.']};
 await writeFile(path.join(dir,'decor-validation.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({...report,inventory:undefined,notes:undefined},null,2));

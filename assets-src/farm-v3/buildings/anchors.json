@@ -1,0 +1,17 @@
+{
+  "fit": {
+    "width": 11,
+    "rotateY": -1.5707963267948966
+  },
+  "chimneyLocal": [
+    4.188,
+    8.535,
+    -0.461
+  ],
+  "chimneyWorld": [
+    -34.312,
+    8.535,
+    -25.961
+  ],
+  "method": "Top 0.015 source units of the chimney cap; bounding center in XZ, maximum Y, then current model() fit."
+}
