@@ -1,0 +1,39 @@
+{
+  "useCase": "stylized-concept",
+  "prompt": "Use case: stylized-concept.\nAsset type: single isolated toy-shop building reference for image-to-3D, for the children's game Electro-table.\nReference image 1: approved city composition; use ONLY its small lavender toy shop with pink roof in the upper-right corner as architectural and palette reference. Do not reproduce the city.\nReference image 2: bakery; use its tactile molded painted-toy material, softly rounded solid edges, generous cream trim and readable architectural details. Do not copy its oven, chimney, base or empty shop interior.\nCreate one beautiful compact one-storey lavender toy shop with a low magenta-pink tiled hipped roof, cream cornice and frames, shallow pink-and-cream striped scalloped awning. A large shop display with exactly three chunky recognizable toys: honey-colored teddy bear, colorful ball, small turquoise-and-coral toy train. Toys are static shallow molded relief backed by an opaque dark blue display panel, integrated into the facade, not loose objects or a deep/open interior. Place a narrow cream-framed teal door at street level to the left of the display. Small simple side window. No sign or lettering.\nProportions: broad and low; approximate full outer width 6, full height 4.2, depth 4.4 INCLUDING roof, awning and trims. Keep the roof particularly low so a gameplay bell behind the building remains visible; no dormer, tower, tall emblem or rooftop toys. Whole closed opaque building, not a cutaway. Solid roof continuous across the back.\nComposition: single complete object, front three-quarter view showing front and right wall, slightly elevated camera, centered with clear margin; warm off-white seamless studio background, soft neutral daylight, gentle contact shadow. Crisp sculpted details with restrained satin finish, polished premium children's toy look. Cream and lavender walls, rose-magenta roof, teal accents and warm golden toy details. Large simple shapes readable at small game scale, not microdetail.\nConstraints: flat bottom at ground level, no base slab, pedestal, plinth, steps, pavement, plants, people, animals, bins, bell, wires or detached props. No text, numbers, logos, watermark, transparent glass, holes through the building, open underside or interior room. One view only, no collage.",
+  "references": [
+    "/Users/gusev/gameios/assets-src/city-v2/concept-v2.png",
+    "/Users/gusev/gameios/assets-src/city-v1/bakery-v1.png"
+  ],
+  "mode": "built-in image_gen; reference generation, not an edit",
+  "output": "toy-shop-v1.png",
+  "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-0bef7be2-8725-46dc-8358-8ec8f5071749.png",
+  "sha256": "e67e439e47752d1f197cc892b8d9256fb3a8099970a19c0a3aa6bba6e636cc81",
+  "sourceRevision": "0bc7afa",
+  "status": "Reference ready for Claude review; no new GLB or Tripo order",
+  "inspection": "Single low lavender shop, pink closed-looking roof, shallow striped awning, three recognizable molded toys backed by opaque dark blue display, street-level teal door. No text, separate props, base slab, people or stairs. Hidden roof topology, real dimensions and gameplay visibility cannot be established from PNG.",
+  "createdAtUTC": "2026-10-25T21:56:36.101981+00:00",
+  "verification": {
+    "tests": 21,
+    "typecheck": "passed",
+    "browser": "IAB static HTML reference, Python localhost server",
+    "iframeSizes": [
+      [
+        1180,
+        660
+      ],
+      [
+        390,
+        660
+      ]
+    ],
+    "visualInspection": "Image visible; responsive single-column at390; bottom conditions and links accessible by scrolling. This is not a game viewport test.",
+    "screenshots": [
+      "qa/toy-shop-reference-1180.png",
+      "qa/toy-shop-reference-390.png",
+      "qa/toy-shop-reference-390-details.png"
+    ],
+    "consoleErrorsWarnings": [],
+    "limits": "No GLB/runtime/iPad/performance validation at reference stage."
+  }
+}

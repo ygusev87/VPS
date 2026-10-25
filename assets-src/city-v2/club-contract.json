@@ -1,5 +1,5 @@
 {
-  "status": "Reference approved m0217; installed GLB and asset QA complete; full game review pending",
+  "status": "Reference approved m0217; installed GLB; Claude visual integration accepted m0220; full task/iPad result pending",
   "reference": "club-v1.png",
   "sourceRevision": "50c03ab",
   "styleSource": "Accepted city-v2 concept m0195; existing bakery material language",
@@ -131,5 +131,6 @@
     "roofSampleCount": 25
   },
   "installedFile": "public/models/club.glb",
-  "release": "club-3d/release.json"
+  "release": "club-3d/release.json",
+  "integrationReviewMessage": "m0220"
 }

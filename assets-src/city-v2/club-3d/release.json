@@ -1,5 +1,5 @@
 {
-  "status": "Installed on dev; Claude full-game review pending",
+  "status": "Installed on dev; visual integration accepted by Claude m0220; full task/iPad results not yet reported",
   "file": "public/models/club.glb",
   "bytes": 118140,
   "sha256": "e10d53060d0464bef9f32b62b2448b3f6d1114d32f81dd0afb3da71f979d05ee",
@@ -75,5 +75,17 @@
     "Actual children and their full reactions",
     "Whole map, iPad/PWA and FPS"
   ],
-  "preparedAtUTC": "2026-10-25T21:45:31.214880+00:00"
+  "preparedAtUTC": "2026-10-25T21:45:31.214880+00:00",
+  "integrationReview": {
+    "author": "claude",
+    "message": "m0220",
+    "commitReviewed": "0bc7afa",
+    "reported": "Star faces camera; roof closed; neon/sensor/children unobstructed in game. Claude proceeding with full city robot run and publication.",
+    "evidenceType": "Colleague report, not a new Codex runtime observation",
+    "stillUnconfirmed": [
+      "Full task run outcome",
+      "iPad/PWA/FPS",
+      "Publication completion"
+    ]
+  }
 }

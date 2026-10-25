@@ -1,0 +1,139 @@
+{
+  "status": "Reference proposal; await review before Tripo",
+  "reference": "toy-shop-v1.png",
+  "sourceRevision": "0bc7afa",
+  "placementSource": "src/city-decor.ts, f77d137 layout",
+  "placement": {
+    "centerXZ": [
+      49.75,
+      -22.4
+    ],
+    "fitWidth": 6,
+    "instanceScale": 0.9,
+    "rotateY": -1.5707963267948966,
+    "baseY": 0,
+    "normalisedFront": "+X",
+    "gameFront": "+Z",
+    "actualRuntimeWidth": 5.4,
+    "scaleEvidence": "src/decor.ts placed() applies uniform per-instance scale after model(name, fit)"
+  },
+  "geometryTargets": {
+    "fitSizeXYZ": [
+      6,
+      4.2,
+      4.4
+    ],
+    "runtimeSizeXYZ": [
+      5.4,
+      3.78,
+      3.96
+    ],
+    "unmeasured": true,
+    "fullExtentsInclude": [
+      "roof",
+      "awning",
+      "trim",
+      "display toys"
+    ],
+    "closedOpaqueRoof": true,
+    "groundLevelDoor": true,
+    "trianglesMax": 8000,
+    "materials": 1,
+    "baseColorPixels": 512,
+    "downloadBytesTarget": 200000,
+    "note": "Approximate shape target only. Do not stretch geometry to force all dimensions; review actual decoded mesh."
+  },
+  "targetFootprintOnly": {
+    "x0": 47.05,
+    "x1": 52.45,
+    "z0": -24.38,
+    "z1": -20.42,
+    "note": "Derived from proposed dimensions after scale0.9; not a measured GLB bbox."
+  },
+  "fixedGameplay": {
+    "BINS": [
+      45,
+      -22.5
+    ],
+    "binsFitWidth": 2,
+    "DOMINO_SPOT": [
+      48,
+      -33
+    ],
+    "RACCOON_PATH": [
+      [
+        56,
+        -37
+      ],
+      [
+        52,
+        -34
+      ],
+      [
+        48,
+        -33
+      ],
+      [
+        45.5,
+        -29
+      ],
+      [
+        45.3,
+        -24
+      ]
+    ],
+    "raccoonFitWidth": 1.4,
+    "ALARM_SPOT": [
+      50.5,
+      -29.5
+    ],
+    "SHOP_POLE": [
+      53,
+      -31
+    ],
+    "SHOPKEEPER": [
+      47.5,
+      -19
+    ],
+    "shopkeeperHeight": 1.6,
+    "doNotMove": "Shop center/fit/scale, task anchors, bins, seller and raccoon path"
+  },
+  "appearance": {
+    "walls": "lavender with cream frames and corners",
+    "roof": "low pink-magenta hipped tile roof, no high emblem or dormer",
+    "awning": "shallow cream and pink stripes",
+    "display": "bear, ball and toy train as integrated shallow static relief on opaque dark blue backing",
+    "door": "teal, left of display, at ground level",
+    "exclude": [
+      "text",
+      "people",
+      "loose toys",
+      "bins",
+      "bell",
+      "wires",
+      "plants",
+      "base slab",
+      "stairs",
+      "transparent glass",
+      "open interior"
+    ]
+  },
+  "acceptance": [
+    "Inspect decoded GLB with actual model() and storymap.patched(), applying both fit width6 and instance scale0.9.",
+    "Keep the established center and scale. The previous move from z-24.2 to z-22.4 protects visibility of the bell ring behind the shop.",
+    "Measure actual full bbox and front direction; inspect roof/back/bottom and opaque material. All protrusions count toward fit.",
+    "At 1180 and390 game camera, check ALARM_SPOT bell body, ring and terminals remain visible and touchable during wire dragging. Ground-plane separation alone is insufficient.",
+    "Check the full raccoon path both toward bins and fleeing after bell, including body width and turns; no building, awning or wall intersection.",
+    "Check bins at(45,-22.5) and actual seller at(47.5,-19) remain separate and visible, including reactions.",
+    "Protect nominal4x4 placement areas for bell and domino and power pole/wire access; do not move gameplay anchors.",
+    "Day/night texture and InstancedMesh inspection; prefer positive determinant transforms to avoid mirrored winding issues.",
+    "Proceed to one Tripo order only after reference/fit review; full gameplay and iPad review remain separate acceptance."
+  ],
+  "tripoOrders": 0,
+  "studioCreditsUsed": 0,
+  "apiCreditsUsed": 0,
+  "limitations": [
+    "PNG is only a visual reference, not a runtime model or geometry measurement.",
+    "No game, iPad/PWA or FPS result from this reference."
+  ]
+}
