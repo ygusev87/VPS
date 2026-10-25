@@ -1338,12 +1338,13 @@ function groundPlan(): GroundPlan {
     // The road from the bottom edge through the gate into the field.
     { pts: [[ROAD_X, D / 2], [ROAD_X, GATE.z], [ROAD_X, FIELD.z + 2 * K], [FIELD.x, FIELD.z + K]], w: 2.6 },
     // The lane from the cow pen along the yards to the road, and lanes off it to the coop and the hutch.
-    { pts: [[cx, cz], [cx, LANE_Z], [ROAD_X, LANE_Z]], w: 1.6 },
-    { pts: [[coop.x, LANE_Z], [coop.x, coop.z - 2.4]], w: 1.3 },
-    { pts: [[cx, LANE_Z], [hutchAt.x + 2.5, hutchAt.z - 2]], w: 1.2 },
+    // (These wander a little, like trodden paths; the road and the fox's path stay as they are walked.)
+    { pts: wander([[cx, cz], [cx, LANE_Z], [ROAD_X, LANE_Z]], 1), w: 1.6 },
+    { pts: wander([[coop.x, LANE_Z], [coop.x, coop.z - 2.4]], 2), w: 1.3 },
+    { pts: wander([[cx, LANE_Z], [hutchAt.x + 2.5, hutchAt.z - 2]], 3), w: 1.2 },
     // Up the hill to the mill, and down to the pond.
-    { pts: [[cx, cz], [G(-21, -9.5).x, G(-21, -9.5).z], [MILL.x + K, MILL.z + 2.5 * K]], w: 1.3 },
-    { pts: [[ROAD_X, G(0, 10).z], [G(20, 11).x, G(20, 11).z], [POND.x + 0.6 * K, POND.z - 4.4 * K]], w: 1.2 },
+    { pts: wander([[cx, cz], [G(-21, -9.5).x, G(-21, -9.5).z], [MILL.x + K, MILL.z + 2.5 * K]], 4), w: 1.3 },
+    { pts: wander([[ROAD_X, G(0, 10).z], [G(20, 11).x, G(20, 11).z], [POND.x + 0.6 * K, POND.z - 4.4 * K]], 5), w: 1.2 },
     // The fox's path out of the wood.
     { pts: FOX_PATH.map((q) => [q.x, q.z] as [number, number]).reverse(), w: 1.1 },
   ];
@@ -1358,6 +1359,29 @@ function groundPlan(): GroundPlan {
     mud: [{ x: mud.x, z: mud.z, rx: 2.4 * K, rz: 1.6 * K }],
     hill: { x: MILL.x - 2 * K, z: MILL.z - 0.5 * K, rx: 9 * K, rz: 7 * K },
   };
+}
+
+/**
+ * A lane that wanders gently instead of running ruler-straight: each stretch
+ * bends to and fro a little, its ends (and so the corners) staying put.
+ */
+function wander(pts: [number, number][], seed: number): [number, number][] {
+  const out: [number, number][] = [pts[0]];
+  for (let i = 1; i < pts.length; i++) {
+    const [ax, az] = pts[i - 1];
+    const [bx, bz] = pts[i];
+    const len = Math.hypot(bx - ax, bz - az);
+    const n = Math.max(2, Math.round(len / 1.5));
+    const [nx, nz] = [-(bz - az) / len, (bx - ax) / len];
+    const amp = Math.min(1.1, len * 0.04);
+    const phase = seed * 1.7 + i;
+    for (let k = 1; k <= n; k++) {
+      const t = k / n;
+      const off = amp * Math.sin(Math.PI * t) * Math.sin(t * len * 0.35 + phase);
+      out.push([ax + (bx - ax) * t + nx * off, az + (bz - az) * t + nz * off]);
+    }
+  }
+  return out;
 }
 
 /** The duck pond (its bed, water and shore). */
