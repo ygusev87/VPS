@@ -663,7 +663,8 @@ world.on((e) => {
     case 'activated': {
       // A ring of light and a few rising motes: "it's alive".
       const at = e.part.root.position;
-      glance(at);
+      // (Not on a map while a hint leads somewhere: the view would bounce between the two.)
+      if (!map || !currentHint) glance(at);
       const c = e.part.kind === 'bulb' || e.part.kind === 'led' ? LIGHT[e.part.color].hex : C.teal;
       fx.ring(at, c, e.part.radius * 1.6);
       e.part.bump(0.18);
