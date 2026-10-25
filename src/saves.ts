@@ -129,7 +129,7 @@ export function restore(world: World, inv: Pick<Invention, 'parts' | 'wires'>) {
  * Where play was left: the free-play table and the farm, kept while playing so
  * the next start carries on from there. `null` forgets it.
  */
-export function keepPlace<T>(key: 'table' | 'farm' | 'city', data: T | null) {
+export function keepPlace<T>(key: 'table' | 'farm' | 'city' | 'factory', data: T | null) {
   try {
     if (data === null) localStorage.removeItem(`electro-table:${key}`);
     else localStorage.setItem(`electro-table:${key}`, JSON.stringify(data));
@@ -138,7 +138,7 @@ export function keepPlace<T>(key: 'table' | 'farm' | 'city', data: T | null) {
   }
 }
 
-export function placeKept<T>(key: 'table' | 'farm' | 'city'): T | null {
+export function placeKept<T>(key: 'table' | 'farm' | 'city' | 'factory'): T | null {
   try {
     const raw = localStorage.getItem(`electro-table:${key}`);
     return raw ? (JSON.parse(raw) as T) : null;

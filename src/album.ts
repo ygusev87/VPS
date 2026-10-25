@@ -48,6 +48,13 @@ const SPECIAL: Sticker[] = [
   { id: 'city:firefighter', say: 'stFirefighter', emoji: '🚒' },
   { id: 'city:raccoon', say: 'stRaccoon', emoji: '🦝' },
   { id: 'city:school', say: 'stSchool', emoji: '🏫' },
+  // The factory.
+  { id: 'factory:breaker', say: 'breakerHappy', emoji: '💡' },
+  { id: 'factory:press', say: 'pressHappy', emoji: '⚙️' },
+  { id: 'factory:paint', say: 'paintHappy', emoji: '🎨' },
+  { id: 'factory:robot', say: 'robotHappy', emoji: '🤖' },
+  { id: 'factory:packer', say: 'packHappy', emoji: '🎁' },
+  { id: 'factory:lorry', say: 'loadHappy', emoji: '🚚' },
 ];
 
 export class Album {

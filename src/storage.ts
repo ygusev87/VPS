@@ -10,7 +10,7 @@ export interface Progress {
   /** Wires lay themselves out tidily. */
   neat: boolean;
   /** Where play was left: the next start opens there. */
-  place: 'lab' | 'farm' | 'city';
+  place: 'lab' | 'farm' | 'city' | 'factory';
 }
 
 export function loadProgress(): Progress {
@@ -18,7 +18,7 @@ export function loadProgress(): Progress {
     const raw = localStorage.getItem(KEY);
     if (raw) {
       const d = JSON.parse(raw) as { done?: string[]; sound?: boolean; night?: boolean; neat?: boolean; place?: string };
-      return { done: new Set(d.done ?? []), sound: d.sound ?? true, night: d.night ?? false, neat: d.neat ?? false, place: d.place === 'farm' || d.place === 'city' ? d.place : 'lab' };
+      return { done: new Set(d.done ?? []), sound: d.sound ?? true, night: d.night ?? false, neat: d.neat ?? false, place: d.place === 'farm' || d.place === 'city' || d.place === 'factory' ? d.place : 'lab' };
     }
   } catch {
     // ignore

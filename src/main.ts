@@ -4,6 +4,7 @@ import { Sfx } from './audio';
 import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Fx } from './fx';
 import { CITY_MODELS, CITY_TRAY, CityMap } from './city';
+import { FACTORY_MODELS, FACTORY_TRAY, FactoryMap } from './factory';
 import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap } from './farm';
 import type { MapHooks, MapProgress, StoryMap } from './storymap';
 import { loadGround } from './ground';
@@ -98,7 +99,7 @@ let snapSaid = 0;
 let mapScore = '';
 
 /** The maps to play on: the farm and the city. */
-type MapName = 'farm' | 'city';
+type MapName = 'farm' | 'city' | 'factory';
 const mapLevel = (id: MapName, title: string, task: string, icon: PartKind, intro: PhraseId, winPhrase: PhraseId): Level => ({
   id,
   title,
@@ -126,6 +127,13 @@ const MAPS: Record<MapName, { level: Level; models: string[]; tray(): Level['tra
     models: CITY_MODELS,
     tray: () => CITY_TRAY,
     make: (hooks) => new CityMap(stage, world, hooks),
+    move: 'cityMove',
+  },
+  factory: {
+    level: mapLevel('factory', 'Завод', 'Запусти фабрику игрушек', 'gearMotor', 'factoryIntro', 'factoryDone'),
+    models: FACTORY_MODELS,
+    tray: () => FACTORY_TRAY,
+    make: (hooks) => new FactoryMap(stage, world, hooks),
     move: 'cityMove',
   },
 };
@@ -196,7 +204,7 @@ const hud = new Hud(stage, {
     sfx.unlock();
     if (id === 'open') return voice.say('mapPick', 0);
     sfx.pop();
-    if (id === 'farm' || id === 'city') void startMap(id);
+    if (id === 'farm' || id === 'city' || id === 'factory') void startMap(id);
     else if (id === 'lab') startLevel(FREE_PLAY);
     else voice.say('soon', 0);
   },
@@ -1061,7 +1069,7 @@ function frame(now: number) {
 
 // Free play is the main mode; missions wait in the drop-down. Play carries on
 // where it was left: on a map, or with the table as the child left it.
-if (progress.place === 'farm' || progress.place === 'city') await startMap(progress.place);
+if (progress.place === 'farm' || progress.place === 'city' || progress.place === 'factory') await startMap(progress.place);
 else {
   startLevel(FREE_PLAY, true);
   const table = placeKept<TableKept>('table');

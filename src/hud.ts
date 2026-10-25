@@ -51,7 +51,7 @@ export const MAPS: { id: MapId; name: string; emoji: string; img: string; open: 
   { id: 'farm', name: 'Ферма', emoji: '🐄', img: `${BASE}maps/farm.webp`, open: true },
   // The city opens once its models are made; `?city` in the address opens it for a look.
   { id: 'city', name: 'Город', emoji: '🏙️', img: `${BASE}maps/city.webp`, open: new URLSearchParams(location.search).has('city') },
-  { id: 'factory', name: 'Завод', emoji: '🏭', img: `${BASE}maps/factory.webp`, open: false },
+  { id: 'factory', name: 'Завод', emoji: '🏭', img: `${BASE}maps/factory.webp`, open: new URLSearchParams(location.search).has('factory') },
 ];
 
 export interface HudHooks {

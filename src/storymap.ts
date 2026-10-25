@@ -175,6 +175,10 @@ export abstract class StoryMap {
   protected after(p: Phase): { next: Phase; wait: number; first?: () => void } {
     return p === 'day' ? { next: 'evening', wait: 4 } : p === 'evening' ? { next: 'night', wait: 4 } : p === 'night' ? { next: 'morning', wait: 4 } : { next: 'done', wait: 3 };
   }
+  /** How dark the map is now (0 day .. 1 night): by the time of day, unless the map lights itself (the factory hall). */
+  protected darkness(): number {
+    return NIGHT[this.phase];
+  }
   /** A need was just met (the tractor sets off). */
   protected helpedNeed(_n: Need) {}
   /** A nudge of the map's own when no ring waits for a part. */
@@ -585,7 +589,7 @@ export abstract class StoryMap {
     this.time += dt;
     this.phaseT += dt;
     // Daylight: day → dusk in the evening → night → sunrise.
-    this.night = THREE.MathUtils.damp(this.night, NIGHT[this.phase], 0.6, dt);
+    this.night = THREE.MathUtils.damp(this.night, this.darkness(), 0.6, dt);
     this.stage.setNightAmount(this.night);
 
     // Parts let go near their ring glide onto it.
