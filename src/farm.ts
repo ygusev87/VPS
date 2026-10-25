@@ -470,7 +470,9 @@ export class FarmMap extends StoryMap {
       ...this.world.parts.map((p) => p.root.position),
       BELL_SPOT,
     ];
-    const lines = [FOX_PATH, [LAUNCH_SPOT, v(LAUNCH_SPOT.x + 15, LAUNCH_SPOT.z)], [TRACTOR_AT, FIELD]];
+    // The tractor's way: down through the gate, then its loop round the field (as updateTractor drives it).
+    const loop = Array.from({ length: 25 }, (_, i) => v(FIELD.x + Math.cos((i / 24) * Math.PI * 2) * 4.2, FIELD.z + Math.sin((i / 24) * Math.PI * 2) * 6));
+    const lines = [FOX_PATH, [LAUNCH_SPOT, v(LAUNCH_SPOT.x + 15, LAUNCH_SPOT.z)], [TRACTOR_AT, v(TRACTOR_AT.x, FIELD.z - 6)], loop];
     // The toys to poke, and the herd: animals in the dressing wander about instead of standing still.
     for (const [kind, x, z, yaw] of TOYS) this.life.addToy(kind, x, z, yaw, kind === 'mouse' ? (model('haystack', { width: 2.2 }) ?? undefined) : undefined);
     keep.push(...this.life.toySpots);
@@ -506,8 +508,8 @@ export class FarmMap extends StoryMap {
         if (wood) this.scenery.add(wood);
       }
     }
-    // Young wheat on the field until the crops are modelled.
-    if (![...drawn].some((m) => m.startsWith('crop'))) this.scenery.add(sprouts(this.plan.field));
+    // Young wheat on the field until the wheat is modelled.
+    if (!drawn.has('crop-wheat')) this.scenery.add(sprouts(this.plan.field));
   }
 
   /**
