@@ -62,9 +62,15 @@ export interface GroundPlan {
   lanes: { pts: [number, number][]; w: number }[];
   /** The ploughed field: a rounded rectangle. */
   field: { x0: number; z0: number; x1: number; z1: number };
+  /** More ploughed ground (garden beds, more fields). */
+  fields?: { x0: number; z0: number; x1: number; z1: number }[];
   mud: Ellipse[];
   /** Lighter grass on the hill. */
   hill: Ellipse;
+  /** More patches of lighter grass (meadows), up to three. */
+  meadows?: Ellipse[];
+  /** How colourful the ground is (1 as the tiles are painted; the default is a little greyer). */
+  saturation?: number;
   /** Which tile paints each part of the ground (the farm's by default; the city has asphalt roads and paved squares). */
   tiles?: Partial<Record<'base' | 'hill' | 'lane' | 'field' | 'mud', Tile>>;
 }
@@ -98,11 +104,12 @@ function maskTexture(plan: GroundPlan): THREE.CanvasTexture {
     g.lineWidth = w * MASK_PX;
     g.stroke();
   }
-  const f = plan.field;
   g.fillStyle = 'rgb(0,255,0)';
-  g.beginPath();
-  g.roundRect(X(f.x0), Z(f.z0), (f.x1 - f.x0) * MASK_PX, (f.z1 - f.z0) * MASK_PX, 0.8 * MASK_PX);
-  g.fill();
+  for (const f of [plan.field, ...(plan.fields ?? [])]) {
+    g.beginPath();
+    g.roundRect(X(f.x0), Z(f.z0), (f.x1 - f.x0) * MASK_PX, (f.z1 - f.z0) * MASK_PX, 0.8 * MASK_PX);
+    g.fill();
+  }
   g.fillStyle = 'rgb(0,0,255)';
   for (const m of plan.mud) {
     g.beginPath();
@@ -128,7 +135,8 @@ export function groundMaterial(plan: GroundPlan): THREE.MeshStandardMaterial {
     tMud: { value: tileTexture(t.mud) },
     tMask: { value: maskTexture(plan) },
     uBoard: { value: new THREE.Vector2(plan.width, plan.depth) },
-    uHill: { value: new THREE.Vector4(plan.hill.x, plan.hill.z, plan.hill.rx, plan.hill.rz) },
+    uHill: { value: [plan.hill, ...(plan.meadows ?? [])].slice(0, 4).concat(Array(4).fill({ x: 0, z: 0, rx: 0.001, rz: 0.001 })).slice(0, 4).map((e) => new THREE.Vector4(e.x, e.z, e.rx, e.rz)) },
+    uSaturation: { value: plan.saturation ?? 0.8 },
     // World units per tile of each part.
     uScale: { value: new THREE.Vector4(SIZE[t.base], SIZE[t.lane], SIZE[t.field], SIZE[t.mud]) },
   };
@@ -144,16 +152,17 @@ export function groundMaterial(plan: GroundPlan): THREE.MeshStandardMaterial {
 varying vec2 vGround;
 uniform sampler2D tGrass, tHillGrass, tSand, tSoil, tMud, tMask;
 uniform vec2 uBoard;
-uniform vec4 uHill;
-uniform vec4 uScale;`,
+uniform vec4 uHill[4];
+uniform vec4 uScale;
+uniform float uSaturation;`,
       )
       .replace(
         '#include <map_fragment>',
         `{
   vec2 p = vGround;
   vec4 m = texture2D(tMask, vec2(p.x / uBoard.x + 0.5, 0.5 - p.y / uBoard.y));
-  vec2 h = (p - uHill.xy) / uHill.zw;
-  float hill = 1.0 - smoothstep(0.75, 1.0, length(h));
+  float hill = 0.0;
+  for (int i = 0; i < 4; i++) hill = max(hill, 1.0 - smoothstep(0.75, 1.0, length((p - uHill[i].xy) / uHill[i].zw)));
   vec3 col = mix(texture2D(tGrass, p / uScale.x).rgb, texture2D(tHillGrass, p / uScale.x).rgb, hill);
   col = mix(col, texture2D(tSoil, p / uScale.z).rgb, smoothstep(0.4, 0.6, m.g));
   col = mix(col, texture2D(tMud, p / uScale.w).rgb, smoothstep(0.35, 0.65, m.b));
@@ -161,7 +170,7 @@ uniform vec4 uScale;`,
   float verge = smoothstep(0.15, 0.4, m.r) * (1.0 - lane);
   col *= 1.0 - verge * 0.22;
   col = mix(col, texture2D(tSand, p / uScale.y).rgb, lane);
-  col = mix(vec3(dot(col, vec3(0.2126, 0.7152, 0.0722))), col, 0.8);
+  col = max(mix(vec3(dot(col, vec3(0.2126, 0.7152, 0.0722))), col, uSaturation), 0.0);
   diffuseColor.rgb *= col;
 }`,
       );
