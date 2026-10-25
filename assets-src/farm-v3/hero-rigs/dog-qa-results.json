@@ -1,0 +1,67 @@
+{
+  "date": "2026-10-25",
+  "model": "dog-rig",
+  "status": "asset ready for stationary reactions; Claude integration/review pending",
+  "viewports": [
+    [
+      1180,
+      844
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "views": [
+    "side +Z",
+    "side -Z",
+    "three-quarter",
+    "game"
+  ],
+  "motions": {
+    "headNodDegrees": 15,
+    "headTurnDegrees": 15,
+    "tailSwingDegrees": 20,
+    "oscillation": "head turn and tail visually checked",
+    "walking": "not verified; four 4-joint limb chains exist",
+    "earsAndJaw": "no separate joints"
+  },
+  "orientation": {
+    "sourcePreserved": true,
+    "forwardEstimate": [
+      0.566062105668899,
+      0,
+      0.8243625977236548
+    ],
+    "estimateMethod": "horizontal vector between midpoint of rear and front shoulder/hip joints",
+    "existingGameFit": {
+      "height": 1.5
+    },
+    "existingGameGroupYaw": -0.6,
+    "note": "Old +X-only source annotation was inaccurate; no normalization applied."
+  },
+  "checks": [
+    "Exact protected arrays/skin/transforms after Meshopt compression",
+    "Static texture byte equality and bidirectional vertex comparison in dog-audit.json",
+    "21 tests passed; npm run typecheck passed (2026-10-25 16:55 UTC)",
+    "Common QA camera regression: cow bind pose fully visible on tablet"
+  ],
+  "realIPad": "not tested",
+  "browserNotes": [
+    "An unsourced MutationObserver.observe error was logged, also seen in previous QA sessions"
+  ],
+  "credits": {
+    "before": 165,
+    "check": 0,
+    "rig": 25,
+    "after": 140,
+    "frozen": 0
+  },
+  "screenshots": [
+    "/tmp/gameios-visual-audit-2026-10-25/dog-rig-bind.png",
+    "/tmp/gameios-visual-audit-2026-10-25/dog-rig-head.png",
+    "/tmp/gameios-visual-audit-2026-10-25/dog-rig-look.png",
+    "/tmp/gameios-visual-audit-2026-10-25/dog-rig-tail.png",
+    "/tmp/gameios-visual-audit-2026-10-25/dog-rig-phone.png"
+  ]
+}

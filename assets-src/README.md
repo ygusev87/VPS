@@ -66,7 +66,7 @@ texture_quality=standard, face_limit=30000) — каждая деталь сра
 | solar | солнечная панель | c488cdbe-f1cc-4245-99d8-36ce71bd7797 | `rotateY: -π/2` |
 | pump | насос (носик в +x) | a07ffdd3-ca1d-48e7-ad75-719066268a28 | вода из носика |
 | pole | столб (перекладина вдоль z) | 0e52db62-3503-4716-a4af-b69587fcc4c5 | `rotateY: π/2` |
-| fox, rabbit, dog | лиса, кролик, собака (смотрят в +x) | c2d71a9a-8a5a-44a0-bae6-fbe3f650dccd, 8f04d2f7-04a5-469c-91a4-c06cc2a72920, 0d5d3d02-f8a5-4e9b-a636-b4a7ee9eff24 | |
+| fox, rabbit, dog | лиса, кролик (+x); собака по диагонали +x/+z — см. farm-v3/hero-rigs/dog.md | c2d71a9a-8a5a-44a0-bae6-fbe3f650dccd, 8f04d2f7-04a5-469c-91a4-c06cc2a72920, 0d5d3d02-f8a5-4e9b-a636-b4a7ee9eff24 | |
 | doghouse | будка | 5bc78ef9-ebc5-43e1-9c03-84eb22ab6905 | |
 | sack | мешок муки (1,5 млн треугольников → `gltf-transform simplify --ratio 0.02`) | c3922a1c-6876-41a2-a724-2cd40fa29a98 | |
 
@@ -264,3 +264,7 @@ farm-v3/hero-rigs/README.md: отдельный cow-rig.glb, 301.6 КиБ, 7999 
 Лошадь: public/models/horse-rig.glb, 278.4 КиБ, 26 костей, чистые реакции головы/хвоста;
 карта в farm-v3/hero-rigs/horse.md. Статичная horse.glb сохранена.
 25 API-кредитов (190 → 165); ходьба не заявляется из-за неполной передней ноги −Z.
+
+Собака: public/models/dog-rig.glb, 312.0 КиБ, 26 костей; исходная диагональная
+ориентация и текстуры сохранены. Карта головы/хвоста: farm-v3/hero-rigs/dog.md.
+25 API-кредитов (165 → 140), без клипов.
