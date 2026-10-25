@@ -16,10 +16,8 @@ import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import { flowers, groundMaterial, onLane, pond, type Ellipse, type GroundPlan } from './ground';
 import { AMBIENT } from './parts/wind';
-import type { Stage } from './stage';
-import { thumb } from './thumbs';
-import type { PhraseId } from './voice';
-import { isActive, type World } from './world';
+import { isActive } from './world';
+import { StoryMap, blob, v, type Critter, type MapHooks, type MapProgress, type Need, type NeedSpec, type Phase } from './storymap';
 
 /** Model files only the farm needs (loaded when it opens). */
 export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
@@ -53,26 +51,7 @@ export const FARM_TRAY_TWO: { kind: PartKind; count: number }[] = [
   { kind: 'launcher', count: 1 },
 ];
 
-export interface FarmHooks {
-  say(id: PhraseId): void;
-  /** Confetti and a cheer at a point on the table. */
-  cheer(at: THREE.Vector3): void;
-  /** The whole farm is happy. */
-  done(): void;
-  /** A soft sound for a happy animal. */
-  chime(): void;
-  /** Someone was helped (an animal's name, or 'fox' when it is chased off). */
-  helped?(name: string, at: THREE.Vector3): void;
-  /** Something worth seeing is happening here (the camera may glance at it). */
-  look?(at: THREE.Vector3): void;
-  /** Bring this area into view, close up (the next animal to help). */
-  focus?(points: THREE.Vector3[], instant?: boolean): void;
-  /** A part snapped onto its ring. */
-  placed?(at: THREE.Vector3): void;
-}
-
-/** How close to a ring a dropped part must be to snap onto it. */
-const SNAP_R = 3.2;
+export type FarmHooks = MapHooks;
 
 /**
  * The farm is big, so every task has room round it: the yards stand far apart
@@ -86,19 +65,9 @@ const K = 1.5;
 const W = Math.round(72 * S);
 const D = Math.round(48 * S);
 
-type Phase = 'day' | 'evening' | 'night' | 'morning' | 'done';
-/** How dark each part of the day is (0 day .. 1 night). */
-const NIGHT: Record<Phase, number> = { day: 0, evening: 0.72, night: 1, morning: 0, done: 0 };
 
-/** The story so far, as saved between visits. */
-export interface FarmProgress {
-  /** Which layout the parts were saved on (see FARM_LAYOUT); another one starts the farm afresh. */
-  layout?: number;
-  /** Missing in saves from before the second day. */
-  day?: 1 | 2;
-  phase: Phase;
-  /** Per need, in the order they are built. */
-  done: boolean[];
+/** The farm's story so far, as saved between visits. */
+export interface FarmProgress extends MapProgress {
   trough: number;
   mill: number;
   fountain: number;
@@ -109,57 +78,6 @@ const r2 = (n: number) => Math.round(n * 100) / 100;
 
 /** Bumped whenever the farm is laid out anew: a farm saved on an older layout would have its parts in the wrong places. */
 export const FARM_LAYOUT = 2;
-
-interface Critter {
-  name: string;
-  group: THREE.Group;
-  /** Rests here; bobs and hops around it. */
-  home: THREE.Vector3;
-  height: number;
-  bubble: THREE.Sprite;
-  hearts: THREE.Sprite[];
-  hop: number;
-  /** Height it stands at (a kitten up on the loft or riding a lift, kids on a carousel). */
-  base?: number;
-  mood: 'calm' | 'asking' | 'happy';
-  /** The part pictured in the speech bubble now. */
-  bubbleKind?: PartKind;
-  sweat?: THREE.Sprite[];
-}
-
-interface Need {
-  critter: Critter;
-  day: 1 | 2;
-  phase: Phase;
-  ask: PhraseId;
-  thanks: PhraseId;
-  /** Shown in the bubble, and dragged from the drawers by a hint. */
-  icon: PartKind;
-  /** Parts that belong on the ring (empty: nothing to place, e.g. the gate). */
-  kinds: PartKind[];
-  /** Sticker earned (defaults to the animal's name). */
-  sticker?: string;
-  /**
-   * What the camera shows for this need (with the nearest power): the animal
-   * and its ring unless set — the dog is far from the fox's path, so its need
-   * shows the button's ring and the bell's place instead.
-   */
-  focus?: THREE.Vector3[];
-  /** The right part stands on the ring (lights it green). */
-  ready: boolean;
-  /** Where the part should go (a ring on the grass). */
-  spot: THREE.Vector3;
-  ring: THREE.Mesh;
-  done: boolean;
-  /** Seconds the need has been met in a row. */
-  held: number;
-  met(): boolean;
-}
-
-/** A need as it is described (built with day one unless it says day two). */
-type NeedSpec = Omit<Need, 'ring' | 'done' | 'held' | 'ready' | 'day'> & { day?: 1 | 2 };
-
-const v = (x: number, z: number) => new THREE.Vector3(x, 0, z);
 
 /**
  * Places are written as they were on the 72×48 board (where the yards had
@@ -258,19 +176,17 @@ export function hasDayTwo() {
   return DAY_TWO_ANIMALS.every(hasModel) || new URLSearchParams(location.search).has('day2');
 }
 
-export class FarmMap {
-  readonly scenery = new THREE.Group();
+export class FarmMap extends StoryMap {
+  protected readonly width = W;
+  protected readonly depth = D;
+  readonly layout = FARM_LAYOUT;
+  protected readonly intro = 'farmIntro';
   /** Where the lanes, the field and the mud are (set when the board is built). */
   private plan!: GroundPlan;
   /** Where flowers may grow on the ground (set with the board; the yards are kept clear when they are sown). */
   private flowerFree: (x: number, z: number) => boolean = () => true;
   /** Every fence on the farm, as polylines; built together once the places are laid out. */
   private fences: THREE.Vector3[][] = [];
-  private critters = new Map<string, Critter>();
-  private needs: Need[] = [];
-  phase: Phase = 'day';
-  private phaseT = 0;
-  private night = 0;
   private trough!: THREE.Mesh;
   troughLevel = 0;
   private tractor!: THREE.Group;
@@ -284,19 +200,13 @@ export class FarmMap {
   private foxPressedAt = -1;
   private foxTipSaid = false;
   private gate!: Gate;
-  private time = 0;
   private foxChased = false;
-  /** Parts gliding onto their rings. */
-  private slides: { part: Part; to: THREE.Vector3 }[] = [];
   /** The mill's flour: sacks fill up while it turns. */
   millLevel = 0;
   private sacks: THREE.Object3D[] = [];
   /** The ducks' fountain grows while a pump pours into the pond. */
   fountainLevel = 0;
   private fountain: THREE.Sprite[] = [];
-  private focused: Need | null = null;
-  /** The first day on the farm, then a second with new animals to help. */
-  day: 1 | 2 = 1;
   /**
    * The second day comes once its animals' models are there (stand-ins would
    * spoil the farm); `?day2` in the address turns it on anyway, for testing.
@@ -317,18 +227,8 @@ export class FarmMap {
   private caught = 0;
   private chasing: Ball | null = null;
 
-  constructor(
-    private stage: Stage,
-    private world: World,
-    private hooks: FarmHooks,
-  ) {}
-
-  /** Lay the farm out on the table (the world must be empty). */
-  start() {
-    this.stage.world.add(this.scenery);
-    this.stage.showGrid(false);
-    // The view may roam to the farm's corners.
-    this.stage.limit = Math.hypot(W / 2, D / 2);
+  /** Lay the farm out: the board, the yards, the poles, the animals and what they need. */
+  protected build() {
     this.dayTwo = hasDayTwo();
     this.buildBoard();
     this.buildPlaces();
@@ -341,38 +241,26 @@ export class FarmMap {
     this.buildNeeds();
     if (this.dayTwo) this.buildNeedsTwo();
     this.sowFlowers();
-    this.setPhase('day');
-    this.refocus(true);
     AMBIENT.strength = 0.55;
     AMBIENT.dir.set(-0.7, 0, 0.7).normalize();
   }
 
-  dispose() {
-    this.scenery.removeFromParent();
-    this.stage.showGrid(true);
-    this.stage.limit = 36;
+  protected cleanup() {
     AMBIENT.strength = 0;
     Solar.sun = 1;
-    this.stage.setNightAmount(0);
   }
 
-  /** How far the story got, to carry on next time (the parts and wires are saved with the table). */
   progress(): FarmProgress {
-    return {
-      layout: FARM_LAYOUT,
-      day: this.day,
-      phase: this.phase,
-      done: this.needs.map((n) => n.done),
-      trough: r2(this.troughLevel),
-      mill: r2(this.millLevel),
-      fountain: r2(this.fountainLevel),
-      foxChased: this.foxChased,
-    };
+    return super.progress() as FarmProgress;
   }
 
-  /** Pick the story up where it was left: who has been helped, the time of day, what is full. */
-  resume(p: FarmProgress) {
-    this.needs.forEach((n, i) => (n.done = !!p.done[i]));
+  protected saveExtra() {
+    return { trough: r2(this.troughLevel), mill: r2(this.millLevel), fountain: r2(this.fountainLevel), foxChased: this.foxChased };
+  }
+
+  /** What is full, chased off and grown stays so; day two only on a farm that has it. */
+  protected restoreExtra(m: MapProgress) {
+    const p = m as FarmProgress;
     this.troughLevel = p.trough;
     this.millLevel = p.mill;
     this.fountainLevel = p.fountain;
@@ -384,99 +272,8 @@ export class FarmMap {
     if (this.dayTwo && done('kitten')) this.settleKitten();
     if (done('beehive')) this.bloom = 1;
     if (done('nest')) this.warmth = 1;
-    this.day = this.dayTwo ? (p.day ?? 1) : 1;
-    this.phase = p.phase;
-    this.phaseT = 0;
-    this.night = NIGHT[p.phase];
-    this.stage.setNightAmount(this.night);
-    if (p.phase === 'night') this.foxT = 0;
-    this.moods();
-    this.refocus(true);
-  }
-
-  /** The farm's corners, for fitting it on screen. */
-  bounds(): THREE.Vector3[] {
-    return [v(-W / 2 + 1, -D / 2 + 1), v(W / 2 - 1, D / 2 - 1)];
-  }
-
-  get nightAmount() {
-    return this.night;
-  }
-
-  /** How many needs are met, of how many. */
-  get score(): [number, number] {
-    return [this.needs.filter((n) => n.done).length, this.needs.length];
-  }
-
-  /** Is this need for the day and the part of the day it is now? */
-  private isNow(n: Need) {
-    return n.day === this.day && n.phase === this.phase;
-  }
-
-  /** The animal to help next (first unmet need of this part of the day). */
-  private current(): Need | null {
-    return this.needs.find((n) => !n.done && this.isNow(n)) ?? null;
-  }
-
-  /** The "repeat" button: who needs help now, and a look at them. */
-  replay() {
-    const n = this.current();
-    if (!n) return this.hooks.say('farmIntro');
-    this.hooks.say(n.ask);
-    this.refocus();
-  }
-
-  /** Bring the next animal, its ring and the nearest power into view, close up. */
-  refocus(instant = false) {
-    const n = this.current();
-    this.focused = n;
-    if (!n) return;
-    const src = this.nearestSource(n.spot);
-    this.hooks.focus?.(this.around([...(n.focus ?? [n.critter.home, n.spot]), ...(src ? [src.root.position] : [])]), instant);
-  }
-
-  /** Points with room round them (the ring, the bubble above an animal). */
-  private around(pts: THREE.Vector3[]): THREE.Vector3[] {
-    return pts.flatMap((p) => [p.clone().add(v(-2, -2.6)), p.clone().add(v(2, 1.8))]);
-  }
-
-  private nearestSource(at: THREE.Vector3): Part | null {
-    let best: Part | null = null;
-    for (const p of this.world.parts) {
-      if (!p.pinned || p.kind === 'gate') continue;
-      if (!best || p.root.position.distanceTo(at) < best.root.position.distanceTo(at)) best = p;
-    }
-    return best;
-  }
-
-  /**
-   * A part was let go: if it is the right kind and near a waiting ring, it
-   * glides onto it (so the pump pours into the trough, the fan blows at the cow).
-   */
-  snap(part: Part): boolean {
-    if (part.pinned) return false;
-    for (const n of this.needs) {
-      if (n.done || !this.isNow(n) || !n.kinds.includes(part.kind)) continue;
-      if (part.root.position.distanceTo(n.spot) > SNAP_R) continue;
-      if (this.world.parts.some((p) => p !== part && n.kinds.includes(p.kind) && p.root.position.distanceTo(n.spot) < 0.8)) continue;
-      this.slides = this.slides.filter((s) => s.part !== part);
-      this.slides.push({ part, to: n.spot.clone() });
-      n.critter.hop = 1;
-      this.hooks.placed?.(n.spot.clone());
-      return true;
-    }
-    return false;
-  }
-
-  /** Where a part tapped in the drawer should go: the ring that wants it, if any. */
-  spotFor(part: Part): THREE.Vector3 | null {
-    const free = (n: Need) =>
-      !n.done &&
-      this.isNow(n) &&
-      n.kinds.includes(part.kind) &&
-      !this.world.parts.some((p) => p !== part && n.kinds.includes(p.kind) && p.root.position.distanceTo(n.spot) < 0.8);
-    const n = (this.focused && free(this.focused) ? this.focused : null) ?? this.needs.find(free);
-    return n ? n.spot.clone() : null;
+    if (!this.dayTwo) this.day = 1;
+    if (this.phase === 'night') this.foxT = 0;
   }
 
   // ───────────────────────── Building ─────────────────────────
@@ -505,20 +302,6 @@ export class FarmMap {
     const rocks: [number, number, number][] = [0.4, 1.3, 2.6, 3.7].map((a, i) => [POND.x + Math.cos(a) * (shore.rx + 1.6), POND.z + Math.sin(a) * (shore.rz + 1.4), 0.8 + (i % 3) * 0.2]);
     const rocky = instances('rock-cluster', { width: 1.8 }, rocks);
     if (rocky) this.scenery.add(rocky);
-  }
-
-  private add(name: string, fit: Fit, x: number, z: number, fallback: () => THREE.Object3D, rotY = 0) {
-    const m = model(name, fit) ?? fallback();
-    m.position.set(x, 0, z);
-    m.rotation.y = rotY;
-    m.traverse((o) => {
-      if ((o as THREE.Mesh).isMesh) {
-        o.castShadow = true;
-        o.receiveShadow = true;
-      }
-    });
-    this.scenery.add(m);
-    return m;
   }
 
   private buildPlaces() {
@@ -604,13 +387,8 @@ export class FarmMap {
 
   /** The power sources and the gate are part of the map: they cannot be moved. */
   private placeParts() {
-    const pin = (kind: PartKind, x: number, z: number) => {
-      const p = this.world.addPart(kind, x, z, { locked: true, appear: false });
-      p.pinned = true;
-      return p;
-    };
     // A pole by every yard, so wires stay short; the sun runs the mill, the wind the fountain.
-    const put = (kind: PartKind, p: THREE.Vector3) => pin(kind, p.x, p.z);
+    const put = (kind: PartKind, p: THREE.Vector3) => this.pin(kind, p);
     put('pole', at('cow', -10, 2.6));
     put('pole', at('pig', 3.6, -1.4));
     put('pole', at('hen', 1.8, 4.4));
@@ -620,38 +398,9 @@ export class FarmMap {
     this.gate = put('gate', GATE) as Gate;
   }
 
-  private critter(name: string, fit: Fit, p: THREE.Vector3, height: number, face = 0): Critter {
-    const { x, z } = p;
-    const group = new THREE.Group();
-    const base = name.replace(/\d+$/, '');
-    // The fox walks on its paws: its rigged model, when that is there.
-    const m = (base === 'fox' ? model('fox-rig', fit) : null) ?? model(MODEL_OF[base] ?? base, fit) ?? STAND_INS[base]?.() ?? blob(name);
-    m.traverse((o) => {
-      if ((o as THREE.Mesh).isMesh) {
-        o.castShadow = true;
-        o.userData.critter = name;
-      }
-    });
-    group.add(m);
-    group.position.set(x, 0, z);
-    group.rotation.y = face;
-    this.scenery.add(group);
-    const bubble = new THREE.Sprite(new THREE.SpriteMaterial({ transparent: true, depthWrite: false, opacity: 0 }));
-    bubble.scale.set(1.7, 1.5, 1);
-    bubble.position.set(x, height + 1.1, z);
-    bubble.renderOrder = 12;
-    this.scenery.add(bubble);
-    const hearts: THREE.Sprite[] = [];
-    for (let i = 0; i < 3; i++) {
-      const h = new THREE.Sprite(new THREE.SpriteMaterial({ map: heartTexture(), transparent: true, depthWrite: false, opacity: 0 }));
-      h.scale.setScalar(0.6);
-      h.userData.t = 1;
-      hearts.push(h);
-      this.scenery.add(h);
-    }
-    const c: Critter = { name, group, home: new THREE.Vector3(x, 0, z), height, bubble, hearts, hop: 0, mood: 'calm' };
-    this.critters.set(name, c);
-    return c;
+  /** The fox walks on its paws (its rigged model, when that is there); the puppy is the dog, smaller. */
+  protected critterModel(base: string, fit: Fit, name: string): THREE.Object3D {
+    return (base === 'fox' ? model('fox-rig', fit) : null) ?? model(MODEL_OF[base] ?? base, fit) ?? STAND_INS[base]?.() ?? blob(name);
   }
 
   private buildCritters() {
@@ -669,19 +418,15 @@ export class FarmMap {
     this.critter('dog', { height: 1.5 }, at('dog', 4.4, 8.6), 1.5, -0.6);
     this.fox = this.critter('fox', { width: 1.7 }, FOX_PATH[0], 1, 0);
     this.fox.group.visible = false;
+    this.fox.roams = true;
+    this.fox.mute = true;
     const walk = clipsOf('fox-rig')[0];
     if (walk && hasModel('fox-rig')) {
       this.foxMixer = new THREE.AnimationMixer(this.fox.group);
       this.foxWalk = this.foxMixer.clipAction(walk).play();
     }
     // The tractor speaks for the gate (its bubble floats above it).
-    const t = this.tractor;
-    const bubble = new THREE.Sprite(new THREE.SpriteMaterial({ transparent: true, depthWrite: false, opacity: 0 }));
-    bubble.scale.set(1.7, 1.5, 1);
-    bubble.renderOrder = 12;
-    this.scenery.add(bubble);
-    t.traverse((o) => (o.userData.critter = 'tractor'));
-    this.critters.set('tractor', { name: 'tractor', group: t as THREE.Group, home: t.position.clone(), height: 2, bubble, hearts: [], hop: 0, mood: 'calm' });
+    this.adopt('tractor', this.tractor, 2).roams = true;
     // A hot cow sweats: little blue drops.
     const cow = this.critters.get('cow')!;
     cow.sweat = [0, 1, 2].map((i) => {
@@ -691,15 +436,6 @@ export class FarmMap {
       this.scenery.add(s);
       return s;
     });
-  }
-
-  private ring(spot: THREE.Vector3): THREE.Mesh {
-    const m = new THREE.Mesh(new THREE.RingGeometry(1.05, 1.25, 48), new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0, depthWrite: false }));
-    m.rotation.x = -Math.PI / 2;
-    m.position.copy(spot).setY(0.03);
-    m.renderOrder = 3;
-    this.scenery.add(m);
-    return m;
   }
 
   private buildNeeds() {
@@ -717,9 +453,9 @@ export class FarmMap {
     // Evening.
     add({ critter: get('hen'), phase: 'evening', ask: 'henDark', thanks: 'henHappy', icon: 'bulb', kinds: ['bulb', 'led'], spot: at('hen', 0.9, 6.6), met: near(['bulb', 'led'], at('hen', -1.5, 8), 4.8 * K) });
     add({ critter: get('rabbit'), phase: 'evening', ask: 'rabbitCold', thanks: 'rabbitHappy', icon: 'heater', kinds: ['heater'], spot: at('rabbit', -9.2, 7.6), met: near(['heater'], at('rabbit', -12.6, 7), 4.2 * K) });
-    add({ critter: cow, phase: 'evening', ask: 'cowSleepy', thanks: 'cowSleep', icon: 'musicbox', kinds: ['musicbox'], spot: at('cow', -13.6, -1.3), met: near(['musicbox'], cow.home, 4.5 * K), sticker: 'farm:cow' });
+    add({ critter: cow, phase: 'evening', ask: 'cowSleepy', thanks: 'cowSleep', icon: 'musicbox', kinds: ['musicbox'], spot: at('cow', -13.6, -1.3), met: near(['musicbox'], cow.home, 4.5 * K), sticker: 'cow' });
     // Night: the dog warns about the fox; a button on the path and a bell chase it off.
-    add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], spot: FOX_BUTTON.clone(), focus: [FOX_BUTTON.clone(), BELL_SPOT.clone()], met: () => this.foxChased, sticker: 'farm:fox' });
+    add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], hintPhrase: 'foxTip', spot: FOX_BUTTON.clone(), focus: [FOX_BUTTON.clone(), BELL_SPOT.clone()], met: () => this.foxChased, sticker: 'fox' });
     // Morning: the ducklings want a fountain.
     add({ critter: get('duck'), phase: 'morning', ask: 'ducksAsk', thanks: 'ducksHappy', icon: 'pump', kinds: ['pump'], spot: v(POND.x + 2.2 * K, POND.z - 4.3 * K), met: () => this.fountainLevel > 0.95 });
   }
@@ -738,10 +474,6 @@ export class FarmMap {
       if (free(x, z) && spots.every(([sx, sz]) => Math.hypot(x - sx, z - sz) > 2)) spots.push([x, z, 0.8 + Math.random() * 0.45]);
     }
     this.scenery.add(instances('flower-cluster', { height: 0.45 }, spots) ?? flowers(this.plan, 160, free));
-  }
-
-  private addNeed(n: NeedSpec) {
-    this.needs.push({ day: 1, ...n, ring: this.ring(n.spot), done: false, held: 0, ready: false });
   }
 
   // ───────────────────────── Day two ─────────────────────────
@@ -812,10 +544,10 @@ export class FarmMap {
     const two = (n: NeedSpec) => this.addNeed({ ...n, day: 2 });
     two({ critter: get('kitten'), phase: 'day', ask: 'kittenStuck', thanks: 'kittenHappy', icon: 'lift', kinds: ['lift'], spot: LIFT_SPOT, met: () => this.kitten === 'down' });
     two({ critter: get('goat'), phase: 'day', ask: 'goatsAsk', thanks: 'goatsHappy', icon: 'carousel', kinds: ['carousel'], spot: CAROUSEL_SPOT, met: () => this.rideT > 3 });
-    two({ critter: get('beehive'), phase: 'day', ask: 'beesAsk', thanks: 'beesHappy', icon: 'pump', kinds: ['pump'], spot: BED_PUMP, met: () => this.bloom >= 1, sticker: 'farm:bee' });
+    two({ critter: get('beehive'), phase: 'day', ask: 'beesAsk', thanks: 'beesHappy', icon: 'pump', kinds: ['pump'], spot: BED_PUMP, met: () => this.bloom >= 1, sticker: 'bee' });
     two({ critter: get('horse'), phase: 'day', ask: 'horseHot', thanks: 'horseHappy', icon: 'fan', kinds: FANS, spot: HORSE_FAN, met: near(FANS, HORSE, 4.2 * K) });
     two({ critter: get('puppy'), phase: 'day', ask: 'puppyAsk', thanks: 'puppyHappy', icon: 'launcher', kinds: ['launcher'], spot: LAUNCH_SPOT, met: () => this.caught >= 2 });
-    two({ critter: get('nest'), phase: 'evening', ask: 'eggsCold', thanks: 'chicksHatched', icon: 'heater', kinds: ['heater', 'bulb'], spot: NEST_SPOT, met: () => this.warmth >= 1, sticker: 'farm:chick' });
+    two({ critter: get('nest'), phase: 'evening', ask: 'eggsCold', thanks: 'chicksHatched', icon: 'heater', kinds: ['heater', 'bulb'], spot: NEST_SPOT, met: () => this.warmth >= 1, sticker: 'chick' });
     two({ critter: get('goose'), phase: 'evening', ask: 'geeseDark', thanks: 'geeseHappy', icon: 'led', kinds: ['led', 'bulb'], spot: GEESE_SPOT, met: near(['led', 'bulb'], GEESE, 4 * K) });
     two({
       critter: get('rooster'),
@@ -999,10 +731,7 @@ export class FarmMap {
 
   // ───────────────────────── Story ─────────────────────────
 
-  private setPhase(p: Phase) {
-    this.phase = p;
-    this.phaseT = 0;
-    this.moods();
+  protected phaseBegins(p: Phase) {
     const two = this.day === 2;
     if (p === 'day' && two) this.hooks.say('dayTwo');
     if (p === 'evening') this.hooks.say('evening');
@@ -1011,83 +740,37 @@ export class FarmMap {
       if (!this.foxChased) this.hooks.say('foxComes');
     }
     if (p === 'morning') this.hooks.say(two ? 'roosterAsk' : 'ducksAsk');
-    if (p === 'done') {
-      this.hooks.say('morning');
-      this.hooks.done();
-    }
-    if (p !== 'done') setTimeout(() => this.refocus(), 1200);
+    if (p === 'done') this.hooks.say('morning');
   }
 
-  /** Asking while a need of this part of the day waits; happy once one is met. */
-  private moods() {
-    for (const c of this.critters.values()) {
-      const mine = this.needs.filter((n) => n.critter === c);
-      if (!mine.length) continue;
-      c.mood = mine.some((n) => this.isNow(n) && !n.done) ? 'asking' : mine.some((n) => n.done) ? 'happy' : 'calm';
-      const ask = mine.find((n) => this.isNow(n) && !n.done);
-      if (ask && c.bubbleKind !== ask.icon) {
-        c.bubbleKind = ask.icon;
-        (c.bubble.material as THREE.SpriteMaterial).map = bubbleTexture(ask.icon);
-        (c.bubble.material as THREE.SpriteMaterial).needsUpdate = true;
-      }
-    }
+  /** After the first morning a second day begins, with new animals asking for help. */
+  protected after(p: Phase) {
+    if (p === 'morning' && this.day === 1 && this.dayTwo) return { next: 'day' as Phase, wait: 4, first: () => (this.day = 2) };
+    return super.after(p);
   }
 
-  /** Tap on an animal: it tells what it needs (or says thanks). */
-  tapAt(x: number, y: number): boolean {
-    const meshes: THREE.Object3D[] = [];
-    this.scenery.traverse((o) => {
-      if ((o as THREE.Mesh).isMesh && o.userData.critter) meshes.push(o);
-    });
-    const hit = this.stage.raycast(x, y, meshes)[0];
-    if (!hit) return false;
-    const name = hit.object.userData.critter as string;
-    const c = this.critters.get(name.replace(/\d+$/, ''));
-    if (!c) return false;
-    c.hop = 1;
-    const need = this.needs.find((n) => n.critter === c && this.isNow(n)) ?? [...this.needs].reverse().find((n) => n.critter === c && n.done);
-    if (name === 'fox') this.hooks.say('foxTip');
-    else if (need && !need.done) {
-      this.hooks.say(need.ask);
-      // Tapping an animal brings its ring into view too.
-      this.focused = need;
-      const src = this.nearestSource(need.spot);
-      this.hooks.focus?.(this.around([...(need.focus ?? [c.home, need.spot]), ...(src ? [src.root.position] : [])]));
-    } else if (need?.done) this.hooks.say(need.thanks);
+  protected helpedNeed(n: Need) {
+    if (n.critter.name === 'tractor') this.tractorT = 0;
+  }
+
+  /** The fox does not ask for anything: tapped, it is a reminder of how to chase it off. */
+  protected tapped(c: Critter) {
+    if (c !== this.fox) return false;
+    this.hooks.say('foxTip');
     return true;
   }
 
-  /** The next helpful nudge: bring the part a waiting animal asks for. */
-  hint(trayLeft: (k: PartKind) => number): Hint | null {
-    const order = [this.focused, ...this.needs].filter((n): n is Need => !!n);
-    for (const n of order) {
-      if (n.done || !this.isNow(n) || !n.kinds.length) continue;
-      const placed = this.world.parts.some((p) => n.kinds.includes(p.kind) && p.root.position.distanceTo(n.spot) < 1);
-      if (!placed && trayLeft(n.icon) > 0) return { type: 'drag', kind: n.icon, to: n.spot.clone(), phrase: n.icon === 'button' ? 'foxTip' : 'placeHere' };
-    }
-    // The fox's button is down: now a bell (or buzzer) to go with it.
+  /** The fox's button is down: now a bell (or buzzer) to go with it. */
+  protected extraHint(trayLeft: (k: PartKind) => number): Hint | null {
     if (this.day === 1 && this.phase === 'night' && !this.world.parts.some((p) => p.kind === 'bell' || p.kind === 'buzzer') && trayLeft('bell') > 0)
       return { type: 'drag', kind: 'bell', to: BELL_SPOT.clone(), phrase: 'foxTip' };
     return null;
   }
 
-  update(dt: number) {
-    this.time += dt;
-    this.phaseT += dt;
-    // Daylight: day → dusk in the evening → night → sunrise.
-    this.night = THREE.MathUtils.damp(this.night, NIGHT[this.phase], 0.6, dt);
-    this.stage.setNightAmount(this.night);
+  protected tick(dt: number) {
     Solar.sun = Math.max(0, 1 - this.night * 1.6);
     // Gusts on the hill.
     AMBIENT.strength = 0.55 + Math.sin(this.time * 0.37) * 0.12 + Math.sin(this.time * 1.3) * 0.05;
-
-    // Parts let go near their ring glide onto it.
-    for (const sl of this.slides) {
-      const p = sl.part.root.position;
-      p.lerp(sl.to, Math.min(1, dt * 9));
-      if (p.distanceTo(sl.to) < 0.01) p.copy(sl.to);
-    }
-    this.slides = this.slides.filter((sl) => sl.part.root.parent && !sl.part.root.position.equals(sl.to));
 
     // The trough fills while a pump pours into it.
     const pouring = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.outlet().distanceTo(TROUGH) < 1.6);
@@ -1120,73 +803,24 @@ export class FarmMap {
       d.position.set(POND.x + Math.cos(d.userData.a) * r, 0.2 + h * 4 * t * (1 - t), POND.z + Math.sin(d.userData.a) * r);
       d.material.opacity = this.fountainLevel * (1 - t * 0.6) * 0.9;
     }
-
-    for (const n of this.needs) {
-      const ringMat = n.ring.material as THREE.MeshBasicMaterial;
-      if (n.done || !this.isNow(n)) {
-        ringMat.opacity = THREE.MathUtils.damp(ringMat.opacity, 0, 6, dt);
-        continue;
-      }
-      // White and pulsing while it waits; green and steady once the right part stands on it.
-      n.ready = n.kinds.some((k) => this.world.parts.some((p) => p.kind === k && p.root.position.distanceTo(n.spot) < 0.6));
-      ringMat.color.set(n.ready ? '#4fd27a' : '#ffffff');
-      ringMat.opacity = n.ready ? 0.9 : 0.35 + Math.sin(this.time * 3) * 0.2;
-      n.ring.scale.setScalar(n.ready ? 1 : 1 + Math.sin(this.time * 3) * 0.05);
-      n.held = n.met() ? n.held + dt : 0;
-      if (n.held > 0.8) {
-        n.done = true;
-        n.critter.hop = 1;
-        this.hooks.say(n.thanks);
-        this.hooks.chime();
-        const top = (n.critter.name === 'tractor' ? this.tractor.position : n.critter.home).clone().setY(n.critter.height);
-        this.hooks.cheer(top);
-        this.hooks.helped?.(n.sticker?.replace('farm:', '') ?? n.critter.name, top);
-        for (const h of n.critter.hearts) h.userData.t = Math.random() * -0.6;
-        if (n.critter.name === 'tractor') this.tractorT = 0;
-        this.moods();
-        // On to the next animal of this part of the day.
-        setTimeout(() => this.refocus(), 3200);
-      }
-    }
-
-    // Move the story on when everything of this part of the day is done.
-    const left = this.needs.filter((n) => this.isNow(n) && !n.done).length;
-    if (this.phase === 'day' && left === 0 && this.phaseT > 1) this.waitThen('evening', 4);
-    else if (this.phase === 'evening' && left === 0 && this.phaseT > 1) this.waitThen('night', 4);
-    else if (this.phase === 'night' && left === 0 && this.phaseT > 1) this.waitThen('morning', 4);
-    else if (this.phase === 'morning' && left === 0 && this.phaseT > 1) {
-      // After the first morning a second day begins, with new animals asking for help.
-      if (this.day === 1 && this.dayTwo) this.waitThen('day', 4, () => (this.day = 2));
-      else this.waitThen('done', 3);
-    }
     this.updateDayTwo(dt);
-
     this.updateFox(dt);
     this.updateTractor(dt);
-    for (const c of this.critters.values()) this.animateCritter(c, dt);
-    // With the fountain on, the ducklings swim round it.
-    if (this.fountainLevel > 0.3) {
-      ['duck', 'duck2', 'duck3'].forEach((name, i) => {
-        const c = this.critters.get(name);
-        if (!c) return;
-        const a = this.time * 0.45 + i * 2.1;
-        const k = Math.min(1, dt * 1.5);
-        c.group.position.x += (POND.x + Math.cos(a) * 2.7 * K - c.group.position.x) * k;
-        c.group.position.z += (POND.z + Math.sin(a) * 1.7 * K - c.group.position.z) * k;
-        c.group.position.y = -0.12 + Math.sin(this.time * 3 + i) * 0.03;
-        c.group.rotation.y = Math.atan2(-Math.cos(a) * 1.7, -Math.sin(a) * 2.7);
-      });
-    }
   }
 
-  private nextAt = -1;
-  private waitThen(p: Phase, seconds: number, first?: () => void) {
-    if (this.nextAt < 0) this.nextAt = this.time + seconds;
-    if (this.time >= this.nextAt) {
-      this.nextAt = -1;
-      first?.();
-      this.setPhase(p);
-    }
+  /** With the fountain on, the ducklings swim round it. */
+  protected afterAnimate(dt: number) {
+    if (this.fountainLevel <= 0.3) return;
+    ['duck', 'duck2', 'duck3'].forEach((name, i) => {
+      const c = this.critters.get(name);
+      if (!c) return;
+      const a = this.time * 0.45 + i * 2.1;
+      const k = Math.min(1, dt * 1.5);
+      c.group.position.x += (POND.x + Math.cos(a) * 2.7 * K - c.group.position.x) * k;
+      c.group.position.z += (POND.z + Math.sin(a) * 1.7 * K - c.group.position.z) * k;
+      c.group.position.y = -0.12 + Math.sin(this.time * 3 + i) * 0.03;
+      c.group.rotation.y = Math.atan2(-Math.cos(a) * 1.7, -Math.sin(a) * 2.7);
+    });
   }
 
   private updateTractor(dt: number) {
@@ -1286,47 +920,6 @@ export class FarmMap {
     void this.foxPressedAt;
   }
 
-  private animateCritter(c: Critter, dt: number) {
-    c.hop = Math.max(0, c.hop - dt * 2.2);
-    const bob = c.mood === 'asking' ? Math.max(0, Math.sin(this.time * 4 + c.home.x)) * 0.12 : Math.sin(this.time * 1.5 + c.home.x) * 0.02;
-    const hop = Math.sin(c.hop * Math.PI) * 0.6;
-    if (c.name !== 'tractor' && c.name !== 'fox') {
-      c.group.position.y = (c.base ?? 0) + Math.max(0, bob + hop);
-      c.group.scale.set(1, 1 + (c.mood === 'asking' ? Math.sin(this.time * 8) * 0.015 : 0), 1);
-    }
-    // Speech bubble with the part it wants; a heart when happy.
-    const mat = c.bubble.material as THREE.SpriteMaterial;
-    const show = c.mood === 'asking' && c.name !== 'fox' ? 1 : 0;
-    mat.opacity = THREE.MathUtils.damp(mat.opacity, show, 6, dt);
-
-    const base = c.name === 'tractor' ? this.tractor.position : c.group.position;
-    c.bubble.position.set(base.x, (c.base ?? 0) + c.height + 1.2 + Math.sin(this.time * 2.5 + c.home.z) * 0.08, base.z);
-    c.bubble.scale.set(1.7, 1.5, 1).multiplyScalar(1 + Math.max(0, Math.sin(this.time * 4)) * 0.06 * show);
-    for (const h of c.hearts) {
-      if (h.userData.t >= 1) {
-        h.material.opacity = 0;
-        continue;
-      }
-      h.userData.t += dt * 0.6;
-      const t = Math.max(0, h.userData.t as number);
-      h.position.set(c.group.position.x + Math.sin(t * 6 + h.id) * 0.3, (c.base ?? 0) + c.height + 0.4 + t * 1.6, c.group.position.z);
-      h.material.opacity = h.userData.t > 0 ? Math.sin(t * Math.PI) : 0;
-    }
-    // A hot cow drips sweat until the fan comes.
-    if (c.sweat) {
-      for (const s of c.sweat) {
-        s.userData.t = (s.userData.t + dt * 0.8) % 1;
-        const t = s.userData.t as number;
-        s.position.set(c.home.x + 0.3 + (s.id % 3) * 0.2, c.height - t * 0.8, c.home.z + 0.4);
-        s.material.opacity = c.mood === 'asking' && this.phase === 'day' ? Math.sin(t * Math.PI) * 0.9 : 0;
-      }
-    }
-  }
-
-  /** Which parts of the map the child cannot throw away (none; all are pinned or theirs). */
-  isMapPart(p: Part) {
-    return p.pinned;
-  }
 }
 
 // ───────────────────────── Fox path ─────────────────────────
@@ -1802,76 +1395,4 @@ function greeneryFor(plan: GroundPlan) {
     }
   }
   return { oak, pine, bush, rock };
-}
-
-/** A stand-in animal when its model did not load: a coloured rounded body. */
-function blob(name: string): THREE.Group {
-  const colors: Record<string, string> = { cow: '#f4f4f4', pig: '#f5a9b8', hen: '#ffffff', rabbit: '#b9bdc6', dog: '#c98a4b', fox: '#f08a3a', duck: '#ffd23f', sheep: '#f4f4f4', kitten: '#f2a65a', goat: '#ece6da', kid: '#f4efe6', horse: '#9a6a44', puppy: '#d9a46a', goose: '#fafafa', rooster: '#d8483c', chick: '#ffd84a' };
-  const g = new THREE.Group();
-  const body = mesh(new THREE.SphereGeometry(0.5, 20, 14), mat(colors[name.replace(/\d+$/, '')] ?? '#ffffff', 0.6));
-  body.scale.set(1.4, 0.9, 0.9);
-  body.position.y = 0.6;
-  g.add(body);
-  return g;
-}
-
-let heartTex: THREE.Texture | null = null;
-function heartTexture(): THREE.Texture {
-  if (heartTex) return heartTex;
-  const c = document.createElement('canvas');
-  c.width = c.height = 128;
-  const ctx = c.getContext('2d')!;
-  ctx.font = '100px system-ui, sans-serif';
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillText('❤️', 64, 70);
-  heartTex = new THREE.CanvasTexture(c);
-  heartTex.colorSpace = THREE.SRGBColorSpace;
-  return heartTex;
-}
-
-const bubbleCache = new Map<string, THREE.Texture>();
-/** A speech bubble with a picture of the part an animal is asking for. */
-function bubbleTexture(kind: PartKind): THREE.Texture {
-  const hit = bubbleCache.get(kind);
-  if (hit) return hit;
-  const c = document.createElement('canvas');
-  c.width = 256;
-  c.height = 226;
-  const ctx = c.getContext('2d')!;
-  const draw = (img?: HTMLImageElement) => {
-    ctx.clearRect(0, 0, 256, 226);
-    ctx.fillStyle = '#ffffff';
-    ctx.strokeStyle = '#18213d';
-    ctx.lineWidth = 6;
-    ctx.beginPath();
-    ctx.roundRect(8, 8, 240, 176, 44);
-    ctx.moveTo(108, 182);
-    ctx.lineTo(128, 220);
-    ctx.lineTo(148, 182);
-    ctx.fill();
-    ctx.stroke();
-    ctx.fillStyle = '#ffffff';
-    ctx.fillRect(110, 176, 36, 10);
-    if (img) ctx.drawImage(img, 40, 14, 176, 164);
-    else {
-      ctx.font = '110px system-ui, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillStyle = '#18213d';
-      ctx.fillText(kind === 'gate' ? '🚜' : '❓', 128, 100);
-    }
-    tex.needsUpdate = true;
-  };
-  const tex = new THREE.CanvasTexture(c);
-  tex.colorSpace = THREE.SRGBColorSpace;
-  draw();
-  const src = kind === 'gate' ? '' : thumb(kind, true);
-  if (src) {
-    const img = new Image();
-    img.onload = () => draw(img);
-    img.src = src;
-  }
-  bubbleCache.set(kind, tex);
-  return tex;
 }
