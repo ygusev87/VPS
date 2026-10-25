@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-25",
+  "model": "cow-rig",
+  "status": "accepted-for-stationary-head-and-tail-by-claude-m0181",
+  "renderChecks": {
+    "viewports": [
+      [
+        1180,
+        844
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "views": [
+      "side +Z",
+      "game",
+      "three-quarter"
+    ],
+    "headNodDegrees": 15,
+    "headTurnDegrees": 15,
+    "tailSwingDegrees": 20,
+    "headTurnOscillation": "visually checked",
+    "walking": "rejected; hind +Z chain incomplete",
+    "earsAndJaw": "no separate joints",
+    "realIPad": "not tested in this step"
+  },
+  "comparison": {
+    "fitWidth": 1,
+    "staticVertices": 5660,
+    "rigVertices": 5662,
+    "staticTriangles": 8000,
+    "rigTriangles": 7999,
+    "rigToStaticNearestVertexMax": 4.5469639453841486e-7,
+    "rigToStaticNearestVertexRMS": 2.2263656019051346e-7,
+    "rawRigTexturesPixelIdenticalToStatic": true,
+    "finalRigTextureBytesIdenticalToStatic": true,
+    "compressionGeometrySkinAndTransformsExact": true
+  },
+  "validation": {
+    "errors": 0,
+    "warnings": [
+      "NODE_SKINNED_MESH_NON_ROOT: original Armature hierarchy retained"
+    ],
+    "info": [
+      "Validator cannot inspect EXT_meshopt_compression; decoded arrays checked separately"
+    ],
+    "browserNote": "IAB reports an unsourced MutationObserver.observe error also seen before this asset; no claim of a clean entire browser console."
+  },
+  "checks": [
+    "21 vitest tests passed",
+    "tsc --noEmit passed",
+    "protected fox-rig and motor preserve exact geometry in temp regression export",
+    "two final cow builds byte-identical"
+  ],
+  "credits": {
+    "before": 215,
+    "check": 0,
+    "rig": 25,
+    "after": 190,
+    "frozen": 0
+  },
+  "screenshots": [
+    "/tmp/gameios-visual-audit-2026-10-25/cow-rig-final-tablet.png",
+    "/tmp/gameios-visual-audit-2026-10-25/cow-rig-final-phone.png",
+    "/tmp/gameios-visual-audit-2026-10-25/cow-rig-hind-defect.png"
+  ]
+}

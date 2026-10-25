@@ -15,12 +15,13 @@ const KEEP_GEOMETRY = new Set('motor propeller windmill sails floorfan windgen d
 const FARM = new Set('barn coop doghouse cow dog duck fox hen pig rabbit sheep tractor sack kitten goat kid goose rooster horse chick beehive flowerbed-buds flowerbed-bloom nest stable tree-oak'.split(' '));
 const CITY = new Set('bakery baker grandma-house grandma school fire-station toy-shop club substation house-a child raccoon tram car'.split(' '));
 const args = process.argv.slice(2), names = [];
-let input = 'assets-src/models', output = 'public/models', report = '';
+let input = 'assets-src/models', output = 'public/models', report = '', textureSource = '';
 while (args.length) {
   const a = args.shift();
   if (a === '--input') input = args.shift();
   else if (a === '--output') output = args.shift();
   else if (a === '--report') report = args.shift();
+  else if (a === '--texture-source') textureSource = args.shift();
   else if (a.startsWith('--')) throw new Error(`Unknown option: ${a}`);
   else names.push(a);
 }
@@ -83,6 +84,31 @@ function rewriteWebpImages(source, originals, textures) {
   bh.writeUInt32LE(binBytes.length, 0); bh.writeUInt32LE(0x004e4942, 4);
   return Buffer.concat([header, jsonBytes, bh, binBytes]);
 }
+
+/** NodeIO elides near-identity transforms (epsilon 1e-6). A rig's inverse bind
+ * matrices were built with the original values, so restore exact TRS in JSON.
+ * Buffer-view offsets are relative to BIN; changing JSON length is safe. */
+function preserveNodeTransforms(bytes, doc) {
+  const buffer = Buffer.from(bytes), jsonLength = buffer.readUInt32LE(12);
+  const json = JSON.parse(buffer.subarray(20, 20 + jsonLength).toString());
+  const nodes = doc.getRoot().listNodes();
+  if (json.nodes.length !== nodes.length) throw Error('Node count changed while writing protected rig');
+  for (let i = 0; i < nodes.length; i++) {
+    const original = nodes[i], written = json.nodes[i];
+    if ((written.name ?? '') !== original.getName()) throw Error('Node order changed while writing protected rig');
+    delete written.matrix;
+    written.translation = original.getTranslation();
+    written.rotation = original.getRotation();
+    written.scale = original.getScale();
+  }
+  let encoded = Buffer.from(JSON.stringify(json));
+  encoded = Buffer.concat([encoded, Buffer.alloc((4 - encoded.length % 4) % 4, 0x20)]);
+  const tail = buffer.subarray(20 + jsonLength), header = Buffer.from(buffer.subarray(0, 20));
+  header.writeUInt32LE(20 + encoded.length + tail.length, 8);
+  header.writeUInt32LE(encoded.length, 12);
+  return Buffer.concat([header, encoded, tail]);
+}
+
 function stats(doc, bytes) {
   const r = doc.getRoot();
   const triangles = r.listMeshes().reduce((s, m) => s + m.listPrimitives().reduce((s, p) => s + (p.getIndices()?.getCount() ?? p.getAttribute('POSITION').getCount()) / 3, 0), 0);
@@ -97,6 +123,22 @@ for (const name of names) {
   doc.setLogger(new Logger(Logger.Verbosity.WARN));
   const before = stats(doc, sourceBytes.length), signature = geometrySignature(doc);
   const originalImages = doc.getRoot().listTextures().map(t => sha(t.getImage()));
+  if (textureSource) {
+    if (names.length !== 1) throw Error('--texture-source requires exactly one model');
+    const reference = await io.read(textureSource);
+    const originals = reference.getRoot().listTextures(), targets = doc.getRoot().listTextures();
+    if (originals.length !== targets.length) throw Error('Texture counts differ');
+    for (let i = 0; i < targets.length; i++) {
+      const original = originals[i], target = targets[i];
+      const a = await sharp(original.getImage()).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+      const b = await sharp(target.getImage()).ensureAlpha().raw().toBuffer({ resolveWithObject: true });
+      if (JSON.stringify(a.info) !== JSON.stringify(b.info) || !a.data.equals(b.data)
+        || JSON.stringify(listTextureSlots(original).sort()) !== JSON.stringify(listTextureSlots(target).sort())) {
+        throw Error('Texture pixels or material slots differ; refusing to reuse source texture');
+      }
+      target.setImage(original.getImage()).setMimeType(original.getMimeType());
+    }
+  }
   const keep = KEEP_GEOMETRY.has(name) || before.skins > 0 || before.animations > 0;
   const budget = FARM.has(name) || CITY.has(name) ? 8000 : 6000;
   for (const texture of doc.getRoot().listTextures()) {
@@ -113,7 +155,8 @@ for (const name of names) {
     // do not run quantize(), reorder(), weld(), or simplify() on sensitive meshes.
     doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({ method: EXTMeshoptCompression.EncoderMethod.QUANTIZE });
   }
-  const bytes = (keep || before.triangles <= budget ? rewriteWebpImages(sourceBytes, originalImages, doc.getRoot().listTextures()) : null) ?? await io.writeBinary(doc);
+  let bytes = (keep || before.triangles <= budget ? rewriteWebpImages(sourceBytes, originalImages, doc.getRoot().listTextures()) : null) ?? await io.writeBinary(doc);
+  if (keep) bytes = preserveNodeTransforms(bytes, doc);
   const result = await io.readBinary(bytes);
   const exactGeometry = geometrySignature(result) === signature;
   if (keep && !exactGeometry) throw new Error(`${name}: protected geometry/rig changed; no output written.`);
@@ -124,6 +167,6 @@ for (const name of names) {
   console.log(`${name}: ${before.triangles} → ${after.triangles} tris; ${(before.bytes / 1024).toFixed(1)} → ${(after.bytes / 1024).toFixed(1)} KiB; textures ${before.textureMiB.toFixed(1)} → ${after.textureMiB.toFixed(1)} MiB${keep ? '; geometry exact' : ''}`);
 }
 const totals = key => rows.reduce((s, r) => ({ bytes: s.bytes + r[key].bytes, triangles: s.triangles + r[key].triangles, textureMiB: s.textureMiB + r[key].textureMiB }), { bytes: 0, triangles: 0, textureMiB: 0 });
-const result = { generatedAt: new Date().toISOString(), source: input, output, settings: { colorSize: 512, dataSize: 256, colorQuality: 88, dataQuality: 90, simplifyError: 0.0025 }, textureMemoryNote: 'Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.', totals: { before: totals('before'), after: totals('after') }, models: rows };
+const result = { generatedAt: new Date().toISOString(), source: input, output, textureSource: textureSource || null, settings: { colorSize: 512, dataSize: 256, colorQuality: 88, dataQuality: 90, simplifyError: 0.0025 }, textureMemoryNote: 'Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.', totals: { before: totals('before'), after: totals('after') }, models: rows };
 if (report) { await fs.mkdir(path.dirname(report), { recursive: true }); await fs.writeFile(report, JSON.stringify(result, null, 2) + '\n'); }
 console.log(JSON.stringify(result.totals));
