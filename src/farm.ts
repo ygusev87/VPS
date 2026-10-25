@@ -22,6 +22,7 @@ import { flowers, groundMaterial, onLane, pond, type Ellipse, type GroundPlan } 
 import { AMBIENT } from './parts/wind';
 import { isActive } from './world';
 import { dressing } from './decor';
+import { Pest } from './pest';
 import { type Gait, type ToyKind } from './life';
 import type { PhraseId } from './voice';
 import { DECOR, FENCES, MEADOW, MUD, PATHS, PONDS, SOIL } from './farm-decor';
@@ -235,6 +236,8 @@ export class FarmMap extends StoryMap {
     this.buildNeeds();
     this.dress();
     this.sowFlowers();
+    // The crow comes by day and in the evening, once the story is under way.
+    this.pest = new Pest(this.scenery, this.stage, this.world, { say: (id) => this.hooks.say(id), zap: (at) => this.hooks.zap?.(at), chime: () => this.hooks.chime() }, () => (this.phase === 'day' || this.phase === 'evening' || this.phase === 'morning') && this.phaseT > 20);
     AMBIENT.strength = 0.55;
     AMBIENT.dir.set(-0.7, 0, 0.7).normalize();
   }

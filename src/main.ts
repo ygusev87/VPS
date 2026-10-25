@@ -353,6 +353,7 @@ const input = new Input(stage, world, {
     lastTouch = performance.now();
   },
   preferredWire: () => hintedWire(),
+  grabTap: (x, y) => !!map?.grabTap(x, y),
   onTableTap: (x, y) => {
     map?.tapAt(x, y);
   },
@@ -454,6 +455,11 @@ async function startMap(name: MapName, fresh = false) {
     focus: (pts, instant) => {
       if (instant) stage.frame(pts, true, MAP_PPU);
       else mapFocus = pts;
+    },
+    zap: (at) => {
+      sfx.bonk();
+      fx.burst(at, 18, '#ffe27a', 3);
+      fx.puff(at);
     },
     placed: (at) => {
       sfx.snap();

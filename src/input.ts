@@ -27,6 +27,8 @@ const TAP_TIME = 450;
 export interface InputHooks {
   /** A tap on the table itself (not on a part or wire), e.g. on a map's animal. */
   onTableTap?: (x: number, y: number) => void;
+  /** A press that something on the map takes before any part or wire (a sneaking crow). */
+  grabTap?: (x: number, y: number) => boolean;
   /** Is this screen point over the parts panel (where parts get put away)? */
   overTray(x: number, y: number): boolean;
   onTrayHover(on: boolean): void;
@@ -116,6 +118,7 @@ export class Input {
     }
     if (this.pointerId !== null || this.pointers.size > 1) return;
     const { clientX: x, clientY: y } = e;
+    if (this.hooks.grabTap?.(x, y)) return;
     this.pointerId = e.pointerId;
 
     const t = this.terminalAt(x, y);

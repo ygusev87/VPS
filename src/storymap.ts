@@ -11,6 +11,7 @@ import { mat, mesh } from './parts/kit';
 import type { Stage } from './stage';
 import { bendable, type Pose } from './bend';
 import { Life } from './life';
+import { Pest } from './pest';
 import { thumb } from './thumbs';
 import type { PhraseId } from './voice';
 import type { World } from './world';
@@ -35,6 +36,8 @@ export interface MapHooks {
   focus?(points: THREE.Vector3[], instant?: boolean): void;
   /** A part snapped onto its ring. */
   placed?(at: THREE.Vector3): void;
+  /** Sparks where a wire bit back (the crow pecked it). */
+  zap?(at: THREE.Vector3): void;
 }
 
 export interface Critter {
@@ -141,6 +144,8 @@ export abstract class StoryMap {
   /** Parts gliding onto their rings. */
   protected slides: { part: Part; to: THREE.Vector3 }[] = [];
   protected focused: Need | null = null;
+  /** A hapless crow after the child's wires (the farm has one). */
+  protected pest: Pest | null = null;
   /** The herd wandering about, the toys to poke, butterflies and smoke. */
   protected life!: Life;
   /** Where the last one helped lives. */
@@ -552,6 +557,12 @@ export abstract class StoryMap {
    * thanks); poked again it makes its noise and twirls, and the fifth time in
    * a row it turns a somersault. Taps on the herd and the toys go to them.
    */
+  /** The crow is shooed before anything else under the finger (she creeps up to wires and parts). */
+  grabTap(x: number, y: number): boolean {
+    const crow = this.pest?.pickables() ?? [];
+    return !!crow.length && !!this.stage.raycast(x, y, crow)[0] && this.pest!.tap();
+  }
+
   tapAt(x: number, y: number): boolean {
     const meshes: THREE.Object3D[] = this.life.pickables();
     this.scenery.traverse((o) => {
@@ -680,6 +691,7 @@ export abstract class StoryMap {
 
     for (const c of this.critters.values()) this.animateCritter(c, dt);
     this.life.update(dt, this.night, this.stage.camera.position);
+    this.pest?.update(dt, this.time);
     this.afterAnimate(dt);
     for (const s of this.sprites) s.visible = s.material.opacity > 0.01;
   }
