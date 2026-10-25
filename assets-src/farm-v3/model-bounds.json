@@ -223,5 +223,38 @@
       1.085
     ],
     "triangles": 8000
+  },
+  "tree-pine-lite": {
+    "fit": {
+      "height": 6.2
+    },
+    "size": [
+      3.215,
+      6.2,
+      3.065
+    ],
+    "triangles": 599
+  },
+  "tree-oak-lite": {
+    "fit": {
+      "height": 5.2
+    },
+    "size": [
+      3.458,
+      5.2,
+      5.406
+    ],
+    "triangles": 599
+  },
+  "bush-lite": {
+    "fit": {
+      "width": 2.3
+    },
+    "size": [
+      2.3,
+      0.984,
+      0.742
+    ],
+    "triangles": 794
   }
 }

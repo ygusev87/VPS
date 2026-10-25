@@ -1,0 +1,202 @@
+{
+  "models": [
+    {
+      "name": "tree-pine-lite",
+      "source": "tree-pine",
+      "sourceSha256": "ecd04591ef2e9b86b39119dd42b18509a9ca5588c746fb8db54c38043feb1d05",
+      "outputSha256": "bfe0ddc03c0d1c0b11efdd899ba77ae3c51d840da521cd5c46f35087a9844ac9",
+      "targetTriangles": 600,
+      "simplifyError": 0.015,
+      "before": {
+        "bytes": 32688,
+        "triangles": 1686,
+        "bounds": {
+          "min": [
+            -0.2597125156407361,
+            -0.5,
+            -0.24715414899136326
+          ],
+          "max": [
+            0.2597125156407361,
+            0.5,
+            0.24715414899136326
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "sha256": "8a4a1011ad7d04902d248dcc3777e21df9c02fb33d0056e12d642d33d73b7baa"
+          }
+        ]
+      },
+      "after": {
+        "bytes": 22140,
+        "triangles": 599,
+        "bounds": {
+          "min": [
+            -0.25888851355696146,
+            -0.5,
+            -0.24715414899136326
+          ],
+          "max": [
+            0.25971251796865885,
+            0.5,
+            0.24715414899136326
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "sha256": "8a4a1011ad7d04902d248dcc3777e21df9c02fb33d0056e12d642d33d73b7baa"
+          }
+        ]
+      }
+    },
+    {
+      "name": "tree-oak-lite",
+      "source": "tree-oak",
+      "sourceSha256": "1b7b86cbe8c7b432628c57fc49cc474581b9ba1a58c1c8d804b59edcd3ee2309",
+      "outputSha256": "a3596a45266d3537b483b416b379a2db174e219d60f37c19c5cca8f6d3a39e38",
+      "targetTriangles": 600,
+      "simplifyError": 0.02,
+      "before": {
+        "bytes": 47276,
+        "triangles": 2836,
+        "bounds": {
+          "min": [
+            -0.3227637562181463,
+            -0.4796899319437239,
+            -0.5
+          ],
+          "max": [
+            0.3227637562181463,
+            0.4796899319437239,
+            0.5
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "sha256": "992737c6198cfc4c761ecb19108b9cc6a43a26351a653abcdef5c642858b46ab"
+          }
+        ]
+      },
+      "after": {
+        "bytes": 25672,
+        "triangles": 599,
+        "bounds": {
+          "min": [
+            -0.31817761107278303,
+            -0.4796181936645237,
+            -0.4932706654071808
+          ],
+          "max": [
+            0.3143933121759935,
+            0.4716376085662571,
+            0.49568164348602295
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "sha256": "992737c6198cfc4c761ecb19108b9cc6a43a26351a653abcdef5c642858b46ab"
+          }
+        ]
+      }
+    },
+    {
+      "name": "bush-lite",
+      "source": "bush",
+      "sourceSha256": "81ccc23cf76ab093a7fb521d362d3258994a18656ac4ec4161a1a2c54edc42a7",
+      "outputSha256": "fb18b4731aacf8757c0f05e24552d396e04548be8a0ed59e39c21f327d7e429b",
+      "targetTriangles": 650,
+      "simplifyError": 0.01,
+      "before": {
+        "bytes": 37932,
+        "triangles": 1748,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.21390423291726432,
+            -0.16188543351542709
+          ],
+          "max": [
+            0.5,
+            0.21390423291726432,
+            0.16188543351542717
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "sha256": "f21804bc9689c76bc8e7c6a9f772854ff3d332517387608e898c5fc18b85a520"
+          }
+        ]
+      },
+      "after": {
+        "bytes": 28728,
+        "triangles": 794,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.21390423291726432,
+            -0.16188543491177143
+          ],
+          "max": [
+            0.5,
+            0.21390423291726432,
+            0.16051209919266293
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "sha256": "f21804bc9689c76bc8e7c6a9f772854ff3d332517387608e898c5fc18b85a520"
+          }
+        ]
+      }
+    }
+  ],
+  "notes": [
+    "Static low-detail variants only. Original geometry/textures preserved in public/models.",
+    "Textures are byte-identical to originals. Separate model selection, not automatic camera-distance LOD.",
+    "Rendering cost must be measured again by the integrator; mesh count is not FPS."
+  ],
+  "rejected": [
+    {
+      "source": "flower-cluster",
+      "sourceTriangles": 974,
+      "candidateTriangles": 510,
+      "reason": "Visible triangular petals in side-by-side QA; original retained with fewer repeats."
+    },
+    {
+      "source": "bush",
+      "candidateTriangles": 450,
+      "reason": "Visible angular shading on leaves; replaced with the gentler 794-triangle version."
+    }
+  ]
+}

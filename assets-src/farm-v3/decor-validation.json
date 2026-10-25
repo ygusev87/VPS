@@ -154,26 +154,32 @@
       "trianglesPerInstance": 7561
     },
     {
-      "model": "tree-pine",
+      "model": "tree-oak-lite",
+      "instances": 12,
+      "bytes": 25672,
+      "trianglesPerInstance": 599
+    },
+    {
+      "model": "tree-pine-lite",
       "instances": 44,
-      "bytes": 32688,
-      "trianglesPerInstance": 1686
+      "bytes": 22140,
+      "trianglesPerInstance": 599
     },
     {
       "model": "tree-oak",
-      "instances": 16,
+      "instances": 4,
       "bytes": 47276,
       "trianglesPerInstance": 2836
     },
     {
-      "model": "bush",
+      "model": "bush-lite",
       "instances": 80,
-      "bytes": 37932,
-      "trianglesPerInstance": 1748
+      "bytes": 28728,
+      "trianglesPerInstance": 794
     },
     {
       "model": "flower-cluster",
-      "instances": 83,
+      "instances": 46,
       "bytes": 43180,
       "trianglesPerInstance": 974
     },
@@ -184,8 +190,8 @@
       "trianglesPerInstance": 922
     }
   ],
-  "instances": 264,
-  "trianglesBeforeIntegrationCulling": 563555,
+  "instances": 227,
+  "trianglesBeforeIntegrationCulling": 376525,
   "notes": [
     "Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.",
     "farm.ts culls small instances near its interactive points.",

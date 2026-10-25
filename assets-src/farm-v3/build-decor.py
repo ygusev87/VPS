@@ -162,10 +162,12 @@ for xbase in [-53,53]:
         if clear([x,z],1.6):pine.append([x,z,rng.uniform(-math.pi,math.pi),rng.uniform(.8,1.05)])
 for x,z in [(-49,-30),(-29,-29),(-28,-24),(-8,-34),(3,-33),(18,-31),(34,-30),(50,-26),(-51,1),(-52,13),(-52,20),(52,5),(52,11),(51,31)]:
     if clear([x,z],1.3):oak.append([x,z,rng.uniform(-math.pi,math.pi),rng.uniform(.8,1.1)])
+add('tree-oak-lite',{'height':5.2},oak,'forest')
+oak=[]
 # Orchard: regular rows are intentional; reuse oak until an apple variant is available.
 for x in [-46,-39]:
     for z in [22,29]:oak.append([x,z,.25 if z==22 else -.3,.82])
-add('tree-pine',{'height':6.2},pine,'forest')
+add('tree-pine-lite',{'height':6.2},pine,'forest')
 add('tree-oak',{'height':5.2},oak,'forest')
 
 bush=[];flowers=[];rocks=[]
@@ -182,7 +184,9 @@ for x,z in [(-51,-32),(-29,-33),(14,-33),(32,-33),(51,-31),(-51,14),(-51,31),(-3
     if clear([x,z],.9):rocks.append([x,z,rng.uniform(-math.pi,math.pi),rng.uniform(.65,1)])
 for x,z in [(-23,26),(-22,28),(-12,24),(-12,27),(-16,29),(-47,-22),(-45,-22),(-3,-23),(1,-23)]:
     if clear([x,z],.4):flowers.append([x,z,rng.uniform(-math.pi,math.pi),1.1])
-add('bush',{'width':2.3},bush,'planting')
+add('bush-lite',{'width':2.3},bush,'planting')
+# Preserve the sculpted petals; thin the repeated border clumps instead of damaging them.
+flowers=[p for i,p in enumerate(flowers) if i%2==0 or p[3]==1.1]
 add('flower-cluster',{'height':.5},flowers,'planting')
 add('rock-cluster',{'width':2.6},rocks,'prop')
 
@@ -222,4 +226,4 @@ source=header+'\n\n'.join('export const '+name+': '+types[name]+' = '+literal(na
 (ROOT/'src/farm-decor.ts').write_text(source)
 (OUT/'decor-layout.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
 (OUT/'decor-authoring.json').write_text(json.dumps({'seed':25102503,'anchorsSource':'Claude m0120; farm.ts mechanical constants','tasks':tasks,'travel':travel,'paths':paths,'pens':pens,'fenceRuns':cuts,'groups':groups},ensure_ascii=False,indent=2)+'\n')
-print(json.dumps({'groups':len(groups),'instances':sum(len(g['items']) for g in groups),'paths':len(paths),'fenceRuns':len(fences),'forest':len(pine)+len(oak)}))
+print(json.dumps({'groups':len(groups),'instances':sum(len(g['items']) for g in groups),'paths':len(paths),'fenceRuns':len(fences),'forest':sum(len(g['items']) for g in groups if g['model'].startswith('tree-'))}))
