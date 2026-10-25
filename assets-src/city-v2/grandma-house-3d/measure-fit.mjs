@@ -10,7 +10,10 @@ import * as THREE from 'three';
 import sharp from 'sharp';
 import validator from 'gltf-validator';
 const dir=path.dirname(fileURLToPath(import.meta.url));
-const input=path.join(dir,'candidate/grandma-house.glb'),bytes=await fs.readFile(input);
+const final=process.argv.includes('--final');
+const relativeInput=final?'../../../public/models/grandma-house.glb':'candidate/grandma-house.glb';
+const input=path.join(dir,relativeInput),bytes=await fs.readFile(input);
+const deckLeftX=final?2.8:3.1;
 await MeshoptDecoder.ready;
 const doc=await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.decoder':MeshoptDecoder}).read(input);
 assert.equal(doc.getRoot().listSkins().length,0);assert.equal(doc.getRoot().listAnimations().length,0);
@@ -52,9 +55,21 @@ for(const z of [-.1,.1,.25,.4,.55]){
 }
 assert(threshold.length>=3,'Door colour probes need manual review');
 const plateY=1.95,wallProbe=surface(plateY,.25),doorProbe=threshold.find(p=>p.z===.25);assert(wallProbe&&doorProbe);
-const report={status:'Candidate only; current fit does not meet balcony interface',input:'candidate/grandma-house.glb',runtimeFit:{width:6.2,rotateY:-Math.PI/2,centerXZ:[-44,-27]},fittedSize:size.multiplyScalar(scale).toArray().map(round),sideDoorColourSamples:threshold,doorEstimate:{method:'Nearest ray hit at +X wall; first teal base-colour texel along y1.6..2.7, step0.005. Confirms rendered door placement, not exact physical sill mesh edge.',thresholdY:doorProbe.firstTealPixelY,aboveDeck:round(doorProbe.firstTealPixelY-plateY),estimateUncertainty:'.02-.05 world units from texture boundary/frame; validate visually'},wallAtDeck:{point:wallProbe.point,rgb:wallProbe.rgb,deckLeftX:3.1,gap:round(3.1-wallProbe.point[0])},options:{recommended:{description:'Keep fitted width6.2; reduce house height only, then extend balcony deck back to the measured facade while anchor/outer edge stay fixed. Claude owns final integration choice.',approxHouseYScale:round(plateY/doorProbe.firstTealPixelY),approxDeckExtension:round(3.1-doorProbe.surfaceX+.03)},alternative:{description:'Increase full fitted width until facade touches x3.1, compensate height separately; recheck enlarged footprint.',approxFullWidth:round(6.2*3.1/doorProbe.surfaceX),approxHouseYScale:round(plateY/doorProbe.firstTealPixelY/(3.1/doorProbe.surfaceX))}},limitations:['No changes to balcony, lift, grandma or gameplay anchors.','Neither suggested option applied to the candidate; no public/models addition.','Full game and iPad testing pending.']};
+const report={status:final?'Final asset with baked height adjustment, awaiting full game review':'Candidate only; current fit does not meet balcony interface',input:relativeInput,runtimeFit:{width:6.2,rotateY:-Math.PI/2,centerXZ:[-44,-27]},fittedSize:size.multiplyScalar(scale).toArray().map(round),sideDoorColourSamples:threshold,doorEstimate:{method:'Nearest ray hit at +X wall; first teal base-colour texel along y1.6..2.7, step0.005. Confirms rendered door placement, not exact physical sill mesh edge.',thresholdY:doorProbe.firstTealPixelY,aboveDeck:round(doorProbe.firstTealPixelY-plateY),estimateUncertainty:'.02-.05 world units from texture boundary/frame; validate visually'},wallAtDeck:{point:wallProbe.point,rgb:wallProbe.rgb,deckLeftX,gap:round(deckLeftX-wallProbe.point[0])},options:{recommended:{description:'Keep fitted width6.2; reduce house height only, then extend balcony deck back to the measured facade while anchor/outer edge stay fixed. Claude owns final integration choice.',approxHouseYScale:round(plateY/doorProbe.firstTealPixelY),approxDeckExtension:round(3.1-doorProbe.surfaceX+.03)},alternative:{description:'Increase full fitted width until facade touches x3.1, compensate height separately; recheck enlarged footprint.',approxFullWidth:round(6.2*3.1/doorProbe.surfaceX),approxHouseYScale:round(plateY/doorProbe.firstTealPixelY/(3.1/doorProbe.surfaceX))}},limitations:['No changes to balcony, lift, grandma or gameplay anchors.','Neither suggested option applied to the candidate; no public/models addition.','Full game and iPad testing pending.']};
+if(final){
+ delete report.options;
+ report.approval='Claude m0204; matching deck change 9b3c8f0';
+ report.bakedYScale=0.8764;
+ report.balcony={width:1.9,localCenterX:-.15,topY:1.95,outerEdgeLocalX:4.7};
+ report.limitations=['Final asset is in public/models; game integration review, basket/lift path and iPad performance pending.','Door estimate is colour-derived; inspect the visible sill with the actual balcony.'];
+ const baseline=JSON.parse(await fs.readFile(path.join(dir,'fit-measurements.json'),'utf8'));
+ assert(Math.abs(report.fittedSize[0]-baseline.fittedSize[0])<.002&&Math.abs(report.fittedSize[2]-baseline.fittedSize[2])<.002,'Footprint changed');
+ assert(Math.abs(report.doorEstimate.aboveDeck)<.03,'Door height not aligned');
+ assert(report.wallAtDeck.gap<0&&report.wallAtDeck.gap>-.08,'Deck must overlap wall slightly');
+ report.checks={footprintUnchanged:true,doorWithin0_03:true,deckOverlapsWall:true};
+}
 const validation=await validator.validateBytes(bytes,{uri:'grandma-house.glb'});
 assert.equal(validation.issues.numErrors+validation.issues.numWarnings,0,'GLB failed validation');
-await fs.writeFile(path.join(dir,'validation.json'),JSON.stringify(validation,null,2)+'\n');
-await fs.writeFile(path.join(dir,'fit-measurements.json'),JSON.stringify(report,null,2)+'\n');
+await fs.writeFile(path.join(dir,final?'final-validation.json':'validation.json'),JSON.stringify(validation,null,2)+'\n');
+await fs.writeFile(path.join(dir,final?'final-fit-measurements.json':'fit-measurements.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({size:report.fittedSize,threshold,doorEstimate:report.doorEstimate,wallAtDeck:report.wallAtDeck,options:report.options,validation:{errors:validation.issues.numErrors,warnings:validation.issues.numWarnings}}));

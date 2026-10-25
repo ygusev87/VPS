@@ -1,0 +1,106 @@
+{
+  "status": "Final asset with baked height adjustment, awaiting full game review",
+  "input": "../../../public/models/grandma-house.glb",
+  "runtimeFit": {
+    "width": 6.2,
+    "rotateY": -1.5707963267948966,
+    "centerXZ": [
+      -44,
+      -27
+    ]
+  },
+  "fittedSize": [
+    6.2,
+    6.7773,
+    4.7594
+  ],
+  "sideDoorColourSamples": [
+    {
+      "z": -0.1,
+      "firstTealPixelY": 1.94,
+      "surfaceX": 2.8189,
+      "rgb": [
+        84,
+        134,
+        120
+      ]
+    },
+    {
+      "z": 0.1,
+      "firstTealPixelY": 1.965,
+      "surfaceX": 2.8256,
+      "rgb": [
+        39,
+        104,
+        109
+      ]
+    },
+    {
+      "z": 0.25,
+      "firstTealPixelY": 1.95,
+      "surfaceX": 2.8323,
+      "rgb": [
+        39,
+        97,
+        93
+      ]
+    },
+    {
+      "z": 0.4,
+      "firstTealPixelY": 1.94,
+      "surfaceX": 2.8388,
+      "rgb": [
+        70,
+        122,
+        111
+      ]
+    },
+    {
+      "z": 0.55,
+      "firstTealPixelY": 1.96,
+      "surfaceX": 2.8437,
+      "rgb": [
+        30,
+        104,
+        102
+      ]
+    }
+  ],
+  "doorEstimate": {
+    "method": "Nearest ray hit at +X wall; first teal base-colour texel along y1.6..2.7, step0.005. Confirms rendered door placement, not exact physical sill mesh edge.",
+    "thresholdY": 1.95,
+    "aboveDeck": 0,
+    "estimateUncertainty": ".02-.05 world units from texture boundary/frame; validate visually"
+  },
+  "wallAtDeck": {
+    "point": [
+      2.8323,
+      1.95,
+      0.25
+    ],
+    "rgb": [
+      39,
+      97,
+      93
+    ],
+    "deckLeftX": 2.8,
+    "gap": -0.0323
+  },
+  "limitations": [
+    "Final asset is in public/models; game integration review, basket/lift path and iPad performance pending.",
+    "Door estimate is colour-derived; inspect the visible sill with the actual balcony."
+  ],
+  "approval": "Claude m0204; matching deck change 9b3c8f0",
+  "bakedYScale": 0.8764,
+  "balcony": {
+    "width": 1.9,
+    "localCenterX": -0.15,
+    "topY": 1.95,
+    "outerEdgeLocalX": 4.7
+  },
+  "checks": {
+    "footprintUnchanged": true,
+    "doorWithin0_03": true,
+    "deckOverlapsWall": true
+  }
+}

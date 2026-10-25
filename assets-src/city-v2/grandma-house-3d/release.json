@@ -1,0 +1,34 @@
+{
+  "status": "Final asset installed; Claude full game review pending",
+  "decision": "m0204",
+  "matchingBalconyCodeCommit": "9b3c8f0",
+  "path": "public/models/grandma-house.glb",
+  "bytes": 141356,
+  "sha256": "1407540b61fdb1c6547d72c43d66a473142c9ffd6fe9335683f97bbb8efaf1bd",
+  "triangles": 7068,
+  "materials": 1,
+  "texture": "512x512 WebP",
+  "compression": "Meshopt",
+  "bakedHeightMultiplier": 0.8764,
+  "runtimeFit": {
+    "width": 6.2,
+    "rotateY": -1.5707963267948966,
+    "extraHeightMultiplier": 1
+  },
+  "fittedDimensions": [
+    6.2,
+    6.7773,
+    4.7594
+  ],
+  "doorEstimateY": 1.95,
+  "deckWallOverlap": 0.0323,
+  "newTripoOrders": 0,
+  "newTripoCredits": 0,
+  "validation": "final-validation.json",
+  "measurements": "final-fit-measurements.json",
+  "remainingReview": [
+    "actual basket and lift travel",
+    "full game visibility and collision",
+    "iPad/PWA/frame time"
+  ]
+}

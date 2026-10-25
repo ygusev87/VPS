@@ -1,0 +1,18 @@
+{
+  "grandma-house": {
+    "yawDegrees": 90,
+    "placement": {
+      "scale": [
+        -1,
+        0.8764,
+        1
+      ],
+      "translation": [
+        0,
+        0,
+        0
+      ]
+    },
+    "note": "Native side door +X, native facade -Z (rear repeats facade); orient then reflect canonical X. Combined with runtime yaw -90 this reflects native Z: side door stays +X and its center shifts toward balcony z+0.25. Final height adjustment approved in m0204: Y×0.8764; width and ground origin unchanged. Intended for runtime fit.width6.2 and rotateY -90, with balcony deck1.9 centered localX-0.15."
+  }
+}

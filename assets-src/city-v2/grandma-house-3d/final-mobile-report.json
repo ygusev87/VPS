@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-10-25T20:22:51.877Z",
+  "source": "/tmp/grandma-house-final-canonical-20261026",
+  "output": "/tmp/grandma-house-final-mobile-20261026",
+  "textureSource": null,
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 891912,
+      "triangles": 7068,
+      "textureMiB": 21.333333333333332
+    },
+    "after": {
+      "bytes": 141356,
+      "triangles": 7068,
+      "textureMiB": 1.3333333333333333
+    }
+  },
+  "models": [
+    {
+      "name": "grandma-house",
+      "sourceSha256": "48c1fbf251e1d84ee0f726a77f0e3e7a60227f0f320d59e852ce0162a2f6447e",
+      "outputSha256": "1407540b61fdb1c6547d72c43d66a473142c9ffd6fe9335683f97bbb8efaf1bd",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 891912,
+        "triangles": 7068,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 805961,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.30773339030121766,
+            0,
+            -0.40087588122196105
+          ],
+          "max": [
+            0.30773339030121777,
+            0.8764,
+            0.40087588122196105
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 141356,
+        "triangles": 7068,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 55338,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.30773339030121766,
+            0,
+            -0.40087588122196105
+          ],
+          "max": [
+            0.30773339030121777,
+            0.8764,
+            0.40087588122196105
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ]
+}

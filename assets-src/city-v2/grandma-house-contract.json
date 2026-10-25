@@ -1,7 +1,7 @@
 {
-  "status": "First GLB generated, optimized and measured; candidate only, balcony-fit decision pending",
+  "status": "Final GLB in public/models; height adjustment agreed m0204; full gameplay review pending",
   "reference": "grandma-house-v1.png",
-  "decision": "m0195, reaffirmed m0198; keep existing balcony",
+  "decision": "m0195, reaffirmed m0198; keep existing balcony; final fit m0204",
   "appearance": {
     "storeys": 3,
     "walls": "warm honey/apricot",
@@ -35,12 +35,12 @@
     "gameWallSide": "+X",
     "sourceWallSideAfterNormalisation": "-Z",
     "targetContactWorldXYZ": [
-      -40.9,
+      -41.1677,
       1.95,
       -26.75
     ],
     "targetContactLocalXYZ": [
-      3.1,
+      2.8323,
       1.95,
       0.25
     ],
@@ -56,7 +56,10 @@
       -38.6,
       -26.5
     ],
-    "doNotMove": "balcony, grandma, lift, all task/pole anchors"
+    "doNotMove": "balcony, grandma, lift, all task/pole anchors",
+    "deckWidth": 1.9,
+    "deckCenterOffsetX": -0.15,
+    "deckWallOverlap": 0.0323
   },
   "geometryTargets": {
     "fullWidth": 6.2,
@@ -80,9 +83,39 @@
   "reviewNotes": [
     "Current image has shallow projecting roof and horizontal trim. These are stylistic, not permission to change contact coordinates.",
     "No device test or performance claim from reference image.",
-    "At fit.width6.2: rendered middle-door boundary y2.225, wall at deck y1.95 has gap0.2928. Proposed Y scale0.8764 and deck extension0.30 are preview-only, not integrated. See grandma-house-3d/README.md."
+    "At fit.width6.2: rendered middle-door boundary y2.225, wall at deck y1.95 has gap0.2928. Proposed Y scale0.8764 and deck extension0.30 are preview-only, not integrated. See grandma-house-3d/README.md.",
+    "m0204 selected first option. Final baked Y×0.8764 matches deck extended in9b3c8f0; originalConnection retained as initial contract. Full game integration review still pending."
   ],
   "tripoOrders": 1,
   "candidate": "grandma-house-3d/candidate/grandma-house.glb",
-  "measurement": "grandma-house-3d/fit-measurements.json"
+  "measurement": "grandma-house-3d/final-fit-measurements.json",
+  "originalConnection": {
+    "gameWallSide": "+X",
+    "sourceWallSideAfterNormalisation": "-Z",
+    "targetContactWorldXYZ": [
+      -40.9,
+      1.95,
+      -26.75
+    ],
+    "targetContactLocalXYZ": [
+      3.1,
+      1.95,
+      0.25
+    ],
+    "existingBalconyCenterXZ": [
+      -40.1,
+      -26.75
+    ],
+    "existingGrandmaXZ": [
+      -40.45,
+      -26.75
+    ],
+    "liftXZ": [
+      -38.6,
+      -26.5
+    ],
+    "doNotMove": "balcony, grandma, lift, all task/pole anchors"
+  },
+  "finalAsset": "../../public/models/grandma-house.glb",
+  "release": "grandma-house-3d/release.json"
 }
