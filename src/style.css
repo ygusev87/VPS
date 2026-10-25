@@ -1600,6 +1600,20 @@ body.on-map .inv-btn {
 .map-soon .icon .fill {
   fill: #fff;
 }
+/* The build's version, small in the top right corner. */
+.build-tag {
+  position: fixed;
+  top: calc(var(--safe-t) + 2px);
+  right: calc(var(--safe-r, 0px) + 8px);
+  font: 600 10px/1 'Fira Sans Condensed', system-ui, sans-serif;
+  color: rgba(24, 33, 61, 0.45);
+  pointer-events: none;
+  z-index: 999;
+}
+body.is-night .build-tag {
+  color: rgba(255, 255, 255, 0.45);
+}
+
 /* The hidden speed meter (five taps on the title). */
 .perf {
   position: fixed;

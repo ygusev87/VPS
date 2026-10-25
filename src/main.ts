@@ -280,6 +280,11 @@ stage.setNight(progress.night);
 Part.night = progress.night;
 Wire.glow = progress.night ? 0.7 : 1.4;
 const perf = new PerfMeter(stage, document.querySelector('.brand')!);
+// Which version this is, small in a corner, so a test on the tablet knows what it is looking at.
+const buildTag = document.createElement('div');
+buildTag.className = 'build-tag';
+buildTag.textContent = `версия ${__BUILD__}`;
+document.body.append(buildTag);
 
 const input = new Input(stage, world, {
   overTray: (x, y) => hud.overTray(x, y),
