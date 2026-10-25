@@ -20,7 +20,7 @@ import { Shelf } from './shelf';
 import { capture, deleteInvention, keepPlace, loadInventions, placeKept, restore, saveInvention, snapshot, type Invention } from './saves';
 import { FireTruck, Helicopter, RaceTrack, TrafficLight } from './parts/fun';
 import { Dynamo } from './parts/more';
-import { loadModels } from './parts/assets';
+import { loadModels, releaseUnused } from './parts/assets';
 import { ALL_ITEMS, createPart, itemKey, itemOf, MODEL_NAMES } from './parts/catalog';
 import { PerfMeter } from './perf';
 import { Stage } from './stage';
@@ -405,6 +405,8 @@ async function startFarm(fresh = false) {
     },
   });
   farm.start();
+  // The workbench's parts are not on the farm: give their textures' video memory back for now.
+  setTimeout(() => farm && releaseUnused(stage.scene), 1500);
   farmScore = '';
   // Carry on where the farm was left, unless the story was over (then it starts again).
   const kept = fresh ? null : placeKept<FarmKept>('farm');

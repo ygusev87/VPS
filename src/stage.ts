@@ -563,6 +563,9 @@ export class Stage {
     // A real draw also uploads textures and geometry.
     this.render();
     this.scene.remove(g);
+    // The compiled shaders are what we came for: give back the throwaway parts' geometry
+    // (an iPad has little video memory). Shared pieces simply upload again when next drawn.
+    g.traverse((o) => (o as THREE.Mesh).geometry?.dispose());
   }
 
   /** Screen point → point on the horizontal plane at height y. */

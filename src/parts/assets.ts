@@ -114,6 +114,34 @@ export function hasModel(name: string) {
   return cache.has(name);
 }
 
+/**
+ * Frees the video memory of every model texture nothing in `scene` shows (the
+ * workbench's parts while a map is open): an iPad has little of it. A texture
+ * keeps its picture, so it simply goes up to the GPU again if it is drawn later.
+ */
+export function releaseUnused(scene: THREE.Object3D) {
+  const used = new Set<THREE.Texture>();
+  const textures = (m: THREE.Material) => Object.values(m).filter((v): v is THREE.Texture => v instanceof THREE.Texture);
+  scene.traverse((o) => {
+    const m = o as THREE.Mesh;
+    if (m.isMesh) for (const mat of ([] as THREE.Material[]).concat(m.material)) for (const t of textures(mat)) used.add(t);
+  });
+  let freed = 0;
+  for (const src of cache.values()) {
+    src.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (!m.isMesh) return;
+      for (const mat of ([] as THREE.Material[]).concat(m.material))
+        for (const t of textures(mat))
+          if (!used.has(t)) {
+            t.dispose();
+            freed++;
+          }
+    });
+  }
+  return freed;
+}
+
 /** A model's animation clips (empty when it has none or is not loaded). */
 export function clipsOf(name: string): THREE.AnimationClip[] {
   return clipCache.get(name) ?? [];
