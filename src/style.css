@@ -1295,7 +1295,8 @@ body.is-night .brand {
     transform: scale(1.25) rotate(-8deg);
   }
 }
-body.on-map .inv-btn {
+body.on-map .inv-btn,
+body.on-map .mach-btn {
   display: none;
 }
 .sheet .maps-card {
