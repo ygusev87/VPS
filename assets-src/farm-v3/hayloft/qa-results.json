@@ -49,7 +49,8 @@
   },
   "limitations": [
     "No real iPad GPU/FPS measurement.",
-    "Browser captured unsourced MutationObserver.observe errors, also observed in previous QA pages; source not established."
+    "Browser captured unsourced MutationObserver.observe errors, also observed in previous QA pages; source not established.",
+    "Later recheck of 93c6b07 blocked by WebGL context creation failure; source of context loss not established. Earlier asset and integration screenshots succeeded."
   ],
   "screenshots": [
     "/tmp/gameios-visual-audit-2026-10-25/hayloft-tablet.png",
@@ -58,5 +59,11 @@
     "/tmp/gameios-visual-audit-2026-10-25/hayloft-before-after-phone.png",
     "/tmp/gameios-visual-audit-2026-10-25/hayloft-farm-tablet.png",
     "/tmp/gameios-visual-audit-2026-10-25/hayloft-cabin-roof-hidden.png"
-  ]
+  ],
+  "followup": {
+    "commit": "93c6b07",
+    "codeReview": "Cabin platform top matches localY.1; roof and window hidden for kitten.",
+    "visualStatus": "Pending independent review by Claude: IAB could not create a WebGL context after repeated QA reloads. Closing both QA tabs and opening one fresh tab did not restore it.",
+    "coordination": "m0168"
+  }
 }
