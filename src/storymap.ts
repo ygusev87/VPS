@@ -618,19 +618,22 @@ export abstract class StoryMap {
 
     this.tick(dt);
 
+    const mine = this.helping();
     for (const n of this.needs) {
       const waiting = !n.done && this.isNow(n);
+      // The rings of the one being helped are teal and bold: easy to find on grass or tarmac.
+      const lead = n === mine;
       for (const s of slots(n)) {
         const ringMat = s.ring.material as THREE.MeshBasicMaterial;
         if (!waiting) {
           ringMat.opacity = THREE.MathUtils.damp(ringMat.opacity, 0, 6, dt);
           continue;
         }
-        // White and pulsing while it waits; green and steady once the right part stands on it.
+        // Pulsing while it waits; green and steady once the right part stands on it.
         s.ready = s.kinds.some((k) => this.world.parts.some((p) => p.kind === k && p.root.position.distanceTo(s.spot) < 0.6));
-        ringMat.color.set(s.ready ? '#4fd27a' : '#ffffff');
-        ringMat.opacity = s.ready ? 0.9 : 0.35 + Math.sin(this.time * 3) * 0.2;
-        s.ring.scale.setScalar(s.ready ? 1 : 1 + Math.sin(this.time * 3) * 0.05);
+        ringMat.color.set(s.ready ? '#4fd27a' : lead ? '#1aa3a1' : '#ffffff');
+        ringMat.opacity = s.ready ? 0.9 : lead ? 0.85 + Math.sin(this.time * 4) * 0.15 : 0.35 + Math.sin(this.time * 3) * 0.2;
+        s.ring.scale.setScalar(s.ready ? 1 : 1 + Math.sin(this.time * (lead ? 4 : 3)) * (lead ? 0.1 : 0.05));
       }
       if (!waiting) continue;
       // The bubble shows the next part still missing from the chain.
@@ -648,6 +651,8 @@ export abstract class StoryMap {
         this.helpedNeed(n);
         this.moods();
         // The camera stays: the child picks whom to help next. The first time, a word on how.
+        // Only if the happy one is off screen (the wire was laid far away) does it glance there.
+        setTimeout(() => !this.gone && this.hooks.look?.(top), 800);
         this.lastAt = n.critter.home.clone();
         if (this.focused === n) {
           this.focused = null;
