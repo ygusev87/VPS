@@ -699,8 +699,31 @@ export class FarmMap extends StoryMap {
     return true;
   }
 
+  /**
+   * The kitten is in the lift at the top: the current has to run the other
+   * way. Take off the two wires as they are, then wire the lift the other way
+   * round: the pole's plus to the lift's other leg.
+   */
+  private swapHint(): Hint | null {
+    if (this.kitten !== 'riding') return null;
+    const lift = this.world.parts.find((p): p is Lift => p instanceof Lift && p.root.position.distanceTo(LIFT_SPOT) < 0.8);
+    const pole = this.nearestSource(LIFT_SPOT);
+    if (!lift || !pole || lift.state.level < -0.15) return null;
+    const [plus, minus] = [pole.terminal('a'), pole.terminal('b')];
+    const [a, b] = [lift.terminal('a'), lift.terminal('b')];
+    const w = this.world;
+    // Wires the old way round go first.
+    const old = w.wires.find((x) => x.b && ((x.touches(a) && w.wired(a, plus)) || (x.touches(b) && w.wired(b, minus))));
+    if (old) return { type: 'tapWire', wire: old, at: lift, problem: 'reversed', phrase: 'liftSwap', u: 0.5 };
+    if (!w.wired(plus, b)) return { type: 'connect', from: b, to: plus, phrase: 'liftSwap' };
+    if (!w.wired(a, minus)) return { type: 'connect', from: a, to: minus, phrase: 'liftSwap' };
+    return null;
+  }
+
   /** The fox's button is down: now a bell (or buzzer) to go with it. */
   protected extraHint(trayLeft: (k: PartKind) => number): Hint | null {
+    const swap = this.swapHint();
+    if (swap) return swap;
     if (this.day === 1 && this.phase === 'night' && !this.world.parts.some((p) => p.kind === 'bell' || p.kind === 'buzzer') && trayLeft('bell') > 0)
       return { type: 'drag', kind: 'bell', to: BELL_SPOT.clone(), phrase: 'foxTip' };
     // Both on their rings: one loop from the pole through the button and the bell.
