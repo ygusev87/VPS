@@ -54,10 +54,17 @@ function store(list: Invention[]) {
   }
 }
 
-/** The table as data (pinned map parts are not part of an invention). */
-export function capture(world: World, pic: string): Invention | null {
+/**
+ * The table as data. Pinned map parts are not saved themselves, but with
+ * `withMap` the wires to them are: such an end is numbered -1, -2, … in the
+ * order the map pinned its parts (the same every time the map is laid out).
+ */
+export function capture(world: World, pic: string, withMap = false): Invention | null {
   const parts = world.parts.filter((p) => !p.pinned);
+  const pins = withMap ? world.parts.filter((p) => p.pinned) : [];
   if (!parts.length) return null;
+  const index = (p: Part) => (parts.includes(p) ? parts.indexOf(p) : -1 - pins.indexOf(p));
+  const known = (p: Part) => parts.includes(p) || pins.includes(p);
   const extra = (p: Part) => p as unknown as { aim?: number; side?: 0 | 1; song?: number };
   return {
     id: `i${Date.now().toString(36)}`,
@@ -74,10 +81,10 @@ export function capture(world: World, pic: string): Invention | null {
       return s;
     }),
     wires: world.wires
-      .filter((w) => w.b && parts.includes(w.a.part) && parts.includes(w.b.part))
+      .filter((w) => w.b && known(w.a.part) && known(w.b.part) && !(w.a.part.pinned && w.b.part.pinned))
       .map((w) => ({
-        a: [parts.indexOf(w.a.part), w.a.key] as [number, string],
-        b: [parts.indexOf(w.b!.part), w.b!.key] as [number, string],
+        a: [index(w.a.part), w.a.key] as [number, string],
+        b: [index(w.b!.part), w.b!.key] as [number, string],
         ...(w.route.length ? { route: w.route.map((v) => [r2(v.x), r2(v.z)] as [number, number]) } : {}),
       })),
   };
@@ -95,8 +102,9 @@ export function deleteInvention(id: string) {
   store(loadInventions().filter((i) => i.id !== id));
 }
 
-/** Lay a saved table out on the (cleared) world. */
-export function restore(world: World, inv: Invention) {
+/** Lay a saved table out on the world (cleared, or holding just a map's pinned parts). */
+export function restore(world: World, inv: Pick<Invention, 'parts' | 'wires'>) {
+  const pins = world.parts.filter((p) => p.pinned);
   const made = inv.parts.map((s) => {
     const p = world.addPart(s.kind, s.x, s.z, { color: s.color, closed: s.closed, appear: true });
     const e = p as unknown as { aim?: number; side?: 0 | 1; song?: number };
@@ -105,14 +113,37 @@ export function restore(world: World, inv: Invention) {
     if (s.song !== undefined && 'song' in p) e.song = s.song;
     return p;
   });
+  const part = (i: number) => (i >= 0 ? made[i] : pins[-1 - i]);
   for (const w of inv.wires) {
-    const a = made[w.a[0]]?.terminal(w.a[1]);
-    const b = made[w.b[0]]?.terminal(w.b[1]);
+    const a = part(w.a[0])?.terminal(w.a[1]);
+    const b = part(w.b[0])?.terminal(w.b[1]);
     if (!a || !b) continue;
     const wire = new Wire(a);
     if (w.route) wire.route = w.route.map(([x, z]) => new THREE.Vector3(x, 0, z));
     world.stage.world.add(wire.group);
     world.attachWire(wire, b);
+  }
+}
+
+/**
+ * Where play was left: the free-play table and the farm, kept while playing so
+ * the next start carries on from there. `null` forgets it.
+ */
+export function keepPlace<T>(key: 'table' | 'farm', data: T | null) {
+  try {
+    if (data === null) localStorage.removeItem(`electro-table:${key}`);
+    else localStorage.setItem(`electro-table:${key}`, JSON.stringify(data));
+  } catch {
+    // Storage full or blocked: play goes on, only unsaved.
+  }
+}
+
+export function placeKept<T>(key: 'table' | 'farm'): T | null {
+  try {
+    const raw = localStorage.getItem(`electro-table:${key}`);
+    return raw ? (JSON.parse(raw) as T) : null;
+  } catch {
+    return null;
   }
 }
 

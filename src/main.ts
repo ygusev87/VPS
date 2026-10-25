@@ -3,7 +3,7 @@ import './style.css';
 import { Sfx } from './audio';
 import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Fx } from './fx';
-import { FARM_MODELS, FARM_TRAY, FarmMap, loadGround } from './farm';
+import { FARM_MODELS, FARM_TRAY, FarmMap, loadGround, type FarmProgress } from './farm';
 import { Hud } from './hud';
 import { Input } from './input';
 import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
@@ -16,7 +16,7 @@ import { blowWind, Pinwheel } from './parts/wind';
 import { Belt, interact, Laser, Launcher, Magnet, Mirror, tracePath } from './parts/chain';
 import { Album, type Sticker } from './album';
 import { Shelf } from './shelf';
-import { capture, deleteInvention, loadInventions, restore, saveInvention, snapshot } from './saves';
+import { capture, deleteInvention, keepPlace, loadInventions, placeKept, restore, saveInvention, snapshot, type Invention } from './saves';
 import { FireTruck, Helicopter, RaceTrack, TrafficLight } from './parts/fun';
 import { Dynamo } from './parts/more';
 import { loadModels } from './parts/assets';
@@ -118,7 +118,7 @@ const hud = new Hud(stage, {
   onRestart: () => {
     sfx.unlock();
     sfx.pop();
-    if (farm) void startFarm();
+    if (farm) void startFarm(true);
     else startLevel(level);
   },
   onSound: (on) => {
@@ -354,8 +354,8 @@ function applyNight(on: boolean) {
   Wire.glow = on ? 0.7 : 1.4;
 }
 
-/** Open the farm map (loading its models the first time). */
-async function startFarm() {
+/** Open the farm map (loading its models the first time); `fresh` starts its story over. */
+async function startFarm(fresh = false) {
   await Promise.all([loadModels(FARM_MODELS), loadGround()]);
   leaveFarm();
   level = FARM_LEVEL;
@@ -396,6 +396,15 @@ async function startFarm() {
   });
   farm.start();
   farmScore = '';
+  // Carry on where the farm was left, unless the story was over (then it starts again).
+  const kept = fresh ? null : placeKept<FarmKept>('farm');
+  const carryOn = !!kept && kept.state.phase !== 'done' && kept.state.done.length === farm.progress().done.length;
+  if (kept && carryOn) {
+    if (kept.table) restore(world, kept.table);
+    farm.resume(kept.state);
+  } else keepPlace('farm', null);
+  progress.place = 'farm';
+  saveProgress(progress);
   // Once per visit: tell them the map moves under the finger.
   setTimeout(() => farm && voice.say('farmMove', 0), 9000);
   refreshTray();
@@ -403,11 +412,52 @@ async function startFarm() {
   levelStart = performance.now();
   lastTouch = levelStart;
   setHint(null);
-  voice.say('farmIntro', 0);
+  // Back again: who is waiting for help says so; a new visit hears the welcome.
+  if (carryOn) farm.replay();
+  else voice.say('farmIntro', 0);
 }
+
+/** The farm as it was left: the story so far and the parts and wires the child put down. */
+interface FarmKept {
+  state: FarmProgress;
+  table: TableKept | null;
+}
+type TableKept = Pick<Invention, 'parts' | 'wires'>;
+
+/** The table as data for keeping (without the id and time a saved invention has). */
+function tableKept(withMap = false): TableKept | null {
+  const t = capture(world, '', withMap);
+  return t && { parts: t.parts, wires: t.wires };
+}
+
+/**
+ * Every couple of seconds while playing, and when the game is put away, the
+ * free-play table or the farm is kept, so the next start carries on from there.
+ */
+let keptAt = 0;
+let keptJson = '';
+function keepPlay(force = false) {
+  const now = performance.now();
+  if (!force && now - keptAt < 2000) return;
+  keptAt = now;
+  const kept = farm ? { key: 'farm' as const, data: { state: farm.progress(), table: tableKept(true) } } : level === FREE_PLAY ? { key: 'table' as const, data: tableKept() } : null;
+  if (!kept) return;
+  const json = kept.key + JSON.stringify(kept.data);
+  if (json === keptJson) return;
+  keptJson = json;
+  keepPlace(kept.key, kept.data);
+}
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'hidden') keepPlay(true);
+});
+window.addEventListener('pagehide', () => keepPlay(true));
 
 function startLevel(l: Level, instant = false, speak = true) {
   leaveFarm();
+  if (progress.place !== 'lab') {
+    progress.place = 'lab';
+    saveProgress(progress);
+  }
   level = l;
   won = false;
   goalHeld = 0;
@@ -928,6 +978,7 @@ function frame(now: number) {
 
   watchShorts(dt);
   watchChains(dt);
+  keepPlay();
   watchStickers(dt);
   watchBelts();
   if (!farm) fx.night = progress.night;
@@ -939,8 +990,19 @@ function frame(now: number) {
   requestAnimationFrame(frame);
 }
 
-// Free play is the main mode; missions wait in the drop-down.
-startLevel(FREE_PLAY, true);
+// Free play is the main mode; missions wait in the drop-down. Play carries on
+// where it was left: on the farm, or with the table as the child left it.
+if (progress.place === 'farm') await startFarm();
+else {
+  startLevel(FREE_PLAY, true);
+  const table = placeKept<TableKept>('table');
+  if (table?.parts.length) {
+    world.clear();
+    restore(world, table);
+    refreshTray();
+    frameParts(true);
+  }
+}
 voice.stop();
 requestAnimationFrame((t) => {
   last = t;

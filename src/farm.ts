@@ -64,6 +64,21 @@ const W = 72;
 const D = 48;
 
 type Phase = 'day' | 'evening' | 'night' | 'morning' | 'done';
+/** How dark each part of the day is (0 day .. 1 night). */
+const NIGHT: Record<Phase, number> = { day: 0, evening: 0.72, night: 1, morning: 0, done: 0 };
+
+/** The story so far, as saved between visits. */
+export interface FarmProgress {
+  phase: Phase;
+  /** Per need, in the order they are built. */
+  done: boolean[];
+  trough: number;
+  mill: number;
+  fountain: number;
+  foxChased: boolean;
+}
+
+const r2 = (n: number) => Math.round(n * 100) / 100;
 
 interface Critter {
   name: string;
@@ -194,6 +209,36 @@ export class FarmMap {
     AMBIENT.strength = 0;
     Solar.sun = 1;
     this.stage.setNightAmount(0);
+  }
+
+  /** How far the story got, to carry on next time (the parts and wires are saved with the table). */
+  progress(): FarmProgress {
+    return {
+      phase: this.phase,
+      done: this.needs.map((n) => n.done),
+      trough: r2(this.troughLevel),
+      mill: r2(this.millLevel),
+      fountain: r2(this.fountainLevel),
+      foxChased: this.foxChased,
+    };
+  }
+
+  /** Pick the story up where it was left: who has been helped, the time of day, what is full. */
+  resume(p: FarmProgress) {
+    this.needs.forEach((n, i) => (n.done = !!p.done[i]));
+    this.troughLevel = p.trough;
+    this.millLevel = p.mill;
+    this.fountainLevel = p.fountain;
+    this.foxChased = p.foxChased;
+    // The tractor has long gone through the gate into the field.
+    if (this.needs.some((n) => n.done && n.critter.name === 'tractor')) this.tractorT = 30;
+    this.phase = p.phase;
+    this.phaseT = 0;
+    this.night = NIGHT[p.phase];
+    this.stage.setNightAmount(this.night);
+    if (p.phase === 'night') this.foxT = 0;
+    this.moods();
+    this.refocus(true);
   }
 
   /** The farm's corners, for fitting it on screen. */
@@ -567,8 +612,7 @@ export class FarmMap {
     this.time += dt;
     this.phaseT += dt;
     // Daylight: day → dusk in the evening → night → sunrise.
-    const goal = this.phase === 'evening' ? 0.72 : this.phase === 'night' ? 1 : 0;
-    this.night = THREE.MathUtils.damp(this.night, goal, 0.6, dt);
+    this.night = THREE.MathUtils.damp(this.night, NIGHT[this.phase], 0.6, dt);
     this.stage.setNightAmount(this.night);
     Solar.sun = Math.max(0, 1 - this.night * 1.6);
     // Gusts on the hill.
