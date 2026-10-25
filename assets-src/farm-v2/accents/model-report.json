@@ -1,0 +1,171 @@
+{
+  "generatedAt": "2026-10-25T09:06:53.801Z",
+  "source": "/tmp/gameios-accents-normalized",
+  "output": "/tmp/gameios-accents-ready",
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 847128,
+      "triangles": 1896,
+      "textureMiB": 42.666666666666664
+    },
+    "after": {
+      "bytes": 69624,
+      "triangles": 1896,
+      "textureMiB": 2.6666666666666665
+    }
+  },
+  "models": [
+    {
+      "name": "rock-cluster",
+      "sourceSha256": "fd538036d8e17813aa05284de54f5ac254e35e101886db87533c71914231f15c",
+      "outputSha256": "4ec185b34269620a3bf88be98edd8e00111b396f45a279048e5c497bc823437c",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 6000,
+      "before": {
+        "bytes": 350472,
+        "triangles": 922,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 334697,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.4946897793511765,
+            -0.3470717490157781,
+            -0.5
+          ],
+          "max": [
+            0.4946897793511765,
+            0.3470717490157781,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 26444,
+        "triangles": 922,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 10608,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.4946897793511765,
+            -0.3470717490157781,
+            -0.5
+          ],
+          "max": [
+            0.4946897793511765,
+            0.3470717490157781,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "flower-cluster",
+      "sourceSha256": "f43b9cc245de23e8b39eaa2f46accf9f9315b18dc380ad9772142dd91e9d32cb",
+      "outputSha256": "c0cb8cdf97f9a61c52d4137b25e265ba0217bb300e0f8287b2efe1c422674f52",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 6000,
+      "before": {
+        "bytes": 496656,
+        "triangles": 974,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 476280,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.4449598681600391,
+            -0.31240272225104526,
+            -0.5
+          ],
+          "max": [
+            0.4449598681600391,
+            0.31240272225104526,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 43180,
+        "triangles": 974,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 22734,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.4449598681600391,
+            -0.31240272225104526,
+            -0.5
+          ],
+          "max": [
+            0.4449598681600391,
+            0.31240272225104526,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ]
+}

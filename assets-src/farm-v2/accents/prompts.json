@@ -1,0 +1,12 @@
+[
+  {
+    "key": "rock-cluster",
+    "prompt": "Single isolated stylized 3D toy game asset on pure white background: a small asymmetrical cluster of THREE rounded smooth warm grey boulders, one medium and two smaller, nestled together, with just two soft olive green moss patches on top. Premium handcrafted clay miniature style for a preschool countryside farm, soft sculpted chunky forms, matte finish, very subtle painted shading, warm gentle colours. Three-quarter view from slightly above. Real thickness, coherent single compact low silhouette, broad smooth surfaces easy to reconstruct into a very low polygon 3D mesh (under 1000 triangles). Rock shapes should be charming imperfect pebbles, not sharp angular stones. NO soil disk, NO base, NO ground plane, NO gravel, no tiny scattered objects, no flowers, no grass blades, no lettering, no face, no shadows beyond a barely visible contact shadow. Object fills 75% of square image. No photorealism.",
+    "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-153570d4-e84a-4ebf-81a4-7c6772163185.png"
+  },
+  {
+    "key": "flower-cluster",
+    "prompt": "Single isolated stylized 3D toy game asset on pure white background: a small low cluster of exactly FIVE chunky friendly wildflowers rising from one compact rounded mass of broad dark sage green leaves. Three cream daisy-like flowers with golden centres and TWO soft lavender flowers. Simple thick rounded petals, each flower only five broad petals, flowers tilted upward to read from an isometric overhead game camera, varying modest heights, no fine stalks visible, no gaps in foliage base. Premium handcrafted clay miniature style matching a colourful preschool toy farm. Soft sculpted matte forms, restrained warm gentle colours, large readable shapes suitable for fewer than 1000 triangles in a mobile 3D game. Three-quarter view slightly above. No soil disk, no pot, no planter, no base, no thin grass, no tiny details, no text, no face, no shadows beyond minimal contact shadow. One coherent small mound, fills 75% of square image. No photorealism.",
+    "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-55d83ade-c9ad-4cfa-8fb7-c5858e09dcd0.png"
+  }
+]

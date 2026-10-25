@@ -1,0 +1,32 @@
+{
+  "rock-cluster": {
+    "yawDegrees": 0,
+    "taskId": "923bb302-490e-4c15-a554-5b96aecebd82",
+    "modelSeed": 25102060,
+    "faceLimit": 1000,
+    "modelVersion": "v3.1-20260211",
+    "textureModelVersion": "v3.5-20260815",
+    "textureQuality": "standard",
+    "pbr": false,
+    "delight": true,
+    "creditsConsumed": 30,
+    "reference": "assets-src/farm-v2/accents/rock-cluster-v1.png",
+    "rawSha256": "ea842a125e9b46a846221d38cdb6a69726d1b63f839ac0f4da02d597b83957b0",
+    "outputSha256": "4ec185b34269620a3bf88be98edd8e00111b396f45a279048e5c497bc823437c"
+  },
+  "flower-cluster": {
+    "yawDegrees": 0,
+    "taskId": "357137ec-ce44-4373-a4e3-76c60a024864",
+    "modelSeed": 25102061,
+    "faceLimit": 1000,
+    "modelVersion": "v3.1-20260211",
+    "textureModelVersion": "v3.5-20260815",
+    "textureQuality": "standard",
+    "pbr": false,
+    "delight": true,
+    "creditsConsumed": 30,
+    "reference": "assets-src/farm-v2/accents/flower-cluster-v1.png",
+    "rawSha256": "1d4587a9d3a0ea7a9f8c64471eadd81511992c524fd96ede94b7aad9ff198c22",
+    "outputSha256": "c0cb8cdf97f9a61c52d4137b25e265ba0217bb300e0f8287b2efe1c422674f52"
+  }
+}
