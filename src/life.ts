@@ -15,7 +15,7 @@ export interface LifeHooks {
 }
 
 /** How a herd animal moves about. */
-export type Gait = 'graze' | 'peck' | 'hop' | 'waddle';
+export type Gait = 'graze' | 'peck' | 'hop' | 'waddle' | 'stroll';
 
 interface Extra {
   group: THREE.Group;
@@ -31,7 +31,7 @@ interface Extra {
   jump: number;
 }
 
-export type ToyKind = 'mouse' | 'frog' | 'scarecrow' | 'mailbox' | 'well';
+export type ToyKind = 'mouse' | 'frog' | 'scarecrow' | 'mailbox' | 'well' | 'trashcan' | 'hydrant' | 'clock' | 'soda';
 
 interface Toy {
   kind: ToyKind;
@@ -203,7 +203,7 @@ export class Life {
     e.flee = Math.max(0, e.flee - dt);
     const to = e.target.clone().sub(p).setY(0);
     const dist = to.length();
-    const speed = e.flee > 0 ? 3.2 : e.gait === 'graze' ? 0.45 : e.gait === 'peck' ? 0.9 : e.gait === 'hop' ? 1.3 : 0.6;
+    const speed = e.flee > 0 ? 3.2 : e.gait === 'graze' ? 0.45 : e.gait === 'peck' ? 0.9 : e.gait === 'hop' ? 1.3 : e.gait === 'stroll' ? 1.1 : 0.6;
     let moving = false;
     if (dist > 0.05 && (e.wait <= 0 || e.flee > 0)) {
       moving = true;
@@ -211,7 +211,7 @@ export class Life {
       const yaw = Math.atan2(-to.z, to.x);
       e.group.rotation.y += Math.atan2(Math.sin(yaw - e.group.rotation.y), Math.cos(yaw - e.group.rotation.y)) * Math.min(1, dt * 6);
     } else if (dist <= 0.05) {
-      if (e.wait <= 0) e.wait = 2 + this.rnd() * (e.gait === 'graze' ? 8 : 4);
+      if (e.wait <= 0) e.wait = (e.gait === 'stroll' ? 0.5 : 2) + this.rnd() * (e.gait === 'graze' ? 8 : 4);
       e.wait -= dt;
       if (e.wait <= 0) {
         const a = this.rnd() * Math.PI * 2;
@@ -227,6 +227,7 @@ export class Life {
     if (e.gait === 'hop' && moving) y += Math.abs(Math.sin(e.step * 0.8)) * 0.35;
     if (e.gait === 'peck' && !moving) tilt = Math.max(0, Math.sin(this.time * 5 + e.home.x)) * 0.35;
     if (e.gait === 'waddle' && moving) roll = Math.sin(e.step) * 0.12;
+    if (e.gait === 'stroll' && moving) y += Math.abs(Math.sin(e.step * 0.9)) * 0.06;
     if (e.gait === 'graze' && !moving) tilt = 0.12 + Math.sin(this.time * 0.8 + e.home.z) * 0.06;
     p.y = y;
     const model = e.group.children[0];
@@ -291,6 +292,47 @@ export class Life {
         }
         break;
       }
+      case 'trashcan': {
+        // The lid flips up, a cat pops out with a fish bone, looks round, ducks back.
+        const up = k < 0.25 ? k / 0.25 : k < 1.8 ? 1 : Math.max(0, 1 - (k - 1.8) / 0.3);
+        P.lid.rotation.x = -up * 1.9;
+        P.cat.visible = up > 0.05;
+        P.cat.position.y = P.cat.userData.y0 + up * 0.45;
+        P.cat.rotation.y = k > 0.3 && k < 1.7 ? Math.sin(k * 5) * 0.7 : 0;
+        if (k > 2.2) this.rest(t);
+        break;
+      }
+      case 'hydrant': {
+        // A fountain of water out of its top for a moment.
+        if (!t.root.userData.sprayed || k - (t.root.userData.sprayed as number) > 0.12) {
+          t.root.userData.sprayed = k;
+          if (k < 1.4) this.splash(t.root.localToWorld(new THREE.Vector3(0, 0.8, 0)), '#8fd3ff');
+        }
+        P.cap.rotation.y = k * 12;
+        if (k > 1.6) {
+          t.root.userData.sprayed = 0;
+          this.rest(t);
+        }
+        break;
+      }
+      case 'clock': {
+        // Rings: the bells shake and the clock jumps on the wall.
+        P.face.rotation.z = Math.sin(k * 60) * 0.12 * Math.max(0, 1 - k / 1.6);
+        P.face.position.y = P.face.userData.y0 + Math.abs(Math.sin(k * 30)) * 0.08 * Math.max(0, 1 - k / 1.6);
+        P.hand.rotation.z = -k * 8;
+        if (k > 1.8) this.rest(t);
+        break;
+      }
+      case 'soda': {
+        // A can drops out of the machine and rolls off along the floor.
+        const c = P.can;
+        c.visible = k > 0.3 && k < 2.6;
+        const f = Math.max(0, k - 0.3);
+        c.position.set(0.1 + f * 1.4, Math.max(0.12, 0.5 - f * 2), 0.45 + f * 0.3);
+        c.rotation.x = f * 9;
+        if (k > 2.8) this.rest(t);
+        break;
+      }
       case 'well': {
         // The bucket goes down the well, splash, and winds back up.
         const d = k < 0.8 ? k / 0.8 : k < 1.4 ? 1 : Math.max(0, 1 - (k - 1.4) / 1);
@@ -326,7 +368,7 @@ export class Life {
   }
 }
 
-const TOY_SOUND: Record<ToyKind, PhraseId> = { mouse: 'squeak', frog: 'ribbit', scarecrow: 'crowCaw', mailbox: 'mailHere', well: 'splash' };
+const TOY_SOUND: Record<ToyKind, PhraseId> = { mouse: 'squeak', frog: 'ribbit', scarecrow: 'crowCaw', mailbox: 'mailHere', well: 'splash', trashcan: 'binCat', hydrant: 'hydrantSpray', clock: 'clockRing', soda: 'sodaCan' };
 
 /** Code-built toys (a sculpted body is used where it is given). */
 const TOY_BUILDERS: Record<ToyKind, (body?: THREE.Object3D) => { root: THREE.Group; parts: Record<string, THREE.Object3D> }> = {
@@ -437,6 +479,82 @@ const TOY_BUILDERS: Record<ToyKind, (body?: THREE.Object3D) => { root: THREE.Gro
     letter.visible = false;
     root.add(post, box, base, flag, letter);
     return { root, parts: { flag, letter } };
+  },
+  trashcan: () => {
+    const root = new THREE.Group();
+    const bin = mesh(new THREE.CylinderGeometry(0.38, 0.32, 0.9, 16), mat('#5a7a9a', 0.6));
+    bin.position.y = 0.45;
+    const lid = new THREE.Group();
+    const top = mesh(new THREE.CylinderGeometry(0.42, 0.42, 0.06, 16), mat('#4a6a8a', 0.6));
+    top.position.z = 0.4;
+    lid.add(top);
+    lid.position.set(0, 0.92, -0.4);
+    const cat = new THREE.Group();
+    const head = mesh(new THREE.SphereGeometry(0.2, 14, 10), mat('#f2a24a', 0.7));
+    const ears = [-0.11, 0.11].map((x) => {
+      const e = mesh(new THREE.ConeGeometry(0.07, 0.14, 6), mat('#f2a24a', 0.7));
+      e.position.set(x, 0.18, 0);
+      return e;
+    });
+    const bone = mesh(new THREE.BoxGeometry(0.3, 0.03, 0.05), mat('#ffffff', 0.5));
+    bone.position.set(0, -0.08, 0.2);
+    cat.add(head, ...ears, bone);
+    cat.userData.y0 = 0.7;
+    cat.position.y = 0.7;
+    cat.visible = false;
+    root.add(bin, lid, cat);
+    return { root, parts: { lid, cat } };
+  },
+  hydrant: () => {
+    const root = new THREE.Group();
+    const red = mat('#d8483c', 0.45);
+    const body = mesh(new THREE.CylinderGeometry(0.2, 0.24, 0.7, 16), red);
+    body.position.y = 0.35;
+    const cap = mesh(new THREE.SphereGeometry(0.21, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2), red);
+    cap.position.y = 0.7;
+    const arm = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.6, 12), red);
+    arm.rotation.z = Math.PI / 2;
+    arm.position.y = 0.45;
+    root.add(body, cap, arm);
+    return { root, parts: { cap } };
+  },
+  clock: () => {
+    const root = new THREE.Group();
+    const face = new THREE.Group();
+    const dial = mesh(new THREE.CylinderGeometry(0.6, 0.6, 0.12, 24), mat('#ffffff', 0.4));
+    dial.rotation.x = Math.PI / 2;
+    const rim = mesh(new THREE.TorusGeometry(0.6, 0.07, 8, 24), mat('#d8483c', 0.4));
+    const hand = new THREE.Group();
+    const h = mesh(new THREE.BoxGeometry(0.05, 0.45, 0.03), mat('#18213d', 0.4));
+    h.position.y = 0.2;
+    hand.add(h);
+    hand.position.z = 0.08;
+    const bells = [-0.38, 0.38].map((x) => {
+      const b = mesh(new THREE.SphereGeometry(0.17, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), mat('#e0b040', 0.3, 0.6));
+      b.position.set(x, 0.62, 0);
+      return b;
+    });
+    face.add(dial, rim, hand, ...bells);
+    face.userData.y0 = 2.6;
+    face.position.y = 2.6;
+    const post = mesh(new THREE.BoxGeometry(0.15, 2.3, 0.15), mat('#8a90a0', 0.4));
+    post.position.y = 1.15;
+    root.add(post, face);
+    return { root, parts: { face, hand } };
+  },
+  soda: () => {
+    const root = new THREE.Group();
+    const box = mesh(new THREE.BoxGeometry(1.1, 2, 0.8), mat('#d8483c', 0.45));
+    box.position.y = 1;
+    const window = mesh(new THREE.PlaneGeometry(0.7, 1), mat('#9fd0e8', 0.2));
+    window.position.set(0, 1.25, 0.41);
+    const slot = mesh(new THREE.BoxGeometry(0.5, 0.18, 0.05), mat('#2a2f3a', 0.5));
+    slot.position.set(0, 0.45, 0.41);
+    const can = mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.25, 12), mat('#3f86d6', 0.3, 0.5));
+    can.rotation.z = Math.PI / 2;
+    can.visible = false;
+    root.add(box, window, slot, can);
+    return { root, parts: { can } };
   },
   well: () => {
     const root = new THREE.Group();

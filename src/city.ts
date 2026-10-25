@@ -512,7 +512,13 @@ export class CityMap extends StoryMap {
       }
     }
     this.scenery.add(bakeGroup(boxes));
+    // Things to poke, and townsfolk out for a walk.
     this.life.addToy('mailbox', GRANDMA.x + 3, GRANDMA.z + 4, 0);
+    this.life.addToy('trashcan', 15.2, -6.8, 0.3);
+    this.life.addToy('trashcan', 52, -17, -0.4);
+    this.life.addToy('hydrant', 8, -16.4, 0);
+    const walkers: [number, number, string, string][] = [[-25, -17, '#3f86d6', '#7a4a2a'], [25, 17, '#ff8fb1', '#f2c230'], [-10, 18, '#5cb85c', '#3a2a1a'], [10, -18, '#b388ff', '#d9dde3'], [45, -17, '#f2c230', '#7a4a2a'], [-46, 3.8, '#ff8f2a', '#5a3a2a']];
+    for (const [x, z, body, hair] of walkers) this.life.addExtra(person(body, hair, 1.25), x, z, 0, 'stroll', 'passerby', 3);
     this.life.addFlutters([v(8, 4), v(-8, -4), v(-40, 20), v(14, -26)], [v(-12, 2), v(6, 4)]);
     const houses = DECOR.filter((g) => g.model.startsWith('house')).flatMap((g) => g.items).slice(0, 4);
     for (const [x, z] of houses) this.life.addSmoke(v(x + 1, z).setY(3.6));

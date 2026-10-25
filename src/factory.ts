@@ -119,6 +119,10 @@ export class FactoryMap extends StoryMap {
     this.placeParts();
     this.buildCritters();
     this.buildNeeds();
+    // A clock on the back wall, a soda machine, workers walking about.
+    this.life.addToy('clock', 0, -35.6, 0);
+    this.life.addToy('soda', -52.5, -24, Math.PI / 2);
+    for (const [x, z] of [[-12, 12], [16, 14], [34, -18], [-40, 14]] as const) this.life.addExtra(worker('#3f86d6', '#f2c230'), x, z, 0, 'stroll', 'hammer', 4);
     this.life.addFlutters([], [v(-20, -25), v(20, -25)]);
   }
 
