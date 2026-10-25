@@ -1,0 +1,111 @@
+{
+  "status": "Image reference only; actual GLB measurements and review required",
+  "reference": "school-v1.png",
+  "styleSource": "Approved city-v2 concept m0195, school next confirmed m0201",
+  "placement": {
+    "centerXZ": [
+      11,
+      -30
+    ],
+    "fitWidth": 9,
+    "rotateY": -1.5707963267948966,
+    "baseY": 0,
+    "normalisedFront": "+X",
+    "gameFront": "+Z"
+  },
+  "geometryTargets": {
+    "fullWidth": 9,
+    "approxFullDepth": 9,
+    "approxTotalHeight": 6.5,
+    "storeys": 2,
+    "doorCenterLocalXZ": [
+      0,
+      4.5
+    ],
+    "doorCenterWorldXZ": [
+      11,
+      -25.5
+    ],
+    "doorThresholdY": 0,
+    "trianglesMax": 8000,
+    "materialCount": 1,
+    "baseColorPixels": 512,
+    "downloadBytesTarget": 200000,
+    "targetsUnmeasured": true
+  },
+  "fixedGameplay": {
+    "LASER_SPOT": [
+      17,
+      -22
+    ],
+    "MIRROR_SPOT": [
+      24,
+      -22
+    ],
+    "SCHOOL_SENSOR": [
+      24,
+      -16.5
+    ],
+    "SCHOOL_BELL": [
+      17,
+      -17.5
+    ],
+    "SCHOOL_POLE": [
+      20.5,
+      -19.2
+    ],
+    "SCHOOL_DOOR": [
+      11,
+      -25.5
+    ],
+    "childrenStartXZ": [
+      [
+        9,
+        -21.5
+      ],
+      [
+        10.6,
+        -21.5
+      ],
+      [
+        12.2,
+        -21.5
+      ]
+    ],
+    "childrenHeight": 1.15,
+    "beamLegLengths": [
+      7,
+      5.5
+    ],
+    "doNotMove": "School center, all task/power anchors, children paths and laser path"
+  },
+  "appearance": {
+    "walls": "teal",
+    "roof": "blue tiles, shallow eaves",
+    "trim": "cream",
+    "clock": "round static cream clock, hands and dots, no numerals",
+    "windows": "opaque toy glass",
+    "entrance": "centered double arched door flush with ground",
+    "exclude": [
+      "stairs",
+      "raised base",
+      "balcony",
+      "hanging bell",
+      "children",
+      "courtyard",
+      "roads",
+      "trees",
+      "fences",
+      "text"
+    ]
+  },
+  "acceptance": [
+    "Measure decoded GLB after actual model() fit and orientation. Full bbox includes eaves and clock gable; do not infer door position from PNG.",
+    "Door must align with SCHOOL_DOOR near local(0,0,4.5); no stairs or raised threshold, children move at ground level. Resolve geometry mismatches before integration without moving anchors.",
+    "Check full footprint, eaves, opaque walls and child visibility along all three approach paths. Keep 4x4 task reservations and both laser segments clear.",
+    "Use actual storymap.patched() InstancedMesh path for visual QA. Ordinary Mesh alone missed mirrored winding defect in grandma-house (m0207, fixed7f4f986).",
+    "Prefer positive determinant transforms. If mirroring is required, bake reflection into vertices and reverse triangle winding/handle normals; inspect instanced result before delivery.",
+    "No GLB order until reference review and price/budget confirmed; no public/models/school.glb until model measurement and review."
+  ],
+  "tripoOrders": 0
+}

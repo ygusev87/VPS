@@ -1,5 +1,5 @@
 {
-  "status": "Final asset installed; Claude full game review pending",
+  "status": "Final asset visually accepted in game by Claude m0207 after instancing fix7f4f986; full task/device checks pending",
   "decision": "m0204",
   "matchingBalconyCodeCommit": "9b3c8f0",
   "path": "public/models/grandma-house.glb",
@@ -30,5 +30,12 @@
     "actual basket and lift travel",
     "full game visibility and collision",
     "iPad/PWA/frame time"
-  ]
+  ],
+  "runtimeReview": {
+    "message": "m0207",
+    "engineFix": "7f4f986",
+    "issue": "Negative-determinant node rendered inside out in InstancedMesh; ordinary Mesh preview missed it",
+    "previewUpdate": "Now imports actual storymap.patched(); final house visually checked1180/390",
+    "assetUnchanged": true
+  }
 }
