@@ -1,0 +1,29 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Город — габариты транспорта</title>
+<style>body{margin:0;background:#efe5d2;color:#263443;font:14px system-ui}header{padding:12px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}select{padding:8px}#stage{width:100%;height:min(70vh,680px)}canvas{display:block}p{margin:8px 12px;line-height:1.5}</style>
+<header><b>Габариты транспорта</b><label>Ракурс <select id="view"><option value="threequarter">Три четверти</option><option value="top">Сверху</option><option value="side">Сбоку</option></select></label></header><div id="stage"></div><p id="status">Загрузка…</p>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
+const stage=document.querySelector('#stage'),status=document.querySelector('#status'),view=document.querySelector('#view');
+const renderer=new THREE.WebGLRenderer({antialias:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.toneMapping=THREE.NeutralToneMapping;stage.append(renderer.domElement);
+const scene=new THREE.Scene();scene.background=new THREE.Color('#efe5d2');
+const pmrem=new THREE.PMREMGenerator(renderer);scene.environment=pmrem.fromScene(new RoomEnvironment(),.04).texture;pmrem.dispose();
+scene.add(new THREE.DirectionalLight('#fff7e8',2).translateY(8).translateZ(5));
+const camera=new THREE.OrthographicCamera(-7,7,5,-5,.1,100);
+const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder),dir=new URLSearchParams(location.search).get('dir')??'/models/';
+function box(x,y,z,w,h,d,color){const m=new THREE.Mesh(new THREE.BoxGeometry(w,h,d),new THREE.MeshStandardMaterial({color,roughness:.85}));m.position.set(x,y,z);scene.add(m);return m;}
+box(0,-.1,0,13,.2,9,'#c9c7b6');box(0,.01,2.2,12,.02,2.5,'#737b80');
+for(const z of [-.75,.75])box(0,.03,-2.2+z,12,.06,.12,'#929ba5');
+function fitted(g,width){const o=g.scene.clone(true),b=new THREE.Box3().setFromObject(o),s=b.getSize(new THREE.Vector3());o.scale.multiplyScalar(width/s.x);o.updateMatrixWorld(true);b.setFromObject(o);const c=b.getCenter(new THREE.Vector3());o.position.set(-c.x,-b.min.y,-c.z);const holder=new THREE.Group();holder.add(o);return holder;}
+const directions={threequarter:new THREE.Vector3(10,11,12),top:new THREE.Vector3(0,20,.001),side:new THREE.Vector3(0,4,20)};
+function render(){const w=stage.clientWidth,h=stage.clientHeight,a=w/h;renderer.setSize(w,h);const halfH=Math.max(5,7/a);camera.left=-halfH*a;camera.right=halfH*a;camera.top=halfH;camera.bottom=-halfH;camera.position.copy(directions[view.value]);camera.lookAt(0,.5,0);camera.updateProjectionMatrix();renderer.render(scene,camera);}
+try{
+ const [tg,cg]=await Promise.all(['tram','car'].map(n=>loader.loadAsync(dir+n+'.glb')));
+ const tram=fitted(tg,7);tram.position.set(0,.06,-2.2);scene.add(tram);
+ for(const x of [-3.2,0,3.2]){const c=fitted(cg,2.4);c.position.set(x,.03,2.2);scene.add(c);}
+ status.textContent='Трамвай: длина 7, ширина 1.8; колея 1.5. Машины: длина 2.4, шаг центров 3.2, зазор 0.8. Перед каждой модели +X. Проверка масштаба ассетов, не скриншот игры.';
+ render();view.onchange=render;new ResizeObserver(render).observe(stage);
+}catch(e){status.textContent=e.message;console.error(e);}
+</script></html>

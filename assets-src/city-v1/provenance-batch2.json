@@ -1,0 +1,61 @@
+{
+  "models": [
+    {
+      "task_id": "acadaf02-9ea2-46df-9cf8-83b035f919d1",
+      "type": "image_to_model",
+      "status": "success",
+      "credits_consumed": 30,
+      "created_at": "2026-10-25T11:29:36.545221Z",
+      "completed_at": "2026-10-25T11:30:24.545422Z",
+      "name": "tram",
+      "sourceReference": "tram-v1.png",
+      "rawSha256": "44b2bbba9bda137c0575264f556c1d8fbc1cea57d6c2f875e59ef7ca9f9f2b6d",
+      "model": "v3.1-20260211",
+      "texture_version": "v3.5-20260815",
+      "texture": true,
+      "pbr": false,
+      "delight": true,
+      "texture_quality": "standard",
+      "face_limit": 8000,
+      "model_seed": 25102102,
+      "forward": "+x",
+      "rigged": false,
+      "preparation": {
+        "yawDegrees": 90,
+        "footprint": [
+          7,
+          1.8
+        ]
+      }
+    },
+    {
+      "task_id": "5495f77a-b15c-4926-b270-92d458e9afa0",
+      "type": "image_to_model",
+      "status": "success",
+      "credits_consumed": 30,
+      "created_at": "2026-10-25T11:29:43.522497Z",
+      "completed_at": "2026-10-25T11:31:00.666831Z",
+      "name": "car",
+      "sourceReference": "car-v1.png",
+      "rawSha256": "3d18ed9259d15187060bcf4cefa1384d6c54f21de348b5b7e313f68ef993d357",
+      "model": "v3.1-20260211",
+      "texture_version": "v3.5-20260815",
+      "texture": true,
+      "pbr": false,
+      "delight": true,
+      "texture_quality": "standard",
+      "face_limit": 8000,
+      "model_seed": 25102103,
+      "forward": "+x",
+      "rigged": false,
+      "preparation": {
+        "yawDegrees": 0
+      }
+    }
+  ],
+  "apiBalanceBefore": 305,
+  "apiBalanceAfter": 245,
+  "apiCreditsUsed": 60,
+  "cityApiCreditsTotal": 120,
+  "studioCreditsUsed": 0
+}

@@ -1,0 +1,171 @@
+{
+  "generatedAt": "2026-10-25T11:32:16.707Z",
+  "source": "/tmp/gameios-city-normalized",
+  "output": "/tmp/gameios-city-optimized",
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 1518884,
+      "triangles": 14146,
+      "textureMiB": 42.666666666666664
+    },
+    "after": {
+      "bytes": 252556,
+      "triangles": 14146,
+      "textureMiB": 2.6666666666666665
+    }
+  },
+  "models": [
+    {
+      "name": "tram",
+      "sourceSha256": "c6121787fb487061816131a7c8eea8de680a85b7757b4312298f4ce184434d90",
+      "outputSha256": "fdc30ee55d9b23dc59e889177b92ec176e025f445c6b210fb0b8a5fe8ae59109",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 851824,
+        "triangles": 6552,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 770550,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -3.5,
+            -1.0973082674642172,
+            -0.9000299017039735
+          ],
+          "max": [
+            3.5,
+            1.0973082674642172,
+            0.9000299017039725
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 132468,
+        "triangles": 6552,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 51124,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -3.5,
+            -1.0973082674642172,
+            -0.9000299017039735
+          ],
+          "max": [
+            3.5,
+            1.0973082674642172,
+            0.9000299017039725
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "car",
+      "sourceSha256": "e53a903c37b60a12128a284d9165f6643c4286331a4ebca0618ef4f26b5c7e7a",
+      "outputSha256": "92d40d62f2ff2985f12d26a5b251930368d3e8830f4834d3158aaaa0f218b57b",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 667060,
+        "triangles": 7594,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 582086,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.26285592211676384,
+            -0.3073519089327677
+          ],
+          "max": [
+            0.5,
+            0.26285592211676384,
+            0.3073519089327677
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 120088,
+        "triangles": 7594,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 35044,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.26285592211676384,
+            -0.3073519089327677
+          ],
+          "max": [
+            0.5,
+            0.26285592211676384,
+            0.3073519089327677
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ]
+}

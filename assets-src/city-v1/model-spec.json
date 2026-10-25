@@ -4,5 +4,15 @@
   },
   "baker": {
     "yawDegrees": 0
+  },
+  "tram": {
+    "yawDegrees": 90,
+    "footprint": [
+      7,
+      1.8
+    ]
+  },
+  "car": {
+    "yawDegrees": 0
   }
 }
