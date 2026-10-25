@@ -373,6 +373,22 @@ export abstract class StoryMap {
     return s.spot.clone();
   }
 
+  /** A general hint, if it is about this need's own parts (not the fox's button while the ducks wait). */
+  private about(n: Need, h: Hint | null): Hint | null {
+    if (!h) return null;
+    const mine = new Set<Part>();
+    for (const s of slots(n)) {
+      for (const p of this.world.parts) {
+        const near = p.root.position.distanceTo(s.spot);
+        if ((s.kinds.length ? !p.pinned && s.kinds.includes(p.kind) && near < 1 : p.kind === s.icon && near < 6)) mine.add(p);
+      }
+      const src = this.nearestSource(s.spot);
+      if (src) mine.add(src);
+    }
+    const parts = h.type === 'connect' ? [h.from.part, h.to.part] : h.type === 'drag' ? [] : [h.type === 'tapWire' ? h.at : h.part];
+    return parts.length && parts.every((p) => p && mine.has(p)) ? h : null;
+  }
+
   /** A gadget of this need stands on its ring with no wire yet: from the nearest pole to it. */
   private firstWire(n: Need): Hint | null {
     for (const s of slots(n)) {
@@ -582,7 +598,7 @@ export abstract class StoryMap {
     // Only about the one being helped (the child picks whom): its parts, then its wires.
     const first = this.helping();
     if (!first) return null;
-    return drag(first) ?? this.extraHint(trayLeft) ?? this.firstWire(first) ?? (this.ownHints ? null : sandboxHint(this.world));
+    return drag(first) ?? this.extraHint(trayLeft) ?? this.firstWire(first) ?? (this.ownHints ? null : this.about(first, sandboxHint(this.world)));
   }
 
   update(dt: number) {
