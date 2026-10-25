@@ -9,6 +9,7 @@
 // grass: a part dropped near it snaps in.
 import * as THREE from 'three';
 import type { Hint } from './hints';
+import type { Level } from './levels';
 import { clipsOf, hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
 import { Launcher, type Ball } from './parts/chain';
@@ -55,13 +56,14 @@ const MODEL_OF: Record<string, string> = { puppy: 'dog' };
 
 /** What the drawers offer on the farm. */
 // No batteries: on the farm the power comes from the poles, the sun and the wind.
-export const FARM_TRAY: { kind: PartKind; count: number }[] = [
+export const FARM_TRAY: Level['tray'] = [
   { kind: 'fan', count: 2 },
   { kind: 'floorFan', count: 1 },
   { kind: 'pump', count: 3 },
   { kind: 'windmill', count: 1 },
   { kind: 'bulb', count: 2 },
-  { kind: 'led', count: 2 },
+  // Warm light for the geese, not an alarm-red one.
+  { kind: 'led', count: 2, color: 'yellow' },
   { kind: 'heater', count: 2 },
   { kind: 'musicbox', count: 1 },
   { kind: 'button', count: 1 },

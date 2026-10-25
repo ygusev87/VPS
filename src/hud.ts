@@ -332,8 +332,11 @@ export class Hud {
   /** Variants of a drawer this level lets the child take. */
   private offered(g: CatalogGroup): CatalogItem[] {
     if (this.level === FREE_PLAY) return g.items;
-    // Missions offer plain kinds: the first variant of each.
-    return g.items.filter((it) => this.level.tray.some((t) => t.kind === it.kind) && g.items.find((o) => o.kind === it.kind) === it);
+    // Missions offer plain kinds: the first variant of each, or the colour the tray names.
+    return g.items.filter((it) => {
+      const t = this.level.tray.find((t) => t.kind === it.kind);
+      return !!t && g.items.find((o) => o.kind === it.kind && (!t.color || o.color === t.color)) === it;
+    });
   }
 
   private take(item: CatalogItem, e: PointerEvent, el: HTMLElement) {
@@ -520,6 +523,13 @@ export class Hud {
     const g = this.groupOf(kind);
     const c = g && this.sidebar.querySelector<HTMLElement>(`.group[data-group="${g.id}"] .part-btn`);
     if (!c) return null;
+    // The hand drags from the drawer, so its face turns to the part asked for:
+    // dragging takes that one, and the picture matches what the voice names.
+    const want = this.offered(g).find((it) => it.kind === kind);
+    if (want && this.face.get(g)?.kind !== kind) {
+      this.face.set(g, want);
+      c.querySelector<HTMLImageElement>('img')!.src = thumb(itemKey(want));
+    }
     const r = c.getBoundingClientRect();
     return { x: r.left + r.width / 2, y: r.top + r.height / 2 };
   }

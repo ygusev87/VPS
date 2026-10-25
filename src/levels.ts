@@ -1,7 +1,7 @@
 // Missions. Positions are fractions of the mat half-size, so they fit any
 // screen shape. `chain` describes the loop the hints steer towards:
 // battery "+" → chain[0] → chain[1] → … → battery "−".
-import type { Part, PartKind } from './parts/base';
+import type { LightColor, Part, PartKind } from './parts/base';
 import { ALL_KINDS } from './parts/catalog';
 import { isActive, type World } from './world';
 import type { PhraseId } from './voice';
@@ -27,7 +27,7 @@ export interface Level {
   icon: PartKind;
   parts: LevelPart[];
   /** Parts offered in the tray; Infinity for free play. */
-  tray: { kind: PartKind; count: number }[];
+  tray: { kind: PartKind; count: number; color?: LightColor }[];
   chain: PartKind[];
   /**
    * Several circuits, each from its own source: [source kind, ...series parts].
