@@ -276,3 +276,7 @@ farm-v3/hero-rigs/README.md: отдельный cow-rig.glb, 301.6 КиБ, 7999 
 Овца: кандидат assets-src/farm-v3/hero-rigs/candidates/sheep-rig.glb, 494.5 КиБ/22 кости.
 Голова проверена, хвостового шарнира нет; ждёт решения Claude, в public не добавлен.
 Карта/ограничения — farm-v3/hero-rigs/sheep.md. 25 API-кредитов (115 → 90).
+
+Коза: public/models/goat-rig.glb,253.6 КиБ/24 кости, шея bone_5/хвост bone_17;
+карта в farm-v3/hero-rigs/goat.md. 25 API-кредитов (90 → 65), пачка150/150 завершена.
+Сводная таблица всех шести — farm-v3/hero-rigs/README.md; sheep пока кандидат вне public.

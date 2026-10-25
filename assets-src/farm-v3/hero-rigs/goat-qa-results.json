@@ -1,0 +1,65 @@
+{
+  "dateUTC": "2026-10-25",
+  "model": "goat-rig",
+  "status": "asset ready for stationary head/tail reactions; Claude integration/review pending",
+  "viewports": [
+    [
+      1180,
+      844
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "views": [
+    "side +Z",
+    "side -Z",
+    "three-quarter",
+    "game"
+  ],
+  "motions": {
+    "headBone": "bone_5",
+    "headNodDegrees": 15,
+    "headTurnDegrees": 15,
+    "tailBone": "bone_17",
+    "tailSwingDegrees": 20,
+    "oscillation": "head nod, head turn and tail sampled in browser",
+    "walking": "not verified; rear +Z chain incomplete",
+    "earsJawBeard": "no separate joints"
+  },
+  "orientation": {
+    "sourcePreserved": true,
+    "forward": "+X",
+    "up": "+Y",
+    "existingGameFit": {
+      "width": 1.6
+    },
+    "existingGameGroupYaw": 0.3
+  },
+  "checks": [
+    "Exact geometry/skin/TRS arrays after Meshopt compression",
+    "Static texture byte equality and bidirectional vertex comparison in goat-audit.json",
+    "21 tests passed; npm run typecheck passed"
+  ],
+  "realIPad": "not tested",
+  "browserNotes": [
+    "Unsourced MutationObserver.observe error logged at 2026-10-25T17:32:53.290Z; also observed in earlier QA sessions"
+  ],
+  "credits": {
+    "before": 90,
+    "check": 0,
+    "rig": 25,
+    "after": 65,
+    "frozen": 0,
+    "batchSpent": 150,
+    "batchLimit": 150
+  },
+  "screenshots": [
+    "/tmp/gameios-visual-audit-2026-10-25/goat-rig-bind.png",
+    "/tmp/gameios-visual-audit-2026-10-25/goat-rig-head.png",
+    "/tmp/gameios-visual-audit-2026-10-25/goat-rig-look.png",
+    "/tmp/gameios-visual-audit-2026-10-25/goat-rig-tail.png",
+    "/tmp/gameios-visual-audit-2026-10-25/goat-rig-phone.png"
+  ]
+}
