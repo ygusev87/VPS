@@ -26,7 +26,7 @@ export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-ri
   // Day two (each falls back to a stand-in until its model is made).
   'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'goose', 'rooster', 'horse', 'stable',
   // Scenery.
-  'tree-oak', 'tree-pine', 'bush', 'haystack', 'hutch'];
+  'tree-oak', 'tree-pine', 'bush', 'haystack', 'hutch', 'fence', 'fence-post'];
 /** Animals drawn with another one's model: the puppy is the dog, smaller. */
 const MODEL_OF: Record<string, string> = { puppy: 'dog' };
 
@@ -262,6 +262,8 @@ export class FarmMap {
   readonly scenery = new THREE.Group();
   /** Where the lanes, the field and the mud are (set when the board is built). */
   private plan!: GroundPlan;
+  /** Every fence on the farm, as polylines; built together once the places are laid out. */
+  private fences: THREE.Vector3[][] = [];
   private critters = new Map<string, Critter>();
   private needs: Need[] = [];
   phase: Phase = 'day';
@@ -329,6 +331,7 @@ export class FarmMap {
     this.buildBoard();
     this.buildPlaces();
     if (this.dayTwo) this.buildPlacesTwo();
+    this.scenery.add(fences(this.fences));
     this.placeParts();
     this.placePartsTwo();
     this.buildCritters();
@@ -528,11 +531,11 @@ export class FarmMap {
     } else still.add(hutch(hutchAt));
     still.add(kennel(at('dog', 6.2, 8.4)));
     // Fences: the cow pen, the pig pen, the long fence before the field (with the gate), the sheep fold.
-    still.add(fence([at('cow', -16, -5.2), at('cow', -16, 0.8), at('cow', -7, 0.8), at('cow', -7, -5.2)]));
-    still.add(fence([at('pig', -1.2, -9.5), at('pig', -1.2, -3), at('pig', 5.5, -3), at('pig', 5.5, -9.5)]));
-    still.add(fence([at('field', 9.5, 3), at('field', 18.5, 3)]));
-    still.add(fence([at('field', 4.5, 3), at('field', 6.5, 3)]));
-    still.add(fence([at('sheep', -27, -9), at('sheep', -27, -17.5), at('sheep', -21.5, -17.5)]));
+    this.fences.push([at('cow', -16, -5.2), at('cow', -16, 0.8), at('cow', -7, 0.8), at('cow', -7, -5.2)]);
+    this.fences.push([at('pig', -1.2, -9.5), at('pig', -1.2, -3), at('pig', 5.5, -3), at('pig', 5.5, -9.5)]);
+    this.fences.push([at('field', 9.5, 3), at('field', 18.5, 3)]);
+    this.fences.push([at('field', 4.5, 3), at('field', 6.5, 3)]);
+    this.fences.push([at('sheep', -27, -9), at('sheep', -27, -17.5), at('sheep', -21.5, -17.5)]);
     // Trough in the pig pen: a wooden box with water that rises.
     const troughBox = mesh(new THREE.BoxGeometry(2, 0.45, 0.8), mat('#9a6a3e', 0.7));
     troughBox.position.set(TROUGH.x, 0.22, TROUGH.z);
@@ -724,7 +727,7 @@ export class FarmMap {
   private buildPlacesTwo() {
     const still = new THREE.Group();
     still.add(loft(LOFT));
-    still.add(fence([v(GOATS.x - 3.5 * K, GOATS.z + 2.6 * K), v(GOATS.x - 3.5 * K, GOATS.z - 3.2 * K), v(GOATS.x + 3.5 * K, GOATS.z - 3.2 * K), v(GOATS.x + 3.5 * K, GOATS.z + 2.6 * K)]));
+    this.fences.push([v(GOATS.x - 3.5 * K, GOATS.z + 2.6 * K), v(GOATS.x - 3.5 * K, GOATS.z - 3.2 * K), v(GOATS.x + 3.5 * K, GOATS.z - 3.2 * K), v(GOATS.x + 3.5 * K, GOATS.z + 2.6 * K)]);
     this.scenery.add(bakeGroup(still));
     this.add('stable', { width: 4.2, rotateY: -Math.PI / 2 }, STABLE.x, STABLE.z, () => boxHouse('#b5653a', '#5a5f6a', 4, 2.8, 3.4));
     const buds = this.add('flowerbed-buds', { width: 2.6 }, BED.x, BED.z, () => flowerBed(false));
@@ -1440,31 +1443,34 @@ function fence(pts: THREE.Vector3[]): THREE.Group {
  * close look at one yard does not pay for every tree on the farm.
  */
 function instances(name: string, fit: Fit, items: readonly [number, number, number][]): THREE.Group | null {
-  if (!items.length) return null;
-  const src = model(name, fit);
+  const src = items.length ? model(name, fit) : null;
   if (!src) return null;
+  const up = new THREE.Vector3(0, 1, 0);
+  return patched(
+    src,
+    items.map(([x, z, s], i) => new THREE.Matrix4().compose(v(x, z), new THREE.Quaternion().setFromAxisAngle(up, (i * 2.39996) % (Math.PI * 2)), new THREE.Vector3(s, s, s))),
+  );
+}
+
+/** Copies of a fitted model at these placements, instanced patch by patch (see `instances`). */
+function patched(src: THREE.Object3D, places: THREE.Matrix4[]): THREE.Group {
   src.updateMatrixWorld(true);
   const PATCH = 42;
-  const patches = new Map<string, number[]>();
-  items.forEach(([x, z], i) => {
-    const key = `${Math.floor(x / PATCH)},${Math.floor(z / PATCH)}`;
-    patches.set(key, [...(patches.get(key) ?? []), i]);
-  });
+  const patches = new Map<string, THREE.Matrix4[]>();
+  const at = new THREE.Vector3();
+  for (const m of places) {
+    at.setFromMatrixPosition(m);
+    const key = `${Math.floor(at.x / PATCH)},${Math.floor(at.z / PATCH)}`;
+    patches.set(key, [...(patches.get(key) ?? []), m]);
+  }
   const out = new THREE.Group();
-  const place = new THREE.Matrix4();
-  const turn = new THREE.Quaternion();
-  const up = new THREE.Vector3(0, 1, 0);
+  const each = new THREE.Matrix4();
   src.traverse((o) => {
     const m = o as THREE.Mesh;
     if (!m.isMesh) return;
     for (const members of patches.values()) {
       const im = new THREE.InstancedMesh(m.geometry, m.material, members.length);
-      members.forEach((i, k) => {
-        const [x, z, s] = items[i];
-        turn.setFromAxisAngle(up, (i * 2.39996) % (Math.PI * 2));
-        place.compose(new THREE.Vector3(x, 0, z), turn, new THREE.Vector3(s, s, s)).multiply(m.matrixWorld);
-        im.setMatrixAt(k, place);
-      });
+      members.forEach((place, k) => im.setMatrixAt(k, each.multiplyMatrices(place, m.matrixWorld)));
       im.castShadow = true;
       im.receiveShadow = true;
       im.computeBoundingSphere();
@@ -1472,6 +1478,42 @@ function instances(name: string, fit: Fit, items: readonly [number, number, numb
     }
   });
   return out;
+}
+
+/**
+ * The farm's fences from the sculpted section (a post with two rails reaching
+ * to the next post, 2 long) and a lone post to close each run: sections are
+ * stretched a little to fit each stretch exactly. Code-built fences without them.
+ */
+function fences(lines: THREE.Vector3[][]): THREE.Object3D {
+  const section = model('fence', { height: 0.8 });
+  const post = model('fence-post', { height: 0.8 });
+  if (!section || !post) {
+    const built = new THREE.Group();
+    for (const line of lines) built.add(fence(line));
+    return bakeGroup(built);
+  }
+  // model() centres the section; its post's axis was 2 short of the rails' far end.
+  section.updateMatrixWorld(true);
+  const start = new THREE.Box3().setFromObject(section).max.x - 2;
+  const up = new THREE.Vector3(0, 1, 0);
+  const sections: THREE.Matrix4[] = [];
+  const posts: THREE.Matrix4[] = [];
+  for (const line of lines) {
+    for (let i = 1; i < line.length; i++) {
+      const a = line[i - 1];
+      const b = line[i];
+      const len = a.distanceTo(b);
+      const n = Math.max(1, Math.round(len / 2));
+      const turn = new THREE.Quaternion().setFromAxisAngle(up, -Math.atan2(b.z - a.z, b.x - a.x));
+      for (let k = 0; k < n; k++) {
+        const p = a.clone().lerp(b, k / n);
+        sections.push(new THREE.Matrix4().compose(p, turn, new THREE.Vector3(len / n / 2, 1, 1)).multiply(new THREE.Matrix4().makeTranslation(-start, 0, 0)));
+      }
+    }
+    posts.push(new THREE.Matrix4().makeTranslation(line[line.length - 1].x, 0, line[line.length - 1].z));
+  }
+  return new THREE.Group().add(patched(section, sections), patched(post, posts));
 }
 
 function tree(x: number, z: number, s: number): THREE.Group {
