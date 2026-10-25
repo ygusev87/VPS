@@ -23,7 +23,8 @@ import { isActive, type World } from './world';
 /** Model files only the farm needs (loaded when it opens). */
 export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
   // Day two (each falls back to a stand-in until its model is made).
-  'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'goose', 'rooster', 'horse', 'stable'];
+  'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'goose', 'rooster', 'horse', 'stable',
+  'tree-oak'];
 /** Animals drawn with another one's model: the puppy is the dog, smaller. */
 const MODEL_OF: Record<string, string> = { puppy: 'dog' };
 
@@ -501,10 +502,13 @@ export class FarmMap {
     const trees: [number, number, number][] = [
       [-34, 22, 1.3], [-31, 22.4, 1.1], [-34.4, 18.6, 1.2], [-28, 22, 1.0], [-32, 15.8, 1.1], [-25.5, 22.6, 0.9], [-34.8, 13.6, 1], [-29.5, 18.5, 1.2],
       [-6, -16, 0.9], [8.5, -15.8, 1], [-2, -22, 1.2], [10, -22.2, 1.1], [34, -22, 1.2],
-      [34.4, -8, 1.1], [34.2, 3, 1], [13.2, 23.2, 0.9], [-6.5, 22.6, 0.8], [-11.5, 22, 1.1], [10.6, 22.8, 1], [34.2, 21.8, 1.2],
+      [34.4, -8, 1.1], [34.2, 3, 1], [24, 23.2, 0.9], [-6.5, 22.6, 0.8], [-11.5, 22, 1.1], [10.6, 22.8, 1], [34.2, 21.8, 1.2],
       [-18, -22.4, 1], [22, -22.2, 0.9], [-34.6, -5, 1.1], [-23.5, 7.8, 1], [35, -14.5, 1], [-22, 19.2, 0.9],
     ];
-    for (const [x, z, s] of trees) still.add(tree(x, z, s));
+    // The sculpted tree, drawn all at once (one instanced mesh); the code-built one without it.
+    const grove = treeModels(trees);
+    if (grove) this.scenery.add(grove);
+    else for (const [x, z, s] of trees) still.add(tree(x, z, s));
     // Haystacks by the barn, in the field and on the hill.
     for (const p of [at('cow', -8.5, -9.5), at('cow', -6.6, -10.2), at('field', 16.5, 0.6), at('sheep', -24.5, -15.8)]) still.add(haystack(p.x, p.z));
     this.scenery.add(sprouts());
@@ -1468,6 +1472,34 @@ function fence(pts: THREE.Vector3[]): THREE.Group {
     }
   }
   return g;
+}
+
+/**
+ * Every tree from the one sculpted model: an instanced copy per tree, each
+ * turned its own way, so the whole wood costs one draw (and one shadow draw).
+ */
+function treeModels(trees: [number, number, number][]): THREE.Group | null {
+  const src = model('tree-oak', { height: 3 });
+  if (!src) return null;
+  src.updateMatrixWorld(true);
+  const out = new THREE.Group();
+  const place = new THREE.Matrix4();
+  const turn = new THREE.Quaternion();
+  src.traverse((o) => {
+    const m = o as THREE.Mesh;
+    if (!m.isMesh) return;
+    const im = new THREE.InstancedMesh(m.geometry, m.material, trees.length);
+    trees.forEach(([x, z, s], i) => {
+      turn.setFromAxisAngle(new THREE.Vector3(0, 1, 0), (i * 2.39996) % (Math.PI * 2));
+      place.compose(new THREE.Vector3(x, 0, z), turn, new THREE.Vector3(s, s, s)).multiply(m.matrixWorld);
+      im.setMatrixAt(i, place);
+    });
+    im.castShadow = true;
+    im.receiveShadow = true;
+    im.computeBoundingSphere();
+    out.add(im);
+  });
+  return out;
 }
 
 function tree(x: number, z: number, s: number): THREE.Group {
