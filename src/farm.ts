@@ -103,6 +103,9 @@ export interface FarmProgress extends MapProgress {
 const r2 = (n: number) => Math.round(n * 100) / 100;
 
 /** Bumped whenever the farm is laid out anew: a farm saved on an older layout would have its parts in the wrong places. */
+/** Where the smoke leaves a house model (fitted model space, from assets-src/farm-v3/buildings/anchors.json). */
+const CHIMNEY: Record<string, [number, number, number]> = { farmhouse: [4.188, 8.535, -0.461] };
+
 export const FARM_LAYOUT = 4;
 
 // The cows' pasture in the middle: one cow is hot by day (a fan) and cannot sleep at night (a lullaby).
@@ -491,8 +494,15 @@ export class FarmMap extends StoryMap {
     this.life.addFlutters([v(4, 21), v(-18, 19), v(13, 26), v(-40, 22), v(44, -24), v(-10, 0)], [POND, v(-35, 14)]);
     const house = DECOR.find((g) => (g.model === 'house' || g.model === 'farmhouse') && drawn.has(g.model));
     if (house) {
-      const box = new THREE.Box3().setFromObject(group.children[[...drawn].indexOf(house.model)] ?? group);
-      this.life.addSmoke(v(house.items[0][0] + 1.5, house.items[0][1]).setY(Math.max(3, box.max.y)));
+      const [x, z, yaw, s] = house.items[0];
+      const pipe = CHIMNEY[house.model];
+      if (pipe) {
+        // The measured top of the chimney, turned and scaled with the house.
+        this.life.addSmoke(new THREE.Vector3(pipe[0], pipe[1], pipe[2]).multiplyScalar(s).applyAxisAngle(new THREE.Vector3(0, 1, 0), yaw).add(v(x, z)));
+      } else {
+        const box = new THREE.Box3().setFromObject(group.children[[...drawn].indexOf(house.model)] ?? group);
+        this.life.addSmoke(v(x + 1.5, z).setY(Math.max(3, box.max.y)));
+      }
     }
     const trees = [...drawn].some((m) => m.startsWith('tree'));
     // Without the full dressing yet: a wood round the edges of the board, groves and bushes.
