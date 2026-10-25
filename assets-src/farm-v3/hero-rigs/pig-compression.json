@@ -1,0 +1,122 @@
+{
+  "generatedAt": "2026-10-25T17:02:29.555Z",
+  "source": "assets-src/raw/farm-hero-rigs-2026-10-25/compress-input",
+  "output": "public/models",
+  "textureSource": "public/models/pig.glb",
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 686328,
+      "triangles": 8000,
+      "textureMiB": 1.6666666666666665
+    },
+    "after": {
+      "bytes": 307172,
+      "triangles": 8000,
+      "textureMiB": 1.6666666666666665
+    }
+  },
+  "models": [
+    {
+      "name": "pig-rig",
+      "sourceSha256": "2cf31b972f315e048587277823f4f9ee9449d7671bf0cd41f9534c252615eda1",
+      "outputSha256": "cce217c36630c76223592070f840ce47028fac6b8e299a90c5f5ecce1593851e",
+      "protectedGeometry": true,
+      "exactGeometry": true,
+      "targetTriangles": null,
+      "before": {
+        "bytes": 686328,
+        "triangles": 8000,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 212769,
+            "mime": "image/png"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 114723,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 1.6666666666666665,
+        "bounds": {
+          "min": [
+            -0.5,
+            4.470348358154297e-7,
+            -0.3499862551689148
+          ],
+          "max": [
+            0.5,
+            0.8813138008117676,
+            0.34998619556427
+          ]
+        },
+        "skins": 1,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 307172,
+        "triangles": 8000,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 16196,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 11080,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.6666666666666665,
+        "bounds": {
+          "min": [
+            -0.5,
+            4.470348358154297e-7,
+            -0.3499862551689148
+          ],
+          "max": [
+            0.5,
+            0.8813138008117676,
+            0.34998619556427
+          ]
+        },
+        "skins": 1,
+        "animations": 0
+      }
+    }
+  ]
+}

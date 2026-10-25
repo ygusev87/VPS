@@ -1,0 +1,63 @@
+{
+  "dateUTC": "2026-10-25",
+  "model": "pig-rig",
+  "status": "asset ready for stationary head/tail reactions; Claude integration/review pending",
+  "viewports": [
+    [
+      1180,
+      844
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "views": [
+    "side +Z",
+    "side -Z",
+    "three-quarter",
+    "game"
+  ],
+  "motions": {
+    "headNodDegrees": 15,
+    "headTurnDegrees": 15,
+    "tailSwingDegrees": 20,
+    "oscillation": "head nod, head turn and tail sampled in browser",
+    "walking": "not verified",
+    "earsAndJaw": "candidate joints exist; separate motion not verified"
+  },
+  "orientation": {
+    "sourcePreserved": true,
+    "forward": "+X",
+    "up": "+Y",
+    "existingGameFit": {
+      "width": 1.7
+    },
+    "existingGameGroupYaw": 0.3
+  },
+  "checks": [
+    "Exact protected geometry/skin/TRS after Meshopt compression",
+    "Static texture byte equality and bidirectional vertex comparison in pig-audit.json",
+    "21 tests passed; npm run typecheck passed"
+  ],
+  "realIPad": "not tested",
+  "browserNotes": [
+    "No error/warn entries reported by QA tab at check time"
+  ],
+  "credits": {
+    "before": 140,
+    "check": 0,
+    "rig": 25,
+    "after": 115,
+    "frozen": 0,
+    "batchSpent": 100,
+    "batchLimit": 150
+  },
+  "screenshots": [
+    "/tmp/gameios-visual-audit-2026-10-25/pig-rig-bind.png",
+    "/tmp/gameios-visual-audit-2026-10-25/pig-rig-head.png",
+    "/tmp/gameios-visual-audit-2026-10-25/pig-rig-look.png",
+    "/tmp/gameios-visual-audit-2026-10-25/pig-rig-tail.png",
+    "/tmp/gameios-visual-audit-2026-10-25/pig-rig-phone.png"
+  ]
+}
