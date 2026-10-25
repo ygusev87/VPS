@@ -50,7 +50,7 @@ const carries = (p: Part) => p.closed && Math.abs(p.state.current) > 0.01;
 const switchInLoop = (w: World) => w.parts.some((p) => p.kind === 'switch' && carries(p));
 /** A part of this kind is closed and current runs through it (a sensor, target, dominoes). */
 export const through = (w: World, kind: PartKind) => w.parts.some((p) => p.kind === kind && carries(p));
-const TRIGGERS: PartKind[] = ['target', 'domino', 'lightSensor', 'button'];
+const TRIGGERS: PartKind[] = ['target', 'domino', 'lightSensor', 'button', 'balloon', 'skittles'];
 /**
  * A chain works: something switched on by another part (a ball, light, wind),
  * not by a finger, now powers a working gadget.
@@ -393,7 +393,7 @@ export const LEVELS: Level[] = [
       { kind: 'bell', fx: 0.6, fz: 0.3 },
     ],
     tray: [
-      ...(['battery', 'bigBattery', 'switch', 'bulb', 'led', 'fan', 'buzzer', 'windGen', 'lightSensor', 'launcher', 'target', 'domino', 'laser', 'mirror', 'belt', 'bell', 'magnet', 'tester', 'drum', 'xylophone', 'pinwheel'] as PartKind[]).map((kind) => ({ kind, count: Infinity })),
+      ...(['battery', 'bigBattery', 'switch', 'bulb', 'led', 'fan', 'buzzer', 'windGen', 'lightSensor', 'launcher', 'target', 'domino', 'laser', 'mirror', 'belt', 'bell', 'magnet', 'tester', 'drum', 'xylophone', 'pinwheel', 'balloon', 'skittles', 'garland', 'kettle'] as PartKind[]).map((kind) => ({ kind, count: Infinity })),
     ],
     chain: [],
     intro: 'l16',

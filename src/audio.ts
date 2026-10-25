@@ -518,6 +518,48 @@ export class Sfx {
     this.noise(0.04, 0.2, 1500);
   }
 
+  /** A balloon pops: a sharp crack of noise and a squeak of rubber. */
+  burst() {
+    this.noise(0.09, 0.6, 3200);
+    this.noise(0.05, 0.35, 900, 0.01);
+    this.tone(1200, 0.08, 'triangle', 0.08, 0.02, 500);
+  }
+
+  /** Skittles go down: a clatter of wooden knocks. */
+  pins() {
+    for (let i = 0; i < 6; i++) {
+      this.noise(0.03, 0.28, 1800 + Math.random() * 1400, 0.02 + i * 0.06 + Math.random() * 0.03);
+      this.tone(700 + Math.random() * 500, 0.05, 'triangle', 0.07, 0.02 + i * 0.06);
+    }
+  }
+
+  /** A kettle boils: a rising whistle that wobbles. */
+  whistle() {
+    const ctx = this.ctx;
+    if (!ctx || !this.master) return;
+    const t = ctx.currentTime;
+    const o = ctx.createOscillator();
+    const lfo = ctx.createOscillator();
+    const depth = ctx.createGain();
+    const g = ctx.createGain();
+    o.type = 'sine';
+    o.frequency.setValueAtTime(1300, t);
+    o.frequency.linearRampToValueAtTime(1900, t + 0.5);
+    lfo.frequency.value = 9;
+    depth.gain.value = 40;
+    lfo.connect(depth).connect(o.frequency);
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(0.12, t + 0.15);
+    g.gain.setValueAtTime(0.12, t + 1.1);
+    g.gain.linearRampToValueAtTime(0, t + 1.5);
+    o.connect(g).connect(this.master);
+    o.start(t);
+    lfo.start(t);
+    o.stop(t + 1.55);
+    lfo.stop(t + 1.55);
+    this.noise(1.2, 0.05, 6000, 0.1);
+  }
+
   /** A domino tips onto the next one. */
   clack() {
     this.noise(0.03, 0.35, 2600 + Math.random() * 800);

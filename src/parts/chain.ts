@@ -1414,6 +1414,9 @@ function roll(parts: Part[], dt: number) {
 
 /** Every link between parts that is not a wire: light, balls. (Wind is in wind.ts.) */
 export function interact(parts: Part[], dt: number) {
-  shine(parts, beams(parts));
+  const lit = beams(parts);
+  shine(parts, lit);
+  // A beam that ends on a balloon pops it.
+  for (const p of lit.keys()) (p as Part & { laserHit?: () => void }).laserHit?.();
   roll(parts, dt);
 }

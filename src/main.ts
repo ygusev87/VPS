@@ -808,6 +808,15 @@ function playPartSound(snd: PartSound, from?: Part) {
     case 'gong':
       sfx.gong();
       break;
+    case 'burst':
+      sfx.burst();
+      break;
+    case 'pins':
+      sfx.pins();
+      break;
+    case 'whistle':
+      sfx.whistle();
+      break;
     case 'volts': {
       const v = Math.round(Math.abs(snd.v));
       if (snd.v < -0.5) voice.say('testerBack', 0);

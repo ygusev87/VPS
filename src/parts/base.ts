@@ -40,6 +40,10 @@ export type PartKind =
   | 'lightSensor'
   | 'launcher'
   | 'target'
+  | 'balloon'
+  | 'skittles'
+  | 'garland'
+  | 'kettle'
   | 'domino'
   | 'laser'
   | 'mirror'
@@ -233,6 +237,9 @@ export type PartSound =
   | { kind: 'clack' }
   | { kind: 'missed' }
   | { kind: 'gong' }
+  | { kind: 'burst' }
+  | { kind: 'pins' }
+  | { kind: 'whistle' }
   | { kind: 'volts'; v: number };
 
 /** A 3D effect a part asks for (drained by the game into fx.ts), at a world point. */

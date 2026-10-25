@@ -14,6 +14,7 @@ import { Gate, Heater, Pole, Pump, Solar } from './farm';
 import { Barrier, CarWash, Drawbridge, DuskLamp, FerrisWheel, FireLadder, NeonSign, Substation, TowerCrane } from './city';
 import { Gear, GearMotor, Packer, PaintBooth, PaintTank, Pipe, Press, RobotArm } from './factory';
 import type { PhraseId } from '../voice';
+import { Balloon, Garland, Kettle, Skittles } from './toys';
 
 export interface CatalogItem {
   kind: PartKind;
@@ -54,6 +55,7 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'led', color: 'yellow', name: 'Жёлтый светодиод', say: 'ledYellow' },
       { kind: 'trafficLight', name: 'Светофор', say: 'trafficLight' },
       { kind: 'disco', name: 'Диско-шар', say: 'disco' },
+      { kind: 'garland', name: 'Гирлянда', say: 'garland' },
     ],
   },
   {
@@ -83,6 +85,7 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'marbleRun', name: 'Шариковая горка', say: 'marbleRun' },
       { kind: 'waterMill', name: 'Водяная мельница', say: 'waterMill' },
       { kind: 'conveyor', name: 'Конвейер', say: 'conveyor' },
+      { kind: 'kettle', name: 'Чайник', say: 'kettle' },
     ],
   },
   {
@@ -92,6 +95,8 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'launcher', name: 'Пушка с шариком', say: 'launcher' },
       { kind: 'target', name: 'Мишень', say: 'target' },
       { kind: 'domino', name: 'Домино', say: 'domino' },
+      { kind: 'balloon', name: 'Воздушный шарик', say: 'balloon' },
+      { kind: 'skittles', name: 'Кегли', say: 'skittles' },
       { kind: 'windGen', name: 'Ветряк', say: 'windGen' },
       { kind: 'lightSensor', name: 'Фотодатчик', say: 'lightSensor' },
       { kind: 'laser', name: 'Лазер', say: 'laser' },
@@ -221,6 +226,14 @@ function make(kind: PartKind): Part {
       return new Target();
     case 'domino':
       return new Domino();
+    case 'balloon':
+      return new Balloon();
+    case 'skittles':
+      return new Skittles();
+    case 'garland':
+      return new Garland();
+    case 'kettle':
+      return new Kettle();
     case 'laser':
       return new Laser();
     case 'bell':
