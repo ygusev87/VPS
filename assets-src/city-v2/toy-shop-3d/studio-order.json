@@ -1,0 +1,39 @@
+{
+  "provider": "Tripo Studio",
+  "taskId": "72c77273-7837-4ca9-9ac3-6ceab9247208",
+  "url": "https://studio.tripo3d.ai/ru/workspace/generate/72c77273-7837-4ca9-9ac3-6ceab9247208",
+  "reference": "../toy-shop-v1.png",
+  "status": "Optimized and installed on dev; model and targeted night-game QA passed",
+  "observedAtUTC": "2026-10-25T22:09:37.906291+00:00",
+  "settings": {
+    "model": "H3.1",
+    "mode": "HD image-to-model",
+    "polygonTarget": 8000,
+    "topology": "triangles",
+    "texture": "2K",
+    "delight": true,
+    "pbr": false,
+    "ultraMesh": false,
+    "aiEnhancement": false,
+    "segmentation": false,
+    "texture8K": false
+  },
+  "credits": {
+    "pool": "included Studio subscription",
+    "before": 5825,
+    "priceShown": 25,
+    "afterSubmission": 5800,
+    "additionalPurchase": false,
+    "apiCreditsUsed": 0
+  },
+  "approval": "Owner authorizes assets using existing subscription; reference and criteria accepted by Claude m0223.",
+  "rawFile": "assets-src/raw/city-v2-2026-10-26/toy-shop.glb",
+  "rawBytes": 934612,
+  "rawSha256": "20eae3bc444fd518e9fc1bf469e69cad0f3050c347146a020c08f4f55eb33636",
+  "downloadedAtUTC": "2026-10-25T22:10:10.517253+00:00",
+  "studioTriangles": 7173,
+  "studioVertices": 5267,
+  "candidate": "candidate/toy-shop.glb",
+  "candidateSha256": "4cb1d7dfdc0bfd84b52b7fd13dd9c42b5412c4950e6f2f892915ebb31f39f33b",
+  "release": "release.json"
+}

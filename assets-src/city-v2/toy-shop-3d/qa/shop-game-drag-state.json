@@ -1,0 +1,58 @@
+{
+  "phase": "night",
+  "raccoonChased": false,
+  "done": [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false
+  ],
+  "bell": {
+    "level": 4.1343896380104837e-17,
+    "ringing": false,
+    "terminals": [
+      {
+        "world": [
+          51.1,
+          0.48,
+          -29
+        ],
+        "screen": {
+          "x": 241.0908829392373,
+          "y": 358.30600455425673
+        }
+      },
+      {
+        "world": [
+          49.9,
+          0.48,
+          -29
+        ],
+        "screen": {
+          "x": 211.3155187897256,
+          "y": 358.30600455425673
+        }
+      }
+    ]
+  },
+  "domino": {
+    "standing": false,
+    "closed": true
+  },
+  "wires": 1,
+  "canvas": [
+    "390",
+    "844"
+  ],
+  "quality": "q=1; desktop browser; no iPad/FPS claim"
+}

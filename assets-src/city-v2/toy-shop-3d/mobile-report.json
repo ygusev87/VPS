@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-10-25T22:10:15.947Z",
+  "source": "/tmp/toy-shop-canonical-20261026",
+  "output": "assets-src/city-v2/toy-shop-3d/candidate",
+  "textureSource": null,
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 763632,
+      "triangles": 7173,
+      "textureMiB": 21.333333333333332
+    },
+    "after": {
+      "bytes": 128920,
+      "triangles": 7173,
+      "textureMiB": 1.3333333333333333
+    }
+  },
+  "models": [
+    {
+      "name": "toy-shop",
+      "sourceSha256": "749d8790a46263150fa2bb549d36d87d44775397f25c398894517917d0fb03fa",
+      "outputSha256": "4cb1d7dfdc0bfd84b52b7fd13dd9c42b5412c4950e6f2f892915ebb31f39f33b",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 763632,
+        "triangles": 7173,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 678374,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.3114261299478134,
+            0.0000059569209780452326,
+            -0.5
+          ],
+          "max": [
+            0.3114261299478134,
+            0.609613183704022,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 128920,
+        "triangles": 7173,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 43590,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.3114261299478134,
+            0.0000059569209780452326,
+            -0.5
+          ],
+          "max": [
+            0.3114261299478134,
+            0.609613183704022,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ]
+}

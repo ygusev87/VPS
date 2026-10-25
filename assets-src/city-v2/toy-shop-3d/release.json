@@ -1,0 +1,80 @@
+{
+  "status": "Installed on dev; targeted actual-game night task passed; Claude review and iPad pending",
+  "file": "public/models/toy-shop.glb",
+  "bytes": 128920,
+  "sha256": "4cb1d7dfdc0bfd84b52b7fd13dd9c42b5412c4950e6f2f892915ebb31f39f33b",
+  "sameBytesAsCandidate": true,
+  "previousPublicModelExisted": false,
+  "triangles": 7173,
+  "materials": 1,
+  "baseColorPixels": [
+    512,
+    512
+  ],
+  "compression": [
+    "Meshopt",
+    "WebP"
+  ],
+  "negativeMeshNodes": 0,
+  "referenceDecision": "m0223",
+  "placement": {
+    "centerXZ": [
+      49.75,
+      -22.4
+    ],
+    "width": 6,
+    "instanceScale": 0.9,
+    "rotateY": -1.5707963267948966
+  },
+  "fittedSize": [
+    5.4,
+    3.2919,
+    3.3634
+  ],
+  "fixedGameplayAnchorsChanged": false,
+  "sourceCodeChanged": false,
+  "nonUniformScaleApplied": false,
+  "tripoOrders": 1,
+  "studioCreditsUsed": 25,
+  "studioBalanceAfter": 5800,
+  "apiCreditsUsed": 0,
+  "additionalPurchase": false,
+  "measurementReport": "final-measurements.json",
+  "validationReport": "final-validation.json",
+  "verification": {
+    "tests": 21,
+    "typecheck": "passed",
+    "assetViewer": "Actual model() and patched(), one InstancedMesh; 1180 and390, front/back/top/day/night",
+    "actualGame": "game-review.html loads unmodified main.ts in iframe, installed public GLB; q=1 on desktop IAB",
+    "gameSizes": [
+      [
+        1180,
+        660
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "nightSetup": "Debug API seeds night, adds actual bell/domino at unchanged anchors. No victory flag or circuit state forced.",
+    "visibility": "Bell body/ring/terminals, bins and seller visible at task focus. Mouse drag from bell to pole completed one visible wire at390.",
+    "chain": "Actual solver with pole -> domino -> bell -> pole; raccoon knocks domino, bell rings; raccoonChased=true, done[12]=true, phase advances to morning. Connections set by debug helper, separate manual drag verified.",
+    "path": "Current stand-in raccoon reached bins in unwired run. Wired run set raccoonChased=true and advanced phase. Full backward run was not separately visually tracked; sampled corridor covers both directions. Detailed future raccoon mesh requires renewed animation clearance check.",
+    "orientation": "Resize initially fits whole map; task focus restored through map.refocus(true) for close inspection.",
+    "console": [
+      {
+        "level": "error",
+        "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+        "timestamp": "2026-10-25T22:13:17.448Z"
+      }
+    ],
+    "consoleCaveat": "Existing MutationObserver.observe TypeError without source URL, previously seen on static HTML too. No claim of a clean console."
+  },
+  "remaining": [
+    "Claude independent integration review",
+    "iPad/PWA and FPS",
+    "Future detailed raccoon/character meshes and full animation clearance",
+    "Publication handled separately by Claude"
+  ],
+  "preparedAtUTC": "2026-10-25T22:17:48.109371+00:00"
+}

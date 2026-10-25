@@ -1,0 +1,709 @@
+{
+  "status": "Candidate; visual QA pending",
+  "file": "candidate/toy-shop.glb",
+  "bytes": 128920,
+  "triangles": 7173,
+  "materials": [
+    {
+      "alphaMode": "OPAQUE",
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "extensions": []
+    }
+  ],
+  "negativeMeshNodes": 0,
+  "runtimeFit": {
+    "width": 6,
+    "instanceScale": 0.9,
+    "rotateY": -1.5707963267948966,
+    "centerXZ": [
+      49.75,
+      -22.4
+    ]
+  },
+  "fittedSize": [
+    5.4,
+    3.2919,
+    3.3634
+  ],
+  "worldBox": {
+    "min": [
+      47.05,
+      0,
+      -24.0817
+    ],
+    "max": [
+      52.45,
+      3.2919,
+      -20.7183
+    ]
+  },
+  "taskReservations": [
+    {
+      "name": "ALARM_SPOT",
+      "nominalSize": [
+        4,
+        4
+      ],
+      "overlapArea": 0
+    },
+    {
+      "name": "DOMINO_SPOT",
+      "nominalSize": [
+        4,
+        4
+      ],
+      "overlapArea": 0
+    }
+  ],
+  "bellVisibility": {
+    "viewDirection": [
+      0,
+      0.7885023060177911,
+      0.6150317986938771
+    ],
+    "samples": [
+      {
+        "name": "bell-ring-0",
+        "point": [
+          51.875,
+          0.03,
+          -29.5
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-1",
+        "point": [
+          51.86323668438899,
+          0.03,
+          -29.320526485697428
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-2",
+        "point": [
+          51.82814801114747,
+          0.03,
+          -29.144123812984034
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-3",
+        "point": [
+          51.77033435720302,
+          0.03,
+          -28.973810280498
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-4",
+        "point": [
+          51.690784930203606,
+          0.03,
+          -28.8125
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-5",
+        "point": [
+          51.59086084290045,
+          0.03,
+          -28.66295303511301
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-6",
+        "point": [
+          51.472271824131504,
+          0.03,
+          -28.527728175868496
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-7",
+        "point": [
+          51.337046964886994,
+          0.03,
+          -28.409139157099553
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-8",
+        "point": [
+          51.1875,
+          0.03,
+          -28.309215069796398
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-9",
+        "point": [
+          51.026189719502,
+          0.03,
+          -28.22966564279698
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-10",
+        "point": [
+          50.855876187015966,
+          0.03,
+          -28.17185198885253
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-11",
+        "point": [
+          50.67947351430257,
+          0.03,
+          -28.13676331561101
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-12",
+        "point": [
+          50.5,
+          0.03,
+          -28.125
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-13",
+        "point": [
+          50.32052648569743,
+          0.03,
+          -28.13676331561101
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-14",
+        "point": [
+          50.144123812984034,
+          0.03,
+          -28.17185198885253
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-15",
+        "point": [
+          49.973810280498,
+          0.03,
+          -28.22966564279698
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-16",
+        "point": [
+          49.8125,
+          0.03,
+          -28.309215069796398
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-17",
+        "point": [
+          49.662953035113006,
+          0.03,
+          -28.409139157099553
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-18",
+        "point": [
+          49.527728175868496,
+          0.03,
+          -28.527728175868496
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-19",
+        "point": [
+          49.40913915709955,
+          0.03,
+          -28.66295303511301
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-20",
+        "point": [
+          49.309215069796394,
+          0.03,
+          -28.8125
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-21",
+        "point": [
+          49.22966564279698,
+          0.03,
+          -28.973810280498
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-22",
+        "point": [
+          49.17185198885253,
+          0.03,
+          -29.144123812984034
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-23",
+        "point": [
+          49.13676331561101,
+          0.03,
+          -29.320526485697428
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-24",
+        "point": [
+          49.125,
+          0.03,
+          -29.5
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-25",
+        "point": [
+          49.13676331561101,
+          0.03,
+          -29.679473514302572
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-26",
+        "point": [
+          49.17185198885253,
+          0.03,
+          -29.855876187015966
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-27",
+        "point": [
+          49.22966564279698,
+          0.03,
+          -30.026189719502
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-28",
+        "point": [
+          49.309215069796394,
+          0.03,
+          -30.1875
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-29",
+        "point": [
+          49.40913915709955,
+          0.03,
+          -30.33704696488699
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-30",
+        "point": [
+          49.527728175868496,
+          0.03,
+          -30.472271824131504
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-31",
+        "point": [
+          49.662953035113006,
+          0.03,
+          -30.590860842900447
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-32",
+        "point": [
+          49.8125,
+          0.03,
+          -30.690784930203602
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-33",
+        "point": [
+          49.973810280498,
+          0.03,
+          -30.77033435720302
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-34",
+        "point": [
+          50.144123812984034,
+          0.03,
+          -30.82814801114747
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-35",
+        "point": [
+          50.32052648569743,
+          0.03,
+          -30.86323668438899
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-36",
+        "point": [
+          50.5,
+          0.03,
+          -30.875
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-37",
+        "point": [
+          50.67947351430257,
+          0.03,
+          -30.86323668438899
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-38",
+        "point": [
+          50.855876187015966,
+          0.03,
+          -30.82814801114747
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-39",
+        "point": [
+          51.026189719502,
+          0.03,
+          -30.77033435720302
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-40",
+        "point": [
+          51.1875,
+          0.03,
+          -30.690784930203602
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-41",
+        "point": [
+          51.337046964886994,
+          0.03,
+          -30.590860842900447
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-42",
+        "point": [
+          51.472271824131504,
+          0.03,
+          -30.472271824131504
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-43",
+        "point": [
+          51.59086084290045,
+          0.03,
+          -30.33704696488699
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-44",
+        "point": [
+          51.690784930203606,
+          0.03,
+          -30.1875
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-45",
+        "point": [
+          51.77033435720302,
+          0.03,
+          -30.026189719502
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-46",
+        "point": [
+          51.82814801114747,
+          0.03,
+          -29.855876187015966
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-ring-47",
+        "point": [
+          51.86323668438899,
+          0.03,
+          -29.679473514302572
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "bell-center",
+        "point": [
+          50.5,
+          0.5,
+          -29.5
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "terminal-right",
+        "point": [
+          51.1,
+          0.16,
+          -29
+        ],
+        "occludedByShop": false
+      },
+      {
+        "name": "terminal-left",
+        "point": [
+          49.9,
+          0.16,
+          -29
+        ],
+        "occludedByShop": false
+      }
+    ],
+    "occluded": 0,
+    "note": "Ray tests against shop mesh only; terminal y=.16 is conservative ground attachment level, real terminals higher. Other scenery/full game must be inspected."
+  },
+  "raccoon": {
+    "path": [
+      [
+        56,
+        -37
+      ],
+      [
+        52,
+        -34
+      ],
+      [
+        48,
+        -33
+      ],
+      [
+        45.5,
+        -29
+      ],
+      [
+        45.3,
+        -24
+      ]
+    ],
+    "segmentSamples": 1001,
+    "centerlineToFullBox": 1.7453,
+    "controlRadius": 1,
+    "clearance": 0.7453,
+    "note": "Conservative circle around path, not actual skin/animated extremities. Full game check required."
+  },
+  "seller": {
+    "centerXZ": [
+      47.5,
+      -19
+    ],
+    "controlRadius": 0.45,
+    "clearance": 1.2683
+  },
+  "bins": {
+    "centerXZ": [
+      45,
+      -22.5
+    ],
+    "fitWidth": 2,
+    "separationAlongX": 1.05
+  },
+  "roofProbes": [
+    {
+      "x": 48.13,
+      "z": -23.409,
+      "topY": 2.9636
+    },
+    {
+      "x": 48.13,
+      "z": -22.9045,
+      "topY": 3.2528
+    },
+    {
+      "x": 48.13,
+      "z": -22.4,
+      "topY": 3.258
+    },
+    {
+      "x": 48.13,
+      "z": -21.8955,
+      "topY": 3.1858
+    },
+    {
+      "x": 48.13,
+      "z": -21.391,
+      "topY": 2.7311
+    },
+    {
+      "x": 48.94,
+      "z": -23.409,
+      "topY": 2.9422
+    },
+    {
+      "x": 48.94,
+      "z": -22.9045,
+      "topY": 3.2857
+    },
+    {
+      "x": 48.94,
+      "z": -22.4,
+      "topY": 3.271
+    },
+    {
+      "x": 48.94,
+      "z": -21.8955,
+      "topY": 3.2433
+    },
+    {
+      "x": 48.94,
+      "z": -21.391,
+      "topY": 2.7289
+    },
+    {
+      "x": 49.75,
+      "z": -23.409,
+      "topY": 2.9087
+    },
+    {
+      "x": 49.75,
+      "z": -22.9045,
+      "topY": 3.2854
+    },
+    {
+      "x": 49.75,
+      "z": -22.4,
+      "topY": 3.2797
+    },
+    {
+      "x": 49.75,
+      "z": -21.8955,
+      "topY": 3.2572
+    },
+    {
+      "x": 49.75,
+      "z": -21.391,
+      "topY": 2.7308
+    },
+    {
+      "x": 50.56,
+      "z": -23.409,
+      "topY": 2.9476
+    },
+    {
+      "x": 50.56,
+      "z": -22.9045,
+      "topY": 3.2852
+    },
+    {
+      "x": 50.56,
+      "z": -22.4,
+      "topY": 3.2812
+    },
+    {
+      "x": 50.56,
+      "z": -21.8955,
+      "topY": 3.2652
+    },
+    {
+      "x": 50.56,
+      "z": -21.391,
+      "topY": 2.726
+    },
+    {
+      "x": 51.37,
+      "z": -23.409,
+      "topY": 2.9584
+    },
+    {
+      "x": 51.37,
+      "z": -22.9045,
+      "topY": 3.2662
+    },
+    {
+      "x": 51.37,
+      "z": -22.4,
+      "topY": 3.254
+    },
+    {
+      "x": 51.37,
+      "z": -21.8955,
+      "topY": 3.2502
+    },
+    {
+      "x": 51.37,
+      "z": -21.391,
+      "topY": 2.7294
+    }
+  ],
+  "limitations": [
+    "Roof sampling is not watertight topology proof.",
+    "Path envelope is not animated mesh collision.",
+    "No circuit/iPad/PWA/FPS result from geometric checks."
+  ]
+}

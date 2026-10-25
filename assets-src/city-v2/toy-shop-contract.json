@@ -1,5 +1,5 @@
 {
-  "status": "Reference proposal; await review before Tripo",
+  "status": "Reference accepted m0223; GLB installed and targeted night-game QA passed; Claude/iPad review pending",
   "reference": "toy-shop-v1.png",
   "sourceRevision": "0bc7afa",
   "placementSource": "src/city-decor.ts, f77d137 layout",
@@ -41,7 +41,7 @@
     "materials": 1,
     "baseColorPixels": 512,
     "downloadBytesTarget": 200000,
-    "note": "Approximate shape target only. Do not stretch geometry to force all dimensions; review actual decoded mesh."
+    "note": "Original approximate targets; actual mesh is lower and shallower. No non-uniform stretching."
   },
   "targetFootprintOnly": {
     "x0": 47.05,
@@ -129,11 +129,26 @@
     "Day/night texture and InstancedMesh inspection; prefer positive determinant transforms to avoid mirrored winding issues.",
     "Proceed to one Tripo order only after reference/fit review; full gameplay and iPad review remain separate acceptance."
   ],
-  "tripoOrders": 0,
-  "studioCreditsUsed": 0,
+  "tripoOrders": 1,
+  "studioCreditsUsed": 25,
   "apiCreditsUsed": 0,
   "limitations": [
     "PNG is only a visual reference, not a runtime model or geometry measurement.",
     "No game, iPad/PWA or FPS result from this reference."
-  ]
+  ],
+  "installedFile": "public/models/toy-shop.glb",
+  "release": "toy-shop-3d/release.json",
+  "measuredGeometry": {
+    "fullRuntimeSizeXYZ": [
+      5.4,
+      3.2919,
+      3.3634
+    ],
+    "file": "toy-shop-3d/final-measurements.json",
+    "bellVisibilityRaysClear": 51,
+    "raccoonControlRadius": 1,
+    "raccoonCorridorClearance": 0.7453,
+    "sellerControlClearance": 1.2683,
+    "binsXSeparation": 1.05
+  }
 }
