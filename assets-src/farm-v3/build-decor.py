@@ -14,39 +14,31 @@ updates={'gateStuck':([28.3,17.4],[26,13.5]),'foxTip':([-34,-10],[-35.5,-7.5]),
 for task in tasks:
     if task['id'] in updates:task['workingPatch']['center'],task['pole']=updates[task['id']]
 fox=[[-27,-37],[-27.5,-29],[-29.5,-19],[-32.5,-12.5],[-34,-10],[-38,-10],[-39.5,-10.8]]
+toys=[[-7.5,-18.5],[-1.5,-3.2],[8.3,25.2],[-32.5,-21.6],[-34.6,8.4]]
 travel=[fox,[[-23,-8.15],[-8,-8.15]],[[30,12],[29,26.5]]]
 rng=random.Random(25102503)
 paths=[]
-def lane(name,points,width=2.4): paths.append({'name':name,'points':points,'width':width})
-lane('yard-loop',[[-52.5,-19],[-29,-19],[-29,-12],[-8,-12],[-8,-9],[32,-9],[32,13],[-28,13],[-28,-4],[-52.5,-4],[-52.5,-19]],3.2)
-lane('barn-entry',[[-29,-19],[-16,-19],[-16,-20.8]],2.4)
-lane('kitten-lift',[[-19,-19],[-19,-16]],2)
-lane('farmhouse-porch',[[-38.5,-19],[-38.5,-21]],2.4)
-lane('rabbit-entry',[[-43,-4],[-43,-12.5]],2)
-lane('dog-entry',[[-34,-4],[-34,-11],[-38.5,-13.8]],2)
-lane('puppy-lane',[[-23,-12],[-23,-6]],2.4)
-lane('hen-entry',[[7,-9],[7,-19.4]],2.2)
+def lane(name,points,width=1.8): paths.append({'name':name,'points':points,'width':width})
+lane('yard-spine',[[-38.5,-19],[-29,-19],[-29,-12],[-8,-12],[-8,-9],[32,-9],[32,13],[-28,13],[-28,-4],[-47,-4]],2.0)
+lane('barn-entry',[[-29,-19],[-16,-19],[-16,-20.8]],1.8)
+lane('kitten-lift',[[-19,-19],[-19,-16]],1.6)
+lane('farmhouse-porch',[[-38.5,-19],[-38.5,-21]],1.8)
+lane('rabbit-entry',[[-43,-4],[-43,-12.5]],1.6)
+lane('dog-entry',[[-34,-4],[-34,-11],[-38.5,-13.8]],1.6)
+lane('hen-entry',[[7,-9],[7,-19.4]],1.6)
 lane('nest-entry',[[7,-12],[16,-12],[16,-14]],1.8)
-lane('rooster-entry',[[-1,-9],[-1,-10]],2)
-lane('pig-entry',[[27,-9],[27,-21.8]],2.2)
-lane('hill-entry',[[32,-9],[38,-14],[44,-17],[44,-22]],2.4)
-lane('cow-cooling',[[10,13],[10,4]],2.2)
-lane('cow-music',[[20,13],[20,8],[16,8],[16,4]],2.2)
-lane('horse-yard',[[32,13],[36,13],[36,18],[39,18],[39,13],[42,7],[42,2.5]],2.4)
-lane('courtyard',[[-8,-9],[-8.5,-2],[-8.5,10],[0,13]],2.4)
-lane('well-entry',[[-8.5,1],[-5,1],[-5,-.4]],1.6)
-lane('goat-entry',[[-15,13],[-15,5]],2.2)
-lane('duck-pump',[[-28,5.5],[-30.5,5.5]],2)
-lane('duck-landing',[[-28,9],[-34,9]],1.8)
-lane('geese-bank',[[-28,13],[-31,15]],2)
-lane('south-loop',[[-28,13],[-28,35.5],[36,35.5],[36,13],[32,13]],2.6)
-lane('orchard-entry',[[-28,25],[-36,25]],2)
-lane('apiary-entry',[[-20,13],[-20,23]],2)
+lane('pig-entry',[[27,-9],[27,-21.8]],1.6)
+lane('hill-entry',[[32,-9],[38,-14],[44,-17],[44,-22]],1.8)
+lane('horse-yard',[[32,13],[36,13],[36,18],[39,18],[39,13],[42,7],[42,2.5]],1.8)
+lane('courtyard',[[-8,-9],[-8.5,-2],[-8.5,10],[0,13]],1.8)
+lane('south-loop',[[-28,13],[-28,35.5],[36,35.5],[36,13],[32,13]],1.8)
+lane('orchard-entry',[[-28,25],[-36,25]],1.6)
+lane('apiary-entry',[[-20,13],[-20,23]],1.6)
 lane('garden-north',[[3,13],[3,26],[-1,26]],1.6)
 lane('garden-cross',[[3,26],[15,26]],1.4)
 lane('garden-south',[[11,26],[11,35.5]],1.6)
-lane('shed-entry',[[36,28],[38,28]],2.4)
-lane('tractor-gate',[[30,13],[30,21]],2.4)
+lane('shed-entry',[[36,28],[38,28]],1.8)
+lane('tractor-gate',[[30,13],[30,21]],1.8)
 
 def point_segment(p,a,b):
     dx=b[0]-a[0]; dz=b[1]-a[1]; q=dx*dx+dz*dz
@@ -58,7 +50,7 @@ def road_distance(p):
 # Rectangles are yards, not building footprints. Gate gaps include the full road width.
 pens=[
  {'name':'rabbit','rect':[-50.5,-18,-40.7,-6],'gates':{'S':[(-43,4.8)]}},
- {'name':'dog','rect':[-40.7,-18,-29.8,-6],'gates':{'S':[(-34,4.8)]},'omit':['W']},
+ {'name':'dog','rect':[-40.7,-18.5,-29.8,-6],'gates':{'S':[(-34,4.8)]},'omit':['W']},
  {'name':'chickens','rect':[-4,-29.5,18,-10.8],'gates':{'S':[(-1,6),(7,4.8)]}},
  {'name':'pigs','rect':[18,-21,36,-11],'gates':{'N':[(27,5)],'S':[(27,5)]}},
  {'name':'hill','rect':[36,-34,51,-18],'gates':{'S':[(44,5.2)]}},
@@ -124,7 +116,7 @@ add('farmhouse',{'width':11,'rotateY':turn},[[-38.5,-25.5,0,1]],'future')
 add('silo',{'height':12},[[-5,-27,0,1]],'future')
 add('pigsty',{'width':10,'rotateY':turn},[[27,-25,0,1]],'future')
 add('tractor-shed',{'width':10,'rotateY':math.pi},[[43,26,0,1]],'future')
-add('well',{'width':2.8},[[-5,-2,0,1]],'future')
+add('well',{'width':2.8},[[-1.5,-3.2,0,1]],'future-toy')
 add('beehive',{'height':1.7},[[-15,25,.2,1],[-20,28,-.1,.95]],'prop')
 add('haystack',{'width':2.8},[[-24,-25,.3,1],[-24,-22,-.15,.8],[-7,-22,.1,.9],[46,21,.5,1],[46,30,-.4,.85],[39,-30,.2,.7]],'prop')
 add('sack',{'height':1.25},[[-22.7,-23,.3,1],[-22.6,-24.5,-.2,.95],[-22,-24.8,.1,.85]],'prop')
@@ -142,6 +134,7 @@ def clear(p,radius):
         px,pz=t['workingPatch']['center']
         if abs(x-px)<2+radius+.25 and abs(z-pz)<2+radius+.25:return False
         if math.dist(p,t['pole'])<1.4+radius:return False
+    if any(math.dist(p,q)<radius+1.15 for q in toys):return False
     if road_distance(p)<radius+.3:return False
     if any(point_segment(p,a,b)<radius+1.1 for line in travel for a,b in zip(line,line[1:])):return False
     for e in ponds:
@@ -201,7 +194,7 @@ add('crop-wheat',{'width':1.8},[[x,z,0,1] for x in [25,27.3,29.6,32] for z in [2
 
 # Future groups stay in authoring only. Missing crop groups would suppress the
 # integration's wheat fallback even when no GLB can be loaded (m0121).
-payload={'DECOR':[{k:v for k,v in g.items() if k!='category'} for g in groups if (ROOT/'public/models'/f"{g['model']}.glb").exists()],
+payload={'DECOR':[{k:v for k,v in g.items() if k!='category'} for g in groups if g['category']!='future-toy' and (ROOT/'public/models'/f"{g['model']}.glb").exists()],
  'PATHS':[{k:v for k,v in p.items() if k!='name'} for p in paths],
  'FENCES':fences,'SOIL':soil,'MUD':mud,'MEADOW':meadow,'PONDS':ponds}
 comments={g['model']:g['category'] for g in groups}
@@ -225,5 +218,5 @@ def literal(name,value):
 source=header+'\n\n'.join('export const '+name+': '+types[name]+' = '+literal(name,value)+';' for name,value in payload.items())+'\n'
 (ROOT/'src/farm-decor.ts').write_text(source)
 (OUT/'decor-layout.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
-(OUT/'decor-authoring.json').write_text(json.dumps({'seed':25102503,'anchorsSource':'Claude m0120; farm.ts mechanical constants','tasks':tasks,'travel':travel,'paths':paths,'pens':pens,'fenceRuns':cuts,'groups':groups},ensure_ascii=False,indent=2)+'\n')
+(OUT/'decor-authoring.json').write_text(json.dumps({'seed':25102503,'anchorsSource':'Claude m0120; farm.ts mechanical constants','tasks':tasks,'toys':toys,'travel':travel,'paths':paths,'pens':pens,'fenceRuns':cuts,'groups':groups},ensure_ascii=False,indent=2)+'\n')
 print(json.dumps({'groups':len(groups),'instances':sum(len(g['items']) for g in groups),'paths':len(paths),'fenceRuns':len(fences),'forest':sum(len(g['items']) for g in groups if g['model'].startswith('tree-'))}))

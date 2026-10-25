@@ -1,0 +1,18 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "sourceReference": "assets-src/farm-v2/path-source-v1.png",
+  "generatedSource": "path-source-v3.png",
+  "runtime": "public/textures/farm/path.webp",
+  "prompt": "Use case: precise-object-edit. Asset: a seamless square base-color texture for the dirt paths of a polished children's 3D toy farm. Edit the provided texture. Preserve the all-over surface material, tiny irregular rounded pebbles, gentle hand-painted sculpted detail and exact overhead view. Change the strong golden-orange ochre into light desaturated sand and pale limestone beige: main color around #d2c1a3, small warm gray stones and soft ivory highlights, subdued brown crevices, comfortable contrast. Reduce dense peppery micro-noise so the surface reads softly at mobile distance, keep a few slightly larger irregular flattened limestone pebbles to avoid a flat stripe. No single focal object. Seamless tile in X and Y, even edge-to-edge distribution and constant lighting, no vignette, no illumination gradient, no cast shadows. This is a material tile, NOT an illustration of a road: no visible path shape, borders, grass fringe, surrounding landscape or frame, no text or symbols. Keep subtle tactile 3D sculpted surface detail suitable for the existing toy style.",
+  "processing": "Mechanical resize to 512x512 WebP quality 88. No procedural drawing or color editing.",
+  "note": "Grass fringe belongs in the road-mask blend, not as a rectangular border baked into the seamless material.",
+  "sourceSha256": "eaa928e8aaded4524493f00e239d92b08d7d4016d395a9dd437c25ee670a5a49",
+  "oldRuntimeSha256": "947713e0c2d9c7a21791d83ae7dfe4212695289bd456f7e7db0d10c9a46e2ab1",
+  "runtimeSha256": "f4d1738f1bd5b37b87068bd4f6d72e9945f19cfd4ba173dc637c740550799b0a",
+  "bytes": 68432,
+  "size": [
+    512,
+    512
+  ]
+}
