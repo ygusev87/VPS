@@ -269,12 +269,17 @@ export abstract class StoryMap {
     if (n) this.hooks.focus?.(this.view(n), instant);
   }
 
-  /** Everyone waiting now, in one view (a new part of the day begins: who calls for help?). */
+  /**
+   * A new part of the day begins: who calls for help? The few waiting nearest
+   * to where the child was (or to the middle), close enough to tap them on a
+   * phone; the rest are a pan away.
+   */
   private overview() {
-    const waiting = this.needs.filter((n) => !n.done && this.isNow(n));
+    const at = this.lastAt ?? new THREE.Vector3();
+    const waiting = this.needs.filter((n) => !n.done && this.isNow(n)).sort((a, b) => a.critter.home.distanceTo(at) - b.critter.home.distanceTo(at));
     if (waiting.length === 1) return this.refocus();
     this.focused = null;
-    const pts = waiting.map((n) => n.critter.home);
+    const pts = waiting.slice(0, 4).map((n) => n.critter.home);
     if (pts.length) this.hooks.focus?.(pts.flatMap((p) => [p.clone().add(v(-3, -3)), p.clone().add(v(3, 3))]));
   }
 
