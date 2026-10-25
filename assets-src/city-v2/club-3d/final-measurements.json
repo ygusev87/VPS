@@ -1,0 +1,438 @@
+{
+  "status": "Installed GLB; full game review pending",
+  "file": "../../../public/models/club.glb",
+  "bytes": 118140,
+  "triangles": 7287,
+  "negativeMeshNodes": 0,
+  "materials": [
+    {
+      "name": "tripo_material_4fcb123e-fe64-4f81-ab3e-899cc88af154",
+      "alphaMode": "OPAQUE",
+      "doubleSided": false,
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "extensions": []
+    }
+  ],
+  "runtimeFit": {
+    "width": 7,
+    "rotateY": -1.5707963267948966,
+    "centerXZ": [
+      48.5,
+      -13
+    ]
+  },
+  "fittedSize": [
+    7,
+    4.5604,
+    3.9225
+  ],
+  "worldBox": {
+    "min": [
+      45,
+      0,
+      -14.9612
+    ],
+    "max": [
+      52,
+      4.5604,
+      -11.0388
+    ]
+  },
+  "children": [
+    {
+      "name": "child6",
+      "positionXZ": [
+        49,
+        -8.3
+      ],
+      "height": 1.2,
+      "controlRadius": 0.35,
+      "conservativeHorizontalClearance": 2.3888,
+      "hopMaxY": 0.72,
+      "note": "Includes .6 hop + up to .12 asking bob; fixed XZ circle envelope, not actual animated skin."
+    },
+    {
+      "name": "child7",
+      "positionXZ": [
+        50.5,
+        -8.8
+      ],
+      "height": 1.15,
+      "controlRadius": 0.35,
+      "conservativeHorizontalClearance": 1.8888,
+      "hopMaxY": 0.72,
+      "note": "Includes .6 hop + up to .12 asking bob; fixed XZ circle envelope, not actual animated skin."
+    }
+  ],
+  "taskReservations": [
+    {
+      "name": "NEON_SPOT",
+      "centerXZ": [
+        43,
+        -9.5
+      ],
+      "nominalSize": [
+        4,
+        4
+      ],
+      "overlapArea": 0
+    },
+    {
+      "name": "CLUB_SENSOR",
+      "centerXZ": [
+        43,
+        -7.6
+      ],
+      "nominalSize": [
+        4,
+        4
+      ],
+      "overlapArea": 0
+    },
+    {
+      "name": "MUSIC_SPOT",
+      "centerXZ": [
+        46.5,
+        -6.8
+      ],
+      "nominalSize": [
+        4,
+        4
+      ],
+      "overlapArea": 0
+    }
+  ],
+  "lightPath": {
+    "from": [
+      43,
+      1.21,
+      -9.5
+    ],
+    "to": [
+      43,
+      0.51,
+      -7.6
+    ],
+    "length": 2.0248,
+    "intersections": 0,
+    "horizontalXSeparation": 2,
+    "note": "Heights from NeonSign.glowLight()/LightSensor.eyePoint(); geometric corridor only, not circuit simulation."
+  },
+  "boundingGridDiagnostic": [
+    {
+      "x": 46.26,
+      "z": -14.2552,
+      "topY": 3.2952
+    },
+    {
+      "x": 46.26,
+      "z": -13.6276,
+      "topY": 3.2971
+    },
+    {
+      "x": 46.26,
+      "z": -13,
+      "topY": 3.2809
+    },
+    {
+      "x": 46.26,
+      "z": -12.3724,
+      "topY": 2.9595
+    },
+    {
+      "x": 46.26,
+      "z": -11.7448,
+      "topY": null
+    },
+    {
+      "x": 47.38,
+      "z": -14.2552,
+      "topY": 3.3966
+    },
+    {
+      "x": 47.38,
+      "z": -13.6276,
+      "topY": 3.7539
+    },
+    {
+      "x": 47.38,
+      "z": -13,
+      "topY": 3.8974
+    },
+    {
+      "x": 47.38,
+      "z": -12.3724,
+      "topY": 3.9652
+    },
+    {
+      "x": 47.38,
+      "z": -11.7448,
+      "topY": 3.6845
+    },
+    {
+      "x": 48.5,
+      "z": -14.2552,
+      "topY": 3.4277
+    },
+    {
+      "x": 48.5,
+      "z": -13.6276,
+      "topY": 3.7513
+    },
+    {
+      "x": 48.5,
+      "z": -13,
+      "topY": 4.5248
+    },
+    {
+      "x": 48.5,
+      "z": -12.3724,
+      "topY": 4.558
+    },
+    {
+      "x": 48.5,
+      "z": -11.7448,
+      "topY": 3.8159
+    },
+    {
+      "x": 49.62,
+      "z": -14.2552,
+      "topY": 3.4005
+    },
+    {
+      "x": 49.62,
+      "z": -13.6276,
+      "topY": 3.7536
+    },
+    {
+      "x": 49.62,
+      "z": -13,
+      "topY": 3.889
+    },
+    {
+      "x": 49.62,
+      "z": -12.3724,
+      "topY": 3.9558
+    },
+    {
+      "x": 49.62,
+      "z": -11.7448,
+      "topY": 2.2737
+    },
+    {
+      "x": 50.74,
+      "z": -14.2552,
+      "topY": 3.2952
+    },
+    {
+      "x": 50.74,
+      "z": -13.6276,
+      "topY": 3.3345
+    },
+    {
+      "x": 50.74,
+      "z": -13,
+      "topY": 3.274
+    },
+    {
+      "x": 50.74,
+      "z": -12.3724,
+      "topY": 2.9543
+    },
+    {
+      "x": 50.74,
+      "z": -11.7448,
+      "topY": null
+    }
+  ],
+  "roofProbes": [
+    {
+      "x": 46.26,
+      "z": -14.4017,
+      "bodyBackZ": -14.6578,
+      "bodyFrontZ": -12.0963,
+      "topY": 3.2391
+    },
+    {
+      "x": 46.26,
+      "z": -13.8894,
+      "bodyBackZ": -14.6578,
+      "bodyFrontZ": -12.0963,
+      "topY": 3.3471
+    },
+    {
+      "x": 46.26,
+      "z": -13.3771,
+      "bodyBackZ": -14.6578,
+      "bodyFrontZ": -12.0963,
+      "topY": 3.3303
+    },
+    {
+      "x": 46.26,
+      "z": -12.8648,
+      "bodyBackZ": -14.6578,
+      "bodyFrontZ": -12.0963,
+      "topY": 3.2367
+    },
+    {
+      "x": 46.26,
+      "z": -12.3524,
+      "bodyBackZ": -14.6578,
+      "bodyFrontZ": -12.0963,
+      "topY": 2.9369
+    },
+    {
+      "x": 47.38,
+      "z": -14.3891,
+      "bodyBackZ": -14.6576,
+      "bodyFrontZ": -11.973,
+      "topY": 3.3508
+    },
+    {
+      "x": 47.38,
+      "z": -13.8522,
+      "bodyBackZ": -14.6576,
+      "bodyFrontZ": -11.973,
+      "topY": 3.7324
+    },
+    {
+      "x": 47.38,
+      "z": -13.3153,
+      "bodyBackZ": -14.6576,
+      "bodyFrontZ": -11.973,
+      "topY": 3.5286
+    },
+    {
+      "x": 47.38,
+      "z": -12.7784,
+      "bodyBackZ": -14.6576,
+      "bodyFrontZ": -11.973,
+      "topY": 3.9222
+    },
+    {
+      "x": 47.38,
+      "z": -12.2415,
+      "bodyBackZ": -14.6576,
+      "bodyFrontZ": -11.973,
+      "topY": 3.9386
+    },
+    {
+      "x": 48.5,
+      "z": -14.3859,
+      "bodyBackZ": -14.6554,
+      "bodyFrontZ": -11.9601,
+      "topY": 3.3827
+    },
+    {
+      "x": 48.5,
+      "z": -13.8468,
+      "bodyBackZ": -14.6554,
+      "bodyFrontZ": -11.9601,
+      "topY": 3.7533
+    },
+    {
+      "x": 48.5,
+      "z": -13.3078,
+      "bodyBackZ": -14.6554,
+      "bodyFrontZ": -11.9601,
+      "topY": 3.5339
+    },
+    {
+      "x": 48.5,
+      "z": -12.7687,
+      "bodyBackZ": -14.6554,
+      "bodyFrontZ": -11.9601,
+      "topY": 4.5393
+    },
+    {
+      "x": 48.5,
+      "z": -12.2297,
+      "bodyBackZ": -14.6554,
+      "bodyFrontZ": -11.9601,
+      "topY": 4.5303
+    },
+    {
+      "x": 49.62,
+      "z": -14.3647,
+      "bodyBackZ": -14.6544,
+      "bodyFrontZ": -11.7567,
+      "topY": 3.3627
+    },
+    {
+      "x": 49.62,
+      "z": -13.7851,
+      "bodyBackZ": -14.6544,
+      "bodyFrontZ": -11.7567,
+      "topY": 3.7553
+    },
+    {
+      "x": 49.62,
+      "z": -13.2056,
+      "bodyBackZ": -14.6544,
+      "bodyFrontZ": -11.7567,
+      "topY": 3.5308
+    },
+    {
+      "x": 49.62,
+      "z": -12.626,
+      "bodyBackZ": -14.6544,
+      "bodyFrontZ": -11.7567,
+      "topY": 3.9358
+    },
+    {
+      "x": 49.62,
+      "z": -12.0465,
+      "bodyBackZ": -14.6544,
+      "bodyFrontZ": -11.7567,
+      "topY": 3.9428
+    },
+    {
+      "x": 50.74,
+      "z": -14.396,
+      "bodyBackZ": -14.6515,
+      "bodyFrontZ": -12.0965,
+      "topY": 3.2404
+    },
+    {
+      "x": 50.74,
+      "z": -13.885,
+      "bodyBackZ": -14.6515,
+      "bodyFrontZ": -12.0965,
+      "topY": 3.3454
+    },
+    {
+      "x": 50.74,
+      "z": -13.374,
+      "bodyBackZ": -14.6515,
+      "bodyFrontZ": -12.0965,
+      "topY": 3.3331
+    },
+    {
+      "x": 50.74,
+      "z": -12.863,
+      "bodyBackZ": -14.6515,
+      "bodyFrontZ": -12.0965,
+      "topY": 3.238
+    },
+    {
+      "x": 50.74,
+      "z": -12.352,
+      "bodyBackZ": -14.6515,
+      "bodyFrontZ": -12.0965,
+      "topY": 2.9356
+    }
+  ],
+  "boardMargins": {
+    "east": 3,
+    "north": 22.5388
+  },
+  "limitations": [
+    "Roof probes sample five width columns inside measured wall envelopes at y.8; not a watertight topology proof.",
+    "Child circles are conservative fixed-XZ envelopes, not real characters or all gestures.",
+    "Actual parts, whole task, lighting, iPad and FPS require runtime review."
+  ]
+}

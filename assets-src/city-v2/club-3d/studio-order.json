@@ -1,0 +1,39 @@
+{
+  "provider": "Tripo Studio",
+  "taskId": "07059ada-fde2-4e3e-9243-54a018a5080f",
+  "url": "https://studio.tripo3d.ai/ru/workspace/generate/07059ada-fde2-4e3e-9243-54a018a5080f",
+  "reference": "../club-v1.png",
+  "status": "Compressed, measured, visually checked and installed on dev; full game review pending",
+  "observedAtUTC": "2026-10-25T21:38:18.865235+00:00",
+  "settings": {
+    "model": "H3.1",
+    "mode": "HD image-to-model",
+    "polygonTarget": 8000,
+    "topology": "triangles",
+    "texture": "2K",
+    "delight": true,
+    "pbr": false,
+    "ultraMesh": false,
+    "aiEnhancement": false,
+    "segmentation": false,
+    "texture8K": false
+  },
+  "credits": {
+    "pool": "included Studio subscription",
+    "before": 5850,
+    "priceShown": 25,
+    "afterSubmission": 5825,
+    "additionalPurchase": false,
+    "apiCreditsUsed": 0
+  },
+  "approval": "Owner authorizes assets using existing subscription; Claude accepted image and7x5x5.2 targets in m0217.",
+  "rawFile": "assets-src/raw/city-v2-2026-10-26/club.glb",
+  "rawBytes": 857012,
+  "rawSha256": "1098cfcd2fe8a62b597a8e3fbf0d15d7b6fc813651adb4efe7632ab0bae4581e",
+  "downloadedAtUTC": "2026-10-25T21:40:10.716832+00:00",
+  "studioTriangles": 7287,
+  "studioVertices": 5122,
+  "candidate": "candidate/club.glb",
+  "candidateSha256": "e10d53060d0464bef9f32b62b2448b3f6d1114d32f81dd0afb3da71f979d05ee",
+  "release": "release.json"
+}

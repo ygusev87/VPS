@@ -1,0 +1,79 @@
+{
+  "status": "Installed on dev; Claude full-game review pending",
+  "file": "public/models/club.glb",
+  "bytes": 118140,
+  "sha256": "e10d53060d0464bef9f32b62b2448b3f6d1114d32f81dd0afb3da71f979d05ee",
+  "sameBytesAsCandidate": true,
+  "triangles": 7287,
+  "materials": 1,
+  "baseColorPixels": [
+    512,
+    512
+  ],
+  "compression": [
+    "EXT_meshopt_compression",
+    "WebP"
+  ],
+  "negativeMeshNodes": 0,
+  "referenceDecision": "m0217",
+  "placement": {
+    "width": 7,
+    "rotateY": -1.5707963267948966,
+    "centerXZ": [
+      48.5,
+      -13
+    ]
+  },
+  "fittedSize": [
+    7,
+    4.5604,
+    3.9225
+  ],
+  "fixedGameplayAnchorsChanged": false,
+  "nonUniformScaleApplied": false,
+  "tripoOrders": 1,
+  "studioCreditsUsed": 25,
+  "studioBalanceAfter": 5825,
+  "apiCreditsUsed": 0,
+  "additionalPurchase": false,
+  "measurementReport": "final-measurements.json",
+  "validationReport": "final-validation.json",
+  "verification": {
+    "tests": 21,
+    "typecheck": "passed",
+    "browserWidths": [
+      1180,
+      390
+    ],
+    "loader": "Actual loadModels()/model() from src/parts/assets.ts",
+    "renderPath": "Actual storymap.patched(), one InstancedMesh",
+    "views": [
+      "front three-quarter day",
+      "rear",
+      "top",
+      "game angle evening hop+.72",
+      "game angle390 night hop+.72",
+      "three-quarter390 day"
+    ],
+    "lightingCaveat": "Viewer presets, not exact full-game Stage postprocessing",
+    "console": [
+      {
+        "level": "error",
+        "message": "MutationObserver.observe: parameter1 is not of type Node",
+        "timestampsUTC": [
+          "2026-10-25T21:41:30.078Z",
+          "2026-10-25T21:42:47.512Z",
+          "2026-10-25T21:43:11.414Z"
+        ],
+        "sourceURL": null,
+        "origin": "Unconfirmed; same symptom previously observed on static reference HTML"
+      }
+    ]
+  },
+  "remaining": [
+    "Actual club circuit and neon/sensor/music interaction",
+    "Actual children and their full reactions",
+    "Whole map, iPad/PWA and FPS"
+  ],
+  "preparedAtUTC": "2026-10-25T21:45:31.214880+00:00"
+}

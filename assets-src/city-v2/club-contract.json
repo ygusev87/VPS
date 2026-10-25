@@ -1,5 +1,5 @@
 {
-  "status": "Image reference ready for Claude review; no GLB order",
+  "status": "Reference approved m0217; installed GLB and asset QA complete; full game review pending",
   "reference": "club-v1.png",
   "sourceRevision": "50c03ab",
   "styleSource": "Accepted city-v2 concept m0195; existing bakery material language",
@@ -29,7 +29,8 @@
     "materials": 1,
     "baseColorPixels": 512,
     "downloadBytesTarget": 200000,
-    "targetsUnmeasured": true
+    "targetsUnmeasured": true,
+    "note": "Original approximate targets; actual GLB is shallower and lower, no stretching was applied."
   },
   "fixedGameplay": {
     "NEON_SPOT": [
@@ -107,12 +108,28 @@
     "At the original center and width7, measure actual front extent and verify children(49,-8.3)/(50.5,-8.8) remain visible while hopping, including at phone width390.",
     "Show roof and sign at day/evening/night exposure. Star is decorative, non-emissive; gameplay neon is a separate powered part.",
     "Prefer positive determinant transforms; inspect InstancedMesh rendering to avoid the mirrored winding defect found in grandma-house.",
-    "No Tripo order until reference and geometry targets reviewed; no public model until actual size, visibility and material QA. Report any center/fit change before applying."
+    "Reference and approximate dimensions accepted in m0217; actual GLB inspected at unchanged center/fit. Further orders or geometry changes require their own reviewed plan."
   ],
-  "tripoOrders": 0,
-  "tripoCreditsUsed": 0,
+  "tripoOrders": 1,
+  "tripoCreditsUsed": 25,
   "limitations": [
     "PNG does not prove actual width/depth/height or roof topology",
     "No runtime, iPad, PWA or performance result from this reference"
-  ]
+  ],
+  "measuredGeometry": {
+    "fullSizeXYZ": [
+      7,
+      4.5604,
+      3.9225
+    ],
+    "file": "club-3d/final-measurements.json",
+    "childrenClearance": [
+      2.3888,
+      1.8888
+    ],
+    "lightPathXSeparation": 2,
+    "roofSampleCount": 25
+  },
+  "installedFile": "public/models/club.glb",
+  "release": "club-3d/release.json"
 }

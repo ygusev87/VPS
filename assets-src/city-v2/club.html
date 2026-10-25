@@ -4,11 +4,11 @@
 <style>*{box-sizing:border-box}body{margin:0;background:#f5efe4;color:#243a3e;font:16px/1.5 system-ui}header{padding:18px 24px;border-bottom:1px solid #dbd3c4}a{color:#25666d}h1{font-size:25px;margin:4px 0}h2{font-size:20px;margin:20px 0 8px}.layout{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(280px,1fr);gap:28px;padding:24px;max-width:1400px;margin:auto}figure{margin:0}img{display:block;width:100%;height:auto;border-radius:16px}figcaption{font-size:14px;color:#617276;padding-top:12px}.tag{color:#277b80;font-weight:600}p{margin:8px 0}ul{padding-left:20px}.note{padding:14px;background:#e4ede7;border-radius:12px}.links{display:flex;flex-wrap:wrap;gap:14px;margin:20px 0}code{overflow-wrap:anywhere}@media(max-width:720px){header,.layout{padding:16px}.layout{grid-template-columns:1fr;gap:10px}h1{font-size:22px}}</style>
 <header><a href="concepts.html">Город v2</a><h1>Клуб со звездой</h1></header>
 <main class="layout">
-<figure><img src="club-v1.png" alt="Игрушечный бирюзовый клуб: объёмная золотистая звезда, цельная крыша, кремовые колонны и коралловый козырёк"><figcaption>Референс создан встроенным Image. Это образ будущей модели, ещё не GLB в игре.</figcaption></figure>
-<section><p class="tag">Референс на ревью · Tripo 0 кредитов</p>
+<figure><img src="club-v1.png" alt="Игрушечный бирюзовый клуб: объёмная золотистая звезда, цельная крыша, кремовые колонны и коралловый козырёк"><figcaption>Референс создан встроенным Image. По нему создан и установлен GLB; игровое задание ещё проходит ревью.</figcaption></figure>
+<section><p class="tag">GLB установлен · 115,4 KiB</p>
 <h2>Узнаётся по звезде</h2><p>Один этаж, приподнятый центральный фасад и цельная непрозрачная крыша. Бирюзовые стены, кремовые обрамления и небольшой коралловый козырёк продолжают стиль города.</p>
 <ul><li>Золотистая звезда — статичное украшение без собственного свечения.</li><li>Неон, датчик и музыкальная шкатулка остаются отдельными игровыми деталями.</li><li>У входа нет ступеней и подиума; окна непрозрачные.</li></ul>
 <h2>Двор для музыки и детей</h2><p>Сохраняем центр <code>(48,5; −13)</code>, ширину 7 и все точки задания. Двое детей танцуют перед зданием; крыша и козырёк не должны их скрывать.</p>
-<p class="note">Ориентир размера: ширина 7, глубина 5,2, высота 5. После генерации нужны замеры реального GLB, проверка света от неона к датчику и видимости детей через игровой InstancedMesh.</p>
-<div class="links"><a href="club-contract.json">Габариты и условия</a><a href="club-prompt-v1.json">Промпт и источники</a></div></section>
+<p class="note">Реальный размер: ширина 7, глубина 3,92, высота 4,56. Модель проверена игровым загрузчиком и InstancedMesh; геометрия оставляет место для света и детей. Полное задание и iPad ещё проверяет интеграция.</p>
+<div class="links"><a href="club-3d/fit-review.html?final">Финальный GLB</a><a href="club-contract.json">Габариты и условия</a><a href="club-prompt-v1.json">Промпт и источники</a></div></section>
 </main></html>

@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-10-25T21:42:34.999Z",
+  "source": "/tmp/club-canonical-20261026",
+  "output": "assets-src/city-v2/club-3d/candidate",
+  "textureSource": null,
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 685808,
+      "triangles": 7287,
+      "textureMiB": 21.333333333333332
+    },
+    "after": {
+      "bytes": 118140,
+      "triangles": 7287,
+      "textureMiB": 1.3333333333333333
+    }
+  },
+  "models": [
+    {
+      "name": "club",
+      "sourceSha256": "cfefbe7b320796ee14751c05294dde8397bc883c7d3d2bf83cd046346caae19a",
+      "outputSha256": "e10d53060d0464bef9f32b62b2448b3f6d1114d32f81dd0afb3da71f979d05ee",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 685808,
+        "triangles": 7287,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 604067,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.2801751762443921,
+            0.000005318014193955722,
+            -0.5
+          ],
+          "max": [
+            0.2801751762443922,
+            0.6514839397983061,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 118140,
+        "triangles": 7287,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 36330,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.2801751762443921,
+            0.000005318014193955722,
+            -0.5
+          ],
+          "max": [
+            0.2801751762443922,
+            0.6514839397983061,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ]
+}

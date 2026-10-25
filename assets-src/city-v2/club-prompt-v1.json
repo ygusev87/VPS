@@ -8,7 +8,7 @@
   "mode": "built-in image_gen; references supply building identity and material style",
   "output": "club-v1.png",
   "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-e8375afe-52b6-4ef0-8525-8b462fcb097e.png",
-  "status": "First club reference for Claude review; no Tripo order",
+  "status": "Reference approved by Claude in m0217; one Studio GLB generated, see club-3d/release.json",
   "inspection": "One storey with raised central star facade, opaque roof, shallow coral canopy, flush ground door. No people, steps, plinth, text or attached gameplay devices. PNG does not establish dimensions, hidden roof topology or gameplay visibility.",
   "sha256": "da2a329da8be34f1b2891442a0acf0cc92341c5d60ba5c568593ed9df8fab88d"
 }
