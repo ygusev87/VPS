@@ -1,0 +1,171 @@
+{
+  "generatedAt": "2026-10-25T11:20:34.170Z",
+  "source": "/tmp/gameios-city-normalized",
+  "output": "/tmp/gameios-city-optimized",
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 1153144,
+      "triangles": 14528,
+      "textureMiB": 42.666666666666664
+    },
+    "after": {
+      "bytes": 214568,
+      "triangles": 14528,
+      "textureMiB": 2.6666666666666665
+    }
+  },
+  "models": [
+    {
+      "name": "bakery",
+      "sourceSha256": "2fcf23449ba6a5d149d9718002dff9b7c5047c4bb4c524f3c7e2185e00249d66",
+      "outputSha256": "16ac5318b007d7b4e4f05ee6290e21e0a5788e214cee18ffec05cec6bc274667",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 602728,
+        "triangles": 7042,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 523734,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.32976775414288767,
+            -0.3947874385814997,
+            -0.5
+          ],
+          "max": [
+            0.32976775414288767,
+            0.3947874385814997,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 109372,
+        "triangles": 7042,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 30310,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.32976775414288767,
+            -0.3947874385814997,
+            -0.5
+          ],
+          "max": [
+            0.32976775414288767,
+            0.3947874385814997,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "baker",
+      "sourceSha256": "775d3ff6080788ba8e6bdd159c0d4d00a4e0035aa06039da61f35e8907a5707a",
+      "outputSha256": "d21c442949150a180a6f4677596f504909609b26026cfc75c75752371f8a3b2a",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 550416,
+        "triangles": 7486,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 471485,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.2097689748832667,
+            -0.5,
+            -0.3087862788781396
+          ],
+          "max": [
+            0.2097689748832667,
+            0.5,
+            0.3087862788781396
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 105196,
+        "triangles": 7486,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 26196,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.2097689748832667,
+            -0.5,
+            -0.3087862788781396
+          ],
+          "max": [
+            0.2097689748832667,
+            0.5,
+            0.3087862788781396
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ]
+}

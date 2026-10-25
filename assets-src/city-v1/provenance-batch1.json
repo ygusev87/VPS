@@ -1,0 +1,77 @@
+{
+  "models": [
+    {
+      "task_id": "6c203f35-85af-423d-9f21-0ffd465509af",
+      "type": "image_to_model",
+      "status": "success",
+      "credits_consumed": 30,
+      "created_at": "2026-10-25T11:11:12.090603Z",
+      "completed_at": "2026-10-25T11:12:46.636886Z",
+      "name": "bakery",
+      "sourceReference": "bakery-v1.png",
+      "sourceModel": "assets-src/raw/city-2026-10-25/bakery.glb",
+      "model": "v3.1-20260211",
+      "texture_version": "v3.5-20260815",
+      "texture": true,
+      "pbr": false,
+      "delight": true,
+      "face_limit": 8000,
+      "model_seed": 25102100,
+      "forward": "+x",
+      "rigged": false
+    },
+    {
+      "task_id": "af808790-9856-4b75-a13d-2f89f6d5555e",
+      "type": "image_to_model",
+      "status": "success",
+      "credits_consumed": 30,
+      "created_at": "2026-10-25T11:11:18.575782Z",
+      "completed_at": "2026-10-25T11:12:29.269899Z",
+      "name": "baker",
+      "sourceReference": "baker-v1.png",
+      "sourceModel": "assets-src/raw/city-2026-10-25/baker.glb",
+      "model": "v3.1-20260211",
+      "texture_version": "v3.5-20260815",
+      "texture": true,
+      "pbr": false,
+      "delight": true,
+      "face_limit": 8000,
+      "model_seed": 25102101,
+      "forward": "+x",
+      "rigged": false
+    }
+  ],
+  "textures": [
+    {
+      "name": "asphalt",
+      "source": "asphalt-v1.png",
+      "path": "public/textures/farm/asphalt.webp",
+      "size": [
+        512,
+        512
+      ],
+      "quality": 90,
+      "bytes": 57498,
+      "sha256": "a10b3ae165ef88376ac40b82b22d158c9f49be6645eb0ca2acbc65d3794e02c4",
+      "worldRepeatSize": 6
+    },
+    {
+      "name": "paving",
+      "source": "paving-v2.png",
+      "path": "public/textures/farm/paving.webp",
+      "size": [
+        512,
+        512
+      ],
+      "quality": 90,
+      "bytes": 11184,
+      "sha256": "bf66faaf804375fd0dc6729666381ec2dcf2030497e312a86fe897b6eba627a1",
+      "worldRepeatSize": 0.75
+    }
+  ],
+  "apiBalanceBefore": 365,
+  "apiBalanceAfter": 305,
+  "apiCreditsUsed": 60,
+  "studioBalanceObserved": 6200,
+  "studioCreditsUsed": 0
+}

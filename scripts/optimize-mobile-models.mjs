@@ -13,6 +13,7 @@ import sharp from 'sharp';
 // highlights visibly distort after simplification (confirmed by side-by-side QA).
 const KEEP_GEOMETRY = new Set('motor propeller windmill sails floorfan windgen dynamo knife musicbox tester magnet mirror carousel cannon laser pump helicopter trafficlight fox-rig solar buzzer drum bell panel target tuba'.split(' '));
 const FARM = new Set('barn coop doghouse cow dog duck fox hen pig rabbit sheep tractor sack kitten goat kid goose rooster horse chick beehive flowerbed-buds flowerbed-bloom nest stable tree-oak'.split(' '));
+const CITY = new Set('bakery baker grandma-house grandma school fire-station toy-shop club substation house-a child raccoon tram car'.split(' '));
 const args = process.argv.slice(2), names = [];
 let input = 'assets-src/models', output = 'public/models', report = '';
 while (args.length) {
@@ -97,7 +98,7 @@ for (const name of names) {
   const before = stats(doc, sourceBytes.length), signature = geometrySignature(doc);
   const originalImages = doc.getRoot().listTextures().map(t => sha(t.getImage()));
   const keep = KEEP_GEOMETRY.has(name) || before.skins > 0 || before.animations > 0;
-  const budget = FARM.has(name) ? 8000 : 6000;
+  const budget = FARM.has(name) || CITY.has(name) ? 8000 : 6000;
   for (const texture of doc.getRoot().listTextures()) {
     const slots = listTextureSlots(texture), color = slots.some(s => /baseColor|emissive|diffuse|specularColor|sheenColor/.test(s));
     const limit = color ? 512 : 256, size = texture.getSize();
