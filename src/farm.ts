@@ -31,7 +31,7 @@ export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-ri
   // Day two (each falls back to a stand-in until its model is made).
   'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'goose', 'rooster', 'horse', 'stable',
   // Scenery.
-  'tree-oak', 'tree-pine', 'bush', 'haystack', 'hutch', 'fence', 'fence-post', 'rock-cluster', 'flower-cluster',
+  'tree-oak', 'tree-pine', 'bush', 'haystack', 'hutch', 'fence', 'fence-post', 'fence-lite', 'fence-post-lite', 'rock-cluster', 'flower-cluster',
   // And whatever the dressing uses (a model not made yet is simply left out).
   ...DECOR.map((g) => g.model)].filter((m, i, all) => all.indexOf(m) === i);
 /** What each one says when poked. */

@@ -86,8 +86,9 @@ function fence(pts: THREE.Vector3[]): THREE.Group {
  * stretched a little to fit each stretch exactly. Code-built fences without them.
  */
 export function fences(lines: THREE.Vector3[][]): THREE.Object3D {
-  const section = model('fence', { height: 0.8 });
-  const post = model('fence-post', { height: 0.8 });
+  // The light sections when they are there (the full ones are heavy for long runs of fence).
+  const section = model('fence-lite', { height: 0.8 }) ?? model('fence', { height: 0.8 });
+  const post = model('fence-post-lite', { height: 0.8 }) ?? model('fence-post', { height: 0.8 });
   if (!section || !post) {
     const built = new THREE.Group();
     for (const line of lines) built.add(fence(line));
