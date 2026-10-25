@@ -1,0 +1,143 @@
+{
+  "models": [
+    {
+      "name": "fence-lite",
+      "source": "fence",
+      "sourceSha256": "ff6f1911b8d048c26088beac3ce290ae93823269e03a8e9c77360539a441f589",
+      "outputSha256": "992fb045003de7a80e986a1089b1f7af8d60ea0dab93dd99e56afb81f4b1cdcb",
+      "targetTriangles": 250,
+      "error": 0.035,
+      "weights": [
+        0.5,
+        0.5,
+        0.5,
+        1,
+        1
+      ],
+      "before": {
+        "bytes": 34116,
+        "triangles": 1412,
+        "bounds": {
+          "min": [
+            -0.13606078101350716,
+            0.0000044602167002527615,
+            -0.14602423625813335
+          ],
+          "max": [
+            2,
+            0.7999955397832998,
+            0.14602423625813338
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "sha256": "1595fd35acaf67e85b38b43a7148b217386f50921b026f43c2f5b059a64ef5bd"
+          }
+        ]
+      },
+      "after": {
+        "bytes": 19612,
+        "triangles": 292,
+        "bounds": {
+          "min": [
+            -0.13606078101350716,
+            0.0000044602167002527615,
+            -0.14602423625813335
+          ],
+          "max": [
+            2,
+            0.7999955397832998,
+            0.14602423625813338
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "sha256": "1595fd35acaf67e85b38b43a7148b217386f50921b026f43c2f5b059a64ef5bd"
+          }
+        ]
+      }
+    },
+    {
+      "name": "fence-post-lite",
+      "source": "fence-post",
+      "sourceSha256": "1f4ec22b2f0ca177160123e63bd10afdb7e48a3a2a673f641e55a6197604b5d3",
+      "outputSha256": "646ac48c198ab24bed39ddda54206f6496224bb46542cd4e0d79a2ef73a55895",
+      "targetTriangles": 220,
+      "error": 0.035,
+      "weights": [
+        0.5,
+        0.5,
+        0.5,
+        1,
+        1
+      ],
+      "before": {
+        "bytes": 40660,
+        "triangles": 616,
+        "bounds": {
+          "min": [
+            -0.1360642138938623,
+            0,
+            -0.14600905320638166
+          ],
+          "max": [
+            0.1629911306521443,
+            0.8,
+            0.14600905320638244
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "sha256": "1595fd35acaf67e85b38b43a7148b217386f50921b026f43c2f5b059a64ef5bd"
+          }
+        ]
+      },
+      "after": {
+        "bytes": 18932,
+        "triangles": 326,
+        "bounds": {
+          "min": [
+            -0.1360642138938623,
+            0,
+            -0.14600905320638166
+          ],
+          "max": [
+            0.1629911306521443,
+            0.8,
+            0.14600905320638244
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "sha256": "1595fd35acaf67e85b38b43a7148b217386f50921b026f43c2f5b059a64ef5bd"
+          }
+        ]
+      }
+    }
+  ],
+  "notes": [
+    "Normals and UVs participate in simplification; all extrema are locked. Existing vertex attributes and image atlas are reused.",
+    "Error tolerance takes precedence over target count; selected after visual comparison.",
+    "Original files preserved. Geometry savings are not measurements of FPS."
+  ]
+}

@@ -1,0 +1,20 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Забор: стыки до и после</title><style>body{margin:0;background:#eee7d9;color:#26352e;font:14px system-ui}header{padding:16px;display:flex;gap:12px;flex-wrap:wrap;align-items:center}select{padding:8px}main{display:grid;grid-template-columns:1fr 1fr;gap:12px;padding:12px}section{min-width:0;background:#f8f4eb;border-radius:16px;overflow:hidden}h2,p{margin:12px 16px}img{display:block;width:100%}p{font-size:13px;color:#526157}@media(max-width:500px){main{grid-template-columns:1fr}}</style><header><b>Забор: настоящие соединения из игры</b><label>Ракурс <select id="angle"><option value="game">В игре</option><option value="front">Вблизи спереди</option><option value="back">С обратной стороны</option><option value="top">Сверху</option></select></label><span id="status">Загрузка…</span></header><main><section><h2>Исходный</h2><img id="before"><p id="beforeStat"></p></section><section><h2>Облегчённый</h2><img id="after"><p id="afterStat"></p></section></main><script type="module">
+import * as T from 'three';
+import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
+import {loadModels} from '/src/parts/assets.ts';
+import {fences} from '/src/decor.ts';
+const angle=document.querySelector('#angle'),statusEl=document.querySelector('#status');
+const lines=[[[-4,-2],[4,-2],[4,3],[-4,3]],[[-5.1,-2],[-5.1,1.1]]].map(l=>l.map(([x,z])=>new T.Vector3(x,0,z)));
+const renderer=new T.WebGLRenderer({antialias:true,preserveDrawingBuffer:true});renderer.setSize(840,500);renderer.toneMapping=T.NeutralToneMapping;
+const env=new T.PMREMGenerator(renderer).fromScene(new RoomEnvironment(),.04).texture;
+const count=g=>{let n=0;g.traverse(o=>{if(o.isMesh)n+=(o.geometry.index?.count??o.geometry.attributes.position.count)/3*(o.isInstancedMesh?o.count:1)});return n};
+try{
+ await loadModels(['fence','fence-post']);const before=fences(lines);
+ await loadModels(['fence-lite','fence-post-lite']);const after=fences(lines);
+ document.querySelector('#beforeStat').textContent=`${count(before).toLocaleString('ru-RU')} треугольников в этих секциях`;
+ document.querySelector('#afterStat').textContent=`${count(after).toLocaleString('ru-RU')} треугольников; тот же шаг, стыки и цветовая карта`;
+ const dirs={game:[.5,1,.78],front:[.35,.32,1],back:[-.35,.32,-1],top:[0,1,.001]};
+ function draw(){for(const[g,id]of[[before,'before'],[after,'after']]){const scene=new T.Scene();scene.background=new T.Color('#f8f4eb');scene.environment=env;scene.add(new T.HemisphereLight('#fff7e6','#817d68',1));scene.add(new T.DirectionalLight('#fff',2).translateY(6).translateZ(4));scene.add(g);const cam=new T.OrthographicCamera(-6.8,6.8,4.05,-4.05,.1,80);cam.position.copy(new T.Vector3(...dirs[angle.value]).normalize().multiplyScalar(20));cam.lookAt(-.5,.1,.5);renderer.render(scene,cam);document.getElementById(id).src=renderer.domElement.toDataURL();scene.remove(g)}statusEl.textContent='Готово'}
+ angle.onchange=draw;draw();
+}catch(e){statusEl.textContent=e.message;console.error(e)}
+</script></html>
