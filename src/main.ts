@@ -598,9 +598,8 @@ world.on((e) => {
       break;
     case 'drop':
       sfx.drop();
-      // A gear or a pipe lines itself up with its neighbour (on the table and on the maps).
-      if (fitGear(e.part, world.parts) || fitPipe(e.part, world.parts)) world.markDirty();
-      map?.snap(e.part);
+      // Onto a map's ring if it wants it; else a gear or a pipe lines itself up with its neighbour.
+      if (!map?.snap(e.part) && (fitGear(e.part, world.parts) || fitPipe(e.part, world.parts))) world.markDirty();
       break;
     case 'wireStart':
       sfx.wireStart();

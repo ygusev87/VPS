@@ -12,7 +12,7 @@ import { sandboxHint, type Hint } from './hints';
 import { model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
 import { Belt, LightSensor } from './parts/chain';
-import { Packer, PaintBooth, Press, RobotArm } from './parts/factory';
+import { Packer, PaintBooth, Pipe, Press, RobotArm } from './parts/factory';
 import type { Substation } from './parts/city';
 import { mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
@@ -299,6 +299,11 @@ export class FactoryMap extends StoryMap {
   protected extraHint(): Hint | null {
     const n = this.focused && !this.focused.done && this.isNow(this.focused) ? this.focused : this.current();
     if (!n) return null;
+    // A pipe on its ring but turned across the line: a tap turns it back.
+    for (const at of PIPES) {
+      const pipe = this.on(at, ['pipe']) as Pipe | undefined;
+      if (pipe && pipe.aim !== 0 && n.critter.name === 'worker2') return { type: 'tap', part: pipe, phrase: 'pipeTurn' };
+    }
     const mine = new Set<Part>();
     for (const [src, parts] of this.loops(n)) {
       if (!src || parts.some((p) => !p)) continue;
