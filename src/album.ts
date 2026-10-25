@@ -40,7 +40,7 @@ const SPECIAL: Sticker[] = [
   { id: 'city:pigeon', say: 'stPigeon', emoji: '🕊️' },
   { id: 'city:grandma', say: 'stGrandma', emoji: '👵' },
   { id: 'city:kitten', say: 'stKitten', emoji: '🐱' },
-  { id: 'city:kid', say: 'stKid', emoji: '🪩' },
+  { id: 'city:child', say: 'stKid', emoji: '🪩' },
   { id: 'city:firefighter', say: 'stFirefighter', emoji: '🚒' },
   { id: 'city:raccoon', say: 'stRaccoon', emoji: '🦝' },
   { id: 'city:school', say: 'stSchool', emoji: '🏫' },

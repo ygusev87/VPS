@@ -22,7 +22,7 @@ import { isActive } from './world';
 
 /** Model files the city needs (each falls back to a stand-in until it is made). */
 export const CITY_MODELS = ['pole', 'grandma-house', 'bakery', 'fire-station', 'school', 'toy-shop', 'club', 'house-a', 'house-b', 'house-c',
-  'baker', 'grandma', 'kid', 'kitten', 'raccoon', 'raccoon-rig', 'tram', 'car', 'fountain-basin', 'bench', 'street-lamp', 'bins', 'pigeon',
+  'baker', 'grandma', 'child', 'kitten', 'raccoon', 'raccoon-rig', 'tram', 'car', 'fountain-basin', 'bench', 'street-lamp', 'bins', 'pigeon',
   'tree-oak', 'tree-pine', 'bush', 'flower-cluster'];
 
 /** What the drawers offer in the city (power comes from the poles). */
@@ -167,7 +167,7 @@ export class CityMap extends StoryMap {
     const done = (name: string) => this.needs.some((n) => n.done && n.critter.name === name);
     this.driving = done('car');
     if (done('grandma')) this.settleGrandma();
-    if (done('kid3')) this.schooling = 1;
+    if (done('child3')) this.schooling = 1;
     if (this.phase === 'night') this.raccoonT = 0;
   }
 
@@ -272,11 +272,11 @@ export class CityMap extends StoryMap {
     this.critter('pigeon2', { height: 0.45 }, v(FOUNTAIN.x - 3.4, FOUNTAIN.z + 2.4), 0.45, -0.4);
     this.critter('grandma', { height: 1.5 }, GRANDMA, 1.5, 0.4);
     this.critter('kitten', { height: 0.75 }, KITTEN, 0.75, -0.6);
-    this.critter('kid', { height: 1.2 }, v(CLUB.x - 6, CLUB.z + 5), 1.2, 0.3);
-    this.critter('kid2', { height: 1.15 }, v(CLUB.x - 4.5, CLUB.z + 6), 1.15, -0.3);
+    this.critter('child', { height: 1.2 }, v(CLUB.x - 6, CLUB.z + 5), 1.2, 0.3);
+    this.critter('child2', { height: 1.15 }, v(CLUB.x - 4.5, CLUB.z + 6), 1.15, -0.3);
     this.critter('firefighter', { height: 1.6 }, v(STATION.x - 4.5, STATION.z - 4.5), 1.6, 0.4);
     this.critter('shopkeeper', { height: 1.6 }, SHOPKEEPER, 1.6, 0);
-    ['kid3', 'kid4', 'kid5'].forEach((name, i) => this.critter(name, { height: 1.15 }, v(SCHOOL_DOOR.x - 3 + i * 1.6, SCHOOL_DOOR.z + 4), 1.15, i - 1));
+    ['child3', 'child4', 'child5'].forEach((name, i) => this.critter(name, { height: 1.15 }, v(SCHOOL_DOOR.x - 3 + i * 1.6, SCHOOL_DOOR.z + 4), 1.15, i - 1));
     this.raccoon = this.critter('raccoon', { width: 1.4 }, RACCOON_PATH[0], 0.9, 0);
     this.raccoon.group.visible = false;
     this.raccoon.roams = true;
@@ -301,12 +301,12 @@ export class CityMap extends StoryMap {
     add({ critter: get('grandma'), phase: 'day', ask: 'grandmaAsk', thanks: 'grandmaHappy', icon: 'lift', kinds: ['lift'], spot: LIFT_SPOT, met: () => this.grandma === 'home' });
     // Evening.
     add({ critter: get('kitten'), phase: 'evening', ask: 'kittenDark', thanks: 'kittenHome', icon: 'bulb', kinds: ['bulb', 'led'], spot: LAMP_SPOT, met: near(['bulb', 'led'], LAMP_SPOT, 1.5) });
-    add({ critter: get('kid'), phase: 'evening', ask: 'clubAsk', thanks: 'clubHappy', icon: 'disco', kinds: ['disco'], spot: DISCO_SPOT, met: near(['disco'], DISCO_SPOT, 1.5) });
+    add({ critter: get('child'), phase: 'evening', ask: 'clubAsk', thanks: 'clubHappy', icon: 'disco', kinds: ['disco'], spot: DISCO_SPOT, met: near(['disco'], DISCO_SPOT, 1.5) });
     add({ critter: get('firefighter'), phase: 'evening', ask: 'fireAsk', thanks: 'fireHappy', icon: 'firetruck', kinds: ['firetruck'], spot: ENGINE_SPOT, focus: [STATION.clone().add(v(-4.5, -4.5)), ENGINE_SPOT.clone(), SMOKE_HOUSE.clone()], met: () => this.fire >= 1 });
     // Night: the raccoon; a button on its path and an alarm bell.
     add({ critter: get('shopkeeper'), phase: 'night', ask: 'raccoonTip', thanks: 'raccoonScared', icon: 'button', kinds: ['button'], hintPhrase: 'raccoonTip', spot: RACCOON_BUTTON.clone(), focus: [RACCOON_BUTTON.clone(), ALARM_SPOT.clone()], met: () => this.raccoonChased, sticker: 'raccoon' });
     // Morning: the school bell.
-    add({ critter: get('kid3'), phase: 'morning', ask: 'schoolAsk', thanks: 'schoolHappy', icon: 'bell', kinds: ['bell', 'buzzer'], spot: SCHOOL_BELL, met: () => this.world.parts.some((p) => (p.kind === 'bell' || p.kind === 'buzzer') && p.state.level > 0.05 && p.root.position.distanceTo(SCHOOL_BELL) < 1.5), sticker: 'school' });
+    add({ critter: get('child3'), phase: 'morning', ask: 'schoolAsk', thanks: 'schoolHappy', icon: 'bell', kinds: ['bell', 'buzzer'], spot: SCHOOL_BELL, met: () => this.world.parts.some((p) => (p.kind === 'bell' || p.kind === 'buzzer') && p.state.level > 0.05 && p.root.position.distanceTo(SCHOOL_BELL) < 1.5), sticker: 'school' });
   }
 
   /** Flowers in the park and along the pavements, kept off the rings, the people and the poles. */
@@ -528,9 +528,9 @@ export class CityMap extends StoryMap {
 
   /** Once the morning bell rings the children run in at the school door. */
   private updateSchool(dt: number) {
-    const need = this.needs.find((n) => n.critter.name === 'kid3');
+    const need = this.needs.find((n) => n.critter.name === 'child3');
     if (need?.done) this.schooling = Math.min(1, this.schooling + dt * 0.5);
-    ['kid3', 'kid4', 'kid5'].forEach((name, i) => {
+    ['child3', 'child4', 'child5'].forEach((name, i) => {
       const c = this.critters.get(name)!;
       if (this.schooling <= 0) return;
       const from = v(SCHOOL_DOOR.x - 3 + i * 1.6, SCHOOL_DOOR.z + 4);
