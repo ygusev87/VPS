@@ -12,6 +12,7 @@ import { FloorFan, PcFan, Pinwheel } from './wind';
 import { Bell, Belt, Domino, Laser, Launcher, LightSensor, Magnet, Mirror, Target, WindGen } from './chain';
 import { Gate, Heater, Pole, Pump, Solar } from './farm';
 import { Barrier, CarWash, Drawbridge, DuskLamp, FerrisWheel, FireLadder, NeonSign, Substation, TowerCrane } from './city';
+import { Gear, GearMotor, Packer, PaintBooth, PaintTank, Pipe, Press, RobotArm } from './factory';
 import type { PhraseId } from '../voice';
 
 export interface CatalogItem {
@@ -101,17 +102,12 @@ export const GROUPS: CatalogGroup[] = [
     ],
   },
   {
-    id: 'farm',
-    name: 'Ферма',
+    // What the maps brought: the farm's, the city's and the factory's own parts (on a map, just its own).
+    id: 'special',
+    name: 'Особое',
     items: [
       { kind: 'pump', name: 'Насос', say: 'pump' },
       { kind: 'heater', name: 'Обогреватель', say: 'heater' },
-    ],
-  },
-  {
-    id: 'city',
-    name: 'Город',
-    items: [
       { kind: 'barrier', name: 'Шлагбаум', say: 'barrier' },
       { kind: 'ferris', name: 'Колесо обозрения', say: 'ferris' },
       { kind: 'carWash', name: 'Автомойка', say: 'carWash' },
@@ -120,6 +116,15 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'duskLamp', name: 'Уличный фонарь', say: 'duskLamp' },
       { kind: 'neon', name: 'Неоновая вывеска', say: 'neon' },
       { kind: 'ladder', name: 'Пожарная лестница', say: 'ladder' },
+      { kind: 'gearMotor', name: 'Мотор с шестерёнкой', say: 'gearMotor' },
+      { kind: 'gear', name: 'Шестерёнка', say: 'gear' },
+      { kind: 'bigGear', name: 'Большая шестерёнка', say: 'bigGear' },
+      { kind: 'press', name: 'Пресс', say: 'press' },
+      { kind: 'tank', name: 'Бак с краской', say: 'tank' },
+      { kind: 'pipe', name: 'Труба', say: 'pipe' },
+      { kind: 'paintBooth', name: 'Покрасочная камера', say: 'paintBooth' },
+      { kind: 'robotArm', name: 'Робот-рука', say: 'robotArm' },
+      { kind: 'packer', name: 'Упаковщик', say: 'packer' },
     ],
   },
   {
@@ -248,6 +253,24 @@ function make(kind: PartKind): Part {
       return new NeonSign();
     case 'ladder':
       return new FireLadder();
+    case 'gearMotor':
+      return new GearMotor();
+    case 'gear':
+      return new Gear();
+    case 'bigGear':
+      return new Gear(true);
+    case 'press':
+      return new Press();
+    case 'pipe':
+      return new Pipe();
+    case 'tank':
+      return new PaintTank();
+    case 'paintBooth':
+      return new PaintBooth();
+    case 'robotArm':
+      return new RobotArm();
+    case 'packer':
+      return new Packer();
     case 'belt':
       return new Belt();
     case 'mirror':

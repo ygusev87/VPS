@@ -15,6 +15,7 @@ import type { BandVoice } from './audio';
 import { Bells, Maracas, Piano, Tuba } from './parts/band';
 import { Drum, MusicBox } from './parts/extra';
 import { WaterMill } from './parts/mech';
+import { fitGear, fitPipe, runPipes, turnGears } from './parts/factory';
 import { blowWind, Pinwheel } from './parts/wind';
 import { Belt, interact, Laser, Launcher, Magnet, Mirror, tracePath } from './parts/chain';
 import { Album, type Sticker } from './album';
@@ -589,6 +590,8 @@ world.on((e) => {
       break;
     case 'drop':
       sfx.drop();
+      // A gear or a pipe lines itself up with its neighbour (on the table and on the maps).
+      if (fitGear(e.part, world.parts) || fitPipe(e.part, world.parts)) world.markDirty();
       map?.snap(e.part);
       break;
     case 'wireStart':
@@ -984,6 +987,8 @@ function frame(now: number) {
   const band = { melody: false, drum: false, piano: false, tuba: false, maracas: false, bells: false };
   blowWind(world.parts);
   interact(world.parts, dt);
+  turnGears(world.parts);
+  runPipes(world.parts);
   for (const p of world.parts) {
     for (const snd of p.sounds.splice(0)) playPartSound(snd, p);
     for (const e of p.effects.splice(0)) {
@@ -1117,6 +1122,8 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
     for (let i = 0; i < n; i++) {
       blowWind(world.parts);
       interact(world.parts, 0.05);
+      turnGears(world.parts);
+      runPipes(world.parts);
       world.update(0.05);
       for (const p of world.parts) {
         p.sounds.length = 0;

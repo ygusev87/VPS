@@ -1098,6 +1098,20 @@ body.is-night .brand {
     }
   }
 }
+/* Narrower tablets on their side (1024–1100 wide): slightly smaller drawers, so they clear the view panel. */
+@media (orientation: landscape) and (max-width: 1100px) and (min-height: 561px) {
+  .side-parts {
+    gap: 5px;
+  }
+  .sidebar .part-btn {
+    width: 46px;
+    height: 46px;
+  }
+  .sidebar .part-btn img {
+    width: 41px;
+    height: 41px;
+  }
+}
 /* Phones on their side: a slimmer dock without captions. */
 @media (orientation: landscape) and (max-height: 560px) {
   .sidebar {

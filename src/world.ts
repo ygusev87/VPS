@@ -44,6 +44,11 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'drawbridge':
     case 'towerCrane':
     case 'ladder':
+    case 'gearMotor':
+    case 'tank':
+    case 'paintBooth':
+    case 'robotArm':
+    case 'packer':
     case 'floorFan':
     case 'pcFan':
     case 'marbleRun':
