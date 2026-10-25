@@ -7,3 +7,7 @@ dist-preview
 voice-samples
 assets-src/voice/
 assets-src/raw/
+
+# Переписка агентов: в git только README
+coordination/*
+!coordination/README.md
