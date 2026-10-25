@@ -262,6 +262,8 @@ export class FarmMap {
   readonly scenery = new THREE.Group();
   /** Where the lanes, the field and the mud are (set when the board is built). */
   private plan!: GroundPlan;
+  /** Where flowers may grow on the ground (set with the board; the yards are kept clear when they are sown). */
+  private flowerFree: (x: number, z: number) => boolean = () => true;
   /** Every fence on the farm, as polylines; built together once the places are laid out. */
   private fences: THREE.Vector3[][] = [];
   private critters = new Map<string, Critter>();
@@ -338,6 +340,7 @@ export class FarmMap {
     if (this.dayTwo) this.buildCrittersTwo();
     this.buildNeeds();
     if (this.dayTwo) this.buildNeedsTwo();
+    this.sowFlowers();
     this.setPhase('day');
     this.refocus(true);
     AMBIENT.strength = 0.55;
@@ -496,16 +499,8 @@ export class FarmMap {
     // Flowers in clumps on the grass: not on the lanes, the field, the mud or by the pond.
     const inside = (x: number, z: number, e: Ellipse, grow: number) => ((x - e.x) / (e.rx + grow)) ** 2 + ((z - e.z) / (e.rz + grow)) ** 2 < 1;
     const f = plan.field;
-    const free = (x: number, z: number) =>
+    this.flowerFree = (x: number, z: number) =>
       !onLane(plan, x, z, 0.8) && !inside(x, z, shore, 1.5) && !plan.mud.some((m) => inside(x, z, m, 1)) && !(x > f.x0 - 1 && x < f.x1 + 1 && z > f.z0 - 1 && z < f.z1 + 1);
-    // The sculpted clumps of wild flowers, or little flat flowers without them.
-    const spots: [number, number, number][] = [];
-    for (let tries = 0; spots.length < 110 && tries < 5000; tries++) {
-      const x = (Math.random() - 0.5) * (W - 3);
-      const z = (Math.random() - 0.5) * (D - 3);
-      if (free(x, z) && spots.every(([sx, sz]) => Math.hypot(x - sx, z - sz) > 2)) spots.push([x, z, 0.8 + Math.random() * 0.45]);
-    }
-    this.scenery.add(instances('flower-cluster', { height: 0.45 }, spots) ?? flowers(plan, 160, free));
     // Mossy rocks round the pond (not on the side of the ducks' pump ring and the wind generator).
     const rocks: [number, number, number][] = [0.4, 1.3, 2.6, 3.7].map((a, i) => [POND.x + Math.cos(a) * (shore.rx + 1.6), POND.z + Math.sin(a) * (shore.rz + 1.4), 0.8 + (i % 3) * 0.2]);
     const rocky = instances('rock-cluster', { width: 1.8 }, rocks);
@@ -727,6 +722,22 @@ export class FarmMap {
     add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], spot: FOX_BUTTON.clone(), focus: [FOX_BUTTON.clone(), BELL_SPOT.clone()], met: () => this.foxChased, sticker: 'farm:fox' });
     // Morning: the ducklings want a fountain.
     add({ critter: get('duck'), phase: 'morning', ask: 'ducksAsk', thanks: 'ducksHappy', icon: 'pump', kinds: ['pump'], spot: v(POND.x + 2.2 * K, POND.z - 4.3 * K), met: () => this.fountainLevel > 0.95 });
+  }
+
+  /**
+   * Clumps of wild flowers on the grass (sculpted, or little flat ones without the
+   * model) — sown last, so they keep off every ring, animal and pole.
+   */
+  private sowFlowers() {
+    const taken = [...this.needs.map((n) => n.spot), ...[...this.critters.values()].map((c) => c.home), ...this.world.parts.map((p) => p.root.position)];
+    const free = (x: number, z: number) => this.flowerFree(x, z) && taken.every((t) => Math.hypot(x - t.x, z - t.z) > 2.6);
+    const spots: [number, number, number][] = [];
+    for (let tries = 0; spots.length < 110 && tries < 5000; tries++) {
+      const x = (Math.random() - 0.5) * (W - 3);
+      const z = (Math.random() - 0.5) * (D - 3);
+      if (free(x, z) && spots.every(([sx, sz]) => Math.hypot(x - sx, z - sz) > 2)) spots.push([x, z, 0.8 + Math.random() * 0.45]);
+    }
+    this.scenery.add(instances('flower-cluster', { height: 0.45 }, spots) ?? flowers(this.plan, 160, free));
   }
 
   private addNeed(n: NeedSpec) {
