@@ -11,3 +11,6 @@ assets-src/raw/
 # Переписка агентов: в git только README
 coordination/*
 !coordination/README.md
+
+# Local Tripo CLI task/cache context; never publish account metadata.
+.tripo/
