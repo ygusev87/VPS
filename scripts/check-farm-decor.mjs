@@ -67,12 +67,26 @@ for(const g of DECOR){
  }
 }
 assert.equal(buildingConflicts.length,0,JSON.stringify(buildingConflicts));
-assert(!DECOR.some(g=>g.model.startsWith('crop')),'missing crops would hide temporary wheat');
+// Every crop file was checked above. Field crops must also clear the actual
+// tractor loop with the same safety radius used by the integration (m0142).
+const fieldCrops=DECOR.filter(g=>g.model==='crop-wheat').flatMap(g=>g.items.filter(([x,z])=>x>24&&x<34&&z>21&&z<32).map(p=>({p,fit:g.fit})));
+const tractorLoop=Array.from({length:25},(_,i)=>[29+Math.cos(i/24*Math.PI*2)*4.2,26.5+Math.sin(i/24*Math.PI*2)*6]);
+let cropRouteClearance=null;
+if(DECOR.some(g=>g.model==='crop-wheat')){
+ assert.equal(fieldCrops.length,9,'wheat must include the planted field, not just its garden bed');
+ cropRouteClearance=Infinity;
+ for(const {p:[x,z,,s],fit} of fieldCrops){
+  const radius=1.6+fit.width*s/2;
+  const distance=Math.min(pointDistance([x,z],[30,12],[30,20.5]),...tractorLoop.slice(1).map((b,i)=>pointDistance([x,z],tractorLoop[i],b)));
+  cropRouteClearance=Math.min(cropRouteClearance,distance-radius);
+ }
+ assert(cropRouteClearance>=0,'wheat enters the tractor safety corridor');
+}
 for(const r of SOIL){board([r.x0,r.z0]);board([r.x1,r.z1]);assert(r.x1>r.x0&&r.z1>r.z0);}
 for(const e of [...PONDS,...MUD,...MEADOW]){board([e.x-e.rx,e.z-e.rz]);board([e.x+e.rx,e.z+e.rz]);}
 const report={status:'pass',roadComponents,paths:PATHS.length,fenceRuns:FENCES.length,minRoadClearance,minFoxClearance,minPoleClearance,workingPadFenceConflicts:padConflicts,
  gate:{root:[30,17],posts:[[28.4,16.4],[31.6,16.4]],exception:'Gate motor plate occupies the gate-side working square; static fences meet the existing gate posts.'},
- buildingFootprints,buildingConflicts,inventory,instances:inventory.reduce((n,m)=>n+m.instances,0),trianglesBeforeIntegrationCulling:inventory.reduce((n,m)=>n+m.instances*(m.trianglesPerInstance??0),0),
+ buildingFootprints,buildingConflicts,cropRouteClearance,fieldCropInstances:fieldCrops.length,inventory,instances:inventory.reduce((n,m)=>n+m.instances,0),trianglesBeforeIntegrationCulling:inventory.reduce((n,m)=>n+m.instances*(m.trianglesPerInstance??0),0),
  notes:['Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.','farm.ts culls small instances near its interactive points.','Future groups are authoring data only until their GLBs exist.']};
 await writeFile(path.join(dir,'decor-validation.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({...report,inventory:undefined,notes:undefined},null,2));

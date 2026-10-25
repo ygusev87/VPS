@@ -1,0 +1,33 @@
+{
+  "date": "2026-10-25",
+  "provider": "Tripo Studio",
+  "model": "H3.1",
+  "settings": {
+    "triangles": 4000,
+    "texture": "2K",
+    "delight": true,
+    "pbr": false,
+    "ultra": false,
+    "aiEnhance": false
+  },
+  "credits": {
+    "before": 6200,
+    "after": 6150,
+    "spent": 50,
+    "perModel": 25
+  },
+  "models": [
+    {
+      "name": "crop-wheat",
+      "id": "afe8fdde-1f98-4665-9c80-bcdfecba752f",
+      "reference": "crop-wheat-v1.png"
+    },
+    {
+      "name": "crop-cabbage",
+      "id": "6c41f7ef-49a3-4ac2-b8ee-a9bfab4e99c9",
+      "reference": "crop-cabbage-v1.png"
+    }
+  ],
+  "rawDirectory": "assets-src/raw/farm-v3-2026-10-25",
+  "note": "First wheat submission returned HTTP500 without credit deduction; one retry succeeded. No API credits used."
+}

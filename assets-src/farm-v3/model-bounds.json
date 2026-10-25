@@ -256,5 +256,27 @@
       0.742
     ],
     "triangles": 794
+  },
+  "crop-wheat": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1.0,
+      1.294985,
+      0.616646
+    ],
+    "triangles": 2942
+  },
+  "crop-cabbage": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1.0,
+      0.662343,
+      0.789789
+    ],
+    "triangles": 1931
   }
 }

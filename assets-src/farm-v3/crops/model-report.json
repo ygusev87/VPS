@@ -1,0 +1,143 @@
+{
+  "models": [
+    {
+      "name": "crop-wheat",
+      "sourceSha256": "f81acc6712252f1e0f3a91292086c6f77130c418049af524daa3f7135341355d",
+      "outputSha256": "9c336618aab4bf4929a46d6b0a56034acbdabf93e4353bd91d6a1d69439492ce",
+      "target": 1800,
+      "error": 0.008,
+      "before": {
+        "bytes": 738220,
+        "triangles": 3944,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.3861083984375,
+            0,
+            -0.2380829155445099
+          ],
+          "max": [
+            0.3861083984375,
+            1,
+            0.2380829155445099
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 570575
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 85804,
+        "triangles": 2942,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.3861049226355785,
+            0,
+            -0.2380901516769921
+          ],
+          "max": [
+            0.3861049226355785,
+            1,
+            0.2380901516769921
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 32692
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "crop-cabbage",
+      "sourceSha256": "9ddb6a38a583dee6b8c2e40c12097666754119334e22d458713bcf334a8eb57c",
+      "outputSha256": "f440a7e2ccf5b858818a2304910fa0529815a6f9853e540429f8889808f168e7",
+      "target": 1000,
+      "error": 0.01,
+      "before": {
+        "bytes": 675572,
+        "triangles": 3892,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.5,
+            0,
+            -0.3948974609375
+          ],
+          "max": [
+            0.5,
+            0.662353515625,
+            0.3948974609375
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 534410
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 59324,
+        "triangles": 1931,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.5,
+            0.000005152233716443355,
+            -0.39489425336466566
+          ],
+          "max": [
+            0.5,
+            0.6623483633912836,
+            0.39489425336466566
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 26916
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ],
+  "notes": [
+    "Static GLB, single 512px WebP color atlas, meshopt compression.",
+    "Full-topology comparisons are authoring QA only, not runtime assets.",
+    "Triangle count is an asset budget, not a measured GPU/FPS result."
+  ]
+}

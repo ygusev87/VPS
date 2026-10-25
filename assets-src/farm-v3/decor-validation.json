@@ -62,6 +62,8 @@
     }
   ],
   "buildingConflicts": [],
+  "cropRouteClearance": 0.08693500655433928,
+  "fieldCropInstances": 9,
   "inventory": [
     {
       "model": "barn",
@@ -188,10 +190,28 @@
       "instances": 11,
       "bytes": 27448,
       "trianglesPerInstance": 922
+    },
+    {
+      "model": "crop-wheat",
+      "instances": 6,
+      "bytes": 85804,
+      "trianglesPerInstance": 2942
+    },
+    {
+      "model": "crop-cabbage",
+      "instances": 6,
+      "bytes": 59324,
+      "trianglesPerInstance": 1931
+    },
+    {
+      "model": "crop-wheat",
+      "instances": 9,
+      "bytes": 85804,
+      "trianglesPerInstance": 2942
     }
   ],
-  "instances": 253,
-  "trianglesBeforeIntegrationCulling": 398594,
+  "instances": 274,
+  "trianglesBeforeIntegrationCulling": 454310,
   "notes": [
     "Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.",
     "farm.ts culls small instances near its interactive points.",

@@ -190,10 +190,11 @@ for name,bed in zip(crop_names,soil[:6]):
     for x in [bed['x0']+1,bed['x0']+3,bed['x0']+5]:
         for z in [bed['z0']+1.3,bed['z0']+3.7]:items.append([x,z,0,1])
     add(name,{'width':1.8},items,'future-crop')
-add('crop-wheat',{'width':1.8},[[x,z,0,1] for x in [25,27.3,29.6,32] for z in [22.2,24.7,27.2,29.7]],'future-crop')
+# The tractor drives around the outside (rx4.2/rz6); leave its full route clear.
+add('crop-wheat',{'width':1.4},[[x,z,0,1] for x in [27.5,29,30.5] for z in [24.7,26.5,28.3]],'crop-field')
 
-# Future groups stay in authoring only. Missing crop groups would suppress the
-# integration's wheat fallback even when no GLB can be loaded (m0121).
+# Future groups stay in authoring only until their GLB exists. The field uses
+# the measured clumps above and the real tractor route agreed in m0142.
 payload={'DECOR':[{k:v for k,v in g.items() if k!='category'} for g in groups if g['category']!='future-toy' and (ROOT/'public/models'/f"{g['model']}.glb").exists()],
  'PATHS':[{k:v for k,v in p.items() if k!='name'} for p in paths],
  'FENCES':fences,'SOIL':soil,'MUD':mud,'MEADOW':meadow,'PONDS':ponds}
