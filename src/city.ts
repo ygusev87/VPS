@@ -1,49 +1,62 @@
-// The city: a toy town round a park with a fountain, the step after the farm.
-// Most helps here are chains of parts: the tram's substation behind a switch,
-// the bakery's oven and a belt to carry the loaves, a fountain pump with a wind
-// generator of its own (no pole in the park), grandma's lift on a button held
-// while she rides; in the evening three street lamps for the kitten, a disco
-// ball whose light starts the music through a light sensor, the fire engine
-// and a pump at the burning house; at night dominoes on the raccoon's path
-// that ring the alarm as it knocks them over; in the morning a laser beam
-// round a mirror onto a light sensor rings the school bell.
+// The city: a busy toy town round a park, with a canal, a building site, a
+// car park and a car wash. It is a level of its own: most helps are built
+// from the city's own devices, each with a chain of parts. By day the cars
+// want a traffic light, the tram its substation behind a switch, the baker
+// an oven and a belt for the loaves, the drivers a barrier (held open with a
+// button), the children a Ferris wheel on a wind generator (no pole in the
+// park), a muddy car a car wash with a pump, grandma a lift on a button for
+// her shopping, the builder a tower crane on a switch, the boat a drawbridge
+// on a button; in the evening a kitten wants three street lamps that light
+// in the dark, the club a neon sign whose light starts the music through a
+// light sensor, the firemen their engine, a ladder for the cat on the burning
+// roof and a pump at the hydrant; at night dominoes on the raccoon's path
+// ring the alarm; in the morning a laser beam round a mirror onto a light
+// sensor rings the school bell.
 import * as THREE from 'three';
+import { DECOR, FENCES, MEADOW, PATHS, PONDS, SOIL } from './city-decor';
+import { dressing } from './decor';
+import { flowers, groundMaterial, onLane, pond, type GroundPlan } from './ground';
 import { sandboxHint, type Hint } from './hints';
 import { clipsOf, hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
-import { Substation } from './parts/city';
 import { Belt, Domino } from './parts/chain';
+import { Barrier, CarWash, Drawbridge, DuskLamp, FerrisWheel, FireLadder, Substation, TowerCrane } from './parts/city';
 import { Pump } from './parts/farm';
 import { FireTruck } from './parts/fun';
 import { mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import { Lift } from './parts/more';
-import { flowers, groundMaterial, onLane, type GroundPlan } from './ground';
 import { AMBIENT } from './parts/wind';
 import { StoryMap, blob, boxHouse, instances, v, type Critter, type MapProgress, type Need, type NeedSpec, type Phase } from './storymap';
-import { isActive } from './world';
+import type { PhraseId } from './voice';
+import { activeAt, isActive } from './world';
 
 /** Model files the city needs (each falls back to a stand-in until it is made). */
-export const CITY_MODELS = ['pole', 'grandma-house', 'bakery', 'fire-station', 'school', 'toy-shop', 'club', 'house-a', 'house-b', 'house-c',
-  'baker', 'grandma', 'child', 'kitten', 'raccoon', 'raccoon-rig', 'tram', 'car', 'fountain-basin', 'bench', 'street-lamp', 'bins', 'pigeon',
-  'tree-oak', 'tree-pine', 'bush', 'flower-cluster'];
+export const CITY_MODELS = ['pole', 'baker', 'grandma', 'child', 'kitten', 'raccoon', 'raccoon-rig', 'tram', 'car', 'fountain-basin', 'bench', 'street-lamp', 'bins', 'pigeon',
+  'tree-oak', 'tree-pine', 'bush', 'flower-cluster', 'boat', 'builder', 'counter', 'hydrant', 'basket',
+  ...DECOR.map((g) => g.model)].filter((m, i, all) => all.indexOf(m) === i);
 
-/** What the drawers offer in the city (power comes from the poles). */
+/** What the drawers offer in the city: its own devices, and the parts their chains need (power from the poles). */
 export const CITY_TRAY: { kind: PartKind; count: number }[] = [
   { kind: 'trafficLight', count: 1 },
-  { kind: 'switch', count: 1 },
+  { kind: 'barrier', count: 1 },
+  { kind: 'ferris', count: 1 },
+  { kind: 'carWash', count: 1 },
+  { kind: 'towerCrane', count: 1 },
+  { kind: 'drawbridge', count: 1 },
+  { kind: 'duskLamp', count: 3 },
+  { kind: 'neon', count: 1 },
+  { kind: 'ladder', count: 1 },
+  { kind: 'firetruck', count: 1 },
+  { kind: 'switch', count: 2 },
+  { kind: 'button', count: 3 },
   { kind: 'heater', count: 1 },
   { kind: 'belt', count: 1 },
   { kind: 'windGen', count: 1 },
   { kind: 'pump', count: 2 },
   { kind: 'lift', count: 1 },
-  { kind: 'button', count: 1 },
-  { kind: 'bulb', count: 3 },
-  { kind: 'led', count: 3 },
-  { kind: 'disco', count: 1 },
   { kind: 'lightSensor', count: 2 },
   { kind: 'musicbox', count: 1 },
-  { kind: 'firetruck', count: 1 },
   { kind: 'domino', count: 1 },
   { kind: 'bell', count: 2 },
   { kind: 'laser', count: 1 },
@@ -51,91 +64,129 @@ export const CITY_TRAY: { kind: PartKind; count: number }[] = [
 ];
 
 /** Bumped whenever the city is laid out anew (a save on another layout starts it afresh). */
-export const CITY_LAYOUT = 2;
+export const CITY_LAYOUT = 3;
 
 export interface CityProgress extends MapProgress {
   /** Loaves the belt has brought to the counter. */
   bread: number;
-  fountain: number;
   fire: number;
   raccoonChased: boolean;
+  parked: number;
+  washed: number;
+  floors: number;
+  boat: number;
+  catSaved: boolean;
 }
 
-const W = 150;
-const D = 100;
+const W = 110;
+const D = 75;
 
-// The town: a ring road round the park, roads out from its middle sides, a tram line along the south.
-const RING = { x: 28, z: 18 };
-const TRAM_Z = 38;
+// The town: a ring road round the park, roads out from its middle sides, a tram line along the south, a canal in the east.
+const RING = { x: 20, z: 12 };
+const TRAM_Z = 27;
 const ROAD = 6;
+/** The canal: a straight strip of water from the north edge down to the harbour. */
+const CANAL = { x: 37, w: 3.2, z0: -D / 2, z1: 17 };
+const HARBOR = { x: 37, z: 19.5, rx: 5, rz: 3.2 };
 /** The crossing south of the park, where the cars wait for a traffic light. */
 const CROSS = v(0, RING.z);
 const LIGHT_SPOT = v(5.5, RING.z + 5.5);
-const LIGHT_POLE = v(11, RING.z + 7);
+const LIGHT_POLE = v(10.5, RING.z + 7.5);
 /** The tram's substation by the line, and the switch that has to be in its circuit. */
-const SUBSTATION = v(-34, TRAM_Z + 5.5);
-const SUB_POLE = v(-28, TRAM_Z + 8);
-const TRAM_SWITCH = v(-31.5, TRAM_Z + 9.5);
-/** The bakery north of the park: the heater by the oven, the belt to the counter by the baker. */
-const BAKERY = v(-14, -31);
-const BAKER = v(-8.5, -24.5);
-const OVEN_SPOT = v(-14, -24.2);
-const BELT_SPOT = v(-11, -21.3);
-const COUNTER = v(-7.4, -21.4);
-const BAKERY_POLE = v(-16.5, -20);
-/** The park's fountain in the middle; the pump's ring at the basin's edge, a wind generator beside it. */
-const FOUNTAIN = v(0, 0);
+const SUBSTATION = v(-30, TRAM_Z + 4.5);
+const TRAM_SWITCH = v(-26.5, TRAM_Z + 7.5);
+const SUB_POLE = v(-23.5, TRAM_Z + 4.5);
+/** The bakery north of the ring: the heater by the oven, the belt to the counter by the baker. */
+const OVEN_SPOT = v(-12, -21.5);
+const BELT_SPOT = v(-8.5, -18.5);
+const COUNTER = v(-5, -18.6);
+const BAKER = v(-6, -21.8);
+const BAKERY_POLE = v(-12.5, -17);
+/** The car park west: a barrier over its drive, held up with a button while the cars go in. */
+const BARRIER_SPOT = v(-34, -4.5);
+const PARK_BUTTON = v(-29.5, -8.5);
+const PARK_POLE = v(-28.5, -4.5);
+const PARK_WAY = [v(-33, 1.5), v(-33, -7.5)];
+const PARK_SLOTS = [v(-37, -10), v(-40.5, -10), v(-44, -10)];
+/** The park: a Ferris wheel on its own wind generator (no pole in the park), a fountain with pigeons. */
+const FERRIS_SPOT = v(7, -3);
+const WIND_SPOT = v(12, 3);
+const FOUNTAIN = v(-3, 1);
 const BASIN_R = 3.2;
-const FOUNTAIN_SPOT = v(BASIN_R + 1.6, 1.2);
-const WIND_SPOT = v(8.5, 4.5);
-/** Grandma's house west of the ring: she waits on her balcony for the lift to bring her shopping up. */
-const HOUSE = v(-50, -9);
-const LIFT_SPOT = v(-44.6, -8.5);
-const LIFT_BUTTON = v(-40.5, -9.5);
+/** The car wash south of the west road: the muddy car drives up through it. */
+const WASH_SPOT = v(-38, 8);
+const WASH_PUMP = v(-33.5, 9);
+const WASH_POLE = v(-34.5, 5.5);
+const WASH_WAY = [v(-38, 14), v(-38, 8), v(-38, 3.6)];
+/** The building site south-west: the crane on a switch builds the house floor by floor. */
+const CRANE_SPOT = v(-34, 20);
+const CRANE_SWITCH = v(-29.5, 21.5);
+const CRANE_POLE = v(-31, 17);
+const SITE = v(-41, 20.5);
+const BUILDER = v(-37.5, 16.2);
+/** Grandma's house north-west: she waits on her balcony for the lift to bring her shopping up. */
+const LIFT_SPOT = v(-38.6, -26.5);
+const LIFT_BUTTON = v(-34.5, -27.5);
+const HOUSE_POLE = v(-34, -23);
 const BALCONY = v(LIFT_SPOT.x - 1.5, LIFT_SPOT.z - 0.25);
 const BALCONY_TOP = 1.95;
 const GRANDMA = v(BALCONY.x - 0.35, BALCONY.z);
 /** Her basket of shopping, on the pavement by the lift till it rides up. */
 const BASKET = v(LIFT_SPOT.x + 0.4, LIFT_SPOT.z + 2.2);
-const HOUSE_POLE = v(-38.5, -5);
-/** Evening: a kitten in the park, three street lamps on its way home across the road. */
-const KITTEN = v(-17, 9.5);
-const LAMPS = [v(-13.5, 11.5), v(-20.5, 13), v(-21.5, 24)];
-const KITTEN_WAY = [KITTEN, v(-19.5, 12), v(-20, 22.5), v(-18, 25.3)];
-const KITTEN_POLE = v(-16.5, 14);
-/** The club east of the ring: the disco ball, a light sensor in its light, the music box behind it. */
-const CLUB = v(51, -12);
-const DISCO_SPOT = v(43, -9.5);
-const CLUB_SENSOR = v(43, -7.4);
-const MUSIC_SPOT = v(46.5, -7);
-const CLUB_POLE = v(39, -7.5);
-/** The fire station south-east, the house down the road with smoke coming out, a pump at its hydrant. */
-const STATION = v(50, 13);
-const ENGINE_SPOT = v(43, 9.5);
-const STATION_POLE = v(39.5, 7.5);
-const SMOKE_HOUSE = v(60, 27);
-const HYDRANT_SPOT = v(56.5, 22.5);
-const HYDRANT_POLE = v(52.5, 21.5);
+/** The drawbridge where the east road crosses the canal; the boat waits north of it. */
+const BRIDGE_SPOT = v(35.9, 0);
+const BRIDGE_BUTTON = v(31.5, -8.5);
+const BRIDGE_POLE = v(31, -4.5);
+const BOAT_WAY = [v(CANAL.x, -10), v(CANAL.x, HARBOR.z - 0.5)];
+/** Evening: a kitten in the park, three street lamps on its way home to the cat house in the corner. */
+const KITTEN = v(-13, -5.5);
+const LAMPS = [v(-11.5, -2.5), v(-15.2, 1), v(-11.5, 4.5)];
+const KITTEN_WAY = [KITTEN, v(-13.5, -2), v(-13.6, 2.5), v(-14.6, 6)];
+const KITTEN_POLE = v(-8.5, 1);
+/** The club east of the canal: the neon sign, a light sensor in its light, the music box behind it. */
+const NEON_SPOT = v(43, -9.5);
+const CLUB_SENSOR = v(43, -7.6);
+const MUSIC_SPOT = v(46.5, -6.8);
+const CLUB_POLE = v(40.5, -11.5);
+/** The fire station by the ring, the house burning across the canal with a cat on its roof, a pump at its hydrant. */
+const ENGINE_SPOT = v(25.5, 13.5);
+const STATION_POLE = v(24, 17.5);
+const BURNING = v(48, 8);
+const BURNING_TOP = 3.7;
+const LADDER_SPOT = v(43.5, 9.5);
+const HYDRANT_SPOT = v(44, 14);
+const FIRE_POLE = v(40.5, 12.5);
 /** Night: the raccoon's path from the corner of the board to the toy shop's bins, dominoes across it. */
-const SHOP = v(50, -33);
-const BINS = v(43.5, -27.5);
-const DOMINO_SPOT = v(60, -38);
-const RACCOON_PATH = [v(73, -47), v(66, -42), DOMINO_SPOT, v(52, -32.5), v(46, -28.5)];
-const ALARM_SPOT = DOMINO_SPOT.clone().add(v(-1.5, 4.5));
-const SHOP_POLE = DOMINO_SPOT.clone().add(v(3.5, 5.5));
-const SHOPKEEPER = v(55, -26.5);
+const BINS = v(45, -22.5);
+const DOMINO_SPOT = v(48, -33);
+const RACCOON_PATH = [v(56, -37), v(52, -34), DOMINO_SPOT, v(45.5, -29), v(45.3, -24)];
+const ALARM_SPOT = v(50.5, -29.5);
+const SHOP_POLE = v(53, -31);
+const SHOPKEEPER = v(47.5, -19);
 /**
- * Morning: the school north-east of the ring. A laser shines along the
- * school's side to a mirror, the mirror turns the beam onto a light sensor,
- * and the sensor rings the bell by the door.
+ * Morning: the school north of the ring. A laser shines along its side to a
+ * mirror, the mirror turns the beam onto a light sensor, and the sensor rings
+ * the bell by the door.
  */
-const SCHOOL = v(18, -32);
-const LASER_SPOT = v(25, -30);
-const MIRROR_SPOT = v(32, -30);
-const SCHOOL_SENSOR = v(32, -24.5);
-const SCHOOL_BELL = v(23.5, -25.5);
-const SCHOOL_POLE = v(28.5, -26.5);
-const SCHOOL_DOOR = v(18, -27.5);
+const LASER_SPOT = v(17, -22);
+const MIRROR_SPOT = v(24, -22);
+const SCHOOL_SENSOR = v(24, -16.5);
+const SCHOOL_BELL = v(17, -17.5);
+const SCHOOL_POLE = v(20.5, -19.2);
+const SCHOOL_DOOR = v(11, -25.5);
+
+/** What each one says when poked. */
+const CITY_VOICES: Record<string, PhraseId> = {
+  car: 'beep', tram: 'tramDing', baker: 'yum', pigeon: 'coo', grandma: 'grannyOh', kitten: 'meow', cat: 'meow', child: 'giggle',
+  firefighter: 'siren', shopkeeper: 'shopHello', builder: 'hammer', boat: 'toot',
+};
+/** Wall, roof and height of each building, for the painted boxes that stand in until it is sculpted. */
+const HOUSES: Record<string, [string, string, number]> = {
+  'grandma-house': ['#f2c2a2', '#c84a3a', 4.2], 'fire-station': ['#e05a4a', '#5a5f6a', 3.2], school: ['#f2d06b', '#3f86d6', 3.8], 'toy-shop': ['#b7a6f0', '#ff8fb1', 3.2],
+  club: ['#5aa6d6', '#f2c230', 3.4], 'house-a': ['#a3d0f0', '#d8483c', 3.2], 'house-b': ['#f6b0a0', '#3f86d6', 3.4], 'house-c': ['#c8e6a0', '#c84a3a', 3], bakery: ['#f6e3b8', '#d8483c', 3.2],
+};
+/** Characters drawn with another one's model. */
+const MODEL_OF: Record<string, string> = { cat: 'kitten' };
 
 const r2 = (n: number) => Math.round(n * 100) / 100;
 
@@ -160,17 +211,36 @@ export class CityMap extends StoryMap {
   private loaves: { m: THREE.Object3D; s: number }[] = [];
   private baked = 0;
   private ovenT = 0;
-  fountainLevel = 0;
-  private spray: THREE.Sprite[] = [];
+  /** The cars going into the car park (s: how far along), and how many are in. */
+  private parkers: { c: Critter; s: number }[] = [];
+  parked = 0;
+  /** The muddy car's way through the car wash (0..1), its mud. */
+  washed = 0;
+  private dirty!: Critter;
+  private mud: THREE.Mesh[] = [];
+  /** Floors of the house on the building site (0..3), and the crane's count when it was put up. */
+  floors = 0;
+  private floorMeshes: THREE.Object3D[] = [];
+  private craneSeen = -1;
+  /** The boat's way down the canal to the harbour (0..1). */
+  boat = 0;
+  private boatCritter!: Critter;
   /** Grandma's basket on the pavement, riding up in the lift, or up on her balcony. */
   private grandma: 'waiting' | 'riding' | 'home' = 'waiting';
   private basket!: THREE.Object3D;
   private liftWaitT = 0;
+  /** The children going round and round on the wheel (seconds). */
+  private rideT = 0;
+  fountainLevel = 1;
+  private spray: THREE.Sprite[] = [];
   /** The kitten on its way home along the lamps (0..1). */
   private kittenWalk = 0;
   /** The fire engine's and the pump's work: at 1 the smoke is out. */
   fire = 0;
   private smoke: THREE.Sprite[] = [];
+  /** The cat on the burning roof: down the ladder once it reaches up (0..1). */
+  private catDown = 0;
+  catSaved = false;
   private raccoon!: Critter;
   private raccoonMixer: THREE.AnimationMixer | null = null;
   private raccoonWalk: THREE.AnimationAction | null = null;
@@ -189,6 +259,7 @@ export class CityMap extends StoryMap {
     this.placeParts();
     this.buildCritters();
     this.buildNeeds();
+    this.dress();
     this.sowFlowers();
     // A steady breeze for the park's wind generator.
     AMBIENT.strength = 0.55;
@@ -197,29 +268,40 @@ export class CityMap extends StoryMap {
 
   protected cleanup() {
     AMBIENT.strength = 0;
+    DuskLamp.dark = 0;
   }
 
   protected saveExtra() {
-    return { bread: r2(this.bread), fountain: r2(this.fountainLevel), fire: r2(this.fire), raccoonChased: this.raccoonChased };
+    return { bread: r2(this.bread), fire: r2(this.fire), raccoonChased: this.raccoonChased, parked: this.parked, washed: r2(this.washed), floors: this.floors, boat: r2(this.boat), catSaved: this.catSaved };
   }
 
   protected restoreExtra(m: MapProgress) {
     const p = m as CityProgress;
-    this.bread = this.baked = Math.round(p.bread);
+    this.bread = this.baked = Math.round(p.bread ?? 0);
     this.loaves.forEach((l, i) => (l.s = i < this.bread ? Infinity : -1));
-    this.fountainLevel = p.fountain;
-    this.fire = p.fire;
-    this.raccoonChased = p.raccoonChased;
+    this.fire = p.fire ?? 0;
+    this.raccoonChased = !!p.raccoonChased;
     const done = (name: string) => this.needs.some((n) => n.done && n.critter.name === name);
     this.driving = done('car');
+    this.parked = done('car4') ? 3 : 0;
+    if (this.parked) this.parkers.forEach((pk, i) => this.putParked(pk, i));
+    this.washed = done('car7') ? 1 : 0;
+    this.floors = done('builder') ? 3 : 0;
+    this.boat = done('boat') ? 1 : 0;
+    this.catSaved = done('firefighter');
+    if (this.catSaved) this.catDown = 1;
     if (done('grandma')) this.settleGrandma();
     if (done('kitten')) this.kittenWalk = 1;
     if (done('child3')) this.schooling = 1;
     if (this.phase === 'night') this.raccoonT = 0;
   }
 
+  protected voiceOf(base: string): PhraseId | null {
+    return CITY_VOICES[base] ?? null;
+  }
+
   protected critterModel(base: string, fit: Fit, name: string): THREE.Object3D {
-    return (base === 'raccoon' ? model('raccoon-rig', fit) : null) ?? model(base, fit) ?? STAND_INS[base]?.() ?? blob(name);
+    return (base === 'raccoon' ? model('raccoon-rig', fit) : null) ?? model(MODEL_OF[base] ?? base, fit) ?? STAND_INS[base]?.() ?? blob(name);
   }
 
   // ───────────────────────── Building ─────────────────────────
@@ -237,28 +319,14 @@ export class CityMap extends StoryMap {
     rim.position.y = -0.36;
     this.scenery.add(rim);
     this.scenery.add(roadMarks());
+    this.scenery.add(canal());
+    for (const p of [HARBOR, ...PONDS]) this.scenery.add(pond(p));
   }
 
+  /** What works in the story: the balcony and basket, the fountain, the loaves, the building site, the smoke. */
   private buildPlaces() {
-    const house = (name: string, at: THREE.Vector3, w: number, wall: string, roof: string, h = 3.2) =>
-      this.add(name, { width: w, rotateY: -Math.PI / 2 }, at.x, at.z, () => boxHouse(wall, roof, w, h, w * 0.8));
-    house('grandma-house', HOUSE, 5, '#f2c2a2', '#c84a3a', 4.2);
-    house('bakery', BAKERY, 6, '#f6e3b8', '#d8483c');
-    house('fire-station', STATION, 6.5, '#e05a4a', '#5a5f6a');
-    house('school', SCHOOL, 8, '#f2d06b', '#3f86d6', 3.8);
-    house('toy-shop', SHOP, 6, '#b7a6f0', '#ff8fb1');
-    house('club', CLUB, 6.5, '#5aa6d6', '#f2c230');
-    // Houses along the streets.
-    const homes: [string, number, number, string, string][] = [
-      ['house-a', -62, -32, '#a3d0f0', '#d8483c'], ['house-b', -36, -32, '#f6b0a0', '#3f86d6'], ['house-c', 34, -42, '#c8e6a0', '#c84a3a'],
-      ['house-a', -62, 18, '#f2c230', '#5a5f6a'], ['house-b', -48, 22, '#a3d0f0', '#c84a3a'], ['house-c', 22, 28, '#f6e3b8', '#3f86d6'],
-      ['house-a', 60, 27, '#e0e0e0', '#5a5f6a'], ['house-b', -18, 28, '#f6b0a0', '#2a6a3a'], ['house-c', 64, -8, '#f2d06b', '#c84a3a'],
-    ];
-    for (const [name, x, z, wall, roof] of homes) house(name, v(x, z), 4.5, wall, roof);
-    // The balcony by the lift, as high as its cabin at the top, and grandma's basket of shopping.
     this.scenery.add(balcony(BALCONY));
     this.basket = this.add('basket', { width: 0.6 }, BASKET.x, BASKET.z, () => basket());
-    // The fountain: a basin in the park with water thrown up from the middle.
     this.add('fountain-basin', { width: BASIN_R * 2 }, FOUNTAIN.x, FOUNTAIN.z, () => basin());
     for (let i = 0; i < 36; i++) {
       const d = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowFor('rgba(120,200,255,0.95)'), transparent: true, depthWrite: false, opacity: 0 }));
@@ -278,33 +346,33 @@ export class CityMap extends StoryMap {
       this.loaves.push({ m: loaf, s: -1 });
       this.scenery.add(loaf);
     }
-    this.add('hydrant', { height: 0.9 }, HYDRANT_SPOT.x + 1.8, HYDRANT_SPOT.z - 1.2, () => hydrant());
-    // Smoke from the house down the road.
+    this.add('hydrant', { height: 0.9 }, HYDRANT_SPOT.x + 1.8, HYDRANT_SPOT.z + 0.6, () => hydrant());
+    this.add('bins', { width: 2 }, BINS.x, BINS.z, () => bins());
+    // The building site: a fenced plot whose house rises floor by floor.
+    this.scenery.add(sitePlot(SITE));
+    for (let i = 0; i < 3; i++) {
+      const f = floor(i);
+      f.position.set(SITE.x, i * 1.1, SITE.z);
+      f.visible = false;
+      this.floorMeshes.push(f);
+      this.scenery.add(f);
+    }
+    // The cat house in the park's corner, where the kitten lives.
+    this.scenery.add(catHouse(KITTEN_WAY[KITTEN_WAY.length - 1].clone().add(v(-1.2, 1))));
+    // Smoke from the burning house across the canal.
     for (let i = 0; i < 14; i++) {
       const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowFor('rgba(120,120,130,0.85)'), transparent: true, depthWrite: false, opacity: 0 }));
       s.userData.t = i / 14;
       this.smoke.push(s);
       this.scenery.add(s);
     }
-    this.add('bins', { width: 2 }, BINS.x, BINS.z, () => bins());
-    // Benches and lamps round the park, trees in it and at the edges.
-    for (const [x, z, r] of [[-10, -12, 0], [10, -12, 0], [-21, 0, Math.PI / 2], [21, 0, -Math.PI / 2]]) this.add('bench', { width: 1.8 }, x, z, () => bench(), r);
-    const lamps: [number, number, number][] = [-24, -12, 0, 12, 24].flatMap((x) => [[x, -RING.z + 4.2, 1] as [number, number, number], [x, RING.z - 4.2, 1] as [number, number, number]]);
-    const streetLamps = instances('street-lamp', { height: 3 }, lamps);
-    if (streetLamps) this.scenery.add(streetLamps);
-    const green = greenery(this.plan);
-    for (const [name, fit, items] of [
-      ['tree-oak', { height: 3 }, green.trees],
-      ['bush', { width: 1.8 }, green.bushes],
-    ] as const) {
-      const g = instances(name, fit, items);
-      if (g) this.scenery.add(g);
-    }
+    this.add('house-a', { width: 5, rotateY: -Math.PI / 2 }, BURNING.x, BURNING.z, () => boxHouse('#f2d06b', '#c84a3a', 5, 3.2, 4));
   }
 
   /** A pole by every place, and the tram's substation: parts of the map. */
   private placeParts() {
-    for (const p of [LIGHT_POLE, SUB_POLE, BAKERY_POLE, HOUSE_POLE, KITTEN_POLE, CLUB_POLE, STATION_POLE, HYDRANT_POLE, SHOP_POLE, SCHOOL_POLE]) this.poles.set(p, this.pin('pole', p));
+    for (const p of [LIGHT_POLE, SUB_POLE, BAKERY_POLE, PARK_POLE, WASH_POLE, CRANE_POLE, HOUSE_POLE, BRIDGE_POLE, KITTEN_POLE, CLUB_POLE, STATION_POLE, FIRE_POLE, SHOP_POLE, SCHOOL_POLE])
+      this.poles.set(p, this.pin('pole', p));
     this.substation = this.pin('substation', SUBSTATION) as Substation;
   }
 
@@ -315,21 +383,36 @@ export class CityMap extends StoryMap {
       c.roams = true;
       this.cars.push({ c, s: 0 });
     });
+    // Three more wait on the west road to go into the car park.
+    ['car4', 'car5', 'car6'].forEach((name, i) => {
+      const c = this.critter(name, { width: 2.4 }, v(-24 - i * 3.4, 1.5), 1.3, Math.PI);
+      c.roams = true;
+      this.parkers.push({ c, s: -i * 3.4 });
+    });
+    // A muddy car by the car wash.
+    this.dirty = this.critter('car7', { width: 2.4 }, WASH_WAY[0], 1.3, Math.PI / 2);
+    this.dirty.roams = true;
+    this.mud = muddy(this.dirty.group);
     this.tram = this.critter('tram', { width: 7 }, v(this.tramX, TRAM_Z), 2.4, 0);
     this.tram.roams = true;
-    // The model faces +x: turned to face the camera.
     this.critter('baker', { height: 1.6 }, BAKER, 1.6, -Math.PI / 2 + 0.3);
     this.critter('pigeon', { height: 0.5 }, v(FOUNTAIN.x - 2.2, FOUNTAIN.z + 3.2), 0.5, 0.5);
     this.critter('pigeon2', { height: 0.45 }, v(FOUNTAIN.x - 3.4, FOUNTAIN.z + 2.4), 0.45, -0.4);
-    // The model faces +x: towards the lift, where her basket comes up.
     const grandma = this.critter('grandma', { height: 1.5 }, GRANDMA, 1.5, 0);
     grandma.base = BALCONY_TOP;
+    this.critter('child', { height: 1.2 }, v(FERRIS_SPOT.x - 4.5, FERRIS_SPOT.z + 4.5), 1.2, 0.3);
+    this.critter('child2', { height: 1.15 }, v(FERRIS_SPOT.x - 3, FERRIS_SPOT.z + 5.5), 1.15, -0.3);
+    this.critter('builder', { height: 1.6 }, BUILDER, 1.6, 0.6);
+    this.boatCritter = this.critter('boat', { width: 3 }, BOAT_WAY[0], 1.4, -Math.PI / 2);
+    this.boatCritter.roams = true;
     this.critter('kitten', { height: 0.75 }, KITTEN, 0.75, -0.6);
-    this.critter('child', { height: 1.2 }, v(CLUB.x - 5, CLUB.z + 7.5), 1.2, 0.3);
-    this.critter('child2', { height: 1.15 }, v(CLUB.x - 3.5, CLUB.z + 8), 1.15, -0.3);
-    this.critter('firefighter', { height: 1.6 }, v(STATION.x - 4.5, STATION.z - 4.5), 1.6, 0.4);
+    this.critter('child6', { height: 1.2 }, v(MUSIC_SPOT.x + 2.5, MUSIC_SPOT.z - 1.5), 1.2, 0.3);
+    this.critter('child7', { height: 1.15 }, v(MUSIC_SPOT.x + 4, MUSIC_SPOT.z - 2), 1.15, -0.3);
+    this.critter('firefighter', { height: 1.6 }, v(ENGINE_SPOT.x + 3, ENGINE_SPOT.z - 1), 1.6, 0.4);
+    const cat = this.critter('cat', { height: 0.7 }, v(BURNING.x - 1, BURNING.z), 0.7, Math.PI);
+    cat.base = BURNING_TOP;
     this.critter('shopkeeper', { height: 1.6 }, SHOPKEEPER, 1.6, 0);
-    ['child3', 'child4', 'child5'].forEach((name, i) => this.critter(name, { height: 1.15 }, v(SCHOOL_DOOR.x - 3 + i * 1.6, SCHOOL_DOOR.z + 4), 1.15, i - 1));
+    ['child3', 'child4', 'child5'].forEach((name, i) => this.critter(name, { height: 1.15 }, v(SCHOOL_DOOR.x - 2 + i * 1.6, SCHOOL_DOOR.z + 4), 1.15, i - 1));
     this.raccoon = this.critter('raccoon', { width: 1.4 }, RACCOON_PATH[0], 0.9, 0);
     this.raccoon.group.visible = false;
     this.raccoon.roams = true;
@@ -344,21 +427,26 @@ export class CityMap extends StoryMap {
   private buildNeeds() {
     const get = (name: string) => this.critters.get(name)!;
     const add = (n: NeedSpec) => this.addNeed(n);
-    const lit = (at: THREE.Vector3) => { const p = this.on(at, ['bulb', 'led']); return !!p && isActive(p); };
-    // Day: a traffic light to start with, then chains of two parts.
+    const lamp = (at: THREE.Vector3) => (this.on(at, ['duskLamp']) as DuskLamp | undefined)?.lit ?? false;
+    const slot = (icon: PartKind, spot: THREE.Vector3, kinds: PartKind[] = [icon]) => ({ icon, kinds, spot });
+    // Day.
     add({ critter: get('car'), phase: 'day', ask: 'carsAsk', thanks: 'carsHappy', icon: 'trafficLight', kinds: ['trafficLight'], spot: LIGHT_SPOT, met: () => this.working(LIGHT_SPOT, ['trafficLight']) });
     add({ critter: this.tram, phase: 'day', ask: 'tramAsk', thanks: 'tramHappy', icon: 'switch', kinds: ['switch'], spot: TRAM_SWITCH, focus: [SUBSTATION.clone(), TRAM_SWITCH.clone(), v(this.tramX, TRAM_Z)], met: () => this.substation.live && !!this.on(TRAM_SWITCH, ['switch'])?.closed });
-    add({ critter: get('baker'), phase: 'day', ask: 'bakerAsk', thanks: 'bakerHappy', icon: 'heater', kinds: ['heater'], spot: OVEN_SPOT, more: [{ icon: 'belt', kinds: ['belt'], spot: BELT_SPOT }], focus: [BAKER.clone(), OVEN_SPOT.clone(), COUNTER.clone()], met: () => this.bread >= 3 });
-    add({ critter: get('pigeon'), phase: 'day', ask: 'pigeonsAsk', thanks: 'pigeonsHappy', icon: 'pump', kinds: ['pump'], spot: FOUNTAIN_SPOT, more: [{ icon: 'windGen', kinds: ['windGen'], spot: WIND_SPOT }], met: () => this.fountainLevel > 0.95 });
-    add({ critter: get('grandma'), phase: 'day', ask: 'grandmaAsk', thanks: 'grandmaHappy', icon: 'lift', kinds: ['lift'], spot: LIFT_SPOT, more: [{ icon: 'button', kinds: ['button'], spot: LIFT_BUTTON }], met: () => this.grandma === 'home' });
+    add({ critter: get('baker'), phase: 'day', ask: 'bakerAsk', thanks: 'bakerHappy', icon: 'heater', kinds: ['heater'], spot: OVEN_SPOT, more: [slot('belt', BELT_SPOT)], focus: [BAKER.clone(), OVEN_SPOT.clone(), COUNTER.clone()], met: () => this.bread >= 3 });
+    add({ critter: get('car4'), phase: 'day', ask: 'parkAsk', thanks: 'parkHappy', icon: 'barrier', kinds: ['barrier'], spot: BARRIER_SPOT, more: [slot('button', PARK_BUTTON)], focus: [v(-24, 1.5), BARRIER_SPOT.clone(), PARK_SLOTS[2].clone()], met: () => this.parked >= 3, sticker: 'parking' });
+    add({ critter: get('child'), phase: 'day', ask: 'ferrisAsk', thanks: 'ferrisHappy', icon: 'ferris', kinds: ['ferris'], spot: FERRIS_SPOT, more: [slot('windGen', WIND_SPOT)], met: () => this.rideT > 3, sticker: 'ferris' });
+    add({ critter: this.dirty, phase: 'day', ask: 'washAsk', thanks: 'washHappy', icon: 'carWash', kinds: ['carWash'], spot: WASH_SPOT, more: [slot('pump', WASH_PUMP)], focus: [WASH_WAY[0].clone(), WASH_SPOT.clone(), WASH_PUMP.clone()], met: () => this.washed >= 1, sticker: 'carwash' });
+    add({ critter: get('grandma'), phase: 'day', ask: 'grandmaAsk', thanks: 'grandmaHappy', icon: 'lift', kinds: ['lift'], spot: LIFT_SPOT, more: [slot('button', LIFT_BUTTON)], met: () => this.grandma === 'home' });
+    add({ critter: get('builder'), phase: 'day', ask: 'craneAsk', thanks: 'craneHappy', icon: 'towerCrane', kinds: ['towerCrane'], spot: CRANE_SPOT, more: [slot('switch', CRANE_SWITCH)], focus: [BUILDER.clone(), CRANE_SPOT.clone(), SITE.clone()], met: () => this.floors >= 3, sticker: 'crane' });
+    add({ critter: this.boatCritter, phase: 'day', ask: 'bridgeAsk', thanks: 'bridgeHappy', icon: 'drawbridge', kinds: ['drawbridge'], spot: BRIDGE_SPOT, more: [slot('button', BRIDGE_BUTTON)], focus: [BOAT_WAY[0].clone(), BRIDGE_SPOT.clone(), BRIDGE_BUTTON.clone()], met: () => this.boat >= 1 });
     // Evening.
-    add({ critter: get('kitten'), phase: 'evening', ask: 'kittenDark', thanks: 'kittenHome', icon: 'bulb', kinds: ['bulb', 'led'], spot: LAMPS[0], more: LAMPS.slice(1).map((spot) => ({ icon: 'bulb' as PartKind, kinds: ['bulb', 'led'] as PartKind[], spot })), met: () => LAMPS.every(lit) });
-    add({ critter: get('child'), phase: 'evening', ask: 'clubAsk', thanks: 'clubHappy', icon: 'disco', kinds: ['disco'], spot: DISCO_SPOT, more: [{ icon: 'lightSensor', kinds: ['lightSensor'], spot: CLUB_SENSOR }, { icon: 'musicbox', kinds: ['musicbox'], spot: MUSIC_SPOT }], met: () => this.working(MUSIC_SPOT, ['musicbox']) && !!this.on(CLUB_SENSOR, ['lightSensor'])?.closed });
-    add({ critter: get('firefighter'), phase: 'evening', ask: 'fireAsk', thanks: 'fireHappy', icon: 'firetruck', kinds: ['firetruck'], spot: ENGINE_SPOT, more: [{ icon: 'pump', kinds: ['pump'], spot: HYDRANT_SPOT }], focus: [STATION.clone().add(v(-4.5, -4.5)), ENGINE_SPOT.clone(), HYDRANT_SPOT.clone(), SMOKE_HOUSE.clone()], met: () => this.fire >= 1 });
+    add({ critter: get('kitten'), phase: 'evening', ask: 'kittenDark', thanks: 'kittenHome', icon: 'duskLamp', kinds: ['duskLamp'], spot: LAMPS[0], more: LAMPS.slice(1).map((spot) => slot('duskLamp', spot)), met: () => LAMPS.every(lamp) });
+    add({ critter: get('child6'), phase: 'evening', ask: 'clubAsk', thanks: 'clubHappy', icon: 'neon', kinds: ['neon'], spot: NEON_SPOT, more: [slot('lightSensor', CLUB_SENSOR), slot('musicbox', MUSIC_SPOT)], met: () => this.working(MUSIC_SPOT, ['musicbox']) && !!this.on(CLUB_SENSOR, ['lightSensor'])?.closed, sticker: 'child' });
+    add({ critter: get('firefighter'), phase: 'evening', ask: 'fireAsk', thanks: 'fireHappy', icon: 'firetruck', kinds: ['firetruck'], spot: ENGINE_SPOT, more: [slot('ladder', LADDER_SPOT), slot('pump', HYDRANT_SPOT)], focus: [ENGINE_SPOT.clone(), LADDER_SPOT.clone(), HYDRANT_SPOT.clone(), BURNING.clone()], met: () => this.fire >= 1 && this.catSaved });
     // Night: dominoes on the raccoon's path, and the alarm bell they switch on.
-    add({ critter: get('shopkeeper'), phase: 'night', ask: 'raccoonTip', thanks: 'raccoonScared', icon: 'domino', kinds: ['domino'], hintPhrase: 'raccoonTip', spot: DOMINO_SPOT.clone(), more: [{ icon: 'bell', kinds: ['bell'], spot: ALARM_SPOT.clone() }], focus: [SHOPKEEPER.clone(), DOMINO_SPOT.clone(), ALARM_SPOT.clone()], met: () => this.raccoonChased, sticker: 'raccoon' });
+    add({ critter: get('shopkeeper'), phase: 'night', ask: 'raccoonTip', thanks: 'raccoonScared', icon: 'domino', kinds: ['domino'], hintPhrase: 'raccoonTip', spot: DOMINO_SPOT.clone(), more: [slot('bell', ALARM_SPOT.clone())], focus: [SHOPKEEPER.clone(), DOMINO_SPOT.clone(), ALARM_SPOT.clone()], met: () => this.raccoonChased, sticker: 'raccoon' });
     // Morning: the school bell, rung by a laser beam.
-    add({ critter: get('child3'), phase: 'morning', ask: 'schoolAsk', thanks: 'schoolHappy', icon: 'laser', kinds: ['laser'], spot: LASER_SPOT, more: [{ icon: 'mirror', kinds: ['mirror'], spot: MIRROR_SPOT }, { icon: 'lightSensor', kinds: ['lightSensor'], spot: SCHOOL_SENSOR }, { icon: 'bell', kinds: ['bell'], spot: SCHOOL_BELL }], focus: [SCHOOL_DOOR.clone(), LASER_SPOT.clone(), MIRROR_SPOT.clone(), SCHOOL_SENSOR.clone(), SCHOOL_BELL.clone()], met: () => this.working(SCHOOL_BELL, ['bell']) && !!this.on(SCHOOL_SENSOR, ['lightSensor'])?.closed, sticker: 'school' });
+    add({ critter: get('child3'), phase: 'morning', ask: 'schoolAsk', thanks: 'schoolHappy', icon: 'laser', kinds: ['laser'], spot: LASER_SPOT, more: [slot('mirror', MIRROR_SPOT), slot('lightSensor', SCHOOL_SENSOR), slot('bell', SCHOOL_BELL)], focus: [SCHOOL_DOOR.clone(), LASER_SPOT.clone(), MIRROR_SPOT.clone(), SCHOOL_SENSOR.clone(), SCHOOL_BELL.clone()], met: () => this.working(SCHOOL_BELL, ['bell']) && !!this.on(SCHOOL_SENSOR, ['lightSensor'])?.closed, sticker: 'school' });
   }
 
   /** The part of these kinds standing on a ring. */
@@ -381,15 +469,51 @@ export class CityMap extends StoryMap {
       case 'car': return [[pole(LIGHT_POLE), [this.on(LIGHT_SPOT, ['trafficLight'])]]];
       case 'tram': return [[pole(SUB_POLE), [this.on(TRAM_SWITCH, ['switch']), this.substation]]];
       case 'baker': return [[pole(BAKERY_POLE), [this.on(OVEN_SPOT, ['heater'])]], [pole(BAKERY_POLE), [this.on(BELT_SPOT, ['belt'])]]];
-      case 'pigeon': return [[this.on(WIND_SPOT, ['windGen']), [this.on(FOUNTAIN_SPOT, ['pump'])]]];
+      case 'car4': return [[pole(PARK_POLE), [this.on(PARK_BUTTON, ['button']), this.on(BARRIER_SPOT, ['barrier'])]]];
+      case 'child': return [[this.on(WIND_SPOT, ['windGen']), [this.on(FERRIS_SPOT, ['ferris'])]]];
+      case 'car7': return [[pole(WASH_POLE), [this.on(WASH_SPOT, ['carWash'])]], [pole(WASH_POLE), [this.on(WASH_PUMP, ['pump'])]]];
       case 'grandma': return [[pole(HOUSE_POLE), [this.on(LIFT_BUTTON, ['button']), this.on(LIFT_SPOT, ['lift'])]]];
-      case 'kitten': return LAMPS.map((at) => [pole(KITTEN_POLE), [this.on(at, ['bulb', 'led'])]]);
-      case 'child': return [[pole(CLUB_POLE), [this.on(DISCO_SPOT, ['disco'])]], [pole(CLUB_POLE), [this.on(CLUB_SENSOR, ['lightSensor']), this.on(MUSIC_SPOT, ['musicbox'])]]];
-      case 'firefighter': return [[pole(STATION_POLE), [this.on(ENGINE_SPOT, ['firetruck'])]], [pole(HYDRANT_POLE), [this.on(HYDRANT_SPOT, ['pump'])]]];
+      case 'builder': return [[pole(CRANE_POLE), [this.on(CRANE_SWITCH, ['switch']), this.on(CRANE_SPOT, ['towerCrane'])]]];
+      case 'boat': return [[pole(BRIDGE_POLE), [this.on(BRIDGE_BUTTON, ['button']), this.on(BRIDGE_SPOT, ['drawbridge'])]]];
+      case 'kitten': return LAMPS.map((at) => [pole(KITTEN_POLE), [this.on(at, ['duskLamp'])]]);
+      case 'child6': return [[pole(CLUB_POLE), [this.on(NEON_SPOT, ['neon'])]], [pole(CLUB_POLE), [this.on(CLUB_SENSOR, ['lightSensor']), this.on(MUSIC_SPOT, ['musicbox'])]]];
+      case 'firefighter': return [[pole(STATION_POLE), [this.on(ENGINE_SPOT, ['firetruck'])]], [pole(FIRE_POLE), [this.on(LADDER_SPOT, ['ladder'])]], [pole(FIRE_POLE), [this.on(HYDRANT_SPOT, ['pump'])]]];
       case 'shopkeeper': return [[pole(SHOP_POLE), [this.on(DOMINO_SPOT, ['domino']), this.on(ALARM_SPOT, ['bell'])]]];
       case 'child3': return [[pole(SCHOOL_POLE), [this.on(LASER_SPOT, ['laser'])]], [pole(SCHOOL_POLE), [this.on(SCHOOL_SENSOR, ['lightSensor']), this.on(SCHOOL_BELL, ['bell'])]]];
     }
     return [];
+  }
+
+  /**
+   * The city's dressing (src/city-decor.ts), kept off the rings, the poles,
+   * the people and the ways things move along; smoke from a few chimneys.
+   */
+  private dress() {
+    const keep = [
+      ...this.needs.flatMap((n) => [n.spot, ...n.more.map((s) => s.spot)]),
+      ...[...this.critters.values()].filter((c) => !c.roams).map((c) => c.home),
+      ...this.world.parts.map((p) => p.root.position),
+      FOUNTAIN, SITE, BINS,
+    ];
+    const lines = [RACCOON_PATH, KITTEN_WAY, WASH_WAY, PARK_WAY, BOAT_WAY, [LASER_SPOT, MIRROR_SPOT, SCHOOL_SENSOR]];
+    const { group, drawn } = dressing(DECOR, FENCES, keep, lines);
+    this.scenery.add(group);
+    // Buildings not sculpted yet: painted boxes in their places, so the town is never bare.
+    for (const g of DECOR) {
+      const look = HOUSES[g.model];
+      if (!look || drawn.has(g.model)) continue;
+      for (const [x, z, yaw, s] of g.items) {
+        const w = (g.fit.width ?? 5) * s;
+        const h = boxHouse(look[0], look[1], w, look[2] * s, w * 0.8);
+        h.position.set(x, 0, z);
+        h.rotation.y = yaw;
+        this.scenery.add(h);
+      }
+    }
+    this.life.addToy('mailbox', GRANDMA.x + 3, GRANDMA.z + 4, 0);
+    this.life.addFlutters([v(8, 4), v(-8, -4), v(-40, 20), v(14, -26)], [v(-12, 2), v(6, 4)]);
+    const houses = DECOR.filter((g) => g.model.startsWith('house')).flatMap((g) => g.items).slice(0, 4);
+    for (const [x, z] of houses) this.life.addSmoke(v(x + 1, z).setY(3.6));
   }
 
   /** Flowers in the park and along the pavements, kept off the rings, the people and the poles. */
@@ -399,12 +523,12 @@ export class CityMap extends StoryMap {
     const free = (x: number, z: number) =>
       x > f.x0 + 1 && x < f.x1 - 1 && z > f.z0 + 1 && z < f.z1 - 1 && Math.hypot(x - FOUNTAIN.x, z - FOUNTAIN.z) > BASIN_R + 2 && !onLane(this.plan, x, z, 0.8) && taken.every((t) => Math.hypot(x - t.x, z - t.z) > 2.6);
     const spots: [number, number, number][] = [];
-    for (let tries = 0; spots.length < 40 && tries < 3000; tries++) {
+    for (let tries = 0; spots.length < 30 && tries < 3000; tries++) {
       const x = f.x0 + Math.random() * (f.x1 - f.x0);
       const z = f.z0 + Math.random() * (f.z1 - f.z0);
       if (free(x, z) && spots.every(([sx, sz]) => Math.hypot(x - sx, z - sz) > 2)) spots.push([x, z, 0.8 + Math.random() * 0.45]);
     }
-    this.scenery.add(instances('flower-cluster', { height: 0.45 }, spots) ?? flowers(this.plan, 50, free));
+    this.scenery.add(instances('flower-cluster', { height: 0.45 }, spots) ?? flowers(this.plan, 40, free));
   }
 
   // ───────────────────────── Story ─────────────────────────
@@ -446,6 +570,17 @@ export class CityMap extends StoryMap {
       for (const p of parts) mine.add(p!);
     }
     for (const p of this.world.parts) if (p.kind === 'mirror' && n.more.some((s) => s.kinds.includes('mirror') && p.root.position.distanceTo(s.spot) < 0.8)) mine.add(p);
+    // A switch or button of this need that would get one of its gadgets going (not one of another need's).
+    for (const sw of mine) {
+      if (sw.kind !== 'switch' && sw.kind !== 'button') continue;
+      for (const el of sw.elements()) {
+        if (el.kind !== 'switch' || el.closed) continue;
+        const r = this.world.trial((e) => (e.id === el.id ? { ...e, closed: true } : e));
+        if (r.shorted.size) continue;
+        if ([...mine].some((p) => !activeAt(p.kind, p.state.level) && activeAt(p.kind, r.elements.get(p.id)?.level ?? 0)))
+          return { type: 'tap', part: sw, phrase: sw.kind === 'button' ? 'holdButton' : 'tapSwitch' };
+      }
+    }
     const h = sandboxHint(this.world);
     if (!h) return null;
     // The dominoes are for the raccoon to knock over.
@@ -455,12 +590,16 @@ export class CityMap extends StoryMap {
   }
 
   protected tick(dt: number) {
+    DuskLamp.dark = this.nightAmount;
     this.updateCars(dt);
     this.updateTram(dt);
     this.updateBakery(dt);
-    // The fountain plays while a pump pours into its basin.
-    const pouring = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.root.position.distanceTo(FOUNTAIN) < BASIN_R + 2.6);
-    this.fountainLevel = Math.min(1, Math.max(0, this.fountainLevel + dt * (pouring ? 0.35 : -0.2)));
+    this.updateParking(dt);
+    this.updateFerris(dt);
+    this.updateWash(dt);
+    this.updateCrane();
+    this.updateBoat(dt);
+    // The fountain plays all day; the pigeons drink from it.
     for (const d of this.spray) {
       d.userData.t = (d.userData.t + dt * 0.9) % 1;
       const t = d.userData.t as number;
@@ -469,21 +608,37 @@ export class CityMap extends StoryMap {
       d.material.opacity = this.fountainLevel * (1 - t * 0.6) * 0.9;
     }
     this.updateGrandma(dt);
-    // The engine out with its siren and the pump at the hydrant put the fire out; the smoke rises till then (from the evening on).
-    const engine = this.world.parts.some((p) => p instanceof FireTruck && p.powered && p.root.position.distanceTo(ENGINE_SPOT) < 1.5);
-    const hose = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.root.position.distanceTo(HYDRANT_SPOT) < 1.5);
-    if (engine && hose && this.phase === 'evening') this.fire = Math.min(1, this.fire + dt * 0.2);
-    const burning = (this.phase === 'evening' || (this.phase === 'night' && this.fire < 1)) && this.fire < 1;
-    for (const s of this.smoke) {
-      s.userData.t = (s.userData.t + dt * 0.25) % 1;
-      const t = s.userData.t as number;
-      s.position.set(SMOKE_HOUSE.x + Math.sin(t * 5 + s.id) * 0.6 * t, 3.2 + t * 4, SMOKE_HOUSE.z);
-      s.scale.setScalar(0.8 + t * 2);
-      s.material.opacity = burning ? (1 - t) * 0.7 * (1 - this.fire) : 0;
-    }
+    this.updateFire(dt);
     this.updateKitten(dt);
+    this.updateClub();
     this.updateRaccoon(dt);
     this.updateSchool(dt);
+  }
+
+  /** Round the ring road, keeping to the right, once the light works; waiting at the crossing before that. */
+  private updateCars(dt: number) {
+    const perimeter = 4 * (RING.x + RING.z);
+    this.cars.forEach((car, i) => {
+      const p = car.c.group.position;
+      if (!this.driving) return;
+      car.s = (car.s + dt * 5) % perimeter;
+      // Each car starts from the crossing, spaced out round the ring.
+      const { at, dir } = ringAt((car.s + i * (perimeter / 3)) % perimeter);
+      p.lerp(at, Math.min(1, dt * 4));
+      car.c.group.rotation.y = Math.atan2(dir.x, dir.z) - Math.PI / 2;
+      car.c.home.copy(p);
+    });
+  }
+
+  /** Up and down the line while the substation has power; braking to a stop without it. */
+  private updateTram(dt: number) {
+    const goal = this.substation?.live ? 3.5 * Math.sign(this.tramV || 1) : 0;
+    this.tramV = THREE.MathUtils.damp(this.tramV, goal, 1.5, dt);
+    this.tramX += this.tramV * dt;
+    if (this.tramX > W / 2 - 12) this.tramV = -Math.abs(this.tramV) || -0.01;
+    if (this.tramX < -W / 2 + 12) this.tramV = Math.abs(this.tramV) || 0.01;
+    this.tram.group.position.set(this.tramX, 0.06, TRAM_Z);
+    this.tram.home.copy(this.tram.group.position);
   }
 
   /**
@@ -522,43 +677,85 @@ export class CityMap extends StoryMap {
     }
   }
 
-  /** Once all three lamps are lit the kitten walks home along them, across the road. */
-  private updateKitten(dt: number) {
-    const c = this.critters.get('kitten')!;
-    if (this.needs.find((n) => n.critter === c)?.done) this.kittenWalk = Math.min(1, this.kittenWalk + dt * 0.12);
-    if (this.kittenWalk <= 0) return;
-    const len = pathLength(KITTEN_WAY);
-    const { at, dir } = pathAt(KITTEN_WAY, this.kittenWalk * len);
-    c.group.position.x = at.x;
-    c.group.position.z = at.z;
-    c.home.copy(at);
-    if (this.kittenWalk < 1) c.group.rotation.y = Math.atan2(dir.x, dir.z) - Math.PI / 2;
-  }
-
-  /** Round the ring road, keeping to the right, once the light works; waiting at the crossing before that. */
-  private updateCars(dt: number) {
-    const perimeter = 4 * (RING.x + RING.z);
-    this.cars.forEach((car, i) => {
-      const p = car.c.group.position;
-      if (!this.driving) return;
-      car.s = (car.s + dt * 5) % perimeter;
-      // Each car starts from the crossing, spaced out round the ring.
-      const { at, dir } = ringAt((car.s + i * (perimeter / 3)) % perimeter);
-      p.lerp(at, Math.min(1, dt * 4));
-      car.c.group.rotation.y = Math.atan2(dir.x, dir.z) - Math.PI / 2;
-      car.c.home.copy(p);
+  /** With the barrier up the cars drive off the road, up the drive and into their places, one after another. */
+  private updateParking(dt: number) {
+    const barrier = this.on(BARRIER_SPOT, ['barrier']) as Barrier | undefined;
+    const open = !!barrier && barrier.open > 0.8;
+    this.parkers.forEach((pk, i) => {
+      if (pk.s === Infinity) return;
+      const way = [pk.c.home.clone(), ...PARK_WAY, PARK_SLOTS[i]];
+      if (pk.s < 0) {
+        // Queueing: moves up as the ones ahead go in.
+        if (open) pk.s = Math.min(0, pk.s + dt * 3);
+        return;
+      }
+      if (!open && pk.s < 1) return;
+      pk.s += dt * 3;
+      const len = pathLength(way);
+      if (pk.s >= len) {
+        this.putParked(pk, i);
+        this.parked = this.parkers.filter((x) => x.s === Infinity).length;
+        this.hooks.chime();
+        return;
+      }
+      const { at, dir } = pathAt(way, pk.s);
+      pk.c.group.position.copy(at);
+      pk.c.group.rotation.y = Math.atan2(dir.x, dir.z) - Math.PI / 2;
     });
   }
 
-  /** Up and down the line while the substation has power; braking to a stop without it. */
-  private updateTram(dt: number) {
-    const goal = this.substation?.live ? 3.5 * Math.sign(this.tramV || 1) : 0;
-    this.tramV = THREE.MathUtils.damp(this.tramV, goal, 1.5, dt);
-    this.tramX += this.tramV * dt;
-    if (this.tramX > W / 2 - 12) this.tramV = -Math.abs(this.tramV) || -0.01;
-    if (this.tramX < -W / 2 + 12) this.tramV = Math.abs(this.tramV) || 0.01;
-    this.tram.group.position.set(this.tramX, 0.06, TRAM_Z);
-    this.tram.home.copy(this.tram.group.position);
+  private putParked(pk: { c: Critter; s: number }, i: number) {
+    pk.s = Infinity;
+    pk.c.group.position.copy(PARK_SLOTS[i]);
+    pk.c.group.rotation.y = Math.PI / 2;
+    pk.c.home.copy(PARK_SLOTS[i]);
+  }
+
+  /** The children cheer while the wheel goes round. */
+  private updateFerris(dt: number) {
+    const wheel = this.on(FERRIS_SPOT, ['ferris']) as FerrisWheel | undefined;
+    const turning = !!wheel && Math.abs(wheel.spin) > 0.4;
+    if (turning) this.rideT += dt;
+    if (turning && Math.sin(this.rideT * 3) > 0.95) for (const n of ['child', 'child2']) this.critters.get(n)!.hop = 1;
+  }
+
+  /** Brushes and water on, the muddy car drives up through the wash and comes out shiny. */
+  private updateWash(dt: number) {
+    const wash = this.on(WASH_SPOT, ['carWash']) as CarWash | undefined;
+    const water = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.root.position.distanceTo(WASH_PUMP) < 0.8);
+    if (wash?.running && water && this.washed < 1) this.washed = Math.min(1, this.washed + dt * 0.2);
+    const { at } = pathAt(WASH_WAY, this.washed * pathLength(WASH_WAY));
+    this.dirty.group.position.copy(at);
+    this.dirty.home.copy(at);
+    // The mud washes off as it passes the brushes.
+    const clean = THREE.MathUtils.smoothstep(this.washed, 0.3, 0.6);
+    for (const m of this.mud) m.visible = clean < 0.99 && m.userData.k > clean;
+  }
+
+  /** Each block the crane lifts adds a floor to the house on the site. */
+  private updateCrane() {
+    const crane = this.on(CRANE_SPOT, ['towerCrane']) as TowerCrane | undefined;
+    if (!crane) {
+      this.craneSeen = -1;
+    } else if (this.craneSeen < 0) this.craneSeen = crane.lifts;
+    else if (crane.lifts > this.craneSeen && this.floors < 3) {
+      this.craneSeen = crane.lifts;
+      this.floors++;
+      this.critters.get('builder')!.hop = 1;
+      this.hooks.chime();
+    }
+    this.floorMeshes.forEach((f, i) => (f.visible = i < this.floors));
+  }
+
+  /** With the bridge up the boat sails down the canal into the harbour. */
+  private updateBoat(dt: number) {
+    const bridge = this.on(BRIDGE_SPOT, ['drawbridge']) as Drawbridge | undefined;
+    if (bridge && bridge.up > 0.85 && this.boat < 1) this.boat = Math.min(1, this.boat + dt * 0.18);
+    const { at } = pathAt(BOAT_WAY, this.boat * pathLength(BOAT_WAY));
+    const p = this.boatCritter.group.position;
+    p.set(at.x, 0.05 + Math.sin(this.time * 2) * 0.04, at.z);
+    this.boatCritter.group.rotation.z = Math.sin(this.time * 1.6) * 0.04;
+    this.boatCritter.home.copy(at);
   }
 
   /** The basket goes into the lift's cabin at the bottom, rides up, and grandma takes it in on her balcony. */
@@ -597,6 +794,59 @@ export class CityMap extends StoryMap {
     this.grandma = 'home';
     this.basket.position.set(BALCONY.x + 0.45, BALCONY_TOP, BALCONY.z + 0.1);
     this.critters.get('grandma')!.hop = 1;
+  }
+
+  /**
+   * The engine out with its siren and the pump at the hydrant put the fire
+   * out; the ladder reaching the roof brings the cat down. The smoke rises
+   * till then (from the evening on).
+   */
+  private updateFire(dt: number) {
+    const engine = this.world.parts.some((p) => p instanceof FireTruck && p.powered && p.root.position.distanceTo(ENGINE_SPOT) < 1.5);
+    const hose = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.root.position.distanceTo(HYDRANT_SPOT) < 1.5);
+    if (engine && hose && this.phase === 'evening') this.fire = Math.min(1, this.fire + dt * 0.2);
+    const ladder = this.on(LADDER_SPOT, ['ladder']) as FireLadder | undefined;
+    if (ladder && ladder.reach > 0.95 && this.phase === 'evening') this.catDown = Math.min(1, this.catDown + dt * 0.4);
+    if (this.catDown >= 1 && !this.catSaved) {
+      this.catSaved = true;
+      this.hooks.chime();
+    }
+    const cat = this.critters.get('cat')!;
+    // Down the ladder from the roof to the pavement by the house.
+    const top = v(BURNING.x - 1, BURNING.z);
+    const foot = v(LADDER_SPOT.x - 1, LADDER_SPOT.z + 1.2);
+    const k = THREE.MathUtils.smoothstep(this.catDown, 0, 1);
+    cat.group.position.x = THREE.MathUtils.lerp(top.x, foot.x, k);
+    cat.group.position.z = THREE.MathUtils.lerp(top.z, foot.z, k);
+    cat.home.set(cat.group.position.x, 0, cat.group.position.z);
+    cat.base = BURNING_TOP * (1 - k);
+    const burning = (this.phase === 'evening' || this.phase === 'night') && this.fire < 1;
+    for (const s of this.smoke) {
+      s.userData.t = (s.userData.t + dt * 0.25) % 1;
+      const t = s.userData.t as number;
+      s.position.set(BURNING.x + Math.sin(t * 5 + s.id) * 0.6 * t, 3.6 + t * 4, BURNING.z);
+      s.scale.setScalar(0.8 + t * 2);
+      s.material.opacity = burning ? (1 - t) * 0.7 * (1 - this.fire) : 0;
+    }
+  }
+
+  /** Once all three lamps shine the kitten walks home along them. */
+  private updateKitten(dt: number) {
+    const c = this.critters.get('kitten')!;
+    if (this.needs.find((n) => n.critter === c)?.done) this.kittenWalk = Math.min(1, this.kittenWalk + dt * 0.15);
+    if (this.kittenWalk <= 0) return;
+    const len = pathLength(KITTEN_WAY);
+    const { at, dir } = pathAt(KITTEN_WAY, this.kittenWalk * len);
+    c.group.position.x = at.x;
+    c.group.position.z = at.z;
+    c.home.copy(at);
+    if (this.kittenWalk < 1) c.group.rotation.y = Math.atan2(dir.x, dir.z) - Math.PI / 2;
+  }
+
+  /** With the music on the children dance. */
+  private updateClub() {
+    if (!this.working(MUSIC_SPOT, ['musicbox'])) return;
+    for (const [n, k] of [['child6', 0], ['child7', 1.6]] as const) if (Math.sin(this.time * 5 + k) > 0.97) this.critters.get(n)!.hop = 1;
   }
 
   /** Sneaks to the bins; it knocks over the dominoes on its path, they switch the alarm bell on, and it runs. */
@@ -667,7 +917,7 @@ export class CityMap extends StoryMap {
     ['child3', 'child4', 'child5'].forEach((name, i) => {
       const c = this.critters.get(name)!;
       if (this.schooling <= 0) return;
-      const from = v(SCHOOL_DOOR.x - 3 + i * 1.6, SCHOOL_DOOR.z + 4);
+      const from = v(SCHOOL_DOOR.x - 2 + i * 1.6, SCHOOL_DOOR.z + 4);
       const p = from.lerp(SCHOOL_DOOR, Math.min(1, this.schooling * 1.2 - i * 0.1));
       c.group.position.x = p.x;
       c.group.position.z = p.z;
@@ -714,9 +964,10 @@ function pathAt(pts: THREE.Vector3[], s: number): { at: THREE.Vector3; dir: THRE
 
 // ───────────────────────── Ground ─────────────────────────
 
-/** Paving everywhere, asphalt roads (the ring, the roads out of it, the tram line), grass in the park. */
+/** Paving everywhere, asphalt roads (the ring, the roads out of it, the tram line, the drives), grass in the park and on the lawns. */
 function cityPlan(): GroundPlan {
   const ring: [number, number][] = [[-RING.x, -RING.z], [RING.x, -RING.z], [RING.x, RING.z], [-RING.x, RING.z], [-RING.x, -RING.z]];
+  const lawns = SOIL.length ? SOIL : [{ x0: -RING.x + ROAD / 2 + 1, z0: -RING.z + ROAD / 2 + 1, x1: RING.x - ROAD / 2 - 1, z1: RING.z - ROAD / 2 - 1 }];
   return {
     width: W,
     depth: D,
@@ -727,11 +978,14 @@ function cityPlan(): GroundPlan {
       { pts: [[-RING.x, 0], [-W / 2, 0]], w: ROAD },
       { pts: [[RING.x, 0], [W / 2, 0]], w: ROAD },
       { pts: [[-W / 2, TRAM_Z], [W / 2, TRAM_Z]], w: 4 },
+      ...PATHS.map((p) => ({ pts: p.points, w: p.width })),
     ],
-    field: { x0: -RING.x + ROAD / 2 + 1.5, z0: -RING.z + ROAD / 2 + 1.5, x1: RING.x - ROAD / 2 - 1.5, z1: RING.z - ROAD / 2 - 1.5 },
+    field: lawns[0],
+    fields: lawns.slice(1),
     mud: [],
-    hill: { x: 0, z: 0, rx: 0.01, rz: 0.01 },
-    tiles: { base: 'paving', hill: 'paving', lane: 'asphalt', field: 'grass', mud: 'grass' },
+    hill: MEADOW[0] ?? { x: 0, z: 0, rx: 0.01, rz: 0.01 },
+    meadows: MEADOW.slice(1),
+    tiles: { base: 'paving', hill: 'grass-light', lane: 'asphalt', field: 'grass', mud: 'grass' },
   };
 }
 
@@ -741,6 +995,8 @@ function roadMarks(): THREE.Group {
   const white = new THREE.MeshBasicMaterial({ color: '#f4f1ea', transparent: true, opacity: 0.85, depthWrite: false });
   const dashes: THREE.Matrix4[] = [];
   const dash = (x: number, z: number, along: 'x' | 'z', w = 1.2, d = 0.18) => dashes.push(new THREE.Matrix4().compose(v(x, z).setY(0.02), new THREE.Quaternion(), along === 'x' ? new THREE.Vector3(w, 1, d) : new THREE.Vector3(d, 1, w)));
+  // Not over the water (the drawbridge stands there).
+  const dry = (x: number) => Math.abs(x - CANAL.x) > 2.5;
   for (let x = -RING.x + 3; x < RING.x - 2; x += 3) {
     dash(x, -RING.z, 'x');
     dash(x, RING.z, 'x');
@@ -750,16 +1006,18 @@ function roadMarks(): THREE.Group {
     dash(RING.x, z, 'z');
   }
   for (let x = RING.x + 4; x < W / 2 - 1; x += 3) {
-    dash(x, 0, 'x');
+    if (dry(x)) dash(x, 0, 'x');
     dash(-x, 0, 'x');
   }
   for (let z = RING.z + 4; z < D / 2 - 1; z += 3) {
-    dash(0, z, 'z');
+    if (Math.abs(z - TRAM_Z) > 2.5) dash(0, z, 'z');
     dash(0, -z, 'z');
   }
   // Zebras where the roads leave the ring.
   for (const [x, z, along] of [[0, RING.z + ROAD / 2 + 1.6, 'x'], [0, -RING.z - ROAD / 2 - 1.6, 'x'], [RING.x + ROAD / 2 + 1.6, 0, 'z'], [-RING.x - ROAD / 2 - 1.6, 0, 'z']] as const)
     for (let k = -2; k <= 2; k++) along === 'x' ? dash(x + k * 1.1, z, 'z', 2.2, 0.55) : dash(x, z + k * 1.1, 'x', 2.2, 0.55);
+  // Parking bays.
+  for (const s of PARK_SLOTS) dash(s.x - 1.7, s.z, 'z', 3, 0.14);
   const quad = new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2);
   const im = new THREE.InstancedMesh(quad, white, dashes.length);
   dashes.forEach((m, i) => im.setMatrixAt(i, m));
@@ -774,32 +1032,26 @@ function roadMarks(): THREE.Group {
   return g;
 }
 
-/** Trees round the board's edge and in the park's corners, bushes between; off the roads and places. */
-function greenery(plan: GroundPlan) {
-  let seed = 11;
-  const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
-  const busy = [HOUSE, BAKERY, STATION, SCHOOL, SHOP, CLUB, SUBSTATION, SMOKE_HOUSE, BINS, ...RACCOON_PATH, ...LAMPS, ...KITTEN_WAY, LIFT_SPOT, LIFT_BUTTON, OVEN_SPOT, BELT_SPOT, COUNTER, LIGHT_SPOT, TRAM_SWITCH, DISCO_SPOT, CLUB_SENSOR, MUSIC_SPOT, ENGINE_SPOT, HYDRANT_SPOT, LASER_SPOT, MIRROR_SPOT, SCHOOL_SENSOR, SCHOOL_BELL, WIND_SPOT, FOUNTAIN];
-  const trees: [number, number, number][] = [];
-  const bushes: [number, number, number][] = [];
-  const ok = (x: number, z: number, room: number) =>
-    Math.abs(x) < W / 2 - 1.5 && Math.abs(z) < D / 2 - 1.5 && !onLane(plan, x, z, room) && busy.every((b) => Math.hypot(x - b.x, z - b.z) > 7) && [...trees, ...bushes].every(([tx, tz]) => Math.hypot(x - tx, z - tz) > room + 0.8);
-  for (let x = -W / 2 + 3; x < W / 2 - 2; x += 7) {
-    for (const z of [-D / 2 + 2.5, D / 2 - 2.5]) if (ok(x, z, 2)) trees.push([x, z, 0.9 + rnd() * 0.35]);
-  }
-  for (let z = -D / 2 + 8; z < D / 2 - 6; z += 7) for (const x of [-W / 2 + 2.5, W / 2 - 2.5]) if (ok(x, z, 2)) trees.push([x, z, 0.9 + rnd() * 0.35]);
-  const f = plan.field;
-  for (const [x, z] of [[f.x0 + 2.5, f.z0 + 2.5], [f.x1 - 2.5, f.z0 + 2.5], [f.x0 + 2.5, f.z1 - 2.5], [f.x1 - 2.5, f.z1 - 2.5], [f.x0 + 7, f.z0 + 2.2], [f.x1 - 7, f.z1 - 2.2]]) if (ok(x, z, 2)) trees.push([x, z, 0.9 + rnd() * 0.3]);
-  for (let i = 0; i < 60; i++) {
-    const x = (rnd() - 0.5) * (W - 6);
-    const z = (rnd() - 0.5) * (D - 6);
-    if (ok(x, z, 1)) bushes.push([x, z, 0.7 + rnd() * 0.4]);
-  }
-  return { trees, bushes };
-}
-
 // ───────────────────────── Stand-ins ─────────────────────────
 
-/** Grandma's balcony: a little platform on posts, as high as the lift's cabin at the top. */
+/** The canal: stone banks and water, straight from the board's north edge to the harbour. */
+function canal(): THREE.Group {
+  const g = new THREE.Group();
+  const len = CANAL.z1 - CANAL.z0;
+  const mid = (CANAL.z0 + CANAL.z1) / 2;
+  const water = mesh(new THREE.PlaneGeometry(CANAL.w, len).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color: '#4aa3d4', roughness: 0.08, metalness: 0.1 }), false);
+  water.position.set(CANAL.x, 0.012, mid);
+  water.receiveShadow = true;
+  water.userData.noAO = true;
+  g.add(water);
+  for (const dx of [-1, 1]) {
+    const bank = mesh(new THREE.BoxGeometry(0.4, 0.22, len), mat('#c9c1b4', 0.8));
+    bank.position.set(CANAL.x + dx * (CANAL.w / 2 + 0.2), 0.11, mid);
+    g.add(bank);
+  }
+  return g;
+}
+
 function balcony({ x, z }: THREE.Vector3): THREE.Group {
   const g = new THREE.Group();
   const deck = mesh(new THREE.BoxGeometry(1.6, 0.14, 1.3), mat('#e8e0d0', 0.7));
@@ -885,18 +1137,115 @@ function bins(): THREE.Group {
   return g;
 }
 
-function bench(): THREE.Group {
+/** The building site: a sandy plot with a low fence and a stack of blocks. */
+function sitePlot({ x, z }: THREE.Vector3): THREE.Group {
   const g = new THREE.Group();
-  const seat = mesh(new THREE.BoxGeometry(1.8, 0.1, 0.5), mat('#a8774a', 0.7));
-  seat.position.y = 0.45;
-  const back = mesh(new THREE.BoxGeometry(1.8, 0.4, 0.08), mat('#a8774a', 0.7));
-  back.position.set(0, 0.75, -0.22);
-  g.add(seat, back);
+  const sand = mesh(new THREE.BoxGeometry(6, 0.06, 5), mat('#d8b878', 0.95));
+  sand.position.y = 0.03;
+  g.add(sand);
+  for (const [dx, dz, w, d] of [[0, -2.5, 6, 0.08], [0, 2.5, 6, 0.08], [-3, 0, 0.08, 5]] as const) {
+    const f = mesh(new THREE.BoxGeometry(w, 0.5, d), mat('#f2c230', 0.6));
+    f.position.set(dx, 0.25, dz);
+    g.add(f);
+  }
+  for (let i = 0; i < 4; i++) {
+    const b = mesh(new THREE.BoxGeometry(0.5, 0.35, 0.5), mat('#d8483c', 0.7));
+    b.position.set(2.3, 0.18 + (i % 2) * 0.36, -1.6 + Math.floor(i / 2) * 0.55);
+    g.add(b);
+  }
+  g.position.set(x, 0, z);
   return g;
 }
 
+/** One floor of the house on the building site, with windows. */
+function floor(i: number): THREE.Group {
+  const g = new THREE.Group();
+  const walls = mesh(new THREE.BoxGeometry(3.6, 1.1, 3), mat(['#f2d06b', '#a3d0f0', '#f6b0a0'][i], 0.7));
+  walls.position.y = 0.55;
+  g.add(walls);
+  for (const dx of [-1, 0, 1]) {
+    const w = mesh(new THREE.BoxGeometry(0.5, 0.5, 0.05), mat('#3f6a9a', 0.2), false);
+    w.position.set(dx, 0.6, 1.52);
+    g.add(w);
+  }
+  if (i === 2) {
+    const roof = mesh(new THREE.ConeGeometry(2.7, 1.2, 4), mat('#c84a3a', 0.6));
+    roof.rotation.y = Math.PI / 4;
+    roof.position.y = 1.7;
+    g.add(roof);
+  }
+  return g;
+}
+
+/** The kitten's little house in the park's corner. */
+function catHouse({ x, z }: THREE.Vector3): THREE.Group {
+  const g = boxHouse('#ff8fb1', '#3f86d6', 1.5, 1.1, 1.3);
+  const door = mesh(new THREE.CircleGeometry(0.3, 18), mat('#2a1a10', 0.9));
+  door.position.set(0, 0.4, 0.66);
+  g.add(door);
+  g.position.set(x, 0, z);
+  g.rotation.y = 0.5;
+  return g;
+}
+
+/** Spots of mud on the car by the car wash (each one goes at its own moment). */
+function muddy(car: THREE.Group): THREE.Mesh[] {
+  const out: THREE.Mesh[] = [];
+  for (let i = 0; i < 9; i++) {
+    const m = mesh(new THREE.SphereGeometry(0.22 + (i % 3) * 0.06, 10, 8), mat('#7a5a3a', 0.95), false);
+    m.scale.y = 0.45;
+    m.position.set(-0.9 + (i % 5) * 0.45, 0.55 + (i % 2) * 0.35, i % 2 ? 0.55 : -0.55);
+    m.userData.k = (i + 1) / 10;
+    car.add(m);
+    out.push(m);
+  }
+  return out;
+}
+
 /** Code-built stand-ins for the city's people and vehicles. */
+/** A little person: body, head and a hat or hair of their own colours. */
+function person(body: string, top: string, h = 1.1): THREE.Group {
+  const g = new THREE.Group();
+  const b = mesh(new THREE.CylinderGeometry(0.22 * h, 0.27 * h, 0.75 * h, 14), mat(body, 0.6));
+  b.position.y = 0.38 * h;
+  const head = mesh(new THREE.SphereGeometry(0.21 * h, 14, 10), mat('#f2d9a6', 0.7));
+  head.position.y = 0.95 * h;
+  const hat = mesh(new THREE.SphereGeometry(0.23 * h, 14, 10, 0, Math.PI * 2, 0, Math.PI / 2), mat(top, 0.5));
+  hat.position.y = 1.0 * h;
+  g.add(b, head, hat);
+  return g;
+}
+
 const STAND_INS: Record<string, () => THREE.Object3D> = {
+  child: () => person(['#3f86d6', '#ff8fb1', '#5cb85c', '#f2c230'][Math.floor(Math.random() * 4)], '#7a4a2a', 1),
+  firefighter: () => person('#d8483c', '#f2c230', 1.3),
+  shopkeeper: () => person('#b388ff', '#5a3a2a', 1.3),
+  baker: () => person('#ffffff', '#ffffff', 1.3),
+  grandma: () => person('#b5653a', '#d9dde3', 1.25),
+  boat: () => {
+    const g = new THREE.Group();
+    const hull = mesh(new THREE.BoxGeometry(2.8, 0.6, 1.2), mat('#f4f1ea', 0.5));
+    hull.position.y = 0.3;
+    const stripe = mesh(new THREE.BoxGeometry(2.82, 0.15, 1.22), mat('#d8483c', 0.5));
+    stripe.position.y = 0.45;
+    const cabin = mesh(new THREE.BoxGeometry(1, 0.6, 0.9), mat('#3f86d6', 0.5));
+    cabin.position.set(-0.3, 0.9, 0);
+    const funnel = mesh(new THREE.CylinderGeometry(0.15, 0.18, 0.5, 12), mat('#f2c230', 0.5));
+    funnel.position.set(-0.4, 1.45, 0);
+    g.add(hull, stripe, cabin, funnel);
+    return g;
+  },
+  builder: () => {
+    const g = new THREE.Group();
+    const body = mesh(new THREE.CylinderGeometry(0.28, 0.32, 1, 14), mat('#ff8f2a', 0.6));
+    body.position.y = 0.5;
+    const head = mesh(new THREE.SphereGeometry(0.25, 14, 10), mat('#f2d9a6', 0.7));
+    head.position.y = 1.22;
+    const helmet = mesh(new THREE.SphereGeometry(0.28, 14, 10, 0, Math.PI * 2, 0, Math.PI / 2), mat('#f2c230', 0.4));
+    helmet.position.y = 1.3;
+    g.add(body, head, helmet);
+    return g;
+  },
   car: () => {
     const g = new THREE.Group();
     const body = mesh(new THREE.BoxGeometry(2.2, 0.6, 1.1), mat('#d8483c', 0.4));
