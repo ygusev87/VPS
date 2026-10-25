@@ -563,8 +563,9 @@ export class Hud {
         break;
       case 'drag': {
         const to = h.to.clone();
+        const from = h.part;
         this.hintScreen = {
-          a: () => this.trayCardCenter(h.kind) ?? { x: 0, y: 0 },
+          a: () => (from ? this.stage.project(from.root.localToWorld(v.set(0, 0.4, 0))) : this.trayCardCenter(h.kind) ?? { x: 0, y: 0 }),
           b: () => this.stage.project(to),
         };
         break;
@@ -578,7 +579,7 @@ export class Hud {
     const show = visible && !!h && !!this.hintScreen;
     const op = Number(this.hints.style.opacity || 0);
     this.hints.style.opacity = String(THREE.MathUtils.damp(op, show ? 1 : 0, 8, dt));
-    const pulse = show && h?.type === 'drag' ? this.groupOf(h.kind)?.id : undefined;
+    const pulse = show && h?.type === 'drag' && !h.part ? this.groupOf(h.kind)?.id : undefined;
     this.sidebar.querySelectorAll<HTMLElement>('.group').forEach((c) => c.querySelector('.part-btn')!.classList.toggle('is-pulse', c.dataset.group === pulse));
     if (!h || !this.hintScreen) return;
     this.hintT += dt;

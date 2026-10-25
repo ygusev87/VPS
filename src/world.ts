@@ -1,6 +1,6 @@
 // What is on the table: parts, wires and the live circuit result.
 import { solveCircuit, type CircuitElement, type CircuitResult } from './circuit/solver';
-import type { LightColor, Part, PartKind, Terminal } from './parts/base';
+import { MAP_BOARD, type LightColor, type Part, type PartKind, type Terminal } from './parts/base';
 import { createPart } from './parts/catalog';
 import type { Stage } from './stage';
 import { Wire } from './wires';
@@ -295,8 +295,14 @@ export class World {
   /** Keep a part within reach on the endless table. */
   clamp(part: Part) {
     const p = part.root.position;
-    const len = Math.hypot(p.x, p.z);
-    if (len > 34) p.multiplyScalar(34 / len);
+    const b = MAP_BOARD.half;
+    if (b) {
+      p.x = Math.min(b.x - 1, Math.max(-b.x + 1, p.x));
+      p.z = Math.min(b.z - 1, Math.max(-b.z + 1, p.z));
+    } else {
+      const len = Math.hypot(p.x, p.z);
+      if (len > 34) p.multiplyScalar(34 / len);
+    }
     p.y = 0;
   }
 

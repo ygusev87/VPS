@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 import type { CircuitElement, ElementKind } from '../circuit/solver';
 import { C } from '../theme';
-import { Part, type PartKind } from './base';
+import { MAP_BOARD, Part, type PartKind } from './base';
 import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox } from './kit';
 import { glowFor, sprite } from './models';
 import { boundsWhere, model, sizeOf, tip } from './assets';
@@ -1291,6 +1291,7 @@ function shine(parts: Part[], laserLit: Map<Part, number>) {
 
 const FRICTION = 1.5;
 const BOUNCE = 0.45;
+/** Balls stop this far out on the workbench (on a map, at its board's edge). */
 const LIMIT = 34;
 
 /** Plate rectangle of a part in world units, roughly from its size. */
@@ -1376,7 +1377,8 @@ function roll(parts: Part[], dt: number) {
     }
     b.pos.y = b.pos.y > floor ? Math.max(floor, b.pos.y - dt * 3) : damp(b.pos.y, floor, 20, dt);
     const len = Math.hypot(b.pos.x, b.pos.z);
-    if (len > LIMIT) b.vel.set(0, 0, 0);
+    const edge = MAP_BOARD.half;
+    if (edge ? Math.abs(b.pos.x) > edge.x - 0.5 || Math.abs(b.pos.z) > edge.z - 0.5 : len > LIMIT) b.vel.set(0, 0, 0);
     // Roll: turn about the axis across the motion.
     const v = b.vel.length();
     if (v > 0.01) {

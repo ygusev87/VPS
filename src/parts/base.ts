@@ -3,6 +3,9 @@ import type { CircuitElement, CircuitResult, ElementKind } from '../circuit/solv
 import { C } from '../theme';
 import { BAKED, bake, mat, PLATE_TOP } from './kit';
 
+/** On a map, its board's half size: parts and balls stay on the board (the workbench keeps them within a round 34). */
+export const MAP_BOARD: { half: { x: number; z: number } | null } = { half: null };
+
 export type PartKind =
   | 'battery'
   | 'bigBattery'

@@ -6,7 +6,7 @@
 import * as THREE from 'three';
 import { isPolar, sandboxHint, type Hint } from './hints';
 import { model, type Fit } from './parts/assets';
-import type { Part, PartKind } from './parts/base';
+import { MAP_BOARD, type Part, type PartKind } from './parts/base';
 import { mat, mesh } from './parts/kit';
 import type { Stage } from './stage';
 import { Life } from './life';
@@ -206,8 +206,9 @@ export abstract class StoryMap {
     this.life = new Life(this.scenery, { say: (id) => this.hooks.say(id), chime: () => this.hooks.chime() });
     this.stage.world.add(this.scenery);
     this.stage.showGrid(false);
-    // The view may roam to the map's corners.
+    // The view may roam to the map's corners, and parts may stand anywhere on its board.
     this.stage.limit = Math.hypot(this.width / 2, this.depth / 2);
+    MAP_BOARD.half = { x: this.width / 2, z: this.depth / 2 };
     this.build();
     this.setPhase('day');
     this.refocus(true);
@@ -218,6 +219,7 @@ export abstract class StoryMap {
     this.scenery.removeFromParent();
     this.stage.showGrid(true);
     this.stage.limit = 36;
+    MAP_BOARD.half = null;
     this.stage.setNightAmount(0);
     this.cleanup();
   }
@@ -341,6 +343,11 @@ export abstract class StoryMap {
       }
     }
     return false;
+  }
+
+  /** The part stands on a ring that wants its kind. */
+  private onAnyRing(p: Part) {
+    return this.needs.some((n) => slots(n).some((s) => s.kinds.includes(p.kind) && p.root.position.distanceTo(s.spot) < 1));
   }
 
   /** Another part of the kind already stands on this ring. */
@@ -555,9 +562,13 @@ export abstract class StoryMap {
       for (const s of slots(n)) {
         if (!s.kinds.length) continue;
         const placed = this.world.parts.some((p) => s.kinds.includes(p.kind) && p.root.position.distanceTo(s.spot) < 1);
+        if (placed) continue;
         // The pictured part, or another that does as well (a bulb for the eggs when the heater is taken).
         const kind = [s.icon, ...s.kinds].find((k) => trayLeft(k) > 0);
-        if (!placed && kind) return { type: 'drag', kind, to: s.spot.clone(), phrase: s.hintPhrase ?? 'placeHere' };
+        if (kind) return { type: 'drag', kind, to: s.spot.clone(), phrase: s.hintPhrase ?? 'placeHere' };
+        // None left in the drawers: one put down off its ring will do.
+        const stray = this.world.parts.find((p) => !p.pinned && s.kinds.includes(p.kind) && !this.onAnyRing(p));
+        if (stray) return { type: 'drag', kind: stray.kind, to: s.spot.clone(), phrase: s.hintPhrase ?? 'placeHere', part: stray };
       }
       return null;
     };

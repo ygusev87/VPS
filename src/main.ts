@@ -23,7 +23,7 @@ import { capture, deleteInvention, keepPlace, loadInventions, placeKept, restore
 import { FireTruck, Helicopter, RaceTrack, TrafficLight } from './parts/fun';
 import { Dynamo } from './parts/more';
 import { loadModels, releaseUnused } from './parts/assets';
-import { ALL_ITEMS, createPart, itemKey, itemOf, MODEL_NAMES } from './parts/catalog';
+import { ALL_ITEMS, createPart, GROUPS, itemKey, itemOf, MODEL_NAMES } from './parts/catalog';
 import { PerfMeter } from './perf';
 import { Stage } from './stage';
 import { loadProgress, saveProgress } from './storage';
@@ -625,6 +625,8 @@ world.on((e) => {
 // ───────── Hints ─────────
 
 let hintTimer = 0;
+/** `?quickhints`: hints come up at once (for the finger-driven play-throughs in tests). */
+const QUICK_HINTS = new URLSearchParams(location.search).has('quickhints');
 function updateHint(dt: number) {
   hintTimer -= dt;
   if (hintTimer > 0) return;
@@ -635,7 +637,7 @@ function updateHint(dt: number) {
   const idle = performance.now() - lastTouch;
   // Free play is the child's own experiment: nudge later than in missions.
   const free = level === FREE_PLAY || !!level.sandbox;
-  const wait = free ? (hintShownOnce ? 9000 : 4000) : hintShownOnce ? 6000 : 1600;
+  const wait = QUICK_HINTS ? 300 : free ? (hintShownOnce ? 9000 : 4000) : hintShownOnce ? 6000 : 1600;
   const h = map ? (map.hint(trayLeft) ?? (map.ownHints ? null : sandboxHint(world))) : free ? sandboxHint(world) : levelHint(world, level, trayLeft);
   if (!h) return setHint(null);
   // Keep showing a hint that is already up; new ones wait for the child to pause.
@@ -1086,6 +1088,11 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
   hud,
   voice,
   hints: { problemHint, sandboxHint, levelHint },
+  /** The hint on screen now (the hand), for tests that follow it with a real finger. */
+  get hint() {
+    return hintVisible() ? currentHint : null;
+  },
+  GROUPS,
   /** Run the table (wind, light, balls, circuits) n steps of 50 ms without drawing — for tests. */
   step(n: number) {
     for (let i = 0; i < n; i++) {

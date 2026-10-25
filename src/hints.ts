@@ -22,7 +22,8 @@ export type Hint =
   | { type: 'weak'; part: Part; phrase: PhraseId }
   /** Take this wire off: it is the newest step that caused the problem. */
   | { type: 'tapWire'; wire: Wire; at: Part | null; problem: Problem; phrase: PhraseId; u: number }
-  | { type: 'drag'; kind: PartKind; to: THREE.Vector3; phrase: PhraseId };
+  /** Bring a part here: a new one from the drawers, or `part`, one already on the table (put down off its ring). */
+  | { type: 'drag'; kind: PartKind; to: THREE.Vector3; phrase: PhraseId; part?: Part };
 
 export function hintKey(h: Hint | null): string {
   if (!h) return '';
@@ -36,7 +37,7 @@ export function hintKey(h: Hint | null): string {
     case 'tapWire':
       return `w:${h.wire.id}:${h.problem}`;
     case 'drag':
-      return `d:${h.kind}`;
+      return `d:${h.kind}:${h.part?.id ?? ''}`;
   }
 }
 
