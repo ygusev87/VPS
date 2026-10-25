@@ -300,6 +300,9 @@ function spring(): THREE.Mesh {
 const FIL_COLD = new THREE.Color('#ff3a10');
 const FIL_HOT = new THREE.Color('#ffe2b0');
 
+/** Height of the teal drum under the sculpted bulb socket. */
+const BULB_DRUM = 0.14;
+
 export class Bulb extends Part {
   readonly kind: PartKind = 'bulb';
   readonly elementKind: ElementKind = 'bulb';
@@ -317,9 +320,13 @@ export class Bulb extends Part {
     const plate = basePlate(2.0, 1.55, 'лампа 3 в');
     const socketModel = model('socket', { width: 1.05 });
     const socket = socketModel ?? mesh(new THREE.CylinderGeometry(0.42, 0.48, 0.32, 28), mat(C.navy2, 0.5));
-    socket.position.set(0, socketModel ? PLATE_TOP : PLATE_TOP + 0.16, -0.15);
+    // The cream sculpted socket stands on a teal drum, so it shows against the cream board.
+    const drum = mesh(new THREE.CylinderGeometry(0.6, 0.64, BULB_DRUM, 36), mat(C.teal, 0.4));
+    drum.position.set(0, PLATE_TOP + BULB_DRUM / 2, -0.15);
+    drum.visible = !!socketModel;
+    socket.position.set(0, socketModel ? PLATE_TOP + BULB_DRUM - 0.02 : PLATE_TOP + 0.16, -0.15);
     // Where the glass starts: on the brass collar of the sculpted socket, or on the code-built screw.
-    const neck = socketModel ? PLATE_TOP + sizeOf(socketModel).y - 0.08 : PLATE_TOP + 0.66;
+    const neck = socketModel ? PLATE_TOP + BULB_DRUM + sizeOf(socketModel).y - 0.1 : PLATE_TOP + 0.66;
 
     const screwPts: THREE.Vector2[] = [];
     for (let i = 0; i <= 12; i++) {
@@ -379,7 +386,7 @@ export class Bulb extends Part {
     this.rays.renderOrder = 9;
 
     this.pool.position.z = -0.15;
-    this.body.add(plate, socket, screw, fil, glass, this.glow, this.rays, this.pool);
+    this.body.add(plate, drum, socket, screw, fil, glass, this.glow, this.rays, this.pool);
     this.addTerminal('a', 'none', 0.66, 0.48);
     this.addTerminal('b', 'none', -0.66, 0.48);
     this.pickable(plate, socket, screw, glass);
@@ -396,7 +403,7 @@ export class Bulb extends Part {
   setColor(c: LightColor) {
     this.color = c;
     const l = LIGHT[c];
-    this.glassMat.color.set('#fffaf0').lerp(new THREE.Color(l.hex), c === 'warm' ? 0 : 0.45);
+    this.glassMat.color.set('#e8eff6').lerp(new THREE.Color(l.hex), c === 'warm' ? 0 : 0.45);
     this.glassMat.emissive.set(c === 'warm' ? '#ffd27a' : l.hex);
     this.filamentMat.emissive.set(l.hex);
     this.glow.material.map = glowFor(l.glow);
@@ -423,7 +430,7 @@ export class Bulb extends Part {
     if (this.color === 'warm') this.filamentMat.emissive.copy(FIL_COLD).lerp(FIL_HOT, Math.min(1, b));
     this.filamentMat.emissiveIntensity = (0.5 + b * 9) * b * flicker;
     this.glassMat.emissiveIntensity = b * (Part.night ? 1.1 : 2.6);
-    this.glassMat.opacity = 0.34 + b * 0.35;
+    this.glassMat.opacity = 0.46 + b * 0.25;
     // The bloom makes the halo now; the painted glow only softens it.
     this.glow.material.opacity = Math.min(Part.night ? 0.6 : 0.9, b * (Part.night ? 0.55 : 0.85));
     this.glow.scale.setScalar(1.6 + b * 0.9);

@@ -28,10 +28,12 @@ export class Pole extends Part {
     pole.position.set(0, PLATE_TOP + 1.7, -0.3);
     const arm = mesh(new THREE.BoxGeometry(1.3, 0.1, 0.1), wood());
     arm.position.set(0, PLATE_TOP + 3.1, -0.3);
+    const wooden: THREE.Object3D[] = [pole, arm];
     this.body.add(plate, pole, arm);
     for (const x of [-0.5, 0, 0.5]) {
       const ins = mesh(new THREE.CylinderGeometry(0.05, 0.07, 0.16, 10), mat('#e8eef5', 0.2, 0.1));
       ins.position.set(x, PLATE_TOP + 3.23, -0.3);
+      wooden.push(ins);
       this.body.add(ins);
     }
     // A grey box with the sockets the child wires to.
@@ -47,11 +49,14 @@ export class Pole extends Part {
     this.body.add(plus);
     this.addTerminal('a', 'plus', 0.62, 0.52);
     this.addTerminal('b', 'minus', -0.62, 0.52);
-    const sculpt = model('pole', { height: 3.4, rotateY: Math.PI / 2 });
+    const sculpt = model('pole', { height: 2.5, rotateY: Math.PI / 2 });
     if (sculpt) {
-      // The sculpted pole has its own insulators and socket box.
-      for (const o of this.body.children.filter((c) => c !== plate && c !== l && c !== bolt && c !== plus)) o.visible = false;
-      sculpt.position.set(0, PLATE_TOP - 0.02, -0.3);
+      // The sculpted pole has its own insulators and socket box; it stands at
+      // the back of the board so it never hides the posts.
+      for (const o of [...wooden, box]) o.visible = false;
+      const back = new THREE.Box3().setFromObject(sculpt).min.z;
+      sculpt.position.set(0, PLATE_TOP - 0.02, -0.78 - back);
+      l.position.set(0, PLATE_TOP + 0.03, 0.15);
       this.body.add(sculpt);
       this.pickable(plate, sculpt);
     } else this.pickable(plate, pole, box);
