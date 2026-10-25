@@ -166,9 +166,11 @@ uniform float uSaturation;`,
   vec3 col = mix(texture2D(tGrass, p / uScale.x).rgb, texture2D(tHillGrass, p / uScale.x).rgb, hill);
   col = mix(col, texture2D(tSoil, p / uScale.z).rgb, smoothstep(0.4, 0.6, m.g));
   col = mix(col, texture2D(tMud, p / uScale.w).rgb, smoothstep(0.35, 0.65, m.b));
-  float lane = smoothstep(0.55, 0.8, m.r);
-  float verge = smoothstep(0.15, 0.4, m.r) * (1.0 - lane);
-  col *= 1.0 - verge * 0.22;
+  // A path's edge is ragged where the grass grows into it (the grass tile's own pattern breaks the line).
+  float tuft = texture2D(tGrass, p / 1.7).g - 0.5;
+  float lane = smoothstep(0.45 + tuft * 0.5, 0.85 + tuft * 0.3, m.r);
+  float verge = smoothstep(0.15, 0.45, m.r) * (1.0 - lane);
+  col *= 1.0 - verge * 0.12;
   col = mix(col, texture2D(tSand, p / uScale.y).rgb, lane);
   col = max(mix(vec3(dot(col, vec3(0.2126, 0.7152, 0.0722))), col, uSaturation), 0.0);
   diffuseColor.rgb *= col;

@@ -487,9 +487,9 @@ export class FarmMap extends StoryMap {
     this.scenery.add(group);
     // Butterflies over the garden and the flowers, fireflies by the pond at night; smoke from the house.
     this.life.addFlutters([v(4, 21), v(-18, 19), v(13, 26), v(-40, 22), v(44, -24), v(-10, 0)], [POND, v(-35, 14)]);
-    const house = DECOR.find((g) => g.model === 'house' && drawn.has('house'));
+    const house = DECOR.find((g) => (g.model === 'house' || g.model === 'farmhouse') && drawn.has(g.model));
     if (house) {
-      const box = new THREE.Box3().setFromObject(group.children[[...drawn].indexOf('house')] ?? group);
+      const box = new THREE.Box3().setFromObject(group.children[[...drawn].indexOf(house.model)] ?? group);
       this.life.addSmoke(v(house.items[0][0] + 1.5, house.items[0][1]).setY(Math.max(3, box.max.y)));
     }
     const trees = [...drawn].some((m) => m.startsWith('tree'));
