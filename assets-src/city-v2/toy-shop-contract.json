@@ -1,5 +1,5 @@
 {
-  "status": "Reference accepted m0223; GLB installed and targeted night-game QA passed; Claude/iPad review pending",
+  "status": "Reference m0223; GLB installed and targeted night task passed; Claude visual integration accepted m0226; iPad pending",
   "reference": "toy-shop-v1.png",
   "sourceRevision": "0bc7afa",
   "placementSource": "src/city-decor.ts, f77d137 layout",
@@ -150,5 +150,6 @@
     "raccoonCorridorClearance": 0.7453,
     "sellerControlClearance": 1.2683,
     "binsXSeparation": 1.05
-  }
+  },
+  "integrationReviewMessage": "m0226"
 }

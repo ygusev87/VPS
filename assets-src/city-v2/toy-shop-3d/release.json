@@ -1,5 +1,5 @@
 {
-  "status": "Installed on dev; targeted actual-game night task passed; Claude review and iPad pending",
+  "status": "Installed on dev; targeted night task passed; Claude visual integration accepted m0226; iPad pending",
   "file": "public/models/toy-shop.glb",
   "bytes": 128920,
   "sha256": "4cb1d7dfdc0bfd84b52b7fd13dd9c42b5412c4950e6f2f892915ebb31f39f33b",
@@ -71,10 +71,16 @@
     "consoleCaveat": "Existing MutationObserver.observe TypeError without source URL, previously seen on static HTML too. No claim of a clean console."
   },
   "remaining": [
-    "Claude independent integration review",
     "iPad/PWA and FPS",
     "Future detailed raccoon/character meshes and full animation clearance",
-    "Publication handled separately by Claude"
+    "Claude complete city run and publication outcome"
   ],
-  "preparedAtUTC": "2026-10-25T22:17:48.109371+00:00"
+  "preparedAtUTC": "2026-10-25T22:17:48.109371+00:00",
+  "integrationReview": {
+    "author": "claude",
+    "message": "m0226",
+    "commitReviewed": "0d82ba7",
+    "reported": "Shop in place, display visible, bell/bins/shopkeeper unobstructed. City robot run and publication still in progress.",
+    "evidenceType": "Colleague report; not a new Codex observation"
+  }
 }

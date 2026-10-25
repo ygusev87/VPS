@@ -1,0 +1,145 @@
+{
+  "status": "Reference proposal; await Claude review before Tripo",
+  "reference": "fire-station-v1.png",
+  "sourceRevision": "0d82ba7",
+  "placement": {
+    "centerXZ": [
+      29,
+      8
+    ],
+    "fitWidth": 7,
+    "instanceScale": 1,
+    "rotateY": -1.5707963267948966,
+    "baseY": 0,
+    "normalisedFront": "+X",
+    "gameFront": "+Z"
+  },
+  "geometryTargets": {
+    "fullSizeXYZ": [
+      7,
+      4.5,
+      5
+    ],
+    "unmeasured": true,
+    "fullExtentsInclude": [
+      "roof",
+      "beacon dome",
+      "cornices",
+      "door trim"
+    ],
+    "closedOpaqueRoof": true,
+    "groundLevelDoors": true,
+    "trianglesMax": 8000,
+    "materials": 1,
+    "baseColorPixels": 512,
+    "downloadBytesTarget": 200000,
+    "note": "Approximate proportions, not measured geometry; preserve uniform scale and review actual shape."
+  },
+  "targetFootprintOnly": {
+    "x0": 25.5,
+    "x1": 32.5,
+    "z0": 5.5,
+    "z1": 10.5,
+    "note": "Derived from target width/depth; not actual model measurement."
+  },
+  "fixedGameplay": {
+    "ENGINE_SPOT": [
+      25.5,
+      13.5
+    ],
+    "STATION_POLE": [
+      24,
+      17.5
+    ],
+    "firefighter": {
+      "centerXZ": [
+        28.5,
+        12.5
+      ],
+      "height": 1.6,
+      "yaw": 0.4
+    },
+    "BURNING": [
+      48,
+      8
+    ],
+    "BURNING_TOP": 3.7,
+    "LADDER_SPOT": [
+      43.5,
+      9.5
+    ],
+    "HYDRANT_SPOT": [
+      44,
+      14
+    ],
+    "visualHydrant": [
+      45.8,
+      14.6
+    ],
+    "FIRE_POLE": [
+      40.5,
+      12.5
+    ],
+    "catDescent": {
+      "fromXYZ": [
+        47,
+        3.7,
+        8
+      ],
+      "toXYZ": [
+        42.5,
+        0,
+        10.7
+      ]
+    },
+    "canal": {
+      "centerX": 37,
+      "width": 3.2
+    },
+    "doNotMove": "Building center/fit and all task/character anchors. Do not modify burning house or cat landing route as part of this asset.",
+    "behavior": "FireTruck is a separate powered part at ENGINE_SPOT; no drive-out-of-garage path exists. Garage and beacon are static building decoration."
+  },
+  "appearance": {
+    "walls": "coral red",
+    "trim": "warm cream substantial pillars and arch",
+    "garageDoor": "closed opaque dark teal sectional door, static",
+    "serviceDoor": "small teal door on front right, ground level",
+    "roof": "filled opaque flat roof within shallow cream parapet, low central front parapet/window",
+    "roofBeacon": "short red opaque painted dome, non-emissive and static",
+    "exclude": [
+      "text",
+      "numbers",
+      "vehicles",
+      "people",
+      "cat",
+      "ladder",
+      "hydrant",
+      "wires",
+      "fire",
+      "smoke",
+      "plants",
+      "base slab",
+      "stairs",
+      "open garage",
+      "transparent roof",
+      "roof hole"
+    ]
+  },
+  "acceptance": [
+    "Inspect decoded GLB using actual model() fit and storymap.patched(), unchanged center(29,8), width7 and scale1.",
+    "Measure full bbox including beacon/cornices; verify positive determinant transforms and front direction visually.",
+    "Confirm closed opaque roof/top/back rather than an open courtyard. Check gate, window and red dome at day/evening/night exposure; dome does not emit gameplay light.",
+    "Protect nominal4x4 fire-engine placement area around(25.5,13.5), power pole access and actual firetruck body, ring and terminals at1180 and390.",
+    "Keep actual firefighter at(28.5,12.5), height1.6 visible in front of the facade, including reaction jumps; no roof/cornice intersection.",
+    "Keep canal/bridge bank free; full bbox must not enter canal left edge35.4 or obstruct eastern task views.",
+    "Do not alter ladder, hydrant, burning house or cat descent. Full evening task should still extinguish fire and bring cat down.",
+    "Reference review precedes any Tripo order; iPad/PWA/FPS remain separate from asset geometry and desktop QA."
+  ],
+  "tripoOrders": 0,
+  "studioCreditsUsed": 0,
+  "apiCreditsUsed": 0,
+  "limitations": [
+    "Reference PNG is not a runtime building, topology check or measured footprint.",
+    "No full game/iPad/performance result from the reference."
+  ]
+}

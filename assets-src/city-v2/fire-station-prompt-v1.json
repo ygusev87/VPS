@@ -1,0 +1,47 @@
+{
+  "useCase": "stylized-concept",
+  "prompt": "Use case: stylized-concept.\nAsset type: one isolated fire-station building reference for image-to-3D in a children's toy-town game.\nReference image 1: approved city composition. Use ONLY the small coral-red fire station on the left bank of the blue canal in the middle-right area, with cream trim and a small red roof beacon. Do not reproduce the town, truck or surrounding props.\nReference image 2: bakery. Use only its premium tactile molded painted-toy material, substantial softly rounded edges, generous cream architectural trim and clear simple forms. Do not copy its tiled pitched roof, bakery awning, oven or base slab.\nCreate a compact beautiful miniature fire station: coral-red walls, broad cream corner pillars and cornice, one large garage opening outlined by a cream rounded arch. The garage is completely closed with an opaque deep teal-blue sectional door with a few broad horizontal panels; no dark open interior. A slim pedestrian door on the front right and one modest cream-framed side window. Low solid flat roof with a gently raised central front parapet containing one small opaque blue window. On the central roof above that window sits a short rounded opaque red painted beacon dome on a cream base; this is static non-glowing decoration, not glass or a working light.\nProportions: wide, compact and low, approximately full outer width 7, depth 5, total height 4.5 INCLUDING roof dome and trims. The full roof is a continuous opaque filled solid surface, visible from above, not an open-top courtyard, cutaway or hollow parapet box. Shallow roof edges and no projecting front porch. All doors meet ground level, no stairs, base slab, plinth or pavement. There must be generous empty ground in front because the game adds a separate fire engine and firefighter there.\nStyle: warmly polished sculpted toy render with satin painted surfaces, softly beveled corners, a few large molded masonry joints at most, simple readable details at small game scale. Restrained palette of rich coral red, warm cream, muted blue-teal, small brass door handle. No lettering or numbers.\nComposition: single complete building, centered with unclipped margins, slightly elevated front/right three-quarter view, plain warm off-white seamless studio background, soft even neutral daylight and a gentle contact shadow.\nExclude: truck, vehicles, firefighters, people, cats, trees, plants, hoses, ladders, hydrants, roads, wires, fire, smoke, flags, signs, badges, roof terrace furniture, open interior, transparent glass, pedestal, steps, logos, text, numerals or watermark. One view only.",
+  "references": [
+    "/Users/gusev/gameios/assets-src/city-v2/concept-v2.png",
+    "/Users/gusev/gameios/assets-src/city-v1/bakery-v1.png"
+  ],
+  "mode": "built-in image_gen; style reference generation",
+  "output": "fire-station-v1.png",
+  "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-9750d0f3-825b-4767-bf7b-e667eef8bc20.png",
+  "sha256": "5809fc3c9aa5da5bf2e3ab5123349b9ac8382f7a4e2bb656cd532167329870fa",
+  "sourceRevision": "0d82ba7",
+  "status": "Reference ready for review; no Tripo order",
+  "inspection": "Single red/cream fire station, closed dark teal garage door, small side door, solid-looking red roof behind shallow parapet, opaque red dome. No people, vehicle, text, base slab, steps or detached props. Hidden roof geometry and dimensions still require GLB validation.",
+  "createdAtUTC": "2026-10-25T22:24:16.391549+00:00",
+  "verification": {
+    "tests": 21,
+    "typecheck": "passed",
+    "browser": "IAB static reference HTML, Python localhost server",
+    "iframeSizes": [
+      [
+        1180,
+        660
+      ],
+      [
+        390,
+        660
+      ]
+    ],
+    "inspection": "Complete image visible; responsive single column390; lower conditions and links reachable by scroll. No game imports on this page.",
+    "screenshots": [
+      "qa/fire-station-reference-1180.png",
+      "qa/fire-station-reference-390.png",
+      "qa/fire-station-reference-390-details.png"
+    ],
+    "console": [
+      {
+        "level": "error",
+        "message": "MutationObserver.observe parameter1 is not of type Node",
+        "timestampUTC": "2026-10-25T22:24:46.433Z",
+        "sourceURL": null,
+        "origin": "Unconfirmed; previously reported same error on static references and game"
+      }
+    ],
+    "limitations": "Reference layout only, no GLB/runtime/iPad/FPS result."
+  }
+}
