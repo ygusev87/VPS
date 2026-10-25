@@ -1310,7 +1310,10 @@ function boardTexture(): THREE.Texture {
   }
   // Paths: soft sand-coloured lanes with a worn, darker verge.
   const sand = paint('path', '#d6bd86', 3.5);
+  /** Every lane as drawn, so the flowers can keep off them. */
+  const lanes: { pts: [number, number][]; w: number }[] = [];
   const path = (pts: [number, number][], w: number) => {
+    lanes.push({ pts, w });
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
     ctx.beginPath();
@@ -1350,14 +1353,43 @@ function boardTexture(): THREE.Texture {
   blobPaint(POND.x, POND.z, 4.6, 2.9, bed ? 'rgba(70,165,215,0.7)' : '#5bb5d8');
   if (bed) blobPaint(POND.x + 0.3, POND.z + 0.2, 3, 1.8, 'rgba(40,120,185,0.35)');
   blobPaint(POND.x - 1, POND.z - 0.8, 2, 0.7, 'rgba(255,255,255,0.35)');
-  // Flowers: a few, the tiles carry the rest of the detail.
-  for (let i = 0; i < (textured ? 220 : 520); i++) {
-    ctx.fillStyle = ['#ffffff', '#ffd23f', '#ff8fb1', '#b388ff'][i % 4];
-    const x = Math.random() * c.width;
-    const y = Math.random() * c.height;
-    ctx.beginPath();
-    ctx.arc(x, y, 5, 0, Math.PI * 2);
-    ctx.fill();
+  // The tiles come out of the day-time grading greener and more orange than painted:
+  // take some colour out of the whole ground so the toys stand out from it.
+  if (textured) {
+    ctx.globalCompositeOperation = 'saturation';
+    ctx.fillStyle = 'rgba(128,128,128,0.22)';
+    ctx.fillRect(0, 0, c.width, c.height);
+    ctx.globalCompositeOperation = 'source-over';
+  }
+  // Flowers in little clumps on the grass: not on the lanes, the field, the mud or the pond.
+  const onLane = (x: number, z: number) =>
+    lanes.some(({ pts, w }) =>
+      pts.slice(1).some(([bx, bz], i) => {
+        const [ax, az] = pts[i];
+        const dx = bx - ax;
+        const dz = bz - az;
+        const k = Math.max(0, Math.min(1, ((x - ax) * dx + (z - az) * dz) / (dx * dx + dz * dz || 1)));
+        return Math.hypot(x - ax - dx * k, z - az - dz * k) < w / 2 + 0.7;
+      }),
+    );
+  const inside = (x: number, z: number, cx: number, cz: number, rx: number, rz: number) => ((x - cx) / rx) ** 2 + ((z - cz) / rz) ** 2 < 1;
+  const free = (x: number, z: number) =>
+    !onLane(x, z) &&
+    !inside(x, z, POND.x, POND.z, 6, 4.2) &&
+    !inside(x, z, mud.x, mud.z, 3, 2.2) &&
+    !(x > 9 + fx && x < 19 + fx && z > -12 + fz && z < 2.5 + fz);
+  const colors = ['#ffffff', '#ffd23f', '#ff8fb1', '#b388ff'];
+  for (let n = 0, tries = 0; n < (textured ? 55 : 120) && tries < 2000; tries++) {
+    const x = (Math.random() - 0.5) * (W - 2);
+    const z = (Math.random() - 0.5) * (D - 2);
+    if (!free(x, z)) continue;
+    n++;
+    ctx.fillStyle = colors[n % colors.length];
+    for (let i = 0; i < 4 + (n % 4); i++) {
+      ctx.beginPath();
+      ctx.arc(X(x + (Math.random() - 0.5) * 1.1), Z(z + (Math.random() - 0.5) * 0.8), 3.5, 0, Math.PI * 2);
+      ctx.fill();
+    }
   }
   const t = new THREE.CanvasTexture(c);
   t.colorSpace = THREE.SRGBColorSpace;
