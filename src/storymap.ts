@@ -651,8 +651,6 @@ export abstract class StoryMap {
         this.helpedNeed(n);
         this.moods();
         // The camera stays: the child picks whom to help next. The first time, a word on how.
-        // Only if the happy one is off screen (the wire was laid far away) does it glance there.
-        setTimeout(() => !this.gone && this.hooks.look?.(top), 800);
         this.lastAt = n.critter.home.clone();
         if (this.focused === n) {
           this.focused = null;

@@ -141,6 +141,8 @@ const MAPS: Record<MapName, { level: Level; models: string[]; tray(): Level['tra
 let won = false;
 let goalHeld = 0;
 let lastTouch = performance.now();
+/** The hint whose hand the camera last went to find. */
+let hintLook = '';
 let levelStart = performance.now();
 let hintShownOnce = false;
 let currentHint: Hint | null = null;
@@ -989,6 +991,15 @@ function frame(now: number) {
     if (mapFocus && performance.now() - lastTouch > 1200 && !input.busy) {
       stage.frame(mapFocus, false, MAP_PPU);
       mapFocus = null;
+    }
+    // The hand drifted off screen (the view moved after it appeared) and the child has
+    // left the table alone a while: bring it back into view, once for each hint.
+    if (!mapFocus && currentHint && hintLook !== currentKey && performance.now() - lastTouch > 5000 && !input.busy) {
+      const pts = hintPoints(currentHint);
+      if (pts.some((p) => !stage.inView(p))) {
+        hintLook = currentKey;
+        mapFocus = pts.flatMap((p) => [p.clone().add(new THREE.Vector3(-2.5, 0, -2.5)), p.clone().add(new THREE.Vector3(2.5, 0, 2.5))]);
+      }
     }
     const night = map.nightAmount > 0.5;
     if (night !== Part.night) applyNight(night);
