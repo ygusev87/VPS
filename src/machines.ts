@@ -147,7 +147,7 @@ export const MACHINES: Level[] = [
     title: 'Разводной мост',
     task: 'Держи кнопку — мост поднимается',
     icon: 'drawbridge',
-    parts: [at('bigBattery', -4, 1.6), at('button', -1.5, 1.6), at('drawbridge', 1.5, -1)],
+    parts: [at('bigBattery', -4.6, 1.8), at('button', -1, 2.3), at('drawbridge', 3.2, -0.9)],
     loops: [['bigBattery', 'button', 'drawbridge']],
     intro: 'mBridge',
     goal: (w) => (find<Drawbridge>(w, 'drawbridge')?.up ?? 0) > 0.85,
