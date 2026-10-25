@@ -133,6 +133,274 @@
         "skins": 0,
         "animations": 0
       }
+    },
+    {
+      "name": "crop-lavender",
+      "sourceSha256": "0ec7806ae3bc41aa2dbcdd53a680644e39e34d88c34b855efc3dcf98c880d620",
+      "outputSha256": "2b5f33697ef15f0270fb4f924046e0ffad3fb1522090ecd5985973451a8551e3",
+      "target": 1600,
+      "error": 0.008,
+      "before": {
+        "bytes": 836708,
+        "triangles": 3880,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.495330810546875,
+            0,
+            -0.311065673828125
+          ],
+          "max": [
+            0.495330810546875,
+            1,
+            0.311065673828125
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 652147
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 105056,
+        "triangles": 3465,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.49533066805017245,
+            0,
+            -0.31105990783410137
+          ],
+          "max": [
+            0.49533066805017245,
+            1,
+            0.31105990783410137
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 37312
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "crop-carrot",
+      "sourceSha256": "66c39a8ec71b1418f3ebac22b7cbce0b7664330400fd32d436b5bf9a8cf194ab",
+      "outputSha256": "f43b399e1cecdaf7098041b98534194bc0e4a3f5f62ca519d0d23e2d7b0cfc68",
+      "target": 1300,
+      "error": 0.01,
+      "before": {
+        "bytes": 663456,
+        "triangles": 3863,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.5,
+            0,
+            -0.254638671875
+          ],
+          "max": [
+            0.5,
+            0.58807373046875,
+            0.254638671875
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 509859
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 63364,
+        "triangles": 2020,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.5,
+            0.000036803731680523644,
+            -0.25463118148460506
+          ],
+          "max": [
+            0.5,
+            0.5880674443151945,
+            0.25447859359398006
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 25204
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "crop-sunflower",
+      "sourceSha256": "de4a6a1e464ac7f7a06139059b4af13dc5c945699265c389ae64d0dff73752eb",
+      "outputSha256": "6a0d08c402f1ed8c787751e200cd45b17271e5b854490c8c897c19679cbf5321",
+      "target": 1500,
+      "error": 0.008,
+      "before": {
+        "bytes": 774444,
+        "triangles": 3838,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.41009521484375,
+            0,
+            -0.1790771186351776
+          ],
+          "max": [
+            0.41009521484375,
+            1,
+            0.1790771186351776
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 624642
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 76728,
+        "triangles": 2244,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.4100924710837123,
+            0,
+            -0.1790826136051515
+          ],
+          "max": [
+            0.4100924710837123,
+            1,
+            0.1790826136051515
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 37308
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "crop-tomato",
+      "sourceSha256": "b356b753da32f2d2bc61ce115fd820ae83abad49619c983eacc1f15fdc6041ce",
+      "outputSha256": "267368346e44ac8c20fd4e71dbe04d18fed1c8153c053094c4074e70e8b93bb4",
+      "target": 1600,
+      "error": 0.008,
+      "before": {
+        "bytes": 696616,
+        "triangles": 3928,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.5,
+            0,
+            -0.3999023139476776
+          ],
+          "max": [
+            0.5,
+            0.763671875,
+            0.3999023139476776
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 535628
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 78976,
+        "triangles": 3006,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.5,
+            0.0000036061910611562276,
+            -0.3998992889187292
+          ],
+          "max": [
+            0.5,
+            0.7636682688089389,
+            0.3998992889187292
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 27178
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
     }
   ],
   "notes": [

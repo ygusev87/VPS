@@ -278,5 +278,49 @@
       0.789789
     ],
     "triangles": 1931
+  },
+  "crop-lavender": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1.0,
+      1.009427,
+      0.627984
+    ],
+    "triangles": 3465
+  },
+  "crop-carrot": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1.0,
+      0.588031,
+      0.50911
+    ],
+    "triangles": 2020
+  },
+  "crop-sunflower": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1.0,
+      1.219237,
+      0.436688
+    ],
+    "triangles": 2244
+  },
+  "crop-tomato": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1.0,
+      0.763665,
+      0.799799
+    ],
+    "triangles": 3006
   }
 }

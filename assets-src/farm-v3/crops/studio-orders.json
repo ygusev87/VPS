@@ -12,8 +12,8 @@
   },
   "credits": {
     "before": 6200,
-    "after": 6150,
-    "spent": 50,
+    "after": 6050,
+    "spent": 150,
     "perModel": 25
   },
   "models": [
@@ -26,6 +26,26 @@
       "name": "crop-cabbage",
       "id": "6c41f7ef-49a3-4ac2-b8ee-a9bfab4e99c9",
       "reference": "crop-cabbage-v1.png"
+    },
+    {
+      "name": "crop-lavender",
+      "id": "c6715ab6-e6b1-4369-ab54-be325cf72b53",
+      "reference": "crop-lavender-v1.png"
+    },
+    {
+      "name": "crop-carrot",
+      "id": "baacfa9b-b7a4-4eea-b784-8b8cfd49f44e",
+      "reference": "crop-carrot-v1.png"
+    },
+    {
+      "name": "crop-sunflower",
+      "id": "5a6927d3-451f-411e-a5be-0a3d03a03e8c",
+      "reference": "crop-sunflower-v1.png"
+    },
+    {
+      "name": "crop-tomato",
+      "id": "3b2bb455-16a2-4078-9076-01b9f12c7cc6",
+      "reference": "crop-tomato-v1.png"
     }
   ],
   "rawDirectory": "assets-src/raw/farm-v3-2026-10-25",

@@ -63,7 +63,17 @@
   ],
   "buildingConflicts": [],
   "cropRouteClearance": 0.08693500655433928,
+  "gardenToyClearance": 0.09615099714943343,
   "fieldCropInstances": 9,
+  "gardenCropInstances": 36,
+  "gardenCropModels": [
+    "crop-wheat",
+    "crop-lavender",
+    "crop-carrot",
+    "crop-sunflower",
+    "crop-tomato",
+    "crop-cabbage"
+  ],
   "inventory": [
     {
       "model": "barn",
@@ -198,6 +208,30 @@
       "trianglesPerInstance": 2942
     },
     {
+      "model": "crop-lavender",
+      "instances": 6,
+      "bytes": 105056,
+      "trianglesPerInstance": 3465
+    },
+    {
+      "model": "crop-carrot",
+      "instances": 6,
+      "bytes": 63364,
+      "trianglesPerInstance": 2020
+    },
+    {
+      "model": "crop-sunflower",
+      "instances": 6,
+      "bytes": 76728,
+      "trianglesPerInstance": 2244
+    },
+    {
+      "model": "crop-tomato",
+      "instances": 6,
+      "bytes": 78976,
+      "trianglesPerInstance": 3006
+    },
+    {
       "model": "crop-cabbage",
       "instances": 6,
       "bytes": 59324,
@@ -210,8 +244,8 @@
       "trianglesPerInstance": 2942
     }
   ],
-  "instances": 274,
-  "trianglesBeforeIntegrationCulling": 454310,
+  "instances": 298,
+  "trianglesBeforeIntegrationCulling": 518720,
   "notes": [
     "Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.",
     "farm.ts culls small instances near its interactive points.",

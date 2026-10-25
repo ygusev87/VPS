@@ -4,7 +4,7 @@
     "uri": "crop-wheat.glb",
     "mimeType": "model/gltf-binary",
     "validatorVersion": "2.0.0-dev.3.10",
-    "validatedAt": "2026-10-25T13:54:10.161Z",
+    "validatedAt": "2026-10-25T14:12:53.187Z",
     "issues": {
       "numErrors": 0,
       "numWarnings": 0,
@@ -78,7 +78,7 @@
     "uri": "crop-cabbage.glb",
     "mimeType": "model/gltf-binary",
     "validatorVersion": "2.0.0-dev.3.10",
-    "validatedAt": "2026-10-25T13:54:10.170Z",
+    "validatedAt": "2026-10-25T14:12:53.194Z",
     "issues": {
       "numErrors": 0,
       "numWarnings": 0,
@@ -142,6 +142,302 @@
       "drawCallCount": 1,
       "totalVertexCount": 1780,
       "totalTriangleCount": 1931,
+      "maxUVs": 1,
+      "maxInfluences": 0,
+      "maxAttributes": 3
+    }
+  },
+  {
+    "name": "crop-lavender",
+    "uri": "crop-lavender.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-10-25T14:12:53.195Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 1,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/0"
+        }
+      ],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "glTF-Transform v4.5.1",
+      "extensionsUsed": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "extensionsRequired": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_mesh_quantization"
+      ],
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "glb",
+          "byteLength": 102564
+        },
+        {
+          "pointer": "/buffers/1",
+          "mimeType": "application/gltf-buffer"
+        },
+        {
+          "pointer": "/images/0",
+          "mimeType": "image/webp",
+          "storage": "buffer-view",
+          "image": {
+            "width": 512,
+            "height": 512,
+            "format": "rgb",
+            "primaries": "srgb",
+            "transfer": "srgb",
+            "bits": 8
+          }
+        }
+      ],
+      "animationCount": 0,
+      "materialCount": 1,
+      "hasMorphTargets": false,
+      "hasSkins": false,
+      "hasTextures": true,
+      "hasDefaultScene": true,
+      "drawCallCount": 1,
+      "totalVertexCount": 4019,
+      "totalTriangleCount": 3465,
+      "maxUVs": 1,
+      "maxInfluences": 0,
+      "maxAttributes": 3
+    }
+  },
+  {
+    "name": "crop-carrot",
+    "uri": "crop-carrot.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-10-25T14:12:53.196Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 1,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/0"
+        }
+      ],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "glTF-Transform v4.5.1",
+      "extensionsUsed": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "extensionsRequired": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_mesh_quantization"
+      ],
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "glb",
+          "byteLength": 60844
+        },
+        {
+          "pointer": "/buffers/1",
+          "mimeType": "application/gltf-buffer"
+        },
+        {
+          "pointer": "/images/0",
+          "mimeType": "image/webp",
+          "storage": "buffer-view",
+          "image": {
+            "width": 512,
+            "height": 512,
+            "format": "rgb",
+            "primaries": "srgb",
+            "transfer": "srgb",
+            "bits": 8
+          }
+        }
+      ],
+      "animationCount": 0,
+      "materialCount": 1,
+      "hasMorphTargets": false,
+      "hasSkins": false,
+      "hasTextures": true,
+      "hasDefaultScene": true,
+      "drawCallCount": 1,
+      "totalVertexCount": 2168,
+      "totalTriangleCount": 2020,
+      "maxUVs": 1,
+      "maxInfluences": 0,
+      "maxAttributes": 3
+    }
+  },
+  {
+    "name": "crop-sunflower",
+    "uri": "crop-sunflower.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-10-25T14:12:53.197Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 1,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/0"
+        }
+      ],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "glTF-Transform v4.5.1",
+      "extensionsUsed": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "extensionsRequired": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_mesh_quantization"
+      ],
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "glb",
+          "byteLength": 74240
+        },
+        {
+          "pointer": "/buffers/1",
+          "mimeType": "application/gltf-buffer"
+        },
+        {
+          "pointer": "/images/0",
+          "mimeType": "image/webp",
+          "storage": "buffer-view",
+          "image": {
+            "width": 512,
+            "height": 512,
+            "format": "rgb",
+            "primaries": "srgb",
+            "transfer": "srgb",
+            "bits": 8
+          }
+        }
+      ],
+      "animationCount": 0,
+      "materialCount": 1,
+      "hasMorphTargets": false,
+      "hasSkins": false,
+      "hasTextures": true,
+      "hasDefaultScene": true,
+      "drawCallCount": 1,
+      "totalVertexCount": 2256,
+      "totalTriangleCount": 2244,
+      "maxUVs": 1,
+      "maxInfluences": 0,
+      "maxAttributes": 3
+    }
+  },
+  {
+    "name": "crop-tomato",
+    "uri": "crop-tomato.glb",
+    "mimeType": "model/gltf-binary",
+    "validatorVersion": "2.0.0-dev.3.10",
+    "validatedAt": "2026-10-25T14:12:53.199Z",
+    "issues": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 1,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/0"
+        }
+      ],
+      "truncated": false
+    },
+    "info": {
+      "version": "2.0",
+      "generator": "glTF-Transform v4.5.1",
+      "extensionsUsed": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "extensionsRequired": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_mesh_quantization"
+      ],
+      "resources": [
+        {
+          "pointer": "/buffers/0",
+          "mimeType": "application/gltf-buffer",
+          "storage": "glb",
+          "byteLength": 76480
+        },
+        {
+          "pointer": "/buffers/1",
+          "mimeType": "application/gltf-buffer"
+        },
+        {
+          "pointer": "/images/0",
+          "mimeType": "image/webp",
+          "storage": "buffer-view",
+          "image": {
+            "width": 512,
+            "height": 512,
+            "format": "rgb",
+            "primaries": "srgb",
+            "transfer": "srgb",
+            "bits": 8
+          }
+        }
+      ],
+      "animationCount": 0,
+      "materialCount": 1,
+      "hasMorphTargets": false,
+      "hasSkins": false,
+      "hasTextures": true,
+      "hasDefaultScene": true,
+      "drawCallCount": 1,
+      "totalVertexCount": 2991,
+      "totalTriangleCount": 3006,
       "maxUVs": 1,
       "maxInfluences": 0,
       "maxAttributes": 3

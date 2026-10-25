@@ -10,7 +10,11 @@ import { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer
 import sharp from 'sharp';
 const [input,output,...names]=process.argv.slice(2);
 if(!input||!output||!names.length||path.resolve(input)===path.resolve(output))throw Error('Usage: build-farm-crops.mjs RAW OUTPUT crop-wheat crop-cabbage');
-const specs={'crop-wheat':{target:1800,error:.008},'crop-cabbage':{target:1000,error:.01}};
+const specs={
+ 'crop-wheat':{target:1800,error:.008}, 'crop-cabbage':{target:1000,error:.01},
+ 'crop-lavender':{target:1600,error:.008}, 'crop-carrot':{target:1300,error:.01},
+ 'crop-sunflower':{target:1500,error:.008}, 'crop-tomato':{target:1600,error:.008},
+};
 await Promise.all([MeshoptDecoder.ready,MeshoptEncoder.ready,MeshoptSimplifier.ready]);
 const io=new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.decoder':MeshoptDecoder,'meshopt.encoder':MeshoptEncoder});
 const sha=b=>createHash('sha256').update(b).digest('hex');

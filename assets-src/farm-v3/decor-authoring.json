@@ -3785,7 +3785,7 @@
           1
         ]
       ],
-      "category": "future-crop"
+      "category": "crop-garden"
     },
     {
       "model": "crop-lavender",
@@ -3830,7 +3830,7 @@
           1
         ]
       ],
-      "category": "future-crop"
+      "category": "crop-garden"
     },
     {
       "model": "crop-carrot",
@@ -3846,7 +3846,7 @@
         ],
         [
           5,
-          23.7,
+          22.7,
           0,
           1
         ],
@@ -3858,7 +3858,7 @@
         ],
         [
           7,
-          23.7,
+          22.7,
           0,
           1
         ],
@@ -3870,12 +3870,12 @@
         ],
         [
           9,
-          23.7,
+          22.7,
           0,
           1
         ]
       ],
-      "category": "future-crop"
+      "category": "crop-garden"
     },
     {
       "model": "crop-sunflower",
@@ -3920,7 +3920,7 @@
           1
         ]
       ],
-      "category": "future-crop"
+      "category": "crop-garden"
     },
     {
       "model": "crop-tomato",
@@ -3965,7 +3965,7 @@
           1
         ]
       ],
-      "category": "future-crop"
+      "category": "crop-garden"
     },
     {
       "model": "crop-cabbage",
@@ -4010,7 +4010,7 @@
           1
         ]
       ],
-      "category": "future-crop"
+      "category": "crop-garden"
     },
     {
       "model": "crop-wheat",

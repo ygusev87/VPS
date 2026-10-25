@@ -82,11 +82,31 @@ if(DECOR.some(g=>g.model==='crop-wheat')){
  }
  assert(cropRouteClearance>=0,'wheat enters the tractor safety corridor');
 }
+// Crops must remain wholly inside their beds, not spill into walking lanes.
+const gardenCropModels=new Set(),gardenCropBoxes=[];
+let gardenToyClearance=Infinity;
+for(const g of DECOR.filter(g=>g.model.startsWith('crop'))){
+ const measured=bounds[g.model];assert(measured,'crop is missing measured bounds');
+ for(const [x,z,yaw,s] of g.items){
+  if(x>24)continue; // Tractor field checked separately above.
+  assert.equal(yaw,0,'crop bounds require an oriented rectangle for a rotated plant');
+  const w=g.fit.width*s,d=measured.size[2]/measured.size[0]*w;
+  const toyClearance=Math.min(...author.toys.map(([tx,tz])=>Math.hypot(x-tx,z-tz)))-(1.6+w/2);
+  gardenToyClearance=Math.min(gardenToyClearance,toyClearance);
+  assert(toyClearance>=.05,`${g.model} would be hidden by an interactive toy's safety radius`);
+  const box={x0:x-w/2,x1:x+w/2,z0:z-d/2,z1:z+d/2,model:g.model};
+  assert(SOIL.some(b=>box.x0>=b.x0+.02&&box.x1<=b.x1-.02&&box.z0>=b.z0+.02&&box.z1<=b.z1-.02),'crop extends beyond its bed');
+  for(const b of gardenCropBoxes)assert(box.x1<=b.x0||box.x0>=b.x1||box.z1<=b.z0||box.z0>=b.z1,'crop silhouettes overlap');
+  gardenCropBoxes.push(box);gardenCropModels.add(g.model);
+ }
+}
+assert.equal(gardenCropModels.size,6,'all six garden crops must be present');
+assert.equal(gardenCropBoxes.length,36,'each bed must have six plants');
 for(const r of SOIL){board([r.x0,r.z0]);board([r.x1,r.z1]);assert(r.x1>r.x0&&r.z1>r.z0);}
 for(const e of [...PONDS,...MUD,...MEADOW]){board([e.x-e.rx,e.z-e.rz]);board([e.x+e.rx,e.z+e.rz]);}
 const report={status:'pass',roadComponents,paths:PATHS.length,fenceRuns:FENCES.length,minRoadClearance,minFoxClearance,minPoleClearance,workingPadFenceConflicts:padConflicts,
  gate:{root:[30,17],posts:[[28.4,16.4],[31.6,16.4]],exception:'Gate motor plate occupies the gate-side working square; static fences meet the existing gate posts.'},
- buildingFootprints,buildingConflicts,cropRouteClearance,fieldCropInstances:fieldCrops.length,inventory,instances:inventory.reduce((n,m)=>n+m.instances,0),trianglesBeforeIntegrationCulling:inventory.reduce((n,m)=>n+m.instances*(m.trianglesPerInstance??0),0),
+ buildingFootprints,buildingConflicts,cropRouteClearance,gardenToyClearance,fieldCropInstances:fieldCrops.length,gardenCropInstances:gardenCropBoxes.length,gardenCropModels:[...gardenCropModels],inventory,instances:inventory.reduce((n,m)=>n+m.instances,0),trianglesBeforeIntegrationCulling:inventory.reduce((n,m)=>n+m.instances*(m.trianglesPerInstance??0),0),
  notes:['Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.','farm.ts culls small instances near its interactive points.','Future groups are authoring data only until their GLBs exist.']};
 await writeFile(path.join(dir,'decor-validation.json'),JSON.stringify(report,null,2)+'\n');
 console.log(JSON.stringify({...report,inventory:undefined,notes:undefined},null,2));

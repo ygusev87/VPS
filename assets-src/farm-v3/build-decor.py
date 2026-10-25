@@ -183,13 +183,15 @@ flowers=[p for i,p in enumerate(flowers) if i%2==0 or p[3]==1.1]
 add('flower-cluster',{'height':.5},flowers,'planting')
 add('rock-cluster',{'width':2.6},rocks,'prop')
 
-# Future 2-unit planted-row modules: three rows per 6x5 garden bed, already spaced.
+# Six sculpted crops: three columns by two rows per 6x5 garden bed.
 crop_names=['crop-wheat','crop-lavender','crop-carrot','crop-sunflower','crop-tomato','crop-cabbage']
 for name,bed in zip(crop_names,soil[:6]):
     items=[]
+    # Leave the scarecrow at (8.3,25.2) its runtime 2.5-unit safety radius.
+    rows=[1.3,2.7] if name=='crop-carrot' else [1.3,3.7]
     for x in [bed['x0']+1,bed['x0']+3,bed['x0']+5]:
-        for z in [bed['z0']+1.3,bed['z0']+3.7]:items.append([x,z,0,1])
-    add(name,{'width':1.8},items,'future-crop')
+        for dz in rows:items.append([x,bed['z0']+dz,0,1])
+    add(name,{'width':1.8},items,'crop-garden')
 # The tractor drives around the outside (rx4.2/rz6); leave its full route clear.
 add('crop-wheat',{'width':1.4},[[x,z,0,1] for x in [27.5,29,30.5] for z in [24.7,26.5,28.3]],'crop-field')
 
