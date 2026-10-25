@@ -148,7 +148,7 @@ const plateCache = new Map<string, THREE.BufferGeometry>();
 
 /**
  * The module board every part sits on: a thin cream plate with a tan edge,
- * corner screws and a printed label, like a component card from a kit.
+ * brass corner screws and a printed label, like a component card from a kit.
  * Edge, top and screws are one baked mesh (shared by plates of a size).
  */
 export function basePlate(w: number, d: number, label?: string): THREE.Group {
@@ -157,8 +157,8 @@ export function basePlate(w: number, d: number, label?: string): THREE.Group {
   let geo = plateCache.get(key);
   if (!geo) {
     const pieces: Piece[] = [
-      { geo: new RoundedBoxGeometry(w, PLATE_TOP - 0.02, d, 3, 0.06), color: '#d9cbb6', at: new THREE.Vector3(0, (PLATE_TOP - 0.02) / 2, 0) },
-      { geo: new RoundedBoxGeometry(w - 0.06, 0.04, d - 0.06, 2, 0.02), color: '#f3ebdc', at: new THREE.Vector3(0, PLATE_TOP - 0.02, 0) },
+      { geo: new RoundedBoxGeometry(w, PLATE_TOP - 0.02, d, 3, 0.06), color: '#dcc29c', at: new THREE.Vector3(0, (PLATE_TOP - 0.02) / 2, 0) },
+      { geo: new RoundedBoxGeometry(w - 0.06, 0.04, d - 0.06, 2, 0.02), color: '#f6e6cb', at: new THREE.Vector3(0, PLATE_TOP - 0.02, 0) },
     ];
     const screwGeo = new THREE.CylinderGeometry(0.055, 0.055, 0.02, 14);
     const slotGeo = new THREE.BoxGeometry(0.08, 0.012, 0.016);
@@ -169,7 +169,7 @@ export function basePlate(w: number, d: number, label?: string): THREE.Group {
       [1, 1],
     ]) {
       const at = new THREE.Vector3(sx * (w / 2 - 0.13), PLATE_TOP + 0.005, sz * (d / 2 - 0.13));
-      pieces.push({ geo: screwGeo, color: '#b9bec6', at }, { geo: slotGeo, color: '#6d727c', at: at.clone().setY(PLATE_TOP + 0.016), rotY: 0.6 });
+      pieces.push({ geo: screwGeo, color: '#c9a24e', at }, { geo: slotGeo, color: '#7a5c26', at: at.clone().setY(PLATE_TOP + 0.016), rotY: 0.6 });
     }
     geo = bake(pieces);
     plateCache.set(key, geo);

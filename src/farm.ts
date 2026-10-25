@@ -19,7 +19,7 @@ import type { PhraseId } from './voice';
 import { isActive, type World } from './world';
 
 /** Model files only the farm needs (loaded when it opens). */
-export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'barn', 'coop', 'tractor', 'duck', 'sheep'];
+export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack'];
 
 /** What the drawers offer on the farm. */
 // No batteries: on the farm the power comes from the poles, the sun and the wind.
@@ -892,6 +892,12 @@ function hutch(x: number, z: number): THREE.Group {
 }
 
 function kennel(x: number, z: number): THREE.Group {
+  const sculpt = model('doghouse', { width: 1.6 });
+  if (sculpt) {
+    sculpt.position.set(x, 0, z);
+    sculpt.rotation.y = -0.4;
+    return sculpt;
+  }
   const g = boxHouse('#c98a4b', '#d8483c', 1.6, 1.1, 1.4);
   const door = mesh(new THREE.CircleGeometry(0.35, 20), mat('#2a1a10', 0.9));
   door.position.set(0, 0.45, 0.71);
@@ -943,6 +949,8 @@ function tree(x: number, z: number, s: number): THREE.Group {
 
 /** A white flour sack, tied at the top. */
 function flourSack(): THREE.Group {
+  const sculpt = model('sack', { height: 1.1 });
+  if (sculpt) return sculpt;
   const g = new THREE.Group();
   const cloth = mat('#f4efe4', 0.85);
   const body = mesh(new THREE.SphereGeometry(0.42, 18, 12), cloth);

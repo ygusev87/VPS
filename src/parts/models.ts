@@ -62,18 +62,30 @@ export function glowFor(rgba: string): THREE.Texture {
 }
 
 /**
+ * Which pixels turn: all of them; only strong colours (an LED's glass, which
+ * is also all that glows, not the cream base); or only light cool colours
+ * (a teal case, leaving cream and navy alone).
+ */
+type HueMask = 'all' | 'vivid' | 'teal';
+const HUE_MASK: Record<HueMask, string> = {
+  all: 'float turn = 1.0;',
+  vivid: 'float hi = max(diffuseColor.r, max(diffuseColor.g, diffuseColor.b)); float lo = min(diffuseColor.r, min(diffuseColor.g, diffuseColor.b)); float turn = smoothstep(0.72, 0.9, (hi - lo) / max(hi, 1e-4));',
+  teal: 'vec3 q = toYIQ * diffuseColor.rgb; float turn = smoothstep(0.01, -0.03, q.y) * smoothstep(0.08, 0.16, q.x);',
+};
+
+/**
  * Rotate the hue of a material's colour and emissive maps in the shader, so
  * one red LED model can be any colour. Grey metal parts stay grey.
  */
-function hueShift(m: THREE.MeshStandardMaterial): { value: number } {
+function hueShift(m: THREE.MeshStandardMaterial, emissive = true, mask: HueMask = 'all'): { value: number } {
   const uniform = { value: 0 };
   m.onBeforeCompile = (shader) => {
     shader.uniforms.uHue = uniform;
     const fn = `
       uniform float uHue;
+      const mat3 toYIQ = mat3(0.299, 0.596, 0.211, 0.587, -0.274, -0.523, 0.114, -0.322, 0.312);
+      const mat3 toRGB = mat3(1.0, 1.0, 1.0, 0.956, -0.272, -1.106, 0.621, -0.647, 1.703);
       vec3 hueRotate(vec3 c, float a) {
-        const mat3 toYIQ = mat3(0.299, 0.596, 0.211, 0.587, -0.274, -0.523, 0.114, -0.322, 0.312);
-        const mat3 toRGB = mat3(1.0, 1.0, 1.0, 0.956, -0.272, -1.106, 0.621, -0.647, 1.703);
         vec3 yiq = toYIQ * c;
         float h = atan(yiq.z, yiq.y) + a;
         float ch = length(yiq.yz);
@@ -81,10 +93,18 @@ function hueShift(m: THREE.MeshStandardMaterial): { value: number } {
       }`;
     shader.fragmentShader = shader.fragmentShader
       .replace('#include <common>', '#include <common>' + fn)
-      .replace('#include <map_fragment>', '#include <map_fragment>\n diffuseColor.rgb = max(hueRotate(diffuseColor.rgb, uHue), 0.0);')
-      .replace('#include <emissivemap_fragment>', '#include <emissivemap_fragment>\n totalEmissiveRadiance = max(hueRotate(totalEmissiveRadiance, uHue), 0.0);');
+      .replace(
+        '#include <map_fragment>',
+        `#include <map_fragment>\n ${HUE_MASK[mask]}\n diffuseColor.rgb = mix(diffuseColor.rgb, max(hueRotate(diffuseColor.rgb, uHue), 0.0), turn);`,
+      )
+      .replace(
+        '#include <emissivemap_fragment>',
+        '#include <emissivemap_fragment>\n' +
+          (emissive ? ' totalEmissiveRadiance = max(hueRotate(totalEmissiveRadiance, uHue), 0.0);\n' : '') +
+          (mask === 'vivid' ? ' totalEmissiveRadiance *= turn;' : ''),
+      );
   };
-  m.customProgramCacheKey = () => 'hue-shift';
+  m.customProgramCacheKey = () => `hue-shift-${emissive}-${mask}`;
   return uniform;
 }
 
@@ -96,6 +116,9 @@ export function sprite(map: THREE.Texture, size: number): THREE.Sprite {
 }
 
 // ───────────────────────────── Battery ─────────────────────────────
+
+/** Turns the teal battery box coral for the big 6 V one. */
+const BIG_HUE = 2.9;
 
 export class Battery extends Part {
   readonly kind: PartKind;
@@ -151,9 +174,13 @@ export class Battery extends Part {
       tray.add(sp);
     }
     // Prefer the sculpted model; the code-built tray is the fallback.
-    const holder = (big ? model('bigbattery', { width: 2.4 }) : model('battery', { width: 2.3 })) ?? tray;
-    holder.position.set(0, PLATE_TOP, big ? -0.35 : -0.3);
+    // Prefer the sculpted box (lying along x); the big one is the same box, larger and coral.
+    const sculpt = model('battery', { height: big ? 1.45 : 1.2, rotateY: Math.PI / 2 });
+    const holder = sculpt ?? tray;
+    holder.position.set(0, PLATE_TOP - 0.02, big ? -0.35 : -0.3);
     this.heat = materialsOf(holder);
+    if (sculpt && big) for (const m of this.heat) hueShift(m, false, 'teal').value = BIG_HUE;
+    const end = sculpt ? sizeOf(sculpt).x / 2 - 0.05 : 1.17;
 
     // Leads from the holder to the posts.
     const lead = (color: string, from: THREE.Vector3, to: THREE.Vector3) => {
@@ -163,8 +190,8 @@ export class Battery extends Part {
     };
     // Leads leave the holder's end walls low and run along the board to the posts.
     const zt = big ? 1.0 : 0.7;
-    const leadR = lead(C.red, new THREE.Vector3(1.17, PLATE_TOP + 0.1, big ? 0.3 : 0.05), new THREE.Vector3(1.0, PLATE_TOP + 0.06, zt));
-    const leadB = lead('#20242e', new THREE.Vector3(-1.17, PLATE_TOP + 0.1, big ? 0.2 : -0.1), new THREE.Vector3(-1.0, PLATE_TOP + 0.06, zt));
+    const leadR = lead(C.red, new THREE.Vector3(end, PLATE_TOP + 0.1, big ? 0.3 : 0.05), new THREE.Vector3(1.0, PLATE_TOP + 0.06, zt));
+    const leadB = lead('#20242e', new THREE.Vector3(-end, PLATE_TOP + 0.1, big ? 0.2 : -0.1), new THREE.Vector3(-1.0, PLATE_TOP + 0.06, zt));
 
     this.lamp = mesh(new THREE.SphereGeometry(0.06, 16, 10), this.lampMat);
     this.lamp.position.set(0, PLATE_TOP + 0.03, zt + 0.02);
@@ -647,16 +674,15 @@ export class Led extends Part {
       emissive: '#ff3b2a',
       emissiveIntensity: 0,
     });
-    const sculpt = model('led', { height: 1.6 });
+    const sculpt = model('led', { height: 0.72 });
     const dome = new THREE.Group();
     let domeTop: number;
     if (sculpt) {
-      // Push the long legs into the board so only a short stretch shows.
-      sculpt.position.set(0, PLATE_TOP - 0.45, -0.2);
+      sculpt.position.set(0, PLATE_TOP - 0.02, -0.2);
       dome.add(sculpt);
       this.ledMats = materialsOfMeshes(sculpt);
-      this.hue = this.ledMats.map(hueShift);
-      domeTop = PLATE_TOP - 0.45 + 1.6;
+      this.hue = this.ledMats.map((m) => hueShift(m, true, 'vivid'));
+      domeTop = PLATE_TOP + 0.7;
     } else {
       const rim = mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.07, 28), this.domeMat);
       rim.position.y = 0.035;
@@ -757,8 +783,7 @@ export class Buzzer extends Part {
     const hole = mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.02, 20), mat('#05070d', 0.9));
     hole.position.y = 0.51;
     if (sculpt) {
-      // Pins go into the board.
-      sculpt.position.y = -0.17;
+      sculpt.position.y = -0.02;
       this.can.add(sculpt);
     } else this.can.add(body, lip, hole);
     this.can.position.set(0, PLATE_TOP, -0.2);

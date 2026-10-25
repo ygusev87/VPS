@@ -8,7 +8,7 @@ import { Part, type PartKind } from './base';
 import { cellTexture } from './chain';
 import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox, signDecal } from './kit';
 import { glowFor, materialsOf, sprite } from './models';
-import { model } from './assets';
+import { model, tip } from './assets';
 
 const wood = () => mat('#9a6a3e', 0.7);
 
@@ -47,7 +47,14 @@ export class Pole extends Part {
     this.body.add(plus);
     this.addTerminal('a', 'plus', 0.62, 0.52);
     this.addTerminal('b', 'minus', -0.62, 0.52);
-    this.pickable(plate, pole, box);
+    const sculpt = model('pole', { height: 3.4, rotateY: Math.PI / 2 });
+    if (sculpt) {
+      // The sculpted pole has its own insulators and socket box.
+      for (const o of this.body.children.filter((c) => c !== plate && c !== l && c !== bolt && c !== plus)) o.visible = false;
+      sculpt.position.set(0, PLATE_TOP - 0.02, -0.3);
+      this.body.add(sculpt);
+      this.pickable(plate, sculpt);
+    } else this.pickable(plate, pole, box);
   }
 
   protected electrical(): Partial<CircuitElement> {
@@ -89,13 +96,19 @@ export class Solar extends Part {
     this.sunMat = new THREE.MeshStandardMaterial({ color: '#f2c230', emissive: '#ffcf3a', emissiveIntensity: 1.5, roughness: 0.4 });
     const sun = mesh(new THREE.CylinderGeometry(0.12, 0.12, 0.03, 20), this.sunMat);
     sun.position.set(-0.7, PLATE_TOP + 0.02, 0.45);
-    this.body.add(plate, leg, panel, sun);
+    const sculpt = model('solar', { height: 1.5, rotateY: -Math.PI / 2 });
+    if (sculpt) {
+      // The sculpted panel tilts towards the viewer on its own stand.
+      sculpt.position.set(0, PLATE_TOP - 0.02, -0.3);
+      this.body.add(plate, sculpt, sun);
+    } else this.body.add(plate, leg, panel, sun);
     const plus = signDecal('plus', C.red, 0.26);
     plus.position.set(0.72, PLATE_TOP + 0.005, 0.3);
     this.body.add(plus);
     this.addTerminal('a', 'plus', 0.72, 0.65);
     this.addTerminal('b', 'minus', -0.2, 0.65);
-    this.pickable(plate, leg, panel);
+    if (sculpt) this.pickable(plate, sculpt);
+    else this.pickable(plate, leg, panel);
   }
 
   protected electrical(): Partial<CircuitElement> {
@@ -128,6 +141,8 @@ export class Pump extends Part {
   private stream: THREE.Mesh;
   private drops: { m: THREE.Mesh; t: number }[] = [];
   private flow = 0;
+  /** Where the water leaves the spout. */
+  private spoutY = PLATE_TOP + 0.72;
 
   constructor() {
     super();
@@ -162,10 +177,22 @@ export class Pump extends Part {
       this.drops.push({ m, t: i / 8 });
       this.body.add(m);
     }
-    this.body.add(plate, tank, cap, hose, this.wheel, this.stream);
+    const sculpt = model('pump', { height: 1.05 });
+    if (sculpt) {
+      // The sculpted pump's spout (its +x end) pours where the code-built hose did.
+      const spout = tip(sculpt, 'x', 1, 0.06);
+      sculpt.position.set(0.9 - spout.x, PLATE_TOP - 0.02, -0.2 - spout.z);
+      this.spoutY = PLATE_TOP - 0.02 + spout.y - 0.04;
+      this.stream.scale.y = (this.spoutY - PLATE_TOP) / 0.7;
+      this.stream.position.y = PLATE_TOP + (this.spoutY - PLATE_TOP) / 2;
+      this.body.add(plate, sculpt, this.stream);
+      this.pickable(plate, sculpt);
+    } else {
+      this.body.add(plate, tank, cap, hose, this.wheel, this.stream);
+      this.pickable(plate, tank, hose);
+    }
     this.addTerminal('a', 'none', 0.62, 0.5);
     this.addTerminal('b', 'none', -0.62, 0.5);
-    this.pickable(plate, tank, hose);
   }
 
   protected electrical(): Partial<CircuitElement> {
@@ -189,7 +216,7 @@ export class Pump extends Part {
     for (const d of this.drops) {
       d.t = (d.t + dt * 1.6) % 1;
       d.m.visible = this.flow > 0.2;
-      d.m.position.set(0.88 + d.t * 0.25 + Math.sin(d.t * 9 + d.m.id) * 0.04, PLATE_TOP + 0.72 - d.t * d.t * 0.7, -0.2 + Math.cos(d.t * 7 + d.m.id) * 0.06);
+      d.m.position.set(0.88 + d.t * 0.25 + Math.sin(d.t * 9 + d.m.id) * 0.04, this.spoutY - d.t * d.t * (this.spoutY - PLATE_TOP), -0.2 + Math.cos(d.t * 7 + d.m.id) * 0.06);
     }
   }
 }

@@ -4,6 +4,7 @@
 import * as THREE from 'three';
 import type { CircuitElement, ElementKind } from '../circuit/solver';
 import { Part, type PartKind } from './base';
+import { boundsWhere, model } from './assets';
 import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox, signDecal } from './kit';
 import { C } from '../theme';
 
@@ -12,16 +13,21 @@ const SCALE = 12;
 /** Needle swing either side of straight up, radians. */
 const SWING = 1.05;
 
-function dialTexture(): THREE.Texture {
+/** The scale: a card for the code-built case, or a round face (pivot at 0.6 of its height). */
+function dialTexture(round = false): THREE.Texture {
   const c = document.createElement('canvas');
   c.width = 512;
-  c.height = 320;
+  c.height = round ? 512 : 320;
   const g = c.getContext('2d')!;
   g.fillStyle = '#fbf6ea';
-  g.fillRect(0, 0, 512, 320);
+  if (round) {
+    g.beginPath();
+    g.arc(256, 256, 252, 0, Math.PI * 2);
+    g.fill();
+  } else g.fillRect(0, 0, 512, 320);
   const cx = 256;
-  const cy = 290;
-  const r = 220;
+  const cy = round ? 307 : 290;
+  const r = round ? 215 : 220;
   // Coloured bands: a little, a lot, too much.
   const band = (from: number, to: number, color: string) => {
     g.beginPath();
@@ -59,6 +65,7 @@ function dialTexture(): THREE.Texture {
 }
 
 let dial: THREE.Texture | null = null;
+let roundDial: THREE.Texture | null = null;
 
 export class Tester extends Part {
   readonly kind: PartKind = 'tester';
@@ -97,6 +104,24 @@ export class Tester extends Part {
     box.add(shell, face, glass, this.needle, foot);
     box.position.set(0, PLATE_TOP, -0.2);
     box.rotation.x = -0.5;
+    const sculpt = model('tester', { height: 1.15, rotateY: -Math.PI / 2 });
+    if (sculpt) {
+      // The sculpted case has a round dial (facing +x in the model): lay our
+      // scale over it and pivot the needle low in its middle.
+      box.clear();
+      box.rotation.x = 0;
+      box.position.set(0, PLATE_TOP - 0.02, -0.25);
+      const front = new THREE.Box3().setFromObject(sculpt).max.z;
+      const ring = boundsWhere(sculpt, (v) => v.z > front - 0.06);
+      const c = ring.getCenter(new THREE.Vector3());
+      const d = Math.min(ring.max.x - ring.min.x, ring.max.y - ring.min.y) * 0.84;
+      roundDial ??= dialTexture(true);
+      const card = mesh(new THREE.CircleGeometry(d / 2, 48), new THREE.MeshStandardMaterial({ map: roundDial, roughness: 0.6 }), false);
+      card.position.set(c.x, c.y, front + 0.01);
+      this.needle.position.set(c.x, c.y - d * 0.1, front + 0.02);
+      this.needle.scale.setScalar(d / 1.3);
+      box.add(sculpt, card, this.needle);
+    }
     const plus = signDecal('plus', C.red, 0.28);
     plus.position.set(0.66, PLATE_TOP + 0.005, 0.1);
     const minus = signDecal('minus', C.navy, 0.28);

@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 import type { CircuitElement, ElementKind } from '../circuit/solver';
 import { C } from '../theme';
-import { model, sizeOf, tip } from './assets';
+import { boundsWhere, model, sizeOf, tip } from './assets';
 import { Part, type Footprint, type PartKind } from './base';
 import { basePlate, blurAmount, damp, lightPool, mat, mesh, PLATE_TOP, rotorBlur, roundedBox } from './kit';
 import { glowFor, sprite } from './models';
@@ -502,26 +502,44 @@ export class TrafficLight extends Part {
     foot.position.set(0, PLATE_TOP + 0.04, -0.25);
     const box = roundedBox(0.62, 1.5, 0.44, 0.1, C.navy2, 0.45);
     box.position.set(0, PLATE_TOP + 1.65, -0.25);
-    this.body.add(plate, pole, foot, box);
+    // The sculpted light has its own coloured lenses (facing +x in the model);
+    // lit ones get a glowing cap on top.
+    const sculpt = model('trafficlight', { height: 2.45, rotateY: -Math.PI / 2 });
+    let lensAt = (i: number) => new THREE.Vector3(0, PLATE_TOP + 2.13 - i * 0.47, -0.02);
+    let lensR = 0.17;
+    if (sculpt) {
+      sculpt.position.set(0, PLATE_TOP - 0.02, -0.25);
+      this.body.add(plate, sculpt);
+      const front = new THREE.Box3().setFromObject(sculpt).max.z;
+      const face = boundsWhere(sculpt, (v) => v.z > front - 0.05 && v.y > 0.5);
+      const step = (face.max.y - face.min.y) / 3;
+      lensR = step * 0.36;
+      lensAt = (i) => new THREE.Vector3((face.min.x + face.max.x) / 2, PLATE_TOP - 0.02 + face.max.y - step * (i + 0.5), -0.25 + front - lensR * 0.3);
+    } else this.body.add(plate, pole, foot, box);
     LAMP_COLORS.forEach((color, i) => {
-      const y = PLATE_TOP + 2.13 - i * 0.47;
-      const m = new THREE.MeshStandardMaterial({ color: '#3b3f4a', emissive: color, emissiveIntensity: 0, roughness: 0.2 });
-      const lens = mesh(new THREE.SphereGeometry(0.17, 24, 16), m);
+      const at = lensAt(i);
+      const y = at.y;
+      const m = sculpt
+        ? new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0, roughness: 0.2, transparent: true, opacity: 0, depthWrite: false })
+        : new THREE.MeshStandardMaterial({ color: '#3b3f4a', emissive: color, emissiveIntensity: 0, roughness: 0.2 });
+      const lens = mesh(new THREE.SphereGeometry(lensR, 24, 16), m, false);
       lens.scale.z = 0.45;
-      lens.position.set(0, y, -0.02);
+      lens.position.copy(at);
       const visor = mesh(new THREE.CylinderGeometry(0.21, 0.21, 0.22, 24, 1, true, -Math.PI / 2, Math.PI), mat(C.navy2, 0.45));
       visor.rotation.x = Math.PI / 2;
       visor.position.set(0, y + 0.02, 0.06);
       (visor.material as THREE.MeshStandardMaterial).side = THREE.DoubleSide;
       const g = sprite(glowFor(color === LAMP_COLORS[0] ? 'rgba(255,70,60,0.9)' : color === LAMP_COLORS[1] ? 'rgba(255,200,40,0.9)' : 'rgba(40,210,100,0.9)'), 0.9);
-      g.position.set(0, y, 0.1);
-      this.body.add(lens, visor, g);
+      g.position.set(at.x, y, at.z + 0.12);
+      if (sculpt) this.body.add(lens, g);
+      else this.body.add(lens, visor, g);
       this.lenses.push(m);
       this.glows.push(g);
     });
     this.addTerminal('a', 'none', 0.62, 0.55);
     this.addTerminal('b', 'none', -0.62, 0.55);
-    this.pickable(plate, pole, box);
+    if (sculpt) this.pickable(plate, sculpt);
+    else this.pickable(plate, pole, box);
   }
 
   protected electrical(): Partial<CircuitElement> {
@@ -575,6 +593,7 @@ export class TrafficLight extends Part {
     this.lenses.forEach((m, i) => {
       const lit = on && p.lamps[i] && !blinkOff;
       m.emissiveIntensity = damp(m.emissiveIntensity, lit ? 2.6 : 0, 18, dt);
+      if (m.transparent) m.opacity = Math.min(1, m.emissiveIntensity / 1.5);
       this.glows[i].material.opacity = damp(this.glows[i].material.opacity, lit ? 0.85 : 0, 18, dt);
     });
   }

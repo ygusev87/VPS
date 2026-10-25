@@ -5,7 +5,7 @@
 import * as THREE from 'three';
 import type { CircuitElement, CircuitResult, ElementKind } from '../circuit/solver';
 import { C } from '../theme';
-import { centroid, model, sizeOf, tip } from './assets';
+import { boundsWhere, centroid, model, sizeOf, tip } from './assets';
 import { Part, type PartKind, type Terminal } from './base';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox, signDecal } from './kit';
@@ -215,11 +215,16 @@ export class MusicBox extends Part {
   constructor() {
     super();
     const plate = basePlate(2.0, 1.7, 'шкатулка');
-    const sculpt = model('musicbox', { width: 1.25 });
+    // Open box, lid at the back; the dancer rises from its round stage.
+    const sculpt = model('musicbox', { width: 1.45, rotateY: -Math.PI / 2 });
     let lidY = 0.75;
+    let stage = new THREE.Vector3();
     if (sculpt) {
       this.box.add(sculpt);
-      lidY = sizeOf(sculpt).y;
+      const all = new THREE.Box3().setFromObject(sculpt);
+      stage = new THREE.Vector3(0, 0, all.min.z + (all.max.z - all.min.z) * 0.61);
+      const top = boundsWhere(sculpt, (v) => Math.hypot(v.x - stage.x, v.z - stage.z) < 0.14 && v.y < all.max.y * 0.7);
+      lidY = top.isEmpty() ? sizeOf(sculpt).y : top.max.y;
     } else {
       const b = roundedBox(1.1, 0.75, 0.85, 0.12, '#d79a4f', 0.5);
       this.box.add(b);
@@ -240,7 +245,7 @@ export class MusicBox extends Part {
     leg.position.y = 0.06;
     const stand = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.02, 20), mat(C.brass, 0.3, 0.8));
     this.dancer.add(stand, leg, skirt, torso, arms, head, bun);
-    this.dancer.position.set(0, PLATE_TOP + lidY - 0.02, -0.2);
+    this.dancer.position.set(stage.x, PLATE_TOP + lidY - 0.02, -0.2 + stage.z);
     this.dancer.scale.setScalar(0.001);
     this.lidY = PLATE_TOP + lidY - 0.02;
     const plus = signDecal('plus', C.red, 0.3);

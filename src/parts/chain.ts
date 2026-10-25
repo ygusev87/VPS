@@ -8,7 +8,7 @@ import { C } from '../theme';
 import { Part, type PartKind } from './base';
 import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox } from './kit';
 import { glowFor, sprite } from './models';
-import { boundsWhere, model, tip } from './assets';
+import { boundsWhere, model, sizeOf, tip } from './assets';
 import { traceBeam, type BeamBox, type BeamDisc } from './beam';
 import { AMBIENT } from './wind';
 
@@ -243,6 +243,8 @@ export class Launcher extends Part {
   private turn = 0;
   private misses = 0;
   private nextColor = '#e5533d';
+  /** Height balls leave at. */
+  private mouthY = BARREL_Y;
 
   constructor() {
     super();
@@ -263,12 +265,27 @@ export class Launcher extends Part {
     muzzle.position.x = 0.64;
     const back = mesh(new THREE.SphereGeometry(0.19, 20, 12), mat(C.teal, 0.35));
     back.position.x = -0.14;
-    this.barrel.add(tube, muzzle, back);
-    this.barrel.position.y = BARREL_Y - PLATE_TOP;
-    this.barrel.rotation.z = 0.12;
     this.loaded = mesh(new THREE.SphereGeometry(BALL_R, 20, 14), mat('#e5533d', 0.25, 0.1));
-    this.loaded.position.set(MOUTH - 0.06, BARREL_Y - PLATE_TOP + 0.07, 0);
-    this.turret.add(base, ring, yoke, this.barrel, this.loaded);
+    const sculpt = model('cannon', { width: 1 });
+    if (sculpt) {
+      // Scale the sculpted cannon so its muzzle is where balls leave, turning about its foot.
+      const h = sizeOf(sculpt).y;
+      const foot = boundsWhere(sculpt, (v) => v.y < h * 0.15).getCenter(new THREE.Vector3());
+      const mouth = tip(sculpt, 'x', 1, 0.08);
+      const k = MOUTH / (mouth.x - foot.x);
+      sculpt.scale.setScalar(k);
+      sculpt.position.set(-foot.x * k, 0, -foot.z * k);
+      this.mouthY = PLATE_TOP + mouth.y * k;
+      this.barrel.add(sculpt);
+      this.loaded.position.set(MOUTH - 0.1, mouth.y * k + 0.04, 0);
+      this.turret.add(this.barrel, this.loaded);
+    } else {
+      this.barrel.add(tube, muzzle, back);
+      this.barrel.position.y = BARREL_Y - PLATE_TOP;
+      this.barrel.rotation.z = 0.12;
+      this.loaded.position.set(MOUTH - 0.06, BARREL_Y - PLATE_TOP + 0.07, 0);
+      this.turret.add(base, ring, yoke, this.barrel, this.loaded);
+    }
     this.turret.position.set(0, PLATE_TOP, -0.15);
     // An arrow on the plate shows where the ball will go.
     this.body.add(plate, this.turret);
@@ -304,7 +321,7 @@ export class Launcher extends Part {
     const table = this.root.parent;
     if (!table) return;
     const dir = this.direction();
-    const pos = this.root.position.clone().add(new THREE.Vector3(0, BARREL_Y + 0.05, -0.15)).addScaledVector(dir, MOUTH);
+    const pos = this.root.position.clone().add(new THREE.Vector3(0, this.mouthY + 0.05, -0.15)).addScaledVector(dir, MOUTH);
     const color = this.nextColor;
     const m = mesh(new THREE.SphereGeometry(BALL_R, 20, 14), mat(color, 0.25, 0.1));
     m.position.copy(pos);
@@ -406,10 +423,19 @@ export class Target extends Part {
     disk.position.y = TARGET_Y - PLATE_TOP - 0.18;
     const post = mesh(new THREE.CylinderGeometry(0.035, 0.035, 0.4, 10), face);
     post.position.y = 0.2;
-    this.flap.add(post, disk);
     // The face looks at the viewer; a hit from any side knocks it over backwards.
     const holder = new THREE.Group();
-    holder.position.set(0, PLATE_TOP + 0.18, -0.15);
+    const sculpt = model('target', { height: TARGET_Y - PLATE_TOP + 0.5, rotateY: -Math.PI / 2 });
+    if (sculpt) {
+      // The whole sculpted stand tips over about its foot.
+      sculpt.position.y = -0.04;
+      this.flap.add(sculpt);
+      holder.position.set(0, PLATE_TOP + 0.04, -0.15);
+      stand.visible = hinge.visible = false;
+    } else {
+      this.flap.add(post, disk);
+      holder.position.set(0, PLATE_TOP + 0.18, -0.15);
+    }
     holder.add(this.flap);
     this.lamp = new THREE.MeshStandardMaterial({ color: '#9a9fae', emissive: '#3fe07a', emissiveIntensity: 0, roughness: 0.3 });
     const l = mesh(new THREE.SphereGeometry(0.06, 14, 10), this.lamp);
@@ -603,6 +629,8 @@ export class Laser extends Part {
   private segs: THREE.Mesh[] = [];
   private spot: THREE.Sprite;
   private shown = 0;
+  /** How far in front of the middle the beam starts. */
+  private reach = 0.42;
 
   constructor() {
     super();
@@ -622,7 +650,17 @@ export class Laser extends Part {
     const warn = mesh(new THREE.ConeGeometry(0.06, 0.02, 3), mat('#f2c230', 0.5), false);
     warn.rotation.x = Math.PI / 2;
     warn.position.set(0.12, BEAM_Y - PLATE_TOP, 0.135);
-    this.turret.add(base, body, stripe, lens, warn);
+    const sculpt = model('laser', { height: 1 });
+    if (sculpt) {
+      // Scale the sculpted box so its lens (the far +x end) is at beam height.
+      const h = sizeOf(sculpt).y;
+      const eye = tip(sculpt, 'x', 1, 0.03, (v) => v.y > h * 0.3 && v.y < h * 0.8);
+      const k = (BEAM_Y - PLATE_TOP) / eye.y;
+      sculpt.scale.setScalar(k);
+      this.reach = eye.x * k + 0.02;
+      lens.position.set(this.reach - 0.02, BEAM_Y - PLATE_TOP, eye.z * k);
+      this.turret.add(sculpt, lens);
+    } else this.turret.add(base, body, stripe, lens, warn);
     this.turret.position.set(0, PLATE_TOP, -0.15);
     const segGeo = new THREE.CylinderGeometry(0.03, 0.03, 1, 8, 1, true);
     segGeo.rotateZ(Math.PI / 2);
@@ -659,7 +697,7 @@ export class Laser extends Part {
   muzzle(): [number, number] {
     const [dx, dz] = this.direction();
     const p = this.root.position;
-    return [p.x + dx * 0.42, p.z - 0.15 + dz * 0.42];
+    return [p.x + dx * this.reach, p.z - 0.15 + dz * this.reach];
   }
 
   tap(): boolean {
@@ -722,7 +760,8 @@ export class Mirror extends Part {
     super();
     const plate = basePlate(1.3, 1.3);
     // The sculpted mirror turns on its round foot; the glass gets a real shine on top.
-    const sculpt = model('mirror', { height: 1.25, rotateY: -Math.PI / 2 });
+    // The model's glass faces +x, turned a third of a right angle towards +z.
+    const sculpt = model('mirror', { height: 1.3, rotateY: -Math.PI / 3 });
     if (sculpt) {
       // The frame is everything above the post; the glass fills its middle.
       const frame = boundsWhere(sculpt, (v) => v.y > 0.52);
@@ -888,10 +927,21 @@ export class Bell extends Part {
     this.hammer.add(arm, ball);
     this.hammer.position.set(-0.28, PLATE_TOP + 0.3, -0.15);
     this.hammer.rotation.z = -0.35;
-    this.body.add(plate, board, post, this.dome, coil, this.hammer);
+    const sculpt = model('bell', { height: 1.05 });
+    if (sculpt) {
+      // The sculpted bell has its own striker: the whole bell shivers as it rings.
+      this.dome.clear();
+      this.dome.add(sculpt);
+      this.dome.position.set(0, PLATE_TOP - 0.02, -0.15);
+      this.dome.rotation.z = 0;
+      this.body.add(plate, this.dome);
+      this.pickable(plate, this.dome);
+    } else {
+      this.body.add(plate, board, post, this.dome, coil, this.hammer);
+      this.pickable(plate, board, this.dome, coil, this.hammer);
+    }
     this.addTerminal('a', 'none', 0.6, 0.5);
     this.addTerminal('b', 'none', -0.6, 0.5);
-    this.pickable(plate, board, this.dome, coil, this.hammer);
   }
 
   protected electrical(): Partial<CircuitElement> {
@@ -993,6 +1043,15 @@ export class Magnet extends Part {
     const stand = roundedBox(0.5, 0.22, 0.9, 0.06, C.navy2, 0.5);
     stand.position.set(-0.2, PLATE_TOP + 0.11, -0.2);
     this.head.position.set(0, PLATE_TOP + 0.36, -0.2);
+    const sculpt = model('magnet', { height: 1.0, rotateY: -Math.PI / 2 });
+    if (sculpt) {
+      // The sculpted horseshoe stands upright, arch to the viewer; balls stick at its +x side.
+      for (const c of [...this.head.children]) if (!this.field.includes(c as THREE.Mesh)) c.removeFromParent();
+      const front = new THREE.Box3().setFromObject(sculpt).max.x;
+      sculpt.position.set(0.3 - front, -0.38, 0);
+      this.head.add(sculpt);
+      stand.visible = false;
+    }
     this.body.add(plate, stand, this.head);
     this.addTerminal('a', 'none', 0.62, 0.5);
     this.addTerminal('b', 'none', -0.62, 0.5);
