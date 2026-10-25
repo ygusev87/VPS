@@ -1,0 +1,41 @@
+{
+  "date": "2026-10-25",
+  "asset": "well",
+  "staticAssetReview": "passed",
+  "browser": "Codex IAB, single-model comparison; WebGL usable again",
+  "viewports": [
+    [
+      1180,
+      844
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "views": [
+    "game",
+    "threequarter",
+    "front"
+  ],
+  "observations": [
+    "Well mouth remains open and roof stays behind the front rim.",
+    "Stone silhouette, roof tiles and colors preserved after compression at tested displayed sizes.",
+    "No GLB load error observed; one unsourced MutationObserver.observe error also seen in previous QA."
+  ],
+  "geometry": "scripts/measure-well.mjs checks fitted anchors, 96 radial bucket-path probes and raised-bucket line of sight.",
+  "validation": {
+    "errors": 0,
+    "warnings": 0,
+    "info": "Validator cannot validate EXT_meshopt_compression; decoded geometry independently measured."
+  },
+  "integrationStatus": "Model and measured anchors handed to Claude in m0175; animated toy still needs integration review.",
+  "limits": [
+    "No FPS/GPU-time measurement on physical iPad."
+  ],
+  "screenshots": [
+    "/tmp/gameios-visual-audit-2026-10-25/well-studio.png",
+    "/tmp/gameios-visual-audit-2026-10-25/well-before-after-tablet.png",
+    "/tmp/gameios-visual-audit-2026-10-25/well-before-after-phone.png"
+  ]
+}

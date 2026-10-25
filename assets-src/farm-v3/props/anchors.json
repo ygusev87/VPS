@@ -1,0 +1,65 @@
+{
+  "fit": {
+    "width": 2.8
+  },
+  "rotateY": 0,
+  "front": "+Z",
+  "origin": "model() centered XZ, base Y0",
+  "size": [
+    2.8,
+    2.818580074344874,
+    2.709164080980615
+  ],
+  "measured": {
+    "frontRimY": 1.0428653425738281,
+    "postInnerLeft": [
+      -0.8520503235789291,
+      1.7,
+      -0.4
+    ],
+    "postInnerRight": [
+      0.9113501635168291,
+      1.7,
+      -0.4
+    ],
+    "bucketPathMinWallDistance": 0.43016352318540924,
+    "sampledHeights": [
+      0.25,
+      0.5,
+      0.8,
+      1.05,
+      1.3,
+      1.55
+    ],
+    "directionsPerHeight": 16,
+    "raisedBucketClearFromGameDirection": true
+  },
+  "suggested": {
+    "rimY": 1.05,
+    "axleCenter": [
+      0,
+      1.7,
+      -0.4
+    ],
+    "axleAxis": "+X",
+    "axleLength": 2.2,
+    "bucketXZ": [
+      0,
+      0.45
+    ],
+    "bucketRadius": 0.18,
+    "raisedBucketCenterY": 1.3,
+    "loweredBucketCenterY": 0.25,
+    "waterCenter": [
+      0,
+      0.2,
+      0
+    ],
+    "waterRadius": 0.78
+  },
+  "notes": [
+    "Suggested bucket location is forward of posts to keep it visible. Route a rope over a forward guide or short brackets; do not assume a vertical rope from the rear axle.",
+    "Geometry probes do not replace a visual review of the real animated toy.",
+    "Do not bake bucket, water, crank or rope into this static asset."
+  ]
+}

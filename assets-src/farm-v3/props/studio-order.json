@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-25",
+  "provider": "Tripo Studio",
+  "model": "H3.1",
+  "taskId": "9840175f-b8da-426f-929d-4b77d48a4f3f",
+  "reference": "well-v1.png",
+  "settings": {
+    "triangles": 4000,
+    "texture": "2K",
+    "delight": true,
+    "pbr": false,
+    "ultra": false,
+    "aiEnhance": false
+  },
+  "credits": {
+    "before": 5925,
+    "after": 5900,
+    "spent": 25,
+    "apiSpent": 0
+  },
+  "status": "accepted first attempt",
+  "rawFile": "assets-src/raw/farm-v3-2026-10-25/well.glb"
+}

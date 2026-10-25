@@ -10,7 +10,7 @@ import { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer
 import sharp from 'sharp';
 const [input,output,...names]=process.argv.slice(2);
 if(!input||!output||!names.length||path.resolve(input)===path.resolve(output))throw Error('Usage: build-farm-buildings.mjs RAW OUTPUT farmhouse silo');
-const specs={farmhouse:{target:3000,error:.004,yawDegrees:90},silo:{target:1000,error:.0015,yawDegrees:0},pigsty:{target:2000,error:.002,yawDegrees:90},'tractor-shed':{target:2400,error:.002,yawDegrees:90}};
+const specs={farmhouse:{target:3000,error:.004,yawDegrees:90},silo:{target:1000,error:.0015,yawDegrees:0},pigsty:{target:2000,error:.002,yawDegrees:90},'tractor-shed':{target:2400,error:.002,yawDegrees:90},well:{target:2200,error:.0015,yawDegrees:0}};
 await Promise.all([MeshoptDecoder.ready,MeshoptEncoder.ready,MeshoptSimplifier.ready]);
 const io=new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.decoder':MeshoptDecoder,'meshopt.encoder':MeshoptEncoder});
 const sha=b=>createHash('sha256').update(b).digest('hex');

@@ -1,0 +1,77 @@
+{
+  "models": [
+    {
+      "name": "well",
+      "sourceSha256": "aeb40960ffb8d21e0c177b7254a08072c0bf94cbc6007eb9927128cca640d695",
+      "outputSha256": "936e1fae6a9a3c48d7bf4e014f740b2680ab2cc9ba2970875328024536dd0f85",
+      "target": 2200,
+      "error": 0.0015,
+      "yawDegrees": 0,
+      "before": {
+        "bytes": 778764,
+        "triangles": 3736,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.4967041015625,
+            0,
+            -0.4805908203125
+          ],
+          "max": [
+            0.4967041015625,
+            0.9999999403953552,
+            0.4805908203125
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 640302
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 80984,
+        "triangles": 3379,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.49670397137072675,
+            0,
+            -0.48059019932785596
+          ],
+          "max": [
+            0.49670397137072675,
+            0.9999999403953552,
+            0.48059019932785596
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 33646
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ],
+  "notes": [
+    "Static GLB, single 512px WebP color atlas, meshopt compression.",
+    "Oriented source comparisons in before/ are authoring QA only, not runtime assets.",
+    "Triangle count is an asset budget, not a measured GPU/FPS result."
+  ]
+}
