@@ -1064,11 +1064,12 @@ function canal(): THREE.Group {
 
 function balcony({ x, z }: THREE.Vector3): THREE.Group {
   const g = new THREE.Group();
-  const deck = mesh(new THREE.BoxGeometry(1.6, 0.14, 1.3), mat('#e8e0d0', 0.7));
-  deck.position.y = BALCONY_TOP - 0.07;
+  // The deck reaches 0.3 back into the house's wall (its door is set in from the eaves), the outer edge stays.
+  const deck = mesh(new THREE.BoxGeometry(1.9, 0.14, 1.3), mat('#e8e0d0', 0.7));
+  deck.position.set(-0.15, BALCONY_TOP - 0.07, 0);
   g.add(deck);
-  const rail = mesh(new THREE.BoxGeometry(1.6, 0.5, 0.06), mat('#ffffff', 0.5));
-  rail.position.set(0, BALCONY_TOP + 0.25, 0.62);
+  const rail = mesh(new THREE.BoxGeometry(1.9, 0.5, 0.06), mat('#ffffff', 0.5));
+  rail.position.set(-0.15, BALCONY_TOP + 0.25, 0.62);
   g.add(rail);
   for (const sx of [-0.7, 0.7]) {
     const post = mesh(new THREE.BoxGeometry(0.12, BALCONY_TOP, 0.12), mat('#d8cdbd', 0.7));
