@@ -12,6 +12,7 @@ import type { Stage } from './stage';
 import { bendable, type Pose } from './bend';
 import { Life } from './life';
 import { Pest } from './pest';
+import { Rig } from './rig';
 import { thumb } from './thumbs';
 import type { PhraseId } from './voice';
 import type { World } from './world';
@@ -66,8 +67,11 @@ export interface Critter {
   taps?: number;
   lastTap?: number;
   sweat?: THREE.Sprite[];
-  /** A four-legged one's head and tail (it looks at you while it asks). */
+  /** A four-legged one's head and tail (it looks at you while it asks): bones, or a bent body. */
   pose?: Pose | null;
+  rig?: Rig | null;
+  /** Where its head and tail are heading (smoothed). */
+  stance?: { graze: number; look: number; wag: number };
 }
 
 /** A ring on the ground and the part that goes on it. */
@@ -123,6 +127,7 @@ export interface MapProgress {
 }
 
 /** Four-legged characters whose head and tail move (their models face +X). */
+const X = new THREE.Vector3(1, 0, 0);
 const LOOKERS = new Set(['cow', 'pig', 'sheep', 'goat', 'horse']);
 
 /** How close to a ring a dropped part must be to snap onto it. */
@@ -470,7 +475,8 @@ export abstract class StoryMap {
     const { x, z } = p;
     const group = new THREE.Group();
     const m = this.critterModel(name.replace(/\d+$/, ''), fit, name);
-    const pose = LOOKERS.has(name.replace(/\d+$/, '')) ? bendable(m) : null;
+    const rig = m.userData.rig ? Rig.of(m, m.userData.rig as string) : null;
+    const pose = !rig && LOOKERS.has(name.replace(/\d+$/, '')) ? bendable(m) : null;
     m.traverse((o) => {
       if ((o as THREE.Mesh).isMesh) {
         o.castShadow = true;
@@ -484,6 +490,7 @@ export abstract class StoryMap {
     const c = this.adopt(name, group, height);
     c.face = face;
     c.pose = pose;
+    c.rig = rig;
     return c;
   }
 
@@ -709,17 +716,28 @@ export abstract class StoryMap {
    * Asking for help, it turns its head to you and swishes its tail; once
    * happy, it grazes, now and then lifting its head to look at you.
    */
-  private pose(c: Critter, pose: Pose, dt: number) {
+  private pose(c: Critter, dt: number) {
+    const s = (c.stance ??= { graze: 0, look: 0, wag: 0 });
+    const forward = c.rig?.forward ?? X;
+    // The way to the camera, in its own frame: the angle from its nose.
     const to = c.group.worldToLocal(this.stage.camera.position.clone()).setY(0);
-    const atYou = THREE.MathUtils.clamp(Math.atan2(to.z, to.x), -0.9, 0.9);
+    const atYou = Math.atan2(forward.x * to.z - forward.z * to.x, forward.x * to.x + forward.z * to.z);
     const turning = (c.spin ?? 0) > 0 || (c.flip ?? 0) > 0;
     const period = 10 + (Math.abs(c.home.x * 5.1) % 4);
     const down = c.mood !== 'asking' && !turning && (this.time + c.home.z) % period < period * 0.55;
-    pose.graze = THREE.MathUtils.damp(pose.graze, down ? 0.9 + Math.sin(this.time * 6) * 0.08 : 0, 2.5, dt);
-    pose.look = THREE.MathUtils.damp(pose.look, down || turning ? 0 : atYou, 2.5, dt);
-    const swish = c.mood === 'asking' ? 0.8 : Math.max(0, Math.sin(this.time * 0.7 + c.home.x)) ** 3;
-    pose.wag = THREE.MathUtils.damp(pose.wag, swish, 3, dt);
-    pose.update(this.time);
+    s.graze = THREE.MathUtils.damp(s.graze, down ? 0.9 + Math.sin(this.time * 6) * 0.08 : 0, 2.5, dt);
+    s.look = THREE.MathUtils.damp(s.look, down || turning ? 0 : THREE.MathUtils.clamp(atYou, -0.9, 0.9), 2.5, dt);
+    s.wag = THREE.MathUtils.damp(s.wag, c.mood === 'asking' ? 0.8 : Math.max(0, Math.sin(this.time * 0.7 + c.home.x)) ** 3, 3, dt);
+    if (c.rig) {
+      // A bone turns only so far: the look is its share of the way round to you
+      // (a turn about Y takes the nose the other way from the bent body's).
+      c.rig.set(s.graze, -s.look / 0.9, Math.sin(this.time * 7) * s.wag);
+    } else if (c.pose) {
+      c.pose.graze = s.graze;
+      c.pose.look = s.look;
+      c.pose.wag = s.wag;
+      c.pose.update(this.time);
+    }
   }
 
   private animateCritter(c: Critter, dt: number) {
@@ -737,7 +755,7 @@ export abstract class StoryMap {
       c.group.position.y = (c.base ?? 0) + Math.max(0, bob + hop) + Math.sin(sault * Math.PI) * 2.2;
       c.group.scale.set(1, 1 + (c.mood === 'asking' ? Math.sin(this.time * 8) * 0.015 : 0), 1);
     }
-    if (c.pose) this.pose(c, c.pose, dt);
+    if (c.pose || c.rig) this.pose(c, dt);
     // Speech bubble with the part it wants; a heart when happy.
     const mat = c.bubble.material as THREE.SpriteMaterial;
     const show = c.mood === 'asking' && !c.mute ? 1 : 0;

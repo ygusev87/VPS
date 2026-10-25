@@ -22,6 +22,7 @@ import { flowers, groundMaterial, onLane, pond, type Ellipse, type GroundPlan } 
 import { AMBIENT } from './parts/wind';
 import { isActive } from './world';
 import { dressing } from './decor';
+import { RIGS } from './rig';
 import { Pest } from './pest';
 import { type Gait, type ToyKind } from './life';
 import type { PhraseId } from './voice';
@@ -29,7 +30,7 @@ import { DECOR, FENCES, MEADOW, MUD, PATHS, PONDS, SOIL } from './farm-decor';
 import { StoryMap, blob, boxHouse, instances, v, type Critter, type MapHooks, type MapProgress, type Need, type NeedSpec, type Phase } from './storymap';
 
 /** Model files only the farm needs (loaded when it opens). */
-export const FARM_MODELS = ['well', 'hayloft', 'cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
+export const FARM_MODELS = ['cow-rig', 'horse-rig', 'pig-rig', 'goat-rig', 'dog-rig', 'well', 'hayloft', 'cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
   // Day two (each falls back to a stand-in until its model is made).
   'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'goose', 'rooster', 'horse', 'stable',
   // Scenery.
@@ -370,9 +371,16 @@ export class FarmMap extends StoryMap {
     return FARM_VOICES[base] ?? null;
   }
 
-  /** The fox walks on its paws (its rigged model, when that is there); the puppy is the dog, smaller. */
+  /**
+   * The fox walks on its paws (its rigged model, when that is there); the
+   * cow, horse, pig, goat and dog asking for help have a skeleton for their
+   * head and tail; the puppy is the dog, smaller.
+   */
   protected critterModel(base: string, fit: Fit, name: string): THREE.Object3D {
-    return (base === 'fox' ? model('fox-rig', fit) : null) ?? model(MODEL_OF[base] ?? base, fit) ?? STAND_INS[base]?.() ?? blob(name);
+    const kind = MODEL_OF[base] ?? base;
+    const rigged = RIGS[kind] ? model(`${kind}-rig`, fit) : null;
+    if (rigged) rigged.userData.rig = kind;
+    return (base === 'fox' ? model('fox-rig', fit) : null) ?? rigged ?? model(kind, fit) ?? STAND_INS[base]?.() ?? blob(name);
   }
 
   private buildCritters() {
