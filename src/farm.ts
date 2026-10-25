@@ -201,7 +201,7 @@ const GEESE_SPOT = v(16.2, 20.2);
 const ROOSTER = v(1.8, 13.6);
 const ROOSTER_SPOT = v(3.8, 14.8);
 /** A pole for each new yard (the nest and the rooster share the hens' pole). */
-const POLES_TWO = [v(-19.2, -0.8), v(25.8, -10.6), v(-1.8, -15.4), v(-24.6, 3.6), v(-2.6, 17.8), v(14.4, 22)];
+const POLES_TWO = [v(-19.2, -0.8), v(25.8, -10.6), v(-1.8, -15.4), v(-22, 1.5), v(-2.6, 17.8), v(14.4, 22)];
 /** By the gate, which used to need a long wire from the pigs' pole. */
 const GATE_POLE = v(10, 5.8);
 /** Day two needs these animals' models (see dayTwo). */
