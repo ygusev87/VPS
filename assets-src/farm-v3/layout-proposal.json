@@ -1,0 +1,618 @@
+{
+  "status": "proposal; do not import into gameplay before review",
+  "bounds": {
+    "width": 110,
+    "depth": 75,
+    "x": [
+      -55,
+      55
+    ],
+    "z": [
+      -37.5,
+      37.5
+    ]
+  },
+  "coordinates": "x increases right; z increases down/south; top-left = (-55,-37.5)",
+  "grid": {
+    "columns": 10,
+    "rows": 10,
+    "cellWidth": 11,
+    "cellDepth": 7.5
+  },
+  "note": "Coordinates are a proposed design, not measurements extracted from the generated PNG. The image grid/perspective is illustrative and not exact. Building footprints, gates, walkways and terrain must be reconciled during farm-decor.ts implementation.",
+  "tasks": [
+    {
+      "number": 1,
+      "id": "cowHot",
+      "title": "Корова: вентилятор",
+      "workingPatch": {
+        "center": [
+          10,
+          4
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        6,
+        1
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "F6"
+    },
+    {
+      "number": 2,
+      "id": "pigThirsty",
+      "title": "Свиньи: насос у корыта",
+      "workingPatch": {
+        "center": [
+          27,
+          -13
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        22,
+        -13
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "H4"
+    },
+    {
+      "number": 3,
+      "id": "gateStuck",
+      "title": "Трактор: ворота поля",
+      "workingPatch": {
+        "center": [
+          36,
+          17
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        41,
+        17
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "I8"
+    },
+    {
+      "number": 4,
+      "id": "sheepMill",
+      "title": "Овцы: мельница на холме",
+      "workingPatch": {
+        "center": [
+          44,
+          -22
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        39,
+        -22
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "J3"
+    },
+    {
+      "number": 5,
+      "id": "henDark",
+      "title": "Куры: освещение",
+      "workingPatch": {
+        "center": [
+          7,
+          -15
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        2,
+        -15
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "F4"
+    },
+    {
+      "number": 6,
+      "id": "rabbitCold",
+      "title": "Кролики: тепло",
+      "workingPatch": {
+        "center": [
+          -43,
+          -8
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        -48,
+        -8
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "B4"
+    },
+    {
+      "number": 7,
+      "id": "cowSleepy",
+      "title": "Корова: музыкальная шкатулка",
+      "workingPatch": {
+        "center": [
+          16,
+          4
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        20,
+        1
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "G6"
+    },
+    {
+      "number": 8,
+      "id": "foxTip",
+      "title": "Собака и тропа лисы",
+      "workingPatch": {
+        "center": [
+          -34,
+          -11
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        -34,
+        -16
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "B4"
+    },
+    {
+      "number": 9,
+      "id": "ducksAsk",
+      "title": "Утки: фонтан",
+      "workingPatch": {
+        "center": [
+          -25,
+          5
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        -20,
+        5
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "C6"
+    },
+    {
+      "number": 10,
+      "id": "kittenStuck",
+      "title": "Котёнок: лифт у бокового сеновала",
+      "workingPatch": {
+        "center": [
+          -19,
+          -16
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        -24,
+        -16
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "D3"
+    },
+    {
+      "number": 11,
+      "id": "goatsAsk",
+      "title": "Козлята: карусель",
+      "workingPatch": {
+        "center": [
+          -15,
+          5
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        -20,
+        5
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "D6"
+    },
+    {
+      "number": 12,
+      "id": "beesAsk",
+      "title": "Пасека: полив клумбы",
+      "workingPatch": {
+        "center": [
+          -20,
+          17
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        -15,
+        17
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "D8"
+    },
+    {
+      "number": 13,
+      "id": "horseHot",
+      "title": "Лошади: вентилятор",
+      "workingPatch": {
+        "center": [
+          39,
+          13
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        34,
+        13
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "I7"
+    },
+    {
+      "number": 14,
+      "id": "puppyAsk",
+      "title": "Щенок: пушка и мяч",
+      "workingPatch": {
+        "center": [
+          -23,
+          -8
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        -18,
+        -8
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "C4"
+    },
+    {
+      "number": 15,
+      "id": "eggsCold",
+      "title": "Гнездо: согреть яйца",
+      "workingPatch": {
+        "center": [
+          16,
+          -14
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        21,
+        -14
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "G4"
+    },
+    {
+      "number": 16,
+      "id": "geeseDark",
+      "title": "Гуси: освещение берега",
+      "workingPatch": {
+        "center": [
+          -31,
+          15
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        -26,
+        15
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "C8"
+    },
+    {
+      "number": 17,
+      "id": "roosterAsk",
+      "title": "Петух",
+      "workingPatch": {
+        "center": [
+          -1,
+          -10
+        ],
+        "size": [
+          4,
+          4
+        ]
+      },
+      "pole": [
+        -6,
+        -10
+      ],
+      "poleDistance": 5.0,
+      "gridCell": "E4"
+    }
+  ],
+  "sharedPoles": [
+    {
+      "position": [
+        -20,
+        5
+      ],
+      "tasks": [
+        "ducksAsk",
+        "goatsAsk"
+      ]
+    }
+  ],
+  "checks": {
+    "taskCount": 17,
+    "patchOverlapPairs": [],
+    "poleDistancesWithin4to6": true,
+    "notYetVerified": [
+      "all paths through exact gate gaps",
+      "props/trees excluded from every patch",
+      "lift reach to kitten landing",
+      "wire reach against final game constants",
+      "camera occlusion",
+      "actual iPad performance"
+    ]
+  },
+  "zoneFootprints": [
+    {
+      "name": "Дом",
+      "center": [
+        -38.5,
+        -25.5
+      ],
+      "size": [
+        11,
+        9
+      ]
+    },
+    {
+      "name": "Амбар",
+      "center": [
+        -14.3,
+        -24.75
+      ],
+      "size": [
+        14,
+        10
+      ]
+    },
+    {
+      "name": "Силос",
+      "center": [
+        -3.3,
+        -27.75
+      ],
+      "size": [
+        5,
+        5
+      ]
+    },
+    {
+      "name": "Курятник",
+      "center": [
+        7.7,
+        -21
+      ],
+      "size": [
+        8,
+        7
+      ]
+    },
+    {
+      "name": "Свинарник",
+      "center": [
+        26.4,
+        -22.5
+      ],
+      "size": [
+        10,
+        6
+      ]
+    },
+    {
+      "name": "Холм / овцы",
+      "center": [
+        43,
+        -28
+      ],
+      "size": [
+        17,
+        12
+      ]
+    },
+    {
+      "name": "Будка",
+      "center": [
+        -34,
+        -13
+      ],
+      "size": [
+        8,
+        7
+      ]
+    },
+    {
+      "name": "Кролики",
+      "center": [
+        -43,
+        -11
+      ],
+      "size": [
+        8,
+        7
+      ]
+    },
+    {
+      "name": "Щенок",
+      "center": [
+        -23,
+        -9
+      ],
+      "size": [
+        8,
+        10
+      ]
+    },
+    {
+      "name": "Козлята",
+      "center": [
+        -18,
+        2
+      ],
+      "size": [
+        14,
+        11
+      ]
+    },
+    {
+      "name": "Пруд",
+      "center": [
+        -40,
+        4
+      ],
+      "size": [
+        18,
+        14
+      ]
+    },
+    {
+      "name": "Коровы",
+      "center": [
+        13,
+        1
+      ],
+      "size": [
+        26,
+        16
+      ]
+    },
+    {
+      "name": "Конюшня",
+      "center": [
+        41,
+        -3
+      ],
+      "size": [
+        12,
+        9
+      ]
+    },
+    {
+      "name": "Лошади",
+      "center": [
+        41,
+        9
+      ],
+      "size": [
+        16,
+        10
+      ]
+    },
+    {
+      "name": "Сад",
+      "center": [
+        -41,
+        24
+      ],
+      "size": [
+        16,
+        20
+      ]
+    },
+    {
+      "name": "Пасека",
+      "center": [
+        -20,
+        24
+      ],
+      "size": [
+        14,
+        12
+      ]
+    },
+    {
+      "name": "Цветные грядки",
+      "center": [
+        4,
+        25
+      ],
+      "size": [
+        28,
+        17
+      ]
+    },
+    {
+      "name": "Пшеница",
+      "center": [
+        29,
+        26
+      ],
+      "size": [
+        12,
+        18
+      ]
+    },
+    {
+      "name": "Навес",
+      "center": [
+        44,
+        27
+      ],
+      "size": [
+        14,
+        10
+      ]
+    }
+  ]
+}
