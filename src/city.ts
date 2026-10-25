@@ -536,7 +536,9 @@ export class CityMap extends StoryMap {
       const z = f.z0 + Math.random() * (f.z1 - f.z0);
       if (free(x, z) && spots.every(([sx, sz]) => Math.hypot(x - sx, z - sz) > 2)) spots.push([x, z, 0.8 + Math.random() * 0.45]);
     }
-    this.scenery.add(instances('flower-cluster', { height: 0.45 }, spots) ?? flowers(this.plan, 40, free));
+    const bloom = instances('flower-cluster', { height: 0.45 }, spots);
+    bloom?.traverse((o) => (o.castShadow = false));
+    this.scenery.add(bloom ?? flowers(this.plan, 40, free));
   }
 
   // ───────────────────────── Story ─────────────────────────

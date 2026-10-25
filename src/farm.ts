@@ -525,7 +525,9 @@ export class FarmMap extends StoryMap {
       const z = (Math.random() - 0.5) * (D - 3);
       if (free(x, z) && spots.every(([sx, sz]) => Math.hypot(x - sx, z - sz) > 1.8)) spots.push([x, z, 0.8 + Math.random() * 0.45]);
     }
-    this.scenery.add(instances('flower-cluster', { height: 0.45 }, spots) ?? flowers(this.plan, 160, free));
+    const bloom = instances('flower-cluster', { height: 0.45 }, spots);
+    bloom?.traverse((o) => (o.castShadow = false));
+    this.scenery.add(bloom ?? flowers(this.plan, 160, free));
   }
 
   /** Where the kids and the puppy go back to between rides and games. */

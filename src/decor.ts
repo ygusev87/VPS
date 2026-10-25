@@ -31,6 +31,8 @@ export function dressing(groups: DecorGroup[], fenceLines: [number, number][][],
     const items = size > 4 ? g.items : g.items.filter(([x, z, , s]) => !inTheWay(x, z, 1.6 + (size * s) / 2));
     const batch = placed(g.model, g.fit, items);
     if (!batch) continue;
+    // Little things (flowers, tufts) cast no shadow: many copies, hardly any shade, a whole extra pass each.
+    if (size < 1.2) batch.traverse((o) => (o.castShadow = false));
     drawn.add(g.model);
     group.add(batch);
   }
