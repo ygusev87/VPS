@@ -274,9 +274,15 @@ farm-v3/hero-rigs/README.md: отдельный cow-rig.glb, 301.6 КиБ, 7999 
 25 API-кредитов (140 → 115), без клипов.
 
 Овца: кандидат assets-src/farm-v3/hero-rigs/candidates/sheep-rig.glb, 494.5 КиБ/22 кости.
-Голова проверена, хвостового шарнира нет; ждёт решения Claude, в public не добавлен.
+Голова проверена, хвостового шарнира нет. Claude m0189 оставил static+bend.ts;
+кандидат не используется, сохранён вне public.
 Карта/ограничения — farm-v3/hero-rigs/sheep.md. 25 API-кредитов (115 → 90).
 
 Коза: public/models/goat-rig.glb,253.6 КиБ/24 кости, шея bone_5/хвост bone_17;
 карта в farm-v3/hero-rigs/goat.md. 25 API-кредитов (90 → 65), пачка150/150 завершена.
-Сводная таблица всех шести — farm-v3/hero-rigs/README.md; sheep пока кандидат вне public.
+Сводная таблица всех шести — farm-v3/hero-rigs/README.md; sheep не выбран, архив вне public.
+
+Пять скелетов интегрированы в 3166f41: головы и хвосты главных cow/horse/pig/goat/dog
+(также puppy использует dog-rig через MODEL_OF). Визуальное ревью 1180×660/390×660 —
+farm-v3/hero-rigs/integration-review.md. GAIN1.8 даёт пределы 27°/36°,
+проверены сэмплы игровых поз, без новых Tripo-заказов. Реальный iPad/PWA ещё не проверен.

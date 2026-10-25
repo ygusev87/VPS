@@ -1,7 +1,7 @@
 {
   "dateUTC": "2026-10-25",
   "model": "sheep-rig",
-  "status": "candidate only; head reactions passed, no independent tail joint; Claude decision pending",
+  "status": "not selected for game; head reactions passed, no independent tail joint; Claude m0189 keeps static sheep with bend.ts",
   "path": "assets-src/farm-v3/hero-rigs/candidates/sheep-rig.glb",
   "viewports": [
     [
@@ -62,5 +62,12 @@
     "/tmp/gameios-visual-audit-2026-10-25/sheep-rig-head.png",
     "/tmp/gameios-visual-audit-2026-10-25/sheep-rig-look.png",
     "/tmp/gameios-visual-audit-2026-10-25/sheep-rig-phone.png"
-  ]
+  ],
+  "integrationDecision": {
+    "message": "m0189",
+    "gameCommit": "3166f41",
+    "selected": false,
+    "reason": "Static sheep with bend.ts is lighter and retains head and tail reactions; rig candidate lacks tail joint.",
+    "candidateRetained": true
+  }
 }
