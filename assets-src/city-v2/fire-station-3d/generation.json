@@ -1,0 +1,19 @@
+{
+  "provider": "Tripo Studio browser",
+  "task": "28ec1e92-6afc-4280-8e05-912875f1d088",
+  "reference": "../fire-station-v1.png",
+  "model": "H3.1 HD",
+  "triangleTarget": 8000,
+  "texture": "2K",
+  "delight": true,
+  "PBR": false,
+  "ultra": false,
+  "aiEnhance": false,
+  "segmentation": false,
+  "orders": 1,
+  "includedCredits": 25,
+  "balanceBefore": 5800,
+  "balanceAfter": 5775,
+  "apiCredits": 0,
+  "referenceApproved": "m0229"
+}

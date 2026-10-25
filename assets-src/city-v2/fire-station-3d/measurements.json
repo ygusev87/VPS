@@ -1,0 +1,1573 @@
+{
+  "status": "Candidate; visual QA pending",
+  "file": "candidate/fire-station.glb",
+  "bytes": 120152,
+  "triangles": 6846,
+  "materials": [
+    {
+      "alphaMode": "OPAQUE",
+      "emissiveFactor": [
+        0,
+        0,
+        0
+      ],
+      "extensions": []
+    }
+  ],
+  "negativeMeshNodes": 0,
+  "runtimeFit": {
+    "width": 7,
+    "instanceScale": 1,
+    "rotateY": -1.5707963267948966,
+    "centerXZ": [
+      29,
+      8
+    ]
+  },
+  "fittedSize": [
+    7,
+    5.1598,
+    4.4975
+  ],
+  "worldBox": {
+    "min": [
+      25.5,
+      0,
+      5.7512
+    ],
+    "max": [
+      32.5,
+      5.1598,
+      10.2488
+    ]
+  },
+  "taskReservations": [
+    {
+      "name": "ENGINE_SPOT",
+      "nominalSize": [
+        4,
+        4
+      ],
+      "overlapArea": 0
+    },
+    {
+      "name": "LADDER_SPOT",
+      "nominalSize": [
+        4,
+        4
+      ],
+      "overlapArea": 0
+    },
+    {
+      "name": "HYDRANT_SPOT",
+      "nominalSize": [
+        4,
+        4
+      ],
+      "overlapArea": 0
+    }
+  ],
+  "visibility": {
+    "viewDirection": [
+      0,
+      0.7885023060177911,
+      0.6150317986938771
+    ],
+    "samples": [
+      {
+        "name": "ENGINE_SPOT-ring-0",
+        "point": [
+          26.875,
+          0.03,
+          13.5
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-1",
+        "point": [
+          26.86323668438899,
+          0.03,
+          13.67947351430257
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-2",
+        "point": [
+          26.82814801114747,
+          0.03,
+          13.855876187015966
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-3",
+        "point": [
+          26.77033435720302,
+          0.03,
+          14.026189719501998
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-4",
+        "point": [
+          26.690784930203602,
+          0.03,
+          14.1875
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-5",
+        "point": [
+          26.590860842900447,
+          0.03,
+          14.33704696488699
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-6",
+        "point": [
+          26.472271824131504,
+          0.03,
+          14.472271824131504
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-7",
+        "point": [
+          26.33704696488699,
+          0.03,
+          14.590860842900447
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-8",
+        "point": [
+          26.1875,
+          0.03,
+          14.690784930203604
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-9",
+        "point": [
+          26.026189719502,
+          0.03,
+          14.77033435720302
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-10",
+        "point": [
+          25.855876187015966,
+          0.03,
+          14.82814801114747
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-11",
+        "point": [
+          25.679473514302572,
+          0.03,
+          14.863236684388989
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-12",
+        "point": [
+          25.5,
+          0.03,
+          14.875
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-13",
+        "point": [
+          25.320526485697428,
+          0.03,
+          14.863236684388989
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-14",
+        "point": [
+          25.144123812984034,
+          0.03,
+          14.82814801114747
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-15",
+        "point": [
+          24.973810280498,
+          0.03,
+          14.77033435720302
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-16",
+        "point": [
+          24.8125,
+          0.03,
+          14.690784930203604
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-17",
+        "point": [
+          24.66295303511301,
+          0.03,
+          14.590860842900447
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-18",
+        "point": [
+          24.527728175868496,
+          0.03,
+          14.472271824131504
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-19",
+        "point": [
+          24.409139157099553,
+          0.03,
+          14.33704696488699
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-20",
+        "point": [
+          24.309215069796398,
+          0.03,
+          14.1875
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-21",
+        "point": [
+          24.22966564279698,
+          0.03,
+          14.026189719501998
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-22",
+        "point": [
+          24.17185198885253,
+          0.03,
+          13.855876187015966
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-23",
+        "point": [
+          24.13676331561101,
+          0.03,
+          13.67947351430257
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-24",
+        "point": [
+          24.125,
+          0.03,
+          13.5
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-25",
+        "point": [
+          24.13676331561101,
+          0.03,
+          13.320526485697428
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-26",
+        "point": [
+          24.17185198885253,
+          0.03,
+          13.144123812984034
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-27",
+        "point": [
+          24.22966564279698,
+          0.03,
+          12.973810280498002
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-28",
+        "point": [
+          24.309215069796398,
+          0.03,
+          12.8125
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-29",
+        "point": [
+          24.409139157099553,
+          0.03,
+          12.66295303511301
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-30",
+        "point": [
+          24.527728175868496,
+          0.03,
+          12.527728175868496
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-31",
+        "point": [
+          24.66295303511301,
+          0.03,
+          12.409139157099553
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-32",
+        "point": [
+          24.8125,
+          0.03,
+          12.309215069796398
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-33",
+        "point": [
+          24.973810280498,
+          0.03,
+          12.22966564279698
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-34",
+        "point": [
+          25.144123812984034,
+          0.03,
+          12.17185198885253
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-35",
+        "point": [
+          25.320526485697428,
+          0.03,
+          12.136763315611011
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-36",
+        "point": [
+          25.5,
+          0.03,
+          12.125
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-37",
+        "point": [
+          25.679473514302572,
+          0.03,
+          12.136763315611011
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-38",
+        "point": [
+          25.855876187015966,
+          0.03,
+          12.17185198885253
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-39",
+        "point": [
+          26.026189719502,
+          0.03,
+          12.22966564279698
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-40",
+        "point": [
+          26.1875,
+          0.03,
+          12.309215069796396
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-41",
+        "point": [
+          26.33704696488699,
+          0.03,
+          12.409139157099553
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-42",
+        "point": [
+          26.472271824131504,
+          0.03,
+          12.527728175868496
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-43",
+        "point": [
+          26.590860842900447,
+          0.03,
+          12.66295303511301
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-44",
+        "point": [
+          26.690784930203602,
+          0.03,
+          12.8125
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-45",
+        "point": [
+          26.77033435720302,
+          0.03,
+          12.973810280498
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-46",
+        "point": [
+          26.82814801114747,
+          0.03,
+          13.144123812984034
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "ENGINE_SPOT-ring-47",
+        "point": [
+          26.86323668438899,
+          0.03,
+          13.320526485697428
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-0",
+        "point": [
+          44.875,
+          0.03,
+          9.5
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-1",
+        "point": [
+          44.86323668438899,
+          0.03,
+          9.67947351430257
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-2",
+        "point": [
+          44.82814801114747,
+          0.03,
+          9.855876187015966
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-3",
+        "point": [
+          44.77033435720302,
+          0.03,
+          10.026189719501998
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-4",
+        "point": [
+          44.690784930203606,
+          0.03,
+          10.1875
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-5",
+        "point": [
+          44.59086084290045,
+          0.03,
+          10.33704696488699
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-6",
+        "point": [
+          44.472271824131504,
+          0.03,
+          10.472271824131504
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-7",
+        "point": [
+          44.337046964886994,
+          0.03,
+          10.590860842900447
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-8",
+        "point": [
+          44.1875,
+          0.03,
+          10.690784930203604
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-9",
+        "point": [
+          44.026189719502,
+          0.03,
+          10.77033435720302
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-10",
+        "point": [
+          43.855876187015966,
+          0.03,
+          10.82814801114747
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-11",
+        "point": [
+          43.67947351430257,
+          0.03,
+          10.863236684388989
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-12",
+        "point": [
+          43.5,
+          0.03,
+          10.875
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-13",
+        "point": [
+          43.32052648569743,
+          0.03,
+          10.863236684388989
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-14",
+        "point": [
+          43.144123812984034,
+          0.03,
+          10.82814801114747
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-15",
+        "point": [
+          42.973810280498,
+          0.03,
+          10.77033435720302
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-16",
+        "point": [
+          42.8125,
+          0.03,
+          10.690784930203604
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-17",
+        "point": [
+          42.662953035113006,
+          0.03,
+          10.590860842900447
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-18",
+        "point": [
+          42.527728175868496,
+          0.03,
+          10.472271824131504
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-19",
+        "point": [
+          42.40913915709955,
+          0.03,
+          10.33704696488699
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-20",
+        "point": [
+          42.309215069796394,
+          0.03,
+          10.1875
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-21",
+        "point": [
+          42.22966564279698,
+          0.03,
+          10.026189719501998
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-22",
+        "point": [
+          42.17185198885253,
+          0.03,
+          9.855876187015966
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-23",
+        "point": [
+          42.13676331561101,
+          0.03,
+          9.67947351430257
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-24",
+        "point": [
+          42.125,
+          0.03,
+          9.5
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-25",
+        "point": [
+          42.13676331561101,
+          0.03,
+          9.320526485697428
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-26",
+        "point": [
+          42.17185198885253,
+          0.03,
+          9.144123812984034
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-27",
+        "point": [
+          42.22966564279698,
+          0.03,
+          8.973810280498002
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-28",
+        "point": [
+          42.309215069796394,
+          0.03,
+          8.8125
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-29",
+        "point": [
+          42.40913915709955,
+          0.03,
+          8.66295303511301
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-30",
+        "point": [
+          42.527728175868496,
+          0.03,
+          8.527728175868496
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-31",
+        "point": [
+          42.662953035113006,
+          0.03,
+          8.409139157099553
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-32",
+        "point": [
+          42.8125,
+          0.03,
+          8.309215069796398
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-33",
+        "point": [
+          42.973810280498,
+          0.03,
+          8.22966564279698
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-34",
+        "point": [
+          43.144123812984034,
+          0.03,
+          8.17185198885253
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-35",
+        "point": [
+          43.32052648569743,
+          0.03,
+          8.136763315611011
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-36",
+        "point": [
+          43.5,
+          0.03,
+          8.125
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-37",
+        "point": [
+          43.67947351430257,
+          0.03,
+          8.136763315611011
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-38",
+        "point": [
+          43.855876187015966,
+          0.03,
+          8.17185198885253
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-39",
+        "point": [
+          44.026189719502,
+          0.03,
+          8.22966564279698
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-40",
+        "point": [
+          44.1875,
+          0.03,
+          8.309215069796396
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-41",
+        "point": [
+          44.337046964886994,
+          0.03,
+          8.409139157099553
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-42",
+        "point": [
+          44.472271824131504,
+          0.03,
+          8.527728175868496
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-43",
+        "point": [
+          44.59086084290045,
+          0.03,
+          8.66295303511301
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-44",
+        "point": [
+          44.690784930203606,
+          0.03,
+          8.8125
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-45",
+        "point": [
+          44.77033435720302,
+          0.03,
+          8.973810280498
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-46",
+        "point": [
+          44.82814801114747,
+          0.03,
+          9.144123812984034
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "LADDER_SPOT-ring-47",
+        "point": [
+          44.86323668438899,
+          0.03,
+          9.320526485697428
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-0",
+        "point": [
+          45.375,
+          0.03,
+          14
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-1",
+        "point": [
+          45.36323668438899,
+          0.03,
+          14.17947351430257
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-2",
+        "point": [
+          45.32814801114747,
+          0.03,
+          14.355876187015966
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-3",
+        "point": [
+          45.27033435720302,
+          0.03,
+          14.526189719501998
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-4",
+        "point": [
+          45.190784930203606,
+          0.03,
+          14.6875
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-5",
+        "point": [
+          45.09086084290045,
+          0.03,
+          14.83704696488699
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-6",
+        "point": [
+          44.972271824131504,
+          0.03,
+          14.972271824131504
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-7",
+        "point": [
+          44.837046964886994,
+          0.03,
+          15.090860842900447
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-8",
+        "point": [
+          44.6875,
+          0.03,
+          15.190784930203604
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-9",
+        "point": [
+          44.526189719502,
+          0.03,
+          15.27033435720302
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-10",
+        "point": [
+          44.355876187015966,
+          0.03,
+          15.32814801114747
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-11",
+        "point": [
+          44.17947351430257,
+          0.03,
+          15.363236684388989
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-12",
+        "point": [
+          44,
+          0.03,
+          15.375
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-13",
+        "point": [
+          43.82052648569743,
+          0.03,
+          15.363236684388989
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-14",
+        "point": [
+          43.644123812984034,
+          0.03,
+          15.32814801114747
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-15",
+        "point": [
+          43.473810280498,
+          0.03,
+          15.27033435720302
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-16",
+        "point": [
+          43.3125,
+          0.03,
+          15.190784930203604
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-17",
+        "point": [
+          43.162953035113006,
+          0.03,
+          15.090860842900447
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-18",
+        "point": [
+          43.027728175868496,
+          0.03,
+          14.972271824131504
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-19",
+        "point": [
+          42.90913915709955,
+          0.03,
+          14.83704696488699
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-20",
+        "point": [
+          42.809215069796394,
+          0.03,
+          14.6875
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-21",
+        "point": [
+          42.72966564279698,
+          0.03,
+          14.526189719501998
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-22",
+        "point": [
+          42.67185198885253,
+          0.03,
+          14.355876187015966
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-23",
+        "point": [
+          42.63676331561101,
+          0.03,
+          14.17947351430257
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-24",
+        "point": [
+          42.625,
+          0.03,
+          14
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-25",
+        "point": [
+          42.63676331561101,
+          0.03,
+          13.820526485697428
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-26",
+        "point": [
+          42.67185198885253,
+          0.03,
+          13.644123812984034
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-27",
+        "point": [
+          42.72966564279698,
+          0.03,
+          13.473810280498002
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-28",
+        "point": [
+          42.809215069796394,
+          0.03,
+          13.3125
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-29",
+        "point": [
+          42.90913915709955,
+          0.03,
+          13.16295303511301
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-30",
+        "point": [
+          43.027728175868496,
+          0.03,
+          13.027728175868496
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-31",
+        "point": [
+          43.162953035113006,
+          0.03,
+          12.909139157099553
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-32",
+        "point": [
+          43.3125,
+          0.03,
+          12.809215069796398
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-33",
+        "point": [
+          43.473810280498,
+          0.03,
+          12.72966564279698
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-34",
+        "point": [
+          43.644123812984034,
+          0.03,
+          12.67185198885253
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-35",
+        "point": [
+          43.82052648569743,
+          0.03,
+          12.636763315611011
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-36",
+        "point": [
+          44,
+          0.03,
+          12.625
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-37",
+        "point": [
+          44.17947351430257,
+          0.03,
+          12.636763315611011
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-38",
+        "point": [
+          44.355876187015966,
+          0.03,
+          12.67185198885253
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-39",
+        "point": [
+          44.526189719502,
+          0.03,
+          12.72966564279698
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-40",
+        "point": [
+          44.6875,
+          0.03,
+          12.809215069796396
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-41",
+        "point": [
+          44.837046964886994,
+          0.03,
+          12.909139157099553
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-42",
+        "point": [
+          44.972271824131504,
+          0.03,
+          13.027728175868496
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-43",
+        "point": [
+          45.09086084290045,
+          0.03,
+          13.16295303511301
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-44",
+        "point": [
+          45.190784930203606,
+          0.03,
+          13.3125
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-45",
+        "point": [
+          45.27033435720302,
+          0.03,
+          13.473810280498
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-46",
+        "point": [
+          45.32814801114747,
+          0.03,
+          13.644123812984034
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "HYDRANT_SPOT-ring-47",
+        "point": [
+          45.36323668438899,
+          0.03,
+          13.820526485697428
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "engineRight",
+        "point": [
+          26.85,
+          0.48,
+          14.22
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "engineLeft",
+        "point": [
+          24.15,
+          0.48,
+          14.22
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "polePlus",
+        "point": [
+          24.62,
+          0.48,
+          18.02
+        ],
+        "occludedByStation": false
+      },
+      {
+        "name": "poleMinus",
+        "point": [
+          23.38,
+          0.48,
+          18.02
+        ],
+        "occludedByStation": false
+      }
+    ],
+    "occluded": 0,
+    "note": "Station mesh only. Other scenery needs actual game review."
+  },
+  "firefighter": {
+    "centerXZ": [
+      28.5,
+      12.5
+    ],
+    "controlRadius": 0.72,
+    "clearance": 1.5312
+  },
+  "canal": {
+    "leftEdge": 35.4,
+    "clearance": 2.9
+  },
+  "cat": {
+    "path": {
+      "fromXYZ": [
+        47,
+        3.7,
+        8
+      ],
+      "toXYZ": [
+        42.5,
+        0,
+        10.7
+      ]
+    },
+    "stationClearance": 9.3102,
+    "controlRadius": 0.7
+  },
+  "roofProbes": [
+    {
+      "x": 26.9,
+      "z": 6.6507,
+      "topY": 3.3008
+    },
+    {
+      "x": 26.9,
+      "z": 7.3254,
+      "topY": 3.2918
+    },
+    {
+      "x": 26.9,
+      "z": 8,
+      "topY": 3.282
+    },
+    {
+      "x": 26.9,
+      "z": 8.6746,
+      "topY": 3.2715
+    },
+    {
+      "x": 26.9,
+      "z": 9.3493,
+      "topY": 3.2616
+    },
+    {
+      "x": 27.95,
+      "z": 6.6507,
+      "topY": 3.3601
+    },
+    {
+      "x": 27.95,
+      "z": 7.3254,
+      "topY": 3.3492
+    },
+    {
+      "x": 27.95,
+      "z": 8,
+      "topY": 3.3387
+    },
+    {
+      "x": 27.95,
+      "z": 8.6746,
+      "topY": 3.3247
+    },
+    {
+      "x": 27.95,
+      "z": 9.3493,
+      "topY": 4.1765
+    },
+    {
+      "x": 29,
+      "z": 6.6507,
+      "topY": 3.397
+    },
+    {
+      "x": 29,
+      "z": 7.3254,
+      "topY": 3.3855
+    },
+    {
+      "x": 29,
+      "z": 8,
+      "topY": 3.3715
+    },
+    {
+      "x": 29,
+      "z": 8.6746,
+      "topY": 3.3562
+    },
+    {
+      "x": 29,
+      "z": 9.3493,
+      "topY": 5.144
+    },
+    {
+      "x": 30.05,
+      "z": 6.6507,
+      "topY": 3.4103
+    },
+    {
+      "x": 30.05,
+      "z": 7.3254,
+      "topY": 3.3948
+    },
+    {
+      "x": 30.05,
+      "z": 8,
+      "topY": 3.3805
+    },
+    {
+      "x": 30.05,
+      "z": 8.6746,
+      "topY": 3.3652
+    },
+    {
+      "x": 30.05,
+      "z": 9.3493,
+      "topY": 3.3503
+    },
+    {
+      "x": 31.1,
+      "z": 6.6507,
+      "topY": 3.4057
+    },
+    {
+      "x": 31.1,
+      "z": 7.3254,
+      "topY": 3.3894
+    },
+    {
+      "x": 31.1,
+      "z": 8,
+      "topY": 3.3735
+    },
+    {
+      "x": 31.1,
+      "z": 8.6746,
+      "topY": 3.3568
+    },
+    {
+      "x": 31.1,
+      "z": 9.3493,
+      "topY": 3.3401
+    }
+  ],
+  "limitations": [
+    "Roof sampling is not watertight topology proof.",
+    "Character envelopes are conservative circles, not animated meshes.",
+    "No iPad/PWA/FPS result from geometric checks."
+  ]
+}

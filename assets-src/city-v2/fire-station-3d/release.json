@@ -1,0 +1,75 @@
+{
+  "status": "Installed and tested locally; awaiting Claude review/publication",
+  "referenceApproval": "m0229",
+  "layoutFixApproval": "m0232",
+  "sourceRevision": "c8c6739",
+  "source": "assets-src/raw/city-v2-2026-10-26/fire-station.glb",
+  "sourceBytes": 898120,
+  "sourceSha256": "2b23091a5f6fe339ef5395f62514f48bcdb6170b1bffcf1cd5122c4d38d39a70",
+  "output": "public/models/fire-station.glb",
+  "outputBytes": 120152,
+  "outputSha256": "285e7684bda63b72ca9df86adb61b00b021ad8f0d4fa87fb0a3d136121ce74b8",
+  "triangles": 6846,
+  "runtimeSizeXYZ": [
+    7,
+    5.1598,
+    4.4975
+  ],
+  "orientation": {
+    "rawFront": "+Z",
+    "canonicalYawDegrees": 90,
+    "canonicalFront": "+X",
+    "gameYawDegrees": -90,
+    "gameFront": "+Z"
+  },
+  "processing": "Static-only Meshopt canonical pass; 512px WebP88. No simplification: optimized geometry signature identical to canonical source. No nonuniform scaling.",
+  "roof": "Closed opaque surface observed front/top/back,25 downward samples minY3.2616; not watertight proof",
+  "render": "Actual model()/patched() one InstancedMesh,1opaque material, no negative mesh nodes",
+  "gameQA": {
+    "viewportSizes": [
+      [
+        1180,
+        660
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "setup": "Actual main.ts q=1. Seed phase evening and mark only other evening needs done. Add actual parts at fixed anchors through local QA UI.",
+    "mouseDragAt390": "Engine minus to STATION_POLE minus creates one wire; tested before and after house-b move. Mouse gesture, not physical iPad touch.",
+    "circuit": "6 real wires across three powered loops. No victory flags forced.",
+    "result": {
+      "fire": 1,
+      "catSaved": true,
+      "catDown": 1,
+      "ladderReach": 1,
+      "firefighterDone": true,
+      "phase": "night"
+    },
+    "catTrace": "qa/fire-game-fixed-result.json,17samples from roof(47,3.7,8) to ground(42.5,0,10.7)",
+    "houseMove": {
+      "from": [
+        26,
+        21
+      ],
+      "to": [
+        29,
+        21
+      ],
+      "purpose": "Open both STATION_POLE terminals previously hidden by blue roof. Current fallback geometry: harborXgap.34835,roadZgap1.34835."
+    }
+  },
+  "checks": {
+    "tests": "21 passed",
+    "typecheck": "passed",
+    "gltfValidator": "0 errors,0 warnings,1 unsupported Meshopt info"
+  },
+  "limitations": [
+    "Desktop IAB only; no iPad/PWA/FPS claim.",
+    "Firefighter, cat, burning house and house-b are current stand-ins; future sculpted/animated assets require clearance review.",
+    "Recorded recurring MutationObserver.observe TypeError without source URL; origin unresolved, no clean-console claim.",
+    "All-city pole occlusion audit requested m0232 is a separate next step.",
+    "No main publication by Codex."
+  ]
+}

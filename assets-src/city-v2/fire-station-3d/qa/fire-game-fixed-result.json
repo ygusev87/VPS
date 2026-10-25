@@ -1,0 +1,463 @@
+{
+  "phase": "night",
+  "fire": 1,
+  "catSaved": true,
+  "catDown": 1,
+  "cat": {
+    "position": [
+      42.5,
+      0,
+      10.7
+    ],
+    "base": 0
+  },
+  "needs": [
+    {
+      "name": "car",
+      "phase": "day",
+      "done": false
+    },
+    {
+      "name": "tram",
+      "phase": "day",
+      "done": false
+    },
+    {
+      "name": "baker",
+      "phase": "day",
+      "done": false
+    },
+    {
+      "name": "car4",
+      "phase": "day",
+      "done": false
+    },
+    {
+      "name": "child",
+      "phase": "day",
+      "done": false
+    },
+    {
+      "name": "car7",
+      "phase": "day",
+      "done": false
+    },
+    {
+      "name": "grandma",
+      "phase": "day",
+      "done": false
+    },
+    {
+      "name": "builder",
+      "phase": "day",
+      "done": false
+    },
+    {
+      "name": "boat",
+      "phase": "day",
+      "done": false
+    },
+    {
+      "name": "kitten",
+      "phase": "evening",
+      "done": true
+    },
+    {
+      "name": "child6",
+      "phase": "evening",
+      "done": true
+    },
+    {
+      "name": "firefighter",
+      "phase": "evening",
+      "done": true
+    },
+    {
+      "name": "shopkeeper",
+      "phase": "night",
+      "done": false
+    },
+    {
+      "name": "child3",
+      "phase": "morning",
+      "done": false
+    }
+  ],
+  "engine": {
+    "powered": true,
+    "level": 2.0371371699559315,
+    "terminals": [
+      {
+        "world": [
+          26.85,
+          0.48,
+          14.22
+        ],
+        "screen": {
+          "x": 267.1106425513756,
+          "y": 361.8651113434252
+        }
+      },
+      {
+        "world": [
+          24.15,
+          0.48,
+          14.22
+        ],
+        "screen": {
+          "x": 171.83181576325677,
+          "y": 361.8651113434252
+        }
+      }
+    ]
+  },
+  "ladder": {
+    "reach": 1,
+    "level": 1.1318242312932958,
+    "terminals": [
+      {
+        "world": [
+          44.45,
+          0.48,
+          9.92
+        ],
+        "screen": {
+          "x": 869.9119007316159,
+          "y": 247.00000816888914
+        }
+      },
+      {
+        "world": [
+          42.5,
+          0.48,
+          9.92
+        ],
+        "screen": {
+          "x": 805.3168467166275,
+          "y": 247.00000816888914
+        }
+      }
+    ]
+  },
+  "pump": {
+    "pumping": true,
+    "level": 1.1318242312932958,
+    "terminals": [
+      {
+        "world": [
+          44.62,
+          0.48,
+          14.5
+        ],
+        "screen": {
+          "x": 895.4852357968202,
+          "y": 369.86706419374104
+        }
+      },
+      {
+        "world": [
+          43.38,
+          0.48,
+          14.5
+        ],
+        "screen": {
+          "x": 851.5407239188556,
+          "y": 369.86706419374104
+        }
+      }
+    ]
+  },
+  "poles": [
+    {
+      "position": [
+        24,
+        0,
+        17.5
+      ],
+      "terminals": [
+        {
+          "world": [
+            24.62,
+            0.48,
+            18.02
+          ],
+          "screen": {
+            "x": 163.82793187850166,
+            "y": 476.6226734811797
+          }
+        },
+        {
+          "world": [
+            23.38,
+            0.48,
+            18.02
+          ],
+          "screen": {
+            "x": 117.39090512361072,
+            "y": 476.6226734811797
+          }
+        }
+      ]
+    },
+    {
+      "position": [
+        40.5,
+        0,
+        12.5
+      ],
+      "terminals": [
+        {
+          "world": [
+            41.12,
+            0.48,
+            13.02
+          ],
+          "screen": {
+            "x": 767.443762431268,
+            "y": 328.327894447236
+          }
+        },
+        {
+          "world": [
+            39.88,
+            0.48,
+            13.02
+          ],
+          "screen": {
+            "x": 724.4691012174455,
+            "y": 328.327894447236
+          }
+        }
+      ]
+    }
+  ],
+  "wires": 6,
+  "canvas": [
+    "1180",
+    "660"
+  ],
+  "trace": [
+    {
+      "phase": "evening",
+      "fire": 0.02,
+      "catDown": 0,
+      "catSaved": false,
+      "reach": 0.03248999999999651,
+      "catPosition": [
+        47,
+        3.7,
+        8
+      ],
+      "catBase": 3.7
+    },
+    {
+      "phase": "evening",
+      "fire": 0.1,
+      "catDown": 0,
+      "catSaved": false,
+      "reach": 0.15257999999999736,
+      "catPosition": [
+        47,
+        3.7,
+        8
+      ],
+      "catBase": 3.7
+    },
+    {
+      "phase": "evening",
+      "fire": 0.2,
+      "catDown": 0,
+      "catSaved": false,
+      "reach": 0.3024599999999992,
+      "catPosition": [
+        47,
+        3.7,
+        8
+      ],
+      "catBase": 3.7
+    },
+    {
+      "phase": "evening",
+      "fire": 0.3,
+      "catDown": 0,
+      "catSaved": false,
+      "reach": 0.45248999999999656,
+      "catPosition": [
+        47,
+        3.7,
+        8
+      ],
+      "catBase": 3.7
+    },
+    {
+      "phase": "evening",
+      "fire": 0.4,
+      "catDown": 0,
+      "catSaved": false,
+      "reach": 0.6049799999999979,
+      "catPosition": [
+        47,
+        3.7091049430134855,
+        8
+      ],
+      "catBase": 3.7
+    },
+    {
+      "phase": "evening",
+      "fire": 0.5,
+      "catDown": 0,
+      "catSaved": false,
+      "reach": 0.7524899999999978,
+      "catPosition": [
+        47,
+        3.7187137301674764,
+        8
+      ],
+      "catBase": 3.7
+    },
+    {
+      "phase": "evening",
+      "fire": 0.6,
+      "catDown": 0,
+      "catSaved": false,
+      "reach": 0.9024899999999981,
+      "catPosition": [
+        47,
+        3.718502713924609,
+        8
+      ],
+      "catBase": 3.7
+    },
+    {
+      "phase": "evening",
+      "fire": 0.7,
+      "catDown": 0.13627999999999885,
+      "catSaved": false,
+      "reach": 1,
+      "catPosition": [
+        46.77205400344237,
+        3.5248509543665354,
+        8.136767597934577
+      ],
+      "catBase": 3.512577736163728
+    },
+    {
+      "phase": "evening",
+      "fire": 0.74,
+      "catDown": 0.2199599999999976,
+      "catSaved": false,
+      "reach": 1,
+      "catPosition": [
+        46.44261731590343,
+        3.254226203676336,
+        8.334429610457939
+      ],
+      "catBase": 3.2417075708539356
+    },
+    {
+      "phase": "evening",
+      "fire": 0.8,
+      "catDown": 0.33663999999999644,
+      "catSaved": false,
+      "reach": 1,
+      "catPosition": [
+        45.813444455530515,
+        2.739647751761306,
+        8.71193332668169
+      ],
+      "catBase": 2.7243876634362034
+    },
+    {
+      "phase": "evening",
+      "fire": 0.84,
+      "catDown": 0.41663999999999624,
+      "catSaved": false,
+      "reach": 1,
+      "catPosition": [
+        45.30746666506652,
+        2.325943056309522,
+        9.015520000960088
+      ],
+      "catBase": 2.308361480165806
+    },
+    {
+      "phase": "evening",
+      "fire": 0.9,
+      "catDown": 0.5366399999999962,
+      "catSaved": false,
+      "reach": 1,
+      "catPosition": [
+        44.50312269937052,
+        1.6668092038637425,
+        9.498126380377688
+      ],
+      "catBase": 1.6470119972602066
+    },
+    {
+      "phase": "evening",
+      "fire": 0.94,
+      "catDown": 0.6166399999999964,
+      "catSaved": false,
+      "reach": 1,
+      "catPosition": [
+        43.97696186890652,
+        1.234320963155632,
+        9.813822878656088
+      ],
+      "catBase": 1.2143908699898043
+    },
+    {
+      "phase": "evening",
+      "fire": 1,
+      "catDown": 0.7366399999999967,
+      "catSaved": false,
+      "reach": 1,
+      "catPosition": [
+        43.271943343210516,
+        0.6535730300625756,
+        10.236833994073692
+      ],
+      "catBase": 0.6347089710841997
+    },
+    {
+      "phase": "evening",
+      "fire": 1,
+      "catDown": 0.8166399999999969,
+      "catSaved": false,
+      "reach": 1,
+      "catPosition": [
+        42.898399472746505,
+        0.345897756512948,
+        10.460960316352093
+      ],
+      "catBase": 0.32757289981379606
+    },
+    {
+      "phase": "evening",
+      "fire": 1,
+      "catDown": 0.9400000000000007,
+      "catSaved": false,
+      "reach": 1,
+      "catPosition": [
+        42.546656,
+        0.05746038943136901,
+        10.6720064
+      ],
+      "catBase": 0.038361599999998934
+    },
+    {
+      "phase": "evening",
+      "fire": 1,
+      "catDown": 1,
+      "catSaved": true,
+      "reach": 1,
+      "catPosition": [
+        42.5,
+        0.019962009063843506,
+        10.7
+      ],
+      "catBase": 0
+    }
+  ],
+  "quality": "q=1; desktop IAB, no iPad/FPS claim"
+}

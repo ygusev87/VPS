@@ -1,5 +1,5 @@
 {
-  "status": "Reference proposal; await Claude review before Tripo",
+  "status": "Installed in public/models; local game task passed; Claude review pending",
   "reference": "fire-station-v1.png",
   "sourceRevision": "0d82ba7",
   "placement": {
@@ -135,11 +135,39 @@
     "Do not alter ladder, hydrant, burning house or cat descent. Full evening task should still extinguish fire and bring cat down.",
     "Reference review precedes any Tripo order; iPad/PWA/FPS remain separate from asset geometry and desktop QA."
   ],
-  "tripoOrders": 0,
-  "studioCreditsUsed": 0,
+  "tripoOrders": 1,
+  "studioCreditsUsed": 25,
   "apiCreditsUsed": 0,
   "limitations": [
-    "Reference PNG is not a runtime building, topology check or measured footprint.",
-    "No full game/iPad/performance result from the reference."
-  ]
+    "Desktop IAB only; no iPad/PWA/FPS claim.",
+    "Firefighter, cat, burning house and house-b are current stand-ins; future sculpted/animated assets require clearance review.",
+    "Recorded recurring MutationObserver.observe TypeError without source URL; origin unresolved, no clean-console claim.",
+    "All-city pole occlusion audit requested m0232 is a separate next step.",
+    "No main publication by Codex."
+  ],
+  "referenceApproval": "m0229",
+  "studioTask": "28ec1e92-6afc-4280-8e05-912875f1d088",
+  "actualRuntime": {
+    "sizeXYZ": [
+      7,
+      5.1598,
+      4.4975
+    ],
+    "worldBox": {
+      "min": [
+        25.5,
+        0,
+        5.7512
+      ],
+      "max": [
+        32.5,
+        5.1598,
+        10.2488
+      ]
+    },
+    "bytes": 120152,
+    "triangles": 6846,
+    "sha256": "285e7684bda63b72ca9df86adb61b00b021ad8f0d4fa87fb0a3d136121ce74b8"
+  },
+  "release": "fire-station-3d/release.json"
 }

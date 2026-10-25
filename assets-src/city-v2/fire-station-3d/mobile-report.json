@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-10-25T22:42:09.739Z",
+  "source": "/tmp/fire-station-canonical-20261026",
+  "output": "assets-src/city-v2/fire-station-3d/candidate",
+  "textureSource": null,
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 738436,
+      "triangles": 6846,
+      "textureMiB": 21.333333333333332
+    },
+    "after": {
+      "bytes": 120152,
+      "triangles": 6846,
+      "textureMiB": 1.3333333333333333
+    }
+  },
+  "models": [
+    {
+      "name": "fire-station",
+      "sourceSha256": "e4fdf2bd31d8136bd2727e0a98d16b12de746f02281c6a3de93f869df26f5ffa",
+      "outputSha256": "285e7684bda63b72ca9df86adb61b00b021ad8f0d4fa87fb0a3d136121ce74b8",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 738436,
+        "triangles": 6846,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 661690,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.32125308999908453,
+            0.00000401132874489063,
+            -0.49999999999999994
+          ],
+          "max": [
+            0.3212530899990843,
+            0.737117570702505,
+            0.5000000000000001
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 120152,
+        "triangles": 6846,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 43340,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.32125308999908453,
+            0.00000401132874489063,
+            -0.49999999999999994
+          ],
+          "max": [
+            0.3212530899990843,
+            0.737117570702505,
+            0.5000000000000001
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ]
+}

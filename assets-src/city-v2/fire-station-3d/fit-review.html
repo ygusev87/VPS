@@ -1,0 +1,27 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Пожарная часть — проверка GLB</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#f4efe6;color:#283b3d;font:14px/1.45 system-ui}header{padding:10px 14px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}select,input{font:inherit}select{padding:6px}canvas{display:block;width:100%;height:min(68vh,620px);touch-action:none}pre{white-space:pre-wrap;padding:10px 14px;margin:0}p{padding:8px 14px;margin:0;max-width:1000px}label{display:flex;gap:6px;align-items:center}</style>
+<header><strong>Пожарная часть · примерка</strong><label>Ракурс<select id="view"><option value="three">Три четверти</option><option value="game">Игровой угол / двор</option><option value="back">Сзади</option><option value="top">План и крыша</option></select></label><label>Свет<select id="light"><option value="day">День</option><option value="evening">Вечер</option><option value="night">Ночь</option></select></label></header>
+<canvas id="stage"></canvas><pre id="report">Загрузка…</pre><p>Стенд внешнего вида новой пожарной части через model()/patched(). Полное вечернее задание проверяется отдельно в game-review.html. Гараж и купол статичны. Крыша должна быть закрыта.</p>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
+import {patched} from '/src/storymap.ts';
+import {loadModels,model} from '/src/parts/assets.ts';
+import {DECOR} from '/src/city-decor.ts';
+const final=new URLSearchParams(location.search).has('final');
+const $=s=>document.querySelector(s),canvas=$('#stage'),report=$('#report'),view=$('#view'),light=$('#light');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.toneMapping=THREE.NeutralToneMapping;
+const scene=new THREE.Scene();scene.environment=new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(),.04).texture;
+const hemi=new THREE.HemisphereLight('#fffaf0','#d9c5ac',2.2),sun=new THREE.DirectionalLight('#fff3df',3);sun.position.set(-4,8,6);scene.add(hemi,sun);
+const floor=new THREE.Mesh(new THREE.PlaneGeometry(23,20),new THREE.MeshStandardMaterial({color:'#e2d5bd',roughness:1}));floor.rotation.x=-Math.PI/2;floor.position.set(-1,-.02,3);scene.add(floor);
+let house;
+function fit(src){const inner=src.clone(true);inner.rotation.y=-Math.PI/2;const holder=new THREE.Group().add(inner);holder.updateMatrixWorld(true);let b=new THREE.Box3().setFromObject(inner),s=b.getSize(new THREE.Vector3());inner.scale.setScalar(7/s.x);holder.updateMatrixWorld(true);b=new THREE.Box3().setFromObject(inner);const c=b.getCenter(new THREE.Vector3());inner.position.set(-c.x,-b.min.y,-c.z);return holder;}
+async function candidate(){const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder),r=await fetch('candidate/fire-station.glb');if(!r.ok)throw Error('Candidate missing');const bytes=await r.arrayBuffer();return new Promise((resolve,reject)=>{const old=window.createImageBitmap;window.createImageBitmap=undefined;try{loader.parse(bytes,'',g=>resolve(fit(g.scene)),reject);}finally{window.createImageBitmap=old;}});}
+const camera=new THREE.OrthographicCamera();
+function render(){if(!house)return;const w=canvas.clientWidth,h=canvas.clientHeight;renderer.setSize(w,h,false);const wide=['game','top'].includes(view.value),span=Math.max(wide?9:8,(wide?9:8)*h/w),target=new THREE.Vector3(...(wide?[0,1.6,0]:[0,1.6,0]));camera.left=-span*w/h/2;camera.right=span*w/h/2;camera.top=span/2;camera.bottom=-span/2;camera.near=.1;camera.far=100;camera.up.set(0,1,0);let d=view.value==='back'?[-1,.75,-1]:view.value==='game'?[0,1,.78]:[1,.65,1];if(view.value==='top'){d=[0,1,0];camera.up.set(0,0,-1);}camera.position.copy(target).addScaledVector(new THREE.Vector3(...d).normalize(),32);camera.lookAt(target);camera.updateProjectionMatrix();renderer.render(scene,camera);}
+function update(){if(!house)return;const preset={day:['#f4efe6',2.2,3,.7,1],evening:['#46495c',1.0,.7,.45,.85],night:['#202837',.5,.3,.25,.8]}[light.value];scene.background=new THREE.Color(preset[0]);hemi.intensity=preset[1];sun.intensity=preset[2];scene.environmentIntensity=preset[3];renderer.toneMappingExposure=preset[4];const box=new THREE.Box3().setFromObject(house),s=box.getSize(new THREE.Vector3());report.textContent=`${final?'Установленный public GLB через игровой model()':'Кандидат: игровой fit воспроизведён в стенде'}; patched(), InstancedMesh ${house.children.filter(o=>o.isInstancedMesh).length}.\nГабарит X/Y/Z: ${s.toArray().map(n=>n.toFixed(3)).join(' / ')}. Центр (29, 8), fit7 × scale1.\nсвет: ${light.options[light.selectedIndex].text}.`;render();}
+try{await loadModels(final?['fire-station']:[]);const entry=DECOR.find(g=>g.model==='fire-station');if(!entry)throw Error('Missing DECOR');const fitted=final?model('fire-station',entry.fit):await candidate();if(!fitted)throw Error('Game loader failed');house=patched(fitted,[new THREE.Matrix4().makeScale(1,1,1)]);scene.add(house);update();}catch(e){report.textContent=e.message;console.error(e);}
+view.onchange=render;light.onchange=update;window.addEventListener('resize',render);
+</script></html>

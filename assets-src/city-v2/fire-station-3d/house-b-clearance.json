@@ -1,0 +1,72 @@
+{
+  "approval": "m0232",
+  "source": "Current house-b townHouse/boxHouse fallback: w5,h3.4,d4, ConeGeometry(max(w,d)*.75,h*.6,4), yawPI/4. Vertex-accurate bounds. No house-b GLB exists yet.",
+  "from": [
+    26,
+    21
+  ],
+  "to": [
+    29,
+    21
+  ],
+  "fitWidth": 5,
+  "roofBox": {
+    "min": [
+      26.348349570550447,
+      3.4000000190734863,
+      18.348349570550447
+    ],
+    "max": [
+      31.651650429449553,
+      5.439999980926514,
+      23.651650429449553
+    ]
+  },
+  "terminalPoints": [
+    [
+      24.62,
+      0.48,
+      18.02
+    ],
+    [
+      23.38,
+      0.48,
+      18.02
+    ]
+  ],
+  "viewDirection": [
+    0,
+    0.7885023060177911,
+    0.6150317986938771
+  ],
+  "beforeOccluded": [
+    true,
+    true
+  ],
+  "afterOccluded": [
+    false,
+    false
+  ],
+  "harbor": {
+    "center": [
+      37,
+      19.5
+    ],
+    "radiusXZ": [
+      5,
+      3.2
+    ],
+    "leftEdge": 32,
+    "xGap": 0.3483495705504467
+  },
+  "tramRoad": {
+    "centerZ": 27,
+    "width": 4,
+    "nearEdge": 25,
+    "zGap": 1.3483495705504467
+  },
+  "limitations": [
+    "Future house-b GLB must be remeasured including full roof.",
+    "Browser game screenshots verify actual rendering."
+  ]
+}
