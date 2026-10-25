@@ -684,7 +684,7 @@ export class FarmMap {
   }
 
   private buildCrittersTwo() {
-    const kitten = this.critter('kitten', { height: 0.75 }, LOFT.clone().add(v(0.3, 0.2)), 0.75, 0.6);
+    const kitten = this.critter('kitten', { height: 0.75 }, LOFT.clone().add(v(0.3, 0.2)), 0.75, -0.6);
     kitten.base = LOFT_TOP;
     this.critter('goat', { width: 1.6 }, v(GOATS.x - 1.6, GOATS.z - 1.2), 1.4, 0.3);
     this.critter('kid', { width: 1 }, v(GOATS.x + 0.8, GOATS.z - 0.4), 0.9, -0.4);
@@ -1222,7 +1222,8 @@ const FOX_PATH = [v(-33, 20.5), v(-27, 19), v(-20.5, 17), v(-13.5, 15.6), v(-8, 
 const FOX_SNEAK = 1.5;
 const FOX_RUN = 4.5;
 const FOX_WALK_SNEAK = 1;
-const FOX_WALK_RUN = 2.2;
+// Running is three times as fast as sneaking: so are the steps.
+const FOX_WALK_RUN = 3;
 /** Where a hint asks for the bell: by the fox's button, off its path. */
 const BELL_SPOT = v(-10.8, 12.4);
 function pathLength() {
