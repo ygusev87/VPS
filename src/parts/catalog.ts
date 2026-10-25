@@ -11,6 +11,7 @@ import { Conveyor, MarbleRun, WaterMill } from './mech';
 import { FloorFan, PcFan, Pinwheel } from './wind';
 import { Bell, Belt, Domino, Laser, Launcher, LightSensor, Magnet, Mirror, Target, WindGen } from './chain';
 import { Gate, Heater, Pole, Pump, Solar } from './farm';
+import { Substation } from './city';
 import type { PhraseId } from '../voice';
 
 export interface CatalogItem {
@@ -215,6 +216,8 @@ function make(kind: PartKind): Part {
       return new Heater();
     case 'gate':
       return new Gate();
+    case 'substation':
+      return new Substation();
     case 'belt':
       return new Belt();
     case 'mirror':

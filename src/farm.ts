@@ -17,7 +17,7 @@ import { glowFor } from './parts/models';
 import { flowers, groundMaterial, onLane, pond, type Ellipse, type GroundPlan } from './ground';
 import { AMBIENT } from './parts/wind';
 import { isActive } from './world';
-import { StoryMap, blob, v, type Critter, type MapHooks, type MapProgress, type Need, type NeedSpec, type Phase } from './storymap';
+import { StoryMap, blob, boxHouse, instances, patched, v, type Critter, type MapHooks, type MapProgress, type Need, type NeedSpec, type Phase } from './storymap';
 
 /** Model files only the farm needs (loaded when it opens). */
 export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
@@ -1019,17 +1019,6 @@ function wander(pts: [number, number][], seed: number): [number, number][] {
 /** The duck pond (its bed, water and shore). */
 const POND_SIZE = { rx: 5.1 * K, rz: 3.3 * K };
 
-function boxHouse(wall: string, roof: string, w: number, h: number, d: number): THREE.Group {
-  const g = new THREE.Group();
-  const body = mesh(new THREE.BoxGeometry(w, h, d), mat(wall, 0.7));
-  body.position.y = h / 2;
-  const r = mesh(new THREE.ConeGeometry(Math.max(w, d) * 0.75, h * 0.6, 4), mat(roof, 0.7));
-  r.rotation.y = Math.PI / 4;
-  r.position.y = h + h * 0.3;
-  g.add(body, r);
-  return g;
-}
-
 function hutch({ x, z }: THREE.Vector3): THREE.Group {
   const g = new THREE.Group();
   const wood = mat('#b98654', 0.7);
@@ -1090,50 +1079,6 @@ function fence(pts: THREE.Vector3[]): THREE.Group {
     }
   }
   return g;
-}
-
-/**
- * Many copies of one sculpted model (a kind of tree, a bush), each turned its
- * own way. They are instanced in patches of the board: a patch costs one draw
- * (and one shadow draw), and patches out of view are not drawn at all — so a
- * close look at one yard does not pay for every tree on the farm.
- */
-function instances(name: string, fit: Fit, items: readonly [number, number, number][]): THREE.Group | null {
-  const src = items.length ? model(name, fit) : null;
-  if (!src) return null;
-  const up = new THREE.Vector3(0, 1, 0);
-  return patched(
-    src,
-    items.map(([x, z, s], i) => new THREE.Matrix4().compose(v(x, z), new THREE.Quaternion().setFromAxisAngle(up, (i * 2.39996) % (Math.PI * 2)), new THREE.Vector3(s, s, s))),
-  );
-}
-
-/** Copies of a fitted model at these placements, instanced patch by patch (see `instances`). */
-function patched(src: THREE.Object3D, places: THREE.Matrix4[]): THREE.Group {
-  src.updateMatrixWorld(true);
-  const PATCH = 42;
-  const patches = new Map<string, THREE.Matrix4[]>();
-  const at = new THREE.Vector3();
-  for (const m of places) {
-    at.setFromMatrixPosition(m);
-    const key = `${Math.floor(at.x / PATCH)},${Math.floor(at.z / PATCH)}`;
-    patches.set(key, [...(patches.get(key) ?? []), m]);
-  }
-  const out = new THREE.Group();
-  const each = new THREE.Matrix4();
-  src.traverse((o) => {
-    const m = o as THREE.Mesh;
-    if (!m.isMesh) return;
-    for (const members of patches.values()) {
-      const im = new THREE.InstancedMesh(m.geometry, m.material, members.length);
-      members.forEach((place, k) => im.setMatrixAt(k, each.multiplyMatrices(place, m.matrixWorld)));
-      im.castShadow = true;
-      im.receiveShadow = true;
-      im.computeBoundingSphere();
-      out.add(im);
-    }
-  });
-  return out;
 }
 
 /**

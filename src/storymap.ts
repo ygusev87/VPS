@@ -560,6 +560,8 @@ function heartTexture(): THREE.Texture {
 }
 
 const bubbleCache = new Map<string, THREE.Texture>();
+/** Needs with nothing to bring from the drawers show a picture of who waits instead. */
+const EMOJI: Partial<Record<PartKind, string>> = { gate: '🚜', substation: '🚋' };
 /** A speech bubble with a picture of the part a character is asking for. */
 function bubbleTexture(kind: PartKind): THREE.Texture {
   const hit = bubbleCache.get(kind);
@@ -588,14 +590,14 @@ function bubbleTexture(kind: PartKind): THREE.Texture {
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
       ctx.fillStyle = '#18213d';
-      ctx.fillText(kind === 'gate' ? '🚜' : '❓', 128, 100);
+      ctx.fillText(EMOJI[kind] ?? '❓', 128, 100);
     }
     tex.needsUpdate = true;
   };
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
   draw();
-  const src = kind === 'gate' ? '' : thumb(kind, true);
+  const src = EMOJI[kind] ? '' : thumb(kind, true);
   if (src) {
     const img = new Image();
     img.onload = () => draw(img);
@@ -603,4 +605,60 @@ function bubbleTexture(kind: PartKind): THREE.Texture {
   }
   bubbleCache.set(kind, tex);
   return tex;
+}
+
+/** A plain house of a box and a pyramid roof: the stand-in for a building whose model is not there. */
+export function boxHouse(wall: string, roof: string, w: number, h: number, d: number): THREE.Group {
+  const g = new THREE.Group();
+  const body = mesh(new THREE.BoxGeometry(w, h, d), mat(wall, 0.7));
+  body.position.y = h / 2;
+  const r = mesh(new THREE.ConeGeometry(Math.max(w, d) * 0.75, h * 0.6, 4), mat(roof, 0.7));
+  r.rotation.y = Math.PI / 4;
+  r.position.y = h + h * 0.3;
+  g.add(body, r);
+  return g;
+}
+
+/**
+ * Many copies of one sculpted model (a kind of tree, a bush), each turned its
+ * own way. They are instanced in patches of the board: a patch costs one draw
+ * (and one shadow draw), and patches out of view are not drawn at all — so a
+ * close look at one yard does not pay for every tree on the farm.
+ */
+export function instances(name: string, fit: Fit, items: readonly [number, number, number][]): THREE.Group | null {
+  const src = items.length ? model(name, fit) : null;
+  if (!src) return null;
+  const up = new THREE.Vector3(0, 1, 0);
+  return patched(
+    src,
+    items.map(([x, z, s], i) => new THREE.Matrix4().compose(v(x, z), new THREE.Quaternion().setFromAxisAngle(up, (i * 2.39996) % (Math.PI * 2)), new THREE.Vector3(s, s, s))),
+  );
+}
+
+/** Copies of a fitted model at these placements, instanced patch by patch (see `instances`). */
+export function patched(src: THREE.Object3D, places: THREE.Matrix4[]): THREE.Group {
+  src.updateMatrixWorld(true);
+  const PATCH = 42;
+  const patches = new Map<string, THREE.Matrix4[]>();
+  const at = new THREE.Vector3();
+  for (const m of places) {
+    at.setFromMatrixPosition(m);
+    const key = `${Math.floor(at.x / PATCH)},${Math.floor(at.z / PATCH)}`;
+    patches.set(key, [...(patches.get(key) ?? []), m]);
+  }
+  const out = new THREE.Group();
+  const each = new THREE.Matrix4();
+  src.traverse((o) => {
+    const m = o as THREE.Mesh;
+    if (!m.isMesh) return;
+    for (const members of patches.values()) {
+      const im = new THREE.InstancedMesh(m.geometry, m.material, members.length);
+      members.forEach((place, k) => im.setMatrixAt(k, each.multiplyMatrices(place, m.matrixWorld)));
+      im.castShadow = true;
+      im.receiveShadow = true;
+      im.computeBoundingSphere();
+      out.add(im);
+    }
+  });
+  return out;
 }

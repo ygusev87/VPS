@@ -3,7 +3,9 @@ import './style.css';
 import { Sfx } from './audio';
 import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Fx } from './fx';
-import { FARM_LAYOUT, FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap, hasDayTwo, type FarmProgress } from './farm';
+import { CITY_MODELS, CITY_TRAY, CityMap } from './city';
+import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap, hasDayTwo } from './farm';
+import type { MapHooks, MapProgress, StoryMap } from './storymap';
 import { loadGround } from './ground';
 import { Hud } from './hud';
 import { Input } from './input';
@@ -84,26 +86,47 @@ window.addEventListener('resize', () => {
 });
 
 let level: Level = LEVELS[0];
-/** The farm map while it is open (null on the workbench). */
-let farm: FarmMap | null = null;
-/** On the farm the view comes in closer than on the workbench. */
-const FARM_PPU = 62;
-/** A close-up the farm asked for, shown once the finger is off the table. */
-let farmFocus: THREE.Vector3[] | null = null;
+/** The map open now (null on the workbench), and which one it is. */
+let map: StoryMap | null = null;
+let mapName: MapName | null = null;
+/** On a map the view comes in closer than on the workbench. */
+const MAP_PPU = 62;
+/** A close-up the map asked for, shown once the finger is off the table. */
+let mapFocus: THREE.Vector3[] | null = null;
 let snapSaid = 0;
-let farmScore = '';
-const FARM_LEVEL: Level = {
-  id: 'farm',
-  title: 'Ферма',
-  task: 'Помоги животным',
-  icon: 'pump',
+let mapScore = '';
+
+/** The maps to play on: the farm and the city. */
+type MapName = 'farm' | 'city';
+const mapLevel = (id: MapName, title: string, task: string, icon: PartKind, intro: PhraseId, winPhrase: PhraseId): Level => ({
+  id,
+  title,
+  task,
+  icon,
   parts: [],
-  tray: FARM_TRAY,
+  tray: [],
   chain: [],
   sandbox: true,
-  intro: 'farmIntro',
-  winPhrase: 'morning',
+  intro,
+  winPhrase,
   goal: () => false,
+});
+const MAPS: Record<MapName, { level: Level; models: string[]; tray(): Level['tray']; make(hooks: MapHooks): StoryMap; move: PhraseId }> = {
+  farm: {
+    level: mapLevel('farm', 'Ферма', 'Помоги животным', 'pump', 'farmIntro', 'morning'),
+    models: FARM_MODELS,
+    // The second day's parts come into the drawers with it (and one more LED for the geese).
+    tray: () => (hasDayTwo() ? [...FARM_TRAY.map((t) => (t.kind === 'led' ? { ...t, count: t.count + 1 } : t)), ...FARM_TRAY_TWO] : FARM_TRAY),
+    make: (hooks) => new FarmMap(stage, world, hooks),
+    move: 'farmMove',
+  },
+  city: {
+    level: mapLevel('city', 'Город', 'Помоги жителям', 'trafficLight', 'cityIntro', 'cityDone'),
+    models: CITY_MODELS,
+    tray: () => CITY_TRAY,
+    make: (hooks) => new CityMap(stage, world, hooks),
+    move: 'cityMove',
+  },
 };
 let won = false;
 let goalHeld = 0;
@@ -120,7 +143,7 @@ const hud = new Hud(stage, {
   onRestart: () => {
     sfx.unlock();
     sfx.pop();
-    if (farm) void startFarm(true);
+    if (mapName) void startMap(mapName, true);
     else startLevel(level);
   },
   onSound: (on) => {
@@ -152,7 +175,7 @@ const hud = new Hud(stage, {
   onResetView: () => frameParts(),
   onReplay: () => {
     sfx.unlock();
-    if (farm) farm.replay();
+    if (map) map.replay();
     else voice.say(level.intro, 0);
   },
   onPickLevel: (l) => {
@@ -172,7 +195,7 @@ const hud = new Hud(stage, {
     sfx.unlock();
     if (id === 'open') return voice.say('mapPick', 0);
     sfx.pop();
-    if (id === 'farm') void startFarm();
+    if (id === 'farm' || id === 'city') void startMap(id);
     else if (id === 'lab') startLevel(FREE_PLAY);
     else voice.say('soon', 0);
   },
@@ -296,11 +319,11 @@ const input = new Input(stage, world, {
   },
   preferredWire: () => hintedWire(),
   onTableTap: (x, y) => {
-    farm?.tapAt(x, y);
+    map?.tapAt(x, y);
   },
   // A tap on a drawer item (no drag) puts the part in a free spot.
   onSpawnTap: (part) => {
-    const at = farm?.spotFor(part) ?? freeSpot(world);
+    const at = map?.spotFor(part) ?? freeSpot(world);
     part.root.position.set(at.x, 0, at.z);
     world.separate(part);
     part.appear();
@@ -311,13 +334,13 @@ stage.onResize = (flipped) => {
   drawTraces(traces);
   hud.layout();
   if (flipped) {
-    if (farm) farm.refocus(true);
+    if (map) map.refocus(true);
     else frameParts();
   }
 };
 
 function frameParts(instant = false) {
-  if (farm) return stage.frame(farm.bounds(), instant);
+  if (map) return stage.frame(map.bounds(), instant);
   const pts: THREE.Vector3[] = [];
   for (const p of world.parts) {
     const c = p.root.position;
@@ -347,10 +370,11 @@ function refreshTray() {
   hud.updateTray(left);
 }
 
-function leaveFarm() {
-  if (!farm) return;
-  farm.dispose();
-  farm = null;
+function leaveMap() {
+  if (!map) return;
+  map.dispose();
+  map = null;
+  mapName = null;
   hud.setMapMode(null);
   stage.setNight(progress.night);
   applyNight(progress.night);
@@ -362,20 +386,20 @@ function applyNight(on: boolean) {
   Wire.glow = on ? 0.7 : 1.4;
 }
 
-/** Open the farm map (loading its models the first time); `fresh` starts its story over. */
-async function startFarm(fresh = false) {
-  await Promise.all([loadModels(FARM_MODELS), loadGround()]);
-  leaveFarm();
-  level = FARM_LEVEL;
+/** Open a map (loading its models the first time); `fresh` starts its story over. */
+async function startMap(name: MapName, fresh = false) {
+  const def = MAPS[name];
+  await Promise.all([loadModels(def.models), loadGround()]);
+  leaveMap();
+  level = def.level;
   won = false;
   goalHeld = 0;
   hintShownOnce = false;
   world.clear();
   hud.showNext(false);
-  // The second day's parts come into the drawers with it (and one more LED for the geese).
-  FARM_LEVEL.tray = hasDayTwo() ? [...FARM_TRAY.map((t) => (t.kind === 'led' ? { ...t, count: t.count + 1 } : t)), ...FARM_TRAY_TWO] : FARM_TRAY;
-  hud.setLevel(FARM_LEVEL, progress.done);
-  farm = new FarmMap(stage, world, {
+  level.tray = def.tray();
+  hud.setLevel(level, progress.done);
+  const m = (map = def.make({
     say: (id) => voice.say(id, 0),
     chime: () => sfx.star(),
     cheer: (at) => {
@@ -385,14 +409,14 @@ async function startFarm(fresh = false) {
     done: () => {
       sfx.win();
       hud.celebrate();
-      progress.done.add('farm');
+      progress.done.add(name);
       saveProgress(progress);
     },
-    helped: (name, at) => setTimeout(() => earnSticker(`farm:${name}`, at), 1500),
+    helped: (who, at) => setTimeout(() => earnSticker(`${name}:${who}`, at), 1500),
     look: (at) => setTimeout(() => glance(at), 1200),
     focus: (pts, instant) => {
-      if (instant) stage.frame(pts, true, FARM_PPU);
-      else farmFocus = pts;
+      if (instant) stage.frame(pts, true, MAP_PPU);
+      else mapFocus = pts;
     },
     placed: (at) => {
       sfx.snap();
@@ -403,36 +427,39 @@ async function startFarm(fresh = false) {
         voice.say('snapOk', 0);
       }
     },
-  });
-  farm.start();
-  // The workbench's parts are not on the farm: give their textures' video memory back for now.
-  setTimeout(() => farm && releaseUnused(stage.scene), 1500);
-  farmScore = '';
-  // Carry on where the farm was left, unless the story was over (then it starts again).
-  const kept = fresh ? null : placeKept<FarmKept>('farm');
-  // A save from before the farm grew has fewer needs: the new ones start undone.
-  const carryOn = !!kept && kept.state.layout === FARM_LAYOUT && kept.state.phase !== 'done' && kept.state.done.length <= farm.progress().done.length;
+  }));
+  mapName = name;
+  m.start();
+  // The workbench's parts are not on the map: give their textures' video memory back for now.
+  setTimeout(() => map === m && releaseUnused(stage.scene), 1500);
+  mapScore = '';
+  // Carry on where the map was left, unless the story was over (then it starts again).
+  const kept = fresh ? null : placeKept<MapKept>(name);
+  // A save from before the map grew has fewer needs: the new ones start undone.
+  const carryOn = !!kept && kept.state.layout === m.layout && kept.state.phase !== 'done' && kept.state.done.length <= m.progress().done.length;
   if (kept && carryOn) {
     if (kept.table) restore(world, kept.table);
-    farm.resume(kept.state);
-  } else keepPlace('farm', null);
-  progress.place = 'farm';
+    m.resume(kept.state);
+  } else keepPlace(name, null);
+  progress.place = name;
   saveProgress(progress);
   // Once per visit: tell them the map moves under the finger.
-  setTimeout(() => farm && voice.say('farmMove', 0), 9000);
+  setTimeout(() => map === m && voice.say(def.move, 0), 9000);
   refreshTray();
-  // The first animal close up (farm.start asked for it); the compass shows the whole farm.
+  // The first one to help close up (start asked for it); the compass shows the whole map.
   levelStart = performance.now();
   lastTouch = levelStart;
   setHint(null);
   // Back again: who is waiting for help says so; a new visit hears the welcome.
-  if (carryOn) farm.replay();
-  else voice.say('farmIntro', 0);
+  if (carryOn) m.replay();
+  else voice.say(level.intro, 0);
 }
+/** The farm, as the debug handle and tests call it. */
+const startFarm = (fresh = false) => startMap('farm', fresh);
 
-/** The farm as it was left: the story so far and the parts and wires the child put down. */
-interface FarmKept {
-  state: FarmProgress;
+/** A map as it was left: the story so far and the parts and wires the child put down. */
+interface MapKept {
+  state: MapProgress;
   table: TableKept | null;
 }
 type TableKept = Pick<Invention, 'parts' | 'wires'>;
@@ -445,7 +472,7 @@ function tableKept(withMap = false): TableKept | null {
 
 /**
  * Every couple of seconds while playing, and when the game is put away, the
- * free-play table or the farm is kept, so the next start carries on from there.
+ * free-play table or the map is kept, so the next start carries on from there.
  */
 let keptAt = 0;
 let keptJson = '';
@@ -453,7 +480,7 @@ function keepPlay(force = false) {
   const now = performance.now();
   if (!force && now - keptAt < 2000) return;
   keptAt = now;
-  const kept = farm ? { key: 'farm' as const, data: { state: farm.progress(), table: tableKept(true) } } : level === FREE_PLAY ? { key: 'table' as const, data: tableKept() } : null;
+  const kept = map && mapName ? { key: mapName, data: { state: map.progress(), table: tableKept(true) } } : level === FREE_PLAY ? { key: 'table' as const, data: tableKept() } : null;
   if (!kept) return;
   const json = kept.key + JSON.stringify(kept.data);
   if (json === keptJson) return;
@@ -466,7 +493,7 @@ document.addEventListener('visibilitychange', () => {
 window.addEventListener('pagehide', () => keepPlay(true));
 
 function startLevel(l: Level, instant = false, speak = true) {
-  leaveFarm();
+  leaveMap();
   if (progress.place !== 'lab') {
     progress.place = 'lab';
     saveProgress(progress);
@@ -541,7 +568,7 @@ world.on((e) => {
       break;
     case 'drop':
       sfx.drop();
-      farm?.snap(e.part);
+      map?.snap(e.part);
       break;
     case 'wireStart':
       sfx.wireStart();
@@ -607,7 +634,7 @@ function updateHint(dt: number) {
   // Free play is the child's own experiment: nudge later than in missions.
   const free = level === FREE_PLAY || !!level.sandbox;
   const wait = free ? (hintShownOnce ? 9000 : 4000) : hintShownOnce ? 6000 : 1600;
-  const h = farm ? (farm.hint(trayLeft) ?? sandboxHint(world)) : free ? sandboxHint(world) : levelHint(world, level, trayLeft);
+  const h = map ? (map.hint(trayLeft) ?? sandboxHint(world)) : free ? sandboxHint(world) : levelHint(world, level, trayLeft);
   if (!h) return setHint(null);
   // Keep showing a hint that is already up; new ones wait for the child to pause.
   if (currentHint && hintKey(currentHint) === hintKey(h)) return;
@@ -787,7 +814,7 @@ let chainHeld = 0;
 let chainWas = false;
 let chainCheerAt = -1e9;
 function watchChains(dt: number) {
-  if (!farm && !album.has('chain') && chainWorks(world)) {
+  if (!map && !album.has('chain') && chainWorks(world)) {
     const lit = world.parts.find((p) => p.triggered === 'world') ?? world.parts[0];
     if (lit) earnSticker('chain', lit.root.localToWorld(new THREE.Vector3(0, 1, 0)));
   }
@@ -890,21 +917,21 @@ function frame(now: number) {
   last = now;
   stage.update(dt);
   stage.busy = input.busy;
-  if (farm) {
-    farm.update(dt);
+  if (map) {
+    map.update(dt);
     // The camera moves on to the next animal once the finger is off the table.
-    if (farmFocus && performance.now() - lastTouch > 1200 && !input.busy) {
-      stage.frame(farmFocus, false, FARM_PPU);
-      farmFocus = null;
+    if (mapFocus && performance.now() - lastTouch > 1200 && !input.busy) {
+      stage.frame(mapFocus, false, MAP_PPU);
+      mapFocus = null;
     }
-    const night = farm.nightAmount > 0.5;
+    const night = map.nightAmount > 0.5;
     if (night !== Part.night) applyNight(night);
     fx.night = night;
-    const [n, of] = farm.score;
+    const [n, of] = map.score;
     const score = `Помощь: ${n} из ${of}`;
-    if (score !== farmScore) {
-      farmScore = score;
-      hud.setMapMode('farm', 'Ферма', score);
+    if (score !== mapScore) {
+      mapScore = score;
+      hud.setMapMode(mapName!, level.title, score);
     }
   }
   world.update(dt);
@@ -994,7 +1021,7 @@ function frame(now: number) {
   keepPlay();
   watchStickers(dt);
   watchBelts();
-  if (!farm) fx.night = progress.night;
+  if (!map) fx.night = progress.night;
   fx.shine(world.parts.flatMap((p) => p.glowLight() ?? []));
   fx.resize(stage.renderer.domElement.height, stage.camera.fov);
   fx.update(dt);
@@ -1005,8 +1032,8 @@ function frame(now: number) {
 }
 
 // Free play is the main mode; missions wait in the drop-down. Play carries on
-// where it was left: on the farm, or with the table as the child left it.
-if (progress.place === 'farm') await startFarm();
+// where it was left: on a map, or with the table as the child left it.
+if (progress.place === 'farm' || progress.place === 'city') await startMap(progress.place);
 else {
   startLevel(FREE_PLAY, true);
   const table = placeKept<TableKept>('table');
@@ -1037,10 +1064,15 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
   stage,
   sfx,
   startFarm,
+  startMap,
   album,
   shelf,
+  /** The open map (the farm or the city), under its old name too. */
   get farm() {
-    return farm;
+    return map;
+  },
+  get map() {
+    return map;
   },
   get won() {
     return won;

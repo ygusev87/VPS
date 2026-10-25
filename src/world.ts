@@ -35,6 +35,7 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'belt':
     case 'pump':
     case 'gate':
+    case 'substation':
     case 'floorFan':
     case 'pcFan':
     case 'marbleRun':

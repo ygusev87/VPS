@@ -47,6 +47,7 @@ export type PartKind =
   | 'pump'
   | 'heater'
   | 'gate'
+  | 'substation'
   | 'switch'
   | 'button'
   | 'panel'

@@ -33,6 +33,17 @@ const SPECIAL: Sticker[] = [
   { id: 'farm:chick', say: 'stChick', emoji: '🐣' },
   { id: 'farm:goose', say: 'stGoose', emoji: '🪿' },
   { id: 'farm:rooster', say: 'stRooster', emoji: '🐓' },
+  // The city.
+  { id: 'city:car', say: 'stCar', emoji: '🚗' },
+  { id: 'city:tram', say: 'stTram', emoji: '🚋' },
+  { id: 'city:baker', say: 'stBaker', emoji: '🥖' },
+  { id: 'city:pigeon', say: 'stPigeon', emoji: '🕊️' },
+  { id: 'city:grandma', say: 'stGrandma', emoji: '👵' },
+  { id: 'city:kitten', say: 'stKitten', emoji: '🐱' },
+  { id: 'city:kid', say: 'stKid', emoji: '🪩' },
+  { id: 'city:firefighter', say: 'stFirefighter', emoji: '🚒' },
+  { id: 'city:raccoon', say: 'stRaccoon', emoji: '🦝' },
+  { id: 'city:school', say: 'stSchool', emoji: '🏫' },
 ];
 
 export class Album {
