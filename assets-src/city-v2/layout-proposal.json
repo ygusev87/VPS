@@ -1,0 +1,1322 @@
+{
+  "status": "proposal for art direction; anchors copied from current source, no gameplay changes",
+  "source": {
+    "path": "src/city.ts",
+    "sha256": "f56b2fc8ac07438113222809f21b35945e9b113c76860c637bdf6de8d53efbfd",
+    "decorSha256": "a31e8894982fdd28c0b4aaedd4883bbf56a3e94de321e22426a17adbf558e569",
+    "referenceCommit": "3166f41",
+    "extractor": "assets-src/city-v2/build-layout.mjs"
+  },
+  "coordinates": "x right/east, z down/south; metres are game world units; concept PNG is illustrative, not a measured plan",
+  "bounds": {
+    "width": 110,
+    "depth": 75,
+    "x": [
+      -55,
+      55
+    ],
+    "z": [
+      -37.5,
+      37.5
+    ]
+  },
+  "park": {
+    "x0": -16.5,
+    "z0": -8.5,
+    "x1": 16.5,
+    "z1": 8.5,
+    "locked": true,
+    "source": "src/city-decor.ts SOIL[0]"
+  },
+  "lanes": [
+    {
+      "id": "ring",
+      "points": [
+        [
+          -20,
+          -12
+        ],
+        [
+          20,
+          -12
+        ],
+        [
+          20,
+          12
+        ],
+        [
+          -20,
+          12
+        ],
+        [
+          -20,
+          -12
+        ]
+      ],
+      "width": 6
+    },
+    {
+      "id": "north",
+      "points": [
+        [
+          0,
+          -12
+        ],
+        [
+          0,
+          -37.5
+        ]
+      ],
+      "width": 6
+    },
+    {
+      "id": "south",
+      "points": [
+        [
+          0,
+          12
+        ],
+        [
+          0,
+          37.5
+        ]
+      ],
+      "width": 6
+    },
+    {
+      "id": "west",
+      "points": [
+        [
+          -20,
+          0
+        ],
+        [
+          -55,
+          0
+        ]
+      ],
+      "width": 6
+    },
+    {
+      "id": "east",
+      "points": [
+        [
+          20,
+          0
+        ],
+        [
+          55,
+          0
+        ]
+      ],
+      "width": 6
+    },
+    {
+      "id": "tram",
+      "points": [
+        [
+          -55,
+          27
+        ],
+        [
+          55,
+          27
+        ]
+      ],
+      "width": 4
+    },
+    {
+      "id": "decor-path-0",
+      "points": [
+        [
+          -33,
+          -2
+        ],
+        [
+          -33,
+          -9
+        ],
+        [
+          -45,
+          -9
+        ]
+      ],
+      "width": 4
+    }
+  ],
+  "canal": {
+    "x": 37,
+    "w": 3.2,
+    "z0": -37.5,
+    "z1": 17
+  },
+  "harbor": {
+    "x": 37,
+    "z": 19.5,
+    "rx": 5,
+    "rz": 3.2
+  },
+  "anchors": {
+    "W": 110,
+    "D": 75,
+    "RING": {
+      "x": 20,
+      "z": 12
+    },
+    "TRAM_Z": 27,
+    "ROAD": 6,
+    "CANAL": {
+      "x": 37,
+      "w": 3.2,
+      "z0": -37.5,
+      "z1": 17
+    },
+    "HARBOR": {
+      "x": 37,
+      "z": 19.5,
+      "rx": 5,
+      "rz": 3.2
+    },
+    "CROSS": [
+      0,
+      12
+    ],
+    "LIGHT_SPOT": [
+      5.5,
+      17.5
+    ],
+    "LIGHT_POLE": [
+      10.5,
+      19.5
+    ],
+    "SUBSTATION": [
+      -30,
+      31.5
+    ],
+    "TRAM_SWITCH": [
+      -26.5,
+      34.5
+    ],
+    "SUB_POLE": [
+      -23.5,
+      31.5
+    ],
+    "OVEN_SPOT": [
+      -12,
+      -21.5
+    ],
+    "BELT_SPOT": [
+      -8.5,
+      -18.5
+    ],
+    "COUNTER": [
+      -5,
+      -18.6
+    ],
+    "BAKER": [
+      -6,
+      -21.8
+    ],
+    "BAKERY_POLE": [
+      -12.5,
+      -17
+    ],
+    "BARRIER_SPOT": [
+      -34,
+      -4.5
+    ],
+    "PARK_BUTTON": [
+      -29.5,
+      -8.5
+    ],
+    "PARK_POLE": [
+      -28.5,
+      -4.5
+    ],
+    "PARK_WAY": [
+      [
+        -33,
+        1.5
+      ],
+      [
+        -33,
+        -7.5
+      ]
+    ],
+    "PARK_SLOTS": [
+      [
+        -37,
+        -10
+      ],
+      [
+        -40.5,
+        -10
+      ],
+      [
+        -44,
+        -10
+      ]
+    ],
+    "FERRIS_SPOT": [
+      7,
+      -3
+    ],
+    "WIND_SPOT": [
+      12,
+      3
+    ],
+    "FOUNTAIN": [
+      -3,
+      1
+    ],
+    "BASIN_R": 3.2,
+    "WASH_SPOT": [
+      -38,
+      8
+    ],
+    "WASH_PUMP": [
+      -33.5,
+      9
+    ],
+    "WASH_POLE": [
+      -34.5,
+      5.5
+    ],
+    "WASH_WAY": [
+      [
+        -38,
+        14
+      ],
+      [
+        -38,
+        8
+      ],
+      [
+        -38,
+        3.6
+      ]
+    ],
+    "CRANE_SPOT": [
+      -34,
+      20
+    ],
+    "CRANE_SWITCH": [
+      -29.5,
+      21.5
+    ],
+    "CRANE_POLE": [
+      -31,
+      17
+    ],
+    "SITE": [
+      -41,
+      20.5
+    ],
+    "BUILDER": [
+      -37.5,
+      16.2
+    ],
+    "LIFT_SPOT": [
+      -38.6,
+      -26.5
+    ],
+    "LIFT_BUTTON": [
+      -34.5,
+      -27.5
+    ],
+    "HOUSE_POLE": [
+      -34,
+      -23
+    ],
+    "BALCONY": [
+      -40.1,
+      -26.75
+    ],
+    "BALCONY_TOP": 1.95,
+    "GRANDMA": [
+      -40.45,
+      -26.75
+    ],
+    "BASKET": [
+      -38.2,
+      -24.3
+    ],
+    "BRIDGE_SPOT": [
+      35.9,
+      0
+    ],
+    "BRIDGE_BUTTON": [
+      31.5,
+      -8.5
+    ],
+    "BRIDGE_POLE": [
+      31,
+      -4.5
+    ],
+    "BOAT_WAY": [
+      [
+        37,
+        -10
+      ],
+      [
+        37,
+        19
+      ]
+    ],
+    "KITTEN": [
+      -13,
+      -5.5
+    ],
+    "LAMPS": [
+      [
+        -11.5,
+        -2.5
+      ],
+      [
+        -15.2,
+        1
+      ],
+      [
+        -11.5,
+        4.5
+      ]
+    ],
+    "KITTEN_WAY": [
+      [
+        -13,
+        -5.5
+      ],
+      [
+        -13.5,
+        -2
+      ],
+      [
+        -13.6,
+        2.5
+      ],
+      [
+        -14.6,
+        6
+      ]
+    ],
+    "KITTEN_POLE": [
+      -8.5,
+      1
+    ],
+    "NEON_SPOT": [
+      43,
+      -9.5
+    ],
+    "CLUB_SENSOR": [
+      43,
+      -7.6
+    ],
+    "MUSIC_SPOT": [
+      46.5,
+      -6.8
+    ],
+    "CLUB_POLE": [
+      40.5,
+      -11.5
+    ],
+    "ENGINE_SPOT": [
+      25.5,
+      13.5
+    ],
+    "STATION_POLE": [
+      24,
+      17.5
+    ],
+    "BURNING": [
+      48,
+      8
+    ],
+    "BURNING_TOP": 3.7,
+    "LADDER_SPOT": [
+      43.5,
+      9.5
+    ],
+    "HYDRANT_SPOT": [
+      44,
+      14
+    ],
+    "FIRE_POLE": [
+      40.5,
+      12.5
+    ],
+    "BINS": [
+      45,
+      -22.5
+    ],
+    "DOMINO_SPOT": [
+      48,
+      -33
+    ],
+    "RACCOON_PATH": [
+      [
+        56,
+        -37
+      ],
+      [
+        52,
+        -34
+      ],
+      [
+        48,
+        -33
+      ],
+      [
+        45.5,
+        -29
+      ],
+      [
+        45.3,
+        -24
+      ]
+    ],
+    "ALARM_SPOT": [
+      50.5,
+      -29.5
+    ],
+    "SHOP_POLE": [
+      53,
+      -31
+    ],
+    "SHOPKEEPER": [
+      47.5,
+      -19
+    ],
+    "LASER_SPOT": [
+      17,
+      -22
+    ],
+    "MIRROR_SPOT": [
+      24,
+      -22
+    ],
+    "SCHOOL_SENSOR": [
+      24,
+      -16.5
+    ],
+    "SCHOOL_BELL": [
+      17,
+      -17.5
+    ],
+    "SCHOOL_POLE": [
+      20.5,
+      -19.2
+    ],
+    "SCHOOL_DOOR": [
+      11,
+      -25.5
+    ]
+  },
+  "tasks": [
+    {
+      "number": 1,
+      "id": "traffic",
+      "title": "Перекрёсток",
+      "phase": "day",
+      "patches": [
+        {
+          "anchor": "LIGHT_SPOT",
+          "center": [
+            5.5,
+            17.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "LIGHT_POLE",
+          "center": [
+            10.5,
+            19.5
+          ]
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "tram",
+      "title": "Трамвай",
+      "phase": "day",
+      "patches": [
+        {
+          "anchor": "TRAM_SWITCH",
+          "center": [
+            -26.5,
+            34.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "SUB_POLE",
+          "center": [
+            -23.5,
+            31.5
+          ]
+        }
+      ]
+    },
+    {
+      "number": 3,
+      "id": "bakery",
+      "title": "Пекарня",
+      "phase": "day",
+      "patches": [
+        {
+          "anchor": "OVEN_SPOT",
+          "center": [
+            -12,
+            -21.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "BELT_SPOT",
+          "center": [
+            -8.5,
+            -18.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "BAKERY_POLE",
+          "center": [
+            -12.5,
+            -17
+          ]
+        }
+      ]
+    },
+    {
+      "number": 4,
+      "id": "parking",
+      "title": "Парковка",
+      "phase": "day",
+      "patches": [
+        {
+          "anchor": "BARRIER_SPOT",
+          "center": [
+            -34,
+            -4.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "PARK_BUTTON",
+          "center": [
+            -29.5,
+            -8.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "PARK_POLE",
+          "center": [
+            -28.5,
+            -4.5
+          ]
+        }
+      ]
+    },
+    {
+      "number": 5,
+      "id": "ferris",
+      "title": "Колесо от ветряка",
+      "phase": "day",
+      "patches": [
+        {
+          "anchor": "FERRIS_SPOT",
+          "center": [
+            7,
+            -3
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "WIND_SPOT",
+          "center": [
+            12,
+            3
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": []
+    },
+    {
+      "number": 6,
+      "id": "wash",
+      "title": "Автомойка",
+      "phase": "day",
+      "patches": [
+        {
+          "anchor": "WASH_SPOT",
+          "center": [
+            -38,
+            8
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "WASH_PUMP",
+          "center": [
+            -33.5,
+            9
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "WASH_POLE",
+          "center": [
+            -34.5,
+            5.5
+          ]
+        }
+      ]
+    },
+    {
+      "number": 7,
+      "id": "grandma",
+      "title": "Лифт с корзиной",
+      "phase": "day",
+      "patches": [
+        {
+          "anchor": "LIFT_SPOT",
+          "center": [
+            -38.6,
+            -26.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "LIFT_BUTTON",
+          "center": [
+            -34.5,
+            -27.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "HOUSE_POLE",
+          "center": [
+            -34,
+            -23
+          ]
+        }
+      ]
+    },
+    {
+      "number": 8,
+      "id": "crane",
+      "title": "Стройка",
+      "phase": "day",
+      "patches": [
+        {
+          "anchor": "CRANE_SPOT",
+          "center": [
+            -34,
+            20
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "CRANE_SWITCH",
+          "center": [
+            -29.5,
+            21.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "CRANE_POLE",
+          "center": [
+            -31,
+            17
+          ]
+        }
+      ]
+    },
+    {
+      "number": 9,
+      "id": "bridge",
+      "title": "Разводной мост",
+      "phase": "day",
+      "patches": [
+        {
+          "anchor": "BRIDGE_SPOT",
+          "center": [
+            35.9,
+            0
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "BRIDGE_BUTTON",
+          "center": [
+            31.5,
+            -8.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "BRIDGE_POLE",
+          "center": [
+            31,
+            -4.5
+          ]
+        }
+      ]
+    },
+    {
+      "number": 10,
+      "id": "kitten",
+      "title": "Дорожка котёнка",
+      "phase": "evening",
+      "patches": [
+        {
+          "anchor": "LAMPS[0]",
+          "center": [
+            -11.5,
+            -2.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "LAMPS[1]",
+          "center": [
+            -15.2,
+            1
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "LAMPS[2]",
+          "center": [
+            -11.5,
+            4.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "KITTEN_POLE",
+          "center": [
+            -8.5,
+            1
+          ]
+        }
+      ]
+    },
+    {
+      "number": 11,
+      "id": "club",
+      "title": "Клуб",
+      "phase": "evening",
+      "patches": [
+        {
+          "anchor": "NEON_SPOT",
+          "center": [
+            43,
+            -9.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "CLUB_SENSOR",
+          "center": [
+            43,
+            -7.6
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "MUSIC_SPOT",
+          "center": [
+            46.5,
+            -6.8
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "CLUB_POLE",
+          "center": [
+            40.5,
+            -11.5
+          ]
+        }
+      ]
+    },
+    {
+      "number": 12,
+      "id": "fire",
+      "title": "Пожар и спасение",
+      "phase": "evening",
+      "patches": [
+        {
+          "anchor": "ENGINE_SPOT",
+          "center": [
+            25.5,
+            13.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "LADDER_SPOT",
+          "center": [
+            43.5,
+            9.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "HYDRANT_SPOT",
+          "center": [
+            44,
+            14
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "STATION_POLE",
+          "center": [
+            24,
+            17.5
+          ]
+        },
+        {
+          "anchor": "FIRE_POLE",
+          "center": [
+            40.5,
+            12.5
+          ]
+        }
+      ]
+    },
+    {
+      "number": 13,
+      "id": "raccoon",
+      "title": "Енот и сигнализация",
+      "phase": "night",
+      "patches": [
+        {
+          "anchor": "DOMINO_SPOT",
+          "center": [
+            48,
+            -33
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "ALARM_SPOT",
+          "center": [
+            50.5,
+            -29.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "SHOP_POLE",
+          "center": [
+            53,
+            -31
+          ]
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "id": "school",
+      "title": "Школьный звонок",
+      "phase": "morning",
+      "patches": [
+        {
+          "anchor": "LASER_SPOT",
+          "center": [
+            17,
+            -22
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "MIRROR_SPOT",
+          "center": [
+            24,
+            -22
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "SCHOOL_SENSOR",
+          "center": [
+            24,
+            -16.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        },
+        {
+          "anchor": "SCHOOL_BELL",
+          "center": [
+            17,
+            -17.5
+          ],
+          "size": [
+            4,
+            4
+          ],
+          "meaning": "nominal protected placement envelope; existing linked slots may overlap"
+        }
+      ],
+      "poles": [
+        {
+          "anchor": "SCHOOL_POLE",
+          "center": [
+            20.5,
+            -19.2
+          ]
+        }
+      ]
+    }
+  ],
+  "protectedRoutes": [
+    {
+      "name": "PARK_WAY",
+      "points": [
+        [
+          -33,
+          1.5
+        ],
+        [
+          -33,
+          -7.5
+        ]
+      ],
+      "rule": "reserve moving body width plus margin; final envelope checked against actual models"
+    },
+    {
+      "name": "WASH_WAY",
+      "points": [
+        [
+          -38,
+          14
+        ],
+        [
+          -38,
+          8
+        ],
+        [
+          -38,
+          3.6
+        ]
+      ],
+      "rule": "reserve moving body width plus margin; final envelope checked against actual models"
+    },
+    {
+      "name": "BOAT_WAY",
+      "points": [
+        [
+          37,
+          -10
+        ],
+        [
+          37,
+          19
+        ]
+      ],
+      "rule": "reserve moving body width plus margin; final envelope checked against actual models"
+    },
+    {
+      "name": "KITTEN_WAY",
+      "points": [
+        [
+          -13,
+          -5.5
+        ],
+        [
+          -13.5,
+          -2
+        ],
+        [
+          -13.6,
+          2.5
+        ],
+        [
+          -14.6,
+          6
+        ]
+      ],
+      "rule": "reserve moving body width plus margin; final envelope checked against actual models"
+    },
+    {
+      "name": "RACCOON_PATH",
+      "points": [
+        [
+          56,
+          -37
+        ],
+        [
+          52,
+          -34
+        ],
+        [
+          48,
+          -33
+        ],
+        [
+          45.5,
+          -29
+        ],
+        [
+          45.3,
+          -24
+        ]
+      ],
+      "rule": "reserve moving body width plus margin; final envelope checked against actual models"
+    },
+    {
+      "name": "SCHOOL_BEAM",
+      "points": [
+        [
+          17,
+          -22
+        ],
+        [
+          24,
+          -22
+        ],
+        [
+          24,
+          -16.5
+        ]
+      ],
+      "rule": "keep all new decoration outside beam corridor"
+    }
+  ],
+  "artZones": [
+    {
+      "id": "north-street",
+      "area": [
+        -52,
+        -36,
+        32,
+        -24
+      ],
+      "intent": "Townhouse fronts, bakery and school; open forecourts face south, short tree/planter groups behind and between buildings."
+    },
+    {
+      "id": "west-courts",
+      "area": [
+        -52,
+        -16,
+        -25,
+        24
+      ],
+      "intent": "Parking north of west road; wash south of it; crane further south. Separate forecourts; no row houses in vehicle corridors."
+    },
+    {
+      "id": "park",
+      "area": [
+        -16.5,
+        -8.5,
+        16.5,
+        8.5
+      ],
+      "intent": "Frame the perimeter with low planters; fountain, Ferris wheel, turbine and kitten path remain open. No dense canopy over devices."
+    },
+    {
+      "id": "east-bank",
+      "area": [
+        40,
+        -36,
+        54,
+        22
+      ],
+      "intent": "Toy shop, club and rescue house; a clear raccoon alley behind shops, open bridge landing and fire forecourt."
+    },
+    {
+      "id": "south-street",
+      "area": [
+        -54,
+        29.5,
+        54,
+        36.5
+      ],
+      "intent": "Compact residential clusters beside tram, excluding substation/switch and center-road corridor."
+    }
+  ],
+  "reuse": [
+    "bakery",
+    "baker",
+    "grandma",
+    "tram",
+    "car",
+    "kitten",
+    "tree-oak-lite",
+    "tree-pine-lite",
+    "bush-lite",
+    "flower-cluster-lite",
+    "rock-cluster"
+  ],
+  "needsBeforeDecorCommit": [
+    "Fit new facade dimensions to locked device courts; do not infer collision boxes from concept PNG.",
+    "Check HOUSES/source bounds and ground bake against every placement.",
+    "Keep south facades within z37.5 and clear of tram width4.",
+    "Never suppress a stand-in or request a missing model until its GLB is delivered."
+  ],
+  "discrepanciesToKeepExplicit": [
+    "Grandma concept still shows two full floors plus attic; final house reference must have three explicit floors and balcony y1.95.",
+    "Concept depicts scenic details/finished devices and nearby figures not yet present as GLBs.",
+    "Concept has aspirational planting density; use lite repeated assets, measured budgets and task clearances for implementation."
+  ],
+  "checks": {
+    "taskCount": 14,
+    "inBoundsTaskAnchorsAndPoles": 45,
+    "schoolBeamGeometry": "7 by 5.5, exact source values",
+    "imageIsCoordinateAuthority": false,
+    "buildingCollisionCheck": "pending actual final decoration/model footprints"
+  }
+}
