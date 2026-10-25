@@ -10,4 +10,4 @@ npm test
 npm run build
 ```
 
-Подробности об устройстве проекта — в [CLAUDE.md](CLAUDE.md).
+Подробности об устройстве проекта и правила работы — в [AGENTS.md](AGENTS.md).
