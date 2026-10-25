@@ -22,6 +22,7 @@ const entries=[['before',source.scene],['after',rig.scene]].map(([id,model])=>{
 const frameBox=new T.Box3().setFromObject(entries[0].model),frameCenter=frameBox.getCenter(new T.Vector3()),frameRadius=frameBox.getSize(new T.Vector3()).length()/2;
 const directions={side:[0,.12,1],back:[0,.12,-1],front:[1,.12,0],game:[0,1,.78],quarter:[1,.55,.85]};
 const controls=await(await fetch('./'+name+'-controls.json')).json();
+for(const option of [...pose.options])if(option.value!=='rest'&&!controls[option.value])option.remove();
 let playing=false,start=0,phase=1;
 function apply(){for(const b of mesh.skeleton.bones)b.quaternion.copy(rest.get(b.name));rig.scene.updateMatrixWorld(true);const c=controls[pose.value];if(c){const b=mesh.skeleton.bones.find(b=>(b.userData.name??b.name)===c[0]);if(!b)throw Error('Нет кости '+c[0]);const axis=new T.Vector3(...c[1]).applyQuaternion(b.parent.getWorldQuaternion(new T.Quaternion()).invert());b.quaternion.premultiply(new T.Quaternion().setFromAxisAngle(axis,c[2]*Math.PI/180*phase))}rig.scene.updateMatrixWorld(true);mesh.skeleton.update();mesh.computeBoundingBox();status.textContent='Готово · '+skinCount+' skinned mesh · '+mesh.skeleton.bones.length+' костей · '+(c?c[0]:'bind pose')}
 pose.onchange=()=>{playing=false;phase=1;play.textContent='Анимировать';apply()};play.onclick=()=>{playing=!playing;start=performance.now();play.textContent=playing?'Остановить':'Анимировать'};apply();

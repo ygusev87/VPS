@@ -272,3 +272,7 @@ farm-v3/hero-rigs/README.md: отдельный cow-rig.glb, 301.6 КиБ, 7999 
 Свинья: public/models/pig-rig.glb, 300.0 КиБ, 36 костей; голова/хвост проверены,
 ориентация и текстуры сохранены. Карта: farm-v3/hero-rigs/pig.md.
 25 API-кредитов (140 → 115), без клипов.
+
+Овца: кандидат assets-src/farm-v3/hero-rigs/candidates/sheep-rig.glb, 494.5 КиБ/22 кости.
+Голова проверена, хвостового шарнира нет; ждёт решения Claude, в public не добавлен.
+Карта/ограничения — farm-v3/hero-rigs/sheep.md. 25 API-кредитов (115 → 90).

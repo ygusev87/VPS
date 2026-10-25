@@ -1,0 +1,100 @@
+{
+  "generatedAt": "2026-10-25T17:17:32.756Z",
+  "source": "assets-src/raw/farm-hero-rigs-2026-10-25/compress-input",
+  "output": "assets-src/farm-v3/hero-rigs/candidates",
+  "textureSource": "public/models/sheep.glb",
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 895828,
+      "triangles": 14979,
+      "textureMiB": 1.3333333333333333
+    },
+    "after": {
+      "bytes": 506372,
+      "triangles": 14979,
+      "textureMiB": 1.3333333333333333
+    }
+  },
+  "models": [
+    {
+      "name": "sheep-rig",
+      "sourceSha256": "1dcca83975db9e9e6d349b550632bf07abb31df65525e8fad3cf21874ecb29a8",
+      "outputSha256": "36940d67df1877b13360d4c7e297411b5933ff8f630ea2700e785366217334a1",
+      "protectedGeometry": true,
+      "exactGeometry": true,
+      "targetTriangles": null,
+      "before": {
+        "bytes": 895828,
+        "triangles": 14979,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 308789,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.281121164560318,
+            0,
+            -0.4999999701976776
+          ],
+          "max": [
+            0.281121164560318,
+            0.853938639163971,
+            0.4999999403953552
+          ]
+        },
+        "skins": 1,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 506372,
+        "triangles": 14979,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 27346,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.281121164560318,
+            0,
+            -0.4999999701976776
+          ],
+          "max": [
+            0.281121164560318,
+            0.853938639163971,
+            0.4999999403953552
+          ]
+        },
+        "skins": 1,
+        "animations": 0
+      }
+    }
+  ]
+}
