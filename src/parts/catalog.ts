@@ -11,7 +11,7 @@ import { Conveyor, MarbleRun, WaterMill } from './mech';
 import { FloorFan, PcFan, Pinwheel } from './wind';
 import { Bell, Belt, Domino, Laser, Launcher, LightSensor, Magnet, Mirror, Target, WindGen } from './chain';
 import { Gate, Heater, Pole, Pump, Solar } from './farm';
-import { Substation } from './city';
+import { Barrier, CarWash, Drawbridge, DuskLamp, FerrisWheel, FireLadder, NeonSign, Substation, TowerCrane } from './city';
 import type { PhraseId } from '../voice';
 
 export interface CatalogItem {
@@ -106,6 +106,20 @@ export const GROUPS: CatalogGroup[] = [
     items: [
       { kind: 'pump', name: 'Насос', say: 'pump' },
       { kind: 'heater', name: 'Обогреватель', say: 'heater' },
+    ],
+  },
+  {
+    id: 'city',
+    name: 'Город',
+    items: [
+      { kind: 'barrier', name: 'Шлагбаум', say: 'barrier' },
+      { kind: 'ferris', name: 'Колесо обозрения', say: 'ferris' },
+      { kind: 'carWash', name: 'Автомойка', say: 'carWash' },
+      { kind: 'drawbridge', name: 'Разводной мост', say: 'drawbridge' },
+      { kind: 'towerCrane', name: 'Башенный кран', say: 'towerCrane' },
+      { kind: 'duskLamp', name: 'Уличный фонарь', say: 'duskLamp' },
+      { kind: 'neon', name: 'Неоновая вывеска', say: 'neon' },
+      { kind: 'ladder', name: 'Пожарная лестница', say: 'ladder' },
     ],
   },
   {
@@ -218,6 +232,22 @@ function make(kind: PartKind): Part {
       return new Gate();
     case 'substation':
       return new Substation();
+    case 'barrier':
+      return new Barrier();
+    case 'ferris':
+      return new FerrisWheel();
+    case 'carWash':
+      return new CarWash();
+    case 'drawbridge':
+      return new Drawbridge();
+    case 'towerCrane':
+      return new TowerCrane();
+    case 'duskLamp':
+      return new DuskLamp();
+    case 'neon':
+      return new NeonSign();
+    case 'ladder':
+      return new FireLadder();
     case 'belt':
       return new Belt();
     case 'mirror':

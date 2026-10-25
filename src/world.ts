@@ -28,6 +28,8 @@ export function isActive(p: Part): boolean {
 export function activeAt(kind: PartKind, l: number): boolean {
   switch (kind) {
     case 'bulb':
+    case 'duskLamp':
+    case 'neon':
       return l > 0.12;
     case 'led':
       return l > 0.12;
@@ -36,6 +38,12 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'pump':
     case 'gate':
     case 'substation':
+    case 'barrier':
+    case 'ferris':
+    case 'carWash':
+    case 'drawbridge':
+    case 'towerCrane':
+    case 'ladder':
     case 'floorFan':
     case 'pcFan':
     case 'marbleRun':
