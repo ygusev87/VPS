@@ -222,11 +222,16 @@ export class Voice {
     speechSynthesis.addEventListener?.('voiceschanged', pick);
   }
 
-  /** Hook up to the game's audio graph once it exists (after a first touch). */
+  /**
+   * Hook up to the game's audio graph once it exists (after a first touch), and
+   * again whenever it is rebuilt: decoded clips are not tied to a context.
+   */
   attach(ctx: AudioContext, out: AudioNode) {
-    if (this.ctx) return;
+    const first = !this.ctx;
+    if (!first) this.stop();
     this.ctx = ctx;
     this.out = out;
+    if (!first) return;
     // Decode one clip at a time in the background: decoding all ~200 at once
     // on the first touch made the first seconds of play stutter on an iPad.
     const queue = [...this.raw.keys()];
@@ -317,7 +322,8 @@ export class Voice {
       // Already finished.
     }
     this.playing = null;
-    if ('speechSynthesis' in window) speechSynthesis.cancel();
+    // Only when it is talking: on an iPad a needless cancel can take the audio away from the game.
+    if ('speechSynthesis' in window && (speechSynthesis.speaking || speechSynthesis.pending)) speechSynthesis.cancel();
   }
 }
 

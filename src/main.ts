@@ -907,6 +907,7 @@ function frame(now: number) {
   }
   band.melody = music;
   const players = Object.values(band).filter(Boolean).length;
+  sfx.watch();
   sfx.setFan(fan);
   sfx.tickBand(band, music ? song : bandSong);
   sfx.setWater(water);

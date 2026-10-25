@@ -7,28 +7,109 @@ export class Sfx {
   private fanNoise: { src: AudioBufferSourceNode; gain: GainNode; filter: BiquadFilterNode } | null = null;
   private buzz: { osc: OscillatorNode; gain: GainNode } | null = null;
   muted = false;
-  /** Called once the audio graph exists, e.g. to route the voice through it. */
+  /** Called whenever a new audio graph is made, e.g. to route the voice through it. */
   onReady?: (ctx: AudioContext, out: AudioNode) => void;
+  /**
+   * The context stopped making sound and resuming did not help: the next touch
+   * replaces it. On an iPad the context can drop into WebKit's own
+   * 'interrupted' state (a notification, Siri, auto-lock, headphones) or its
+   * clock can stop for good; then all sound was gone until a reload.
+   */
+  private stale = false;
+  private clock = { t: -1, at: 0 };
+  /** Last audio events, kept across reloads, for when the sound vanishes again. */
+  readonly log: string[] = readLog();
 
-  /** Must be called from a user gesture (iOS). */
+  constructor() {
+    const wake = () => {
+      if (document.visibilityState === 'visible' && this.ctx && this.ctx.state !== 'running') this.resume();
+    };
+    document.addEventListener('visibilitychange', wake);
+    window.addEventListener('pageshow', wake);
+  }
+
+  /** Must be called from a user gesture (iOS). Brings dead or paused sound back. */
   unlock() {
-    if (!this.ctx) {
-      const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
-      if (!AC) return;
-      this.ctx = new AC();
-      this.master = this.ctx.createGain();
-      this.master.gain.value = this.muted ? 0 : 0.8;
-      // A gentle limiter, so a whole band playing at once never distorts.
-      const limit = this.ctx.createDynamicsCompressor();
-      limit.threshold.value = -10;
-      limit.knee.value = 8;
-      limit.ratio.value = 6;
-      limit.attack.value = 0.005;
-      limit.release.value = 0.2;
-      this.master.connect(limit).connect(this.ctx.destination);
-      this.onReady?.(this.ctx, this.master);
+    if (this.ctx && (this.stale || this.ctx.state === 'closed')) this.rebuild();
+    if (!this.ctx) this.build();
+    if (this.ctx && this.ctx.state !== 'running') this.resume();
+  }
+
+  private build() {
+    const AC = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext;
+    if (!AC) return;
+    const ctx = new AC();
+    this.ctx = ctx;
+    this.stale = false;
+    this.clock = { t: -1, at: performance.now() };
+    this.master = ctx.createGain();
+    this.master.gain.value = this.muted ? 0 : 0.8;
+    // A gentle limiter, so a whole band playing at once never distorts.
+    const limit = ctx.createDynamicsCompressor();
+    limit.threshold.value = -10;
+    limit.knee.value = 8;
+    limit.ratio.value = 6;
+    limit.attack.value = 0.005;
+    limit.release.value = 0.2;
+    this.master.connect(limit).connect(ctx.destination);
+    ctx.addEventListener('statechange', () => {
+      if (ctx === this.ctx) this.note(`state ${ctx.state}`);
+    });
+    this.onReady?.(ctx, this.master);
+  }
+
+  /** Drops the old context and every long-lived sound made in it; `build` starts afresh. */
+  private rebuild() {
+    this.note(`rebuild (was ${this.ctx?.state})`);
+    void this.ctx?.close().catch(() => {});
+    this.ctx = null;
+    this.master = null;
+    this.fanNoise = null;
+    this.buzz = null;
+    this.waterNode = null;
+    this.engine = null;
+    this.sirenNode = null;
+    this.bandClock.running = false;
+    this.bellAt = 0;
+  }
+
+  /** Asks the context to run; if it still is not running a second later, the next touch rebuilds it. */
+  private resume() {
+    const ctx = this.ctx;
+    if (!ctx) return;
+    this.note(`resume from ${ctx.state}`);
+    ctx.resume().catch(() => {});
+    setTimeout(() => {
+      if (ctx === this.ctx && ctx.state !== 'running') this.stale = true;
+    }, 1000);
+  }
+
+  /**
+   * Call every frame: notices a context that says 'running' while its clock
+   * has stood still for over a second and a half (WebKit's silent dead context).
+   */
+  watch() {
+    const ctx = this.ctx;
+    const now = performance.now();
+    if (!ctx || ctx.state !== 'running' || document.visibilityState !== 'visible') {
+      this.clock = { t: -1, at: now };
+      return;
     }
-    if (this.ctx.state === 'suspended') void this.ctx.resume();
+    if (ctx.currentTime !== this.clock.t) this.clock = { t: ctx.currentTime, at: now };
+    else if (now - this.clock.at > 1500 && !this.stale) {
+      this.stale = true;
+      this.note('clock stopped');
+    }
+  }
+
+  private note(what: string) {
+    this.log.push(`${new Date().toISOString().slice(11, 19)} ${what}`);
+    this.log.splice(0, this.log.length - 40);
+    try {
+      localStorage.setItem(LOG_KEY, JSON.stringify(this.log));
+    } catch {
+      // Storage full or blocked: the log is only a diagnostic.
+    }
   }
 
   setMuted(m: boolean) {
@@ -144,7 +225,7 @@ export class Sfx {
       src.start();
       this.fanNoise = { src, gain, filter };
     }
-    const l = Math.min(1, level);
+    const l = Math.min(1, finite(level));
     this.fanNoise.gain.gain.setTargetAtTime(l * 0.09, ctx.currentTime, 0.15);
     this.fanNoise.filter.frequency.setTargetAtTime(300 + l * 900, ctx.currentTime, 0.2);
   }
@@ -489,7 +570,7 @@ export class Sfx {
       lfo.start();
       this.waterNode = { gain, filter };
     }
-    this.waterNode.gain.gain.setTargetAtTime(Math.min(1, level) * 0.1, ctx.currentTime, 0.2);
+    this.waterNode.gain.gain.setTargetAtTime(Math.min(1, finite(level)) * 0.1, ctx.currentTime, 0.2);
   }
 
   /** Traffic light relay click. */
@@ -514,7 +595,7 @@ export class Sfx {
       osc.start();
       this.engine = { osc, gain, filter };
     }
-    const v = Math.min(1.6, speed);
+    const v = Math.min(1.6, finite(speed));
     this.engine.osc.frequency.setTargetAtTime(55 + v * 70, ctx.currentTime, 0.1);
     this.engine.filter.frequency.setTargetAtTime(300 + v * 500, ctx.currentTime, 0.1);
     this.engine.gain.gain.setTargetAtTime(v > 0.05 ? 0.035 + v * 0.02 : 0, ctx.currentTime, 0.15);
@@ -563,6 +644,20 @@ export class Sfx {
     this.tone(down ? 900 : 1300, 0.03, 'square', 0.04);
   }
 }
+
+const LOG_KEY = 'electro-table:audio-log';
+
+function readLog(): string[] {
+  try {
+    const log: unknown = JSON.parse(localStorage.getItem(LOG_KEY) ?? '[]');
+    return Array.isArray(log) ? log.map(String) : [];
+  } catch {
+    return [];
+  }
+}
+
+/** A level from the game, or 0 if it is not a number (a NaN would throw in an AudioParam). */
+const finite = (v: number) => (Number.isFinite(v) ? v : 0);
 
 /** Seconds per beat for every song. */
 const BEAT = 0.3;
