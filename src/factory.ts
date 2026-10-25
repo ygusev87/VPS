@@ -103,7 +103,7 @@ export class FactoryMap extends StoryMap {
   private booth!: PaintBooth;
   /** The hall's lights are on (the main switch works). */
   private lit = false;
-  private lamps: { glow: THREE.Sprite; bulb: THREE.MeshStandardMaterial }[] = [];
+  private lamps: { glow: THREE.Sprite; bulb: THREE.MeshStandardMaterial; pool: THREE.Mesh }[] = [];
   /** Toys on the line: how far along (x) and what has been done to them. */
   private toys: { m: THREE.Group; x: number; stage: number }[] = [];
   private stampsSeen = 0;
@@ -209,7 +209,7 @@ export class FactoryMap extends StoryMap {
     for (let x = -40; x <= 40; x += 16) {
       for (const z of [-26, -12, 6]) {
         const bulb = new THREE.MeshStandardMaterial({ color: '#f7f2dc', emissive: '#ffe9a8', emissiveIntensity: 0, roughness: 0.3 });
-        const shade = mesh(new THREE.ConeGeometry(0.7, 0.5, 16, 1, true), mat('#3f86d6', 0.5));
+        const shade = mesh(new THREE.ConeGeometry(0.55, 0.4, 16, 1, true), mat('#e8e4dc', 0.5));
         shade.position.set(x, 4.6, z);
         const b = mesh(new THREE.SphereGeometry(0.25, 12, 8), bulb, false);
         b.position.set(x, 4.35, z);
@@ -218,8 +218,12 @@ export class FactoryMap extends StoryMap {
         const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowFor('rgba(255,235,170,0.9)'), transparent: true, depthWrite: false, opacity: 0 }));
         glow.scale.setScalar(3.2);
         glow.position.set(x, 4.2, z);
-        this.lamps.push({ glow, bulb });
-        this.scenery.add(shade, b, cord, glow);
+        // The pool of light the lamp throws on the floor.
+        const pool = mesh(new THREE.CircleGeometry(3.2, 28).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: glowFor('rgba(255,240,190,0.55)'), transparent: true, opacity: 0, depthWrite: false }), false);
+        pool.position.set(x, 0.02, z);
+        pool.renderOrder = 2;
+        this.lamps.push({ glow, bulb, pool });
+        this.scenery.add(shade, b, cord, glow, pool);
       }
     }
     // The conveyor line the toys ride along.
@@ -240,6 +244,11 @@ export class FactoryMap extends StoryMap {
       this.steam.push(s);
       this.scenery.add(s);
     }
+    // Yellow and black safety lines round every station.
+    for (const [cx, cz, w, d] of [[PANEL.x + 1, PANEL.z + 2, 10, 9], [PRESS.x - 3, PRESS.z - 1.5, 13, 10], [TANK.x + 4, TANK.z - 2.5, 13, 9], [ROBOT.x - 1.5, ROBOT.z - 3, 9, 11], [PACKER.x - 1.5, PACKER.z - 2.5, 9, 9], [BELT_SPOT.x - 0.5, BELT_SPOT.z - 2.5, 9, 9]] as const) this.scenery.add(hazard(cx, cz, w, d));
+    // By the way out: stacks of boxes on pallets, and a forklift.
+    for (const [x, z, n] of [[50, -14, 3], [52.5, -14, 2], [50, -10.5, 2]] as const) this.scenery.add(stack(x, z, n));
+    this.scenery.add(forklift(46, -16));
     const chimney = mesh(new THREE.CylinderGeometry(0.3, 0.3, 4.5, 12), mat('#8a90a0', 0.4, 0.5));
     chimney.position.set(-4, 2.25, -14);
     this.scenery.add(chimney);
@@ -347,6 +356,8 @@ export class FactoryMap extends StoryMap {
       const on = this.lit && this.phaseT * 3 > i * 0.15 ? 1 : 0;
       l.bulb.emissiveIntensity = THREE.MathUtils.damp(l.bulb.emissiveIntensity, on * 2.5, 6, dt);
       l.glow.material.opacity = THREE.MathUtils.damp(l.glow.material.opacity, on * 0.6, 6, dt);
+      const pm = l.pool.material as THREE.MeshBasicMaterial;
+      pm.opacity = THREE.MathUtils.damp(pm.opacity, on * 0.8, 6, dt);
     });
     // Steam from the pipe by the paint shop while the paint flows.
     for (const s of this.steam) {
@@ -454,6 +465,74 @@ function dressToy(g: THREE.Group, stage: number) {
       if (o.name === 'body' || o.name === 'ear') o.visible = false;
     });
   }
+}
+
+/** A painted frame of yellow and black stripes on the floor. */
+function hazard(cx: number, cz: number, w: number, d: number): THREE.Group {
+  const g = new THREE.Group();
+  const yellow = new THREE.MeshBasicMaterial({ color: '#f2c230' });
+  const black = new THREE.MeshBasicMaterial({ color: '#2a2f3a' });
+  const side = (x0: number, z0: number, x1: number, z1: number) => {
+    const len = Math.hypot(x1 - x0, z1 - z0);
+    const n = Math.max(2, Math.round(len / 0.6));
+    for (let i = 0; i < n; i++) {
+      const t = (i + 0.5) / n;
+      const m = mesh(new THREE.PlaneGeometry(len / n, 0.25).rotateX(-Math.PI / 2), i % 2 ? black : yellow, false);
+      m.position.set(x0 + (x1 - x0) * t, 0.015, z0 + (z1 - z0) * t);
+      m.rotation.y = -Math.atan2(z1 - z0, x1 - x0);
+      m.renderOrder = 2;
+      g.add(m);
+    }
+  };
+  const [x0, x1, z0, z1] = [cx - w / 2, cx + w / 2, cz - d / 2, cz + d / 2];
+  side(x0, z0, x1, z0);
+  side(x1, z0, x1, z1);
+  side(x1, z1, x0, z1);
+  side(x0, z1, x0, z0);
+  return g;
+}
+
+/** Boxes stacked on a pallet. */
+function stack(x: number, z: number, n: number): THREE.Group {
+  const g = new THREE.Group();
+  const pallet = mesh(new THREE.BoxGeometry(1.8, 0.2, 1.8), mat('#b98654', 0.8));
+  pallet.position.y = 0.1;
+  g.add(pallet);
+  for (let i = 0; i < n; i++) {
+    const b = mesh(new THREE.BoxGeometry(1.6, 0.8, 1.6), mat('#c9a27a', 0.85));
+    b.position.y = 0.6 + i * 0.82;
+    const tape = mesh(new THREE.BoxGeometry(0.2, 0.82, 1.62), mat('#d8483c', 0.6));
+    tape.position.y = b.position.y;
+    g.add(b, tape);
+  }
+  g.position.set(x, 0, z);
+  return g;
+}
+
+/** A little forklift. */
+function forklift(x: number, z: number): THREE.Group {
+  const g = new THREE.Group();
+  const body = mesh(new THREE.BoxGeometry(1.8, 0.9, 1.2), mat('#f2c230', 0.45));
+  body.position.y = 0.75;
+  const cab = mesh(new THREE.BoxGeometry(0.9, 0.9, 1.1), mat('#2a3148', 0.4));
+  cab.position.set(-0.3, 1.65, 0);
+  const mast = mesh(new THREE.BoxGeometry(0.12, 2.2, 1), mat('#5a6a7a', 0.4, 0.4));
+  mast.position.set(1, 1.1, 0);
+  for (const zz of [-0.35, 0.35]) {
+    const fork = mesh(new THREE.BoxGeometry(1.1, 0.06, 0.12), mat('#5a6a7a', 0.4, 0.4));
+    fork.position.set(1.6, 0.3, zz);
+    g.add(fork);
+  }
+  for (const [wx, wz] of [[-0.6, -0.6], [-0.6, 0.6], [0.6, -0.6], [0.6, 0.6]]) {
+    const w = mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.2, 12), mat('#2a2f3a', 0.6));
+    w.rotation.x = Math.PI / 2;
+    w.position.set(wx, 0.3, wz);
+    g.add(w);
+  }
+  g.add(body, cab, mast);
+  g.position.set(x, 0, z);
+  g.rotation.y = 0.6;
+  return g;
 }
 
 function crate(x: number, z: number, s: number): THREE.Group {
