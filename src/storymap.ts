@@ -889,6 +889,19 @@ export function instances(name: string, fit: Fit, items: readonly [number, numbe
   );
 }
 
+/** The same geometry with each triangle wound the other way round. */
+function turnedOut(g: THREE.BufferGeometry): THREE.BufferGeometry {
+  const out = g.index ? g.clone() : g.toNonIndexed();
+  if (!out.index) out.setIndex([...Array(out.attributes.position.count).keys()]);
+  const idx = out.index!;
+  for (let i = 0; i < idx.count; i += 3) {
+    const b = idx.getX(i + 1);
+    idx.setX(i + 1, idx.getX(i + 2));
+    idx.setX(i + 2, b);
+  }
+  return out;
+}
+
 /** Copies of a fitted model at these placements, instanced patch by patch (see `instances`). */
 export function patched(src: THREE.Object3D, places: THREE.Matrix4[]): THREE.Group {
   src.updateMatrixWorld(true);
@@ -905,8 +918,11 @@ export function patched(src: THREE.Object3D, places: THREE.Matrix4[]): THREE.Gro
   src.traverse((o) => {
     const m = o as THREE.Mesh;
     if (!m.isMesh) return;
+    // A mirrored part (a node scaled -1) would be drawn inside out: an instance's
+    // own matrix does not flip the faces the way an object's does.
+    const geometry = m.matrixWorld.determinant() < 0 ? turnedOut(m.geometry) : m.geometry;
     for (const members of patches.values()) {
-      const im = new THREE.InstancedMesh(m.geometry, m.material, members.length);
+      const im = new THREE.InstancedMesh(geometry, m.material, members.length);
       members.forEach((place, k) => im.setMatrixAt(k, each.multiplyMatrices(place, m.matrixWorld)));
       im.castShadow = true;
       im.receiveShadow = true;
