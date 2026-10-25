@@ -23,7 +23,9 @@ import { isActive, type World } from './world';
 /** Model files only the farm needs (loaded when it opens). */
 export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
   // Day two (each falls back to a stand-in until its model is made).
-  'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'puppy', 'goose', 'rooster', 'horse', 'stable'];
+  'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'goose', 'rooster', 'horse', 'stable'];
+/** Animals drawn with another one's model: the puppy is the dog, smaller. */
+const MODEL_OF: Record<string, string> = { puppy: 'dog' };
 
 /** What the drawers offer on the farm. */
 // No batteries: on the farm the power comes from the poles, the sun and the wind.
@@ -202,7 +204,7 @@ const POLES_TWO = [v(-19.2, -0.8), v(25.8, -10.6), v(-1.8, -15.4), v(-24.6, 3.6)
 /** By the gate, which used to need a long wire from the pigs' pole. */
 const GATE_POLE = v(10, 5.8);
 /** Day two needs these animals' models (see dayTwo). */
-const DAY_TWO_ANIMALS = ['kitten', 'goat', 'kid', 'puppy', 'goose', 'rooster', 'horse', 'chick'];
+const DAY_TWO_ANIMALS = ['kitten', 'goat', 'kid', 'goose', 'rooster', 'horse', 'chick'];
 
 /** Will the farm have its second day (once its models are loaded)? `?day2` forces it, for testing. */
 export function hasDayTwo() {
@@ -534,7 +536,7 @@ export class FarmMap {
     const group = new THREE.Group();
     const base = name.replace(/\d+$/, '');
     // The fox walks on its paws: its rigged model, when that is there.
-    const m = (base === 'fox' ? model('fox-rig', fit) : null) ?? model(base, fit) ?? STAND_INS[base]?.() ?? blob(name);
+    const m = (base === 'fox' ? model('fox-rig', fit) : null) ?? model(MODEL_OF[base] ?? base, fit) ?? STAND_INS[base]?.() ?? blob(name);
     m.traverse((o) => {
       if ((o as THREE.Mesh).isMesh) {
         o.castShadow = true;
