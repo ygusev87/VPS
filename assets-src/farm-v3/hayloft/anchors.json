@@ -1,0 +1,26 @@
+{
+  "base": [
+    0,
+    0,
+    0
+  ],
+  "kittenFeet": [
+    0.3,
+    1.95,
+    0.2
+  ],
+  "liftRelative": [
+    2.3,
+    0,
+    0.25
+  ],
+  "deckY": 1.95,
+  "worldOrigin": [
+    -21.3,
+    0,
+    -16.25
+  ],
+  "fit": {},
+  "rotateY": 0,
+  "front": "+Z"
+}

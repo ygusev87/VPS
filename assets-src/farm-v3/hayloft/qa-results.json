@@ -1,0 +1,62 @@
+{
+  "date": "2026-10-25",
+  "asset": "hayloft",
+  "testedIntegration": "510c110",
+  "browserChecks": {
+    "fixture": "assets-src/farm-v3/hayloft/qa-frame.html",
+    "viewports": [
+      [
+        1180,
+        820
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "compressionViews": [
+      "game",
+      "threequarter",
+      "front"
+    ],
+    "result": "Silhouette, braces, hay and color preserved at tested displayed sizes; no observed GLB load errors.",
+    "runtime": "Farm loads hayloft at prior LOFT with kitten standing on deck; reviewed close-up at 1180×820, narrow viewport also loads farm. Portrait Show all remains very small (existing behavior)."
+  },
+  "measurements": {
+    "footprint": [
+      1.7999710896833956,
+      1.1702883705962008
+    ],
+    "deckCenterY": 1.9499752935150236,
+    "deckRangeY": [
+      1.9403154605355168,
+      1.9525937641511173
+    ],
+    "deckSamples": 9,
+    "cabinFloorTopY": 2.01,
+    "cabinFloorBottomY": 0.34,
+    "plateGap": 0.25
+  },
+  "validation": {
+    "errors": 0,
+    "warnings": 0,
+    "info": "Validator cannot validate EXT_meshopt_compression; decoded mesh measured separately."
+  },
+  "checks": {
+    "vitest": "21 tests passed",
+    "typecheck": "passed",
+    "status": "Asset accepted; lift rider roof/floor review sent to Claude as m0165."
+  },
+  "limitations": [
+    "No real iPad GPU/FPS measurement.",
+    "Browser captured unsourced MutationObserver.observe errors, also observed in previous QA pages; source not established."
+  ],
+  "screenshots": [
+    "/tmp/gameios-visual-audit-2026-10-25/hayloft-tablet.png",
+    "/tmp/gameios-visual-audit-2026-10-25/hayloft-phone.png",
+    "/tmp/gameios-visual-audit-2026-10-25/hayloft-before-after-tablet.png",
+    "/tmp/gameios-visual-audit-2026-10-25/hayloft-before-after-phone.png",
+    "/tmp/gameios-visual-audit-2026-10-25/hayloft-farm-tablet.png",
+    "/tmp/gameios-visual-audit-2026-10-25/hayloft-cabin-roof-hidden.png"
+  ]
+}

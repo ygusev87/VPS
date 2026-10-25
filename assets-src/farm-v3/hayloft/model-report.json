@@ -1,0 +1,193 @@
+{
+  "name": "hayloft",
+  "sourceSha256": "4a79624d90f06e89b7e0516fab1e3e0aa6a2fee873e8c609fb09340a7625e10b",
+  "outputSha256": "b1bd6bda98530cfaee5dd239f85e2b31e65928b8a38dd46c0efb8762394c6791",
+  "before": {
+    "bytes": 921164,
+    "triangles": 3127,
+    "meshes": 1,
+    "materials": 1,
+    "bounds": {
+      "min": [
+        -0.5,
+        0,
+        -0.3250732719898224
+      ],
+      "max": [
+        0.5,
+        0.88690185546875,
+        0.3250732719898224
+      ]
+    },
+    "textures": [
+      {
+        "size": [
+          2048,
+          2048
+        ],
+        "mime": "image/jpeg",
+        "bytes": 787062
+      }
+    ]
+  },
+  "after": {
+    "bytes": 84784,
+    "triangles": 2694,
+    "meshes": 1,
+    "materials": 1,
+    "bounds": {
+      "min": [
+        -0.8999855448416978,
+        0,
+        -0.5851441852981004
+      ],
+      "max": [
+        0.8999855448416978,
+        2.3406481742858887,
+        0.5851441852981004
+      ]
+    },
+    "textures": [
+      {
+        "size": [
+          512,
+          512
+        ],
+        "mime": "image/webp",
+        "bytes": 38544
+      }
+    ]
+  },
+  "calibration": {
+    "rawDeckY": 0.6698751546939745,
+    "targetDeckY": 1.95,
+    "xzScale": 1.8,
+    "postYScale": 2.910990184269242,
+    "method": "Stretch posts below the measured deck. Preserve hay proportions above the deck with uniform XZ scale.",
+    "fittedDeck": [
+      {
+        "x": 0.08,
+        "z": 0,
+        "y": 1.9525977880102214
+      },
+      {
+        "x": 0.08,
+        "z": 0.2,
+        "y": 1.9499835846842895
+      },
+      {
+        "x": 0.08,
+        "z": 0.4,
+        "y": 1.940313238203505
+      },
+      {
+        "x": 0.3,
+        "z": 0,
+        "y": 1.9526304627068547
+      },
+      {
+        "x": 0.3,
+        "z": 0.2,
+        "y": 1.949988203458346
+      },
+      {
+        "x": 0.3,
+        "z": 0.4,
+        "y": 1.9403374657518504
+      },
+      {
+        "x": 0.52,
+        "z": 0,
+        "y": 1.9527654827302117
+      },
+      {
+        "x": 0.52,
+        "z": 0.2,
+        "y": 1.9500272992864036
+      },
+      {
+        "x": 0.52,
+        "z": 0.4,
+        "y": 1.941371525488019
+      }
+    ],
+    "outputDeck": [
+      {
+        "x": 0.08,
+        "z": 0,
+        "y": 1.9525937641511173
+      },
+      {
+        "x": 0.08,
+        "z": 0.2,
+        "y": 1.949997539834536
+      },
+      {
+        "x": 0.08,
+        "z": 0.4,
+        "y": 1.9403154605355168
+      },
+      {
+        "x": 0.3,
+        "z": 0,
+        "y": 1.9521198858219022
+      },
+      {
+        "x": 0.3,
+        "z": 0.2,
+        "y": 1.9499752935150236
+      },
+      {
+        "x": 0.3,
+        "z": 0.4,
+        "y": 1.9403287415031505
+      },
+      {
+        "x": 0.52,
+        "z": 0,
+        "y": 1.9511426963919414
+      },
+      {
+        "x": 0.52,
+        "z": 0.2,
+        "y": 1.9500197749777826
+      },
+      {
+        "x": 0.52,
+        "z": 0.4,
+        "y": 1.9413704684364412
+      }
+    ]
+  },
+  "anchors": {
+    "base": [
+      0,
+      0,
+      0
+    ],
+    "kittenFeet": [
+      0.3,
+      1.95,
+      0.2
+    ],
+    "liftRelative": [
+      2.3,
+      0,
+      0.25
+    ],
+    "deckY": 1.95,
+    "worldOrigin": [
+      -21.3,
+      0,
+      -16.25
+    ],
+    "fit": {},
+    "rotateY": 0,
+    "front": "+Z"
+  },
+  "notes": [
+    "Static GLB. Already in game units: model(hayloft,{}) without extra height/width fitting.",
+    "512px color WebP, Meshopt, one material. Full-resolution calibrated source in before/ is QA-only.",
+    "No roof or ladder: kitten visible, lift remains necessary. Asset counts are not measured iPad FPS."
+  ]
+}

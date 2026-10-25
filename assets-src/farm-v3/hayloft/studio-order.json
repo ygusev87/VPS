@@ -1,0 +1,23 @@
+{
+  "date": "2026-10-25",
+  "provider": "Tripo Studio",
+  "model": "H3.1",
+  "taskId": "4f7dfa71-0b27-4880-9883-ff05df3827bc",
+  "reference": "hayloft-v1.png",
+  "settings": {
+    "triangles": 4000,
+    "texture": "2K",
+    "delight": true,
+    "pbr": false,
+    "ultra": false,
+    "aiEnhance": false
+  },
+  "credits": {
+    "before": 5950,
+    "after": 5925,
+    "spent": 25,
+    "apiSpent": 0
+  },
+  "acceptedAttempt": 1,
+  "rawFile": "assets-src/raw/farm-v3-2026-10-25/hayloft.glb"
+}

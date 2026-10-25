@@ -1,0 +1,23 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><title>Сеновал — высота и проход</title>
+<style>body{margin:0;background:#f6eddd;color:#18213d;font:14px system-ui}header{padding:10px;display:flex;gap:8px;flex-wrap:wrap;align-items:center}button,select{font:inherit;padding:8px}#stage{width:100%;height:66vh;min-height:320px;display:block}#report{padding:10px;white-space:pre-wrap;line-height:1.5}</style>
+<header><label>Ракурс <select id="view"><option value="threequarter">Три четверти</option><option value="game">Игровой</option><option value="front">Спереди</option><option value="top">Сверху</option></select></label><button id="up">Кабина наверху</button><button id="down">Кабина внизу</button><label><input type="checkbox" id="riding">Котёнок в кабине</label></header><canvas id="stage"></canvas><div id="report">Загрузка…</div>
+<script type="module">
+import * as THREE from 'three';
+import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
+import {loadModels,model} from '/src/parts/assets.ts';
+import {Lift} from '/src/parts/more.ts';
+const canvas=document.querySelector('#stage'),report=document.querySelector('#report'),view=document.querySelector('#view'),ride=document.querySelector('#riding');
+const r=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});r.setPixelRatio(Math.min(devicePixelRatio,2));r.toneMapping=THREE.NeutralToneMapping;
+const scene=new THREE.Scene();scene.background=new THREE.Color('#f6eddd');scene.environment=new THREE.PMREMGenerator(r).fromScene(new RoomEnvironment(),.04).texture;
+scene.add(new THREE.HemisphereLight(0xffffff,0xa98f60,1.5));const light=new THREE.DirectionalLight(0xffffff,2);light.position.set(-3,7,4);scene.add(light);
+await loadModels(['hayloft','kitten']);const loft=model('hayloft',{}),cat=model('kitten',{height:.75});if(!loft||!cat)throw Error('GLB failed to load');
+scene.add(loft,cat);cat.rotation.y=-.6;
+const lift=new Lift();lift.root.position.set(2.3,0,.25);lift.driver=false;scene.add(lift.root);
+const camera=new THREE.OrthographicCamera(-4,4,3,-3,.01,100);
+const dirs={threequarter:[5,5,7],game:[0,8,6.24],front:[0,.7,8],top:[0,10,.001]};
+function pose(){cat.position.copy(ride.checked?lift.cabinFloor(new THREE.Vector3()):new THREE.Vector3(.3,1.95,.2));}
+function draw(){const w=canvas.clientWidth,h=canvas.clientHeight;r.setSize(w,h,false);const aspect=w/h,span=aspect<1?3.8/aspect:3;camera.left=-span*aspect;camera.right=span*aspect;camera.top=span;camera.bottom=-span;camera.updateProjectionMatrix();const center=new THREE.Vector3(1.1,1.4,0);camera.position.copy(center).add(new THREE.Vector3(...dirs[view.value]));camera.lookAt(center);scene.updateMatrixWorld(true);pose();r.render(scene,camera);}
+function heights(){scene.updateMatrixWorld(true);const ray=new THREE.Raycaster(),ys=[];for(const x of [.08,.3,.52])for(const z of [0,.2,.4]){ray.set(new THREE.Vector3(x,5,z),new THREE.Vector3(0,-1,0));const hit=ray.intersectObject(loft,true)[0];if(hit)ys.push(hit.point.y);}const box=new THREE.Box3().setFromObject(loft),b2=new THREE.Box3(),f=lift.cabinFloor(new THREE.Vector3());lift.root.traverse(o=>{if(o.userData.plate)b2.union(new THREE.Box3().setFromObject(o));});report.textContent='Пятно модели: '+(box.max.x-box.min.x).toFixed(3)+' × '+(box.max.z-box.min.z).toFixed(3)+'\nНастил под лапами: '+Math.min(...ys).toFixed(3)+'…'+Math.max(...ys).toFixed(3)+'; цель 1.950\nВысота пола кабины: '+f.y.toFixed(3)+'; положение '+lift.end+'\nЗазор до платы лифта: '+(b2.min.x-box.max.x).toFixed(3)+'\nПроб поверхности: '+ys.length+'/9';}
+function move(level){lift.state.level=level;for(let i=0;i<360;i++)lift.update(1/60);lift.state.level=0;lift.root.updateMatrixWorld(true);draw();heights();}
+document.querySelector('#up').onclick=()=>move(1.6);document.querySelector('#down').onclick=()=>move(-1.6);view.onchange=()=>draw();ride.onchange=()=>draw();new ResizeObserver(draw).observe(canvas);move(1.6);
+</script></html>
