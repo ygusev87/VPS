@@ -6,7 +6,7 @@
 // Each helper has a ring on the grass: a part dropped near it snaps in.
 import * as THREE from 'three';
 import type { Hint } from './hints';
-import { model, type Fit } from './parts/assets';
+import { clipsOf, hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
 import { PushButton } from './parts/extra';
 import { Gate, Pump, Solar } from './parts/farm';
@@ -19,7 +19,7 @@ import type { PhraseId } from './voice';
 import { isActive, type World } from './world';
 
 /** Model files only the farm needs (loaded when it opens). */
-export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack'];
+export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack'];
 
 /** What the drawers offer on the farm. */
 // No batteries: on the farm the power comes from the poles, the sun and the wind.
@@ -147,6 +147,9 @@ export class FarmMap {
   private tractor!: THREE.Group;
   private tractorT = -1;
   private fox!: Critter;
+  /** Plays the fox's walk, as fast as the fox is going (none without the rigged model). */
+  private foxMixer: THREE.AnimationMixer | null = null;
+  private foxWalk: THREE.AnimationAction | null = null;
   private foxT = -1;
   private foxRun = 0;
   private foxPressedAt = -1;
@@ -387,7 +390,9 @@ export class FarmMap {
   private critter(name: string, fit: Fit, p: THREE.Vector3, height: number, face = 0): Critter {
     const { x, z } = p;
     const group = new THREE.Group();
-    const m = model(name.replace(/\d+$/, ''), fit) ?? blob(name);
+    const base = name.replace(/\d+$/, '');
+    // The fox walks on its paws: its rigged model, when that is there.
+    const m = (base === 'fox' ? model('fox-rig', fit) : null) ?? model(base, fit) ?? blob(name);
     m.traverse((o) => {
       if ((o as THREE.Mesh).isMesh) {
         o.castShadow = true;
@@ -431,6 +436,11 @@ export class FarmMap {
     this.critter('dog', { height: 1.5 }, at('dog', 4.4, 8.6), 1.5, -0.6);
     this.fox = this.critter('fox', { width: 1.7 }, FOX_PATH[0], 1, 0);
     this.fox.group.visible = false;
+    const walk = clipsOf('fox-rig')[0];
+    if (walk && hasModel('fox-rig')) {
+      this.foxMixer = new THREE.AnimationMixer(this.fox.group);
+      this.foxWalk = this.foxMixer.clipAction(walk).play();
+    }
     // The tractor speaks for the gate (its bubble floats above it).
     const t = this.tractor;
     const bubble = new THREE.Sprite(new THREE.SpriteMaterial({ transparent: true, depthWrite: false, opacity: 0 }));
@@ -702,9 +712,9 @@ export class FarmMap {
     this.foxT += dt;
     // Sneak along the path towards the coop; scared — run back; else wait, slink off, come again.
     const scared = this.foxRun > 0;
-    let s = scared ? this.foxRun : Math.min(this.foxT * 1.1, pathLength());
+    let s = scared ? this.foxRun : Math.min(this.foxT * FOX_SNEAK, pathLength());
     if (scared) {
-      this.foxRun = Math.max(0, this.foxRun - dt * 4.5);
+      this.foxRun = Math.max(0, this.foxRun - dt * FOX_RUN);
       s = this.foxRun;
       if (this.foxRun === 0) {
         fox.group.visible = false;
@@ -715,6 +725,11 @@ export class FarmMap {
     fox.group.position.copy(at);
     fox.group.rotation.y = Math.atan2(scared ? -dir.x : dir.x, scared ? -dir.z : dir.z) - Math.PI / 2;
     fox.home.copy(at);
+    // The paws keep pace with the ground: quicker when it runs off, still while it waits at the coop.
+    if (this.foxMixer && this.foxWalk) {
+      this.foxWalk.timeScale = scared ? FOX_WALK_RUN : s < pathLength() ? FOX_WALK_SNEAK : 0;
+      this.foxMixer.update(dt);
+    }
     // Paws on a button press it.
     if (!scared) {
       for (const p of this.world.parts) {
@@ -733,7 +748,7 @@ export class FarmMap {
         return;
       }
       // At the coop with no alarm: wait, then slink back and try again.
-      if (s >= pathLength() && this.foxT > pathLength() / 1.1 + 3) {
+      if (s >= pathLength() && this.foxT > pathLength() / FOX_SNEAK + 3) {
         if (!this.foxTipSaid) {
           this.foxTipSaid = true;
           this.hooks.say('foxTip');
@@ -790,7 +805,12 @@ export class FarmMap {
 // ───────────────────────── Fox path ─────────────────────────
 
 /** From the wood in the corner, below the rabbits, up to the coop. */
-const FOX_PATH = [v(-33, 20.5), v(-27, 19), v(-20.5, 17), v(-13.5, 15.6), v(-8, 14.4), at('hen', -3.4, 8.8)];
+const FOX_PATH = [v(-33, 20.5), v(-27, 19), v(-20.5, 17), v(-13.5, 15.6), v(-8, 14.4), at('hen', -4.8, 10.2)];
+/** The fox's speed (units a second) sneaking up and running off, and how fast its walk clip plays then. */
+const FOX_SNEAK = 1.5;
+const FOX_RUN = 4.5;
+const FOX_WALK_SNEAK = 1;
+const FOX_WALK_RUN = 2.2;
 /** Where a hint asks for the bell: by the fox's button, off its path. */
 const BELL_SPOT = v(-10.8, 12.4);
 function pathLength() {
@@ -823,13 +843,14 @@ export async function loadGround() {
   await Promise.all(
     GROUND.filter((name) => !groundTiles.has(name)).map(async (name) => {
       const img = new Image();
-      img.src = `${import.meta.env.BASE_URL}textures/farm/${name}.webp`;
-      try {
-        await img.decode();
-        groundTiles.set(name, img);
-      } catch {
-        // Missing tile: its flat colour stands in.
-      }
+      // The load event, not decode(): decode() can wait forever while the page is hidden.
+      const ok = await new Promise<boolean>((done) => {
+        img.onload = () => done(true);
+        img.onerror = () => done(false);
+        img.src = `${import.meta.env.BASE_URL}textures/farm/${name}.webp`;
+      });
+      // A missing tile leaves its flat colour.
+      if (ok) groundTiles.set(name, img);
     }),
   );
 }

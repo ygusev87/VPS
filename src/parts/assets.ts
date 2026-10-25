@@ -4,8 +4,11 @@
 import * as THREE from 'three';
 import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 import { MeshoptDecoder } from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+import { clone as cloneSkinned } from 'three/examples/jsm/utils/SkeletonUtils.js';
 
 const cache = new Map<string, THREE.Object3D>();
+/** Animation clips of rigged models (the farm's walking fox). */
+const clipCache = new Map<string, THREE.AnimationClip[]>();
 
 export async function loadModels(names: string[]): Promise<void> {
   const loader = new GLTFLoader();
@@ -20,11 +23,13 @@ export async function loadModels(names: string[]): Promise<void> {
           if (!m.isMesh) return;
           m.castShadow = true;
           m.receiveShadow = true;
+          if ((m as THREE.SkinnedMesh).isSkinnedMesh) gltf.scene.userData.skinned = true;
           const mat = m.material as THREE.MeshStandardMaterial;
           // Generated PBR maps tend to read dull under our soft studio light.
           mat.envMapIntensity = 1.2;
         });
         cache.set(name, gltf.scene);
+        if (gltf.animations.length) clipCache.set(name, gltf.animations);
       } catch {
         // Keep the code-built fallback.
       }
@@ -56,7 +61,7 @@ async function moduleBytes(name: string): Promise<ArrayBuffer> {
  * black. The loader decides synchronously inside parse(), so hiding
  * createImageBitmap for that call is enough.
  */
-function parseWithImages(loader: GLTFLoader, bin: ArrayBuffer): Promise<{ scene: THREE.Group }> {
+function parseWithImages(loader: GLTFLoader, bin: ArrayBuffer): Promise<{ scene: THREE.Group; animations: THREE.AnimationClip[] }> {
   return new Promise((resolve, reject) => {
     const original = window.createImageBitmap;
     (window as { createImageBitmap?: unknown }).createImageBitmap = undefined;
@@ -83,7 +88,8 @@ export interface Fit {
 export function model(name: string, fit: Fit): THREE.Group | null {
   const src = cache.get(name);
   if (!src) return null;
-  const inner = src.clone(true);
+  // A rigged model needs its own skeleton, bound to its own copy of the bones.
+  const inner = src.userData.skinned ? cloneSkinned(src) : src.clone(true);
   // Each copy owns its materials so parts can glow independently.
   inner.traverse((o) => {
     const m = o as THREE.Mesh;
@@ -106,6 +112,11 @@ export function model(name: string, fit: Fit): THREE.Group | null {
 
 export function hasModel(name: string) {
   return cache.has(name);
+}
+
+/** A model's animation clips (empty when it has none or is not loaded). */
+export function clipsOf(name: string): THREE.AnimationClip[] {
+  return clipCache.get(name) ?? [];
 }
 
 /** Iterate every vertex of a fitted model in its holder's space. */
