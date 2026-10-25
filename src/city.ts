@@ -23,7 +23,7 @@ import { Belt, Domino } from './parts/chain';
 import { Barrier, CarWash, Drawbridge, DuskLamp, FerrisWheel, FireLadder, Substation, TowerCrane } from './parts/city';
 import { Pump } from './parts/farm';
 import { FireTruck } from './parts/fun';
-import { mat, mesh } from './parts/kit';
+import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import { Lift } from './parts/more';
 import { AMBIENT } from './parts/wind';
@@ -498,7 +498,8 @@ export class CityMap extends StoryMap {
     const lines = [RACCOON_PATH, KITTEN_WAY, WASH_WAY, PARK_WAY, BOAT_WAY, [LASER_SPOT, MIRROR_SPOT, SCHOOL_SENSOR]];
     const { group, drawn } = dressing(DECOR, FENCES, keep, lines);
     this.scenery.add(group);
-    // Buildings not sculpted yet: painted boxes in their places, so the town is never bare.
+    // Buildings not sculpted yet: painted boxes in their places, so the town is never bare (baked: few draws).
+    const boxes = new THREE.Group();
     for (const g of DECOR) {
       const look = HOUSES[g.model];
       if (!look || drawn.has(g.model)) continue;
@@ -507,9 +508,10 @@ export class CityMap extends StoryMap {
         const h = boxHouse(look[0], look[1], w, look[2] * s, w * 0.8);
         h.position.set(x, 0, z);
         h.rotation.y = yaw;
-        this.scenery.add(h);
+        boxes.add(h);
       }
     }
+    this.scenery.add(bakeGroup(boxes));
     this.life.addToy('mailbox', GRANDMA.x + 3, GRANDMA.z + 4, 0);
     this.life.addFlutters([v(8, 4), v(-8, -4), v(-40, 20), v(14, -26)], [v(-12, 2), v(6, 4)]);
     const houses = DECOR.filter((g) => g.model.startsWith('house')).flatMap((g) => g.items).slice(0, 4);

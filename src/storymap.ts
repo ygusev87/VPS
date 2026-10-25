@@ -140,6 +140,7 @@ export abstract class StoryMap {
   /** Where the last one helped lives. */
   private lastAt: THREE.Vector3 | null = null;
   private toldToLook = false;
+  private sprites: THREE.Sprite[] = [];
   /** Left the map (its timers stay quiet). */
   private gone = false;
   /** The child picked whom to help (a tap, a part on a ring): a new view does not undo it. */
@@ -210,6 +211,8 @@ export abstract class StoryMap {
     this.stage.limit = Math.hypot(this.width / 2, this.depth / 2);
     MAP_BOARD.half = { x: this.width / 2, z: this.depth / 2 };
     this.build();
+    // Sprites faded right out (bubbles, hearts, spray, smoke) cost a draw each: they are hidden instead.
+    this.scenery.traverse((o) => (o as THREE.Sprite).isSprite && this.sprites.push(o as THREE.Sprite));
     this.setPhase('day');
     this.refocus(true);
   }
@@ -647,6 +650,7 @@ export abstract class StoryMap {
     for (const c of this.critters.values()) this.animateCritter(c, dt);
     this.life.update(dt, this.night);
     this.afterAnimate(dt);
+    for (const s of this.sprites) s.visible = s.material.opacity > 0.01;
   }
 
   private waitThen(p: Phase, seconds: number, first?: () => void) {
