@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-25",
+  "model": "horse-rig",
+  "usage": "Standing hero head/tail reactions; integration and in-game acceptance pending Claude",
+  "viewports": [
+    [
+      1180,
+      844
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "views": [
+    "side +Z",
+    "three-quarter",
+    "game"
+  ],
+  "motions": {
+    "headNodDegrees": 15,
+    "headTurnDegrees": 15,
+    "tailSwingDegrees": 20,
+    "headAndTailOscillation": "visually checked",
+    "walking": "not accepted: front -Z chain has a single joint",
+    "earsAndJaw": "no independent joints"
+  },
+  "sourceAppearance": "Bidirectional nearest-vertex max <6.92e-7 of fitted width; both material images byte-identical to static model",
+  "compression": "Exact decoded positions, normals, UVs, index sequence, joints, weights, inverse bind matrices and node TRS; no simplify/retarget",
+  "checks": [
+    "21 vitest tests passed",
+    "tsc --noEmit passed",
+    "fox-rig, cow-rig and motor exact-array export regression passed",
+    "raw cow rebuilt with exact index codec passed",
+    "updated common QA page still loads and poses cow",
+    "No error/warn entries returned by horse preview dev.logs during verification"
+  ],
+  "realIPad": "Not tested in this step",
+  "credits": {
+    "before": 190,
+    "check": 0,
+    "rig": 25,
+    "after": 165,
+    "frozen": 0
+  },
+  "screenshots": [
+    "/tmp/gameios-visual-audit-2026-10-25/horse-rig-tablet.png",
+    "/tmp/gameios-visual-audit-2026-10-25/horse-rig-phone.png",
+    "/tmp/gameios-visual-audit-2026-10-25/horse-rig-tail.png"
+  ]
+}

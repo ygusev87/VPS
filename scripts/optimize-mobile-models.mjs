@@ -32,6 +32,15 @@ if (!names.length) throw new Error(`No GLB sources in ${input}`);
 await fs.mkdir(output, { recursive: true });
 await Promise.all([MeshoptDecoder.ready, MeshoptEncoder.ready, MeshoptSimplifier.ready]);
 const io = new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({ 'meshopt.decoder': MeshoptDecoder, 'meshopt.encoder': MeshoptEncoder });
+// TRIANGLES may cyclically rotate a triangle's indices. Protected rigs use
+// INDICES, which preserves the original sequence as well as winding/geometry.
+const exactIndexEncoder = {
+  ...MeshoptEncoder,
+  encodeGltfBuffer(source, count, size, mode, version) {
+    return MeshoptEncoder.encodeGltfBuffer(source, count, size, mode === 'TRIANGLES' ? 'INDICES' : mode, version);
+  },
+};
+const rigIO = new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({ 'meshopt.decoder': MeshoptDecoder, 'meshopt.encoder': exactIndexEncoder });
 const sha = bytes => createHash('sha256').update(bytes).digest('hex');
 const accessor = a => a ? { type: a.getType(), normalized: a.getNormalized(), componentType: a.getComponentType(), data: sha(Buffer.from(a.getArray().buffer, a.getArray().byteOffset, a.getArray().byteLength)) } : null;
 function geometrySignature(doc) {
@@ -88,9 +97,13 @@ function rewriteWebpImages(source, originals, textures) {
 /** NodeIO elides near-identity transforms (epsilon 1e-6). A rig's inverse bind
  * matrices were built with the original values, so restore exact TRS in JSON.
  * Buffer-view offsets are relative to BIN; changing JSON length is safe. */
-function preserveNodeTransforms(bytes, doc) {
+function preserveNodeTransforms(bytes, doc, exactIndexMode = false) {
   const buffer = Buffer.from(bytes), jsonLength = buffer.readUInt32LE(12);
   const json = JSON.parse(buffer.subarray(20, 20 + jsonLength).toString());
+  if (exactIndexMode) for (const view of json.bufferViews ?? []) {
+    const ext = view.extensions?.EXT_meshopt_compression;
+    if (ext?.mode === 'TRIANGLES') ext.mode = 'INDICES';
+  }
   const nodes = doc.getRoot().listNodes();
   if (json.nodes.length !== nodes.length) throw Error('Node count changed while writing protected rig');
   for (let i = 0; i < nodes.length; i++) {
@@ -155,8 +168,9 @@ for (const name of names) {
     // do not run quantize(), reorder(), weld(), or simplify() on sensitive meshes.
     doc.createExtension(EXTMeshoptCompression).setRequired(true).setEncoderOptions({ method: EXTMeshoptCompression.EncoderMethod.QUANTIZE });
   }
-  let bytes = (keep || before.triangles <= budget ? rewriteWebpImages(sourceBytes, originalImages, doc.getRoot().listTextures()) : null) ?? await io.writeBinary(doc);
-  if (keep) bytes = preserveNodeTransforms(bytes, doc);
+  const rewritten = keep || before.triangles <= budget ? rewriteWebpImages(sourceBytes, originalImages, doc.getRoot().listTextures()) : null;
+  let bytes = rewritten ?? await (keep ? rigIO : io).writeBinary(doc);
+  if (keep) bytes = preserveNodeTransforms(bytes, doc, rewritten === null);
   const result = await io.readBinary(bytes);
   const exactGeometry = geometrySignature(result) === signature;
   if (keep && !exactGeometry) throw new Error(`${name}: protected geometry/rig changed; no output written.`);

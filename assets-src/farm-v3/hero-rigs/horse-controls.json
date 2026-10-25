@@ -1,0 +1,56 @@
+{
+  "head": [
+    "tripo::Head_0",
+    [
+      0,
+      0,
+      1
+    ],
+    -15
+  ],
+  "look": [
+    "tripo::Head_0",
+    [
+      0,
+      1,
+      0
+    ],
+    15
+  ],
+  "tail": [
+    "tripo::Tail_0",
+    [
+      1,
+      0,
+      0
+    ],
+    20
+  ],
+  "frontLeg": [
+    "tripo::0_Right_Limb_0",
+    [
+      0,
+      0,
+      1
+    ],
+    15
+  ],
+  "hindLeg": [
+    "tripo::1_Left_Limb_0",
+    [
+      0,
+      0,
+      1
+    ],
+    15
+  ],
+  "otherHind": [
+    "tripo::1_Right_Limb_0",
+    [
+      0,
+      0,
+      1
+    ],
+    15
+  ]
+}
