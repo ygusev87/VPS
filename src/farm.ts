@@ -28,7 +28,7 @@ import { DECOR, FENCES, MEADOW, MUD, PATHS, PONDS, SOIL } from './farm-decor';
 import { StoryMap, blob, boxHouse, instances, v, type Critter, type MapHooks, type MapProgress, type Need, type NeedSpec, type Phase } from './storymap';
 
 /** Model files only the farm needs (loaded when it opens). */
-export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
+export const FARM_MODELS = ['hayloft', 'cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
   // Day two (each falls back to a stand-in until its model is made).
   'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'goose', 'rooster', 'horse', 'stable',
   // Scenery.
@@ -330,7 +330,9 @@ export class FarmMap extends StoryMap {
     spout.position.set(POND.x, 0.1, POND.z);
     this.scenery.add(spout);
     // The kitten's hay loft, the bees' flower bed, three eggs in the nest, the bees (out once it blooms).
-    still.add(loft(LOFT));
+    const hayloft = hasModel('hayloft') ? model('hayloft', {}) : null;
+    hayloft?.position.set(LOFT.x, 0, LOFT.z);
+    still.add(hayloft ?? loft(LOFT));
     const buds = this.add('flowerbed-buds', { width: 2.6 }, BED.x, BED.z, () => flowerBed(false));
     const bloom = this.add('flowerbed-bloom', { width: 2.6 }, BED.x, BED.z, () => flowerBed(true));
     bloom.visible = false;

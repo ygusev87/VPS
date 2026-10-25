@@ -176,6 +176,9 @@ export class Lift extends Part {
   private atEnd: 'top' | 'bottom' | null = 'bottom';
   private floorLamps: THREE.MeshStandardMaterial[] = [];
   private passenger = new THREE.Group();
+  /** The cabin's walls and window: lowered to an open car when a kitten rides. */
+  private shell!: THREE.Object3D;
+  private window_!: THREE.Object3D;
 
   constructor() {
     super();
@@ -214,9 +217,9 @@ export class Lift extends Part {
     tower.add(roof, this.pulley, floor);
 
     // The cabin with a little passenger looking out of the open front.
-    const shell = roundedBox(0.86, 0.72, 0.8, 0.08, '#ffb547', 0.4);
+    const shell = (this.shell = roundedBox(0.86, 0.72, 0.8, 0.08, '#ffb547', 0.4));
     shell.position.y = 0.36;
-    const window_ = mesh(new THREE.PlaneGeometry(0.6, 0.38), new THREE.MeshStandardMaterial({ color: '#2a3555', roughness: 0.15, metalness: 0.3 }));
+    const window_ = (this.window_ = mesh(new THREE.PlaneGeometry(0.6, 0.38), new THREE.MeshStandardMaterial({ color: '#2a3555', roughness: 0.15, metalness: 0.3 })));
     window_.position.set(0, 0.42, 0.405);
     const head = mesh(new THREE.SphereGeometry(0.11, 18, 12), mat('#f5c7a0', 0.6));
     head.position.set(0, 0.48, 0.3);
@@ -262,6 +265,10 @@ export class Lift extends Part {
   /** The farm's kitten rides instead of the little driver. */
   set driver(on: boolean) {
     this.passenger.visible = on;
+    // A closed cabin would hide the kitten: low sides, so the rider is seen all the way.
+    this.shell.scale.y = on ? 1 : 0.4;
+    this.shell.position.y = on ? 0.36 : 0.36 * 0.4;
+    this.window_.visible = on;
   }
 
   protected animate(dt: number) {
