@@ -3,7 +3,8 @@ import './style.css';
 import { Sfx } from './audio';
 import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Fx } from './fx';
-import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap, hasDayTwo, loadGround, type FarmProgress } from './farm';
+import { FARM_LAYOUT, FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap, hasDayTwo, type FarmProgress } from './farm';
+import { loadGround } from './ground';
 import { Hud } from './hud';
 import { Input } from './input';
 import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
@@ -408,7 +409,7 @@ async function startFarm(fresh = false) {
   // Carry on where the farm was left, unless the story was over (then it starts again).
   const kept = fresh ? null : placeKept<FarmKept>('farm');
   // A save from before the farm grew has fewer needs: the new ones start undone.
-  const carryOn = !!kept && kept.state.phase !== 'done' && kept.state.done.length <= farm.progress().done.length;
+  const carryOn = !!kept && kept.state.layout === FARM_LAYOUT && kept.state.phase !== 'done' && kept.state.done.length <= farm.progress().done.length;
   if (kept && carryOn) {
     if (kept.table) restore(world, kept.table);
     farm.resume(kept.state);

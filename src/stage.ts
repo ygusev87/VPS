@@ -29,8 +29,8 @@ export interface Insets {
 const VIEW_DIR = new THREE.Vector3(0, 1, 0.78).normalize();
 const MIN_DIST = 7;
 // Far enough to see the whole farm board at once, even on a phone held upright.
-const MAX_DIST = 150;
-/** How far from the origin the view may wander. */
+const MAX_DIST = 340;
+/** How far from the origin the view may wander over the workbench (a map sets its own, see `limit`). */
 const LIMIT = 36;
 /** Largest on-screen scale `frame()` will choose, in CSS pixels per table unit. */
 const MAX_PPU = 46;
@@ -76,6 +76,8 @@ export class Stage {
   private bloom: UnrealBloomPass | null = null;
   private finish: FinishOutputPass | null = null;
   quality: Quality = 2;
+  /** How far from the origin the view may wander: the workbench's LIMIT, or as far as a map reaches. */
+  limit = LIMIT;
   /**
    * The canvas changed size on its own (iPad rotation: Safari fires "resize"
    * before the layout has the new size). `flipped`: portrait ↔ landscape.
@@ -390,6 +392,9 @@ export class Stage {
   private placeCamera() {
     this.camera.position.copy(this.target).addScaledVector(VIEW_DIR, this.distance);
     this.camera.lookAt(this.target);
+    // Far enough to see the far edge of a big map from high up; near grows with it to keep depth precise.
+    this.camera.far = Math.max(300, this.distance * 2.5);
+    this.camera.near = Math.max(0.5, this.distance * 0.02);
     this.camera.updateProjectionMatrix();
     this.camera.updateMatrixWorld();
     const f = this.scene.fog as THREE.Fog;
@@ -422,7 +427,7 @@ export class Stage {
   private setView(target: THREE.Vector3, distance: number) {
     target.y = 0;
     const len = Math.hypot(target.x, target.z);
-    if (len > LIMIT) target.multiplyScalar(LIMIT / len);
+    if (len > this.limit) target.multiplyScalar(this.limit / len);
     this.target.copy(target);
     this.goalTarget.copy(target);
     this.distance = this.goalDistance = THREE.MathUtils.clamp(distance, MIN_DIST, MAX_DIST);
@@ -516,7 +521,7 @@ export class Stage {
     // Bring it most of the way in, not dead centre, so the view does not jump about.
     const goal = this.target.clone().addScaledVector(point.clone().setY(0).sub(c), 0.7);
     const len = Math.hypot(goal.x, goal.z);
-    if (len > LIMIT) goal.multiplyScalar(LIMIT / len);
+    if (len > this.limit) goal.multiplyScalar(this.limit / len);
     this.goalTarget.copy(goal).setY(0);
     return true;
   }

@@ -14,6 +14,7 @@ import { Gate, Pump, Solar } from './parts/farm';
 import { Lift } from './parts/more';
 import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
+import { flowers, groundMaterial, onLane, pond, type Ellipse, type GroundPlan } from './ground';
 import { AMBIENT } from './parts/wind';
 import type { Stage } from './stage';
 import { thumb } from './thumbs';
@@ -72,9 +73,17 @@ export interface FarmHooks {
 /** How close to a ring a dropped part must be to snap onto it. */
 const SNAP_R = 3.2;
 
-/** Board size (world units) and where it lies. */
-const W = 72;
-const D = 48;
+/**
+ * The farm is big, so every task has room round it: the yards stand far apart
+ * (S times as far as on the first, crowded board) and inside a yard the animal,
+ * the ring for its part and the pole are K times as far apart, so wires run
+ * short and tidy instead of over one another.
+ */
+const S = 2.35;
+const K = 1.5;
+/** Board size (world units), centred on 0. */
+const W = Math.round(72 * S);
+const D = Math.round(48 * S);
 
 type Phase = 'day' | 'evening' | 'night' | 'morning' | 'done';
 /** How dark each part of the day is (0 day .. 1 night). */
@@ -82,6 +91,8 @@ const NIGHT: Record<Phase, number> = { day: 0, evening: 0.72, night: 1, morning:
 
 /** The story so far, as saved between visits. */
 export interface FarmProgress {
+  /** Which layout the parts were saved on (see FARM_LAYOUT); another one starts the farm afresh. */
+  layout?: number;
   /** Missing in saves from before the second day. */
   day?: 1 | 2;
   phase: Phase;
@@ -94,6 +105,9 @@ export interface FarmProgress {
 }
 
 const r2 = (n: number) => Math.round(n * 100) / 100;
+
+/** Bumped whenever the farm is laid out anew: a farm saved on an older layout would have its parts in the wrong places. */
+export const FARM_LAYOUT = 2;
 
 interface Critter {
   name: string;
@@ -147,11 +161,39 @@ type NeedSpec = Omit<Need, 'ring' | 'done' | 'held' | 'ready' | 'day'> & { day?:
 const v = (x: number, z: number) => new THREE.Vector3(x, 0, z);
 
 /**
- * The farm is laid out yard by yard. Inside a yard everything keeps its place
- * next to the rest (the pump pours right into the trough, the fan blows at the
- * cow); each yard as a whole is moved by its offset, so the yards stand well
- * apart instead of crowding the middle of the board.
+ * Places are written as they were on the 72×48 board (where the yards had
+ * first been pulled apart by YARDS), and moved onto the big board here: each
+ * site's middle goes S times as far out, and what is in the site K times as far
+ * from that middle. Pairs that must stay exact (the pump pouring into the
+ * trough, the loft beside the lift's cabin) are built from these points with
+ * fixed offsets.
  */
+const SITES = {
+  cow: [-15, -5],
+  pig: [2.2, -8.7],
+  field: [18.5, -5.75],
+  hen: [-1, 12],
+  rabbit: [-17, 12],
+  dog: [8, 16.5],
+  sheep: [-27.5, -16.5],
+  pond: [27, 15],
+  kitten: [-21.5, -3],
+  goats: [29.5, -15.5],
+  bees: [2.5, -18.5],
+  horse: [-27.5, 1],
+  puppy: [1.5, 19.5],
+  geese: [17.5, 21],
+} as const;
+type Site = keyof typeof SITES;
+/** A point of a site, given where it was on the 72×48 board. */
+const L = (site: Site, x: number, z: number) => {
+  const [ax, az] = SITES[site];
+  return v(ax * S + (x - ax) * K, az * S + (z - az) * K);
+};
+/** A point of the open farm between the sites (lanes, woods), from the 72×48 board. */
+const G = (x: number, z: number) => v(x * S, z * S);
+
+/** How each day-one yard was moved apart on the 72×48 board (its points are written from before that). */
 const YARDS = {
   cow: [-3.5, -1.5],
   pig: [0, -2.5],
@@ -163,47 +205,50 @@ const YARDS = {
   pond: [8, 4],
 } as const;
 type Yard = keyof typeof YARDS;
-/** A point of a yard, given where it was before the yards moved apart. */
-const at = (yard: Yard, x: number, z: number) => v(x + YARDS[yard][0], z + YARDS[yard][1]);
+/** A point of a day-one yard, given where it was on the first board. */
+const at = (yard: Yard, x: number, z: number) => L(yard, x + YARDS[yard][0], z + YARDS[yard][1]);
 
 /** Landmarks: the pig trough, the mill on the hill, the middle of the duck pond. */
 const TROUGH = at('pig', 3.4, -5.2);
 const MILL = at('sheep', -19.5, -12.5);
 const POND = at('pond', 19, 12.5);
-/** The road from the bottom edge up through the gate into the field; the tractor waits on it. */
-const ROAD_X = 12.5;
-const TRACTOR_Z = 6.4;
+/** The gate into the field, and the road up through it from the bottom edge; the tractor waits on it. */
 const GATE = at('field', 8, 3.2);
+const ROAD_X = GATE.x;
+const TRACTOR_Z = L('field', 12.5, 6.4).z;
 /** The middle of the field the tractor drives round. */
 const FIELD = at('field', 14, -4.75);
+/** The lane along the yards, between the cow pen and the coop. */
+const LANE_Z = G(0, 3.6).z;
 
 // Day two's yards, in the free corners of the board.
 /** The lift's ring, and the hay loft beside its cabin where the kitten is stuck (as high as the cabin at the top). */
-const LIFT_SPOT = v(-21.2, -3.2);
+const LIFT_SPOT = L('kitten', -21.2, -3.2);
 const LOFT = v(LIFT_SPOT.x - 2.3, LIFT_SPOT.z - 0.25);
 const LOFT_TOP = 1.95;
-const GOATS = v(29.5, -17.5);
-const CAROUSEL_SPOT = v(29.5, -12.6);
+const GOATS = L('goats', 29.5, -17.5);
+const CAROUSEL_SPOT = L('goats', 29.5, -12.6);
 /** The flower bed and the hive; the pump's ring is placed so it pours into the bed (as at the trough). */
-const BED = v(2, -18.5);
-const HIVE = v(5.8, -19.8);
+const BED = L('bees', 2, -18.5);
+const HIVE = L('bees', 5.8, -19.8);
 const BED_PUMP = v(BED.x - 1.9, BED.z + 0.2);
-const STABLE = v(-31, -1);
-const HORSE = v(-28, 1.5);
-const HORSE_FAN = v(-25.6, 1.6);
+const STABLE = L('horse', -31, -1);
+const HORSE = L('horse', -28, 1.5);
+const HORSE_FAN = L('horse', -25.6, 1.6);
 /** The puppy waits by the cannon's ring; balls fly off along +x into open grass. */
-const PUPPY = v(3.5, 20.2);
-const LAUNCH_SPOT = v(-0.5, 20.8);
-const NEST = v(5, 11.4);
-const NEST_SPOT = v(5.2, 9.3);
-const GEESE = v(18.5, 21.5);
-const GEESE_SPOT = v(16.2, 20.2);
-const ROOSTER = v(1.8, 13.6);
-const ROOSTER_SPOT = v(3.8, 14.8);
+const PUPPY = L('puppy', 3.5, 20.2);
+const LAUNCH_SPOT = L('puppy', -0.5, 20.8);
+const NEST = L('hen', 5, 11.4);
+const NEST_SPOT = L('hen', 5.2, 9.3);
+const GEESE = L('geese', 18.5, 21.5);
+const GEESE_SPOT = L('geese', 16.2, 20.2);
+/** The rooster between the coop and the hens' pole, its bell's ring close to the pole. */
+const ROOSTER = L('hen', -0.2, 9.8);
+const ROOSTER_SPOT = L('hen', -1.6, 8.2);
 /** A pole for each new yard (the nest and the rooster share the hens' pole). */
-const POLES_TWO = [v(-19.2, -0.8), v(25.8, -10.6), v(-1.8, -15.4), v(-22, 1.5), v(-2.6, 17.8), v(14.4, 22)];
+const POLES_TWO = [L('kitten', -19.2, -0.8), L('goats', 25.8, -10.6), L('bees', -1.8, -15.4), L('horse', -22, 1.5), L('puppy', -2.6, 17.8), L('geese', 16, 23.2)];
 /** By the gate, which used to need a long wire from the pigs' pole. */
-const GATE_POLE = v(10, 5.8);
+const GATE_POLE = L('field', 10, 5.8);
 /** Day two needs these animals' models (see dayTwo). */
 const DAY_TWO_ANIMALS = ['kitten', 'goat', 'kid', 'goose', 'rooster', 'horse', 'chick'];
 
@@ -214,6 +259,8 @@ export function hasDayTwo() {
 
 export class FarmMap {
   readonly scenery = new THREE.Group();
+  /** Where the lanes, the field and the mud are (set when the board is built). */
+  private plan!: GroundPlan;
   private critters = new Map<string, Critter>();
   private needs: Need[] = [];
   phase: Phase = 'day';
@@ -275,6 +322,8 @@ export class FarmMap {
   start() {
     this.stage.world.add(this.scenery);
     this.stage.showGrid(false);
+    // The view may roam to the farm's corners.
+    this.stage.limit = Math.hypot(W / 2, D / 2);
     this.dayTwo = hasDayTwo();
     this.buildBoard();
     this.buildPlaces();
@@ -294,6 +343,7 @@ export class FarmMap {
   dispose() {
     this.scenery.removeFromParent();
     this.stage.showGrid(true);
+    this.stage.limit = 36;
     AMBIENT.strength = 0;
     Solar.sun = 1;
     this.stage.setNightAmount(0);
@@ -302,6 +352,7 @@ export class FarmMap {
   /** How far the story got, to carry on next time (the parts and wires are saved with the table). */
   progress(): FarmProgress {
     return {
+      layout: FARM_LAYOUT,
       day: this.day,
       phase: this.phase,
       done: this.needs.map((n) => n.done),
@@ -424,8 +475,8 @@ export class FarmMap {
   // ───────────────────────── Building ─────────────────────────
 
   private buildBoard() {
-    const tex = boardTexture();
-    const top = new THREE.MeshStandardMaterial({ map: tex, roughness: 0.9 });
+    const plan = (this.plan = groundPlan());
+    const top = groundMaterial(plan);
     const side = mat('#8a6a46', 0.8);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
@@ -436,6 +487,14 @@ export class FarmMap {
     const rim = mesh(new THREE.BoxGeometry(W + 0.4, 0.4, D + 0.4), mat('#6e5236', 0.8));
     rim.position.y = -0.36;
     this.scenery.add(rim);
+    const shore = { x: POND.x, z: POND.z, ...POND_SIZE };
+    this.scenery.add(pond(shore));
+    // Flowers in clumps on the grass: not on the lanes, the field, the mud or by the pond.
+    const inside = (x: number, z: number, e: Ellipse, grow: number) => ((x - e.x) / (e.rx + grow)) ** 2 + ((z - e.z) / (e.rz + grow)) ** 2 < 1;
+    const f = plan.field;
+    this.scenery.add(
+      flowers(plan, 160, (x, z) => !onLane(plan, x, z, 0.8) && !inside(x, z, shore, 1.5) && !plan.mud.some((m) => inside(x, z, m, 1)) && !(x > f.x0 - 1 && x < f.x1 + 1 && z > f.z0 - 1 && z < f.z1 + 1)),
+    );
   }
 
   private add(name: string, fit: Fit, x: number, z: number, fallback: () => THREE.Object3D, rotY = 0) {
@@ -499,19 +558,14 @@ export class FarmMap {
     spout.position.set(POND.x, 0.1, POND.z);
     this.scenery.add(spout);
     // Trees round the edges; a wood in the bottom-left where the fox lives.
-    const trees: [number, number, number][] = [
-      [-34, 22, 1.3], [-31, 22.4, 1.1], [-34.4, 18.6, 1.2], [-28, 22, 1.0], [-32, 15.8, 1.1], [-25.5, 22.6, 0.9], [-34.8, 13.6, 1], [-29.5, 18.5, 1.2],
-      [-6, -16, 0.9], [8.5, -15.8, 1], [-2, -22, 1.2], [10, -22.2, 1.1], [34, -22, 1.2],
-      [34.4, -8, 1.1], [34.2, 3, 1], [24, 23.2, 0.9], [-6.5, 22.6, 0.8], [-11.5, 22, 1.1], [10.6, 22.8, 1], [34.2, 21.8, 1.2],
-      [-18, -22.4, 1], [22, -22.2, 0.9], [-34.6, -5, 1.1], [-23.5, 7.8, 1], [35, -14.5, 1], [-22, 19.2, 0.9],
-    ];
+    const trees = treesFor(this.plan);
     // The sculpted tree, drawn all at once (one instanced mesh); the code-built one without it.
     const grove = treeModels(trees);
     if (grove) this.scenery.add(grove);
     else for (const [x, z, s] of trees) still.add(tree(x, z, s));
     // Haystacks by the barn, in the field and on the hill.
     for (const p of [at('cow', -8.5, -9.5), at('cow', -6.6, -10.2), at('field', 16.5, 0.6), at('sheep', -24.5, -15.8)]) still.add(haystack(p.x, p.z));
-    this.scenery.add(sprouts());
+    this.scenery.add(sprouts(this.plan.field));
     this.scenery.add(bakeGroup(still));
     // The tractor waits on the road below the gate.
     this.tractor = <THREE.Group>this.add('tractor', { depth: 2.6, rotateY: Math.PI }, ROAD_X, TRACTOR_Z, () => boxHouse('#3f8a4f', '#2a3148', 2.2, 1.2, 1.4), 0);
@@ -575,9 +629,9 @@ export class FarmMap {
     this.critter('sheep', { width: 1.7, rotateY: -Math.PI / 2 }, at('sheep', -23.6, -12.6), 1.3, 0.2);
     this.critter('sheep2', { width: 1.5, rotateY: -Math.PI / 2 }, at('sheep', -25, -15), 1.2, -0.5);
     // Ducklings wait at the edge of the pond (they swim round the fountain once it plays).
-    this.critter('duck', { height: 0.9, rotateY: -Math.PI / 2 }, v(POND.x + 2.2, POND.z + 1.4), 0.9, Math.PI);
-    this.critter('duck2', { height: 0.8, rotateY: -Math.PI / 2 }, v(POND.x + 3.1, POND.z + 0.6), 0.8, Math.PI);
-    this.critter('duck3', { height: 0.8, rotateY: -Math.PI / 2 }, v(POND.x + 2.6, POND.z - 0.5), 0.8, Math.PI);
+    this.critter('duck', { height: 0.9, rotateY: -Math.PI / 2 }, v(POND.x + 2.2 * K, POND.z + 1.4 * K), 0.9, Math.PI);
+    this.critter('duck2', { height: 0.8, rotateY: -Math.PI / 2 }, v(POND.x + 3.1 * K, POND.z + 0.6 * K), 0.8, Math.PI);
+    this.critter('duck3', { height: 0.8, rotateY: -Math.PI / 2 }, v(POND.x + 2.6 * K, POND.z - 0.5 * K), 0.8, Math.PI);
     this.critter('hen', { height: 1.25 }, at('hen', -0.8, 8.6), 1.25, -0.4);
     this.critter('hen2', { height: 1.1 }, at('hen', -1.9, 9.6), 1.1, 0.6);
     this.critter('rabbit', { height: 1.25 }, at('rabbit', -11.7, 7.6), 1.25, 0.2);
@@ -625,18 +679,18 @@ export class FarmMap {
     const add = (n: NeedSpec) => this.addNeed(n);
     const FANS: PartKind[] = ['fan', 'floorFan', 'pcFan'];
     // Day.
-    add({ critter: cow, phase: 'day', ask: 'cowHot', thanks: 'cowHappy', icon: 'fan', kinds: FANS, spot: at('cow', -8.6, -2.4), met: near(FANS, cow.home, 4.2) });
+    add({ critter: cow, phase: 'day', ask: 'cowHot', thanks: 'cowHappy', icon: 'fan', kinds: FANS, spot: at('cow', -8.6, -2.4), met: near(FANS, cow.home, 4.2 * K) });
     add({ critter: get('pig'), phase: 'day', ask: 'pigThirsty', thanks: 'pigHappy', icon: 'pump', kinds: ['pump'], spot: v(TROUGH.x - 1.9, TROUGH.z + 0.2), met: () => this.troughLevel > 0.95 });
     add({ critter: get('tractor'), phase: 'day', ask: 'gateStuck', thanks: 'gateHappy', icon: 'gate', kinds: [], spot: at('field', 6.3, 3.6), met: () => this.gate.open > 0.97 });
     add({ critter: get('sheep'), phase: 'day', ask: 'sheepMill', thanks: 'sheepHappy', icon: 'windmill', kinds: ['windmill'], spot: MILL.clone(), met: () => this.millLevel >= 1 });
     // Evening.
-    add({ critter: get('hen'), phase: 'evening', ask: 'henDark', thanks: 'henHappy', icon: 'bulb', kinds: ['bulb', 'led'], spot: at('hen', 0.9, 6.6), met: near(['bulb', 'led'], at('hen', -1.5, 8), 4.8) });
-    add({ critter: get('rabbit'), phase: 'evening', ask: 'rabbitCold', thanks: 'rabbitHappy', icon: 'heater', kinds: ['heater'], spot: at('rabbit', -9.2, 7.6), met: near(['heater'], at('rabbit', -12.6, 7), 4.2) });
-    add({ critter: cow, phase: 'evening', ask: 'cowSleepy', thanks: 'cowSleep', icon: 'musicbox', kinds: ['musicbox'], spot: at('cow', -13.6, -1.3), met: near(['musicbox'], cow.home, 4.5), sticker: 'farm:cow' });
+    add({ critter: get('hen'), phase: 'evening', ask: 'henDark', thanks: 'henHappy', icon: 'bulb', kinds: ['bulb', 'led'], spot: at('hen', 0.9, 6.6), met: near(['bulb', 'led'], at('hen', -1.5, 8), 4.8 * K) });
+    add({ critter: get('rabbit'), phase: 'evening', ask: 'rabbitCold', thanks: 'rabbitHappy', icon: 'heater', kinds: ['heater'], spot: at('rabbit', -9.2, 7.6), met: near(['heater'], at('rabbit', -12.6, 7), 4.2 * K) });
+    add({ critter: cow, phase: 'evening', ask: 'cowSleepy', thanks: 'cowSleep', icon: 'musicbox', kinds: ['musicbox'], spot: at('cow', -13.6, -1.3), met: near(['musicbox'], cow.home, 4.5 * K), sticker: 'farm:cow' });
     // Night: the dog warns about the fox; a button on the path and a bell chase it off.
-    add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], spot: FOX_PATH[3].clone(), focus: [FOX_PATH[3].clone(), BELL_SPOT.clone()], met: () => this.foxChased, sticker: 'farm:fox' });
+    add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], spot: FOX_BUTTON.clone(), focus: [FOX_BUTTON.clone(), BELL_SPOT.clone()], met: () => this.foxChased, sticker: 'farm:fox' });
     // Morning: the ducklings want a fountain.
-    add({ critter: get('duck'), phase: 'morning', ask: 'ducksAsk', thanks: 'ducksHappy', icon: 'pump', kinds: ['pump'], spot: v(POND.x + 2.2, POND.z - 4.3), met: () => this.fountainLevel > 0.95 });
+    add({ critter: get('duck'), phase: 'morning', ask: 'ducksAsk', thanks: 'ducksHappy', icon: 'pump', kinds: ['pump'], spot: v(POND.x + 2.2 * K, POND.z - 4.3 * K), met: () => this.fountainLevel > 0.95 });
   }
 
   private addNeed(n: NeedSpec) {
@@ -649,7 +703,7 @@ export class FarmMap {
   private buildPlacesTwo() {
     const still = new THREE.Group();
     still.add(loft(LOFT));
-    still.add(fence([v(GOATS.x - 3.5, GOATS.z + 2.6), v(GOATS.x - 3.5, GOATS.z - 3.2), v(GOATS.x + 3.5, GOATS.z - 3.2), v(GOATS.x + 3.5, GOATS.z + 2.6)]));
+    still.add(fence([v(GOATS.x - 3.5 * K, GOATS.z + 2.6 * K), v(GOATS.x - 3.5 * K, GOATS.z - 3.2 * K), v(GOATS.x + 3.5 * K, GOATS.z - 3.2 * K), v(GOATS.x + 3.5 * K, GOATS.z + 2.6 * K)]));
     this.scenery.add(bakeGroup(still));
     this.add('stable', { width: 4.2, rotateY: -Math.PI / 2 }, STABLE.x, STABLE.z, () => boxHouse('#b5653a', '#5a5f6a', 4, 2.8, 3.4));
     const buds = this.add('flowerbed-buds', { width: 2.6 }, BED.x, BED.z, () => flowerBed(false));
@@ -677,7 +731,7 @@ export class FarmMap {
    * find map parts by their order, so new ones only ever go at the end.
    */
   private placePartsTwo() {
-    for (const p of [GATE_POLE, ...(this.dayTwo ? POLES_TWO : [])]) {
+    for (const p of [GATE_POLE, FOX_POLE, ...(this.dayTwo ? POLES_TWO : [])]) {
       const pole = this.world.addPart('pole', p.x, p.z, { locked: true, appear: false });
       pole.pinned = true;
     }
@@ -712,10 +766,10 @@ export class FarmMap {
     two({ critter: get('kitten'), phase: 'day', ask: 'kittenStuck', thanks: 'kittenHappy', icon: 'lift', kinds: ['lift'], spot: LIFT_SPOT, met: () => this.kitten === 'down' });
     two({ critter: get('goat'), phase: 'day', ask: 'goatsAsk', thanks: 'goatsHappy', icon: 'carousel', kinds: ['carousel'], spot: CAROUSEL_SPOT, met: () => this.rideT > 3 });
     two({ critter: get('beehive'), phase: 'day', ask: 'beesAsk', thanks: 'beesHappy', icon: 'pump', kinds: ['pump'], spot: BED_PUMP, met: () => this.bloom >= 1, sticker: 'farm:bee' });
-    two({ critter: get('horse'), phase: 'day', ask: 'horseHot', thanks: 'horseHappy', icon: 'fan', kinds: FANS, spot: HORSE_FAN, met: near(FANS, HORSE, 4.2) });
+    two({ critter: get('horse'), phase: 'day', ask: 'horseHot', thanks: 'horseHappy', icon: 'fan', kinds: FANS, spot: HORSE_FAN, met: near(FANS, HORSE, 4.2 * K) });
     two({ critter: get('puppy'), phase: 'day', ask: 'puppyAsk', thanks: 'puppyHappy', icon: 'launcher', kinds: ['launcher'], spot: LAUNCH_SPOT, met: () => this.caught >= 2 });
     two({ critter: get('nest'), phase: 'evening', ask: 'eggsCold', thanks: 'chicksHatched', icon: 'heater', kinds: ['heater', 'bulb'], spot: NEST_SPOT, met: () => this.warmth >= 1, sticker: 'farm:chick' });
-    two({ critter: get('goose'), phase: 'evening', ask: 'geeseDark', thanks: 'geeseHappy', icon: 'led', kinds: ['led', 'bulb'], spot: GEESE_SPOT, met: near(['led', 'bulb'], GEESE, 4) });
+    two({ critter: get('goose'), phase: 'evening', ask: 'geeseDark', thanks: 'geeseHappy', icon: 'led', kinds: ['led', 'bulb'], spot: GEESE_SPOT, met: near(['led', 'bulb'], GEESE, 4 * K) });
     two({
       critter: get('rooster'),
       phase: 'morning',
@@ -724,7 +778,7 @@ export class FarmMap {
       icon: 'bell',
       kinds: ['bell', 'buzzer'],
       spot: ROOSTER_SPOT,
-      met: () => this.world.parts.some((p) => (p.kind === 'bell' || p.kind === 'buzzer') && p.state.level > 0.05 && p.root.position.distanceTo(ROOSTER) < 4),
+      met: () => this.world.parts.some((p) => (p.kind === 'bell' || p.kind === 'buzzer') && p.state.level > 0.05 && p.root.position.distanceTo(ROOSTER) < 4 * K),
     });
   }
 
@@ -847,7 +901,7 @@ export class FarmMap {
 
   /** Kept warm in the evening, the eggs wobble, then crack: three chicks. */
   private updateEggs(dt: number, now: boolean) {
-    const warm = now && this.world.parts.some((p) => (p.kind === 'heater' || p.kind === 'bulb') && isActive(p) && p.root.position.distanceTo(NEST) < 3.4);
+    const warm = now && this.world.parts.some((p) => (p.kind === 'heater' || p.kind === 'bulb') && isActive(p) && p.root.position.distanceTo(NEST) < 3.4 * K);
     if (warm) this.warmth = Math.min(1, this.warmth + dt * 0.15);
     const hatched = this.warmth >= 1;
     this.eggs.forEach((e, i) => {
@@ -1009,7 +1063,7 @@ export class FarmMap {
       }
     });
     // The fountain plays while a pump stands at the pond's edge.
-    const spraying = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.root.position.distanceTo(POND) < 7);
+    const spraying = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.root.position.distanceTo(POND) < 7 * K);
     this.fountainLevel = Math.min(1, Math.max(0, this.fountainLevel + dt * (spraying ? 0.35 : -0.2)));
     for (const d of this.fountain) {
       d.userData.t = (d.userData.t + dt * 0.9) % 1;
@@ -1070,8 +1124,8 @@ export class FarmMap {
         if (!c) return;
         const a = this.time * 0.45 + i * 2.1;
         const k = Math.min(1, dt * 1.5);
-        c.group.position.x += (POND.x + Math.cos(a) * 2.7 - c.group.position.x) * k;
-        c.group.position.z += (POND.z + Math.sin(a) * 1.7 - c.group.position.z) * k;
+        c.group.position.x += (POND.x + Math.cos(a) * 2.7 * K - c.group.position.x) * k;
+        c.group.position.z += (POND.z + Math.sin(a) * 1.7 * K - c.group.position.z) * k;
         c.group.position.y = -0.12 + Math.sin(this.time * 3 + i) * 0.03;
         c.group.rotation.y = Math.atan2(-Math.cos(a) * 1.7, -Math.sin(a) * 2.7);
       });
@@ -1095,11 +1149,11 @@ export class FarmMap {
     const t = this.tractorT;
     const p = this.tractor.position;
     if (t < 4) {
-      p.set(ROAD_X, 0, TRACTOR_Z - t * 2.1);
+      p.set(ROAD_X, 0, TRACTOR_Z - t * 2.1 * K);
       this.tractor.rotation.y = 0;
     } else {
       const a = (t - 4) * 0.35;
-      const target = new THREE.Vector3(FIELD.x - 0.5 + Math.cos(a) * 3.6, 0, FIELD.z + 0.75 + Math.sin(a) * 4.6);
+      const target = new THREE.Vector3(FIELD.x + (Math.cos(a) * 3.6 - 0.5) * K, 0, FIELD.z + (Math.sin(a) * 4.6 + 0.75) * K);
       const dir = target.clone().sub(p);
       if (dir.lengthSq() > 1e-4) this.tractor.rotation.y = Math.atan2(-dir.x, -dir.z);
       p.lerp(target, Math.min(1, dt * 2));
@@ -1217,7 +1271,9 @@ export class FarmMap {
 // ───────────────────────── Fox path ─────────────────────────
 
 /** From the wood in the corner, below the rabbits, up to the coop. */
-const FOX_PATH = [v(-33, 20.5), v(-27, 19), v(-20.5, 17), v(-13.5, 15.6), v(-8, 14.4), at('hen', -4.8, 10.2)];
+/** Where the fox's button goes: on its path, a short walk out of the wood. */
+const FOX_BUTTON = G(-13.5, 15.6);
+const FOX_PATH = [G(-22.5, 19.5), G(-20.5, 17), FOX_BUTTON, G(-8, 14.4), at('hen', -4.8, 10.2)];
 /** The fox's speed (units a second) sneaking up and running off, and how fast its walk clip plays then. */
 const FOX_SNEAK = 1.2;
 const FOX_RUN = 4.5;
@@ -1226,7 +1282,9 @@ const FOX_WALK_SNEAK = 3;
 // Running off, a little short of keeping pace: any faster and the legs blur.
 const FOX_WALK_RUN = 7;
 /** Where a hint asks for the bell: by the fox's button, off its path. */
-const BELL_SPOT = v(-10.8, 12.4);
+const BELL_SPOT = FOX_BUTTON.clone().add(v(2.7 * K, -3.2 * K));
+/** A pole of its own by the fox's path, so the button and the bell need short wires. */
+const FOX_POLE = FOX_BUTTON.clone().add(v(1.7, -5.7));
 function pathLength() {
   let l = 0;
   for (let i = 1; i < FOX_PATH.length; i++) l += FOX_PATH[i].distanceTo(FOX_PATH[i - 1]);
@@ -1247,161 +1305,39 @@ function pathAt(s: number): { at: THREE.Vector3; dir: THREE.Vector3 } {
 
 // ───────────────────────── Scenery helpers ─────────────────────────
 
-/** Seamless ground tiles (public/textures/farm), seen from straight above. */
-const GROUND = ['grass', 'grass-light', 'path', 'soil', 'mud', 'pond-bed'] as const;
-type Ground = (typeof GROUND)[number];
-const groundTiles = new Map<Ground, HTMLImageElement>();
-
-/** Loads the ground tiles once; any that fail leave the board in flat colours. */
-export async function loadGround() {
-  await Promise.all(
-    GROUND.filter((name) => !groundTiles.has(name)).map(async (name) => {
-      const img = new Image();
-      // The load event, not decode(): decode() can wait forever while the page is hidden.
-      const ok = await new Promise<boolean>((done) => {
-        img.onload = () => done(true);
-        img.onerror = () => done(false);
-        img.src = `${import.meta.env.BASE_URL}textures/farm/${name}.webp`;
-      });
-      // A missing tile leaves its flat colour.
-      if (ok) groundTiles.set(name, img);
-    }),
-  );
-}
-
-/** The board's painted top: grass, paths, the field, the pond, mud. */
-function boardTexture(): THREE.Texture {
-  // About the same number of pixels as the smaller board had (a big texture costs an iPad dearly).
-  const px = 34;
-  const c = document.createElement('canvas');
-  c.width = W * px;
-  c.height = D * px;
-  const ctx = c.getContext('2d')!;
-  const X = (x: number) => (x + W / 2) * px;
-  const Z = (z: number) => (z + D / 2) * px;
-  /** A ground tile repeated every `tile` units, or the flat colour without it. */
-  const paint = (name: Ground, colour: string, tile: number): string | CanvasPattern => {
-    const img = groundTiles.get(name);
-    const pattern = img && ctx.createPattern(img, 'repeat');
-    if (!img || !pattern) return colour;
-    pattern.setTransform(new DOMMatrix().scale((tile * px) / img.width));
-    return pattern;
-  };
-  const textured = groundTiles.has('grass');
-  ctx.fillStyle = paint('grass', '#a3c17f', 7);
-  ctx.fillRect(0, 0, c.width, c.height);
-  // The hill with the mill: lighter grass.
-  ctx.fillStyle = paint('grass-light', '#b6d28f', 7);
-  ctx.beginPath();
-  ctx.ellipse(X(MILL.x - 2), Z(MILL.z - 0.5), 9 * px, 7 * px, 0, 0, Math.PI * 2);
-  ctx.fill();
-  // Flat grass gets speckles; the tiles have their own blades.
-  for (let i = 0; i < (textured ? 0 : 16000); i++) {
-    ctx.fillStyle = Math.random() < 0.5 ? 'rgba(80,120,60,0.22)' : 'rgba(205,225,160,0.28)';
-    ctx.fillRect(Math.random() * c.width, Math.random() * c.height, 3, 6);
-  }
-  // The field: plowed rows (the soil tile has its furrows running along z).
-  const [fx, fz] = YARDS.field;
-  ctx.fillStyle = paint('soil', '#9a7650', 14);
-  ctx.beginPath();
-  ctx.roundRect(X(9.5 + fx), Z(-11.5 + fz), 9 * px, 13.5 * px, 24);
-  ctx.fill();
-  ctx.strokeStyle = 'rgba(80,55,30,0.45)';
-  ctx.lineWidth = 8;
-  for (let x = 10; x < 18.5 && !groundTiles.has('soil'); x += 0.9) {
-    ctx.beginPath();
-    ctx.moveTo(X(x + fx), Z(-11 + fz));
-    ctx.lineTo(X(x + fx), Z(1.5 + fz));
-    ctx.stroke();
-  }
-  // Paths: soft sand-coloured lanes with a worn, darker verge.
-  const sand = paint('path', '#d6bd86', 3.5);
-  /** Every lane as drawn, so the flowers can keep off them. */
-  const lanes: { pts: [number, number][]; w: number }[] = [];
-  const path = (pts: [number, number][], w: number) => {
-    lanes.push({ pts, w });
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.beginPath();
-    pts.forEach(([x, z], i) => (i ? ctx.lineTo(X(x), Z(z)) : ctx.moveTo(X(x), Z(z))));
-    ctx.strokeStyle = 'rgba(110,95,50,0.28)';
-    ctx.lineWidth = (w + 0.35) * px;
-    ctx.stroke();
-    ctx.strokeStyle = sand;
-    ctx.lineWidth = w * px;
-    ctx.stroke();
-    ctx.strokeStyle = 'rgba(255,240,200,0.2)';
-    ctx.lineWidth = w * px * 0.45;
-    ctx.stroke();
-  };
-  // The road through the gate; the lane from the cow pen along the yards to it, with a lane off to each yard.
-  const LANE_Z = 3.6;
-  path([[ROAD_X, D / 2], [ROAD_X, GATE.z], [ROAD_X, FIELD.z + 2], [FIELD.x, FIELD.z + 1]], 2.4);
-  path([[-15.5, -6.5], [-15.5, LANE_Z], [ROAD_X, LANE_Z]], 1.4);
-  path(FOX_PATH.map((q) => [q.x, q.z] as [number, number]).reverse(), 1.1);
-  path([[-3.2, LANE_Z], [-3.2, 9.6]], 1.2);
-  path([[-15.5, LANE_Z], [-16, 10.4]], 1.1);
-  path([[-15.5, -6.5], [-21, -9.5], [MILL.x + 1, MILL.z + 2.5]], 1.2);
-  path([[ROAD_X, 10], [20, 11], [POND.x + 0.6, POND.z - 4.4]], 1.1);
-  // Mud in the pig pen, the pond by the house.
-  const blobPaint = (x: number, z: number, rx: number, rz: number, col: string | CanvasPattern) => {
-    ctx.fillStyle = col;
-    ctx.beginPath();
-    ctx.ellipse(X(x), Z(z), rx * px, rz * px, 0, 0, Math.PI * 2);
-    ctx.fill();
-  };
+/** Where the lanes, the field, the mud and the hill lie (painted by src/ground.ts). */
+function groundPlan(): GroundPlan {
+  const [cx, cz] = [L('cow', -15.5, -6.5).x, L('cow', -15.5, -6.5).z];
+  const coop = at('hen', -3.2, 7.2);
+  const hutchAt = at('rabbit', -14, 6.6);
+  const lanes: GroundPlan['lanes'] = [
+    // The road from the bottom edge through the gate into the field.
+    { pts: [[ROAD_X, D / 2], [ROAD_X, GATE.z], [ROAD_X, FIELD.z + 2 * K], [FIELD.x, FIELD.z + K]], w: 2.6 },
+    // The lane from the cow pen along the yards to the road, and lanes off it to the coop and the hutch.
+    { pts: [[cx, cz], [cx, LANE_Z], [ROAD_X, LANE_Z]], w: 1.6 },
+    { pts: [[coop.x, LANE_Z], [coop.x, coop.z - 2.4]], w: 1.3 },
+    { pts: [[cx, LANE_Z], [hutchAt.x + 2.5, hutchAt.z - 2]], w: 1.2 },
+    // Up the hill to the mill, and down to the pond.
+    { pts: [[cx, cz], [G(-21, -9.5).x, G(-21, -9.5).z], [MILL.x + K, MILL.z + 2.5 * K]], w: 1.3 },
+    { pts: [[ROAD_X, G(0, 10).z], [G(20, 11).x, G(20, 11).z], [POND.x + 0.6 * K, POND.z - 4.4 * K]], w: 1.2 },
+    // The fox's path out of the wood.
+    { pts: FOX_PATH.map((q) => [q.x, q.z] as [number, number]).reverse(), w: 1.1 },
+  ];
+  const f0 = at('field', 9.5, -11.5);
+  const f1 = at('field', 18.5, 2);
   const mud = at('pig', 1.6, -6.2);
-  blobPaint(mud.x, mud.z, 2.4, 1.6, paint('mud', '#8a6a46', 3));
-  blobPaint(mud.x + 0.2, mud.z - 0.2, 1.6, 1.0, groundTiles.has('mud') ? 'rgba(60,40,25,0.3)' : '#7a5a3a');
-  // The pond: a sandy bed seen through the water, deeper in the middle.
-  const bed = groundTiles.has('pond-bed');
-  blobPaint(POND.x, POND.z, 5.1, 3.3, paint('pond-bed', '#c9e6f0', 4));
-  blobPaint(POND.x, POND.z, 4.6, 2.9, bed ? 'rgba(70,165,215,0.7)' : '#5bb5d8');
-  if (bed) blobPaint(POND.x + 0.3, POND.z + 0.2, 3, 1.8, 'rgba(40,120,185,0.35)');
-  blobPaint(POND.x - 1, POND.z - 0.8, 2, 0.7, 'rgba(255,255,255,0.35)');
-  // The tiles come out of the day-time grading greener and more orange than painted:
-  // take some colour out of the whole ground so the toys stand out from it.
-  if (textured) {
-    ctx.globalCompositeOperation = 'saturation';
-    ctx.fillStyle = 'rgba(128,128,128,0.22)';
-    ctx.fillRect(0, 0, c.width, c.height);
-    ctx.globalCompositeOperation = 'source-over';
-  }
-  // Flowers in little clumps on the grass: not on the lanes, the field, the mud or the pond.
-  const onLane = (x: number, z: number) =>
-    lanes.some(({ pts, w }) =>
-      pts.slice(1).some(([bx, bz], i) => {
-        const [ax, az] = pts[i];
-        const dx = bx - ax;
-        const dz = bz - az;
-        const k = Math.max(0, Math.min(1, ((x - ax) * dx + (z - az) * dz) / (dx * dx + dz * dz || 1)));
-        return Math.hypot(x - ax - dx * k, z - az - dz * k) < w / 2 + 0.7;
-      }),
-    );
-  const inside = (x: number, z: number, cx: number, cz: number, rx: number, rz: number) => ((x - cx) / rx) ** 2 + ((z - cz) / rz) ** 2 < 1;
-  const free = (x: number, z: number) =>
-    !onLane(x, z) &&
-    !inside(x, z, POND.x, POND.z, 6, 4.2) &&
-    !inside(x, z, mud.x, mud.z, 3, 2.2) &&
-    !(x > 9 + fx && x < 19 + fx && z > -12 + fz && z < 2.5 + fz);
-  const colors = ['#ffffff', '#ffd23f', '#ff8fb1', '#b388ff'];
-  for (let n = 0, tries = 0; n < (textured ? 55 : 120) && tries < 2000; tries++) {
-    const x = (Math.random() - 0.5) * (W - 2);
-    const z = (Math.random() - 0.5) * (D - 2);
-    if (!free(x, z)) continue;
-    n++;
-    ctx.fillStyle = colors[n % colors.length];
-    for (let i = 0; i < 4 + (n % 4); i++) {
-      ctx.beginPath();
-      ctx.arc(X(x + (Math.random() - 0.5) * 1.1), Z(z + (Math.random() - 0.5) * 0.8), 3.5, 0, Math.PI * 2);
-      ctx.fill();
-    }
-  }
-  const t = new THREE.CanvasTexture(c);
-  t.colorSpace = THREE.SRGBColorSpace;
-  t.anisotropy = 8;
-  return t;
+  return {
+    width: W,
+    depth: D,
+    lanes,
+    field: { x0: f0.x, z0: f0.z, x1: f1.x, z1: f1.z },
+    mud: [{ x: mud.x, z: mud.z, rx: 2.4 * K, rz: 1.6 * K }],
+    hill: { x: MILL.x - 2 * K, z: MILL.z - 0.5 * K, rx: 9 * K, rz: 7 * K },
+  };
 }
+
+/** The duck pond (its bed, water and shore). */
+const POND_SIZE = { rx: 5.1 * K, rz: 3.3 * K };
 
 function boxHouse(wall: string, roof: string, w: number, h: number, d: number): THREE.Group {
   const g = new THREE.Group();
@@ -1622,21 +1558,65 @@ const STAND_INS: Record<string, () => THREE.Object3D> = {
   },
 };
 
-function sprouts(): THREE.InstancedMesh {
+function sprouts(field: GroundPlan['field']): THREE.InstancedMesh {
   const geo = new THREE.ConeGeometry(0.12, 0.35, 5);
-  const im = new THREE.InstancedMesh(geo, mat('#5aa64a', 0.7), 90);
+  const im = new THREE.InstancedMesh(geo, mat('#5aa64a', 0.7), 400);
   const m = new THREE.Matrix4();
   let i = 0;
-  const [dx, dz] = YARDS.field;
-  for (let x = 10.45; x < 18.3 && i < 90; x += 0.9) {
-    for (let z = -10.5; z < 1 && i < 90; z += 1.3) {
-      m.makeTranslation(x + dx, 0.17, z + dz + (Math.random() - 0.5) * 0.3);
+  for (let x = field.x0 + 0.6; x < field.x1 - 0.4 && i < 400; x += 0.9) {
+    for (let z = field.z0 + 0.7; z < field.z1 - 0.5 && i < 400; z += 1.3) {
+      m.makeTranslation(x, 0.17, z + (Math.random() - 0.5) * 0.3);
       im.setMatrixAt(i++, m);
     }
   }
   im.count = i;
   im.castShadow = true;
   return im;
+}
+
+/**
+ * Where the trees grow: a wood in the bottom-left corner (the fox's), a ring
+ * along the board's edge and a few small groves — never on a lane, in the
+ * field or in a yard. Always the same trees (a fixed seed).
+ */
+function treesFor(plan: GroundPlan): [number, number, number][] {
+  let seed = 7;
+  const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+  const clear: [THREE.Vector3, number][] = Object.entries(SITES).map(([name, [x, z]]) => [
+    v(x * S, z * S),
+    name === 'field' ? 20 : name === 'pond' || name === 'sheep' ? 15 : 11,
+  ]);
+  const f = plan.field;
+  const ok = (x: number, z: number, out: [number, number, number][]) =>
+    Math.abs(x) < W / 2 - 1.5 &&
+    Math.abs(z) < D / 2 - 1.5 &&
+    !onLane(plan, x, z, 2) &&
+    !(x > f.x0 - 3 && x < f.x1 + 3 && z > f.z0 - 3 && z < f.z1 + 3) &&
+    clear.every(([c, r]) => Math.hypot(x - c.x, z - c.z) > r) &&
+    out.every(([tx, tz]) => Math.hypot(x - tx, z - tz) > 2.6);
+  const out: [number, number, number][] = [];
+  const add = (x: number, z: number) => {
+    if (ok(x, z, out)) out.push([x, z, 0.85 + rnd() * 0.45]);
+  };
+  // The fox's wood.
+  const wood = G(-25, 19.5);
+  for (let i = 0; i < 160; i++) add(wood.x + (rnd() - 0.5) * 30, wood.z + (rnd() - 0.5) * 16);
+  // Along the edges.
+  for (let x = -W / 2 + 3; x < W / 2 - 2; x += 6) {
+    add(x + (rnd() - 0.5) * 3, -D / 2 + 2.5 + rnd() * 2);
+    add(x + (rnd() - 0.5) * 3, D / 2 - 2.5 - rnd() * 2);
+  }
+  for (let z = -D / 2 + 6; z < D / 2 - 5; z += 6) {
+    add(-W / 2 + 2.5 + rnd() * 2, z + (rnd() - 0.5) * 3);
+    add(W / 2 - 2.5 - rnd() * 2, z + (rnd() - 0.5) * 3);
+  }
+  // Small groves in the open.
+  for (let g = 0; g < 14; g++) {
+    const cx = (rnd() - 0.5) * (W - 16);
+    const cz = (rnd() - 0.5) * (D - 12);
+    for (let i = 0; i < 5; i++) add(cx + (rnd() - 0.5) * 7, cz + (rnd() - 0.5) * 6);
+  }
+  return out;
 }
 
 /** A stand-in animal when its model did not load: a coloured rounded body. */
