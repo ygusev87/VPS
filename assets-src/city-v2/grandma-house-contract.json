@@ -1,0 +1,85 @@
+{
+  "status": "Image reference prepared; GLB not ordered or integrated; measurement required",
+  "reference": "grandma-house-v1.png",
+  "decision": "m0195, reaffirmed m0198; keep existing balcony",
+  "appearance": {
+    "storeys": 3,
+    "walls": "warm honey/apricot",
+    "roof": "blue hipped tiles, no dormers",
+    "trim": "cream",
+    "doorAndWindows": "teal",
+    "included": "house shell only",
+    "excluded": [
+      "balcony",
+      "deck",
+      "rails",
+      "legs",
+      "stairs",
+      "base plot",
+      "characters",
+      "vegetation"
+    ]
+  },
+  "existingPlacement": {
+    "centerXZ": [
+      -44,
+      -27
+    ],
+    "baseY": 0,
+    "fitWidth": 6.2,
+    "rotateY": -1.5707963267948966,
+    "normalisedSourceFront": "+X",
+    "gameFront": "+Z"
+  },
+  "connection": {
+    "gameWallSide": "+X",
+    "sourceWallSideAfterNormalisation": "-Z",
+    "targetContactWorldXYZ": [
+      -40.9,
+      1.95,
+      -26.75
+    ],
+    "targetContactLocalXYZ": [
+      3.1,
+      1.95,
+      0.25
+    ],
+    "existingBalconyCenterXZ": [
+      -40.1,
+      -26.75
+    ],
+    "existingGrandmaXZ": [
+      -40.45,
+      -26.75
+    ],
+    "liftXZ": [
+      -38.6,
+      -26.5
+    ],
+    "doNotMove": "balcony, grandma, lift, all task/pole anchors"
+  },
+  "geometryTargets": {
+    "fullWidth": 6.2,
+    "approxDepth": 4.8,
+    "approxTotalHeight": 7.1,
+    "middleStoreyDoorThresholdY": 1.95,
+    "trianglesMax": 8000,
+    "materialsTarget": 1,
+    "baseColorPixels": 512,
+    "approxDownloadBytesTarget": 200000,
+    "allTargetsUnmeasured": true
+  },
+  "acceptance": [
+    "Decode and measure the actual GLB after orientation, optimisation and runtime model() fit; do not infer metres from PNG.",
+    "Check contact at world(-40.9,1.95,-26.75) against the existing deck. model() scales/recenters FULL bbox, including eaves/corner trim; fitting width6.2 alone does not prove wall or threshold alignment.",
+    "If full bbox and wall/door alignment cannot both fit the current contract, send measured options to Claude before integration; never silently shift gameplay anchors.",
+    "View with grandma.glb and the actual code balcony at game camera: the upper roof/side trim must not hide grandma, basket, or lifting route.",
+    "Check nearby house and road clearances including actual roof projection; retain opaque materials and a single small texture atlas.",
+    "No generated balcony. No public/models/grandma-house.glb until measurement and visual review pass."
+  ],
+  "reviewNotes": [
+    "Current image has shallow projecting roof and horizontal trim. These are stylistic, not permission to change contact coordinates.",
+    "No device test or performance claim from reference image."
+  ],
+  "tripoOrders": 0
+}

@@ -1,0 +1,25 @@
+{
+  "tool": "built-in image_gen",
+  "intent": "isolate and redesign the grandmother house from the approved city concept",
+  "prompt": "Create an isolated production reference of the grandmother's townhouse in the upper left corner of reference image 1. Transform that ONE house into a beautiful standalone 3D toy building for the same children's city game. Reference image 2 is ONLY for the smooth handcrafted toy materials, thick rounded trim, and clarity of large forms.\n\nThe building must have THREE unmistakable full storeys below the roof: a ground floor with one entrance door and two windows, a middle storey with three front windows, and a top storey with three front windows. Three horizontal rows of living-space openings, not two storeys plus an attic. A compact rectangular footprint, width : depth : total height about 6.2 : 4.8 : 7.1. Warm honey-yellow / apricot plaster walls, creamy ivory window frames and restrained corner trim, teal-blue front door, blue-green opaque window panes, saturated deep blue rounded hipped tile roof with a small cream chimney. Roof modest in height, no dormers, no attic, small eaves. Readable at a child's tablet game scale. Softly rounded substantial architecture, welcoming, premium miniature toy craftsmanship, not a cardboard cutout or a basic box.\n\nImportant integration constraint: NO BALCONY is included in this asset. NO projecting deck, railings, supports, stairs, awnings, porch or base plinth. The game already supplies its balcony. On the visible RIGHT side wall, on the MIDDLE storey, include one closed full-height teal door with a cream frame, centered along that side wall; its bottom aligns with the first upper-floor level, approximately 1.95 units above the ground. It will later connect to the separate game balcony. The right side wall around and below this door is flat and clear, no projecting trims at the contact area. Show a modest side window on the top storey. No side ground-floor door. The front ground-floor door reaches ground level, without steps.\n\nOne single complete building centered on plain white studio background with a subtle contact shadow. Elevated three-quarter front-right view: large front facade to the left and the right side wall clearly visible to the right. Both the THREE front storeys and the raised door on the right side wall must be plainly visible. Building fills around 85% of the frame, nothing cropped. Orthographic-like game-asset render, soft daylight, satin matte painted toy finish, crisp forms, attractive color harmony. No people, grandmother, basket, trees, shrubs, flowers, fences, pavement tile, plot base, roads, text, labels, arrows, measurements, logos, watermark, glow or transparent walls. The output is a single isolated house-shell reference, not a whole town and not a multi-view sheet.",
+  "references": [
+    {
+      "path": "assets-src/city-v2/concept-v2.png",
+      "role": "approved city composition; upper-left grandmother house"
+    },
+    {
+      "path": "assets-src/city-v1/bakery-v1.png",
+      "role": "toy material and large-form style"
+    }
+  ],
+  "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-5caaaacf-e4cd-47a0-ba50-c52bdd2ecfd5.png",
+  "selectedOutput": "grandma-house-v1.png",
+  "tripoOrders": 0,
+  "notes": [
+    "Three explicit storeys and side upper-floor door visually verified.",
+    "No second balcony, figures, vegetation, stairs or plot base.",
+    "Image is a reference, not a measured model. Eave/trim projection and door threshold require GLB measurement."
+  ],
+  "savedAtUTC": "2026-10-25T19:51:01.294107+00:00",
+  "sha256": "ec37c4d5da03095650f360ea84928a6f1423dc4931fac53620d85d17238b15a3"
+}
