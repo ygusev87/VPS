@@ -58,6 +58,9 @@ const SPECIAL: Sticker[] = [
   { id: 'machine:m-laser', say: 'machineWorks', emoji: '🚨' },
   { id: 'machine:m-carwash', say: 'machineWorks', emoji: '🚿' },
   { id: 'machine:m-bridge', say: 'machineWorks', emoji: '🌉' },
+  { id: 'machine:m-disco', say: 'machineWorks', emoji: '🪩' },
+  { id: 'machine:m-helicopter', say: 'machineWorks', emoji: '🚁' },
+  { id: 'machine:m-band', say: 'machineWorks', emoji: '🎺' },
   { id: 'machine:m-factory', say: 'machineWorks', emoji: '🏭' },
   // The factory.
   { id: 'factory:breaker', say: 'breakerHappy', emoji: '💡' },
