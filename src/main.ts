@@ -553,6 +553,25 @@ function setHint(h: Hint | null) {
   if (h?.type === 'tapWire') h.wire.alert = true;
   Wire.focus = h?.type === 'tapWire' ? h.wire : null;
   hud.setHint(h);
+  // On a map the hand may point somewhere off screen: bring that into view (a hand off screen helps nobody).
+  const pts = map ? hintPoints(h) : [];
+  if (pts.length && pts.some((p) => !stage.inView(p))) mapFocus = pts.flatMap((p) => [p.clone().add(new THREE.Vector3(-2.5, 0, -2.5)), p.clone().add(new THREE.Vector3(2.5, 0, 2.5))]);
+}
+
+/** The places on the table a hint points at. */
+function hintPoints(h: Hint | null): THREE.Vector3[] {
+  if (!h) return [];
+  switch (h.type) {
+    case 'drag':
+      return [h.to.clone(), ...(h.part ? [h.part.root.position.clone()] : [])];
+    case 'connect':
+      return [h.from.attachPoint(), h.to.attachPoint()];
+    case 'tap':
+    case 'weak':
+      return [h.part.root.position.clone()];
+    case 'tapWire':
+      return [h.wire.pointAt(h.u)];
+  }
 }
 
 /** The wire a hint asks to remove, so a tap near it takes that one. */

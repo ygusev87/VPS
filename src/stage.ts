@@ -379,6 +379,14 @@ export class Stage {
     return sh > sw * 1.15;
   }
 
+  /** Does this point show in the free part of the view (not under the panels)? */
+  inView(p: THREE.Vector3, margin = 30): boolean {
+    const s = this.project(p);
+    const r = this.rect;
+    const { top, bottom, left, right } = this.insets;
+    return s.x > r.left + left + margin && s.x < r.left + this.w - right - margin && s.y > r.top + top + margin && s.y < r.top + this.h - bottom - margin;
+  }
+
   setInsets(insets: Insets) {
     this.insets = insets;
     this.resize();
