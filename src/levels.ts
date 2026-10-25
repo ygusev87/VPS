@@ -38,16 +38,18 @@ export interface Level {
   sandbox?: boolean;
   /** Keep the layout as drawn on tall screens too (parts that face each other). */
   fixed?: boolean;
+  /** One of the ready-made machines (src/machines.ts), not a lesson. */
+  machine?: boolean;
   intro: PhraseId;
   winPhrase: PhraseId;
   goal(world: World): boolean;
 }
 
-const active = (w: World, kind: PartKind) => w.parts.filter((p) => p.kind === kind && isActive(p));
+export const active = (w: World, kind: PartKind) => w.parts.filter((p) => p.kind === kind && isActive(p));
 const carries = (p: Part) => p.closed && Math.abs(p.state.current) > 0.01;
 const switchInLoop = (w: World) => w.parts.some((p) => p.kind === 'switch' && carries(p));
 /** A part of this kind is closed and current runs through it (a sensor, target, dominoes). */
-const through = (w: World, kind: PartKind) => w.parts.some((p) => p.kind === kind && carries(p));
+export const through = (w: World, kind: PartKind) => w.parts.some((p) => p.kind === kind && carries(p));
 const TRIGGERS: PartKind[] = ['target', 'domino', 'lightSensor', 'button'];
 /**
  * A chain works: something switched on by another part (a ball, light, wind),
@@ -58,7 +60,7 @@ export function chainWorks(w: World): boolean {
   return fired && w.parts.some((p) => p.kind !== 'launcher' && p.kind !== 'laser' && isActive(p));
 }
 /** A generator of this kind is delivering current. */
-const feeding = (w: World, kind: PartKind) => w.parts.some((p) => p.kind === kind && Math.abs(p.state.current) > 0.01);
+export const feeding = (w: World, kind: PartKind) => w.parts.some((p) => p.kind === kind && Math.abs(p.state.current) > 0.01);
 
 export const LEVELS: Level[] = [
   {

@@ -1395,6 +1395,52 @@ body.on-map .inv-btn {
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
   gap: 12px;
 }
+.mach-card {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  border: 1.5px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  background: #fff;
+  padding: 0;
+}
+.mach-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.mach-card:not(.is-done) img {
+  padding: 14%;
+  opacity: 0.75;
+}
+.mach-card.is-done img {
+  object-fit: cover;
+}
+.mach-num,
+.mach-star {
+  position: absolute;
+  top: 6px;
+  display: grid;
+  place-items: center;
+  min-width: 24px;
+  height: 24px;
+  border-radius: 99px;
+  font-weight: 700;
+  font-size: 13px;
+}
+.mach-num {
+  left: 6px;
+  background: var(--card-soft);
+  border: 1px solid var(--line);
+}
+.mach-star {
+  right: 6px;
+  background: var(--amber);
+  color: #fff;
+}
+.mach-btn .icon .fill {
+  fill: var(--teal);
+}
 .inv-new,
 .inv-card {
   position: relative;

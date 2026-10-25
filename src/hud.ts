@@ -4,6 +4,7 @@
 import * as THREE from 'three';
 import type { Hint } from './hints';
 import { FREE_PLAY, LEVELS, type Level } from './levels';
+import { MACHINES } from './machines';
 import type { Part, PartKind } from './parts/base';
 import { GROUPS, itemKey, itemOf, type CatalogGroup, type CatalogItem } from './parts/catalog';
 import type { Stage } from './stage';
@@ -395,7 +396,8 @@ export class Hud {
     img.src = thumb(level.icon, true);
     this.mission.querySelector('h3')!.textContent = level.task;
     const i = LEVELS.indexOf(level);
-    this.mission.querySelector('p')!.textContent = `Задание ${i + 1} из ${LEVELS.length}`;
+    const m = MACHINES.indexOf(level);
+    this.mission.querySelector('p')!.textContent = m >= 0 ? `Машина ${m + 1} из ${MACHINES.length}` : `Задание ${i + 1} из ${LEVELS.length}`;
     this.mission.classList.toggle('is-hidden', level === FREE_PLAY);
 
     const n = LEVELS.filter((l) => done.has(l.id)).length;

@@ -5,6 +5,7 @@ import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sa
 import { Fx } from './fx';
 import { CITY_MODELS, CITY_TRAY, CityMap } from './city';
 import { FACTORY_MODELS, FACTORY_TRAY, FactoryMap } from './factory';
+import { keepMachinePicture, machinePictures, MACHINES } from './machines';
 import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap } from './farm';
 import type { MapHooks, MapProgress, StoryMap } from './storymap';
 import { loadGround } from './ground';
@@ -195,6 +196,10 @@ const hud = new Hud(stage, {
   onNext: () => {
     sfx.unlock();
     sfx.pop();
+    if (level.machine) {
+      const k = MACHINES.indexOf(level);
+      return startLevel(MACHINES[k + 1] ?? FREE_PLAY);
+    }
     const i = LEVELS.indexOf(level);
     startLevel(i >= 0 && i < LEVELS.length - 1 ? LEVELS[i + 1] : FREE_PLAY);
   },
@@ -232,15 +237,7 @@ const shelf = new Shelf(album, {
   },
   onSave: () => {
     sfx.unlock();
-    stage.render();
-    const box = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
-    for (const c of partsOnScreen(world)) {
-      box.x0 = Math.min(box.x0, c.x - c.r);
-      box.y0 = Math.min(box.y0, c.y - c.r * 1.5);
-      box.x1 = Math.max(box.x1, c.x + c.r);
-      box.y1 = Math.max(box.y1, c.y + c.r);
-    }
-    const inv = capture(world, snapshot(stage.renderer.domElement, Number.isFinite(box.x0) ? box : undefined));
+    const inv = capture(world, tablePicture());
     if (!inv || !saveInvention(inv)) {
       sfx.noPower();
       voice.say('inventionsEmpty', 0);
@@ -266,7 +263,34 @@ const shelf = new Shelf(album, {
     deleteInvention(inv.id);
   },
   inventions: () => loadInventions(),
+  onMachines: () => {
+    sfx.unlock();
+    sfx.pop();
+    voice.say('machinesIntro', 0);
+  },
+  onMachine: (m) => {
+    sfx.unlock();
+    sfx.pop();
+    startLevel(m);
+  },
+  machines: () => {
+    const pics = machinePictures();
+    return MACHINES.map((m) => ({ level: m, done: progress.done.has(m.id), pic: pics[m.id] }));
+  },
 });
+
+/** A small picture of the parts on the table, as they are on screen now. */
+function tablePicture(): string {
+  stage.render();
+  const box = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
+  for (const c of partsOnScreen(world)) {
+    box.x0 = Math.min(box.x0, c.x - c.r);
+    box.y0 = Math.min(box.y0, c.y - c.r * 1.5);
+    box.x1 = Math.max(box.x1, c.x + c.r);
+    box.y1 = Math.max(box.y1, c.y + c.r);
+  }
+  return snapshot(stage.renderer.domElement, Number.isFinite(box.x0) ? box : undefined);
+}
 
 /** Give a sticker (once): it flies from the spot into the album. */
 function earnSticker(id: string, at: THREE.Vector3) {
@@ -536,6 +560,15 @@ function win() {
   won = true;
   progress.done.add(level.id);
   saveProgress(progress);
+  // A machine got working is his: its picture on the card, a sticker, and kept in "My inventions".
+  if (level.machine) {
+    const pic = tablePicture();
+    keepMachinePicture(level.id, pic);
+    const inv = capture(world, pic);
+    if (inv) saveInvention(inv);
+    const mid = world.parts.reduce((s, p) => s.add(p.root.position), new THREE.Vector3()).multiplyScalar(1 / Math.max(1, world.parts.length));
+    setTimeout(() => earnSticker(`machine:${level.id}`, mid.setY(1.5)), 1500);
+  }
   setHint(null);
   sfx.win();
   voice.say(level.winPhrase, 0);
@@ -1114,6 +1147,7 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
   },
   startLevel,
   LEVELS,
+  MACHINES,
   FREE_PLAY,
   input,
   hud,

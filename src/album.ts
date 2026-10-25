@@ -48,6 +48,17 @@ const SPECIAL: Sticker[] = [
   { id: 'city:firefighter', say: 'stFirefighter', emoji: '🚒' },
   { id: 'city:raccoon', say: 'stRaccoon', emoji: '🦝' },
   { id: 'city:school', say: 'stSchool', emoji: '🏫' },
+  // The ready-made machines.
+  { id: 'machine:m-nightlight', say: 'machineWorks', emoji: '🎡' },
+  { id: 'machine:m-shooting', say: 'machineWorks', emoji: '🎯' },
+  { id: 'machine:m-windsign', say: 'machineWorks', emoji: '🌬️' },
+  { id: 'machine:m-press', say: 'machineWorks', emoji: '⚙️' },
+  { id: 'machine:m-paint', say: 'machineWorks', emoji: '🖌️' },
+  { id: 'machine:m-alarm', say: 'machineWorks', emoji: '⏰' },
+  { id: 'machine:m-laser', say: 'machineWorks', emoji: '🚨' },
+  { id: 'machine:m-carwash', say: 'machineWorks', emoji: '🚿' },
+  { id: 'machine:m-bridge', say: 'machineWorks', emoji: '🌉' },
+  { id: 'machine:m-factory', say: 'machineWorks', emoji: '🏭' },
   // The factory.
   { id: 'factory:breaker', say: 'breakerHappy', emoji: '💡' },
   { id: 'factory:press', say: 'pressHappy', emoji: '⚙️' },
