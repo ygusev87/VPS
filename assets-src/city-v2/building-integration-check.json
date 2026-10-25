@@ -1,0 +1,538 @@
+{
+  "status": "Applied m0195; static spatial checks passed, full gameplay/iPad QA pending",
+  "sources": {
+    "city": "f56b2fc8ac07438113222809f21b35945e9b113c76860c637bdf6de8d53efbfd",
+    "decor": "5d936760b29dd1f3ddd02b434d099e0589d64bf5adf11cf423a11886084cb584",
+    "baseline": "building-contracts.json at80403c5"
+  },
+  "buildings": [
+    {
+      "id": "school-0",
+      "model": "school",
+      "center": [
+        11,
+        -30
+      ],
+      "groupFitWidth": 9,
+      "scale": 1,
+      "width": 9,
+      "bodyDepth": 7.2,
+      "body": {
+        "x0": 6.5,
+        "z0": -33.6,
+        "x1": 15.5,
+        "z1": -26.4
+      },
+      "roofProjection": {
+        "x0": 6.227,
+        "z0": -34.773,
+        "x1": 15.773,
+        "z1": -25.227
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "grandma-house-0",
+      "model": "grandma-house",
+      "center": [
+        -44,
+        -27
+      ],
+      "groupFitWidth": 6.2,
+      "scale": 1,
+      "width": 6.2,
+      "bodyDepth": 4.960000000000001,
+      "body": {
+        "x0": -47.1,
+        "z0": -29.48,
+        "x1": -40.9,
+        "z1": -24.52
+      },
+      "roofProjection": {
+        "x0": -47.288,
+        "z0": -30.288,
+        "x1": -40.712,
+        "z1": -23.712
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "club-0",
+      "model": "club",
+      "center": [
+        48.5,
+        -13
+      ],
+      "groupFitWidth": 7,
+      "scale": 1,
+      "width": 7,
+      "bodyDepth": 5.6000000000000005,
+      "body": {
+        "x0": 45,
+        "z0": -15.8,
+        "x1": 52,
+        "z1": -10.2
+      },
+      "roofProjection": {
+        "x0": 44.788,
+        "z0": -16.712,
+        "x1": 52.212,
+        "z1": -9.288
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "toy-shop-0",
+      "model": "toy-shop",
+      "center": [
+        49.75,
+        -22.4
+      ],
+      "groupFitWidth": 6,
+      "scale": 0.9,
+      "width": 5.4,
+      "bodyDepth": 4.32,
+      "body": {
+        "x0": 47.05,
+        "z0": -24.56,
+        "x1": 52.45,
+        "z1": -20.24
+      },
+      "roofProjection": {
+        "x0": 46.886,
+        "z0": -25.264,
+        "x1": 52.614,
+        "z1": -19.536
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "fire-station-0",
+      "model": "fire-station",
+      "center": [
+        29,
+        8
+      ],
+      "groupFitWidth": 7,
+      "scale": 1,
+      "width": 7,
+      "bodyDepth": 5.6000000000000005,
+      "body": {
+        "x0": 25.5,
+        "z0": 5.2,
+        "x1": 32.5,
+        "z1": 10.8
+      },
+      "roofProjection": {
+        "x0": 25.288,
+        "z0": 4.288,
+        "x1": 32.712,
+        "z1": 11.712
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-a-0",
+      "model": "house-a",
+      "center": [
+        -26,
+        -28
+      ],
+      "groupFitWidth": 5,
+      "scale": 1,
+      "width": 5,
+      "bodyDepth": 4,
+      "body": {
+        "x0": -28.5,
+        "z0": -30,
+        "x1": -23.5,
+        "z1": -26
+      },
+      "roofProjection": {
+        "x0": -28.652,
+        "z0": -30.652,
+        "x1": -23.348,
+        "z1": -25.348
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-a-1",
+      "model": "house-a",
+      "center": [
+        24,
+        -29
+      ],
+      "groupFitWidth": 5,
+      "scale": 1,
+      "width": 5,
+      "bodyDepth": 4,
+      "body": {
+        "x0": 21.5,
+        "z0": -31,
+        "x1": 26.5,
+        "z1": -27
+      },
+      "roofProjection": {
+        "x0": 21.348,
+        "z0": -31.652,
+        "x1": 26.652,
+        "z1": -26.348
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-a-2",
+      "model": "house-a",
+      "center": [
+        -50,
+        32.2
+      ],
+      "groupFitWidth": 5,
+      "scale": 1,
+      "width": 5,
+      "bodyDepth": 4,
+      "body": {
+        "x0": -52.5,
+        "z0": 30.2,
+        "x1": -47.5,
+        "z1": 34.2
+      },
+      "roofProjection": {
+        "x0": -52.652,
+        "z0": 29.548,
+        "x1": -47.348,
+        "z1": 34.852
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-a-3",
+      "model": "house-a",
+      "center": [
+        14.5,
+        21
+      ],
+      "groupFitWidth": 5,
+      "scale": 1,
+      "width": 5,
+      "bodyDepth": 4,
+      "body": {
+        "x0": 12,
+        "z0": 19,
+        "x1": 17,
+        "z1": 23
+      },
+      "roofProjection": {
+        "x0": 11.848,
+        "z0": 18.348,
+        "x1": 17.152,
+        "z1": 23.652
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-b-0",
+      "model": "house-b",
+      "center": [
+        -48,
+        -14
+      ],
+      "groupFitWidth": 5,
+      "scale": 1,
+      "width": 5,
+      "bodyDepth": 4,
+      "body": {
+        "x0": -50.5,
+        "z0": -16,
+        "x1": -45.5,
+        "z1": -12
+      },
+      "roofProjection": {
+        "x0": -50.652,
+        "z0": -16.652,
+        "x1": -45.348,
+        "z1": -11.348
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-b-1",
+      "model": "house-b",
+      "center": [
+        -5.75,
+        -33
+      ],
+      "groupFitWidth": 5,
+      "scale": 0.9,
+      "width": 4.5,
+      "bodyDepth": 3.6,
+      "body": {
+        "x0": -8,
+        "z0": -34.8,
+        "x1": -3.5,
+        "z1": -31.2
+      },
+      "roofProjection": {
+        "x0": -8.136,
+        "z0": -35.386,
+        "x1": -3.364,
+        "z1": -30.614
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-b-2",
+      "model": "house-b",
+      "center": [
+        26,
+        21
+      ],
+      "groupFitWidth": 5,
+      "scale": 1,
+      "width": 5,
+      "bodyDepth": 4,
+      "body": {
+        "x0": 23.5,
+        "z0": 19,
+        "x1": 28.5,
+        "z1": 23
+      },
+      "roofProjection": {
+        "x0": 23.348,
+        "z0": 18.348,
+        "x1": 28.652,
+        "z1": 23.652
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-b-3",
+      "model": "house-b",
+      "center": [
+        -14,
+        32
+      ],
+      "groupFitWidth": 5,
+      "scale": 1,
+      "width": 5,
+      "bodyDepth": 4,
+      "body": {
+        "x0": -16.5,
+        "z0": 30,
+        "x1": -11.5,
+        "z1": 34
+      },
+      "roofProjection": {
+        "x0": -16.652,
+        "z0": 29.348,
+        "x1": -11.348,
+        "z1": 34.652
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-c-0",
+      "model": "house-c",
+      "center": [
+        -20,
+        -30
+      ],
+      "groupFitWidth": 5,
+      "scale": 1,
+      "width": 5,
+      "bodyDepth": 4,
+      "body": {
+        "x0": -22.5,
+        "z0": -32,
+        "x1": -17.5,
+        "z1": -28
+      },
+      "roofProjection": {
+        "x0": -22.652,
+        "z0": -32.652,
+        "x1": -17.348,
+        "z1": -27.348
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-c-1",
+      "model": "house-c",
+      "center": [
+        6,
+        32
+      ],
+      "groupFitWidth": 5,
+      "scale": 1,
+      "width": 5,
+      "bodyDepth": 4,
+      "body": {
+        "x0": 3.5,
+        "z0": 30,
+        "x1": 8.5,
+        "z1": 34
+      },
+      "roofProjection": {
+        "x0": 3.348,
+        "z0": 29.348,
+        "x1": 8.652,
+        "z1": 34.652
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    },
+    {
+      "id": "house-c-2",
+      "model": "house-c",
+      "center": [
+        50,
+        32.2
+      ],
+      "groupFitWidth": 5,
+      "scale": 1,
+      "width": 5,
+      "bodyDepth": 4,
+      "body": {
+        "x0": 47.5,
+        "z0": 30.2,
+        "x1": 52.5,
+        "z1": 34.2
+      },
+      "roofProjection": {
+        "x0": 47.348,
+        "z0": 29.548,
+        "x1": 52.652,
+        "z1": 34.852
+      },
+      "basis": "current townHouse/boxHouse placeholder; body is exact, roof is overhead projection, not ground collision"
+    }
+  ],
+  "remaining": [],
+  "visualCorrection": {
+    "building": "toy-shop-0",
+    "approvedCenter": [
+      49.75,
+      -24.2
+    ],
+    "finalCenter": [
+      49.75,
+      -22.4
+    ],
+    "reason": "Night QA at1180/390: roof hid the bell ring; move1.8 forward, gameplay anchors unchanged."
+  },
+  "grandma": {
+    "bodyRightX": -40.9,
+    "deckLeftX": -40.9,
+    "gap": 0,
+    "balcony": "existing code object; new GLB must be shell-only"
+  },
+  "edgePlanting": [
+    {
+      "model": "tree-oak-lite",
+      "center": [
+        -44.5,
+        35
+      ],
+      "box": {
+        "x0": -46.331,
+        "z0": 32.81,
+        "x1": -42.669,
+        "z1": 37.19
+      }
+    },
+    {
+      "model": "tree-oak-lite",
+      "center": [
+        -40,
+        35.1
+      ],
+      "box": {
+        "x0": -42.123,
+        "z0": 33.446,
+        "x1": -37.877,
+        "z1": 36.754
+      }
+    },
+    {
+      "model": "tree-oak-lite",
+      "center": [
+        -35.3,
+        35.2
+      ],
+      "box": {
+        "x0": -37.345,
+        "z0": 32.98,
+        "x1": -33.255,
+        "z1": 37.42
+      }
+    },
+    {
+      "model": "bush-lite",
+      "center": [
+        -46,
+        35.8
+      ],
+      "box": {
+        "x0": -46.835,
+        "z0": 35.388,
+        "x1": -45.165,
+        "z1": 36.212
+      }
+    },
+    {
+      "model": "bush-lite",
+      "center": [
+        -42.5,
+        36.2
+      ],
+      "box": {
+        "x0": -43.326,
+        "z0": 35.59,
+        "x1": -41.674,
+        "z1": 36.81
+      }
+    },
+    {
+      "model": "bush-lite",
+      "center": [
+        -37.6,
+        36.1
+      ],
+      "box": {
+        "x0": -38.437,
+        "z0": 35.551,
+        "x1": -36.763,
+        "z1": 36.649
+      }
+    },
+    {
+      "model": "bush-lite",
+      "center": [
+        -33.2,
+        35.9
+      ],
+      "box": {
+        "x0": -34.04,
+        "z0": 35.417,
+        "x1": -32.36,
+        "z1": 36.383
+      }
+    }
+  ],
+  "fenceBox": {
+    "x0": -53.13948671450187,
+    "z0": 36.85397413547437,
+    "x1": -32.350472327727,
+    "z1": 37.14602586452563
+  },
+  "geometryBudget": {
+    "beforeOakAndBushTriangles": 37100,
+    "afterOakBushAndFenceTriangles": 18179,
+    "scope": "Maximum instances before runtime avoidance; excludes all other scene geometry and render passes. Not an FPS or frame-time measurement."
+  },
+  "limitations": [
+    "Full AABB canopy checks against roads, task/pole envelopes, placeholder bodies and substation; existing runtime protects moving routes.",
+    "Real future building GLB bounds need a fresh audit.",
+    "Night background beyond board remains; handoff to Claude."
+  ]
+}
