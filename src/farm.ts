@@ -119,6 +119,12 @@ interface Need {
   kinds: PartKind[];
   /** Sticker earned (defaults to the animal's name). */
   sticker?: string;
+  /**
+   * What the camera shows for this need (with the nearest power): the animal
+   * and its ring unless set — the dog is far from the fox's path, so its need
+   * shows the button's ring and the bell's place instead.
+   */
+  focus?: THREE.Vector3[];
   /** The right part stands on the ring (lights it green). */
   ready: boolean;
   /** Where the part should go (a ring on the grass). */
@@ -358,7 +364,7 @@ export class FarmMap {
     this.focused = n;
     if (!n) return;
     const src = this.nearestSource(n.spot);
-    this.hooks.focus?.(this.around([n.critter.home, n.spot, ...(src ? [src.root.position] : [])]), instant);
+    this.hooks.focus?.(this.around([...(n.focus ?? [n.critter.home, n.spot]), ...(src ? [src.root.position] : [])]), instant);
   }
 
   /** Points with room round them (the ring, the bubble above an animal). */
@@ -615,7 +621,7 @@ export class FarmMap {
     add({ critter: get('rabbit'), phase: 'evening', ask: 'rabbitCold', thanks: 'rabbitHappy', icon: 'heater', kinds: ['heater'], spot: at('rabbit', -9.2, 7.6), met: near(['heater'], at('rabbit', -12.6, 7), 4.2) });
     add({ critter: cow, phase: 'evening', ask: 'cowSleepy', thanks: 'cowSleep', icon: 'musicbox', kinds: ['musicbox'], spot: at('cow', -13.6, -1.3), met: near(['musicbox'], cow.home, 4.5), sticker: 'farm:cow' });
     // Night: the dog warns about the fox; a button on the path and a bell chase it off.
-    add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], spot: FOX_PATH[3].clone(), met: () => this.foxChased, sticker: 'farm:fox' });
+    add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], spot: FOX_PATH[3].clone(), focus: [FOX_PATH[3].clone(), BELL_SPOT.clone()], met: () => this.foxChased, sticker: 'farm:fox' });
     // Morning: the ducklings want a fountain.
     add({ critter: get('duck'), phase: 'morning', ask: 'ducksAsk', thanks: 'ducksHappy', icon: 'pump', kinds: ['pump'], spot: v(POND.x - 5.3, POND.z + 0.2), met: () => this.fountainLevel > 0.95 });
   }
@@ -932,7 +938,7 @@ export class FarmMap {
       // Tapping an animal brings its ring into view too.
       this.focused = need;
       const src = this.nearestSource(need.spot);
-      this.hooks.focus?.(this.around([c.home, need.spot, ...(src ? [src.root.position] : [])]));
+      this.hooks.focus?.(this.around([...(need.focus ?? [c.home, need.spot]), ...(src ? [src.root.position] : [])]));
     } else if (need?.done) this.hooks.say(need.thanks);
     return true;
   }
