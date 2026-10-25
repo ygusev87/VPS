@@ -813,6 +813,27 @@ function pathAt(s: number): { at: THREE.Vector3; dir: THREE.Vector3 } {
 
 // ───────────────────────── Scenery helpers ─────────────────────────
 
+/** Seamless ground tiles (public/textures/farm), seen from straight above. */
+const GROUND = ['grass', 'grass-light', 'path', 'soil', 'mud', 'pond-bed'] as const;
+type Ground = (typeof GROUND)[number];
+const groundTiles = new Map<Ground, HTMLImageElement>();
+
+/** Loads the ground tiles once; any that fail leave the board in flat colours. */
+export async function loadGround() {
+  await Promise.all(
+    GROUND.filter((name) => !groundTiles.has(name)).map(async (name) => {
+      const img = new Image();
+      img.src = `${import.meta.env.BASE_URL}textures/farm/${name}.webp`;
+      try {
+        await img.decode();
+        groundTiles.set(name, img);
+      } catch {
+        // Missing tile: its flat colour stands in.
+      }
+    }),
+  );
+}
+
 /** The board's painted top: grass, paths, the field, the pond, mud. */
 function boardTexture(): THREE.Texture {
   // About the same number of pixels as the smaller board had (a big texture costs an iPad dearly).
@@ -823,42 +844,55 @@ function boardTexture(): THREE.Texture {
   const ctx = c.getContext('2d')!;
   const X = (x: number) => (x + W / 2) * px;
   const Z = (z: number) => (z + D / 2) * px;
-  ctx.fillStyle = '#a3c17f';
+  /** A ground tile repeated every `tile` units, or the flat colour without it. */
+  const paint = (name: Ground, colour: string, tile: number): string | CanvasPattern => {
+    const img = groundTiles.get(name);
+    const pattern = img && ctx.createPattern(img, 'repeat');
+    if (!img || !pattern) return colour;
+    pattern.setTransform(new DOMMatrix().scale((tile * px) / img.width));
+    return pattern;
+  };
+  const textured = groundTiles.has('grass');
+  ctx.fillStyle = paint('grass', '#a3c17f', 7);
   ctx.fillRect(0, 0, c.width, c.height);
-  // Grass speckles.
   // The hill with the mill: lighter grass.
-  ctx.fillStyle = '#b6d28f';
+  ctx.fillStyle = paint('grass-light', '#b6d28f', 7);
   ctx.beginPath();
   ctx.ellipse(X(MILL.x - 2), Z(MILL.z - 0.5), 9 * px, 7 * px, 0, 0, Math.PI * 2);
   ctx.fill();
-  for (let i = 0; i < 16000; i++) {
+  // Flat grass gets speckles; the tiles have their own blades.
+  for (let i = 0; i < (textured ? 0 : 16000); i++) {
     ctx.fillStyle = Math.random() < 0.5 ? 'rgba(80,120,60,0.22)' : 'rgba(205,225,160,0.28)';
     ctx.fillRect(Math.random() * c.width, Math.random() * c.height, 3, 6);
   }
-  // The field: plowed rows.
+  // The field: plowed rows (the soil tile has its furrows running along z).
   const [fx, fz] = YARDS.field;
-  ctx.fillStyle = '#9a7650';
+  ctx.fillStyle = paint('soil', '#9a7650', 14);
   ctx.beginPath();
   ctx.roundRect(X(9.5 + fx), Z(-11.5 + fz), 9 * px, 13.5 * px, 24);
   ctx.fill();
   ctx.strokeStyle = 'rgba(80,55,30,0.45)';
   ctx.lineWidth = 8;
-  for (let x = 10; x < 18.5; x += 0.9) {
+  for (let x = 10; x < 18.5 && !groundTiles.has('soil'); x += 0.9) {
     ctx.beginPath();
     ctx.moveTo(X(x + fx), Z(-11 + fz));
     ctx.lineTo(X(x + fx), Z(1.5 + fz));
     ctx.stroke();
   }
-  // Paths: soft sand-coloured lanes.
+  // Paths: soft sand-coloured lanes with a worn, darker verge.
+  const sand = paint('path', '#d6bd86', 3.5);
   const path = (pts: [number, number][], w: number) => {
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
-    ctx.strokeStyle = '#d6bd86';
-    ctx.lineWidth = w * px;
     ctx.beginPath();
     pts.forEach(([x, z], i) => (i ? ctx.lineTo(X(x), Z(z)) : ctx.moveTo(X(x), Z(z))));
+    ctx.strokeStyle = 'rgba(110,95,50,0.28)';
+    ctx.lineWidth = (w + 0.35) * px;
     ctx.stroke();
-    ctx.strokeStyle = 'rgba(255,240,200,0.35)';
+    ctx.strokeStyle = sand;
+    ctx.lineWidth = w * px;
+    ctx.stroke();
+    ctx.strokeStyle = 'rgba(255,240,200,0.2)';
     ctx.lineWidth = w * px * 0.45;
     ctx.stroke();
   };
@@ -872,20 +906,23 @@ function boardTexture(): THREE.Texture {
   path([[-15.5, -6.5], [-21, -9.5], [MILL.x + 1, MILL.z + 2.5]], 1.2);
   path([[ROAD_X, 10], [17, 13], [POND.x - 6, POND.z + 3]], 1.1);
   // Mud in the pig pen, the pond by the house.
-  const blobPaint = (x: number, z: number, rx: number, rz: number, col: string) => {
+  const blobPaint = (x: number, z: number, rx: number, rz: number, col: string | CanvasPattern) => {
     ctx.fillStyle = col;
     ctx.beginPath();
     ctx.ellipse(X(x), Z(z), rx * px, rz * px, 0, 0, Math.PI * 2);
     ctx.fill();
   };
   const mud = at('pig', 1.6, -6.2);
-  blobPaint(mud.x, mud.z, 2.4, 1.6, '#8a6a46');
-  blobPaint(mud.x + 0.2, mud.z - 0.2, 1.6, 1.0, '#7a5a3a');
-  blobPaint(POND.x, POND.z, 5.1, 3.3, '#c9e6f0');
-  blobPaint(POND.x, POND.z, 4.6, 2.9, '#5bb5d8');
+  blobPaint(mud.x, mud.z, 2.4, 1.6, paint('mud', '#8a6a46', 3));
+  blobPaint(mud.x + 0.2, mud.z - 0.2, 1.6, 1.0, groundTiles.has('mud') ? 'rgba(60,40,25,0.3)' : '#7a5a3a');
+  // The pond: a sandy bed seen through the water, deeper in the middle.
+  const bed = groundTiles.has('pond-bed');
+  blobPaint(POND.x, POND.z, 5.1, 3.3, paint('pond-bed', '#c9e6f0', 4));
+  blobPaint(POND.x, POND.z, 4.6, 2.9, bed ? 'rgba(70,165,215,0.7)' : '#5bb5d8');
+  if (bed) blobPaint(POND.x + 0.3, POND.z + 0.2, 3, 1.8, 'rgba(40,120,185,0.35)');
   blobPaint(POND.x - 1, POND.z - 0.8, 2, 0.7, 'rgba(255,255,255,0.35)');
-  // Flowers.
-  for (let i = 0; i < 520; i++) {
+  // Flowers: a few, the tiles carry the rest of the detail.
+  for (let i = 0; i < (textured ? 220 : 520); i++) {
     ctx.fillStyle = ['#ffffff', '#ffd23f', '#ff8fb1', '#b388ff'][i % 4];
     const x = Math.random() * c.width;
     const y = Math.random() * c.height;

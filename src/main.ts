@@ -3,7 +3,7 @@ import './style.css';
 import { Sfx } from './audio';
 import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Fx } from './fx';
-import { FARM_MODELS, FARM_TRAY, FarmMap } from './farm';
+import { FARM_MODELS, FARM_TRAY, FarmMap, loadGround } from './farm';
 import { Hud } from './hud';
 import { Input } from './input';
 import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
@@ -356,7 +356,7 @@ function applyNight(on: boolean) {
 
 /** Open the farm map (loading its models the first time). */
 async function startFarm() {
-  await loadModels(FARM_MODELS);
+  await Promise.all([loadModels(FARM_MODELS), loadGround()]);
   leaveFarm();
   level = FARM_LEVEL;
   won = false;
