@@ -10,10 +10,18 @@ import * as THREE from 'three';
 import sharp from 'sharp';
 import validator from 'gltf-validator';
 const dir=path.dirname(fileURLToPath(import.meta.url));
-const fitted=process.argv.includes('--offset-preview');
+const final=process.argv.includes('--final');
+const fitted=process.argv.includes('--offset-preview')||final;
+let approvedCenter=[11,-30];
+if(final){
+ const decor=await fs.readFile(path.resolve(dir,'../../../src/city-decor.ts'),'utf8');
+ const match=decor.match(/model:\s*'school'[^\n]+items:\s*\[\[\s*([-\d.]+),\s*([-\d.]+)/);
+ assert(match,'Cannot read actual school placement');approvedCenter=match.slice(1).map(Number);
+ assert.equal(approvedCenter[0],11);assert(Math.abs(approvedCenter[1]+27.754)<.0001,'Placement differs from m0213');
+}
 const baseline=fitted?JSON.parse(await fs.readFile(path.join(dir,'measurements.json'),'utf8')):null;
-const offsetZ=fitted?baseline.distanceFromFixedDoorTarget:0;
-const file='candidate/school.glb';
+const offsetZ=final?approvedCenter[1]+30:fitted?baseline.distanceFromFixedDoorTarget:0;
+const file=final?'../../../public/models/school.glb':'candidate/school.glb';
 const bytes=await fs.readFile(path.join(dir,file));
 await MeshoptDecoder.ready;
 const doc=await new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.decoder':MeshoptDecoder}).read(path.join(dir,file));
@@ -71,8 +79,8 @@ const beam=[[[6,8],[13,8]],[[13,8],[13,13.5]]].map(([a,b])=>{
 });
 const proposal={depthMultiplier:round(4.5/door.point[2]),resultFullDepth:round(fittedSize[2]*4.5/door.point[2]),heightUnchanged:round(fittedSize[1]),reason:'Extend depth only to bring measured central entrance to fixed local z4.5. Keeps width, height, center and all gameplay anchors.'};
 const validation=await validator.validateBytes(bytes,{uri:'school.glb'});assert.equal(validation.issues.numErrors+validation.issues.numWarnings,0);
-const report={status:fitted?'Proposed visual building offset only; Claude decision required':'Native-depth candidate; entrance does not yet align',file,bytes:bytes.length,triangles,negativeMeshNodes:negativeNodes,runtimeFit:{width:9,rotateY:-Math.PI/2,centerXZ:[11,round(-30+offsetZ)]},referenceOriginXZ:[11,-30],proposedOffsetZ:offsetZ,fittedSize:fittedSize.map(round),frontCenterProbes:front,backCenterProbes:back,lowestCenterSurface:doorFloor[0]??null,doorZAtY0_6:door.point[2],distanceFromFixedDoorTarget:round(4.5-door.point[2]),childrenPaths:paths,laserProjection:beam,boardNorthMargin:round(7.5-fittedSize[2]/2+offsetZ),proposal,limitations:['Door height/position estimates from central surface probes; inspect atlas and silhouette.','Beam checks conservative complete AABB projection, not gameplay traceBeam.','Child tests are center rays at y0.6, not swept collision volumes or full character animation.','Not an iPad, performance or full game test.']};
-if(fitted){delete report.proposal;assert(Math.abs(report.distanceFromFixedDoorTarget)<.025);assert(paths.every(p=>!p.hitBeforeEndpoint));assert(beam.every(p=>p.clearanceToFullAABB>1));assert(report.boardNorthMargin>1);}
-await fs.writeFile(path.join(dir,fitted?'offset-preview-measurements.json':'measurements.json'),JSON.stringify(report,null,2)+'\n');
-await fs.writeFile(path.join(dir,fitted?'offset-preview-validation.json':'validation.json'),JSON.stringify(validation,null,2)+'\n');
+const report={status:final?'Installed asset at approved center; full game review pending':fitted?'Proposed visual building offset only; Claude decision required':'Native-depth candidate; entrance does not yet align',file,bytes:bytes.length,triangles,negativeMeshNodes:negativeNodes,runtimeFit:{width:9,rotateY:-Math.PI/2,centerXZ:[11,round(-30+offsetZ)]},referenceOriginXZ:[11,-30],proposedOffsetZ:offsetZ,fittedSize:fittedSize.map(round),frontCenterProbes:front,backCenterProbes:back,lowestCenterSurface:doorFloor[0]??null,doorZAtY0_6:door.point[2],distanceFromFixedDoorTarget:round(4.5-door.point[2]),childrenPaths:paths,laserProjection:beam,boardNorthMargin:round(7.5-fittedSize[2]/2+offsetZ),proposal,limitations:['Door height/position estimates from central surface probes; inspect atlas and silhouette.','Beam checks conservative complete AABB projection, not gameplay traceBeam.','Child tests are center rays at y0.6, not swept collision volumes or full character animation.','Not an iPad, performance or full game test.']};
+if(fitted){delete report.proposal;assert(Math.abs(report.distanceFromFixedDoorTarget-(final?.25:0))<.025);assert(paths.every(p=>!p.hitBeforeEndpoint));assert(beam.every(p=>p.clearanceToFullAABB>1));assert(report.boardNorthMargin>1);}
+await fs.writeFile(path.join(dir,final?'final-measurements.json':fitted?'offset-preview-measurements.json':'measurements.json'),JSON.stringify(report,null,2)+'\n');
+await fs.writeFile(path.join(dir,final?'final-validation.json':fitted?'offset-preview-validation.json':'validation.json'),JSON.stringify(validation,null,2)+'\n');
 console.log(JSON.stringify(report,null,2));

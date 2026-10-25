@@ -1,17 +1,22 @@
 {
-  "status": "GLB candidate measured; native depth4.9256 cannot match fixed door with center(11,-30). Placement proposal awaiting Claude.",
+  "status": "Installed public GLB at approved m0213 center; final asset QA complete, Claude full-game review pending",
   "reference": "school-v1.png",
   "styleSource": "Approved city-v2 concept m0195, school next confirmed m0201",
   "placement": {
     "centerXZ": [
       11,
-      -30
+      -27.754
     ],
     "fitWidth": 9,
     "rotateY": -1.5707963267948966,
     "baseY": 0,
     "normalisedFront": "+X",
-    "gameFront": "+Z"
+    "gameFront": "+Z",
+    "originalCenterXZ": [
+      11,
+      -30
+    ],
+    "decision": "m0213: visual center only +2.246Z, keep shape and fixed gameplay anchors"
   },
   "geometryTargets": {
     "fullWidth": 9,
@@ -31,7 +36,8 @@
     "materialCount": 1,
     "baseColorPixels": 512,
     "downloadBytesTarget": 200000,
-    "targetsUnmeasured": true
+    "targetsUnmeasured": false,
+    "note": "Original generation targets retained for history; actual dimensions and door standoff are in finalMeasuredGeometry."
   },
   "fixedGameplay": {
     "LASER_SPOT": [
@@ -77,7 +83,7 @@
       7,
       5.5
     ],
-    "doNotMove": "School center, all task/power anchors, children paths and laser path"
+    "doNotMove": "All task/power anchors, children endpoints/paths and laser path; visual building center exception approved in m0213"
   },
   "appearance": {
     "walls": "teal",
@@ -101,11 +107,11 @@
   },
   "acceptance": [
     "Measure decoded GLB after actual model() fit and orientation. Full bbox includes eaves and clock gable; do not infer door position from PNG.",
-    "Door must align with SCHOOL_DOOR near local(0,0,4.5); no stairs or raised threshold, children move at ground level. Resolve geometry mismatches before integration without moving anchors.",
+    "Door must face fixed SCHOOL_DOOR with 0.25 standoff (m0213); no stairs or raised threshold. Children endpoints and other gameplay anchors stay fixed.",
     "Check full footprint, eaves, opaque walls and child visibility along all three approach paths. Keep 4x4 task reservations and both laser segments clear.",
     "Use actual storymap.patched() InstancedMesh path for visual QA. Ordinary Mesh alone missed mirrored winding defect in grandma-house (m0207, fixed7f4f986).",
     "Prefer positive determinant transforms. If mirroring is required, bake reflection into vertices and reverse triangle winding/handle normals; inspect instanced result before delivery.",
-    "No GLB order until reference review and price/budget confirmed; no public/models/school.glb until model measurement and review."
+    "One order approved in m0210; public installation and visual center(11,-27.754) approved in m0213. Further generation needs its own reviewed plan."
   ],
   "tripoOrders": 1,
   "candidate": "school-3d/candidate/school.glb",
@@ -114,6 +120,28 @@
     "preferred": "Translate visual building only along Z by+2.496, center(11,-27.504); gameplay anchors remain fixed. Requires Claude decision before changing center contract.",
     "alternative": "Depth scale×2.2455 at original center gives full depth11.0605 and visibly stretched side windows/roof; not recommended.",
     "review": "school-3d/fit-review.html",
-    "notApplied": true
-  }
+    "notApplied": true,
+    "status": "Historical exact-alignment shift and depth-stretch options were not applied as written. Decision m0213 instead approved+2.246Z with0.25 standoff; see placement."
+  },
+  "finalMeasuredGeometry": {
+    "fullSizeXYZ": [
+      9,
+      6.1231,
+      4.9256
+    ],
+    "doorSurfaceWorldXZ": [
+      11,
+      -25.75
+    ],
+    "fixedDoorTargetWorldXZ": [
+      11,
+      -25.5
+    ],
+    "doorStandoff": 0.25,
+    "lowestCentralSurfaceY": 0.01,
+    "report": "school-3d/final-measurements.json"
+  },
+  "installedFile": "public/models/school.glb",
+  "finalReview": "school-3d/fit-review.html?final",
+  "release": "school-3d/release.json"
 }

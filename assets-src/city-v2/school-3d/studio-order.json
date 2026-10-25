@@ -3,7 +3,7 @@
   "taskId": "4e297f77-2e7c-49fa-8143-5be5abe8ae48",
   "url": "https://studio.tripo3d.ai/ru/workspace/generate/4e297f77-2e7c-49fa-8143-5be5abe8ae48",
   "reference": "../school-v1.png",
-  "status": "Optimized and measured candidate; building placement decision pending",
+  "status": "Candidate installed unchanged at m0213 approved center; full game review pending",
   "observedAtUTC": "2026-10-25T20:53:39.477453+00:00",
   "settings": {
     "model": "H3.1",
@@ -27,7 +27,7 @@
     "apiCreditsUsed": 0
   },
   "approval": "Owner authorizes game assets with existing Tripo subscription; Claude approved reference, depth and height in m0210",
-  "note": "Candidate outside public until measured; include laser corridor and children paths in QA.",
+  "note": "Order and original measurements retained; final installation metadata in release.json. No additional order or credits.",
   "rawFile": "assets-src/raw/city-v2-2026-10-26/school.glb",
   "rawBytes": 1140052,
   "rawSha256": "6bd2aca04125efba33fff9852ad1ae31d42180435d1c91c7efb7f10129357ab9",

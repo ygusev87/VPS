@@ -1,0 +1,73 @@
+{
+  "status": "Installed on dev; Claude full-game integration review pending",
+  "file": "public/models/school.glb",
+  "bytes": 147932,
+  "sha256": "698da0d29b21fbff9385b02b13195016eb18d9eaa9153f14d9b469413f5ab42c",
+  "sameBytesAsCandidate": true,
+  "triangles": 7371,
+  "materials": 1,
+  "baseColorPixels": [
+    512,
+    512
+  ],
+  "compression": [
+    "EXT_meshopt_compression",
+    "WebP"
+  ],
+  "negativeMeshNodes": 0,
+  "decision": "m0213",
+  "placement": {
+    "width": 9,
+    "rotateY": -1.5707963267948966,
+    "centerXZ": [
+      11,
+      -27.754
+    ]
+  },
+  "fittedSize": [
+    9,
+    6.1231,
+    4.9256
+  ],
+  "doorStandoff": 0.25,
+  "fixedGameplayAnchorsChanged": false,
+  "nonUniformScaleApplied": false,
+  "newTripoOrders": 0,
+  "additionalCreditsUsed": 0,
+  "measurementReport": "final-measurements.json",
+  "validationReport": "final-validation.json",
+  "verification": {
+    "tests": {
+      "passed": 21,
+      "failed": 0
+    },
+    "typecheck": "passed",
+    "browserWidths": [
+      1180,
+      390
+    ],
+    "loader": "src/parts/assets.ts loadModels()/model()",
+    "renderer": "src/storymap.ts patched(), 1 InstancedMesh",
+    "views": [
+      "three-quarter",
+      "front arrival100%",
+      "top laser corridor",
+      "game angle arrival100%"
+    ],
+    "console": [
+      {
+        "level": "error",
+        "timestampUTC": "2026-10-25T21:11:02.453Z",
+        "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+        "sourceURL": null,
+        "origin": "Unconfirmed; previously reported to Claude, not attributed to game"
+      }
+    ]
+  },
+  "remaining": [
+    "Actual morning task: laser, bell and children",
+    "Full map/greenery review",
+    "iPad/PWA and frame rate"
+  ],
+  "preparedAtUTC": "2026-10-25T21:12:26.774583+00:00"
+}

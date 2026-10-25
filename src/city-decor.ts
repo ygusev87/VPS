@@ -7,7 +7,7 @@ import type { DecorGroup } from './decor';
 
 export const DECOR: DecorGroup[] = [
   { model: 'bakery', fit: { width: 7, rotateY: -Math.PI / 2 }, items: [[-12, -27, 0, 1]] },
-  { model: 'school', fit: { width: 9, rotateY: -Math.PI / 2 }, items: [[11, -30, 0, 1]] },
+  { model: 'school', fit: { width: 9, rotateY: -Math.PI / 2 }, items: [[11, -27.754, 0, 1]] },
   { model: 'grandma-house', fit: { width: 6.2, rotateY: -Math.PI / 2 }, items: [[-44, -27, 0, 1]] },
   { model: 'club', fit: { width: 7, rotateY: -Math.PI / 2 }, items: [[48.5, -13, 0, 1]] },
   // Kept forward enough that the roof does not hide the bell's ring behind it.
