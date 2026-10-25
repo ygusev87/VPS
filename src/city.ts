@@ -554,7 +554,7 @@ export class CityMap extends StoryMap {
     this.tramX += this.tramV * dt;
     if (this.tramX > W / 2 - 12) this.tramV = -Math.abs(this.tramV) || -0.01;
     if (this.tramX < -W / 2 + 12) this.tramV = Math.abs(this.tramV) || 0.01;
-    this.tram.group.position.set(this.tramX, 0, TRAM_Z);
+    this.tram.group.position.set(this.tramX, 0.06, TRAM_Z);
     this.tram.home.copy(this.tram.group.position);
   }
 

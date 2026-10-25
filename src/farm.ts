@@ -77,7 +77,7 @@ export interface FarmProgress extends MapProgress {
 const r2 = (n: number) => Math.round(n * 100) / 100;
 
 /** Bumped whenever the farm is laid out anew: a farm saved on an older layout would have its parts in the wrong places. */
-export const FARM_LAYOUT = 2;
+export const FARM_LAYOUT = 3;
 
 /**
  * Places are written as they were on the 72×48 board (where the yards had
@@ -272,7 +272,8 @@ export class FarmMap extends StoryMap {
     if (this.dayTwo && done('kitten')) this.settleKitten();
     if (done('beehive')) this.bloom = 1;
     if (done('nest')) this.warmth = 1;
-    if (!this.dayTwo) this.day = 1;
+    // One day now: every animal asks from the start.
+    this.day = 1;
     if (this.phase === 'night') this.foxT = 0;
   }
 
@@ -541,7 +542,8 @@ export class FarmMap extends StoryMap {
     const FANS: PartKind[] = ['fan', 'floorFan', 'pcFan'];
     const near = (kinds: PartKind[], at: THREE.Vector3, r: number) => () =>
       this.world.parts.some((p) => kinds.includes(p.kind) && isActive(p) && p.root.position.distanceTo(at) < r);
-    const two = (n: NeedSpec) => this.addNeed({ ...n, day: 2 });
+    // The rest of the farm's animals: asking for help from the start, alongside the first ones.
+    const two = (n: NeedSpec) => this.addNeed(n);
     two({ critter: get('kitten'), phase: 'day', ask: 'kittenStuck', thanks: 'kittenHappy', icon: 'lift', kinds: ['lift'], spot: LIFT_SPOT, met: () => this.kitten === 'down' });
     two({ critter: get('goat'), phase: 'day', ask: 'goatsAsk', thanks: 'goatsHappy', icon: 'carousel', kinds: ['carousel'], spot: CAROUSEL_SPOT, met: () => this.rideT > 3 });
     two({ critter: get('beehive'), phase: 'day', ask: 'beesAsk', thanks: 'beesHappy', icon: 'pump', kinds: ['pump'], spot: BED_PUMP, met: () => this.bloom >= 1, sticker: 'bee' });
@@ -567,7 +569,7 @@ export class FarmMap extends StoryMap {
 
   private updateDayTwo(dt: number) {
     if (!this.dayTwo) return;
-    const today = this.day === 2;
+    const today = true;
     this.updateKitten(dt, today);
     this.updateRide(dt, today);
     this.updateBloom(dt);
@@ -664,7 +666,7 @@ export class FarmMap extends StoryMap {
   /** A pump pouring into the flower bed makes it bloom; then the bees come out. */
   private updateBloom(dt: number) {
     const watering = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.outlet().distanceTo(BED) < 1.8);
-    if (watering && this.day === 2) this.bloom = Math.min(1, this.bloom + dt * 0.3);
+    if (watering) this.bloom = Math.min(1, this.bloom + dt * 0.3);
     if (this.beds) {
       this.beds.buds.visible = this.bloom < 1;
       this.beds.bloom.visible = this.bloom > 0;
@@ -732,21 +734,13 @@ export class FarmMap extends StoryMap {
   // ───────────────────────── Story ─────────────────────────
 
   protected phaseBegins(p: Phase) {
-    const two = this.day === 2;
-    if (p === 'day' && two) this.hooks.say('dayTwo');
     if (p === 'evening') this.hooks.say('evening');
     if (p === 'night') {
       this.foxT = 0;
       if (!this.foxChased) this.hooks.say('foxComes');
     }
-    if (p === 'morning') this.hooks.say(two ? 'roosterAsk' : 'ducksAsk');
+    if (p === 'morning') this.hooks.say('ducksAsk');
     if (p === 'done') this.hooks.say('morning');
-  }
-
-  /** After the first morning a second day begins, with new animals asking for help. */
-  protected after(p: Phase) {
-    if (p === 'morning' && this.day === 1 && this.dayTwo) return { next: 'day' as Phase, wait: 4, first: () => (this.day = 2) };
-    return super.after(p);
   }
 
   protected helpedNeed(n: Need) {

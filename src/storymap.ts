@@ -127,6 +127,9 @@ export abstract class StoryMap {
   /** Parts gliding onto their rings. */
   protected slides: { part: Part; to: THREE.Vector3 }[] = [];
   protected focused: Need | null = null;
+  /** Where the last one helped lives. */
+  private lastAt: THREE.Vector3 | null = null;
+  private toldToLook = false;
   private nextAt = -1;
 
   /** Board size, world units, centred on the origin. */
@@ -236,8 +239,19 @@ export abstract class StoryMap {
   }
 
   /** The one to help next (first unmet need of this part of the day). */
+  /** Who waits for help now: the nearest one to whoever was helped last (the child picks, this is for "repeat"). */
   protected current(): Need | null {
-    return this.needs.find((n) => !n.done && this.isNow(n)) ?? null;
+    const waiting = this.needs.filter((n) => !n.done && this.isNow(n));
+    const at = this.lastAt;
+    if (!at) return waiting[0] ?? null;
+    return waiting.sort((a, b) => a.critter.home.distanceTo(at) - b.critter.home.distanceTo(at))[0] ?? null;
+  }
+
+  /** The one the child is helping: picked by a tap (or a part put on its ring), or the only one left now. */
+  private helping(): Need | null {
+    if (this.focused && !this.focused.done && this.isNow(this.focused)) return this.focused;
+    const waiting = this.needs.filter((n) => !n.done && this.isNow(n));
+    return waiting.length === 1 ? waiting[0] : null;
   }
 
   /** The "repeat" button: who needs help now, and a look at them. */
@@ -253,6 +267,15 @@ export abstract class StoryMap {
     const n = this.current();
     this.focused = n;
     if (n) this.hooks.focus?.(this.view(n), instant);
+  }
+
+  /** Everyone waiting now, in one view (a new part of the day begins: who calls for help?). */
+  private overview() {
+    const waiting = this.needs.filter((n) => !n.done && this.isNow(n));
+    if (waiting.length === 1) return this.refocus();
+    this.focused = null;
+    const pts = waiting.map((n) => n.critter.home);
+    if (pts.length) this.hooks.focus?.(pts.flatMap((p) => [p.clone().add(v(-3, -3)), p.clone().add(v(3, 3))]));
   }
 
   /** What to show for a need: its points with room round them, and the nearest power. */
@@ -283,6 +306,7 @@ export abstract class StoryMap {
         if (!s.kinds.includes(part.kind) || part.root.position.distanceTo(s.spot) > SNAP_R || this.taken(s, part)) continue;
         this.slides = this.slides.filter((sl) => sl.part !== part);
         this.slides.push({ part, to: s.spot.clone() });
+        this.focused = n;
         n.critter.hop = 1;
         this.hooks.placed?.(s.spot.clone());
         return true;
@@ -423,7 +447,7 @@ export abstract class StoryMap {
     this.moods();
     this.phaseBegins(p);
     if (p === 'done') this.hooks.done();
-    else setTimeout(() => this.refocus(), 1200);
+    else setTimeout(() => this.overview(), 1200);
   }
 
   /** Asking while a need of this part of the day waits; happy once one is met. */
@@ -477,18 +501,10 @@ export abstract class StoryMap {
       }
       return null;
     };
-    // The one being helped comes first: its parts, then its wires, before any other ring.
-    const first = this.focused && !this.focused.done && this.isNow(this.focused) ? this.focused : this.current();
-    if (first) {
-      const h = drag(first) ?? this.extraHint(trayLeft) ?? this.firstWire(first) ?? (this.ownHints ? null : sandboxHint(this.world));
-      if (h) return h;
-    }
-    for (const n of this.needs) {
-      if (n === first || n.done || !this.isNow(n)) continue;
-      const h = drag(n);
-      if (h) return h;
-    }
-    return first ? null : this.extraHint(trayLeft);
+    // Only about the one being helped (the child picks whom): its parts, then its wires.
+    const first = this.helping();
+    if (!first) return null;
+    return drag(first) ?? this.extraHint(trayLeft) ?? this.firstWire(first) ?? (this.ownHints ? null : sandboxHint(this.world));
   }
 
   update(dt: number) {
@@ -537,8 +553,13 @@ export abstract class StoryMap {
         for (const h of n.critter.hearts) h.userData.t = Math.random() * -0.6;
         this.helpedNeed(n);
         this.moods();
-        // On to the next one of this part of the day.
-        setTimeout(() => this.refocus(), 3200);
+        // The camera stays: the child picks whom to help next. The first time, a word on how.
+        this.lastAt = n.critter.home.clone();
+        if (this.focused === n) this.focused = null;
+        if (!this.toldToLook && this.needs.some((x) => !x.done && this.isNow(x))) {
+          this.toldToLook = true;
+          setTimeout(() => this.hooks.say('lookAround'), 3600);
+        }
       }
     }
 
