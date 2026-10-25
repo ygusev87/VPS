@@ -1,0 +1,228 @@
+{
+  "historicalRoofControl": true,
+  "source": "Actual main.ts q=1, fa703b3 baseline; current local scene via THREE.Raycaster",
+  "viewport": [
+    1180,
+    660
+  ],
+  "checkedPoles": 1,
+  "blockedTerminals": 2,
+  "outsideCanvas": 0,
+  "outsidePlayArea": 0,
+  "results": [
+    {
+      "name": "STATION_POLE",
+      "control": true,
+      "centerXZ": [
+        24,
+        17.5
+      ],
+      "task": "firefighter",
+      "phase": "evening",
+      "camera": [
+        36,
+        32.6451,
+        37.81318
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            24.62,
+            0.48,
+            18.02
+          ],
+          "screen": {
+            "x": 156.64109,
+            "y": 476.2597
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [
+            {
+              "mesh": "Mesh",
+              "objectId": 6,
+              "instanceId": null,
+              "point": [
+                25.18345,
+                2.07256,
+                19
+              ],
+              "distance": 1.95298,
+              "material": {
+                "transparent": false,
+                "opacity": 1,
+                "depthTest": true
+              },
+              "dynamic": false,
+              "critter": null,
+              "life": null,
+              "nearbyDecor": [
+                {
+                  "model": "house-b",
+                  "center": [
+                    29,
+                    21
+                  ],
+                  "distance": 4.30884
+                },
+                {
+                  "model": "house-a",
+                  "center": [
+                    14.5,
+                    21
+                  ],
+                  "distance": 10.86904
+                }
+              ]
+            },
+            {
+              "mesh": "Mesh",
+              "objectId": 7,
+              "instanceId": null,
+              "point": [
+                25.65309,
+                3.4,
+                19.81686
+              ],
+              "distance": 3.58084,
+              "material": {
+                "transparent": false,
+                "opacity": 1,
+                "depthTest": true
+              },
+              "dynamic": false,
+              "critter": null,
+              "life": null,
+              "nearbyDecor": [
+                {
+                  "model": "house-b",
+                  "center": [
+                    29,
+                    21
+                  ],
+                  "distance": 3.54987
+                },
+                {
+                  "model": "house-a",
+                  "center": [
+                    14.5,
+                    21
+                  ],
+                  "distance": 11.21567
+                }
+              ]
+            }
+          ],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            23.38,
+            0.48,
+            18.02
+          ],
+          "screen": {
+            "x": 109.42097,
+            "y": 476.2597
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [
+            {
+              "mesh": "Mesh",
+              "objectId": 6,
+              "instanceId": null,
+              "point": [
+                24.00484,
+                2.07256,
+                19
+              ],
+              "distance": 1.97157,
+              "material": {
+                "transparent": false,
+                "opacity": 1,
+                "depthTest": true
+              },
+              "dynamic": false,
+              "critter": null,
+              "life": null,
+              "nearbyDecor": [
+                {
+                  "model": "house-b",
+                  "center": [
+                    29,
+                    21
+                  ],
+                  "distance": 5.38067
+                },
+                {
+                  "model": "house-a",
+                  "center": [
+                    14.5,
+                    21
+                  ],
+                  "distance": 9.71298
+                }
+              ]
+            },
+            {
+              "mesh": "Mesh",
+              "objectId": 7,
+              "instanceId": null,
+              "point": [
+                24.52566,
+                3.4,
+                19.81686
+              ],
+              "distance": 3.61492,
+              "material": {
+                "transparent": false,
+                "opacity": 1,
+                "depthTest": true
+              },
+              "dynamic": false,
+              "critter": null,
+              "life": null,
+              "nearbyDecor": [
+                {
+                  "model": "house-b",
+                  "center": [
+                    29,
+                    21
+                  ],
+                  "distance": 4.62812
+                },
+                {
+                  "model": "house-a",
+                  "center": [
+                    14.5,
+                    21
+                  ],
+                  "distance": 10.09523
+                }
+              ]
+            }
+          ],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Rays use actual focused perspective camera and loaded scenery meshes; sprites/own pole excluded.",
+    "Opaque=opacity>=.9, visible hierarchy/material, depthTest enabled. This is a conservative geometry check, not pixel segmentation.",
+    "Moving critters/life extras are listed separately.",
+    "No player-added parts/wires; those can create later occlusion.",
+    "Desktop IAB, not physical iPad or touch/FPS/PWA test."
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "status": "Completed local audit; Claude review pending",
+  "requestedBy": "Claude m0232, acknowledged m0233/m0235",
+  "sourceRevision": "fa703b389eb6cbcf32504dac28012ac066fd8566",
+  "method": "Actual main.ts city scene; each task selected in its phase; exact production view(need)/focus helper, actual perspective camera; ray from each terminal attachPoint toward camera through visible scenery meshes.",
+  "sizes": [
+    [
+      1180,
+      660
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "poleCount": 14,
+  "terminalCountPerSize": 28,
+  "totalChecks": 56,
+  "blockedByOpaqueStaticScenery": 0,
+  "outsideCanvas": 0,
+  "outsidePlayArea": 0,
+  "positiveControls": {
+    "historicalGeometry": "Actual exported boxHouse(w5,h3.4,d4) placed at old house-b center(26,21), only in QA scenery, then removed/disposed. Current game data stays untouched.",
+    "size1180Blocked": 2,
+    "size390Blocked": 2
+  },
+  "runtimeEdits": [],
+  "visualSpotChecks": [
+    "STATION_POLE390",
+    "CLUB_POLE390",
+    "BAKERY_POLE1180",
+    "HOUSE_POLE1180",
+    "SCHOOL_POLE1180"
+  ],
+  "tests": "21 passed; typecheck passed",
+  "generationCredits": 0,
+  "limitations": [
+    "Static decorations only: own pole geometry, sprites, CSS overlays and future player-added parts/wires excluded.",
+    "Moving critters and Life extras reported separately; this is not an exhaustive animation-time sweep.",
+    "Geometry rays do not prove finger target size, contrast or full gameplay completion.",
+    "Desktop IAB; no physical iPad/PWA/FPS test.",
+    "Recurring MutationObserver.observe TypeError without URL recorded; origin unresolved.",
+    "Future models, placements and focus changes require rerun."
+  ]
+}
