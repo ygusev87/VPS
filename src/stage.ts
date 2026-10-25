@@ -28,8 +28,8 @@ export interface Insets {
 
 const VIEW_DIR = new THREE.Vector3(0, 1, 0.78).normalize();
 const MIN_DIST = 7;
-// Far enough to see the whole farm board at once, even on a phone held upright.
-const MAX_DIST = 340;
+// Far enough to see a whole map at once, even on a phone held upright (its view is narrow).
+const MAX_DIST = 900;
 /** How far from the origin the view may wander over the workbench (a map sets its own, see `limit`). */
 const LIMIT = 36;
 /** Largest on-screen scale `frame()` will choose, in CSS pixels per table unit. */

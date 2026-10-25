@@ -94,7 +94,7 @@ const LIFT_SPOT = v(-44.6, -8.5);
 const LIFT_BUTTON = v(-40.5, -9.5);
 const BALCONY = v(LIFT_SPOT.x - 1.5, LIFT_SPOT.z - 0.25);
 const BALCONY_TOP = 1.95;
-const GRANDMA = v(BALCONY.x - 0.2, BALCONY.z);
+const GRANDMA = v(BALCONY.x - 0.35, BALCONY.z);
 /** Her basket of shopping, on the pavement by the lift till it rides up. */
 const BASKET = v(LIFT_SPOT.x + 0.4, LIFT_SPOT.z + 2.2);
 const HOUSE_POLE = v(-38.5, -5);
@@ -321,7 +321,8 @@ export class CityMap extends StoryMap {
     this.critter('baker', { height: 1.6 }, BAKER, 1.6, -Math.PI / 2 + 0.3);
     this.critter('pigeon', { height: 0.5 }, v(FOUNTAIN.x - 2.2, FOUNTAIN.z + 3.2), 0.5, 0.5);
     this.critter('pigeon2', { height: 0.45 }, v(FOUNTAIN.x - 3.4, FOUNTAIN.z + 2.4), 0.45, -0.4);
-    const grandma = this.critter('grandma', { height: 1.5 }, GRANDMA, 1.5, 0.4);
+    // The model faces +x: towards the lift, where her basket comes up.
+    const grandma = this.critter('grandma', { height: 1.5 }, GRANDMA, 1.5, 0);
     grandma.base = BALCONY_TOP;
     this.critter('kitten', { height: 0.75 }, KITTEN, 0.75, -0.6);
     this.critter('child', { height: 1.2 }, v(CLUB.x - 5, CLUB.z + 7.5), 1.2, 0.3);
@@ -594,7 +595,7 @@ export class CityMap extends StoryMap {
 
   private settleGrandma() {
     this.grandma = 'home';
-    this.basket.position.set(BALCONY.x + 0.4, BALCONY_TOP, BALCONY.z + 0.1);
+    this.basket.position.set(BALCONY.x + 0.45, BALCONY_TOP, BALCONY.z + 0.1);
     this.critters.get('grandma')!.hop = 1;
   }
 

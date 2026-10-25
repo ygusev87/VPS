@@ -961,7 +961,7 @@ function groundPlan(): GroundPlan {
     hill: MEADOW[0] ?? { x: MILL.x, z: MILL.z - 4, rx: 10, rz: 7 },
     meadows: MEADOW.slice(1),
     // A bright, juicy farm, like the toy farms of the mobile games.
-    saturation: 1.12,
+    saturation: 1,
   };
 }
 
