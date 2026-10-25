@@ -26,7 +26,7 @@ export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-ri
   // Day two (each falls back to a stand-in until its model is made).
   'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'goose', 'rooster', 'horse', 'stable',
   // Scenery.
-  'tree-oak', 'tree-pine', 'bush', 'haystack', 'hutch', 'fence', 'fence-post'];
+  'tree-oak', 'tree-pine', 'bush', 'haystack', 'hutch', 'fence', 'fence-post', 'rock-cluster', 'flower-cluster'];
 /** Animals drawn with another one's model: the puppy is the dog, smaller. */
 const MODEL_OF: Record<string, string> = { puppy: 'dog' };
 
@@ -496,9 +496,20 @@ export class FarmMap {
     // Flowers in clumps on the grass: not on the lanes, the field, the mud or by the pond.
     const inside = (x: number, z: number, e: Ellipse, grow: number) => ((x - e.x) / (e.rx + grow)) ** 2 + ((z - e.z) / (e.rz + grow)) ** 2 < 1;
     const f = plan.field;
-    this.scenery.add(
-      flowers(plan, 160, (x, z) => !onLane(plan, x, z, 0.8) && !inside(x, z, shore, 1.5) && !plan.mud.some((m) => inside(x, z, m, 1)) && !(x > f.x0 - 1 && x < f.x1 + 1 && z > f.z0 - 1 && z < f.z1 + 1)),
-    );
+    const free = (x: number, z: number) =>
+      !onLane(plan, x, z, 0.8) && !inside(x, z, shore, 1.5) && !plan.mud.some((m) => inside(x, z, m, 1)) && !(x > f.x0 - 1 && x < f.x1 + 1 && z > f.z0 - 1 && z < f.z1 + 1);
+    // The sculpted clumps of wild flowers, or little flat flowers without them.
+    const spots: [number, number, number][] = [];
+    for (let tries = 0; spots.length < 110 && tries < 5000; tries++) {
+      const x = (Math.random() - 0.5) * (W - 3);
+      const z = (Math.random() - 0.5) * (D - 3);
+      if (free(x, z) && spots.every(([sx, sz]) => Math.hypot(x - sx, z - sz) > 2)) spots.push([x, z, 0.8 + Math.random() * 0.45]);
+    }
+    this.scenery.add(instances('flower-cluster', { height: 0.45 }, spots) ?? flowers(plan, 160, free));
+    // Mossy rocks round the pond (not on the side of the ducks' pump ring and the wind generator).
+    const rocks: [number, number, number][] = [0.4, 1.3, 2.6, 3.7].map((a, i) => [POND.x + Math.cos(a) * (shore.rx + 1.6), POND.z + Math.sin(a) * (shore.rz + 1.4), 0.8 + (i % 3) * 0.2]);
+    const rocky = instances('rock-cluster', { width: 1.8 }, rocks);
+    if (rocky) this.scenery.add(rocky);
   }
 
   private add(name: string, fit: Fit, x: number, z: number, fallback: () => THREE.Object3D, rotY = 0) {
@@ -573,10 +584,11 @@ export class FarmMap {
       ['tree-oak', { height: 3 }, green.oak],
       ['tree-pine', { height: 3.6 }, green.pine],
       ['bush', { width: 1.8 }, green.bush],
+      ['rock-cluster', { width: 1.8 }, green.rock],
     ] as const) {
       const wood = instances(name, fit, items);
       if (wood) this.scenery.add(wood);
-      else if (name !== 'bush') for (const [x, z, s] of items) still.add(tree(x, z, s));
+      else if (name.startsWith('tree')) for (const [x, z, s] of items) still.add(tree(x, z, s));
     }
     // Haystacks by the barn, in the field and on the hill.
     for (const p of [at('cow', -8.5, -9.5), at('cow', -6.6, -10.2), at('field', 16.5, 0.6), at('sheep', -24.5, -15.8)]) {
@@ -1765,7 +1777,20 @@ function greeneryFor(plan: GroundPlan) {
       bush.push(it);
     }
   }
-  return { oak, pine, bush };
+  // Mossy rocks at the edges of the groves and here and there in the open.
+  const rock: Item[] = [];
+  for (const [tx, tz] of oak.concat(pine)) {
+    if (rnd() > 0.12) continue;
+    const a = rnd() * Math.PI * 2;
+    const x = tx + Math.cos(a) * 2.6;
+    const z = tz + Math.sin(a) * 2.6;
+    if (ok(x, z, 1.2, 0)) {
+      const it: Item = [x, z, 0.7 + rnd() * 0.5];
+      all.push(it);
+      rock.push(it);
+    }
+  }
+  return { oak, pine, bush, rock };
 }
 
 /** A stand-in animal when its model did not load: a coloured rounded body. */
