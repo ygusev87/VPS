@@ -1,0 +1,1711 @@
+{
+  "generatedAt": "2026-10-25T09:30:31.827Z",
+  "estimate": "RGBA8 plus full mip chain; file inventory, not measured GPU memory",
+  "before": {
+    "fileBytes": 3432208,
+    "textureMiB": 49.99999999999999,
+    "textureCount": 75
+  },
+  "after": {
+    "fileBytes": 3285352,
+    "textureMiB": 39.00000000000001,
+    "textureCount": 42
+  },
+  "models": [
+    {
+      "name": "cow",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 144468,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 138184,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "765328e7f27ec5d9a715adcb79f558e56bde136d6bb6d11f638549b870bacee4",
+      "outputSha256": "0bc786fe4922259867408c9e030dd5d74cca30afb5dc9e18bff3b1df7e0433b3"
+    },
+    {
+      "name": "pig",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 120488,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 118340,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "b6cbd3e26a893cd857316ffba2421a7884d6bb68fee46e661a6aef6cb8f09f06",
+      "outputSha256": "0bd937cdb15f59e8a037c98ab83da6f7e411774781c11b9af60711d3c5b824f3"
+    },
+    {
+      "name": "duck",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 117296,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 115436,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "6458cc7c773b4db747da6c2743b5320dba9e6b07718c7c9b8238ed1cf81e9103",
+      "outputSha256": "0ad32f3d3773c1cbc62c65b1d75da2cb4b398e2f8ecb610043c47f6e6ec1883e"
+    },
+    {
+      "name": "hen",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 132028,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 130024,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "f1217288c53f889e66b33797146c2af4d209377b0d0e7e8ca7c5d66ee27d3e5e",
+      "outputSha256": "0d57f56744a5345b25efe9dbad3967dbcf36148cf7f3ca609628342112c2ef35"
+    },
+    {
+      "name": "dog",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 139876,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 134908,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "938e8acd2173d668e04c97189b312866a058235f9b41ec091522c092a7575c7f",
+      "outputSha256": "cf539077acf614ddd1a5fd6175e76a8af54420be1e88a1be86b37f5bbbc4a4de"
+    },
+    {
+      "name": "kitten",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 112500,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 111316,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "5d61686148b3c1c218d9ee2c75b00b9909003460ba03e38f8b4ad0a27955227b",
+      "outputSha256": "f0fc67190048cbb9b37b668f6ea98f3f0875d2dce0aa741c636258f943edc6c4"
+    },
+    {
+      "name": "horse",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 114596,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 112720,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "9eece22f996aadf274f98418e72e3ce09c8929ceb0d39ccf49fa909679a0345f",
+      "outputSha256": "a7a5177b60af0a10d9882c73cc4cd5fe26d012fa8e3bf7a2fd091c11fd84902f"
+    },
+    {
+      "name": "goat",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 100592,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 97872,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "6d7ffe92b1b26d0d55147699a7eb920fe5bb496a8cac9601452599999d0f900d",
+      "outputSha256": "e0463ea7bc376d4015c9ab2846dcec48e40e5b68dfec135646506598554a4b5c"
+    },
+    {
+      "name": "kid",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 116644,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 114320,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "a1920817f0bc76258c4abb79e9197c80b98f564d3246cb989da53b781a710c8c",
+      "outputSha256": "729ac89136ec9a3a2775b9760301c642ade57210f910be8a8df5c0b4d154bd4d"
+    },
+    {
+      "name": "goose",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 107192,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 105436,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "f5df90497e483b024334b038b925bf9ad2c98b2074cf367e779036807c448aa2",
+      "outputSha256": "565f966e6058acee2c07d939c005828808dc8d55ca855e15d093d82e8e610e5f"
+    },
+    {
+      "name": "rooster",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 124564,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 122880,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "91be7f7d9cbed23c649f11519051927090b27664e76f81ae339f397c06195063",
+      "outputSha256": "c610142f8fedab92448fdf7579b573454a42bda4a880fc25a3fdd522cb40262e"
+    },
+    {
+      "name": "chick",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 81408,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 80256,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "19bce6b6bdcac1d604e2eee6177f3b4af4fc23fe731a2870e1f66bfcbde58d8e",
+      "outputSha256": "bd9bdbf6dad7d5010b317867a31eeed7dacbe496de330104ff43a077d62f72fc"
+    },
+    {
+      "name": "rabbit",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 117876,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 115936,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "0d2b7b458c1ab0b59dd3a6e2421cc12d36628936a4b0852dbda36f2cc56fdc49",
+      "outputSha256": "feb5e5fa305ae8ac899fc1f406097599e05f20add98600f636c927f0c5aedf4e"
+    },
+    {
+      "name": "sheep",
+      "mode": "matte",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 187128,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 178172,
+        "textureCount": 1,
+        "textureMiB": 1.3333333333333333,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "c62efedf578b2af91f0330ed3894b4896f3f76680b8fc345a75fb46f38ff3817",
+      "outputSha256": "94c1e4c6d46d850e6b8345fe751c3bfa8eeebf5be7db721ba1f96189233f4eac"
+    },
+    {
+      "name": "fox",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 127668,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 124000,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "be050cea7b87a685a68bc8c5ed1b3b9b8ad8d9d1fa3e1d5a22b3b564d68282fb",
+      "outputSha256": "8407d27cc6e2b31e86192db58cf9b9a0a1892280e22397d84fab14895bc83bd1"
+    },
+    {
+      "name": "fox-rig",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 201652,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 209976,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "40e3e457c7ea42760999a59c01934f183acdeaf891aa5d21fbdf54c97d1b022f",
+      "outputSha256": "63065818000ea0240d4c73f05740b732c9bc689792cf94d901cc54811d94910e"
+    },
+    {
+      "name": "barn",
+      "mode": "matte",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 186608,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 166436,
+        "textureCount": 1,
+        "textureMiB": 1.3333333333333333,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "d614c26bb7552a0cd90d827b5ce6a0128354eca77096601a3836044154a68d58",
+      "outputSha256": "62f9dbe2a6d572e35e5e54c77597aa9df5c1ef159190db9ee249684680adc506"
+    },
+    {
+      "name": "coop",
+      "mode": "matte",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 156780,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 146336,
+        "textureCount": 1,
+        "textureMiB": 1.3333333333333333,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "837bea6a2b21967654bed8b40c7a5e4898c08c3c27f69515d1a2c2b99e529aee",
+      "outputSha256": "68b4ee6350758fd266a7d55930891ce6926da1c6eb3f60345dc507c579ec9192"
+    },
+    {
+      "name": "doghouse",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 202484,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 199976,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "d0026900a3a262a46641235695816b13e47ceb33aceb9901c4b076c3259e6fcf",
+      "outputSha256": "667ccb2195f2d3155452aa2c02239355b490615c950f44eb5757f3917fa0d053"
+    },
+    {
+      "name": "stable",
+      "mode": "matte",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 166936,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 149988,
+        "textureCount": 1,
+        "textureMiB": 1.3333333333333333,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "99646a05c1da49e240bd425d7939bbd6689a03b3033f76b289f3128bb9dc5881",
+      "outputSha256": "272b7a91e2df1e0db74879b897e68658df18928dd62a5561c3d23ab334aa2781"
+    },
+    {
+      "name": "beehive",
+      "mode": "normal",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 114448,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 112148,
+        "textureCount": 2,
+        "textureMiB": 1.6666666666666665,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "484fb687fa9d1af9e5f82f7cee4148d5cb6841126670b0d5164815e161f7664c",
+      "outputSha256": "a1bcd49fb3df3c6deea424463add5761742a59253045ddfb60dd49216b72c775"
+    },
+    {
+      "name": "flowerbed-buds",
+      "mode": "matte",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 134760,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 124068,
+        "textureCount": 1,
+        "textureMiB": 1.3333333333333333,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "a4babf0df1f593019c242f400ac7673dd35e0001f20f65183a5d89f86e43d9c5",
+      "outputSha256": "7be51ca93f1b0aa58b04a15c50ec6fdac8e7c592824d883dacd8182969e23752"
+    },
+    {
+      "name": "flowerbed-bloom",
+      "mode": "matte",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 145844,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 129992,
+        "textureCount": 1,
+        "textureMiB": 1.3333333333333333,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "49b65e8eeaa573f61f8839d9171dd6fa9e4c18863d43068fb8dcb2cc34042785",
+      "outputSha256": "8917f3401aeb2076d6d74799ce9fcf7486d197c69e7b5137da7137c3507a11ee"
+    },
+    {
+      "name": "nest",
+      "mode": "matte",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 127148,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 104368,
+        "textureCount": 1,
+        "textureMiB": 1.3333333333333333,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "565f066950ffd14b909126d20c73076aee652ae793331027a2cf587edeec1862",
+      "outputSha256": "3eec8235570d609dfe67b2556ab9f809d3b74f29928409bb643704a7d30689dd"
+    },
+    {
+      "name": "sack",
+      "mode": "matte",
+      "geometryUnchanged": true,
+      "before": {
+        "fileBytes": 151224,
+        "textureCount": 3,
+        "textureMiB": 1.9999999999999998,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 349525.3333333333
+          }
+        ]
+      },
+      "after": {
+        "fileBytes": 142264,
+        "textureCount": 1,
+        "textureMiB": 1.3333333333333333,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 1398101.3333333333
+          }
+        ]
+      },
+      "sourceSha256": "a150fdda24c1a6348baee837e25188deb78dbf6f54a6cd84cf9c68af51dce143",
+      "outputSha256": "3edddc7a60234d82f47d2439e0eedf0b77efe89696f72d4a9df2c395ace1f327"
+    }
+  ]
+}
