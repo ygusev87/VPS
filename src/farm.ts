@@ -60,8 +60,8 @@ export interface FarmHooks {
 const SNAP_R = 3.2;
 
 /** Board size (world units) and where it lies. */
-const W = 56;
-const D = 38;
+const W = 72;
+const D = 48;
 
 type Phase = 'day' | 'evening' | 'night' | 'morning' | 'done';
 
@@ -104,10 +104,36 @@ interface Need {
 
 const v = (x: number, z: number) => new THREE.Vector3(x, 0, z);
 
+/**
+ * The farm is laid out yard by yard. Inside a yard everything keeps its place
+ * next to the rest (the pump pours right into the trough, the fan blows at the
+ * cow); each yard as a whole is moved by its offset, so the yards stand well
+ * apart instead of crowding the middle of the board.
+ */
+const YARDS = {
+  cow: [-3.5, -1.5],
+  pig: [0, -2.5],
+  field: [4.5, -1],
+  hen: [0, 4],
+  rabbit: [-6, 5],
+  dog: [2.5, 8],
+  sheep: [-6, -5],
+  pond: [8, 4],
+} as const;
+type Yard = keyof typeof YARDS;
+/** A point of a yard, given where it was before the yards moved apart. */
+const at = (yard: Yard, x: number, z: number) => v(x + YARDS[yard][0], z + YARDS[yard][1]);
+
 /** Landmarks: the pig trough, the mill on the hill, the middle of the duck pond. */
-const TROUGH = v(3.4, -5.2);
-const MILL = v(-19.5, -12.5);
-const POND = v(19, 12.5);
+const TROUGH = at('pig', 3.4, -5.2);
+const MILL = at('sheep', -19.5, -12.5);
+const POND = at('pond', 19, 12.5);
+/** The road from the bottom edge up through the gate into the field; the tractor waits on it. */
+const ROAD_X = 12.5;
+const TRACTOR_Z = 6.4;
+const GATE = at('field', 8, 3.2);
+/** The middle of the field the tractor drives round. */
+const FIELD = at('field', 14, -4.75);
 
 export class FarmMap {
   readonly scenery = new THREE.Group();
@@ -147,6 +173,7 @@ export class FarmMap {
   /** Lay the farm out on the table (the world must be empty). */
   start() {
     this.stage.world.add(this.scenery);
+    this.stage.showGrid(false);
     this.buildBoard();
     this.buildPlaces();
     this.placeParts();
@@ -160,6 +187,7 @@ export class FarmMap {
 
   dispose() {
     this.scenery.removeFromParent();
+    this.stage.showGrid(true);
     AMBIENT.strength = 0;
     Solar.sun = 1;
     this.stage.setNightAmount(0);
@@ -280,16 +308,18 @@ export class FarmMap {
     // Fences, trees, haystacks, hutch and kennel never move: built into one group and baked (few draw calls).
     const still = new THREE.Group();
     // Barn (cows), coop (hens), hutch (rabbits), kennel (dog), pig pen with trough.
-    this.add('barn', { width: 5, rotateY: -Math.PI / 2 }, -12, -8.2, () => boxHouse('#c84a3a', '#5a5f6a', 6, 4, 4.5));
-    this.add('coop', { width: 2.7, rotateY: -Math.PI / 2 }, -3.2, 7.2, () => boxHouse('#f2c230', '#d8483c', 3.2, 2.2, 2.6));
-    still.add(hutch(-14, 6.6));
-    still.add(kennel(6.2, 8.4));
+    const barn = at('cow', -12, -8.2);
+    this.add('barn', { width: 5, rotateY: -Math.PI / 2 }, barn.x, barn.z, () => boxHouse('#c84a3a', '#5a5f6a', 6, 4, 4.5));
+    const coop = at('hen', -3.2, 7.2);
+    this.add('coop', { width: 2.7, rotateY: -Math.PI / 2 }, coop.x, coop.z, () => boxHouse('#f2c230', '#d8483c', 3.2, 2.2, 2.6));
+    still.add(hutch(at('rabbit', -14, 6.6)));
+    still.add(kennel(at('dog', 6.2, 8.4)));
     // Fences: the cow pen, the pig pen, the long fence before the field (with the gate), the sheep fold.
-    still.add(fence([v(-16, -5.2), v(-16, 0.8), v(-7, 0.8), v(-7, -5.2)]));
-    still.add(fence([v(-1.2, -9.5), v(-1.2, -3), v(5.5, -3), v(5.5, -9.5)]));
-    still.add(fence([v(9.5, 3), v(18.5, 3)]));
-    still.add(fence([v(4.5, 3), v(6.5, 3)]));
-    still.add(fence([v(-27, -9), v(-27, -17.5), v(-21.5, -17.5)]));
+    still.add(fence([at('cow', -16, -5.2), at('cow', -16, 0.8), at('cow', -7, 0.8), at('cow', -7, -5.2)]));
+    still.add(fence([at('pig', -1.2, -9.5), at('pig', -1.2, -3), at('pig', 5.5, -3), at('pig', 5.5, -9.5)]));
+    still.add(fence([at('field', 9.5, 3), at('field', 18.5, 3)]));
+    still.add(fence([at('field', 4.5, 3), at('field', 6.5, 3)]));
+    still.add(fence([at('sheep', -27, -9), at('sheep', -27, -17.5), at('sheep', -21.5, -17.5)]));
     // Trough in the pig pen: a wooden box with water that rises.
     const troughBox = mesh(new THREE.BoxGeometry(2, 0.45, 0.8), mat('#9a6a3e', 0.7));
     troughBox.position.set(TROUGH.x, 0.22, TROUGH.z);
@@ -322,18 +352,18 @@ export class FarmMap {
     this.scenery.add(spout);
     // Trees round the edges; a wood in the bottom-left where the fox lives.
     const trees: [number, number, number][] = [
-      [-26.5, 17.5, 1.3], [-24.2, 17.8, 1.1], [-26.8, 14.8, 1.2], [-22, 17.4, 1.0], [-25, 12.6, 1.1], [-20, 18, 0.9], [-27.2, 11, 1],
-      [-6, -12.2, 0.9], [6.5, -12.4, 1], [-1.5, -17.5, 1.2], [8, -17.6, 1.1], [26.5, -17.5, 1.2],
-      [26.8, -6, 1.1], [26.6, 2.5, 1], [9.6, 13.5, 0.9], [0.8, 13, 0.8], [-9, 17.5, 1.1], [4, 17.6, 1], [26.6, 17.4, 1.2],
-      [-14, -17.8, 1], [17, -17.6, 0.9], [-27, -4, 1.1], [-20.5, 3, 1],
+      [-34, 22, 1.3], [-31, 22.4, 1.1], [-34.4, 18.6, 1.2], [-28, 22, 1.0], [-32, 15.8, 1.1], [-25.5, 22.6, 0.9], [-34.8, 13.6, 1], [-29.5, 18.5, 1.2],
+      [-6, -16, 0.9], [8.5, -15.8, 1], [-2, -22, 1.2], [10, -22.2, 1.1], [34, -22, 1.2],
+      [34.4, -8, 1.1], [34.2, 3, 1], [17.5, 21.5, 0.9], [2, 19.5, 0.8], [-11.5, 22, 1.1], [5, 22.2, 1], [34.2, 21.8, 1.2],
+      [-18, -22.4, 1], [22, -22.2, 0.9], [-34.6, -5, 1.1], [-25, 4, 1], [27, -15.5, 1], [-22, 19.2, 0.9],
     ];
     for (const [x, z, s] of trees) still.add(tree(x, z, s));
-    // Haystacks and sprouts in the field.
-    for (const [x, z] of [[-8.5, -9.5], [-6.6, -10.2], [16.5, 0.6], [-24.5, -15.8]]) still.add(haystack(x, z));
+    // Haystacks by the barn, in the field and on the hill.
+    for (const p of [at('cow', -8.5, -9.5), at('cow', -6.6, -10.2), at('field', 16.5, 0.6), at('sheep', -24.5, -15.8)]) still.add(haystack(p.x, p.z));
     this.scenery.add(sprouts());
     this.scenery.add(bakeGroup(still));
     // The tractor waits on the road below the gate.
-    this.tractor = <THREE.Group>this.add('tractor', { depth: 2.6, rotateY: Math.PI }, 8, 7.4, () => boxHouse('#3f8a4f', '#2a3148', 2.2, 1.2, 1.4), 0);
+    this.tractor = <THREE.Group>this.add('tractor', { depth: 2.6, rotateY: Math.PI }, ROAD_X, TRACTOR_Z, () => boxHouse('#3f8a4f', '#2a3148', 2.2, 1.2, 1.4), 0);
   }
 
   /** The power sources and the gate are part of the map: they cannot be moved. */
@@ -344,16 +374,18 @@ export class FarmMap {
       return p;
     };
     // A pole by every yard, so wires stay short; the sun runs the mill, the wind the fountain.
-    pin('pole', -10, 2.6);
-    pin('pole', 3.6, -1.4);
-    pin('pole', 1.8, 4.4);
-    pin('pole', -7.6, 6.4);
-    pin('solar', -20, -7.6);
-    pin('windGen', 24.2, 8);
-    this.gate = pin('gate', 8, 3.2) as Gate;
+    const put = (kind: PartKind, p: THREE.Vector3) => pin(kind, p.x, p.z);
+    put('pole', at('cow', -10, 2.6));
+    put('pole', at('pig', 3.6, -1.4));
+    put('pole', at('hen', 1.8, 4.4));
+    put('pole', at('rabbit', -7.6, 6.4));
+    put('solar', at('sheep', -20, -7.6));
+    put('windGen', at('pond', 24.2, 8));
+    this.gate = put('gate', GATE) as Gate;
   }
 
-  private critter(name: string, fit: Fit, x: number, z: number, height: number, face = 0): Critter {
+  private critter(name: string, fit: Fit, p: THREE.Vector3, height: number, face = 0): Critter {
+    const { x, z } = p;
     const group = new THREE.Group();
     const m = model(name.replace(/\d+$/, ''), fit) ?? blob(name);
     m.traverse((o) => {
@@ -385,19 +417,19 @@ export class FarmMap {
   }
 
   private buildCritters() {
-    this.critter('cow', { width: 2.4 }, -11, -2.4, 1.9, 0.25);
-    this.critter('pig', { width: 1.7 }, 1.8, -7.4, 1.2, 0.3);
-    this.critter('sheep', { width: 1.7, rotateY: -Math.PI / 2 }, -23.6, -12.6, 1.3, 0.2);
-    this.critter('sheep2', { width: 1.5, rotateY: -Math.PI / 2 }, -25, -15, 1.2, -0.5);
+    this.critter('cow', { width: 2.4 }, at('cow', -11, -2.4), 1.9, 0.25);
+    this.critter('pig', { width: 1.7 }, at('pig', 1.8, -7.4), 1.2, 0.3);
+    this.critter('sheep', { width: 1.7, rotateY: -Math.PI / 2 }, at('sheep', -23.6, -12.6), 1.3, 0.2);
+    this.critter('sheep2', { width: 1.5, rotateY: -Math.PI / 2 }, at('sheep', -25, -15), 1.2, -0.5);
     // Ducklings wait at the edge of the pond (they swim round the fountain once it plays).
-    this.critter('duck', { height: 0.9, rotateY: -Math.PI / 2 }, POND.x + 2.2, POND.z + 1.4, 0.9, Math.PI);
-    this.critter('duck2', { height: 0.8, rotateY: -Math.PI / 2 }, POND.x + 3.1, POND.z + 0.6, 0.8, Math.PI);
-    this.critter('duck3', { height: 0.8, rotateY: -Math.PI / 2 }, POND.x + 2.6, POND.z - 0.5, 0.8, Math.PI);
-    this.critter('hen', { height: 1.25 }, -0.8, 8.6, 1.25, -0.4);
-    this.critter('hen2', { height: 1.1 }, -1.9, 9.6, 1.1, 0.6);
-    this.critter('rabbit', { height: 1.25 }, -11.7, 7.6, 1.25, 0.2);
-    this.critter('dog', { height: 1.5 }, 4.4, 8.6, 1.5, -0.6);
-    this.fox = this.critter('fox', { width: 1.7 }, FOX_PATH[0].x, FOX_PATH[0].z, 1, 0);
+    this.critter('duck', { height: 0.9, rotateY: -Math.PI / 2 }, v(POND.x + 2.2, POND.z + 1.4), 0.9, Math.PI);
+    this.critter('duck2', { height: 0.8, rotateY: -Math.PI / 2 }, v(POND.x + 3.1, POND.z + 0.6), 0.8, Math.PI);
+    this.critter('duck3', { height: 0.8, rotateY: -Math.PI / 2 }, v(POND.x + 2.6, POND.z - 0.5), 0.8, Math.PI);
+    this.critter('hen', { height: 1.25 }, at('hen', -0.8, 8.6), 1.25, -0.4);
+    this.critter('hen2', { height: 1.1 }, at('hen', -1.9, 9.6), 1.1, 0.6);
+    this.critter('rabbit', { height: 1.25 }, at('rabbit', -11.7, 7.6), 1.25, 0.2);
+    this.critter('dog', { height: 1.5 }, at('dog', 4.4, 8.6), 1.5, -0.6);
+    this.fox = this.critter('fox', { width: 1.7 }, FOX_PATH[0], 1, 0);
     this.fox.group.visible = false;
     // The tractor speaks for the gate (its bubble floats above it).
     const t = this.tractor;
@@ -435,14 +467,14 @@ export class FarmMap {
     const add = (n: Omit<Need, 'ring' | 'done' | 'held' | 'ready'>) => this.needs.push({ ...n, ring: this.ring(n.spot), done: false, held: 0, ready: false });
     const FANS: PartKind[] = ['fan', 'floorFan', 'pcFan'];
     // Day.
-    add({ critter: cow, phase: 'day', ask: 'cowHot', thanks: 'cowHappy', icon: 'fan', kinds: FANS, spot: v(-8.6, -2.4), met: near(FANS, cow.home, 4.2) });
+    add({ critter: cow, phase: 'day', ask: 'cowHot', thanks: 'cowHappy', icon: 'fan', kinds: FANS, spot: at('cow', -8.6, -2.4), met: near(FANS, cow.home, 4.2) });
     add({ critter: get('pig'), phase: 'day', ask: 'pigThirsty', thanks: 'pigHappy', icon: 'pump', kinds: ['pump'], spot: v(TROUGH.x - 1.9, TROUGH.z + 0.2), met: () => this.troughLevel > 0.95 });
-    add({ critter: get('tractor'), phase: 'day', ask: 'gateStuck', thanks: 'gateHappy', icon: 'gate', kinds: [], spot: v(6.3, 3.6), met: () => this.gate.open > 0.97 });
+    add({ critter: get('tractor'), phase: 'day', ask: 'gateStuck', thanks: 'gateHappy', icon: 'gate', kinds: [], spot: at('field', 6.3, 3.6), met: () => this.gate.open > 0.97 });
     add({ critter: get('sheep'), phase: 'day', ask: 'sheepMill', thanks: 'sheepHappy', icon: 'windmill', kinds: ['windmill'], spot: MILL.clone(), met: () => this.millLevel >= 1 });
     // Evening.
-    add({ critter: get('hen'), phase: 'evening', ask: 'henDark', thanks: 'henHappy', icon: 'bulb', kinds: ['bulb', 'led'], spot: v(0.9, 6.6), met: near(['bulb', 'led'], v(-1.5, 8), 4.8) });
-    add({ critter: get('rabbit'), phase: 'evening', ask: 'rabbitCold', thanks: 'rabbitHappy', icon: 'heater', kinds: ['heater'], spot: v(-10.6, 7.4), met: near(['heater'], v(-12.6, 7), 4.2) });
-    add({ critter: cow, phase: 'evening', ask: 'cowSleepy', thanks: 'cowSleep', icon: 'musicbox', kinds: ['musicbox'], spot: v(-13.2, -0.4), met: near(['musicbox'], cow.home, 4.5), sticker: 'farm:cow' });
+    add({ critter: get('hen'), phase: 'evening', ask: 'henDark', thanks: 'henHappy', icon: 'bulb', kinds: ['bulb', 'led'], spot: at('hen', 0.9, 6.6), met: near(['bulb', 'led'], at('hen', -1.5, 8), 4.8) });
+    add({ critter: get('rabbit'), phase: 'evening', ask: 'rabbitCold', thanks: 'rabbitHappy', icon: 'heater', kinds: ['heater'], spot: at('rabbit', -10.6, 7.4), met: near(['heater'], at('rabbit', -12.6, 7), 4.2) });
+    add({ critter: cow, phase: 'evening', ask: 'cowSleepy', thanks: 'cowSleep', icon: 'musicbox', kinds: ['musicbox'], spot: at('cow', -13.2, -0.4), met: near(['musicbox'], cow.home, 4.5), sticker: 'farm:cow' });
     // Night: the dog warns about the fox; a button on the path and a bell chase it off.
     add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], spot: FOX_PATH[3].clone(), met: () => this.foxChased, sticker: 'farm:fox' });
     // Morning: the ducklings want a fountain.
@@ -517,7 +549,7 @@ export class FarmMap {
     }
     // The fox's button is down: now a bell (or buzzer) to go with it.
     if (this.phase === 'night' && !this.world.parts.some((p) => p.kind === 'bell' || p.kind === 'buzzer') && trayLeft('bell') > 0)
-      return { type: 'drag', kind: 'bell', to: v(-6.2, 7.8), phrase: 'foxTip' };
+      return { type: 'drag', kind: 'bell', to: BELL_SPOT.clone(), phrase: 'foxTip' };
     return null;
   }
 
@@ -641,11 +673,11 @@ export class FarmMap {
     const t = this.tractorT;
     const p = this.tractor.position;
     if (t < 4) {
-      p.set(8, 0, 7.4 - t * 2.1);
+      p.set(ROAD_X, 0, TRACTOR_Z - t * 2.1);
       this.tractor.rotation.y = 0;
     } else {
       const a = (t - 4) * 0.35;
-      const target = new THREE.Vector3(13.5 + Math.cos(a) * 3.6, 0, -4 + Math.sin(a) * 4.6);
+      const target = new THREE.Vector3(FIELD.x - 0.5 + Math.cos(a) * 3.6, 0, FIELD.z + 0.75 + Math.sin(a) * 4.6);
       const dir = target.clone().sub(p);
       if (dir.lengthSq() > 1e-4) this.tractor.rotation.y = Math.atan2(-dir.x, -dir.z);
       p.lerp(target, Math.min(1, dt * 2));
@@ -757,7 +789,10 @@ export class FarmMap {
 
 // ───────────────────────── Fox path ─────────────────────────
 
-const FOX_PATH = [v(-26, 16.2), v(-21, 14.4), v(-15, 12), v(-9.5, 10.8), v(-5, 9.6), v(-3.4, 8.8)];
+/** From the wood in the corner, below the rabbits, up to the coop. */
+const FOX_PATH = [v(-33, 20.5), v(-27, 19), v(-20.5, 17), v(-13.5, 15.6), v(-8, 14.4), at('hen', -3.4, 8.8)];
+/** Where a hint asks for the bell: by the fox's button, off its path. */
+const BELL_SPOT = v(-10.8, 12.4);
 function pathLength() {
   let l = 0;
   for (let i = 1; i < FOX_PATH.length; i++) l += FOX_PATH[i].distanceTo(FOX_PATH[i - 1]);
@@ -780,7 +815,8 @@ function pathAt(s: number): { at: THREE.Vector3; dir: THREE.Vector3 } {
 
 /** The board's painted top: grass, paths, the field, the pond, mud. */
 function boardTexture(): THREE.Texture {
-  const px = 44;
+  // About the same number of pixels as the smaller board had (a big texture costs an iPad dearly).
+  const px = 34;
   const c = document.createElement('canvas');
   c.width = W * px;
   c.height = D * px;
@@ -800,16 +836,17 @@ function boardTexture(): THREE.Texture {
     ctx.fillRect(Math.random() * c.width, Math.random() * c.height, 3, 6);
   }
   // The field: plowed rows.
+  const [fx, fz] = YARDS.field;
   ctx.fillStyle = '#9a7650';
   ctx.beginPath();
-  ctx.roundRect(X(9.5), Z(-11.5), 9 * px, 13.5 * px, 30);
+  ctx.roundRect(X(9.5 + fx), Z(-11.5 + fz), 9 * px, 13.5 * px, 24);
   ctx.fill();
   ctx.strokeStyle = 'rgba(80,55,30,0.45)';
-  ctx.lineWidth = 10;
+  ctx.lineWidth = 8;
   for (let x = 10; x < 18.5; x += 0.9) {
     ctx.beginPath();
-    ctx.moveTo(X(x), Z(-11));
-    ctx.lineTo(X(x), Z(1.5));
+    ctx.moveTo(X(x + fx), Z(-11 + fz));
+    ctx.lineTo(X(x + fx), Z(1.5 + fz));
     ctx.stroke();
   }
   // Paths: soft sand-coloured lanes.
@@ -825,12 +862,15 @@ function boardTexture(): THREE.Texture {
     ctx.lineWidth = w * px * 0.45;
     ctx.stroke();
   };
-  path([[8, 13], [8, 2], [8, -2], [12, -3]], 2.4);
-  path([[-12, -5], [-12, 0], [-4, 1.5], [3, 1.5], [8, 2]], 1.4);
+  // The road through the gate; the lane from the cow pen along the yards to it, with a lane off to each yard.
+  const LANE_Z = 3.6;
+  path([[ROAD_X, D / 2], [ROAD_X, GATE.z], [ROAD_X, FIELD.z + 2], [FIELD.x, FIELD.z + 1]], 2.4);
+  path([[-15.5, -6.5], [-15.5, LANE_Z], [ROAD_X, LANE_Z]], 1.4);
   path(FOX_PATH.map((q) => [q.x, q.z] as [number, number]).reverse(), 1.1);
-  path([[-4, 1.5], [-3.2, 5.5]], 1.2);
-  path([[-12, -5], [-16.5, -6.5], [-19.5, -10.5]], 1.2);
-  path([[8, 9], [12, 11], [14, 12.4]], 1.1);
+  path([[-3.2, LANE_Z], [-3.2, 9.6]], 1.2);
+  path([[-15.5, LANE_Z], [-16, 10.4]], 1.1);
+  path([[-15.5, -6.5], [-21, -9.5], [MILL.x + 1, MILL.z + 2.5]], 1.2);
+  path([[ROAD_X, 10], [17, 13], [POND.x - 6, POND.z + 3]], 1.1);
   // Mud in the pig pen, the pond by the house.
   const blobPaint = (x: number, z: number, rx: number, rz: number, col: string) => {
     ctx.fillStyle = col;
@@ -838,13 +878,14 @@ function boardTexture(): THREE.Texture {
     ctx.ellipse(X(x), Z(z), rx * px, rz * px, 0, 0, Math.PI * 2);
     ctx.fill();
   };
-  blobPaint(1.6, -6.2, 2.4, 1.6, '#8a6a46');
-  blobPaint(1.8, -6.4, 1.6, 1.0, '#7a5a3a');
+  const mud = at('pig', 1.6, -6.2);
+  blobPaint(mud.x, mud.z, 2.4, 1.6, '#8a6a46');
+  blobPaint(mud.x + 0.2, mud.z - 0.2, 1.6, 1.0, '#7a5a3a');
   blobPaint(POND.x, POND.z, 5.1, 3.3, '#c9e6f0');
   blobPaint(POND.x, POND.z, 4.6, 2.9, '#5bb5d8');
   blobPaint(POND.x - 1, POND.z - 0.8, 2, 0.7, 'rgba(255,255,255,0.35)');
   // Flowers.
-  for (let i = 0; i < 320; i++) {
+  for (let i = 0; i < 520; i++) {
     ctx.fillStyle = ['#ffffff', '#ffd23f', '#ff8fb1', '#b388ff'][i % 4];
     const x = Math.random() * c.width;
     const y = Math.random() * c.height;
@@ -869,7 +910,7 @@ function boxHouse(wall: string, roof: string, w: number, h: number, d: number): 
   return g;
 }
 
-function hutch(x: number, z: number): THREE.Group {
+function hutch({ x, z }: THREE.Vector3): THREE.Group {
   const g = new THREE.Group();
   const wood = mat('#b98654', 0.7);
   const box = mesh(new THREE.BoxGeometry(2.6, 1.3, 1.6), wood);
@@ -891,7 +932,7 @@ function hutch(x: number, z: number): THREE.Group {
   return g;
 }
 
-function kennel(x: number, z: number): THREE.Group {
+function kennel({ x, z }: THREE.Vector3): THREE.Group {
   const sculpt = model('doghouse', { width: 1.6 });
   if (sculpt) {
     sculpt.position.set(x, 0, z);
@@ -977,9 +1018,10 @@ function sprouts(): THREE.InstancedMesh {
   const im = new THREE.InstancedMesh(geo, mat('#5aa64a', 0.7), 90);
   const m = new THREE.Matrix4();
   let i = 0;
+  const [dx, dz] = YARDS.field;
   for (let x = 10.45; x < 18.3 && i < 90; x += 0.9) {
     for (let z = -10.5; z < 1 && i < 90; z += 1.3) {
-      m.makeTranslation(x, 0.17, z + (Math.random() - 0.5) * 0.3);
+      m.makeTranslation(x + dx, 0.17, z + dz + (Math.random() - 0.5) * 0.3);
       im.setMatrixAt(i++, m);
     }
   }

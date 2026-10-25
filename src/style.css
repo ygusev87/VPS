@@ -1603,6 +1603,7 @@ body.on-map .inv-btn {
 /* On a map: the level list and the night switch belong to the workbench. */
 body.on-map .status,
 body.on-map .lessons,
-body.on-map [data-v='night'] {
+body.on-map [data-v='night'],
+body.on-map .traces {
   display: none;
 }

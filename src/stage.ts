@@ -28,7 +28,8 @@ export interface Insets {
 
 const VIEW_DIR = new THREE.Vector3(0, 1, 0.78).normalize();
 const MIN_DIST = 7;
-const MAX_DIST = 95;
+// Far enough to see the whole farm board at once, even on a phone held upright.
+const MAX_DIST = 150;
 /** How far from the origin the view may wander. */
 const LIMIT = 36;
 /** Largest on-screen scale `frame()` will choose, in CSS pixels per table unit. */
@@ -256,6 +257,11 @@ export class Stage {
    */
   setNight(on: boolean) {
     this.setNightAmount(on ? 1 : 0);
+  }
+
+  /** The workbench's graph paper; a map lies on its own board and hides it. */
+  showGrid(on: boolean) {
+    this.ground.visible = on;
   }
 
   /** 0 day .. 1 night, smoothly (a sunset on a map). */
