@@ -1,22 +1,25 @@
-// The city: a toy town round a park with a fountain. People and pets ask for
-// help in turn — the cars wait at a dark traffic light, the tram for power at
-// its substation, the baker for a warm oven, the pigeons for the fountain,
-// grandma for a lift up to her balcony; in the evening a kitten wants a lamp
-// to find the way home, the children a disco, the firemen their engine; at
-// night a raccoon sneaks to the toy shop's bins until an alarm bell sends it
-// off; in the morning the school bell has to ring.
+// The city: a toy town round a park with a fountain, the step after the farm.
+// Most helps here are chains of parts: the tram's substation behind a switch,
+// the bakery's oven and a belt to carry the loaves, a fountain pump with a wind
+// generator of its own (no pole in the park), grandma's lift on a button held
+// while she rides; in the evening three street lamps for the kitten, a disco
+// ball whose light starts the music through a light sensor, the fire engine
+// and a pump at the burning house; at night dominoes on the raccoon's path
+// that ring the alarm as it knocks them over; in the morning a laser beam
+// round a mirror onto a light sensor rings the school bell.
 import * as THREE from 'three';
-import type { Hint } from './hints';
+import { sandboxHint, type Hint } from './hints';
 import { clipsOf, hasModel, model, type Fit } from './parts/assets';
-import type { PartKind } from './parts/base';
+import type { Part, PartKind } from './parts/base';
 import { Substation } from './parts/city';
-import { PushButton } from './parts/extra';
+import { Belt, Domino } from './parts/chain';
 import { Pump } from './parts/farm';
 import { FireTruck } from './parts/fun';
 import { mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import { Lift } from './parts/more';
 import { flowers, groundMaterial, onLane, type GroundPlan } from './ground';
+import { AMBIENT } from './parts/wind';
 import { StoryMap, blob, boxHouse, instances, v, type Critter, type MapProgress, type Need, type NeedSpec, type Phase } from './storymap';
 import { isActive } from './world';
 
@@ -28,23 +31,30 @@ export const CITY_MODELS = ['pole', 'grandma-house', 'bakery', 'fire-station', '
 /** What the drawers offer in the city (power comes from the poles). */
 export const CITY_TRAY: { kind: PartKind; count: number }[] = [
   { kind: 'trafficLight', count: 1 },
+  { kind: 'switch', count: 1 },
   { kind: 'heater', count: 1 },
-  { kind: 'pump', count: 1 },
+  { kind: 'belt', count: 1 },
+  { kind: 'windGen', count: 1 },
+  { kind: 'pump', count: 2 },
   { kind: 'lift', count: 1 },
-  { kind: 'bulb', count: 2 },
-  { kind: 'led', count: 2 },
-  { kind: 'disco', count: 1 },
-  { kind: 'firetruck', count: 1 },
   { kind: 'button', count: 1 },
+  { kind: 'bulb', count: 3 },
+  { kind: 'led', count: 3 },
+  { kind: 'disco', count: 1 },
+  { kind: 'lightSensor', count: 2 },
+  { kind: 'musicbox', count: 1 },
+  { kind: 'firetruck', count: 1 },
+  { kind: 'domino', count: 1 },
   { kind: 'bell', count: 2 },
-  { kind: 'buzzer', count: 1 },
-  { kind: 'switch', count: 2 },
+  { kind: 'laser', count: 1 },
+  { kind: 'mirror', count: 1 },
 ];
 
 /** Bumped whenever the city is laid out anew (a save on another layout starts it afresh). */
-export const CITY_LAYOUT = 1;
+export const CITY_LAYOUT = 2;
 
 export interface CityProgress extends MapProgress {
+  /** Loaves the belt has brought to the counter. */
   bread: number;
   fountain: number;
   fire: number;
@@ -62,51 +72,69 @@ const ROAD = 6;
 const CROSS = v(0, RING.z);
 const LIGHT_SPOT = v(5.5, RING.z + 5.5);
 const LIGHT_POLE = v(11, RING.z + 7);
-/** The tram's substation by the line, and where the tram stands still till it has power. */
+/** The tram's substation by the line, and the switch that has to be in its circuit. */
 const SUBSTATION = v(-34, TRAM_Z + 5.5);
 const SUB_POLE = v(-28, TRAM_Z + 8);
-/** The bakery north of the park: its oven by the door, where the heater goes. */
+const TRAM_SWITCH = v(-31.5, TRAM_Z + 9.5);
+/** The bakery north of the park: the heater by the oven, the belt to the counter by the baker. */
 const BAKERY = v(-14, -31);
 const BAKER = v(-8.5, -24.5);
 const OVEN_SPOT = v(-14, -24.2);
-const BAKERY_POLE = v(-20.5, -24.5);
-/** The park's fountain in the middle; the pump's ring at the basin's edge. */
+const BELT_SPOT = v(-11, -21.3);
+const COUNTER = v(-7.4, -21.4);
+const BAKERY_POLE = v(-16.5, -20);
+/** The park's fountain in the middle; the pump's ring at the basin's edge, a wind generator beside it. */
 const FOUNTAIN = v(0, 0);
 const BASIN_R = 3.2;
 const FOUNTAIN_SPOT = v(BASIN_R + 1.6, 1.2);
-const PARK_POLE = v(9, 6.5);
-/** Grandma's house west of the ring: the lift by its right side, her balcony at the top of the lift. */
+const WIND_SPOT = v(8.5, 4.5);
+/** Grandma's house west of the ring: she waits on her balcony for the lift to bring her shopping up. */
 const HOUSE = v(-50, -9);
 const LIFT_SPOT = v(-44.6, -8.5);
-const GRANDMA = v(-43.2, -4.6);
+const LIFT_BUTTON = v(-40.5, -9.5);
 const BALCONY = v(LIFT_SPOT.x - 1.5, LIFT_SPOT.z - 0.25);
 const BALCONY_TOP = 1.95;
+const GRANDMA = v(BALCONY.x - 0.2, BALCONY.z);
+/** Her basket of shopping, on the pavement by the lift till it rides up. */
+const BASKET = v(LIFT_SPOT.x + 0.4, LIFT_SPOT.z + 2.2);
 const HOUSE_POLE = v(-38.5, -5);
-/** Evening: a kitten in the park looking for its way home. */
+/** Evening: a kitten in the park, three street lamps on its way home across the road. */
 const KITTEN = v(-17, 9.5);
-const LAMP_SPOT = v(-13, 6.5);
-const KITTEN_POLE = v(-19.5, 3);
-/** The club east of the ring with the children who want a disco. */
+const LAMPS = [v(-13.5, 11.5), v(-20.5, 13), v(-21.5, 24)];
+const KITTEN_WAY = [KITTEN, v(-19.5, 12), v(-20, 22.5), v(-18, 25.3)];
+const KITTEN_POLE = v(-16.5, 14);
+/** The club east of the ring: the disco ball, a light sensor in its light, the music box behind it. */
 const CLUB = v(51, -12);
 const DISCO_SPOT = v(43, -9.5);
+const CLUB_SENSOR = v(43, -7.4);
+const MUSIC_SPOT = v(46.5, -7);
 const CLUB_POLE = v(39, -7.5);
-/** The fire station south-east, and the house down the road with smoke coming out. */
+/** The fire station south-east, the house down the road with smoke coming out, a pump at its hydrant. */
 const STATION = v(50, 13);
 const ENGINE_SPOT = v(43, 9.5);
 const STATION_POLE = v(39.5, 7.5);
 const SMOKE_HOUSE = v(60, 27);
-/** Night: the raccoon's path from the corner of the board to the toy shop's bins. */
+const HYDRANT_SPOT = v(56.5, 22.5);
+const HYDRANT_POLE = v(52.5, 21.5);
+/** Night: the raccoon's path from the corner of the board to the toy shop's bins, dominoes across it. */
 const SHOP = v(50, -33);
 const BINS = v(43.5, -27.5);
-const RACCOON_BUTTON = v(60, -38);
-const RACCOON_PATH = [v(73, -47), v(66, -42), RACCOON_BUTTON, v(52, -32.5), v(46, -28.5)];
-const ALARM_SPOT = RACCOON_BUTTON.clone().add(v(-1.5, 4.5));
-const SHOP_POLE = RACCOON_BUTTON.clone().add(v(3.5, 5.5));
+const DOMINO_SPOT = v(60, -38);
+const RACCOON_PATH = [v(73, -47), v(66, -42), DOMINO_SPOT, v(52, -32.5), v(46, -28.5)];
+const ALARM_SPOT = DOMINO_SPOT.clone().add(v(-1.5, 4.5));
+const SHOP_POLE = DOMINO_SPOT.clone().add(v(3.5, 5.5));
 const SHOPKEEPER = v(55, -26.5);
-/** Morning: the school north-east of the ring. */
+/**
+ * Morning: the school north-east of the ring. A laser shines along the
+ * school's side to a mirror, the mirror turns the beam onto a light sensor,
+ * and the sensor rings the bell by the door.
+ */
 const SCHOOL = v(18, -32);
-const SCHOOL_BELL = v(23, -24.2);
-const SCHOOL_POLE = v(28.5, -25);
+const LASER_SPOT = v(25, -30);
+const MIRROR_SPOT = v(32, -30);
+const SCHOOL_SENSOR = v(32, -24.5);
+const SCHOOL_BELL = v(23.5, -25.5);
+const SCHOOL_POLE = v(28.5, -26.5);
 const SCHOOL_DOOR = v(18, -27.5);
 
 const r2 = (n: number) => Math.round(n * 100) / 100;
@@ -116,6 +144,7 @@ export class CityMap extends StoryMap {
   protected readonly depth = D;
   readonly layout = CITY_LAYOUT;
   protected readonly intro = 'cityIntro';
+  readonly ownHints = true;
   private plan!: GroundPlan;
   /** The cars driving round the ring once the traffic light works (s: how far round). */
   private cars: { c: Critter; s: number }[] = [];
@@ -124,15 +153,22 @@ export class CityMap extends StoryMap {
   private tramX = -12;
   private tramV = 0;
   private substation!: Substation;
-  /** The bakery's loaves come out one by one while the oven is warm. */
+  /** The poles, by the place they stand at. */
+  private poles = new Map<THREE.Vector3, Part>();
+  /** Loaves brought to the counter; each one comes out of the warm oven and rides the belt there. */
   bread = 0;
-  private loaves: THREE.Object3D[] = [];
+  private loaves: { m: THREE.Object3D; s: number }[] = [];
+  private baked = 0;
+  private ovenT = 0;
   fountainLevel = 0;
   private spray: THREE.Sprite[] = [];
-  /** Grandma down by her house, riding up in the lift, or out on her balcony. */
+  /** Grandma's basket on the pavement, riding up in the lift, or up on her balcony. */
   private grandma: 'waiting' | 'riding' | 'home' = 'waiting';
+  private basket!: THREE.Object3D;
   private liftWaitT = 0;
-  /** The fire engine's work: at 1 the smoke is out. */
+  /** The kitten on its way home along the lamps (0..1). */
+  private kittenWalk = 0;
+  /** The fire engine's and the pump's work: at 1 the smoke is out. */
   fire = 0;
   private smoke: THREE.Sprite[] = [];
   private raccoon!: Critter;
@@ -142,6 +178,8 @@ export class CityMap extends StoryMap {
   private raccoonRun = 0;
   private raccoonChased = false;
   private raccoonTipSaid = false;
+  /** Seconds till the knocked-over dominoes stand up again (after the raccoon has run). */
+  private dominoReset = -1;
   /** The children on their way into school once the bell rings. */
   private schooling = 0;
 
@@ -152,6 +190,13 @@ export class CityMap extends StoryMap {
     this.buildCritters();
     this.buildNeeds();
     this.sowFlowers();
+    // A steady breeze for the park's wind generator.
+    AMBIENT.strength = 0.55;
+    AMBIENT.dir.set(-0.7, 0, 0.7).normalize();
+  }
+
+  protected cleanup() {
+    AMBIENT.strength = 0;
   }
 
   protected saveExtra() {
@@ -160,13 +205,15 @@ export class CityMap extends StoryMap {
 
   protected restoreExtra(m: MapProgress) {
     const p = m as CityProgress;
-    this.bread = p.bread;
+    this.bread = this.baked = Math.round(p.bread);
+    this.loaves.forEach((l, i) => (l.s = i < this.bread ? Infinity : -1));
     this.fountainLevel = p.fountain;
     this.fire = p.fire;
     this.raccoonChased = p.raccoonChased;
     const done = (name: string) => this.needs.some((n) => n.done && n.critter.name === name);
     this.driving = done('car');
     if (done('grandma')) this.settleGrandma();
+    if (done('kitten')) this.kittenWalk = 1;
     if (done('child3')) this.schooling = 1;
     if (this.phase === 'night') this.raccoonT = 0;
   }
@@ -208,8 +255,9 @@ export class CityMap extends StoryMap {
       ['house-a', 60, 27, '#e0e0e0', '#5a5f6a'], ['house-b', -18, 28, '#f6b0a0', '#2a6a3a'], ['house-c', 64, -8, '#f2d06b', '#c84a3a'],
     ];
     for (const [name, x, z, wall, roof] of homes) house(name, v(x, z), 4.5, wall, roof);
-    // The balcony by the lift, as high as its cabin at the top.
+    // The balcony by the lift, as high as its cabin at the top, and grandma's basket of shopping.
     this.scenery.add(balcony(BALCONY));
+    this.basket = this.add('basket', { width: 0.6 }, BASKET.x, BASKET.z, () => basket());
     // The fountain: a basin in the park with water thrown up from the middle.
     this.add('fountain-basin', { width: BASIN_R * 2 }, FOUNTAIN.x, FOUNTAIN.z, () => basin());
     for (let i = 0; i < 36; i++) {
@@ -220,15 +268,17 @@ export class CityMap extends StoryMap {
       this.spray.push(d);
       this.scenery.add(d);
     }
-    // Loaves on the bakery's counter, out one by one.
+    // The bakery's counter, and the loaves that come out of the oven one by one.
+    this.add('counter', { width: 2 }, COUNTER.x, COUNTER.z, () => counter());
     for (let i = 0; i < 3; i++) {
-      const loaf = mesh(new THREE.CapsuleGeometry(0.22, 0.4, 6, 12), mat('#c98a4b', 0.6));
+      const loaf = mesh(new THREE.CapsuleGeometry(0.17, 0.32, 6, 12), mat('#c98a4b', 0.6));
+      loaf.rotation.y = Math.PI / 2;
       loaf.rotation.z = Math.PI / 2;
-      loaf.position.set(BAKER.x + 1.2 + i * 0.6, 0.9, BAKER.z - 1.4);
       loaf.visible = false;
-      this.loaves.push(loaf);
+      this.loaves.push({ m: loaf, s: -1 });
       this.scenery.add(loaf);
     }
+    this.add('hydrant', { height: 0.9 }, HYDRANT_SPOT.x + 1.8, HYDRANT_SPOT.z - 1.2, () => hydrant());
     // Smoke from the house down the road.
     for (let i = 0; i < 14; i++) {
       const s = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowFor('rgba(120,120,130,0.85)'), transparent: true, depthWrite: false, opacity: 0 }));
@@ -254,14 +304,14 @@ export class CityMap extends StoryMap {
 
   /** A pole by every place, and the tram's substation: parts of the map. */
   private placeParts() {
-    for (const p of [LIGHT_POLE, SUB_POLE, BAKERY_POLE, PARK_POLE, HOUSE_POLE, KITTEN_POLE, CLUB_POLE, STATION_POLE, SHOP_POLE, SCHOOL_POLE]) this.pin('pole', p);
+    for (const p of [LIGHT_POLE, SUB_POLE, BAKERY_POLE, HOUSE_POLE, KITTEN_POLE, CLUB_POLE, STATION_POLE, HYDRANT_POLE, SHOP_POLE, SCHOOL_POLE]) this.poles.set(p, this.pin('pole', p));
     this.substation = this.pin('substation', SUBSTATION) as Substation;
   }
 
   private buildCritters() {
     // Three cars wait at the crossing south of the park; the first one speaks for them.
     ['car', 'car2', 'car3'].forEach((name, i) => {
-      const c = this.critter(name, { depth: 2.4 }, v(CROSS.x + 1.5, CROSS.z + 4 + i * 3.2), 1.3, Math.PI / 2);
+      const c = this.critter(name, { width: 2.4 }, v(CROSS.x + 1.5, CROSS.z + 4 + i * 3.2), 1.3, Math.PI / 2);
       c.roams = true;
       this.cars.push({ c, s: 0 });
     });
@@ -270,10 +320,11 @@ export class CityMap extends StoryMap {
     this.critter('baker', { height: 1.6 }, BAKER, 1.6, 0.3);
     this.critter('pigeon', { height: 0.5 }, v(FOUNTAIN.x - 2.2, FOUNTAIN.z + 3.2), 0.5, 0.5);
     this.critter('pigeon2', { height: 0.45 }, v(FOUNTAIN.x - 3.4, FOUNTAIN.z + 2.4), 0.45, -0.4);
-    this.critter('grandma', { height: 1.5 }, GRANDMA, 1.5, 0.4);
+    const grandma = this.critter('grandma', { height: 1.5 }, GRANDMA, 1.5, 0.4);
+    grandma.base = BALCONY_TOP;
     this.critter('kitten', { height: 0.75 }, KITTEN, 0.75, -0.6);
-    this.critter('child', { height: 1.2 }, v(CLUB.x - 6, CLUB.z + 5), 1.2, 0.3);
-    this.critter('child2', { height: 1.15 }, v(CLUB.x - 4.5, CLUB.z + 6), 1.15, -0.3);
+    this.critter('child', { height: 1.2 }, v(CLUB.x - 5, CLUB.z + 7.5), 1.2, 0.3);
+    this.critter('child2', { height: 1.15 }, v(CLUB.x - 3.5, CLUB.z + 8), 1.15, -0.3);
     this.critter('firefighter', { height: 1.6 }, v(STATION.x - 4.5, STATION.z - 4.5), 1.6, 0.4);
     this.critter('shopkeeper', { height: 1.6 }, SHOPKEEPER, 1.6, 0);
     ['child3', 'child4', 'child5'].forEach((name, i) => this.critter(name, { height: 1.15 }, v(SCHOOL_DOOR.x - 3 + i * 1.6, SCHOOL_DOOR.z + 4), 1.15, i - 1));
@@ -290,28 +341,58 @@ export class CityMap extends StoryMap {
 
   private buildNeeds() {
     const get = (name: string) => this.critters.get(name)!;
-    const near = (kinds: PartKind[], at: THREE.Vector3, r: number) => () =>
-      this.world.parts.some((p) => kinds.includes(p.kind) && isActive(p) && p.root.position.distanceTo(at) < r);
     const add = (n: NeedSpec) => this.addNeed(n);
-    // Day.
-    add({ critter: get('car'), phase: 'day', ask: 'carsAsk', thanks: 'carsHappy', icon: 'trafficLight', kinds: ['trafficLight'], spot: LIGHT_SPOT, met: near(['trafficLight'], LIGHT_SPOT, 1.5) });
-    add({ critter: this.tram, phase: 'day', ask: 'tramAsk', thanks: 'tramHappy', icon: 'substation', kinds: [], spot: SUBSTATION.clone(), focus: [SUBSTATION.clone(), v(this.tramX, TRAM_Z)], met: () => this.substation.live });
-    add({ critter: get('baker'), phase: 'day', ask: 'bakerAsk', thanks: 'bakerHappy', icon: 'heater', kinds: ['heater'], spot: OVEN_SPOT, met: () => this.bread >= 1 });
-    add({ critter: get('pigeon'), phase: 'day', ask: 'pigeonsAsk', thanks: 'pigeonsHappy', icon: 'pump', kinds: ['pump'], spot: FOUNTAIN_SPOT, met: () => this.fountainLevel > 0.95 });
-    add({ critter: get('grandma'), phase: 'day', ask: 'grandmaAsk', thanks: 'grandmaHappy', icon: 'lift', kinds: ['lift'], spot: LIFT_SPOT, met: () => this.grandma === 'home' });
+    const lit = (at: THREE.Vector3) => { const p = this.on(at, ['bulb', 'led']); return !!p && isActive(p); };
+    // Day: a traffic light to start with, then chains of two parts.
+    add({ critter: get('car'), phase: 'day', ask: 'carsAsk', thanks: 'carsHappy', icon: 'trafficLight', kinds: ['trafficLight'], spot: LIGHT_SPOT, met: () => this.working(LIGHT_SPOT, ['trafficLight']) });
+    add({ critter: this.tram, phase: 'day', ask: 'tramAsk', thanks: 'tramHappy', icon: 'switch', kinds: ['switch'], spot: TRAM_SWITCH, focus: [SUBSTATION.clone(), TRAM_SWITCH.clone(), v(this.tramX, TRAM_Z)], met: () => this.substation.live && !!this.on(TRAM_SWITCH, ['switch'])?.closed });
+    add({ critter: get('baker'), phase: 'day', ask: 'bakerAsk', thanks: 'bakerHappy', icon: 'heater', kinds: ['heater'], spot: OVEN_SPOT, more: [{ icon: 'belt', kinds: ['belt'], spot: BELT_SPOT }], focus: [BAKER.clone(), OVEN_SPOT.clone(), COUNTER.clone()], met: () => this.bread >= 3 });
+    add({ critter: get('pigeon'), phase: 'day', ask: 'pigeonsAsk', thanks: 'pigeonsHappy', icon: 'pump', kinds: ['pump'], spot: FOUNTAIN_SPOT, more: [{ icon: 'windGen', kinds: ['windGen'], spot: WIND_SPOT }], met: () => this.fountainLevel > 0.95 });
+    add({ critter: get('grandma'), phase: 'day', ask: 'grandmaAsk', thanks: 'grandmaHappy', icon: 'lift', kinds: ['lift'], spot: LIFT_SPOT, more: [{ icon: 'button', kinds: ['button'], spot: LIFT_BUTTON }], met: () => this.grandma === 'home' });
     // Evening.
-    add({ critter: get('kitten'), phase: 'evening', ask: 'kittenDark', thanks: 'kittenHome', icon: 'bulb', kinds: ['bulb', 'led'], spot: LAMP_SPOT, met: near(['bulb', 'led'], LAMP_SPOT, 1.5) });
-    add({ critter: get('child'), phase: 'evening', ask: 'clubAsk', thanks: 'clubHappy', icon: 'disco', kinds: ['disco'], spot: DISCO_SPOT, met: near(['disco'], DISCO_SPOT, 1.5) });
-    add({ critter: get('firefighter'), phase: 'evening', ask: 'fireAsk', thanks: 'fireHappy', icon: 'firetruck', kinds: ['firetruck'], spot: ENGINE_SPOT, focus: [STATION.clone().add(v(-4.5, -4.5)), ENGINE_SPOT.clone(), SMOKE_HOUSE.clone()], met: () => this.fire >= 1 });
-    // Night: the raccoon; a button on its path and an alarm bell.
-    add({ critter: get('shopkeeper'), phase: 'night', ask: 'raccoonTip', thanks: 'raccoonScared', icon: 'button', kinds: ['button'], hintPhrase: 'raccoonTip', spot: RACCOON_BUTTON.clone(), focus: [RACCOON_BUTTON.clone(), ALARM_SPOT.clone()], met: () => this.raccoonChased, sticker: 'raccoon' });
-    // Morning: the school bell.
-    add({ critter: get('child3'), phase: 'morning', ask: 'schoolAsk', thanks: 'schoolHappy', icon: 'bell', kinds: ['bell', 'buzzer'], spot: SCHOOL_BELL, met: () => this.world.parts.some((p) => (p.kind === 'bell' || p.kind === 'buzzer') && p.state.level > 0.05 && p.root.position.distanceTo(SCHOOL_BELL) < 1.5), sticker: 'school' });
+    add({ critter: get('kitten'), phase: 'evening', ask: 'kittenDark', thanks: 'kittenHome', icon: 'bulb', kinds: ['bulb', 'led'], spot: LAMPS[0], more: LAMPS.slice(1).map((spot) => ({ icon: 'bulb' as PartKind, kinds: ['bulb', 'led'] as PartKind[], spot })), met: () => LAMPS.every(lit) });
+    add({ critter: get('child'), phase: 'evening', ask: 'clubAsk', thanks: 'clubHappy', icon: 'disco', kinds: ['disco'], spot: DISCO_SPOT, more: [{ icon: 'lightSensor', kinds: ['lightSensor'], spot: CLUB_SENSOR }, { icon: 'musicbox', kinds: ['musicbox'], spot: MUSIC_SPOT }], met: () => this.working(MUSIC_SPOT, ['musicbox']) && !!this.on(CLUB_SENSOR, ['lightSensor'])?.closed });
+    add({ critter: get('firefighter'), phase: 'evening', ask: 'fireAsk', thanks: 'fireHappy', icon: 'firetruck', kinds: ['firetruck'], spot: ENGINE_SPOT, more: [{ icon: 'pump', kinds: ['pump'], spot: HYDRANT_SPOT }], focus: [STATION.clone().add(v(-4.5, -4.5)), ENGINE_SPOT.clone(), HYDRANT_SPOT.clone(), SMOKE_HOUSE.clone()], met: () => this.fire >= 1 });
+    // Night: dominoes on the raccoon's path, and the alarm bell they switch on.
+    add({ critter: get('shopkeeper'), phase: 'night', ask: 'raccoonTip', thanks: 'raccoonScared', icon: 'domino', kinds: ['domino'], hintPhrase: 'raccoonTip', spot: DOMINO_SPOT.clone(), more: [{ icon: 'bell', kinds: ['bell'], spot: ALARM_SPOT.clone() }], focus: [SHOPKEEPER.clone(), DOMINO_SPOT.clone(), ALARM_SPOT.clone()], met: () => this.raccoonChased, sticker: 'raccoon' });
+    // Morning: the school bell, rung by a laser beam.
+    add({ critter: get('child3'), phase: 'morning', ask: 'schoolAsk', thanks: 'schoolHappy', icon: 'laser', kinds: ['laser'], spot: LASER_SPOT, more: [{ icon: 'mirror', kinds: ['mirror'], spot: MIRROR_SPOT }, { icon: 'lightSensor', kinds: ['lightSensor'], spot: SCHOOL_SENSOR }, { icon: 'bell', kinds: ['bell'], spot: SCHOOL_BELL }], focus: [SCHOOL_DOOR.clone(), LASER_SPOT.clone(), MIRROR_SPOT.clone(), SCHOOL_SENSOR.clone(), SCHOOL_BELL.clone()], met: () => this.working(SCHOOL_BELL, ['bell']) && !!this.on(SCHOOL_SENSOR, ['lightSensor'])?.closed, sticker: 'school' });
+  }
+
+  /** The part of these kinds standing on a ring. */
+  private on(at: THREE.Vector3, kinds: PartKind[]): Part | undefined {
+    return this.world.parts.find((p) => kinds.includes(p.kind) && p.root.position.distanceTo(at) < 0.8);
+  }
+
+  private working(at: THREE.Vector3, kinds: PartKind[]) {
+    const p = this.on(at, kinds);
+    return !!p && isActive(p);
+  }
+
+  /**
+   * How each need is wired: loops from a power source through its parts and
+   * back (a missing part leaves its loop out; the rings ask for it first).
+   */
+  private loops(n: Need): [Part | undefined, (Part | undefined)[]][] {
+    const pole = (at: THREE.Vector3) => this.poles.get(at);
+    switch (n.critter.name) {
+      case 'car': return [[pole(LIGHT_POLE), [this.on(LIGHT_SPOT, ['trafficLight'])]]];
+      case 'tram': return [[pole(SUB_POLE), [this.on(TRAM_SWITCH, ['switch']), this.substation]]];
+      case 'baker': return [[pole(BAKERY_POLE), [this.on(OVEN_SPOT, ['heater'])]], [pole(BAKERY_POLE), [this.on(BELT_SPOT, ['belt'])]]];
+      case 'pigeon': return [[this.on(WIND_SPOT, ['windGen']), [this.on(FOUNTAIN_SPOT, ['pump'])]]];
+      case 'grandma': return [[pole(HOUSE_POLE), [this.on(LIFT_BUTTON, ['button']), this.on(LIFT_SPOT, ['lift'])]]];
+      case 'kitten': return LAMPS.map((at) => [pole(KITTEN_POLE), [this.on(at, ['bulb', 'led'])]]);
+      case 'child': return [[pole(CLUB_POLE), [this.on(DISCO_SPOT, ['disco'])]], [pole(CLUB_POLE), [this.on(CLUB_SENSOR, ['lightSensor']), this.on(MUSIC_SPOT, ['musicbox'])]]];
+      case 'firefighter': return [[pole(STATION_POLE), [this.on(ENGINE_SPOT, ['firetruck'])]], [pole(HYDRANT_POLE), [this.on(HYDRANT_SPOT, ['pump'])]]];
+      case 'shopkeeper': return [[pole(SHOP_POLE), [this.on(DOMINO_SPOT, ['domino']), this.on(ALARM_SPOT, ['bell'])]]];
+      case 'child3': return [[pole(SCHOOL_POLE), [this.on(LASER_SPOT, ['laser'])]], [pole(SCHOOL_POLE), [this.on(SCHOOL_SENSOR, ['lightSensor']), this.on(SCHOOL_BELL, ['bell'])]]];
+    }
+    return [];
   }
 
   /** Flowers in the park and along the pavements, kept off the rings, the people and the poles. */
   private sowFlowers() {
-    const taken = [...this.needs.map((n) => n.spot), ...[...this.critters.values()].map((c) => c.home), ...this.world.parts.map((p) => p.root.position)];
+    const taken = [...this.needs.flatMap((n) => [n.spot, ...n.more.map((m) => m.spot)]), ...[...this.critters.values()].map((c) => c.home), ...this.world.parts.map((p) => p.root.position)];
     const f = this.plan.field;
     const free = (x: number, z: number) =>
       x > f.x0 + 1 && x < f.x1 - 1 && z > f.z0 + 1 && z < f.z1 - 1 && Math.hypot(x - FOUNTAIN.x, z - FOUNTAIN.z) > BASIN_R + 2 && !onLane(this.plan, x, z, 0.8) && taken.every((t) => Math.hypot(x - t.x, z - t.z) > 2.6);
@@ -346,26 +427,35 @@ export class CityMap extends StoryMap {
     return true;
   }
 
-  /** The raccoon's button is down: now an alarm bell to go with it. */
-  protected extraHint(trayLeft: (k: PartKind) => number): Hint | null {
-    if (this.phase === 'night' && !this.world.parts.some((p) => p.kind === 'bell' || p.kind === 'buzzer') && trayLeft('bell') > 0)
-      return { type: 'drag', kind: 'bell', to: ALARM_SPOT.clone(), phrase: 'raccoonTip' };
-    return null;
+  /**
+   * Every part of the chain is on its ring: the next wire of its loops, then
+   * the general hints (press the switch, turn the laser), but only about the
+   * parts of this need — not grandma's button again while the kitten waits.
+   */
+  protected extraHint(): Hint | null {
+    const n = this.focused && !this.focused.done && this.isNow(this.focused) ? this.focused : this.current();
+    if (!n) return null;
+    const mine = new Set<Part>();
+    for (const [src, parts] of this.loops(n)) {
+      if (!src || parts.some((p) => !p)) continue;
+      const h = this.chainHint(src, parts as Part[]);
+      if (h) return h;
+      mine.add(src);
+      for (const p of parts) mine.add(p!);
+    }
+    for (const p of this.world.parts) if (p.kind === 'mirror' && n.more.some((s) => s.kinds.includes('mirror') && p.root.position.distanceTo(s.spot) < 0.8)) mine.add(p);
+    const h = sandboxHint(this.world);
+    if (!h) return null;
+    // The dominoes are for the raccoon to knock over.
+    if (h.type === 'tap' && h.part.kind === 'domino') return null;
+    const about = h.type === 'connect' ? [h.from.part, h.to.part] : h.type === 'drag' ? [] : [h.type === 'tapWire' ? h.at : h.part];
+    return about.length && about.every((p) => p && mine.has(p)) ? h : null;
   }
 
   protected tick(dt: number) {
     this.updateCars(dt);
     this.updateTram(dt);
-    // The oven bakes while a heater warms it.
-    const baking = this.world.parts.some((p) => p.kind === 'heater' && isActive(p) && p.root.position.distanceTo(OVEN_SPOT) < 1.5);
-    if (baking) this.bread = Math.min(1, this.bread + dt * 0.16);
-    this.loaves.forEach((loaf, i) => {
-      const want = this.bread >= (i + 1) / 3 - 0.01;
-      if (want && !loaf.visible) {
-        loaf.visible = true;
-        this.hooks.chime();
-      }
-    });
+    this.updateBakery(dt);
     // The fountain plays while a pump pours into its basin.
     const pouring = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.root.position.distanceTo(FOUNTAIN) < BASIN_R + 2.6);
     this.fountainLevel = Math.min(1, Math.max(0, this.fountainLevel + dt * (pouring ? 0.35 : -0.2)));
@@ -377,9 +467,10 @@ export class CityMap extends StoryMap {
       d.material.opacity = this.fountainLevel * (1 - t * 0.6) * 0.9;
     }
     this.updateGrandma(dt);
-    // The engine's siren and lights put the fire out; the smoke rises till then (it only starts in the evening).
+    // The engine out with its siren and the pump at the hydrant put the fire out; the smoke rises till then (from the evening on).
     const engine = this.world.parts.some((p) => p instanceof FireTruck && p.powered && p.root.position.distanceTo(ENGINE_SPOT) < 1.5);
-    if (engine && this.phase === 'evening') this.fire = Math.min(1, this.fire + dt * 0.2);
+    const hose = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.root.position.distanceTo(HYDRANT_SPOT) < 1.5);
+    if (engine && hose && this.phase === 'evening') this.fire = Math.min(1, this.fire + dt * 0.2);
     const burning = (this.phase === 'evening' || (this.phase === 'night' && this.fire < 1)) && this.fire < 1;
     for (const s of this.smoke) {
       s.userData.t = (s.userData.t + dt * 0.25) % 1;
@@ -388,8 +479,57 @@ export class CityMap extends StoryMap {
       s.scale.setScalar(0.8 + t * 2);
       s.material.opacity = burning ? (1 - t) * 0.7 * (1 - this.fire) : 0;
     }
+    this.updateKitten(dt);
     this.updateRaccoon(dt);
     this.updateSchool(dt);
+  }
+
+  /**
+   * While the heater warms the oven a loaf comes out every few seconds (three
+   * in all); a running belt carries each one from the oven to the counter.
+   */
+  private updateBakery(dt: number) {
+    const baking = this.working(OVEN_SPOT, ['heater']);
+    if (baking && this.baked < 3) {
+      this.ovenT += dt;
+      // The next loaf comes out once the one before has left the oven.
+      if (this.ovenT > 2.5 && !this.loaves.some((l) => l.s >= 0 && l.s < 1.2)) {
+        this.ovenT = 0;
+        this.loaves[this.baked++].s = 0;
+        this.hooks.chime();
+      }
+    }
+    const belt = this.on(BELT_SPOT, ['belt']) as Belt | undefined;
+    const running = !!belt && Math.abs(belt.speed) > 0.05;
+    const way = belt ? loafWay(belt) : [OVEN_SPOT, OVEN_SPOT];
+    const len = pathLength(way);
+    for (const l of this.loaves) {
+      l.m.visible = l.s >= 0;
+      if (l.s < 0) continue;
+      if (l.s !== Infinity && running) l.s += dt * 1.4;
+      if (l.s !== Infinity && l.s >= len) {
+        l.s = Infinity;
+        this.bread = this.loaves.filter((x) => x.s === Infinity).length;
+        this.hooks.chime();
+      }
+      if (l.s === Infinity) {
+        const i = this.loaves.indexOf(l);
+        l.m.position.set(COUNTER.x - 0.5 + i * 0.5, 0.92, COUNTER.z);
+      } else l.m.position.copy(pathAt(way, l.s).at).setY(l.s < 0.6 ? 0.55 : 0.62);
+    }
+  }
+
+  /** Once all three lamps are lit the kitten walks home along them, across the road. */
+  private updateKitten(dt: number) {
+    const c = this.critters.get('kitten')!;
+    if (this.needs.find((n) => n.critter === c)?.done) this.kittenWalk = Math.min(1, this.kittenWalk + dt * 0.12);
+    if (this.kittenWalk <= 0) return;
+    const len = pathLength(KITTEN_WAY);
+    const { at, dir } = pathAt(KITTEN_WAY, this.kittenWalk * len);
+    c.group.position.x = at.x;
+    c.group.position.z = at.z;
+    c.home.copy(at);
+    if (this.kittenWalk < 1) c.group.rotation.y = Math.atan2(dir.x, dir.z) - Math.PI / 2;
   }
 
   /** Round the ring road, keeping to the right, once the light works; waiting at the crossing before that. */
@@ -418,33 +558,25 @@ export class CityMap extends StoryMap {
     this.tram.home.copy(this.tram.group.position);
   }
 
-  /** Grandma steps into the lift's cabin at the bottom, rides up, and walks out onto her balcony. */
+  /** The basket goes into the lift's cabin at the bottom, rides up, and grandma takes it in on her balcony. */
   private updateGrandma(dt: number) {
-    const c = this.critters.get('grandma')!;
     const lift = this.world.parts.find((p): p is Lift => p instanceof Lift && p.root.position.distanceTo(LIFT_SPOT) < 0.8);
     if (this.grandma === 'home') return;
     if (this.grandma === 'waiting') {
-      // She steps in while the cabin is down by the pavement (even if it has just started up).
+      // In it goes while the cabin is down by the pavement (even if it has just started up).
       if (!lift || this.phase !== 'day' || lift.cabinFloor(new THREE.Vector3()).y > 0.7) return;
       this.grandma = 'riding';
       lift.driver = false;
-      c.hop = 1;
       this.liftWaitT = 0;
       return;
     }
     if (!lift) {
-      // The lift was taken away: she is back on the pavement.
+      // The lift was taken away: the basket is back on the pavement.
       this.grandma = 'waiting';
-      c.base = 0;
-      c.group.position.set(GRANDMA.x, 0, GRANDMA.z);
-      c.home.copy(GRANDMA);
+      this.basket.position.set(BASKET.x, 0, BASKET.z);
       return;
     }
-    const at = lift.cabinFloor(new THREE.Vector3());
-    c.group.position.x = at.x;
-    c.group.position.z = at.z;
-    c.home.set(at.x, 0, at.z);
-    c.base = at.y;
+    this.basket.position.copy(lift.cabinFloor(new THREE.Vector3()));
     if (lift.end === 'top') {
       lift.driver = true;
       this.settleGrandma();
@@ -454,22 +586,25 @@ export class CityMap extends StoryMap {
     this.liftWaitT = lift.end === 'bottom' && lift.state.level < -0.15 ? this.liftWaitT + dt : 0;
     if (this.liftWaitT > 2.5) {
       this.liftWaitT = -20;
-      this.hooks.say('liftUp');
+      this.hooks.say('liftWrongWay');
     }
   }
 
   private settleGrandma() {
     this.grandma = 'home';
-    const c = this.critters.get('grandma')!;
-    c.group.position.set(BALCONY.x - 0.3, BALCONY_TOP, BALCONY.z);
-    c.home.set(BALCONY.x - 0.3, 0, BALCONY.z);
-    c.base = BALCONY_TOP;
-    c.hop = 1;
+    this.basket.position.set(BALCONY.x + 0.4, BALCONY_TOP, BALCONY.z + 0.1);
+    this.critters.get('grandma')!.hop = 1;
   }
 
-  /** Like the farm's fox: sneaks to the bins, a button on its path rings the alarm, a bell sends it off. */
+  /** Sneaks to the bins; it knocks over the dominoes on its path, they switch the alarm bell on, and it runs. */
   private updateRaccoon(dt: number) {
     const r = this.raccoon;
+    // The raccoon is gone: the dominoes stand up again and the bell stops.
+    if (this.dominoReset > 0) {
+      this.dominoReset -= dt;
+      const d = this.on(DOMINO_SPOT, ['domino']) as Domino | undefined;
+      if (this.dominoReset <= 0 && d && !d.standing) d.tap();
+    }
     if (this.phase !== 'night' || (this.raccoonChased && this.raccoonRun === 0)) {
       r.group.visible = false;
       return;
@@ -495,12 +630,6 @@ export class CityMap extends StoryMap {
     }
     const { at, dir } = pathAt(RACCOON_PATH, s);
     r.group.position.copy(at);
-    // A button on its path: it climbs up onto it (and so presses it).
-    for (const p of this.world.parts) {
-      if (!(p instanceof PushButton)) continue;
-      const d = Math.hypot(p.root.position.x - at.x, p.root.position.z - at.z);
-      if (d < 1.8) r.group.position.y = Math.max(r.group.position.y, 0.55 * (1 - THREE.MathUtils.smoothstep(d, 0.9, 1.8)));
-    }
     r.group.rotation.y = Math.atan2(scared ? -dir.x : dir.x, scared ? -dir.z : dir.z) - Math.PI / 2;
     r.home.copy(at);
     if (this.raccoonMixer && this.raccoonWalk) {
@@ -508,11 +637,13 @@ export class CityMap extends StoryMap {
       this.raccoonMixer.update(dt);
     }
     if (scared) return;
-    for (const p of this.world.parts) if (p instanceof PushButton && p.root.position.distanceTo(at) < 1.3 && !p.closed) p.ballHit();
-    const ringing = this.world.parts.some((p) => (p.kind === 'bell' || p.kind === 'buzzer') && p.state.level > 0.05);
+    // Its paws knock over the first domino.
+    for (const p of this.world.parts) if (p instanceof Domino && p.windPoint().distanceTo(at) < 1.6) p.push();
+    const ringing = this.working(ALARM_SPOT, ['bell']);
     if (ringing && s > 3) {
       this.raccoonRun = s;
       this.raccoonChased = true;
+      this.dominoReset = 4;
       this.hooks.look?.(at.clone());
       return;
     }
@@ -551,6 +682,14 @@ function ringAt(s: number): { at: THREE.Vector3; dir: THREE.Vector3 } {
   const z = RING.z + 1.5;
   const corners = [v(0, z), v(x, z), v(x, -z), v(-x, -z), v(-x, z), v(0, z)];
   return pathAt(corners, s % pathLength(corners));
+}
+
+/** A loaf's way: out of the oven onto the belt's near end, along it, and off onto the counter. */
+function loafWay(belt: Belt): THREE.Vector3[] {
+  const s = belt.surface();
+  const z = (s.z0 + s.z1) / 2;
+  const [from, to] = belt.speed < 0 ? [s.x1 - 0.2, s.x0 + 0.2] : [s.x0 + 0.2, s.x1 - 0.2];
+  return [OVEN_SPOT.clone().add(v(0, 0.6)), v(from, z), v(to, z), COUNTER.clone()];
 }
 
 function pathLength(pts: THREE.Vector3[]) {
@@ -636,7 +775,7 @@ function roadMarks(): THREE.Group {
 function greenery(plan: GroundPlan) {
   let seed = 11;
   const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
-  const busy = [HOUSE, BAKERY, STATION, SCHOOL, SHOP, CLUB, SUBSTATION, SMOKE_HOUSE, BINS, ...RACCOON_PATH, LIFT_SPOT, OVEN_SPOT, LIGHT_SPOT, DISCO_SPOT, ENGINE_SPOT, SCHOOL_BELL, LAMP_SPOT, FOUNTAIN];
+  const busy = [HOUSE, BAKERY, STATION, SCHOOL, SHOP, CLUB, SUBSTATION, SMOKE_HOUSE, BINS, ...RACCOON_PATH, ...LAMPS, ...KITTEN_WAY, LIFT_SPOT, LIFT_BUTTON, OVEN_SPOT, BELT_SPOT, COUNTER, LIGHT_SPOT, TRAM_SWITCH, DISCO_SPOT, CLUB_SENSOR, MUSIC_SPOT, ENGINE_SPOT, HYDRANT_SPOT, LASER_SPOT, MIRROR_SPOT, SCHOOL_SENSOR, SCHOOL_BELL, WIND_SPOT, FOUNTAIN];
   const trees: [number, number, number][] = [];
   const bushes: [number, number, number][] = [];
   const ok = (x: number, z: number, room: number) =>
@@ -685,6 +824,51 @@ function basin(): THREE.Group {
   const spout = mesh(new THREE.CylinderGeometry(0.3, 0.45, 0.8, 16), mat('#d8d4cc', 0.5));
   spout.position.y = 0.4;
   g.add(rim, water, spout);
+  return g;
+}
+
+/** The bakery's counter by the baker, where the belt brings the loaves. */
+function counter(): THREE.Group {
+  const g = new THREE.Group();
+  const top = mesh(new THREE.BoxGeometry(2, 0.12, 0.8), mat('#c9a27a', 0.6));
+  top.position.y = 0.76;
+  const front = mesh(new THREE.BoxGeometry(1.9, 0.7, 0.7), mat('#f6e3b8', 0.7));
+  front.position.y = 0.35;
+  g.add(top, front);
+  return g;
+}
+
+/** A red fire hydrant by the burning house. */
+function hydrant(): THREE.Group {
+  const g = new THREE.Group();
+  const red = mat('#d8483c', 0.45);
+  const body = mesh(new THREE.CylinderGeometry(0.2, 0.24, 0.7, 16), red);
+  body.position.y = 0.35;
+  const cap = mesh(new THREE.SphereGeometry(0.21, 16, 10, 0, Math.PI * 2, 0, Math.PI / 2), red);
+  cap.position.y = 0.7;
+  const arm = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.6, 12), red);
+  arm.rotation.z = Math.PI / 2;
+  arm.position.y = 0.45;
+  g.add(body, cap, arm);
+  return g;
+}
+
+/** A wicker basket with a loaf and apples sticking out. */
+function basket(): THREE.Group {
+  const g = new THREE.Group();
+  const body = mesh(new THREE.CylinderGeometry(0.3, 0.24, 0.3, 16), mat('#c8945a', 0.8));
+  body.position.y = 0.15;
+  const handle = mesh(new THREE.TorusGeometry(0.24, 0.03, 6, 20, Math.PI), mat('#a8774a', 0.8));
+  handle.position.y = 0.3;
+  const loaf = mesh(new THREE.CapsuleGeometry(0.08, 0.22, 4, 8), mat('#c98a4b', 0.6));
+  loaf.position.set(-0.05, 0.34, 0);
+  loaf.rotation.z = 0.9;
+  g.add(body, handle, loaf);
+  for (const [x, z] of [[0.12, 0.06], [0.06, -0.12]]) {
+    const apple = mesh(new THREE.SphereGeometry(0.07, 10, 8), mat('#d8483c', 0.5));
+    apple.position.set(x, 0.32, z);
+    g.add(apple);
+  }
   return g;
 }
 

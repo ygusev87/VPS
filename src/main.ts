@@ -634,7 +634,7 @@ function updateHint(dt: number) {
   // Free play is the child's own experiment: nudge later than in missions.
   const free = level === FREE_PLAY || !!level.sandbox;
   const wait = free ? (hintShownOnce ? 9000 : 4000) : hintShownOnce ? 6000 : 1600;
-  const h = map ? (map.hint(trayLeft) ?? sandboxHint(world)) : free ? sandboxHint(world) : levelHint(world, level, trayLeft);
+  const h = map ? (map.hint(trayLeft) ?? (map.ownHints ? null : sandboxHint(world))) : free ? sandboxHint(world) : levelHint(world, level, trayLeft);
   if (!h) return setHint(null);
   // Keep showing a hint that is already up; new ones wait for the child to pause.
   if (currentHint && hintKey(currentHint) === hintKey(h)) return;

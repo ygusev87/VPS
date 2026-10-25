@@ -12,7 +12,7 @@ const images = new Map<Tile, HTMLImageElement>();
 /** Stand-in colours for tiles that failed to load (or are not made yet). */
 const FLAT: Record<Tile, string> = { grass: '#a3c17f', 'grass-light': '#b6d28f', path: '#d6bd86', soil: '#9a7650', mud: '#8a6a46', 'pond-bed': '#c9e6f0', asphalt: '#767b84', paving: '#d8cdbd' };
 /** How many world units one tile covers. */
-const SIZE: Record<Tile, number> = { grass: 7, 'grass-light': 7, path: 3.5, soil: 14, mud: 3, 'pond-bed': 4, asphalt: 6, paving: 3 };
+const SIZE: Record<Tile, number> = { grass: 7, 'grass-light': 7, path: 3.5, soil: 14, mud: 3, 'pond-bed': 4, asphalt: 6, paving: 0.75 };
 
 /** Loads the tiles once; any that fail leave a flat colour in their place. */
 export async function loadGround() {

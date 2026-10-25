@@ -131,20 +131,31 @@ export function problemHint(world: World): Hint | null {
   }
 
   // 4. Wired right but too little power: with twice the battery it would work.
-  const idle = world.parts.filter((p) => LOADS.includes(p.kind) && !activeAt(p.kind, p.state.level));
+  // (Idle by the circuit as it is now: a switch just pressed is not solved into the parts yet.)
+  const now = world.trial((e) => e);
+  const idle = world.parts.filter((p) => LOADS.includes(p.kind) && !activeAt(p.kind, p.state.level) && !activeAt(p.kind, now.elements.get(p.id)?.level ?? 0));
   if (idle.length) {
     const strong = world.trial((e) => (e.kind === 'battery' ? { ...e, emf: (e.emf ?? PARAMS.battery.emf) * 2 } : e));
     if (idle.some((p) => activeAt(p.kind, strong.elements.get(p.id)?.level ?? 0))) {
-      // The battery working hardest is the one to point at.
+      // The one source that, made stronger alone, would get it going (on a map with many poles,
+      // not a busy pole elsewhere); failing that, the battery working hardest.
+      const batteries = world.elements().filter((e) => e.kind === 'battery');
       let best: string | null = null;
-      let bestI = 0;
-      for (const [id, e] of strong.elements) {
-        const el = world.elements().find((x) => x.id === id);
-        if (el?.kind === 'battery' && Math.abs(e.current) > bestI) {
-          best = partIdOf(id);
-          bestI = Math.abs(e.current);
+      for (const b of batteries) {
+        const one = world.trial((e) => (e.id === b.id ? { ...e, emf: (e.emf ?? PARAMS.battery.emf) * 2 } : e));
+        if (idle.some((p) => activeAt(p.kind, one.elements.get(p.id)?.level ?? 0))) {
+          best = partIdOf(b.id);
+          break;
         }
       }
+      let bestI = 0;
+      if (!best)
+        for (const [id, e] of strong.elements) {
+          if (batteries.some((x) => x.id === id) && Math.abs(e.current) > bestI) {
+            best = partIdOf(id);
+            bestI = Math.abs(e.current);
+          }
+        }
       const busiest = world.parts.find((q) => q.id === best);
       // A hand generator is "weak" because it is turned too slowly (or not at all).
       if (busiest instanceof Dynamo) return { type: 'tap', part: busiest, phrase: 'crank', local: busiest.knobPoint() };

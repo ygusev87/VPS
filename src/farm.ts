@@ -764,6 +764,14 @@ export class FarmMap extends StoryMap {
   protected extraHint(trayLeft: (k: PartKind) => number): Hint | null {
     if (this.day === 1 && this.phase === 'night' && !this.world.parts.some((p) => p.kind === 'bell' || p.kind === 'buzzer') && trayLeft('bell') > 0)
       return { type: 'drag', kind: 'bell', to: BELL_SPOT.clone(), phrase: 'foxTip' };
+    // Both on their rings: one loop from the pole through the button and the bell.
+    if (this.day === 1 && this.phase === 'night') {
+      const near = (at: THREE.Vector3, kinds: PartKind[]) => this.world.parts.find((p) => kinds.includes(p.kind) && p.root.position.distanceTo(at) < 4);
+      const button = near(FOX_BUTTON, ['button']);
+      const bell = near(BELL_SPOT, ['bell', 'buzzer']);
+      const pole = this.nearestSource(FOX_BUTTON);
+      if (button && bell && pole) return this.chainHint(pole, [button, bell]);
+    }
     return null;
   }
 

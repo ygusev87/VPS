@@ -4,7 +4,7 @@
 // part of the day is helped, a close look at whoever is next, and the story
 // kept between visits. A map lays itself out and adds what is its own.
 import * as THREE from 'three';
-import type { Hint } from './hints';
+import { sandboxHint, type Hint } from './hints';
 import { model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
 import { mat, mesh } from './parts/kit';
@@ -56,30 +56,36 @@ export interface Critter {
   sweat?: THREE.Sprite[];
 }
 
-export interface Need {
+/** A ring on the ground and the part that goes on it. */
+export interface Slot {
+  /** Shown in the bubble, and dragged from the drawers by a hint. */
+  icon: PartKind;
+  /** Parts that belong on the ring (empty: nothing to place, e.g. the farm's gate). */
+  kinds: PartKind[];
+  /** The phrase of the hint that drags its part over (defaults to "put it on the ring"). */
+  hintPhrase?: PhraseId;
+  /** Where the part should go (a ring on the ground). */
+  spot: THREE.Vector3;
+  ring: THREE.Mesh;
+  /** The right part stands on the ring (lights it green). */
+  ready: boolean;
+}
+
+export interface Need extends Slot {
   critter: Critter;
   day: 1 | 2;
   phase: Phase;
   ask: PhraseId;
   thanks: PhraseId;
-  /** Shown in the bubble, and dragged from the drawers by a hint. */
-  icon: PartKind;
-  /** Parts that belong on the ring (empty: nothing to place, e.g. the farm's gate). */
-  kinds: PartKind[];
+  /** More parts on rings of their own: a chain the need is built of (the city's). */
+  more: Slot[];
   /** Sticker earned (defaults to the character's name). */
   sticker?: string;
-  /** The phrase of the hint that drags its part over (defaults to "put it on the ring"). */
-  hintPhrase?: PhraseId;
   /**
    * What the camera shows for this need (with the nearest power): the character
    * and its ring unless set (the farm's dog is far from the fox's button).
    */
   focus?: THREE.Vector3[];
-  /** The right part stands on the ring (lights it green). */
-  ready: boolean;
-  /** Where the part should go (a ring on the ground). */
-  spot: THREE.Vector3;
-  ring: THREE.Mesh;
   done: boolean;
   /** Seconds the need has been met in a row. */
   held: number;
@@ -87,7 +93,10 @@ export interface Need {
 }
 
 /** A need as it is described (built with day one unless it says day two). */
-export type NeedSpec = Omit<Need, 'ring' | 'done' | 'held' | 'ready' | 'day'> & { day?: 1 | 2 };
+export type NeedSpec = Omit<Need, 'ring' | 'done' | 'held' | 'ready' | 'day' | 'more'> & { day?: 1 | 2; more?: Omit<Slot, 'ring' | 'ready'>[] };
+
+/** Every ring of a need: its own first, then the rest of its chain. */
+const slots = (n: Need): Slot[] => [n, ...n.more];
 
 /** The story so far, as saved between visits (a map adds its own fields). */
 export interface MapProgress {
@@ -125,6 +134,8 @@ export abstract class StoryMap {
   protected abstract readonly depth: number;
   /** Bumped whenever the map is laid out anew (a save on another layout is dropped). */
   abstract readonly layout: number;
+  /** The map's hints are all there is (no general wiring hints for the rest of the board). */
+  readonly ownHints: boolean = false;
   /** Said by "repeat" when nobody waits for help. */
   protected abstract readonly intro: PhraseId;
 
@@ -247,7 +258,7 @@ export abstract class StoryMap {
   /** What to show for a need: its points with room round them, and the nearest power. */
   private view(n: Need): THREE.Vector3[] {
     const src = this.nearestSource(n.spot);
-    const pts = [...(n.focus ?? [n.critter.home, n.spot]), ...(src ? [src.root.position] : [])];
+    const pts = [...(n.focus ?? [n.critter.home, ...slots(n).map((s) => s.spot)]), ...(src ? [src.root.position] : [])];
     return pts.flatMap((p) => [p.clone().add(v(-2, -2.6)), p.clone().add(v(2, 1.8))]);
   }
 
@@ -267,27 +278,60 @@ export abstract class StoryMap {
   snap(part: Part): boolean {
     if (part.pinned) return false;
     for (const n of this.needs) {
-      if (n.done || !this.isNow(n) || !n.kinds.includes(part.kind)) continue;
-      if (part.root.position.distanceTo(n.spot) > SNAP_R) continue;
-      if (this.world.parts.some((p) => p !== part && n.kinds.includes(p.kind) && p.root.position.distanceTo(n.spot) < 0.8)) continue;
-      this.slides = this.slides.filter((s) => s.part !== part);
-      this.slides.push({ part, to: n.spot.clone() });
-      n.critter.hop = 1;
-      this.hooks.placed?.(n.spot.clone());
-      return true;
+      if (n.done || !this.isNow(n)) continue;
+      for (const s of slots(n)) {
+        if (!s.kinds.includes(part.kind) || part.root.position.distanceTo(s.spot) > SNAP_R || this.taken(s, part)) continue;
+        this.slides = this.slides.filter((sl) => sl.part !== part);
+        this.slides.push({ part, to: s.spot.clone() });
+        n.critter.hop = 1;
+        this.hooks.placed?.(s.spot.clone());
+        return true;
+      }
     }
     return false;
   }
 
+  /** Another part of the kind already stands on this ring. */
+  private taken(s: Slot, part?: Part) {
+    return this.world.parts.some((p) => p !== part && s.kinds.includes(p.kind) && p.root.position.distanceTo(s.spot) < 0.8);
+  }
+
   /** Where a part tapped in the drawer should go: the ring that wants it, if any. */
   spotFor(part: Part): THREE.Vector3 | null {
-    const free = (n: Need) =>
-      !n.done &&
-      this.isNow(n) &&
-      n.kinds.includes(part.kind) &&
-      !this.world.parts.some((p) => p !== part && n.kinds.includes(p.kind) && p.root.position.distanceTo(n.spot) < 0.8);
-    const n = (this.focused && free(this.focused) ? this.focused : null) ?? this.needs.find(free);
-    return n ? n.spot.clone() : null;
+    const free = (n: Need) => (!n.done && this.isNow(n) ? slots(n).find((s) => s.kinds.includes(part.kind) && !this.taken(s, part)) : undefined);
+    const s = (this.focused ? free(this.focused) : undefined) ?? this.needs.map(free).find((x) => x);
+    return s ? s.spot.clone() : null;
+  }
+
+  /** A gadget of this need stands on its ring with no wire yet: from the nearest pole to it. */
+  private firstWire(n: Need): Hint | null {
+    for (const s of slots(n)) {
+      // (A ring with nothing to place is for a part of the map itself, like the farm's gate.)
+      const part = this.world.parts.find((p) => (s.kinds.length ? !p.pinned && s.kinds.includes(p.kind) : p.kind === s.icon) && p.root.position.distanceTo(s.spot) < (s.kinds.length ? 0.8 : 6));
+      // Switch-like parts go in a loop with something else; the map says which (a switch alone on a pole is a short).
+      if (!part || part.elementKind === 'switch' || part.terminals.length < 2 || this.world.wires.some((w) => part.terminals.some((t) => w.touches(t)))) continue;
+      const src = this.nearestSource(s.spot);
+      if (src) return this.chainHint(src, [part]);
+    }
+    return null;
+  }
+
+  /**
+   * The next wire of a loop from a pole through these parts and back to it:
+   * from the end reached so far to the next part, and at last back to the pole.
+   */
+  protected chainHint(src: Part, chain: Part[]): Hint | null {
+    const plus = src.terminal('a')!;
+    let at = plus;
+    for (const p of chain) {
+      const a = p.terminal('a')!;
+      const b = p.terminal('b')!;
+      if (this.world.wired(at, a)) at = b;
+      else if (this.world.wired(at, b)) at = a;
+      else return { type: 'connect', from: at, to: a, phrase: at === plus ? 'chainStart' : 'chainNext' };
+    }
+    const back = src.terminal('b')!;
+    return this.world.wired(at, back) ? null : { type: 'connect', from: at, to: back, phrase: 'chainBack' };
   }
 
   /** Which parts of the map the child cannot throw away (none; all are pinned or theirs). */
@@ -367,7 +411,8 @@ export abstract class StoryMap {
   }
 
   protected addNeed(n: NeedSpec) {
-    this.needs.push({ day: 1, ...n, ring: this.ring(n.spot), done: false, held: 0, ready: false });
+    const more = (n.more ?? []).map((s) => ({ ...s, ring: this.ring(s.spot), ready: false }));
+    this.needs.push({ day: 1, ...n, more, ring: this.ring(n.spot), done: false, held: 0, ready: false });
   }
 
   // ───────────────────────── Story ─────────────────────────
@@ -388,12 +433,16 @@ export abstract class StoryMap {
       if (!mine.length) continue;
       c.mood = mine.some((n) => this.isNow(n) && !n.done) ? 'asking' : mine.some((n) => n.done) ? 'happy' : 'calm';
       const ask = mine.find((n) => this.isNow(n) && !n.done);
-      if (ask && c.bubbleKind !== ask.icon) {
-        c.bubbleKind = ask.icon;
-        (c.bubble.material as THREE.SpriteMaterial).map = bubbleTexture(ask.icon);
-        (c.bubble.material as THREE.SpriteMaterial).needsUpdate = true;
-      }
+      if (ask) this.picture(c, ask.icon);
     }
+  }
+
+  /** Show this part in the character's speech bubble. */
+  private picture(c: Critter, kind: PartKind) {
+    if (c.bubbleKind === kind) return;
+    c.bubbleKind = kind;
+    (c.bubble.material as THREE.SpriteMaterial).map = bubbleTexture(kind);
+    (c.bubble.material as THREE.SpriteMaterial).needsUpdate = true;
   }
 
   /** Tap on a character: it tells what it needs (or says thanks). */
@@ -420,13 +469,26 @@ export abstract class StoryMap {
 
   /** The next helpful nudge: bring the part a waiting character asks for. */
   hint(trayLeft: (k: PartKind) => number): Hint | null {
-    const order = [this.focused, ...this.needs].filter((n): n is Need => !!n);
-    for (const n of order) {
-      if (n.done || !this.isNow(n) || !n.kinds.length) continue;
-      const placed = this.world.parts.some((p) => n.kinds.includes(p.kind) && p.root.position.distanceTo(n.spot) < 1);
-      if (!placed && trayLeft(n.icon) > 0) return { type: 'drag', kind: n.icon, to: n.spot.clone(), phrase: n.hintPhrase ?? 'placeHere' };
+    const drag = (n: Need): Hint | null => {
+      for (const s of slots(n)) {
+        if (!s.kinds.length) continue;
+        const placed = this.world.parts.some((p) => s.kinds.includes(p.kind) && p.root.position.distanceTo(s.spot) < 1);
+        if (!placed && trayLeft(s.icon) > 0) return { type: 'drag', kind: s.icon, to: s.spot.clone(), phrase: s.hintPhrase ?? 'placeHere' };
+      }
+      return null;
+    };
+    // The one being helped comes first: its parts, then its wires, before any other ring.
+    const first = this.focused && !this.focused.done && this.isNow(this.focused) ? this.focused : this.current();
+    if (first) {
+      const h = drag(first) ?? this.extraHint(trayLeft) ?? this.firstWire(first) ?? (this.ownHints ? null : sandboxHint(this.world));
+      if (h) return h;
     }
-    return this.extraHint(trayLeft);
+    for (const n of this.needs) {
+      if (n === first || n.done || !this.isNow(n)) continue;
+      const h = drag(n);
+      if (h) return h;
+    }
+    return first ? null : this.extraHint(trayLeft);
   }
 
   update(dt: number) {
@@ -447,16 +509,22 @@ export abstract class StoryMap {
     this.tick(dt);
 
     for (const n of this.needs) {
-      const ringMat = n.ring.material as THREE.MeshBasicMaterial;
-      if (n.done || !this.isNow(n)) {
-        ringMat.opacity = THREE.MathUtils.damp(ringMat.opacity, 0, 6, dt);
-        continue;
+      const waiting = !n.done && this.isNow(n);
+      for (const s of slots(n)) {
+        const ringMat = s.ring.material as THREE.MeshBasicMaterial;
+        if (!waiting) {
+          ringMat.opacity = THREE.MathUtils.damp(ringMat.opacity, 0, 6, dt);
+          continue;
+        }
+        // White and pulsing while it waits; green and steady once the right part stands on it.
+        s.ready = s.kinds.some((k) => this.world.parts.some((p) => p.kind === k && p.root.position.distanceTo(s.spot) < 0.6));
+        ringMat.color.set(s.ready ? '#4fd27a' : '#ffffff');
+        ringMat.opacity = s.ready ? 0.9 : 0.35 + Math.sin(this.time * 3) * 0.2;
+        s.ring.scale.setScalar(s.ready ? 1 : 1 + Math.sin(this.time * 3) * 0.05);
       }
-      // White and pulsing while it waits; green and steady once the right part stands on it.
-      n.ready = n.kinds.some((k) => this.world.parts.some((p) => p.kind === k && p.root.position.distanceTo(n.spot) < 0.6));
-      ringMat.color.set(n.ready ? '#4fd27a' : '#ffffff');
-      ringMat.opacity = n.ready ? 0.9 : 0.35 + Math.sin(this.time * 3) * 0.2;
-      n.ring.scale.setScalar(n.ready ? 1 : 1 + Math.sin(this.time * 3) * 0.05);
+      if (!waiting) continue;
+      // The bubble shows the next part still missing from the chain.
+      if (n.more.length) this.picture(n.critter, (slots(n).find((s) => s.kinds.length && !s.ready) ?? n).icon);
       n.held = n.met() ? n.held + dt : 0;
       if (n.held > 0.8) {
         n.done = true;
