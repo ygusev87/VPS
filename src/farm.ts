@@ -623,7 +623,7 @@ export class FarmMap {
     // Night: the dog warns about the fox; a button on the path and a bell chase it off.
     add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], spot: FOX_PATH[3].clone(), focus: [FOX_PATH[3].clone(), BELL_SPOT.clone()], met: () => this.foxChased, sticker: 'farm:fox' });
     // Morning: the ducklings want a fountain.
-    add({ critter: get('duck'), phase: 'morning', ask: 'ducksAsk', thanks: 'ducksHappy', icon: 'pump', kinds: ['pump'], spot: v(POND.x - 5.3, POND.z + 0.2), met: () => this.fountainLevel > 0.95 });
+    add({ critter: get('duck'), phase: 'morning', ask: 'ducksAsk', thanks: 'ducksHappy', icon: 'pump', kinds: ['pump'], spot: v(POND.x + 2.2, POND.z - 4.3), met: () => this.fountainLevel > 0.95 });
   }
 
   private addNeed(n: NeedSpec) {
@@ -1324,7 +1324,7 @@ function boardTexture(): THREE.Texture {
   path([[-3.2, LANE_Z], [-3.2, 9.6]], 1.2);
   path([[-15.5, LANE_Z], [-16, 10.4]], 1.1);
   path([[-15.5, -6.5], [-21, -9.5], [MILL.x + 1, MILL.z + 2.5]], 1.2);
-  path([[ROAD_X, 10], [17, 13], [POND.x - 6, POND.z + 3]], 1.1);
+  path([[ROAD_X, 10], [20, 11], [POND.x + 0.6, POND.z - 4.4]], 1.1);
   // Mud in the pig pen, the pond by the house.
   const blobPaint = (x: number, z: number, rx: number, rz: number, col: string | CanvasPattern) => {
     ctx.fillStyle = col;
