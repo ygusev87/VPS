@@ -461,8 +461,9 @@ export class FireLadder extends Part {
     this.boom.add(this.outer);
     this.boom.position.set(-0.7, PLATE_TOP + 0.25, -0.15);
     this.body.add(plate, turn, this.boom);
-    this.addTerminal('a', 'none', 0.9, 0.4);
-    this.addTerminal('b', 'none', -0.2, 0.4);
+    // Both posts at the plate's ends, so a finger on its middle moves the ladder rather than starting a wire.
+    this.addTerminal('a', 'none', 0.95, 0.42);
+    this.addTerminal('b', 'none', -1.0, 0.42);
     this.pickable(plate, turn);
   }
 
