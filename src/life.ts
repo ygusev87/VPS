@@ -368,8 +368,11 @@ export class Life {
       case 'well': {
         // The bucket goes down the well, splash, and winds back up.
         const d = k < 0.8 ? k / 0.8 : k < 1.4 ? 1 : Math.max(0, 1 - (k - 1.4) / 1);
-        P.bucket.position.y = P.bucket.userData.y0 - d * 1.1;
-        P.crank.rotation.z = -d * Math.PI * 6;
+        P.bucket.position.y = P.bucket.userData.y0 - d * (P.bucket.userData.rope ? 1.05 : 1.1);
+        P.bucket.userData.hang?.();
+        // The sculpted well's winch turns about its own length (x); the old one is a cylinder lying along x.
+        if (P.bucket.userData.rope) P.crank.rotation.x = -d * Math.PI * 6;
+        else P.crank.rotation.z = -d * Math.PI * 6;
         if (k > 0.8 && !t.root.userData.splashed) {
           t.root.userData.splashed = true;
           this.splash(t.root.localToWorld(new THREE.Vector3(0, 0.9, 0)), '#8fd3ff');
@@ -588,7 +591,8 @@ const TOY_BUILDERS: Record<ToyKind, (body?: THREE.Object3D) => { root: THREE.Gro
     root.add(box, window, slot, can);
     return { root, parts: { can } };
   },
-  well: () => {
+  well: (body) => {
+    if (body) return modelWell(body);
     const root = new THREE.Group();
     const stone = mat('#a9a39a', 0.85);
     const ring = mesh(new THREE.CylinderGeometry(0.75, 0.8, 0.7, 20, 1, true), stone);
@@ -618,6 +622,48 @@ const TOY_BUILDERS: Record<ToyKind, (body?: THREE.Object3D) => { root: THREE.Gro
     return { root, parts: { crank, bucket } };
   },
 };
+
+/**
+ * The sculpted well (2.8 wide, its front to +Z, measured in
+ * assets-src/farm-v3/props/anchors.json): our water in its open throat, a
+ * winch between the posts that turns about its own length, a short beam out
+ * over the throat, and the rope and bucket hanging from it.
+ */
+function modelWell(body: THREE.Object3D) {
+  const root = new THREE.Group();
+  const water = mesh(new THREE.CircleGeometry(0.76, 24).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ color: '#3f8fc4', roughness: 0.1 }), false);
+  water.position.y = 0.2;
+  const wood = mat('#8a5a32', 0.8);
+  const crank = new THREE.Group();
+  crank.position.set(0, 1.7, -0.4);
+  const drum = mesh(new THREE.CylinderGeometry(0.08, 0.08, 2.2, 10), wood);
+  drum.rotation.z = Math.PI / 2;
+  // A handle on the end, so the turning shows.
+  const arm = mesh(new THREE.BoxGeometry(0.06, 0.32, 0.06), wood);
+  arm.position.set(1.12, 0.14, 0);
+  const grip = mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.2, 8), wood);
+  grip.rotation.z = Math.PI / 2;
+  grip.position.set(1.2, 0.28, 0);
+  crank.add(drum, arm, grip);
+  const beam = mesh(new THREE.BoxGeometry(0.08, 0.08, 0.9), wood);
+  beam.position.set(0, 1.74, 0.03);
+  const rope = mesh(new THREE.CylinderGeometry(0.015, 0.015, 1, 6), mat('#d8c39a', 0.9), false);
+  const bucket = mesh(new THREE.CylinderGeometry(0.18, 0.14, 0.26, 14), mat('#9a6a3e', 0.7));
+  bucket.position.set(0, 1.3, 0.45);
+  bucket.userData.y0 = 1.3;
+  bucket.userData.rope = rope;
+  const hang = () => {
+    // The rope from the beam's end down to the bucket's handle.
+    const top = 1.7;
+    const low = bucket.position.y + 0.13;
+    rope.scale.y = Math.max(0.01, top - low);
+    rope.position.set(0, (top + low) / 2, 0.45);
+  };
+  hang();
+  bucket.userData.hang = hang;
+  root.add(body, water, crank, beam, rope, bucket);
+  return { root, parts: { crank, bucket } };
+}
 
 const butterflyCache = new Map<string, THREE.Texture>();
 /** Two pairs of round wings and a dark body, seen from above. */

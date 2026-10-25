@@ -29,7 +29,7 @@ import { DECOR, FENCES, MEADOW, MUD, PATHS, PONDS, SOIL } from './farm-decor';
 import { StoryMap, blob, boxHouse, instances, v, type Critter, type MapHooks, type MapProgress, type Need, type NeedSpec, type Phase } from './storymap';
 
 /** Model files only the farm needs (loaded when it opens). */
-export const FARM_MODELS = ['hayloft', 'cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
+export const FARM_MODELS = ['well', 'hayloft', 'cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-rig', 'barn', 'coop', 'tractor', 'duck', 'sheep', 'pole', 'solar', 'doghouse', 'sack',
   // Day two (each falls back to a stand-in until its model is made).
   'kitten', 'goat', 'kid', 'beehive', 'flowerbed-buds', 'flowerbed-bloom', 'nest', 'chick', 'goose', 'rooster', 'horse', 'stable',
   // Scenery.
@@ -484,7 +484,8 @@ export class FarmMap extends StoryMap {
     const loop = Array.from({ length: 25 }, (_, i) => v(FIELD.x + Math.cos((i / 24) * Math.PI * 2) * 4.2, FIELD.z + Math.sin((i / 24) * Math.PI * 2) * 6));
     const lines = [FOX_PATH, [LAUNCH_SPOT, v(LAUNCH_SPOT.x + 15, LAUNCH_SPOT.z)], [TRACTOR_AT, v(TRACTOR_AT.x, FIELD.z - 6)], loop];
     // The toys to poke, and the herd: animals in the dressing wander about instead of standing still.
-    for (const [kind, x, z, yaw] of TOYS) this.life.addToy(kind, x, z, yaw, kind === 'mouse' ? (model('haystack', { width: 2.2 }) ?? undefined) : undefined);
+    const bodies: Partial<Record<ToyKind, () => THREE.Object3D | null>> = { mouse: () => model('haystack', { width: 2.2 }), well: () => model('well', { width: 2.8 }) };
+    for (const [kind, x, z, yaw] of TOYS) this.life.addToy(kind, x, z, yaw, bodies[kind]?.() ?? undefined);
     keep.push(...this.life.toySpots);
     const herd = DECOR.filter((g) => HERD[g.model]);
     for (const g of herd) {
