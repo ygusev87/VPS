@@ -1,0 +1,99 @@
+{
+  "generatedAt": "2026-10-25T12:14:06.949Z",
+  "source": "/tmp/gameios-city-normalized",
+  "output": "/tmp/gameios-city-optimized",
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 613072,
+      "triangles": 7612,
+      "textureMiB": 21.333333333333332
+    },
+    "after": {
+      "bytes": 113860,
+      "triangles": 7612,
+      "textureMiB": 1.3333333333333333
+    }
+  },
+  "models": [
+    {
+      "name": "grandma",
+      "sourceSha256": "1941209f1169afdb312d744fb2f5ecb11552f46b3ba5497942a1df4c17723bf9",
+      "outputSha256": "4ea551640122e52df7cb483c94f908a8c08a799115a360c28def7570a9961c14",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 613072,
+        "triangles": 7612,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 529146,
+            "mime": "image/jpeg"
+          }
+        ],
+        "textureMiB": 21.333333333333332,
+        "bounds": {
+          "min": [
+            -0.21233252967925045,
+            -0.5,
+            -0.3186590166936247
+          ],
+          "max": [
+            0.21233252967925045,
+            0.5,
+            0.3186590166936247
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 113860,
+        "triangles": 7612,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 29868,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.21233252967925045,
+            -0.5,
+            -0.3186590166936247
+          ],
+          "max": [
+            0.21233252967925045,
+            0.5,
+            0.3186590166936247
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ]
+}

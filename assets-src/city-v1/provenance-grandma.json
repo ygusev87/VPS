@@ -1,0 +1,33 @@
+{
+  "models": [
+    {
+      "name": "grandma",
+      "task_id": "7ce70e13-ab48-4643-8aeb-af0bf67e01b5",
+      "type": "image_to_model",
+      "status": "success",
+      "credits_consumed": 30,
+      "sourceReference": "grandma-v1.png",
+      "rawSha256": "a6a9a4edc588b601fdac8389b45c45d52cd5ffeafea8a67a0712a25183c11e30",
+      "model": "v3.1-20260211",
+      "texture_version": "v3.5-20260815",
+      "texture": true,
+      "pbr": false,
+      "delight": true,
+      "texture_quality": "standard",
+      "face_limit": 8000,
+      "model_seed": 25102104,
+      "rigged": false,
+      "preparation": {
+        "yawDegrees": 0
+      },
+      "created_at": "2026-10-25T12:11:18.782184Z",
+      "completed_at": "2026-10-25T12:12:29.368452Z",
+      "forward": "+x"
+    }
+  ],
+  "apiBalanceBefore": 245,
+  "apiBalanceAfter": 215,
+  "apiCreditsUsed": 30,
+  "cityApiCreditsTotal": 150,
+  "studioCreditsUsed": 0
+}
