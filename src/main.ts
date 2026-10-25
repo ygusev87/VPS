@@ -4,7 +4,7 @@ import { Sfx } from './audio';
 import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
 import { Fx } from './fx';
 import { CITY_MODELS, CITY_TRAY, CityMap } from './city';
-import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap, hasDayTwo } from './farm';
+import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap } from './farm';
 import type { MapHooks, MapProgress, StoryMap } from './storymap';
 import { loadGround } from './ground';
 import { Hud } from './hud';
@@ -116,7 +116,7 @@ const MAPS: Record<MapName, { level: Level; models: string[]; tray(): Level['tra
     level: mapLevel('farm', 'Ферма', 'Помоги животным', 'pump', 'farmIntro', 'morning'),
     models: FARM_MODELS,
     // The second day's parts come into the drawers with it (and one more LED for the geese).
-    tray: () => (hasDayTwo() ? [...FARM_TRAY.map((t) => (t.kind === 'led' ? { ...t, count: t.count + 1 } : t)), ...FARM_TRAY_TWO] : FARM_TRAY),
+    tray: () => [...FARM_TRAY.map((t) => (t.kind === 'led' ? { ...t, count: t.count + 1 } : t)), ...FARM_TRAY_TWO],
     make: (hooks) => new FarmMap(stage, world, hooks),
     move: 'farmMove',
   },
@@ -391,6 +391,8 @@ async function startMap(name: MapName, fresh = false) {
   const def = MAPS[name];
   await Promise.all([loadModels(def.models), loadGround()]);
   leaveMap();
+  // A view asked for by the map just left is not this one's.
+  mapFocus = null;
   level = def.level;
   won = false;
   goalHeld = 0;

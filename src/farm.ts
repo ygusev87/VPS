@@ -21,6 +21,8 @@ import { flowers, groundMaterial, onLane, pond, type Ellipse, type GroundPlan } 
 import { AMBIENT } from './parts/wind';
 import { isActive } from './world';
 import { dressing } from './decor';
+import { type Gait, type ToyKind } from './life';
+import type { PhraseId } from './voice';
 import { DECOR, FENCES, MEADOW, MUD, PATHS, PONDS, SOIL } from './farm-decor';
 import { StoryMap, blob, boxHouse, instances, v, type Critter, type MapHooks, type MapProgress, type Need, type NeedSpec, type Phase } from './storymap';
 
@@ -32,6 +34,22 @@ export const FARM_MODELS = ['cow', 'pig', 'hen', 'rabbit', 'dog', 'fox', 'fox-ri
   'tree-oak', 'tree-pine', 'bush', 'haystack', 'hutch', 'fence', 'fence-post', 'rock-cluster', 'flower-cluster',
   // And whatever the dressing uses (a model not made yet is simply left out).
   ...DECOR.map((g) => g.model)].filter((m, i, all) => all.indexOf(m) === i);
+/** What each one says when poked. */
+const FARM_VOICES: Record<string, PhraseId> = {
+  cow: 'moo', pig: 'oink', sheep: 'baa', hen: 'cluck', rabbit: 'munch', dog: 'woof', duck: 'quack', kitten: 'meow', goat: 'maa', kid: 'maa',
+  beehive: 'buzz', horse: 'neigh', puppy: 'yap', nest: 'peep', chick: 'peep', goose: 'honk', rooster: 'crow', tractor: 'beep',
+};
+/** How the herd (animals in the dressing) moves about. */
+const HERD: Record<string, Gait> = { cow: 'graze', horse: 'graze', sheep: 'graze', goat: 'graze', kid: 'hop', pig: 'graze', hen: 'peck', chick: 'peck', rooster: 'peck', rabbit: 'hop', duck: 'waddle', goose: 'waddle' };
+/** Things placed to be poked (each does something funny). */
+const TOYS: [ToyKind, number, number, number][] = [
+  ['mouse', -7.5, -18.5, 0.4],
+  ['well', -1.5, -3.2, 0.3],
+  ['scarecrow', 8.3, 25.2, 0],
+  ['mailbox', -32.5, -21.6, 0],
+  ['frog', -34.6, 8.4, -0.6],
+];
+
 /** Animals drawn with another one's model: the puppy is the dog, smaller. */
 const MODEL_OF: Record<string, string> = { puppy: 'dog' };
 
@@ -40,18 +58,18 @@ const MODEL_OF: Record<string, string> = { puppy: 'dog' };
 export const FARM_TRAY: { kind: PartKind; count: number }[] = [
   { kind: 'fan', count: 2 },
   { kind: 'floorFan', count: 1 },
-  { kind: 'pump', count: 2 },
+  { kind: 'pump', count: 3 },
   { kind: 'windmill', count: 1 },
   { kind: 'bulb', count: 2 },
   { kind: 'led', count: 2 },
-  { kind: 'heater', count: 1 },
+  { kind: 'heater', count: 2 },
   { kind: 'musicbox', count: 1 },
   { kind: 'button', count: 1 },
   { kind: 'bell', count: 1 },
   { kind: 'buzzer', count: 1 },
   { kind: 'switch', count: 2 },
 ];
-/** Added to the drawers when the farm has its second day. */
+/** The rest of the farm's drawers (the kitten's lift, the goats' carousel, the puppy's cannon). */
 export const FARM_TRAY_TWO: { kind: PartKind; count: number }[] = [
   { kind: 'lift', count: 1 },
   { kind: 'carousel', count: 1 },
@@ -159,14 +177,6 @@ const POLES = [
 const SOLAR_AT = v(39, -22);
 const WIND_AT = v(-27, 9.5);
 
-/** The farm's second lot of animals need these models (see dayTwo). */
-const DAY_TWO_ANIMALS = ['kitten', 'goat', 'kid', 'goose', 'rooster', 'horse', 'chick'];
-
-/** Will the farm have its second lot of animals (once their models are loaded)? `?day2` forces it, for testing. */
-export function hasDayTwo() {
-  return DAY_TWO_ANIMALS.every(hasModel) || new URLSearchParams(location.search).has('day2');
-}
-
 export class FarmMap extends StoryMap {
   protected readonly width = W;
   protected readonly depth = D;
@@ -196,11 +206,6 @@ export class FarmMap extends StoryMap {
   /** The ducks' fountain grows while a pump pours into the pond. */
   fountainLevel = 0;
   private fountain: THREE.Sprite[] = [];
-  /**
-   * The second day comes once its animals' models are there (stand-ins would
-   * spoil the farm); `?day2` in the address turns it on anyway, for testing.
-   */
-  dayTwo = false;
   /** Day two: the kitten up on the hay loft, riding the lift, or safe on the ground. */
   private kitten: 'stuck' | 'riding' | 'down' = 'stuck';
   /** How long the goat kids have been going round on the carousel. */
@@ -218,7 +223,6 @@ export class FarmMap extends StoryMap {
 
   /** Lay the farm out: the board, the working props, the poles, the animals and what they need, then the dressing round them. */
   protected build() {
-    this.dayTwo = hasDayTwo();
     this.buildBoard();
     this.buildPlaces();
     this.placeParts();
@@ -253,7 +257,7 @@ export class FarmMap extends StoryMap {
     // The tractor has long gone through the gate into the field.
     if (this.needs.some((n) => n.done && n.critter.name === 'tractor')) this.tractorT = 30;
     const done = (name: string) => this.needs.some((n) => n.done && n.critter.name === name);
-    if (this.dayTwo && done('kitten')) this.settleKitten();
+    if (done('kitten')) this.settleKitten();
     if (done('beehive')) this.bloom = 1;
     if (done('nest')) this.warmth = 1;
     // One day now: every animal asks from the start.
@@ -350,6 +354,10 @@ export class FarmMap extends StoryMap {
     this.pin('solar', SOLAR_AT);
     this.pin('windGen', WIND_AT);
     this.gate = this.pin('gate', GATE) as Gate;
+  }
+
+  protected voiceOf(base: string): PhraseId | null {
+    return FARM_VOICES[base] ?? null;
   }
 
   /** The fox walks on its paws (its rigged model, when that is there); the puppy is the dog, smaller. */
@@ -463,8 +471,27 @@ export class FarmMap extends StoryMap {
       BELL_SPOT,
     ];
     const lines = [FOX_PATH, [LAUNCH_SPOT, v(LAUNCH_SPOT.x + 15, LAUNCH_SPOT.z)], [TRACTOR_AT, FIELD]];
-    const { group, drawn, inTheWay } = dressing(DECOR, FENCES, keep, lines);
+    // The toys to poke, and the herd: animals in the dressing wander about instead of standing still.
+    for (const [kind, x, z, yaw] of TOYS) this.life.addToy(kind, x, z, yaw, kind === 'mouse' ? (model('haystack', { width: 2.2 }) ?? undefined) : undefined);
+    keep.push(...this.life.toySpots);
+    const herd = DECOR.filter((g) => HERD[g.model]);
+    for (const g of herd) {
+      for (const [x, z, yaw, s] of g.items) {
+        const m = model(g.model, g.fit);
+        if (!m) break;
+        m.scale.multiplyScalar(s);
+        this.life.addExtra(m, x, z, yaw, HERD[g.model], FARM_VOICES[g.model] ?? null, g.model === 'hen' || g.model === 'rabbit' ? 1.8 : 2.6);
+      }
+    }
+    const { group, drawn, inTheWay } = dressing(DECOR.filter((g) => !HERD[g.model]), FENCES, keep, lines);
     this.scenery.add(group);
+    // Butterflies over the garden and the flowers, fireflies by the pond at night; smoke from the house.
+    this.life.addFlutters([v(4, 21), v(-18, 19), v(13, 26), v(-40, 22), v(44, -24), v(-10, 0)], [POND, v(-35, 14)]);
+    const house = DECOR.find((g) => g.model === 'house' && drawn.has('house'));
+    if (house) {
+      const box = new THREE.Box3().setFromObject(group.children[[...drawn].indexOf('house')] ?? group);
+      this.life.addSmoke(v(house.items[0][0] + 1.5, house.items[0][1]).setY(Math.max(3, box.max.y)));
+    }
     const trees = [...drawn].some((m) => m.startsWith('tree'));
     // Without the full dressing yet: a wood round the edges of the board, groves and bushes.
     if (!trees) {
@@ -504,7 +531,6 @@ export class FarmMap extends StoryMap {
   private liftWaitT = 0;
 
   private updateDayTwo(dt: number) {
-    if (!this.dayTwo) return;
     const today = true;
     this.updateKitten(dt, today);
     this.updateRide(dt, today);

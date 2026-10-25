@@ -46,7 +46,7 @@ export function isProblem(h: Hint | null): boolean {
 
 const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher', 'laser', 'bell', 'belt', 'pump', 'heater', 'gate', 'substation', 'magnet'];
 const POLAR: PartKind[] = ['led', 'buzzer', 'musicbox'];
-const isPolar = (p: Part) => POLAR.includes(p.kind);
+export const isPolar = (p: Part) => POLAR.includes(p.kind);
 const isBattery = (p: Part) => p.kind === 'battery' || p.kind === 'bigBattery';
 
 /** Every place power comes from: a battery's two posts, or a clip pair of the panel. */

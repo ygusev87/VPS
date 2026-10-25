@@ -574,6 +574,11 @@ export class Domino extends Part {
   }
 
   protected animate(dt: number) {
+    // Laid out from a save as closed, but standing: the contact is open.
+    if (this.closed && this.standing && this.resetting <= 0) {
+      this.closed = false;
+      this.wantsSolve = true;
+    }
     // A fan's gust, not the map's steady breeze.
     if (this.wind - AMBIENT.strength > 0.35) this.push();
     this.resetting = Math.max(0, this.resetting - dt);

@@ -4,11 +4,12 @@
 // part of the day is helped, a close look at whoever is next, and the story
 // kept between visits. A map lays itself out and adds what is its own.
 import * as THREE from 'three';
-import { sandboxHint, type Hint } from './hints';
+import { isPolar, sandboxHint, type Hint } from './hints';
 import { model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
 import { mat, mesh } from './parts/kit';
 import type { Stage } from './stage';
+import { Life } from './life';
 import { thumb } from './thumbs';
 import type { PhraseId } from './voice';
 import type { World } from './world';
@@ -53,6 +54,13 @@ export interface Critter {
   mood: 'calm' | 'asking' | 'happy';
   /** The part pictured in the speech bubble now. */
   bubbleKind?: PartKind;
+  /** Which way it faces when it stands still. */
+  face?: number;
+  /** Tapped again and again: a twirl (1..0), a somersault (1..0). */
+  spin?: number;
+  flip?: number;
+  taps?: number;
+  lastTap?: number;
   sweat?: THREE.Sprite[];
 }
 
@@ -127,9 +135,15 @@ export abstract class StoryMap {
   /** Parts gliding onto their rings. */
   protected slides: { part: Part; to: THREE.Vector3 }[] = [];
   protected focused: Need | null = null;
+  /** The herd wandering about, the toys to poke, butterflies and smoke. */
+  protected life!: Life;
   /** Where the last one helped lives. */
   private lastAt: THREE.Vector3 | null = null;
   private toldToLook = false;
+  /** Left the map (its timers stay quiet). */
+  private gone = false;
+  /** The child picked whom to help (a tap, a part on a ring): a new view does not undo it. */
+  private picked = false;
   private nextAt = -1;
 
   /** Board size, world units, centred on the origin. */
@@ -178,12 +192,18 @@ export abstract class StoryMap {
   /** Undo what the map changed on the stage. */
   protected cleanup() {}
   /** The model a character is drawn with (or a stand-in). */
+  /** What a character says when it is poked again (a moo, an oink), by its kind. */
+  protected voiceOf(_base: string): PhraseId | null {
+    return null;
+  }
+
   protected critterModel(base: string, fit: Fit, name: string): THREE.Object3D {
     return model(base, fit) ?? blob(name);
   }
 
   /** Lay the map out on the table (the world must be empty). */
   start() {
+    this.life = new Life(this.scenery, { say: (id) => this.hooks.say(id), chime: () => this.hooks.chime() });
     this.stage.world.add(this.scenery);
     this.stage.showGrid(false);
     // The view may roam to the map's corners.
@@ -194,6 +214,7 @@ export abstract class StoryMap {
   }
 
   dispose() {
+    this.gone = true;
     this.scenery.removeFromParent();
     this.stage.showGrid(true);
     this.stage.limit = 36;
@@ -278,6 +299,7 @@ export abstract class StoryMap {
     const at = this.lastAt ?? new THREE.Vector3();
     const waiting = this.needs.filter((n) => !n.done && this.isNow(n)).sort((a, b) => a.critter.home.distanceTo(at) - b.critter.home.distanceTo(at));
     if (waiting.length === 1) return this.refocus();
+    if (this.picked && this.helping()) return;
     this.focused = null;
     const pts = waiting.slice(0, 4).map((n) => n.critter.home);
     if (pts.length) this.hooks.focus?.(pts.flatMap((p) => [p.clone().add(v(-3, -3)), p.clone().add(v(3, 3))]));
@@ -312,6 +334,7 @@ export abstract class StoryMap {
         this.slides = this.slides.filter((sl) => sl.part !== part);
         this.slides.push({ part, to: s.spot.clone() });
         this.focused = n;
+        this.picked = true;
         n.critter.hop = 1;
         this.hooks.placed?.(s.spot.clone());
         return true;
@@ -328,8 +351,12 @@ export abstract class StoryMap {
   /** Where a part tapped in the drawer should go: the ring that wants it, if any. */
   spotFor(part: Part): THREE.Vector3 | null {
     const free = (n: Need) => (!n.done && this.isNow(n) ? slots(n).find((s) => s.kinds.includes(part.kind) && !this.taken(s, part)) : undefined);
-    const s = (this.focused ? free(this.focused) : undefined) ?? this.needs.map(free).find((x) => x);
-    return s ? s.spot.clone() : null;
+    const n = (this.focused && free(this.focused) ? this.focused : null) ?? this.needs.find((x) => free(x));
+    const s = n ? free(n) : undefined;
+    if (!n || !s) return null;
+    this.focused = n;
+    this.picked = true;
+    return s.spot.clone();
   }
 
   /** A gadget of this need stands on its ring with no wire yet: from the nearest pole to it. */
@@ -356,8 +383,14 @@ export abstract class StoryMap {
       const a = p.terminal('a')!;
       const b = p.terminal('b')!;
       if (this.world.wired(at, a)) at = b;
-      else if (this.world.wired(at, b)) at = a;
-      else return { type: 'connect', from: at, to: a, phrase: at === plus ? 'chainStart' : 'chainNext' };
+      else if (this.world.wired(at, b)) {
+        // An LED or a music box the wrong way round: that wire comes off first.
+        if (isPolar(p)) {
+          const wire = this.world.wiresAt(b).at(-1);
+          if (wire) return { type: 'tapWire', wire, at: p, problem: 'reversed', phrase: p.kind === 'led' ? 'reversed' : p.kind === 'musicbox' ? 'musicReversed' : 'buzzerReversed', u: 0.5 };
+        }
+        at = a;
+      } else return { type: 'connect', from: at, to: a, phrase: at === plus ? 'chainStart' : 'chainNext' };
     }
     const back = src.terminal('b')!;
     return this.world.wired(at, back) ? null : { type: 'connect', from: at, to: back, phrase: 'chainBack' };
@@ -406,7 +439,9 @@ export abstract class StoryMap {
     group.position.set(x, 0, z);
     group.rotation.y = face;
     this.scenery.add(group);
-    return this.adopt(name, group, height);
+    const c = this.adopt(name, group, height);
+    c.face = face;
+    return c;
   }
 
   /** Make something on the map a character (the farm's tractor speaks for the gate). */
@@ -452,7 +487,7 @@ export abstract class StoryMap {
     this.moods();
     this.phaseBegins(p);
     if (p === 'done') this.hooks.done();
-    else setTimeout(() => this.overview(), 1200);
+    else setTimeout(() => !this.gone && this.overview(), 1200);
   }
 
   /** Asking while a need of this part of the day waits; happy once one is met. */
@@ -474,25 +509,43 @@ export abstract class StoryMap {
     (c.bubble.material as THREE.SpriteMaterial).needsUpdate = true;
   }
 
-  /** Tap on a character: it tells what it needs (or says thanks). */
+  /**
+   * Tap on a character: the first time it tells what it needs (or says
+   * thanks); poked again it makes its noise and twirls, and the fifth time in
+   * a row it turns a somersault. Taps on the herd and the toys go to them.
+   */
   tapAt(x: number, y: number): boolean {
-    const meshes: THREE.Object3D[] = [];
+    const meshes: THREE.Object3D[] = this.life.pickables();
     this.scenery.traverse((o) => {
       if ((o as THREE.Mesh).isMesh && o.userData.critter) meshes.push(o);
     });
     const hit = this.stage.raycast(x, y, meshes)[0];
     if (!hit) return false;
+    if (hit.object.userData.life) return this.life.tap(hit.object);
     const c = this.critters.get(hit.object.userData.critter as string) ?? this.critters.get((hit.object.userData.critter as string).replace(/\d+$/, ''));
     if (!c) return false;
     c.hop = 1;
     if (this.tapped(c)) return true;
+    c.taps = this.time - (c.lastTap ?? -9) < 3 ? (c.taps ?? 0) + 1 : 1;
+    c.lastTap = this.time;
     const need = this.needs.find((n) => n.critter === c && this.isNow(n)) ?? [...this.needs].reverse().find((n) => n.critter === c && n.done);
-    if (need && !need.done) {
+    if (c.taps > 1 || !need) {
+      const noise = this.voiceOf(c.name.replace(/\d+$/, ''));
+      if (noise) this.hooks.say(noise);
+      if (c.taps >= 5) {
+        c.flip = 1;
+        c.taps = 0;
+        this.hooks.cheer(c.group.position.clone().setY(c.height + 0.5));
+      } else c.spin = 1;
+      return true;
+    }
+    if (!need.done) {
       this.hooks.say(need.ask);
       // Tapping a character brings its ring into view too.
       this.focused = need;
+      this.picked = true;
       this.hooks.focus?.(this.view(need));
-    } else if (need?.done) this.hooks.say(need.thanks);
+    } else this.hooks.say(need.thanks);
     return true;
   }
 
@@ -502,7 +555,9 @@ export abstract class StoryMap {
       for (const s of slots(n)) {
         if (!s.kinds.length) continue;
         const placed = this.world.parts.some((p) => s.kinds.includes(p.kind) && p.root.position.distanceTo(s.spot) < 1);
-        if (!placed && trayLeft(s.icon) > 0) return { type: 'drag', kind: s.icon, to: s.spot.clone(), phrase: s.hintPhrase ?? 'placeHere' };
+        // The pictured part, or another that does as well (a bulb for the eggs when the heater is taken).
+        const kind = [s.icon, ...s.kinds].find((k) => trayLeft(k) > 0);
+        if (!placed && kind) return { type: 'drag', kind, to: s.spot.clone(), phrase: s.hintPhrase ?? 'placeHere' };
       }
       return null;
     };
@@ -560,10 +615,13 @@ export abstract class StoryMap {
         this.moods();
         // The camera stays: the child picks whom to help next. The first time, a word on how.
         this.lastAt = n.critter.home.clone();
-        if (this.focused === n) this.focused = null;
+        if (this.focused === n) {
+          this.focused = null;
+          this.picked = false;
+        }
         if (!this.toldToLook && this.needs.some((x) => !x.done && this.isNow(x))) {
           this.toldToLook = true;
-          setTimeout(() => this.hooks.say('lookAround'), 3600);
+          setTimeout(() => !this.gone && this.hooks.say('lookAround'), 3600);
         }
       }
     }
@@ -576,6 +634,7 @@ export abstract class StoryMap {
     }
 
     for (const c of this.critters.values()) this.animateCritter(c, dt);
+    this.life.update(dt, this.night);
     this.afterAnimate(dt);
   }
 
@@ -593,7 +652,14 @@ export abstract class StoryMap {
     const bob = c.mood === 'asking' ? Math.max(0, Math.sin(this.time * 4 + c.home.x)) * 0.12 : Math.sin(this.time * 1.5 + c.home.x) * 0.02;
     const hop = Math.sin(c.hop * Math.PI) * 0.6;
     if (!c.roams) {
-      c.group.position.y = (c.base ?? 0) + Math.max(0, bob + hop);
+      // Poked: a twirl on the spot, or a high somersault.
+      c.spin = Math.max(0, (c.spin ?? 0) - dt * 1.6);
+      c.flip = Math.max(0, (c.flip ?? 0) - dt * 1.1);
+      const twirl = c.spin > 0 ? THREE.MathUtils.smootherstep(1 - c.spin, 0, 1) * Math.PI * 2 : 0;
+      const sault = c.flip > 0 ? THREE.MathUtils.smootherstep(1 - c.flip, 0, 1) : 0;
+      if (c.spin > 0 || c.flip > 0) c.group.rotation.y = (c.face ?? 0) + twirl;
+      c.group.rotation.z = sault * Math.PI * 2;
+      c.group.position.y = (c.base ?? 0) + Math.max(0, bob + hop) + Math.sin(sault * Math.PI) * 2.2;
       c.group.scale.set(1, 1 + (c.mood === 'asking' ? Math.sin(this.time * 8) * 0.015 : 0), 1);
     }
     // Speech bubble with the part it wants; a heart when happy.

@@ -508,7 +508,8 @@ export class CityMap extends StoryMap {
       l.m.visible = l.s >= 0;
       if (l.s < 0) continue;
       if (l.s !== Infinity && running) l.s += dt * 1.4;
-      if (l.s !== Infinity && l.s >= len) {
+      // Without a belt a loaf waits by the oven.
+      if (l.s !== Infinity && belt && len > 0 && l.s >= len) {
         l.s = Infinity;
         this.bread = this.loaves.filter((x) => x.s === Infinity).length;
         this.hooks.chime();
