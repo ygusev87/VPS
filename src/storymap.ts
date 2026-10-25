@@ -9,6 +9,7 @@ import { model, type Fit } from './parts/assets';
 import { MAP_BOARD, type Part, type PartKind } from './parts/base';
 import { mat, mesh } from './parts/kit';
 import type { Stage } from './stage';
+import { bendable, type Pose } from './bend';
 import { Life } from './life';
 import { thumb } from './thumbs';
 import type { PhraseId } from './voice';
@@ -62,6 +63,8 @@ export interface Critter {
   taps?: number;
   lastTap?: number;
   sweat?: THREE.Sprite[];
+  /** A four-legged one's head and tail (it looks at you while it asks). */
+  pose?: Pose | null;
 }
 
 /** A ring on the ground and the part that goes on it. */
@@ -115,6 +118,9 @@ export interface MapProgress {
   /** Per need, in the order they are built. */
   done: boolean[];
 }
+
+/** Four-legged characters whose head and tail move (their models face +X). */
+const LOOKERS = new Set(['cow', 'pig', 'sheep', 'goat', 'horse']);
 
 /** How close to a ring a dropped part must be to snap onto it. */
 const SNAP_R = 3.2;
@@ -459,6 +465,7 @@ export abstract class StoryMap {
     const { x, z } = p;
     const group = new THREE.Group();
     const m = this.critterModel(name.replace(/\d+$/, ''), fit, name);
+    const pose = LOOKERS.has(name.replace(/\d+$/, '')) ? bendable(m) : null;
     m.traverse((o) => {
       if ((o as THREE.Mesh).isMesh) {
         o.castShadow = true;
@@ -471,6 +478,7 @@ export abstract class StoryMap {
     this.scenery.add(group);
     const c = this.adopt(name, group, height);
     c.face = face;
+    c.pose = pose;
     return c;
   }
 
@@ -671,7 +679,7 @@ export abstract class StoryMap {
     }
 
     for (const c of this.critters.values()) this.animateCritter(c, dt);
-    this.life.update(dt, this.night);
+    this.life.update(dt, this.night, this.stage.camera.position);
     this.afterAnimate(dt);
     for (const s of this.sprites) s.visible = s.material.opacity > 0.01;
   }
@@ -683,6 +691,23 @@ export abstract class StoryMap {
       first?.();
       this.setPhase(p);
     }
+  }
+
+  /**
+   * Asking for help, it turns its head to you and swishes its tail; once
+   * happy, it grazes, now and then lifting its head to look at you.
+   */
+  private pose(c: Critter, pose: Pose, dt: number) {
+    const to = c.group.worldToLocal(this.stage.camera.position.clone()).setY(0);
+    const atYou = THREE.MathUtils.clamp(Math.atan2(to.z, to.x), -0.9, 0.9);
+    const turning = (c.spin ?? 0) > 0 || (c.flip ?? 0) > 0;
+    const period = 10 + (Math.abs(c.home.x * 5.1) % 4);
+    const down = c.mood !== 'asking' && !turning && (this.time + c.home.z) % period < period * 0.55;
+    pose.graze = THREE.MathUtils.damp(pose.graze, down ? 0.9 + Math.sin(this.time * 6) * 0.08 : 0, 2.5, dt);
+    pose.look = THREE.MathUtils.damp(pose.look, down || turning ? 0 : atYou, 2.5, dt);
+    const swish = c.mood === 'asking' ? 0.8 : Math.max(0, Math.sin(this.time * 0.7 + c.home.x)) ** 3;
+    pose.wag = THREE.MathUtils.damp(pose.wag, swish, 3, dt);
+    pose.update(this.time);
   }
 
   private animateCritter(c: Critter, dt: number) {
@@ -700,6 +725,7 @@ export abstract class StoryMap {
       c.group.position.y = (c.base ?? 0) + Math.max(0, bob + hop) + Math.sin(sault * Math.PI) * 2.2;
       c.group.scale.set(1, 1 + (c.mood === 'asking' ? Math.sin(this.time * 8) * 0.015 : 0), 1);
     }
+    if (c.pose) this.pose(c, c.pose, dt);
     // Speech bubble with the part it wants; a heart when happy.
     const mat = c.bubble.material as THREE.SpriteMaterial;
     const show = c.mood === 'asking' && !c.mute ? 1 : 0;

@@ -194,6 +194,11 @@
   Old MacDonald, Row Your Boat, London Bridge, Itsy Bitsy Spider, Jingle Bells, Frère Jacques). Голос — записанные клипы `public/voice/<id>.mp3`
   (Higgsfield `text2speech_v2`/ElevenLabs, голос «Elena», как делать — `assets-src/README.md`),
   играются через WebAudio; без клипа — `speechSynthesis` ru-RU (`src/voice.ts`).
+- **Анимация животных (решение владельца):** мелкие и плохо заметные (куры, утки, гуси, кролики, котёнок, стадо в массе) —
+  только кодом: всё тело (`Life`, походки) и изгиб вершин без скелета (`src/bend.ts`: голова к траве, взгляд на игрока,
+  хвост, дыхание). Крупные и те, кто просит помощи, — скелет из Tripo (только rig, без покупных анимаций) и движения
+  кодом по костям. В стаде скелет не у каждого: массу — кодом, одному — скелет, если уместно. Скелет оправдан и для
+  движений по нажатию ребёнка, если они заметны глазу.
 - Команды: `npm run dev`, `npm test` (vitest), `npm run build`, `npm run typecheck`.
 - Публикация: GitHub Pages через `.github/workflows/deploy.yml` при пуше в `main` —
   https://ygusev87.github.io/VPS/ (репозиторий публичный). На iPad: Safari → «На экран "Домой"» + Гид-доступ.

@@ -5,6 +5,7 @@
 // into the pond, the scarecrow spins and loses its hat, a letter flies out
 // of the mailbox, a bucket splashes down the well.
 import * as THREE from 'three';
+import { bendable, type Pose } from './bend';
 import { mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import type { PhraseId } from './voice';
@@ -29,6 +30,10 @@ interface Extra {
   /** Running off from a finger (seconds left). */
   flee: number;
   jump: number;
+  /** A grazer's head, tail and breath (null: the model moves as a whole). */
+  pose: Pose | null;
+  /** Its own clock for grazing and looking about. */
+  cycle: number;
 }
 
 export type ToyKind = 'mouse' | 'frog' | 'scarecrow' | 'mailbox' | 'well' | 'trashcan' | 'hydrant' | 'clock' | 'soda';
@@ -64,6 +69,7 @@ export class Life {
 
   /** A herd animal (not one that asks for help) that wanders round its spot. */
   addExtra(model: THREE.Object3D, x: number, z: number, yaw: number, gait: Gait, sound: PhraseId | null, roam = 2.5) {
+    const pose = gait === 'graze' ? bendable(model) : null;
     const group = new THREE.Group();
     group.add(model);
     group.position.set(x, 0, z);
@@ -75,7 +81,7 @@ export class Life {
       }
     });
     this.scenery.add(group);
-    this.extras.push({ group, home: new THREE.Vector3(x, 0, z), roam, gait, sound, target: new THREE.Vector3(x, 0, z), wait: this.rnd() * 4, step: 0, flee: 0, jump: 0 });
+    this.extras.push({ group, home: new THREE.Vector3(x, 0, z), roam, gait, sound, target: new THREE.Vector3(x, 0, z), wait: this.rnd() * 4, step: 0, flee: 0, jump: 0, pose, cycle: this.rnd() * 20 });
   }
 
   /** A thing placed to be tapped. */
@@ -160,9 +166,9 @@ export class Life {
     return true;
   }
 
-  update(dt: number, night: number) {
+  update(dt: number, night: number, eye?: THREE.Vector3) {
     this.time += dt;
-    for (const e of this.extras) this.moveExtra(e, dt);
+    for (const e of this.extras) this.moveExtra(e, dt, eye);
     for (const t of this.toys) if (t.t >= 0) this.playToy(t, dt);
     const day = 1 - night;
     for (const f of this.flutters) {
@@ -197,7 +203,7 @@ export class Life {
   }
 
   /** Stroll to a spot near home, stand a while (grazing, pecking), choose another. */
-  private moveExtra(e: Extra, dt: number) {
+  private moveExtra(e: Extra, dt: number, eye?: THREE.Vector3) {
     const p = e.group.position;
     e.jump = Math.max(0, e.jump - dt * 2.5);
     e.flee = Math.max(0, e.flee - dt);
@@ -228,11 +234,37 @@ export class Life {
     if (e.gait === 'peck' && !moving) tilt = Math.max(0, Math.sin(this.time * 5 + e.home.x)) * 0.35;
     if (e.gait === 'waddle' && moving) roll = Math.sin(e.step) * 0.12;
     if (e.gait === 'stroll' && moving) y += Math.abs(Math.sin(e.step * 0.9)) * 0.06;
-    if (e.gait === 'graze' && !moving) tilt = 0.12 + Math.sin(this.time * 0.8 + e.home.z) * 0.06;
+    if (e.gait === 'graze' && !moving && !e.pose) tilt = 0.12 + Math.sin(this.time * 0.8 + e.home.z) * 0.06;
+    if (e.pose) this.graze(e, e.pose, moving, dt, eye);
     p.y = y;
     const model = e.group.children[0];
     model.rotation.z = -tilt;
     model.rotation.x = roll;
+  }
+
+  /**
+   * A grazer standing still: nose in the grass, chewing, for a few seconds;
+   * then the head comes up and looks about (at you, if you are near). The
+   * tail swishes now and then. Walking or running off: head up.
+   */
+  private graze(e: Extra, pose: Pose, moving: boolean, dt: number, eye?: THREE.Vector3) {
+    e.cycle += dt;
+    const period = 9 + (Math.abs(e.home.x * 7.3) % 4);
+    const down = !moving && e.flee <= 0 && e.cycle % period < period * 0.6;
+    const chew = Math.sin(this.time * 6 + e.home.z) * 0.08;
+    let look = 0;
+    if (!moving && !down) {
+      look = Math.sin(this.time * 0.6 + e.home.x) * 0.5;
+      if (eye) {
+        // The way to the camera, in the animal's own frame (+X is its nose).
+        const to = e.group.worldToLocal(eye.clone()).setY(0);
+        look = THREE.MathUtils.clamp(Math.atan2(to.z, to.x), -0.8, 0.8);
+      }
+    }
+    pose.graze = THREE.MathUtils.damp(pose.graze, down ? 0.9 + chew : 0, 2.5, dt);
+    pose.look = THREE.MathUtils.damp(pose.look, look, 2, dt);
+    pose.wag = THREE.MathUtils.damp(pose.wag, Math.max(0, Math.sin(this.time * 0.7 + e.home.z * 3)) ** 3, 3, dt);
+    pose.update(this.time);
   }
 
   private playToy(t: Toy, dt: number) {
