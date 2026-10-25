@@ -106,3 +106,7 @@ retarget `f1d80f7d-2111-41bd-8161-44568b4e93be`, всего 35 кредитов.
 Декор фермы — лёгкий полноценный 3D с динамическим светом. Изображение дерева v1
 оставлено только как исследование; финальный референс должен иметь крупные мягкие
 формы без отдельных мелких листьев и пройти визуальное согласование перед Tripo.
+
+## Mobile asset budget (2026-10-25)
+
+`scripts/optimize-models.sh` now uses `scripts/optimize-mobile-models.mjs`: color maps 512px, normal/ORM 256px, target 8k triangles for farm animals/buildings and 6k for simple parts. Rigged models and parts whose vertices define pivots, plus reflective surfaces damaged by simplification, keep exact geometry. Sources must be separate from output. See `farm-v2/mobile-models-report.md` and `.json` for the complete measured inventory, exceptions and reproduction command.

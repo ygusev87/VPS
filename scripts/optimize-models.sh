@@ -1,19 +1,12 @@
 #!/usr/bin/env bash
-# Compress generated part models for the web: meshopt geometry, 1024px WebP
-# textures, light simplification. Sources (raw .glb from Higgsfield) live in
-# assets-src/models/, results go to public/models/.
-#   scripts/optimize-models.sh            # all models
-#   scripts/optimize-models.sh battery    # one model
+# Mobile GLB profile: color 512px, normal/ORM 256px; meshopt geometry.
+# Vertex-derived pivots, rigs, and sensitive reflective meshes stay unchanged.
+#   scripts/optimize-models.sh battery
+#   MODEL_SOURCE_DIR=assets-src/raw/mobile-models-2026-10-25 \
+#     MODEL_REPORT_PATH=/tmp/models-report.json scripts/optimize-models.sh
+# Never use public/models itself as the source: preserve a separate input copy.
 set -euo pipefail
 cd "$(dirname "$0")/.."
-mkdir -p public/models
-names=("$@")
-if [ ${#names[@]} -eq 0 ]; then
-  for f in assets-src/models/*.glb; do names+=("$(basename "$f" .glb)"); done
-fi
-for n in "${names[@]}"; do
-  npx gltf-transform optimize "assets-src/models/$n.glb" "public/models/$n.glb" \
-    --compress meshopt --texture-compress webp --texture-size 1024 \
-    --simplify-ratio 0.6 --simplify-error 0.0008
-done
-ls -la public/models
+args=(--input "${MODEL_SOURCE_DIR:-assets-src/models}" --output public/models)
+if [[ -n "${MODEL_REPORT_PATH:-}" ]]; then args+=(--report "$MODEL_REPORT_PATH"); fi
+node scripts/optimize-mobile-models.mjs "${args[@]}" "$@"
