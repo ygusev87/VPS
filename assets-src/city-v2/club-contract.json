@@ -1,0 +1,118 @@
+{
+  "status": "Image reference ready for Claude review; no GLB order",
+  "reference": "club-v1.png",
+  "sourceRevision": "50c03ab",
+  "styleSource": "Accepted city-v2 concept m0195; existing bakery material language",
+  "placement": {
+    "centerXZ": [
+      48.5,
+      -13
+    ],
+    "fitWidth": 7,
+    "rotateY": -1.5707963267948966,
+    "baseY": 0,
+    "normalisedFront": "+X",
+    "gameFront": "+Z"
+  },
+  "geometryTargets": {
+    "fullSizeXYZ": [
+      7,
+      5,
+      5.2
+    ],
+    "storeys": 1,
+    "tallerCentralFacade": true,
+    "closedOpaqueRoof": true,
+    "shallowCanopy": true,
+    "groundLevelDoor": true,
+    "trianglesMax": 8000,
+    "materials": 1,
+    "baseColorPixels": 512,
+    "downloadBytesTarget": 200000,
+    "targetsUnmeasured": true
+  },
+  "fixedGameplay": {
+    "NEON_SPOT": [
+      43,
+      -9.5
+    ],
+    "CLUB_SENSOR": [
+      43,
+      -7.6
+    ],
+    "MUSIC_SPOT": [
+      46.5,
+      -6.8
+    ],
+    "CLUB_POLE": [
+      40.5,
+      -11.5
+    ],
+    "children": [
+      {
+        "name": "child6",
+        "positionXZ": [
+          49,
+          -8.3
+        ],
+        "height": 1.2
+      },
+      {
+        "name": "child7",
+        "positionXZ": [
+          50.5,
+          -8.8
+        ],
+        "height": 1.15
+      }
+    ],
+    "reaction": "Children hop in place when musicbox works; no arrival-to-door path in updateClub()",
+    "doNotMove": "Building center, all power/task anchors and children positions"
+  },
+  "targetFootprintOnly": {
+    "x0": 45,
+    "x1": 52,
+    "z0": -15.6,
+    "z1": -10.4,
+    "note": "Derived from target7x5.2, not measured geometry; all roof/canopy/star extents must be included in actual fit bbox"
+  },
+  "appearance": {
+    "walls": "teal/turquoise",
+    "trim": "cream",
+    "roof": "solid opaque blue-green vaulted roof",
+    "emblem": "single raised golden star, static non-emissive",
+    "door": "opaque deep blue double door at ground level",
+    "canopy": "shallow coral arch with restrained gold studs",
+    "exclude": [
+      "letters",
+      "numbers",
+      "people",
+      "instruments",
+      "speakers",
+      "attached neon",
+      "sensor",
+      "musicbox",
+      "plants",
+      "base slab",
+      "stairs",
+      "transparent roof",
+      "cutaway",
+      "interior"
+    ]
+  },
+  "acceptance": [
+    "Inspect decoded GLB after actual model() fit and storymap.patched() InstancedMesh; width includes roof, cornices, canopy and star.",
+    "Roof must be closed and opaque from the elevated game camera; confirm side/back topology, not only front PNG.",
+    "Protect 4x4 nominal placement areas for neon, sensor and musicbox, actual part bodies and the light path between neon and sensor. Existing linked task areas may overlap each other.",
+    "At the original center and width7, measure actual front extent and verify children(49,-8.3)/(50.5,-8.8) remain visible while hopping, including at phone width390.",
+    "Show roof and sign at day/evening/night exposure. Star is decorative, non-emissive; gameplay neon is a separate powered part.",
+    "Prefer positive determinant transforms; inspect InstancedMesh rendering to avoid the mirrored winding defect found in grandma-house.",
+    "No Tripo order until reference and geometry targets reviewed; no public model until actual size, visibility and material QA. Report any center/fit change before applying."
+  ],
+  "tripoOrders": 0,
+  "tripoCreditsUsed": 0,
+  "limitations": [
+    "PNG does not prove actual width/depth/height or roof topology",
+    "No runtime, iPad, PWA or performance result from this reference"
+  ]
+}
