@@ -1219,11 +1219,12 @@ export class FarmMap {
 /** From the wood in the corner, below the rabbits, up to the coop. */
 const FOX_PATH = [v(-33, 20.5), v(-27, 19), v(-20.5, 17), v(-13.5, 15.6), v(-8, 14.4), at('hen', -4.8, 10.2)];
 /** The fox's speed (units a second) sneaking up and running off, and how fast its walk clip plays then. */
-const FOX_SNEAK = 1.5;
+const FOX_SNEAK = 1.2;
 const FOX_RUN = 4.5;
-const FOX_WALK_SNEAK = 1;
-// Running is three times as fast as sneaking: so are the steps.
-const FOX_WALK_RUN = 3;
+// The rig's steps are short: the clip runs fast so the paws keep up with the ground (Codex measured the stride).
+const FOX_WALK_SNEAK = 3;
+// Running off, a little short of keeping pace: any faster and the legs blur.
+const FOX_WALK_RUN = 7;
 /** Where a hint asks for the bell: by the fox's button, off its path. */
 const BELL_SPOT = v(-10.8, 12.4);
 function pathLength() {
