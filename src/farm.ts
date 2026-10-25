@@ -518,7 +518,7 @@ export class FarmMap extends StoryMap {
     const taken = [...this.needs.flatMap((n) => [n.spot, ...n.more.map((s) => s.spot)]), ...[...this.critters.values()].map((c) => c.home), ...this.world.parts.map((p) => p.root.position)];
     const free = (x: number, z: number) => this.flowerFree(x, z) && taken.every((t) => Math.hypot(x - t.x, z - t.z) > 2.6);
     const spots: [number, number, number][] = [];
-    for (let tries = 0; spots.length < 140 && tries < 6000; tries++) {
+    for (let tries = 0; spots.length < 80 && tries < 6000; tries++) {
       const x = (Math.random() - 0.5) * (W - 3);
       const z = (Math.random() - 0.5) * (D - 3);
       if (free(x, z) && spots.every(([sx, sz]) => Math.hypot(x - sx, z - sz) > 1.8)) spots.push([x, z, 0.8 + Math.random() * 0.45]);
