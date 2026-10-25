@@ -62,7 +62,8 @@ function store(list: Invention[]) {
 export function capture(world: World, pic: string, withMap = false): Invention | null {
   const parts = world.parts.filter((p) => !p.pinned);
   const pins = withMap ? world.parts.filter((p) => p.pinned) : [];
-  if (!parts.length) return null;
+  // On a map a wire between two of its own parts (a pole and the gate, the hall's panel) is kept too.
+  if (!parts.length && !(withMap && world.wires.length)) return null;
   const index = (p: Part) => (parts.includes(p) ? parts.indexOf(p) : -1 - pins.indexOf(p));
   const known = (p: Part) => parts.includes(p) || pins.includes(p);
   const extra = (p: Part) => p as unknown as { aim?: number; side?: 0 | 1; song?: number };
@@ -81,7 +82,7 @@ export function capture(world: World, pic: string, withMap = false): Invention |
       return s;
     }),
     wires: world.wires
-      .filter((w) => w.b && known(w.a.part) && known(w.b.part) && !(w.a.part.pinned && w.b.part.pinned))
+      .filter((w) => w.b && known(w.a.part) && known(w.b.part))
       .map((w) => ({
         a: [index(w.a.part), w.a.key] as [number, string],
         b: [index(w.b!.part), w.b!.key] as [number, string],
