@@ -71,6 +71,17 @@ export class Carousel extends Part {
     return { r: 10 };
   }
 
+  /** How fast the ride turns (radians a second) — riders on the farm go round with it. */
+  get spin() {
+    return this.speed;
+  }
+
+  /** A point riding on the deck, `r` from the middle at angle `a` (relative to the ride), in world space. */
+  seat(r: number, a: number, target = new THREE.Vector3()) {
+    const t = this.rotor.rotation.y + a;
+    return this.rotor.parent!.localToWorld(target.set(this.rotor.position.x + Math.cos(t) * r, this.rotor.position.y + 0.08, this.rotor.position.z - Math.sin(t) * r));
+  }
+
   protected animate(dt: number) {
     // A gentle ride: slower than the fan, eases in and out.
     const target = Math.max(-1.6, Math.min(1.6, this.state.level)) * 2.4;

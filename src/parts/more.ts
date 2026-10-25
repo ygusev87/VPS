@@ -249,6 +249,21 @@ export class Lift extends Part {
     return { r: 10 };
   }
 
+  /** Where the cabin stands: at the top, at the bottom, or on its way. */
+  get end() {
+    return this.atEnd;
+  }
+
+  /** The middle of the cabin's floor, in world space (a passenger stands there). */
+  cabinFloor(target = new THREE.Vector3()) {
+    return this.cabin.localToWorld(target.set(0, 0.1, 0));
+  }
+
+  /** The farm's kitten rides instead of the little driver. */
+  set driver(on: boolean) {
+    this.passenger.visible = on;
+  }
+
   protected animate(dt: number) {
     const l = Math.max(-1.6, Math.min(1.6, this.state.level));
     this.v = damp(this.v, Math.abs(l) > 0.15 ? l * 0.75 : 0, 5, dt);

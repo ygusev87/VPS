@@ -400,7 +400,8 @@ async function startFarm(fresh = false) {
   farmScore = '';
   // Carry on where the farm was left, unless the story was over (then it starts again).
   const kept = fresh ? null : placeKept<FarmKept>('farm');
-  const carryOn = !!kept && kept.state.phase !== 'done' && kept.state.done.length === farm.progress().done.length;
+  // A save from before the farm grew has fewer needs: the new ones start undone.
+  const carryOn = !!kept && kept.state.phase !== 'done' && kept.state.done.length <= farm.progress().done.length;
   if (kept && carryOn) {
     if (kept.table) restore(world, kept.table);
     farm.resume(kept.state);
