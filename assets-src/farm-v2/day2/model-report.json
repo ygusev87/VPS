@@ -1,0 +1,1491 @@
+{
+  "generatedAt": "2026-10-25T08:06:29.036Z",
+  "source": "/tmp/gameios-farm-normalized",
+  "output": "/tmp/gameios-farm-models-ready",
+  "settings": {
+    "colorSize": 512,
+    "dataSize": 256,
+    "colorQuality": 88,
+    "dataQuality": 90,
+    "simplifyError": 0.0025
+  },
+  "textureMemoryNote": "Estimated RGBA8 + complete mip chain for every unique embedded image. Asset inventory, not measured process or GPU allocation.",
+  "totals": {
+    "before": {
+      "bytes": 28069920,
+      "triangles": 86105,
+      "textureMiB": 775.9982299804688
+    },
+    "after": {
+      "bytes": 1493908,
+      "triangles": 86105,
+      "textureMiB": 25.333333333333332
+    }
+  },
+  "models": [
+    {
+      "name": "tree-oak",
+      "sourceSha256": "a3b294532f1c90957413bbc85919340cb727f3f143ce10e6a3e3a8a17c0ed433",
+      "outputSha256": "1b7b86cbe8c7b432628c57fc49cc474581b9ba1a58c1c8d804b59edcd3ee2309",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 1484404,
+        "triangles": 2836,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              1254,
+              1254
+            ],
+            "bytes": 1449979,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 7.99822998046875,
+        "bounds": {
+          "min": [
+            -0.3227637562181463,
+            -0.4796899319437239,
+            -0.5
+          ],
+          "max": [
+            0.3227637562181463,
+            0.4796899319437239,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 47276,
+        "triangles": 2836,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 12792,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.3333333333333333,
+        "bounds": {
+          "min": [
+            -0.3227637562181463,
+            -0.4796899319437239,
+            -0.5
+          ],
+          "max": [
+            0.3227637562181463,
+            0.4796899319437239,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "kitten",
+      "sourceSha256": "14b283801bd82ce079938bda046309042456b7757c0fb3e18f55c11a520a34cc",
+      "outputSha256": "5d61686148b3c1c218d9ee2c75b00b9909003460ba03e38f8b4ad0a27955227b",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 1942036,
+        "triangles": 7764,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 410147,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 427554,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 1021847,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -0.45823541978209786,
+            -0.5,
+            -0.3643604846339305
+          ],
+          "max": [
+            0.45823541978209786,
+            0.5,
+            0.3643604846339305
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 112500,
+        "triangles": 7764,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 20496,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 8442,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 946,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -0.45823541978209786,
+            -0.5,
+            -0.3643604846339305
+          ],
+          "max": [
+            0.45823541978209786,
+            0.5,
+            0.3643604846339305
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "goat",
+      "sourceSha256": "ef29465898d781ac2515fba9c5fc2bc9ed7b36e21a47cec186333bf129dbf729",
+      "outputSha256": "6d7ffe92b1b26d0d55147699a7eb920fe5bb496a8cac9601452599999d0f900d",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 1794008,
+        "triangles": 7542,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 367236,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 330832,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 1017715,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.4615466780602435,
+            -0.29120761741996526
+          ],
+          "max": [
+            0.5,
+            0.4615466780602435,
+            0.29120761741996515
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 100592,
+        "triangles": 7542,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 14468,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 5286,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 2488,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.4615466780602435,
+            -0.29120761741996526
+          ],
+          "max": [
+            0.5,
+            0.4615466780602435,
+            0.29120761741996515
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "kid",
+      "sourceSha256": "a75203eecfb9c6227f879db86e9c32a25eec3e5808c9f6c87cbf083e94128f9d",
+      "outputSha256": "a1920817f0bc76258c4abb79e9197c80b98f564d3246cb989da53b781a710c8c",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 2142600,
+        "triangles": 7680,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 423286,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 577240,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 1061754,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.4797662282174139,
+            -0.35152745139927377
+          ],
+          "max": [
+            0.5,
+            0.4797662282174139,
+            0.3515274513992736
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 116644,
+        "triangles": 7680,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 20972,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 13130,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 2088,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.4797662282174139,
+            -0.35152745139927377
+          ],
+          "max": [
+            0.5,
+            0.4797662282174139,
+            0.3515274513992736
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "goose",
+      "sourceSha256": "4e7e0ebfdf1134700cf859bd3c36dec2a23f53d347e097eedc6441b4a0130d6c",
+      "outputSha256": "f5df90497e483b024334b038b925bf9ad2c98b2074cf367e779036807c448aa2",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 1876476,
+        "triangles": 7561,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 351784,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 498425,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 948151,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -0.4489730521561327,
+            -0.5,
+            -0.28308969389934996
+          ],
+          "max": [
+            0.4489730521561327,
+            0.5,
+            0.28308969389934996
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 107192,
+        "triangles": 7561,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 15618,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 11808,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 1516,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -0.4489730521561327,
+            -0.5,
+            -0.28308969389934996
+          ],
+          "max": [
+            0.4489730521561327,
+            0.5,
+            0.28308969389934996
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "horse",
+      "sourceSha256": "06dc3191c2bca3a2aa82f0904c7d0061fb36f7d2038c8e9daca1208b04baff52",
+      "outputSha256": "9eece22f996aadf274f98418e72e3ce09c8929ceb0d39ccf49fa909679a0345f",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 1854832,
+        "triangles": 7930,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 444411,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 381058,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 944107,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.44924771874141667,
+            -0.17375713370159
+          ],
+          "max": [
+            0.5,
+            0.44924771874141667,
+            0.17375713370159007
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 114596,
+        "triangles": 7930,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 21658,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 5918,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 1638,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.44924771874141667,
+            -0.17375713370159
+          ],
+          "max": [
+            0.5,
+            0.44924771874141667,
+            0.17375713370159007
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "rooster",
+      "sourceSha256": "189c2a83975775c87ada48cf8366151d80f9d43d4874ae602c02ca607c3c5070",
+      "outputSha256": "91be7f7d9cbed23c649f11519051927090b27664e76f81ae339f397c06195063",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 1885552,
+        "triangles": 7551,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 479327,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 498101,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 824367,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -0.4980620746482742,
+            -0.5,
+            -0.2921536912137211
+          ],
+          "max": [
+            0.4980620746482742,
+            0.5,
+            0.2921536912137211
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 124564,
+        "triangles": 7551,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 27698,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 11524,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 1446,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -0.4980620746482742,
+            -0.5,
+            -0.2921536912137211
+          ],
+          "max": [
+            0.4980620746482742,
+            0.5,
+            0.2921536912137211
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "chick",
+      "sourceSha256": "3620986b8bb33b40cf31d0189a92f8bbe9f88a65b0e94ef34135608e83d0eb68",
+      "outputSha256": "19bce6b6bdcac1d604e2eee6177f3b4af4fc23fe731a2870e1f66bfcbde58d8e",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 1494284,
+        "triangles": 5839,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 261669,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 365755,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 803402,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -0.4427167577135533,
+            -0.5,
+            -0.3455763420514542
+          ],
+          "max": [
+            0.4427167577135533,
+            0.5,
+            0.3455763420514542
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 81408,
+        "triangles": 5839,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 9958,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 6956,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 920,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -0.4427167577135533,
+            -0.5,
+            -0.3455763420514542
+          ],
+          "max": [
+            0.4427167577135533,
+            0.5,
+            0.3455763420514542
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "beehive",
+      "sourceSha256": "ea560ca97b4a6b2fd3fda9a955cadd2fec5e78f15b994f0a637ac5e615f55ec9",
+      "outputSha256": "484fb687fa9d1af9e5f82f7cee4148d5cb6841126670b0d5164815e161f7664c",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 2436796,
+        "triangles": 4896,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 649506,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 557100,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 1167271,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -0.4100314340647603,
+            -0.5,
+            -0.34522537919248025
+          ],
+          "max": [
+            0.4100314340647603,
+            0.5,
+            0.34522537919248025
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 114448,
+        "triangles": 4896,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 35846,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 13490,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 2060,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -0.4100314340647603,
+            -0.5,
+            -0.34522537919248025
+          ],
+          "max": [
+            0.4100314340647603,
+            0.5,
+            0.34522537919248025
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "nest",
+      "sourceSha256": "3b24b621074bbc49319062c35453b2d2873b51eb5a5d3b829b06b8e1e51d0748",
+      "outputSha256": "565f066950ffd14b909126d20c73076aee652ae793331027a2cf587edeec1862",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 3265112,
+        "triangles": 5739,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 564390,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 680355,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 1943318,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -0.4967345194860683,
+            -0.16583758049256875,
+            -0.5
+          ],
+          "max": [
+            0.4967345194860683,
+            0.16583758049256875,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 127148,
+        "triangles": 5739,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 27626,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 16438,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 5898,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -0.4967345194860683,
+            -0.16583758049256875,
+            -0.5
+          ],
+          "max": [
+            0.4967345194860683,
+            0.16583758049256875,
+            0.5
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "flowerbed-buds",
+      "sourceSha256": "eef464f0a2539b24ca13bee1c2d38300629aa7960652c42af5ac503949649c0b",
+      "outputSha256": "a4babf0df1f593019c242f400ac7673dd35e0001f20f65183a5d89f86e43d9c5",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 2703512,
+        "triangles": 7502,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 762261,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 490900,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 1362749,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -1.3000000000000003,
+            -0.4303048799096652,
+            -0.7999996324451594
+          ],
+          "max": [
+            1.2999999999999998,
+            0.4303048799096652,
+            0.7999996324451598
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 134760,
+        "triangles": 7502,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 36780,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 8962,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 1286,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -1.3000000000000003,
+            -0.4303048799096652,
+            -0.7999996324451594
+          ],
+          "max": [
+            1.2999999999999998,
+            0.4303048799096652,
+            0.7999996324451598
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "flowerbed-bloom",
+      "sourceSha256": "675728632344f88537bd774e7a2fdfa2ebf369815fefbc63febd5f6dfcc1f5b3",
+      "outputSha256": "49b65e8eeaa573f61f8839d9171dd6fa9e4c18863d43068fb8dcb2cc34042785",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 2804600,
+        "triangles": 7238,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 794702,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 591686,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 1330904,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -1.3000000000000003,
+            -0.4118167668691061,
+            -0.7999911390284972
+          ],
+          "max": [
+            1.3000000000000003,
+            0.4118167668691061,
+            0.7999911390284972
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 145844,
+        "triangles": 7238,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 42988,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 13716,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 1690,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -1.3000000000000003,
+            -0.4118167668691061,
+            -0.7999911390284972
+          ],
+          "max": [
+            1.3000000000000003,
+            0.4118167668691061,
+            0.7999911390284972
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "stable",
+      "sourceSha256": "b4fede7ba3d7bd368bbd1297454f9300391813f72c38ff61663551f1fe20b93b",
+      "outputSha256": "99646a05c1da49e240bd425d7939bbd6689a03b3033f76b289f3128bb9dc5881",
+      "protectedGeometry": false,
+      "exactGeometry": true,
+      "targetTriangles": 8000,
+      "before": {
+        "bytes": 2385708,
+        "triangles": 6027,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 895193,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 648020,
+            "mime": "image/jpeg"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              2048,
+              2048
+            ],
+            "bytes": 747648,
+            "mime": "image/png"
+          }
+        ],
+        "textureMiB": 64,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.31333353679006315,
+            -0.39214758751182593
+          ],
+          "max": [
+            0.5,
+            0.31333353679006315,
+            0.39214758751182593
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 166936,
+        "triangles": 6027,
+        "textures": [
+          {
+            "slots": [
+              "baseColorTexture"
+            ],
+            "size": [
+              512,
+              512
+            ],
+            "bytes": 55454,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "metallicRoughnessTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 14566,
+            "mime": "image/webp"
+          },
+          {
+            "slots": [
+              "normalTexture"
+            ],
+            "size": [
+              256,
+              256
+            ],
+            "bytes": 1938,
+            "mime": "image/webp"
+          }
+        ],
+        "textureMiB": 1.9999999999999998,
+        "bounds": {
+          "min": [
+            -0.5,
+            -0.31333353679006315,
+            -0.39214758751182593
+          ],
+          "max": [
+            0.5,
+            0.31333353679006315,
+            0.39214758751182593
+          ]
+        },
+        "skins": 0,
+        "animations": 0
+      }
+    }
+  ]
+}

@@ -4,7 +4,7 @@ import fs from 'node:fs/promises';
 import path from 'node:path';
 import { createHash } from 'node:crypto';
 import { NodeIO, Logger } from '@gltf-transform/core';
-import { ALL_EXTENSIONS, EXTMeshoptCompression } from '@gltf-transform/extensions';
+import { ALL_EXTENSIONS, EXTMeshoptCompression, EXTTextureWebP } from '@gltf-transform/extensions';
 import { compressTexture, dequantize, getBounds, listTextureSlots, meshopt, simplify, weld } from '@gltf-transform/functions';
 import { MeshoptDecoder, MeshoptEncoder, MeshoptSimplifier } from 'meshoptimizer';
 import sharp from 'sharp';
@@ -12,7 +12,7 @@ import sharp from 'sharp';
 // Protect vertex-derived pivots and rigs; also reflective surfaces whose
 // highlights visibly distort after simplification (confirmed by side-by-side QA).
 const KEEP_GEOMETRY = new Set('motor propeller windmill sails floorfan windgen dynamo knife musicbox tester magnet mirror carousel cannon laser pump helicopter trafficlight fox-rig solar buzzer drum bell panel target tuba'.split(' '));
-const FARM = new Set('barn coop doghouse cow dog duck fox hen pig rabbit sheep tractor sack'.split(' '));
+const FARM = new Set('barn coop doghouse cow dog duck fox hen pig rabbit sheep tractor sack kitten goat kid goose rooster horse chick beehive flowerbed-buds flowerbed-bloom nest stable tree-oak'.split(' '));
 const args = process.argv.slice(2), names = [];
 let input = 'assets-src/models', output = 'public/models', report = '';
 while (args.length) {
@@ -104,6 +104,7 @@ for (const name of names) {
     if (Math.max(...size) <= limit && texture.getMimeType() === 'image/webp') continue;
     await compressTexture(texture, { encoder: sharp, targetFormat: 'webp', resize: [limit, limit], quality: color ? 88 : 90, effort: 70, lossless: false });
   }
+  if (doc.getRoot().listTextures().some(t => t.getMimeType() === 'image/webp')) doc.createExtension(EXTTextureWebP).setRequired(true);
   if (!keep && before.triangles > budget) {
     await doc.transform(dequantize(), weld(), simplify({ simplifier: MeshoptSimplifier, ratio: budget / before.triangles, error: 0.0025 }), meshopt({ encoder: MeshoptEncoder, level: 'medium', quantizePosition: 16 }));
   } else {

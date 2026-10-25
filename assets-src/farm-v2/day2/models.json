@@ -1,0 +1,154 @@
+{
+  "tree-oak": {
+    "yawDegrees": 0,
+    "baseColorPath": "assets-src/farm-v2/tree-oak-color-v3.png",
+    "taskId": "73333322-b226-410f-b96a-1004a57c4418",
+    "modelSeed": 25102026,
+    "creditsConsumed": 30,
+    "faceLimit": 3000,
+    "pbr": false,
+    "reference": "assets-src/farm-v2/tree-oak-v2.png",
+    "rawSha256": "03cceb3d6dc16be0acc28da93e4d617a746767f381f17fccba8addbdd6595d18",
+    "outputSha256": "1b7b86cbe8c7b432628c57fc49cc474581b9ba1a58c1c8d804b59edcd3ee2309"
+  },
+  "kitten": {
+    "yawDegrees": 0,
+    "taskId": "ede3d0c7-7596-4630-9937-8eff925e5e79",
+    "modelSeed": 25102030,
+    "creditsConsumed": 30,
+    "faceLimit": 8000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/kitten-v1.png",
+    "rawSha256": "9ad4ed8be0b9571f1bd023984b6f56f5f6089c6584af1b14ad59a0dacbf7d3b4",
+    "outputSha256": "5d61686148b3c1c218d9ee2c75b00b9909003460ba03e38f8b4ad0a27955227b"
+  },
+  "goat": {
+    "yawDegrees": -90,
+    "taskId": "a8510eb0-08f4-4d9f-8d79-43bedade7d2b",
+    "modelSeed": 25102031,
+    "creditsConsumed": 30,
+    "faceLimit": 8000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/goat-v1.png",
+    "rawSha256": "56b337a02bc040792e13c89b3d92b30dcc7b3d0ab0826217042b7a976b7da9b9",
+    "outputSha256": "6d7ffe92b1b26d0d55147699a7eb920fe5bb496a8cac9601452599999d0f900d"
+  },
+  "kid": {
+    "yawDegrees": -90,
+    "taskId": "f94f52b4-11a9-452a-833a-e2a34ffae276",
+    "modelSeed": 25102032,
+    "creditsConsumed": 30,
+    "faceLimit": 8000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/kid-v1.png",
+    "rawSha256": "9f9d9a5b147f16898a305ac85bb9fc7e21dc79cf8dce7a172f42021cbfb91b46",
+    "outputSha256": "a1920817f0bc76258c4abb79e9197c80b98f564d3246cb989da53b781a710c8c"
+  },
+  "goose": {
+    "yawDegrees": -90,
+    "taskId": "25290976-86da-4b9d-ab7d-5b25b631ef8f",
+    "modelSeed": 25102033,
+    "creditsConsumed": 30,
+    "faceLimit": 8000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/goose-v1.png",
+    "rawSha256": "5dfbe574e7978a29ea0a4922b7fda36127ecf024e5d852619219efe76c47b9f4",
+    "outputSha256": "f5df90497e483b024334b038b925bf9ad2c98b2074cf367e779036807c448aa2"
+  },
+  "horse": {
+    "yawDegrees": -90,
+    "taskId": "69a0e7d6-0a65-4c6d-9dfa-759fb4747e56",
+    "modelSeed": 25102034,
+    "creditsConsumed": 30,
+    "faceLimit": 8000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/horse-v1.png",
+    "rawSha256": "63bed484dfc293032a8c005aa3a00559a9ae9be818f1279e0e8dd102691a289d",
+    "outputSha256": "9eece22f996aadf274f98418e72e3ce09c8929ceb0d39ccf49fa909679a0345f"
+  },
+  "rooster": {
+    "yawDegrees": -90,
+    "taskId": "0cc3acdc-e113-44bc-8f80-6e01d0adae59",
+    "modelSeed": 25102035,
+    "creditsConsumed": 30,
+    "faceLimit": 8000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/rooster-v1.png",
+    "rawSha256": "9bb78298f26ad84ba62ed6f3477a3fc157b2441f01350956f6b4b83d7050c42f",
+    "outputSha256": "91be7f7d9cbed23c649f11519051927090b27664e76f81ae339f397c06195063"
+  },
+  "chick": {
+    "yawDegrees": -90,
+    "taskId": "e1b646f1-3d98-4fa2-ab4f-7e0a355bc03d",
+    "modelSeed": 25102036,
+    "creditsConsumed": 30,
+    "faceLimit": 6000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/chick-v1.png",
+    "rawSha256": "97b259221f9d4dcfff3d372ba3174025d0709a21c685ec0c7107eb43eca1ab95",
+    "outputSha256": "19bce6b6bdcac1d604e2eee6177f3b4af4fc23fe731a2870e1f66bfcbde58d8e"
+  },
+  "beehive": {
+    "yawDegrees": 0,
+    "taskId": "db7495d6-fafc-4781-891e-c67bb44bf6c1",
+    "modelSeed": 25102037,
+    "creditsConsumed": 30,
+    "faceLimit": 6000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/beehive-v1.png",
+    "rawSha256": "2c85c7454a76d90dd36631cc779a05fde4c9176c1ebc3ec21231187e6093efb6",
+    "outputSha256": "484fb687fa9d1af9e5f82f7cee4148d5cb6841126670b0d5164815e161f7664c"
+  },
+  "nest": {
+    "yawDegrees": 0,
+    "taskId": "835d8ef2-ee8b-49fc-bcf2-2d99401a4de4",
+    "modelSeed": 25102038,
+    "creditsConsumed": 30,
+    "faceLimit": 6000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/nest-v1.png",
+    "rawSha256": "d9adf33408af6859bc6830834a435dcf24083d4960c4f790ca723d285a8c2a80",
+    "outputSha256": "565f066950ffd14b909126d20c73076aee652ae793331027a2cf587edeec1862"
+  },
+  "flowerbed-buds": {
+    "yawDegrees": -90,
+    "footprint": [
+      2.6,
+      1.6
+    ],
+    "taskId": "5be7341e-4908-4a01-a92d-42f733c75cd0",
+    "modelSeed": 25102039,
+    "creditsConsumed": 30,
+    "faceLimit": 8000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/flowerbed-buds-v1.png",
+    "rawSha256": "6b6409a0d20a3bc691d7e2d7c1510e36449e711f457f2c4569e7b3193752e03d",
+    "outputSha256": "a4babf0df1f593019c242f400ac7673dd35e0001f20f65183a5d89f86e43d9c5"
+  },
+  "flowerbed-bloom": {
+    "yawDegrees": -90,
+    "footprint": [
+      2.6,
+      1.6
+    ],
+    "taskId": "758ebf3e-9b51-4304-928c-58c27d5fe56c",
+    "modelSeed": 25102040,
+    "creditsConsumed": 30,
+    "faceLimit": 8000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/flowerbed-bloom-v1.png",
+    "rawSha256": "588b9f1b058c99aea418f320cdb8af4f9e99e28c98be9e6349c6905381e38ddb",
+    "outputSha256": "49b65e8eeaa573f61f8839d9171dd6fa9e4c18863d43068fb8dcb2cc34042785"
+  },
+  "stable": {
+    "yawDegrees": 0,
+    "taskId": "c7e63329-189f-45f7-ab57-3d1ffbdfeeed",
+    "modelSeed": 25102041,
+    "creditsConsumed": 30,
+    "faceLimit": 8000,
+    "pbr": true,
+    "reference": "assets-src/farm-v2/day2/stable-v1.png",
+    "rawSha256": "ad7924e563a0c499c2ad4ba64322b1c3b109fb46d7f87ecbb2179671090f8680",
+    "outputSha256": "99646a05c1da49e240bd425d7939bbd6689a03b3033f76b289f3128bb9dc5881"
+  }
+}

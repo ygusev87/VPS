@@ -110,3 +110,33 @@ retarget `f1d80f7d-2111-41bd-8161-44568b4e93be`, всего 35 кредитов.
 ## Mobile asset budget (2026-10-25)
 
 `scripts/optimize-models.sh` now uses `scripts/optimize-mobile-models.mjs`: color maps 512px, normal/ORM 256px, target 8k triangles for farm animals/buildings and 6k for simple parts. Rigged models and parts whose vertices define pivots, plus reflective surfaces damaged by simplification, keep exact geometry. Sources must be separate from output. See `farm-v2/mobile-models-report.md` and `.json` for the complete measured inventory, exceptions and reproduction command.
+
+## Ферма: новые животные и декор (25.10.2026)
+
+13 новых GLB: семь животных (kitten, goat, kid, goose, rooster, horse, chick),
+beehive, nest, stable, flowerbed-buds/bloom и tree-oak. Изображения — built-in Image Generation,
+согласованы в coordination m0036/m0038/m0042; Tripo H3.1 image-to-model
+(`v3.1-20260211`, texture `v3.5-20260815`, standard, delight=true), 30 API-кредитов за модель,
+390 за набор. Итоговый баланс API 575, включая предыдущие 35 за анимацию лисы.
+Промпты и исходные изображения: `farm-v2/day2/`; дерево: `farm-v2/tree-oak-v2.png`.
+`day2/models.json` хранит task ID, seed, параметры, ориентацию и SHA256; приватные URL не сохраняются.
+Оригиналы GLB локально в игнорируемом `assets-src/raw/farm-2026-10-25/`.
+
+Животные, улей и вход конюшни смотрят в +x, верх +y; `model()` центрирует основание.
+Для показа фасада конюшни к основной камере оставить `rotateY: -Math.PI/2`.
+Клумбы имеют одинаковое основание 2.6×1.6 (длинная сторона x); переключать состояние целиком.
+Гнездо пустое, яйца добавляет игра. Щенок использует существующую dog.glb.
+Дерево: один меш, одна color-карта, roughness 0.9 — подходит для InstancedMesh.
+Цветовой атлас дерева дополнительно скорректирован Image в `tree-oak-color-v3.png`.
+
+Сборка (из корня проекта; выходные папки должны отличаться от исходной):
+```sh
+node scripts/prepare-farm-models.mjs assets-src/raw/farm-2026-10-25 /tmp/farm-normalized assets-src/farm-v2/day2/models.json tree-oak kitten goat kid goose horse rooster chick beehive nest flowerbed-buds flowerbed-bloom stable
+node scripts/optimize-mobile-models.mjs --input /tmp/farm-normalized --output /tmp/farm-ready --report /tmp/farm-report.json
+```
+Первый проход только для новых статичных моделей: ориентация, согласование оснований,
+Meshopt (позиции 16 бит); второй — color512 и normal/ORM256 WebP. Геометрия этого набора
+не упрощалась: 86 105 треугольников; все13 GLB вместе 1.42MiB, текстуры каталога ~25.3MiB
+RGBA8+mips (не измерение фактической видеопамяти). Полный отчёт — `day2/model-report.json`.
+Визуальная проверка: `farm-v2/model-diet-qa.html?models=kitten,goat,kid,goose,rooster,horse,chick`
+с параметрами `before` и `after` для директорий сравнения.

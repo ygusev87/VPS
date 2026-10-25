@@ -1,0 +1,87 @@
+[
+  {
+    "key": "kitten",
+    "prompt": "Use case: stylized-concept. Asset type: single-object reference for a real 3D model in a premium children's toy farm game. Style: high-quality sculpted toy with smooth painted plastic, broad rounded forms, satin-matte finish, clean readable silhouette, restrained natural colors, tactile charming design matching a small toy cow and toy pig. Not a flat illustration, no outlines, no fluffy hair strands or tiny surface noise. View: three-quarter from slightly above, whole object centered, ample white margin, pure white seamless background, very soft studio lighting, no cast shadow on background. No text, no logos, no accessories or scenery. Subject: one small sitting ginger-and-cream kitten, facing image-right, broad curious round face, small triangular ears, gentle dark eyes, cream muzzle and chest, short thick tail curved beside its rear paws. Four paws clearly readable; seated compact body, low centre of gravity, able to fit on a miniature lift platform. Anatomically coherent and adorable, not an exaggerated giant head.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-0c08ffa6-a6ea-460e-ac9c-0623402067e2.png",
+    "file": "kitten-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "goat",
+    "prompt": "Use case: stylized-concept. Asset type: single-object reference for a real 3D model in a premium children's toy farm game. Style: high-quality sculpted toy with smooth painted plastic, broad rounded forms, satin-matte finish, clean readable silhouette, restrained natural colors, tactile charming design matching a small toy cow and toy pig. Not a flat illustration, no outlines, no fluffy hair strands or tiny surface noise. View: three-quarter from slightly above, whole object centered, ample white margin, pure white seamless background, very soft studio lighting, no cast shadow on background. No text, no logos, no accessories or scenery. Subject: one friendly adult farm goat standing on all four hooves, body and muzzle facing image-right. Warm ivory body, two short gently curved cocoa horns, little ears, small tan beard, chocolate cloven hooves. Rounded chunky limbs clearly separated, short upright tail, kind lively dark eyes. Readable simple silhouette, no detailed fur, a beautifully made collectible farm toy.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-02229d4c-8476-4d24-90f4-f50b7cfb91b1.png",
+    "file": "goat-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "kid",
+    "prompt": "Use case: stylized-concept. Asset type: single-object reference for a real 3D model in a premium children's toy farm game. Style: high-quality sculpted toy with smooth painted plastic, broad rounded forms, satin-matte finish, clean readable silhouette, restrained natural colors, tactile charming design matching a small toy cow and toy pig. Not a flat illustration, no outlines, no fluffy hair strands or tiny surface noise. View: three-quarter from slightly above, whole object centered, ample white margin, pure white seamless background, very soft studio lighting, no cast shadow on background. No text, no logos, no accessories or scenery. Subject: one baby goat kid standing on all four tiny hooves, body and muzzle facing image-right. Ivory coat with a warm caramel patch across its back and one ear, tiny rounded horn buds, large friendly dark eyes, chunky short legs and small cocoa cloven hooves, short upward tail. Baby proportions, compact body for riding a tiny carousel. No beard. Clearly a goat kid rather than a dog or lamb.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-d1b0bdf8-acca-4cca-8dc0-2d2e25f76a25.png",
+    "file": "kid-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "beehive",
+    "prompt": "Use case: stylized-concept. Asset type: single-object reference for a real 3D model in a premium children's toy farm. One compact wooden beehive on four short sturdy feet, golden honey-colored stacked hive boxes with broad cream horizontal bands, small terracotta gabled lid, a simple dark entrance slot and small landing board. Smooth sculpted painted wood/plastic toy, chunky rounded edges, minimal engraved details, warm harmonious natural palette. Three-quarter view slightly from above, full object centered with generous margin, pure white seamless background, soft studio lighting, no cast shadow on background. No bees, no honey dripping, no flowers, no text, no logo, no scenery. Easy to read at small game size.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-e1e8920b-4aed-4fc6-a36c-f3bb44e13e44.png",
+    "file": "beehive-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "flowerbed-buds",
+    "prompt": "Use case: stylized-concept. Asset type: single 3D flowerbed concept for a children's toy farm, the BEFORE state of watering. A low rounded rectangular raised planter with outer length to width ratio 2.6:1.6, warm weathered honey-brown wooden border, four softly rounded corners, rich dark brown smooth soil inset. Exactly six compact flowering plants in two tidy rows of three: each with a short thick green stem, two broad oval sculpted leaves, one big CLOSED flower bud. Bud colors in repeated warm yellow, coral, soft lavender. Elegant uncluttered forms, no microscopic details, tactile smooth satin painted wood/plastic toy style. Three-quarter top view, full planter centered on plain pure white background, generous margin, soft neutral studio light, no background shadow, no text, no insects, no watering can, no scattered objects. The wooden bed and plant stems will stay exactly in place in a second bloom-state image.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-dd9e0891-c7f3-4a67-87b4-78057aa9faf3.png",
+    "file": "flowerbed-buds-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "nest",
+    "prompt": "Use case: stylized-concept. Asset type: one small empty bird nest 3D model reference for a premium children's toy farm. Subject: a low broad circular bowl-shaped nest made of warm golden straw, a smooth shallow hollow clearly visible in the middle; a small number of chunky curved woven bundles around the rim, broad soft organic forms like a sculpted toy. Entire nest is one connected object, no loose thin twigs, no fine hair-like fibres. EMPTY nest, absolutely no eggs, no birds. Smooth matte painted toy material, three-quarter view from slightly above, full object centered, pure white background and generous margins, soft studio light, no cast shadow on background, no text or scenery.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-cfcc09e5-d9dc-431a-96fd-5d8f44a7f3ec.png",
+    "file": "nest-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "flowerbed-bloom",
+    "reference": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-dd9e0891-c7f3-4a67-87b4-78057aa9faf3.png",
+    "prompt": "Use case: precise-object-edit. Edit target: the supplied toy flowerbed image. Change ONLY the six closed flower buds into six fully opened, beautiful simple tulip-like flowers with broad thick rounded petals and clearly visible golden centers. Keep each flower's existing color: two yellow on the left, two coral in the middle, two lavender on the right. Preserve EXACTLY the wooden planter, its dimensions, the soil, the number and placement of the six stems, leaves, camera angle, framing, white background, lighting and all other parts. The open blooms can be about 1.4 times the closed bud width, but not touch each other. Same sculpted satin toy style, no thin filaments or tiny details. No additional objects and no text.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-8eaa5fec-683c-4ab7-8c0b-e965356d2ea5.png",
+    "file": "flowerbed-bloom-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "chick",
+    "prompt": "Use case: stylized-concept. Asset type: a single real-3D-model reference for a premium toy farm. One tiny newly hatched yellow chicken chick, standing on two small sturdy orange three-toed feet, body and short pointed beak facing image-right. Warm butter-yellow round body, two small rounded wings sculpted against its sides, short round tail, tiny crest of two soft rounded feather shapes, friendly dark bead eyes. Smooth matte painted plastic, broad soft geometry, no fluffy hair or individual feather strands, no eggshell or accessories. Three-quarter view from slightly above, full object centered with ample white margin, pure white seamless background, soft studio lighting, no background shadow, no text. Clearly a baby chicken, not a duck: short conical beak, no flat bill.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-f25fc0f1-a894-4758-81ec-4fb13c1b4ecb.png",
+    "file": "chick-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "goose",
+    "prompt": "Use case: stylized-concept. Asset type: single-object reference for a premium children's 3D toy farm. One friendly white domestic goose, standing with two short sturdy orange webbed feet. Body and orange wedge-shaped beak facing image-right. Long gently curved neck and small head; rounded white body, wings folded snugly against its sides, a few broad sculpted feather shapes on the wings, dark gentle bead eyes. Smooth satin-matte painted plastic, compact stable toy design, natural simplified proportions, no thin feathers or hair, no accessories. Three-quarter view from slightly above, whole object centered on pure white seamless background, soft studio lighting, no background shadow, no text, no scenery.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-279daa7b-0a57-4512-98da-0eab5b8bb91a.png",
+    "file": "goose-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "horse",
+    "prompt": "Use case: stylized-concept. Asset type: one isolated object reference for a real 3D model in a premium children's toy farm game. Smooth sculpted painted plastic, broad rounded shapes, satin-matte surface, natural harmonious colors, charming polished toy design. Three-quarter view from slightly above, body and head facing image-right, entire object centered with ample margins on a pure white seamless background, soft studio lighting, no background shadow. No text, no logo, no props or scenery, no fine hair or thin details. Subject: a friendly small chestnut farm horse standing calmly on all four sturdy legs. Warm reddish-brown body, thick dark cocoa mane sculpted as a few broad locks, a short thick curved tail, creamy narrow forehead blaze and soft cream muzzle, dark hooves, gentle alert eyes and small upright ears. Slightly chunky toy proportions, proper horse anatomy and readable separated legs. No saddle, no bridle, no rider.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-e4b7db21-181d-4dde-80de-9c76d38afaac.png",
+    "file": "horse-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "rooster",
+    "prompt": "Use case: stylized-concept. Asset type: one isolated object reference for a real 3D model in a premium children's toy farm game. Smooth sculpted painted plastic, broad rounded shapes, satin-matte surface, natural harmonious colors, charming polished toy design. Three-quarter view from slightly above, body and head facing image-right, entire object centered with ample margins on a pure white seamless background, soft studio lighting, no background shadow. No text, no logo, no props or scenery, no fine hair or thin details. Subject: a cheerful handsome farm rooster standing on two sturdy golden orange three-toed feet. Creamy body and wings, warm golden neck feathers as a few broad sculpted shapes, bright coral-red compact comb and wattles, small orange pointed beak, dark friendly eyes. Arched fan of three or four thick deep teal tail feathers, beautiful simple silhouette. Tail is one sturdy connected sculpted form, no thin strands. No eggs or accessories.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-f093a36b-173c-4977-ab36-90d2b983a933.png",
+    "file": "rooster-v1.png",
+    "tool": "built-in image_gen"
+  },
+  {
+    "key": "stable",
+    "prompt": "Use case: stylized-concept. Asset type: one isolated miniature stable building reference for a children's 3D toy farm, matching a red wooden barn and warm toy beehive. A compact friendly timber horse stable with warm cream painted vertical plank walls, honey-brown framing and a broad terracotta-red pitched roof with softly rounded edges and very few broad roof courses. One generous central dark open doorway with a pair of chunky teal half doors folded OUTWARD against the facade, a small square side window with cream crossbars. Entire structure about 4.2 units wide, low balanced silhouette; broad sturdy parts, softly sculpted painted wood, high-quality collectible toy product render. Three-quarter front view from slightly above, whole building centered on pure white seamless background with safe margins, soft studio light, no cast shadow on background. No horse, no people, no loose props, no fences, no base platform, no text or sign, no complex thin hardware. A single clean connected building model.",
+    "file": "stable-v1.png",
+    "tool": "image_gen",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-adbc8dd6-118d-47a6-9be5-87151afd0260.png"
+  }
+]

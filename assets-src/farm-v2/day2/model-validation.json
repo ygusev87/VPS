@@ -1,0 +1,218 @@
+[
+  {
+    "name": "tree-oak",
+    "errors": 0,
+    "warnings": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      }
+    ]
+  },
+  {
+    "name": "kitten",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "goat",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "kid",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "goose",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "horse",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "rooster",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "chick",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "beehive",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "nest",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "flowerbed-buds",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "flowerbed-bloom",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  },
+  {
+    "name": "stable",
+    "errors": 0,
+    "warnings": 1,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "severity": 2,
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'."
+      },
+      {
+        "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+        "severity": 1,
+        "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations."
+      }
+    ]
+  }
+]
