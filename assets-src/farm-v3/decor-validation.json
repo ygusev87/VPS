@@ -73,6 +73,20 @@
       "x1": -4.93903,
       "z0": -29.683128,
       "z1": -24.316872
+    },
+    {
+      "model": "pigsty",
+      "x0": 22,
+      "x1": 32,
+      "z0": -30.95921,
+      "z1": -22.04079
+    },
+    {
+      "model": "tractor-shed",
+      "x0": 38.511185,
+      "x1": 47.488815,
+      "z0": 21,
+      "z1": 31
     }
   ],
   "buildingConflicts": [],
@@ -131,6 +145,18 @@
       "instances": 1,
       "bytes": 65788,
       "trianglesPerInstance": 2949
+    },
+    {
+      "model": "pigsty",
+      "instances": 1,
+      "bytes": 84380,
+      "trianglesPerInstance": 2891
+    },
+    {
+      "model": "tractor-shed",
+      "instances": 1,
+      "bytes": 84856,
+      "trianglesPerInstance": 3068
     },
     {
       "model": "beehive",
@@ -271,8 +297,8 @@
       "trianglesPerInstance": 2942
     }
   ],
-  "instances": 300,
-  "trianglesBeforeIntegrationCulling": 524668,
+  "instances": 302,
+  "trianglesBeforeIntegrationCulling": 530627,
   "notes": [
     "Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.",
     "farm.ts culls small instances near its interactive points.",

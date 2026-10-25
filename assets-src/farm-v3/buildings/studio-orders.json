@@ -12,8 +12,8 @@
   },
   "credits": {
     "before": 6050,
-    "after": 6000,
-    "spent": 50,
+    "after": 5950,
+    "spent": 100,
     "perModel": 25
   },
   "models": [
@@ -26,8 +26,20 @@
       "name": "silo",
       "id": "3980dd55-178f-43f8-8818-8cb3abe1a19d",
       "reference": "silo-v1.png"
+    },
+    {
+      "name": "pigsty",
+      "id": "82905fbf-816c-48ca-9a56-a827761b2923",
+      "reference": "pigsty-v1.png",
+      "status": "accepted after two free retries",
+      "freeRetries": 2
+    },
+    {
+      "name": "tractor-shed",
+      "id": "a0669e04-d8a7-490a-8bcf-9437c58eece3",
+      "reference": "tractor-shed-v1.png"
     }
   ],
   "rawDirectory": "assets-src/raw/farm-v3-2026-10-25",
-  "note": "Both succeeded first attempt. No API credits used."
+  "note": "No API credits used. Pigsty first two attempts rejected for folded geometry. Third attempt accepted after two free retries; balance stayed 5950."
 }

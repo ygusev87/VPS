@@ -30,6 +30,12 @@ export const DECOR: DecorGroup[] = [
   { model: "silo", fit: {"height": 12}, items: [
     [-7.6, -27, 0, 1]
   ] },
+  { model: "pigsty", fit: {"width": 10, "rotateY": -1.5707963267948966}, items: [
+    [27, -26.5, 0, 1]
+  ] },
+  { model: "tractor-shed", fit: {"depth": 10, "rotateY": 3.141592653589793}, items: [
+    [43, 26, 0, 1]
+  ] },
   { model: "beehive", fit: {"height": 1.7}, items: [
     [-15, 25, 0.2, 1],
     [-20, 28, -0.1, 0.95]
@@ -38,8 +44,8 @@ export const DECOR: DecorGroup[] = [
     [-24, -25, 0.3, 1],
     [-24, -22, -0.15, 0.8],
     [-7, -22, 0.1, 0.9],
-    [46, 21, 0.5, 1],
-    [46, 30, -0.4, 0.85],
+    [49.5, 21.5, 0.5, 0.85],
+    [49.5, 26.5, -0.4, 0.75],
     [39, -30, 0.2, 0.7]
   ] },
   { model: "sack", fit: {"height": 1.25}, items: [
@@ -390,7 +396,7 @@ export const PATHS: { points: [number, number][]; width: number }[] = [
   {"points": [[3, 13], [3, 26], [-1, 26]], "width": 1.6},
   {"points": [[3, 26], [15, 26]], "width": 1.4},
   {"points": [[11, 26], [11, 35.5]], "width": 1.6},
-  {"points": [[36, 28], [38, 28]], "width": 1.8},
+  {"points": [[36, 26], [38.5, 26]], "width": 1.8},
   {"points": [[30, 13], [30, 21]], "width": 1.8}
 ];
 

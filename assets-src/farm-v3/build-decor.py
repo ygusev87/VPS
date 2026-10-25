@@ -37,7 +37,7 @@ lane('apiary-entry',[[-20,13],[-20,23]],1.6)
 lane('garden-north',[[3,13],[3,26],[-1,26]],1.6)
 lane('garden-cross',[[3,26],[15,26]],1.4)
 lane('garden-south',[[11,26],[11,35.5]],1.6)
-lane('shed-entry',[[36,28],[38,28]],1.8)
+lane('shed-entry',[[36,26],[38.5,26]],1.8)
 lane('tractor-gate',[[30,13],[30,21]],1.8)
 
 def point_segment(p,a,b):
@@ -114,11 +114,11 @@ add('hutch',{'width':3,'rotateY':turn},[[-44,-14.5,0,1]],'building')
 # Missing models are deliberate slots; integration skips missing files without boxes.
 add('farmhouse',{'width':11,'rotateY':turn},[[-38.5,-25.5,0,1]],'building')
 add('silo',{'height':12},[[-7.6,-27,0,1]],'building')
-add('pigsty',{'width':10,'rotateY':turn},[[27,-25,0,1]],'future')
-add('tractor-shed',{'width':10,'rotateY':math.pi},[[43,26,0,1]],'future')
+add('pigsty',{'width':10,'rotateY':turn},[[27,-26.5,0,1]],'building')
+add('tractor-shed',{'depth':10,'rotateY':math.pi},[[43,26,0,1]],'building')
 add('well',{'width':2.8},[[-1.5,-3.2,0,1]],'future-toy')
 add('beehive',{'height':1.7},[[-15,25,.2,1],[-20,28,-.1,.95]],'prop')
-add('haystack',{'width':2.8},[[-24,-25,.3,1],[-24,-22,-.15,.8],[-7,-22,.1,.9],[46,21,.5,1],[46,30,-.4,.85],[39,-30,.2,.7]],'prop')
+add('haystack',{'width':2.8},[[-24,-25,.3,1],[-24,-22,-.15,.8],[-7,-22,.1,.9],[49.5,21.5,.5,.85],[49.5,26.5,-.4,.75],[39,-30,.2,.7]],'prop')
 add('sack',{'height':1.25},[[-22.7,-23,.3,1],[-22.6,-24.5,-.2,.95],[-22,-24.8,.1,.85]],'prop')
 add('cow',{'height':1.65},[[6,-3,-.3,1],[20,-3,-2,.94],[24,5,2.8,1.02]],'herd')
 add('sheep',{'height':1.2},[[41,-28,-.2,1],[46,-30,1.2,.92]],'herd')
@@ -140,7 +140,7 @@ def clear(p,radius):
     for e in ponds:
         if ((x-e['x'])/(e['rx']+radius+.35))**2+((z-e['z'])/(e['rz']+radius+.35))**2<1:return False
     # Authored buildings and future buildings retain their full footprint.
-    for cx,cz,w,d in [(-16,-27,10.5,11.686),(8,-23.5,4.6,7.682),(42,-4,10,12.75),(-38.5,-25.5,11,9),(-7.6,-27,5.322,5.366),(27,-25,10,6),(43,26,10,10)]:
+    for cx,cz,w,d in [(-16,-27,10.5,11.686),(8,-23.5,4.6,7.682),(42,-4,10,12.75),(-38.5,-25.5,11,9),(-7.6,-27,5.322,5.366),(27,-26.5,10,8.919),(43,26,8.978,10)]:
         if abs(x-cx)<w/2+radius+.35 and abs(z-cz)<d/2+radius+.35:return False
     return True
 

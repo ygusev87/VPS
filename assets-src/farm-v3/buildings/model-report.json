@@ -45,7 +45,7 @@
         "bounds": {
           "min": [
             -0.4034699545274208,
-            0.000003419920861669201,
+            3.419920861669201e-06,
             -0.5000000000000001
           ],
           "max": [
@@ -130,6 +130,142 @@
             ],
             "mime": "image/webp",
             "bytes": 28440
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "pigsty",
+      "sourceSha256": "ebdfbfed9276e0cdf7d13248729d7079418780cfe9c26d342290340fb8292c98",
+      "outputSha256": "5afc12715208e2193fd4e34e02d8173661b0c876d6ad510335ae80c223b40582",
+      "target": 2000,
+      "error": 0.002,
+      "yawDegrees": 90,
+      "before": {
+        "bytes": 850296,
+        "triangles": 3327,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.5,
+            0,
+            -0.4459228515625
+          ],
+          "max": [
+            0.5,
+            0.5736083388328552,
+            0.4459228515625
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 714915
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 84380,
+        "triangles": 2891,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.44592120120853296,
+            6.476615743988834e-06,
+            -0.5
+          ],
+          "max": [
+            0.44592120120853296,
+            0.5736018622171113,
+            0.5
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 37822
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      }
+    },
+    {
+      "name": "tractor-shed",
+      "sourceSha256": "22f5ef6414d961226b69cbc1a23b65108e844c649ad731766a8ce9d5778a66d7",
+      "outputSha256": "e85bdce5384ab2e52a93778035a3c06426f47d34ff3f182e985b5f38498f31ce",
+      "target": 2400,
+      "error": 0.002,
+      "yawDegrees": 90,
+      "before": {
+        "bytes": 774916,
+        "triangles": 3501,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.5,
+            0,
+            -0.4488829970359802
+          ],
+          "max": [
+            0.5,
+            0.6296387314796448,
+            0.4488829970359802
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              2048,
+              2048
+            ],
+            "mime": "image/jpeg",
+            "bytes": 623124
+          }
+        ],
+        "skins": 0,
+        "animations": 0
+      },
+      "after": {
+        "bytes": 84856,
+        "triangles": 3068,
+        "meshes": 1,
+        "materials": 1,
+        "bounds": {
+          "min": [
+            -0.4488814966277048,
+            5.681240173360802e-06,
+            -0.5
+          ],
+          "max": [
+            0.4488814966277048,
+            0.6296330502394714,
+            0.4999999999999999
+          ]
+        },
+        "textures": [
+          {
+            "size": [
+              512,
+              512
+            ],
+            "mime": "image/webp",
+            "bytes": 31214
           }
         ],
         "skins": 0,

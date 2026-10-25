@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-25",
+  "models": [
+    "pigsty",
+    "tractor-shed"
+  ],
+  "bytes": 169236,
+  "triangles": 5959,
+  "sourceBytes": 1625212,
+  "validation": "GLB validator: 0 errors, 0 warnings per model. Meshopt decoded successfully in browser; validator does not inspect that extension.",
+  "checks": {
+    "tests": "21 passed (4 files)",
+    "typecheck": "passed",
+    "layout": "scripts/check-farm-decor.mjs passed: no building/fence/working-pad conflicts; 20 connected paths, 64 fence runs",
+    "browser": [
+      "Original vs compressed: game, front +X, three-quarter views",
+      "1180x820 farm, 390x844 farm; 390px model comparison"
+    ],
+    "limits": [
+      "Desktop in-app browser, not hardware iPad FPS testing.",
+      "Portrait show-all remains very small, already reported to Claude."
+    ],
+    "console": [
+      "Two un-attributed MutationObserver.observe errors in runtime tab, same signature already observed in prior static QA. Source not established; no model-load errors observed."
+    ]
+  },
+  "placement": {
+    "pigsty": {
+      "center": [
+        27,
+        -26.5
+      ],
+      "fit": {
+        "width": 10,
+        "rotateY": -1.5707963267948966
+      },
+      "size": [
+        10,
+        5.73595,
+        8.91842
+      ],
+      "front": "+Z",
+      "note": "Moved 1.5 north from the planned slot to clear the north pig-pen fence."
+    },
+    "tractor-shed": {
+      "center": [
+        43,
+        26
+      ],
+      "fit": {
+        "depth": 10,
+        "rotateY": 3.141592653589793
+      },
+      "size": [
+        8.97763,
+        6.29627,
+        10
+      ],
+      "front": "-X",
+      "note": "Entry path at z26; two haystacks moved east. Interior remains empty, no static tractor duplicate."
+    }
+  },
+  "screenshots": [
+    "/tmp/gameios-visual-audit-2026-10-25/shelters-before-after-phone.png",
+    "/tmp/gameios-visual-audit-2026-10-25/shelters-before-after-tablet.png",
+    "/tmp/gameios-visual-audit-2026-10-25/shelters-farm-tablet.png",
+    "/tmp/gameios-visual-audit-2026-10-25/shelters-farm-phone.png"
+  ]
+}
