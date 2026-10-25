@@ -1,0 +1,106 @@
+{
+  "status": "Candidate only; current fit does not meet balcony interface",
+  "input": "candidate/grandma-house.glb",
+  "runtimeFit": {
+    "width": 6.2,
+    "rotateY": -1.5707963267948966,
+    "centerXZ": [
+      -44,
+      -27
+    ]
+  },
+  "fittedSize": [
+    6.2,
+    7.7331,
+    4.7594
+  ],
+  "sideDoorColourSamples": [
+    {
+      "z": -0.1,
+      "firstTealPixelY": 2.21,
+      "surfaceX": 2.8191,
+      "rgb": [
+        84,
+        134,
+        120
+      ]
+    },
+    {
+      "z": 0.1,
+      "firstTealPixelY": 2.24,
+      "surfaceX": 2.8257,
+      "rgb": [
+        39,
+        104,
+        109
+      ]
+    },
+    {
+      "z": 0.25,
+      "firstTealPixelY": 2.225,
+      "surfaceX": 2.8323,
+      "rgb": [
+        39,
+        97,
+        93
+      ]
+    },
+    {
+      "z": 0.4,
+      "firstTealPixelY": 2.215,
+      "surfaceX": 2.8387,
+      "rgb": [
+        70,
+        122,
+        111
+      ]
+    },
+    {
+      "z": 0.55,
+      "firstTealPixelY": 2.24,
+      "surfaceX": 2.8436,
+      "rgb": [
+        30,
+        104,
+        102
+      ]
+    }
+  ],
+  "doorEstimate": {
+    "method": "Nearest ray hit at +X wall; first teal base-colour texel along y1.6..2.7, step0.005. Confirms rendered door placement, not exact physical sill mesh edge.",
+    "thresholdY": 2.225,
+    "aboveDeck": 0.275,
+    "estimateUncertainty": ".02-.05 world units from texture boundary/frame; validate visually"
+  },
+  "wallAtDeck": {
+    "point": [
+      2.8072,
+      1.95,
+      0.25
+    ],
+    "rgb": [
+      251,
+      169,
+      16
+    ],
+    "deckLeftX": 3.1,
+    "gap": 0.2928
+  },
+  "options": {
+    "recommended": {
+      "description": "Keep fitted width6.2; reduce house height only, then extend balcony deck back to the measured facade while anchor/outer edge stay fixed. Claude owns final integration choice.",
+      "approxHouseYScale": 0.8764,
+      "approxDeckExtension": 0.2977
+    },
+    "alternative": {
+      "description": "Increase full fitted width until facade touches x3.1, compensate height separately; recheck enlarged footprint.",
+      "approxFullWidth": 6.786,
+      "approxHouseYScale": 0.8007
+    }
+  },
+  "limitations": [
+    "No changes to balcony, lift, grandma or gameplay anchors.",
+    "Neither suggested option applied to the candidate; no public/models addition.",
+    "Full game and iPad testing pending."
+  ]
+}

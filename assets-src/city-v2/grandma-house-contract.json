@@ -1,5 +1,5 @@
 {
-  "status": "Image reference prepared; GLB not ordered or integrated; measurement required",
+  "status": "First GLB generated, optimized and measured; candidate only, balcony-fit decision pending",
   "reference": "grandma-house-v1.png",
   "decision": "m0195, reaffirmed m0198; keep existing balcony",
   "appearance": {
@@ -67,7 +67,7 @@
     "materialsTarget": 1,
     "baseColorPixels": 512,
     "approxDownloadBytesTarget": 200000,
-    "allTargetsUnmeasured": true
+    "allTargetsUnmeasured": false
   },
   "acceptance": [
     "Decode and measure the actual GLB after orientation, optimisation and runtime model() fit; do not infer metres from PNG.",
@@ -79,7 +79,10 @@
   ],
   "reviewNotes": [
     "Current image has shallow projecting roof and horizontal trim. These are stylistic, not permission to change contact coordinates.",
-    "No device test or performance claim from reference image."
+    "No device test or performance claim from reference image.",
+    "At fit.width6.2: rendered middle-door boundary y2.225, wall at deck y1.95 has gap0.2928. Proposed Y scale0.8764 and deck extension0.30 are preview-only, not integrated. See grandma-house-3d/README.md."
   ],
-  "tripoOrders": 0
+  "tripoOrders": 1,
+  "candidate": "grandma-house-3d/candidate/grandma-house.glb",
+  "measurement": "grandma-house-3d/fit-measurements.json"
 }

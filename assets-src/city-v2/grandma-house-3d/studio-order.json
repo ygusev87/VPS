@@ -1,0 +1,39 @@
+{
+  "provider": "Tripo Studio",
+  "taskId": "fa7766aa-ab98-435b-9f0e-0e5caa21f68a",
+  "url": "https://studio.tripo3d.ai/ru/workspace/generate/fa7766aa-ab98-435b-9f0e-0e5caa21f68a",
+  "reference": "../grandma-house-v1.png",
+  "status": "Optimized and measured candidate; integration waiting on balcony-fit decision",
+  "observedAtUTC": "2026-10-25T20:05:38.764700+00:00",
+  "settings": {
+    "model": "H3.1",
+    "mode": "HD model, image-to-model",
+    "polygonTarget": 8000,
+    "topology": "triangles",
+    "texture": "2K",
+    "delight": true,
+    "pbr": false,
+    "ultraMesh": false,
+    "aiEnhancement": false,
+    "segmentation": false,
+    "texture8K": false
+  },
+  "credits": {
+    "pool": "included Studio subscription credits",
+    "before": 5900,
+    "priceShown": 25,
+    "afterSubmission": 5875,
+    "additionalPurchase": false,
+    "apiCreditsUsed": 0
+  },
+  "approval": "owner authorized models for game using existing Tripo subscription; art reference approved by Claude m0201",
+  "note": "One order. Candidate kept outside public/models until geometry/contact QA.",
+  "rawFile": "assets-src/raw/city-v2-2026-10-26/grandma-house.glb",
+  "rawSha256": "c46c39ecf23c3b7a3fea399173a8ba120072e172fc9f35e7a34630b0cb3319d5",
+  "rawBytes": 1059680,
+  "downloadedAtUTC": "2026-10-25T20:07:57.947377+00:00",
+  "studioTriangles": 7068,
+  "studioVertices": 5227,
+  "candidate": "candidate/grandma-house.glb",
+  "measurement": "fit-measurements.json"
+}
