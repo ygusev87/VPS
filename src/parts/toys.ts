@@ -357,8 +357,9 @@ export class Garland extends Part {
   glowLight() {
     if (this.shown < 0.05) return null;
     const mid = this.bulbs[GARLAND_N >> 1];
-    // Many small bulbs, not one lamp: a soft light on the table (enough for a light sensor close by).
-    return { at: mid.glow.getWorldPosition(new THREE.Vector3()), color: new THREE.Color('#ffc8e6'), power: Math.min(0.45, this.shown * 0.3) };
+    // Many small bulbs, not one lamp: a soft light on the table, but a light
+    // sensor close by feels the whole string (as bright as a lamp).
+    return { at: mid.glow.getWorldPosition(new THREE.Vector3()), color: new THREE.Color('#ffc8e6'), power: Math.min(0.3, this.shown * 0.22), sense: this.shown * 0.7 };
   }
 
   protected animate(dt: number) {

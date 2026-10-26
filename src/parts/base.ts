@@ -500,8 +500,11 @@ export abstract class Part {
     return this.plate;
   }
 
-  /** A lit lamp's light for the room (see Fx.shine), or null. */
-  glowLight(): { at: THREE.Vector3; color: THREE.Color; power: number } | null {
+  /**
+   * A lit lamp's light for the room (see Fx.shine), or null. `sense` is how
+   * strongly a light sensor feels it, when that differs from what is drawn.
+   */
+  glowLight(): { at: THREE.Vector3; color: THREE.Color; power: number; sense?: number } | null {
     return null;
   }
 

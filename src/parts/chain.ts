@@ -1298,7 +1298,7 @@ function shine(parts: Part[], laserLit: Map<Part, number>) {
     for (const l of lights) {
       if (l.part === s) continue;
       const d = l.at.distanceTo(eye);
-      lux += Math.min(1.5, l.power) * Math.max(0, 1 - d / 5) ** 1.5;
+      lux += Math.min(1.5, l.sense ?? l.power) * Math.max(0, 1 - d / 5) ** 1.5;
     }
     lux += laserLit.get(s) ?? 0;
     s.sense(lux);
