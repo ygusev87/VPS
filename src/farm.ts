@@ -624,11 +624,49 @@ export class FarmMap extends StoryMap {
       const z = (Math.random() - 0.5) * (D - 3);
       if (free(x, z) && spots.every(([sx, sz]) => Math.hypot(x - sx, z - sz) > 1.8)) spots.push([x, z, 0.8 + Math.random() * 0.45]);
     }
+    if (this.kit && this.scatterKit(free)) return;
     const bloom = instances('flower-cluster', { height: 0.45 }, spots);
     bloom?.traverse((o) => (o.castShadow = false));
     // The kit's grass has its little flowers painted in; the flat dots are only for the old ground.
     if (bloom) this.scenery.add(bloom);
     else if (!this.kit) this.scenery.add(flowers(this.plan, 160, free));
+  }
+
+  /**
+   * The kit's little painted things, hundreds of them, as on farm-a: tufts and
+   * wild flowers over the grass, thicker along the fences, and round shrubs.
+   * False if the kit has none yet.
+   */
+  private scatterKit(free: (x: number, z: number) => boolean) {
+    const tuft = kitPieces('farm', 'tuft-card');
+    const flower = kitPieces('farm', 'flower-card');
+    const shrub = kitPieces('farm', 'shrub-card');
+    if (!tuft.length && !flower.length) return false;
+    let seed = 23;
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+    // Half of them by the fences, where a mower would not reach.
+    const byFence = () => {
+      const line = FENCES[Math.floor(rnd() * FENCES.length)];
+      const [a, b] = [line[0], line[line.length - 1]];
+      const t = rnd();
+      const side = (rnd() < 0.5 ? -1 : 1) * (0.5 + rnd() * 0.6);
+      const dx = b[0] - a[0];
+      const dz = b[1] - a[1];
+      const len = Math.hypot(dx, dz) || 1;
+      return [a[0] + dx * t - (dz / len) * side, a[1] + dz * t + (dx / len) * side];
+    };
+    const sow = (n: number, size: number, gap: number) => {
+      const out: { x: number; z: number; size: number }[] = [];
+      for (let tries = 0; out.length < n && tries < n * 30; tries++) {
+        const [x, z] = rnd() < 0.5 ? byFence() : [(rnd() - 0.5) * (W - 3), (rnd() - 0.5) * (D - 3)];
+        if (free(x, z) && out.every((o) => Math.hypot(o.x - x, o.z - z) > gap)) out.push({ x, z, size: size * (0.8 + rnd() * 0.4) });
+      }
+      return out;
+    };
+    if (tuft.length) this.scenery.add(cards(sow(700, 0.55, 0.45).sort((a, b) => a.z - b.z), tuft));
+    if (flower.length) this.scenery.add(cards(sow(320, 0.6, 0.7).sort((a, b) => a.z - b.z), flower));
+    if (shrub.length) this.scenery.add(standees(sow(90, 1.2, 1.6), shrub, kitPieces('farm', 'blob-shadow')[0] ?? null));
+    return true;
   }
 
   /** Where the kids and the puppy go back to between rides and games. */
