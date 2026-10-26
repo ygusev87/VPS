@@ -1,0 +1,22 @@
+{
+  "name": "park-lawn",
+  "status": "accepted for integration review after placement fix",
+  "sourceCommit": "d2b6e7b",
+  "runtimePlacementCommit": "471ac7e",
+  "sha256": "c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+  "width": 33.6,
+  "depth": 17.6,
+  "decalOffsetWorldXZ": [
+    0.092578,
+    0.260231
+  ],
+  "fountainWorldXZ": [
+    -3,
+    1
+  ],
+  "verifiedBasinRadius": 3.2,
+  "verifiedExtraMargin": 0.1,
+  "fallbackOuterRadius": 3.55,
+  "fallbackStatus": "not accepted; rim exceeds paving, Claude informed",
+  "kitEntry": "public/textures/kit/city/kit.json"
+}

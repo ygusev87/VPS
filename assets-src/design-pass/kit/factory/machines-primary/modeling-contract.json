@@ -31,7 +31,7 @@
         "door"
       ],
       "clearance": "Open tray for two-by-two interactive tiles; keep top-down visibility and tap access.",
-      "runtimeNote": "WireBox tiles centred at X/Z ±0.5, Y=PLATE_TOP+0.17; current door at rear -Z, brief left. Integrator resolves hinge alignment, not a PNG guarantee."
+      "runtimeNote": "Decision m0410: door pivot on north/rear -Z, opens upward behind tiles. Tiles centred X/Z ±0.5, Y=PLATE_TOP+0.17; connectors outside left/right. Reference left hinges are not final geometry; remove/reposition during modeling or correct reference before conversion."
     },
     {
       "name": "safety-press",
@@ -62,7 +62,7 @@
         "dial needle"
       ],
       "clearance": "Empty axial span between headstock and tailstock; no baked rotating cylinder.",
-      "runtimeNote": "Code spindle centre (0.3,PLATE_TOP+0.75,0.2); dial centre(-0.7,PLATE_TOP+1.25,0.5), radius0.3. Current dial needs height reconciliation."
+      "runtimeNote": "Decision m0410: leave empty/flat mount on top of headstock for code dial facing south. Centre(-0.7,PLATE_TOP+1.25,+0.5), radius0.3. Reference static dial is not an accepted replacement."
     },
     {
       "name": "hoist",
@@ -77,5 +77,6 @@
       "clearance": "Open front and shaft over full cabin travel; sparse mesh must preserve real openings.",
       "runtimeNote": "Do not infer collision or triangle budget from image; inspect generated mesh before acceptance."
     }
-  ]
+  ],
+  "integrationDecision": "Claude m0410; 2026-10-26"
 }
