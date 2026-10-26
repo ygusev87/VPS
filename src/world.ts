@@ -289,11 +289,12 @@ export class World {
     const rects = [];
     const key: string[] = [];
     for (const p of this.parts) {
-      const f = p.footprint();
-      if (!f) continue;
+      const raw = p.footprint();
+      if (!raw) continue;
+      const f = p.turned(raw);
       const { x, z } = p.root.position;
       rects.push({ x0: x + f.x0 - M, x1: x + f.x1 + M, z0: z + f.z0 - M, z1: z + f.z1 + M });
-      key.push(`${x.toFixed(2)},${z.toFixed(2)}`);
+      key.push(`${x.toFixed(2)},${z.toFixed(2)},${p.root.rotation.y.toFixed(2)}`);
     }
     Wire.obstacles = rects;
     Wire.obstacleKey = key.join(';');

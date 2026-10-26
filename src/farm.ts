@@ -19,7 +19,7 @@ import { Lift } from './parts/more';
 import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import { flowers, groundMaterial, onLane, pond, type Ellipse, type GroundPlan } from './ground';
-import { AMBIENT } from './parts/wind';
+import { AMBIENT, WIND_RANGE } from './parts/wind';
 import { isActive } from './world';
 import { dressing } from './decor';
 import { RIGS } from './rig';
@@ -159,7 +159,8 @@ const HORSE = v(42.5, 9.5);
 const HORSE_FAN = v(39, 13);
 // The pond west, the ducks on it; the geese on its south shore.
 const POND = v(-40, 3.5);
-const DUCK_PUMP = v(-30.5, 5.5);
+// On the pond's east bank, its spout over the water (it turns to pour west, into the pond).
+const DUCK_PUMP = v(-33, 4.5);
 const GEESE = v(-33.5, 12.5);
 const GEESE_SPOT = v(-31, 15.5);
 
@@ -441,19 +442,28 @@ export class FarmMap extends StoryMap {
   private buildNeeds() {
     const near = (kinds: PartKind[], at: THREE.Vector3, r: number) => () =>
       this.world.parts.some((p) => kinds.includes(p.kind) && isActive(p) && p.root.position.distanceTo(at) < r);
+    // A fan helps only when it really blows on the one who is hot (it faces them on its place).
+    const blowsOn = (at: THREE.Vector3) => () =>
+      this.world.parts.some((p) => {
+        const b = (p as Part & { breeze?: () => { origin: THREE.Vector3; dir: THREE.Vector3; strength: number } | null }).breeze?.();
+        if (!b || b.strength < 0.05) return false;
+        const d = at.clone().sub(b.origin).setY(0);
+        const along = d.dot(b.dir);
+        return along > 0.3 && along < WIND_RANGE && d.addScaledVector(b.dir, -along).length() < 0.9 + along * 0.3;
+      });
     const get = (name: string) => this.critters.get(name)!;
     const cow = get('cow');
     const add = (n: NeedSpec) => this.addNeed(n);
     const FANS: PartKind[] = ['fan', 'floorFan', 'pcFan'];
     // Day.
-    add({ critter: cow, phase: 'day', ask: 'cowHot', thanks: 'cowHappy', icon: 'fan', kinds: FANS, spot: COW_FAN, met: near(FANS, cow.home, 4.2 * K) });
-    add({ critter: get('pig'), phase: 'day', ask: 'pigThirsty', thanks: 'pigHappy', icon: 'pump', kinds: ['pump'], spot: v(TROUGH.x - 1.9, TROUGH.z + 0.2), met: () => this.troughLevel > 0.95 });
+    add({ critter: cow, phase: 'day', ask: 'cowHot', thanks: 'cowHappy', icon: 'fan', kinds: FANS, spot: COW_FAN, toward: COW.clone(), met: blowsOn(COW) });
+    add({ critter: get('pig'), phase: 'day', ask: 'pigThirsty', thanks: 'pigHappy', icon: 'pump', kinds: ['pump'], spot: v(TROUGH.x - 1.9, TROUGH.z + 0.2), toward: TROUGH.clone(), met: () => this.troughLevel > 0.95 });
     add({ critter: get('tractor'), phase: 'day', ask: 'gateStuck', thanks: 'gateHappy', icon: 'gate', kinds: [], spot: GATE_SPOT, met: () => this.gate.open > 0.97 });
     add({ critter: get('sheep'), phase: 'day', ask: 'sheepMill', thanks: 'sheepHappy', icon: 'windmill', kinds: ['windmill'], spot: MILL.clone(), met: () => this.millLevel >= 1 });
     add({ critter: get('kitten'), phase: 'day', ask: 'kittenStuck', thanks: 'kittenHappy', icon: 'lift', kinds: ['lift'], spot: LIFT_SPOT, met: () => this.kitten === 'down' });
     add({ critter: get('goat'), phase: 'day', ask: 'goatsAsk', thanks: 'goatsHappy', icon: 'carousel', kinds: ['carousel'], spot: CAROUSEL_SPOT, met: () => this.rideT > 3 });
-    add({ critter: get('beehive'), phase: 'day', ask: 'beesAsk', thanks: 'beesHappy', icon: 'pump', kinds: ['pump'], spot: BED_PUMP, met: () => this.bloom >= 1, sticker: 'bee' });
-    add({ critter: get('horse'), phase: 'day', ask: 'horseHot', thanks: 'horseHappy', icon: 'fan', kinds: FANS, spot: HORSE_FAN, met: near(FANS, HORSE, 4.2 * K) });
+    add({ critter: get('beehive'), phase: 'day', ask: 'beesAsk', thanks: 'beesHappy', icon: 'pump', kinds: ['pump'], spot: BED_PUMP, toward: BED.clone(), met: () => this.bloom >= 1, sticker: 'bee' });
+    add({ critter: get('horse'), phase: 'day', ask: 'horseHot', thanks: 'horseHappy', icon: 'fan', kinds: FANS, spot: HORSE_FAN, toward: HORSE.clone(), met: blowsOn(HORSE) });
     add({ critter: get('puppy'), phase: 'day', ask: 'puppyAsk', thanks: 'puppyHappy', icon: 'launcher', kinds: ['launcher'], spot: LAUNCH_SPOT, met: () => this.caught >= 2 });
     // Evening.
     add({ critter: get('hen'), phase: 'evening', ask: 'henDark', thanks: 'henHappy', icon: 'bulb', kinds: ['bulb', 'led'], spot: HEN_LIGHT, met: near(['bulb', 'led'], HEN, 4.8 * K) });
@@ -464,7 +474,7 @@ export class FarmMap extends StoryMap {
     // Night: the dog warns about the fox; a button on the path and a bell (its own place by the kennel) chase it off.
     add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], hintPhrase: 'foxTip', spot: FOX_BUTTON.clone(), more: [{ icon: 'bell', kinds: ['bell', 'buzzer'], spot: BELL_SPOT.clone(), hintPhrase: 'foxTip' }], focus: [DOG.clone(), FOX_BUTTON.clone(), BELL_SPOT.clone()], met: () => this.foxChased, sticker: 'fox' });
     // Morning: the ducklings want a fountain, the rooster a bell.
-    add({ critter: get('duck'), phase: 'morning', ask: 'ducksAsk', thanks: 'ducksHappy', icon: 'pump', kinds: ['pump'], spot: DUCK_PUMP, met: () => this.fountainLevel > 0.95 });
+    add({ critter: get('duck'), phase: 'morning', ask: 'ducksAsk', thanks: 'ducksHappy', icon: 'pump', kinds: ['pump'], spot: DUCK_PUMP, toward: POND.clone(), met: () => this.fountainLevel > 0.95 });
     add({
       critter: get('rooster'),
       phase: 'morning',

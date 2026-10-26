@@ -141,6 +141,8 @@ const MAPS: Record<MapName, { level: Level; models: string[]; tray(): Level['tra
 let won = false;
 let goalHeld = 0;
 let lastTouch = performance.now();
+/** Asks to look somewhere (a tap on someone, the next part of the day): a reward's look does not undo them. */
+let viewAsks = 0;
 /** The hint whose hand the camera last went to find. */
 let hintLook = '';
 let levelStart = performance.now();
@@ -502,13 +504,17 @@ async function startMap(name: MapName, fresh = false) {
       const back = stage.viewGoal();
       stage.frame(pts, false, MAP_PPU);
       const shown = stage.viewGoal();
+      const asks = viewAsks;
       setTimeout(() => {
+        // Not if the child (or the map) has asked to look somewhere else since.
         const now = stage.viewGoal();
-        if (map !== m || input.busy || now.target.distanceTo(shown.target) > 0.2 || Math.abs(now.distance - shown.distance) > 0.2) return;
+        if (map !== m || input.busy || mapFocus || viewAsks !== asks || performance.now() - lastTouch < 3000) return;
+        if (now.target.distanceTo(shown.target) > 0.2 || Math.abs(now.distance - shown.distance) > 0.2) return;
         stage.easeTo(back.target, back.distance);
       }, 3200);
     },
     focus: (pts, instant) => {
+      viewAsks++;
       if (instant) stage.frame(pts, true, MAP_PPU);
       else mapFocus = pts;
     },

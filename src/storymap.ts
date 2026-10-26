@@ -87,6 +87,11 @@ export interface Slot {
   hintPhrase?: PhraseId;
   /** Where the part should go (a ring on the ground). */
   spot: THREE.Vector3;
+  /**
+   * What the part works at, if it works one way (a fan blows, a pump pours):
+   * set on its place it turns to face it, so the child sees why it helps.
+   */
+  toward?: THREE.Vector3;
   ring: THREE.Mesh;
   /** The right part stands on the ring (lights it green). */
   ready: boolean;
@@ -127,6 +132,22 @@ export interface MapProgress {
   phase: Phase;
   /** Per need, in the order they are built. */
   done: boolean[];
+}
+
+/**
+ * Which way a one-way part works, in its own frame: a fan blows along +Z,
+ * a pump's spout pours along +X.
+ */
+const FRONT: Partial<Record<PartKind, 'x' | 'z'>> = { fan: 'z', floorFan: 'z', pcFan: 'z', pump: 'x' };
+
+/** The turn (about +Y) that points a part of this kind at `toward` from `spot` (0 if it does not matter). */
+export function yawFor(kind: PartKind, spot: THREE.Vector3, toward?: THREE.Vector3): number {
+  const front = FRONT[kind];
+  if (!front || !toward) return 0;
+  const dx = toward.x - spot.x;
+  const dz = toward.z - spot.z;
+  // A turn θ sends +Z to (sin θ, cos θ) and +X to (cos θ, −sin θ).
+  return front === 'z' ? Math.atan2(dx, dz) : Math.atan2(-dz, dx);
 }
 
 /** The plate of a kind of part (its size and centre, part-local), measured once. */
@@ -298,7 +319,11 @@ export abstract class StoryMap {
     this.phase = p.phase;
     this.restoreExtra(p);
     // Parts left standing on their rings stay put, as when they were put there.
-    for (const part of this.world.parts) if (!part.pinned && this.onAnyRing(part)) part.seated = true;
+    for (const part of this.world.parts) {
+      if (part.pinned) continue;
+      const s = this.needs.flatMap((n) => slots(n)).find((s) => s.kinds.includes(part.kind) && part.root.position.distanceTo(s.spot) < 1);
+      if (s) this.seat(part, s);
+    }
     this.phaseT = 0;
     this.night = NIGHT[this.phase];
     this.stage.setNightAmount(this.night);
@@ -405,7 +430,7 @@ export abstract class StoryMap {
         if (!s.kinds.includes(part.kind) || part.root.position.distanceTo(s.spot) > SNAP_R || this.taken(s, part)) continue;
         this.slides = this.slides.filter((sl) => sl.part !== part);
         this.slides.push({ part, to: s.spot.clone() });
-        part.seated = true;
+        this.seat(part, s);
         this.focused = n;
         this.picked = true;
         n.critter.hop = 1;
@@ -435,13 +460,20 @@ export abstract class StoryMap {
     if (!best) return false;
     this.slides = this.slides.filter((sl) => sl.part !== part);
     this.slides.push({ part, to: best.s.spot.clone() });
-    part.seated = true;
+    this.seat(part, best.s);
     part.hop();
     this.focused = best.n;
     this.picked = true;
     best.n.critter.hop = 1;
     this.hooks.placed?.(best.s.spot.clone());
     return true;
+  }
+
+  /** A part takes its place: it stays there, turned towards what it works at. */
+  private seat(part: Part, s: Slot) {
+    part.seated = true;
+    part.root.rotation.y = yawFor(part.kind, s.spot, s.toward);
+    this.world.markDirty();
   }
 
   /** The kind of part a finger is carrying now (its rings light up), or null. */
@@ -486,7 +518,7 @@ export abstract class StoryMap {
     if (!n || !s) return null;
     this.focused = n;
     this.picked = true;
-    part.seated = true;
+    this.seat(part, s);
     return s.spot.clone();
   }
 
@@ -620,21 +652,24 @@ export abstract class StoryMap {
    * The mark where a part goes: the outline of that part's own plate (a ring
    * only for a place with no part to put, like the farm's gate).
    */
-  protected ring(spot: THREE.Vector3, kind?: PartKind): THREE.Mesh {
+  protected ring(spot: THREE.Vector3, kind?: PartKind, toward?: THREE.Vector3): THREE.Mesh {
     const plate = kind ? plateOf(kind) : null;
+    const yaw = kind ? yawFor(kind, spot, toward) : 0;
     const geo = plate ? outline(plate.w + 0.3, plate.d + 0.3, 0.12) : new THREE.RingGeometry(1.05, 1.25, 48);
     const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0, depthWrite: false }));
     m.rotation.x = -Math.PI / 2;
     m.position.copy(spot).setY(0.03);
-    if (plate) m.position.add(new THREE.Vector3(plate.cx, 0, plate.cz));
+    // The outline turns with the part (in its laid-down frame a turn about Z is one about Y).
+    m.rotation.z = yaw;
+    if (plate) m.position.add(new THREE.Vector3(plate.cx, 0, plate.cz).applyAxisAngle(new THREE.Vector3(0, 1, 0), yaw));
     m.renderOrder = 3;
     this.scenery.add(m);
     return m;
   }
 
   protected addNeed(n: NeedSpec) {
-    const more = (n.more ?? []).map((s) => ({ ...s, ring: this.ring(s.spot, s.kinds[0]), ready: false }));
-    this.needs.push({ day: 1, ...n, more, ring: this.ring(n.spot, n.kinds[0]), done: false, held: 0, ready: false });
+    const more = (n.more ?? []).map((s) => ({ ...s, ring: this.ring(s.spot, s.kinds[0], s.toward), ready: false }));
+    this.needs.push({ day: 1, ...n, more, ring: this.ring(n.spot, n.kinds[0], n.toward), done: false, held: 0, ready: false });
   }
 
   // ───────────────────────── Story ─────────────────────────

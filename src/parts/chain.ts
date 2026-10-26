@@ -872,8 +872,9 @@ export function tracePath(parts: Part[], laser: Laser, aim = laser.aim, discs: B
       boxes.push(b);
       continue;
     }
-    const f = p.footprint();
-    if (!f) continue;
+    const raw = p.footprint();
+    if (!raw) continue;
+    const f = p.turned(raw);
     const { x, z } = p.root.position;
     boxes.push({ id: p.id, x0: x + f.x0, x1: x + f.x1, z0: z + f.z0, z1: z + f.z1 });
   }
@@ -1312,7 +1313,7 @@ const LIMIT = 34;
 
 /** Plate rectangle of a part in world units, roughly from its size. */
 function plateHalf(p: Part) {
-  const f = p.plateRect();
+  const f = p.turned(p.plateRect());
   const { x, z } = p.root.position;
   return { x0: x + f.x0, x1: x + f.x1, z0: z + f.z0, z1: z + f.z1 };
 }
@@ -1333,8 +1334,9 @@ function roll(parts: Part[], dt: number) {
       const sp = b.vel.length();
       if (sp > 0) b.vel.multiplyScalar(Math.max(0, sp - FRICTION * h) / sp);
       for (const p of parts) {
-        const f = p.footprint();
-        if (!f) continue;
+        const raw = p.footprint();
+        if (!raw) continue;
+        const f = p.turned(raw);
         const { x, z } = p.root.position;
         const r = { x0: x + f.x0 - BALL_R, x1: x + f.x1 + BALL_R, z0: z + f.z0 - BALL_R, z1: z + f.z1 + BALL_R };
         if (b.pos.x < r.x0 || b.pos.x > r.x1 || b.pos.z < r.z0 || b.pos.z > r.z1) continue;

@@ -486,6 +486,31 @@ export abstract class Part {
     this.bump(0.2);
   }
 
+  /**
+   * A part-local rectangle as it lies on the table, the part turned by its
+   * root (a map place can face a part towards whom it is for): the box round
+   * the turned corners, still relative to the part's position.
+   */
+  turned(f: Footprint): Footprint {
+    const a = this.root.rotation.y;
+    if (Math.abs(a) < 1e-4) return f;
+    const c = Math.cos(a);
+    const s = Math.sin(a);
+    const xs: number[] = [];
+    const zs: number[] = [];
+    for (const [x, z] of [
+      [f.x0, f.z0],
+      [f.x1, f.z0],
+      [f.x0, f.z1],
+      [f.x1, f.z1],
+    ]) {
+      // A turn about +Y by a takes (x, z) to (x·cos + z·sin, −x·sin + z·cos).
+      xs.push(x * c + z * s);
+      zs.push(-x * s + z * c);
+    }
+    return { x0: Math.min(...xs), x1: Math.max(...xs), z0: Math.min(...zs), z1: Math.max(...zs) };
+  }
+
   /** The flat base plate seen from above, part-local (the lowest wide meshes). */
   plateRect(): Footprint {
     if (this.plate) return this.plate;
