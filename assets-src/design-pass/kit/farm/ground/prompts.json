@@ -1,0 +1,107 @@
+[
+  {
+    "name": "grass-main-a",
+    "prompt": "Use case: stylized-concept. Asset type: production seamless repeating ground-color texture for a warm, lush, hand-painted children's mobile farm game. Create ONE flat square 2048x2048 grass texture, strictly orthographic straight down, no perspective, no horizon. Style: painterly storybook mobile farm like the provided task concept: cheerful yellow-green grass, soft brushwork, small readable irregular grass tufts and clover, tiny sparse cream/yellow flowers, no dark outlines, no photoreal noise. The texture represents a 12 by 12 meter patch, so details must remain small and evenly distributed. Soft warm diffuse light from bottom left; only extremely subtle local shading toward upper right. Seamlessly tileable on BOTH axes: left and right edges must match perfectly, top and bottom edges must match perfectly in color, density and all crossing motifs. Completely opaque surface; fill every pixel. No paths, soil islands, large objects, trees, rocks, animals, text, labels, border, vignette, spotlights or large recognizable repeating blobs. Keep all four edge bands comparable to center. This is a usable standalone game material, not a material-sphere preview, not a collage. Variant A: balanced fresh meadow green with gentle warm chartreuse tips; low-contrast, calm base with tiny clover clusters and only a few flower flecks.",
+    "tool": "image_gen (built-in)",
+    "transparentBackground": false,
+    "width": 2048,
+    "height": 2048,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-4cc82c51-5387-4c57-864a-2213f76036e5.png",
+    "source": "../sources/grass-main-a.png"
+  },
+  {
+    "name": "grass-main-b",
+    "prompt": "Use case: stylized-concept. Asset type: production seamless repeating ground-color texture for a warm, lush, hand-painted children's mobile farm game. Create ONE flat square 2048x2048 grass texture, strictly orthographic straight down, no perspective, no horizon. Style: painterly storybook mobile farm like the provided task concept: cheerful yellow-green grass, soft brushwork, small readable irregular grass tufts and clover, tiny sparse cream/yellow flowers, no dark outlines, no photoreal noise. The texture represents a 12 by 12 meter patch, so details must remain small and evenly distributed. Soft warm diffuse light from bottom left; only extremely subtle local shading toward upper right. Seamlessly tileable on BOTH axes: left and right edges must match perfectly, top and bottom edges must match perfectly in color, density and all crossing motifs. Completely opaque surface; fill every pixel. No paths, soil islands, large objects, trees, rocks, animals, text, labels, border, vignette, spotlights or large recognizable repeating blobs. Keep all four edge bands comparable to center. This is a usable standalone game material, not a material-sphere preview, not a collage. Variant B: slightly softer, more brushy meadow with a different natural distribution of fine grass tufts, slightly lighter emerald-midgreen ground and sparse clover; maintain the same warm farm palette and scale.",
+    "tool": "image_gen (built-in)",
+    "transparentBackground": false,
+    "width": 2048,
+    "height": 2048,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-da969735-e2de-4152-8914-1884f0ae202e.png",
+    "source": "../sources/grass-main-b.png"
+  },
+  {
+    "name": "grass-sunny-a",
+    "prompt": "Use case: lighting-weather texture correction. Image 1 is the TARGET grass tile to correct. Image 2 is the approved farm style reference only, do not copy its buildings or scene. Produce ONE square opaque repeating ground texture. Correct ONLY the uneven left-to-right illumination of target1: its left side is much brighter than its right side, causing obvious vertical stripes when the texture is repeated. Make illumination and average color completely UNIFORM across the tile, with identical average color in left/right/top/bottom edge bands and no whole-image lighting gradient. Preserve the warm sunny yellow-green grass, soft hand-painted style, small clover and tiny flower scale. Retain a brighter sunny green tone than the farm's regular meadow. Flat orthographic directly overhead ground, no perspective. Construct truly seamless wrapping on both X and Y: motifs crossing left/right or top/bottom must continue naturally at the opposite side. No visible vertical/horizontal seam, rectangular bands, vignette, patch boundaries, dark outlines, text, paths or objects. Output one complete usable texture, NOT a 3x3 preview or collage.",
+    "tool": "image_gen (built-in edit)",
+    "transparentBackground": false,
+    "width": 2048,
+    "height": 2048,
+    "referencedImages": [
+      "../sources/grass-sunny-a.png",
+      "../../../variants/farm-a.png"
+    ],
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-153c5da1-530c-457e-978b-39266d34d22b.png",
+    "source": "../sources/grass-sunny-a-v2.png",
+    "previousAttempt": {
+      "name": "grass-sunny-a",
+      "prompt": "Use case: stylized-concept. ONE 2048x2048 production grass ground texture for a warm cheerful painterly mobile farm. Strict orthographic overhead view, edge-to-edge opaque. A sunny meadow matching a lush storybook farm: fine softly painted yellow-green blades, little clover, a few tiny cream flowers. Warmer and noticeably lighter than ordinary meadow green, but still GREEN, not brown straw. Low-contrast even detail, represents 12x12 meters, no focal objects. Soft diffuse light from lower left, very faint local shading upper right. Must tile seamlessly in both directions with exact matching edge content and color, no frames or vignette. No paths, trees, big flowers, soil patches, rocks, text or shadows of objects. No photographic noise, no black outlines. Single material texture, no grid, no demonstration. Variant A: lime-green and warm yellow-green bright meadow, small softly shaped clover.",
+      "tool": "image_gen (built-in)",
+      "transparentBackground": false,
+      "width": 2048,
+      "height": 2048,
+      "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-b1ea5fc8-b3dc-4d34-b5c4-8c1dd730def8.png",
+      "source": "../sources/grass-sunny-a.png",
+      "rejection": "Visible vertical lighting bands in3x3 repeat; original preserved."
+    }
+  },
+  {
+    "name": "grass-sunny-b",
+    "prompt": "Use case: stylized-concept. ONE 2048x2048 production grass ground texture for a warm cheerful painterly mobile farm. Strict orthographic overhead view, edge-to-edge opaque. A sunny meadow matching a lush storybook farm: fine softly painted yellow-green blades, little clover, a few tiny cream flowers. Warmer and noticeably lighter than ordinary meadow green, but still GREEN, not brown straw. Low-contrast even detail, represents 12x12 meters, no focal objects. Soft diffuse light from lower left, very faint local shading upper right. Must tile seamlessly in both directions with exact matching edge content and color, no frames or vignette. No paths, trees, big flowers, soil patches, rocks, text or shadows of objects. No photographic noise, no black outlines. Single material texture, no grid, no demonstration. Variant B: pale fresh apple-green base, gentle lemony sunlit tips and a different restrained scattered tuft arrangement.",
+    "tool": "image_gen (built-in)",
+    "transparentBackground": false,
+    "width": 2048,
+    "height": 2048,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-2f781348-e6b7-407d-adca-77ad12c00361.png",
+    "source": "../sources/grass-sunny-b.png"
+  },
+  {
+    "name": "path-strip-a",
+    "prompt": "Use case: stylized-concept. Asset type: game ground decal strip. Create one very tall narrow image, 512 pixels wide by 2048 high (aspect1:4), with a continuous hand-painted warm sandy earthen farm footpath running VERTICALLY straight through the center from the very top edge to very bottom edge. Strictly top-down orthographic camera. Style lush warm storybook mobile farm, softly painted, no dark outlines. Path width about64% of canvas at center, finely irregular edges; the outer18% each side feather to REAL TRANSPARENCY with small yellow-green grass tongues and tiny tufts intruding into dirt. Sparse small pebbles and faint irregular foot scuffs, no prominent footprint pattern. Sand palette warm ochre-beige, soft bottom-left illumination, minimal shading. The path has NO top or bottom caps, no round ends: it is an endless strip and the image top and bottom must match perfectly for seamless vertical repetition, including alpha width/grass shapes. Leftmost/rightmost edge fully transparent. No solid rectangular background, no cast shadows, no lettering, no frames, no trees/flowers/objects, no multiple strips. For game world width2.2m and length8.8m. Variant A: gently irregular almost straight verge; subtle softly compacted central sand.",
+    "tool": "image_gen (built-in)",
+    "transparentBackground": true,
+    "width": 512,
+    "height": 2048,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-c7cae8a1-e9cd-4a23-ba28-d78659c69427.png",
+    "source": "../sources/path-strip-a.png"
+  },
+  {
+    "name": "path-strip-b",
+    "prompt": "Use case: stylized-concept. Asset type: game ground decal strip. Create one very tall narrow image, 512 pixels wide by 2048 high (aspect1:4), with a continuous hand-painted warm sandy earthen farm footpath running VERTICALLY straight through the center from the very top edge to very bottom edge. Strictly top-down orthographic camera. Style lush warm storybook mobile farm, softly painted, no dark outlines. Path width about64% of canvas at center, finely irregular edges; the outer18% each side feather to REAL TRANSPARENCY with small yellow-green grass tongues and tiny tufts intruding into dirt. Sparse small pebbles and faint irregular foot scuffs, no prominent footprint pattern. Sand palette warm ochre-beige, soft bottom-left illumination, minimal shading. The path has NO top or bottom caps, no round ends: it is an endless strip and the image top and bottom must match perfectly for seamless vertical repetition, including alpha width/grass shapes. Leftmost/rightmost edge fully transparent. No solid rectangular background, no cast shadows, no lettering, no frames, no trees/flowers/objects, no multiple strips. For game world width2.2m and length8.8m. Variant B: slightly wavier verge, slightly more faint small scattered stones but same sandy palette and width.",
+    "tool": "image_gen (built-in)",
+    "transparentBackground": true,
+    "width": 512,
+    "height": 2048,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-ffa167c2-76bc-4047-b12f-d8e7307744b5.png",
+    "source": "../sources/path-strip-b.png"
+  },
+  {
+    "name": "path-patch-a",
+    "prompt": "Use case: stylized-concept. Production game decal, ONE irregular circular patch of warm sandy farm footpath, viewed EXACTLY straight down orthographically. Square 1024x1024 transparent canvas. A softly painterly warm cheerful mobile farm style: warm honey-beige compacted soil at center, a few tiny subdued stones and faint foot scuffs, small yellow-green grass tongues entering from the irregular outer verge, soft blending at the verge into REAL TRANSPARENCY. Patch fills about86% of the square diameter, center must remain open earth, NOT a ring, NOT a pond, NO raised mound, NO hard border. Keep a transparent margin on all 4 edges so patch is complete and uncropped. Ground plane with NO thickness or cast shadow, diffuse light lower left and subtle local shading upper right. This covers joins and turns of matching sandy paths in a farm game, so earth is same light warm ochre-beige as an ordinary farm path, not dark mud. No scene, objects, labels, text, checkerboard, border or background. Variant A: almost circular soft uneven earth patch, a few tiny pebbles near the verge.",
+    "tool": "image_gen (built-in)",
+    "transparentBackground": true,
+    "width": 1024,
+    "height": 1024,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-0a63910b-8f8a-4a5f-b335-8039af805e6c.png",
+    "source": "../sources/path-patch-a.png"
+  },
+  {
+    "name": "path-patch-b",
+    "prompt": "Use case: stylized-concept. Production game decal, ONE irregular circular patch of warm sandy farm footpath, viewed EXACTLY straight down orthographically. Square 1024x1024 transparent canvas. A softly painterly warm cheerful mobile farm style: warm honey-beige compacted soil at center, a few tiny subdued stones and faint foot scuffs, small yellow-green grass tongues entering from the irregular outer verge, soft blending at the verge into REAL TRANSPARENCY. Patch fills about86% of the square diameter, center must remain open earth, NOT a ring, NOT a pond, NO raised mound, NO hard border. Keep a transparent margin on all 4 edges so patch is complete and uncropped. Ground plane with NO thickness or cast shadow, diffuse light lower left and subtle local shading upper right. This covers joins and turns of matching sandy paths in a farm game, so earth is same light warm ochre-beige as an ordinary farm path, not dark mud. No scene, objects, labels, text, checkerboard, border or background. Variant B: slightly oval yet close to round, organic irregular edge with different small tufts and a few faint worn footprints, no large marks.",
+    "tool": "image_gen (built-in)",
+    "transparentBackground": true,
+    "width": 1024,
+    "height": 1024,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-fccc10b3-2a82-4ba4-975f-6db1224e1fcb.png",
+    "source": "../sources/path-patch-b.png"
+  },
+  {
+    "name": "path-patch-c",
+    "prompt": "Use case: stylized-concept. Production game decal, ONE irregular circular patch of warm sandy farm footpath, viewed EXACTLY straight down orthographically. Square 1024x1024 transparent canvas. A softly painterly warm cheerful mobile farm style: warm honey-beige compacted soil at center, a few tiny subdued stones and faint foot scuffs, small yellow-green grass tongues entering from the irregular outer verge, soft blending at the verge into REAL TRANSPARENCY. Patch fills about86% of the square diameter, center must remain open earth, NOT a ring, NOT a pond, NO raised mound, NO hard border. Keep a transparent margin on all 4 edges so patch is complete and uncropped. Ground plane with NO thickness or cast shadow, diffuse light lower left and subtle local shading upper right. This covers joins and turns of matching sandy paths in a farm game, so earth is same light warm ochre-beige as an ordinary farm path, not dark mud. No scene, objects, labels, text, checkerboard, border or background. Variant C: softly lobed circular patch with broad clean sandy center, slightly warmer soil and sparse tiny grass tongues, harmonious with the other variants.",
+    "tool": "image_gen (built-in)",
+    "transparentBackground": true,
+    "width": 1024,
+    "height": 1024,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-0cf84c64-2ee2-4706-a0a4-9cbf4a6b832b.png",
+    "source": "../sources/path-patch-c.png"
+  }
+]

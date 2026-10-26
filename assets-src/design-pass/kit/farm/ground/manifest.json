@@ -1,0 +1,484 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "main: four grass and five path textures",
+  "images": [
+    {
+      "name": "grass-main-a",
+      "source": "../sources/grass-main-a.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "a6fd67185374860168657ba4c1b2aa0b325be50097230201488c86802c4d2d00",
+      "output": "public/textures/kit/farm/grass-main-a.webp",
+      "width": 2048,
+      "height": 2048,
+      "bytes": 513704,
+      "sha256": "a318c1bf8194af9f1bec881e6c5f63a3d5f3b2d253602fc9444ba879ca0ae831",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "transparentFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "edges": {
+          "left": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "right": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "top": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "bottom": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 15.4912109375,
+        "y": 11.567545572916666
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 3.5978240966796875,
+        "y": 2.9754791259765625
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "grass-main-b",
+      "source": "../sources/grass-main-b.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "61cbbec399e66dee6ae6d12ccbdcd941b329ba38002899c1b5c0c8720edebebf",
+      "output": "public/textures/kit/farm/grass-main-b.webp",
+      "width": 2048,
+      "height": 2048,
+      "bytes": 541786,
+      "sha256": "d3611c67c2b01a381dd313169817c4e24a696ab117e0576199ec91921386c572",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "transparentFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "edges": {
+          "left": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "right": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "top": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "bottom": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 17.71044921875,
+        "y": 14.068359375
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 3.856475830078125,
+        "y": 3.0161844889322915
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "grass-sunny-a",
+      "source": "../sources/grass-sunny-a-v2.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "a40979d8c111bcfe419438d0f74609ae4ead0027605d13a30f42ccc2308e161c",
+      "output": "public/textures/kit/farm/grass-sunny-a.webp",
+      "width": 2048,
+      "height": 2048,
+      "bytes": 768208,
+      "sha256": "eaa33d442b9783852e832ac1cdd3db22ec701128308071c702d15906c99f2c9b",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "transparentFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "edges": {
+          "left": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "right": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "top": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "bottom": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 22.803873697916668,
+        "y": 18.860188802083332
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 6.4256591796875,
+        "y": 4.983062744140625
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "grass-sunny-b",
+      "source": "../sources/grass-sunny-b.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "205f0d40b9c3a4bf70b57c967203dc81660fb45b2ad0d3931b661c0cae260dbd",
+      "output": "public/textures/kit/farm/grass-sunny-b.webp",
+      "width": 2048,
+      "height": 2048,
+      "bytes": 698434,
+      "sha256": "ed4531723b5edd892a198d0f2ace2522212c73f76e9d4ec3aad87b018f588f41",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "transparentFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "edges": {
+          "left": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "right": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "top": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "bottom": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 20.636555989583332,
+        "y": 12.81005859375
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 5.9127146402994795,
+        "y": 4.2800852457682295
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "path-strip-a",
+      "source": "../sources/path-strip-a.png",
+      "sourceWidth": 887,
+      "sourceHeight": 1774,
+      "sourceSha256": "fc0104ea268fa1ab7eff158e24700267db17f3132668aa011a4f9b6436c66815",
+      "output": "public/textures/kit/farm/path-strip-a.webp",
+      "width": 512,
+      "height": 2048,
+      "bytes": 212852,
+      "sha256": "e15fbdcc25555d45560c4d772ae1637ffc3374af0fbbdea12e7d6ec15e9b9571",
+      "sourceAspect": 0.5,
+      "outputAspect": 0.25,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.41196632385253906,
+        "partialFraction": 0.5879898071289062,
+        "opaqueFraction": 0.0000438690185546875,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.22509765625
+          },
+          "right": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.01416015625
+          },
+          "top": {
+            "min": 0,
+            "max": 253,
+            "mean": 140.16796875
+          },
+          "bottom": {
+            "min": 0,
+            "max": 253,
+            "mean": 137.158203125
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.1161815767973809,
+        "y": 3.4022314133987006
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.7038602143331845,
+        "y": 1.0906672060099944
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "path-strip-b",
+      "source": "../sources/path-strip-b.png",
+      "sourceWidth": 793,
+      "sourceHeight": 1983,
+      "sourceSha256": "b1e3c90b30d119c930a34e7eac00f789b5e0dca3a50832eaf9277dc3453a85df",
+      "output": "public/textures/kit/farm/path-strip-b.webp",
+      "width": 512,
+      "height": 2048,
+      "bytes": 250454,
+      "sha256": "4eb324ce4573ebf12e55143841e0d046eb4f3dd1683dae6a729b0f8cfb2a1a73",
+      "sourceAspect": 0.39989914271306104,
+      "outputAspect": 0.25,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.33928585052490234,
+        "partialFraction": 0.6606550216674805,
+        "opaqueFraction": 0.0000591278076171875,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.00634765625
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 252,
+            "mean": 153.48828125
+          },
+          "bottom": {
+            "min": 0,
+            "max": 253,
+            "mean": 153.388671875
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.0030950010212417813,
+        "y": 3.3881995506536065
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.834801208895095,
+        "y": 1.4208301419526024
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "path-patch-a",
+      "source": "../sources/path-patch-a.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "5376eb4b09d5ee37c3e8e20ca92821b6ee03a5598013e0f069f336a3a097ac73",
+      "output": "public/textures/kit/farm/path-patch-a.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 219452,
+      "sha256": "7a3c9dafdfffe1119d871a84f38bec7fb80b4e195a05294e76339a5da7510aeb",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.2844409942626953,
+        "partialFraction": 0.7155580520629883,
+        "opaqueFraction": 9.5367431640625e-7,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.068359375
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0009765625
+          },
+          "bottom": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0771484375
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.02902113970588226,
+        "y": 0.03530815972222193
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.185076944189124,
+        "y": 1.3062813553155543
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "path-patch-b",
+      "source": "../sources/path-patch-b.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "fbccec03c6d4ce664e6d3ffd35d1d77d26f1478fc2f0dae489b8ae74571aea9a",
+      "output": "public/textures/kit/farm/path-patch-b.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 235818,
+      "sha256": "e9cff7c72c1c942a56c1dc4e220d8e6e879f5bc19f364119d61c5da6b434c700",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.32782840728759766,
+        "partialFraction": 0.6721630096435547,
+        "opaqueFraction": 0.00000858306884765625,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.02734375
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0390625
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.010869842728758183,
+        "y": 0.01733940972222227
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.7233089671416202,
+        "y": 1.842308772467402
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "path-patch-c",
+      "source": "../sources/path-patch-c.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "d82726e0e1d57b9e06982ab1bbaa57ebeb357c0620615580b2c02aaf054b3df0",
+      "output": "public/textures/kit/farm/path-patch-c.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 200192,
+      "sha256": "ed576320e17716ce53a2ff93c0591ddf2414b0fedaa4f9d6d4442a3deffdb369",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparentFraction": 0.3543682098388672,
+        "partialFraction": 0.6456317901611328,
+        "opaqueFraction": 0,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0546875
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.00390625
+          },
+          "bottom": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.021484375
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.025902522467319902,
+        "y": 0.012380004084967125
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 0.9113554910896314,
+        "y": 1.028568522135397
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    }
+  ]
+}
