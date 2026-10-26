@@ -1,0 +1,22 @@
+{
+  "viewports": [
+    [
+      390,
+      844
+    ],
+    [
+      1024,
+      768
+    ]
+  ],
+  "loadedPerViewport": 4,
+  "errors": [],
+  "horizontalOverflow": false,
+  "screenshots": [
+    "qa/align1024.jpg",
+    "qa/align1024-detail.jpg",
+    "qa/align390.jpg",
+    "qa/align390-detail.jpg"
+  ],
+  "scope": "local SVG texture-placement QA, not live game"
+}

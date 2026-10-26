@@ -1,0 +1,4 @@
+import http from 'node:http';import{readFile}from'node:fs/promises';
+const here=new URL('./',import.meta.url),root=new URL('../../../../../',import.meta.url);
+const routes={'/':[new URL('qa.html',here),'text/html'],'/viewport.html':[new URL('viewport.html',here),'text/html'],'/measurements.json':[new URL('measurements.json',here),'application/json'],'/layout.json':[new URL('../park/layout.json',here),'application/json'],'/park.webp':[new URL('public/textures/kit/city/park-lawn.webp',root),'image/webp']};
+http.createServer(async(req,res)=>{const r=routes[new URL(req.url,'http://localhost').pathname];if(!r){res.writeHead(404).end();return;}try{res.writeHead(200,{'Content-Type':r[1],'Cache-Control':'no-store'}).end(await readFile(r[0]));}catch{res.writeHead(500).end();}}).listen(65499,'127.0.0.1',()=>console.log('Park QA http://127.0.0.1:65499/viewport.html'));

@@ -1,0 +1,125 @@
+{
+  "schemaVersion": 1,
+  "sourceSha256": "c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+  "sourceCommit": "d2b6e7b",
+  "width": 33.6,
+  "depth": 17.6,
+  "current": {
+    "offset": [
+      0,
+      0
+    ],
+    "checks": [
+      {
+        "radius": 3.2,
+        "samples": 3600,
+        "onPaving": 3572,
+        "fraction": 0.992222
+      },
+      {
+        "radius": 3.3,
+        "samples": 3600,
+        "onPaving": 2832,
+        "fraction": 0.786667
+      },
+      {
+        "radius": 3.55,
+        "samples": 3600,
+        "onPaving": 1166,
+        "fraction": 0.323889
+      }
+    ],
+    "clearZones": [
+      {
+        "name": "Ferris wheel",
+        "pavedPixels": 0
+      },
+      {
+        "name": "Wind generator",
+        "pavedPixels": 0
+      },
+      {
+        "name": "Kitten pole",
+        "pavedPixels": 0
+      },
+      {
+        "name": "North lamp",
+        "pavedPixels": 0
+      },
+      {
+        "name": "West lamp",
+        "pavedPixels": 0
+      },
+      {
+        "name": "South lamp",
+        "pavedPixels": 0
+      },
+      {
+        "name": "Cat house",
+        "pavedPixels": 0
+      }
+    ],
+    "pavedOutsideField": 0,
+    "note": "Outside-field path pixels include intended connections; review cropping/kerb in actual game."
+  },
+  "aligned": {
+    "offset": [
+      0.092578,
+      0.260231
+    ],
+    "checks": [
+      {
+        "radius": 3.2,
+        "samples": 3600,
+        "onPaving": 3600,
+        "fraction": 1
+      },
+      {
+        "radius": 3.3,
+        "samples": 3600,
+        "onPaving": 3600,
+        "fraction": 1
+      },
+      {
+        "radius": 3.55,
+        "samples": 3600,
+        "onPaving": 1081,
+        "fraction": 0.300278
+      }
+    ],
+    "clearZones": [
+      {
+        "name": "Ferris wheel",
+        "pavedPixels": 0
+      },
+      {
+        "name": "Wind generator",
+        "pavedPixels": 0
+      },
+      {
+        "name": "Kitten pole",
+        "pavedPixels": 0
+      },
+      {
+        "name": "North lamp",
+        "pavedPixels": 0
+      },
+      {
+        "name": "West lamp",
+        "pavedPixels": 0
+      },
+      {
+        "name": "South lamp",
+        "pavedPixels": 0
+      },
+      {
+        "name": "Cat house",
+        "pavedPixels": 0
+      }
+    ],
+    "pavedOutsideField": 0,
+    "note": "Outside-field path pixels include intended connections; review cropping/kerb in actual game."
+  },
+  "fittedAlignedBasinMargin": 0.156886,
+  "scope": "Candidate for integration with whole-decal position offset. Artwork and runtime unchanged. Polygon/colour approximation, not a GLB or game check."
+}
