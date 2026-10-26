@@ -1,0 +1,172 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "main: pond shoreline and two farmyard decals",
+  "images": [
+    {
+      "name": "pond-rim",
+      "source": "../sources/pond-rim.png",
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "sourceSha256": "bd03bd1b74728e07be93ccc5f6981fb448f868946b8b6cd0a82ef2cdca43850c",
+      "output": "public/textures/kit/farm/pond-rim.webp",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 345836,
+      "sha256": "c0d112d02cf9617264bad18afc81ff00d158b94ecc2cd27c78e0012af902e32a",
+      "sourceAspect": 2,
+      "outputAspect": 2,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.6351938247680664,
+        "partialFraction": 0.36461639404296875,
+        "opaqueFraction": 0.00018978118896484375,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0205078125
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.001953125
+          },
+          "bottom": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.138671875
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.009999234068627294,
+        "y": 0.06521075878267858
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.2508284425423424,
+        "y": 1.4775242225796645
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required.",
+      "centerWindowAlpha": {
+        "region": "central40%width25%height",
+        "pixels": 209408,
+        "nonzero": 6629,
+        "max": 1
+      }
+    },
+    {
+      "name": "yard-dirt-a",
+      "source": "../sources/yard-dirt-a.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "93f540d82b276fa0182c34dd1c3b369f9ceb9c8667deda87f89b1687b38e0a3e",
+      "output": "public/textures/kit/farm/yard-dirt-a.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 259240,
+      "sha256": "d0f855cb512b515efa17d9b577c95625b4903d77f287eb3672d8576cee89bd85",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.3047065734863281,
+        "partialFraction": 0.6952629089355469,
+        "opaqueFraction": 3.0517578125e-05,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.06640625
+          },
+          "right": {
+            "min": 0,
+            "max": 3,
+            "mean": 0.0615234375
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0087890625
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.04562525531045763,
+        "y": 0.0042853860294116974
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 2.8623851102941913,
+        "y": 3.1345522014145426
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "yard-dirt-b",
+      "source": "../sources/yard-dirt-b.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "15894b575b72a69d22cb7c1119b8ff8051b8ca2fef915d2c57af2de80e444e97",
+      "output": "public/textures/kit/farm/yard-dirt-b.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 242984,
+      "sha256": "4c3f99c6552623701cfc9ce39c81ad07b76e2c86b855bb334be90c2ce85d315b",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.31738948822021484,
+        "partialFraction": 0.6826086044311523,
+        "opaqueFraction": 1.9073486328125e-06,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.048828125
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.037109375
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.02380770016339832,
+        "y": 0.018093852124182724
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 2.5102736928105487,
+        "y": 2.7656516480290905
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    }
+  ]
+}

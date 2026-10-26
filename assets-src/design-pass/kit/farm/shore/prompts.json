@@ -1,0 +1,38 @@
+[
+  {
+    "name": "pond-rim",
+    "width": 2048,
+    "height": 1024,
+    "prompt": "Use case: stylized-concept. Production bitmap asset for a children's painted mobile farm game. Reference 1 is the approved farm-a painting style, palette and soft southwest light; reference 2 is the neighboring dirt/grass material. Make the requested isolated terrain decal, not a whole scene. Strict orthographic straight-down ground view, no horizon, no perspective. Match warm softly painted farm-a greens and ochre earth; no black outlines, text, borders, buildings, characters or object cast shadows. Preserve native transparent background, never bake a checkerboard or white matte. Requested asset: a single closed horizontal elliptical pond shoreline RING, aspect ratio 2:1, fully visible with small transparent outer margin. The large central oval MUST BE COMPLETELY TRANSPARENT, with absolutely no water pixels: the game's separate animated water goes through the hole. Thin irregular earthy bank surrounded by short green grass, scattered rounded warm grey stones and a few sparse low reeds. No bridge, dock, animals or lily pads. Continuous natural bank all the way around; interior water hole approximately 75% of outer width and 65% of outer height. Landscape 2:1 canvas, ring centered. Soft local southwest highlights only, no long shadows.",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/kit/farm/sources/path-patch-a.png"
+    ],
+    "source": "../sources/pond-rim.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-5b32ed6d-ffc1-4026-b5fe-96359dd38d55.png"
+  },
+  {
+    "name": "yard-dirt-a",
+    "width": 1024,
+    "height": 1024,
+    "prompt": "Use case: stylized-concept. Production bitmap asset for a children's painted mobile farm game. Reference 1 is the approved farm-a painting style, palette and soft southwest light; reference 2 is the neighboring dirt/grass material. Make the requested isolated terrain decal, not a whole scene. Strict orthographic straight-down ground view, no horizon, no perspective. Match warm softly painted farm-a greens and ochre earth; no black outlines, text, borders, buildings, characters or object cast shadows. Preserve native transparent background, never bake a checkerboard or white matte. Requested asset: yard-dirt-a, one broad uneven oval of well-trodden farmyard soil for a barn entrance. Flattened warm dusty ochre earth, slightly darker and more compact than reference 2, subtle scuffs and small pebbles, a few sparse straw fragments. Uneven very soft naturally feathered transparent perimeter with tiny grass incursions. Mostly quiet open center, no paths exiting the canvas, no large stones or props. Square canvas; earth patch fills about 90% width and 80% height with transparent margin. Uniform illumination, no bright center spotlight.",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/kit/farm/sources/path-patch-a.png"
+    ],
+    "source": "../sources/yard-dirt-a.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-c143bd51-bc8d-48cb-9087-f4608a75a715.png"
+  },
+  {
+    "name": "yard-dirt-b",
+    "width": 1024,
+    "height": 1024,
+    "prompt": "Use case: stylized-concept. Production bitmap asset for a children's painted mobile farm game. Reference 1 is the approved farm-a painting style, palette and soft southwest light; reference 2 is the neighboring dirt/grass material. Make the requested isolated terrain decal, not a whole scene. Strict orthographic straight-down ground view, no horizon, no perspective. Match warm softly painted farm-a greens and ochre earth; no black outlines, text, borders, buildings, characters or object cast shadows. Preserve native transparent background, never bake a checkerboard or white matte. Requested asset: yard-dirt-b, one separate alternative irregular compacted earth patch for stable/chicken-house entrances. Muted warm brown-beige worn soil, lightly mottled darker footprints/scuffs and a few scattered tiny pebbles, very sparse straw. Asymmetric soft scalloped footprint, subtly darker on one small worn zone but no dramatic lighting gradient. Short grass at a few perimeter points, perimeter fades organically to actual transparency. Square canvas, broad patch 90% width and 85% height, no outgoing road, no building, no large objects.",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/kit/farm/sources/path-patch-a.png"
+    ],
+    "source": "../sources/yard-dirt-b.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-e4ad2224-14f2-468a-b10b-d0474f74bd12.png"
+  }
+]
