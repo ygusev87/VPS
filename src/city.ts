@@ -359,7 +359,8 @@ export class CityMap extends StoryMap {
     if (rails.length) this.scenery.add(ribbons(tram, rails[0], 1, 8, 0.0055, 1, 0.1));
     // Painted bays where the cars park.
     const bay = kitPieces('city', 'parking-bay');
-    for (const s of bay.length ? PARK_SLOTS : []) this.scenery.add(decal({ x0: s.x - 1.75, z0: s.z - 1.5, x1: s.x + 1.75, z1: s.z + 1.5 }, bay[0], 0, 0.009, 3));
+    // Inside the painted asphalt of the drive (its kerbs take a little of the lane's width).
+    for (const s of bay.length ? PARK_SLOTS : []) this.scenery.add(decal({ x0: s.x - 1.65, z0: s.z - 0.8, x1: s.x + 1.65, z1: s.z + 1.6 }, bay[0], 0, 0.009, 3));
     const lawn = kitPieces('city', 'lawn-main', true);
     const kerb = kitPieces('city', 'kerb-strip', true);
     const park = kitPieces('city', 'park-lawn');
@@ -391,7 +392,7 @@ export class CityMap extends StoryMap {
     const lawns = [plan.field, ...(plan.fields ?? [])];
     let seed = 31;
     const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
-    const free = (x: number, z: number) => !onLane(plan, x, z, 0.6) && this.needs.every((n) => [n.spot, ...n.more.map((m) => m.spot)].every((t) => Math.hypot(x - t.x, z - t.z) > 2.4));
+    const free = (x: number, z: number) => !onLane(plan, x, z, 0.6) && !(Math.abs(x - SITE.x) < 4 && Math.abs(z - SITE.z) < 3.5) && this.needs.every((n) => [n.spot, ...n.more.map((m) => m.spot)].every((t) => Math.hypot(x - t.x, z - t.z) > 2.4));
     const sow = (n: number, size: number, edge: number) => {
       const out: { x: number; z: number; size: number }[] = [];
       for (const f of lawns) {
@@ -593,12 +594,15 @@ export class CityMap extends StoryMap {
     const lines = [RACCOON_PATH, KITTEN_WAY, WASH_WAY, PARK_WAY, BOAT_WAY, [LASER_SPOT, MIRROR_SPOT, SCHOOL_SENSOR]];
     // With the painted kit, the trees and bushes are its cards (when it has them), not the 3D models.
     const carded = this.kit ? DECOR.filter((g) => CITY_CARDS[g.model] && hasKit('city', CITY_CARDS[g.model].card)) : [];
-    const { group, drawn, inTheWay } = dressing(DECOR.filter((g) => !carded.includes(g)), FENCES, keep, lines);
+    // Nothing grows inside the building site's fence.
+    const onSite = ([x, z]: readonly number[]) => Math.abs(x - SITE.x) < 3.6 && Math.abs(z - SITE.z) < 3;
+    const dressed = DECOR.filter((g) => !carded.includes(g)).map((g) => ({ ...g, items: g.items.filter((i) => !onSite(i)) }));
+    const { group, drawn, inTheWay } = dressing(dressed, FENCES, keep, lines);
     this.scenery.add(group);
     for (const g of carded) {
       const { card, wide } = CITY_CARDS[g.model];
       const tall = g.fit.height ?? (g.fit.width ?? 2) / wide;
-      const items = tall > 4 ? g.items : g.items.filter(([x, z, , s]) => !inTheWay(x, z, 1.6 + (tall * wide * s) / 2));
+      const items = (tall > 4 ? g.items : g.items.filter(([x, z, , s]) => !inTheWay(x, z, 1.6 + (tall * wide * s) / 2))).filter((i) => !onSite(i));
       this.scenery.add(standees(items.map(([x, z, , s]) => ({ x, z, size: tall * wide * s })), kitPieces('city', card), kitPieces('farm', 'blob-shadow')[0] ?? null));
       drawn.add(g.model);
     }
