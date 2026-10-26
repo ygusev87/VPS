@@ -1,0 +1,351 @@
+{
+  "atSeconds": 34.47,
+  "wires": 5,
+  "goal": true,
+  "won": true,
+  "parts": [
+    {
+      "kind": "battery",
+      "level": 0.37623747823088277,
+      "current": -0.5643562173463241,
+      "closed": false,
+      "triggered": null
+    },
+    {
+      "kind": "launcher",
+      "level": 0.7515370302308837,
+      "current": 0.22610831042426827,
+      "closed": false,
+      "triggered": null
+    },
+    {
+      "kind": "balloon",
+      "level": 0,
+      "current": 0.3382479038650743,
+      "closed": true,
+      "triggered": "world",
+      "popped": true,
+      "ballVisible": false,
+      "leverAngle": -0.62
+    },
+    {
+      "kind": "garland",
+      "level": 1.1212341023509813,
+      "current": 0.3382479018368612,
+      "closed": false,
+      "triggered": null,
+      "emissive": [
+        1.185949433150111,
+        1.185949433150111,
+        1.3748674729295065,
+        3.0951034349506887,
+        2.8323888412411775,
+        1.2315314912146007,
+        1.185949433150111,
+        1.185949433150111,
+        1.185949433150111,
+        1.396120794064195,
+        3.1198078073046602,
+        2.799909749812831
+      ]
+    }
+  ],
+  "scene": "party",
+  "viewport": [
+    390,
+    844
+  ],
+  "quality": "q=1; desktop IAB; not iPad/PWA/FPS",
+  "triggers": [
+    {
+      "kind": "balloon",
+      "screen": {
+        "x": 263.9768072864759,
+        "y": 353.0553677035603
+      }
+    }
+  ],
+  "terminals": [
+    {
+      "kind": "battery",
+      "key": "a",
+      "world": [
+        -3.5999999999999996,
+        0.47999999999999976,
+        2.5
+      ],
+      "screen": {
+        "x": 113.8188476842946,
+        "y": 451.8063259431164
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "battery",
+      "key": "b",
+      "world": [
+        -5.6,
+        0.47999999999999976,
+        2.5
+      ],
+      "screen": {
+        "x": 55.83231031593358,
+        "y": 451.8063259431164
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "launcher",
+      "key": "a",
+      "world": [
+        -2.92,
+        0.48,
+        -0.6999999999999998
+      ],
+      "screen": {
+        "x": 135.39498255752346,
+        "y": 379.7052789236774
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "launcher",
+      "key": "b",
+      "world": [
+        -4.28,
+        0.48,
+        -0.6999999999999998
+      ],
+      "screen": {
+        "x": 97.15780155668948,
+        "y": 379.7052789236774
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "balloon",
+      "key": "a",
+      "world": [
+        1.9999999999999998,
+        0.47999999999999976,
+        -0.7999999999999998
+      ],
+      "screen": {
+        "x": 273.6492049312755,
+        "y": 377.5223946191644
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "balloon",
+      "key": "b",
+      "world": [
+        0.8,
+        0.47999999999999976,
+        -0.7999999999999998
+      ],
+      "screen": {
+        "x": 239.9424028178717,
+        "y": 377.5223946191644
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "garland",
+      "key": "a",
+      "world": [
+        4.25,
+        0.48,
+        2.25
+      ],
+      "screen": {
+        "x": 341.0597878600164,
+        "y": 446.01171969070435
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "garland",
+      "key": "b",
+      "world": [
+        2.5500000000000003,
+        0.48,
+        2.25
+      ],
+      "screen": {
+        "x": 291.8911464021891,
+        "y": 446.01171969070435
+      },
+      "inside": true,
+      "bodyOccluders": []
+    }
+  ],
+  "trace": [
+    {
+      "atSeconds": 0.04,
+      "wires": 0,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 1.000000082740371e-9,
+          "current": -1.5000001241105565e-9,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "launcher",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0
+        },
+        {
+          "kind": "garland",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 18.69,
+      "wires": 2,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 0.1597444107860717,
+          "current": -0.23961661617910757,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "launcher",
+          "level": 0.8440169841388145,
+          "current": 0.23961661330130551,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0.18
+        },
+        {
+          "kind": "garland",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 19.59,
+      "wires": 5,
+      "goal": true,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 0.37623747823088277,
+          "current": -0.5643562173463241,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "launcher",
+          "level": 0.7515370302308837,
+          "current": 0.22610831042426827,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0.3382479038650743,
+          "closed": true,
+          "triggered": "world",
+          "popped": true,
+          "ballVisible": false,
+          "leverAngle": -0.4807860821205959
+        },
+        {
+          "kind": "garland",
+          "level": 1.1212341023509813,
+          "current": 0.3382479018368612,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0.796104609368741,
+            0.7493138522942209,
+            0.7493138522942209,
+            0.7493138522942209,
+            0.8511962642835083,
+            1.933051067079488,
+            1.8172897019933991,
+            0.7880373484615901,
+            0.7493138522942209,
+            0.7493138522942209,
+            0.7493138522942209,
+            0.8637200314720126
+          ]
+        }
+      ]
+    }
+  ]
+}

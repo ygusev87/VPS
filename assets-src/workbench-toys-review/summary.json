@@ -1,0 +1,68 @@
+{
+  "reviewedCommit": "404d1f84de45fcc17c7b0953ad71fa106054a6a2",
+  "scope": [
+    "balloon",
+    "skittles",
+    "garland",
+    "kettle",
+    "m-party"
+  ],
+  "viewports": [
+    [
+      1180,
+      660
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "renderer": "actual main.ts, desktop IAB, q=1",
+  "generationCreditsSpent": 0,
+  "productionCodeChanged": false,
+  "checks": {
+    "nativeKettleWires1180": 2,
+    "nativePartyWires390": 5,
+    "partyWon1180": true,
+    "partyWon390": true,
+    "partyBalloonTrigger": "world",
+    "galleryTerminalsBlocked1180": 0,
+    "galleryTerminalsBlocked390": 0,
+    "partyTerminalsBlocked1180": 0,
+    "partyTerminalsBlocked390": 0,
+    "balloonPopAndRegrow": true,
+    "skittlesFallAndReset": true,
+    "kettleHeatBoilCool": true,
+    "garlandEmissiveChanges": true,
+    "tests": "21 passed",
+    "typecheck": "passed"
+  },
+  "findings": [
+    {
+      "priority": "P2",
+      "id": "garland-night-bloom",
+      "status": "needs Claude fix",
+      "description": "At q=1 at night, light merges into a bright blob that obscures individual coloured bulbs and their chase."
+    },
+    {
+      "priority": "P3",
+      "id": "skittles-contrast",
+      "status": "visual proposal",
+      "description": "White pins are weakly separated from cream board, especially at 390 width; slightly larger upper body and stronger red neck would read better."
+    },
+    {
+      "priority": "P3",
+      "id": "kettle-body-style",
+      "status": "optional future asset",
+      "description": "Kettle is recognisable close up, but its plain round body has less material detail than the existing battery. Prepare a body-only reference after the city houses; no generation ordered."
+    }
+  ],
+  "limitations": [
+    "No physical iPad, PWA, touch timing or GPU/FPS measurements.",
+    "Synthetic gallery placement; real machine layout unchanged.",
+    "Programmatic wiring in 1180 party, native pointer wires in 390 party.",
+    "Ray check excludes terminal metal and transparent effects; only sampled poses, no full interaction proof.",
+    "Sound events were not an audible voice/accent review.",
+    "Recurring IAB MutationObserver error without source URL, also seen on earlier unrelated QA pages; cause unresolved."
+  ]
+}

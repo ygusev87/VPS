@@ -1,0 +1,422 @@
+{
+  "atSeconds": 21.24,
+  "wires": 2,
+  "goal": false,
+  "won": false,
+  "parts": [
+    {
+      "kind": "battery",
+      "level": 0.1597444107860717,
+      "current": -0.23961661617910757,
+      "closed": false,
+      "triggered": null
+    },
+    {
+      "kind": "balloon",
+      "level": 0,
+      "current": 0,
+      "closed": false,
+      "triggered": null,
+      "popped": false,
+      "ballVisible": true,
+      "leverAngle": 0.18
+    },
+    {
+      "kind": "skittles",
+      "level": 0,
+      "current": 0,
+      "closed": false,
+      "triggered": null,
+      "down": false,
+      "angles": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "kind": "garland",
+      "level": 0,
+      "current": 0,
+      "closed": false,
+      "triggered": null,
+      "emissive": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "kind": "kettle",
+      "level": 0.8440169841388145,
+      "current": 0.23961661330130551,
+      "closed": false,
+      "triggered": null,
+      "heat": 0.005707242846746578,
+      "boiling": false,
+      "lidY": 0.8,
+      "lidZ": 0,
+      "steam": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "scene": "gallery",
+  "viewport": [
+    1180,
+    660
+  ],
+  "quality": "q=1; desktop IAB; not iPad/PWA/FPS",
+  "triggers": [
+    {
+      "kind": "balloon",
+      "screen": {
+        "x": 530.2057323541495,
+        "y": 175.33692119874345
+      }
+    },
+    {
+      "kind": "skittles",
+      "screen": {
+        "x": 660.7387446020765,
+        "y": 231.63128692116447
+      }
+    }
+  ],
+  "terminals": [
+    {
+      "kind": "battery",
+      "key": "a",
+      "world": [
+        -3,
+        0.4799999999999999,
+        3.3
+      ],
+      "screen": {
+        "x": 462.2711822964107,
+        "y": 403.4615840124003
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "battery",
+      "key": "b",
+      "world": [
+        -5,
+        0.4799999999999999,
+        3.3
+      ],
+      "screen": {
+        "x": 364.01824560134213,
+        "y": 403.4615840124003
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "balloon",
+      "key": "a",
+      "world": [
+        -1.4,
+        0.4799999999999999,
+        -1.1
+      ],
+      "screen": {
+        "x": 545.0538420050688,
+        "y": 240.18893952376115
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "balloon",
+      "key": "b",
+      "world": [
+        -2.6,
+        0.4799999999999999,
+        -1.1
+      ],
+      "screen": {
+        "x": 491.11845241115134,
+        "y": 240.18893952376115
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "skittles",
+      "key": "a",
+      "world": [
+        1.65,
+        0.4799999999999999,
+        -1.05
+      ],
+      "screen": {
+        "x": 682.2288058253465,
+        "y": 241.88807471571693
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "skittles",
+      "key": "b",
+      "world": [
+        0.35,
+        0.4799999999999999,
+        -1.05
+      ],
+      "screen": {
+        "x": 623.7422460336634,
+        "y": 241.88807471571693
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "garland",
+      "key": "a",
+      "world": [
+        4.45,
+        0.4799999999999999,
+        1.9500000000000002
+      ],
+      "screen": {
+        "x": 821.6528652413092,
+        "y": 350.22650751023974
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "garland",
+      "key": "b",
+      "world": [
+        2.75,
+        0.4799999999999999,
+        1.9500000000000002
+      ],
+      "screen": {
+        "x": 740.4549537134276,
+        "y": 350.22650751023974
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "kettle",
+      "key": "a",
+      "world": [
+        0.2769314899124909,
+        0.40901893389414434,
+        2.0807762415937425
+      ],
+      "screen": {
+        "x": 622.359053276719,
+        "y": 357.2696088317703
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "kettle",
+      "key": "b",
+      "world": [
+        -0.8769314899124909,
+        0.40901893389414434,
+        2.0807762415937425
+      ],
+      "screen": {
+        "x": 567.2014572797931,
+        "y": 357.2696088317703
+      },
+      "inside": true,
+      "bodyOccluders": []
+    }
+  ],
+  "trace": [
+    {
+      "atSeconds": 0.01,
+      "wires": 0,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 1.000000082740371e-9,
+          "current": -1.5000001241105565e-9,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "heat": 0,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 21.24,
+      "wires": 2,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 0.1597444107860717,
+          "current": -0.23961661617910757,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0.18
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 0.8440169841388145,
+          "current": 0.23961661330130551,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.005707242846746578,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    }
+  ]
+}

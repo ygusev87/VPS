@@ -1,0 +1,351 @@
+{
+  "atSeconds": 40.3,
+  "wires": 2,
+  "goal": false,
+  "won": false,
+  "parts": [
+    {
+      "kind": "battery",
+      "level": 0.1597444107860717,
+      "current": -0.23961661617910757,
+      "closed": false,
+      "triggered": null
+    },
+    {
+      "kind": "kettle",
+      "level": 0.8440169841388145,
+      "current": 0.23961661330130551,
+      "closed": false,
+      "triggered": null,
+      "heat": 1,
+      "boiling": true,
+      "lidY": 0.8175823476343762,
+      "lidZ": -0.006570214580686826,
+      "steam": [
+        0.38061984701594437,
+        0.7441526369597598,
+        0.9602968707205343,
+        0.9862425319668718,
+        0.8168507642862801,
+        0.48567168472159566,
+        0.0582993716254698
+      ]
+    }
+  ],
+  "scene": "kettle",
+  "viewport": [
+    1180,
+    660
+  ],
+  "quality": "q=1; desktop IAB; not iPad/PWA/FPS",
+  "triggers": [],
+  "terminals": [
+    {
+      "kind": "battery",
+      "key": "a",
+      "world": [
+        -1,
+        0.47999999999999976,
+        2.0999999999999996
+      ],
+      "screen": {
+        "x": 434.4317815697725,
+        "y": 458.0003572242455
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "battery",
+      "key": "b",
+      "world": [
+        -3,
+        0.47999999999999976,
+        2.0999999999999996
+      ],
+      "screen": {
+        "x": 180.44285352042158,
+        "y": 458.0003572242455
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "kettle",
+      "key": "a",
+      "world": [
+        1.5999999999999999,
+        0.47999999999999976,
+        0.49999999999999994
+      ],
+      "screen": {
+        "x": 750.5782862820674,
+        "y": 299.34875036262355
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "kettle",
+      "key": "b",
+      "world": [
+        0.40000000000000013,
+        0.47999999999999976,
+        0.49999999999999994
+      ],
+      "screen": {
+        "x": 610.4372364358995,
+        "y": 299.34875036262355
+      },
+      "inside": true,
+      "bodyOccluders": []
+    }
+  ],
+  "trace": [
+    {
+      "atSeconds": 0.01,
+      "wires": 0,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 1.000000082740371e-9,
+          "current": -1.5000001241105565e-9,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "kettle",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "heat": 0,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 0.28,
+      "wires": 2,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 0.1597444107860717,
+          "current": -0.23961661617910757,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "kettle",
+          "level": 0.8440169841388145,
+          "current": 0.23961661330130551,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.0020914740866973583,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 2.49,
+      "wires": 2,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 0.1597444107860717,
+          "current": -0.23961661617910757,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "kettle",
+          "level": 0.8440169841388145,
+          "current": 0.23961661330130551,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.2630176366992448,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 4.59,
+      "wires": 2,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 0.1597444107860717,
+          "current": -0.23961661617910757,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "kettle",
+          "level": 0.8440169841388145,
+          "current": 0.23961661330130551,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.5111704462738338,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0.20944926023024307,
+            0.27757010886590866,
+            0.2907147932666946,
+            0.24627984747805043,
+            0.15306615747226424,
+            0.029535837745868952,
+            0.09984441687937463
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 6.69,
+      "wires": 2,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 0.1597444107860717,
+          "current": -0.23961661617910757,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "kettle",
+          "level": 0.8440169841388145,
+          "current": 0.23961661330130551,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.7601858412062126,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0.4835665100132892,
+            0.8044678652135531,
+            0.9660344935573716,
+            0.9362661428165913,
+            0.7210587999402857,
+            0.3630369185299619,
+            0.06688887695084343
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 7.59,
+      "wires": 2,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 0.1597444107860717,
+          "current": -0.23961661617910757,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "kettle",
+          "level": 0.8440169841388145,
+          "current": 0.23961661330130551,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.8656575796121316,
+          "boiling": true,
+          "lidY": 0.8203291102312756,
+          "lidZ": 0.059997823872592865,
+          "steam": [
+            0.44007838774039215,
+            0.7861068915876104,
+            0.9764372845875673,
+            0.973372298157535,
+            0.7775189904495725,
+            0.42766851103843156,
+            0.0068869619939568045
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 8.79,
+      "wires": 2,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "battery",
+          "level": 0.1597444107860717,
+          "current": -0.23961661617910757,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "kettle",
+          "level": 0.8440169841388145,
+          "current": 0.23961661330130551,
+          "closed": false,
+          "triggered": null,
+          "heat": 1,
+          "boiling": true,
+          "lidY": 0.8182208277321866,
+          "lidZ": -0.04718474471281773,
+          "steam": [
+            0.9939779558595725,
+            0.9430882665249717,
+            0.7054083797865456,
+            0.3280137121653554,
+            0.11434809397436693,
+            0.5340618577151233,
+            0.8479981206965493
+          ]
+        }
+      ]
+    }
+  ]
+}
