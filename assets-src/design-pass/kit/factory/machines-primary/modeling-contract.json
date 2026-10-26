@@ -32,7 +32,66 @@
       ],
       "clearance": "Open tray for two-by-two interactive tiles; keep top-down visibility and tap access.",
       "runtimeNote": "m0410: selected v2 has rear/north -Z hinges, door opens upward behind tiles. Tiles X/Z ±0.5,Y=PLATE_TOP+0.17; connectors left/right outside.",
-      "selectedReference": "concepts/factory-cabinet-v2.png"
+      "selectedReference": "concepts/factory-cabinet-v2.png",
+      "runtimeGeometry": {
+        "tileCentreY": 0.33,
+        "tileCentresXZ": [
+          [
+            -0.5,
+            -0.5
+          ],
+          [
+            0.5,
+            -0.5
+          ],
+          [
+            -0.5,
+            0.5
+          ],
+          [
+            0.5,
+            0.5
+          ]
+        ],
+        "tileSlabSizeXYZ": [
+          0.94,
+          0.06,
+          0.94
+        ],
+        "tileSlabYRange": [
+          0.3,
+          0.36
+        ],
+        "copperMaximumY": 0.415,
+        "rotatingSlabSweepOuterExtentXZ": 1.16468,
+        "minimumUnobstructedSquareAtSlabHeight": 2.329361,
+        "doorCurrentCentreXYZ": [
+          0,
+          0.46,
+          -1.2
+        ],
+        "doorCurrentSizeXYZ": [
+          2.24,
+          0.6,
+          0.06
+        ],
+        "currentDoorIsAnimated": false,
+        "statusLampCurrentCentreXYZ": [
+          0.7,
+          0.66,
+          -1.14
+        ],
+        "terminalX": [
+          -1.5,
+          1.5
+        ]
+      },
+      "acceptanceCases": [
+        "all four tiles through full quarter-turn, including 45 degrees; rim cannot cover or intersect tile sweep",
+        "preserve cellOf/tap mapping; fixed two-by-two GLB not a general variable grid",
+        "keep code-driven indicator; static red pixel on reference is not a functional lamp",
+        "door separate or code; current constructor displays it open, no swing animation to claim"
+      ]
     },
     {
       "name": "safety-press",
@@ -48,7 +107,84 @@
         "right button"
       ],
       "clearance": "Empty central press span throughout ram travel; do not fuse columns to ram.",
-      "runtimeNote": "Columns X ±0.75, Z -0.35; code ram centre Y=PLATE_TOP+1.4, Z=-0.35; code anvil 1.2×0.3×0.8."
+      "runtimeNote": "Columns X ±0.75, Z -0.35; code ram centre Y=PLATE_TOP+1.4, Z=-0.35; code anvil 1.2×0.3×0.8.",
+      "runtimeGeometry": {
+        "bodyPositionXYZ": [
+          0,
+          0.16,
+          -0.35
+        ],
+        "ramGroupCentreYRange": [
+          0.81,
+          1.56
+        ],
+        "ramTravel": 0.75,
+        "headSizeXYZ": [
+          1,
+          0.35,
+          0.7
+        ],
+        "headSweptAabb": {
+          "min": [
+            -0.5,
+            0.635,
+            -0.7
+          ],
+          "max": [
+            0.5,
+            1.735,
+            0
+          ]
+        },
+        "rodRadius": 0.1,
+        "rodHeight": 0.9,
+        "rodSweptYRange": [
+          0.96,
+          2.61
+        ],
+        "beamYRange": [
+          2.085,
+          2.435
+        ],
+        "requiredRodBoreAxisXZ": [
+          0,
+          -0.35
+        ],
+        "anvilTopY": 0.46,
+        "existingHeadToAnvilDownGap": 0.175,
+        "postInnerX": [
+          -0.625,
+          0.625
+        ],
+        "codeSideClearance": 0.125,
+        "buttonsXZ": [
+          [
+            -1.6,
+            0.35
+          ],
+          [
+            1.6,
+            0.35
+          ]
+        ],
+        "buttonTouchRadius": 0.55,
+        "terminalXZ": [
+          [
+            -1.75,
+            -0.75
+          ],
+          [
+            1.75,
+            -0.75
+          ]
+        ]
+      },
+      "acceptanceCases": [
+        "ramY0,0.5,1; head clears frame and rod passes top beam through an actual opening",
+        "do not close the existing 0.175 anvil gap by changing animation without integrator decision",
+        "buttons and both terminals remain accessible",
+        "include neither ram nor code controls in static body"
+      ]
     },
     {
       "name": "lathe",
@@ -60,11 +196,74 @@
       "separateOrCode": [
         "spindle",
         "workpiece",
-        "dial needle"
+        "dial face",
+        "dial band",
+        "dial needle",
+        "rear gear shaft"
       ],
       "clearance": "Empty axial span between headstock and tailstock; no baked rotating cylinder.",
       "runtimeNote": "m0410: selected v2 has no static dial and leaves flat top mounting area. Code dial centre(-0.7,PLATE_TOP+1.25,+0.5), r0.3, south-facing.",
-      "selectedReference": "concepts/lathe-v2.png"
+      "selectedReference": "concepts/lathe-v2.png",
+      "runtimeGeometry": {
+        "spindleAxis": "X",
+        "spindleCentreXYZ": [
+          0.3,
+          0.91,
+          0.2
+        ],
+        "workpieceRadius": 0.16,
+        "workpieceLength": 1.5,
+        "ringOuterRadius": 0.2,
+        "overspeedVerticalAmplitude": 0.03,
+        "workpieceSweptXRange": [
+          -0.45,
+          1.05
+        ],
+        "movingAssemblySweptYRange": [
+          0.68,
+          1.14
+        ],
+        "movingAssemblySweptZRange": [
+          0,
+          0.4
+        ],
+        "dialCentreXYZ": [
+          -0.7,
+          1.41,
+          0.5
+        ],
+        "dialRadius": 0.3,
+        "dialMaxY": 1.71,
+        "needleCentreXYZ": [
+          -0.7,
+          1.41,
+          0.55
+        ],
+        "needleAngleRangeRad": [
+          -2.356194490192345,
+          2.356194490192345
+        ],
+        "rearShaftAxisXZ": [
+          -1.1,
+          -0.45
+        ],
+        "rearShaftYRange": [
+          0.16,
+          0.66
+        ],
+        "rearShaftRadius": 0.08,
+        "gearCentreXYZ": [
+          -1.1,
+          0.51,
+          -0.45
+        ]
+      },
+      "acceptanceCases": [
+        "spindle full rotation and fast-speed ±.03Y vibration without static intersections",
+        "align hollow inward bearing openings to code axis rather than scaling body solely by outer width",
+        "dial, green band and needle remain code-driven and visible from south",
+        "back-left input shaft/gear remain reachable; do not bake their moving function into reference"
+      ]
     },
     {
       "name": "hoist",
@@ -74,11 +273,129 @@
         1.3
       ],
       "separateOrCode": [
-        "cabin"
+        "cabin",
+        "roof",
+        "pulley",
+        "rope",
+        "floor lamps"
       ],
       "clearance": "Open front and shaft over full cabin travel; sparse mesh must preserve real openings.",
-      "runtimeNote": "Do not infer collision or triangle budget from image; inspect generated mesh before acceptance."
+      "runtimeNote": "Do not infer collision or triangle budget from image; inspect generated mesh before acceptance.",
+      "runtimeGeometry": {
+        "towerCentreZ": -0.25,
+        "cabinCentreZ": -0.23,
+        "cabinBaseYRange": [
+          0.24,
+          1.91
+        ],
+        "cabinTravel": 1.67,
+        "shellSizeXYZ": [
+          0.86,
+          0.72,
+          0.8
+        ],
+        "shellSweptAabb": {
+          "min": [
+            -0.43,
+            0.24,
+            -0.63
+          ],
+          "max": [
+            0.43,
+            2.63,
+            0.17
+          ]
+        },
+        "frontWindowZ": 0.175,
+        "roofCurrentLowerY": 2.6,
+        "currentTopShellRoofAabbOverlap": 0.03,
+        "pillarCentresXZ": [
+          [
+            -0.56,
+            -0.75
+          ],
+          [
+            0.56,
+            -0.75
+          ],
+          [
+            -0.56,
+            0.25
+          ],
+          [
+            0.56,
+            0.25
+          ]
+        ],
+        "pillarWidth": 0.12,
+        "terminalsXZ": [
+          [
+            0.85,
+            0.8
+          ],
+          [
+            -0.85,
+            0.8
+          ]
+        ],
+        "cabinFloorLocalXYZ": [
+          0,
+          0.1,
+          0
+        ],
+        "driverFalseShellHeight": 0.1,
+        "driverFalseHides": [
+          "passenger",
+          "window",
+          "roof"
+        ],
+        "pulleyCentreXYZ": [
+          0,
+          2.46,
+          -0.25
+        ],
+        "pulleySpinPerVerticalDistance": 6
+      },
+      "acceptanceCases": [
+        "bottom/middle/top travel, entire shell envelope clear of mesh and guide rails",
+        "roof must be separately hideable if model replaces Lift globally; farm calls driver=false for kitten",
+        "alternative is factory-only visual; explicitly preserve original farm Lift, integrator chooses",
+        "cabinFloor() world location unchanged so rider follows platform",
+        "pulley and rope must remain animated separately; static reference top motor is decor only",
+        "inspect existing roof/top shell overlap in real mesh rather than inheriting it as desired tolerance"
+      ]
     }
   ],
-  "integrationDecision": "Claude m0410; 2026-10-26"
+  "integrationDecision": "Claude m0410; 2026-10-26",
+  "coordinateBasis": {
+    "space": "Part.root local; absolute Y includes PLATE_TOP=0.16 unless named relative",
+    "plateTop": 0.16,
+    "fit": "model() rotates Y, uses one requested dimension for uniform scaling, centres bbox X/Z, places minY=0; then integrator adds body placement. Measure moving clearance after this transform."
+  },
+  "sourceSnapshots": [
+    {
+      "path": "src/parts/workshop.ts",
+      "sha256": "811fa602106278b3eeb179bf379950415ad30c74a08db5972ff5962f08ea84b4"
+    },
+    {
+      "path": "src/parts/more.ts",
+      "sha256": "d9f4fc117ab64a748844847f7bbd3767718c7b9755126dd93b6e2f44f37bdd74"
+    },
+    {
+      "path": "src/parts/assets.ts",
+      "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+    },
+    {
+      "path": "src/parts/kit.ts",
+      "sha256": "32edbaa0e6375aea7c96994014cba9e91d7690a1bb2887c32cad3cf9f52b6509"
+    },
+    {
+      "path": "src/factory.ts",
+      "sha256": "bdbbeaf58e97f8b1a15ddd4c1ea92104605250c0e760175956970b2ed8b8680d"
+    },
+    {
+      "path": "src/farm.ts",
+      "sha256": "8c92ea8008b2dd365f0d39efbcab8f6b6f3150a4010ed34a47ed43bf51a1079e"
+    }
+  ]
 }
