@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "main: city tram",
+  "images": [
+    {
+      "name": "tram-rails-strip",
+      "source": "../sources/tram-rails-strip.png",
+      "sourceWidth": 768,
+      "sourceHeight": 2048,
+      "sourceSha256": "160d4f07a46f77497311e7f49d41b8d8af9242f4ac1cfd63d58ccb7bcdc63139",
+      "output": "public/textures/kit/city/tram-rails-strip.webp",
+      "width": 512,
+      "height": 2048,
+      "bytes": 102230,
+      "sha256": "ef21a1bc3f169dd23726ac7b4e1783e73175b794d8211a949df91b9e8bed7a1e",
+      "sourceAspect": 0.375,
+      "outputAspect": 0.25,
+      "extract": null,
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "transparentFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "edges": {
+          "left": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "right": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "top": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "bottom": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 5.851888020833333,
+        "y": 6.484375
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 4.764912923177083,
+        "y": 2.0705362955729165
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+[
+  {
+    "name": "tram-rails-strip",
+    "width": 512,
+    "height": 2048,
+    "refs": [
+      "../sources/road-lane-strip.png"
+    ],
+    "prompt": "Use case: precise-object-edit. Asset type: production tram-rails-strip ground texture for the approved toy town, orthographic straight-down diffuse texture. Edit the supplied road-lane-strip: preserve its warm medium-grey softly painted asphalt palette and small-scale grain, but replace BOTH beige kerb strips completely with matching grey asphalt to the left/right image edges. Add exactly TWO perfectly straight parallel steel tram rails embedded flush in the asphalt, running continuously from the top image boundary to the bottom image boundary. Rail centres precisely at 31.25% and 68.75% of total canvas width (1.5-unit gauge on a 4-unit-wide street). Each complete visible metal head is 3% of canvas width (0.12 units), a quiet silvery grey top with a thin dark inset groove immediately alongside, no prominent side shadows. No sleepers or railroad ballast, no wooden ties, no lane markings, no centreline, no curb stones, no scenery, no text. Pure flat plan view, absolutely no perspective taper or vanishing point. Portrait canvas physical proportion 1:2, representing4×8 world units, full bleed asphalt. Uniform illumination and texture density; NO top-to-bottom gradient, vignette or large stains. Critical vertical tiling: top and bottom rows must match in asphalt colour and texture distribution; both rail positions and widths must be identical and unbroken at the two ends. No transverse seams across rails. The output is only this repeatable asphalt/embedded-rail material; retain restrained hand-painted toy-town style from the input.",
+    "source": "../sources/tram-rails-strip.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-bbe81025-0661-4e96-b6e2-1889866621df.png"
+  }
+]

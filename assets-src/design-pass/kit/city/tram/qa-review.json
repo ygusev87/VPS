@@ -1,0 +1,57 @@
+{
+  "status": "accepted-for-integration-review",
+  "assetSha256": "ef21a1bc3f169dd23726ac7b4e1783e73175b794d8211a949df91b9e8bed7a1e",
+  "nativeBrowser": "Codex IAB",
+  "viewportTests": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "scalePixelsPerWorldUnit": [
+    32,
+    70
+  ],
+  "screenshots": [
+    {
+      "path": "qa/tram-repeat-1024.jpg",
+      "sha256": "1c13afdb1e6be88a52b9aaededd567732c0f9f6a7cb3d366aed569cec17c5a4d"
+    },
+    {
+      "path": "qa/tram-detail-1024.jpg",
+      "sha256": "16518348363867deec0beb0176b78fcd629a1de5456d7a5227c1fb1487d5854a"
+    },
+    {
+      "path": "qa/tram-repeat-390.jpg",
+      "sha256": "382cd21c2d5c5eff6296fd9a37734e35551d56a14627fb87946d870fd3e336a6"
+    },
+    {
+      "path": "qa/tram-gauge-390.jpg",
+      "sha256": "156b7f79f33bb8e04976c42c607fdd58ddab50ec4e6f7b6c19af58b6499ecf73"
+    }
+  ],
+  "visual": [
+    "Exactly two embedded metal rails; no sleepers, kerbs or lane markings.",
+    "No obvious repeat boundary at32 or70px/unit; not pixel-identical seamless.",
+    "Rail centres remain straight and continuous at the repeated ends.",
+    "Fits390-wide viewport without visible horizontal clipping."
+  ],
+  "measuredGaugeAtWidth4": 1.4749621886207773,
+  "requestedGauge": 1.5,
+  "differencePerRail": 0.01251890568961135,
+  "opposingTopBottomRgbMae": 6.484375,
+  "browserErrors": [
+    {
+      "message": "MutationObserver.observe parameter1 is not of type Node",
+      "url": null,
+      "note": "Same unlocated IAB error seen previously; qa.html has no MutationObserver. Asset loaded; source not established."
+    }
+  ],
+  "notYetVerified": [
+    "Actual game frame and interaction with existing3Drail strips."
+  ]
+}

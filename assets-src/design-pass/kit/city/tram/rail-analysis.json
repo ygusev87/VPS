@@ -1,0 +1,55 @@
+{
+  "width": 512,
+  "height": 2048,
+  "rail_analysis": [
+    {
+      "rows": [
+        0,
+        8
+      ],
+      "rail_centres_px": [
+        161.2100159567939,
+        349.81784968684764
+      ],
+      "gauge_world": 1.4734987010160447,
+      "offset_world": -0.0037973998295250944
+    },
+    {
+      "rows": [
+        1020,
+        1028
+      ],
+      "rail_centres_px": [
+        161.11804484517737,
+        349.7443926594815
+      ],
+      "gauge_world": 1.473643342299251,
+      "offset_world": -0.0044436034974264516
+    },
+    {
+      "rows": [
+        2040,
+        2048
+      ],
+      "rail_centres_px": [
+        161.27601631364297,
+        349.87772925764193
+      ],
+      "gauge_world": 1.4734508823749919,
+      "offset_world": -0.0033056813621683556
+    },
+    {
+      "rows": [
+        0,
+        2048
+      ],
+      "rail_centres_px": [
+        161.28266399667956,
+        350.07782414013906
+      ],
+      "gauge_world": 1.4749621886207773,
+      "offset_world": -0.0024980932155522773
+    }
+  ],
+  "method": "Centroid of averaged luminance above155, search windows26\u201336%/64\u201374%; polished head only."
+}
