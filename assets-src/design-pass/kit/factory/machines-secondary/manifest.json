@@ -1,0 +1,143 @@
+{
+  "schemaVersion": 1,
+  "kind": "future-GLB-concepts-only",
+  "tool": "image_gen.imagegen",
+  "calls": 4,
+  "initialGenerations": 4,
+  "edits": 0,
+  "actualGLB": "pending",
+  "external3DOrders": 0,
+  "paidAPIUsage": 0,
+  "externalUploads": 0,
+  "targetGLBBudget": {
+    "trianglesMax": 4000,
+    "materials": 1,
+    "textureResolution": [
+      512,
+      1024
+    ],
+    "textureFormat": "WebP"
+  },
+  "references": "references.json",
+  "promptSet": "prompts.json",
+  "generationLog": "generation-log.json",
+  "totalBytes": 7507800,
+  "assets": [
+    {
+      "name": "lever-box",
+      "label": "Корпус реверсора",
+      "path": "concepts/lever-box.png",
+      "bytes": 1960515,
+      "sha256": "8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd",
+      "size": [
+        1254,
+        1254
+      ],
+      "format": "png",
+      "hasAlpha": false,
+      "colourSpace": "srgb",
+      "sourcePreservedByteExact": true,
+      "transforms": [],
+      "targetBodySizeWHDepth": [
+        1.5,
+        0.4,
+        1.1
+      ],
+      "targetPart": "Reverser",
+      "movingPartsContract": "Lever, pivoting handle and knob supplied by code; none present in concept.",
+      "status": "concept-accepted-for-3D",
+      "actualGLB": "pending",
+      "dimensionsVerified": false,
+      "dimensionsNote": "Image proportions are visual only. Bounding box, mounting anchors, nodes and material budget must be verified on the future GLB.",
+      "initialGenerations": 1,
+      "edits": 0
+    },
+    {
+      "name": "rail-cart",
+      "label": "Вагонетка со стальной катушкой",
+      "path": "concepts/rail-cart.png",
+      "bytes": 2039164,
+      "sha256": "fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126",
+      "size": [
+        1254,
+        1254
+      ],
+      "format": "png",
+      "hasAlpha": false,
+      "colourSpace": "srgb",
+      "sourcePreservedByteExact": true,
+      "transforms": [],
+      "targetBodySizeWHDepth": [
+        1.3,
+        0.8,
+        1
+      ],
+      "targetPart": "RailCart",
+      "movingPartsContract": "Four wheels must become separate wheel-* nodes in GLB; assembled visible wheel geometry shown in concept.",
+      "status": "concept-accepted-for-3D",
+      "actualGLB": "pending",
+      "dimensionsVerified": false,
+      "dimensionsNote": "Image proportions are visual only. Bounding box, mounting anchors, nodes and material budget must be verified on the future GLB.",
+      "initialGenerations": 1,
+      "edits": 0
+    },
+    {
+      "name": "shaft-motor",
+      "label": "Плоский мотор без вала",
+      "path": "concepts/shaft-motor.png",
+      "bytes": 1651500,
+      "sha256": "fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216",
+      "size": [
+        1254,
+        1254
+      ],
+      "format": "png",
+      "hasAlpha": false,
+      "colourSpace": "srgb",
+      "sourcePreservedByteExact": true,
+      "transforms": [],
+      "targetBodySizeWHDepth": [
+        1.1,
+        0.25,
+        0.9
+      ],
+      "targetPart": "ShaftMotor",
+      "movingPartsContract": "Shaft, collar and gear supplied by code; all excluded. Bearing centre target local(0,-0.35) for body centre z=-0.1.",
+      "status": "concept-accepted-for-3D",
+      "actualGLB": "pending",
+      "dimensionsVerified": false,
+      "dimensionsNote": "Image proportions are visual only. Bounding box, mounting anchors, nodes and material budget must be verified on the future GLB.",
+      "initialGenerations": 1,
+      "edits": 0
+    },
+    {
+      "name": "socket-board",
+      "label": "Панель с тремя гнёздами",
+      "path": "concepts/socket-board.png",
+      "bytes": 1856621,
+      "sha256": "ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a",
+      "size": [
+        1254,
+        1254
+      ],
+      "format": "png",
+      "hasAlpha": false,
+      "colourSpace": "srgb",
+      "sourcePreservedByteExact": true,
+      "transforms": [],
+      "targetBodySizeWHDepth": [
+        2.6,
+        1,
+        0.2
+      ],
+      "targetPart": "SocketBoard",
+      "movingPartsContract": "No plugs or cords; active terminals supplied by code. Three shape signs are painted texture, not detailed socket geometry.",
+      "status": "concept-accepted-for-3D",
+      "actualGLB": "pending",
+      "dimensionsVerified": false,
+      "dimensionsNote": "Image proportions are visual only. Bounding box, mounting anchors, nodes and material budget must be verified on the future GLB.",
+      "initialGenerations": 1,
+      "edits": 0
+    }
+  ]
+}

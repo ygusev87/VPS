@@ -1,0 +1,78 @@
+{
+  "at": "2026-10-26T15:52:18.303348+00:00",
+  "testCommand": "npm test",
+  "testExitCode": 0,
+  "testFilesPassed": 17,
+  "testsPassed": 88,
+  "typecheckCommand": "npm run typecheck",
+  "typecheckExitCode": 0,
+  "browserChecks": 10,
+  "browserConsoleErrors": [],
+  "horizontalOverflow": false,
+  "nativePNGs": 4,
+  "nativeSizes": [
+    [
+      1254,
+      1254
+    ],
+    [
+      1254,
+      1254
+    ],
+    [
+      1254,
+      1254
+    ],
+    [
+      1254,
+      1254
+    ]
+  ],
+  "sourceHashesVerified": true,
+  "generationCalls": 4,
+  "edits": 0,
+  "externalOrders": 0,
+  "actualGLB": "pending",
+  "screenshots": [
+    {
+      "path": "qa/all-1024.jpg",
+      "sha256": "7026b3f0cb3c796ced536c2b09940b6c6c0a378cffdf78b0a189d66d847325a4"
+    },
+    {
+      "path": "qa/all-390.jpg",
+      "sha256": "203ff924413a8b4be6de22e0a49f0e48630800da2d7672b328e8616cc86a1963"
+    },
+    {
+      "path": "qa/lever-box-1024.jpg",
+      "sha256": "83e89080e3a6a0285820feae99f58af91dc20da62c00e97b25ac5c2e5f9e2b90"
+    },
+    {
+      "path": "qa/lever-box-390.jpg",
+      "sha256": "b8a9406b4d2ce2a5e6b6d234b97792bad8909694f3ff8ec4043e93157e1e38f0"
+    },
+    {
+      "path": "qa/rail-cart-1024.jpg",
+      "sha256": "015b3f8c2ad6a7de0bb71a58500cec162e85b91445f1542901f2565acf90a024"
+    },
+    {
+      "path": "qa/rail-cart-390.jpg",
+      "sha256": "ad154a27fa62d7e2f9bf69fab9eac4b644172e0fa9007b4ba9a464189e48a9e2"
+    },
+    {
+      "path": "qa/shaft-motor-1024.jpg",
+      "sha256": "3452fd1ad66fc92342e46ac7de916626b778e3f7e8cf08505f5c247e7d139880"
+    },
+    {
+      "path": "qa/shaft-motor-390.jpg",
+      "sha256": "67a1d67b629ef908f6117badbb92789a99c1e66a7e98e56b5b80bfa434739467"
+    },
+    {
+      "path": "qa/socket-board-1024.jpg",
+      "sha256": "a0e0f0815b97e0778b6d21c400cc004817b5e51b30a5b1c35fd19bf8a21645c7"
+    },
+    {
+      "path": "qa/socket-board-390.jpg",
+      "sha256": "80ba5390a9e1bb7570126b4b19361b9edba9b990a951a30178162b24cc3a6eec"
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+[
+  {
+    "name": "lever-box",
+    "label": "Корпус реверсора",
+    "size": [
+      1.5,
+      0.4,
+      1.1
+    ],
+    "part": "Reverser",
+    "moving": "Lever, pivoting handle and knob supplied by code; none present in concept.",
+    "toolArgs": {
+      "prompt": "Use case: stylized-concept. Create ONE isolated industrial machine housing as a reference for a future 3D GLB asset in a miniature engineering game. Real manufactured machinery, readable solid geometry, teal enamel cast metal, brushed steel, restrained warm safety-yellow accents, rivets and subtle wear; match the sober rounded industrial look of the viewed factory B concept. Clean large forms that can later be modeled with <=4000 triangles and one texture material. Soft studio lighting, three-quarter view from above, object fully visible with generous margin, white background, no cast shadow on the background. Square composition. No room, floor, game board, shared base plate, cables, terminals, rails, surrounding props, captions, dimension arrows, logos, watermark or exploded diagram. The image is only a 3D modeling concept, not a playable sprite. A low rectangular reversing-switch enclosure, width1.5, height0.4, depth1.1. Teal body with a flat steel lid, four corner bolts and a small yellow edge accent. At the rear centre of the lid is one EMPTY low mounting socket for a separate lever. NO lever, stick, handle, knob or protruding shaft. Along the front part of the lid show exactly three flat painted symbols from left to right: orange LEFT-pointing solid triangle ◀, red solid SQUARE ■, green RIGHT-pointing solid triangle ▶. These are printed markings, not buttons. Keep them large, clear and correctly oriented. No other words or symbols. All moving parts absent.",
+      "transparent_background": false
+    },
+    "status": "generated once; concept accepted for 3D; actual GLB pending"
+  },
+  {
+    "name": "rail-cart",
+    "label": "Вагонетка со стальной катушкой",
+    "size": [
+      1.3,
+      0.8,
+      1
+    ],
+    "part": "RailCart",
+    "moving": "Four wheels must become separate wheel-* nodes in GLB; assembled visible wheel geometry shown in concept.",
+    "toolArgs": {
+      "prompt": "Use case: stylized-concept. Create ONE isolated industrial machine housing as a reference for a future 3D GLB asset in a miniature engineering game. Real manufactured machinery, readable solid geometry, teal enamel cast metal, brushed steel, restrained warm safety-yellow accents, rivets and subtle wear; match the sober rounded industrial look of the viewed factory B concept. Clean large forms that can later be modeled with <=4000 triangles and one texture material. Soft studio lighting, three-quarter view from above, object fully visible with generous margin, white background, no cast shadow on the background. Square composition. No room, floor, game board, shared base plate, cables, terminals, rails, surrounding props, captions, dimension arrows, logos, watermark or exploded diagram. The image is only a 3D modeling concept, not a playable sprite. A compact rail-cart wagon, width1.3, total height about0.8, depth1.0. Low teal steel tray chassis with warm yellow cradle supports carrying one heavy coil of tightly rolled sheet steel. The coil has a clearly visible central hollow core and concentric layered steel edges; it is rolled metal, not wire, rope or a wooden spool. Four dark steel flanged wheels on two axles, visibly distinct from the chassis with separation gaps and exposed round hubs; show the near wheels clearly so future modeler can separate them into wheel-* nodes. Wheels remain assembled on the wagon, not exploded. Compact realistic proportions, steel coil secured in its cradle. NO railway tracks, sleepers, track bed, platform, motor unit, rail buffers, game base plate or surroundings.",
+      "transparent_background": false
+    },
+    "status": "generated once; concept accepted for 3D; actual GLB pending"
+  },
+  {
+    "name": "shaft-motor",
+    "label": "Плоский мотор без вала",
+    "size": [
+      1.1,
+      0.25,
+      0.9
+    ],
+    "part": "ShaftMotor",
+    "moving": "Shaft, collar and gear supplied by code; all excluded. Bearing centre target local(0,-0.35) for body centre z=-0.1.",
+    "toolArgs": {
+      "prompt": "Use case: stylized-concept. Create ONE isolated industrial machine housing as a reference for a future 3D GLB asset in a miniature engineering game. Real manufactured machinery, readable solid geometry, teal enamel cast metal, brushed steel, restrained warm safety-yellow accents, rivets and subtle wear; match the sober rounded industrial look of the viewed factory B concept. Clean large forms that can later be modeled with <=4000 triangles and one texture material. Soft studio lighting, three-quarter view from above, object fully visible with generous margin, white background, no cast shadow on the background. Square composition. No room, floor, game board, shared base plate, cables, terminals, rails, surrounding props, captions, dimension arrows, logos, watermark or exploded diagram. The image is only a 3D modeling concept, not a playable sprite. A very LOW FLAT rectangular motor housing, width1.1, height0.25, depth0.9, teal enamel with shallow side cooling ribs, a few steel corner bolts and one modest yellow accent. This is a flat pancake motor casing, NOT a cylindrical horizontal motor. On the TOP surface, centred left-to-right and slightly toward the REAR, show a short flush steel bearing ring with an EMPTY dark circular bore whose axis is VERTICAL. Leave obvious empty space ABOVE the hole for a future rotating upright shaft. Absolutely NO shaft, spindle, gear, pin, rotor, stick or moving collar protruding from that bearing. One static housing only; no external terminals, wires or game base.",
+      "transparent_background": false
+    },
+    "status": "generated once; concept accepted for 3D; actual GLB pending"
+  },
+  {
+    "name": "socket-board",
+    "label": "Панель с тремя гнёздами",
+    "size": [
+      2.6,
+      1,
+      0.2
+    ],
+    "part": "SocketBoard",
+    "moving": "No plugs or cords; active terminals supplied by code. Three shape signs are painted texture, not detailed socket geometry.",
+    "toolArgs": {
+      "prompt": "Use case: stylized-concept. Create ONE isolated industrial machine housing as a reference for a future 3D GLB asset in a miniature engineering game. Real manufactured machinery, readable solid geometry, teal enamel cast metal, brushed steel, restrained warm safety-yellow accents, rivets and subtle wear; match the sober rounded industrial look of the viewed factory B concept. Clean large forms that can later be modeled with <=4000 triangles and one texture material. Soft studio lighting, three-quarter view from above, object fully visible with generous margin, white background, no cast shadow on the background. Square composition. No room, floor, game board, shared base plate, cables, terminals, rails, surrounding props, captions, dimension arrows, logos, watermark or exploded diagram. The image is only a 3D modeling concept, not a playable sprite. A wide upright thin industrial socket panel on two SHORT integrated support feet. Panel width2.6, height1.0, thickness0.2, a warm light-gray steel face inside a teal frame with steel corner bolts and a small warm-yellow lower edge accent. Feet are short and simple, not tall posts. Across the FRONT face, evenly spaced in ONE horizontal row, exactly THREE large painted socket markings: blue CIRCLE at left, yellow SQUARE in centre, orange-red TRIANGLE at right. Each is a flat graphic in the face texture with a simple dark inset-shape illustration; no projecting socket hardware. Keep all three unmistakable and readable from the three-quarter view. NO plugs, cords, loose components, fourth socket, extra second row, labels, buttons, game base plate or surrounding apparatus. The face is upright, NOT lying flat like a keyboard.",
+      "transparent_background": false
+    },
+    "status": "generated once; concept accepted for 3D; actual GLB pending"
+  }
+]

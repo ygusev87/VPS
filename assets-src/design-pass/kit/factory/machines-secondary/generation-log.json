@@ -1,0 +1,50 @@
+[
+  {
+    "name": "lever-box",
+    "tool": "image_gen.imagegen",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-e793fe42-e9c3-41ab-a326-2485aa7dc442.png",
+    "path": "concepts/lever-box.png",
+    "sha256": "8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd",
+    "bytes": 1960515,
+    "callCount": 1,
+    "initialGenerations": 1,
+    "edits": 0,
+    "copiedByteExact": true
+  },
+  {
+    "name": "rail-cart",
+    "tool": "image_gen.imagegen",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-f6f54c81-9fa8-4de1-8504-70c381d1b978.png",
+    "path": "concepts/rail-cart.png",
+    "sha256": "fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126",
+    "bytes": 2039164,
+    "callCount": 1,
+    "initialGenerations": 1,
+    "edits": 0,
+    "copiedByteExact": true
+  },
+  {
+    "name": "shaft-motor",
+    "tool": "image_gen.imagegen",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-5c1cd505-c593-4991-b13f-a270bb3bd0db.png",
+    "path": "concepts/shaft-motor.png",
+    "sha256": "fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216",
+    "bytes": 1651500,
+    "callCount": 1,
+    "initialGenerations": 1,
+    "edits": 0,
+    "copiedByteExact": true
+  },
+  {
+    "name": "socket-board",
+    "tool": "image_gen.imagegen",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-4f6ee2aa-0514-4c26-a349-c7d875a7a7ab.png",
+    "path": "concepts/socket-board.png",
+    "sha256": "ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a",
+    "bytes": 1856621,
+    "callCount": 1,
+    "initialGenerations": 1,
+    "edits": 0,
+    "copiedByteExact": true
+  }
+]

@@ -1,0 +1,249 @@
+{
+  "checks": [
+    {
+      "asset": "all",
+      "images": [
+        {
+          "complete": true,
+          "name": "lever-box",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/lever-box.png?v=8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd"
+        },
+        {
+          "complete": true,
+          "name": "rail-cart",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/rail-cart.png?v=fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126"
+        },
+        {
+          "complete": true,
+          "name": "shaft-motor",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/shaft-motor.png?v=fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216"
+        },
+        {
+          "complete": true,
+          "name": "socket-board",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/socket-board.png?v=ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a"
+        }
+      ],
+      "overflow": false,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "asset": "lever-box",
+      "images": [
+        {
+          "complete": true,
+          "name": "lever-box",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/lever-box.png?v=8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd"
+        }
+      ],
+      "overflow": false,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "asset": "rail-cart",
+      "images": [
+        {
+          "complete": true,
+          "name": "rail-cart",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/rail-cart.png?v=fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126"
+        }
+      ],
+      "overflow": false,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "asset": "shaft-motor",
+      "images": [
+        {
+          "complete": true,
+          "name": "shaft-motor",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/shaft-motor.png?v=fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216"
+        }
+      ],
+      "overflow": false,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "asset": "socket-board",
+      "images": [
+        {
+          "complete": true,
+          "name": "socket-board",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/socket-board.png?v=ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a"
+        }
+      ],
+      "overflow": false,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "asset": "all",
+      "images": [
+        {
+          "complete": true,
+          "name": "lever-box",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/lever-box.png?v=8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd"
+        },
+        {
+          "complete": true,
+          "name": "rail-cart",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/rail-cart.png?v=fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126"
+        },
+        {
+          "complete": true,
+          "name": "shaft-motor",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/shaft-motor.png?v=fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216"
+        },
+        {
+          "complete": true,
+          "name": "socket-board",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/socket-board.png?v=ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a"
+        }
+      ],
+      "overflow": false,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "asset": "lever-box",
+      "images": [
+        {
+          "complete": true,
+          "name": "lever-box",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/lever-box.png?v=8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd"
+        }
+      ],
+      "overflow": false,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "asset": "rail-cart",
+      "images": [
+        {
+          "complete": true,
+          "name": "rail-cart",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/rail-cart.png?v=fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126"
+        }
+      ],
+      "overflow": false,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "asset": "shaft-motor",
+      "images": [
+        {
+          "complete": true,
+          "name": "shaft-motor",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/shaft-motor.png?v=fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216"
+        }
+      ],
+      "overflow": false,
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "asset": "socket-board",
+      "images": [
+        {
+          "complete": true,
+          "name": "socket-board",
+          "natural": [
+            1254,
+            1254
+          ],
+          "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/socket-board.png?v=ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a"
+        }
+      ],
+      "overflow": false,
+      "viewport": [
+        1024,
+        768
+      ]
+    }
+  ],
+  "consoleErrors": []
+}

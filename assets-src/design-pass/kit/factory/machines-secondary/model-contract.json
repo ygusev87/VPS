@@ -1,0 +1,136 @@
+{
+  "source": "FACTORY-KIT.md and src/parts/workshop.ts read-only",
+  "sizeOrder": [
+    "widthX",
+    "heightY",
+    "depthZ"
+  ],
+  "actualGLB": "pending",
+  "budgets": {
+    "trianglesMax": 4000,
+    "materials": 1,
+    "textureResolution": [
+      512,
+      1024
+    ],
+    "textureFormat": "WebP"
+  },
+  "assets": [
+    {
+      "name": "lever-box",
+      "size": [
+        1.5,
+        0.4,
+        1.1
+      ],
+      "staticOnly": true,
+      "excluded": [
+        "lever",
+        "knob",
+        "wires",
+        "terminals",
+        "basePlate"
+      ],
+      "leverPivotPartLocalXZ": [
+        0,
+        -0.35
+      ],
+      "paintedSymbols": [
+        "◀",
+        "■",
+        "▶"
+      ],
+      "integrationNote": "FACTORY-KIT requires square stop sign; current procedural Reverser draws a red circle. Avoid duplicate painted/runtime marks when integrating."
+    },
+    {
+      "name": "rail-cart",
+      "size": [
+        1.3,
+        0.8,
+        1
+      ],
+      "separateNodes": [
+        "wheel-front-left",
+        "wheel-front-right",
+        "wheel-rear-left",
+        "wheel-rear-right"
+      ],
+      "wheelRotationAxis": "localZ",
+      "currentWheelCentreXZ": [
+        [
+          -0.4,
+          -0.35
+        ],
+        [
+          0.4,
+          -0.35
+        ],
+        [
+          -0.4,
+          0.35
+        ],
+        [
+          0.4,
+          0.35
+        ]
+      ],
+      "includedStaticLoad": "one steel coil in cradle",
+      "excluded": [
+        "rails",
+        "sleepers",
+        "buffers",
+        "basePlate"
+      ],
+      "integrationNote": "Four-wheel geometry and axle clearance must be verified, not inferred from three visible wheels in concept."
+    },
+    {
+      "name": "shaft-motor",
+      "size": [
+        1.1,
+        0.25,
+        0.9
+      ],
+      "staticOnly": true,
+      "bearingAxis": "verticalY",
+      "bearingCentrePartLocalXZ": [
+        0,
+        -0.35
+      ],
+      "bodyCentrePartLocalZ": -0.1,
+      "bearingOffsetFromBodyCentreXZ": [
+        0,
+        -0.25
+      ],
+      "excluded": [
+        "shaft",
+        "shaftCollar",
+        "gear",
+        "terminals",
+        "basePlate"
+      ],
+      "integrationNote": "Reference is appearance only. Place bore at contract anchor when producing actual mesh."
+    },
+    {
+      "name": "socket-board",
+      "panelSize": [
+        2.6,
+        1,
+        0.2
+      ],
+      "shortFeet": true,
+      "paintedSocketShapes": [
+        "round",
+        "square",
+        "triangle"
+      ],
+      "staticOnly": true,
+      "excluded": [
+        "plugs",
+        "cords",
+        "activeTerminals",
+        "basePlate"
+      ],
+      "integrationNote": "Socket signs are face texture. Active six-terminal layout stays in runtime code. Verify overall feet bounding box separately."
+    }
+  ]
+}

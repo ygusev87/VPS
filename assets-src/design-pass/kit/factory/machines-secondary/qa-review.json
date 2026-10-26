@@ -1,0 +1,316 @@
+{
+  "schemaVersion": 1,
+  "reviewedAt": "2026-10-26T15:52:18.302711+00:00",
+  "status": "four-concepts-accepted-for-3D",
+  "actualGLB": "pending",
+  "assets": [
+    {
+      "name": "lever-box",
+      "sha256": "8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd",
+      "status": "concept-accepted-for-3D",
+      "actualGLB": "pending",
+      "findings": [
+        "Low teal enclosure with steel lid, four visible corner bolts and empty rear mounting bore.",
+        "Orange left triangle, red square, green right triangle are legible in both viewport sizes.",
+        "No lever, handle, knob, wires or external terminals.",
+        "The mounting collar is static. Exact collar clearance and pivot position remain GLB tasks."
+      ],
+      "dimensionCheck": "visual proportions only; numeric bounding-box check deferred to actual GLB"
+    },
+    {
+      "name": "rail-cart",
+      "sha256": "fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126",
+      "status": "concept-accepted-for-3D",
+      "actualGLB": "pending",
+      "findings": [
+        "Steel coil with a hollow core and visible rolled layers in a yellow cradle on a teal wagon.",
+        "Three wheels visible from this angle; the fourth is occluded. The GLB must contain all four separate wheel-* nodes.",
+        "No rails, sleepers, buffers, game plate or surrounding props.",
+        "Individual wheel gaps and hubs are legible; geometry separation is not yet performed."
+      ],
+      "dimensionCheck": "visual proportions only; numeric bounding-box check deferred to actual GLB"
+    },
+    {
+      "name": "shaft-motor",
+      "sha256": "fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216",
+      "status": "concept-accepted-for-3D",
+      "actualGLB": "pending",
+      "findings": [
+        "Low flat motor body, cooling grooves and open vertical bearing bore; no shaft or gear.",
+        "Bore visibly open at mobile and tablet sizes.",
+        "Exact rearward bearing offset cannot be certified from this view; future mesh must match part-local x0,z-0.35 for body centre z-0.1."
+      ],
+      "dimensionCheck": "visual proportions only; numeric bounding-box check deferred to actual GLB"
+    },
+    {
+      "name": "socket-board",
+      "sha256": "ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a",
+      "status": "concept-accepted-for-3D",
+      "actualGLB": "pending",
+      "findings": [
+        "Upright thin framed panel on short feet.",
+        "Exactly three clear face symbols: blue circle, yellow square, orange-red triangle.",
+        "No plugs, cords, additional row or projecting controls.",
+        "Dark socket shapes have a shallow shaded inset appearance; model as texture on the face, not deep moving hardware."
+      ],
+      "dimensionCheck": "visual proportions only; numeric bounding-box check deferred to actual GLB"
+    }
+  ],
+  "sourceReview": "All four native generated images inspected at generation.",
+  "browserReview": "All10 native screenshots inspected: contact sheet and each object at390x844 and1024x768.",
+  "browser": {
+    "checks": [
+      {
+        "asset": "all",
+        "images": [
+          {
+            "complete": true,
+            "name": "lever-box",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/lever-box.png?v=8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd"
+          },
+          {
+            "complete": true,
+            "name": "rail-cart",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/rail-cart.png?v=fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126"
+          },
+          {
+            "complete": true,
+            "name": "shaft-motor",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/shaft-motor.png?v=fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216"
+          },
+          {
+            "complete": true,
+            "name": "socket-board",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/socket-board.png?v=ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      {
+        "asset": "lever-box",
+        "images": [
+          {
+            "complete": true,
+            "name": "lever-box",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/lever-box.png?v=8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      {
+        "asset": "rail-cart",
+        "images": [
+          {
+            "complete": true,
+            "name": "rail-cart",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/rail-cart.png?v=fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      {
+        "asset": "shaft-motor",
+        "images": [
+          {
+            "complete": true,
+            "name": "shaft-motor",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/shaft-motor.png?v=fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      {
+        "asset": "socket-board",
+        "images": [
+          {
+            "complete": true,
+            "name": "socket-board",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/socket-board.png?v=ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      {
+        "asset": "all",
+        "images": [
+          {
+            "complete": true,
+            "name": "lever-box",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/lever-box.png?v=8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd"
+          },
+          {
+            "complete": true,
+            "name": "rail-cart",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/rail-cart.png?v=fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126"
+          },
+          {
+            "complete": true,
+            "name": "shaft-motor",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/shaft-motor.png?v=fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216"
+          },
+          {
+            "complete": true,
+            "name": "socket-board",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/socket-board.png?v=ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          1024,
+          768
+        ]
+      },
+      {
+        "asset": "lever-box",
+        "images": [
+          {
+            "complete": true,
+            "name": "lever-box",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/lever-box.png?v=8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          1024,
+          768
+        ]
+      },
+      {
+        "asset": "rail-cart",
+        "images": [
+          {
+            "complete": true,
+            "name": "rail-cart",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/rail-cart.png?v=fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          1024,
+          768
+        ]
+      },
+      {
+        "asset": "shaft-motor",
+        "images": [
+          {
+            "complete": true,
+            "name": "shaft-motor",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/shaft-motor.png?v=fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          1024,
+          768
+        ]
+      },
+      {
+        "asset": "socket-board",
+        "images": [
+          {
+            "complete": true,
+            "name": "socket-board",
+            "natural": [
+              1254,
+              1254
+            ],
+            "source": "http://127.0.0.1:33342/assets-src/design-pass/kit/factory/machines-secondary/concepts/socket-board.png?v=ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a"
+          }
+        ],
+        "overflow": false,
+        "viewport": [
+          1024,
+          768
+        ]
+      }
+    ],
+    "consoleErrors": []
+  },
+  "style": "Consistent teal enamel / steel / yellow industrial construction, compared visually with factory-industrial-b and primary lathe concept. Detailed wear must become texture detail, not excess mesh geometry.",
+  "limitations": [
+    "No external image-to-3D job or upload occurred.",
+    "No geometry, topology, node, material or physical-device/WebGL performance checks can be claimed until GLBs exist.",
+    "Image proportions, wheel count on hidden side and exact mounting coordinates require explicit modeling checks."
+  ]
+}

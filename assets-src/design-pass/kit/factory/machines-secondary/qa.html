@@ -1,0 +1,11 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Завод · четыре референса корпусов</title>
+<style>body{margin:0;background:#ece7dc;color:#18213d;font:14px system-ui}header,main{max-width:1080px;margin:auto;padding:12px}h1{font-size:22px;margin:0 0 6px}p{margin:5px 0;line-height:1.4}nav{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}a{color:#116662;padding:4px 6px;border:1px solid #98b7ad;border-radius:5px;background:#fff}main{padding-top:4px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}figure{margin:0;min-width:0;background:white;border-radius:6px;overflow:hidden}img{display:block;width:100%;height:auto}figcaption{padding:8px;font-size:13px}.single img{max-height:calc(100vh - 220px);object-fit:contain}.single figcaption{text-align:center}.note{font-size:12px;color:#40534e}@media(max-width:500px){h1{font-size:18px}header,main{padding:10px}.grid{gap:8px}figcaption{font-size:11px;padding:6px}.single img{max-height:none}}</style>
+<header><h1>Завод · референсы для 3D</h1><p>Четыре отдельных корпуса. GLB ещё не создан.</p><nav id="nav"><a href="?asset=all">Все четыре</a></nav></header><main id="main"></main>
+<script type="module">
+const m=await fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),requested=new URLSearchParams(location.search).get('asset')??'all';
+for(const a of m.assets){const link=document.createElement('a');link.href='?asset='+a.name;link.textContent=a.label;nav.append(link);}
+const selected=requested==='all'?m.assets:m.assets.filter(a=>a.name===requested);if(!selected.length)throw Error('Unknown concept');
+main.className=requested==='all'?'grid':'single';
+for(const a of selected){const f=document.createElement('figure'),img=new Image(),c=document.createElement('figcaption');img.src=a.path+'?v='+a.sha256;img.alt=a.label;img.dataset.name=a.name;c.textContent=a.label+' · цель '+a.targetBodySizeWHDepth.join('×')+' ед. · PNG '+a.size.join('×');f.append(img,c);main.append(f);}
+await Promise.all([...document.images].map(i=>i.decode()));document.body.dataset.ready='true';
+</script></html>

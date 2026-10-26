@@ -1,0 +1,22 @@
+[
+  {
+    "path": "assets-src/design-pass/kit/FACTORY-KIT.md",
+    "sha256": "2476ab882bdb22cf364677280c0fafd9d5e033a45ac738c3eb8fd4d58e722762",
+    "use": "Read-only contract/style review; not an edit target"
+  },
+  {
+    "path": "src/parts/workshop.ts",
+    "sha256": "811fa602106278b3eeb179bf379950415ad30c74a08db5972ff5962f08ea84b4",
+    "use": "Read-only contract/style review; not an edit target"
+  },
+  {
+    "path": "assets-src/design-pass/variants/factory-industrial-b.png",
+    "sha256": "202b9e941ae208c9fab86bcdce36240ce88a41996fc0a55e9fc40de2607d5398",
+    "use": "Read-only contract/style review; not an edit target"
+  },
+  {
+    "path": "assets-src/design-pass/kit/factory/machines-primary/concepts/lathe.png",
+    "sha256": "bb77198439039c98ddad7cf0dd6a59492c89fa5654a429d684b0f499eef978dc",
+    "use": "Read-only contract/style review; not an edit target"
+  }
+]
