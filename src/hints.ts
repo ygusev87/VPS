@@ -32,7 +32,7 @@ export function hintKey(h: Hint | null): string {
     case 'connect':
       return `c:${h.from.id}>${h.to.id}`;
     case 'tap':
-      return `t:${h.part.id}:${h.local?.x ?? ''}`;
+      return `t:${h.part.id}:${h.local?.x ?? ''}:${h.local?.z ?? ''}`;
     case 'weak':
       return `k:${h.part.id}`;
     case 'tapWire':
@@ -119,7 +119,8 @@ export function problemHint(world: World): Hint | null {
   if (!r.shorted.size) {
     for (let i = world.parts.length - 1; i >= 0; i--) {
       const sw = world.parts[i];
-      if (sw instanceof ButtonPanel) continue;
+      // Parts with several contacts inside (a panel, a reversing lever, a two-hand press) are not one switch beside a gadget.
+      if (sw instanceof ButtonPanel || sw instanceof Reverser || sw instanceof SafetyPress) continue;
       const el = sw.elements()[0];
       if (!el || el.kind !== 'switch' || el.closed) continue;
       if (!world.wiresAt(sw.terminal('a')).length || !world.wiresAt(sw.terminal('b')).length) continue;

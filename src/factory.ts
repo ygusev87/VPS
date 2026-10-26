@@ -446,6 +446,13 @@ export class FactoryMap extends StoryMap {
     }
     const pressed = this.press.strokes > this.strokesSeen;
     this.strokesSeen = this.press.strokes;
+    // Once the child has shown the press how, its worker keeps working it for every blank that comes.
+    const pressDone = !!this.needs.find((n) => n.critter.name === 'worker3')?.done;
+    const waitingAtPress = this.toys.some((t) => t.stage === 1 && t.x >= PRESS.x - 0.1);
+    if (pressDone && this.press.held[0] !== waitingAtPress) {
+      this.press.held.fill(waitingAtPress);
+      this.world.markDirty();
+    }
     const top = this.hoist.end === 'top';
     const lifted = top && !this.hoistWasTop;
     this.hoistWasTop = top;
