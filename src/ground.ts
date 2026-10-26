@@ -5,17 +5,17 @@
 import * as THREE from 'three';
 
 /** Seamless ground tiles (public/textures/farm), seen from straight above. */
-const TILES = ['grass', 'grass-light', 'path', 'path-earth', 'soil', 'mud', 'pond-bed', 'asphalt', 'paving'] as const;
+const TILES = ['grass', 'grass-light', 'grass-base', 'grass-meadow', 'path', 'path-earth', 'soil', 'mud', 'pond-bed', 'asphalt', 'paving'] as const;
 export type Tile = (typeof TILES)[number];
 const images = new Map<Tile, HTMLImageElement>();
 
 /** Stand-in colours for tiles that failed to load (or are not made yet). */
-const FLAT: Record<Tile, string> = { grass: '#a3c17f', 'grass-light': '#b6d28f', path: '#d6bd86', 'path-earth': '#c8954f', soil: '#9a7650', mud: '#8a6a46', 'pond-bed': '#c9e6f0', asphalt: '#767b84', paving: '#d8cdbd' };
+const FLAT: Record<Tile, string> = { grass: '#a3c17f', 'grass-light': '#b6d28f', 'grass-base': '#7fb04a', 'grass-meadow': '#9cc455', path: '#d6bd86', 'path-earth': '#c8954f', soil: '#9a7650', mud: '#8a6a46', 'pond-bed': '#c9e6f0', asphalt: '#767b84', paving: '#d8cdbd' };
 /** How many world units one tile covers. */
-const SIZE: Record<Tile, number> = { grass: 7, 'grass-light': 7, path: 3.5, 'path-earth': 3.5, soil: 14, mud: 3, 'pond-bed': 4, asphalt: 6, paving: 0.75 };
+const SIZE: Record<Tile, number> = { grass: 7, 'grass-light': 7, 'grass-base': 7, 'grass-meadow': 7, path: 3.5, 'path-earth': 3.5, soil: 14, mud: 3, 'pond-bed': 4, asphalt: 6, paving: 0.75 };
 
 /** Single painted pictures, laid once over a place (not tiled): the pig yard's mud and its wetness. */
-const PICTURES = ['pig-mud.webp', 'pig-wetness.png'] as const;
+const PICTURES = ['pig-mud.webp', 'pig-wetness.png', 'soil-bed.webp'] as const;
 type Picture = (typeof PICTURES)[number];
 const pictures = new Map<Picture, HTMLImageElement>();
 
@@ -221,11 +221,21 @@ const PAINTED = `
   vec3 sunny = texture2D(tHillGrass, p / uScale.x).rgb;
   grass = mix(grass, sunny, smoothstep(0.5, 0.8, patchy) * 0.8);
   grass *= mix(0.8, 1.1, smoothstep(0.15, 0.85, gFbm(p / 9.0 + 3.3)));
+  // The painted grass tiles are bright lime under the day grading: a calmer, bluer green (the target's).
+  grass = mix(vec3(dot(grass, vec3(0.2126, 0.7152, 0.0722))), grass, 0.82) * vec3(0.84, 0.9, 0.82);
+  sunny = mix(vec3(dot(sunny, vec3(0.2126, 0.7152, 0.0722))), sunny, 0.82) * vec3(0.9, 0.94, 0.8);
   vec3 col = mix(grass, sunny, hill);
   // Beds: dark loose soil with furrows along their length.
   float bed = smoothstep(0.4, 0.6, m.g);
   vec3 soil = texture2D(tSoil, p / uScale.z).rgb;
-  soil *= 0.82 + 0.18 * smoothstep(-0.6, 0.6, sin(p.x * 5.2 + gNoise(p * 1.3) * 1.2));
+  if (uHasBed > 0.5) {
+    // The bed this point lies in: its own picture over it (top of the picture to the north).
+    for (int i = 0; i < 8; i++) {
+      vec4 b = uBeds[i];
+      vec2 buv = vec2((p.x - b.x) / (b.z - b.x), 1.0 - (p.y - b.y) / (b.w - b.y));
+      if (b.z > b.x && buv.x >= 0.0 && buv.x <= 1.0 && buv.y >= 0.0 && buv.y <= 1.0) soil = texture2D(tBed, buv).rgb;
+    }
+  } else soil *= 0.82 + 0.18 * smoothstep(-0.6, 0.6, sin(p.x * 5.2 + gNoise(p * 1.3) * 1.2));
   col = mix(col, soil, bed);
   // Mud: a ragged churned edge, darker and wet towards the middle, puddles that shine.
   // (The mask ramps from ~0.1 just outside the ellipse to 1 well inside it.)
@@ -278,6 +288,12 @@ export function groundMaterial(plan: GroundPlan): THREE.MeshStandardMaterial {
   const pigMud = painted && plan.mud[0] ? pictureTexture('pig-mud.webp', false) : null;
   const pigWet = pigMud ? pictureTexture('pig-wetness.png', true) : null;
   const yard = plan.mud[0] ?? { x: 0, z: 0, rx: 1, rz: 1 };
+  const bedSoil = painted ? pictureTexture('soil-bed.webp', false) : null;
+  const beds = [plan.field, ...(plan.fields ?? [])]
+    .slice(0, 8)
+    .map((f) => new THREE.Vector4(f.x0, f.z0, f.x1, f.z1))
+    .concat(Array.from({ length: 8 }, () => new THREE.Vector4(0, 0, -1, -1)))
+    .slice(0, 8);
   const t = { base: 'grass', hill: 'grass-light', lane: 'path', field: 'soil', mud: 'mud', ...plan.tiles } as const;
   const uniforms = {
     tGrass: { value: tileTexture(t.base) },
@@ -295,6 +311,10 @@ export function groundMaterial(plan: GroundPlan): THREE.MeshStandardMaterial {
     tPigWet: { value: pigWet ?? tileTexture(t.mud) },
     uYard: { value: new THREE.Vector4(yard.x, yard.z, yard.rx, yard.rz) },
     uHasYard: { value: pigMud && pigWet ? 1 : 0 },
+    // Each bed (and the field) gets one soil picture, its ridges running north-south.
+    tBed: { value: bedSoil ?? tileTexture(t.field) },
+    uHasBed: { value: bedSoil ? 1 : 0 },
+    uBeds: { value: beds },
   };
   mat.onBeforeCompile = (shader) => {
     Object.assign(shader.uniforms, uniforms);
@@ -314,6 +334,9 @@ uniform float uSaturation;
 uniform sampler2D tPigMud, tPigWet;
 uniform vec4 uYard;
 uniform float uHasYard;
+uniform sampler2D tBed;
+uniform float uHasBed;
+uniform vec4 uBeds[8];
 float vWet;
 ${painted ? NOISE : ''}`,
       )
