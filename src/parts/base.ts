@@ -79,7 +79,8 @@ export type PartKind =
   | 'magnet'
   | 'wireBox'
   | 'reverser'
-  | 'railCart';
+  | 'railCart'
+  | 'safetyPress';
 
 /** Light colours a bulb or LED can take (tap to cycle). */
 export type LightColor = 'warm' | 'red' | 'green' | 'blue' | 'yellow';
@@ -374,7 +375,8 @@ export abstract class Part {
   /** The held finger slid over the part (e.g. along xylophone bars). */
   pressMove(_hit: THREE.Object3D | null, _point: THREE.Vector3 | null) {}
 
-  pressEnd() {}
+  /** The finger that pressed at `point` (world) let go. */
+  pressEnd(_point?: THREE.Vector3 | null) {}
 
   /** Pop in from nothing, optionally after a delay in seconds. */
   appear(delay = 0) {

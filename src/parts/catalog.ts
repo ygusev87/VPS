@@ -13,7 +13,7 @@ import { Bell, Belt, Domino, Laser, Launcher, LightSensor, Magnet, Mirror, Targe
 import { Gate, Heater, Pole, Pump, Solar } from './farm';
 import { Barrier, CarWash, Drawbridge, DuskLamp, FerrisWheel, FireLadder, NeonSign, Substation, TowerCrane } from './city';
 import { Gear, GearMotor, Packer, PaintBooth, PaintTank, Pipe, Press, RobotArm } from './factory';
-import { RailCart, Reverser, WireBox } from './workshop';
+import { RailCart, Reverser, SafetyPress, WireBox } from './workshop';
 import type { PhraseId } from '../voice';
 import { Balloon, Garland, Kettle, Skittles } from './toys';
 
@@ -134,6 +134,7 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'wireBox', name: 'Щиток-головоломка', say: 'wireBox' },
       { kind: 'reverser', name: 'Переключатель вперёд-назад', say: 'reverser' },
       { kind: 'railCart', name: 'Тележка на рельсах', say: 'railCart' },
+      { kind: 'safetyPress', name: 'Пресс на две руки', say: 'safetyPress' },
     ],
   },
   {
@@ -294,6 +295,8 @@ function make(kind: PartKind): Part {
       return new Reverser();
     case 'railCart':
       return new RailCart();
+    case 'safetyPress':
+      return new SafetyPress();
     case 'belt':
       return new Belt();
     case 'mirror':

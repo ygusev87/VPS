@@ -5,7 +5,7 @@ import type { Level } from './levels';
 import { PARAMS } from './circuit/solver';
 import type { Part, PartKind, Terminal } from './parts/base';
 import { ButtonPanel } from './parts/extra';
-import { Reverser, WireBox } from './parts/workshop';
+import { Reverser, SafetyPress, WireBox } from './parts/workshop';
 import { Dynamo } from './parts/more';
 import { aimFor, Laser, LightSensor, Magnet, WindGen } from './parts/chain';
 import { Pole, Solar } from './parts/farm';
@@ -46,7 +46,7 @@ export function isProblem(h: Hint | null): boolean {
   return h?.type === 'tapWire';
 }
 
-const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher', 'laser', 'bell', 'belt', 'pump', 'heater', 'gate', 'substation', 'magnet', 'barrier', 'ferris', 'carWash', 'drawbridge', 'towerCrane', 'duskLamp', 'neon', 'ladder', 'gearMotor', 'tank', 'paintBooth', 'robotArm', 'packer', 'garland', 'kettle', 'railCart'];
+const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher', 'laser', 'bell', 'belt', 'pump', 'heater', 'gate', 'substation', 'magnet', 'barrier', 'ferris', 'carWash', 'drawbridge', 'towerCrane', 'duskLamp', 'neon', 'ladder', 'gearMotor', 'tank', 'paintBooth', 'robotArm', 'packer', 'garland', 'kettle', 'railCart', 'safetyPress'];
 const POLAR: PartKind[] = ['led', 'buzzer', 'musicbox'];
 export const isPolar = (p: Part) => POLAR.includes(p.kind);
 const isBattery = (p: Part) => p.kind === 'battery' || p.kind === 'bigBattery';
@@ -197,6 +197,14 @@ function switchHint(world: World): Hint | null {
   const idle = world.parts.filter((p) => LOADS.includes(p.kind) && !activeAt(p.kind, p.state.level));
   if (!idle.length) return null;
   for (const sw of world.parts) {
+    // A two-hand press runs only with both buttons held: say so, pointing at one.
+    if (sw instanceof SafetyPress) {
+      if (idle.includes(sw) && world.wiresAt(sw.terminal('a')).length && world.wiresAt(sw.terminal('b')).length) {
+        const r = world.trial((e) => (e.id.startsWith(`${sw.id}#`) ? { ...e, closed: true } : e));
+        if (!r.shorted.size && activeAt(sw.kind, r.elements.get(sw.id)?.level ?? 0)) return { type: 'tap', part: sw, phrase: 'twoHands', local: sw.buttonPoint(sw.held[0] ? 1 : 0) };
+      }
+      continue;
+    }
     // A reversing lever closes two contacts at once: try it forward, then back.
     if (sw instanceof Reverser) {
       if (sw.pos !== 0) continue;

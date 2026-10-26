@@ -303,3 +303,119 @@ export class RailCart extends Part {
     this.cart.position.y = PLATE_TOP + (Math.abs(moved) > 1e-4 ? Math.abs(Math.sin(this.time * 18)) * 0.015 : 0);
   }
 }
+
+/**
+ * A press with a two-hand guard, as in a real factory: the ram comes down
+ * only while both big buttons, far apart, are held — one finger on each, so
+ * no hand can be under it. Inside: the two buttons in a row, then the motor.
+ */
+export class SafetyPress extends Part {
+  readonly kind: PartKind = 'safetyPress';
+  readonly elementKind: ElementKind = 'motor';
+  readonly radius = 2.2;
+  /** Left and right button held. */
+  readonly held = [false, false];
+  /** Strokes made (each stamps whatever lies on the anvil). */
+  strokes = 0;
+  private ram = new THREE.Group();
+  private ramY = 0;
+  private caps: THREE.Mesh[] = [];
+  private lamps: THREE.MeshStandardMaterial[] = [];
+  private down = false;
+
+  constructor() {
+    super();
+    const plate = basePlate(4.2, 2.2);
+    const steel = mat('#8d97a3', 0.4, 0.65);
+    const frame = new THREE.Group();
+    for (const x of [-0.75, 0.75]) {
+      const post = mesh(new THREE.BoxGeometry(0.25, 2, 0.4), steel);
+      post.position.set(x, PLATE_TOP + 1, -0.35);
+      frame.add(post);
+    }
+    const top = mesh(new THREE.BoxGeometry(1.9, 0.35, 0.6), mat('#f5c33b', 0.5));
+    top.position.set(0, PLATE_TOP + 2.1, -0.35);
+    const anvil = mesh(new THREE.BoxGeometry(1.2, 0.3, 0.8), mat('#2b3242', 0.5, 0.4));
+    anvil.position.set(0, PLATE_TOP + 0.15, -0.35);
+    frame.add(top, anvil);
+    const head = mesh(new THREE.BoxGeometry(1, 0.35, 0.7), mat('#e8483f', 0.4, 0.3));
+    const rod = mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.9, 12), mat('#c9ced6', 0.25, 0.9));
+    rod.position.y = 0.6;
+    this.ram.add(head, rod);
+    this.ram.position.set(0, PLATE_TOP + 1.4, -0.35);
+    // Yellow-black guard stripes on the base, and the two buttons wide apart.
+    for (const side of [-1, 1]) {
+      const stand = mesh(new THREE.CylinderGeometry(0.32, 0.36, 0.3, 20), mat('#2b3242', 0.45, 0.4));
+      stand.position.set(side * 1.6, PLATE_TOP + 0.15, 0.35);
+      const cap = mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.16, 24), mat('#4cc46a', 0.35));
+      cap.position.set(side * 1.6, PLATE_TOP + 0.38, 0.35);
+      const lamp = new THREE.MeshStandardMaterial({ color: '#3a4250', emissive: '#7dff6b', emissiveIntensity: 0, roughness: 0.3 });
+      this.lamps.push(lamp);
+      const bulb = mesh(new THREE.SphereGeometry(0.08, 12, 8), lamp, false);
+      bulb.position.set(side * 1.6, PLATE_TOP + 0.35, -0.2);
+      this.caps.push(cap);
+      this.body.add(stand, cap, bulb);
+    }
+    this.body.add(plate, frame, this.ram);
+    this.addTerminal('a', 'plus', -1.75, -0.75);
+    this.addTerminal('b', 'minus', 1.75, -0.75);
+    this.pickable(plate, frame, ...this.caps);
+  }
+
+  elements(): CircuitElement[] {
+    const X = `${this.id}.X`;
+    const Y = `${this.id}.Y`;
+    return [
+      { id: `${this.id}#L`, kind: 'switch', a: this.terminal('a').id, b: X, closed: this.held[0] },
+      { id: `${this.id}#R`, kind: 'switch', a: X, b: Y, closed: this.held[1] },
+      { id: this.id, kind: 'motor', a: Y, b: this.terminal('b').id, r: 6 },
+    ];
+  }
+
+  /** Which button a point (world) is on: 0 left, 1 right, or −1. */
+  buttonAt(point: THREE.Vector3 | null | undefined): number {
+    if (!point) return -1;
+    const p = this.root.worldToLocal(point.clone());
+    for (const i of [0, 1]) if (Math.hypot(p.x - (i ? 1.6 : -1.6), p.z - 0.35) < 0.55) return i;
+    return -1;
+  }
+
+  /** Part-local top of a button (for the hint's hand). */
+  buttonPoint(i: number): THREE.Vector3 {
+    return new THREE.Vector3(i ? 1.6 : -1.6, PLATE_TOP + 0.46, 0.35);
+  }
+
+  controlAt(_hit: THREE.Object3D | null, point: THREE.Vector3 | null): boolean {
+    return this.buttonAt(point) >= 0;
+  }
+
+  pressStart(_hit: THREE.Object3D | null, point: THREE.Vector3 | null): boolean {
+    const i = this.buttonAt(point);
+    if (i < 0) return false;
+    this.held[i] = true;
+    this.sounds.push({ kind: 'tick' });
+    return true;
+  }
+
+  pressEnd(point?: THREE.Vector3 | null) {
+    const i = this.buttonAt(point);
+    if (i >= 0) this.held[i] = false;
+    else this.held.fill(false);
+  }
+
+  protected animate(dt: number) {
+    const on = Math.abs(this.state.level) > 0.15;
+    // Down fast while both are held, back up slowly; a stamp each time it lands.
+    this.ramY = damp(this.ramY, on ? 1 : 0, on ? 9 : 3, dt);
+    const landed = this.ramY > 0.95;
+    if (landed && !this.down) {
+      this.strokes++;
+      this.sounds.push({ kind: 'stamp' });
+      this.effects.push({ kind: 'dust', at: this.root.localToWorld(new THREE.Vector3(0, PLATE_TOP + 0.3, -0.35)), radius: 0.6 });
+    }
+    this.down = landed;
+    this.ram.position.y = PLATE_TOP + 1.4 - this.ramY * 0.75;
+    this.caps.forEach((c, i) => (c.position.y = PLATE_TOP + (this.held[i] ? 0.32 : 0.38)));
+    this.lamps.forEach((m, i) => (m.emissiveIntensity = damp(m.emissiveIntensity, this.held[i] ? 2.4 : 0, 12, dt)));
+  }
+}

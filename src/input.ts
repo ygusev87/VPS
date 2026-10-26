@@ -14,7 +14,7 @@ type Mode =
   | { kind: 'idle' }
   | { kind: 'press-part'; part: Part; x: number; y: number; t: number; hit: THREE.Intersection | undefined }
   /** A part holding the finger itself, like a push button kept pressed. */
-  | { kind: 'hold-part'; part: Part }
+  | { kind: 'hold-part'; part: Part; point: THREE.Vector3 | null }
   | { kind: 'drag-part'; part: Part; offset: THREE.Vector3; spawned: boolean; x0: number; y0: number }
   | { kind: 'wire'; wire: Wire; from: Terminal; target: Terminal | null }
   | { kind: 'press-wire'; wire: Wire; x: number; y: number }
@@ -46,6 +46,8 @@ export class Input {
   private mode: Mode = { kind: 'idle' };
   private pointerId: number | null = null;
   private pointers = new Map<number, { x: number; y: number }>();
+  /** Buttons held by a second finger while the first holds another (pointer → part, where it pressed). */
+  private holds = new Map<number, { part: Part; point: THREE.Vector3 | null }>();
   enabled = true;
 
   constructor(
@@ -117,6 +119,17 @@ export class Input {
       this.startPinch();
       return;
     }
+    // A second finger on another button while one is held: both held at once (a two-hand press).
+    if (this.mode.kind === 'hold-part' && this.pointers.size === 2) {
+      const hit = this.stage.raycast(e.clientX, e.clientY, this.world.parts.flatMap((p) => p.pickables))[0];
+      const part = hit?.object.userData.part as Part | undefined;
+      if (part && part.pressStart(hit!.object, hit!.point)) {
+        this.holds.set(e.pointerId, { part, point: hit!.point });
+        this.world.markDirty();
+        this.world.emit({ type: 'switch', part });
+      }
+      return;
+    }
     if (this.pointerId !== null || this.pointers.size > 1) return;
     const { clientX: x, clientY: y } = e;
     if (this.hooks.grabTap?.(x, y)) return;
@@ -135,7 +148,7 @@ export class Input {
     if (wire && control && wire !== this.hooks.preferredWire?.()) wire = null;
     if (wire) this.mode = { kind: 'press-wire', wire, x, y };
     else if (part && part.pressStart(hit!.object, hit!.point)) {
-      this.mode = { kind: 'hold-part', part };
+      this.mode = { kind: 'hold-part', part, point: hit!.point };
       this.world.markDirty();
       this.world.emit({ type: 'switch', part });
     } else if (part) this.mode = { kind: 'press-part', part, x, y, t: performance.now(), hit };
@@ -320,6 +333,14 @@ export class Input {
 
   private up(e: PointerEvent, cancelled = false) {
     this.pointers.delete(e.pointerId);
+    const extra = this.holds.get(e.pointerId);
+    if (extra) {
+      this.holds.delete(e.pointerId);
+      extra.part.pressEnd(extra.point);
+      this.world.markDirty();
+      this.world.emit({ type: 'switch', part: extra.part });
+      return;
+    }
     const m = this.mode;
     if (m.kind === 'pinch') {
       if (this.pointers.size < 2) {
@@ -350,7 +371,7 @@ export class Input {
         }
         break;
       case 'hold-part':
-        m.part.pressEnd();
+        m.part.pressEnd(m.point);
         this.world.markDirty();
         this.world.emit({ type: 'switch', part: m.part });
         break;
