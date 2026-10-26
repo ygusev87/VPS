@@ -1,0 +1,11 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Farm material QA</title><style>body{margin:0;background:#e7e2d4;font:13px system-ui}header{height:34px;display:flex;align-items:center;gap:14px;padding:0 10px}iframe{border:0;display:block;zoom:.78}pre{font:11px monospace;margin:3px 10px;white-space:pre-wrap}</style><header><b>after · pig yard</b><label>Экран <select id="size"><option value="1180">1180 × 820</option><option value="390">390 × 844</option></select></label><button id="focus">Свиной загон</button><button id="wide">Вся ферма</button><span id="status">Загрузка</span></header><iframe id="game" width="1180" height="820" src="/?q=1"></iframe><pre id="report"></pre><script type="module">
+import {Vector3} from '/node_modules/three/build/three.module.js';
+import {PATHS,MUD} from '/src/farm-decor.ts';
+const errors=[];let g;const f=document.getElementById('game'),size=document.getElementById('size');
+const state=document.getElementById('status'),report=document.getElementById('report');
+const points=(wide=false)=>(wide?[[-54,-37],[54,37]]:[[18,-31],[37,-8]]).map(([x,z])=>new Vector3(x,0,z));
+function focus(wide=false){if(!g)return;const ps=points(wide);g.map.hooks.focus(ps);g.map.hooks.focus(ps,true);state.textContent=wide?'Готово: обзор':'Готово: свиньи';report.textContent=JSON.stringify({viewport:[f.width,f.height],paths:PATHS.length,pigLanePresent:PATHS.some(p=>p.points[0][0]===27&&p.points[0][1]===-9),mud:MUD,errors},null,0)}
+document.getElementById('focus').onclick=()=>focus();document.getElementById('wide').onclick=()=>focus(true);
+size.onchange=()=>{f.width=size.value;f.height=size.value==='390'?'844':'820';requestAnimationFrame(()=>requestAnimationFrame(()=>focus()))};
+f.addEventListener('load',()=>{f.contentWindow.addEventListener('error',e=>errors.push(e.message));f.contentWindow.addEventListener('unhandledrejection',e=>errors.push(String(e.reason)));const t=setInterval(async()=>{g=f.contentWindow.__game;if(!g)return;clearInterval(t);try{await g.startMap('farm',true);g.voice.stop();focus()}catch(e){state.textContent='Ошибка';report.textContent=String(e)}},200)});
+</script></html>

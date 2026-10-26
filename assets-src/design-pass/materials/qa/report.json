@@ -1,0 +1,72 @@
+{
+  "status": "pass",
+  "date": "2026-10-26",
+  "baselineCommit": "a05c622ecbf1ae2cda18368ea6559c89783295a6",
+  "snapshot": "git archive committed src/index/package/tsconfig, before and after only differ in src/farm-decor.ts; public assets shared read-only; no uncommitted Claude source changes included",
+  "groundSha256": "89a9107ab5cf3f51948fa18739e6d7d4b70fed32fe8edcdf741fbabdd1118ff4",
+  "runtimeSha256": "32048eb82b9c9cd1c62b0b68030bd5876981eda27fffb1f22614a743147a657b",
+  "removedPath": {
+    "name": "pig-entry",
+    "points": [
+      [
+        27,
+        -9
+      ],
+      [
+        27,
+        -21.8
+      ]
+    ],
+    "width": 1.6
+  },
+  "reproduction": {
+    "generatorRunInIsolatedTree": true,
+    "onlyRuntimeAndAuthoringPathRemoved": true,
+    "remainingPaths": 19,
+    "preservedSections": [
+      "DECOR",
+      "FENCES",
+      "SOIL",
+      "MUD",
+      "MEADOW",
+      "PONDS",
+      "tasks",
+      "pens",
+      "fenceRuns",
+      "groups"
+    ]
+  },
+  "checks": {
+    "npmTest": "21 passed in 4 files",
+    "typecheck": "pass",
+    "independentLayoutChecker": "pass; assets-src/farm-v3/decor-validation.json"
+  },
+  "browser": {
+    "engine": "Codex in-app browser on Mac",
+    "actualGameIframes": [
+      [
+        1180,
+        820
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "iframeCssZoom": 0.78,
+    "quality": 1,
+    "phase": "day",
+    "capture": "full QA window; controls outside game",
+    "view": "pig yard x18..37 z-31..-8",
+    "visualResult": "Before: path through mud; after: no path through mud, pigsty, pigs, fences, trough and pole remain visible",
+    "consoleErrors": 0,
+    "consoleWarnings": 0,
+    "manualStep": "After startup/orientation auto-fit finishes, press Свиной загон again before capture. Initial harness lacked __BUILD__; corrected QA-only config and captured fresh tabs."
+  },
+  "limitations": [
+    "Not a physical iPad test",
+    "Not an iOS Home Screen/offline update test",
+    "Not an FPS or whole-game regression audit",
+    "New material textures are a proposal and were not generated or installed in this step"
+  ]
+}

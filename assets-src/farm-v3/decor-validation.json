@@ -1,7 +1,7 @@
 {
   "status": "pass",
   "roadComponents": 1,
-  "paths": 20,
+  "paths": 19,
   "fenceRuns": 64,
   "minRoadClearance": 0.3984405600525154,
   "minFoxClearance": 1.2000000000000028,

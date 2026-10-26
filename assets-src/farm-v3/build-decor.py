@@ -195,6 +195,11 @@ for name,bed in zip(crop_names,soil[:6]):
 # The tractor drives around the outside (rx4.2/rz6); leave its full route clear.
 add('crop-wheat',{'width':1.4},[[x,z,0,1] for x in [27.5,29,30.5] for z in [24.7,26.5,28.3]],'crop-field')
 
+# m0270: retire the painted lane through the pig mud. Keep its placement
+# clearance above so rebuilding does not shift the approved fences/plantings.
+# This is an open yard corridor, no longer a ground-material path.
+paths = [p for p in paths if p['name'] != 'pig-entry']
+
 # Future groups stay in authoring only until their GLB exists. The field uses
 # the measured clumps above and the real tractor route agreed in m0142.
 payload={'DECOR':[{k:v for k,v in g.items() if k!='category'} for g in groups if g['category']!='future-toy' and (ROOT/'public/models'/f"{g['model']}.glb").exists()],
