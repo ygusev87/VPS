@@ -1,0 +1,19 @@
+{
+  "revision": "37a1a7cbed1edb9677ccd246f04d6480e799029f",
+  "snapshotSourceAndModelHashes": "5/5 match",
+  "npmTest": {
+    "exitCode": 0,
+    "files": 4,
+    "passed": 21,
+    "note": "Original Vite config printed non-Git snapshot warning; tests all executed."
+  },
+  "typecheck": {
+    "exitCode": 0
+  },
+  "pythonSyntax": "pass",
+  "browser1180": "partial visual evidence saved",
+  "browser390": "blocked by WebGL context creation failure",
+  "iPad": false,
+  "FPS": false,
+  "PWA": false
+}

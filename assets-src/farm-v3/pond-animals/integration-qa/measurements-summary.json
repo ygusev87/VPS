@@ -1,0 +1,146 @@
+{
+  "frog": {
+    "samples": 480,
+    "minVisibleY": 0,
+    "facingMin": 0.9999999999999999,
+    "returnDelta": [
+      0,
+      0,
+      0
+    ],
+    "hiddenSamples": 337
+  },
+  "crow": {
+    "landingSamples": 336,
+    "fleeingSamples": 276,
+    "pivotMaxDeltaRounded": 0.0,
+    "mirrorRotationMaxError": 0.0,
+    "minLandingY": 0,
+    "minFleeY": 0.010564,
+    "settled": {
+      "kind": "crow",
+      "act": "sneak",
+      "t": 1.191667,
+      "clock": 102.8,
+      "visible": true,
+      "root": [
+        -20.320525,
+        0,
+        10.713211
+      ],
+      "bodyY": 0.010463168788730659,
+      "bounds": {
+        "min": [
+          -20.685528,
+          0.010463,
+          10.3834
+        ],
+        "max": [
+          -19.955522,
+          0.580463,
+          11.044244
+        ],
+        "size": [
+          0.730005,
+          0.57,
+          0.660845
+        ]
+      },
+      "wings": [
+        {
+          "name": "wing-left",
+          "rotation": [
+            0.279932,
+            -1.049924,
+            0
+          ],
+          "pivotInSculpt": [
+            0.118187,
+            0.301724,
+            0.122617
+          ],
+          "worldPivot": [
+            -20.438713,
+            0.312187,
+            10.590595
+          ],
+          "bounds": {
+            "min": [
+              -20.457795,
+              0.160208,
+              10.3834
+            ],
+            "max": [
+              -20.14282,
+              0.407962,
+              10.656714
+            ],
+            "size": [
+              0.314975,
+              0.247753,
+              0.273314
+            ]
+          },
+          "meshes": [
+            {
+              "name": "wing-left-mesh",
+              "triangles": 528
+            }
+          ]
+        },
+        {
+          "name": "wing-right",
+          "rotation": [
+            -0.279932,
+            1.049924,
+            0
+          ],
+          "pivotInSculpt": [
+            0.11652,
+            0.304204,
+            -0.122617
+          ],
+          "worldPivot": [
+            -20.437045,
+            0.314667,
+            10.835828
+          ],
+          "bounds": {
+            "min": [
+              -20.457124,
+              0.161113,
+              10.770277
+            ],
+            "max": [
+              -20.141679,
+              0.40863,
+              11.044244
+            ],
+            "size": [
+              0.315444,
+              0.247517,
+              0.273967
+            ]
+          },
+          "meshes": [
+            {
+              "name": "wing-right-mesh",
+              "triangles": 616
+            }
+          ]
+        }
+      ],
+      "bodyMeshes": [
+        {
+          "name": "body-mesh",
+          "triangles": 3862
+        }
+      ]
+    },
+    "leftFlapRange": [
+      -1.199989,
+      0.799991
+    ],
+    "finalVisible": false
+  }
+}

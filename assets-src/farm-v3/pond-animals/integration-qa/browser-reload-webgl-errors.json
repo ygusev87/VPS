@@ -1,0 +1,26 @@
+[
+  {
+    "level": "error",
+    "message": "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Web page caused context loss and was blocked",
+    "timestamp": "2026-10-26T05:41:34.525Z",
+    "url": "http://127.0.0.1:5197/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Web page caused context loss and was blocked",
+    "timestamp": "2026-10-26T05:41:34.554Z",
+    "url": "http://127.0.0.1:5197/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+    "timestamp": "2026-10-26T05:41:34.558Z",
+    "url": "http://127.0.0.1:5197/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new WebGLRenderer (http://127.0.0.1:5197/node_modules/.vite/deps/three.module-Cjdt_t78.js?v=4b00e2ab:51273:17)\n    at new Stage (http://127.0.0.1:5197/src/stage.ts:92:19)\n    at http://127.0.0.1:5197/src/main.ts:43:15",
+    "timestamp": "2026-10-26T05:41:34.558Z",
+    "url": "http://127.0.0.1:5197/node_modules/.vite/deps/three.module-Cjdt_t78.js?v=4b00e2ab"
+  }
+]
