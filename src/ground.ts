@@ -235,6 +235,8 @@ const PAINTED = `
       vec2 buv = vec2((p.x - b.x) / (b.z - b.x), 1.0 - (p.y - b.y) / (b.w - b.y));
       if (b.z > b.x && buv.x >= 0.0 && buv.x <= 1.0 && buv.y >= 0.0 && buv.y <= 1.0) soil = texture2D(tBed, buv).rgb;
     }
+    // Earth brown, not the red-orange the day grading makes of it.
+    soil = mix(vec3(dot(soil, vec3(0.2126, 0.7152, 0.0722))), soil, 0.7) * vec3(0.92, 0.94, 1.0);
   } else soil *= 0.82 + 0.18 * smoothstep(-0.6, 0.6, sin(p.x * 5.2 + gNoise(p * 1.3) * 1.2));
   col = mix(col, soil, bed);
   // Mud: a ragged churned edge, darker and wet towards the middle, puddles that shine.
@@ -259,7 +261,10 @@ const PAINTED = `
   vec2 yuv = vec2((p.x - uYard.x) / (2.0 * uYard.z) + 0.5, 0.5 - (p.y - uYard.y) / (2.0 * uYard.w));
   float inYard = uHasYard * step(0.0, yuv.x) * step(yuv.x, 1.0) * step(0.0, yuv.y) * step(yuv.y, 1.0);
   vec4 wm = texture2D(tPigWet, yuv);
-  muck = mix(muck, texture2D(tPigMud, yuv).rgb, inYard);
+  vec3 painting = texture2D(tPigMud, yuv).rgb;
+  // Brown mud, not red clay: less saturated and a touch less red (puddles and wetness untouched).
+  painting = mix(vec3(dot(painting, vec3(0.2126, 0.7152, 0.0722))), painting, 0.68) * vec3(0.9, 0.93, 1.0);
+  muck = mix(muck, painting, inYard);
   wet = mix(wet, max(wm.r * 0.6, wm.g), inYard);
   col = mix(col, muck, mud);
   vWet = mud * wet;
