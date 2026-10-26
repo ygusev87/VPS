@@ -15,7 +15,7 @@
 import * as THREE from 'three';
 import { DECOR, FENCES, MEADOW, PATHS, PONDS, SOIL } from './city-decor';
 import { dressing } from './decor';
-import { flowers, groundMaterial, onLane, pond, type GroundPlan } from './ground';
+import { boardEdge, flowers, groundMaterial, onLane, pond, type GroundPlan } from './ground';
 import { sandboxHint, type Hint } from './hints';
 import { clipsOf, hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
@@ -309,15 +309,14 @@ export class CityMap extends StoryMap {
   private buildBoard() {
     const plan = (this.plan = cityPlan());
     const top = groundMaterial(plan);
-    const side = mat('#7a6a58', 0.8);
+    const side = mat('#000000', 1);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
     board.receiveShadow = true;
     board.castShadow = false;
     this.scenery.add(board);
-    const rim = mesh(new THREE.BoxGeometry(W + 0.4, 0.4, D + 0.4), mat('#5e5246', 0.8));
-    rim.position.y = -0.36;
-    this.scenery.add(rim);
+    // A light rim and a matte side round the board (see boardEdge).
+    this.scenery.add(boardEdge(W, D, 'city'));
     this.scenery.add(roadMarks());
     this.scenery.add(canal());
     for (const p of [HARBOR, ...PONDS]) this.scenery.add(pond(p));

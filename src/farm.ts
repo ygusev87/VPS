@@ -18,7 +18,7 @@ import { Gate, Pump, Solar } from './parts/farm';
 import { Lift } from './parts/more';
 import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
-import { flowers, groundMaterial, onLane, pond, type Ellipse, type GroundPlan } from './ground';
+import { boardEdge, flowers, groundMaterial, onLane, pond, type Ellipse, type GroundPlan } from './ground';
 import { AMBIENT, WIND_RANGE } from './parts/wind';
 import { isActive } from './world';
 import { dressing } from './decor';
@@ -282,16 +282,14 @@ export class FarmMap extends StoryMap {
   private buildBoard() {
     const plan = (this.plan = groundPlan());
     const top = groundMaterial(plan);
-    const side = mat('#8a6a46', 0.8);
+    const side = mat('#000000', 1);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
     board.receiveShadow = true;
     board.castShadow = false;
     this.scenery.add(board);
-    // A darker rim, like the edge of a model board.
-    const rim = mesh(new THREE.BoxGeometry(W + 0.4, 0.4, D + 0.4), mat('#6e5236', 0.8));
-    rim.position.y = -0.36;
-    this.scenery.add(rim);
+    // A light rim and a matte side round the board (see boardEdge).
+    this.scenery.add(boardEdge(W, D, 'farm'));
     for (const p of PONDS) this.scenery.add(pond(p));
     // Flowers in clumps on the grass: not on the paths, the fields, the mud or in the water.
     const inside = (x: number, z: number, e: Ellipse, grow: number) => ((x - e.x) / (e.rx + grow)) ** 2 + ((z - e.z) / (e.rz + grow)) ** 2 < 1;

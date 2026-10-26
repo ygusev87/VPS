@@ -3,6 +3,7 @@
 // where the lanes, the field and the mud are. One big painted picture of the
 // whole board would be blurry or far too heavy for an iPad once the board grows.
 import * as THREE from 'three';
+import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
 /** Seamless ground tiles (public/textures/farm), seen from straight above. */
 const TILES = ['grass', 'grass-light', 'grass-base', 'grass-meadow', 'path', 'path-earth', 'soil', 'mud', 'pond-bed', 'asphalt', 'paving'] as const;
@@ -222,9 +223,22 @@ const PAINTED = `
   grass = mix(grass, sunny, smoothstep(0.5, 0.8, patchy) * 0.8);
   grass *= mix(0.8, 1.1, smoothstep(0.15, 0.85, gFbm(p / 9.0 + 3.3)));
   // The painted grass tiles are bright lime under the day grading: a calmer, bluer green (the target's).
-  grass = mix(vec3(dot(grass, vec3(0.2126, 0.7152, 0.0722))), grass, 0.82) * vec3(0.84, 0.9, 0.82);
-  sunny = mix(vec3(dot(sunny, vec3(0.2126, 0.7152, 0.0722))), sunny, 0.82) * vec3(0.9, 0.94, 0.8);
+  grass = mix(vec3(dot(grass, vec3(0.2126, 0.7152, 0.0722))), grass, 0.8) * vec3(0.92, 0.93, 0.7);
+  sunny = mix(vec3(dot(sunny, vec3(0.2126, 0.7152, 0.0722))), sunny, 0.8) * vec3(1.0, 0.98, 0.66);
   vec3 col = mix(grass, sunny, hill);
+  // Clover, tiny flowers and darker tufts sprinkled through the grass, as in the target.
+  vec2 fc = floor(p * 1.3);
+  vec2 fin = fract(p * 1.3) - 0.5 - (vec2(gHash(fc + 2.1), gHash(fc + 7.3)) - 0.5) * 0.55;
+  float fr = gHash(fc + 5.5);
+  float dotR = 0.07 + gHash(fc + 8.8) * 0.06;
+  float spot = 1.0 - smoothstep(dotR, dotR + 0.025, length(fin));
+  // Mostly clover-dark tufts, now and then a white, yellow or pink flower.
+  vec3 tuft = col * vec3(0.62, 0.72, 0.5);
+  vec3 bloom = fr > 0.965 ? vec3(0.95, 0.92, 0.85) : fr > 0.93 ? vec3(0.95, 0.75, 0.12) : vec3(0.92, 0.42, 0.55);
+  float isFlower = step(0.9, fr) * smoothstep(0.2, 0.6, gNoise(p / 5.0 + 13.0));
+  float isTuft = step(0.5, fr) * (1.0 - step(0.9, fr));
+  col = mix(col, tuft, spot * isTuft * 0.7);
+  col = mix(col, bloom, spot * isFlower);
   // Beds: dark loose soil with furrows along their length.
   float bed = smoothstep(0.4, 0.6, m.g);
   vec3 soil = texture2D(tSoil, p / uScale.z).rgb;
@@ -279,7 +293,8 @@ const PAINTED = `
   col = mix(col, col * vec3(0.82, 0.8, 0.62), rim * 0.55);
   vec3 earth = texture2D(tSand, p / uScale.y).rgb;
   // A shade lighter and less orange than the tile: the target's paths are warm tan (the day grading adds colour).
-  earth = mix(vec3(dot(earth, vec3(0.2126, 0.7152, 0.0722))), earth, 0.72) * vec3(1.16, 1.08, 1.0);
+  // Warm tan like the target's paths: less pink, a touch deeper (linear light).
+  earth = mix(vec3(dot(earth, vec3(0.2126, 0.7152, 0.0722))), earth, 0.55) * vec3(1.06, 0.98, 0.78);
   earth *= mix(0.88, 1.06, gNoise(p / 3.0 + 5.0));
   // Worn darker towards the shoulders.
   earth *= mix(0.9, 1.0, smoothstep(edge, 1.0, m.r));
@@ -370,6 +385,37 @@ ${painted ? NOISE : ''}`,
   // Boards of a kind share one compiled shader.
   mat.customProgramCacheKey = () => (painted ? 'farm-ground-painted' : 'farm-ground');
   return mat;
+}
+
+/**
+ * The board's edge (Codex's EDGE-PROPOSAL): a low light rim round the top, so
+ * the play surface has a clear, soft outline, and a matte side without the old
+ * dark wooden lip. The farm's rim is earthy, the city's a pale kerb stone.
+ */
+export function boardEdge(width: number, depth: number, look: 'farm' | 'city'): THREE.Group {
+  const g = new THREE.Group();
+  const c = look === 'farm' ? { rim: '#b99a6a', side: '#6b5440' } : { rim: '#e9dfcd', side: '#9a9085' };
+  const rimMat = new THREE.MeshStandardMaterial({ color: c.rim, roughness: 0.85 });
+  const sideMat = new THREE.MeshStandardMaterial({ color: c.side, roughness: 1 });
+  const T = 0.32;
+  const H = 0.16;
+  for (const [w, d, x, z] of [
+    [width + T, T, 0, -depth / 2],
+    [width + T, T, 0, depth / 2],
+    [T, depth - T, -width / 2, 0],
+    [T, depth - T, width / 2, 0],
+  ] as const) {
+    const m = new THREE.Mesh(new RoundedBoxGeometry(w, H, d, 2, 0.06), rimMat);
+    m.position.set(x, -0.02 + H / 2 - 0.04, z);
+    m.receiveShadow = true;
+    m.userData.noAO = true;
+    g.add(m);
+  }
+  // The side under the rim, a little inside it.
+  const side = new THREE.Mesh(new THREE.BoxGeometry(width + 0.1, 0.9, depth + 0.1), sideMat);
+  side.position.y = -0.5;
+  g.add(side);
+  return g;
 }
 
 /** A pond: a sandy bed with a rim of shore, clear water over it, deeper in the middle. */
