@@ -323,7 +323,7 @@ export class CityMap extends StoryMap {
     // A light rim and a matte side round the board (see boardEdge).
     this.scenery.add(boardEdge(W, D, 'city'));
     // The kit's roads carry their own dashes and zebras.
-    this.scenery.add(roadMarks(!this.kit, !(this.kit && hasKit('city', 'parking-bay'))));
+    this.scenery.add(roadMarks(!this.kit, !(this.kit && hasKit('city', 'parking-bay')), !(this.kit && hasKit('city', 'tram-rails-strip'))));
     if (this.kit) this.layKit(plan);
     if (!this.kit || !hasKit('city', 'canal-water')) this.scenery.add(canal());
     for (const p of [HARBOR, ...PONDS]) this.scenery.add(pond(p));
@@ -1131,7 +1131,7 @@ function cityPlan(): GroundPlan {
 }
 
 /** White dashes down the middle of every road, zebras at the crossings (unless the kit's roads have them), rails on the tram line. */
-function roadMarks(paint = true, bays = true): THREE.Group {
+function roadMarks(paint = true, bays = true, rails = true): THREE.Group {
   const g = new THREE.Group();
   const white = new THREE.MeshBasicMaterial({ color: '#f4f1ea', transparent: true, opacity: 0.85, depthWrite: false });
   const dashes: THREE.Matrix4[] = [];
@@ -1165,8 +1165,8 @@ function roadMarks(paint = true, bays = true): THREE.Group {
   dashes.forEach((m, i) => im.setMatrixAt(i, m));
   im.renderOrder = 2;
   g.add(im);
-  // Rails along the tram line.
-  for (const dz of [-0.75, 0.75]) {
+  // Rails along the tram line (unless the kit's street has them painted in).
+  for (const dz of rails ? [-0.75, 0.75] : []) {
     const rail = mesh(new THREE.BoxGeometry(W, 0.06, 0.12), mat('#9aa0a8', 0.3, 0.8), false);
     rail.position.set(0, 0.03, TRAM_Z + dz);
     g.add(rail);
