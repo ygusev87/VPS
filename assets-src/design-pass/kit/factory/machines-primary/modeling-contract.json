@@ -1,0 +1,81 @@
+{
+  "schemaVersion": 1,
+  "status": "reference-only; geometry acceptance pending",
+  "shared": {
+    "triangleLimit": 4000,
+    "materialLimit": 1,
+    "textureFormat": "WebP",
+    "textureEdgeRange": [
+      512,
+      1024
+    ],
+    "upAxis": "Y",
+    "units": "game world units",
+    "origin": "body base centre; normalize after measuring GLB",
+    "exclude": [
+      "shared game plate",
+      "terminal connectors",
+      "baked cast shadow",
+      "moving parts unless separately named"
+    ]
+  },
+  "assets": [
+    {
+      "name": "factory-cabinet",
+      "targetSizeXYZ": [
+        3,
+        1.1,
+        2.4
+      ],
+      "separateOrCode": [
+        "door"
+      ],
+      "clearance": "Open tray for two-by-two interactive tiles; keep top-down visibility and tap access.",
+      "runtimeNote": "WireBox tiles centred at X/Z ±0.5, Y=PLATE_TOP+0.17; current door at rear -Z, brief left. Integrator resolves hinge alignment, not a PNG guarantee."
+    },
+    {
+      "name": "safety-press",
+      "targetSizeXYZ": [
+        1.9,
+        2.3,
+        0.6
+      ],
+      "allowedStaticDepth": 0.8,
+      "separateOrCode": [
+        "ram",
+        "left button",
+        "right button"
+      ],
+      "clearance": "Empty central press span throughout ram travel; do not fuse columns to ram.",
+      "runtimeNote": "Columns X ±0.75, Z -0.35; code ram centre Y=PLATE_TOP+1.4, Z=-0.35; code anvil 1.2×0.3×0.8."
+    },
+    {
+      "name": "lathe",
+      "targetSizeXYZ": [
+        2.6,
+        1.2,
+        0.7
+      ],
+      "separateOrCode": [
+        "spindle",
+        "workpiece",
+        "dial needle"
+      ],
+      "clearance": "Empty axial span between headstock and tailstock; no baked rotating cylinder.",
+      "runtimeNote": "Code spindle centre (0.3,PLATE_TOP+0.75,0.2); dial centre(-0.7,PLATE_TOP+1.25,0.5), radius0.3. Current dial needs height reconciliation."
+    },
+    {
+      "name": "hoist",
+      "targetSizeXYZ": [
+        1.3,
+        3,
+        1.3
+      ],
+      "separateOrCode": [
+        "cabin"
+      ],
+      "clearance": "Open front and shaft over full cabin travel; sparse mesh must preserve real openings.",
+      "runtimeNote": "Do not infer collision or triangle budget from image; inspect generated mesh before acceptance."
+    }
+  ]
+}

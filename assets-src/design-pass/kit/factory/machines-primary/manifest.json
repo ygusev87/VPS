@@ -1,0 +1,94 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "assets": [
+    {
+      "name": "factory-cabinet",
+      "source": "concepts/factory-cabinet.png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1909265,
+      "sha256": "90fa9c3567e246c3b61156f3eb7956623a75e843d5064a40937af0ab704cf22d",
+      "preview": "previews/factory-cabinet.webp",
+      "previewWidth": 1024,
+      "previewHeight": 683,
+      "previewBytes": 87436,
+      "previewSha256": "32050eeca81aa6a6d6f7646bc11f8eab41c131e5da977ad1a32112624c395283",
+      "referenceImages": [
+        {
+          "path": "/Users/gusev/gameios/assets-src/design-pass/variants/factory-industrial-b.png",
+          "sha256": "202b9e941ae208c9fab86bcdce36240ce88a41996fc0a55e9fc40de2607d5398"
+        }
+      ],
+      "generation": "built-in image_gen; one initial call, no correction",
+      "status": "reference-only; no GLB generated; no external upload",
+      "packaging": "original PNG preserved byte-for-byte; only resize/sRGB/WebP for local review"
+    },
+    {
+      "name": "safety-press",
+      "source": "concepts/safety-press.png",
+      "width": 1283,
+      "height": 1226,
+      "bytes": 1735702,
+      "sha256": "f7868a7c9759e2bae034934f43c6b2d57efa75b6e6c7b366bdfd9a26cfdc72e6",
+      "preview": "previews/safety-press.webp",
+      "previewWidth": 1024,
+      "previewHeight": 979,
+      "previewBytes": 99390,
+      "previewSha256": "1d6e079a3b7ae7ad4ff244e8faa1b66dceecb759c6d64c7a43559930eede25b6",
+      "referenceImages": [
+        {
+          "path": "/Users/gusev/gameios/assets-src/design-pass/variants/factory-industrial-b.png",
+          "sha256": "202b9e941ae208c9fab86bcdce36240ce88a41996fc0a55e9fc40de2607d5398"
+        }
+      ],
+      "generation": "built-in image_gen; one initial call, no correction",
+      "status": "reference-only; no GLB generated; no external upload",
+      "packaging": "original PNG preserved byte-for-byte; only resize/sRGB/WebP for local review"
+    },
+    {
+      "name": "lathe",
+      "source": "concepts/lathe.png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1834199,
+      "sha256": "bb77198439039c98ddad7cf0dd6a59492c89fa5654a429d684b0f499eef978dc",
+      "preview": "previews/lathe.webp",
+      "previewWidth": 1024,
+      "previewHeight": 512,
+      "previewBytes": 67930,
+      "previewSha256": "bba65fa9ffc523fd3969a6e24a1fd170db516231721bdd9fbc0082b81627acd8",
+      "referenceImages": [
+        {
+          "path": "/Users/gusev/gameios/assets-src/design-pass/variants/factory-industrial-b.png",
+          "sha256": "202b9e941ae208c9fab86bcdce36240ce88a41996fc0a55e9fc40de2607d5398"
+        }
+      ],
+      "generation": "built-in image_gen; one initial call, no correction",
+      "status": "reference-only; no GLB generated; no external upload",
+      "packaging": "original PNG preserved byte-for-byte; only resize/sRGB/WebP for local review"
+    },
+    {
+      "name": "hoist",
+      "source": "concepts/hoist.png",
+      "width": 1278,
+      "height": 1230,
+      "bytes": 1551119,
+      "sha256": "d8b432be56af6965a8df39f00c392a6e900d117b95b670081c0ed09538571c1e",
+      "preview": "previews/hoist.webp",
+      "previewWidth": 1024,
+      "previewHeight": 986,
+      "previewBytes": 107896,
+      "previewSha256": "85e6ebb170b9b1128d5c2bd8821c5bc669daef70347c298f5e14fbf97029cf94",
+      "referenceImages": [
+        {
+          "path": "/Users/gusev/gameios/assets-src/design-pass/variants/factory-industrial-b.png",
+          "sha256": "202b9e941ae208c9fab86bcdce36240ce88a41996fc0a55e9fc40de2607d5398"
+        }
+      ],
+      "generation": "built-in image_gen; one initial call, no correction",
+      "status": "reference-only; no GLB generated; no external upload",
+      "packaging": "original PNG preserved byte-for-byte; only resize/sRGB/WebP for local review"
+    }
+  ]
+}

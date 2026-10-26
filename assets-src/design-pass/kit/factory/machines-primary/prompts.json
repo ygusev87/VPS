@@ -1,0 +1,46 @@
+[
+  {
+    "name": "factory-cabinet",
+    "prompt": "Use case: product-mockup. Single isolated 3D modeling reference for a miniature industrial game. Attached image is STYLE reference ONLY: factory B, teal cast metal, steel, warm safety yellow, gentle rounded industrial forms and realistic mechanical construction. Render ONE object at three-quarter top view, all edges in frame, pure white background with NO cast shadow on background, no surrounding scene, floor, wiring, electronic game base plate, terminals, text labels, dimension marks or decorative props. Clean large shapes suitable for a <=4000 triangle game model, details mostly painted in one texture. It is a static BODY ONLY; moving parts will be supplied by game code and MUST NOT be included. A low horizontal open steel electrical cabinet tray, body proportions width3.0,height1.1,depth2.4. This is a FLOOR/TABLE-MOUNTED HORIZONTAL puzzle housing, NOT an upright wall cupboard. Wide shallow teal metal casing with riveted steel edging and modest yellow lower corner markings, open upward. Inside is one clean empty square flat recess occupying a little over2×2 units, ready for four square puzzle tiles that are NOT drawn. A low rear rail can have a tiny unlit round status lamp. The left edge has hinge knuckles, but the removable left door is entirely absent. No puzzle tiles, cables, copper tracks, circuit boards, handles over the cavity, knobs, open door or lid in this image. Show the full empty cavity clearly. Teal enamel, steel bevels, gently aged but clean industrial equipment.",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/factory-industrial-b.png"
+    ],
+    "alpha": false,
+    "kind": "model-reference-only",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-302f653e-3946-4efb-bc61-837fe1565d0e.png",
+    "status": "reference-only; GLB not created"
+  },
+  {
+    "name": "safety-press",
+    "prompt": "Use case: product-mockup. Single isolated 3D modeling reference for a miniature industrial game. Attached image is STYLE reference ONLY: factory B, teal cast metal, steel, warm safety yellow, gentle rounded industrial forms and realistic mechanical construction. Render ONE object at three-quarter top view, all edges in frame, pure white background with NO cast shadow on background, no surrounding scene, floor, wiring, electronic game base plate, terminals, text labels, dimension marks or decorative props. Clean large shapes suitable for a <=4000 triangle game model, details mostly painted in one texture. It is a static BODY ONLY; moving parts will be supplied by game code and MUST NOT be included. The stationary frame of a realistic compact two-column industrial press. Width1.9,height2.3,frame-depth0.6, with a slightly deeper0.8 lower anvil foot. Two sturdy vertical steel columns and a thick bright warm yellow upper crossbeam. Teal lower plinth with steel dark anvil plate, heavy bolted industrial construction, softly rounded edges. The rectangular middle opening is COMPLETELY EMPTY from above the bottom anvil to underside of top crossbeam. NO moving press head/ram, piston rod, cylinder extending down, workpiece or hydraulic hoses across the opening. No control buttons at all: both hand buttons are code on separate stands outside this body. No hazard floor, railings or platform. Static frame only, with an obvious central top socket for a separate moving mechanism.",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/factory-industrial-b.png"
+    ],
+    "alpha": false,
+    "kind": "model-reference-only",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-97688c90-59ba-472c-b8d7-3f4d4d27348d.png",
+    "status": "reference-only; GLB not created"
+  },
+  {
+    "name": "lathe",
+    "prompt": "Use case: product-mockup. Single isolated 3D modeling reference for a miniature industrial game. Attached image is STYLE reference ONLY: factory B, teal cast metal, steel, warm safety yellow, gentle rounded industrial forms and realistic mechanical construction. Render ONE object at three-quarter top view, all edges in frame, pure white background with NO cast shadow on background, no surrounding scene, floor, wiring, electronic game base plate, terminals, text labels, dimension marks or decorative props. Clean large shapes suitable for a <=4000 triangle game model, details mostly painted in one texture. It is a static BODY ONLY; moving parts will be supplied by game code and MUST NOT be included. A realistic compact tabletop metalworking lathe STATIC BODY: width2.6,height1.2,depth0.7. Elongated warm gray steel machine bed on two low feet, chunky teal headstock at LEFT and smaller teal tailstock at RIGHT. Two parallel steel guideways along the bed, small rivets and vents, warm yellow warning accent. The working horizontal span between the two stocks is visibly EMPTY: NO spindle, workpiece, cylindrical bar, chuck, cutting tool, moving carriage or handwheels. Those parts will be created and animated by code. The headstock has a clean round socket facing the empty span and a small EMPTY circular gauge mounting recess on its front face; NO dial hand, tick scale or glass. The front is facing viewer, long axis horizontal. No cables, power terminals, separate gears, support table or floor.",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/factory-industrial-b.png"
+    ],
+    "alpha": false,
+    "kind": "model-reference-only",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-5aca3a9f-205a-44b1-896f-819e051b5d1f.png",
+    "status": "reference-only; GLB not created"
+  },
+  {
+    "name": "hoist",
+    "prompt": "Use case: product-mockup. Single isolated 3D modeling reference for a miniature industrial game. Attached image is STYLE reference ONLY: factory B, teal cast metal, steel, warm safety yellow, gentle rounded industrial forms and realistic mechanical construction. Render ONE object at three-quarter top view, all edges in frame, pure white background with NO cast shadow on background, no surrounding scene, floor, wiring, electronic game base plate, terminals, text labels, dimension marks or decorative props. Clean large shapes suitable for a <=4000 triangle game model, details mostly painted in one texture. It is a static BODY ONLY; moving parts will be supplied by game code and MUST NOT be included. Stationary shaft frame of a small industrial freight hoist, width1.3,height3.0,depth1.3. Tall yellow four-post steel cage with teal foot brackets and warm gray narrow mesh safety panels on the BACK and two SIDES, front open. Square footprint, sturdy top beam and two clearly visible parallel vertical guide rails inside. Sparse coarse grid mesh with large openings, not dense wire detail. Entire internal shaft is EMPTY: absolutely no cabin, platform, elevator car, load, counterweight, hanging cable or moving carriage; game code supplies the cabin. Top central beam may have a simple stationary motor cover but no loose hooks. Miniature engineering apparatus with clean robust geometry. View reveals open front, side and inside guide space, no surrounding scene.",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/factory-industrial-b.png"
+    ],
+    "alpha": false,
+    "kind": "model-reference-only",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-e7bafac6-d1bc-4ed0-91a4-b7bf9205de65.png",
+    "status": "reference-only; GLB not created"
+  }
+]

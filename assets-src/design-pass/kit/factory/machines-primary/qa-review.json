@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "type": "reference image browser QA only",
+  "frames": [
+    {
+      "path": "qa/all1024.jpg",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "path": "qa/press1024.jpg",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "path": "qa/press390.jpg",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "qa/cabinet390.jpg",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "qa/lathe390.jpg",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "qa/hoist390.jpg",
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "previewLoads": 4,
+  "errors": [],
+  "horizontalOverflow": false,
+  "geometryValidation": "not applicable until GLB exists",
+  "runtimeValidation": "pending integration"
+}
