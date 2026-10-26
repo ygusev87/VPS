@@ -13,7 +13,7 @@ import sharp from 'sharp';
 // highlights visibly distort after simplification (confirmed by side-by-side QA).
 const KEEP_GEOMETRY = new Set('motor propeller windmill sails floorfan windgen dynamo knife musicbox tester magnet mirror carousel cannon laser pump helicopter trafficlight fox-rig solar buzzer drum bell panel target tuba'.split(' '));
 const FARM = new Set('barn coop doghouse cow dog duck fox hen pig rabbit sheep tractor sack kitten goat kid goose rooster horse chick beehive flowerbed-buds flowerbed-bloom nest stable tree-oak'.split(' '));
-const CITY = new Set('bakery baker grandma-house grandma school fire-station toy-shop club substation house-a child raccoon tram car'.split(' '));
+const CITY = new Set('bakery baker grandma-house grandma school fire-station toy-shop club substation house-a house-b child raccoon tram car'.split(' '));
 const args = process.argv.slice(2), names = [];
 let input = 'assets-src/models', output = 'public/models', report = '', textureSource = '';
 while (args.length) {

@@ -1,0 +1,138 @@
+{
+  "date": "2026-10-26",
+  "status": "Prepared on dev for Claude review; no main deployment",
+  "order": {
+    "provider": "Tripo Studio UI",
+    "task": "d2a17a52-cfc3-4967-9354-81a88dcf33c9",
+    "approval": "m0255",
+    "reference": "assets-src/city-v2/house-b-v1.png",
+    "referenceSha256": "927815b240742635246a12e1f767be9083558b9751abd5d3c9354847be6fbd1c",
+    "includedCredits": 25,
+    "balanceBefore": 5750,
+    "balanceAfter": 5725,
+    "orders": 1,
+    "settings": {
+      "model": "H3.1 HD maximum quality",
+      "triangles": 7000,
+      "texture": true,
+      "textureSize": 2048,
+      "delight": true,
+      "PBR": false,
+      "Ultra": false,
+      "AIEnhance": false,
+      "segmentation": false
+    },
+    "sourceRevision": "7eaefdd",
+    "status": "Completed; exported GLB",
+    "trianglesReported": 6405
+  },
+  "raw": {
+    "file": "assets-src/raw/city-v2-2026-10-26/house-b.glb",
+    "bytes": 1014312,
+    "sha256": "8eb5820003c8a0f5ad58ed5c29382ef2203172e8effb5e72a31261f83447b460",
+    "gitIgnored": true
+  },
+  "canonical": {
+    "yawDegrees": 90,
+    "rawFront": "+Z",
+    "canonicalFront": "+X",
+    "bytes": 856876,
+    "sha256": "69d1225628c5cf795bdb5c7811c9b99c2abeff5503d31a09d018ede8dd0a426d"
+  },
+  "installed": {
+    "file": "public/models/house-b.glb",
+    "bytes": 137576,
+    "sha256": "7809b6929f70e4a07603f55bcf3d5306769a9d9b30af4274ad26f94c37b8195e",
+    "triangles": 6405,
+    "materialCount": 1,
+    "alphaMode": "OPAQUE",
+    "texture": [
+      512,
+      512
+    ],
+    "textureFormat": "WebP",
+    "geometryCompression": "Meshopt",
+    "geometryPreservedDuringOptimization": true
+  },
+  "fit": {
+    "width": 5,
+    "rotateY": -1.5707963267948966,
+    "fullXYZ": [
+      5,
+      4.9625,
+      3.6377
+    ],
+    "heightTarget": 4.8,
+    "uniformScaling": true,
+    "frontInGame": "+Z",
+    "placementChanges": false
+  },
+  "qa": {
+    "baseCommit": "163b69608ee071f735f9eaebd8f1185f9934fd2e",
+    "source": "Frozen committed src plus current public assets and new house-b; excludes concurrent uncommitted src changes",
+    "viewports": [
+      [
+        1180,
+        660
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "instances": 4,
+    "reservations": 62,
+    "reservationOverlaps": 0,
+    "minRoadGap": 0.5,
+    "minBoardGap": 2.8631,
+    "northRoadGap": 0.5,
+    "harborGap": 0.5,
+    "minParkingGap": 0.6812,
+    "poleTerminalChecks": 56,
+    "blockedTerminals": 0,
+    "ringSampleChecks": 2976,
+    "ringOccluderScope": "Only new house-b meshes, not all scenery",
+    "blockedRingSamples": 0,
+    "positiveControlBlockedTerminals390": 2,
+    "validatorErrors": 0,
+    "validatorWarnings": 0,
+    "validatorInfo": "EXT_meshopt_compression unsupported by validator; decoded and rendered in runtime",
+    "finalTabConsoleWarningsErrors": 0,
+    "npmTests": {
+      "passed": 21,
+      "files": 4,
+      "scope": "Shared working tree at test time; contains concurrent Claude changes"
+    },
+    "typecheck": "passed"
+  },
+  "limitations": [
+    "No physical iPad, Home-screen PWA or FPS measurement.",
+    "No arbitrary player parts/wires or all moving actor trajectories.",
+    "Roof probes and visual inspection do not prove manifold topology.",
+    "Texture-memory report is an inventory estimate, not measured GPU allocation.",
+    "Final camera audits are tied to the recorded snapshot; later scene/camera changes require a rerun."
+  ],
+  "evidence": [
+    "house-b-clearances.json",
+    "house-b-console.json",
+    "house-b-control-390.json",
+    "house-b-game-north-1180.png",
+    "house-b-game-north-390.png",
+    "house-b-game-south-1180.png",
+    "house-b-game-station-1180.png",
+    "house-b-game-station-390.png",
+    "house-b-game-west-1180.png",
+    "house-b-installed-back.png",
+    "house-b-installed-bottom.png",
+    "house-b-installed-night.png",
+    "house-b-installed-three.png",
+    "house-b-installed-top.png",
+    "house-b-poles-1180.json",
+    "house-b-poles-390.json",
+    "house-b-rings-1180.json",
+    "house-b-rings-390.json",
+    "house-b-snapshot.json",
+    "house-b-stationpole-1180.png",
+    "house-b-stationpole-390.png"
+  ]
+}

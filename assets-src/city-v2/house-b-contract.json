@@ -1,5 +1,5 @@
 {
-  "status": "Image reference pending Claude review; no Tripo order",
+  "status": "Reference accepted m0255; one Tripo order completed, GLB installed on dev for Claude review",
   "reference": "house-b-v1.png",
   "sourceRevision": "9a7f655",
   "instances": [
@@ -172,5 +172,18 @@
         "z1": 34
       }
     }
-  ]
+  ],
+  "referenceApproval": "m0255",
+  "measured": {
+    "fullXYZ": [
+      5,
+      4.9625,
+      3.6377
+    ],
+    "triangles": 6405,
+    "bytes": 137576,
+    "northRoadGap": 0.5,
+    "harborGap": 0.5,
+    "report": "house-b-3d/release.json"
+  }
 }

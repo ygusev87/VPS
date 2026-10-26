@@ -1,0 +1,8 @@
+{
+  "baseCommit": "163b69608ee071f735f9eaebd8f1185f9934fd2e",
+  "snapshotPath": "/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/house-b-qa-ktrr4ghe",
+  "src": "git archive of committed src only; no colleague uncommitted changes",
+  "public": "copied current public; includes the new house-b GLB",
+  "houseBSha256": "7809b6929f70e4a07603f55bcf3d5306769a9d9b30af4274ad26f94c37b8195e",
+  "qaOnlyChange": "Build label"
+}
