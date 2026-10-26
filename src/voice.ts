@@ -374,6 +374,7 @@ export class Voice {
   enabled = true;
   private voice: SpeechSynthesisVoice | null = null;
   private last: { id: PhraseId; at: number } | null = null;
+  private saidAt = -1e9;
   private ctx: AudioContext | null = null;
   private out: AudioNode | null = null;
   private raw = new Map<PhraseId, Promise<ArrayBuffer | null>>();
@@ -444,6 +445,7 @@ export class Voice {
     const now = performance.now();
     if (this.last && this.last.id === id && now - this.last.at < cooldown) return;
     this.last = { id, at: now };
+    this.saidAt = now;
     this.stop();
     const clip = this.clips.get(id);
     // Not decoded yet: decode it now and speak a moment later (better than the robot voice).
@@ -481,8 +483,10 @@ export class Voice {
     speechSynthesis.speak(u);
   }
 
-  /** Still talking (a clip playing or the synthesiser speaking)? */
+  /** Still talking (a clip playing or the synthesiser speaking, or about to)? */
   get busy() {
+    // Just asked: the clip may still be decoding, or the synthesiser not started yet.
+    if (performance.now() - this.saidAt < 600) return true;
     if (this.playing) return performance.now() < this.endsAt;
     return 'speechSynthesis' in window && speechSynthesis.speaking;
   }

@@ -698,6 +698,8 @@ world.on((e) => {
 let hintTimer = 0;
 /** `?quickhints`: hints come up at once (for the finger-driven play-throughs in tests). */
 const QUICK_HINTS = new URLSearchParams(location.search).has('quickhints');
+/** When the voice was last heard talking (hints wait for a pause). */
+let voiceBusyAt = 0;
 function updateHint(dt: number) {
   hintTimer -= dt;
   if (hintTimer > 0) return;
@@ -1039,7 +1041,10 @@ function frame(now: number) {
   const vis = hintVisible();
   hud.updateHints(dt, vis);
   hud.updateTag(input.carried);
-  if (vis && currentHint && spokenKey !== currentKey) {
+  // A hint speaks only once the voice has been quiet a moment: it must not cut
+  // off an animal still telling what it needs (or any other phrase).
+  if (voice.busy) voiceBusyAt = performance.now();
+  if (vis && currentHint && spokenKey !== currentKey && performance.now() - voiceBusyAt > 700) {
     spokenKey = currentKey;
     voice.say(currentHint.phrase, 9000);
   }
