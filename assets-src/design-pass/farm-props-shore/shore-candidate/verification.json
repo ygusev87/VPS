@@ -1,0 +1,226 @@
+{
+  "dateUtc": "2026-10-26T09:00:22.726961+00:00",
+  "source": {
+    "revision": "244d3d18e385fbb0e588025ea7ee994aeb138380",
+    "snapshot": "/private/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/farm-shore-9p9laoik",
+    "runtimeHashes": {
+      "src/farm.ts": "7d281bcd4bcafaa651dc90c859925d0d3a8e924f84f2098fa213585585b44521",
+      "src/farm-decor.ts": "bffcc4d3da3549f732481b41bdef7f2db9d474e23cf5fb0ca2f6e2df052eb954",
+      "src/ground.ts": "5701a8451b206c576b2addc1ea7ac5bcab4810201263b31ad7cd2008a80d1cb1",
+      "src/stage.ts": "a70d990075a5898867bd5a59e7dacde73f7e2e2f7ee501382958fc638bf1998f"
+    },
+    "placementSha256": "19e05c889b3d2c3b9d8b9b0197cb299fd988c30915f8e8a99e2f7551a447005d",
+    "publicModelHashes": {
+      "rock-cluster.glb": "838ce9f743e9de3943160ed204fec6c24dfc9c4b8c332613cfce4e0eed3386c4",
+      "duck.glb": "0ad32f3d3773c1cbc62c65b1d75da2cb4b398e2f8ecb610043c47f6e6ec1883e"
+    }
+  },
+  "models": {
+    "provenance": "Original small meshes authored in code for the requested pond details; no image/API orders. Existing rock-cluster reused for placement.",
+    "models": [
+      {
+        "name": "pond-dock",
+        "bytes": 18216,
+        "triangles": 2092,
+        "bounds": {
+          "min": [
+            -1.1600103874676875,
+            -2.3108601804822104e-05,
+            -1.9800000190734863
+          ],
+          "max": [
+            1.1600103874676875,
+            0.6580231027605496,
+            1.9800000190734863
+          ]
+        },
+        "sha256": "514963d387cc28dd5dedcc1fce2c8c6d2cd67d97c3f54c51473a49d798565a2d",
+        "materials": 1,
+        "textures": 0,
+        "validation": {
+          "numErrors": 0,
+          "numWarnings": 0,
+          "numInfos": 2,
+          "numHints": 0,
+          "messages": [
+            {
+              "code": "UNSUPPORTED_EXTENSION",
+              "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+              "severity": 2,
+              "pointer": "/extensionsUsed/0"
+            },
+            {
+              "code": "UNUSED_OBJECT",
+              "message": "This object may be unused.",
+              "severity": 2,
+              "pointer": "/buffers/0"
+            }
+          ],
+          "truncated": false
+        }
+      },
+      {
+        "name": "pond-reeds",
+        "bytes": 8700,
+        "triangles": 400,
+        "bounds": {
+          "min": [
+            -0.47461392750388454,
+            -1.4305114426349519e-08,
+            -0.4044417231763311
+          ],
+          "max": [
+            0.3299944030249722,
+            0.9700000286102295,
+            0.3523874371732183
+          ]
+        },
+        "sha256": "3baeda516f23c4d655c527ff592bdb49b1f2cb6c5e7bbbeb0333d8ca256fba3e",
+        "materials": 1,
+        "textures": 0,
+        "validation": {
+          "numErrors": 0,
+          "numWarnings": 0,
+          "numInfos": 2,
+          "numHints": 0,
+          "messages": [
+            {
+              "code": "UNSUPPORTED_EXTENSION",
+              "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+              "severity": 2,
+              "pointer": "/extensionsUsed/0"
+            },
+            {
+              "code": "UNUSED_OBJECT",
+              "message": "This object may be unused.",
+              "severity": 2,
+              "pointer": "/buffers/0"
+            }
+          ],
+          "truncated": false
+        }
+      }
+    ]
+  },
+  "placement": {
+    "scope": "Candidate only. East bank/pump left clear; review in actual farm required.",
+    "groups": [
+      {
+        "model": "pond-dock",
+        "fit": {
+          "depth": 3.95
+        },
+        "items": [
+          [
+            -47.5,
+            4.6,
+            1.5707963267948966,
+            1
+          ]
+        ]
+      },
+      {
+        "model": "pond-reeds",
+        "fit": {
+          "height": 0.85
+        },
+        "items": [
+          [
+            -44.8,
+            0.8,
+            0.3,
+            1
+          ],
+          [
+            -44.7,
+            7.6,
+            1.2,
+            0.9
+          ],
+          [
+            -40.5,
+            -1.1,
+            2.2,
+            0.9
+          ]
+        ]
+      },
+      {
+        "model": "rock-cluster",
+        "fit": {
+          "width": 1.6
+        },
+        "items": [
+          [
+            -43.5,
+            -1.2,
+            0.8,
+            0.85
+          ],
+          [
+            -46.4,
+            6.9,
+            -0.4,
+            0.85
+          ]
+        ]
+      }
+    ]
+  },
+  "views": 51,
+  "sampledRays": 93840,
+  "newOcclusions": 0,
+  "staticOverlaps": [],
+  "workOverlaps": [],
+  "pairOverlaps": [],
+  "roadOverlaps": [],
+  "duckRoute": {
+    "formula": "center(-40,3.5), radiusX4.05, radiusZ2.55; farm.ts K1.5; 360 samples",
+    "bodyRadius": 0.75,
+    "actualFittedDuckFootprintRadius": 0.4276277567450038,
+    "minimumClearance": 0.5640579270014079
+  },
+  "renderCost": {
+    "before": {
+      "shadow=False,ao=True": {
+        "triangles": 2805025,
+        "calls": 869
+      },
+      "shadow=True,ao=False": {
+        "triangles": 2226143,
+        "calls": 712
+      },
+      "shadow=False,ao=False": {
+        "triangles": 1403971,
+        "calls": 572
+      },
+      "shadow=True,ao=True": {
+        "triangles": 3627197,
+        "calls": 1009
+      }
+    },
+    "after": {
+      "shadow=True,ao=True": {
+        "triangles": 3637469,
+        "calls": 1021
+      },
+      "shadow=False,ao=False": {
+        "triangles": 1409107,
+        "calls": 578
+      },
+      "shadow=True,ao=False": {
+        "triangles": 2231279,
+        "calls": 718
+      },
+      "shadow=False,ao=True": {
+        "triangles": 2815297,
+        "calls": 881
+      }
+    }
+  },
+  "limitations": [
+    "Candidate added by QA module; not integrated into public/runtime/authoring.",
+    "No physical iPad, FPS or offline test.",
+    "Duck route is a static conservative clearance audit, not an executed fountain task."
+  ]
+}

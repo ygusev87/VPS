@@ -1,0 +1,319 @@
+{
+  "source": {
+    "revision": "244d3d18e385fbb0e588025ea7ee994aeb138380",
+    "snapshot": "/private/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/farm-shore-9p9laoik",
+    "runtimeHashes": {
+      "src/farm.ts": "7d281bcd4bcafaa651dc90c859925d0d3a8e924f84f2098fa213585585b44521",
+      "src/farm-decor.ts": "bffcc4d3da3549f732481b41bdef7f2db9d474e23cf5fb0ca2f6e2df052eb954",
+      "src/ground.ts": "5701a8451b206c576b2addc1ea7ac5bcab4810201263b31ad7cd2008a80d1cb1",
+      "src/stage.ts": "a70d990075a5898867bd5a59e7dacde73f7e2e2f7ee501382958fc638bf1998f"
+    },
+    "placementSha256": "19e05c889b3d2c3b9d8b9b0197cb299fd988c30915f8e8a99e2f7551a447005d"
+  },
+  "mode": "before",
+  "area": "wide",
+  "viewport": [
+    1180,
+    820
+  ],
+  "bounds": [
+    {
+      "model": "pond-dock",
+      "item": [
+        -47.5,
+        4.6,
+        1.5707963267948966,
+        1
+      ],
+      "min": [
+        -49.475,
+        0,
+        3.4429189428388307
+      ],
+      "max": [
+        -45.525,
+        0.6563844721823786,
+        5.757081057161169
+      ]
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -44.8,
+        0.8,
+        0.3,
+        1
+      ],
+      "min": [
+        -45.234783746929025,
+        0,
+        0.3790289603360945
+      ],
+      "max": [
+        -44.36521625307097,
+        0.85,
+        1.2209710396639055
+      ]
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -44.7,
+        7.6,
+        1.2,
+        0.9
+      ],
+      "min": [
+        -45.09312734160075,
+        5.551115123125783e-17,
+        7.196139432336375
+      ],
+      "max": [
+        -44.30687265839926,
+        0.7649999999999999,
+        8.003860567663624
+      ]
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -40.5,
+        -1.1,
+        2.2,
+        0.9
+      ],
+      "min": [
+        -40.9280082363612,
+        5.551115123125783e-17,
+        -1.5321531135283744
+      ],
+      "max": [
+        -40.0719917636388,
+        0.7649999999999999,
+        -0.6678468864716258
+      ]
+    },
+    {
+      "model": "rock-cluster",
+      "item": [
+        -43.5,
+        -1.2,
+        0.8,
+        0.85
+      ],
+      "min": [
+        -44.46679898984437,
+        5.551115123125783e-17,
+        -2.166648261270062
+      ],
+      "max": [
+        -42.53320101015563,
+        0.9541688515993709,
+        -0.23335173872993809
+      ]
+    },
+    {
+      "model": "rock-cluster",
+      "item": [
+        -46.4,
+        6.9,
+        -0.4,
+        0.85
+      ],
+      "min": [
+        -47.293968477965535,
+        5.551115123125783e-17,
+        6.002150837340396
+      ],
+      "max": [
+        -45.50603152203446,
+        0.9541688515993709,
+        7.797849162659605
+      ]
+    }
+  ],
+  "staticOverlaps": [],
+  "workOverlaps": [],
+  "pairOverlaps": [],
+  "duckClearance": [
+    {
+      "model": "pond-dock",
+      "item": [
+        -47.5,
+        4.6,
+        1.5707963267948966,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 0.7250000000000014
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -44.8,
+        0.8,
+        0.3,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 0.5640579270014079
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -44.7,
+        7.6,
+        1.2,
+        0.9
+      ],
+      "minClearanceWithBodyRadius075": 1.6246050763565418
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -40.5,
+        -1.1,
+        2.2,
+        0.9
+      ],
+      "minClearanceWithBodyRadius075": 0.8682357936703784
+    },
+    {
+      "model": "rock-cluster",
+      "item": [
+        -43.5,
+        -1.2,
+        0.8,
+        0.85
+      ],
+      "minClearanceWithBodyRadius075": 0.8574225028765994
+    },
+    {
+      "model": "rock-cluster",
+      "item": [
+        -46.4,
+        6.9,
+        -0.4,
+        0.85
+      ],
+      "minClearanceWithBodyRadius075": 1.5733466945521144
+    }
+  ],
+  "renderCost": {
+    "samples": [
+      {
+        "frame": 212197,
+        "calls": 869,
+        "triangles": 2805025,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": true
+      },
+      {
+        "frame": 212217,
+        "calls": 712,
+        "triangles": 2226143,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": false
+      },
+      {
+        "frame": 212237,
+        "calls": 572,
+        "triangles": 1403971,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": false
+      },
+      {
+        "frame": 212260,
+        "calls": 1009,
+        "triangles": 3627197,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": true
+      },
+      {
+        "frame": 212280,
+        "calls": 572,
+        "triangles": 1403971,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": false
+      },
+      {
+        "frame": 212300,
+        "calls": 712,
+        "triangles": 2226143,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": false
+      },
+      {
+        "frame": 212323,
+        "calls": 869,
+        "triangles": 2805025,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": true
+      },
+      {
+        "frame": 212343,
+        "calls": 712,
+        "triangles": 2226143,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": false
+      },
+      {
+        "frame": 212363,
+        "calls": 572,
+        "triangles": 1403971,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": false
+      },
+      {
+        "frame": 212386,
+        "calls": 1009,
+        "triangles": 3627197,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": true
+      },
+      {
+        "frame": 212406,
+        "calls": 572,
+        "triangles": 1403971,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": false
+      },
+      {
+        "frame": 212426,
+        "calls": 712,
+        "triangles": 2226143,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": false
+      }
+    ],
+    "method": "12 complete Stage.render samples, scheduled shadows/AO. Not FPS."
+  },
+  "occlusion": {
+    "sampledTargets": 1840,
+    "addedOcclusions": []
+  },
+  "errors": [],
+  "contextLost": false
+}

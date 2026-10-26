@@ -1,0 +1,87 @@
+{
+  "provenance": "Original small meshes authored in code for the requested pond details; no image/API orders. Existing rock-cluster reused for placement.",
+  "models": [
+    {
+      "name": "pond-dock",
+      "bytes": 18216,
+      "triangles": 2092,
+      "bounds": {
+        "min": [
+          -1.1600103874676875,
+          -0.000023108601804822104,
+          -1.9800000190734863
+        ],
+        "max": [
+          1.1600103874676875,
+          0.6580231027605496,
+          1.9800000190734863
+        ]
+      },
+      "sha256": "514963d387cc28dd5dedcc1fce2c8c6d2cd67d97c3f54c51473a49d798565a2d",
+      "materials": 1,
+      "textures": 0,
+      "validation": {
+        "numErrors": 0,
+        "numWarnings": 0,
+        "numInfos": 2,
+        "numHints": 0,
+        "messages": [
+          {
+            "code": "UNSUPPORTED_EXTENSION",
+            "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+            "severity": 2,
+            "pointer": "/extensionsUsed/0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/buffers/0"
+          }
+        ],
+        "truncated": false
+      }
+    },
+    {
+      "name": "pond-reeds",
+      "bytes": 8700,
+      "triangles": 400,
+      "bounds": {
+        "min": [
+          -0.47461392750388454,
+          -1.4305114426349519e-8,
+          -0.4044417231763311
+        ],
+        "max": [
+          0.3299944030249722,
+          0.9700000286102295,
+          0.3523874371732183
+        ]
+      },
+      "sha256": "3baeda516f23c4d655c527ff592bdb49b1f2cb6c5e7bbbeb0333d8ca256fba3e",
+      "materials": 1,
+      "textures": 0,
+      "validation": {
+        "numErrors": 0,
+        "numWarnings": 0,
+        "numInfos": 2,
+        "numHints": 0,
+        "messages": [
+          {
+            "code": "UNSUPPORTED_EXTENSION",
+            "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+            "severity": 2,
+            "pointer": "/extensionsUsed/0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/buffers/0"
+          }
+        ],
+        "truncated": false
+      }
+    }
+  ]
+}
