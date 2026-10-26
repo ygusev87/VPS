@@ -61,6 +61,173 @@
         "y": 0.7840584150326788
       },
       "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "canal-water",
+      "source": "../sources/canal-water.png",
+      "sourceWidth": 887,
+      "sourceHeight": 1774,
+      "sourceSha256": "55a8387469b74109eb8500771c78e42be43f6113074fc91b199f42837639b4bd",
+      "output": "public/textures/kit/city/canal-water.webp",
+      "width": 1024,
+      "height": 2048,
+      "bytes": 75670,
+      "sha256": "a76d62fab0682497656c858326242ec9ac017df24d145fc6ca2e47cd9f147f51",
+      "sourceAspect": 0.5,
+      "outputAspect": 0.5,
+      "extract": null,
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "transparentFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "edges": {
+          "left": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "right": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "top": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "bottom": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 4.919921875,
+        "y": 3.2115885416666665
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 0.31732177734375,
+        "y": 1.0122782389322917
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "quay-strip",
+      "source": "../sources/quay-strip.png",
+      "sourceWidth": 887,
+      "sourceHeight": 1774,
+      "sourceSha256": "8f02a7918dc80f7871c459b10fdff02bf2085b967c6ba8d9ca71a5c08b98357b",
+      "output": "public/textures/kit/city/quay-strip.webp",
+      "width": 512,
+      "height": 2048,
+      "bytes": 132218,
+      "sha256": "55c1a3652837d57f04b77ad3decba7f2f778fc3eed6b98f206011bf577580658",
+      "sourceAspect": 0.5,
+      "outputAspect": 0.25,
+      "extract": {
+        "left": 315,
+        "top": 0,
+        "width": 300,
+        "height": 1774
+      },
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.22078990936279297,
+        "partialFraction": 0.7790107727050781,
+        "opaqueFraction": 0.00019931793212890625,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "right": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.005859375
+          },
+          "top": {
+            "min": 0,
+            "max": 255,
+            "mean": 131.6015625
+          },
+          "bottom": {
+            "min": 0,
+            "max": 253,
+            "mean": 140.4375
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.0028569240196077983,
+        "y": 4.273761744281052
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.0976886425143193,
+        "y": 0.7600485409007401
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "harbour-water",
+      "source": "../sources/harbour-water.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "a09bdfdc6033b5781747cb030629ac47a43aa48bebd4773a157625b0bfe4d697",
+      "output": "public/textures/kit/city/harbour-water.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 169140,
+      "sha256": "ab5a968e4dda11abad94f0207a1bc628fec9ff319e5a218c8c4376d7c5fe388a",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "extract": null,
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 254,
+        "transparentFraction": 0.3106536865234375,
+        "partialFraction": 0.6893463134765625,
+        "opaqueFraction": 0,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.076171875
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.00390625
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.03706214256535891,
+        "y": 0.0019046160130718655
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.188301914190114,
+        "y": 2.2629958607792804
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
     }
   ]
 }

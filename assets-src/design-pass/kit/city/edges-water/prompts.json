@@ -20,5 +20,64 @@
       "width": 224,
       "height": 1774
     }
+  },
+  {
+    "name": "canal-water",
+    "width": 1024,
+    "height": 2048,
+    "alpha": false,
+    "source": "../sources/canal-water.png",
+    "folder": "edges-water",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png"
+    ],
+    "prompt": "Use case: stylized-concept. Asset: canal-water, a flat strict orthographic TOP-DOWN game texture for the attached soft painted miniature city. Reference1 is STYLE ONLY. Render only a seamless rectangular strip of calm turquoise water, portrait1:2. The entire rectangle is water, no land, bank, stones, objects, boats, perspective or horizon. Covers3×6 game units. Warm soft gouache style with gentle small pale mint horizontal ripples irregularly spread; medium turquoise center and slightly lighter water towards the left/right edges. Quiet low contrast with a few readable ripples, not realistic ocean and no foam. Both top/bottom cut the same continuous water body; their colors/values and ripple density must match for vertical repeats. No top-bottom gradient, no framing, no text. Opaque. Desired final1024×2048.",
+    "initialPrompt": "Use case: stylized-concept. Asset: canal-water, a flat strict orthographic TOP-DOWN game texture for the attached soft painted miniature city. Reference1 is STYLE ONLY. Render only a seamless rectangular strip of calm turquoise water, portrait1:2. The entire rectangle is water, no land, bank, stones, objects, boats, perspective or horizon. Covers3×6 game units. Warm soft gouache style with gentle small pale mint horizontal ripples irregularly spread; medium turquoise center and slightly lighter water towards the left/right edges. Quiet low contrast with a few readable ripples, not realistic ocean and no foam. Both top/bottom cut the same continuous water body; their colors/values and ripple density must match for vertical repeats. No top-bottom gradient, no framing, no text. Opaque. Desired final1024×2048.",
+    "initialReferences": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png"
+    ],
+    "finalPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-2bc3e678-935f-46c5-a69f-12bd2ba9193f.png"
+  },
+  {
+    "name": "quay-strip",
+    "width": 512,
+    "height": 2048,
+    "alpha": true,
+    "source": "../sources/quay-strip.png",
+    "folder": "edges-water",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/kerb-strip.png"
+    ],
+    "prompt": "Use case: stylized-concept. Asset: quay-strip, a separate top-down stone canal bank for a miniature city. Reference1 style; reference2 pale stone material. Strict orthographic TOP VIEW, isolated single vertical continuous row of large pale limestone rectangular quay coping stones with slight rough texture and softly rounded edges. Native transparent background. The stone row is at x30% through50% of the portrait image; a short translucent grey-teal shadow extends RIGHT to about60%, and all other areas are transparent. The image's LEFT of the stone is land, RIGHT is water, but neither ground nor water is painted: only stones plus their short shadow. The column goes continuously through top/bottom image borders. HALF a block at the top, FIVE complete blocks, HALF a block at bottom; no end caps. Vertical loop matching color and width. A 1.2-wide and6-long strip in game. No perspective, bricks on a tall front-facing wall, grass, dirt, railings, objects, scenery, text. Portrait tall canvas, technical transparent frame will be cropped. Final packaging512×2048. Stone must be wide enough to read as a sturdy quay rather than thin kerb.",
+    "initialPrompt": "Use case: stylized-concept. Asset: quay-strip, a separate top-down stone canal bank for a miniature city. Reference1 style; reference2 pale stone material. Strict orthographic TOP VIEW, isolated single vertical continuous row of large pale limestone rectangular quay coping stones with slight rough texture and softly rounded edges. Native transparent background. The stone row is at x30% through50% of the portrait image; a short translucent grey-teal shadow extends RIGHT to about60%, and all other areas are transparent. The image's LEFT of the stone is land, RIGHT is water, but neither ground nor water is painted: only stones plus their short shadow. The column goes continuously through top/bottom image borders. HALF a block at the top, FIVE complete blocks, HALF a block at bottom; no end caps. Vertical loop matching color and width. A 1.2-wide and6-long strip in game. No perspective, bricks on a tall front-facing wall, grass, dirt, railings, objects, scenery, text. Portrait tall canvas, technical transparent frame will be cropped. Final packaging512×2048. Stone must be wide enough to read as a sturdy quay rather than thin kerb.",
+    "initialReferences": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/kerb-strip.png"
+    ],
+    "finalPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-824aff80-2707-48ad-bba0-3c866e2d92d8.png",
+    "extract": {
+      "left": 315,
+      "top": 0,
+      "width": 300,
+      "height": 1774
+    }
+  },
+  {
+    "name": "harbour-water",
+    "width": 1024,
+    "height": 1024,
+    "alpha": true,
+    "source": "../sources/harbour-water.png",
+    "folder": "edges-water",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png"
+    ],
+    "prompt": "Use case: stylized-concept. Asset: harbour-water for the attached miniature city style. Strict orthographic TOP DOWN view of one perfectly round small body of calm turquoise water isolated on native transparent background. Soft painted gouache, warm gentle light. Water only: no land, stone rim, ground, props, boats, pier, buildings, island, plants, reflection of objects or horizon. The round water disc fills92% of a square canvas, centered. Pale aqua outer ring of gentle ripples just inside the water edge, with small irregular short pale horizontal ripple marks across a calm teal center. Keep its central water light and readable. Outer edge is a narrow soft fade to fully transparent, not a dark outline. The alpha outside the disc is empty. It will be placed as an ellipse10×6 in game; do not pre-squash it. Desired1024-square. No shadow outside the water, no text, no checkerboard painted into pixels.",
+    "initialPrompt": "Use case: stylized-concept. Asset: harbour-water for the attached miniature city style. Strict orthographic TOP DOWN view of one perfectly round small body of calm turquoise water isolated on native transparent background. Soft painted gouache, warm gentle light. Water only: no land, stone rim, ground, props, boats, pier, buildings, island, plants, reflection of objects or horizon. The round water disc fills92% of a square canvas, centered. Pale aqua outer ring of gentle ripples just inside the water edge, with small irregular short pale horizontal ripple marks across a calm teal center. Keep its central water light and readable. Outer edge is a narrow soft fade to fully transparent, not a dark outline. The alpha outside the disc is empty. It will be placed as an ellipse10×6 in game; do not pre-squash it. Desired1024-square. No shadow outside the water, no text, no checkerboard painted into pixels.",
+    "initialReferences": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png"
+    ],
+    "finalPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-191e2d9e-093b-488b-8bae-22de03937b6d.png"
   }
 ]
