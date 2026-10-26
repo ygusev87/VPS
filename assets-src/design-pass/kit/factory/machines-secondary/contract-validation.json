@@ -1,0 +1,30 @@
+{
+  "atUTC": "2026-10-26T16:02:23.428153+00:00",
+  "scope": "Geometry contract documentation only; generated images and original browser QA unchanged",
+  "contractSha256": "ce959bbad8bfd9abef1024011a05aba85e6a19662de6bc343009f98ba19c5ccc",
+  "tests": {
+    "command": "npm test",
+    "exitCode": 0,
+    "files": 17,
+    "tests": 88
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  },
+  "sourceHashesVerified": 5,
+  "conceptHashesUnchanged": 4,
+  "wheelAxisCheck": "THREE.Vector3(0,1,0).applyEuler(Euler(pi/2,0.7,0)) gives cart-local+Z within1e-10. Current animated EulerY is compatible with the documented procedural rest basis.",
+  "actualGLB": "pending",
+  "externalUploads": 0,
+  "externalOrders": 0,
+  "paidAPICalls": 0,
+  "newImageGenerations": 0,
+  "parkEvidence": {
+    "source": "assets-src/design-pass/kit/city/park-main-review/README.md and src/city.ts read-only",
+    "runtimeCommit": "471ac7e",
+    "kitAcceptanceCommit": "b3a02b9",
+    "ownImageChanged": false,
+    "newGameQAClaimed": false
+  }
+}

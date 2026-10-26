@@ -40,7 +40,73 @@
         "■",
         "▶"
       ],
-      "integrationNote": "FACTORY-KIT requires square stop sign; current procedural Reverser draws a red circle. Avoid duplicate painted/runtime marks when integrating."
+      "integrationNote": "FACTORY-KIT requires square stop sign; current procedural Reverser draws a red circle. Avoid duplicate painted/runtime marks when integrating.",
+      "runtimeBaseline": {
+        "bodyBoxSize": [
+          1.5,
+          0.35,
+          1.1
+        ],
+        "bodyCentre": [
+          0,
+          0.335,
+          0
+        ],
+        "bodyYBounds": [
+          0.16,
+          0.51
+        ],
+        "leverPivot": [
+          0,
+          0.51,
+          -0.35
+        ],
+        "leverRotationAxis": "partZ",
+        "leverRestAndEndAnglesRadians": [
+          -0.55,
+          0,
+          0.55
+        ],
+        "paintedRuntimeMarkCentres": [
+          [
+            -0.5,
+            0.52,
+            0.3
+          ],
+          [
+            0,
+            0.52,
+            0.3
+          ],
+          [
+            0.5,
+            0.52,
+            0.3
+          ]
+        ],
+        "hintPoints": [
+          [
+            -0.5,
+            0.56,
+            0.3
+          ],
+          [
+            0,
+            0.56,
+            0.3
+          ],
+          [
+            0.5,
+            0.56,
+            0.3
+          ]
+        ]
+      },
+      "clearanceRequirements": [
+        "FACTORY-KIT target height0.4 would give topY0.56 if based at PLATE_TOP, while current lever pivot isY0.51. Keep mounting bore open and check lever at0/±0.55rad before accepting mesh. Do not silently shift controls.",
+        "Static collar must not collide with stick or knob through the sweep. No exact swept-volume pass is claimed without the GLB.",
+        "Avoid duplicate painted symbols and current emissive runtime markers; integration owns the final mark treatment."
+      ]
     },
     {
       "name": "rail-cart",
@@ -53,9 +119,10 @@
         "wheel-front-left",
         "wheel-front-right",
         "wheel-rear-left",
-        "wheel-rear-right"
+        "wheel-rear-right",
+        "load-coil"
       ],
-      "wheelRotationAxis": "localZ",
+      "wheelRotationAxis": "Physical axle is cart-local Z. Existing procedural wheel geometry uses native Y, rest EulerX=pi/2, and animated EulerY. Choose and document node basis before wiring GLB animation.",
       "currentWheelCentreXZ": [
         [
           -0.4,
@@ -74,14 +141,70 @@
           0.35
         ]
       ],
-      "includedStaticLoad": "one steel coil in cradle",
+      "includedStaticLoad": "Steel coil in a separate hideable load-coil node; stationary relative to wagon while loaded, not fused with chassis.",
       "excluded": [
         "rails",
         "sleepers",
         "buffers",
         "basePlate"
       ],
-      "integrationNote": "Four-wheel geometry and axle clearance must be verified, not inferred from three visible wheels in concept."
+      "integrationNote": "Four-wheel geometry and axle clearance must be verified, not inferred from three visible wheels in concept.",
+      "runtimeBaseline": {
+        "cartRootAtRest": [
+          0,
+          0.16,
+          0
+        ],
+        "travelAxis": "partX",
+        "travelBounds": [
+          -3.6,
+          3.6
+        ],
+        "wheelRadius": 0.15,
+        "wheelWidth": 0.08,
+        "wheelCentresCartLocal": [
+          [
+            -0.4,
+            0.17,
+            -0.35
+          ],
+          [
+            0.4,
+            0.17,
+            -0.35
+          ],
+          [
+            -0.4,
+            0.17,
+            0.35
+          ],
+          [
+            0.4,
+            0.17,
+            0.35
+          ]
+        ],
+        "proceduralWheelRestEulerXYZ": [
+          1.5707963267948966,
+          0,
+          0
+        ],
+        "spinIncrement": "EulerY -= movedX/0.15",
+        "bedAnchorCartLocal": [
+          0,
+          0.72,
+          0
+        ],
+        "cartVerticalBobAmplitude": 0.015
+      },
+      "loadVisibility": {
+        "code": "src/factory.ts updateCart(): cart.bed.visible=cartWasHome",
+        "unloadCondition": "cart.x>3.5 after arriving loaded",
+        "reloadCondition": "cart.x< -3.5",
+        "requiredNode": "load-coil",
+        "requirement": "Attach/reparent separated coil to runtime bed with its transform preserved. Toggle only the load; keep chassis/wheels visible. Existing whole-model coil must not stay baked into chassis."
+      },
+      "normalizationCaution": "Current wheels have minimum cart-localY0.02. model() normalizes complete mesh minY to0; compare fitted wheel centres and rail contact after normalization rather than blindly retaining the raw0.17 pivotY. Exact placement adapter belongs to integration."
     },
     {
       "name": "shaft-motor",
@@ -108,7 +231,51 @@
         "terminals",
         "basePlate"
       ],
-      "integrationNote": "Reference is appearance only. Place bore at contract anchor when producing actual mesh."
+      "integrationNote": "Reference is appearance only. Place bore at contract anchor when producing actual mesh.",
+      "runtimeBaseline": {
+        "bodyBoxSize": [
+          1.1,
+          0.24,
+          0.9
+        ],
+        "bodyCentre": [
+          0,
+          0.28,
+          -0.1
+        ],
+        "bodyYBounds": [
+          0.16,
+          0.4
+        ],
+        "shaftCentre": [
+          0,
+          0.41,
+          -0.35
+        ],
+        "shaftRadius": 0.08,
+        "shaftHeight": 0.5,
+        "shaftYBounds": [
+          0.16,
+          0.66
+        ],
+        "gearAnchor": [
+          0,
+          0.51,
+          -0.35
+        ],
+        "rotatingCollarSize": [
+          0.06,
+          0.04,
+          0.2
+        ],
+        "rotatingCollarCentreY": 0.61,
+        "rotationAxis": "partY"
+      },
+      "clearanceRequirements": [
+        "Keep through-bore open over body height at model-localXZ(0,-0.25) when the body is placed at partZ=-0.1.",
+        "Bore radius must exceed actual shaft radius0.08; recommended modeling allowance radius0.10, subject to actual mesh measurement.",
+        "No static cover in the shaft or rotating-collar volume. Future target body height0.25 differs from current0.24; confirm top/bearing clearance after fitting."
+      ]
     },
     {
       "name": "socket-board",
@@ -130,7 +297,108 @@
         "activeTerminals",
         "basePlate"
       ],
-      "integrationNote": "Socket signs are face texture. Active six-terminal layout stays in runtime code. Verify overall feet bounding box separately."
+      "integrationNote": "Socket signs are face texture. Active six-terminal layout stays in runtime code. Verify overall feet bounding box separately.",
+      "runtimeBaseline": {
+        "panelBoxSize": [
+          2.6,
+          0.9,
+          0.18
+        ],
+        "panelCentre": [
+          0,
+          0.61,
+          -0.75
+        ],
+        "frontFaceZ": -0.66,
+        "frameBoxSize": [
+          2.75,
+          1,
+          0.12
+        ],
+        "frameCentre": [
+          0,
+          0.61,
+          -0.85
+        ],
+        "shapeTerminalXZ": [
+          [
+            -0.6,
+            -0.05
+          ],
+          [
+            -0.6,
+            0.7
+          ],
+          [
+            0.3,
+            -0.05
+          ],
+          [
+            0.3,
+            0.7
+          ],
+          [
+            1.2,
+            -0.05
+          ],
+          [
+            1.2,
+            0.7
+          ]
+        ],
+        "inputTerminalXZ": [
+          [
+            -1.45,
+            0.75
+          ],
+          [
+            -1.45,
+            -0.05
+          ]
+        ]
+      },
+      "clearanceRequirements": [
+        "Keep front(+Z) access to all six shaped terminals and two inputs; painted3signs do not replace electrical terminals.",
+        "FACTORY-KIT target and current fallback dimensions differ. Record panel and overall frame/feet bbox separately; do not normalize whole asset to panel width without measuring feet/frame.",
+        "Keep feet short and behind active terminal rows; actual placement is integration work."
+      ]
     }
-  ]
+  ],
+  "schemaVersion": 2,
+  "coordinateFrames": {
+    "part": "Game part local frame: +X right/travel, +Y up, +Z front/south. All baseline coordinates below include PLATE_TOP where stated.",
+    "modelHelper": "src/parts/assets.ts model(): rotateY, then uniform fit on one chosen axis, then baseY=0 and XZ bbox centre=0. Do not assume fitting width enforces height/depth.",
+    "plateTop": 0.16,
+    "status": "Measured code baseline and proposed GLB requirements, not verified GLB geometry."
+  },
+  "sourceEvidence": [
+    {
+      "path": "src/parts/kit.ts",
+      "sha256": "32edbaa0e6375aea7c96994014cba9e91d7690a1bb2887c32cad3cf9f52b6509"
+    },
+    {
+      "path": "src/parts/workshop.ts",
+      "sha256": "811fa602106278b3eeb179bf379950415ad30c74a08db5972ff5962f08ea84b4"
+    },
+    {
+      "path": "src/parts/assets.ts",
+      "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+    },
+    {
+      "path": "src/factory.ts",
+      "sha256": "7777b5649dbfcbbe142585284d811c9334d3df2109eac293113879c421ea6b29"
+    },
+    {
+      "path": "assets-src/design-pass/kit/FACTORY-KIT.md",
+      "sha256": "2476ab882bdb22cf364677280c0fafd9d5e033a45ac738c3eb8fd4d58e722762"
+    }
+  ],
+  "futureGLBAcceptance": [
+    "Inspect all three fitted bbox dimensions and record actual values against target.",
+    "Record actual nodes, pivot positions, physical spin axes, four wheels and separately hideable load.",
+    "Check empty lever/shaft spaces at runtime poses and terminal access.",
+    "Verify<=4000triangles,1material,WebP512..1024 after optimization; image counts do not prove mesh budgets.",
+    "Re-run game QA390x844/1024x768 and actual iPad render after integration. Current screenshots cover references only."
+  ],
+  "externalGenerationAuthorization": "Pending owner reply in main chat; no upload, order, API use or purchase is authorized by this contract."
 }
