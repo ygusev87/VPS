@@ -1,0 +1,27 @@
+{
+  "date": "2026-10-26",
+  "tool": "built-in image_gen",
+  "higgsfieldCredits": 0,
+  "tripoCredits": 0,
+  "items": [
+    {
+      "id": "pig-mud-v1",
+      "mode": "generate",
+      "prompt": "Use case: stylized-concept. Asset type: production diffuse/albedo ground texture for a premium cozy mobile 3D farm game, NOT a scene or mockup. Make ONE square 1024x1024 fully opaque top-down texture containing the entire muddy surface of a small pig wallow, in a beautiful hand-painted sculpted toy-farm style. Rich warm chocolate and chestnut soil, broad softly modelled churned clay forms with modest tonal variation rather than high-frequency speckle. Exactly three distinct irregular shallow puddles, flat deep muted umber-brown water interiors, softly darker damp rims, a few grouped rounded paired pig hoof impressions in the mud. The puddles and hoof marks are readable at small mobile size but never giant. Place all puddles well inside the central 70% of the square, keep the outer 15% uninterrupted muddy earth. Mud fills every pixel to all four edges: no oval cutout, no grass, no surrounding scene. This single texture will be mapped across one oval area about 11.2 by 6.6 world units, so use irregular organically shaped pools rather than perfect circles. Orthographic overhead, no horizon, uniform neutral ambient illumination. This is BASE COLOR: NO white reflections, NO sky reflections, NO directional sunlight, NO cast shadows, NO specular highlights, NO vignette, no perspective. Subtle painted dimensionality in the dirt only; puddle water should remain darker than surrounding dry mud. Absolutely no pig/animal, no buildings, no vegetation, no road, no border, no symbols, no words, no watermark. High-quality appealing art, soft rounded forms, visually calm game-readable surface.",
+      "source": "sources/pig-mud-v1.png"
+    },
+    {
+      "id": "pig-wetness-v1",
+      "mode": "edit",
+      "prompt": "Use case: precise-object-edit. Convert the supplied mud albedo into a strictly registered technical control-mask image for the same game material. Preserve pixel-exact positions and silhouettes of all THREE puddles and their damp borders. Do not repaint mud, change shape, move or add anything. Output a square opaque control map: pure BLACK (RGB0,0,0) everywhere on dry soil, pure YELLOW (255,255,0) inside the existing dark flat water interiors of all three puddles, pure RED (255,0,0) on a narrow irregular damp soil band following the outside of those same three puddle boundaries. Smooth only a very short transition on those edges; no wide halos. Treat the hoofprints as dry black, no extra wet spots. All blue channel values must be zero. No texture, brushstroke, illumination, noise, shading, white, gray, labels, border or watermark. This is raw channel data: R=wet area including water, G=puddle water only. Absolute priority is exact alignment with the provided albedo's puddle water edges.",
+      "source": "sources/pig-wetness-v1.png",
+      "input": "sources/pig-mud-v1.png"
+    },
+    {
+      "id": "path-earth-v1",
+      "mode": "generate",
+      "prompt": "Use case: stylized-concept. Asset: seamless production albedo texture for the packed-earth footpaths of a premium cozy 3D mobile farm. ONE square texture covering the entire image, exactly orthographic top-down. Warm medium light biscuit-brown and sandy ochre compacted EARTH, gentle broader worn patches, a few sparse flattened small rounded stones embedded in earth, softly modelled clay and shallow natural scuffs. Beautiful painterly toy-farm style, readable at mobile distance. Main earth roughly muted #b58d58, a small range of warmer tan and soft taupe, do NOT make it pale white sand or orange desert. Stones occupy less than 7 percent of the surface, varied naturally, no dense gravel. This is the surface MATERIAL only, NOT a picture of a road. No road silhouette, no borders, no grass edging, no landscape, no rails or wheel ruts, no objects. Seamless tiling in X and Y with consistent color/texture density right up to each edge. Even neutral ambient lighting, no cast shadows, no directional highlights, no vignette, no center glow, no perspective, no text or watermark. Smooth enough to read as traversable packed soil, with tactile hand-painted detail, not a flat fill and not a noisy photograph.",
+      "source": "sources/path-earth-v1.png"
+    }
+  ]
+}

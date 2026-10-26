@@ -1,0 +1,50 @@
+{
+  "status": "candidate-for-integration",
+  "assets": [
+    {
+      "id": "pig-mud",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 125268,
+      "sha256": "7acaad5bd638c192e22b191f7a177c96eef103643ded11459fc036737b37a436",
+      "processing": "Mechanical resize and WebP encoding; no painted or procedural replacement of artwork",
+      "quality": 88
+    },
+    {
+      "id": "path-earth",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 65068,
+      "sha256": "2adaff7a859b56297a89c5dbec1bb67427bf798378f625df424a20d69eedfc62",
+      "processing": "Mechanical resize and WebP encoding; no painted or procedural replacement of artwork",
+      "quality": 90
+    },
+    {
+      "id": "pig-wetness",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 4969,
+      "sha256": "cd0b4538321e21fc28d66288c0889b54f27d2833f109fc4a2445fb61d1893214",
+      "colorSpace": "NoColorSpace/linear data; PNG contains no ICC",
+      "channels": "R damp soil + puddles; G puddle interiors; B zero; G<=R",
+      "wetPixels": 12311,
+      "puddlePixels": 8162,
+      "processing": "Resize generated registered mask; normalize 16..239 to0..255 to remove near-endpoint generator noise; enforce G<=R, B=0; lossless PNG"
+    }
+  ],
+  "totalBytes": 195305
+}

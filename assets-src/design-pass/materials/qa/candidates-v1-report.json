@@ -1,0 +1,39 @@
+{
+  "date": "2026-10-26",
+  "status": "asset-preview-pass-awaiting-game-integration",
+  "viewports": [
+    [
+      1180,
+      820
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "actualCssWidths": [
+    1179,
+    389
+  ],
+  "horizontalOverflow": false,
+  "visualChecks": [
+    "Mud mapped once to11.2x6.6 ellipse, all3 pools readable",
+    "R/G mask visually aligns with existing pool boundaries",
+    "Path repeat3x3 inspected; repeating stone motif remains, use agreed shader anti-repeat"
+  ],
+  "console": [
+    {
+      "level": "error",
+      "message": "MutationObserver.observe parameter1 is not Node",
+      "url": null,
+      "scope": "QA iframe wrapper in IAB; origin unresolved, same signature seen in earlier IAB checks; no MutationObserver in authored HTML"
+    }
+  ],
+  "tests": "21 passed; typecheck passed",
+  "limitations": [
+    "Not yet viewed in game shader",
+    "Not tested on actual iPad/PWA",
+    "No performance claim",
+    "Generated mask alignment is visually checked, not a pixel-exact segmentation guarantee"
+  ]
+}

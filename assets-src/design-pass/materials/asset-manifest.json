@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "request": "m0270",
   "reference": "../variants/farm-a.png",
-  "status": "contract-for-review",
+  "status": "accepted-m0274-in-production",
   "assets": [
     {
       "id": "grass-base",
@@ -51,13 +51,15 @@
       "worldSpan": 3.5,
       "maxKiB": 100,
       "art": "Warm compacted earth; sparse rounded pebbles and shallow wear; no grass frame, directional paired wheel tracks, cracks or white sand.",
-      "status": "planned-not-generated",
+      "status": "candidate-ready-for-integration",
       "candidateFile": "candidates/path-earth-v1.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
       "alpha": "opaque",
       "colorSpace": "sRGB",
-      "generation": "builtin Image"
+      "generation": "builtin Image",
+      "bytes": 65068,
+      "sha256": "2adaff7a859b56297a89c5dbec1bb67427bf798378f625df424a20d69eedfc62"
     },
     {
       "id": "soil-furrows",
@@ -90,13 +92,15 @@
       ],
       "maxKiB": 250,
       "art": "Single top-down wet pig-yard patch: two or three irregular puddles, soft churned edges, sparse grouped hoof prints; no animals, white reflection blobs or baked directional lighting.",
-      "status": "planned-not-generated",
+      "status": "candidate-ready-for-integration",
       "candidateFile": "candidates/pig-mud-v1.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
       "alpha": "opaque",
       "colorSpace": "sRGB",
-      "generation": "builtin Image"
+      "generation": "builtin Image",
+      "bytes": 125268,
+      "sha256": "7acaad5bd638c192e22b191f7a177c96eef103643ded11459fc036737b37a436"
     },
     {
       "id": "pig-wetness",
@@ -111,14 +115,16 @@
       ],
       "maxKiB": 32,
       "art": "Control mask registered to accepted pig-mud image: R wet soil, G puddles, B reserved 0, A opaque. Linear data, no color management.",
-      "status": "planned-not-generated",
+      "status": "candidate-ready-for-integration",
       "candidateFile": "candidates/pig-wetness-v1.png",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
       "alpha": "opaque",
       "colorSpace": "linear-data",
       "generation": "registered mask from approved artwork",
-      "encoding": "lossless PNG"
+      "encoding": "lossless PNG",
+      "bytes": 4969,
+      "sha256": "cd0b4538321e21fc28d66288c0889b54f27d2833f109fc4a2445fb61d1893214"
     }
   ],
   "generationEstimate": {
@@ -128,7 +134,7 @@
     ],
     "higgsfieldCredits": 0,
     "tripoCredits": 0,
-    "actualCallsThisStep": 0
+    "actualCallsThisStep": 3
   },
   "firstPassAdditionalModels": [],
   "payloadTargetKiB": 682,
