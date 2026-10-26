@@ -1,0 +1,142 @@
+{
+  "name": "frog",
+  "sourceSha256": "0b124f9fc107ad7865f9be6a19c5b4b07ad14a1b427dddb22bb8775241483451",
+  "candidateSha256": "380cc5a98dd466dbff9b4ae8a3daccdcb0c8f336934ebfd0e84f21fd396e84cc",
+  "bytes": 56208,
+  "sourceBytes": 508000,
+  "yawDegrees": 90,
+  "forward": "+X",
+  "up": "+Y",
+  "before": {
+    "triangles": 2808,
+    "meshes": 1,
+    "materials": 1,
+    "bounds": {
+      "min": [
+        -0.5,
+        0,
+        -0.464630126953125
+      ],
+      "max": [
+        0.5,
+        0.8333740234375,
+        0.464630126953125
+      ]
+    },
+    "textures": [
+      {
+        "size": [
+          2048,
+          2048
+        ],
+        "mime": "image/jpeg",
+        "bytes": 407738
+      }
+    ],
+    "nodes": [
+      {
+        "name": "tripo_node_efd4db2a-34b2-45f8-913c-405338310203",
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "after": {
+    "triangles": 2808,
+    "meshes": 1,
+    "materials": 1,
+    "bounds": {
+      "min": [
+        -0.46462904751731926,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.46462904751731926,
+        0.8333689382610553,
+        0.5
+      ]
+    },
+    "textures": [
+      {
+        "size": [
+          512,
+          512
+        ],
+        "mime": "image/webp",
+        "bytes": 19810
+      }
+    ],
+    "nodes": [
+      {
+        "name": "body-mesh",
+        "translation": [
+          0,
+          0.41668446913052765,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          0.5,
+          0.5,
+          0.5
+        ]
+      },
+      {
+        "name": "body",
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "pivots": {},
+  "caps": {},
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  }
+}

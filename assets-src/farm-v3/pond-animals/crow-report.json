@@ -1,0 +1,282 @@
+{
+  "name": "crow",
+  "sourceSha256": "e17ad8fe9598fee1274fd57d67c5548fdd840b2a04c543a13a3a9f0443b0eadf",
+  "candidateSha256": "381d8a6f12ef23e58988d5b37dac35760f6644449cad583a4ee5bd7fb095c167",
+  "bytes": 77604,
+  "sourceBytes": 568868,
+  "yawDegrees": 90,
+  "forward": "+X",
+  "up": "+Y",
+  "before": {
+    "triangles": 4814,
+    "meshes": 1,
+    "materials": 1,
+    "bounds": {
+      "min": [
+        -0.5,
+        0,
+        -0.416748046875
+      ],
+      "max": [
+        0.5,
+        0.65081787109375,
+        0.416748046875
+      ]
+    },
+    "textures": [
+      {
+        "size": [
+          2048,
+          2048
+        ],
+        "mime": "image/jpeg",
+        "bytes": 401129
+      }
+    ],
+    "nodes": [
+      {
+        "name": "tripo_node_bb551d14-8b77-437b-93fd-9451ba78a033",
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "after": {
+    "triangles": 5006,
+    "meshes": 3,
+    "materials": 1,
+    "bounds": {
+      "min": [
+        -0.416748046875,
+        0,
+        -0.5000000143051148
+      ],
+      "max": [
+        0.416748046875,
+        0.6508071400675604,
+        0.5000000143051148
+      ]
+    },
+    "textures": [
+      {
+        "size": [
+          512,
+          512
+        ],
+        "mime": "image/webp",
+        "bytes": 14726
+      }
+    ],
+    "nodes": [
+      {
+        "name": "body-mesh",
+        "translation": [
+          0,
+          0.3254035700337802,
+          -0.0006561577320098877
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          0.416748046875,
+          0.416748046875,
+          0.416748046875
+        ]
+      },
+      {
+        "name": "body",
+        "translation": [
+          0,
+          0,
+          0
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "wing-left-mesh",
+        "translation": [
+          -0.0038123242557048798,
+          -0.008585534989833832,
+          0.18000000715255735
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          0.18000000715255737,
+          0.18000000715255737,
+          0.18000000715255737
+        ]
+      },
+      {
+        "name": "wing-left",
+        "translation": [
+          0.13494257441179414,
+          0.3444985929593288,
+          0.14000000000000004
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      },
+      {
+        "name": "wing-right-mesh",
+        "translation": [
+          -0.002065040171146393,
+          -0.0101618692278862,
+          -0.1800000071525574
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          0.18000000715255735,
+          0.18000000715255735,
+          0.18000000715255735
+        ]
+      },
+      {
+        "name": "wing-right",
+        "translation": [
+          0.1330388239517724,
+          0.34732998853111174,
+          -0.13999999999999996
+        ],
+        "rotation": [
+          0,
+          0,
+          0,
+          1
+        ],
+        "scale": [
+          1,
+          1,
+          1
+        ]
+      }
+    ]
+  },
+  "pivots": {
+    "wing-left": [
+      0.13494257441179414,
+      0.3444985929593288,
+      0.14000000000000004
+    ],
+    "wing-right": [
+      0.1330388239517724,
+      0.34732998853111174,
+      -0.13999999999999996
+    ]
+  },
+  "caps": {
+    "body:0.14": {
+      "triangles": 24,
+      "loops": [
+        {
+          "vertices": 26,
+          "center": [
+            0.13494257441179414,
+            0.3445039584724236,
+            0.14000000000000004
+          ]
+        }
+      ]
+    },
+    "body:-0.14": {
+      "triangles": 22,
+      "loops": [
+        {
+          "vertices": 24,
+          "center": [
+            0.1330388239517724,
+            0.34733535404420657,
+            -0.13999999999999996
+          ]
+        }
+      ]
+    },
+    "wing-left:0.14": {
+      "triangles": 24,
+      "loops": [
+        {
+          "vertices": 26,
+          "center": [
+            0.13494257441179414,
+            0.3445039584724236,
+            0.14000000000000004
+          ]
+        }
+      ]
+    },
+    "wing-right:-0.14": {
+      "triangles": 22,
+      "loops": [
+        {
+          "vertices": 24,
+          "center": [
+            0.1330388239517724,
+            0.34733535404420657,
+            -0.13999999999999996
+          ]
+        }
+      ]
+    }
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  }
+}

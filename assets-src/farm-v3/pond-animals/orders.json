@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-26",
+  "provider": "Tripo Studio authenticated browser",
+  "credits": "included subscription credits; no purchases",
+  "totalCost": 50,
+  "balanceBefore": 5700,
+  "balanceAfter": 5650,
+  "commonSettings": {"model":"H3.1 HD", "texture":"2K", "delight":true, "pbr":false, "ultra":false, "aiEnhance":false, "generateParts":false, "topology":"triangles"},
+  "frog": {"taskId":"1bdc7e27-d9c2-44e6-a7ae-e180b45f6201", "image":"references/frog-v1.png", "targetTriangles":3000, "cost":25, "balanceBefore":5700, "balanceAfter":5675},
+  "crow": {"taskId":"c15da2f6-0a43-4f00-a578-20e05c533168", "image":"references/crow-v1.png", "targetTriangles":5000, "cost":25, "balanceBefore":5675, "balanceAfter":5650}
+}

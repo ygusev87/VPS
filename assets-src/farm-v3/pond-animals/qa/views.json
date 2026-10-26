@@ -1,0 +1,1142 @@
+[
+  {
+    "animal": "frog",
+    "view": "three",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "front",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "back",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "top",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "bottom",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "game",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "three",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "front",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "back",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "top",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "bottom",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "game",
+    "screen": {
+      "width": 1180,
+      "height": 660
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      1180,
+      436
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "three",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "front",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "back",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "top",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "bottom",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "frog",
+    "view": "game",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "frog",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 2808,
+    "meshCount": 1,
+    "bounds": {
+      "min": [
+        -0.464629,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.464629,
+        0.833369,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.929258,
+      0.833369,
+      1
+    ],
+    "pivots": {},
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "three",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "front",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "back",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "top",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "bottom",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  },
+  {
+    "animal": "crow",
+    "view": "game",
+    "screen": {
+      "width": 390,
+      "height": 844
+    },
+    "model": "crow",
+    "source": "candidate",
+    "viewport": [
+      390,
+      557
+    ],
+    "triangles": 5006,
+    "meshCount": 3,
+    "bounds": {
+      "min": [
+        -0.416748,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.416748,
+        0.650807,
+        0.5
+      ]
+    },
+    "restSize": [
+      0.833496,
+      0.650807,
+      1
+    ],
+    "pivots": {
+      "wing-left": {
+        "world": [
+          0.134943,
+          0.344499,
+          0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      },
+      "wing-right": {
+        "world": [
+          0.133039,
+          0.34733,
+          -0.14
+        ],
+        "rotation": [
+          0,
+          0,
+          0
+        ]
+      }
+    },
+    "pose": "neutral"
+  }
+]

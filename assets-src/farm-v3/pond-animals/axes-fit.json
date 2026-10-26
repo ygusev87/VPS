@@ -1,0 +1,150 @@
+{
+  "forward": "+X",
+  "up": "+Y",
+  "left": "+Z (anatomical when facing +X)",
+  "bottomY": 0,
+  "sourceSnapshot": {
+    "commit": "328fd1f5e0e0aab661fd42bbd3cbf7cbd9170ef9",
+    "files": {
+      "src/farm.ts": "2b928db7fcf9f56a289e64749abb6a2e17ed74f50f00eee903bf5200884921c6",
+      "src/life.ts": "f9e500bfff8eef1ef878d1599d5bd4808758e946702802b9cb611774d519664d",
+      "src/pest.ts": "0eb1b5f71bfd2c1714266d04f1b8ab0ed540a01a13cbde1d0e343301434b5c9b"
+    }
+  },
+  "frog": {
+    "file": "candidate/frog.glb",
+    "sha256": "380cc5a98dd466dbff9b4ae8a3daccdcb0c8f336934ebfd0e84f21fd396e84cc",
+    "bytes": 56208,
+    "triangles": 2808,
+    "bounds": {
+      "min": [
+        -0.46462904751731926,
+        0,
+        -0.5
+      ],
+      "max": [
+        0.46462904751731926,
+        0.8333689382610553,
+        0.5
+      ]
+    },
+    "size": [
+      0.9292580950346385,
+      0.8333689382610553,
+      1
+    ],
+    "proposedFit": {
+      "height": 0.47,
+      "scale": 0.5639759036144578,
+      "size": [
+        0.52407917383821,
+        0.47,
+        0.5639759036144578
+      ]
+    },
+    "pivots": {},
+    "sourcePreservation": {
+      "sourceVertexSamples": 2028,
+      "candidateVertexSamples": 2028,
+      "maxNearestVertexError": 0.000014333873244728636,
+      "rmsNearestVertexError": 0.000009000558870476275,
+      "note": "Original +90 degree yaw vertices to closest decoded candidate rest vertex; includes small grounding shift. Added cap interiors are not source samples."
+    },
+    "existingPlacement": {
+      "x": -34.6,
+      "z": 8.4,
+      "yaw": -0.6,
+      "source": "src/farm.ts TOYS"
+    },
+    "existingToy": {
+      "height": 0.47,
+      "bodyFootprint": [
+        0.616,
+        0.56
+      ],
+      "padDiameter": 0.9,
+      "jumpLocal": [
+        -2.5,
+        0,
+        0
+      ],
+      "source": "src/life.ts TOY_BUILDERS.frog"
+    }
+  },
+  "crow": {
+    "file": "candidate/crow.glb",
+    "sha256": "381d8a6f12ef23e58988d5b37dac35760f6644449cad583a4ee5bd7fb095c167",
+    "bytes": 77604,
+    "triangles": 5006,
+    "bounds": {
+      "min": [
+        -0.416748046875,
+        0,
+        -0.5000000143051148
+      ],
+      "max": [
+        0.416748046875,
+        0.6508071400675604,
+        0.5000000143051148
+      ]
+    },
+    "size": [
+      0.83349609375,
+      0.6508071400675604,
+      1.0000000286102295
+    ],
+    "proposedFit": {
+      "height": 0.57,
+      "scale": 0.8758355047254525,
+      "size": [
+        0.7300054719562243,
+        0.57,
+        0.8758355297833073
+      ]
+    },
+    "pivots": {
+      "wing-left": [
+        0.13494257441179414,
+        0.3444985929593288,
+        0.14000000000000004
+      ],
+      "wing-right": [
+        0.1330388239517724,
+        0.34732998853111174,
+        -0.13999999999999996
+      ]
+    },
+    "sourcePreservation": {
+      "sourceVertexSamples": 3384,
+      "candidateVertexSamples": 3600,
+      "maxNearestVertexError": 0.00001410299376986421,
+      "rmsNearestVertexError": 0.000007793732048707771,
+      "note": "Original +90 degree yaw vertices to closest decoded candidate rest vertex; includes small grounding shift. Added cap interiors are not source samples."
+    },
+    "wingRotation": {
+      "order": "XYZ",
+      "flapAxis": "local X",
+      "left": "rotation.x = -a",
+      "right": "rotation.x = +a",
+      "testedRadians": [
+        -0.959931,
+        0.959931
+      ],
+      "recommendedFlightAmplitude": 0.75,
+      "fold": {
+        "left": [
+          0.28,
+          -1.05,
+          0
+        ],
+        "right": [
+          -0.28,
+          1.05,
+          0
+        ]
+      },
+      "fullDownstrokeMinimumY": -0.01816,
+      "suggestedFlightClearance": 0.03
+    }
+  }
+}

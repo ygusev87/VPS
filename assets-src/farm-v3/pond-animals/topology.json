@@ -1,0 +1,146 @@
+{
+  "frog": {
+    "sourceParts": {
+      "tripo_node_efd4db2a-34b2-45f8-913c-405338310203": {
+        "epsilon": 0.00003,
+        "triangles": 2808,
+        "vertices": 1399,
+        "components": 1,
+        "boundaryEdges": 2,
+        "boundarySegments": [
+          [
+            [
+              -0.28521728515625,
+              0.09857177734375,
+              0.006976178847253323
+            ],
+            [
+              -0.284912109375,
+              0.098602294921875,
+              0.006129792891442776
+            ]
+          ],
+          [
+            [
+              -0.284820556640625,
+              0.09869384765625,
+              0.005283883772790432
+            ],
+            [
+              -0.284912109375,
+              0.098602294921875,
+              0.006129792891442776
+            ]
+          ]
+        ],
+        "nonManifoldEdges": 11,
+        "degenerateAfterTolerance": 0,
+        "signedVolume": 0.23127532527361921
+      }
+    },
+    "parts": {
+      "body-mesh": {
+        "epsilon": 0.00003,
+        "triangles": 2808,
+        "vertices": 1399,
+        "components": 1,
+        "boundaryEdges": 2,
+        "boundarySegments": [
+          [
+            [
+              0.0069734794087708,
+              0.09857477798749176,
+              0.2852107286453247
+            ],
+            [
+              0.006134220398962498,
+              0.09860529556561676,
+              0.2849055528640747
+            ]
+          ],
+          [
+            [
+              0.0052797021344304085,
+              0.09869684829999176,
+              0.2848140001296997
+            ],
+            [
+              0.006134220398962498,
+              0.09860529556561676,
+              0.2849055528640747
+            ]
+          ]
+        ],
+        "nonManifoldEdges": 11,
+        "degenerateAfterTolerance": 0,
+        "signedVolume": 0.23127224252582843
+      }
+    },
+    "preservation": {
+      "sourceVertexSamples": 2028,
+      "candidateVertexSamples": 2028,
+      "maxNearestVertexError": 0.000014333873244728636,
+      "rmsNearestVertexError": 0.000009000558870476275,
+      "note": "Original +90 degree yaw vertices to closest decoded candidate rest vertex; includes small grounding shift. Added cap interiors are not source samples."
+    },
+    "notes": "Position-only vertex clustering after decoding; epsilon 3e-5 normalized units. Tests edge incidence and components, not self-intersections. Source irregularities are preserved, not claimed as manifold."
+  },
+  "crow": {
+    "sourceParts": {
+      "tripo_node_bb551d14-8b77-437b-93fd-9451ba78a033": {
+        "epsilon": 0.00003,
+        "triangles": 4814,
+        "vertices": 2396,
+        "components": 1,
+        "boundaryEdges": 0,
+        "boundarySegments": [],
+        "nonManifoldEdges": 9,
+        "degenerateAfterTolerance": 0,
+        "signedVolume": 0.03494011786973858
+      }
+    },
+    "parts": {
+      "body-mesh": {
+        "epsilon": 0.00003,
+        "triangles": 3862,
+        "vertices": 1932,
+        "components": 1,
+        "boundaryEdges": 0,
+        "boundarySegments": [],
+        "nonManifoldEdges": 3,
+        "degenerateAfterTolerance": 0,
+        "signedVolume": 0.03049595491125764
+      },
+      "wing-left-mesh": {
+        "epsilon": 0.00003,
+        "triangles": 528,
+        "vertices": 263,
+        "components": 1,
+        "boundaryEdges": 0,
+        "boundarySegments": [],
+        "nonManifoldEdges": 3,
+        "degenerateAfterTolerance": 0,
+        "signedVolume": 0.00221917419648252
+      },
+      "wing-right-mesh": {
+        "epsilon": 0.00003,
+        "triangles": 616,
+        "vertices": 301,
+        "components": 1,
+        "boundaryEdges": 0,
+        "boundarySegments": [],
+        "nonManifoldEdges": 3,
+        "degenerateAfterTolerance": 0,
+        "signedVolume": 0.002224988101617855
+      }
+    },
+    "preservation": {
+      "sourceVertexSamples": 3384,
+      "candidateVertexSamples": 3600,
+      "maxNearestVertexError": 0.00001410299376986421,
+      "rmsNearestVertexError": 0.000007793732048707771,
+      "note": "Original +90 degree yaw vertices to closest decoded candidate rest vertex; includes small grounding shift. Added cap interiors are not source samples."
+    },
+    "notes": "Position-only vertex clustering after decoding; epsilon 3e-5 normalized units. Tests edge incidence and components, not self-intersections. Source irregularities are preserved, not claimed as manifold."
+  }
+}
