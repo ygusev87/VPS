@@ -1,0 +1,92 @@
+[
+  {
+    "name": "tuft-card-a",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-5b67f170-d059-4b99-91bc-5afeef8f2c85.png",
+    "sourcePath": "assets-src/design-pass/kit/farm/sources/tuft-card-a.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-5b67f170-d059-4b99-91bc-5afeef8f2c85.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 958626,
+    "sha256": "dcd1111705e17c03225ded7c985d716e88742644812777b264c356e4aa6074bc"
+  },
+  {
+    "name": "tuft-card-b",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-d6039966-115b-4bc6-a262-782e12269f36.png",
+    "sourcePath": "assets-src/design-pass/kit/farm/sources/tuft-card-b.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-d6039966-115b-4bc6-a262-782e12269f36.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 876487,
+    "sha256": "8b793949809f20335227eb303d1995e3bfac8c0ddd1a8219cebb1194b7641d08"
+  },
+  {
+    "name": "tuft-card-c",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-525216b5-4999-4f6b-bd57-214818b38e1d.png",
+    "sourcePath": "assets-src/design-pass/kit/farm/sources/tuft-card-c.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-525216b5-4999-4f6b-bd57-214818b38e1d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1030641,
+    "sha256": "3867701bedc65acd8a57475826ef0f0d483f8e64271cf87115984c4ffc537a6b"
+  },
+  {
+    "name": "flower-card-a",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-e824d4ac-6a0a-471f-b591-28461b9b0fcb.png",
+    "sourcePath": "assets-src/design-pass/kit/farm/sources/flower-card-a.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-e824d4ac-6a0a-471f-b591-28461b9b0fcb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1080667,
+    "sha256": "7adf8359fb8b76c1fa417e29504177886c900edb10ffcfd9022c2605edf230e0"
+  },
+  {
+    "name": "flower-card-b",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-8aad58c4-2db2-4b1c-9c8e-3b5d192667b8.png",
+    "sourcePath": "assets-src/design-pass/kit/farm/sources/flower-card-b.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-8aad58c4-2db2-4b1c-9c8e-3b5d192667b8.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1228206,
+    "sha256": "7fc6178ca44fb45273d6aae97b9372bb038ce960b50094d5fc43ba4b8e5ab16a"
+  },
+  {
+    "name": "flower-card-c",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-a0861c71-7a06-466e-9ff7-98635239139c.png",
+    "sourcePath": "assets-src/design-pass/kit/farm/sources/flower-card-c.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-a0861c71-7a06-466e-9ff7-98635239139c.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1414822,
+    "sha256": "5133acca4d6c5948554f43f0fa2afad408dbffd0efe48806cc135f9b45405e78"
+  },
+  {
+    "name": "flower-card-d",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-d74cd872-ff5f-48e1-8b49-8a608a7391a3.png",
+    "sourcePath": "assets-src/design-pass/kit/farm/sources/flower-card-d.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-d74cd872-ff5f-48e1-8b49-8a608a7391a3.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1344175,
+    "sha256": "5f5065ddac80f5c3a49d27afd4070f98eff182e61185929b9cd642b430164ccd"
+  },
+  {
+    "name": "shrub-card-a",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-e13520aa-44bf-4c9c-820e-5242535159eb.png",
+    "sourcePath": "assets-src/design-pass/kit/farm/sources/shrub-card-a.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-e13520aa-44bf-4c9c-820e-5242535159eb.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1192031,
+    "sha256": "ee82eec7063fde30f0fdcd9f48ea72d0b0774db7029938e719346b3f01cc26cd"
+  },
+  {
+    "name": "shrub-card-b",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-fd310de3-86b8-4ce3-ae10-d8384f8655b0.png",
+    "sourcePath": "assets-src/design-pass/kit/farm/sources/shrub-card-b.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-fd310de3-86b8-4ce3-ae10-d8384f8655b0.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1047260,
+    "sha256": "8b8d583cea2d9d328d555a0c906f9e7f61f323bfb7edddc2382ec943755aabde"
+  }
+]

@@ -1,0 +1,1191 @@
+{
+  "schemaVersion": 1,
+  "status": "visually reviewed; runtime acceptance pending",
+  "generationCalls": 9,
+  "repeatedGenerations": 0,
+  "artworkEdits": 0,
+  "alphaPolicy": "Native generated alpha retained within a technical rectangular crop; discarded distant residue measured per file. No pixel alpha thresholding, chroma key, repaint, color grading or procedural art. Full originals retained.",
+  "kitJsonOwner": "main; never written here",
+  "totalBytes": 254866,
+  "assets": [
+    {
+      "name": "tuft-card-a",
+      "path": "public/textures/kit/farm/tuft-card-a.webp",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 20184,
+      "sha256": "5e8fe74d5407210818a02427c1c7b5241cbcddd5a0bc4e97d137f3948ff0a283",
+      "source": "assets-src/design-pass/kit/farm/sources/tuft-card-a.png",
+      "sourceSha256": "dcd1111705e17c03225ded7c985d716e88742644812777b264c356e4aa6074bc",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          78,
+          151,
+          1083,
+          968
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 675,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.0000058343137357352,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          252,
+          225
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 31,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.687121,
+        "nearOpaqueFraction": 0.278091,
+        "boundsAnyAlpha": [
+          0,
+          0,
+          1239,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          86,
+          159,
+          1152,
+          1110
+        ],
+        "boundsAlphaAbove128": [
+          87,
+          160,
+          1151,
+          1109
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 1,
+          "bottom": 1
+        },
+        "baseCentroidX": 624.154354,
+        "baseY": 1110,
+        "baseBandPixels": 19
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.579437,
+        "nearOpaqueFraction": 0.352005,
+        "boundsAnyAlpha": [
+          2,
+          31,
+          253,
+          255
+        ],
+        "boundsAlphaAbove16": [
+          4,
+          32,
+          252,
+          254
+        ],
+        "boundsAlphaAbove128": [
+          4,
+          33,
+          251,
+          253
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 3
+        },
+        "baseCentroidX": 129.106298,
+        "baseY": 254,
+        "baseBandPixels": 5
+      },
+      "pivot": {
+        "pixels": [
+          128,
+          254
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Upright fan with two cream daisies; clean transparent silhouette, no cast shadow/base. Grass and flowers readable at48/64px; at32px a small light-green tuft with pale accents.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "tuft-card-b",
+      "path": "public/textures/kit/farm/tuft-card-b.webp",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 19542,
+      "sha256": "af3a85d8566693a3885e20b3c81ffe66a1f42276adadd3f9491f141395dde928",
+      "source": "assets-src/design-pass/kit/farm/sources/tuft-card-b.png",
+      "sourceSha256": "8b793949809f20335227eb303d1995e3bfac8c0ddd1a8219cebb1194b7641d08",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          30,
+          237,
+          1196,
+          797
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 1345,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.000013565074972706969,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          252,
+          167
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 89,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.715108,
+        "nearOpaqueFraction": 0.231758,
+        "boundsAnyAlpha": [
+          0,
+          21,
+          1239,
+          1223
+        ],
+        "boundsAlphaAbove16": [
+          38,
+          245,
+          1217,
+          1025
+        ],
+        "boundsAlphaAbove128": [
+          39,
+          246,
+          1216,
+          1024
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 0,
+          "bottom": 0
+        },
+        "baseCentroidX": 692.202363,
+        "baseY": 1025,
+        "baseBandPixels": 16
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.686142,
+        "nearOpaqueFraction": 0.236938,
+        "boundsAnyAlpha": [
+          2,
+          89,
+          253,
+          255
+        ],
+        "boundsAlphaAbove16": [
+          3,
+          90,
+          252,
+          254
+        ],
+        "boundsAlphaAbove128": [
+          4,
+          91,
+          251,
+          252
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 2
+        },
+        "baseCentroidX": 143.191649,
+        "baseY": 253,
+        "baseBandPixels": 4
+      },
+      "pivot": {
+        "pixels": [
+          128,
+          253
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.988281
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.011719
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Low right-leaning tuft with two yellow flowers; distinct wide silhouette, clean alpha, no base or cast shadow. Yellow accents less separated from grass at32px, still natural meadow filler.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "tuft-card-c",
+      "path": "public/textures/kit/farm/tuft-card-c.webp",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 20446,
+      "sha256": "40d09373ef9d6384f4de7c911c2a588bd2b71a3b6977c0d5d0d320eb2025d243",
+      "source": "assets-src/design-pass/kit/farm/sources/tuft-card-c.png",
+      "sourceSha256": "3867701bedc65acd8a57475826ef0f0d483f8e64271cf87115984c4ffc537a6b",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          77,
+          172,
+          1126,
+          885
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 356,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.000002772376014243783,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          252,
+          198
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 58,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.647443,
+        "nearOpaqueFraction": 0.309836,
+        "boundsAnyAlpha": [
+          41,
+          55,
+          1239,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          85,
+          180,
+          1194,
+          1048
+        ],
+        "boundsAlphaAbove128": [
+          86,
+          181,
+          1193,
+          1047
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 649.71156,
+        "baseY": 1048,
+        "baseBandPixels": 18
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.569214,
+        "nearOpaqueFraction": 0.363266,
+        "boundsAnyAlpha": [
+          2,
+          58,
+          253,
+          255
+        ],
+        "boundsAlphaAbove16": [
+          3,
+          59,
+          251,
+          253
+        ],
+        "boundsAlphaAbove128": [
+          4,
+          60,
+          251,
+          253
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 3
+        },
+        "baseCentroidX": 129.802591,
+        "baseY": 254,
+        "baseBandPixels": 4
+      },
+      "pivot": {
+        "pixels": [
+          128,
+          254
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Fuller left-leaning tuft with two pale pink flowers; clean alpha, no base/shadow. Pink accents subtle at32px; shape remains readable.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "flower-card-a",
+      "path": "public/textures/kit/farm/flower-card-a.webp",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 23556,
+      "sha256": "9976142c95091d7e6f3eee76a81a4f674afc7de17408d3d006f480c00ec3484d",
+      "source": "assets-src/design-pass/kit/farm/sources/flower-card-a.png",
+      "sourceSha256": "7adf8359fb8b76c1fa417e29504177886c900edb10ffcfd9022c2605edf230e0",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          107,
+          237,
+          1053,
+          878
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 129,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 9.292704792358077e-7,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          251,
+          209
+        ],
+        "padding": {
+          "left": 3,
+          "right": 2,
+          "top": 47,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.630032,
+        "nearOpaqueFraction": 0.336433,
+        "boundsAnyAlpha": [
+          0,
+          31,
+          1247,
+          1211
+        ],
+        "boundsAlphaAbove16": [
+          115,
+          245,
+          1151,
+          1106
+        ],
+        "boundsAlphaAbove128": [
+          115,
+          246,
+          1150,
+          1105
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 0,
+          "bottom": 0
+        },
+        "baseCentroidX": 664.828853,
+        "baseY": 1106,
+        "baseBandPixels": 18
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.481003,
+        "nearOpaqueFraction": 0.447098,
+        "boundsAnyAlpha": [
+          3,
+          47,
+          253,
+          255
+        ],
+        "boundsAlphaAbove16": [
+          4,
+          48,
+          251,
+          254
+        ],
+        "boundsAlphaAbove128": [
+          5,
+          49,
+          251,
+          253
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 3
+        },
+        "baseCentroidX": 135.446347,
+        "baseY": 254,
+        "baseBandPixels": 5
+      },
+      "pivot": {
+        "pixels": [
+          128.5,
+          254
+        ],
+        "normalizedTopLeft": [
+          0.501953,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.501953,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Cream-white daisies with golden centres, compact foliage; no matte/halo, soil or external shadow. White flower grouping reads clearly down to32px.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "flower-card-b",
+      "path": "public/textures/kit/farm/flower-card-b.webp",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 24918,
+      "sha256": "69299c8fa521f6ee09b9adaf938e85acf4c37c223e7c6ebbf5f378341bb1f08f",
+      "source": "assets-src/design-pass/kit/farm/sources/flower-card-b.png",
+      "sourceSha256": "7fc6178ca44fb45273d6aae97b9372bb038ce960b50094d5fc43ba4b8e5ab16a",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          83,
+          146,
+          1088,
+          942
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 1568,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.000010136069492892442,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          252,
+          218
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 38,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.584232,
+        "nearOpaqueFraction": 0.373122,
+        "boundsAnyAlpha": [
+          83,
+          0,
+          1239,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          91,
+          154,
+          1162,
+          1079
+        ],
+        "boundsAlphaAbove128": [
+          92,
+          155,
+          1161,
+          1078
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 1,
+          "bottom": 1
+        },
+        "baseCentroidX": 771.047637,
+        "baseY": 1079,
+        "baseBandPixels": 19
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.454498,
+        "nearOpaqueFraction": 0.472092,
+        "boundsAnyAlpha": [
+          2,
+          38,
+          253,
+          255
+        ],
+        "boundsAlphaAbove16": [
+          4,
+          40,
+          252,
+          254
+        ],
+        "boundsAlphaAbove128": [
+          4,
+          40,
+          251,
+          253
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 3
+        },
+        "baseCentroidX": 155.093949,
+        "baseY": 254,
+        "baseBandPixels": 5
+      },
+      "pivot": {
+        "pixels": [
+          128,
+          254
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Yellow flowers and compact foliage; no matte/halo, soil or external shadow. Yellow flower grouping reads clearly down to32px.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "flower-card-c",
+      "path": "public/textures/kit/farm/flower-card-c.webp",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 25012,
+      "sha256": "2e93e9a6985766c69cbc0056b8814ffcd95aa4a01d34c6f5f08d862d5f5411e9",
+      "source": "assets-src/design-pass/kit/farm/sources/flower-card-c.png",
+      "sourceSha256": "5133acca4d6c5948554f43f0fa2afad408dbffd0efe48806cc135f9b45405e78",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          55,
+          95,
+          1155,
+          1047
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 70,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 3.9374090113995077e-7,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          251,
+          228
+        ],
+        "padding": {
+          "left": 2,
+          "right": 3,
+          "top": 28,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.522802,
+        "nearOpaqueFraction": 0.431046,
+        "boundsAnyAlpha": [
+          23,
+          21,
+          1233,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          63,
+          103,
+          1201,
+          1133
+        ],
+        "boundsAlphaAbove128": [
+          64,
+          104,
+          1201,
+          1132
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 684.585348,
+        "baseY": 1133,
+        "baseBandPixels": 21
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.447021,
+        "nearOpaqueFraction": 0.478333,
+        "boundsAnyAlpha": [
+          2,
+          28,
+          252,
+          255
+        ],
+        "boundsAlphaAbove16": [
+          3,
+          29,
+          250,
+          254
+        ],
+        "boundsAlphaAbove128": [
+          3,
+          30,
+          250,
+          253
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 4
+        },
+        "baseCentroidX": 138.212792,
+        "baseY": 254,
+        "baseBandPixels": 5
+      },
+      "pivot": {
+        "pixels": [
+          127,
+          254
+        ],
+        "normalizedTopLeft": [
+          0.496094,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.496094,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Coral-pink open flowers and buds; no matte/halo, soil or external shadow. Colour grouping reads clearly down to32px.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "flower-card-d",
+      "path": "public/textures/kit/farm/flower-card-d.webp",
+      "size": [
+        256,
+        256
+      ],
+      "bytes": 31168,
+      "sha256": "fc5e43ee99a97c6836e6798417acbf92784ee71053b5695cf4a8e2cfdc3832a5",
+      "source": "assets-src/design-pass/kit/farm/sources/flower-card-d.png",
+      "sourceSha256": "5f5065ddac80f5c3a49d27afd4070f98eff182e61185929b9cd642b430164ccd",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          100,
+          173,
+          1064,
+          969
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 1757,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.000011882551802955072,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          252,
+          229
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 27,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.587236,
+        "nearOpaqueFraction": 0.341992,
+        "boundsAnyAlpha": [
+          0,
+          24,
+          1237,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          108,
+          181,
+          1155,
+          1133
+        ],
+        "boundsAlphaAbove128": [
+          109,
+          182,
+          1154,
+          1132
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 410.107378,
+        "baseY": 1133,
+        "baseBandPixels": 20
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.435852,
+        "nearOpaqueFraction": 0.455399,
+        "boundsAnyAlpha": [
+          2,
+          27,
+          253,
+          255
+        ],
+        "boundsAlphaAbove16": [
+          4,
+          28,
+          251,
+          253
+        ],
+        "boundsAlphaAbove128": [
+          4,
+          29,
+          251,
+          252
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 4
+        },
+        "baseCentroidX": 75.73448,
+        "baseY": 253,
+        "baseBandPixels": 5
+      },
+      "pivot": {
+        "pixels": [
+          128,
+          253
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.988281
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.011719
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Cornflower-blue flower group; no matte/halo, soil or external shadow. Blue grouping reads clearly down to32px; fine petal detail intentionally merges at that size.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "shrub-card-a",
+      "path": "public/textures/kit/farm/shrub-card-a.webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 46654,
+      "sha256": "83bd81823523fa856027881a20e9da1ded4a3e59e387235a45fccf4ff6547222",
+      "source": "assets-src/design-pass/kit/farm/sources/shrub-card-a.png",
+      "sourceSha256": "ee82eec7063fde30f0fdcd9f48ea72d0b0774db7029938e719346b3f01cc26cd",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          37,
+          128,
+          1179,
+          977
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 2881,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.00001590680812326293,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          508,
+          420
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 92,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.526701,
+        "nearOpaqueFraction": 0.448114,
+        "boundsAnyAlpha": [
+          0,
+          17,
+          1239,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          45,
+          136,
+          1207,
+          1096
+        ],
+        "boundsAlphaAbove128": [
+          46,
+          137,
+          1206,
+          1095
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 625.705466,
+        "baseY": 1096,
+        "baseBandPixels": 20
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.472908,
+        "nearOpaqueFraction": 0.496857,
+        "boundsAnyAlpha": [
+          3,
+          92,
+          509,
+          510
+        ],
+        "boundsAlphaAbove16": [
+          5,
+          94,
+          506,
+          507
+        ],
+        "boundsAlphaAbove128": [
+          6,
+          95,
+          505,
+          507
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0
+        },
+        "baseCentroidX": 255.975247,
+        "baseY": 508,
+        "baseBandPixels": 9
+      },
+      "pivot": {
+        "pixels": [
+          256,
+          508
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Rounded taller leafy mass, warm olive/lime palette, short base; clean alpha and no soil/cast shadow. Rounded shrub silhouette reads at32/48/64px.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "shrub-card-b",
+      "path": "public/textures/kit/farm/shrub-card-b.webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 43386,
+      "sha256": "66ab7e4156bac18f318ee7427eb592c3bf8b83908954c4379b9b39031b6548c0",
+      "source": "assets-src/design-pass/kit/farm/sources/shrub-card-b.png",
+      "sourceSha256": "8b8d583cea2d9d328d555a0c906f9e7f61f323bfb7edddc2382ec943755aabde",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          46,
+          215,
+          1162,
+          851
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 227,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.0000014774470410247146,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          508,
+          372
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 140,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.599802,
+        "nearOpaqueFraction": 0.37752,
+        "boundsAnyAlpha": [
+          0,
+          148,
+          1217,
+          1233
+        ],
+        "boundsAlphaAbove16": [
+          54,
+          223,
+          1199,
+          1057
+        ],
+        "boundsAlphaAbove128": [
+          55,
+          224,
+          1198,
+          1057
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 0,
+          "bottom": 0
+        },
+        "baseCentroidX": 690.26908,
+        "baseY": 1058,
+        "baseBandPixels": 17
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.539875,
+        "nearOpaqueFraction": 0.431049,
+        "boundsAnyAlpha": [
+          2,
+          141,
+          508,
+          510
+        ],
+        "boundsAlphaAbove16": [
+          5,
+          143,
+          506,
+          508
+        ],
+        "boundsAlphaAbove128": [
+          6,
+          144,
+          505,
+          507
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0
+        },
+        "baseCentroidX": 282.548957,
+        "baseY": 508,
+        "baseBandPixels": 8
+      },
+      "pivot": {
+        "pixels": [
+          256,
+          508
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Lower asymmetric two-lobed shrub with short base, distinct from A; clean alpha, no soil/cast shadow. Silhouette reads at32/48/64px.",
+        "record": "qa-review.json"
+      }
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "intent": "generate",
+  "plannedCalls": 9,
+  "sourceReferencePolicy": "Farm-a, grass-main-a and path-strip-a inspected visually; new-generation calls omit referenced_image_paths as required by tool. Style cues described in each prompt.",
+  "assets": [
+    {
+      "name": "tuft-card-a",
+      "targetSize": [
+        256,
+        256
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: one transparent vegetation sprite for a warm painterly mobile farming game, matched to a cheerful farm with lush yellow-green meadow, clover and sandy ochre paths.\nStyle: softly painted rounded organic forms, warm saturated natural colours, friendly compact shapes, no black outlines. Readable as a SMALL game sprite: broad leaves and clear grouped shapes, restrained detail, no tiny decorative clutter or photoreal microtexture.\nCamera: orthographic 3/4 view from the south, 52 degrees above the horizon, looking DOWN at the plant. Clearly show the TOP surfaces and depth of the leaf clusters; foreshorten the vertical stems. This is an elevated game-camera plant view.\nLighting: soft warm sunlight from the lower-left of the image; softly darker upper-right-facing surfaces, no cast shadow outside the plant.\nComposition: a single complete isolated plant group, square canvas with actual transparent RGBA background. Ground-contact base centered at x=50% very near the bottom edge, all leaves and flowers fully inside the canvas with a small safety margin. No soil disk, ground patch, pot, pedestal, frame, text, watermark, or background; no baked drop shadow. Keep the contact base narrow and unmistakable.\nPalette: meadow yellow-green and warm olive foliage, lime-gold highlights, natural deeper olive in leaf overlaps; no cyan or blue-green foliage.\n\nSubject: A short compact tuft of fresh meadow grass, a few broad curved blades in a rounded fan and exactly two small cream-white daisy flowers with golden centres, low among the leaves. Upright central blades and lower outward side blades. Grass is the main subject.\nFinal in-game asset size: 256 by 256 pixels after technical downsampling; design the silhouette and detail for that scale.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "tuft-card-b",
+      "targetSize": [
+        256,
+        256
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: one transparent vegetation sprite for a warm painterly mobile farming game, matched to a cheerful farm with lush yellow-green meadow, clover and sandy ochre paths.\nStyle: softly painted rounded organic forms, warm saturated natural colours, friendly compact shapes, no black outlines. Readable as a SMALL game sprite: broad leaves and clear grouped shapes, restrained detail, no tiny decorative clutter or photoreal microtexture.\nCamera: orthographic 3/4 view from the south, 52 degrees above the horizon, looking DOWN at the plant. Clearly show the TOP surfaces and depth of the leaf clusters; foreshorten the vertical stems. This is an elevated game-camera plant view.\nLighting: soft warm sunlight from the lower-left of the image; softly darker upper-right-facing surfaces, no cast shadow outside the plant.\nComposition: a single complete isolated plant group, square canvas with actual transparent RGBA background. Ground-contact base centered at x=50% very near the bottom edge, all leaves and flowers fully inside the canvas with a small safety margin. No soil disk, ground patch, pot, pedestal, frame, text, watermark, or background; no baked drop shadow. Keep the contact base narrow and unmistakable.\nPalette: meadow yellow-green and warm olive foliage, lime-gold highlights, natural deeper olive in leaf overlaps; no cyan or blue-green foliage.\n\nSubject: A short low spreading grass tuft with a gentle lean to the right, broad lively yellow-green blades, and exactly two tiny warm-yellow wildflowers nestled among the leaves. Distinct lopsided but balanced silhouette. Grass is the main subject.\nFinal in-game asset size: 256 by 256 pixels after technical downsampling; design the silhouette and detail for that scale.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "tuft-card-c",
+      "targetSize": [
+        256,
+        256
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: one transparent vegetation sprite for a warm painterly mobile farming game, matched to a cheerful farm with lush yellow-green meadow, clover and sandy ochre paths.\nStyle: softly painted rounded organic forms, warm saturated natural colours, friendly compact shapes, no black outlines. Readable as a SMALL game sprite: broad leaves and clear grouped shapes, restrained detail, no tiny decorative clutter or photoreal microtexture.\nCamera: orthographic 3/4 view from the south, 52 degrees above the horizon, looking DOWN at the plant. Clearly show the TOP surfaces and depth of the leaf clusters; foreshorten the vertical stems. This is an elevated game-camera plant view.\nLighting: soft warm sunlight from the lower-left of the image; softly darker upper-right-facing surfaces, no cast shadow outside the plant.\nComposition: a single complete isolated plant group, square canvas with actual transparent RGBA background. Ground-contact base centered at x=50% very near the bottom edge, all leaves and flowers fully inside the canvas with a small safety margin. No soil disk, ground patch, pot, pedestal, frame, text, watermark, or background; no baked drop shadow. Keep the contact base narrow and unmistakable.\nPalette: meadow yellow-green and warm olive foliage, lime-gold highlights, natural deeper olive in leaf overlaps; no cyan or blue-green foliage.\n\nSubject: A compact round grass tuft, fuller on the left, with a few broad overlapping blades and two very small pale pink wildflowers. Short and chunky, a different silhouette from an upright grass fan. Grass is the main subject.\nFinal in-game asset size: 256 by 256 pixels after technical downsampling; design the silhouette and detail for that scale.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "flower-card-a",
+      "targetSize": [
+        256,
+        256
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: one transparent vegetation sprite for a warm painterly mobile farming game, matched to a cheerful farm with lush yellow-green meadow, clover and sandy ochre paths.\nStyle: softly painted rounded organic forms, warm saturated natural colours, friendly compact shapes, no black outlines. Readable as a SMALL game sprite: broad leaves and clear grouped shapes, restrained detail, no tiny decorative clutter or photoreal microtexture.\nCamera: orthographic 3/4 view from the south, 52 degrees above the horizon, looking DOWN at the plant. Clearly show the TOP surfaces and depth of the leaf clusters; foreshorten the vertical stems. This is an elevated game-camera plant view.\nLighting: soft warm sunlight from the lower-left of the image; softly darker upper-right-facing surfaces, no cast shadow outside the plant.\nComposition: a single complete isolated plant group, square canvas with actual transparent RGBA background. Ground-contact base centered at x=50% very near the bottom edge, all leaves and flowers fully inside the canvas with a small safety margin. No soil disk, ground patch, pot, pedestal, frame, text, watermark, or background; no baked drop shadow. Keep the contact base narrow and unmistakable.\nPalette: meadow yellow-green and warm olive foliage, lime-gold highlights, natural deeper olive in leaf overlaps; no cyan or blue-green foliage.\n\nSubject: A small low rounded wildflower clump: five to seven simple cream-white daisies with golden centres above a compact mound of warm green leaves. Clearly visible flower TOPS from the elevated camera. Modest irregular natural spacing, flowers much smaller than the whole clump.\nFinal in-game asset size: 256 by 256 pixels after technical downsampling; design the silhouette and detail for that scale.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "flower-card-b",
+      "targetSize": [
+        256,
+        256
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: one transparent vegetation sprite for a warm painterly mobile farming game, matched to a cheerful farm with lush yellow-green meadow, clover and sandy ochre paths.\nStyle: softly painted rounded organic forms, warm saturated natural colours, friendly compact shapes, no black outlines. Readable as a SMALL game sprite: broad leaves and clear grouped shapes, restrained detail, no tiny decorative clutter or photoreal microtexture.\nCamera: orthographic 3/4 view from the south, 52 degrees above the horizon, looking DOWN at the plant. Clearly show the TOP surfaces and depth of the leaf clusters; foreshorten the vertical stems. This is an elevated game-camera plant view.\nLighting: soft warm sunlight from the lower-left of the image; softly darker upper-right-facing surfaces, no cast shadow outside the plant.\nComposition: a single complete isolated plant group, square canvas with actual transparent RGBA background. Ground-contact base centered at x=50% very near the bottom edge, all leaves and flowers fully inside the canvas with a small safety margin. No soil disk, ground patch, pot, pedestal, frame, text, watermark, or background; no baked drop shadow. Keep the contact base narrow and unmistakable.\nPalette: meadow yellow-green and warm olive foliage, lime-gold highlights, natural deeper olive in leaf overlaps; no cyan or blue-green foliage.\n\nSubject: A small low rounded wildflower clump: five to seven simple buttery yellow flowers with warm golden centres, broad petals and compact warm green foliage. Modest irregular natural spacing and a slightly wider silhouette, clearly seen from above.\nFinal in-game asset size: 256 by 256 pixels after technical downsampling; design the silhouette and detail for that scale.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "flower-card-c",
+      "targetSize": [
+        256,
+        256
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: one transparent vegetation sprite for a warm painterly mobile farming game, matched to a cheerful farm with lush yellow-green meadow, clover and sandy ochre paths.\nStyle: softly painted rounded organic forms, warm saturated natural colours, friendly compact shapes, no black outlines. Readable as a SMALL game sprite: broad leaves and clear grouped shapes, restrained detail, no tiny decorative clutter or photoreal microtexture.\nCamera: orthographic 3/4 view from the south, 52 degrees above the horizon, looking DOWN at the plant. Clearly show the TOP surfaces and depth of the leaf clusters; foreshorten the vertical stems. This is an elevated game-camera plant view.\nLighting: soft warm sunlight from the lower-left of the image; softly darker upper-right-facing surfaces, no cast shadow outside the plant.\nComposition: a single complete isolated plant group, square canvas with actual transparent RGBA background. Ground-contact base centered at x=50% very near the bottom edge, all leaves and flowers fully inside the canvas with a small safety margin. No soil disk, ground patch, pot, pedestal, frame, text, watermark, or background; no baked drop shadow. Keep the contact base narrow and unmistakable.\nPalette: meadow yellow-green and warm olive foliage, lime-gold highlights, natural deeper olive in leaf overlaps; no cyan or blue-green foliage.\n\nSubject: A small low rounded wildflower clump: five to seven simple soft coral-pink field flowers with pale warm centres, nestled into compact warm green foliage. Three-quarter elevated view showing tops of flower faces and leaves, gentle asymmetric grouping.\nFinal in-game asset size: 256 by 256 pixels after technical downsampling; design the silhouette and detail for that scale.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "flower-card-d",
+      "targetSize": [
+        256,
+        256
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: one transparent vegetation sprite for a warm painterly mobile farming game, matched to a cheerful farm with lush yellow-green meadow, clover and sandy ochre paths.\nStyle: softly painted rounded organic forms, warm saturated natural colours, friendly compact shapes, no black outlines. Readable as a SMALL game sprite: broad leaves and clear grouped shapes, restrained detail, no tiny decorative clutter or photoreal microtexture.\nCamera: orthographic 3/4 view from the south, 52 degrees above the horizon, looking DOWN at the plant. Clearly show the TOP surfaces and depth of the leaf clusters; foreshorten the vertical stems. This is an elevated game-camera plant view.\nLighting: soft warm sunlight from the lower-left of the image; softly darker upper-right-facing surfaces, no cast shadow outside the plant.\nComposition: a single complete isolated plant group, square canvas with actual transparent RGBA background. Ground-contact base centered at x=50% very near the bottom edge, all leaves and flowers fully inside the canvas with a small safety margin. No soil disk, ground patch, pot, pedestal, frame, text, watermark, or background; no baked drop shadow. Keep the contact base narrow and unmistakable.\nPalette: meadow yellow-green and warm olive foliage, lime-gold highlights, natural deeper olive in leaf overlaps; no cyan or blue-green foliage.\n\nSubject: A small low rounded wildflower clump: five to seven simple cornflower-blue field flowers, soft blue petals with subtle lavender variation, small warm pale centres, compact warm yellow-green foliage. Gentle natural grouping and clear flower tops viewed from above.\nFinal in-game asset size: 256 by 256 pixels after technical downsampling; design the silhouette and detail for that scale.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "shrub-card-a",
+      "targetSize": [
+        512,
+        512
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: one transparent vegetation sprite for a warm painterly mobile farming game, matched to a cheerful farm with lush yellow-green meadow, clover and sandy ochre paths.\nStyle: softly painted rounded organic forms, warm saturated natural colours, friendly compact shapes, no black outlines. Readable as a SMALL game sprite: broad leaves and clear grouped shapes, restrained detail, no tiny decorative clutter or photoreal microtexture.\nCamera: orthographic 3/4 view from the south, 52 degrees above the horizon, looking DOWN at the plant. Clearly show the TOP surfaces and depth of the leaf clusters; foreshorten the vertical stems. This is an elevated game-camera plant view.\nLighting: soft warm sunlight from the lower-left of the image; softly darker upper-right-facing surfaces, no cast shadow outside the plant.\nComposition: a single complete isolated plant group, square canvas with actual transparent RGBA background. Ground-contact base centered at x=50% very near the bottom edge, all leaves and flowers fully inside the canvas with a small safety margin. No soil disk, ground patch, pot, pedestal, frame, text, watermark, or background; no baked drop shadow. Keep the contact base narrow and unmistakable.\nPalette: meadow yellow-green and warm olive foliage, lime-gold highlights, natural deeper olive in leaf overlaps; no cyan or blue-green foliage.\n\nSubject: One small rounded dense meadow shrub, an almost spherical but naturally uneven cluster of three to five overlapping leafy lobes. Chunky rounded warm olive and yellow-green leaves, broad painted masses with restrained leaf accents, low compact form, just a hint of short stem at its bottom contact point. No flowers, berries, trunk pedestal or ground.\nFinal in-game asset size: 512 by 512 pixels after technical downsampling; design the silhouette and detail for that scale.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "shrub-card-b",
+      "targetSize": [
+        512,
+        512
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: one transparent vegetation sprite for a warm painterly mobile farming game, matched to a cheerful farm with lush yellow-green meadow, clover and sandy ochre paths.\nStyle: softly painted rounded organic forms, warm saturated natural colours, friendly compact shapes, no black outlines. Readable as a SMALL game sprite: broad leaves and clear grouped shapes, restrained detail, no tiny decorative clutter or photoreal microtexture.\nCamera: orthographic 3/4 view from the south, 52 degrees above the horizon, looking DOWN at the plant. Clearly show the TOP surfaces and depth of the leaf clusters; foreshorten the vertical stems. This is an elevated game-camera plant view.\nLighting: soft warm sunlight from the lower-left of the image; softly darker upper-right-facing surfaces, no cast shadow outside the plant.\nComposition: a single complete isolated plant group, square canvas with actual transparent RGBA background. Ground-contact base centered at x=50% very near the bottom edge, all leaves and flowers fully inside the canvas with a small safety margin. No soil disk, ground patch, pot, pedestal, frame, text, watermark, or background; no baked drop shadow. Keep the contact base narrow and unmistakable.\nPalette: meadow yellow-green and warm olive foliage, lime-gold highlights, natural deeper olive in leaf overlaps; no cyan or blue-green foliage.\n\nSubject: One small rounded meadow shrub, a broader low asymmetric silhouette with two main rounded leafy lobes and a small side lobe, distinct from a perfect ball. Chunky yellow-green and warm olive leaves, broad painted masses with restrained leaf accents. Short base centred underneath, no flowers, berries or ground.\nFinal in-game asset size: 512 by 512 pixels after technical downsampling; design the silhouette and detail for that scale.",
+        "transparent_background": true
+      }
+    }
+  ],
+  "references": [
+    {
+      "path": "assets-src/design-pass/variants/farm-a.png",
+      "sha256": "ca3391bcba1eec82614cbda6292e574e9c4737b24c47c5bcb1af62e4bdc6c2c4"
+    },
+    {
+      "path": "public/textures/kit/farm/grass-main-a.webp",
+      "sha256": "a318c1bf8194af9f1bec881e6c5f63a3d5f3b2d253602fc9444ba879ca0ae831"
+    },
+    {
+      "path": "public/textures/kit/farm/path-strip-a.webp",
+      "sha256": "e15fbdcc25555d45560c4d772ae1637ffc3374af0fbbdea12e7d6ec15e9b9571"
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "method": "Nine native in-app-browser screenshots, every final WebP on white, black and actual grass-main-a; large view plus32/48/64CSSpx previews. Rechecked after final technical crop.",
+  "grassBackground": {
+    "path": "public/textures/kit/farm/grass-main-a.webp",
+    "sha256": "a318c1bf8194af9f1bec881e6c5f63a3d5f3b2d253602fc9444ba879ca0ae831"
+  },
+  "readyNames": [
+    "tuft-card-a",
+    "tuft-card-b",
+    "tuft-card-c",
+    "flower-card-a",
+    "flower-card-b",
+    "flower-card-c",
+    "flower-card-d",
+    "shrub-card-a",
+    "shrub-card-b"
+  ],
+  "limitations": [
+    "52-degree elevation is a requested artistic camera cue, not a measured projection guarantee. Final camera/style/scale acceptance belongs to in-game review.",
+    "Pivot is a visible bottom-centre placement anchor; leaves can hide the botanical root. It is not a 3D measured root coordinate.",
+    "Small CSS previews are image-readability checks, not iPad/PWA/FPS or gameplay acceptance."
+  ],
+  "assets": [
+    {
+      "name": "tuft-card-a",
+      "sha256": "5e8fe74d5407210818a02427c1c7b5241cbcddd5a0bc4e97d137f3948ff0a283",
+      "status": "pass",
+      "note": "Upright fan with two cream daisies; clean transparent silhouette, no cast shadow/base. Grass and flowers readable at48/64px; at32px a small light-green tuft with pale accents.",
+      "screenshots": [
+        "qa/tuft-card-a.jpg"
+      ]
+    },
+    {
+      "name": "tuft-card-b",
+      "sha256": "af3a85d8566693a3885e20b3c81ffe66a1f42276adadd3f9491f141395dde928",
+      "status": "pass",
+      "note": "Low right-leaning tuft with two yellow flowers; distinct wide silhouette, clean alpha, no base or cast shadow. Yellow accents less separated from grass at32px, still natural meadow filler.",
+      "screenshots": [
+        "qa/tuft-card-b.jpg"
+      ]
+    },
+    {
+      "name": "tuft-card-c",
+      "sha256": "40d09373ef9d6384f4de7c911c2a588bd2b71a3b6977c0d5d0d320eb2025d243",
+      "status": "pass",
+      "note": "Fuller left-leaning tuft with two pale pink flowers; clean alpha, no base/shadow. Pink accents subtle at32px; shape remains readable.",
+      "screenshots": [
+        "qa/tuft-card-c.jpg"
+      ]
+    },
+    {
+      "name": "flower-card-a",
+      "sha256": "9976142c95091d7e6f3eee76a81a4f674afc7de17408d3d006f480c00ec3484d",
+      "status": "pass",
+      "note": "Cream-white daisies with golden centres, compact foliage; no matte/halo, soil or external shadow. White flower grouping reads clearly down to32px.",
+      "screenshots": [
+        "qa/flower-card-a.jpg"
+      ]
+    },
+    {
+      "name": "flower-card-b",
+      "sha256": "69299c8fa521f6ee09b9adaf938e85acf4c37c223e7c6ebbf5f378341bb1f08f",
+      "status": "pass",
+      "note": "Yellow flowers and compact foliage; no matte/halo, soil or external shadow. Yellow flower grouping reads clearly down to32px.",
+      "screenshots": [
+        "qa/flower-card-b.jpg"
+      ]
+    },
+    {
+      "name": "flower-card-c",
+      "sha256": "2e93e9a6985766c69cbc0056b8814ffcd95aa4a01d34c6f5f08d862d5f5411e9",
+      "status": "pass",
+      "note": "Coral-pink open flowers and buds; no matte/halo, soil or external shadow. Colour grouping reads clearly down to32px.",
+      "screenshots": [
+        "qa/flower-card-c.jpg"
+      ]
+    },
+    {
+      "name": "flower-card-d",
+      "sha256": "fc5e43ee99a97c6836e6798417acbf92784ee71053b5695cf4a8e2cfdc3832a5",
+      "status": "pass",
+      "note": "Cornflower-blue flower group; no matte/halo, soil or external shadow. Blue grouping reads clearly down to32px; fine petal detail intentionally merges at that size.",
+      "screenshots": [
+        "qa/flower-card-d.jpg"
+      ]
+    },
+    {
+      "name": "shrub-card-a",
+      "sha256": "83bd81823523fa856027881a20e9da1ded4a3e59e387235a45fccf4ff6547222",
+      "status": "pass",
+      "note": "Rounded taller leafy mass, warm olive/lime palette, short base; clean alpha and no soil/cast shadow. Rounded shrub silhouette reads at32/48/64px.",
+      "screenshots": [
+        "qa/shrub-card-a.jpg"
+      ]
+    },
+    {
+      "name": "shrub-card-b",
+      "sha256": "66ab7e4156bac18f318ee7427eb592c3bf8b83908954c4379b9b39031b6548c0",
+      "status": "pass",
+      "note": "Lower asymmetric two-lobed shrub with short base, distinct from A; clean alpha, no soil/cast shadow. Silhouette reads at32/48/64px.",
+      "screenshots": [
+        "qa/shrub-card-b.jpg"
+      ]
+    }
+  ]
+}
