@@ -1,0 +1,5 @@
+import http from 'node:http';import {readFile} from 'node:fs/promises';import {fileURLToPath} from 'node:url';import path from 'node:path';
+const here=path.dirname(fileURLToPath(import.meta.url)),root=path.resolve(here,'../../../../..');
+const names=['kerb-strip','paving-main-a','paving-main-c','lawn-main-a'];
+const files=new Map([['/',[path.join(here,'qa.html'),'text/html']],['/index.html',[path.join(here,'qa.html'),'text/html']],['/viewport.html',[path.join(here,'viewport.html'),'text/html']],['/city-a.png',[path.join(root,'assets-src/design-pass/variants/city-a.png'),'image/png']],...names.map(n=>['/textures/'+n+'.webp',[path.join(root,'public/textures/kit/city',n+'.webp'),'image/webp']])]);
+http.createServer(async(req,res)=>{const p=new URL(req.url,'http://localhost').pathname,item=files.get(p);if(!item){res.writeHead(404);res.end();return;}try{res.writeHead(200,{'Content-Type':item[1],'Cache-Control':'no-store'});res.end(await readFile(item[0]));}catch{res.writeHead(500);res.end('Missing review file');}}).listen(Number(process.argv[2]||65496),'127.0.0.1',()=>console.log('Surfaces QA http://127.0.0.1:'+Number(process.argv[2]||65496)+'/viewport.html'));

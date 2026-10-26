@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "main: city edges-water",
+  "images": [
+    {
+      "name": "kerb-strip",
+      "source": "../sources/kerb-strip.png",
+      "sourceWidth": 887,
+      "sourceHeight": 1774,
+      "sourceSha256": "2eadea1b914e95dccb94fc25f94710417c69180f07511be1eaa07733c86d081d",
+      "output": "public/textures/kit/city/kerb-strip.webp",
+      "width": 256,
+      "height": 2048,
+      "bytes": 46436,
+      "sha256": "849ed30e7b918ea6f6c15ca3f2540be820899df512e0f68a62cd8206d3fe6c4b",
+      "sourceAspect": 0.5,
+      "outputAspect": 0.125,
+      "extract": {
+        "left": 350,
+        "top": 0,
+        "width": 224,
+        "height": 1774
+      },
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.333892822265625,
+        "partialFraction": 0.6632347106933594,
+        "opaqueFraction": 0.002872467041015625,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 253,
+            "mean": 131.109375
+          },
+          "bottom": {
+            "min": 0,
+            "max": 254,
+            "mean": 143.5546875
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0,
+        "y": 3.9376480800653546
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 2.133523858762224,
+        "y": 0.7840584150326788
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    }
+  ]
+}

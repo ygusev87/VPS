@@ -1,0 +1,24 @@
+[
+  {
+    "name": "kerb-strip",
+    "width": 256,
+    "height": 2048,
+    "alpha": true,
+    "source": "../sources/kerb-strip.png",
+    "originalPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-db7f51b6-ad84-49d5-9cbf-11d73396301a.png",
+    "finalPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-96d1d639-91c4-45d1-83c5-b8caa12c3b75.png",
+    "folder": "edges-water",
+    "initialPrompt": "Create one isolated production game-texture strip for the LIGHT STONE LAWN KERB in image1 city concept; image2 is the matching approved road curb material. STRICT ORTHOGRAPHIC TOP DOWN, no perspective. Very tall narrow vertical image, target256x2048 (1:8). ONE single continuous column of EIGHT pale warm ivory-beige rectangular kerbstones from top edge to bottom edge, touching both image borders so it repeats vertically. Each block has a softly beveled edge and subtle mottled limestone texture, hand-painted finish matching references. Thin darker joints, not thick black outlines. Stone column centered at x42%, stone occupies x12%-73% of image width. Left outer margin pure transparent, right margin has only a very short soft semitransparent gray contact shadow falling slightly right/up, which fades fully before right edge; no floor, grass, brown dirt, weeds or another row. No bottom cast shadow, no separate isolated pedestal. Strictly identical width from top to bottom, no taper. Top and bottom cut through matching stone surface, not end caps: top and bottom must tile without a gap or dark end border. Mostly even illumination; stone highlight from lower-left. This border will wrap lawn rectangles at world width0.5 and 4-unit vertical period. Exactly one column, no layout sheet, no text, no labels, no watermark, native alpha outside stone/shadow.",
+    "initialReferences": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+    ],
+    "correctionPrompt": "Use case: precise-object-edit. Edit the attached kerb game texture, retaining its warm ivory stone material, strict orthographic top view and native transparency. Fix the vertical repeating seam only: the first and last image rows must cut through the SAME middle of a stone, with the same stone width and shadow profile. Show HALF a stone at the top edge, then SIX complete evenly spaced stones, then HALF a stone at the bottom edge. Never show an end cap at either canvas edge. Keep the column continuously reaching both image edges. Keep straight even stone sides, short soft right-hand shadow, no grass or yellow pixels along the left side. No ground plane. Preserve transparent canvas around the isolated single column. Tall portrait image. The column is narrow, about 12% of image width, centrally aligned; the surrounding transparent frame will be technically cropped later. Do not change the stone style; do not add other objects.",
+    "extract": {
+      "left": 350,
+      "top": 0,
+      "width": 224,
+      "height": 1774
+    }
+  }
+]

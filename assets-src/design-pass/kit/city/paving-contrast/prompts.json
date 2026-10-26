@@ -1,0 +1,18 @@
+[
+  {
+    "name": "paving-main-c",
+    "width": 2048,
+    "height": 2048,
+    "alpha": false,
+    "source": "../sources/paving-main-c.png",
+    "originalPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-4fcfd108-b326-4fb6-a85e-4e4acb75d5ea.png",
+    "finalPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-390d9a30-278d-4c9d-8d2e-6a331b482e38.png",
+    "folder": "paving-contrast",
+    "initialPrompt": "Edit IMAGE1 into a more legible ground texture for the city shown in IMAGE2. Keep exact warm cream-beige limestone material and painterly style, strict orthographic top view. Gameplay issue: at the distant overhead camera the current grid is invisible. Make the square grid VISIBLY STRONGER AND LARGER: use exactly FOUR equal square tiles across and FOUR down across the whole square texture (4x4), instead of8x8, so one tile covers2 world units. Grout is a clean continuous medium warm gray-brown line, dark enough to remain clear at64px display, approximately average RGB145,130,105 against tile-face RGB230,214,181. Joint width about0.8% of full image width, crisp rounded intersections, subtle bevel highlights no more than1pixel beyond joint. No black outlines, no exaggerated relief, no irregular mosaic. Reduce mottling and speckle contrast within each tile so joints are primary detail. Uniform brightness over whole image, no center glow or directional overall shadow. SEAMLESS BOTH AXES: square grid must align exactly at opposite edges; place tile centers at the corners, so boundary cuts through middle of a tile, with grout lines at12.5%,37.5%,62.5%,87.5% along BOTH axes. Pattern period25%, no outer border or edge seam, matching continuation/color/texture at all4edges. Nothing but paving, no objects, cracks, weeds, asphalt, curbs, UI, letters. Opaque square2048x2048. Original A remains preserved, this is an additional stronger-grid variant C.",
+    "initialReferences": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/paving-main-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png"
+    ],
+    "correctionPrompt": "Use case: precise-object-edit. Correct only the grid phase of this warm beige square paving texture to make it wrap in both directions. Keep exactly the same material, colors, grout contrast and size of a full square tile. Move the grid by HALF A TILE in BOTH directions. The output must have FOUR vertical grout lines at x=12.5%,37.5%,62.5%,87.5%, and FOUR horizontal grout lines at y=12.5%,37.5%,62.5%,87.5%. Thus along every outer border are HALF tiles, and the four corners are QUARTER tiles. There are FIVE visible tile columns/rows: half, full, full, full, half. Opposite half tiles must match naturally across the boundary when repeated. No border grout and no frame at the outside edges. Do not keep the current three lines at25%,50%,75%: that creates double-width tiles at repeats. Keep image opaque, strict topdown, square, no perspective, no added objects or gradients. Preserve the bold continuous warm brown grout and warm ivory tile faces."
+  }
+]

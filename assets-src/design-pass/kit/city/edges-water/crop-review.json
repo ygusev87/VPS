@@ -1,0 +1,11 @@
+{
+  "extract": {
+    "left": 350,
+    "top": 0,
+    "width": 224,
+    "height": 1774
+  },
+  "discardedAlphaWeightFraction": 0.000002228770130664844,
+  "maxDiscardedAlpha": 1,
+  "pixelEditing": false
+}

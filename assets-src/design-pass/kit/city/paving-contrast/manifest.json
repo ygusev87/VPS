@@ -1,0 +1,61 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "main: city paving-contrast",
+  "images": [
+    {
+      "name": "paving-main-c",
+      "source": "../sources/paving-main-c.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "fb6283faf48d86ac28a5a53430e15b826908f132425ef466f4c84bb6ec1e320f",
+      "output": "public/textures/kit/city/paving-main-c.webp",
+      "width": 2048,
+      "height": 2048,
+      "bytes": 202658,
+      "sha256": "115c25499b5ab7b5f0643f687515a127994a381e4c66cff35e36cb3e7ec1c458",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "extract": null,
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "transparentFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "edges": {
+          "left": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "right": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "top": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "bottom": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 4.7138671875,
+        "y": 4.586100260416667
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.308258056640625,
+        "y": 1.3689066569010417
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    }
+  ]
+}
