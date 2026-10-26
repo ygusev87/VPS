@@ -73,6 +73,13 @@ export interface GroundPlan {
   saturation?: number;
   /** Which tile paints each part of the ground (the farm's by default; the city has asphalt roads and paved squares). */
   tiles?: Partial<Record<'base' | 'hill' | 'lane' | 'field' | 'mud', Tile>>;
+  /**
+   * The painted look of a mobile farm game (the farm's design target,
+   * assets-src/design-pass/variants/farm-a.png): broad patches in the grass,
+   * paths with soft ragged shoulders and pebbles, wet mud with glossy
+   * puddles, furrows in the beds. Off for the city's asphalt and the factory floor.
+   */
+  painted?: boolean;
 }
 
 /** Mask pixels per world unit: enough for soft lane edges, small enough for any board. */
@@ -97,6 +104,22 @@ function maskTexture(plan: GroundPlan): THREE.CanvasTexture {
   for (const { pts, w } of plan.lanes) {
     g.beginPath();
     pts.forEach(([x, z], i) => (i ? g.lineTo(X(x), Z(z)) : g.moveTo(X(x), Z(z))));
+    if (plan.painted) {
+      // A soft ramp across the edge (1 in the middle, falling off 1.8 units out),
+      // so the shader can let the shoulder wander in and out along the path.
+      for (let k = 6; k >= 1; k--) {
+        g.strokeStyle = `rgb(${Math.round(255 * (0.92 - 0.12 * k))},0,0)`;
+        g.lineWidth = (w + 0.6 * k) * MASK_PX;
+        g.stroke();
+      }
+      g.strokeStyle = 'rgb(235,0,0)';
+      g.lineWidth = w * MASK_PX;
+      g.stroke();
+      g.strokeStyle = 'rgb(255,0,0)';
+      g.lineWidth = Math.max(0.2, w - 0.8) * MASK_PX;
+      g.stroke();
+      continue;
+    }
     g.strokeStyle = 'rgb(90,0,0)';
     g.lineWidth = (w + 0.5) * MASK_PX;
     g.stroke();
@@ -110,11 +133,16 @@ function maskTexture(plan: GroundPlan): THREE.CanvasTexture {
     g.roundRect(X(f.x0), Z(f.z0), (f.x1 - f.x0) * MASK_PX, (f.z1 - f.z0) * MASK_PX, 0.8 * MASK_PX);
     g.fill();
   }
-  g.fillStyle = 'rgb(0,0,255)';
   for (const m of plan.mud) {
-    g.beginPath();
-    g.ellipse(X(m.x), Z(m.z), m.rx * MASK_PX, m.rz * MASK_PX, 0, 0, Math.PI * 2);
-    g.fill();
+    // Painted: a ramp from the middle (1) out past the edge, for a churned ragged rim.
+    const steps = plan.painted ? 7 : 1;
+    for (let k = steps; k >= 1; k--) {
+      const grow = plan.painted ? 1 + (k - 4) * 0.08 : 1;
+      g.fillStyle = `rgb(0,0,${plan.painted ? Math.round(255 * Math.min(1, 1.15 - 0.15 * k)) : 255})`;
+      g.beginPath();
+      g.ellipse(X(m.x), Z(m.z), m.rx * grow * MASK_PX, m.rz * grow * MASK_PX, 0, 0, Math.PI * 2);
+      g.fill();
+    }
   }
   const t = new THREE.CanvasTexture(c);
   t.colorSpace = THREE.NoColorSpace;
@@ -123,9 +151,102 @@ function maskTexture(plan: GroundPlan): THREE.CanvasTexture {
   return t;
 }
 
+/** The ground as it was: tiles blended by the mask, a ragged path edge from the grass tile. */
+const PLAIN = `
+  vec3 col = mix(texture2D(tGrass, p / uScale.x).rgb, texture2D(tHillGrass, p / uScale.x).rgb, hill);
+  col = mix(col, texture2D(tSoil, p / uScale.z).rgb, smoothstep(0.4, 0.6, m.g));
+  col = mix(col, texture2D(tMud, p / uScale.w).rgb, smoothstep(0.35, 0.65, m.b));
+  // A path's edge is ragged where the grass grows into it (the grass tile's own pattern breaks the line).
+  float tuft = texture2D(tGrass, p / 1.7).g - 0.5;
+  float lane = smoothstep(0.45 + tuft * 0.5, 0.85 + tuft * 0.3, m.r);
+  float verge = smoothstep(0.15, 0.45, m.r) * (1.0 - lane);
+  col *= 1.0 - verge * 0.12;
+  col = mix(col, texture2D(tSand, p / uScale.y).rgb, lane);`;
+
+/** Smooth value noise, for patches and edges painted at the scale of the board. */
+const NOISE = `
+float gHash(vec2 q) { return fract(sin(dot(q, vec2(127.1, 311.7))) * 43758.5453); }
+float gNoise(vec2 q) {
+  vec2 i = floor(q);
+  vec2 f = fract(q);
+  vec2 u = f * f * (3.0 - 2.0 * f);
+  return mix(mix(gHash(i), gHash(i + vec2(1.0, 0.0)), u.x), mix(gHash(i + vec2(0.0, 1.0)), gHash(i + vec2(1.0, 1.0)), u.x), u.y);
+}
+float gFbm(vec2 q) { return gNoise(q) * 0.65 + gNoise(q * 2.13 + 7.1) * 0.35; }`;
+
+/**
+ * The painted farm (see GroundPlan.painted): the grass in broad soft patches
+ * of deeper and sunnier green, with the tile sampled twice, turned, so it does
+ * not visibly repeat; paths of warm packed earth with a soft shoulder that
+ * wanders in and out, a darker rim where they meet the grass, and scattered
+ * pebbles; the mud dark and wet towards its middle, with glossy puddles and a
+ * churned edge; the beds furrowed.
+ */
+// Colours in these shaders are linear light (the tiles are decoded from sRGB), not sRGB hex.
+const PAINTED = `
+  // Grass: two samplings, one turned and larger, blended by a slow noise, against the tile's repeat.
+  vec2 pr = mat2(0.8, -0.6, 0.6, 0.8) * p;
+  vec3 g1 = texture2D(tGrass, p / uScale.x).rgb;
+  vec3 g2 = texture2D(tGrass, pr / (uScale.x * 1.7) + 0.37).rgb;
+  float patchy = gFbm(p / 14.0);
+  vec3 grass = mix(g1, g2, smoothstep(0.3, 0.7, gNoise(p / 6.0)));
+  // Broad tonal patches 12-20 units across: deeper green and sunny meadow green.
+  vec3 sunny = texture2D(tHillGrass, p / uScale.x).rgb;
+  grass = mix(grass, sunny, smoothstep(0.5, 0.8, patchy) * 0.8);
+  grass *= mix(0.8, 1.1, smoothstep(0.15, 0.85, gFbm(p / 9.0 + 3.3)));
+  vec3 col = mix(grass, sunny, hill);
+  // Beds: dark loose soil with furrows along their length.
+  float bed = smoothstep(0.4, 0.6, m.g);
+  vec3 soil = texture2D(tSoil, p / uScale.z).rgb;
+  soil *= 0.82 + 0.18 * smoothstep(-0.6, 0.6, sin(p.x * 5.2 + gNoise(p * 1.3) * 1.2));
+  col = mix(col, soil, bed);
+  // Mud: a ragged churned edge, darker and wet towards the middle, puddles that shine.
+  // (The mask ramps from ~0.1 just outside the ellipse to 1 well inside it.)
+  float mudE = m.b + (gNoise(p * 1.4) - 0.5) * 0.36 + (gNoise(p * 4.0) - 0.5) * 0.12;
+  float mud = smoothstep(0.5, 0.62, mudE);
+  float deep = smoothstep(0.7, 1.0, m.b);
+  vec3 muck = texture2D(tMud, p / uScale.w).rgb;
+  // The old mud tile has pale dry patches that repeat: keep it the colour of mud.
+  muck = mix(muck, vec3(0.19, 0.08, 0.03) * (0.85 + gNoise(p * 2.0) * 0.3), smoothstep(0.32, 0.5, dot(muck, vec3(0.333))));
+  muck *= mix(1.0, 0.72, deep);
+  // Puddles: dark brown water, a faint sheen; and darker wet soil round them.
+  float puddleN = gFbm(p / 1.7 + 11.0);
+  float pool = smoothstep(0.6, 0.67, puddleN) * deep;
+  float damp = smoothstep(0.5, 0.62, puddleN) * deep;
+  muck *= 1.0 - damp * 0.18;
+  // (Colours here are linear: #3a2616 for the water, a grey sheen.)
+  muck = mix(muck, vec3(0.042, 0.019, 0.008), pool * 0.9);
+  muck = mix(muck, vec3(0.2, 0.19, 0.18), pool * 0.08);
+  col = mix(col, muck, mud);
+  vWet = mud * mix(deep * 0.35, 0.75, max(pool, damp * 0.4));
+  // Paths: the shoulder wanders in and out, grass tongues reach over it, a darker rim, pebbles.
+  // (The mask ramps across the edge: ~0.92 at the path's width, ~0.2 1.8 units out.)
+  float wander = (gNoise(p / 2.6) - 0.5) * 0.3 + (texture2D(tGrass, p / 1.5).g - 0.5) * 0.2;
+  float edge = 0.8 + wander;
+  // (Never over the mud: a path ends at its rim instead of cutting across it.)
+  float lane = smoothstep(edge - 0.09, edge + 0.07, m.r) * (1.0 - mud);
+  // Trodden grass just outside the edge, darker and a touch yellower.
+  float rim = smoothstep(edge - 0.32, edge - 0.04, m.r) * (1.0 - lane);
+  col = mix(col, col * vec3(0.82, 0.8, 0.62), rim * 0.55);
+  vec3 earth = texture2D(tSand, p / uScale.y).rgb * vec3(0.96, 0.82, 0.64);
+  earth *= mix(0.88, 1.06, gNoise(p / 3.0 + 5.0));
+  // Worn darker towards the shoulders.
+  earth *= mix(0.9, 1.0, smoothstep(edge, 1.0, m.r));
+  // Pebbles: a few small rounded stones per cell, lighter with a soft dark foot.
+  vec2 cell = floor(p * 1.5);
+  vec2 inCell = fract(p * 1.5) - 0.5 - (vec2(gHash(cell), gHash(cell + 3.1)) - 0.5) * 0.5;
+  float here = step(0.84, gHash(cell + 9.7));
+  float rr = 0.05 + gHash(cell + 4.4) * 0.05;
+  float stone = here * (1.0 - smoothstep(rr, rr + 0.03, length(inCell * vec2(1.0, 1.3))));
+  float foot = here * (1.0 - smoothstep(rr + 0.02, rr + 0.09, length((inCell - vec2(0.03, -0.04)) * vec2(1.0, 1.3))));
+  earth *= 1.0 - foot * 0.22;
+  earth = mix(earth, vec3(0.42, 0.33, 0.24) * (0.9 + gHash(cell + 1.7) * 0.25), stone * 0.85);
+  col = mix(col, earth, lane);`;
+
 /** The board's top: tiles blended by the mask, a little less colourful than painted (the day grading adds it back). */
 export function groundMaterial(plan: GroundPlan): THREE.MeshStandardMaterial {
   const mat = new THREE.MeshStandardMaterial({ roughness: 0.92 });
+  const painted = !!plan.painted;
   const t = { base: 'grass', hill: 'grass-light', lane: 'path', field: 'soil', mud: 'mud', ...plan.tiles } as const;
   const uniforms = {
     tGrass: { value: tileTexture(t.base) },
@@ -154,7 +275,9 @@ uniform sampler2D tGrass, tHillGrass, tSand, tSoil, tMud, tMask;
 uniform vec2 uBoard;
 uniform vec4 uHill[4];
 uniform vec4 uScale;
-uniform float uSaturation;`,
+uniform float uSaturation;
+float vWet;
+${painted ? NOISE : ''}`,
       )
       .replace(
         '#include <map_fragment>',
@@ -163,22 +286,23 @@ uniform float uSaturation;`,
   vec4 m = texture2D(tMask, vec2(p.x / uBoard.x + 0.5, 0.5 - p.y / uBoard.y));
   float hill = 0.0;
   for (int i = 0; i < 4; i++) hill = max(hill, 1.0 - smoothstep(0.75, 1.0, length((p - uHill[i].xy) / uHill[i].zw)));
-  vec3 col = mix(texture2D(tGrass, p / uScale.x).rgb, texture2D(tHillGrass, p / uScale.x).rgb, hill);
-  col = mix(col, texture2D(tSoil, p / uScale.z).rgb, smoothstep(0.4, 0.6, m.g));
-  col = mix(col, texture2D(tMud, p / uScale.w).rgb, smoothstep(0.35, 0.65, m.b));
-  // A path's edge is ragged where the grass grows into it (the grass tile's own pattern breaks the line).
-  float tuft = texture2D(tGrass, p / 1.7).g - 0.5;
-  float lane = smoothstep(0.45 + tuft * 0.5, 0.85 + tuft * 0.3, m.r);
-  float verge = smoothstep(0.15, 0.45, m.r) * (1.0 - lane);
-  col *= 1.0 - verge * 0.12;
-  col = mix(col, texture2D(tSand, p / uScale.y).rgb, lane);
+  vWet = 0.0;
+  ${painted ? PAINTED : PLAIN}
   col = max(mix(vec3(dot(col, vec3(0.2126, 0.7152, 0.0722))), col, uSaturation), 0.0);
   diffuseColor.rgb *= col;
 }`,
       );
   };
-  // Every board shares one compiled shader.
-  mat.customProgramCacheKey = () => 'farm-ground';
+  if (painted) {
+    // Wet mud and puddles shine: less rough where vWet is.
+    const prev = mat.onBeforeCompile;
+    mat.onBeforeCompile = (shader, r) => {
+      prev(shader, r);
+      shader.fragmentShader = shader.fragmentShader.replace('#include <roughnessmap_fragment>', '#include <roughnessmap_fragment>\n  roughnessFactor = mix(roughnessFactor, 0.38, vWet);');
+    };
+  }
+  // Boards of a kind share one compiled shader.
+  mat.customProgramCacheKey = () => (painted ? 'farm-ground-painted' : 'farm-ground');
   return mat;
 }
 

@@ -1006,6 +1006,7 @@ function groundPlan(): GroundPlan {
     meadows: MEADOW.slice(1),
     // A bright, juicy farm, like the toy farms of the mobile games.
     saturation: 1,
+    painted: true,
   };
 }
 
