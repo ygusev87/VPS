@@ -1,0 +1,262 @@
+{
+  "date": "2026-10-26",
+  "status": "pass",
+  "generationCalls": 7,
+  "repeatedGenerations": 0,
+  "artworkEdits": 0,
+  "totalBytes": 774204,
+  "tests": {
+    "testFiles": 17,
+    "passed": 88,
+    "failed": 0
+  },
+  "typecheck": {
+    "exitCode": 0
+  },
+  "browserChecks": 14,
+  "consoleErrors": 0,
+  "assets": [
+    {
+      "name": "tree-round-card-a",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 191166,
+      "sha256": "fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e",
+      "sourceSha256": "960730166b368e280f1442e38380c9ab747bc8eaa6948b6ac503a61592f72e92",
+      "hasAlpha": true,
+      "pivot": [
+        0.499912,
+        0.006836
+      ],
+      "browserChecks": 2
+    },
+    {
+      "name": "tree-round-card-b",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 157762,
+      "sha256": "60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e",
+      "sourceSha256": "592fff2a0c193029254eb2ea785c2aef52802414793945cc532eed90f1338eea",
+      "hasAlpha": true,
+      "pivot": [
+        0.499954,
+        0.006836
+      ],
+      "browserChecks": 2
+    },
+    {
+      "name": "tree-round-card-c",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 190946,
+      "sha256": "ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74",
+      "sourceSha256": "f9347d89e0b0a26fe3960c58de0aa258185ca5d1f89db15a3ebc7385ecf17be5",
+      "hasAlpha": true,
+      "pivot": [
+        0.499844,
+        0.006836
+      ],
+      "browserChecks": 2
+    },
+    {
+      "name": "bush-card-a",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 56914,
+      "sha256": "c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834",
+      "sourceSha256": "3baaea3e4fa6b28f4fd929e2d93d2a4c57595426c3933fa32ac3261d637b08c3",
+      "hasAlpha": true,
+      "pivot": [
+        0.5,
+        0.007813
+      ],
+      "browserChecks": 2
+    },
+    {
+      "name": "bush-card-b",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 54026,
+      "sha256": "bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09",
+      "sourceSha256": "b52e704a3a86d387b6b3c0403651bbefd9e2487a6e88696ec8e95e2ba0bfdc84",
+      "hasAlpha": true,
+      "pivot": [
+        0.5,
+        0.007813
+      ],
+      "browserChecks": 2
+    },
+    {
+      "name": "flowerbed-card-a",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 64036,
+      "sha256": "1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f",
+      "sourceSha256": "a1bfb215ec9adf71bca0303340668225462d8ebf405d73edb76f5bbd95876bd7",
+      "hasAlpha": true,
+      "pivot": [
+        0.5,
+        0.007813
+      ],
+      "browserChecks": 2
+    },
+    {
+      "name": "flowerbed-card-b",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 59354,
+      "sha256": "d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65",
+      "sourceSha256": "2be2d945b0b244477a406d738a5e7e0ccc9d0aea67deee446a4d70c6345a2d38",
+      "hasAlpha": true,
+      "pivot": [
+        0.5,
+        0.007813
+      ],
+      "browserChecks": 2
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "qa/all-1024.jpg",
+      "rasterSize": [
+        1024,
+        897
+      ],
+      "sha256": "c0c9adbb7954daaed3d6aeb82a69b7277154d94664c73ca9beabd8d98dfb4e38"
+    },
+    {
+      "path": "qa/all-390.jpg",
+      "rasterSize": [
+        390,
+        1143
+      ],
+      "sha256": "3ee6b551a272242cdd4c01ab1d06bc97cf5144688531b9fd7fa97c92950a0882"
+    },
+    {
+      "path": "qa/bush-card-a-1024.jpg",
+      "rasterSize": [
+        1024,
+        768
+      ],
+      "sha256": "59354c55f98dc103fe4cb5d117bb5c959e14ebdf1d9937d741f03d6892fe58ed"
+    },
+    {
+      "path": "qa/bush-card-a-390.jpg",
+      "rasterSize": [
+        390,
+        1693
+      ],
+      "sha256": "35bd1cdd740cff8b4426401c85eecd627d015343e5b8440bd02046f9d3c7fe16"
+    },
+    {
+      "path": "qa/bush-card-b-1024.jpg",
+      "rasterSize": [
+        1024,
+        768
+      ],
+      "sha256": "7aa024620f4ffc9afc3f968150f0d7778c0419358e16e40a382327721bc0fa08"
+    },
+    {
+      "path": "qa/bush-card-b-390.jpg",
+      "rasterSize": [
+        390,
+        1693
+      ],
+      "sha256": "b4b676a41232fe2b260c362ec931fb906e014f1b423663160f0c9e12dce3c0c9"
+    },
+    {
+      "path": "qa/flowerbed-card-a-1024.jpg",
+      "rasterSize": [
+        1024,
+        768
+      ],
+      "sha256": "bf465eb06c5163084b242f0ad7c6e5b8350dd83abf7fed8b7fccdf2ad96dae71"
+    },
+    {
+      "path": "qa/flowerbed-card-a-390.jpg",
+      "rasterSize": [
+        390,
+        1693
+      ],
+      "sha256": "e3252ad049e69f77387af30c1066a2abf6e321495f5819eb5d1ca0fe94ba8621"
+    },
+    {
+      "path": "qa/flowerbed-card-b-1024.jpg",
+      "rasterSize": [
+        1024,
+        768
+      ],
+      "sha256": "46c54f9646a7cb4895636746fae743c88d6bb5c0063e3c61a247e14968f7fd51"
+    },
+    {
+      "path": "qa/flowerbed-card-b-390.jpg",
+      "rasterSize": [
+        390,
+        1693
+      ],
+      "sha256": "c60735ee227a666dce392a03e5e935a907acbe49a1bab430150ad2005fb8bd60"
+    },
+    {
+      "path": "qa/tree-round-card-a-1024.jpg",
+      "rasterSize": [
+        1024,
+        768
+      ],
+      "sha256": "183a075740945ff12bdbfc993e93ee07414e8c330e96d8520368d9a06fc2b79f"
+    },
+    {
+      "path": "qa/tree-round-card-a-390.jpg",
+      "rasterSize": [
+        390,
+        1693
+      ],
+      "sha256": "03db649a76c364606eca57227e736048ce30936c277e661b84fdc624055b9729"
+    },
+    {
+      "path": "qa/tree-round-card-b-1024.jpg",
+      "rasterSize": [
+        1024,
+        768
+      ],
+      "sha256": "e6f2aa30c34c035c70a4c4ad6f5954facb824780de54ec0b591c23fe55e900c3"
+    },
+    {
+      "path": "qa/tree-round-card-b-390.jpg",
+      "rasterSize": [
+        390,
+        1693
+      ],
+      "sha256": "b15b41d563483241be2d507975cbcb14f0198bad9395fb989ce6060c4a7eab67"
+    },
+    {
+      "path": "qa/tree-round-card-c-1024.jpg",
+      "rasterSize": [
+        1024,
+        768
+      ],
+      "sha256": "d0b36cf677840fcd2cdee7523a342bdaa258718930069c0970450e34d9e1486d"
+    },
+    {
+      "path": "qa/tree-round-card-c-390.jpg",
+      "rasterSize": [
+        390,
+        1693
+      ],
+      "sha256": "c760f566ff6e2f21897c280f1787e9f266d20efba84b74ca27e7503f300073b9"
+    }
+  ]
+}

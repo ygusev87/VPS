@@ -1,0 +1,936 @@
+{
+  "schemaVersion": 1,
+  "status": "visually reviewed; runtime acceptance pending",
+  "generationCalls": 7,
+  "repeatedGenerations": 0,
+  "artworkEdits": 0,
+  "alphaPolicy": "Native generated alpha retained within a technical rectangular crop; discarded distant residue measured per file. No pixel alpha thresholding, chroma key, repaint, color grading or procedural art. Full originals retained.",
+  "kitJsonOwner": "main; never written here",
+  "totalBytes": 774204,
+  "assets": [
+    {
+      "name": "tree-round-card-a",
+      "kind": "tree",
+      "path": "public/textures/kit/city/tree-round-card-a.webp",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 191166,
+      "sha256": "fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e",
+      "source": "assets-src/design-pass/kit/city/sources/tree-round-card-a.png",
+      "sourceSha256": "960730166b368e280f1442e38380c9ab747bc8eaa6948b6ac503a61592f72e92",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          13,
+          14,
+          1232,
+          1235
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 82,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 3.6063487553252413e-7,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          1012,
+          1014
+        ],
+        "padding": {
+          "left": 2,
+          "right": 10,
+          "top": 10,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.404585,
+        "nearOpaqueFraction": 0.553918,
+        "boundsAnyAlpha": [
+          0,
+          8,
+          1239,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          21,
+          22,
+          1236,
+          1240
+        ],
+        "boundsAlphaAbove128": [
+          22,
+          23,
+          1235,
+          1240
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 633.853622,
+        "baseY": 1241,
+        "baseBandPixels": 25
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.397788,
+        "nearOpaqueFraction": 0.560417,
+        "boundsAnyAlpha": [
+          4,
+          13,
+          1009,
+          1023
+        ],
+        "boundsAlphaAbove16": [
+          8,
+          16,
+          1007,
+          1017
+        ],
+        "boundsAlphaAbove128": [
+          9,
+          17,
+          1006,
+          1016
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 511.910307,
+        "baseY": 1017,
+        "baseBandPixels": 20
+      },
+      "pivot": {
+        "pixels": [
+          511.910307,
+          1017
+        ],
+        "normalizedTopLeft": [
+          0.499912,
+          0.993164
+        ],
+        "threeSpriteCenter": [
+          0.499912,
+          0.006836
+        ],
+        "criterion": "X alpha-weighted centroid of lowest visible2% band of trunk/root silhouette; Y immediately below last alpha>128 row."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Rounded broad five-lobe crown with clear short trunk; clean native alpha on white/black/city lawn, no ground shadow; distinctive and readable64/96/128px.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "tree-round-card-b",
+      "kind": "tree",
+      "path": "public/textures/kit/city/tree-round-card-b.webp",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 157762,
+      "sha256": "60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e",
+      "source": "assets-src/design-pass/kit/city/sources/tree-round-card-b.png",
+      "sourceSha256": "592fff2a0c193029254eb2ea785c2aef52802414793945cc532eed90f1338eea",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          159,
+          15,
+          958,
+          1212
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 754,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.000004556966572643674,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          806,
+          1020
+        ],
+        "padding": {
+          "left": 111,
+          "right": 107,
+          "top": 4,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.562375,
+        "nearOpaqueFraction": 0.402101,
+        "boundsAnyAlpha": [
+          0,
+          3,
+          1252,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          167,
+          23,
+          1108,
+          1218
+        ],
+        "boundsAlphaAbove128": [
+          168,
+          23,
+          1107,
+          1218
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 635.544776,
+        "baseY": 1219,
+        "baseBandPixels": 24
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.535919,
+        "nearOpaqueFraction": 0.427041,
+        "boundsAnyAlpha": [
+          112,
+          4,
+          916,
+          1023
+        ],
+        "boundsAlphaAbove16": [
+          118,
+          10,
+          910,
+          1017
+        ],
+        "boundsAlphaAbove128": [
+          118,
+          11,
+          909,
+          1016
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 511.953138,
+        "baseY": 1017,
+        "baseBandPixels": 21
+      },
+      "pivot": {
+        "pixels": [
+          511.953138,
+          1017
+        ],
+        "normalizedTopLeft": [
+          0.499954,
+          0.993164
+        ],
+        "threeSpriteCenter": [
+          0.499954,
+          0.006836
+        ],
+        "criterion": "X alpha-weighted centroid of lowest visible2% band of trunk/root silhouette; Y immediately below last alpha>128 row."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Narrower taller oval/teardrop deciduous crown with visible branch openings; distinct from A/C, clean native alpha, no base shadow, readable64/96/128px.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "tree-round-card-c",
+      "kind": "tree",
+      "path": "public/textures/kit/city/tree-round-card-c.webp",
+      "size": [
+        1024,
+        1024
+      ],
+      "bytes": 190946,
+      "sha256": "ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74",
+      "source": "assets-src/design-pass/kit/city/sources/tree-round-card-c.png",
+      "sourceSha256": "f9347d89e0b0a26fe3960c58de0aa258185ca5d1f89db15a3ebc7385ecf17be5",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          50,
+          48,
+          1168,
+          1151
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 1367,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.000006975501492759871,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          963,
+          949
+        ],
+        "padding": {
+          "left": 2,
+          "right": 59,
+          "top": 75,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.479304,
+        "nearOpaqueFraction": 0.474524,
+        "boundsAnyAlpha": [
+          0,
+          5,
+          1247,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          58,
+          56,
+          1209,
+          1190
+        ],
+        "boundsAlphaAbove128": [
+          59,
+          57,
+          1208,
+          1190
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 668.393993,
+        "baseY": 1191,
+        "baseBandPixels": 23
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.470038,
+        "nearOpaqueFraction": 0.483551,
+        "boundsAnyAlpha": [
+          3,
+          75,
+          964,
+          1023
+        ],
+        "boundsAlphaAbove16": [
+          8,
+          82,
+          958,
+          1017
+        ],
+        "boundsAlphaAbove128": [
+          9,
+          82,
+          957,
+          1016
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 511.840047,
+        "baseY": 1017,
+        "baseBandPixels": 19
+      },
+      "pivot": {
+        "pixels": [
+          511.840047,
+          1017
+        ],
+        "normalizedTopLeft": [
+          0.499844,
+          0.993164
+        ],
+        "threeSpriteCenter": [
+          0.499844,
+          0.006836
+        ],
+        "criterion": "X alpha-weighted centroid of lowest visible2% band of trunk/root silhouette; Y immediately below last alpha>128 row."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Asymmetric rounded canopy with high left mass and lower right shoulder, clear short trunk; clean native alpha and readable64/96/128px.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "bush-card-a",
+      "kind": "bush",
+      "path": "public/textures/kit/city/bush-card-a.webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 56914,
+      "sha256": "c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834",
+      "source": "assets-src/design-pass/kit/city/sources/bush-card-a.png",
+      "sourceSha256": "3baaea3e4fa6b28f4fd929e2d93d2a4c57595426c3933fa32ac3261d637b08c3",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          17,
+          183,
+          1221,
+          893
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 33747,
+          "discardedAlphaMax": 2,
+          "discardedFractionOfTotalAlpha": 0.00018656097701387874,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          507,
+          371
+        ],
+        "padding": {
+          "left": 2,
+          "right": 3,
+          "top": 141,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.502438,
+        "nearOpaqueFraction": 0.442227,
+        "boundsAnyAlpha": [
+          0,
+          0,
+          1250,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          25,
+          191,
+          1229,
+          1067
+        ],
+        "boundsAlphaAbove128": [
+          26,
+          192,
+          1229,
+          1066
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 1,
+          "bottom": 1
+        },
+        "baseCentroidX": 693.508354,
+        "baseY": 1067,
+        "baseBandPixels": 18
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.507374,
+        "nearOpaqueFraction": 0.456776,
+        "boundsAnyAlpha": [
+          2,
+          141,
+          508,
+          511
+        ],
+        "boundsAlphaAbove16": [
+          5,
+          144,
+          505,
+          508
+        ],
+        "boundsAlphaAbove128": [
+          6,
+          145,
+          505,
+          507
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 282.231323,
+        "baseY": 508,
+        "baseBandPixels": 8
+      },
+      "pivot": {
+        "pixels": [
+          256,
+          508
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible alpha>128 silhouette bounds; Y immediately below last visible row. Bottom-centre placement anchor, not hidden botanical root."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Compact three-lobe ornamental shrub, fine oval leaves and continuous low base; no soil or cast shadow, clean alpha, silhouette readable48/64/96px.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "bush-card-b",
+      "kind": "bush",
+      "path": "public/textures/kit/city/bush-card-b.webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 54026,
+      "sha256": "bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09",
+      "source": "assets-src/design-pass/kit/city/sources/bush-card-b.png",
+      "sourceSha256": "b52e704a3a86d387b6b3c0403651bbefd9e2487a6e88696ec8e95e2ba0bfdc84",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          18,
+          242,
+          1228,
+          813
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 6275,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.00004055937735131275,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          508,
+          336
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 176,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.58519,
+        "nearOpaqueFraction": 0.375162,
+        "boundsAnyAlpha": [
+          0,
+          33,
+          1241,
+          1219
+        ],
+        "boundsAlphaAbove16": [
+          26,
+          250,
+          1237,
+          1046
+        ],
+        "boundsAlphaAbove128": [
+          27,
+          251,
+          1236,
+          1045
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 0,
+          "bottom": 0
+        },
+        "baseCentroidX": 528.757454,
+        "baseY": 1046,
+        "baseBandPixels": 16
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.579357,
+        "nearOpaqueFraction": 0.38356,
+        "boundsAnyAlpha": [
+          2,
+          177,
+          508,
+          510
+        ],
+        "boundsAlphaAbove16": [
+          5,
+          179,
+          506,
+          508
+        ],
+        "boundsAlphaAbove128": [
+          6,
+          180,
+          505,
+          507
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0
+        },
+        "baseCentroidX": 220.082374,
+        "baseY": 508,
+        "baseBandPixels": 7
+      },
+      "pivot": {
+        "pixels": [
+          256,
+          508
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible alpha>128 silhouette bounds; Y immediately below last visible row. Bottom-centre placement anchor, not hidden botanical root."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Lower right lobe and fuller left lobe distinguish the second shrub; clean alpha, no baked base, readable48/64/96px.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "flowerbed-card-a",
+      "kind": "flowerbed",
+      "path": "public/textures/kit/city/flowerbed-card-a.webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 64036,
+      "sha256": "1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f",
+      "source": "assets-src/design-pass/kit/city/sources/flowerbed-card-a.png",
+      "sourceSha256": "a1bfb215ec9adf71bca0303340668225462d8ebf405d73edb76f5bbd95876bd7",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          44,
+          193,
+          1195,
+          911
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 2028,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.000011327263751985203,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          508,
+          387
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 125,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.528032,
+        "nearOpaqueFraction": 0.435943,
+        "boundsAnyAlpha": [
+          0,
+          9,
+          1237,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          52,
+          201,
+          1230,
+          1095
+        ],
+        "boundsAlphaAbove128": [
+          53,
+          202,
+          1229,
+          1094
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 799.042668,
+        "baseY": 1095,
+        "baseBandPixels": 18
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.489285,
+        "nearOpaqueFraction": 0.470627,
+        "boundsAnyAlpha": [
+          3,
+          126,
+          509,
+          510
+        ],
+        "boundsAlphaAbove16": [
+          5,
+          128,
+          506,
+          508
+        ],
+        "boundsAlphaAbove128": [
+          6,
+          129,
+          505,
+          507
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0
+        },
+        "baseCentroidX": 322.463512,
+        "baseY": 508,
+        "baseBandPixels": 8
+      },
+      "pivot": {
+        "pixels": [
+          256,
+          508
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible alpha>128 silhouette bounds; Y immediately below last visible row. Bottom-centre placement anchor, not hidden botanical root."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Coral-pink and cream flowers in a compact foliage mound; flowers remain identifiable32/48/64px, clean alpha without soil/edging/shadow.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "flowerbed-card-b",
+      "kind": "flowerbed",
+      "path": "public/textures/kit/city/flowerbed-card-b.webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 59354,
+      "sha256": "d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65",
+      "source": "assets-src/design-pass/kit/city/sources/flowerbed-card-b.png",
+      "sourceSha256": "2be2d945b0b244477a406d738a5e7e0ccc9d0aea67deee446a4d70c6345a2d38",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          10,
+          217,
+          1244,
+          859
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 3576,
+          "discardedAlphaMax": 1,
+          "discardedFractionOfTotalAlpha": 0.000021399828360929217,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          507,
+          350
+        ],
+        "padding": {
+          "left": 2,
+          "right": 3,
+          "top": 162,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.559406,
+        "nearOpaqueFraction": 0.406112,
+        "boundsAnyAlpha": [
+          0,
+          33,
+          1253,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          18,
+          225,
+          1248,
+          1067
+        ],
+        "boundsAlphaAbove128": [
+          18,
+          226,
+          1247,
+          1066
+        ],
+        "edgeMax": {
+          "left": 1,
+          "right": 3,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 569.77798,
+        "baseY": 1067,
+        "baseBandPixels": 17
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.562389,
+        "nearOpaqueFraction": 0.402515,
+        "boundsAnyAlpha": [
+          3,
+          163,
+          508,
+          511
+        ],
+        "boundsAlphaAbove16": [
+          5,
+          165,
+          506,
+          508
+        ],
+        "boundsAlphaAbove128": [
+          5,
+          166,
+          506,
+          507
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 229.983022,
+        "baseY": 508,
+        "baseBandPixels": 7
+      },
+      "pivot": {
+        "pixels": [
+          256,
+          508
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible alpha>128 silhouette bounds; Y immediately below last visible row. Bottom-centre placement anchor, not hidden botanical root."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Yellow/cream flowers with restrained lavender accents, distinguishable from A even at32px; no soil/planter/shadow and clean alpha.",
+        "record": "qa-review.json"
+      }
+    }
+  ]
+}

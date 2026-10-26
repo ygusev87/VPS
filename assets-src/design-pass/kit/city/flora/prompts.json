@@ -1,0 +1,119 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "intent": "generate",
+  "plannedCalls": 7,
+  "sourceReferencePolicy": "city-a and accepted farm tree-oak-card-a, bush-card-a, flower-card-c were inspected visually. New-generation calls omit referenced image paths; style cues are described in each prompt.",
+  "assets": [
+    {
+      "name": "tree-round-card-a",
+      "kind": "tree",
+      "targetSize": [
+        1024,
+        1024
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a finished isolated transparent plant sprite for a warm colourful mobile town game, not a scene or photograph.\nStyle: painterly toy-town art with rounded soft volumes, many small rounded oval leaves grouped into soft green lobes, gentle highlights, warm yellow-green lit areas and natural deep green shading. Match cheerful cream-and-colour town buildings and the hand-painted leafy oak/bush sprite family. No black outlines, photoreal noise or plastic gloss.\nCamera: orthographic three-quarter game view from above, approximately52 degrees elevation, showing top and front surfaces; not a flat side elevation and not straight top-down.\nLight: soft diffuse sunlight from scene lower-left/southwest; softly modelled foliage only. Absolutely no cast shadow, ambient shadow puddle, ground contact shadow or baked backdrop.\nComposition: one complete plant asset, centred with its ground-contact base horizontally centred near the bottom. All leaves and tips fully inside the square with a small transparent margin; no clipping. Natural visible silhouette and genuine transparent alpha around and between foliage gaps, not a checkerboard, solid background or colour key.\nNo ground plane, earth disk, turf mat, pot, planter, stone edging, surrounding scenery, detached floating leaves, text, logo, watermark or frame. No extra objects.\n\nSubject: One compact urban deciduous tree with a large nearly spherical crown of five or six softly overlapping rounded leaf masses and a short visible warm brown trunk. Balanced full rounded canopy, cheerful bright fresh green. The trunk has a subtle fork visible just below the crown, its base centred. Neat park/street tree, not a wild sprawling oak, no fruit or flowers.\nProduce one square finished sprite, requested resolution1024x1024, with actual transparent background.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "tree-round-card-b",
+      "kind": "tree",
+      "targetSize": [
+        1024,
+        1024
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a finished isolated transparent plant sprite for a warm colourful mobile town game, not a scene or photograph.\nStyle: painterly toy-town art with rounded soft volumes, many small rounded oval leaves grouped into soft green lobes, gentle highlights, warm yellow-green lit areas and natural deep green shading. Match cheerful cream-and-colour town buildings and the hand-painted leafy oak/bush sprite family. No black outlines, photoreal noise or plastic gloss.\nCamera: orthographic three-quarter game view from above, approximately52 degrees elevation, showing top and front surfaces; not a flat side elevation and not straight top-down.\nLight: soft diffuse sunlight from scene lower-left/southwest; softly modelled foliage only. Absolutely no cast shadow, ambient shadow puddle, ground contact shadow or baked backdrop.\nComposition: one complete plant asset, centred with its ground-contact base horizontally centred near the bottom. All leaves and tips fully inside the square with a small transparent margin; no clipping. Natural visible silhouette and genuine transparent alpha around and between foliage gaps, not a checkerboard, solid background or colour key.\nNo ground plane, earth disk, turf mat, pot, planter, stone edging, surrounding scenery, detached floating leaves, text, logo, watermark or frame. No extra objects.\n\nSubject: A second compact urban deciduous tree: slightly taller egg-shaped rounded canopy with a softly rounded top, narrower shoulders than variant A, lush warm green leaves. A short visible straight warm brown trunk has two modest branch forks under the foliage; ground contact centred. Tidy natural street tree, not conifer or geometric clipped topiary. Distinct silhouette while keeping the same leaf scale and art style.\nProduce one square finished sprite, requested resolution1024x1024, with actual transparent background.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "tree-round-card-c",
+      "kind": "tree",
+      "targetSize": [
+        1024,
+        1024
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a finished isolated transparent plant sprite for a warm colourful mobile town game, not a scene or photograph.\nStyle: painterly toy-town art with rounded soft volumes, many small rounded oval leaves grouped into soft green lobes, gentle highlights, warm yellow-green lit areas and natural deep green shading. Match cheerful cream-and-colour town buildings and the hand-painted leafy oak/bush sprite family. No black outlines, photoreal noise or plastic gloss.\nCamera: orthographic three-quarter game view from above, approximately52 degrees elevation, showing top and front surfaces; not a flat side elevation and not straight top-down.\nLight: soft diffuse sunlight from scene lower-left/southwest; softly modelled foliage only. Absolutely no cast shadow, ambient shadow puddle, ground contact shadow or baked backdrop.\nComposition: one complete plant asset, centred with its ground-contact base horizontally centred near the bottom. All leaves and tips fully inside the square with a small transparent margin; no clipping. Natural visible silhouette and genuine transparent alpha around and between foliage gaps, not a checkerboard, solid background or colour key.\nNo ground plane, earth disk, turf mat, pot, planter, stone edging, surrounding scenery, detached floating leaves, text, logo, watermark or frame. No extra objects.\n\nSubject: A third compact urban deciduous tree: broad rounded canopy with a larger left crown lobe and a smaller right shoulder, subtly asymmetrical but balanced above a short visible warm brown trunk at bottom centre. Natural dense fine oval leaves, fresh medium green and yellow-green highlights; no fruit or flowers. A distinct compact park tree silhouette in the same family, no tall bare branches.\nProduce one square finished sprite, requested resolution1024x1024, with actual transparent background.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "bush-card-a",
+      "kind": "bush",
+      "targetSize": [
+        512,
+        512
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a finished isolated transparent plant sprite for a warm colourful mobile town game, not a scene or photograph.\nStyle: painterly toy-town art with rounded soft volumes, many small rounded oval leaves grouped into soft green lobes, gentle highlights, warm yellow-green lit areas and natural deep green shading. Match cheerful cream-and-colour town buildings and the hand-painted leafy oak/bush sprite family. No black outlines, photoreal noise or plastic gloss.\nCamera: orthographic three-quarter game view from above, approximately52 degrees elevation, showing top and front surfaces; not a flat side elevation and not straight top-down.\nLight: soft diffuse sunlight from scene lower-left/southwest; softly modelled foliage only. Absolutely no cast shadow, ambient shadow puddle, ground contact shadow or baked backdrop.\nComposition: one complete plant asset, centred with its ground-contact base horizontally centred near the bottom. All leaves and tips fully inside the square with a small transparent margin; no clipping. Natural visible silhouette and genuine transparent alpha around and between foliage gaps, not a checkerboard, solid background or colour key.\nNo ground plane, earth disk, turf mat, pot, planter, stone edging, surrounding scenery, detached floating leaves, text, logo, watermark or frame. No extra objects.\n\nSubject: One low dense rounded ornamental city shrub, a compact near-hemispherical green mound with three softly merging lobes, many small oval leaves and subtle layered foliage. Broad but tidy silhouette, a little higher at the centre, planted contact along a short horizontal base. No visible long trunk, flowers or berries. More compact and manicured than a wild forest-edge bush, still natural.\nProduce one square finished sprite, requested resolution512x512, with actual transparent background.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "bush-card-b",
+      "kind": "bush",
+      "targetSize": [
+        512,
+        512
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a finished isolated transparent plant sprite for a warm colourful mobile town game, not a scene or photograph.\nStyle: painterly toy-town art with rounded soft volumes, many small rounded oval leaves grouped into soft green lobes, gentle highlights, warm yellow-green lit areas and natural deep green shading. Match cheerful cream-and-colour town buildings and the hand-painted leafy oak/bush sprite family. No black outlines, photoreal noise or plastic gloss.\nCamera: orthographic three-quarter game view from above, approximately52 degrees elevation, showing top and front surfaces; not a flat side elevation and not straight top-down.\nLight: soft diffuse sunlight from scene lower-left/southwest; softly modelled foliage only. Absolutely no cast shadow, ambient shadow puddle, ground contact shadow or baked backdrop.\nComposition: one complete plant asset, centred with its ground-contact base horizontally centred near the bottom. All leaves and tips fully inside the square with a small transparent margin; no clipping. Natural visible silhouette and genuine transparent alpha around and between foliage gaps, not a checkerboard, solid background or colour key.\nNo ground plane, earth disk, turf mat, pot, planter, stone edging, surrounding scenery, detached floating leaves, text, logo, watermark or frame. No extra objects.\n\nSubject: One low broad ornamental city shrub in the same family, slightly asymmetric two-mound shape: fuller rounded left lobe, lower right lobe, joined continuous leafy base. Fine small rounded oval leaves, a slightly deeper natural green than variant A, soft yellow-green highlights. Compact tidy volume, not a long hedge or huge individual leaves. No flowers, berries or long visible trunk.\nProduce one square finished sprite, requested resolution512x512, with actual transparent background.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "flowerbed-card-a",
+      "kind": "flowerbed",
+      "targetSize": [
+        512,
+        512
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a finished isolated transparent plant sprite for a warm colourful mobile town game, not a scene or photograph.\nStyle: painterly toy-town art with rounded soft volumes, many small rounded oval leaves grouped into soft green lobes, gentle highlights, warm yellow-green lit areas and natural deep green shading. Match cheerful cream-and-colour town buildings and the hand-painted leafy oak/bush sprite family. No black outlines, photoreal noise or plastic gloss.\nCamera: orthographic three-quarter game view from above, approximately52 degrees elevation, showing top and front surfaces; not a flat side elevation and not straight top-down.\nLight: soft diffuse sunlight from scene lower-left/southwest; softly modelled foliage only. Absolutely no cast shadow, ambient shadow puddle, ground contact shadow or baked backdrop.\nComposition: one complete plant asset, centred with its ground-contact base horizontally centred near the bottom. All leaves and tips fully inside the square with a small transparent margin; no clipping. Natural visible silhouette and genuine transparent alpha around and between foliage gaps, not a checkerboard, solid background or colour key.\nNo ground plane, earth disk, turf mat, pot, planter, stone edging, surrounding scenery, detached floating leaves, text, logo, watermark or frame. No extra objects.\n\nSubject: One complete low rounded cluster of flowering plants for an urban flowerbed: dense small green leaves with seven to ten small cheerful coral-pink and pale cream five-petal flowers with warm yellow centres, a few buds. Flowers form a broad compact dome with varying heights and a slight raised centre. Short stems mostly hidden by foliage. The asset includes only plants, no soil/base/edging; a small integrated planting cluster, not one oversized bouquet or a single giant flower.\nProduce one square finished sprite, requested resolution512x512, with actual transparent background.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "flowerbed-card-b",
+      "kind": "flowerbed",
+      "targetSize": [
+        512,
+        512
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a finished isolated transparent plant sprite for a warm colourful mobile town game, not a scene or photograph.\nStyle: painterly toy-town art with rounded soft volumes, many small rounded oval leaves grouped into soft green lobes, gentle highlights, warm yellow-green lit areas and natural deep green shading. Match cheerful cream-and-colour town buildings and the hand-painted leafy oak/bush sprite family. No black outlines, photoreal noise or plastic gloss.\nCamera: orthographic three-quarter game view from above, approximately52 degrees elevation, showing top and front surfaces; not a flat side elevation and not straight top-down.\nLight: soft diffuse sunlight from scene lower-left/southwest; softly modelled foliage only. Absolutely no cast shadow, ambient shadow puddle, ground contact shadow or baked backdrop.\nComposition: one complete plant asset, centred with its ground-contact base horizontally centred near the bottom. All leaves and tips fully inside the square with a small transparent margin; no clipping. Natural visible silhouette and genuine transparent alpha around and between foliage gaps, not a checkerboard, solid background or colour key.\nNo ground plane, earth disk, turf mat, pot, planter, stone edging, surrounding scenery, detached floating leaves, text, logo, watermark or frame. No extra objects.\n\nSubject: A second complete low city flowerbed planting cluster: broad slightly asymmetrical dense fine green foliage with nine to twelve small golden-yellow and cream-white flowers, a few restrained tiny lavender accents and closed buds. Low mounded plant group, a bit fuller on the right, short hidden stems, attractive at small game scale. Same painterly family as variant A, different flower arrangement and palette. Plants only, without soil/base/edging/pot or detached flowers.\nProduce one square finished sprite, requested resolution512x512, with actual transparent background.",
+        "transparent_background": true
+      }
+    }
+  ],
+  "references": [
+    {
+      "path": "assets-src/design-pass/kit/CITY-KIT.md",
+      "sha256": "c0d432f38fcdc50f58b5342b5d17c7159b943b982d127cca6bf3b741d859c409"
+    },
+    {
+      "path": "assets-src/design-pass/variants/city-a.png",
+      "sha256": "d4b70219ba0bdb45888d6ef954507517554a25eef994b3ed0084a433f2cdb0b1"
+    },
+    {
+      "path": "public/textures/kit/farm/tree-oak-card-a.webp",
+      "sha256": "6b0f00d209164fb252173517c66579075f10046e504d1432aa63e994ca8c1c44"
+    },
+    {
+      "path": "public/textures/kit/farm/bush-card-a.webp",
+      "sha256": "d776f2e96fce4a757ca8d7f9ebdfcf26ed5db277961e471f14311404cedfff87"
+    },
+    {
+      "path": "public/textures/kit/farm/flower-card-c.webp",
+      "sha256": "2e93e9a6985766c69cbc0056b8814ffcd95aa4a01d34c6f5f08d862d5f5411e9"
+    },
+    {
+      "path": "public/textures/kit/city/lawn-main-a.webp",
+      "sha256": "8ec5bf2230d8d45eb5424f6622e6045170e4ef5909042578522984df79afc71a"
+    }
+  ]
+}

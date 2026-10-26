@@ -1,0 +1,72 @@
+[
+  {
+    "name": "tree-round-card-a",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-ea664c19-707b-475f-a33a-8d2674323680.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/tree-round-card-a.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-ea664c19-707b-475f-a33a-8d2674323680.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1657091,
+    "sha256": "960730166b368e280f1442e38380c9ab747bc8eaa6948b6ac503a61592f72e92"
+  },
+  {
+    "name": "tree-round-card-b",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-2bb4bccc-1125-4299-85b2-2344e684e6a6.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/tree-round-card-b.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-2bb4bccc-1125-4299-85b2-2344e684e6a6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1262692,
+    "sha256": "592fff2a0c193029254eb2ea785c2aef52802414793945cc532eed90f1338eea"
+  },
+  {
+    "name": "tree-round-card-c",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-9f2cebb4-4272-428e-bb60-1b33783d6155.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/tree-round-card-c.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-9f2cebb4-4272-428e-bb60-1b33783d6155.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1493427,
+    "sha256": "f9347d89e0b0a26fe3960c58de0aa258185ca5d1f89db15a3ebc7385ecf17be5"
+  },
+  {
+    "name": "bush-card-a",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-d4c84128-c5aa-4843-9432-5ffbb7154002.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/bush-card-a.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-d4c84128-c5aa-4843-9432-5ffbb7154002.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1408367,
+    "sha256": "3baaea3e4fa6b28f4fd929e2d93d2a4c57595426c3933fa32ac3261d637b08c3"
+  },
+  {
+    "name": "bush-card-b",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-ca3c7ba2-1b31-41fb-8238-cd3d86ec6f8f.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/bush-card-b.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-ca3c7ba2-1b31-41fb-8238-cd3d86ec6f8f.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1265597,
+    "sha256": "b52e704a3a86d387b6b3c0403651bbefd9e2487a6e88696ec8e95e2ba0bfdc84"
+  },
+  {
+    "name": "flowerbed-card-a",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-75159e89-5edf-4aed-80dd-40782043161d.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/flowerbed-card-a.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-75159e89-5edf-4aed-80dd-40782043161d.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1459292,
+    "sha256": "a1bfb215ec9adf71bca0303340668225462d8ebf405d73edb76f5bbd95876bd7"
+  },
+  {
+    "name": "flowerbed-card-b",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-4f16b8bd-2435-44e0-a727-76a9560b08c6.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/flowerbed-card-b.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-4f16b8bd-2435-44e0-a727-76a9560b08c6.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+    "bytes": 1392138,
+    "sha256": "2be2d945b0b244477a406d738a5e7e0ccc9d0aea67deee446a4d70c6345a2d38"
+  }
+]

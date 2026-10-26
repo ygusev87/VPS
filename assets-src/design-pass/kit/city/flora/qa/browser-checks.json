@@ -1,0 +1,1491 @@
+{
+  "date": "2026-10-26",
+  "browser": "Codex in-app browser",
+  "checks": [
+    {
+      "name": "tree-round-card-a",
+      "caption": "tree-round-card-a · 1024×1024 · 191166 bytes · мелкий ряд 64 / 96 / 128 px",
+      "height": 768,
+      "images": [
+        {
+          "alt": "tree-round-card-a / Белый",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "tree-round-card-a / Чёрный",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "tree-round-card-a / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "name": "tree-round-card-b",
+      "caption": "tree-round-card-b · 1024×1024 · 157762 bytes · мелкий ряд 64 / 96 / 128 px",
+      "height": 768,
+      "images": [
+        {
+          "alt": "tree-round-card-b / Белый",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "tree-round-card-b / Чёрный",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "tree-round-card-b / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "name": "tree-round-card-c",
+      "caption": "tree-round-card-c · 1024×1024 · 190946 bytes · мелкий ряд 64 / 96 / 128 px",
+      "height": 768,
+      "images": [
+        {
+          "alt": "tree-round-card-c / Белый",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "tree-round-card-c / Чёрный",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "tree-round-card-c / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "name": "bush-card-a",
+      "caption": "bush-card-a · 512×512 · 56914 bytes · мелкий ряд 48 / 64 / 96 px",
+      "height": 768,
+      "images": [
+        {
+          "alt": "bush-card-a / Белый",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "bush-card-a / Чёрный",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "bush-card-a / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "name": "bush-card-b",
+      "caption": "bush-card-b · 512×512 · 54026 bytes · мелкий ряд 48 / 64 / 96 px",
+      "height": 768,
+      "images": [
+        {
+          "alt": "bush-card-b / Белый",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "bush-card-b / Чёрный",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "bush-card-b / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "name": "flowerbed-card-a",
+      "caption": "flowerbed-card-a · 512×512 · 64036 bytes · мелкий ряд 32 / 48 / 64 px",
+      "height": 768,
+      "images": [
+        {
+          "alt": "flowerbed-card-a / Белый",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "flowerbed-card-a / Чёрный",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "flowerbed-card-a / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "name": "flowerbed-card-b",
+      "caption": "flowerbed-card-b · 512×512 · 59354 bytes · мелкий ряд 32 / 48 / 64 px",
+      "height": 768,
+      "images": [
+        {
+          "alt": "flowerbed-card-b / Белый",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "flowerbed-card-b / Чёрный",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "flowerbed-card-b / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 320,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "name": "tree-round-card-a",
+      "caption": "tree-round-card-a · 1024×1024 · 191166 bytes · мелкий ряд 64 / 96 / 128 px",
+      "height": 844,
+      "images": [
+        {
+          "alt": "tree-round-card-a / Белый",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "tree-round-card-a / Чёрный",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "tree-round-card-a / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-a.webp?v=fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "name": "tree-round-card-b",
+      "caption": "tree-round-card-b · 1024×1024 · 157762 bytes · мелкий ряд 64 / 96 / 128 px",
+      "height": 844,
+      "images": [
+        {
+          "alt": "tree-round-card-b / Белый",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "tree-round-card-b / Чёрный",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "tree-round-card-b / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-b.webp?v=60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "name": "tree-round-card-c",
+      "caption": "tree-round-card-c · 1024×1024 · 190946 bytes · мелкий ряд 64 / 96 / 128 px",
+      "height": 844,
+      "images": [
+        {
+          "alt": "tree-round-card-c / Белый",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "tree-round-card-c / Чёрный",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "tree-round-card-c / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        },
+        {
+          "alt": "128px",
+          "complete": true,
+          "naturalHeight": 1024,
+          "naturalWidth": 1024,
+          "renderedWidth": 128,
+          "src": "/public/textures/kit/city/tree-round-card-c.webp?v=ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "name": "bush-card-a",
+      "caption": "bush-card-a · 512×512 · 56914 bytes · мелкий ряд 48 / 64 / 96 px",
+      "height": 844,
+      "images": [
+        {
+          "alt": "bush-card-a / Белый",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "bush-card-a / Чёрный",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "bush-card-a / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-a.webp?v=c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "name": "bush-card-b",
+      "caption": "bush-card-b · 512×512 · 54026 bytes · мелкий ряд 48 / 64 / 96 px",
+      "height": 844,
+      "images": [
+        {
+          "alt": "bush-card-b / Белый",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "bush-card-b / Чёрный",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "bush-card-b / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        },
+        {
+          "alt": "96px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 96,
+          "src": "/public/textures/kit/city/bush-card-b.webp?v=bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "name": "flowerbed-card-a",
+      "caption": "flowerbed-card-a · 512×512 · 64036 bytes · мелкий ряд 32 / 48 / 64 px",
+      "height": 844,
+      "images": [
+        {
+          "alt": "flowerbed-card-a / Белый",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "flowerbed-card-a / Чёрный",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "flowerbed-card-a / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-a.webp?v=1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "name": "flowerbed-card-b",
+      "caption": "flowerbed-card-b · 512×512 · 59354 bytes · мелкий ряд 32 / 48 / 64 px",
+      "height": 844,
+      "images": [
+        {
+          "alt": "flowerbed-card-b / Белый",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "flowerbed-card-b / Чёрный",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "flowerbed-card-b / Городской lawn-main-a",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 272,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "32px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 32,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "48px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 48,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        },
+        {
+          "alt": "64px",
+          "complete": true,
+          "naturalHeight": 512,
+          "naturalWidth": 512,
+          "renderedWidth": 64,
+          "src": "/public/textures/kit/city/flowerbed-card-b.webp?v=d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65"
+        }
+      ],
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    }
+  ],
+  "consoleErrors": []
+}

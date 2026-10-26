@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "method": "Native in-app browser screenshots of actual encoded WebP: white, black and accepted city lawn; every asset at CSS viewports1024x768 and390x844. Visually inspected all7 tablet panels, both contact sheets and full phone panels for tree A and flowerbed B; all14 page loads and image sizes checked from DOM.",
+  "generationCalls": 7,
+  "repeatedGenerations": 0,
+  "artworkEdits": 0,
+  "background": {
+    "path": "public/textures/kit/city/lawn-main-a.webp",
+    "sha256": "8ec5bf2230d8d45eb5424f6622e6045170e4ef5909042578522984df79afc71a"
+  },
+  "browserPassed": true,
+  "readyNames": [
+    "tree-round-card-a",
+    "tree-round-card-b",
+    "tree-round-card-c",
+    "bush-card-a",
+    "bush-card-b",
+    "flowerbed-card-a",
+    "flowerbed-card-b"
+  ],
+  "contactSheets": [
+    "qa/all-1024.jpg",
+    "qa/all-390.jpg"
+  ],
+  "limitations": [
+    "52-degree camera and southwest light are artistic prompt cues, not a measured raster projection; compare in game.",
+    "No gameplay, occlusion, iPad/Safari FPS or PWA acceptance is implied by image QA.",
+    "Tree pivots use the lowest visible trunk/root band. Bush/flower anchors use silhouette bottom centre; actual botanical roots are hidden."
+  ],
+  "assets": [
+    {
+      "name": "tree-round-card-a",
+      "sha256": "fffea92072ef799b50a6bad5b29775d4eb02a25d37714da5851228dedb4ec13e",
+      "status": "pass",
+      "note": "Rounded broad five-lobe crown with clear short trunk; clean native alpha on white/black/city lawn, no ground shadow; distinctive and readable64/96/128px.",
+      "smallSizes": [
+        64,
+        96,
+        128
+      ],
+      "screenshots": [
+        "qa/tree-round-card-a-1024.jpg",
+        "qa/tree-round-card-a-390.jpg"
+      ]
+    },
+    {
+      "name": "tree-round-card-b",
+      "sha256": "60169582e1a0a00ccc2e61db81bc05b2c0575723cb4d744ba459380998b73c0e",
+      "status": "pass",
+      "note": "Narrower taller oval/teardrop deciduous crown with visible branch openings; distinct from A/C, clean native alpha, no base shadow, readable64/96/128px.",
+      "smallSizes": [
+        64,
+        96,
+        128
+      ],
+      "screenshots": [
+        "qa/tree-round-card-b-1024.jpg",
+        "qa/tree-round-card-b-390.jpg"
+      ]
+    },
+    {
+      "name": "tree-round-card-c",
+      "sha256": "ac7782c04481757dabb57a3ea3a5a0b137de9a6e2ada0f48f0f83cbfac52fd74",
+      "status": "pass",
+      "note": "Asymmetric rounded canopy with high left mass and lower right shoulder, clear short trunk; clean native alpha and readable64/96/128px.",
+      "smallSizes": [
+        64,
+        96,
+        128
+      ],
+      "screenshots": [
+        "qa/tree-round-card-c-1024.jpg",
+        "qa/tree-round-card-c-390.jpg"
+      ]
+    },
+    {
+      "name": "bush-card-a",
+      "sha256": "c8151d5215eb3663d92ae67c14ffeee08511cb98b8e32b6e876601a476ac3834",
+      "status": "pass",
+      "note": "Compact three-lobe ornamental shrub, fine oval leaves and continuous low base; no soil or cast shadow, clean alpha, silhouette readable48/64/96px.",
+      "smallSizes": [
+        48,
+        64,
+        96
+      ],
+      "screenshots": [
+        "qa/bush-card-a-1024.jpg",
+        "qa/bush-card-a-390.jpg"
+      ]
+    },
+    {
+      "name": "bush-card-b",
+      "sha256": "bd536713b015571ad77170932374ef717bf8cd5f4a77b2cfecb8450fef26de09",
+      "status": "pass",
+      "note": "Lower right lobe and fuller left lobe distinguish the second shrub; clean alpha, no baked base, readable48/64/96px.",
+      "smallSizes": [
+        48,
+        64,
+        96
+      ],
+      "screenshots": [
+        "qa/bush-card-b-1024.jpg",
+        "qa/bush-card-b-390.jpg"
+      ]
+    },
+    {
+      "name": "flowerbed-card-a",
+      "sha256": "1baefc4bdad0cff4e153395e84cc657c5945ecb6cc19b581feaf8abd99ba724f",
+      "status": "pass",
+      "note": "Coral-pink and cream flowers in a compact foliage mound; flowers remain identifiable32/48/64px, clean alpha without soil/edging/shadow.",
+      "smallSizes": [
+        32,
+        48,
+        64
+      ],
+      "screenshots": [
+        "qa/flowerbed-card-a-1024.jpg",
+        "qa/flowerbed-card-a-390.jpg"
+      ]
+    },
+    {
+      "name": "flowerbed-card-b",
+      "sha256": "d0f65901e635a6c0a8d180aebbc1f60032c6c16c40ffbd6e623f83108fb88e65",
+      "status": "pass",
+      "note": "Yellow/cream flowers with restrained lavender accents, distinguishable from A even at32px; no soil/planter/shadow and clean alpha.",
+      "smallSizes": [
+        32,
+        48,
+        64
+      ],
+      "screenshots": [
+        "qa/flowerbed-card-b-1024.jpg",
+        "qa/flowerbed-card-b-390.jpg"
+      ]
+    }
+  ]
+}

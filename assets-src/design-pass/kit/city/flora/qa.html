@@ -1,0 +1,21 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Городские растения — альфа и мелкий размер</title>
+<style>body{margin:0;background:#eee7d9;color:#18213d;font:14px system-ui}header{padding:12px}h1{font-size:20px;margin:3px 0}nav{display:flex;gap:9px;flex-wrap:wrap}a{color:#12655f}.panels{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px}figure{margin:0;border:1px solid #bba98c;min-width:0}.art{height:326px;display:flex;align-items:flex-end;justify-content:center}.large{width:320px;height:320px;max-width:100%;object-fit:contain}.white{background:#fff}.black{background:#000}.grass{background:#85ae48 url('/public/textures/kit/city/lawn-main-a.webp') repeat;background-size:256px}.small{display:flex;align-items:flex-end;justify-content:space-around;height:138px;border-top:1px solid #aa9}.sample{display:flex;flex-direction:column;align-items:center}.sample img{object-fit:contain}.sample span{font-size:10px;padding:2px 4px;color:#18213d;background:#eee3cf}.sizes,figcaption{padding:6px;text-align:center;background:#eee3cf;color:#18213d;font-size:12px}pre{padding:12px;white-space:pre-wrap;font-size:11px}.contact{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;padding:8px}.contact img{width:100%;height:190px;object-fit:contain}.contact figcaption{font-size:11px}.note{padding:0 12px;font-size:12px}details{padding:10px}@media(max-width:600px){.panels{grid-template-columns:1fr}.contact{grid-template-columns:repeat(2,minmax(0,1fr))}.contact img{height:170px}.art{height:280px}.large{width:272px;height:272px}h1{font-size:18px}}</style>
+<header><h1>Городские растения · WebP, альфа и основание</h1><nav id="nav"></nav><p id="caption"></p></header><div id="contact" class="contact"></div><main id="panels" class="panels"></main><p class="note">Материалы на белом, чёрном и принятом городском газоне. Без добавленной тени. Это просмотр ассетов, не игровой кадр.</p><details><summary>Альфа и точка размещения</summary><pre id="metrics"></pre></details>
+<script type="module">
+const manifest=await fetch('manifest.json',{cache:'no-store'}).then(r=>r.json()),names=manifest.assets.map(a=>a.name),selected=new URLSearchParams(location.search).get('asset')??'all';
+for(const n of ['all',...names]){const a=document.createElement('a');a.href='?asset='+n;a.textContent=n;nav.append(a);}
+const src=n=>'/public/textures/kit/city/'+n+'.webp?v='+manifest.assets.find(a=>a.name===n).sha256;
+if(selected==='all'){
+ caption.textContent='Три дерева, два куста, два цветника на lawn-main-a.';
+ for(const name of names){const f=document.createElement('figure');f.className='grass';const i=new Image();i.src=src(name);i.alt=name;const c=document.createElement('figcaption');c.textContent=name;f.append(i,c);contact.append(f);}
+}else{
+ const a=manifest.assets.find(x=>x.name===selected);if(!a)throw Error('Unknown asset');const sizes=a.kind==='tree'?[64,96,128]:a.kind==='bush'?[48,64,96]:[32,48,64];caption.textContent=selected+' · '+a.size.join('×')+' · '+a.bytes+' bytes · мелкий ряд '+sizes.join(' / ')+' px';
+ for(const [bg,label]of [['white','Белый'],['black','Чёрный'],['grass','Городской lawn-main-a']]){
+  const f=document.createElement('figure');f.className=bg;const large=document.createElement('div');large.className='art';const i=new Image();i.src=src(selected);i.alt=selected+' / '+label;i.className='large';large.append(i);const small=document.createElement('div');small.className='small';
+  for(const s of sizes){const item=document.createElement('div');item.className='sample';const im=new Image();im.src=src(selected);im.alt=s+'px';im.style.width=s+'px';im.style.height=s+'px';const text=document.createElement('span');text.textContent=s+'px';item.append(im,text);small.append(item);}
+  const c=document.createElement('figcaption');c.textContent=label;f.append(large,small,c);panels.append(f);
+ }
+ metrics.textContent=JSON.stringify({name:a.name,pivot:a.pivot,alpha:a.alpha},null,2);
+}
+await Promise.all([...document.images].map(i=>i.decode()));const background=new Image();background.src='/public/textures/kit/city/lawn-main-a.webp';await background.decode();document.body.dataset.ready='true';
+</script></html>
