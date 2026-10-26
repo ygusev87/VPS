@@ -332,7 +332,7 @@ export class FarmMap extends StoryMap {
     const ground = kitPieces('farm', 'wheat-ground');
     if (ground.length) this.scenery.add(decal(f, ground[0], 0.4));
     // The tractor's loop (see the tractor's drive) and its ruts.
-    const loop: [number, number][] = Array.from({ length: 49 }, (_, i) => [FIELD.x + Math.cos((i / 48) * Math.PI * 2) * 4.2, FIELD.z + Math.sin((i / 48) * Math.PI * 2) * 6]);
+    const loop: [number, number][] = Array.from({ length: 65 }, (_, i) => fieldLoop((i / 64) * Math.PI * 2)).map((p) => [p.x, p.z]);
     const ruts = kitPieces('farm', 'ruts-strip', true);
     if (ruts.length) this.scenery.add(ribbons([{ pts: loop, w: 1.6 }], ruts[0], 1, 6.4, 0.007, 1));
     const wheat = kitPieces('farm', 'wheat-card');
@@ -340,13 +340,9 @@ export class FarmMap extends StoryMap {
       let seed = 5;
       const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
       const spots: { x: number; z: number; size: number }[] = [];
-      for (let x = f.x0 + 0.35; x < f.x1 - 0.3; x += 0.55)
-        for (let z = f.z0 + 0.4; z < f.z1 - 0.2; z += 0.42) {
-          const r = Math.hypot((x - FIELD.x) / 4.2, (z - FIELD.z) / 6);
-          // Clear of the ruts: inside the loop or out in the corners.
-          if (r > 0.78 && r < 1.22) continue;
-          spots.push({ x: x + (rnd() - 0.5) * 0.18, z: z + (rnd() - 0.5) * 0.12, size: 0.85 + rnd() * 0.2 });
-        }
+      // Rows running north-south inside the tractor's round, a little furrow between them.
+      for (let x = f.x0 + 1.5; x < f.x1 - 1.3; x += 0.62)
+        for (let z = f.z0 + 1.4; z < f.z1 - 0.9; z += 0.36) spots.push({ x: x + (rnd() - 0.5) * 0.12, z: z + (rnd() - 0.5) * 0.1, size: 1.0 + rnd() * 0.25 });
       // Back rows first, so the nearer cards cover the farther ones.
       spots.sort((a, b) => a.z - b.z);
       this.scenery.add(cards(spots, wheat));
@@ -551,8 +547,8 @@ export class FarmMap extends StoryMap {
       BELL_SPOT,
     ];
     // The tractor's way: down through the gate, then its loop round the field (as updateTractor drives it).
-    const loop = Array.from({ length: 25 }, (_, i) => v(FIELD.x + Math.cos((i / 24) * Math.PI * 2) * 4.2, FIELD.z + Math.sin((i / 24) * Math.PI * 2) * 6));
-    const lines = [FOX_PATH, [LAUNCH_SPOT, v(LAUNCH_SPOT.x + 15, LAUNCH_SPOT.z)], [TRACTOR_AT, v(TRACTOR_AT.x, FIELD.z - 6)], loop];
+    const loop = Array.from({ length: 25 }, (_, i) => fieldLoop((i / 24) * Math.PI * 2));
+    const lines = [FOX_PATH, [LAUNCH_SPOT, v(LAUNCH_SPOT.x + 15, LAUNCH_SPOT.z)], [TRACTOR_AT, fieldLoop(-Math.PI / 2)], loop];
     // The toys to poke, and the herd: animals in the dressing wander about instead of standing still.
     const bodies: Partial<Record<ToyKind, () => THREE.Object3D | null>> = { mouse: () => model('hay-bale', { width: 2.2 }) ?? model('haystack', { width: 2.2 }), well: () => model('well', { width: 2.8 }), frog: () => model('frog', { height: 0.47 }) };
     for (const [kind, x, z, yaw] of TOYS) this.life.addToy(kind, x, z, yaw, bodies[kind]?.() ?? undefined);
@@ -569,7 +565,11 @@ export class FarmMap extends StoryMap {
     }
     // With the painted kit, trees and bushes are its cards (when it has them), not the 3D models.
     const carded = this.kit ? DECOR.filter((g) => CARDS[g.model] && hasKit('farm', CARDS[g.model].card)) : [];
-    const { group, drawn, inTheWay } = dressing(DECOR.filter((g) => !HERD[g.model] && !carded.includes(g)), FENCES, keep, lines);
+    // The kit's wheat cards fill the field: the modelled sheaves step out of it.
+    const field = wheatField();
+    const inField = ([x, z]: readonly number[]) => x > field.x0 && x < field.x1 && z > field.z0 && z < field.z1;
+    const dressed = DECOR.filter((g) => !HERD[g.model] && !carded.includes(g)).map((g) => (g.model === 'crop-wheat' && this.kit && hasKit('farm', 'wheat-card') ? { ...g, items: g.items.filter((i) => !inField(i)) } : g));
+    const { group, drawn, inTheWay } = dressing(dressed, FENCES, keep, lines);
     for (const g of carded) {
       const { card, wide } = CARDS[g.model];
       const tall = g.fit.height ?? (g.fit.width ?? 2) / wide;
@@ -964,7 +964,7 @@ export class FarmMap extends StoryMap {
       this.tractor.rotation.y = Math.PI;
     } else {
       const a = (t - 4) * 0.35 - Math.PI / 2;
-      const target = new THREE.Vector3(FIELD.x + Math.cos(a) * 4.2, 0, FIELD.z + Math.sin(a) * 6);
+      const target = fieldLoop(a);
       const dir = target.clone().sub(p);
       if (dir.lengthSq() > 1e-4) this.tractor.rotation.y = Math.atan2(-dir.x, -dir.z);
       p.lerp(target, Math.min(1, dt * 2));
@@ -1105,11 +1105,32 @@ const CARDS: Record<string, { card: string; wide: number }> = {
   'bush-lite': { card: 'bush-card', wide: 1.6 },
 };
 
+/** The wheat field: the ploughed rectangle of the dressing nearest FIELD. */
+function wheatField() {
+  const fields = SOIL.length ? SOIL : [{ x0: FIELD.x - 5.5, z0: FIELD.z - 8.5, x1: FIELD.x + 5.5, z1: FIELD.z + 8 }];
+  return fields.reduce((best, f) => (Math.hypot((f.x0 + f.x1) / 2 - FIELD.x, (f.z0 + f.z1) / 2 - FIELD.z) < Math.hypot((best.x0 + best.x1) / 2 - FIELD.x, (best.z0 + best.z1) / 2 - FIELD.z) ? f : best));
+}
+
+/**
+ * The tractor's round of the field at angle `a`: a rounded rectangle just
+ * inside the field's edge (a superellipse), so the wheat stands in the middle
+ * and the tractor works its border.
+ */
+function fieldLoop(a: number): THREE.Vector3 {
+  const f = wheatField();
+  const rx = (f.x1 - f.x0) / 2 - 0.4;
+  const rz = (f.z1 - f.z0) / 2 - 0.4;
+  const c = Math.cos(a);
+  const s = Math.sin(a);
+  const k = 2 / 5;
+  return v((f.x0 + f.x1) / 2 + Math.sign(c) * Math.abs(c) ** k * rx, (f.z0 + f.z1) / 2 + Math.sign(s) * Math.abs(s) ** k * rz);
+}
+
 /** Where the paths, the fields, the mud and the meadows lie (from the dressing; painted by src/ground.ts). */
 function groundPlan(): GroundPlan {
   // The wheat field is the one the tractor drives on; the garden's beds are more ploughed ground.
   const fields = SOIL.length ? SOIL : [{ x0: FIELD.x - 5.5, z0: FIELD.z - 8.5, x1: FIELD.x + 5.5, z1: FIELD.z + 8 }];
-  const field = fields.reduce((best, f) => (Math.hypot((f.x0 + f.x1) / 2 - FIELD.x, (f.z0 + f.z1) / 2 - FIELD.z) < Math.hypot((best.x0 + best.x1) / 2 - FIELD.x, (best.z0 + best.z1) / 2 - FIELD.z) ? f : best));
+  const field = wheatField();
   return {
     width: W,
     depth: D,
