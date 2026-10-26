@@ -471,7 +471,8 @@ function mapDone(name: MapName) {
 async function startMap(name: MapName, fresh = false) {
   hud.hideMapDone();
   const def = MAPS[name];
-  await Promise.all([loadModels(def.models), loadGround(), loadKit(name)]);
+  // The city's lawns borrow the farm's painted flowers and shrubs.
+  await Promise.all([loadModels(def.models), loadGround(), loadKit(name), name === 'city' ? loadKit('farm') : null]);
   leaveMap();
   // A view asked for by the map just left is not this one's.
   mapFocus = null;

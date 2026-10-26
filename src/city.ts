@@ -16,7 +16,7 @@ import * as THREE from 'three';
 import { DECOR, FENCES, MEADOW, PATHS, PONDS, SOIL } from './city-decor';
 import { dressing } from './decor';
 import { boardEdge, flowers, groundMaterial, onLane, pond, tiledMaterial, type GroundPlan } from './ground';
-import { decal, grassMaterial, hasKit, kitPieces, ribbons, roadNet, roadRuns, roadTiles, tiledDecal } from './kit';
+import { cards, decal, grassMaterial, hasKit, kitPieces, ribbons, roadNet, roadRuns, roadTiles, standees, tiledDecal, toned } from './kit';
 import { sandboxHint, type Hint } from './hints';
 import { clipsOf, hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
@@ -312,7 +312,7 @@ export class CityMap extends StoryMap {
   private buildBoard() {
     const plan = (this.plan = cityPlan());
     this.kit = hasKit('city', 'paving-main') && !new URLSearchParams(location.search).has('oldground');
-    const top = this.kit ? grassMaterial(kitPieces('city', 'paving-main', true)[0], null, [], 8) : groundMaterial(plan);
+    const top = this.kit ? grassMaterial(kitPieces('city', 'paving-main', true)[0], null, [], 8, PAVING_TONE) : groundMaterial(plan);
     const side = mat('#000000', 1);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
@@ -340,6 +340,15 @@ export class CityMap extends StoryMap {
     if (strip.length) this.scenery.add(ribbons(roadRuns(net.segs, net.tiles, ROAD * 0.58, ROAD), strip[0], 7 / ROAD, 14, 0.006, 1, 0.02));
     const tile = (n: string) => kitPieces('city', n)[0];
     this.scenery.add(roadTiles(net.tiles, { corner: tile('road-corner'), tee: tile('road-tee'), cross: tile('road-cross'), end: tile('road-end') }, ROAD * 7 / 6));
+    // Zebras where the roads leave the ring (as the old painted dashes stood).
+    const zebra = kitPieces('city', 'zebra');
+    if (zebra.length)
+      for (const [x, z, along] of [[0, RING.z + ROAD / 2 + 1.6, 'x'], [0, -RING.z - ROAD / 2 - 1.6, 'x'], [RING.x + ROAD / 2 + 1.6, 0, 'z'], [-RING.x - ROAD / 2 - 1.6, 0, 'z']] as const) {
+        const m = decal({ x0: x - 3, z0: z - 1.5, x1: x + 3, z1: z + 1.5 }, zebra[0], 0, 0.0095, 4);
+        // The picture's stripes run across a road going north-south; turned for an east-west road.
+        if (along === 'z') m.rotation.y = Math.PI / 2;
+        this.scenery.add(m);
+      }
     const narrow = kitPieces('city', 'road-lane-strip', true);
     if (narrow.length) this.scenery.add(ribbons(plan.lanes.filter((l) => l.w !== ROAD), narrow[0], 5 / 4, 10, 0.0055, 1, 0.1));
     const lawn = kitPieces('city', 'lawn-main', true);
@@ -347,7 +356,7 @@ export class CityMap extends StoryMap {
     const park = kitPieces('city', 'park-lawn');
     for (const f of [plan.field, ...(plan.fields ?? [])]) {
       if (f === plan.field && park.length) this.scenery.add(decal(f, park[0], 0.3, 0.005));
-      else if (lawn.length) this.scenery.add(tiledDecal(f, lawn[0], 8));
+      else if (lawn.length) this.scenery.add(toned(tiledDecal(f, lawn[0], 8), LAWN_TONE));
       if (kerb.length) {
         const loop: [number, number][] = [[f.x0, f.z0], [f.x1, f.z0], [f.x1, f.z1], [f.x0, f.z1], [f.x0, f.z0]];
         this.scenery.add(ribbons([{ pts: loop, w: 0.5 }], kerb[0], 1, 4, 0.0065, 2, 0.5));
@@ -363,6 +372,31 @@ export class CityMap extends StoryMap {
         const pts: [number, number][] = dx < 0 ? [[x, CANAL.z1], [x, CANAL.z0]] : [[x, CANAL.z0], [x, CANAL.z1]];
         this.scenery.add(ribbons([{ pts, w: 1.2 }], quay[0], 1, 6, 0.013, 2, 0));
       }
+    // The farm's painted tufts, flowers and shrubs on every lawn, thicker at the edges (city-a's full lawns).
+    const lawns = [plan.field, ...(plan.fields ?? [])];
+    let seed = 31;
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+    const free = (x: number, z: number) => !onLane(plan, x, z, 0.6) && this.needs.every((n) => [n.spot, ...n.more.map((m) => m.spot)].every((t) => Math.hypot(x - t.x, z - t.z) > 2.4));
+    const sow = (n: number, size: number, edge: number) => {
+      const out: { x: number; z: number; size: number }[] = [];
+      for (const f of lawns) {
+        const area = (f.x1 - f.x0) * (f.z1 - f.z0);
+        for (let i = 0; i < Math.round(area * n); i++) {
+          // Half of them along the lawn's edge, under the kerb.
+          const side = rnd() < edge;
+          const x = side && rnd() < 0.5 ? (rnd() < 0.5 ? f.x0 + 0.5 : f.x1 - 0.5) : f.x0 + 0.4 + rnd() * (f.x1 - f.x0 - 0.8);
+          const z = side && Math.abs(x - f.x0 - 0.5) > 0.01 && Math.abs(x - f.x1 + 0.5) > 0.01 ? (rnd() < 0.5 ? f.z0 + 0.5 : f.z1 - 0.5) : f.z0 + 0.4 + rnd() * (f.z1 - f.z0 - 0.8);
+          if (free(x, z)) out.push({ x, z, size: size * (0.8 + rnd() * 0.4) });
+        }
+      }
+      return out.sort((a, b) => a.z - b.z);
+    };
+    const tuft = kitPieces('farm', 'tuft-card');
+    const flower = kitPieces('farm', 'flower-card');
+    const shrub = kitPieces('farm', 'shrub-card');
+    if (tuft.length) this.scenery.add(cards(sow(0.35, 0.5, 0.3), tuft));
+    if (flower.length) this.scenery.add(cards(sow(0.18, 0.55, 0.4), flower));
+    if (shrub.length) this.scenery.add(standees(sow(0.03, 1.1, 0.7), shrub, kitPieces('farm', 'blob-shadow')[0] ?? null));
     const harbour = kitPieces('city', 'harbour-water');
     if (harbour.length) this.scenery.add(decal({ x0: HARBOR.x - HARBOR.rx, z0: HARBOR.z - HARBOR.rz, x1: HARBOR.x + HARBOR.rx, z1: HARBOR.z + HARBOR.rz }, harbour[0], 0.6, 0.014, 2));
   }
@@ -1030,6 +1064,10 @@ function pathAt(pts: THREE.Vector3[], s: number): { at: THREE.Vector3; dir: THRE
 }
 
 // ───────────────────────── Ground ─────────────────────────
+
+/** The kit's paving and lawns under the game's sun and grading, evened to city-a. */
+const PAVING_TONE = new URLSearchParams(location.search).get('tone') ?? '#e8dcd4';
+const LAWN_TONE = new URLSearchParams(location.search).get('ltone') ?? '#a898c8';
 
 /** Paving everywhere, asphalt roads (the ring, the roads out of it, the tram line, the drives), grass in the park and on the lawns. */
 function cityPlan(): GroundPlan {
