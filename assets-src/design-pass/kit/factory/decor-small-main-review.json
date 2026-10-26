@@ -1,0 +1,76 @@
+{
+  "status": "accepted-for-integration-review",
+  "reviewer": "main Codex",
+  "assets": [
+    {
+      "name": "pallet-card",
+      "sha256": "aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+      "bytes": 152294,
+      "size": [
+        1024,
+        976
+      ],
+      "visibleWorldWidth": 1.9,
+      "rectangleWorldSize": [
+        1.977236,
+        1.884553
+      ],
+      "anchor": {
+        "definition": "Bottom centre of alpha>=8 visible bounding box. Image coordinates top-left origin. Sprite centre uses bottom-left origin.",
+        "normalisedTopLeft": [
+          0.5,
+          0.991803
+        ],
+        "spriteCenter": [
+          0.5,
+          0.008197
+        ]
+      }
+    },
+    {
+      "name": "barrels-card",
+      "sha256": "aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+      "bytes": 115878,
+      "size": [
+        767,
+        768
+      ],
+      "visibleWorldWidth": 2.2,
+      "rectangleWorldSize": [
+        2.292663,
+        2.295652
+      ],
+      "anchor": {
+        "definition": "Bottom centre of alpha>=8 visible bounding box. Image coordinates top-left origin. Sprite centre uses bottom-left origin.",
+        "normalisedTopLeft": [
+          0.499348,
+          0.980469
+        ],
+        "spriteCenter": [
+          0.499348,
+          0.019531
+        ]
+      }
+    }
+  ],
+  "nativeScreenshotsReviewed": [
+    "decor-small/qa/white-1024.jpg",
+    "decor-small/qa/dark-1024.jpg",
+    "decor-small/qa/floor-390.jpg",
+    "decor-small/qa/small-1024.jpg"
+  ],
+  "browserEvidence": "All eight worker checks: actual390×844/1024×768, zero recorded errors/overflow, SHA in image URLs matches current exports. Four images additionally viewed by main.",
+  "findings": [
+    "Exactly three crates on pallet and three separate blue barrels",
+    "Pallet base fully inside frame; no visible crop or rectangular backdrop",
+    "Silhouette and crate/barrel count remain readable at32/70px per world unit",
+    "Native alpha retained; no baked floor or cast shadow"
+  ],
+  "integrationNotes": [
+    "Height/width ratios are976/1024 and768/767; worker manifest aspect is width/height, do not invert accidentally",
+    "Full card widths1.977236/2.292663 provide visible widths1.9/2.2. Small transparent margins are approximately4%, not a reason for large upscaling",
+    "Use anchor from manifest for exact base contact and blob-shadow separately",
+    "Barrel group replaces selected pairs; existing single barrels remain code",
+    "In-game camera/occlusion, final composition size and iPad/PWA/FPS remain integration review"
+  ]
+}
