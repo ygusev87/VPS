@@ -341,8 +341,8 @@ export class FarmMap extends StoryMap {
       const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
       const spots: { x: number; z: number; size: number }[] = [];
       // Rows running north-south inside the tractor's round, a little furrow between them.
-      for (let x = f.x0 + 1.5; x < f.x1 - 1.3; x += 0.62)
-        for (let z = f.z0 + 1.4; z < f.z1 - 0.9; z += 0.36) spots.push({ x: x + (rnd() - 0.5) * 0.12, z: z + (rnd() - 0.5) * 0.1, size: 1.0 + rnd() * 0.25 });
+      for (let x = f.x0 + 1.6; x < f.x1 - 1.3; x += 1.05)
+        for (let z = f.z0 + 1.4; z < f.z1 - 0.9; z += 0.42) spots.push({ x: x + (rnd() - 0.5) * 0.08, z: z + (rnd() - 0.5) * 0.08, size: 0.8 + rnd() * 0.15 });
       // Back rows first, so the nearer cards cover the farther ones.
       spots.sort((a, b) => a.z - b.z);
       this.scenery.add(cards(spots, wheat));
