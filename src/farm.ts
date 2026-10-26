@@ -574,6 +574,23 @@ export class FarmMap extends StoryMap {
     const inField = ([x, z]: readonly number[]) => x > field.x0 && x < field.x1 && z > field.z0 && z < field.z1;
     const dressed = DECOR.filter((g) => !HERD[g.model] && !carded.includes(g)).map((g) => (g.model === 'crop-wheat' && this.kit && hasKit('farm', 'wheat-card') ? { ...g, items: g.items.filter((i) => !inField(i)) } : g));
     const { group, drawn, inTheWay } = dressing(dressed, FENCES, keep, lines);
+    // A thick painted wood round the board's edge (farm-a is framed by it): cards only, so it costs little.
+    const oak = kitPieces('farm', 'tree-oak-card');
+    const pine = kitPieces('farm', 'tree-pine-card');
+    if (this.kit && oak.length && pine.length) {
+      let seed = 41;
+      const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+      const wood: { x: number; z: number; size: number }[] = [];
+      const firs: { x: number; z: number; size: number }[] = [];
+      const edge = (x: number, z: number) => {
+        if (inTheWay(x, z, 2.2) || onLane(this.plan, x, z, 1.2) || PONDS.some((p) => Math.hypot((x - p.x) / (p.rx + 2), (z - p.z) / (p.rz + 2)) < 1)) return;
+        (rnd() < 0.35 ? firs : wood).push({ x, z, size: (rnd() < 0.35 ? 3 : 3.8) * (0.85 + rnd() * 0.3) });
+      };
+      for (let x = -W / 2 + 1.2; x < W / 2 - 1; x += 2.3) for (const z of [-D / 2 + 1.3, -D / 2 + 3.4]) edge(x + (rnd() - 0.5) * 0.8, z + (rnd() - 0.5) * 0.6);
+      for (let z = -D / 2 + 5; z < D / 2 - 1; z += 2.4) for (const x of [-W / 2 + 1.3, W / 2 - 1.3]) edge(x + (rnd() - 0.5) * 0.6, z + (rnd() - 0.5) * 0.8);
+      const shade = kitPieces('farm', 'blob-shadow')[0] ?? null;
+      this.scenery.add(standees(wood, oak, shade), standees(firs, pine, shade));
+    }
     for (const g of carded) {
       const { card, wide } = CARDS[g.model];
       const tall = g.fit.height ?? (g.fit.width ?? 2) / wide;
