@@ -1,0 +1,65 @@
+{
+  "status": "pass",
+  "finalDecorSha256": "6d9f72f6968a0b3a5ef44d5a7f9d9d5864beae14159f048e69623e2f02d85e33",
+  "renderedDecorSha256": "b40740b7d50e32b281df1a1c496c09d89b0e419f0dc411cfe4cb928388857e7a",
+  "numericalPayloadMatches": true,
+  "preservedBaselineGroups": 14,
+  "preservedTerrainArrays": 5,
+  "added": [
+    {
+      "model": "tree-oak-lite",
+      "fit": {
+        "height": 2.8
+      },
+      "count": 9
+    },
+    {
+      "model": "bush-lite",
+      "fit": {
+        "width": 1.35
+      },
+      "count": 82
+    },
+    {
+      "model": "flower-cluster",
+      "fit": {
+        "height": 0.48
+      },
+      "count": 182
+    }
+  ],
+  "scans": [
+    {
+      "viewport": [
+        1180,
+        660
+      ],
+      "tasks": 14,
+      "rays": 7308,
+      "newOcclusions": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "tasks": 14,
+      "rays": 7308,
+      "newOcclusions": 0
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "tasks": 14,
+      "rays": 7308,
+      "newOcclusions": 0
+    }
+  ],
+  "limitations": [
+    "Perspective geometry tests of new planting, not every historic occlusion or user camera.",
+    "Desktop IAB q1; physical iPad/FPS/q2/PWA not tested.",
+    "Screenshot wrapper is1280x720:390x844 and1024x768 lower UI extends below captured area; JSON checks use full iframe size."
+  ]
+}

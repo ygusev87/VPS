@@ -1,0 +1,65 @@
+{
+  "source": {
+    "baseRevision": "1f9cc847805acb94092fadfa0d47fc326b006cba",
+    "candidateSha256": "b40740b7d50e32b281df1a1c496c09d89b0e419f0dc411cfe4cb928388857e7a",
+    "snapshot": "/private/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/city-garden-4d5ebsjk",
+    "gameHashes": {
+      "src/city.ts": "4aaa6515d6800936f012a823517e9078e2b95114ea9b4092e8bc5d937cc7e85a",
+      "src/decor.ts": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342",
+      "src/ground.ts": "5701a8451b206c576b2addc1ea7ac5bcab4810201263b31ad7cd2008a80d1cb1",
+      "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+    }
+  },
+  "mode": "after",
+  "area": "south",
+  "viewport": [
+    1180,
+    660
+  ],
+  "quality": 1,
+  "budget": {
+    "before": {
+      "batches": 32,
+      "instances": 39,
+      "triangles": 128352
+    },
+    "after": {
+      "batches": 52,
+      "instances": 312,
+      "triangles": 376119
+    },
+    "additions": {
+      "batches": 20,
+      "instances": 273,
+      "triangles": 247767
+    }
+  },
+  "acceptance": [
+    {
+      "model": "tree-oak-lite",
+      "planned": 9,
+      "drawn": 9,
+      "rejected": []
+    },
+    {
+      "model": "bush-lite",
+      "planned": 82,
+      "drawn": 82,
+      "rejected": []
+    },
+    {
+      "model": "flower-cluster",
+      "planned": 182,
+      "drawn": 182,
+      "rejected": []
+    }
+  ],
+  "occlusion": {
+    "sampledTargets": 522,
+    "terminalCount": 30,
+    "workingCircles": 31,
+    "addedOcclusions": []
+  },
+  "errors": [],
+  "contextLost": false
+}

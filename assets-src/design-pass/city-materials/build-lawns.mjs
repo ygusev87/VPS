@@ -36,7 +36,7 @@ const c=layout.canal,h=layout.harbor;
 exclusions.push({id:'canal-bank',x0:c.x-c.w/2-.8,x1:c.x+c.w/2+.8,z0:c.z0,z1:c.z1+.8},{id:'harbour-bank',...rect(h.x,h.z,(h.rx+.8)*2,(h.rz+.8)*2)});
 await MeshoptDecoder.ready;
 const io=new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.decoder':MeshoptDecoder});
-const skip=new Set(['tree-oak-lite','tree-pine-lite','bush-lite','bench']);
+const skip=new Set(['tree-oak-lite','tree-pine-lite','bush-lite','flower-cluster','bench']);
 const buildings=[];
 for(const g of DECOR.filter(g=>!skip.has(g.model))){
  const file=root+'/public/models/'+g.model+'.glb';const doc=await io.read(file),bounds=getBounds(doc.getRoot().listScenes()[0]);

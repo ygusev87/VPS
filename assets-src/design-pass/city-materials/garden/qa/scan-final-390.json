@@ -1,0 +1,160 @@
+{
+  "viewport": [
+    390,
+    844
+  ],
+  "results": [
+    {
+      "task": "car",
+      "phase": "day",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "tram",
+      "phase": "day",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "baker",
+      "phase": "day",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "car4",
+      "phase": "day",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "child",
+      "phase": "day",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "car7",
+      "phase": "day",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "grandma",
+      "phase": "day",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "builder",
+      "phase": "day",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "boat",
+      "phase": "day",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "kitten",
+      "phase": "evening",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "child6",
+      "phase": "evening",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "firefighter",
+      "phase": "evening",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "shopkeeper",
+      "phase": "night",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    },
+    {
+      "task": "child3",
+      "phase": "morning",
+      "sampledTargets": 522,
+      "terminalCount": 30,
+      "workingCircles": 31,
+      "addedOcclusions": []
+    }
+  ],
+  "addedOcclusions": 0,
+  "acceptance": [
+    {
+      "model": "tree-oak-lite",
+      "planned": 9,
+      "drawn": 9,
+      "rejected": []
+    },
+    {
+      "model": "bush-lite",
+      "planned": 82,
+      "drawn": 82,
+      "rejected": []
+    },
+    {
+      "model": "flower-cluster",
+      "planned": 182,
+      "drawn": 182,
+      "rejected": []
+    }
+  ],
+  "budget": {
+    "before": {
+      "batches": 32,
+      "instances": 39,
+      "triangles": 128352
+    },
+    "after": {
+      "batches": 52,
+      "instances": 312,
+      "triangles": 376119
+    },
+    "additions": {
+      "batches": 20,
+      "instances": 273,
+      "triangles": 247767
+    }
+  },
+  "errors": [],
+  "contextLost": false
+}
