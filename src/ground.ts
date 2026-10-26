@@ -157,13 +157,29 @@ function maskTexture(plan: GroundPlan): THREE.CanvasTexture {
     g.lineWidth = w * MASK_PX;
     g.stroke();
   }
-  for (const f of [plan.field, ...(plan.fields ?? [])]) {
-    // The city's lawns: a ramp out past the edge, for a pale kerb round each.
-    const rings = plan.painted === 'city' ? [[0.5, 70], [0.25, 150], [0, 255]] : [[0, 255]];
-    for (const [grow, v] of rings) {
+  const fields = [plan.field, ...(plan.fields ?? [])];
+  if (plan.painted === 'city') {
+    // The city's lawns are many rectangles that join into whole blocks: grow
+    // their union (square rects, shifted round a circle) into a ramp, so only
+    // the block's outer edge gets the kerb, never the seams inside it.
+    const rect = (f: (typeof fields)[number], dx: number, dz: number) => g.fillRect(X(f.x0 + dx), Z(f.z0 + dz), (f.x1 - f.x0) * MASK_PX, (f.z1 - f.z0) * MASK_PX);
+    for (const [grow, v] of [
+      [0.5, 70],
+      [0.25, 150],
+    ] as const) {
       g.fillStyle = `rgb(0,${v},0)`;
+      for (let k = 0; k < 12; k++) {
+        const a = (k / 12) * Math.PI * 2;
+        for (const f of fields) rect(f, Math.cos(a) * grow, Math.sin(a) * grow);
+      }
+    }
+    g.fillStyle = 'rgb(0,255,0)';
+    for (const f of fields) rect(f, 0, 0);
+  } else {
+    g.fillStyle = 'rgb(0,255,0)';
+    for (const f of fields) {
       g.beginPath();
-      g.roundRect(X(f.x0 - grow), Z(f.z0 - grow), (f.x1 - f.x0 + 2 * grow) * MASK_PX, (f.z1 - f.z0 + 2 * grow) * MASK_PX, (0.8 + grow) * MASK_PX);
+      g.roundRect(X(f.x0), Z(f.z0), (f.x1 - f.x0) * MASK_PX, (f.z1 - f.z0) * MASK_PX, 0.8 * MASK_PX);
       g.fill();
     }
   }
