@@ -1,0 +1,49 @@
+{
+  "reviewer": "codex-main",
+  "timeUtc": "2026-10-26T19:30:41.722448+00:00",
+  "gitHead": "44f67202cfb0aae738221511a42714faf044e6fd",
+  "url": "http://127.0.0.1:5195/",
+  "viewport": [
+    1280,
+    720
+  ],
+  "capture": "Native IAB screenshots, UI map selection, pan and zoom only. No resizing or retouching.",
+  "buildBadge": "47f981b (long-running Vite startup badge); current server city.ts and kit.json checked against accepted integration.",
+  "consoleErrorsAndWarnings": [],
+  "shots": [
+    {
+      "file": "parking-1280.png",
+      "sha256": "dab8086afbfb86631075ac6dfd36ffe40625d50f769b6222943fd6b5a03943e9"
+    },
+    {
+      "file": "site-and-rails-1280.png",
+      "sha256": "0b3cfe5c12dbe135e33bbb86c4f6fd447022f4339c173c7c0c4ff13cd02acdfd"
+    },
+    {
+      "file": "tram-1280.png",
+      "sha256": "e0b683fe1f1c83c11cc5057a62682a28576aae837d45bdb39997a9ae390f2e33"
+    }
+  ],
+  "findings": [
+    {
+      "asset": "tram-rails-strip",
+      "status": "accepted-in-static-game-view",
+      "details": "Tram is centered on the painted track; longitudinal repetition is visually quiet and no second modelled rail pair is visible. Wheel contact during animation was not audited."
+    },
+    {
+      "asset": "parking-bay",
+      "status": "asset-accepted-placement-note",
+      "details": "All three U-shaped slots face south with an open entry. Rear white edge and the far-west stroke extend onto paving at the asphalt boundary; align the asphalt footprint and decal placement in integration. Preserve the accepted pixels."
+    },
+    {
+      "asset": "site-sand",
+      "status": "asset-accepted-layout-note",
+      "details": "Sand fills the fenced plot and fades quietly at the outer edge. Existing flower/grass cards occupy the left/front part inside the plot and intersect the fence; exclude the construction footprint from planting in code. This is overlap with separate scene decor, not holes in the sand alpha."
+    }
+  ],
+  "limits": [
+    "Static desktop integration views only; prior native 390/1024 asset QA remains valid.",
+    "No device/PWA/FPS or animated task completion certification. Claude reports city robot 14/14 in m0434.",
+    "Factory barrels are not part of this review and still need a game view."
+  ]
+}
