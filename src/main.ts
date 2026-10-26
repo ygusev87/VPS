@@ -9,6 +9,7 @@ import { keepMachinePicture, machinePictures, MACHINES } from './machines';
 import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap } from './farm';
 import type { MapHooks, MapProgress, StoryMap } from './storymap';
 import { loadGround } from './ground';
+import { loadKit } from './kit';
 import { Hud, MAPS as HUD_MAPS } from './hud';
 import { Input } from './input';
 import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
@@ -470,7 +471,7 @@ function mapDone(name: MapName) {
 async function startMap(name: MapName, fresh = false) {
   hud.hideMapDone();
   const def = MAPS[name];
-  await Promise.all([loadModels(def.models), loadGround()]);
+  await Promise.all([loadModels(def.models), loadGround(), loadKit(name)]);
   leaveMap();
   // A view asked for by the map just left is not this one's.
   mapFocus = null;

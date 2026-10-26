@@ -18,7 +18,8 @@ import { Gate, Pump, Solar } from './parts/farm';
 import { Lift } from './parts/more';
 import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
-import { boardEdge, flowers, groundMaterial, onLane, pond, type Ellipse, type GroundPlan } from './ground';
+import { boardEdge, flowers, groundMaterial, groundPicture, onLane, pond, type Ellipse, type GroundPlan } from './ground';
+import { cards, decal, grassMaterial, hasKit, kitPieces, laneJoints, ovalMask, patches, ribbons } from './kit';
 import { AMBIENT, WIND_RANGE } from './parts/wind';
 import { isActive } from './world';
 import { dressing } from './decor';
@@ -194,6 +195,8 @@ export class FarmMap extends StoryMap {
   protected readonly intro = 'farmIntro';
   /** Where the lanes, the field and the mud are (set when the board is built). */
   private plan!: GroundPlan;
+  /** The ground is Codex's painted kit (src/kit.ts), not the old shader. */
+  private kit = false;
   /** Where flowers may grow on the ground (set with the board; the yards are kept clear when they are sown). */
   private flowerFree: (x: number, z: number) => boolean = () => true;
   private trough!: THREE.Mesh;
@@ -281,7 +284,9 @@ export class FarmMap extends StoryMap {
 
   private buildBoard() {
     const plan = (this.plan = groundPlan());
-    const top = groundMaterial(plan);
+    // Codex's painted kit when it has come (and ?oldground does not ask for the old shader look).
+    this.kit = hasKit('farm', 'grass-main') && !new URLSearchParams(location.search).has('oldground');
+    const top = this.kit ? grassMaterial(kitPieces('farm', 'grass-main', true)[0], kitPieces('farm', 'grass-sunny', true)[0] ?? null, [plan.hill, ...(plan.meadows ?? [])], 12) : groundMaterial(plan);
     const side = mat('#000000', 1);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
@@ -291,6 +296,7 @@ export class FarmMap extends StoryMap {
     // A light rim and a matte side round the board (see boardEdge).
     this.scenery.add(boardEdge(W, D, 'farm'));
     for (const p of PONDS) this.scenery.add(pond(p));
+    if (this.kit) this.layKit(plan);
     // Flowers in clumps on the grass: not on the paths, the fields, the mud or in the water.
     const inside = (x: number, z: number, e: Ellipse, grow: number) => ((x - e.x) / (e.rx + grow)) ** 2 + ((z - e.z) / (e.rz + grow)) ** 2 < 1;
     const fields = [plan.field, ...(plan.fields ?? [])];
@@ -299,6 +305,51 @@ export class FarmMap extends StoryMap {
       !PONDS.some((p) => inside(x, z, p, 1.5)) &&
       !plan.mud.some((m) => inside(x, z, m, 1)) &&
       !fields.some((f) => x > f.x0 - 1 && x < f.x1 + 1 && z > f.z0 - 1 && z < f.z1 + 1);
+  }
+
+  /**
+   * The painted kit over the grass (src/kit.ts): path ribbons with patches on
+   * their joints, the beds, the pig yard's mud, and the wheat field — painted
+   * stubble under rows of wheat cards, with the tractor's ruts round its loop.
+   */
+  private layKit(plan: GroundPlan) {
+    const strip = kitPieces('farm', 'path-strip', true);
+    if (strip.length) this.scenery.add(ribbons(plan.lanes, strip[0], 2.2 / 1.4, 8.8));
+    const patch = kitPieces('farm', 'path-patch');
+    if (patch.length) this.scenery.add(patches(laneJoints(plan.lanes).map((j) => ({ x: j.x, z: j.z, size: j.w * 2 })), patch));
+    const soil = kitPieces('farm', 'bed-soil');
+    (plan.fields ?? []).forEach((f, i) => soil.length && this.scenery.add(decal(f, soil[i % soil.length], 0.35)));
+    const mud = groundPicture('pig-mud.webp');
+    for (const m of plan.mud) {
+      if (!mud) break;
+      const yard = decal({ x0: m.x - m.rx, z0: m.z - m.rz, x1: m.x + m.rx, z1: m.z + m.rz }, mud, 0, 0.004);
+      // The yard's picture is a full rectangle: an oval edge until the kit brings its own with alpha.
+      (yard.material as THREE.MeshStandardMaterial).alphaMap = ovalMask();
+      this.scenery.add(yard);
+    }
+    const f = plan.field;
+    const ground = kitPieces('farm', 'wheat-ground');
+    if (ground.length) this.scenery.add(decal(f, ground[0], 0.4));
+    // The tractor's loop (see the tractor's drive) and its ruts.
+    const loop: [number, number][] = Array.from({ length: 49 }, (_, i) => [FIELD.x + Math.cos((i / 48) * Math.PI * 2) * 4.2, FIELD.z + Math.sin((i / 48) * Math.PI * 2) * 6]);
+    const ruts = kitPieces('farm', 'ruts-strip', true);
+    if (ruts.length) this.scenery.add(ribbons([{ pts: loop, w: 1.6 }], ruts[0], 1, 6.4, 0.007, 1));
+    const wheat = kitPieces('farm', 'wheat-card');
+    if (wheat.length) {
+      let seed = 5;
+      const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+      const spots: { x: number; z: number; size: number }[] = [];
+      for (let x = f.x0 + 0.35; x < f.x1 - 0.3; x += 0.55)
+        for (let z = f.z0 + 0.4; z < f.z1 - 0.2; z += 0.42) {
+          const r = Math.hypot((x - FIELD.x) / 4.2, (z - FIELD.z) / 6);
+          // Clear of the ruts: inside the loop or out in the corners.
+          if (r > 0.78 && r < 1.22) continue;
+          spots.push({ x: x + (rnd() - 0.5) * 0.18, z: z + (rnd() - 0.5) * 0.12, size: 0.85 + rnd() * 0.2 });
+        }
+      // Back rows first, so the nearer cards cover the farther ones.
+      spots.sort((a, b) => a.z - b.z);
+      this.scenery.add(cards(spots, wheat));
+    }
   }
 
   /** What works in the story: the trough, the mill's sacks, the fountain, the loft, the flower bed, the eggs, the bees, the tractor. */
@@ -546,8 +597,8 @@ export class FarmMap extends StoryMap {
         if (wood) this.scenery.add(wood);
       }
     }
-    // Young wheat on the field until the wheat is modelled.
-    if (!drawn.has('crop-wheat')) this.scenery.add(sprouts(this.plan.field));
+    // Young wheat on the field until the wheat is modelled (the kit has its own wheat cards).
+    if (!drawn.has('crop-wheat') && !(this.kit && hasKit('farm', 'wheat-card'))) this.scenery.add(sprouts(this.plan.field));
   }
 
   /**
@@ -565,7 +616,9 @@ export class FarmMap extends StoryMap {
     }
     const bloom = instances('flower-cluster', { height: 0.45 }, spots);
     bloom?.traverse((o) => (o.castShadow = false));
-    this.scenery.add(bloom ?? flowers(this.plan, 160, free));
+    // The kit's grass has its little flowers painted in; the flat dots are only for the old ground.
+    if (bloom) this.scenery.add(bloom);
+    else if (!this.kit) this.scenery.add(flowers(this.plan, 160, free));
   }
 
   /** Where the kids and the puppy go back to between rides and games. */

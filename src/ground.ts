@@ -46,6 +46,11 @@ export async function loadGround() {
   ]);
 }
 
+/** One of the painted ground pictures (the pig yard's mud…), for laying as a decal; null if missing. */
+export function groundPicture(name: 'pig-mud.webp' | 'soil-bed.webp'): THREE.Texture | null {
+  return pictureTexture(name, false);
+}
+
 /** A picture laid once over a box (clamped), or a 1-pixel stand-in when it is missing. */
 function pictureTexture(name: Picture, data: boolean): THREE.Texture | null {
   const img = pictures.get(name);
