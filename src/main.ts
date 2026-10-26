@@ -1255,6 +1255,10 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
   hud,
   voice,
   hints: { problemHint, sandboxHint, levelHint },
+  /** Why the view is where it is (for tests chasing a hint off screen). */
+  get viewDebug() {
+    return { mapFocus: !!mapFocus, hintLook, currentKey, sinceTouch: Math.round(performance.now() - lastTouch), viewAsks, busy: input.busy };
+  },
   /** The hint on screen now (the hand), for tests that follow it with a real finger. */
   get hint() {
     return hintVisible() ? currentHint : null;

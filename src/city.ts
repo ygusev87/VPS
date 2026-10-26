@@ -499,6 +499,13 @@ export class CityMap extends StoryMap {
     this.scenery.add(group);
     // Buildings not sculpted yet: painted boxes in their places, so the town is never bare (baked: few draws).
     const boxes = new THREE.Group();
+    // Benches not sculpted yet: a wooden seat on two legs.
+    if (!drawn.has('bench')) for (const g of DECOR.filter((d) => d.model === 'bench')) for (const [x, z, yaw, s] of g.items) {
+      const b = codeBench((g.fit.width ?? 1.8) * s);
+      b.position.set(x, 0, z);
+      b.rotation.y = yaw;
+      boxes.add(b);
+    }
     for (const g of DECOR) {
       const look = HOUSES[g.model];
       if (!look || drawn.has(g.model)) continue;
@@ -927,9 +934,15 @@ export class CityMap extends StoryMap {
       const c = this.critters.get(name)!;
       if (this.schooling <= 0) return;
       const from = v(SCHOOL_DOOR.x - 2 + i * 1.6, SCHOOL_DOOR.z + 4);
-      const p = from.lerp(SCHOOL_DOOR, Math.min(1, this.schooling * 1.2 - i * 0.1));
+      const k = Math.min(1, this.schooling * 1.2 - i * 0.1);
+      const p = from.lerp(SCHOOL_DOOR, k);
       c.group.position.x = p.x;
       c.group.position.z = p.z;
+      // They skip in, not slide: facing the door, a little hop with every step while they go.
+      if (k > 0 && k < 1) {
+        c.hop = Math.max(c.hop, 0.35 + 0.35 * Math.abs(Math.sin(this.time * 9 + i)));
+        c.group.rotation.y = Math.atan2(-(SCHOOL_DOOR.z - from.z), SCHOOL_DOOR.x - from.x);
+      }
       c.home.copy(p);
       c.group.visible = this.schooling < 0.95 || i === 0;
     });
@@ -1217,6 +1230,31 @@ function muddy(car: THREE.Group): THREE.Mesh[] {
 
 /** Code-built stand-ins for the city's people and vehicles. */
 /** A painted house for a building not sculpted yet: walls and roof, a door, rows of windows, a chimney. */
+/** A park bench: slatted seat and back on two iron legs. */
+function codeBench(w: number): THREE.Group {
+  const g = new THREE.Group();
+  const wood = mat('#b5763f', 0.7);
+  const iron = mat('#3a3f4b', 0.5, 0.4);
+  for (let i = 0; i < 3; i++) {
+    const slat = mesh(new THREE.BoxGeometry(w, 0.05, 0.12), wood);
+    slat.position.set(0, 0.42, -0.14 + i * 0.14);
+    g.add(slat);
+  }
+  for (let i = 0; i < 2; i++) {
+    const back = mesh(new THREE.BoxGeometry(w, 0.1, 0.05), wood);
+    back.position.set(0, 0.62 + i * 0.16, -0.24);
+    g.add(back);
+  }
+  for (const x of [-w / 2 + 0.12, w / 2 - 0.12]) {
+    const leg = mesh(new THREE.BoxGeometry(0.06, 0.42, 0.42), iron);
+    leg.position.set(x, 0.21, -0.02);
+    const post = mesh(new THREE.BoxGeometry(0.06, 0.45, 0.05), iron);
+    post.position.set(x, 0.62, -0.24);
+    g.add(leg, post);
+  }
+  return g;
+}
+
 function townHouse(wall: string, roof: string, w: number, h: number, d: number): THREE.Group {
   const g = boxHouse(wall, roof, w, h, d);
   const glass = mat('#9fd0e8', 0.25);
