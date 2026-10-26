@@ -323,7 +323,7 @@ export class CityMap extends StoryMap {
     // A light rim and a matte side round the board (see boardEdge).
     this.scenery.add(boardEdge(W, D, 'city'));
     // The kit's roads carry their own dashes and zebras.
-    this.scenery.add(roadMarks(!this.kit));
+    this.scenery.add(roadMarks(!this.kit, !(this.kit && hasKit('city', 'parking-bay'))));
     if (this.kit) this.layKit(plan);
     if (!this.kit || !hasKit('city', 'canal-water')) this.scenery.add(canal());
     for (const p of [HARBOR, ...PONDS]) this.scenery.add(pond(p));
@@ -350,8 +350,16 @@ export class CityMap extends StoryMap {
         if (along === 'z') m.rotation.y = Math.PI / 2;
         this.scenery.add(m);
       }
+    // The tram street has its rails painted in (when the kit has them); the drives are plain narrow asphalt.
     const narrow = kitPieces('city', 'road-lane-strip', true);
-    if (narrow.length) this.scenery.add(ribbons(plan.lanes.filter((l) => l.w !== ROAD), narrow[0], 5 / 4, 10, 0.0055, 1, 0.1));
+    const rails = kitPieces('city', 'tram-rails-strip', true);
+    const tram = plan.lanes.filter((l) => l.w !== ROAD && l.pts.every(([, z]) => z === TRAM_Z));
+    const drives = plan.lanes.filter((l) => l.w !== ROAD && !tram.includes(l));
+    if (narrow.length) this.scenery.add(ribbons(rails.length ? drives : [...drives, ...tram], narrow[0], 5 / 4, 10, 0.0055, 1, 0.1));
+    if (rails.length) this.scenery.add(ribbons(tram, rails[0], 1, 8, 0.0055, 1, 0.1));
+    // Painted bays where the cars park.
+    const bay = kitPieces('city', 'parking-bay');
+    for (const s of bay.length ? PARK_SLOTS : []) this.scenery.add(decal({ x0: s.x - 1.75, z0: s.z - 1.5, x1: s.x + 1.75, z1: s.z + 1.5 }, bay[0], 0, 0.009, 3));
     const lawn = kitPieces('city', 'lawn-main', true);
     const kerb = kitPieces('city', 'kerb-strip', true);
     const park = kitPieces('city', 'park-lawn');
@@ -436,7 +444,7 @@ export class CityMap extends StoryMap {
     this.add('hydrant', { height: 0.9 }, HYDRANT_SPOT.x + 1.8, HYDRANT_SPOT.z + 0.6, () => hydrant());
     this.add('bins', { width: 2 }, BINS.x, BINS.z, () => bins());
     // The building site: a fenced plot whose house rises floor by floor.
-    this.scenery.add(sitePlot(SITE));
+    this.scenery.add(sitePlot(SITE, this.kit ? kitPieces('city', 'site-sand')[0] : undefined));
     for (let i = 0; i < 3; i++) {
       const f = floor(i);
       f.position.set(SITE.x, i * 1.1, SITE.z);
@@ -1123,7 +1131,7 @@ function cityPlan(): GroundPlan {
 }
 
 /** White dashes down the middle of every road, zebras at the crossings (unless the kit's roads have them), rails on the tram line. */
-function roadMarks(paint = true): THREE.Group {
+function roadMarks(paint = true, bays = true): THREE.Group {
   const g = new THREE.Group();
   const white = new THREE.MeshBasicMaterial({ color: '#f4f1ea', transparent: true, opacity: 0.85, depthWrite: false });
   const dashes: THREE.Matrix4[] = [];
@@ -1151,7 +1159,7 @@ function roadMarks(paint = true): THREE.Group {
   for (const [x, z, along] of [[0, RING.z + ROAD / 2 + 1.6, 'x'], [0, -RING.z - ROAD / 2 - 1.6, 'x'], [RING.x + ROAD / 2 + 1.6, 0, 'z'], [-RING.x - ROAD / 2 - 1.6, 0, 'z']] as const)
     for (let k = -2; k <= 2; k++) along === 'x' ? dash(x + k * 1.1, z, 'z', 2.2, 0.55) : dash(x, z + k * 1.1, 'x', 2.2, 0.55);
   // Parking bays.
-  for (const s of PARK_SLOTS) mark(s.x - 1.7, s.z, 'z', 3, 0.14);
+  if (bays) for (const s of PARK_SLOTS) mark(s.x - 1.7, s.z, 'z', 3, 0.14);
   const quad = new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2);
   const im = new THREE.InstancedMesh(quad, white, dashes.length);
   dashes.forEach((m, i) => im.setMatrixAt(i, m));
@@ -1274,10 +1282,11 @@ function bins(): THREE.Group {
 }
 
 /** The building site: a sandy plot with a low fence and a stack of blocks. */
-function sitePlot({ x, z }: THREE.Vector3): THREE.Group {
+function sitePlot({ x, z }: THREE.Vector3, painted?: THREE.Texture): THREE.Group {
   const g = new THREE.Group();
-  const sand = mesh(new THREE.BoxGeometry(6, 0.06, 5), mat('#d8b878', 0.95));
-  sand.position.y = 0.03;
+  // The kit's painted sand when it has it, else a plain sandy slab.
+  const sand = painted ? decal({ x0: -3, z0: -2.5, x1: 3, z1: 2.5 }, painted, 0.2, 0.008, 2) : mesh(new THREE.BoxGeometry(6, 0.06, 5), mat('#d8b878', 0.95));
+  if (!painted) sand.position.y = 0.03;
   g.add(sand);
   for (const [dx, dz, w, d] of [[0, -2.5, 6, 0.08], [0, 2.5, 6, 0.08], [-3, 0, 0.08, 5]] as const) {
     const f = mesh(new THREE.BoxGeometry(w, 0.5, d), mat('#f2c230', 0.6));
