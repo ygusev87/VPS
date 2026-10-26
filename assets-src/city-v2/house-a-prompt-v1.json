@@ -1,0 +1,29 @@
+{
+  "useCase": "stylized-concept",
+  "prompt": "Use case: stylized-concept.\nAsset type: one isolated residential house reference for image-to-3D in a children's tactile toy-town game.\nReference image 1: approved whole-town concept. Use ONLY the small mint-green residential house with a coral-red roof between the tall golden grandma house and the bakery near the upper left. Translate it into a single polished building, not the surrounding town.\nReference image 2: bakery. Use its premium chunky molded painted-toy material, softly rounded edges, large simple roof tiles and generous warm cream trim. Do not copy the shop, awning, oven, or platform.\nSubject: a compact charming mint-green family house, two clearly readable levels: a ground floor and one small attic window integrated in a front gable. Broad coral-red pitched tiled roof, a centered small front gable over the door with one cream-framed rounded-top opaque blue attic window. Ground floor has a deep muted teal front door slightly right of center and a large cream-framed blue window to its left, divided into four large panes. One simple matching window on the visible right side. A short cream chimney with a closed coral cap sits toward the rear of the roof. Corners have a few broad cream quoins and there is a thick cream cornice under the roof. Door has a tiny warm brass knob. The house should feel quietly welcoming, clear and attractive when very small on a tablet.\nFull outer proportions approximately width 5, height 4.6, depth 4.2, including roof and chimney. Shallow eaves, compact footprint, no front porch. Doors touch ground level; no steps, foundation plinth or base slab. Roof is fully solid and opaque, with closed gable ends and no open interior. All windows are opaque painted blue inserts, no glass transparency. All architectural features attached to the house. No detached items.\nStyle: high-quality sculpted toy product render, satin painted surfaces with restrained subtle tactile texture, rounded substantial forms, broad readable details, rich mint-green walls, coral-red roof, warm ivory trim and muted teal-blue door/window inserts. Roof tiles are broad and few, not noisy micro-detail. Keep details simpler than the hero grandma house, and keep the house compact rather than tall.\nComposition: ONE complete building centered with unclipped margins, elevated front-right three-quarter view showing the front door and right wall, neutral plain warm off-white seamless studio background, soft evenly lit neutral daylight, gentle contact shadow. No diagram, no multiple views or collage.\nExclude: words, numbers, signs, logos, watermark, people, animals, vehicles, shop displays, balcony, porch, stairs, fences, flowerboxes, plants, trees, grass, garden, terrain tile, paving, roads, wires, poles, heavy weathering, transparent windows, open doors, empty roof holes, cutaway, detached props.",
+  "references": [
+    "assets-src/city-v2/concept-v2.png",
+    "assets-src/city-v1/bakery-v1.png"
+  ],
+  "mode": "built-in image_gen; style-reference generation",
+  "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-27f75f38-f53c-4a50-93d7-0c10611d4c77.png",
+  "output": "house-a-v1.png",
+  "sourceRevision": "7454b85",
+  "status": "Reference ready for review; no Tripo order",
+  "inspection": "Single mint house with coral tiled pitched roof, cream trim, opaque blue windows, one front door at ground, capped chimney. No base slab, stairs, plants, people or detached props. Hidden roof and full proportions still require GLB measurement.",
+  "sha256": "5ef44092d5afbcff1edbf5cbca8a4285f09208c086e97c48b3987f882898bc2a",
+  "createdAtUTC": "2026-10-26T00:44:11.246752+00:00",
+  "verification": {
+    "tests": 21,
+    "typecheck": "passed",
+    "browser": "IAB static reference at1180x660 and390x844",
+    "imageLoaded": true,
+    "horizontalOverflow390": false,
+    "screenshots": [
+      "qa/house-a-reference-1180.png",
+      "qa/house-a-reference-390.png",
+      "qa/house-a-reference-390-details.png"
+    ],
+    "limits": "Reference only; no GLB/runtime/iPad result."
+  }
+}

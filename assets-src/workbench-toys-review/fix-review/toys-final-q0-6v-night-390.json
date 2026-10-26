@@ -1,0 +1,1097 @@
+{
+  "atSeconds": 19.8,
+  "wires": 4,
+  "goal": false,
+  "won": false,
+  "parts": [
+    {
+      "kind": "bigBattery",
+      "level": 0.7393169850406345,
+      "current": -1.1089754775609517,
+      "closed": false,
+      "triggered": null
+    },
+    {
+      "kind": "balloon",
+      "level": 0,
+      "current": 0,
+      "closed": false,
+      "triggered": null,
+      "popped": false,
+      "ballVisible": true,
+      "leverAngle": 0.18
+    },
+    {
+      "kind": "skittles",
+      "level": 0,
+      "current": 0,
+      "closed": false,
+      "triggered": null,
+      "down": false,
+      "angles": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "kind": "garland",
+      "level": 4.335941918539388,
+      "current": 0.6651639293528945,
+      "closed": false,
+      "triggered": null,
+      "emissive": [
+        0.39199999999999996,
+        0.39199999999999996,
+        0.39199999999999996,
+        0.39199999999999996,
+        0.775716291847495,
+        1.105480564756233,
+        0.5774782754182576,
+        0.39199999999999996,
+        0.39199999999999996,
+        0.39199999999999996,
+        0.39199999999999996,
+        0.7879259661795053
+      ]
+    },
+    {
+      "kind": "kettle",
+      "level": 2.8954396434798375,
+      "current": 0.4438115402171522,
+      "closed": false,
+      "triggered": null,
+      "heat": 1,
+      "boiling": true,
+      "lidY": 0.8185303836213544,
+      "lidZ": -0.030810788695509718,
+      "steam": [
+        0.017016592090191383,
+        0.41848949621466186,
+        0.771108607357344,
+        0.9710002017864491,
+        0.9785732977157721,
+        0.792327950618585,
+        0.4491523356367711
+      ]
+    },
+    {
+      "kind": "lightSensor",
+      "level": 0,
+      "current": 0,
+      "closed": true,
+      "triggered": "world"
+    }
+  ],
+  "scene": "gallery",
+  "viewport": [
+    390,
+    844
+  ],
+  "quality": 0,
+  "night": 1,
+  "source": "bigBattery",
+  "environment": "desktop IAB; not iPad/PWA/FPS",
+  "triggers": [
+    {
+      "kind": "balloon",
+      "screen": {
+        "x": 190.04542260922952,
+        "y": 337.46369895582427
+      }
+    },
+    {
+      "kind": "skittles",
+      "screen": {
+        "x": 260.30099132665845,
+        "y": 366.0955595440384
+      }
+    }
+  ],
+  "terminals": [
+    {
+      "kind": "bigBattery",
+      "key": "a",
+      "world": [
+        -3,
+        0.47999999999999976,
+        3.5999999999999996
+      ],
+      "screen": {
+        "x": 157.98394957216433,
+        "y": 461.33573915117506
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "bigBattery",
+      "key": "b",
+      "world": [
+        -5,
+        0.47999999999999976,
+        3.5999999999999996
+      ],
+      "screen": {
+        "x": 108.37110922989581,
+        "y": 461.33573915117506
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "balloon",
+      "key": "a",
+      "world": [
+        -1.4,
+        0.4799999999999999,
+        -1.1
+      ],
+      "screen": {
+        "x": 198.5169866152953,
+        "y": 371.0686711430799
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "balloon",
+      "key": "b",
+      "world": [
+        -2.6,
+        0.4799999999999999,
+        -1.1
+      ],
+      "screen": {
+        "x": 169.87296876902244,
+        "y": 371.0686711430799
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "skittles",
+      "key": "a",
+      "world": [
+        1.65,
+        0.4799999999999999,
+        -1.05
+      ],
+      "screen": {
+        "x": 271.34114954572885,
+        "y": 371.9930808892691
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "skittles",
+      "key": "b",
+      "world": [
+        0.35,
+        0.4799999999999999,
+        -1.05
+      ],
+      "screen": {
+        "x": 240.29766377389276,
+        "y": 371.9930808892691
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "garland",
+      "key": "a",
+      "world": [
+        4.45,
+        0.47999999999999976,
+        1.95
+      ],
+      "screen": {
+        "x": 341.1236638065252,
+        "y": 428.85046523467173
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "garland",
+      "key": "b",
+      "world": [
+        2.75,
+        0.47999999999999976,
+        1.95
+      ],
+      "screen": {
+        "x": 299.5256378527691,
+        "y": 428.85046523467173
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "kettle",
+      "key": "a",
+      "world": [
+        0.3,
+        0.4799999999999999,
+        2.1
+      ],
+      "screen": {
+        "x": 239.59974716374893,
+        "y": 431.7671549781301
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "kettle",
+      "key": "b",
+      "world": [
+        -0.8999999999999999,
+        0.4799999999999999,
+        2.1
+      ],
+      "screen": {
+        "x": 210.20012641812554,
+        "y": 431.7671549781301
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "lightSensor",
+      "key": "a",
+      "world": [
+        4.2,
+        0.48,
+        3.6500000000000004
+      ],
+      "screen": {
+        "x": 336.63885211278676,
+        "y": 462.33411524223544
+      },
+      "inside": true,
+      "bodyOccluders": []
+    },
+    {
+      "kind": "lightSensor",
+      "key": "b",
+      "world": [
+        3,
+        0.48,
+        3.6500000000000004
+      ],
+      "screen": {
+        "x": 306.85871965845826,
+        "y": 462.33411524223544
+      },
+      "inside": true,
+      "bodyOccluders": []
+    }
+  ],
+  "sensors": [
+    {
+      "closed": true,
+      "lux": 0.522810685770102,
+      "distance": 1.7111132115350554,
+      "currentPower": 0.3,
+      "currentSense": 0.9799999999999999,
+      "legacyPower": 0.9799999999999999,
+      "legacyLux": 0.522810685770102,
+      "turnOnThreshold": 0.28
+    }
+  ],
+  "trace": [
+    {
+      "atSeconds": 0.01,
+      "wires": 0,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "bigBattery",
+          "level": 2.000000165480742e-9,
+          "current": -3.000000248221113e-9,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "heat": 0,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 0.27,
+      "wires": 4,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "bigBattery",
+          "level": 0.7393169850406345,
+          "current": -1.1089754775609517,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0.017259509236983994
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 4.335941918539388,
+          "current": 0.6651639293528945,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 2.8954396434798375,
+          "current": 0.4438115402171522,
+          "closed": false,
+          "triggered": null,
+          "heat": 0,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      ]
+    },
+    {
+      "atSeconds": 0.54,
+      "wires": 4,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "bigBattery",
+          "level": 0.7393169850406345,
+          "current": -1.1089754775609517,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0.14699177242353506
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 4.335941918539388,
+          "current": 0.6651639293528945,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0.06547898307868856,
+            0.03498966212269939,
+            0.02312352208925549,
+            0.02312352208925549,
+            0.02312352208925549,
+            0.02312352208925549,
+            0.04543333450894938,
+            0.06529934782753832,
+            0.03434941657469536,
+            0.02312352208925549,
+            0.02312352208925549,
+            0.02312352208925549
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 2.8954396434798375,
+          "current": 0.4438115402171522,
+          "closed": false,
+          "triggered": null,
+          "heat": 0,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "lightSensor",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null
+        }
+      ]
+    },
+    {
+      "atSeconds": 0.72,
+      "wires": 4,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "bigBattery",
+          "level": 0.7393169850406345,
+          "current": -1.1089754775609517,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0.16905637767081344
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 4.335941918539388,
+          "current": 0.6651639293528945,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0.30735535553354004,
+            0.30735535553354004,
+            0.30735535553354004,
+            0.30735535553354004,
+            0.44458505992197,
+            0.8639668666574001,
+            0.6176894442922669,
+            0.30735535553354004,
+            0.30735535553354004,
+            0.30735535553354004,
+            0.30735535553354004,
+            0.4528703196405148
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 2.8954396434798375,
+          "current": 0.4438115402171522,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.008400000000000001,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "lightSensor",
+          "level": 0,
+          "current": 0,
+          "closed": true,
+          "triggered": "world"
+        }
+      ]
+    },
+    {
+      "atSeconds": 2.22,
+      "wires": 4,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "bigBattery",
+          "level": 0.7393169850406345,
+          "current": -1.1089754775609517,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0.17999871505986484
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 4.335941918539388,
+          "current": 0.6651639293528945,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0.39199951333675365,
+            0.39199951333675365,
+            0.39199951333675365,
+            0.4378370481165633,
+            1.0004909403341864,
+            0.9630629407111626,
+            0.41741648832260225,
+            0.39199951333675365,
+            0.39199951333675365,
+            0.39199951333675365,
+            0.44396248171717034,
+            1.009419671327897
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 2.8954396434798375,
+          "current": 0.4438115402171522,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.26179440000000076,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "lightSensor",
+          "level": 0,
+          "current": 0,
+          "closed": true,
+          "triggered": "world"
+        }
+      ]
+    },
+    {
+      "atSeconds": 3.72,
+      "wires": 4,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "bigBattery",
+          "level": 0.7393169850406345,
+          "current": -1.1089754775609517,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0.17999999984152096
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 4.335941918539388,
+          "current": 0.6651639293528945,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0.3919999999970121,
+            0.3919999999970121,
+            0.3919999999970121,
+            0.3919999999970121,
+            0.7803111565859095,
+            1.1041654826570746,
+            0.5734809894809446,
+            0.3919999999970121,
+            0.3919999999970121,
+            0.3919999999970121,
+            0.3919999999970121,
+            0.792508872257796
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 2.8954396434798375,
+          "current": 0.4438115402171522,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.5138111999999986,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0.28820455562173,
+            0.2218916166589569,
+            0.1116303216947865,
+            0.0207407275370872,
+            0.14900382131191117,
+            0.24775488086396655,
+            0.2974350477467024
+          ]
+        },
+        {
+          "kind": "lightSensor",
+          "level": 0,
+          "current": 0,
+          "closed": true,
+          "triggered": "world"
+        }
+      ]
+    },
+    {
+      "atSeconds": 5.22,
+      "wires": 4,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "bigBattery",
+          "level": 0.7393169850406345,
+          "current": -1.1089754775609517,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0.17999999999998043
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 4.335941918539388,
+          "current": 0.6651639293528945,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0.39199999999999996,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.550860823284577,
+            1.0954333913046181,
+            0.8068992216890781,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.5610868948248503
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 2.8954396434798375,
+          "current": 0.4438115402171522,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.7657944000000002,
+          "boiling": false,
+          "lidY": 0.8,
+          "lidZ": 0,
+          "steam": [
+            0.1118848539609434,
+            0.32316913244538115,
+            0.6942155087615846,
+            0.9277639895730717,
+            0.9775574339709815,
+            0.8337336396157873,
+            0.5247786728626166
+          ]
+        },
+        {
+          "kind": "lightSensor",
+          "level": 0,
+          "current": 0,
+          "closed": true,
+          "triggered": "world"
+        }
+      ]
+    },
+    {
+      "atSeconds": 5.82,
+      "wires": 4,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "bigBattery",
+          "level": 0.7393169850406345,
+          "current": -1.1089754775609517,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0.17999999999999944
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 4.335941918539388,
+          "current": 0.6651639293528945,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0.39199999999999996,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.7619076373060729,
+            1.1090916209280903,
+            0.5896460509070377,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.7741414742422783,
+            1.105918227462549
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 2.8954396434798375,
+          "current": 0.4438115402171522,
+          "closed": false,
+          "triggered": null,
+          "heat": 0.8649479999999996,
+          "boiling": true,
+          "lidY": 0.815369380920662,
+          "lidZ": -0.05927394221585704,
+          "steam": [
+            0.938416015574911,
+            0.6955735611053168,
+            0.3149642322089123,
+            0.12802762565927792,
+            0.5456620421098634,
+            0.855221399014812,
+            0.9953936692427343
+          ]
+        },
+        {
+          "kind": "lightSensor",
+          "level": 0,
+          "current": 0,
+          "closed": true,
+          "triggered": "world"
+        }
+      ]
+    },
+    {
+      "atSeconds": 6.72,
+      "wires": 4,
+      "goal": false,
+      "won": false,
+      "parts": [
+        {
+          "kind": "bigBattery",
+          "level": 0.7393169850406345,
+          "current": -1.1089754775609517,
+          "closed": false,
+          "triggered": null
+        },
+        {
+          "kind": "balloon",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "popped": false,
+          "ballVisible": true,
+          "leverAngle": 0.17999999999999997
+        },
+        {
+          "kind": "skittles",
+          "level": 0,
+          "current": 0,
+          "closed": false,
+          "triggered": null,
+          "down": false,
+          "angles": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ]
+        },
+        {
+          "kind": "garland",
+          "level": 4.335941918539388,
+          "current": 0.6651639293528945,
+          "closed": false,
+          "triggered": null,
+          "emissive": [
+            0.45734342605555134,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.4091598180861409,
+            0.9423584924219567,
+            1.0181581022296469,
+            0.4505157676433636,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.39199999999999996,
+            0.4130693920667611
+          ]
+        },
+        {
+          "kind": "kettle",
+          "level": 2.8954396434798375,
+          "current": 0.4438115402171522,
+          "closed": false,
+          "triggered": null,
+          "heat": 1,
+          "boiling": true,
+          "lidY": 0.8187879626863311,
+          "lidZ": 0.02027603279227658,
+          "steam": [
+            0.9378067152275522,
+            0.6943085134711835,
+            0.3132939954867346,
+            0.12977224060256157,
+            0.5471354928884384,
+            0.8561318506312933,
+            0.9955607955885224
+          ]
+        },
+        {
+          "kind": "lightSensor",
+          "level": 0,
+          "current": 0,
+          "closed": true,
+          "triggered": "world"
+        }
+      ]
+    }
+  ]
+}

@@ -41,13 +41,13 @@
     {
       "priority": "P2",
       "id": "garland-night-bloom",
-      "status": "needs Claude fix",
+      "status": "accepted after 09304c6; local pink spill remains; see followup",
       "description": "At q=1 at night, light merges into a bright blob that obscures individual coloured bulbs and their chase."
     },
     {
       "priority": "P3",
       "id": "skittles-contrast",
-      "status": "visual proposal",
+      "status": "accepted after red caps/stronger stripes in7454b85",
       "description": "White pins are weakly separated from cream board, especially at 390 width; slightly larger upper body and stronger red neck would read better."
     },
     {
@@ -64,5 +64,14 @@
     "Ray check excludes terminal metal and transparent effects; only sampled poses, no full interaction proof.",
     "Sound events were not an audible voice/accent review.",
     "Recurring IAB MutationObserver error without source URL, also seen on earlier unrelated QA pages; cause unresolved."
-  ]
+  ],
+  "followup": {
+    "reviewedCommit": "09304c6",
+    "status": "accepted for desktop QA",
+    "report": "fix-review/README.md",
+    "photocellRegressionFoundIn": "7454b85",
+    "photocellFixedIn": "09304c6",
+    "checks": "q1/3V1180 and6V1180/390 night; q0/q2 6V390 night; pins day1180/390",
+    "ipad": "not tested"
+  }
 }
