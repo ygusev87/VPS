@@ -1,0 +1,140 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "initialCalls": 2,
+  "corrections": 0,
+  "status": "accepted-for-integration-review",
+  "totalBytes": 360628,
+  "images": [
+    {
+      "name": "rack-steel-card",
+      "source": "../sources/rack-steel-card.png",
+      "sourceSha256": "6805ec19787fe894871a95ee2356e0b96ae9f2b41ecde60778a17e432a6b51db",
+      "sourceMeasurement": {
+        "width": 1515,
+        "height": 1038,
+        "alphaBBox16": [
+          53,
+          9,
+          1461,
+          1026
+        ],
+        "transparentFraction": 0.4131510838945166,
+        "partialFraction": 0.5856006409889544,
+        "maxEdgeAlpha": [
+          1,
+          0,
+          4,
+          1
+        ]
+      },
+      "operation": "alpha>16 bounding rectangle +8 sourcepx padding; proportional Lanczos resize inside1024; sRGB/WebP85/alpha100; no alpha thresholding, painting, background reconstruction or hue editing",
+      "crop": {
+        "left": 45,
+        "top": 1,
+        "width": 1425,
+        "height": 1034
+      },
+      "output": "public/textures/kit/factory/rack-steel-card.webp",
+      "bytes": 196924,
+      "sha256": "00f778d3059e363807882c0620a9522a1250b2dadcf8fbeca3817b46fedab2a6",
+      "width": 1024,
+      "height": 743,
+      "alphaBBox16": [
+        6,
+        5,
+        1017,
+        736
+      ],
+      "transparentFraction": 0.3746359248822342,
+      "partialFraction": 0.6214933125841184,
+      "maxEdgeAlpha": [
+        1,
+        0,
+        5,
+        1
+      ],
+      "aspect": 0.7255859375,
+      "visibleWidthFactor": 0.98828125,
+      "desiredVisibleWorldWidth": 3.2,
+      "recommendedCardSize": 3.2379446640316205,
+      "anchor": {
+        "pixel": [
+          512,
+          737
+        ],
+        "spriteCenter": [
+          0.5,
+          0.008075370121130576
+        ],
+        "notes": "Bottom centre of visible alpha bbox; coordinate for geometric placement, not inferred hidden contact point. cards() bottom edge has only remaining transparent pad above ground."
+      },
+      "remainingBottomPadWorld": 0.018972332015810278
+    },
+    {
+      "name": "forklift-card",
+      "source": "../sources/forklift-card.png",
+      "sourceSha256": "5e58e132420d1a8adda0114799d9ed0ba7b05e57041a0e13c3a4be56b6d3f982",
+      "sourceMeasurement": {
+        "width": 1492,
+        "height": 1054,
+        "alphaBBox16": [
+          80,
+          23,
+          1454,
+          1020
+        ],
+        "transparentFraction": 0.5239315565368239,
+        "partialFraction": 0.4752602113231352,
+        "maxEdgeAlpha": [
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "operation": "alpha>16 bounding rectangle +8 sourcepx padding; proportional Lanczos resize inside1024; sRGB/WebP85/alpha100; no alpha thresholding, painting, background reconstruction or hue editing",
+      "crop": {
+        "left": 72,
+        "top": 15,
+        "width": 1391,
+        "height": 1014
+      },
+      "output": "public/textures/kit/factory/forklift-card.webp",
+      "bytes": 163704,
+      "sha256": "927d73882b9463ce2601df092ec3121e27f30715f669b227d0897e97ebdf376c",
+      "width": 1024,
+      "height": 746,
+      "alphaBBox16": [
+        5,
+        6,
+        1017,
+        740
+      ],
+      "transparentFraction": 0.46952627555294907,
+      "partialFraction": 0.5272311704088471,
+      "maxEdgeAlpha": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "aspect": 0.728515625,
+      "visibleWidthFactor": 0.9892578125,
+      "desiredVisibleWorldWidth": 3.1,
+      "recommendedCardSize": 3.1336623889437316,
+      "anchor": {
+        "pixel": [
+          512,
+          741
+        ],
+        "spriteCenter": [
+          0.5,
+          0.006702412868632712
+        ],
+        "notes": "Bottom centre of visible alpha bbox; coordinate for geometric placement, not inferred hidden contact point. cards() bottom edge has only remaining transparent pad above ground."
+      },
+      "remainingBottomPadWorld": 0.015301085883514315
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "status": "accepted-for-integration-review",
+  "reviewer": "main Codex",
+  "images": [
+    {
+      "name": "rack-steel-card",
+      "sha256": "00f778d3059e363807882c0620a9522a1250b2dadcf8fbeca3817b46fedab2a6",
+      "sourceSha256": "6805ec19787fe894871a95ee2356e0b96ae9f2b41ecde60778a17e432a6b51db"
+    },
+    {
+      "name": "forklift-card",
+      "sha256": "927d73882b9463ce2601df092ec3121e27f30715f669b227d0897e97ebdf376c",
+      "sourceSha256": "5e58e132420d1a8adda0114799d9ed0ba7b05e57041a0e13c3a4be56b6d3f982"
+    }
+  ],
+  "nativeScreenshots": [
+    "qa/floor-1024.jpg",
+    "qa/white-1024.jpg",
+    "qa/dark-1024.jpg",
+    "qa/rack-390.jpg",
+    "qa/forklift-390.jpg"
+  ],
+  "viewports": [
+    [
+      390,
+      844
+    ],
+    [
+      1024,
+      768
+    ]
+  ],
+  "visibleChecks": [
+    "Whole rack and forklift silhouette inside frame; alpha edge <=5/255",
+    "Visible gaps in rack/cabin/mast and between forks have no rectangular backdrop",
+    "White/dark/concrete composites show no obvious halo",
+    "Pipes/coils and lowered forks legible at32/70px per world unit",
+    "No baked floor/shadow; separate blob-shadow expected"
+  ],
+  "console": [
+    "One MutationObserver.observe TypeError without URL at16:40:48Z. QA page does not use MutationObserver; origin unresolved. No asset loading failure observed."
+  ],
+  "limits": [
+    "Static asset review; in-game positioning/occlusion and iPad/PWA/FPS not checked",
+    "52-degree camera is an artistic prompt, not a measured 3D reconstruction",
+    "Only near-side wheels are visible; do not infer hidden geometry from the card"
+  ]
+}
