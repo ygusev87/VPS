@@ -358,7 +358,7 @@ export class CityMap extends StoryMap {
     for (const f of [plan.field, ...(plan.fields ?? [])]) {
       if (f === plan.field && park.length) {
         // The picture's paved circle sits a little off its middle: move the whole lawn so it rings the fountain (Codex's park review).
-        const lawn = decal(f, park[0], 0.3, 0.005);
+        const lawn = toned(decal(f, park[0], 0.3, 0.005), LAWN_TONE);
         lawn.position.x += 0.092578;
         lawn.position.z += 0.260231;
         this.scenery.add(lawn);
