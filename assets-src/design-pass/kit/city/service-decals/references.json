@@ -1,0 +1,14 @@
+[
+  {
+    "path": "assets-src/design-pass/variants/city-a.png",
+    "sha256": "d4b70219ba0bdb45888d6ef954507517554a25eef994b3ed0084a433f2cdb0b1"
+  },
+  {
+    "path": "assets-src/design-pass/kit/CITY-KIT.md",
+    "sha256": "c0d432f38fcdc50f58b5342b5d17c7159b943b982d127cca6bf3b741d859c409"
+  },
+  {
+    "path": "public/textures/kit/city/paving-main-a.webp",
+    "sha256": "34462d7988cdc56a796d7a0fbf7f6bb3a2e671205cddb0736b681180199dd0a1"
+  }
+]

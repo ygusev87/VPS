@@ -1,0 +1,479 @@
+{
+  "checks": [
+    {
+      "view": "white",
+      "assets": [
+        {
+          "clip": "full",
+          "name": "parking-bay",
+          "naturalSize": [
+            1024,
+            880
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            257.140625
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/parking-bay.webp?v=7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+          "withinPanel": true
+        },
+        {
+          "clip": "full",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            253.125
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/white-390.jpg"
+    },
+    {
+      "view": "dark",
+      "assets": [
+        {
+          "clip": "full",
+          "name": "parking-bay",
+          "naturalSize": [
+            1024,
+            880
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            257.140625
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/parking-bay.webp?v=7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+          "withinPanel": true
+        },
+        {
+          "clip": "full",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            253.125
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/dark-390.jpg"
+    },
+    {
+      "view": "paving",
+      "assets": [
+        {
+          "clip": "full",
+          "name": "parking-bay",
+          "naturalSize": [
+            1024,
+            880
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            257.140625
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/parking-bay.webp?v=7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+          "withinPanel": true
+        },
+        {
+          "clip": "full",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            253.125
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/paving-390.jpg"
+    },
+    {
+      "view": "small",
+      "assets": [
+        {
+          "clip": "full",
+          "name": "parking-bay",
+          "naturalSize": [
+            1024,
+            880
+          ],
+          "ppu": "32",
+          "renderedSize": [
+            112,
+            96
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/parking-bay.webp?v=7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+          "withinPanel": true
+        },
+        {
+          "clip": "full",
+          "name": "parking-bay",
+          "naturalSize": [
+            1024,
+            880
+          ],
+          "ppu": "70",
+          "renderedSize": [
+            245,
+            210
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/parking-bay.webp?v=7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+          "withinPanel": true
+        },
+        {
+          "clip": "full",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "32",
+          "renderedSize": [
+            204.796875,
+            172.796875
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        },
+        {
+          "clip": "west",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "70",
+          "renderedSize": [
+            448,
+            378
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": false
+        },
+        {
+          "clip": "east",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "70",
+          "renderedSize": [
+            448,
+            378
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": false
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/small-390.jpg"
+    },
+    {
+      "view": "coverage",
+      "assets": [
+        {
+          "clip": "full",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            253.125
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/coverage-390.jpg"
+    },
+    {
+      "view": "white",
+      "assets": [
+        {
+          "clip": "full",
+          "name": "parking-bay",
+          "naturalSize": [
+            1024,
+            880
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            257.140625
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/parking-bay.webp?v=7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+          "withinPanel": true
+        },
+        {
+          "clip": "full",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            253.125
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/white-1024.jpg"
+    },
+    {
+      "view": "dark",
+      "assets": [
+        {
+          "clip": "full",
+          "name": "parking-bay",
+          "naturalSize": [
+            1024,
+            880
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            257.140625
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/parking-bay.webp?v=7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+          "withinPanel": true
+        },
+        {
+          "clip": "full",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            253.125
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/dark-1024.jpg"
+    },
+    {
+      "view": "paving",
+      "assets": [
+        {
+          "clip": "full",
+          "name": "parking-bay",
+          "naturalSize": [
+            1024,
+            880
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            257.140625
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/parking-bay.webp?v=7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+          "withinPanel": true
+        },
+        {
+          "clip": "full",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            253.125
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/paving-1024.jpg"
+    },
+    {
+      "view": "small",
+      "assets": [
+        {
+          "clip": "full",
+          "name": "parking-bay",
+          "naturalSize": [
+            1024,
+            880
+          ],
+          "ppu": "32",
+          "renderedSize": [
+            112,
+            96
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/parking-bay.webp?v=7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+          "withinPanel": true
+        },
+        {
+          "clip": "full",
+          "name": "parking-bay",
+          "naturalSize": [
+            1024,
+            880
+          ],
+          "ppu": "70",
+          "renderedSize": [
+            245,
+            210
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/parking-bay.webp?v=7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+          "withinPanel": true
+        },
+        {
+          "clip": "full",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "32",
+          "renderedSize": [
+            204.796875,
+            172.796875
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        },
+        {
+          "clip": "west",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "70",
+          "renderedSize": [
+            448,
+            378
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/small-1024.jpg"
+    },
+    {
+      "view": "coverage",
+      "assets": [
+        {
+          "clip": "full",
+          "name": "site-sand",
+          "naturalSize": [
+            1200,
+            1008
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            253.125
+          ],
+          "src": "http://127.0.0.1:33348/public/textures/kit/city/site-sand.webp?v=3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/coverage-1024.jpg"
+    }
+  ]
+}

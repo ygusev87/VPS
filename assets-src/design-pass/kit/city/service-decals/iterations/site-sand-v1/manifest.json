@@ -1,0 +1,518 @@
+{
+  "schemaVersion": 1,
+  "status": "visual QA pending",
+  "generationCalls": 2,
+  "targetedEditCalls": 0,
+  "totalBytes": 792382,
+  "kitOwner": "main; never changed here",
+  "assets": [
+    {
+      "name": "parking-bay",
+      "path": "public/textures/kit/city/parking-bay.webp",
+      "sha256": "7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+      "bytes": 108538,
+      "size": [
+        1024,
+        880
+      ],
+      "worldCoverage": [
+        3.5,
+        3
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 88,
+      "alphaQuality": 100,
+      "nativeAlpha": true,
+      "source": "assets-src/design-pass/kit/city/sources/parking-bay.png",
+      "sourceSha256": "e5d302546c6fdeed0082d4a154b931b575f01cd72e596b55ff378e3f0cf9d86d",
+      "sourceSize": [
+        1353,
+        1162
+      ],
+      "aspect": 1.163636,
+      "anchor": {
+        "normalisedTopLeft": [
+          0.5,
+          0.5
+        ],
+        "definition": "Ground decal centred on footprint; image top=north."
+      },
+      "transform": {
+        "operation": "Centred crop to target aspect then Lanczos resize and WebP encoding",
+        "crop": {
+          "left": 0,
+          "top": 0,
+          "width": 1352,
+          "height": 1162
+        },
+        "scaleXY": [
+          0.757396,
+          0.757315
+        ],
+        "roundingOnlyAspectDifference": 0.000108,
+        "noManualAlphaEdits": true,
+        "noProceduralArtwork": true
+      },
+      "alpha": {
+        "whole": {
+          "rect": [
+            0,
+            0,
+            1024,
+            880
+          ],
+          "n": 901120,
+          "min": 0,
+          "max": 255,
+          "mean": 37.552269,
+          "zero": 735492,
+          "below8": 752465,
+          "below128": 767554,
+          "below250": 786372,
+          "coverageAt128": 0.148222,
+          "coverageAt250": 0.127339
+        },
+        "visibleThreshold": 8,
+        "visiblePixels": 148655,
+        "bounds": {
+          "left": 36,
+          "top": 15,
+          "right": 989,
+          "bottom": 864,
+          "width": 954,
+          "height": 850
+        },
+        "outerEdges": {
+          "left": {
+            "rect": [
+              0,
+              0,
+              1,
+              880
+            ],
+            "n": 880,
+            "min": 0,
+            "max": 1,
+            "mean": 0.023864,
+            "zero": 859,
+            "below8": 880,
+            "below128": 880,
+            "below250": 880,
+            "coverageAt128": 0,
+            "coverageAt250": 0
+          },
+          "right": {
+            "rect": [
+              1023,
+              0,
+              1024,
+              880
+            ],
+            "n": 880,
+            "min": 0,
+            "max": 0,
+            "mean": 0,
+            "zero": 880,
+            "below8": 880,
+            "below128": 880,
+            "below250": 880,
+            "coverageAt128": 0,
+            "coverageAt250": 0
+          },
+          "top": {
+            "rect": [
+              0,
+              0,
+              1024,
+              1
+            ],
+            "n": 1024,
+            "min": 0,
+            "max": 0,
+            "mean": 0,
+            "zero": 1024,
+            "below8": 1024,
+            "below128": 1024,
+            "below250": 1024,
+            "coverageAt128": 0,
+            "coverageAt250": 0
+          },
+          "bottom": {
+            "rect": [
+              0,
+              879,
+              1024,
+              880
+            ],
+            "n": 1024,
+            "min": 0,
+            "max": 1,
+            "mean": 0.007813,
+            "zero": 1016,
+            "below8": 1024,
+            "below128": 1024,
+            "below250": 1024,
+            "coverageAt128": 0,
+            "coverageAt250": 0
+          }
+        }
+      },
+      "diagnostics": {
+        "topRear": {
+          "rect": [
+            153.6,
+            0,
+            870.4,
+            132
+          ],
+          "n": 94644,
+          "min": 0,
+          "max": 255,
+          "mean": 94.002293,
+          "zero": 49808,
+          "below8": 55709,
+          "below128": 59570,
+          "below250": 64022,
+          "coverageAt128": 0.370589,
+          "coverageAt250": 0.323549
+        },
+        "bottomEntrance": {
+          "rect": [
+            153.6,
+            748,
+            870.4,
+            880
+          ],
+          "n": 94644,
+          "min": 0,
+          "max": 1,
+          "mean": 0.000528,
+          "zero": 94594,
+          "below8": 94644,
+          "below128": 94644,
+          "below250": 94644,
+          "coverageAt128": 0,
+          "coverageAt250": 0
+        },
+        "interior": {
+          "rect": [
+            153.6,
+            132,
+            870.4,
+            748
+          ],
+          "n": 441672,
+          "min": 0,
+          "max": 1,
+          "mean": 0.000908,
+          "zero": 441271,
+          "below8": 441672,
+          "below128": 441672,
+          "below250": 441672,
+          "coverageAt128": 0,
+          "coverageAt250": 0
+        },
+        "leftSide": {
+          "rect": [
+            0,
+            132,
+            153.6,
+            748
+          ],
+          "n": 94864,
+          "min": 0,
+          "max": 255,
+          "mean": 92.70366,
+          "zero": 52716,
+          "below8": 56240,
+          "below128": 60139,
+          "below250": 64646,
+          "coverageAt128": 0.36605,
+          "coverageAt250": 0.31854
+        },
+        "rightSide": {
+          "rect": [
+            870.4,
+            132,
+            1024,
+            748
+          ],
+          "n": 94248,
+          "min": 0,
+          "max": 255,
+          "mean": 91.066898,
+          "zero": 54198,
+          "below8": 56969,
+          "below128": 60345,
+          "below250": 64725,
+          "coverageAt128": 0.359721,
+          "coverageAt250": 0.313248
+        },
+        "orientation": "top=north closed rear; bottom=south open entrance"
+      },
+      "visualReview": "pending"
+    },
+    {
+      "name": "site-sand",
+      "path": "public/textures/kit/city/site-sand.webp",
+      "sha256": "23157c9d0d85472e0cd9f6c6edb1f5dc2638645317915e962e968cf2461a1df6",
+      "bytes": 683844,
+      "size": [
+        1200,
+        1008
+      ],
+      "worldCoverage": [
+        6.4,
+        5.4
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 88,
+      "alphaQuality": 100,
+      "nativeAlpha": true,
+      "source": "assets-src/design-pass/kit/city/sources/site-sand.png",
+      "sourceSha256": "26942b6215b37569575feab78b333e29a387d32c8e7945874e1ef580b4ab0e0a",
+      "sourceSize": [
+        1369,
+        1149
+      ],
+      "aspect": 1.190476,
+      "anchor": {
+        "normalisedTopLeft": [
+          0.5,
+          0.5
+        ],
+        "definition": "Ground decal centred on footprint; image top=north."
+      },
+      "transform": {
+        "operation": "Centred crop to target aspect then Lanczos resize and WebP encoding",
+        "crop": {
+          "left": 1,
+          "top": 0,
+          "width": 1367,
+          "height": 1149
+        },
+        "scaleXY": [
+          0.877835,
+          0.877285
+        ],
+        "roundingOnlyAspectDifference": 0.000627,
+        "noManualAlphaEdits": true,
+        "noProceduralArtwork": true
+      },
+      "alpha": {
+        "whole": {
+          "rect": [
+            0,
+            0,
+            1200,
+            1008
+          ],
+          "n": 1209600,
+          "min": 0,
+          "max": 255,
+          "mean": 215.326078,
+          "zero": 88727,
+          "below8": 128998,
+          "below128": 177702,
+          "below250": 236671,
+          "coverageAt128": 0.85309,
+          "coverageAt250": 0.804339
+        },
+        "visibleThreshold": 8,
+        "visiblePixels": 1080602,
+        "bounds": {
+          "left": 20,
+          "top": 20,
+          "right": 1179,
+          "bottom": 988,
+          "width": 1160,
+          "height": 969
+        },
+        "outerEdges": {
+          "left": {
+            "rect": [
+              0,
+              0,
+              1,
+              1008
+            ],
+            "n": 1008,
+            "min": 0,
+            "max": 1,
+            "mean": 0.032738,
+            "zero": 975,
+            "below8": 1008,
+            "below128": 1008,
+            "below250": 1008,
+            "coverageAt128": 0,
+            "coverageAt250": 0
+          },
+          "right": {
+            "rect": [
+              1199,
+              0,
+              1200,
+              1008
+            ],
+            "n": 1008,
+            "min": 0,
+            "max": 1,
+            "mean": 0.005952,
+            "zero": 1002,
+            "below8": 1008,
+            "below128": 1008,
+            "below250": 1008,
+            "coverageAt128": 0,
+            "coverageAt250": 0
+          },
+          "top": {
+            "rect": [
+              0,
+              0,
+              1200,
+              1
+            ],
+            "n": 1200,
+            "min": 0,
+            "max": 1,
+            "mean": 0.118333,
+            "zero": 1058,
+            "below8": 1200,
+            "below128": 1200,
+            "below250": 1200,
+            "coverageAt128": 0,
+            "coverageAt250": 0
+          },
+          "bottom": {
+            "rect": [
+              0,
+              1007,
+              1200,
+              1008
+            ],
+            "n": 1200,
+            "min": 0,
+            "max": 1,
+            "mean": 0.206667,
+            "zero": 952,
+            "below8": 1200,
+            "below128": 1200,
+            "below250": 1200,
+            "coverageAt128": 0,
+            "coverageAt250": 0
+          }
+        }
+      },
+      "diagnostics": {
+        "innerPlot": {
+          "worldSize": [
+            6,
+            5
+          ],
+          "padWorld": 0.2,
+          "pixelRect": [
+            37.500000000000036,
+            37.333333333333364,
+            1162.5,
+            970.6666666666666
+          ],
+          "alpha": {
+            "rect": [
+              37.500000000000036,
+              37.333333333333364,
+              1162.5,
+              970.6666666666666
+            ],
+            "n": 1049625,
+            "min": 0,
+            "max": 255,
+            "mean": 246.234731,
+            "zero": 103,
+            "below8": 1182,
+            "below128": 22359,
+            "below250": 76697,
+            "coverageAt128": 0.978698,
+            "coverageAt250": 0.926929
+          },
+          "edges": {
+            "left": {
+              "rect": [
+                38,
+                38,
+                39,
+                970.6666666666666
+              ],
+              "n": 933,
+              "min": 2,
+              "max": 245,
+              "mean": 113.778135,
+              "zero": 0,
+              "below8": 17,
+              "below128": 534,
+              "below250": 933,
+              "coverageAt128": 0.427653,
+              "coverageAt250": 0
+            },
+            "right": {
+              "rect": [
+                1161,
+                38,
+                1162,
+                970.6666666666666
+              ],
+              "n": 933,
+              "min": 0,
+              "max": 247,
+              "mean": 89.60343,
+              "zero": 9,
+              "below8": 69,
+              "below128": 659,
+              "below250": 933,
+              "coverageAt128": 0.293676,
+              "coverageAt250": 0
+            },
+            "top": {
+              "rect": [
+                38,
+                38,
+                1162.5,
+                39
+              ],
+              "n": 1125,
+              "min": 0,
+              "max": 245,
+              "mean": 70.696889,
+              "zero": 12,
+              "below8": 108,
+              "below128": 910,
+              "below250": 1125,
+              "coverageAt128": 0.191111,
+              "coverageAt250": 0
+            },
+            "bottom": {
+              "rect": [
+                38,
+                969,
+                1162.5,
+                970
+              ],
+              "n": 1125,
+              "min": 0,
+              "max": 245,
+              "mean": 94.011556,
+              "zero": 7,
+              "below8": 89,
+              "below128": 763,
+              "below250": 1125,
+              "coverageAt128": 0.321778,
+              "coverageAt250": 0
+            }
+          }
+        }
+      },
+      "visualReview": "pending"
+    }
+  ]
+}

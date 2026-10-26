@@ -1,0 +1,4 @@
+{
+  "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-ede5d0d2-614f-49e1-b354-3796df7f5e1f.png",
+  "reason": "First correction improves alpha>=128 inner coverage to99.9489%, but536 inner pixels remain below128 and fence-edge alpha min62. Remove broad feathered band without changing content."
+}

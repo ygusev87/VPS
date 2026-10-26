@@ -1,0 +1,46 @@
+[
+  {
+    "name": "parking-bay",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-dd9cc3e6-b100-4789-b99b-09cdbe2d8966.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/parking-bay.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "initialGenerations": 1,
+    "targetedEdits": [],
+    "sha256": "e5d302546c6fdeed0082d4a154b931b575f01cd72e596b55ff378e3f0cf9d86d",
+    "bytes": 733573,
+    "sourcePreservedByteExact": true
+  },
+  {
+    "name": "site-sand",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-85521915-91f7-4c2e-8e3c-c859deab8673.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/site-sand.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 2,
+    "initialGenerations": 1,
+    "targetedEdits": [
+      {
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-85521915-91f7-4c2e-8e3c-c859deab8673.png",
+        "reason": "Initial inner6x5 plot coverage at alpha>=128 is97.8698%; its perimeter crosses the feathered rim. Need opaque coverage inside pad0.2 with transparent edge outside.",
+        "inputSha256": "26942b6215b37569575feab78b333e29a387d32c8e7945874e1ef580b4ab0e0a",
+        "archivedInputPath": "assets-src/design-pass/kit/city/service-decals/iterations/site-sand-v1/site-sand.png",
+        "outputSha256": "a5a40d3dc424590f78d2b4401df6f7e3c617a99404fba4c40908cecfa34facbe"
+      }
+    ],
+    "sha256": "a5a40d3dc424590f78d2b4401df6f7e3c617a99404fba4c40908cecfa34facbe",
+    "bytes": 3926530,
+    "sourcePreservedByteExact": true,
+    "initialGeneration": {
+      "name": "site-sand",
+      "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-31bf6b1e-9cd5-4dbb-b378-23b6b2e8b788.png",
+      "sourcePath": "assets-src/design-pass/kit/city/service-decals/iterations/site-sand-v1/site-sand.png",
+      "tool": "image_gen.imagegen",
+      "callCount": 1,
+      "initialGenerations": 1,
+      "targetedEdits": [],
+      "sha256": "26942b6215b37569575feab78b333e29a387d32c8e7945874e1ef580b4ab0e0a",
+      "bytes": 4290917,
+      "sourcePreservedByteExact": true
+    }
+  }
+]

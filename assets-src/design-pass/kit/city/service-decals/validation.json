@@ -1,0 +1,268 @@
+{
+  "schemaVersion": 1,
+  "status": "pass-with-native-alpha-note",
+  "generationCalls": 4,
+  "initialGenerations": 2,
+  "targetedEdits": 2,
+  "totalBytes": 575114,
+  "sourceChecks": [
+    {
+      "name": "parking-bay",
+      "stage": "selected",
+      "path": "assets-src/design-pass/kit/city/sources/parking-bay.png",
+      "sha256": "e5d302546c6fdeed0082d4a154b931b575f01cd72e596b55ff378e3f0cf9d86d",
+      "byteExact": true
+    },
+    {
+      "name": "site-sand",
+      "stage": "selected",
+      "path": "assets-src/design-pass/kit/city/sources/site-sand.png",
+      "sha256": "6bf62af038601f107583301b6cbdfddefe1a123c67b338932155335582435f98",
+      "byteExact": true
+    },
+    {
+      "name": "site-sand",
+      "stage": "initial",
+      "path": "assets-src/design-pass/kit/city/service-decals/iterations/site-sand-v1/site-sand.png",
+      "sha256": "26942b6215b37569575feab78b333e29a387d32c8e7945874e1ef580b4ab0e0a",
+      "byteExact": true
+    },
+    {
+      "name": "site-sand",
+      "stage": "prior-0",
+      "path": "assets-src/design-pass/kit/city/service-decals/iterations/site-sand-v2/site-sand.png",
+      "sha256": "a5a40d3dc424590f78d2b4401df6f7e3c617a99404fba4c40908cecfa34facbe",
+      "byteExact": true
+    }
+  ],
+  "alphaEncodingChecks": [
+    {
+      "name": "parking-bay",
+      "differentAlphaPixels": 0,
+      "maxDifference": 0
+    },
+    {
+      "name": "site-sand",
+      "differentAlphaPixels": 0,
+      "maxDifference": 0
+    }
+  ],
+  "browser": {
+    "screenshots": 10,
+    "visibleInstances": 23,
+    "consoleErrors": 0,
+    "pageHorizontalOverflows": 0,
+    "intentionalMobile70pxWindows": 2,
+    "unexpectedClips": 0,
+    "allHashesMatch": true,
+    "record": "qa/browser-checks.json"
+  },
+  "scaleChecks": [
+    {
+      "name": "parking-bay",
+      "viewport": [
+        390,
+        844
+      ],
+      "ppu": 32,
+      "clip": "full",
+      "size": [
+        112,
+        96
+      ],
+      "expected": [
+        112,
+        96
+      ]
+    },
+    {
+      "name": "parking-bay",
+      "viewport": [
+        390,
+        844
+      ],
+      "ppu": 70,
+      "clip": "full",
+      "size": [
+        245,
+        210
+      ],
+      "expected": [
+        245,
+        210
+      ]
+    },
+    {
+      "name": "site-sand",
+      "viewport": [
+        390,
+        844
+      ],
+      "ppu": 32,
+      "clip": "full",
+      "size": [
+        204.796875,
+        172.796875
+      ],
+      "expected": [
+        204.8,
+        172.8
+      ]
+    },
+    {
+      "name": "site-sand",
+      "viewport": [
+        390,
+        844
+      ],
+      "ppu": 70,
+      "clip": "west",
+      "size": [
+        448,
+        378
+      ],
+      "expected": [
+        448,
+        378
+      ]
+    },
+    {
+      "name": "site-sand",
+      "viewport": [
+        390,
+        844
+      ],
+      "ppu": 70,
+      "clip": "east",
+      "size": [
+        448,
+        378
+      ],
+      "expected": [
+        448,
+        378
+      ]
+    },
+    {
+      "name": "parking-bay",
+      "viewport": [
+        1024,
+        768
+      ],
+      "ppu": 32,
+      "clip": "full",
+      "size": [
+        112,
+        96
+      ],
+      "expected": [
+        112,
+        96
+      ]
+    },
+    {
+      "name": "parking-bay",
+      "viewport": [
+        1024,
+        768
+      ],
+      "ppu": 70,
+      "clip": "full",
+      "size": [
+        245,
+        210
+      ],
+      "expected": [
+        245,
+        210
+      ]
+    },
+    {
+      "name": "site-sand",
+      "viewport": [
+        1024,
+        768
+      ],
+      "ppu": 32,
+      "clip": "full",
+      "size": [
+        204.796875,
+        172.796875
+      ],
+      "expected": [
+        204.8,
+        172.8
+      ]
+    },
+    {
+      "name": "site-sand",
+      "viewport": [
+        1024,
+        768
+      ],
+      "ppu": 70,
+      "clip": "west",
+      "size": [
+        448,
+        378
+      ],
+      "expected": [
+        448,
+        378
+      ]
+    }
+  ],
+  "parkingContract": {
+    "slotCount": 1,
+    "slotCountEvidence": "visual review of white/dark/paving/small native screenshots",
+    "topRearClosed": true,
+    "bottomSouthOpen": true,
+    "interiorAlphaMax": 1,
+    "entranceAlphaMax": 1
+  },
+  "sandContract": {
+    "fullFootprint": [
+      6.4,
+      5.4
+    ],
+    "innerPlot": [
+      6,
+      5
+    ],
+    "pad": 0.2,
+    "innerAlpha": {
+      "rect": [
+        37.500000000000036,
+        37.333333333333364,
+        1162.5,
+        970.6666666666666
+      ],
+      "n": 1049625,
+      "min": 246,
+      "max": 253,
+      "mean": 251.753781,
+      "zero": 0,
+      "below8": 0,
+      "below128": 0,
+      "below250": 886,
+      "coverageAt128": 1,
+      "coverageAt250": 0.999156
+    },
+    "outerEdgeMaxAlpha": 6,
+    "strictAlpha255": false,
+    "note": "Native near-opacity246..253 retained; no alpha normalisation or painted mask."
+  },
+  "tests": {
+    "command": "npm test",
+    "exitCode": 0,
+    "testFiles": 17,
+    "tests": 88
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  },
+  "limitations": [
+    "Game renderer UV orientation/fence integration/iPad/PWA/FPS not tested in this asset-only QA."
+  ]
+}

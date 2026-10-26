@@ -1,0 +1,24 @@
+[
+  {
+    "name": "site-sand",
+    "reason": "Initial inner6x5 plot coverage at alpha>=128 is97.8698%; its perimeter crosses the feathered rim. Need opaque coverage inside pad0.2 with transparent edge outside.",
+    "toolArgs": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/site-sand.png"
+      ],
+      "prompt": "Correct only the alpha coverage of this top-down construction sand decal. Preserve the same quiet beige sand, tread impressions, tiny pebbles, top-down orientation and colours. The current feathered edge extends too far INTO the patch. EXPAND THE SOLID OPAQUE SAND right out to within roughly ONE PERCENT of every canvas edge: the entire central98 percent of width AND98 percent of height, INCLUDING ITS FOUR CORNERS, must have fully opaque alpha255. No transparency holes or translucent sand anywhere in that central98x98 rectangle. Limit all transparency transition to the extremely narrow outermost1 percent rim on each side, ending at zero alpha at the canvas perimeter; use only tiny shallow grain irregularity, nearly square corners, not broadly rounded or ragged. Do NOT shrink the patch or add transparent margins. The full canvas has a6.4x5.4 ground footprint, and the centred6x5 fenced rectangle MUST be entirely opaque sand. Keep a natural fine-grained edge without a hard rectangular matte or raised border. No new props, no fence, no toy blocks, no vehicles, no writing and no added shadow. Keep native transparency only at that very narrow outer edge."
+    }
+  },
+  {
+    "name": "site-sand",
+    "reason": "First correction improves alpha>=128 inner coverage to99.9489%, but536 inner pixels remain below128 and fence-edge alpha min62. Remove broad feathered band without changing content.",
+    "toolArgs": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/site-sand.png"
+      ],
+      "prompt": "Make a targeted correction to this SAME flat top-down sand decal: eliminate the broad translucent halo/band INSIDE the sand. The sand itself must be solid opaque, with alpha255 everywhere across the rectangular surface, all the way to within just a few pixels of the image perimeter. DO NOT softly feather or blur a wide border. The ONLY transparency is outside a very shallow irregular grain-cut silhouette at the extreme perimeter, plus a thin one-to-three-pixel antialiased edge. Preserve nearly square corners and full canvas coverage: no rounded-off corners and no inward bites. A centred rectangle occupying94 percent width by93 percent height must be solid opaque sand at every point, including its entire perimeter and corners. Keep all current sand colours, wheel marks and small pebbles, same orthographic top view, same aspect, no new objects. No outline, no rectangular backing/matte, no drop shadow, no fence, vehicles, toys or writing. True native alpha outside the grain-cut edge; fully opaque texture inside it. Do not shrink the sand patch or leave transparent margins."
+    }
+  }
+]

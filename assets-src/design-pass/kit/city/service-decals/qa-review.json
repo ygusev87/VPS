@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted-for-integration-review",
+  "method": "Visual review of all10 native IAB screenshots: white/dark/city paving/32 and70px per world unit/inner6x5 outline, at390x844 and1024x768.",
+  "assets": [
+    {
+      "name": "parking-bay",
+      "sha256": "7c8bf7825847b3d3a3ad761fb7a9858fee3979eca28c77d48fcf19a646562436",
+      "status": "accepted-for-integration-review",
+      "note": "Exactly one parking bay; white left/right paint lines and closed top/north rear, bottom/south entrance open. No asphalt, numbers or cars. Central interior and entrance alpha max1/255. Lightly worn paint; lower contrast on white/pale paving is expected for white markings.",
+      "orientation": "top=north",
+      "rectangularBackgroundMatteVisible": false,
+      "manualPixelEdits": false,
+      "screenshotPaths": [
+        "qa/white-390.jpg",
+        "qa/dark-390.jpg",
+        "qa/paving-390.jpg",
+        "qa/small-390.jpg",
+        "qa/white-1024.jpg",
+        "qa/dark-1024.jpg",
+        "qa/paving-1024.jpg",
+        "qa/small-1024.jpg"
+      ]
+    },
+    {
+      "name": "site-sand",
+      "sha256": "3c2adc9dd6f39b5dc2ceb9826cc4d52b2bc69d740dfa6497dd456898f8151f5c",
+      "status": "accepted-for-integration-review",
+      "note": "Compacted sand with quiet tyre tracks and small pebbles. No fence, blocks, toys, machinery or added ground slab. Two targeted edits narrowed the alpha transition: all1049625 pixels inside6x5 have alpha246..253 (mean251.753781), zero holes. Not mathematically alpha255; slight native translucency is retained. Natural grain rim lies outside the inner plot, outer canvas alpha max6.",
+      "orientation": "top=north",
+      "rectangularBackgroundMatteVisible": false,
+      "manualPixelEdits": false,
+      "screenshotPaths": [
+        "qa/white-390.jpg",
+        "qa/dark-390.jpg",
+        "qa/paving-390.jpg",
+        "qa/small-390.jpg",
+        "qa/coverage-390.jpg",
+        "qa/white-1024.jpg",
+        "qa/dark-1024.jpg",
+        "qa/paving-1024.jpg",
+        "qa/small-1024.jpg",
+        "qa/coverage-1024.jpg"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "name": "parking-bay",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-dd9cc3e6-b100-4789-b99b-09cdbe2d8966.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/parking-bay.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "initialGenerations": 1,
+    "targetedEdits": [],
+    "sha256": "e5d302546c6fdeed0082d4a154b931b575f01cd72e596b55ff378e3f0cf9d86d",
+    "bytes": 733573,
+    "sourcePreservedByteExact": true
+  },
+  {
+    "name": "site-sand",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-31bf6b1e-9cd5-4dbb-b378-23b6b2e8b788.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/site-sand.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 1,
+    "initialGenerations": 1,
+    "targetedEdits": [],
+    "sha256": "26942b6215b37569575feab78b333e29a387d32c8e7945874e1ef580b4ab0e0a",
+    "bytes": 4290917,
+    "sourcePreservedByteExact": true
+  }
+]

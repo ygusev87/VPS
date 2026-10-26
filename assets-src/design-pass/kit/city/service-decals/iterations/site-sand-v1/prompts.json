@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "assets": [
+    {
+      "name": "parking-bay",
+      "targetSize": [
+        1024,
+        880
+      ],
+      "worldCoverage": [
+        3.5,
+        3
+      ],
+      "orientation": {
+        "top": "north/rear/closed",
+        "bottom": "south/front/open"
+      },
+      "toolArgs": {
+        "transparent_background": true,
+        "prompt": "Use case: stylized-concept. Asset type: one FLAT transparent parking-bay ground decal for a miniature children's city game. Strict orthographic TOP-DOWN camera, no perspective. The complete image contains exactly ONE parking slot, marked by exactly THREE white painted strokes: one straight line down the LEFT side, one straight line down the RIGHT side, and one transverse rear crossbar at the TOP/NORTH joining their upper ends. The BOTTOM/SOUTH front edge is completely OPEN with no line across it. Shape like an upside-down U, one continuous rear-and-side outline; no interior divider and no second bay. Horizontal canvas ratio1024:880 representing3.5x3 ground units. Place the line perimeter close to the canvas edges with only a tiny transparent margin; modest consistent line thickness about0.10 ground units. The rear bar occupies only a narrow strip at the top. Style: calm slightly worn off-white road paint, very subtle small paint chips and gently imperfect edges, readable at112x96 pixels. All negative space INSIDE and OUTSIDE the three lines must be truly transparent native alpha; only the paint is visible. No asphalt, pavement, coloured mat, floor, solid background, ground patch, dark outline, cast shadow, curb, parking number, letter P, text, car, toy, people, markings elsewhere or extra painted strokes. Top means north. Single decal only."
+      }
+    },
+    {
+      "name": "site-sand",
+      "targetSize": [
+        1200,
+        1008
+      ],
+      "worldCoverage": [
+        6.4,
+        5.4
+      ],
+      "innerPlot": [
+        6,
+        5
+      ],
+      "paddingWorld": 0.2,
+      "toolArgs": {
+        "transparent_background": true,
+        "prompt": "Use case: stylized-concept. Asset type: one top-down sand construction-site ground decal for a polished miniature children's city game. Strict orthographic TOP-DOWN, top=north, no perspective, no directional cast shadows. A nearly rectangular horizontal patch of quiet warm beige compacted construction sand, matching a cheerful city diorama with cream paving and green grass. Aspect approximately6:5, target1200x1008. Very subtle pressed wheel tracks in the sand (just a few low-contrast shallow tread impressions), delicate fine grain, exactly a couple of tiny scattered pebbles; mostly calm level sand, no trenches or heaps. CRITICAL COVERAGE: sand must fill essentially the entire image. The central94 percent of width and93 percent of height, including ALL FOUR corners of that central rectangle, must be fully opaque sand with NO transparency holes. This inner rectangle represents a6x5 plot inside a6.4x5.4 decal. Native transparent alpha is allowed ONLY in a very narrow natural feathered rim at the outermost edges (roughly outer2 percent on each side), fading all the way to transparent at the canvas boundary. Keep that rim shallow and almost rectangular, not a rounded island, not an oval, not broadly ragged, no large transparent corners and no blank transparent headroom. Soft irregular sand grains at the perimeter, no hard rectangular matte, no drawn outline, no raised border. Do not add a fence, blocks, bricks, toys, buildings, equipment, machinery, vehicles, people, floor slab, shadows, text, labels or any other props. Preserve a solid opaque centre; alpha only at the outside edge. Single ground texture only."
+      }
+    }
+  ]
+}
