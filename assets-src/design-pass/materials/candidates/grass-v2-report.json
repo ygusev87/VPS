@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-26",
+  "assets": [
+    {
+      "id": "grass-base",
+      "file": "candidates/grass-base-v2.webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 93262,
+      "sha256": "02afb96a221c7b57de45afb75bea122028418f1cd05f5da9d4c721cb2342de8a",
+      "meanRgbV1": [
+        111.12,
+        147.19,
+        45.84
+      ],
+      "meanRgbV2": [
+        84.49,
+        136.31,
+        44.71
+      ]
+    },
+    {
+      "id": "grass-meadow",
+      "file": "candidates/grass-meadow-v2.webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 101452,
+      "sha256": "e91d194ac567dde660ec9c2fbffbdede9e77e722f2d94e3c9c89b15b2fe2f2f2",
+      "meanRgbV1": [
+        146.21,
+        168.25,
+        52.09
+      ],
+      "meanRgbV2": [
+        99.02,
+        149.77,
+        36.48
+      ]
+    }
+  ],
+  "totalBytes": 194714
+}

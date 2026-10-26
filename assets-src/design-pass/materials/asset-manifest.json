@@ -15,15 +15,15 @@
       "worldSpan": 7,
       "maxKiB": 100,
       "art": "Lush hand-painted middle green grass; broad soft tonal clusters; sparse readable blades; no flowers, harsh highlights or shadows.",
-      "status": "candidate-ready-for-integration",
-      "candidateFile": "candidates/grass-base-v1.webp",
+      "status": "v2-candidate-checked-in-private-scene-awaiting-claude",
+      "candidateFile": "candidates/grass-base-v2.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
       "alpha": "opaque",
       "colorSpace": "sRGB",
       "generation": "builtin Image",
-      "bytes": 68212,
-      "sha256": "fd696f23381b82351b63ec08eddcb3f5dcd629ea1979393e43a74e06812b387f"
+      "bytes": 93262,
+      "sha256": "02afb96a221c7b57de45afb75bea122028418f1cd05f5da9d4c721cb2342de8a"
     },
     {
       "id": "grass-meadow",
@@ -35,15 +35,15 @@
       "worldSpan": 7,
       "maxKiB": 100,
       "art": "Compatible warmer meadow green; same brush scale and value range as grass-base; not a yellow carpet.",
-      "status": "candidate-ready-for-integration",
-      "candidateFile": "candidates/grass-meadow-v1.webp",
+      "status": "v2-candidate-checked-in-private-scene-awaiting-claude",
+      "candidateFile": "candidates/grass-meadow-v2.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
       "alpha": "opaque",
       "colorSpace": "sRGB",
       "generation": "builtin Image",
-      "bytes": 54464,
-      "sha256": "f2cd09e9e5b779bcbb16939d46bfbce4fa9cfd8549f7337c136af745116c9438"
+      "bytes": 101452,
+      "sha256": "e91d194ac567dde660ec9c2fbffbdede9e77e722f2d94e3c9c89b15b2fe2f2f2"
     },
     {
       "id": "path-earth",
@@ -140,7 +140,7 @@
     ],
     "higgsfieldCredits": 0,
     "tripoCredits": 0,
-    "actualCallsThisStep": 7
+    "actualCallsThisStep": 9
   },
   "firstPassAdditionalModels": [],
   "payloadTargetKiB": 682,
@@ -155,5 +155,5 @@
     "src/ground.ts",
     "src/farm.ts"
   ],
-  "actualCandidateTotalBytes": 371315
+  "actualCandidateTotalBytes": 443353
 }

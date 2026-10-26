@@ -1,0 +1,19 @@
+{
+  "date": "2026-10-26",
+  "engine": "builtin Image",
+  "reason": "m0283 + QA 1f0931a: grass too yellow and directional",
+  "calls": [
+    {
+      "id": "grass-base-v2",
+      "prompt": "Edit the first attached image, the square grass-base game texture. The second attached image is a PALETTE AND GAME ART reference only: do not reproduce the farm, buildings, flowers, paths, objects, perspective, light shafts or shadows from it. Deliver ONE square opaque seamless top-down diffuse/albedo texture of SHORT soft hand-painted meadow grass. The current first image becomes too yellow/lime and makes diagonal striped bands when repeated across the game. Correct BOTH flaws: use a deeper, cooler natural leaf-green midtone, restrained yellow content, medium value, muted sage green highlights (never yellow); keep the friendly sculpted/painted game style. Break all diagonal rows, waves and directional bands. Scatter very small blade tufts and occasional tiny clover leaves in irregular isotropic clusters, no dominant direction, no recognisable big clover medallions, no repeated rows. Low-to-medium contrast, broad calm patches plus subtle fine brush texture, not noisy or photorealistic. Every edge must tile cleanly with its opposite edge. Uniform soft ambient lighting only, no baked lighting gradient, no shadows, no vignette, no border, no transparent areas, no text. Fill the entire square with grass. This is an albedo bitmap for a 3D farm, not a scene or a rendering of a tile.",
+      "source": "sources/grass-base-v2.png",
+      "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-9090b632-9388-46d2-8cd4-f3582fdc603a.png"
+    },
+    {
+      "id": "grass-meadow-v2",
+      "prompt": "Edit the first image (grass-meadow texture) into a companion to the second image (corrected grass-base), using the third farm concept image ONLY as a green palette/game-art reference. Output ONE square seamless opaque top-down albedo texture, no scene. The meadow must now be only gently brighter and warmer than the second grass-base image, staying a natural medium LEAF GREEN, not yellow or lime. Remove the first image's big yellow clouds and diagonal wave-like stripes. Calm irregular isotropic patches, evenly distributed tiny short grass blades and a few tiny clover leaves; no rows, no repeated large recognisable tufts, no dark diagonal channels. Retain soft hand-painted children's farm-game art and subtle readable brushwork, medium value, low-to-medium contrast. Natural deeper green midtones, subdued sage highlights, no lemon-yellow tips, no neon greens. Seamless edges must match in all directions. No lighting gradient, cast shadows, sun shafts, flowers, rocks, scenery, dirt, text, border or transparency. Fill entire square; this is a game ground material, not a 3D tile render.",
+      "source": "sources/grass-meadow-v2.png",
+      "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-67f4561f-73e6-4a00-8e0a-5fec07bbca81.png"
+    }
+  ]
+}
