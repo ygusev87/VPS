@@ -10,7 +10,7 @@
 // another lever, lifts the finished boxes into the lorry.
 import * as THREE from 'three';
 import { groundMaterial, type GroundPlan } from './ground';
-import { grassMaterial, hasKit, kitPieces, patches, ribbons } from './kit';
+import { grassMaterial, hasKit, kitPieces, patches, ribbons, standees } from './kit';
 import { type Hint } from './hints';
 import { model, type Fit } from './parts/assets';
 import type { Part, PartKind, Terminal } from './parts/base';
@@ -276,9 +276,18 @@ export class FactoryMap extends StoryMap {
     hook.position.set(8, 2.2, 14);
     hall.add(beam, trolley, chain, hook);
     // The stock: racks of steel bars and coils under the crane, crates and barrels.
-    for (const [x, z] of [[-24, 19], [-6, 20], [12, 19], [28, 19]] as const) hall.add(rack(x, z));
+    // The kit's painted stock (cards) when it has it, else the code-built stand-ins.
+    const shade = kitPieces('farm', 'blob-shadow')[0] ?? null;
+    const card = (name: string, spots: { x: number; z: number; size: number }[], fallback: () => void) => {
+      const maps = this.kit ? kitPieces('factory', name) : [];
+      if (maps.length) this.scenery.add(standees(spots, maps, shade));
+      else fallback();
+    };
+    const racks = [[-24, 19], [-6, 20], [12, 19], [28, 19]] as const;
+    card('rack-steel-card', racks.map(([x, z]) => ({ x, z, size: 3.2 })), () => racks.forEach(([x, z]) => hall.add(rack(x, z))));
     for (const [x, z, s] of [[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [36, 22, 1], [-14, 23.5, 0.9], [20, 23.5, 1]] as const) hall.add(crate(x, z, s));
-    for (const [x, z] of [[-38, 19], [-38, 22], [38, 12], [-30, 24], [4, 24]] as const) hall.add(barrel(x, z));
+    const barrels = [[-38, 20.5], [38, 12], [-30, 24], [4, 24]] as const;
+    card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.2 })), () => [[-38, 19], [-38, 22], [38, 12], [-30, 24], [4, 24]].forEach(([x, z]) => hall.add(barrel(x, z))));
     // Yellow and black safety lines round every station.
     for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.5, LATHE.z - 2, 11, 9], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11]] as const) {
       const strip = kitPieces('factory', 'hazard-strip', true);
@@ -287,8 +296,9 @@ export class FactoryMap extends StoryMap {
         hall.add(ribbons([{ pts: [[x0, z0], [x1, z0], [x1, z1], [x0, z1], [x0, z0]], w: 0.3 }], strip[0], 1.12, 4.36, 0.0075, 2, 0.5));
       } else hall.add(hazard(cx, cz, w, d));
     }
-    for (const [x, z, n] of [[36, -14, 3], [38.2, -14, 2], [36, -10.5, 2]] as const) hall.add(stack(x, z, n));
-    hall.add(forklift(33, -18));
+    const pallets = [[36, -14, 3], [38.2, -14, 2], [36, -10.5, 2]] as const;
+    card('pallet-card', pallets.map(([x, z]) => ({ x, z, size: 1.9 })), () => pallets.forEach(([x, z, n]) => hall.add(stack(x, z, n))));
+    card('forklift-card', [{ x: 33, z: -18, size: 3.1 }], () => hall.add(forklift(33, -18)));
     this.scenery.add(bakeGroup(hall));
   }
 
