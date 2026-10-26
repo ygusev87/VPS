@@ -1,0 +1,278 @@
+{
+  "source": {
+    "revision": "967497a9e0405dd92f8e02f5596f3012e0484685",
+    "snapshot": "/private/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/farm-storage-pn9or6uz",
+    "runtimeHashes": {
+      "src/farm.ts": "faff58451d23d89d2620bb9cc6ecc61944c1c581ce2886694d38e615dc343449",
+      "src/farm-decor.ts": "a2009f5730edb1a860fa2fba587b4e6bfe83ff5c64f2a1df2907c007fb1367ef",
+      "src/stage.ts": "a70d990075a5898867bd5a59e7dacde73f7e2e2f7ee501382958fc638bf1998f",
+      "src/decor.ts": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342"
+    },
+    "candidateHashes": {
+      "public/models/farm-crate.glb": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f",
+      "public/models/farm-barrel.glb": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b",
+      "placement.json": "603d148eaac7e83409156f06fdabd0d811431464e08d89e97aa2f50f77f19de3",
+      "forest-additions.json": "e0371dd11670fe8e0bc8580af5e5ef4b975b7cb58fe29485531138491e65bf3e",
+      "occupied-layout.json": "ec74b25eae1ad249d71eece0ab2fdad76ab9a24f8c2552fb06249e52346c04dc"
+    },
+    "occupancyNote": "Native candidate includes 33 forest additions, 4 storage props and seven enlarged reed bundles. Static clearance considers forest candidate; only reed/reed overlap is intentional."
+  },
+  "viewport": [
+    1024,
+    768
+  ],
+  "acceptance": [
+    {
+      "model": "farm-crate",
+      "planned": 2,
+      "accepted": 2
+    },
+    {
+      "model": "farm-barrel",
+      "planned": 2,
+      "accepted": 2
+    },
+    {
+      "model": "pond-reeds",
+      "planned": 7,
+      "accepted": 7
+    },
+    {
+      "model": "tree-oak-lite",
+      "planned": 20,
+      "accepted": 20
+    },
+    {
+      "model": "tree-pine-lite",
+      "planned": 10,
+      "accepted": 10
+    },
+    {
+      "model": "bush-lite",
+      "planned": 3,
+      "accepted": 3
+    }
+  ],
+  "results": [
+    {
+      "task": "cow",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "pig",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "tractor",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "sheep",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "kitten",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "goat",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "beehive",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "horse",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "puppy",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "hen",
+      "phase": "evening",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "rabbit",
+      "phase": "evening",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "cow",
+      "phase": "evening",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "nest",
+      "phase": "evening",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "goose",
+      "phase": "evening",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "dog",
+      "phase": "night",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "duck",
+      "phase": "morning",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "rooster",
+      "phase": "morning",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    }
+  ],
+  "addedOcclusions": 0,
+  "staticOverlaps": [],
+  "workOverlaps": [],
+  "pairOverlaps": [],
+  "duckClearance": [
+    {
+      "model": "farm-crate",
+      "item": [
+        -23.7,
+        -27,
+        0,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 30.167149003474687
+    },
+    {
+      "model": "farm-crate",
+      "item": [
+        49.35,
+        25,
+        0.1,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 86.33437054183368
+    },
+    {
+      "model": "farm-barrel",
+      "item": [
+        -23.7,
+        -28.7,
+        0,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 31.734168296255092
+    },
+    {
+      "model": "farm-barrel",
+      "item": [
+        49.4,
+        27.3,
+        0,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 87.13840985091413
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -44.7,
+        0.55,
+        0.3,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 0.35739674969224056
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -40.7,
+        -1.15,
+        2.2,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 0.6156221600171417
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -40.15,
+        -1.05,
+        1.4,
+        0.9
+      ],
+      "minClearanceWithBodyRadius075": 0.6942276184167842
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -41.2,
+        -0.95,
+        2.6,
+        0.9
+      ],
+      "minClearanceWithBodyRadius075": 0.5288819347039246
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -44.7,
+        7.6,
+        1.2,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 1.2370883077755361
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -44.05,
+        7.6,
+        2,
+        0.9
+      ],
+      "minClearanceWithBodyRadius075": 0.9776871869314718
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -44.45,
+        8.2,
+        0.3,
+        0.9
+      ],
+      "minClearanceWithBodyRadius075": 1.7498782290667583
+    }
+  ],
+  "errors": [],
+  "contextLost": false
+}

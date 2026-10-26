@@ -1,0 +1,87 @@
+{
+  "provenance": "Original local mesh authoring for farm storage props. No external generation or texture orders.",
+  "models": [
+    {
+      "name": "farm-crate",
+      "bytes": 21120,
+      "triangles": 2892,
+      "bounds": {
+        "min": [
+          -0.675000011920929,
+          -0.000010077598588453807,
+          -0.5000030606813193
+        ],
+        "max": [
+          0.675000011920929,
+          0.8700100799827744,
+          0.5000030606813193
+        ]
+      },
+      "sha256": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f",
+      "materials": 1,
+      "textures": 0,
+      "validation": {
+        "numErrors": 0,
+        "numWarnings": 0,
+        "numInfos": 2,
+        "numHints": 0,
+        "messages": [
+          {
+            "code": "UNSUPPORTED_EXTENSION",
+            "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+            "severity": 2,
+            "pointer": "/extensionsUsed/0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/buffers/0"
+          }
+        ],
+        "truncated": false
+      }
+    },
+    {
+      "name": "farm-barrel",
+      "bytes": 22076,
+      "triangles": 1336,
+      "bounds": {
+        "min": [
+          -0.545612375573323,
+          0,
+          -0.545612375573323
+        ],
+        "max": [
+          0.545612375573323,
+          1.3200000524520874,
+          0.545612375573323
+        ]
+      },
+      "sha256": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b",
+      "materials": 1,
+      "textures": 0,
+      "validation": {
+        "numErrors": 0,
+        "numWarnings": 0,
+        "numInfos": 2,
+        "numHints": 0,
+        "messages": [
+          {
+            "code": "UNSUPPORTED_EXTENSION",
+            "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+            "severity": 2,
+            "pointer": "/extensionsUsed/0"
+          },
+          {
+            "code": "UNUSED_OBJECT",
+            "message": "This object may be unused.",
+            "severity": 2,
+            "pointer": "/buffers/0"
+          }
+        ],
+        "truncated": false
+      }
+    }
+  ]
+}

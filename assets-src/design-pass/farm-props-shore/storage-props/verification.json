@@ -1,0 +1,113 @@
+{
+  "status": "pass",
+  "baselineInstances": 645,
+  "preservedNonReedInstances": 642,
+  "candidateInstances": 686,
+  "forestAdded": 33,
+  "storageAdded": 4,
+  "reedsBeforeAfter": [
+    3,
+    7
+  ],
+  "preservedTerrain": [
+    "PATHS",
+    "FENCES",
+    "SOIL",
+    "MUD",
+    "MEADOW",
+    "PONDS"
+  ],
+  "views": [
+    {
+      "viewport": [
+        1180,
+        820
+      ],
+      "tasks": 17,
+      "rays": 31280,
+      "addedOcclusions": 0
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "tasks": 17,
+      "rays": 31280,
+      "addedOcclusions": 0
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "tasks": 17,
+      "rays": 31280,
+      "addedOcclusions": 0
+    }
+  ],
+  "rays": 93840,
+  "addedOcclusions": 0,
+  "nativeAcceptance": [
+    {
+      "model": "farm-crate",
+      "planned": 2,
+      "accepted": 2
+    },
+    {
+      "model": "farm-barrel",
+      "planned": 2,
+      "accepted": 2
+    },
+    {
+      "model": "pond-reeds",
+      "planned": 7,
+      "accepted": 7
+    },
+    {
+      "model": "tree-oak-lite",
+      "planned": 20,
+      "accepted": 20
+    },
+    {
+      "model": "tree-pine-lite",
+      "planned": 10,
+      "accepted": 10
+    },
+    {
+      "model": "bush-lite",
+      "planned": 3,
+      "accepted": 3
+    }
+  ],
+  "newPropsRoadClearance": 1.1156221600171419,
+  "newPropsFenceClearance": 3.965622160017142,
+  "duckClearanceWithBodyRadius075": 0.35739674969224056,
+  "sceneAndShadowsTriangles": 2267987,
+  "fullFrameTriangles": 3695865,
+  "states": [
+    1430795,
+    2267987,
+    2858673,
+    3695865
+  ],
+  "source": {
+    "revision": "967497a9e0405dd92f8e02f5596f3012e0484685",
+    "snapshot": "/private/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/farm-storage-pn9or6uz",
+    "runtimeHashes": {
+      "src/farm.ts": "faff58451d23d89d2620bb9cc6ecc61944c1c581ce2886694d38e615dc343449",
+      "src/farm-decor.ts": "a2009f5730edb1a860fa2fba587b4e6bfe83ff5c64f2a1df2907c007fb1367ef",
+      "src/stage.ts": "a70d990075a5898867bd5a59e7dacde73f7e2e2f7ee501382958fc638bf1998f",
+      "src/decor.ts": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342"
+    },
+    "candidateHashes": {
+      "public/models/farm-crate.glb": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f",
+      "public/models/farm-barrel.glb": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b",
+      "placement.json": "603d148eaac7e83409156f06fdabd0d811431464e08d89e97aa2f50f77f19de3",
+      "forest-additions.json": "e0371dd11670fe8e0bc8580af5e5ef4b975b7cb58fe29485531138491e65bf3e",
+      "occupied-layout.json": "ec74b25eae1ad249d71eece0ab2fdad76ab9a24f8c2552fb06249e52346c04dc"
+    },
+    "occupancyNote": "Native candidate includes 33 forest additions, 4 storage props and seven enlarged reed bundles. Static clearance considers forest candidate; only reed/reed overlap is intentional."
+  },
+  "scope": "44 new or refined instances raycast together; baseline vegetation may occlude independently; FPS/iPad/PWA not measured."
+}
