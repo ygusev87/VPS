@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "request": "m0270",
   "reference": "../variants/farm-a.png",
-  "status": "all-six-candidates-delivered-awaiting-scene-review",
+  "status": "all-listed-textures-integrated-runtime-binding-verified",
   "assets": [
     {
       "id": "grass-base",
@@ -15,7 +15,7 @@
       "worldSpan": 7,
       "maxKiB": 100,
       "art": "Lush hand-painted middle green grass; broad soft tonal clusters; sparse readable blades; no flowers, harsh highlights or shadows.",
-      "status": "v2-candidate-checked-in-private-scene-awaiting-claude",
+      "status": "integrated-byte-identical-runtime-binding-verified",
       "candidateFile": "candidates/grass-base-v2.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
@@ -23,7 +23,8 @@
       "colorSpace": "sRGB",
       "generation": "builtin Image",
       "bytes": 93262,
-      "sha256": "02afb96a221c7b57de45afb75bea122028418f1cd05f5da9d4c721cb2342de8a"
+      "sha256": "02afb96a221c7b57de45afb75bea122028418f1cd05f5da9d4c721cb2342de8a",
+      "runtimeFile": "public/textures/farm/grass-base.webp"
     },
     {
       "id": "grass-meadow",
@@ -35,7 +36,7 @@
       "worldSpan": 7,
       "maxKiB": 100,
       "art": "Compatible warmer meadow green; same brush scale and value range as grass-base; not a yellow carpet.",
-      "status": "v2-candidate-checked-in-private-scene-awaiting-claude",
+      "status": "integrated-byte-identical-runtime-binding-verified",
       "candidateFile": "candidates/grass-meadow-v2.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
@@ -43,7 +44,8 @@
       "colorSpace": "sRGB",
       "generation": "builtin Image",
       "bytes": 101452,
-      "sha256": "e91d194ac567dde660ec9c2fbffbdede9e77e722f2d94e3c9c89b15b2fe2f2f2"
+      "sha256": "e91d194ac567dde660ec9c2fbffbdede9e77e722f2d94e3c9c89b15b2fe2f2f2",
+      "runtimeFile": "public/textures/farm/grass-meadow.webp"
     },
     {
       "id": "path-earth",
@@ -55,7 +57,7 @@
       "worldSpan": 3.5,
       "maxKiB": 100,
       "art": "Warm compacted earth; sparse rounded pebbles and shallow wear; no grass frame, directional paired wheel tracks, cracks or white sand.",
-      "status": "integrated-by-claude-m0280-awaiting-final-scene-review",
+      "status": "integrated-byte-identical-runtime-binding-verified",
       "candidateFile": "candidates/path-earth-v1.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
@@ -63,7 +65,8 @@
       "colorSpace": "sRGB",
       "generation": "builtin Image",
       "bytes": 65068,
-      "sha256": "2adaff7a859b56297a89c5dbec1bb67427bf798378f625df424a20d69eedfc62"
+      "sha256": "2adaff7a859b56297a89c5dbec1bb67427bf798378f625df424a20d69eedfc62",
+      "runtimeFile": "public/textures/farm/path-earth.webp"
     },
     {
       "id": "soil-furrows",
@@ -75,7 +78,7 @@
       "worldSpan": "one6x5 garden bed;3 planted columns",
       "maxKiB": 100,
       "art": "Soft cultivated dark brown soil ridges with small clods; no plants; furrows must align with the planted rows.",
-      "status": "candidate-ready-for-integration",
+      "status": "integrated-byte-identical-runtime-binding-verified",
       "candidateFile": "candidates/soil-furrows-v2.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
@@ -83,7 +86,8 @@
       "colorSpace": "sRGB",
       "generation": "builtin Image",
       "bytes": 53334,
-      "sha256": "761c8785b58809cb27117e528d7d583aa84c6416a6ccc3d46407e567620d497e"
+      "sha256": "761c8785b58809cb27117e528d7d583aa84c6416a6ccc3d46407e567620d497e",
+      "runtimeFile": "public/textures/farm/soil-bed.webp"
     },
     {
       "id": "pig-mud",
@@ -98,7 +102,7 @@
       ],
       "maxKiB": 250,
       "art": "Single top-down wet pig-yard patch: two or three irregular puddles, soft churned edges, sparse grouped hoof prints; no animals, white reflection blobs or baked directional lighting.",
-      "status": "integrated-by-claude-m0280-awaiting-final-scene-review",
+      "status": "integrated-byte-identical-runtime-binding-verified",
       "candidateFile": "candidates/pig-mud-v1.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
@@ -106,7 +110,8 @@
       "colorSpace": "sRGB",
       "generation": "builtin Image",
       "bytes": 125268,
-      "sha256": "7acaad5bd638c192e22b191f7a177c96eef103643ded11459fc036737b37a436"
+      "sha256": "7acaad5bd638c192e22b191f7a177c96eef103643ded11459fc036737b37a436",
+      "runtimeFile": "public/textures/farm/pig-mud.webp"
     },
     {
       "id": "pig-wetness",
@@ -121,7 +126,7 @@
       ],
       "maxKiB": 32,
       "art": "Control mask registered to accepted pig-mud image: R wet soil, G puddles, B reserved 0, A opaque. Linear data, no color management.",
-      "status": "integrated-by-claude-m0280-awaiting-final-scene-review",
+      "status": "integrated-byte-identical-runtime-binding-verified",
       "candidateFile": "candidates/pig-wetness-v1.png",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
@@ -130,7 +135,8 @@
       "generation": "registered mask from approved artwork",
       "encoding": "lossless PNG",
       "bytes": 4969,
-      "sha256": "cd0b4538321e21fc28d66288c0889b54f27d2833f109fc4a2445fb61d1893214"
+      "sha256": "cd0b4538321e21fc28d66288c0889b54f27d2833f109fc4a2445fb61d1893214",
+      "runtimeFile": "public/textures/farm/pig-wetness.png"
     }
   ],
   "generationEstimate": {
@@ -155,5 +161,11 @@
     "src/ground.ts",
     "src/farm.ts"
   ],
-  "actualCandidateTotalBytes": 443353
+  "actualCandidateTotalBytes": 443353,
+  "deliveryVerification": {
+    "revision": "afac517d7529ad589206f713bf6c64513f6ecac8",
+    "date": "2026-10-26",
+    "report": "delivery-audit.json",
+    "scope": "Source/runtime byte equality, dimensions, size budgets, and static farm/city/ground bindings. This does not claim new browser, iPad, PWA, or FPS validation."
+  }
 }

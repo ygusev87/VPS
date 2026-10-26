@@ -3,7 +3,7 @@
   "request": "m0305",
   "selected": "A",
   "reference": "../variants/city-a.png",
-  "status": "integrated-by-claude-final-lawns-game-review-pending",
+  "status": "all-listed-textures-integrated-runtime-binding-verified",
   "runtimeOwner": "claude",
   "assets": [
     {
@@ -21,7 +21,9 @@
       "notes": "No baked road markings. Current roadMarks geometry remains authoritative; soft edge only in city mask.",
       "wrapping": "RepeatWrapping",
       "bytes": 74378,
-      "sha256": "37424790e0e5d696e76259f325bd2d33f97cb5ee5167e884a1618fc6ac15f802"
+      "sha256": "37424790e0e5d696e76259f325bd2d33f97cb5ee5167e884a1618fc6ac15f802",
+      "status": "integrated-byte-identical-runtime-binding-verified",
+      "runtimeFile": "public/textures/farm/asphalt-a.webp"
     },
     {
       "id": "paving",
@@ -39,7 +41,9 @@
       "wrapping": "MirroredRepeatWrapping on both axes",
       "intrinsicallySeamless": false,
       "bytes": 26840,
-      "sha256": "9d6c17bbff5071cd990c792e363917e7a06586e41756bf16108d16cb124d5169"
+      "sha256": "9d6c17bbff5071cd990c792e363917e7a06586e41756bf16108d16cb124d5169",
+      "status": "integrated-byte-identical-runtime-binding-verified",
+      "runtimeFile": "public/textures/farm/paving-a.webp"
     },
     {
       "id": "quay-stone",
@@ -60,7 +64,9 @@
       "wrapping": "MirroredRepeatWrapping on both axes",
       "intrinsicallySeamless": false,
       "bytes": 30016,
-      "sha256": "1556390014ba85de3ac4c49962f5a1af7bae4492554d11e1d80963b066438d11"
+      "sha256": "1556390014ba85de3ac4c49962f5a1af7bae4492554d11e1d80963b066438d11",
+      "status": "integrated-byte-identical-runtime-binding-verified",
+      "runtimeFile": "public/textures/farm/quay.webp"
     },
     {
       "id": "grass-base",
@@ -71,7 +77,9 @@
         512
       ],
       "worldSpan": 7,
-      "sRGB": true
+      "sRGB": true,
+      "status": "integrated-byte-identical-runtime-binding-verified",
+      "runtimeFile": "public/textures/farm/grass-base.webp"
     },
     {
       "id": "grass-meadow",
@@ -82,7 +90,9 @@
         512
       ],
       "worldSpan": 7,
-      "sRGB": true
+      "sRGB": true,
+      "status": "integrated-byte-identical-runtime-binding-verified",
+      "runtimeFile": "public/textures/farm/grass-meadow.webp"
     }
   ],
   "newTextureTargetKiB": 300,
@@ -99,5 +109,11 @@
     "asphalt": "asphalt-a",
     "paving": "paving-a",
     "quay-stone": "quay"
+  },
+  "deliveryVerification": {
+    "revision": "afac517d7529ad589206f713bf6c64513f6ecac8",
+    "date": "2026-10-26",
+    "report": "../materials/delivery-audit.json",
+    "scope": "Source/runtime byte equality, dimensions, size budgets, and static farm/city/ground bindings. This does not claim new browser, iPad, PWA, or FPS validation."
   }
 }

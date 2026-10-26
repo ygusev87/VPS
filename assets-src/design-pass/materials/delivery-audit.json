@@ -1,0 +1,195 @@
+{
+  "date": "2026-10-26",
+  "revision": "afac517d7529ad589206f713bf6c64513f6ecac8",
+  "status": "all-listed-textures-integrated",
+  "manifestEntries": 11,
+  "uniqueRuntimeFiles": 9,
+  "uniqueRuntimeBytes": 574587,
+  "sourceHashes": {
+    "src/ground.ts": "8d01760e9a996e9d401dae7d22a474d51fe3a9ea650e2aaeb6611d77e877d8c6",
+    "src/farm.ts": "faff58451d23d89d2620bb9cc6ecc61944c1c581ce2886694d38e615dc343449",
+    "src/city.ts": "4aaa6515d6800936f012a823517e9078e2b95114ea9b4092e8bc5d937cc7e85a"
+  },
+  "checks": {
+    "allSourceRuntimeBytesEqual": true,
+    "allDimensionsMatchManifest": true,
+    "allFilesWithinManifestBudget": true,
+    "farmAndCityTileBindingsPresent": true,
+    "pictureBindingsPresent": true,
+    "cityPavingAndQuayMirrored": true
+  },
+  "entries": [
+    {
+      "group": "materials",
+      "id": "grass-base",
+      "source": "assets-src/design-pass/materials/candidates/grass-base-v2.webp",
+      "runtime": "public/textures/farm/grass-base.webp",
+      "bytes": 93262,
+      "sha256": "02afb96a221c7b57de45afb75bea122028418f1cd05f5da9d4c721cb2342de8a",
+      "size": [
+        512,
+        512
+      ],
+      "format": "WEBP",
+      "byteIdentical": true,
+      "reused": false
+    },
+    {
+      "group": "materials",
+      "id": "grass-meadow",
+      "source": "assets-src/design-pass/materials/candidates/grass-meadow-v2.webp",
+      "runtime": "public/textures/farm/grass-meadow.webp",
+      "bytes": 101452,
+      "sha256": "e91d194ac567dde660ec9c2fbffbdede9e77e722f2d94e3c9c89b15b2fe2f2f2",
+      "size": [
+        512,
+        512
+      ],
+      "format": "WEBP",
+      "byteIdentical": true,
+      "reused": false
+    },
+    {
+      "group": "materials",
+      "id": "path-earth",
+      "source": "assets-src/design-pass/materials/candidates/path-earth-v1.webp",
+      "runtime": "public/textures/farm/path-earth.webp",
+      "bytes": 65068,
+      "sha256": "2adaff7a859b56297a89c5dbec1bb67427bf798378f625df424a20d69eedfc62",
+      "size": [
+        512,
+        512
+      ],
+      "format": "WEBP",
+      "byteIdentical": true,
+      "reused": false
+    },
+    {
+      "group": "materials",
+      "id": "soil-furrows",
+      "source": "assets-src/design-pass/materials/candidates/soil-furrows-v2.webp",
+      "runtime": "public/textures/farm/soil-bed.webp",
+      "bytes": 53334,
+      "sha256": "761c8785b58809cb27117e528d7d583aa84c6416a6ccc3d46407e567620d497e",
+      "size": [
+        512,
+        512
+      ],
+      "format": "WEBP",
+      "byteIdentical": true,
+      "reused": false
+    },
+    {
+      "group": "materials",
+      "id": "pig-mud",
+      "source": "assets-src/design-pass/materials/candidates/pig-mud-v1.webp",
+      "runtime": "public/textures/farm/pig-mud.webp",
+      "bytes": 125268,
+      "sha256": "7acaad5bd638c192e22b191f7a177c96eef103643ded11459fc036737b37a436",
+      "size": [
+        1024,
+        1024
+      ],
+      "format": "WEBP",
+      "byteIdentical": true,
+      "reused": false
+    },
+    {
+      "group": "materials",
+      "id": "pig-wetness",
+      "source": "assets-src/design-pass/materials/candidates/pig-wetness-v1.png",
+      "runtime": "public/textures/farm/pig-wetness.png",
+      "bytes": 4969,
+      "sha256": "cd0b4538321e21fc28d66288c0889b54f27d2833f109fc4a2445fb61d1893214",
+      "size": [
+        256,
+        256
+      ],
+      "format": "PNG",
+      "byteIdentical": true,
+      "reused": false
+    },
+    {
+      "group": "city-materials",
+      "id": "asphalt",
+      "source": "assets-src/design-pass/city-materials/candidates/asphalt-v1.webp",
+      "runtime": "public/textures/farm/asphalt-a.webp",
+      "bytes": 74378,
+      "sha256": "37424790e0e5d696e76259f325bd2d33f97cb5ee5167e884a1618fc6ac15f802",
+      "size": [
+        512,
+        512
+      ],
+      "format": "WEBP",
+      "byteIdentical": true,
+      "reused": false
+    },
+    {
+      "group": "city-materials",
+      "id": "paving",
+      "source": "assets-src/design-pass/city-materials/candidates/paving-v2.webp",
+      "runtime": "public/textures/farm/paving-a.webp",
+      "bytes": 26840,
+      "sha256": "9d6c17bbff5071cd990c792e363917e7a06586e41756bf16108d16cb124d5169",
+      "size": [
+        512,
+        512
+      ],
+      "format": "WEBP",
+      "byteIdentical": true,
+      "reused": false
+    },
+    {
+      "group": "city-materials",
+      "id": "quay-stone",
+      "source": "assets-src/design-pass/city-materials/candidates/quay-stone-v2.webp",
+      "runtime": "public/textures/farm/quay.webp",
+      "bytes": 30016,
+      "sha256": "1556390014ba85de3ac4c49962f5a1af7bae4492554d11e1d80963b066438d11",
+      "size": [
+        512,
+        512
+      ],
+      "format": "WEBP",
+      "byteIdentical": true,
+      "reused": false
+    },
+    {
+      "group": "city-materials",
+      "id": "grass-base",
+      "source": "assets-src/design-pass/materials/candidates/grass-base-v2.webp",
+      "runtime": "public/textures/farm/grass-base.webp",
+      "bytes": 93262,
+      "sha256": "02afb96a221c7b57de45afb75bea122028418f1cd05f5da9d4c721cb2342de8a",
+      "size": [
+        512,
+        512
+      ],
+      "format": "WEBP",
+      "byteIdentical": true,
+      "reused": true
+    },
+    {
+      "group": "city-materials",
+      "id": "grass-meadow",
+      "source": "assets-src/design-pass/materials/candidates/grass-meadow-v2.webp",
+      "runtime": "public/textures/farm/grass-meadow.webp",
+      "bytes": 101452,
+      "sha256": "e91d194ac567dde660ec9c2fbffbdede9e77e722f2d94e3c9c89b15b2fe2f2f2",
+      "size": [
+        512,
+        512
+      ],
+      "format": "WEBP",
+      "byteIdentical": true,
+      "reused": true
+    }
+  ],
+  "remainingWithinTextureDelivery": [],
+  "limits": [
+    "Static delivery audit; existing runtime was not changed or retested.",
+    "No claim about physical iPad, PWA, FPS, or complete visual acceptance.",
+    "Initial manifest deferred lists describe the first texture pass, not current model-production backlog.",
+    "Ground-detail atlas remains deferred; the current ground.ts supplies procedural clover/flowers/tufts. No new atlas is required by this audit."
+  ]
+}
