@@ -1,0 +1,12 @@
+{
+  "baseRevision": "9c11d30b60282b35044686464d5357610902693a",
+  "candidateDecorSha256": "a493475dcee5656bdcd3860095bb2b58f211baeb09199b2bd36dc51d63f3c9b0",
+  "gameSourceHashes": {
+    "src/farm.ts": "7d281bcd4bcafaa651dc90c859925d0d3a8e924f84f2098fa213585585b44521",
+    "src/decor.ts": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342",
+    "src/life.ts": "6342bbf585a792760380c4a4ec56ff69621cc9d3542255e89c86c5aa21c110a8",
+    "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+  },
+  "snapshot": "/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/farm-density-d45v58ex",
+  "changes": "Candidate farm-decor data plus separate QA wrapper; original game source unchanged."
+}

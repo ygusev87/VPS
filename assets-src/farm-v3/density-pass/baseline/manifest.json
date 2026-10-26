@@ -1,0 +1,9 @@
+{
+  "revision": "9c11d30b60282b35044686464d5357610902693a",
+  "files": {
+    "src/farm-decor.ts": "cb142334390e772ed14bb9b488761f26898397e7596728f67b628aa1154979a2",
+    "assets-src/farm-v3/decor-layout.json": "15f842b35fc9af0c2edf4532fae254fb56e91c235c26505f7642d2a04543c70b",
+    "assets-src/farm-v3/decor-authoring.json": "7763bfbc4f0e7953fd66f5926c7688e00ec8defd620c88592339b783775f2419",
+    "assets-src/farm-v3/decor-validation.json": "7c18c9b98984598d9e0776801c6c0cbbda6fee348b80e94a0e8f3eb4c4cbd1e2"
+  }
+}

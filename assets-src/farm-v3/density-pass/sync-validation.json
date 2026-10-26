@@ -1,0 +1,118 @@
+{
+  "status": "pass",
+  "sourceSha256": "a8c3906036b7bb26b6de66d9d3b6b658a3c2d060cb13a281bf2ecee7a438ff50",
+  "layoutSha256": "4f06e44b8f785e8a58c416a4b626b774886e562d27fda672da87e4ac91b7d3c8",
+  "capturedPayload": "matches applied data; source formatting only differs",
+  "preservedExistingInstances": 302,
+  "activeInstances": 609,
+  "unchangedDatasets": [
+    "PATHS",
+    "FENCES",
+    "SOIL",
+    "MUD",
+    "MEADOW",
+    "PONDS"
+  ],
+  "qa": [
+    {
+      "file": "after-field-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "field",
+      "targets": 376
+    },
+    {
+      "file": "after-field-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "field",
+      "targets": 376
+    },
+    {
+      "file": "after-garden-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "garden",
+      "targets": 376
+    },
+    {
+      "file": "after-wide-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "wide",
+      "targets": 376
+    },
+    {
+      "file": "after-yard-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "yard",
+      "targets": 376
+    },
+    {
+      "file": "after-yard-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "yard",
+      "targets": 376
+    },
+    {
+      "file": "before-field-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "field",
+      "targets": 376
+    },
+    {
+      "file": "before-field-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "field",
+      "targets": 376
+    },
+    {
+      "file": "before-garden-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "garden",
+      "targets": 376
+    },
+    {
+      "file": "before-wide-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "wide",
+      "targets": 376
+    },
+    {
+      "file": "before-yard-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "yard",
+      "targets": 376
+    }
+  ],
+  "scope": "Data equivalence and saved real-runtime QA evidence; geometric gaps are in candidate-audit.json. No iPad/FPS claim."
+}

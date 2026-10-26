@@ -1,0 +1,328 @@
+{
+  "status": "pass",
+  "roadComponents": 1,
+  "paths": 19,
+  "fenceRuns": 64,
+  "minRoadClearance": 0.3984405600525154,
+  "minFoxClearance": 1.2000000000000028,
+  "minPoleClearance": 1.7000000000000002,
+  "workingPadFenceConflicts": [],
+  "gate": {
+    "root": [
+      30,
+      17
+    ],
+    "posts": [
+      [
+        28.4,
+        16.4
+      ],
+      [
+        31.6,
+        16.4
+      ]
+    ],
+    "exception": "Gate motor plate occupies the gate-side working square; static fences meet the existing gate posts."
+  },
+  "buildingFootprints": [
+    {
+      "model": "barn",
+      "x0": -21.25,
+      "x1": -10.75,
+      "z0": -32.842875,
+      "z1": -21.157125
+    },
+    {
+      "model": "coop",
+      "x0": 5.7,
+      "x1": 10.3,
+      "z0": -27.341,
+      "z1": -19.659
+    },
+    {
+      "model": "stable",
+      "x0": 37,
+      "x1": 47,
+      "z0": -10.375,
+      "z1": 2.375000000000001
+    },
+    {
+      "model": "doghouse",
+      "x0": -40,
+      "x1": -37,
+      "z0": -18.0215,
+      "z1": -14.9785
+    },
+    {
+      "model": "hutch",
+      "x0": -45.5,
+      "x1": -42.5,
+      "z0": -15.521,
+      "z1": -13.479
+    },
+    {
+      "model": "farmhouse",
+      "x0": -44,
+      "x1": -33,
+      "z0": -29.93817,
+      "z1": -21.06183
+    },
+    {
+      "model": "silo",
+      "x0": -10.26097,
+      "x1": -4.93903,
+      "z0": -29.683128,
+      "z1": -24.316872
+    },
+    {
+      "model": "pigsty",
+      "x0": 22,
+      "x1": 32,
+      "z0": -30.95921,
+      "z1": -22.04079
+    },
+    {
+      "model": "tractor-shed",
+      "x0": 38.511185,
+      "x1": 47.488815,
+      "z0": 21,
+      "z1": 31
+    }
+  ],
+  "buildingConflicts": [],
+  "minBuildingGap": 0.48902999999999963,
+  "cropRouteClearance": 0.08693500655433928,
+  "gardenToyClearance": 0.09615099714943343,
+  "fieldCropInstances": 18,
+  "gardenCropInstances": 36,
+  "gardenCropModels": [
+    "crop-wheat",
+    "crop-lavender",
+    "crop-carrot",
+    "crop-sunflower",
+    "crop-tomato",
+    "crop-cabbage"
+  ],
+  "inventory": [
+    {
+      "model": "barn",
+      "instances": 1,
+      "bytes": 166436,
+      "trianglesPerInstance": 8000
+    },
+    {
+      "model": "coop",
+      "instances": 1,
+      "bytes": 146336,
+      "trianglesPerInstance": 7999
+    },
+    {
+      "model": "stable",
+      "instances": 1,
+      "bytes": 149988,
+      "trianglesPerInstance": 6027
+    },
+    {
+      "model": "doghouse",
+      "instances": 1,
+      "bytes": 199976,
+      "trianglesPerInstance": 11001
+    },
+    {
+      "model": "hutch",
+      "instances": 1,
+      "bytes": 94512,
+      "trianglesPerInstance": 4900
+    },
+    {
+      "model": "farmhouse",
+      "instances": 1,
+      "bytes": 84820,
+      "trianglesPerInstance": 2999
+    },
+    {
+      "model": "silo",
+      "instances": 1,
+      "bytes": 65788,
+      "trianglesPerInstance": 2949
+    },
+    {
+      "model": "pigsty",
+      "instances": 1,
+      "bytes": 84380,
+      "trianglesPerInstance": 2891
+    },
+    {
+      "model": "tractor-shed",
+      "instances": 1,
+      "bytes": 84856,
+      "trianglesPerInstance": 3068
+    },
+    {
+      "model": "beehive",
+      "instances": 2,
+      "bytes": 112148,
+      "trianglesPerInstance": 4896
+    },
+    {
+      "model": "haystack",
+      "instances": 6,
+      "bytes": 47256,
+      "trianglesPerInstance": 2816
+    },
+    {
+      "model": "sack",
+      "instances": 3,
+      "bytes": 142264,
+      "trianglesPerInstance": 8000
+    },
+    {
+      "model": "cow",
+      "instances": 3,
+      "bytes": 138184,
+      "trianglesPerInstance": 8000
+    },
+    {
+      "model": "sheep",
+      "instances": 2,
+      "bytes": 178172,
+      "trianglesPerInstance": 14981
+    },
+    {
+      "model": "pig",
+      "instances": 2,
+      "bytes": 118340,
+      "trianglesPerInstance": 8000
+    },
+    {
+      "model": "hen",
+      "instances": 3,
+      "bytes": 130024,
+      "trianglesPerInstance": 8000
+    },
+    {
+      "model": "horse",
+      "instances": 1,
+      "bytes": 112720,
+      "trianglesPerInstance": 7930
+    },
+    {
+      "model": "goat",
+      "instances": 1,
+      "bytes": 97872,
+      "trianglesPerInstance": 7542
+    },
+    {
+      "model": "goose",
+      "instances": 2,
+      "bytes": 105436,
+      "trianglesPerInstance": 7561
+    },
+    {
+      "model": "tree-oak-lite",
+      "instances": 12,
+      "bytes": 25672,
+      "trianglesPerInstance": 599
+    },
+    {
+      "model": "tree-pine-lite",
+      "instances": 45,
+      "bytes": 22140,
+      "trianglesPerInstance": 599
+    },
+    {
+      "model": "tree-oak",
+      "instances": 4,
+      "bytes": 47276,
+      "trianglesPerInstance": 2836
+    },
+    {
+      "model": "bush-lite",
+      "instances": 156,
+      "bytes": 28728,
+      "trianglesPerInstance": 794
+    },
+    {
+      "model": "flower-cluster",
+      "instances": 293,
+      "bytes": 43180,
+      "trianglesPerInstance": 974
+    },
+    {
+      "model": "rock-cluster",
+      "instances": 11,
+      "bytes": 27448,
+      "trianglesPerInstance": 922
+    },
+    {
+      "model": "crop-wheat",
+      "instances": 6,
+      "bytes": 85804,
+      "trianglesPerInstance": 2942
+    },
+    {
+      "model": "crop-lavender",
+      "instances": 6,
+      "bytes": 105056,
+      "trianglesPerInstance": 3465
+    },
+    {
+      "model": "crop-carrot",
+      "instances": 6,
+      "bytes": 63364,
+      "trianglesPerInstance": 2020
+    },
+    {
+      "model": "crop-sunflower",
+      "instances": 6,
+      "bytes": 76728,
+      "trianglesPerInstance": 2244
+    },
+    {
+      "model": "crop-tomato",
+      "instances": 6,
+      "bytes": 78976,
+      "trianglesPerInstance": 3006
+    },
+    {
+      "model": "crop-cabbage",
+      "instances": 6,
+      "bytes": 59324,
+      "trianglesPerInstance": 1931
+    },
+    {
+      "model": "crop-wheat",
+      "instances": 18,
+      "bytes": 85804,
+      "trianglesPerInstance": 2942
+    }
+  ],
+  "instances": 609,
+  "trianglesBeforeIntegrationCulling": 836557,
+  "notes": [
+    "Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.",
+    "farm.ts culls small instances near its interactive points.",
+    "Future groups are authoring data only until their GLBs exist."
+  ],
+  "densityPass": {
+    "report": "density-pass/README.md",
+    "geometryAudit": "density-pass/candidate-audit.json",
+    "validatorAdaptation": "Only fixed fieldCrops count 9 -> 18 in isolated snapshot; repository scripts/check-farm-decor.mjs unchanged and still requires maintainer update.",
+    "runtimeInstancesAdded": 307,
+    "runtimeBatchesBefore": 76,
+    "runtimeBatchesAfter": 76,
+    "runtimeTrianglesBefore": 503771,
+    "runtimeTrianglesAfter": 809701,
+    "visualViewports": [
+      [
+        1180,
+        660
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "iPadFPSVerified": false
+  }
+}

@@ -93,7 +93,7 @@
   "minBuildingGap": 0.48902999999999963,
   "cropRouteClearance": 0.08693500655433928,
   "gardenToyClearance": 0.09615099714943343,
-  "fieldCropInstances": 9,
+  "fieldCropInstances": 18,
   "gardenCropInstances": 36,
   "gardenCropModels": [
     "crop-wheat",
@@ -238,13 +238,13 @@
     },
     {
       "model": "bush-lite",
-      "instances": 96,
+      "instances": 156,
       "bytes": 28728,
       "trianglesPerInstance": 794
     },
     {
       "model": "flower-cluster",
-      "instances": 55,
+      "instances": 293,
       "bytes": 43180,
       "trianglesPerInstance": 974
     },
@@ -292,16 +292,37 @@
     },
     {
       "model": "crop-wheat",
-      "instances": 9,
+      "instances": 18,
       "bytes": 85804,
       "trianglesPerInstance": 2942
     }
   ],
-  "instances": 302,
-  "trianglesBeforeIntegrationCulling": 530627,
+  "instances": 609,
+  "trianglesBeforeIntegrationCulling": 836557,
   "notes": [
     "Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.",
     "farm.ts culls small instances near its interactive points.",
     "Future groups are authoring data only until their GLBs exist."
-  ]
+  ],
+  "densityPass": {
+    "report": "density-pass/README.md",
+    "geometryAudit": "density-pass/candidate-audit.json",
+    "validatorAdaptation": "Only fixed fieldCrops count 9 -> 18 in isolated snapshot; repository scripts/check-farm-decor.mjs unchanged and still requires maintainer update.",
+    "runtimeInstancesAdded": 307,
+    "runtimeBatchesBefore": 76,
+    "runtimeBatchesAfter": 76,
+    "runtimeTrianglesBefore": 503771,
+    "runtimeTrianglesAfter": 809701,
+    "visualViewports": [
+      [
+        1180,
+        660
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "iPadFPSVerified": false
+  }
 }

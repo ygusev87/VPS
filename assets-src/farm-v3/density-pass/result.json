@@ -1,0 +1,68 @@
+{
+  "status": "applied",
+  "counts": [
+    {
+      "model": "bush-lite",
+      "fit": {
+        "width": 2.3
+      },
+      "before": 96,
+      "after": 156,
+      "added": 60
+    },
+    {
+      "model": "flower-cluster",
+      "fit": {
+        "height": 0.5
+      },
+      "before": 55,
+      "after": 293,
+      "added": 238
+    },
+    {
+      "model": "crop-wheat",
+      "fit": {
+        "width": 1.4
+      },
+      "before": 9,
+      "after": 18,
+      "added": 9
+    }
+  ],
+  "budget": {
+    "before": {
+      "batches": 76,
+      "instances": 637,
+      "triangles": 503771
+    },
+    "after": {
+      "batches": 76,
+      "instances": 944,
+      "triangles": 809701
+    },
+    "additions": {
+      "batches": 17,
+      "instances": 307,
+      "triangles": 305930
+    }
+  },
+  "tests": {
+    "testFiles": 4,
+    "passed": 21,
+    "typecheck": "pass",
+    "locations": [
+      "isolated snapshot",
+      "shared checkout"
+    ]
+  },
+  "spatialAudit": "pass",
+  "runtimeRaySamplesPerView": 376,
+  "runtimeAddedOcclusions": 0,
+  "savedViews": 11,
+  "pending": [
+    "update old hard-coded field count in scripts/check-farm-decor.mjs (outside owned paths)",
+    "real iPad/FPS",
+    "q2/night",
+    "PWA/offline"
+  ]
+}

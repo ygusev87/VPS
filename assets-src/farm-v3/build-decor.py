@@ -1,8 +1,12 @@
 from pathlib import Path
-import json, math, random
+import json, math, random, subprocess, sys
 
 ROOT=Path(__file__).resolve().parents[2]
 OUT=ROOT/'assets-src/farm-v3'
+# Opt-in additive pass: preserve the accepted authoring and manual placements.
+# This only prepares density-pass/candidate; it never applies unreviewed runtime data.
+if '--density-candidate' in sys.argv:
+    raise SystemExit(subprocess.run(['node',str(OUT/'density-pass/build.mjs')],cwd=ROOT).returncode)
 tasks=json.loads((OUT/'layout-proposal.json').read_text())['tasks']
 # m0120: mechanical anchors supersede the initial concept proposal.
 updates={'gateStuck':([28.3,17.4],[26,13.5]),'foxTip':([-34,-10],[-35.5,-7.5]),
