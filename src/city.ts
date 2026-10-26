@@ -355,7 +355,8 @@ export class CityMap extends StoryMap {
     const rails = kitPieces('city', 'tram-rails-strip', true);
     const tram = plan.lanes.filter((l) => l.w !== ROAD && l.pts.every(([, z]) => z === TRAM_Z));
     const drives = plan.lanes.filter((l) => l.w !== ROAD && !tram.includes(l));
-    if (narrow.length) this.scenery.add(ribbons(rails.length ? drives : [...drives, ...tram], narrow[0], 5 / 4, 10, 0.0055, 1, 0.1));
+    // The drives run a little past their ends, so the last parking bay keeps asphalt beyond its line.
+    if (narrow.length) this.scenery.add(ribbons(rails.length ? drives : [...drives, ...tram], narrow[0], 5 / 4, 10, 0.0055, 1, 0.3));
     if (rails.length) this.scenery.add(ribbons(tram, rails[0], 1, 8, 0.0055, 1, 0.1));
     // Painted bays where the cars park.
     const bay = kitPieces('city', 'parking-bay');
