@@ -1,0 +1,100 @@
+{
+  "status": "reference-ready-for-claude-review-no-3d-order",
+  "task": "city-child-model",
+  "request": "m0135",
+  "sourceRevision": "271bc6cd785782826d29489bb89930d453d37ed3",
+  "sourceHashes": {
+    "src/city.ts": "4aaa6515d6800936f012a823517e9078e2b95114ea9b4092e8bc5d937cc7e85a",
+    "src/storymap.ts": "170333b2820f4fbda5cf1c2d09c3a65dfa69e759d23f3efd57fe10c21290dcfb",
+    "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+  },
+  "reference": "child-v1.png",
+  "runtimeName": "child",
+  "intendedDestination": "public/models/child.glb",
+  "instances": [
+    {
+      "name": "child",
+      "x": 2.5,
+      "z": 1.5,
+      "height": 1.2,
+      "yaw": 0.3
+    },
+    {
+      "name": "child2",
+      "x": 4,
+      "z": 2.5,
+      "height": 1.15,
+      "yaw": -0.3
+    },
+    {
+      "name": "child3",
+      "x": 9,
+      "z": -21.5,
+      "height": 1.15,
+      "yaw": -1
+    },
+    {
+      "name": "child4",
+      "x": 10.6,
+      "z": -21.5,
+      "height": 1.15,
+      "yaw": 0
+    },
+    {
+      "name": "child5",
+      "x": 12.2,
+      "z": -21.5,
+      "height": 1.15,
+      "yaw": 1
+    },
+    {
+      "name": "child6",
+      "x": 49,
+      "z": -8.3,
+      "height": 1.2,
+      "yaw": 0.3
+    },
+    {
+      "name": "child7",
+      "x": 50.5,
+      "z": -8.8,
+      "height": 1.15,
+      "yaw": -0.3
+    }
+  ],
+  "loader": "CITY_MODELS includes child; StoryMap.critter strips trailing digits; City.critterModel tries model(base,fit) before STAND_INS. No per-child variant materials are currently applied to loaded GLB.",
+  "geometryTargets": {
+    "trianglesMax": 4000,
+    "materials": 1,
+    "baseColorPixels": 512,
+    "bytesTarget": 150000,
+    "bytesMax": 200000,
+    "root": "centered XZ, feet Y0",
+    "forwardProposal": "+X",
+    "pose": "neutral A with separate arm/leg silhouettes; no attached prop/pedestal",
+    "fit": "existing height1.15/1.2 unchanged",
+    "dimensionsNote": "No 3D geometry generated; width/depth not measured. Validate actual bounds after generation."
+  },
+  "animation": {
+    "current": "Whole-character bob/hop/spin/flip; child3/4/5 translate to SCHOOL_DOOR. Child has no RigSpec and is absent from LOOKERS.",
+    "requiredResolution": "A static GLB alone does not provide walking limbs. Claude must choose human rig/independent limb nodes and integrate school walking/dancing without reusing quadruped pose().",
+    "noClaim": "Image A pose is only preparation; no skin weights, skeleton, animations or verified limb movement yet."
+  },
+  "preserve": [
+    "all7 centers/yaws/fit heights",
+    "school entry path and door",
+    "Ferris/wind generator and musicbox/photo sensor pads",
+    "existing task/pole positions and touch picking"
+  ],
+  "acceptanceAfterGLB": [
+    "actual fit bounds, root orientation, no floor/pedestal",
+    "all7 instances and nearby pads/terminals at390x844 and1024x768",
+    "school entry movement and tap/hop with correctly animated limbs",
+    "no added material variants or clones without deliberate integration",
+    "decoded triangle/texture/file-size budgets"
+  ],
+  "spend": {
+    "ordersMade": 0,
+    "note": "No Tripo/API order authorised by this artifact. Check existing owner budget and agreed animation contract before spending; no purchases or paid extra credits."
+  }
+}

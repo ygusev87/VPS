@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-26",
+  "mode": "builtin-image-edit",
+  "source": "assets-src/city-v1/characters-style-v1.png",
+  "sourceSha256": "aaf4ea6322ce3feaa67d5eef1e23036dee7e05856ca7988460d63cabcba7cc65",
+  "output": "child-v1.png",
+  "outputSha256": "5281bb3fce3376ea88f4cd408df74aa17f61c8bc002b782009d73f43d3a0936f",
+  "size": [
+    1374,
+    1145
+  ],
+  "prompt": "Use case: precise-object-edit / stylized game concept.\nAsset type: single image-to-3D reference for an already approved character in the game Электро-стол.\nInput image: approved six-character style sheet. The edit target is ONLY the little curly brown-haired boy at the BOTTOM LEFT, wearing coral short overalls, a mint-green short-sleeved shirt, and navy-blue shoes with cream soles.\nPrimary request: isolate and recompose exactly that boy as one centered full-body figure, preserving his approved face, cheerful gentle expression, hair silhouette, toy proportions, clothing colors and details. Keep the same warm, rounded, matte hand-painted toy 3D style. Show a nearly frontal mild three-quarter view, only about 10 degrees turned, with both arms and both shoes clearly visible.\nPose: relaxed neutral rig-friendly A pose; arms slightly away from the torso with obvious background gaps, hands relaxed and empty, legs straight and separated with a visible gap, both feet on the same ground level. Keep the chunky simple fingers and closed solid hair, no loose floating accessories. Complete top of hair and both soles, ample empty margin around the entire silhouette.\nBackground and light: uniform pale warm cream background, very soft neutral studio fill, minimal faint contact shadow only. No dramatic directional lighting, gradients or ground platform.\nConstraints: ONE boy only. Remove all other characters and objects. No base or pedestal, no signs, no letters, no labels, no watermark, no backpack or held props. Do not make a turnaround sheet, collage, multi-view panel or duplicate character. Do not change him into a different character or change his clothing palette.\n",
+  "approvalBasis": [
+    "m0103 approved six-character sheet",
+    "m0135 agreed city models, priority2 people"
+  ],
+  "selection": "bottom-left boy: curly brown hair, mint shirt, coral short overalls, navy shoes",
+  "inspection": {
+    "singleCharacter": true,
+    "completeHairAndSoles": true,
+    "armsClearOfTorso": true,
+    "legsSeparated": true,
+    "noPedestalTextOrProps": true,
+    "sameApprovedPalette": true
+  },
+  "cost": {
+    "builtinCalls": 1,
+    "tripoOrders": 0,
+    "higgsfieldCredits": 0,
+    "openaiApiCalls": 0
+  }
+}
