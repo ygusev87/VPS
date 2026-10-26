@@ -151,8 +151,7 @@ export class Life {
       extra.flee = 1.6;
       extra.jump = 1;
       // Off the other way from where it stood, a little further than its usual stroll.
-      const a = this.rnd() * Math.PI * 2;
-      extra.target.set(extra.home.x + Math.cos(a) * extra.roam, 0, extra.home.z + Math.sin(a) * extra.roam);
+      this.wander(extra, extra.roam, 1);
       if (extra.sound) this.hooks.say(extra.sound);
       return true;
     }
@@ -202,7 +201,32 @@ export class Life {
     });
   }
 
-  /** Stroll to a spot near home, stand a while (grazing, pecking), choose another. */
+  /** Fence lines (on the ground) the herd keeps to its side of. */
+  private fences: [THREE.Vector2, THREE.Vector2][] = [];
+
+  setFences(lines: [number, number][][]) {
+    this.fences = lines.flatMap((l) => l.slice(1).map((p, i) => [new THREE.Vector2(...l[i]), new THREE.Vector2(...p)] as [THREE.Vector2, THREE.Vector2]));
+  }
+
+  /**
+   * A new spot to walk to, `min`…1 of the way out to `roam` from home: one
+   * the animal reaches without crossing a fence, and not right against one.
+   * If no try works, it stays where it is.
+   */
+  private wander(e: Extra, roam: number, min: number) {
+    const from = new THREE.Vector2(e.group.position.x, e.group.position.z);
+    for (let i = 0; i < 10; i++) {
+      const a = this.rnd() * Math.PI * 2;
+      const r = roam * (min + this.rnd() * (1 - min));
+      const to = new THREE.Vector2(e.home.x + Math.cos(a) * r, e.home.z + Math.sin(a) * r);
+      if (this.fences.some(([p, q]) => crosses(from, to, p, q) || toSegment2(to, p, q) < 0.8)) continue;
+      e.target.set(to.x, 0, to.y);
+      return;
+    }
+    e.target.copy(e.group.position).setY(0);
+  }
+
+  /** Stroll to a spot near home, stand a while (grazing, pecking), choose another (if it walks at all). */
   private moveExtra(e: Extra, dt: number, eye?: THREE.Vector3) {
     const p = e.group.position;
     e.jump = Math.max(0, e.jump - dt * 2.5);
@@ -211,7 +235,11 @@ export class Life {
     const dist = to.length();
     const speed = e.flee > 0 ? 3.2 : e.gait === 'graze' ? 0.45 : e.gait === 'peck' ? 0.9 : e.gait === 'hop' ? 1.3 : e.gait === 'stroll' ? 1.1 : 0.6;
     let moving = false;
-    if (dist > 0.05 && (e.wait <= 0 || e.flee > 0)) {
+    // Without legs that step, a walking cow or hen only slides over the grass:
+    // grazers and peckers stay where they stand and move as they would there
+    // (head, tail, a peck). Hoppers, ducks on the water and people do go about.
+    const walks = e.gait !== 'graze' && e.gait !== 'peck';
+    if (walks && dist > 0.05 && (e.wait <= 0 || e.flee > 0)) {
       moving = true;
       p.addScaledVector(to.normalize(), Math.min(dist, speed * dt));
       const yaw = Math.atan2(-to.z, to.x);
@@ -219,15 +247,11 @@ export class Life {
     } else if (dist <= 0.05) {
       if (e.wait <= 0) e.wait = (e.gait === 'stroll' ? 0.5 : 2) + this.rnd() * (e.gait === 'graze' ? 8 : 4);
       e.wait -= dt;
-      if (e.wait <= 0) {
-        const a = this.rnd() * Math.PI * 2;
-        const r = this.rnd() * e.roam;
-        e.target.set(e.home.x + Math.cos(a) * r, 0, e.home.z + Math.sin(a) * r);
-      }
+      if (e.wait <= 0) this.wander(e, e.roam, 0);
     }
     e.step += dt * (moving ? 9 : 2);
     // Each gait has its own little motion: a hop, a peck, a waddle; a jump when startled.
-    let y = Math.sin(e.jump * Math.PI) * 0.7;
+    let y = Math.sin(e.jump * Math.PI) * (walks ? 0.7 : 0.3);
     let tilt = 0;
     let roll = 0;
     if (e.gait === 'hop' && moving) y += Math.abs(Math.sin(e.step * 0.8)) * 0.35;
@@ -663,6 +687,19 @@ function modelWell(body: THREE.Object3D) {
   bucket.userData.hang = hang;
   root.add(body, water, crank, beam, rope, bucket);
   return { root, parts: { crank, bucket } };
+}
+
+/** Do segments ab and cd cross (on the ground)? */
+function crosses(a: THREE.Vector2, b: THREE.Vector2, c: THREE.Vector2, d: THREE.Vector2) {
+  const side = (p: THREE.Vector2, q: THREE.Vector2, r: THREE.Vector2) => (q.x - p.x) * (r.y - p.y) - (q.y - p.y) * (r.x - p.x);
+  return side(a, b, c) * side(a, b, d) < 0 && side(c, d, a) * side(c, d, b) < 0;
+}
+
+/** How far a point is from a segment. */
+function toSegment2(p: THREE.Vector2, a: THREE.Vector2, b: THREE.Vector2) {
+  const ab = b.clone().sub(a);
+  const t = THREE.MathUtils.clamp(p.clone().sub(a).dot(ab) / (ab.lengthSq() || 1), 0, 1);
+  return p.distanceTo(a.clone().addScaledVector(ab, t));
 }
 
 const butterflyCache = new Map<string, THREE.Texture>();

@@ -43,7 +43,9 @@ const FARM_VOICES: Record<string, PhraseId> = {
   beehive: 'buzz', horse: 'neigh', puppy: 'yap', nest: 'peep', chick: 'peep', goose: 'honk', rooster: 'crow', tractor: 'beep',
 };
 /** How the herd (animals in the dressing) moves about. */
-const HERD: Record<string, Gait> = { cow: 'graze', horse: 'graze', sheep: 'graze', goat: 'graze', kid: 'hop', pig: 'graze', hen: 'peck', chick: 'peck', rooster: 'peck', rabbit: 'hop', duck: 'waddle', goose: 'waddle' };
+const HERD: Record<string, Gait> = { cow: 'graze', horse: 'graze', sheep: 'graze', goat: 'graze', kid: 'hop', pig: 'graze', hen: 'peck', chick: 'peck', rooster: 'peck', rabbit: 'hop', duck: 'waddle', goose: 'peck' };
+/** Turns that bring a herd model's nose to +X when its decor fit gives none. */
+const FACE_X: Record<string, number> = { sheep: -Math.PI / 2 };
 /** Things placed to be poked (each does something funny). */
 const TOYS: [ToyKind, number, number, number][] = [
   ['mouse', -7.5, -18.5, 0.4],
@@ -498,13 +500,15 @@ export class FarmMap extends StoryMap {
     const herd = DECOR.filter((g) => HERD[g.model]);
     for (const g of herd) {
       for (const [x, z, yaw, s] of g.items) {
-        const m = model(g.model, g.fit);
+        // The herd faces +X (as it grazes and looks); the sheep's file faces −Z.
+        const m = model(g.model, { ...g.fit, rotateY: g.fit.rotateY ?? FACE_X[g.model] });
         if (!m) break;
         m.scale.multiplyScalar(s);
         this.life.addExtra(m, x, z, yaw, HERD[g.model], FARM_VOICES[g.model] ?? null, g.model === 'hen' || g.model === 'rabbit' ? 1.8 : 2.6);
       }
     }
     const { group, drawn, inTheWay } = dressing(DECOR.filter((g) => !HERD[g.model]), FENCES, keep, lines);
+    this.life.setFences(FENCES);
     this.scenery.add(group);
     // Butterflies over the garden and the flowers, fireflies by the pond at night; smoke from the house.
     this.life.addFlutters([v(4, 21), v(-18, 19), v(13, 26), v(-40, 22), v(44, -24), v(-10, 0)], [POND, v(-35, 14)]);

@@ -99,11 +99,12 @@ export class Pest {
       return leg;
     });
     // An invisible ball round her, so a child's finger need not hit her exactly.
-    const hit = new THREE.Mesh(new THREE.SphereGeometry(0.75, 10, 8), new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false }));
+    const hit = new THREE.Mesh(new THREE.SphereGeometry(1.5, 10, 8), new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false }));
     hit.position.y = 0.5;
     this.body.add(body, tail, head, ...this.wings, ...legs, hit);
     this.root.add(this.body);
-    this.root.scale.setScalar(1.6);
+    // A crow's size beside the farm's animals: about half the dog's height.
+    this.root.scale.setScalar(0.62);
     this.root.traverse((o) => (o.userData.pest = true));
   }
 
