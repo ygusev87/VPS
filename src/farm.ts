@@ -295,7 +295,8 @@ export class FarmMap extends StoryMap {
     this.scenery.add(board);
     // A light rim and a matte side round the board (see boardEdge).
     this.scenery.add(boardEdge(W, D, 'farm'));
-    for (const p of PONDS) this.scenery.add(pond(p));
+    // The kit's painted shore frames the water: no glint disc then.
+    for (const p of PONDS) this.scenery.add(pond(p, !this.kit));
     if (this.kit) this.layKit(plan);
     // Flowers in clumps on the grass: not on the paths, the fields, the mud or in the water.
     const inside = (x: number, z: number, e: Ellipse, grow: number) => ((x - e.x) / (e.rx + grow)) ** 2 + ((z - e.z) / (e.rz + grow)) ** 2 < 1;
@@ -328,6 +329,9 @@ export class FarmMap extends StoryMap {
       (yard.material as THREE.MeshStandardMaterial).alphaMap = ovalMask();
       this.scenery.add(yard);
     }
+    // The ponds' painted shore: its open middle sized to the water (see pond()), measured off the picture.
+    const rim = kitPieces('farm', 'pond-rim');
+    if (rim.length) for (const p of PONDS) this.scenery.add(decal({ x0: p.x - p.rx * 1.285, z0: p.z - p.rz * 1.61, x1: p.x + p.rx * 1.285, z1: p.z + p.rz * 1.61 }, rim[0], 0, 0.016, 4));
     const f = plan.field;
     const ground = kitPieces('farm', 'wheat-ground');
     if (ground.length) this.scenery.add(decal(f, ground[0], 0.4));
@@ -579,6 +583,18 @@ export class FarmMap extends StoryMap {
     }
     this.life.setFences(FENCES);
     this.scenery.add(group);
+    // Trodden earth in front of the doors (the kit's yards), under the buildings' fronts.
+    const yard = this.kit ? kitPieces('farm', 'yard-dirt') : [];
+    if (yard.length) {
+      const fronts = YARDS.flatMap((name) => {
+        const i = [...drawn].indexOf(name);
+        if (i < 0) return [];
+        const box = new THREE.Box3().setFromObject(group.children[i]);
+        const w = Math.min(6, (box.max.x - box.min.x) * 0.55);
+        return [{ x: (box.min.x + box.max.x) / 2, z: box.max.z + w * 0.15, size: w }];
+      });
+      this.scenery.add(patches(fronts, yard, 0.007, 1));
+    }
     // Butterflies over the garden and the flowers, fireflies by the pond at night; smoke from the house.
     this.life.addFlutters([v(4, 21), v(-18, 19), v(13, 26), v(-40, 22), v(44, -24), v(-10, 0)], [POND, v(-35, 14)]);
     const house = DECOR.find((g) => (g.model === 'house' || g.model === 'farmhouse') && drawn.has(g.model));
@@ -1094,6 +1110,9 @@ const GRASS_TONE = '#b4a4d0';
 const PATH_TONE = new URLSearchParams(location.search).get('ptone') ?? '#c8d4f0';
 /** How much wider the painted path is than its lane (the picture includes grassy shoulders). */
 const PATH_WIDE = Number(new URLSearchParams(location.search).get('pwide') ?? 3.6);
+
+/** Buildings with a yard of trodden earth before their doors. */
+const YARDS = ['farmhouse', 'barn', 'coop', 'stable', 'pigsty', 'tractor-shed', 'grandma-house'];
 
 /** Trees and bushes that the painted kit draws as cards: its picture, and the card's width per unit of the model's height. */
 const CARDS: Record<string, { card: string; wide: number }> = {

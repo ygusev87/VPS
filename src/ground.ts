@@ -495,7 +495,7 @@ export function tiledMaterial(name: Tile, repeat: [number, number], roughness = 
 }
 
 /** A pond: a sandy bed with a rim of shore, clear water over it, deeper in the middle. */
-export function pond({ x, z, rx, rz }: Ellipse): THREE.Group {
+export function pond({ x, z, rx, rz }: Ellipse, glint = true): THREE.Group {
   const g = new THREE.Group();
   const disc = (sx: number, sz: number, mat: THREE.Material, y: number) => {
     const m = new THREE.Mesh(new THREE.CircleGeometry(1, 48), mat);
@@ -513,7 +513,7 @@ export function pond({ x, z, rx, rz }: Ellipse): THREE.Group {
   const water = (opacity: number, color: string) => new THREE.MeshStandardMaterial({ color, roughness: 0.08, metalness: 0.1, transparent: true, opacity, depthWrite: false });
   disc(rx * 0.9, rz * 0.88, water(0.7, '#46a5d7'), 0.008);
   disc(rx * 0.6, rz * 0.55, water(0.35, '#2878b9'), 0.01);
-  disc(rx * 0.4, rz * 0.2, water(0.3, '#ffffff'), 0.012).position.x -= rx * 0.2;
+  if (glint) disc(rx * 0.4, rz * 0.2, water(0.3, '#ffffff'), 0.012).position.x -= rx * 0.2;
   return g;
 }
 
