@@ -356,7 +356,13 @@ export class CityMap extends StoryMap {
     const kerb = kitPieces('city', 'kerb-strip', true);
     const park = kitPieces('city', 'park-lawn');
     for (const f of [plan.field, ...(plan.fields ?? [])]) {
-      if (f === plan.field && park.length) this.scenery.add(decal(f, park[0], 0.3, 0.005));
+      if (f === plan.field && park.length) {
+        // The picture's paved circle sits a little off its middle: move the whole lawn so it rings the fountain (Codex's park review).
+        const lawn = decal(f, park[0], 0.3, 0.005);
+        lawn.position.x += 0.092578;
+        lawn.position.z += 0.260231;
+        this.scenery.add(lawn);
+      }
       else if (lawn.length) this.scenery.add(toned(tiledDecal(f, lawn[0], 8), LAWN_TONE));
       if (kerb.length) {
         const loop: [number, number][] = [[f.x0, f.z0], [f.x1, f.z0], [f.x1, f.z1], [f.x0, f.z1], [f.x0, f.z0]];
