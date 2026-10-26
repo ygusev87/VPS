@@ -4,7 +4,7 @@
 // lets the current through only when the pieces join from its left post to
 // its right one (src/parts/tiles.ts).
 import * as THREE from 'three';
-import type { ElementKind } from '../circuit/solver';
+import type { CircuitElement, ElementKind } from '../circuit/solver';
 import { Part, type PartKind } from './base';
 import { basePlate, damp, mat, mesh, PLATE_TOP } from './kit';
 import { flow, hintTile, makePuzzle, opens, turn, type Side, type TileGrid } from './tiles';
@@ -132,5 +132,174 @@ export class WireBox extends Part {
       this.strips[i].emissiveIntensity = damp(this.strips[i].emissiveIntensity, lit[i] ? (live ? 1.6 + Math.sin(this.time * 6 + i) * 0.3 : 0.35) : 0, 8, dt);
     });
     this.lamp.emissiveIntensity = damp(this.lamp.emissiveIntensity, this.closed ? 2.5 : 0, 8, dt);
+  }
+}
+
+/**
+ * The reversing switch: a three-way lever between a source and a motor —
+ * right is forward, left is back (the current through the motor turns round),
+ * the middle stops it. Inside, four contacts: forward joins + to a and − to b,
+ * back joins + to b and − to a.
+ */
+export class Reverser extends Part {
+  readonly kind: PartKind = 'reverser';
+  readonly elementKind: ElementKind = 'switch';
+  readonly radius = 1.6;
+  /** −1 back, 0 stop, 1 forward. */
+  pos: -1 | 0 | 1 = 0;
+  private lever = new THREE.Group();
+  private marks: THREE.MeshStandardMaterial[] = [];
+
+  constructor() {
+    super();
+    const plate = basePlate(2.6, 1.9);
+    const box = mesh(new THREE.BoxGeometry(1.5, 0.35, 1.1), mat('#8d97a3', 0.45, 0.6));
+    box.position.y = PLATE_TOP + 0.175;
+    // Arrows on the box: back (left, orange), stop (middle, red), forward (right, green).
+    const sign = (x: number, color: string, shape: THREE.BufferGeometry) => {
+      const m = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.1, roughness: 0.4 });
+      this.marks.push(m);
+      const s = mesh(shape, m, false);
+      s.position.set(x, PLATE_TOP + 0.36, 0.3);
+      this.body.add(s);
+    };
+    const arrow = (dir: number) => {
+      const shape = new THREE.Shape();
+      shape.moveTo(0.16 * dir, 0);
+      shape.lineTo(-0.1 * dir, 0.14);
+      shape.lineTo(-0.1 * dir, -0.14);
+      shape.closePath();
+      return new THREE.ExtrudeGeometry(shape, { depth: 0.03, bevelEnabled: false }).rotateX(-Math.PI / 2);
+    };
+    sign(-0.5, '#ff9a3c', arrow(-1));
+    sign(0, '#e8483f', new THREE.CylinderGeometry(0.11, 0.11, 0.03, 16));
+    sign(0.5, '#4cc46a', arrow(1));
+    // The lever: a stubby handle on a pivot at the back, swinging over the arrows.
+    const stick = mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.75, 12), mat('#2b3242', 0.4, 0.5));
+    stick.rotation.x = Math.PI / 2 - 0.5;
+    stick.position.set(0, 0.2, 0.3);
+    const knob = mesh(new THREE.SphereGeometry(0.17, 16, 12), mat('#e8483f', 0.35));
+    knob.position.set(0, 0.38, 0.62);
+    this.lever.add(stick, knob);
+    this.lever.position.set(0, PLATE_TOP + 0.35, -0.35);
+    this.body.add(plate, box, this.lever);
+    this.addTerminal('p', 'plus', -1.05, -0.45);
+    this.addTerminal('n', 'minus', -1.05, 0.45);
+    this.addTerminal('a', 'none', 1.05, -0.45);
+    this.addTerminal('b', 'none', 1.05, 0.45);
+    this.pickable(plate, box, this.lever);
+  }
+
+  elements(): CircuitElement[] {
+    const t = (k: string) => this.terminal(k).id;
+    const sw = (key: string, a: string, b: string, closed: boolean): CircuitElement => ({ id: `${this.id}#${key}`, kind: 'switch', a: t(a), b: t(b), closed });
+    return [sw('f1', 'p', 'a', this.pos === 1), sw('f2', 'n', 'b', this.pos === 1), sw('r1', 'p', 'b', this.pos === -1), sw('r2', 'n', 'a', this.pos === -1)];
+  }
+
+  /** Part-local point of the arrow for a position (for the hand of a hint). */
+  posPoint(pos: -1 | 0 | 1): THREE.Vector3 {
+    return new THREE.Vector3(pos * 0.5, PLATE_TOP + 0.4, 0.3);
+  }
+
+  controlAt(_hit: THREE.Object3D | null, point: THREE.Vector3 | null): boolean {
+    if (!point) return false;
+    const p = this.root.worldToLocal(point.clone());
+    return Math.abs(p.x) < 0.85 && Math.abs(p.z) < 0.65;
+  }
+
+  /** A tap on an arrow sets the lever there: right forward, left back, the middle stops. */
+  tap(_hit?: THREE.Object3D | null, point?: THREE.Vector3 | null): boolean {
+    super.tap();
+    const x = point ? this.root.worldToLocal(point.clone()).x : 0;
+    this.pos = x > 0.25 ? 1 : x < -0.25 ? -1 : 0;
+    this.closed = this.pos !== 0;
+    this.sounds.push({ kind: 'clack' });
+    return true;
+  }
+
+  protected animate(dt: number) {
+    this.lever.rotation.z = damp(this.lever.rotation.z, -this.pos * 0.55, 14, dt);
+    this.marks.forEach((m, i) => (m.emissiveIntensity = damp(m.emissiveIntensity, i - 1 === this.pos ? 1.8 : 0.1, 10, dt)));
+  }
+}
+
+const RAIL = 3.6;
+
+/**
+ * A cart on a short railway, pulled by a motor in its end: the current one
+ * way drives it east, the other way west; it stops at the buffers. It can
+ * carry a load (the map puts one in it).
+ */
+export class RailCart extends Part {
+  readonly kind: PartKind = 'railCart';
+  readonly elementKind: ElementKind = 'motor';
+  readonly radius = 4.6;
+  /** Where the cart is along the rails, −RAIL..RAIL (part-local x). */
+  x = 0;
+  private v = 0;
+  private cart = new THREE.Group();
+  private wheels: THREE.Mesh[] = [];
+  private end: -1 | 1 | 0 = 0;
+  /** What rides in the cart (the map hangs a load here). */
+  readonly bed = new THREE.Group();
+
+  constructor() {
+    super();
+    const plate = basePlate(RAIL * 2 + 2, 1.7);
+    const steel = mat('#8d97a3', 0.35, 0.75);
+    for (const z of [-0.35, 0.35]) {
+      const rail = mesh(new THREE.BoxGeometry(RAIL * 2 + 1.4, 0.08, 0.08), steel);
+      rail.position.set(0, PLATE_TOP + 0.04, z);
+      this.body.add(rail);
+    }
+    for (let x = -RAIL - 0.6; x <= RAIL + 0.6; x += 0.6) {
+      const tie = mesh(new THREE.BoxGeometry(0.16, 0.04, 1), mat('#7a5a3c', 0.8), false);
+      tie.position.set(x, PLATE_TOP + 0.02, 0);
+      this.body.add(tie);
+    }
+    for (const x of [-RAIL - 0.75, RAIL + 0.75]) {
+      const buffer = mesh(new THREE.BoxGeometry(0.2, 0.4, 1), mat('#f5c33b', 0.5));
+      buffer.position.set(x, PLATE_TOP + 0.2, 0);
+      this.body.add(buffer);
+    }
+    const tub = mesh(new THREE.BoxGeometry(1.2, 0.5, 0.9), mat('#e8483f', 0.45, 0.2));
+    tub.position.y = 0.42;
+    const rim = mesh(new THREE.BoxGeometry(1.3, 0.08, 1), mat('#2b3242', 0.4, 0.5));
+    rim.position.y = 0.7;
+    this.cart.add(tub, rim);
+    for (const [x, z] of [[-0.4, -0.35], [0.4, -0.35], [-0.4, 0.35], [0.4, 0.35]]) {
+      const w = mesh(new THREE.CylinderGeometry(0.15, 0.15, 0.08, 14), mat('#2b3242', 0.4, 0.6));
+      w.rotation.x = Math.PI / 2;
+      w.position.set(x, 0.17, z);
+      this.wheels.push(w);
+      this.cart.add(w);
+    }
+    this.bed.position.y = 0.72;
+    this.cart.add(this.bed);
+    this.cart.position.y = PLATE_TOP;
+    this.body.add(plate, this.cart);
+    this.addTerminal('a', 'none', -RAIL - 0.2, 0.75);
+    this.addTerminal('b', 'none', -RAIL + 0.6, 0.75);
+    this.pickable(plate, tub);
+  }
+
+  /** The cart's place in the world. */
+  cartAt(out = new THREE.Vector3()): THREE.Vector3 {
+    return this.root.localToWorld(out.set(this.x, 0, 0));
+  }
+
+  protected animate(dt: number) {
+    const l = Math.max(-1.6, Math.min(1.6, this.state.level));
+    this.v = damp(this.v, Math.abs(l) > 0.15 ? l * 1.6 : 0, 4, dt);
+    const before = this.x;
+    this.x = THREE.MathUtils.clamp(this.x + this.v * dt, -RAIL, RAIL);
+    const moved = this.x - before;
+    for (const w of this.wheels) w.rotation.y -= moved / 0.15;
+    const end = this.x >= RAIL - 1e-3 ? 1 : this.x <= -RAIL + 1e-3 ? -1 : 0;
+    if (end && end !== this.end) this.sounds.push({ kind: 'clank' });
+    if (end) this.v = 0;
+    this.end = end;
+    this.cart.position.x = this.x;
+    this.cart.position.y = PLATE_TOP + (Math.abs(moved) > 1e-4 ? Math.abs(Math.sin(this.time * 18)) * 0.015 : 0);
   }
 }
