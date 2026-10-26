@@ -1,0 +1,182 @@
+[
+  {
+    "path": "public/models/barn.glb",
+    "bytes": 166436,
+    "sha256": "62f9dbe2a6d572e35e5e54c77597aa9df5c1ef159190db9ee249684680adc506"
+  },
+  {
+    "path": "public/models/beehive.glb",
+    "bytes": 112148,
+    "sha256": "a1bcd49fb3df3c6deea424463add5761742a59253045ddfb60dd49216b72c775"
+  },
+  {
+    "path": "public/models/bush-lite.glb",
+    "bytes": 28728,
+    "sha256": "fb18b4731aacf8757c0f05e24552d396e04548be8a0ed59e39c21f327d7e429b"
+  },
+  {
+    "path": "public/models/coop.glb",
+    "bytes": 146336,
+    "sha256": "68b4ee6350758fd266a7d55930891ce6926da1c6eb3f60345dc507c579ec9192"
+  },
+  {
+    "path": "public/models/cow.glb",
+    "bytes": 138184,
+    "sha256": "0bc786fe4922259867408c9e030dd5d74cca30afb5dc9e18bff3b1df7e0433b3"
+  },
+  {
+    "path": "public/models/crop-cabbage.glb",
+    "bytes": 59324,
+    "sha256": "f440a7e2ccf5b858818a2304910fa0529815a6f9853e540429f8889808f168e7"
+  },
+  {
+    "path": "public/models/crop-carrot.glb",
+    "bytes": 63364,
+    "sha256": "f43b399e1cecdaf7098041b98534194bc0e4a3f5f62ca519d0d23e2d7b0cfc68"
+  },
+  {
+    "path": "public/models/crop-lavender.glb",
+    "bytes": 105056,
+    "sha256": "2b5f33697ef15f0270fb4f924046e0ffad3fb1522090ecd5985973451a8551e3"
+  },
+  {
+    "path": "public/models/crop-sunflower.glb",
+    "bytes": 76728,
+    "sha256": "6a0d08c402f1ed8c787751e200cd45b17271e5b854490c8c897c19679cbf5321"
+  },
+  {
+    "path": "public/models/crop-tomato.glb",
+    "bytes": 78976,
+    "sha256": "267368346e44ac8c20fd4e71dbe04d18fed1c8153c053094c4074e70e8b93bb4"
+  },
+  {
+    "path": "public/models/crop-wheat.glb",
+    "bytes": 85804,
+    "sha256": "9c336618aab4bf4929a46d6b0a56034acbdabf93e4353bd91d6a1d69439492ce"
+  },
+  {
+    "path": "public/models/doghouse.glb",
+    "bytes": 199976,
+    "sha256": "667ccb2195f2d3155452aa2c02239355b490615c950f44eb5757f3917fa0d053"
+  },
+  {
+    "path": "public/models/farm-barrel.glb",
+    "bytes": 22076,
+    "sha256": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b"
+  },
+  {
+    "path": "public/models/farm-crate.glb",
+    "bytes": 21120,
+    "sha256": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f"
+  },
+  {
+    "path": "public/models/farmhouse.glb",
+    "bytes": 84820,
+    "sha256": "02e0ef29270a0488a07d686095de4d4485f9f16d6593e0b1fcad2883d488bb1d"
+  },
+  {
+    "path": "public/models/flower-cluster.glb",
+    "bytes": 43180,
+    "sha256": "c0cb8cdf97f9a61c52d4137b25e265ba0217bb300e0f8287b2efe1c422674f52"
+  },
+  {
+    "path": "public/models/goat.glb",
+    "bytes": 97872,
+    "sha256": "e0463ea7bc376d4015c9ab2846dcec48e40e5b68dfec135646506598554a4b5c"
+  },
+  {
+    "path": "public/models/goose.glb",
+    "bytes": 105436,
+    "sha256": "565f966e6058acee2c07d939c005828808dc8d55ca855e15d093d82e8e610e5f"
+  },
+  {
+    "path": "public/models/hay-bale.glb",
+    "bytes": 49592,
+    "sha256": "f89caa01a91e7fd8dba0948584bcac1fd3dba52d64a7f92f4a0c08914816c421"
+  },
+  {
+    "path": "public/models/haystack.glb",
+    "bytes": 47256,
+    "sha256": "d5c32fb689208f15fabdaebdd65d72fde8785a99c418c26fb03b105c7c2d1b56"
+  },
+  {
+    "path": "public/models/hen.glb",
+    "bytes": 130024,
+    "sha256": "0d57f56744a5345b25efe9dbad3967dbcf36148cf7f3ca609628342112c2ef35"
+  },
+  {
+    "path": "public/models/horse.glb",
+    "bytes": 112720,
+    "sha256": "a7a5177b60af0a10d9882c73cc4cd5fe26d012fa8e3bf7a2fd091c11fd84902f"
+  },
+  {
+    "path": "public/models/hutch.glb",
+    "bytes": 94512,
+    "sha256": "1443f7d2942dc664b827e6cba7f14d4e44985f988ec2f533f86244443d6828ae"
+  },
+  {
+    "path": "public/models/pig.glb",
+    "bytes": 118340,
+    "sha256": "0bd937cdb15f59e8a037c98ab83da6f7e411774781c11b9af60711d3c5b824f3"
+  },
+  {
+    "path": "public/models/pigsty.glb",
+    "bytes": 84380,
+    "sha256": "5afc12715208e2193fd4e34e02d8173661b0c876d6ad510335ae80c223b40582"
+  },
+  {
+    "path": "public/models/pond-dock.glb",
+    "bytes": 18216,
+    "sha256": "514963d387cc28dd5dedcc1fce2c8c6d2cd67d97c3f54c51473a49d798565a2d"
+  },
+  {
+    "path": "public/models/pond-reeds.glb",
+    "bytes": 8700,
+    "sha256": "3baeda516f23c4d655c527ff592bdb49b1f2cb6c5e7bbbeb0333d8ca256fba3e"
+  },
+  {
+    "path": "public/models/rock-cluster.glb",
+    "bytes": 27448,
+    "sha256": "838ce9f743e9de3943160ed204fec6c24dfc9c4b8c332613cfce4e0eed3386c4"
+  },
+  {
+    "path": "public/models/sack.glb",
+    "bytes": 142264,
+    "sha256": "3edddc7a60234d82f47d2439e0eedf0b77efe89696f72d4a9df2c395ace1f327"
+  },
+  {
+    "path": "public/models/sheep.glb",
+    "bytes": 178172,
+    "sha256": "94c1e4c6d46d850e6b8345fe751c3bfa8eeebf5be7db721ba1f96189233f4eac"
+  },
+  {
+    "path": "public/models/silo.glb",
+    "bytes": 65788,
+    "sha256": "5cc76b051100449ec6bb5c635a8e1bf4bed8333d3943660f609624ae17f8d506"
+  },
+  {
+    "path": "public/models/stable.glb",
+    "bytes": 149988,
+    "sha256": "272b7a91e2df1e0db74879b897e68658df18928dd62a5561c3d23ab334aa2781"
+  },
+  {
+    "path": "public/models/tractor-shed.glb",
+    "bytes": 84856,
+    "sha256": "e85bdce5384ab2e52a93778035a3c06426f47d34ff3f182e985b5f38498f31ce"
+  },
+  {
+    "path": "public/models/tree-oak.glb",
+    "bytes": 47276,
+    "sha256": "1b7b86cbe8c7b432628c57fc49cc474581b9ba1a58c1c8d804b59edcd3ee2309"
+  },
+  {
+    "path": "public/models/tree-oak-lite.glb",
+    "bytes": 25672,
+    "sha256": "a3596a45266d3537b483b416b379a2db174e219d60f37c19c5cca8f6d3a39e38"
+  },
+  {
+    "path": "public/models/tree-pine-lite.glb",
+    "bytes": 22140,
+    "sha256": "bfe0ddc03c0d1c0b11efdd899ba77ae3c51d840da521cd5c46f35087a9844ac9"
+  }
+]

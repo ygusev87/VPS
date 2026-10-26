@@ -1,0 +1,97 @@
+[
+  {
+    "name": "yard-spine",
+    "before": 2.0,
+    "after": 1.4
+  },
+  {
+    "name": "barn-entry",
+    "before": 1.8,
+    "after": 1.4
+  },
+  {
+    "name": "kitten-lift",
+    "before": 1.6,
+    "after": 1.0
+  },
+  {
+    "name": "farmhouse-porch",
+    "before": 1.8,
+    "after": 1.0
+  },
+  {
+    "name": "rabbit-entry",
+    "before": 1.6,
+    "after": 1.2
+  },
+  {
+    "name": "dog-entry",
+    "before": 1.6,
+    "after": 1.2
+  },
+  {
+    "name": "hen-entry",
+    "before": 1.6,
+    "after": 1.2
+  },
+  {
+    "name": "nest-entry",
+    "before": 1.8,
+    "after": 1.2
+  },
+  {
+    "name": "hill-entry",
+    "before": 1.8,
+    "after": 1.2
+  },
+  {
+    "name": "horse-yard",
+    "before": 1.8,
+    "after": 1.4
+  },
+  {
+    "name": "courtyard",
+    "before": 1.8,
+    "after": 1.2
+  },
+  {
+    "name": "south-loop",
+    "before": 1.8,
+    "after": 1.4
+  },
+  {
+    "name": "orchard-entry",
+    "before": 1.6,
+    "after": 1.2
+  },
+  {
+    "name": "apiary-entry",
+    "before": 1.6,
+    "after": 1.2
+  },
+  {
+    "name": "garden-north",
+    "before": 1.6,
+    "after": 1.2
+  },
+  {
+    "name": "garden-cross",
+    "before": 1.4,
+    "after": 1.0
+  },
+  {
+    "name": "garden-south",
+    "before": 1.6,
+    "after": 1.2
+  },
+  {
+    "name": "shed-entry",
+    "before": 1.8,
+    "after": 1.4
+  },
+  {
+    "name": "tractor-gate",
+    "before": 1.8,
+    "after": 1.4
+  }
+]

@@ -1,0 +1,898 @@
+{
+  "status": "pass",
+  "baselineRevision": "699533104f1a53cda99df7aa87fbef66e6658003",
+  "paths": 19,
+  "instances": 686,
+  "changesOnlyWidths": true,
+  "bytePreservation": [
+    {
+      "file": "decor-authoring.json",
+      "status": "only-19-width-tokens-changed",
+      "unchangedOutsideWidthTokens": true,
+      "maskedSha256": "2cd2d6340c2c6463fdb429d22e16e160ea0318b9be30c35564b9bbf27ecb91d9",
+      "tokens": [
+        {
+          "index": 0,
+          "beforeToken": "2.0",
+          "afterToken": "1.4"
+        },
+        {
+          "index": 1,
+          "beforeToken": "1.8",
+          "afterToken": "1.4"
+        },
+        {
+          "index": 2,
+          "beforeToken": "1.6",
+          "afterToken": "1.0"
+        },
+        {
+          "index": 3,
+          "beforeToken": "1.8",
+          "afterToken": "1.0"
+        },
+        {
+          "index": 4,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 5,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 6,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 7,
+          "beforeToken": "1.8",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 8,
+          "beforeToken": "1.8",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 9,
+          "beforeToken": "1.8",
+          "afterToken": "1.4"
+        },
+        {
+          "index": 10,
+          "beforeToken": "1.8",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 11,
+          "beforeToken": "1.8",
+          "afterToken": "1.4"
+        },
+        {
+          "index": 12,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 13,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 14,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 15,
+          "beforeToken": "1.4",
+          "afterToken": "1.0"
+        },
+        {
+          "index": 16,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 17,
+          "beforeToken": "1.8",
+          "afterToken": "1.4"
+        },
+        {
+          "index": 18,
+          "beforeToken": "1.8",
+          "afterToken": "1.4"
+        }
+      ]
+    },
+    {
+      "file": "decor-layout.json",
+      "status": "only-19-width-tokens-changed",
+      "unchangedOutsideWidthTokens": true,
+      "maskedSha256": "479dadf3c7bbb1445b524d19a5b575a9b94bcdbcfab387c029b7154c56daa704",
+      "tokens": [
+        {
+          "index": 0,
+          "beforeToken": "2.0",
+          "afterToken": "1.4"
+        },
+        {
+          "index": 1,
+          "beforeToken": "1.8",
+          "afterToken": "1.4"
+        },
+        {
+          "index": 2,
+          "beforeToken": "1.6",
+          "afterToken": "1.0"
+        },
+        {
+          "index": 3,
+          "beforeToken": "1.8",
+          "afterToken": "1.0"
+        },
+        {
+          "index": 4,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 5,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 6,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 7,
+          "beforeToken": "1.8",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 8,
+          "beforeToken": "1.8",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 9,
+          "beforeToken": "1.8",
+          "afterToken": "1.4"
+        },
+        {
+          "index": 10,
+          "beforeToken": "1.8",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 11,
+          "beforeToken": "1.8",
+          "afterToken": "1.4"
+        },
+        {
+          "index": 12,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 13,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 14,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 15,
+          "beforeToken": "1.4",
+          "afterToken": "1.0"
+        },
+        {
+          "index": 16,
+          "beforeToken": "1.6",
+          "afterToken": "1.2"
+        },
+        {
+          "index": 17,
+          "beforeToken": "1.8",
+          "afterToken": "1.4"
+        },
+        {
+          "index": 18,
+          "beforeToken": "1.8",
+          "afterToken": "1.4"
+        }
+      ]
+    },
+    {
+      "file": "farm-decor.ts",
+      "status": "only-19-PATHS-width-tokens-changed",
+      "unchangedOutsideWidthTokens": true
+    }
+  ],
+  "topologyBefore": {
+    "components": 1,
+    "roadAdjacency": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        0,
+        11
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        0,
+        14
+      ],
+      [
+        0,
+        18
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        11,
+        17
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        15,
+        16
+      ]
+    ],
+    "segments": 43,
+    "pointOccurrences": 62,
+    "centerlineSha256": "9c1da0d951dc680ef2c6ca1a0d9fdf9e4112d8287df3b2b9cf6a21161bfa1bb9"
+  },
+  "topologyAfter": {
+    "components": 1,
+    "roadAdjacency": [
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        3
+      ],
+      [
+        0,
+        4
+      ],
+      [
+        0,
+        5
+      ],
+      [
+        0,
+        6
+      ],
+      [
+        0,
+        8
+      ],
+      [
+        0,
+        9
+      ],
+      [
+        0,
+        10
+      ],
+      [
+        0,
+        11
+      ],
+      [
+        0,
+        13
+      ],
+      [
+        0,
+        14
+      ],
+      [
+        0,
+        18
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        6,
+        7
+      ],
+      [
+        9,
+        11
+      ],
+      [
+        11,
+        12
+      ],
+      [
+        11,
+        16
+      ],
+      [
+        11,
+        17
+      ],
+      [
+        14,
+        15
+      ],
+      [
+        15,
+        16
+      ]
+    ],
+    "segments": 43,
+    "pointOccurrences": 62,
+    "centerlineSha256": "9c1da0d951dc680ef2c6ca1a0d9fdf9e4112d8287df3b2b9cf6a21161bfa1bb9"
+  },
+  "runtimeExports": [
+    {
+      "variant": "baseline",
+      "exports": [
+        "DECOR",
+        "FENCES",
+        "MEADOW",
+        "MUD",
+        "PATHS",
+        "PONDS",
+        "SOIL"
+      ],
+      "paths": 19,
+      "instances": 686,
+      "status": "pass"
+    },
+    {
+      "variant": "candidate",
+      "exports": [
+        "DECOR",
+        "FENCES",
+        "MEADOW",
+        "MUD",
+        "PATHS",
+        "PONDS",
+        "SOIL"
+      ],
+      "paths": 19,
+      "instances": 686,
+      "status": "pass"
+    }
+  ],
+  "clearance": {
+    "samples": 789,
+    "decorCenters": 686,
+    "fullFenceSegments": 64,
+    "minimumGain": 0.1999999999999993,
+    "maximumGain": 0.40000000000000036,
+    "fenceMinimumBefore": 0.3984405600525154,
+    "fenceMinimumAfter": 0.6369999999999998,
+    "proof": "Each unchanged centerline C has new half-width r_new <= r_old. Its round-joined/capped corridor C (+) disk(r_new) is a subset of C (+) disk(r_old). Their unions retain inclusion. Distance to any unchanged obstacle set cannot decrease. Signed distance-to-centerline minus half-width grows by 0.2..0.4 for each changed road. This proof applies to whole fixed footprints, not only sampled centers.",
+    "fixedFoxLane": "Runtime FOX_PATH at width 1.1 is unchanged. Including this fixed lane, global clearance cannot decrease but the 0.2 minimum gain is no longer universal."
+  },
+  "groundMask": {
+    "sourceUnchanged": true,
+    "allEightPaintedStrokeWidthsNonincreasing": true,
+    "layers": [
+      {
+        "name": "yard-spine",
+        "before": [
+          5.6,
+          5.0,
+          4.4,
+          3.8,
+          3.2,
+          2.6,
+          2.0,
+          1.2
+        ],
+        "after": [
+          5.0,
+          4.4,
+          3.8,
+          3.1999999999999997,
+          2.5999999999999996,
+          2.0,
+          1.4,
+          0.5999999999999999
+        ]
+      },
+      {
+        "name": "barn-entry",
+        "before": [
+          5.3999999999999995,
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.8,
+          1.0
+        ],
+        "after": [
+          5.0,
+          4.4,
+          3.8,
+          3.1999999999999997,
+          2.5999999999999996,
+          2.0,
+          1.4,
+          0.5999999999999999
+        ]
+      },
+      {
+        "name": "kitten-lift",
+        "before": [
+          5.199999999999999,
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          0.8
+        ],
+        "after": [
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          1.0,
+          0.2
+        ]
+      },
+      {
+        "name": "farmhouse-porch",
+        "before": [
+          5.3999999999999995,
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.8,
+          1.0
+        ],
+        "after": [
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          1.0,
+          0.2
+        ]
+      },
+      {
+        "name": "rabbit-entry",
+        "before": [
+          5.199999999999999,
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          0.8
+        ],
+        "after": [
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.7999999999999998,
+          1.2,
+          0.3999999999999999
+        ]
+      },
+      {
+        "name": "dog-entry",
+        "before": [
+          5.199999999999999,
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          0.8
+        ],
+        "after": [
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.7999999999999998,
+          1.2,
+          0.3999999999999999
+        ]
+      },
+      {
+        "name": "hen-entry",
+        "before": [
+          5.199999999999999,
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          0.8
+        ],
+        "after": [
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.7999999999999998,
+          1.2,
+          0.3999999999999999
+        ]
+      },
+      {
+        "name": "nest-entry",
+        "before": [
+          5.3999999999999995,
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.8,
+          1.0
+        ],
+        "after": [
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.7999999999999998,
+          1.2,
+          0.3999999999999999
+        ]
+      },
+      {
+        "name": "hill-entry",
+        "before": [
+          5.3999999999999995,
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.8,
+          1.0
+        ],
+        "after": [
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.7999999999999998,
+          1.2,
+          0.3999999999999999
+        ]
+      },
+      {
+        "name": "horse-yard",
+        "before": [
+          5.3999999999999995,
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.8,
+          1.0
+        ],
+        "after": [
+          5.0,
+          4.4,
+          3.8,
+          3.1999999999999997,
+          2.5999999999999996,
+          2.0,
+          1.4,
+          0.5999999999999999
+        ]
+      },
+      {
+        "name": "courtyard",
+        "before": [
+          5.3999999999999995,
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.8,
+          1.0
+        ],
+        "after": [
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.7999999999999998,
+          1.2,
+          0.3999999999999999
+        ]
+      },
+      {
+        "name": "south-loop",
+        "before": [
+          5.3999999999999995,
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.8,
+          1.0
+        ],
+        "after": [
+          5.0,
+          4.4,
+          3.8,
+          3.1999999999999997,
+          2.5999999999999996,
+          2.0,
+          1.4,
+          0.5999999999999999
+        ]
+      },
+      {
+        "name": "orchard-entry",
+        "before": [
+          5.199999999999999,
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          0.8
+        ],
+        "after": [
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.7999999999999998,
+          1.2,
+          0.3999999999999999
+        ]
+      },
+      {
+        "name": "apiary-entry",
+        "before": [
+          5.199999999999999,
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          0.8
+        ],
+        "after": [
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.7999999999999998,
+          1.2,
+          0.3999999999999999
+        ]
+      },
+      {
+        "name": "garden-north",
+        "before": [
+          5.199999999999999,
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          0.8
+        ],
+        "after": [
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.7999999999999998,
+          1.2,
+          0.3999999999999999
+        ]
+      },
+      {
+        "name": "garden-cross",
+        "before": [
+          5.0,
+          4.4,
+          3.8,
+          3.1999999999999997,
+          2.5999999999999996,
+          2.0,
+          1.4,
+          0.5999999999999999
+        ],
+        "after": [
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          1.0,
+          0.2
+        ]
+      },
+      {
+        "name": "garden-south",
+        "before": [
+          5.199999999999999,
+          4.6,
+          4.0,
+          3.4,
+          2.8,
+          2.2,
+          1.6,
+          0.8
+        ],
+        "after": [
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.7999999999999998,
+          1.2,
+          0.3999999999999999
+        ]
+      },
+      {
+        "name": "shed-entry",
+        "before": [
+          5.3999999999999995,
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.8,
+          1.0
+        ],
+        "after": [
+          5.0,
+          4.4,
+          3.8,
+          3.1999999999999997,
+          2.5999999999999996,
+          2.0,
+          1.4,
+          0.5999999999999999
+        ]
+      },
+      {
+        "name": "tractor-gate",
+        "before": [
+          5.3999999999999995,
+          4.8,
+          4.2,
+          3.5999999999999996,
+          3.0,
+          2.4,
+          1.8,
+          1.0
+        ],
+        "after": [
+          5.0,
+          4.4,
+          3.8,
+          3.1999999999999997,
+          2.5999999999999996,
+          2.0,
+          1.4,
+          0.5999999999999999
+        ]
+      }
+    ],
+    "scope": "Analytic stroke support only. Pixel antialiasing, shader appearance, shoulders and gameplay readability belong to main browser QA."
+  },
+  "liveBaselineDriftAtVerification": [],
+  "candidateHashes": {
+    "decor-authoring.json": "d948d03dfc3362ce69b28e95450e53c34fc58c2c732a5bf5082214839cd163c8",
+    "decor-layout.json": "ff7e27689639f02358264656ad3eab85dba2f314e5bbbbb0141af92befeb847a",
+    "farm-decor.ts": "df23f2c9ad83d7cd069090dbe932d10ec4279131573cdca34fe9d72050689f5c"
+  },
+  "checksNotRun": [
+    "browser",
+    "npm tests",
+    "npm typecheck"
+  ],
+  "limitations": [
+    "No new assertion that all old road/object overlaps are absent; this proves they cannot worsen under narrowing.",
+    "Rendered before/after and current game candidate QA are performed by main."
+  ]
+}

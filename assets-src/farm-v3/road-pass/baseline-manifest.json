@@ -1,0 +1,61 @@
+{
+  "revision": "699533104f1a53cda99df7aa87fbef66e6658003",
+  "files": [
+    {
+      "source": "assets-src/farm-v3/decor-authoring.json",
+      "snapshot": "baseline/decor-authoring.json",
+      "bytes": 91488,
+      "sha256": "d6f87ffeaae0f103056bb8996df47106619aa1cf92140942c795ae2460015e8c",
+      "matchesWorkingTreeAtCapture": true
+    },
+    {
+      "source": "assets-src/farm-v3/decor-layout.json",
+      "snapshot": "baseline/decor-layout.json",
+      "bytes": 74667,
+      "sha256": "cc2876bb78921255fde107beccc864c7752fc20dff2514db3bf52e6b18aff5f8",
+      "matchesWorkingTreeAtCapture": true
+    },
+    {
+      "source": "src/farm-decor.ts",
+      "snapshot": "baseline/farm-decor.ts",
+      "bytes": 28955,
+      "sha256": "a2009f5730edb1a860fa2fba587b4e6bfe83ff5c64f2a1df2907c007fb1367ef",
+      "matchesWorkingTreeAtCapture": true
+    },
+    {
+      "source": "assets-src/farm-v3/build-decor.py",
+      "snapshot": "baseline/build-decor.py",
+      "bytes": 16691,
+      "sha256": "81d759624f8baa9b49a912f355e7c92d189f9657958644c717a3154f166c4ace",
+      "matchesWorkingTreeAtCapture": true
+    },
+    {
+      "source": "assets-src/farm-v3/model-bounds.json",
+      "snapshot": "baseline/model-bounds.json",
+      "bytes": 5676,
+      "sha256": "5428d07cdde901b8eab8eb6541e643409bc1b02d4912d8d91a79429e10846ae6",
+      "matchesWorkingTreeAtCapture": true
+    },
+    {
+      "source": "scripts/check-farm-decor.mjs",
+      "snapshot": "baseline/check-farm-decor.mjs",
+      "bytes": 9442,
+      "sha256": "277942f935d87b25a818a414452d0125f78bc9597cfccb4435f01276e3e2b308",
+      "matchesWorkingTreeAtCapture": true
+    },
+    {
+      "source": "src/ground.ts",
+      "snapshot": "baseline/ground.ts",
+      "bytes": 26362,
+      "sha256": "5701a8451b206c576b2addc1ea7ac5bcab4810201263b31ad7cd2008a80d1cb1",
+      "matchesWorkingTreeAtCapture": true
+    },
+    {
+      "source": "src/farm.ts",
+      "snapshot": "baseline/farm.ts",
+      "bytes": 56964,
+      "sha256": "faff58451d23d89d2620bb9cc6ecc61944c1c581ce2886694d38e615dc343449",
+      "matchesWorkingTreeAtCapture": true
+    }
+  ]
+}

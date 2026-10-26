@@ -1,0 +1,24 @@
+[
+  {
+    "variant": "before",
+    "exporter": {
+      "mode": "from-authoring",
+      "groups": 38,
+      "instances": 686,
+      "terrain": "preserved from decor-layout.json"
+    },
+    "validatorExitCode": 0,
+    "validatorStderr": "(node:42750) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+  },
+  {
+    "variant": "after",
+    "exporter": {
+      "mode": "from-authoring",
+      "groups": 38,
+      "instances": 686,
+      "terrain": "preserved from decor-layout.json"
+    },
+    "validatorExitCode": 0,
+    "validatorStderr": "(node:42752) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time\n(Use `node --trace-warnings ...` to show where the warning was created)\n"
+  }
+]
