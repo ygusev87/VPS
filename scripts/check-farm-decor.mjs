@@ -79,7 +79,7 @@ const fieldCrops=DECOR.filter(g=>g.model==='crop-wheat').flatMap(g=>g.items.filt
 const tractorLoop=Array.from({length:25},(_,i)=>[29+Math.cos(i/24*Math.PI*2)*4.2,26.5+Math.sin(i/24*Math.PI*2)*6]);
 let cropRouteClearance=null;
 if(DECOR.some(g=>g.model==='crop-wheat')){
- assert.equal(fieldCrops.length,18,'wheat must include the planted field, not just its garden bed');
+ assert.equal(fieldCrops.length,26,'wheat must include the planted field, not just its garden bed');
  cropRouteClearance=Infinity;
  for(const {p:[x,z,,s],fit} of fieldCrops){
   const radius=1.6+fit.width*s/2;
