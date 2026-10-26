@@ -62,5 +62,6 @@
     "Only assets-src/farm-v3/props-shore added",
     "No public/runtime/layout/source models changed",
     "No generation/API orders or push"
-  ]
+  ],
+  "implementationCommit": "4554d4ddd120baecdc9ba2cb8a3f1f537e39f9a2"
 }
