@@ -49,7 +49,8 @@ export class Pole extends Part {
     this.body.add(plus);
     this.addTerminal('a', 'plus', 0.62, 0.52);
     this.addTerminal('b', 'minus', -0.62, 0.52);
-    const sculpt = model('pole', { height: 2.5, rotateY: Math.PI / 2 });
+    // As tall as a pole looks beside the barns and the animals (the board and its posts stay the same).
+    const sculpt = model('pole', { height: 3.6, rotateY: Math.PI / 2 });
     if (sculpt) {
       // The sculpted pole has its own insulators and socket box; it stands at
       // the back of the board so it never hides the posts.

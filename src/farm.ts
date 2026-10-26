@@ -357,7 +357,7 @@ export class FarmMap extends StoryMap {
     }
     this.scenery.add(bakeGroup(still));
     // The tractor waits on the road above the gate, facing it.
-    this.tractor = <THREE.Group>this.add('tractor', { depth: 2.6, rotateY: Math.PI }, TRACTOR_AT.x, TRACTOR_AT.z, () => boxHouse('#3f8a4f', '#2a3148', 2.2, 1.2, 1.4), Math.PI);
+    this.tractor = <THREE.Group>this.add('tractor', { depth: 3.8, rotateY: Math.PI }, TRACTOR_AT.x, TRACTOR_AT.z, () => boxHouse('#3f8a4f', '#2a3148', 2.2, 1.2, 1.4), Math.PI);
   }
 
   /** The power sources and the gate are part of the map: they cannot be moved. */
@@ -394,9 +394,9 @@ export class FarmMap extends StoryMap {
     this.critter('duck', { height: 0.9, rotateY: -Math.PI / 2 }, v(POND.x + 3.3, POND.z + 2.1), 0.9, Math.PI);
     this.critter('duck2', { height: 0.8, rotateY: -Math.PI / 2 }, v(POND.x + 4.6, POND.z + 0.9), 0.8, Math.PI);
     this.critter('duck3', { height: 0.8, rotateY: -Math.PI / 2 }, v(POND.x + 3.9, POND.z - 0.8), 0.8, Math.PI);
-    this.critter('hen', { height: 1.25 }, HEN, 1.25, -0.4);
-    this.critter('hen2', { height: 1.1 }, HEN.clone().add(v(1.5, 1.3)), 1.1, 0.6);
-    this.critter('rabbit', { height: 1.25 }, RABBIT, 1.25, 0.2);
+    this.critter('hen', { height: 0.9 }, HEN, 0.9, -0.4);
+    this.critter('hen2', { height: 0.85 }, HEN.clone().add(v(1.5, 1.3)), 0.85, 0.6);
+    this.critter('rabbit', { height: 0.95 }, RABBIT, 0.95, 0.2);
     this.critter('dog', { height: 1.5 }, DOG, 1.5, -0.6);
     this.fox = this.critter('fox', { width: 1.7 }, FOX_PATH[0], 1, 0);
     this.fox.group.visible = false;
@@ -408,7 +408,7 @@ export class FarmMap extends StoryMap {
       this.foxWalk = this.foxMixer.clipAction(walk).play();
     }
     // The tractor speaks for the gate (its bubble floats above it).
-    this.adopt('tractor', this.tractor, 2).roams = true;
+    this.adopt('tractor', this.tractor, 2.8).roams = true;
     // A hot cow sweats: little blue drops.
     const cow = this.critters.get('cow')!;
     cow.sweat = [0, 1, 2].map((i) => {
@@ -424,16 +424,16 @@ export class FarmMap extends StoryMap {
     this.critter('kid', { width: 1 }, v(GOATS.x - 3, GOATS.z - 1), 0.9, -0.4);
     this.critter('kid2', { width: 0.95 }, v(GOATS.x + 2, GOATS.z + 4), 0.9, 2.2);
     this.critter('beehive', { height: 1.3 }, HIVE, 1.3, 0);
-    this.critter('horse', { width: 2.6 }, HORSE, 2.1, 0.2);
+    this.critter('horse', { width: 3.0 }, HORSE, 2.4, 0.2);
     this.critter('puppy', { height: 0.8 }, PUPPY, 0.8, Math.PI);
     this.critter('nest', { width: 1.3 }, NEST, 0.5, 0);
     ['chick', 'chick2', 'chick3'].forEach((name, i) => {
       const c = this.critter(name, { height: 0.45 }, v(NEST.x + Math.cos(i * 2.1) * 0.9, NEST.z + Math.sin(i * 2.1) * 0.9), 0.45, i * 2);
       c.group.visible = false;
     });
-    this.critter('goose', { height: 1.2 }, GEESE, 1.2, 0.4);
-    this.critter('goose2', { height: 1.1 }, GEESE.clone().add(v(1.3, 0.6)), 1.1, -0.3);
-    this.critter('rooster', { height: 1.2 }, ROOSTER, 1.2, -0.3);
+    this.critter('goose', { height: 1.0 }, GEESE, 1.0, 0.4);
+    this.critter('goose2', { height: 0.95 }, GEESE.clone().add(v(1.3, 0.6)), 0.95, -0.3);
+    this.critter('rooster', { height: 1.0 }, ROOSTER, 1.0, -0.3);
     for (const name of ['kid', 'kid2', 'puppy']) this.rest.set(name, this.critters.get(name)!.home.clone());
   }
 
