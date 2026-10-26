@@ -10,12 +10,13 @@
 // another lever, lifts the finished boxes into the lorry.
 import * as THREE from 'three';
 import { groundMaterial, type GroundPlan } from './ground';
+import { grassMaterial, hasKit, kitPieces, patches, ribbons } from './kit';
 import { type Hint } from './hints';
 import { model, type Fit } from './parts/assets';
 import type { Part, PartKind, Terminal } from './parts/base';
 import type { Substation } from './parts/city';
 import { Gear } from './parts/factory';
-import { mat, mesh } from './parts/kit';
+import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import type { Lift } from './parts/more';
 import { Lathe, RailCart, Reverser, SafetyPress, ShaftMotor, SocketBoard, WireBox } from './parts/workshop';
@@ -88,6 +89,8 @@ export class FactoryMap extends StoryMap {
   readonly layout = FACTORY_LAYOUT;
   protected readonly intro = 'factoryIntro';
   readonly ownHints = true;
+  /** The floor is Codex's painted kit (src/kit.ts). */
+  private kit = false;
   private poles = new Map<THREE.Vector3, Part>();
   private panel!: Substation;
   private box!: WireBox;
@@ -175,47 +178,55 @@ export class FactoryMap extends StoryMap {
       tiles: { base: 'paving', hill: 'paving', lane: 'path', field: 'paving', mud: 'paving' },
       saturation: 0.25,
     };
-    const top = groundMaterial(plan);
+    // Codex's painted kit (factory-industrial-b's floor) when it has come.
+    this.kit = hasKit('factory', 'factory-floor') && !new URLSearchParams(location.search).has('oldground');
+    const top = this.kit ? grassMaterial(kitPieces('factory', 'factory-floor', true)[0], null, [], 8, undefined, false) : groundMaterial(plan);
     const side = mat('#6a6f78', 0.8);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
     board.receiveShadow = true;
     board.castShadow = false;
     this.scenery.add(board);
+    const walk = kitPieces('factory', 'walkway-strip', true);
+    if (this.kit && walk.length) this.scenery.add(ribbons(plan.lanes, walk[0], 1.1, 6.4, 0.006, 1, 0.1));
+    const oil = kitPieces('factory', 'oil-patch');
+    if (this.kit && oil.length) this.scenery.add(patches([LATHE, PRESS, ROBOT, HOIST, CART].map((p, i) => ({ x: p.x + (i % 2 ? 1.5 : -1.8), z: p.z + 2.2, size: 1.6 })), oil, 0.007, 1));
   }
 
   /** The hall: walls with windows, pillars, lamps, the conveyor, the overhead crane over the stock, racks of steel. */
   private buildHall() {
+    // Everything here stands still: baked into a few meshes at the end (Safari pays for every draw).
+    const hall = new THREE.Group();
     const wall = mat('#e8dcc4', 0.85);
     const glass = mat('#9fd0e8', 0.2);
     const back = mesh(new THREE.BoxGeometry(W, 5, 0.6), wall);
     back.position.set(0, 2.5, -D / 2 + 0.3);
-    this.scenery.add(back);
+    hall.add(back);
     for (const x of [-W / 2 + 0.3, W / 2 - 0.3]) {
       const s = mesh(new THREE.BoxGeometry(0.6, 5, D), wall);
       s.position.set(x, 2.5, 0);
-      this.scenery.add(s);
+      hall.add(s);
     }
     for (let x = -36; x <= 36; x += 8) {
       const win = mesh(new THREE.BoxGeometry(5, 1.6, 0.1), glass, false);
       win.position.set(x, 3.4, -D / 2 + 0.65);
-      this.scenery.add(win);
+      hall.add(win);
     }
     // A pipe along the back wall with red valves.
     const pipe = mesh(new THREE.CylinderGeometry(0.18, 0.18, W - 4, 12), mat('#9aa3ad', 0.35, 0.7));
     pipe.rotation.z = Math.PI / 2;
     pipe.position.set(0, 2.2, -D / 2 + 1);
-    this.scenery.add(pipe);
+    hall.add(pipe);
     for (const x of [-22, -4, 14]) {
       const valve = mesh(new THREE.TorusGeometry(0.3, 0.07, 8, 16), mat('#e8483f', 0.4));
       valve.position.set(x, 2.2, -D / 2 + 1.35);
-      this.scenery.add(valve);
+      hall.add(valve);
     }
     for (let x = -30; x <= 30; x += 15) {
       for (const z of [-16, 8]) {
         const pillar = mesh(new THREE.BoxGeometry(0.8, 5, 0.8), mat('#f2c230', 0.6));
         pillar.position.set(x, 2.5, z);
-        this.scenery.add(pillar);
+        hall.add(pillar);
       }
     }
     // Lamps hanging over the hall: dark till the box lets the power through.
@@ -235,24 +246,25 @@ export class FactoryMap extends StoryMap {
         pool.position.set(x, 0.02, z);
         pool.renderOrder = 2;
         this.lamps.push({ glow, bulb, pool });
-        this.scenery.add(shade, b, cord, glow, pool);
+        hall.add(shade, cord);
+        this.scenery.add(b, glow, pool);
       }
     }
     // The conveyor line the toys ride along.
     const belt = mesh(new THREE.BoxGeometry(57, 0.3, 1.4), mat('#3a3f4b', 0.7));
     belt.position.set(1.5, 0.35, LINE_Z);
-    this.scenery.add(belt);
+    hall.add(belt);
     for (let x = -26; x <= 29; x += 2) {
       const leg = mesh(new THREE.BoxGeometry(0.12, 0.35, 1.3), mat('#8a90a0', 0.4, 0.5), false);
       leg.position.set(x, 0.12, LINE_Z);
-      this.scenery.add(leg);
+      hall.add(leg);
     }
     // The overhead crane over the stock (factory-industrial-b): two yellow gantry legs and a long beam with a hook.
     const yellow = mat('#f2c230', 0.55, 0.2);
     for (const x of [-W / 2 + 2, W / 2 - 2]) {
       const leg = mesh(new THREE.BoxGeometry(0.7, 6, 0.7), yellow);
       leg.position.set(x, 3, 14);
-      this.scenery.add(leg);
+      hall.add(leg);
     }
     const beam = mesh(new THREE.BoxGeometry(W - 3, 0.7, 1), yellow);
     beam.position.set(0, 6.2, 14);
@@ -262,15 +274,22 @@ export class FactoryMap extends StoryMap {
     chain.position.set(8, 3.8, 14);
     const hook = mesh(new THREE.TorusGeometry(0.3, 0.08, 8, 14, Math.PI * 1.5), mat('#2b3242', 0.4, 0.5));
     hook.position.set(8, 2.2, 14);
-    this.scenery.add(beam, trolley, chain, hook);
+    hall.add(beam, trolley, chain, hook);
     // The stock: racks of steel bars and coils under the crane, crates and barrels.
-    for (const [x, z] of [[-24, 19], [-6, 20], [12, 19], [28, 19]] as const) this.scenery.add(rack(x, z));
-    for (const [x, z, s] of [[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [36, 22, 1], [-14, 23.5, 0.9], [20, 23.5, 1]] as const) this.scenery.add(crate(x, z, s));
-    for (const [x, z] of [[-38, 19], [-38, 22], [38, 12], [-30, 24], [4, 24]] as const) this.scenery.add(barrel(x, z));
+    for (const [x, z] of [[-24, 19], [-6, 20], [12, 19], [28, 19]] as const) hall.add(rack(x, z));
+    for (const [x, z, s] of [[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [36, 22, 1], [-14, 23.5, 0.9], [20, 23.5, 1]] as const) hall.add(crate(x, z, s));
+    for (const [x, z] of [[-38, 19], [-38, 22], [38, 12], [-30, 24], [4, 24]] as const) hall.add(barrel(x, z));
     // Yellow and black safety lines round every station.
-    for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.5, LATHE.z - 2, 11, 9], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11]] as const) this.scenery.add(hazard(cx, cz, w, d));
-    for (const [x, z, n] of [[36, -14, 3], [38.2, -14, 2], [36, -10.5, 2]] as const) this.scenery.add(stack(x, z, n));
-    this.scenery.add(forklift(33, -18));
+    for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.5, LATHE.z - 2, 11, 9], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11]] as const) {
+      const strip = kitPieces('factory', 'hazard-strip', true);
+      if (this.kit && strip.length) {
+        const [x0, x1, z0, z1] = [cx - w / 2, cx + w / 2, cz - d / 2, cz + d / 2];
+        hall.add(ribbons([{ pts: [[x0, z0], [x1, z0], [x1, z1], [x0, z1], [x0, z0]], w: 0.3 }], strip[0], 1, 2.4, 0.0075, 2, 0.5));
+      } else hall.add(hazard(cx, cz, w, d));
+    }
+    for (const [x, z, n] of [[36, -14, 3], [38.2, -14, 2], [36, -10.5, 2]] as const) hall.add(stack(x, z, n));
+    hall.add(forklift(33, -18));
+    this.scenery.add(bakeGroup(hall));
   }
 
   /** The poles and every machine are part of the hall; the child brings the levers and the gears. */
@@ -560,18 +579,15 @@ function dressToy(g: THREE.Group, stage: number) {
 /** A painted frame of yellow and black stripes on the floor. */
 function hazard(cx: number, cz: number, w: number, d: number): THREE.Group {
   const g = new THREE.Group();
-  const yellow = new THREE.MeshBasicMaterial({ color: '#f2c230' });
-  const black = new THREE.MeshBasicMaterial({ color: '#2a2f3a' });
+  // Yellow and black dashes round the frame, each colour one instanced draw.
+  const dashes: THREE.Matrix4[][] = [[], []];
   const side = (x0: number, z0: number, x1: number, z1: number) => {
     const len = Math.hypot(x1 - x0, z1 - z0);
     const n = Math.max(2, Math.round(len / 0.6));
+    const turn = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0, 1, 0), -Math.atan2(z1 - z0, x1 - x0));
     for (let i = 0; i < n; i++) {
       const t = (i + 0.5) / n;
-      const m = mesh(new THREE.PlaneGeometry(len / n, 0.25).rotateX(-Math.PI / 2), i % 2 ? black : yellow, false);
-      m.position.set(x0 + (x1 - x0) * t, 0.015, z0 + (z1 - z0) * t);
-      m.rotation.y = -Math.atan2(z1 - z0, x1 - x0);
-      m.renderOrder = 2;
-      g.add(m);
+      dashes[i % 2].push(new THREE.Matrix4().compose(new THREE.Vector3(x0 + (x1 - x0) * t, 0.015, z0 + (z1 - z0) * t), turn, new THREE.Vector3(len / n, 1, 1)));
     }
   };
   const [x0, x1, z0, z1] = [cx - w / 2, cx + w / 2, cz - d / 2, cz + d / 2];
@@ -579,6 +595,13 @@ function hazard(cx: number, cz: number, w: number, d: number): THREE.Group {
   side(x1, z0, x1, z1);
   side(x1, z1, x0, z1);
   side(x0, z1, x0, z0);
+  const geo = new THREE.PlaneGeometry(1, 0.25).rotateX(-Math.PI / 2);
+  ['#f2c230', '#2a2f3a'].forEach((color, k) => {
+    const im = new THREE.InstancedMesh(geo, new THREE.MeshBasicMaterial({ color }), dashes[k].length);
+    dashes[k].forEach((m, i) => im.setMatrixAt(i, m));
+    im.renderOrder = 2;
+    g.add(im);
+  });
   return g;
 }
 
