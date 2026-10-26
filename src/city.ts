@@ -312,7 +312,8 @@ export class CityMap extends StoryMap {
   private buildBoard() {
     const plan = (this.plan = cityPlan());
     this.kit = hasKit('city', 'paving-main') && !new URLSearchParams(location.search).has('oldground');
-    const top = this.kit ? grassMaterial(kitPieces('city', 'paving-main', true)[0], null, [], 8, PAVING_TONE) : groundMaterial(plan);
+    // Paving C is the one with readable joints (Codex's paving-contrast).
+    const top = this.kit ? grassMaterial((kitPieces('city', 'paving-main-c', true)[0] ?? kitPieces('city', 'paving-main', true)[0]), null, [], 8, PAVING_TONE, false) : groundMaterial(plan);
     const side = mat('#000000', 1);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
@@ -397,6 +398,8 @@ export class CityMap extends StoryMap {
     if (tuft.length) this.scenery.add(cards(sow(0.35, 0.5, 0.3), tuft));
     if (flower.length) this.scenery.add(cards(sow(0.18, 0.55, 0.4), flower));
     if (shrub.length) this.scenery.add(standees(sow(0.03, 1.1, 0.7), shrub, kitPieces('farm', 'blob-shadow')[0] ?? null));
+    const beds = kitPieces('city', 'flowerbed-card');
+    if (beds.length) this.scenery.add(standees(sow(0.012, 1.4, 0.8), beds, null));
     const harbour = kitPieces('city', 'harbour-water');
     if (harbour.length) this.scenery.add(decal({ x0: HARBOR.x - HARBOR.rx, z0: HARBOR.z - HARBOR.rz, x1: HARBOR.x + HARBOR.rx, z1: HARBOR.z + HARBOR.rz }, harbour[0], 0.6, 0.014, 2));
   }
@@ -574,8 +577,17 @@ export class CityMap extends StoryMap {
       FOUNTAIN, SITE, BINS,
     ];
     const lines = [RACCOON_PATH, KITTEN_WAY, WASH_WAY, PARK_WAY, BOAT_WAY, [LASER_SPOT, MIRROR_SPOT, SCHOOL_SENSOR]];
-    const { group, drawn } = dressing(DECOR, FENCES, keep, lines);
+    // With the painted kit, the trees and bushes are its cards (when it has them), not the 3D models.
+    const carded = this.kit ? DECOR.filter((g) => CITY_CARDS[g.model] && hasKit('city', CITY_CARDS[g.model].card)) : [];
+    const { group, drawn, inTheWay } = dressing(DECOR.filter((g) => !carded.includes(g)), FENCES, keep, lines);
     this.scenery.add(group);
+    for (const g of carded) {
+      const { card, wide } = CITY_CARDS[g.model];
+      const tall = g.fit.height ?? (g.fit.width ?? 2) / wide;
+      const items = tall > 4 ? g.items : g.items.filter(([x, z, , s]) => !inTheWay(x, z, 1.6 + (tall * wide * s) / 2));
+      this.scenery.add(standees(items.map(([x, z, , s]) => ({ x, z, size: tall * wide * s })), kitPieces('city', card), kitPieces('farm', 'blob-shadow')[0] ?? null));
+      drawn.add(g.model);
+    }
     // Buildings not sculpted yet: painted boxes in their places, so the town is never bare (baked: few draws).
     const boxes = new THREE.Group();
     // Benches not sculpted yet: a wooden seat on two legs.
@@ -1064,6 +1076,14 @@ function pathAt(pts: THREE.Vector3[], s: number): { at: THREE.Vector3; dir: THRE
 }
 
 // ───────────────────────── Ground ─────────────────────────
+
+/** Trees and bushes the city's kit draws as cards: its picture, and the card's width per unit of the model's height. */
+const CITY_CARDS: Record<string, { card: string; wide: number }> = {
+  'tree-oak': { card: 'tree-round-card', wide: 0.95 },
+  'tree-oak-lite': { card: 'tree-round-card', wide: 0.95 },
+  bush: { card: 'bush-card', wide: 1.6 },
+  'bush-lite': { card: 'bush-card', wide: 1.6 },
+};
 
 /** The kit's paving and lawns under the game's sun and grading, evened to city-a. */
 const PAVING_TONE = new URLSearchParams(location.search).get('tone') ?? '#e8dcd4';

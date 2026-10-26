@@ -268,13 +268,15 @@ export function standees(spots: { x: number; z: number; size: number }[], maps: 
  * the meadows: `tile` world units per picture, sampled twice (once turned) so
  * the repeat does not show.
  */
-export function grassMaterial(main: THREE.Texture, sunny: THREE.Texture | null, meadows: { x: number; z: number; rx: number; rz: number }[], tile: number, tone?: THREE.ColorRepresentation): THREE.MeshStandardMaterial {
+export function grassMaterial(main: THREE.Texture, sunny: THREE.Texture | null, meadows: { x: number; z: number; rx: number; rz: number }[], tile: number, tone?: THREE.ColorRepresentation, turned = true): THREE.MeshStandardMaterial {
   // `tone` evens the picture out under the game's own sun and grading, to match the map's target.
   const mat = new THREE.MeshStandardMaterial({ roughness: 0.95, color: tone ?? '#ffffff' });
   const uniforms = {
     tMain: { value: main },
     tSunny: { value: sunny ?? main },
     uTile: { value: tile },
+    // Grass hides its repeat under a second, turned sampling; paving must keep its joints square.
+    uTurned: { value: turned ? 1 : 0 },
     uMeadow: { value: meadows.slice(0, 4).concat(Array(4).fill({ x: 0, z: 0, rx: 0.001, rz: 0.001 })).slice(0, 4).map((e) => new THREE.Vector4(e.x, e.z, e.rx, e.rz)) },
   };
   mat.onBeforeCompile = (shader) => {
@@ -288,7 +290,7 @@ export function grassMaterial(main: THREE.Texture, sunny: THREE.Texture | null, 
         `#include <common>
 varying vec2 vGround;
 uniform sampler2D tMain, tSunny;
-uniform float uTile;
+uniform float uTile, uTurned;
 uniform vec4 uMeadow[4];
 float kHash(vec2 q) { return fract(sin(dot(q, vec2(127.1, 311.7))) * 43758.5453); }
 float kNoise(vec2 q) { vec2 i = floor(q); vec2 f = fract(q); vec2 u = f * f * (3.0 - 2.0 * f);
@@ -299,7 +301,7 @@ float kNoise(vec2 q) { vec2 i = floor(q); vec2 f = fract(q); vec2 u = f * f * (3
         `{
   vec2 p = vGround / uTile;
   vec2 q = mat2(0.8, -0.6, 0.6, 0.8) * p * 0.83 + 0.31;
-  float k = smoothstep(0.3, 0.7, kNoise(vGround / 9.0));
+  float k = smoothstep(0.3, 0.7, kNoise(vGround / 9.0)) * uTurned;
   vec3 a = mix(texture2D(tMain, p).rgb, texture2D(tMain, q).rgb, k);
   vec3 b = mix(texture2D(tSunny, p).rgb, texture2D(tSunny, q).rgb, k);
   float sun = 0.0;
