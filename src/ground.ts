@@ -266,15 +266,25 @@ const PAINTED = `
   // Beds: dark loose soil with furrows along their length.
   float bed = smoothstep(0.4, 0.6, m.g);
   vec3 soil = texture2D(tSoil, p / uScale.z).rgb;
+  float wheat = 0.0;
   if (uHasBed > 0.5) {
     // The bed this point lies in: its own picture over it (top of the picture to the north).
     for (int i = 0; i < 8; i++) {
       vec4 b = uBeds[i];
       vec2 buv = vec2((p.x - b.x) / (b.z - b.x), 1.0 - (p.y - b.y) / (b.w - b.y));
-      if (b.z > b.x && buv.x >= 0.0 && buv.x <= 1.0 && buv.y >= 0.0 && buv.y <= 1.0) soil = texture2D(tBed, buv).rgb;
+      if (b.z > b.x && buv.x >= 0.0 && buv.x <= 1.0 && buv.y >= 0.0 && buv.y <= 1.0) {
+        soil = texture2D(tBed, buv).rgb;
+        // The wheat field (the first): golden stalks in rows on its soil, flat
+        // under the tractor's round, so the whole field reads as ripe wheat.
+        if (i == 0) wheat = 1.0;
+      }
     }
     // Earth brown, not the red-orange the day grading makes of it.
     soil = mix(vec3(dot(soil, vec3(0.2126, 0.7152, 0.0722))), soil, 0.7) * vec3(0.92, 0.94, 1.0);
+    // (Linear light: deep amber between the rows, ripe gold on them; after the browning above.)
+    float row = smoothstep(0.25, 0.75, 0.5 + 0.5 * sin(p.x * 6.0 + gNoise(p * 0.8) * 1.5));
+    vec3 gold = mix(vec3(0.3, 0.13, 0.015), vec3(0.66, 0.4, 0.05), row) * (0.85 + gNoise(p * 3.0) * 0.3);
+    soil = mix(soil, gold, wheat * 0.8);
   } else soil *= 0.82 + 0.18 * smoothstep(-0.6, 0.6, sin(p.x * 5.2 + gNoise(p * 1.3) * 1.2));
   col = mix(col, soil, bed);
   // Mud: a ragged churned edge, darker and wet towards the middle, puddles that shine.
