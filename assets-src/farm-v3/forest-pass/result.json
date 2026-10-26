@@ -1,0 +1,90 @@
+{
+  "status": "applied-verified",
+  "implementationCommit": null,
+  "baselineRevision": "1f9cc847805acb94092fadfa0d47fc326b006cba",
+  "acceptedDensityRevision": "22f0d7e",
+  "sourceSha256": "bffcc4d3da3549f732481b41bdef7f2db9d474e23cf5fb0ca2f6e2df052eb954",
+  "counts": [
+    {
+      "model": "tree-oak-lite",
+      "fit": {
+        "height": 5.2
+      },
+      "before": 12,
+      "after": 14,
+      "added": 2,
+      "trianglesPerInstance": 599
+    },
+    {
+      "model": "tree-pine-lite",
+      "fit": {
+        "height": 6.2
+      },
+      "before": 45,
+      "after": 66,
+      "added": 21,
+      "trianglesPerInstance": 599
+    },
+    {
+      "model": "bush-lite",
+      "fit": {
+        "width": 2.3
+      },
+      "before": 156,
+      "after": 163,
+      "added": 7,
+      "trianglesPerInstance": 794
+    }
+  ],
+  "preservedExistingInstances": 609,
+  "instancesAfter": 639,
+  "geometryTrianglesAdded": 19335,
+  "budget": {
+    "sceneAndShadowsBefore": 2188866,
+    "sceneAndShadowsAfter": 2226143,
+    "completeFrameBefore": 3570585,
+    "completeFrameAfter": 3627197,
+    "completeFrameDelta": 56612,
+    "cap": 2600000,
+    "capDefinition": "Scene+shadows per Claude m0323; full AO frame reported separately"
+  },
+  "occlusion": {
+    "views": 46,
+    "rays": 84640,
+    "newHits": 0,
+    "actualOutlineVerticesPerView": 1050,
+    "authorPadSamplesPerView": 612,
+    "terminalSamplesPerView": 160,
+    "workingCentersPerView": 18
+  },
+  "runtimeBatches": {
+    "before": 76,
+    "after": 76
+  },
+  "checks": {
+    "npmTest": "21 passed, 4 files (snapshot and applied checkout)",
+    "typecheck": "pass (snapshot and applied checkout)",
+    "existingDecorValidator": "pass in snapshot, exact captured maintainer script with18 field crops",
+    "sync": "pass",
+    "gitDiffCheck": "pass",
+    "webglContextLoss": false,
+    "consoleWarningsErrors": []
+  },
+  "runtimeSources": {
+    "src/farm.ts": "7d281bcd4bcafaa651dc90c859925d0d3a8e924f84f2098fa213585585b44521",
+    "src/decor.ts": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342",
+    "src/life.ts": "6342bbf585a792760380c4a4ec56ff69621cc9d3542255e89c86c5aa21c110a8",
+    "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+    "src/stage.ts": "a70d990075a5898867bd5a59e7dacde73f7e2e2f7ee501382958fc638bf1998f",
+    "src/storymap.ts": "170333b2820f4fbda5cf1c2d09c3a65dfa69e759d23f3efd57fe10c21290dcfb",
+    "src/main.ts": "ea4d4ff3b6650438694c0c10bce4706d8eb84824cb6c87eab36b8ab56824c6dd",
+    "src/ground.ts": "5701a8451b206c576b2addc1ea7ac5bcab4810201263b31ad7cd2008a80d1cb1"
+  },
+  "limitations": [
+    "No iPad/FPS/PWA/night verification",
+    "No replay of gesture robot in this pass",
+    "New-object raycast only; does not certify all historical occlusions"
+  ],
+  "push": false,
+  "generatedAt": "2026-10-26T08:24:11.568365+00:00"
+}

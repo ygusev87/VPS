@@ -1,0 +1,532 @@
+{
+  "status": "pass",
+  "mode": "applied",
+  "rays": 84640,
+  "auditViews": [
+    {
+      "width": 1180,
+      "area": "wide",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "northwest",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "north",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "northeast",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "west",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "east",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-cowHot",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-pigThirsty",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-gateStuck",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-sheepMill",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-kittenStuck",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-goatsAsk",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-beesAsk",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-horseHot",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-puppyAsk",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-henDark",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-rabbitCold",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-cowSleepy",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-eggsCold",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-geeseDark",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-foxTip",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-15",
+      "rays": 1840
+    },
+    {
+      "width": 1180,
+      "area": "task-roosterAsk",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "wide",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "northwest",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "north",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "northeast",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "west",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "east",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-cowHot",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-pigThirsty",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-gateStuck",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-sheepMill",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-kittenStuck",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-goatsAsk",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-beesAsk",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-horseHot",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-puppyAsk",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-henDark",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-rabbitCold",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-cowSleepy",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-eggsCold",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-geeseDark",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-foxTip",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-15",
+      "rays": 1840
+    },
+    {
+      "width": 390,
+      "area": "task-roosterAsk",
+      "rays": 1840
+    }
+  ],
+  "budget": {
+    "sceneAndShadowsBefore": 2188866,
+    "sceneAndShadowsAfter": 2226143,
+    "completeFrameBefore": 3570585,
+    "completeFrameAfter": 3627197,
+    "completeFrameDelta": 56612,
+    "cap": 2600000,
+    "capDefinition": "Scene+shadows per Claude m0323; full AO frame reported separately"
+  },
+  "sourceSha256": "bffcc4d3da3549f732481b41bdef7f2db9d474e23cf5fb0ca2f6e2df052eb954",
+  "layoutSha256": "478c3ebdfab6e62f0d6dfef7dff63137f30ad32e2f62096e236212edde1981a4",
+  "capturedPayload": "matches applied data; source formatting only differs",
+  "preservedExistingInstances": 609,
+  "activeInstances": 639,
+  "unchangedDatasets": [
+    "PATHS",
+    "FENCES",
+    "SOIL",
+    "MUD",
+    "MEADOW",
+    "PONDS"
+  ],
+  "qa": [
+    {
+      "file": "after-budget-1180.json",
+      "viewport": [
+        1180,
+        820
+      ],
+      "area": "wide",
+      "targets": 1840
+    },
+    {
+      "file": "after-east-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "east",
+      "targets": 1840
+    },
+    {
+      "file": "after-east-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "east",
+      "targets": 1840
+    },
+    {
+      "file": "after-north-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "north",
+      "targets": 1840
+    },
+    {
+      "file": "after-north-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "north",
+      "targets": 1840
+    },
+    {
+      "file": "after-northeast-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "northeast",
+      "targets": 1840
+    },
+    {
+      "file": "after-northeast-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "northeast",
+      "targets": 1840
+    },
+    {
+      "file": "after-northwest-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "northwest",
+      "targets": 1840
+    },
+    {
+      "file": "after-northwest-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "northwest",
+      "targets": 1840
+    },
+    {
+      "file": "after-task-rabbitCold-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "task-rabbitCold",
+      "targets": 1840
+    },
+    {
+      "file": "after-task-rabbitCold-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "task-rabbitCold",
+      "targets": 1840
+    },
+    {
+      "file": "after-task-sheepMill-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "task-sheepMill",
+      "targets": 1840
+    },
+    {
+      "file": "after-task-sheepMill-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "task-sheepMill",
+      "targets": 1840
+    },
+    {
+      "file": "after-west-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "west",
+      "targets": 1840
+    },
+    {
+      "file": "after-west-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "west",
+      "targets": 1840
+    },
+    {
+      "file": "after-wide-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "wide",
+      "targets": 1840
+    },
+    {
+      "file": "after-wide-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "wide",
+      "targets": 1840
+    },
+    {
+      "file": "before-budget-1180.json",
+      "viewport": [
+        1180,
+        820
+      ],
+      "area": "wide",
+      "targets": 1840
+    },
+    {
+      "file": "before-east-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "east",
+      "targets": 1840
+    },
+    {
+      "file": "before-east-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "east",
+      "targets": 1840
+    },
+    {
+      "file": "before-north-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "north",
+      "targets": 1840
+    },
+    {
+      "file": "before-north-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "north",
+      "targets": 1840
+    },
+    {
+      "file": "before-northeast-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "northeast",
+      "targets": 1840
+    },
+    {
+      "file": "before-northeast-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "northeast",
+      "targets": 1840
+    },
+    {
+      "file": "before-northwest-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "northwest",
+      "targets": 1840
+    },
+    {
+      "file": "before-northwest-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "northwest",
+      "targets": 1840
+    },
+    {
+      "file": "before-west-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "west",
+      "targets": 1840
+    },
+    {
+      "file": "before-west-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "west",
+      "targets": 1840
+    },
+    {
+      "file": "before-wide-1180.json",
+      "viewport": [
+        1180,
+        660
+      ],
+      "area": "wide",
+      "targets": 1840
+    },
+    {
+      "file": "before-wide-390.json",
+      "viewport": [
+        390,
+        844
+      ],
+      "area": "wide",
+      "targets": 1840
+    }
+  ],
+  "scope": "Data equivalence and saved real-runtime QA evidence; geometric gaps are in candidate-audit.json. No iPad/FPS claim."
+}

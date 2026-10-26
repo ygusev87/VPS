@@ -220,13 +220,13 @@
     },
     {
       "model": "tree-oak-lite",
-      "instances": 12,
+      "instances": 14,
       "bytes": 25672,
       "trianglesPerInstance": 599
     },
     {
       "model": "tree-pine-lite",
-      "instances": 45,
+      "instances": 66,
       "bytes": 22140,
       "trianglesPerInstance": 599
     },
@@ -238,7 +238,7 @@
     },
     {
       "model": "bush-lite",
-      "instances": 156,
+      "instances": 163,
       "bytes": 28728,
       "trianglesPerInstance": 794
     },
@@ -297,22 +297,29 @@
       "trianglesPerInstance": 2942
     }
   ],
-  "instances": 609,
-  "trianglesBeforeIntegrationCulling": 836557,
+  "instances": 639,
+  "trianglesBeforeIntegrationCulling": 855892,
   "notes": [
     "Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.",
     "farm.ts culls small instances near its interactive points.",
     "Future groups are authoring data only until their GLBs exist."
   ],
-  "densityPass": {
-    "report": "density-pass/README.md",
-    "geometryAudit": "density-pass/candidate-audit.json",
-    "validatorAdaptation": "Only fixed fieldCrops count 9 -> 18 in isolated snapshot; repository scripts/check-farm-decor.mjs unchanged and still requires maintainer update.",
-    "runtimeInstancesAdded": 307,
+  "forestPass": {
+    "report": "forest-pass/README.md",
+    "geometryAudit": "forest-pass/candidate-audit.json",
+    "baseline": "1f9cc847805acb94092fadfa0d47fc326b006cba",
+    "runtimeInstancesAdded": 30,
     "runtimeBatchesBefore": 76,
     "runtimeBatchesAfter": 76,
-    "runtimeTrianglesBefore": 503771,
-    "runtimeTrianglesAfter": 809701,
+    "additionalGeometryTriangles": 19335,
+    "sceneAndShadowsTrianglesBefore": 2188866,
+    "sceneAndShadowsTrianglesAfter": 2226143,
+    "completeFrameTrianglesBefore": 3570585,
+    "completeFrameTrianglesAfter": 3627197,
+    "budgetCap": 2600000,
+    "budgetDefinition": "Scene + shadows; full frame with AO separately (Claude m0323).",
+    "newOcclusions": 0,
+    "occlusionRays": 84640,
     "visualViewports": [
       [
         1180,

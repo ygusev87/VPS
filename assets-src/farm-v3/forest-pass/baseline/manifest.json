@@ -1,0 +1,14 @@
+{
+  "revision": "1f9cc847805acb94092fadfa0d47fc326b006cba",
+  "acceptedDensityRevision": "22f0d7e",
+  "created": "2026-10-26T08:00:44.372134+00:00",
+  "files": {
+    "src/farm-decor.ts": "a8c3906036b7bb26b6de66d9d3b6b658a3c2d060cb13a281bf2ecee7a438ff50",
+    "assets-src/farm-v3/decor-layout.json": "ef4d607c0fff5f50f11ca0665e497642da35cd3e8e6448903236619dd8627c11",
+    "assets-src/farm-v3/decor-authoring.json": "deaa9abcf8c7492cf0442f6d3a0fde9fb2eccf2bb19f92c0a654b601a542c603",
+    "assets-src/farm-v3/decor-validation.json": "976df2b81280de42b28b4af3d9fafa06930282c6e401db55fd2a2da11b68eaa8",
+    "scripts/check-farm-decor.mjs": "277942f935d87b25a818a414452d0125f78bc9597cfccb4435f01276e3e2b308"
+  },
+  "preExistingChanges": "diff --git a/assets-src/farm-v3/decor-validation.json b/assets-src/farm-v3/decor-validation.json\nindex 195d8d0..a0c7322 100644\n--- a/assets-src/farm-v3/decor-validation.json\n+++ b/assets-src/farm-v3/decor-validation.json\n@@ -303,26 +303,5 @@\n     \"Triangle count excludes gameplay, fences and shadows. It is not an FPS or memory measurement.\",\n     \"farm.ts culls small instances near its interactive points.\",\n     \"Future groups are authoring data only until their GLBs exist.\"\n-  ],\n-  \"densityPass\": {\n-    \"report\": \"density-pass/README.md\",\n-    \"geometryAudit\": \"density-pass/candidate-audit.json\",\n-    \"validatorAdaptation\": \"Only fixed fieldCrops count 9 -> 18 in isolated snapshot; repository scripts/check-farm-decor.mjs unchanged and still requires maintainer update.\",\n-    \"runtimeInstancesAdded\": 307,\n-    \"runtimeBatchesBefore\": 76,\n-    \"runtimeBatchesAfter\": 76,\n-    \"runtimeTrianglesBefore\": 503771,\n-    \"runtimeTrianglesAfter\": 809701,\n-    \"visualViewports\": [\n-      [\n-        1180,\n-        660\n-      ],\n-      [\n-        390,\n-        844\n-      ]\n-    ],\n-    \"iPadFPSVerified\": false\n-  }\n+  ]\n }\ndiff --git a/scripts/check-farm-decor.mjs b/scripts/check-farm-decor.mjs\nindex adf8765..30b7edc 100644\n--- a/scripts/check-farm-decor.mjs\n+++ b/scripts/check-farm-decor.mjs\n@@ -79,7 +79,7 @@ const fieldCrops=DECOR.filter(g=>g.model==='crop-wheat').flatMap(g=>g.items.filt\n const tractorLoop=Array.from({length:25},(_,i)=>[29+Math.cos(i/24*Math.PI*2)*4.2,26.5+Math.sin(i/24*Math.PI*2)*6]);\n let cropRouteClearance=null;\n if(DECOR.some(g=>g.model==='crop-wheat')){\n- assert.equal(fieldCrops.length,9,'wheat must include the planted field, not just its garden bed');\n+ assert.equal(fieldCrops.length,18,'wheat must include the planted field, not just its garden bed');\n  cropRouteClearance=Infinity;\n  for(const {p:[x,z,,s],fit} of fieldCrops){\n   const radius=1.6+fit.width*s/2;\n",
+  "note": "Validator already has maintainer count18 change; capture only, do not overwrite their edits."
+}

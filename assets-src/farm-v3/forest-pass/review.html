@@ -1,0 +1,12 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ферма A · лесная кромка</title>
+<style>body{margin:0;background:#eee7db;font:14px system-ui;color:#25372f}header{display:flex;gap:12px;align-items:center;padding:8px}button,select{font:inherit;padding:5px}iframe{display:block;border:0}pre{max-height:180px;overflow:auto;white-space:pre-wrap;font-size:12px;margin:8px}</style>
+<header><b>Лесная кромка A</b><select id="size"><option value="1180,660">1180×660</option><option value="390,844">390×844</option><option value="1180,820">1180×820 · budget</option></select><select id="mode"><option value="before">До</option><option value="after">Кандидат</option></select><select id="area"></select><button id="show" disabled>Показать</button><button id="audit" disabled>Проверить все ракурсы</button><span id="status">Загрузка</span></header>
+<iframe id="game" src="/qa-game.html?q=2" width="1180" height="660"></iframe><pre id="report"></pre>
+<script type="module">
+const $=id=>document.getElementById(id),frame=$('game');
+async function show(){try{const report=await frame.contentWindow.forestQA.show($('mode').value,$('area').value);$('report').textContent=JSON.stringify(report,null,2);$('status').textContent=report.contextLost?'Потерян WebGL-контекст':'Готово';}catch(e){$('status').textContent='Ошибка';$('report').textContent=String(e);}}
+$('show').onclick=show;
+$('audit').onclick=async()=>{ $('status').textContent='Проверка всех ракурсов'; const reports=await frame.contentWindow.forestQA.audit();$('report').textContent=JSON.stringify(reports,null,2);$('status').textContent='Аудит завершён';};
+$('size').onchange=async()=>{[frame.width,frame.height]=$('size').value.split(',');await new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)));await show();};
+const timer=setInterval(()=>{if(frame.contentWindow.forestQA?.ready){clearInterval(timer);for(const name of frame.contentWindow.forestQA.areas){const option=document.createElement('option');option.value=option.textContent=name;$('area').append(option);}$('show').disabled=false;$('audit').disabled=false;show();}},100);
+</script></html>

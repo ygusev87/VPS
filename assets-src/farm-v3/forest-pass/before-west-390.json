@@ -1,0 +1,579 @@
+{
+  "source": {
+    "baseRevision": "1f9cc847805acb94092fadfa0d47fc326b006cba",
+    "candidateDecorSha256": "bffcc4d3da3549f732481b41bdef7f2db9d474e23cf5fb0ca2f6e2df052eb954",
+    "gameSourceHashes": {
+      "src/farm.ts": "7d281bcd4bcafaa651dc90c859925d0d3a8e924f84f2098fa213585585b44521",
+      "src/decor.ts": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342",
+      "src/life.ts": "6342bbf585a792760380c4a4ec56ff69621cc9d3542255e89c86c5aa21c110a8",
+      "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+    },
+    "snapshot": "/private/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/farm-forest-gvrwnu0q",
+    "changes": "Candidate farm-decor data plus separate QA wrapper; original game source unchanged."
+  },
+  "mode": "before",
+  "area": "west",
+  "viewport": [
+    390,
+    844
+  ],
+  "quality": 2,
+  "budget": {
+    "before": {
+      "batches": 76,
+      "instances": 944,
+      "triangles": 809701
+    },
+    "after": {
+      "batches": 76,
+      "instances": 974,
+      "triangles": 829036
+    },
+    "additions": {
+      "batches": 11,
+      "instances": 30,
+      "triangles": 19335
+    }
+  },
+  "keep": [
+    [
+      10,
+      4
+    ],
+    [
+      27,
+      -13
+    ],
+    [
+      28.3,
+      17.4
+    ],
+    [
+      44,
+      -22
+    ],
+    [
+      -19,
+      -16
+    ],
+    [
+      -15,
+      5
+    ],
+    [
+      -20,
+      17
+    ],
+    [
+      39,
+      13
+    ],
+    [
+      -23,
+      -8
+    ],
+    [
+      7,
+      -15
+    ],
+    [
+      -43,
+      -8
+    ],
+    [
+      16,
+      4
+    ],
+    [
+      16,
+      -14
+    ],
+    [
+      -31,
+      15.5
+    ],
+    [
+      -34,
+      -10
+    ],
+    [
+      -30,
+      -6.5
+    ],
+    [
+      -33,
+      4.5
+    ],
+    [
+      -1,
+      -10
+    ],
+    [
+      12.5,
+      0.5
+    ],
+    [
+      30.5,
+      -16
+    ],
+    [
+      46.5,
+      -27
+    ],
+    [
+      49,
+      -25
+    ],
+    [
+      -36.7,
+      5.6
+    ],
+    [
+      -35.4,
+      4.4
+    ],
+    [
+      -36.1,
+      2.7
+    ],
+    [
+      9.5,
+      -17.5
+    ],
+    [
+      11,
+      -16.2
+    ],
+    [
+      -41,
+      -11.5
+    ],
+    [
+      -36.5,
+      -14
+    ],
+    [
+      30,
+      12
+    ],
+    [
+      -21,
+      -16.05
+    ],
+    [
+      -12,
+      1.5
+    ],
+    [
+      -17.5,
+      1
+    ],
+    [
+      -12.5,
+      6
+    ],
+    [
+      -16,
+      21.5
+    ],
+    [
+      42.5,
+      9.5
+    ],
+    [
+      -20,
+      -5.8
+    ],
+    [
+      17,
+      -17.5
+    ],
+    [
+      17.9,
+      -17.5
+    ],
+    [
+      16.54563850586013,
+      -16.723111570016012
+    ],
+    [
+      16.558765260793372,
+      -18.28441819517223
+    ],
+    [
+      -33.5,
+      12.5
+    ],
+    [
+      -32.2,
+      13.1
+    ],
+    [
+      1,
+      -13
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      20,
+      1
+    ],
+    [
+      21.5,
+      -13.5
+    ],
+    [
+      2.5,
+      -15
+    ],
+    [
+      -5.5,
+      -10
+    ],
+    [
+      -48,
+      -8
+    ],
+    [
+      26,
+      13.5
+    ],
+    [
+      -35.5,
+      -7.5
+    ],
+    [
+      -23.5,
+      -12.5
+    ],
+    [
+      -20,
+      5
+    ],
+    [
+      -15,
+      17
+    ],
+    [
+      34.5,
+      13.5
+    ],
+    [
+      -26.5,
+      14.5
+    ],
+    [
+      39,
+      -22
+    ],
+    [
+      -27,
+      9.5
+    ],
+    [
+      30,
+      17
+    ],
+    [
+      -30,
+      -6.5
+    ],
+    [
+      -7.5,
+      -18.5
+    ],
+    [
+      -1.5,
+      -3.2
+    ],
+    [
+      8.3,
+      25.2
+    ],
+    [
+      -32.5,
+      -21.6
+    ],
+    [
+      -34.6,
+      8.4
+    ]
+  ],
+  "occlusion": {
+    "sampledTargets": 1840,
+    "terminalCount": 32,
+    "actualOutlineVertices": 1050,
+    "authorPadSamples": 612,
+    "workingCircles": 18,
+    "addedOcclusions": []
+  },
+  "errors": [],
+  "contextLost": false,
+  "sculptedAdditions": 30,
+  "taskAreas": [
+    {
+      "id": "task-cowHot",
+      "ask": "cowHot",
+      "critter": "cow",
+      "spot": [
+        10,
+        4
+      ],
+      "nearestNewTree": 36.547647325101515
+    },
+    {
+      "id": "task-pigThirsty",
+      "ask": "pigThirsty",
+      "critter": "pig",
+      "spot": [
+        27,
+        -13
+      ],
+      "nearestNewTree": 20.014931676126203
+    },
+    {
+      "id": "task-gateStuck",
+      "ask": "gateStuck",
+      "critter": "tractor",
+      "spot": [
+        28.3,
+        17.4
+      ],
+      "nearestNewTree": 27.64498147946567
+    },
+    {
+      "id": "task-sheepMill",
+      "ask": "sheepMill",
+      "critter": "sheep",
+      "spot": [
+        44,
+        -22
+      ],
+      "nearestNewTree": 9.781480665011815
+    },
+    {
+      "id": "task-kittenStuck",
+      "ask": "kittenStuck",
+      "critter": "kitten",
+      "spot": [
+        -19,
+        -16
+      ],
+      "nearestNewTree": 17.607475230708122
+    },
+    {
+      "id": "task-goatsAsk",
+      "ask": "goatsAsk",
+      "critter": "goat",
+      "spot": [
+        -15,
+        5
+      ],
+      "nearestNewTree": 38.00226040645477
+    },
+    {
+      "id": "task-beesAsk",
+      "ask": "beesAsk",
+      "critter": "beehive",
+      "spot": [
+        -20,
+        17
+      ],
+      "nearestNewTree": 34.165886436619786
+    },
+    {
+      "id": "task-horseHot",
+      "ask": "horseHot",
+      "critter": "horse",
+      "spot": [
+        39,
+        13
+      ],
+      "nearestNewTree": 16.91526532455226
+    },
+    {
+      "id": "task-puppyAsk",
+      "ask": "puppyAsk",
+      "critter": "puppy",
+      "spot": [
+        -23,
+        -8
+      ],
+      "nearestNewTree": 25.032602421642064
+    },
+    {
+      "id": "task-henDark",
+      "ask": "henDark",
+      "critter": "hen",
+      "spot": [
+        7,
+        -15
+      ],
+      "nearestNewTree": 17.522425203150394
+    },
+    {
+      "id": "task-rabbitCold",
+      "ask": "rabbitCold",
+      "critter": "rabbit",
+      "spot": [
+        -43,
+        -8
+      ],
+      "nearestNewTree": 10.376399375505937
+    },
+    {
+      "id": "task-cowSleepy",
+      "ask": "cowSleepy",
+      "critter": "cow",
+      "spot": [
+        16,
+        4
+      ],
+      "nearestNewTree": 33.9486111792515
+    },
+    {
+      "id": "task-eggsCold",
+      "ask": "eggsCold",
+      "critter": "nest",
+      "spot": [
+        16,
+        -14
+      ],
+      "nearestNewTree": 19.602003086419508
+    },
+    {
+      "id": "task-geeseDark",
+      "ask": "geeseDark",
+      "critter": "goose",
+      "spot": [
+        -31,
+        15.5
+      ],
+      "nearestNewTree": 23.2188672419651
+    },
+    {
+      "id": "task-foxTip",
+      "ask": "foxTip",
+      "critter": "dog",
+      "spot": [
+        -34,
+        -10
+      ],
+      "nearestNewTree": 19.348972479178318
+    },
+    {
+      "id": "task-15",
+      "ask": "ducksAsk",
+      "critter": "duck",
+      "spot": [
+        -33,
+        4.5
+      ],
+      "nearestNewTree": 20.169476840017442
+    },
+    {
+      "id": "task-roosterAsk",
+      "ask": "roosterAsk",
+      "critter": "rooster",
+      "spot": [
+        -1,
+        -10
+      ],
+      "nearestNewTree": 22.33366501494997
+    }
+  ],
+  "renderCost": {
+    "method": "12 synchronous complete Stage.render frames, info.autoReset=false with info.reset before each. Includes composer and shadow passes when scheduled; no timing/FPS claim.",
+    "samples": [
+      {
+        "frame": 137929,
+        "calls": 106,
+        "triangles": 405302,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 137949,
+        "calls": 269,
+        "triangles": 1290492,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 137972,
+        "calls": 169,
+        "triangles": 809353,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 137992,
+        "calls": 269,
+        "triangles": 1290492,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 138012,
+        "calls": 106,
+        "triangles": 405302,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 138035,
+        "calls": 332,
+        "triangles": 1694543,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 138055,
+        "calls": 106,
+        "triangles": 405302,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 138075,
+        "calls": 269,
+        "triangles": 1290492,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 138098,
+        "calls": 169,
+        "triangles": 809353,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 138118,
+        "calls": 269,
+        "triangles": 1290492,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 138138,
+        "calls": 106,
+        "triangles": 405302,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 138161,
+        "calls": 332,
+        "triangles": 1694543,
+        "points": 0,
+        "lines": 0
+      }
+    ],
+    "minTriangles": 405302,
+    "maxTriangles": 1694543,
+    "maxCalls": 332
+  }
+}
