@@ -19,7 +19,7 @@ import { Lift } from './parts/more';
 import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import { boardEdge, flowers, groundMaterial, groundPicture, onLane, pond, type Ellipse, type GroundPlan } from './ground';
-import { cards, decal, grassMaterial, hasKit, kitPieces, laneJoints, ovalMask, patches, ribbons } from './kit';
+import { cards, decal, grassMaterial, hasKit, kitPieces, laneJoints, ovalMask, patches, ribbons, standees } from './kit';
 import { AMBIENT, WIND_RANGE } from './parts/wind';
 import { isActive } from './world';
 import { dressing } from './decor';
@@ -566,7 +566,16 @@ export class FarmMap extends StoryMap {
         this.life.addExtra(m, x, z, yaw, HERD[g.model], FARM_VOICES[g.model] ?? null, g.model === 'hen' || g.model === 'rabbit' ? 1.8 : 2.6);
       }
     }
-    const { group, drawn, inTheWay } = dressing(DECOR.filter((g) => !HERD[g.model]), FENCES, keep, lines);
+    // With the painted kit, trees and bushes are its cards (when it has them), not the 3D models.
+    const carded = this.kit ? DECOR.filter((g) => CARDS[g.model] && hasKit('farm', CARDS[g.model].card)) : [];
+    const { group, drawn, inTheWay } = dressing(DECOR.filter((g) => !HERD[g.model] && !carded.includes(g)), FENCES, keep, lines);
+    for (const g of carded) {
+      const { card, wide } = CARDS[g.model];
+      const tall = g.fit.height ?? (g.fit.width ?? 2) / wide;
+      const items = tall > 4 ? g.items : g.items.filter(([x, z, , s]) => !inTheWay(x, z, 1.6 + (tall * wide * s) / 2));
+      this.scenery.add(standees(items.map(([x, z, , s]) => ({ x, z, size: tall * wide * s })), kitPieces('farm', card), kitPieces('farm', 'blob-shadow')[0] ?? null));
+      drawn.add(g.model);
+    }
     this.life.setFences(FENCES);
     this.scenery.add(group);
     // Butterflies over the garden and the flowers, fireflies by the pond at night; smoke from the house.
@@ -1040,6 +1049,16 @@ function pathAt(s: number): { at: THREE.Vector3; dir: THREE.Vector3 } {
 }
 
 // ───────────────────────── Scenery helpers ─────────────────────────
+
+/** Trees and bushes that the painted kit draws as cards: its picture, and the card's width per unit of the model's height. */
+const CARDS: Record<string, { card: string; wide: number }> = {
+  'tree-oak': { card: 'tree-oak-card', wide: 0.95 },
+  'tree-oak-lite': { card: 'tree-oak-card', wide: 0.95 },
+  'tree-pine': { card: 'tree-pine-card', wide: 0.7 },
+  'tree-pine-lite': { card: 'tree-pine-card', wide: 0.7 },
+  bush: { card: 'bush-card', wide: 1.6 },
+  'bush-lite': { card: 'bush-card', wide: 1.6 },
+};
 
 /** Where the paths, the fields, the mud and the meadows lie (from the dressing; painted by src/ground.ts). */
 function groundPlan(): GroundPlan {

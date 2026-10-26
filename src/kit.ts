@@ -222,6 +222,20 @@ export function cards(spots: { x: number; z: number; size: number }[], maps: THR
 }
 
 /**
+ * Painted things standing on the map (trees, bushes) as cards, each with a soft
+ * painted shadow on the ground thrown up and to the right, away from the sun
+ * (low left, see FARM-KIT.md), since cards don't cast real ones.
+ */
+export function standees(spots: { x: number; z: number; size: number }[], maps: THREE.Texture[], shadow: THREE.Texture | null): THREE.Group {
+  const g = new THREE.Group();
+  // Back to front, so nearer crowns cover farther ones where they overlap.
+  const sorted = [...spots].sort((a, b) => a.z - b.z);
+  g.add(cards(sorted, maps));
+  if (shadow) g.add(patches(sorted.map((s) => ({ x: s.x + s.size * 0.18, z: s.z - s.size * 0.12, size: s.size * 1.1 })), [shadow], 0.009, 3));
+  return g;
+}
+
+/**
  * The seamless painted grass under everything, with its sunny variant over
  * the meadows: `tile` world units per picture, sampled twice (once turned) so
  * the repeat does not show.
