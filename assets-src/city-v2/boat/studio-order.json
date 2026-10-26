@@ -1,0 +1,30 @@
+{
+  "status": "candidate-validated-ready-for-integration",
+  "recordedAt": "2026-10-26T12:12:34.204553+00:00",
+  "provider": "Tripo Studio",
+  "taskId": "5089302e-ecf1-4c58-9611-6f055aeeccfd",
+  "source": "boat-v1.png",
+  "sourceSha256": "ac667f62627a243466622eb3be66d4015489762f2cacb42dfe5ca62f190934ba",
+  "settings": {
+    "model": "H3.1 - Макс.кач.",
+    "mode": "HD model, geometry and texture",
+    "parts": false,
+    "8K": false,
+    "rig": false
+  },
+  "includedCredits": 25,
+  "balanceBefore": 5625,
+  "balanceAfter": 5600,
+  "purchases": 0,
+  "topUps": 0,
+  "paidAPICalls": 0,
+  "orderCount": 1,
+  "contractDecision": "m0366",
+  "proof": "studio/preflight.jpg",
+  "next": "download/optimize/visual axes/real bridge clearance",
+  "rawPath": "assets-src/raw/city-2026-10-26/boat.glb",
+  "rawBytes": 659296,
+  "rawSha256": "5d748d52ba453d346fe9b1a8d5e54f202158ba469257a3002a8d39dfa82589f0",
+  "downloadedAt": "2026-10-26T12:13:47.864576+00:00",
+  "completeProof": "studio/complete.jpg"
+}

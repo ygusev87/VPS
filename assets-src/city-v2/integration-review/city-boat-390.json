@@ -1,0 +1,47 @@
+{
+  "source": {
+    "revision": "fb787044a2f69c31c8d1d2d5e8fabe34f4b62fa5",
+    "models": {
+      "child": "46439a1ade3f50ed9d7ea6a9069a6d90892559e1509f82e1fb0d09c961323e91",
+      "boat": "51cd3854aebe7e33536f214cef7d9bff98eb78cf2692bfd14e6132d14d6eaa98"
+    }
+  },
+  "viewport": [
+    390,
+    844
+  ],
+  "overflow": false,
+  "contextLost": false,
+  "errors": [],
+  "target": "boat",
+  "objects": [
+    {
+      "name": "boat",
+      "meshes": 1,
+      "tris": 3799,
+      "visible": true,
+      "position": [
+        37,
+        0.05,
+        0
+      ],
+      "yaw": -1.5707963267948966,
+      "hop": 0,
+      "min": [
+        36.344691,
+        0.05,
+        -1.5
+      ],
+      "max": [
+        37.655309,
+        1.558011,
+        1.5
+      ]
+    }
+  ],
+  "screen": {
+    "x": 351.9836068369245,
+    "y": 522.2972206205201
+  },
+  "note": "For UI check, click this actual canvas character; this button does not call tap."
+}

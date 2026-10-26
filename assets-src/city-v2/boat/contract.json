@@ -101,5 +101,14 @@
   "spend": {
     "ordersMade": 0,
     "note": "Check accepted reference, included-credit price and existing owner budget before any 3D order. No purchases, paid extra credits or rig required."
+  },
+  "delivery": {
+    "status": "GLB-ready-for-Claude-review",
+    "runtimeFile": "public/models/boat.glb",
+    "report": "model-report.json",
+    "includedStudioCredits": 25,
+    "purchases": 0,
+    "static": true,
+    "sourceDecision": "m0366"
   }
 }

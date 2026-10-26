@@ -1,0 +1,70 @@
+{
+  "source": {
+    "revision": "fb787044a2f69c31c8d1d2d5e8fabe34f4b62fa5",
+    "models": {
+      "child": "46439a1ade3f50ed9d7ea6a9069a6d90892559e1509f82e1fb0d09c961323e91",
+      "boat": "51cd3854aebe7e33536f214cef7d9bff98eb78cf2692bfd14e6132d14d6eaa98"
+    }
+  },
+  "viewport": [
+    390,
+    844
+  ],
+  "overflow": false,
+  "contextLost": false,
+  "errors": [],
+  "target": "harbor",
+  "objects": [
+    {
+      "name": "child6",
+      "meshes": 1,
+      "tris": 3800,
+      "visible": true,
+      "position": [
+        49,
+        0,
+        -8.3
+      ],
+      "yaw": 0.3,
+      "hop": 0,
+      "min": [
+        48.624736,
+        0,
+        -8.718058
+      ],
+      "max": [
+        49.375264,
+        1.2,
+        -7.881942
+      ]
+    },
+    {
+      "name": "child7",
+      "meshes": 1,
+      "tris": 3800,
+      "visible": true,
+      "position": [
+        50.5,
+        0,
+        -8.8
+      ],
+      "yaw": -0.3,
+      "hop": 0,
+      "min": [
+        50.140372,
+        0,
+        -9.200639
+      ],
+      "max": [
+        50.859628,
+        1.15,
+        -8.399361
+      ]
+    }
+  ],
+  "screen": {
+    "x": 220,
+    "y": 467.5970945457406
+  },
+  "note": "For UI check, click this actual canvas character; this button does not call tap."
+}

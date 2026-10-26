@@ -1,0 +1,89 @@
+{
+  "sourcePath": "assets-src/raw/city-2026-10-26/child.glb",
+  "sourceSha256": "7e2a5187291a8ec54e267c2cb9d254de34430b7a77ebb811885574317566453c",
+  "candidateSha256": "46439a1ade3f50ed9d7ea6a9069a6d90892559e1509f82e1fb0d09c961323e91",
+  "sourceBytes": 662152,
+  "bytes": 77712,
+  "yawDegrees": 90,
+  "forward": "+X",
+  "up": "+Y",
+  "before": {
+    "triangles": 4900,
+    "meshes": 1,
+    "materials": 1,
+    "bounds": {
+      "min": [
+        -0.291290283203125,
+        0,
+        -0.2372283935546875
+      ],
+      "max": [
+        0.291290283203125,
+        1,
+        0.2372283935546875
+      ]
+    },
+    "textures": [
+      {
+        "size": [
+          2048,
+          2048
+        ],
+        "mime": "image/jpeg",
+        "bytes": 495309
+      }
+    ],
+    "skins": 0,
+    "animations": 0
+  },
+  "after": {
+    "triangles": 3800,
+    "meshes": 1,
+    "materials": 1,
+    "bounds": {
+      "min": [
+        -0.23723563341166418,
+        0,
+        -0.2912839136936552
+      ],
+      "max": [
+        0.23723563341166418,
+        1,
+        0.2912839136936552
+      ]
+    },
+    "textures": [
+      {
+        "size": [
+          512,
+          512
+        ],
+        "mime": "image/webp",
+        "bytes": 30740
+      }
+    ],
+    "skins": 0,
+    "animations": 0
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "visualAxesVerified": "qa/geometry-review.jpg",
+  "fittedSizeXYZ": [
+    0.569365520187994,
+    1.2,
+    0.6990813928647724
+  ]
+}

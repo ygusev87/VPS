@@ -1,0 +1,89 @@
+{
+  "sourcePath": "assets-src/raw/city-2026-10-26/boat.glb",
+  "sourceSha256": "5d748d52ba453d346fe9b1a8d5e54f202158ba469257a3002a8d39dfa82589f0",
+  "candidateSha256": "51cd3854aebe7e33536f214cef7d9bff98eb78cf2692bfd14e6132d14d6eaa98",
+  "sourceBytes": 659296,
+  "bytes": 79928,
+  "yawDegrees": 0,
+  "forward": "+X",
+  "up": "+Y",
+  "before": {
+    "triangles": 4483,
+    "meshes": 1,
+    "materials": 1,
+    "bounds": {
+      "min": [
+        -0.5,
+        0,
+        -0.2184295654296875
+      ],
+      "max": [
+        0.5,
+        0.502685546875,
+        0.2184295654296875
+      ]
+    },
+    "textures": [
+      {
+        "size": [
+          2048,
+          2048
+        ],
+        "mime": "image/jpeg",
+        "bytes": 501988
+      }
+    ],
+    "skins": 0,
+    "animations": 0
+  },
+  "after": {
+    "triangles": 3799,
+    "meshes": 1,
+    "materials": 1,
+    "bounds": {
+      "min": [
+        -0.5,
+        7.588647925105274e-06,
+        -0.2184362315744499
+      ],
+      "max": [
+        0.5,
+        0.5026779582270748,
+        0.2184362315744499
+      ]
+    },
+    "textures": [
+      {
+        "size": [
+          512,
+          512
+        ],
+        "mime": "image/webp",
+        "bytes": 33150
+      }
+    ],
+    "skins": 0,
+    "animations": 0
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "visualAxesVerified": "qa/geometry-review.jpg",
+  "fittedSizeXYZ": [
+    3.0,
+    1.508011108737449,
+    1.3106173894466995
+  ]
+}

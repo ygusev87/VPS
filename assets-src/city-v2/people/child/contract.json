@@ -107,5 +107,14 @@
     "bottomY": 0,
     "trianglesMax": 4000,
     "fitUnchanged": true
+  },
+  "delivery": {
+    "status": "GLB-ready-for-Claude-review",
+    "runtimeFile": "public/models/child.glb",
+    "report": "model-report.json",
+    "includedStudioCredits": 25,
+    "purchases": 0,
+    "static": true,
+    "sourceDecision": "m0364"
   }
 }

@@ -1,0 +1,93 @@
+{
+  "source": {
+    "revision": "fb787044a2f69c31c8d1d2d5e8fabe34f4b62fa5",
+    "models": {
+      "child": "46439a1ade3f50ed9d7ea6a9069a6d90892559e1509f82e1fb0d09c961323e91",
+      "boat": "51cd3854aebe7e33536f214cef7d9bff98eb78cf2692bfd14e6132d14d6eaa98"
+    }
+  },
+  "viewport": [
+    390,
+    844
+  ],
+  "overflow": false,
+  "contextLost": false,
+  "errors": [],
+  "target": "school",
+  "objects": [
+    {
+      "name": "child3",
+      "meshes": 1,
+      "tris": 3800,
+      "visible": true,
+      "position": [
+        9,
+        0,
+        -21.5
+      ],
+      "yaw": -1,
+      "hop": 0,
+      "min": [
+        8.570721,
+        0,
+        -21.91056
+      ],
+      "max": [
+        9.429279,
+        1.15,
+        -21.08944
+      ]
+    },
+    {
+      "name": "child4",
+      "meshes": 1,
+      "tris": 3800,
+      "visible": true,
+      "position": [
+        10.6,
+        0,
+        -21.5
+      ],
+      "yaw": 0,
+      "hop": 0,
+      "min": [
+        10.327179,
+        0,
+        -21.834977
+      ],
+      "max": [
+        10.872821,
+        1.15,
+        -21.165023
+      ]
+    },
+    {
+      "name": "child5",
+      "meshes": 1,
+      "tris": 3800,
+      "visible": true,
+      "position": [
+        12.2,
+        0,
+        -21.5
+      ],
+      "yaw": 1,
+      "hop": 0,
+      "min": [
+        11.770721,
+        0,
+        -21.91056
+      ],
+      "max": [
+        12.629279,
+        1.15,
+        -21.08944
+      ]
+    }
+  ],
+  "screen": {
+    "x": 190.6240971695014,
+    "y": 467.9881546780746
+  },
+  "note": "For UI check, click this actual canvas character; this button does not call tap."
+}

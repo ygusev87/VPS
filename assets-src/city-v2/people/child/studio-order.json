@@ -1,0 +1,30 @@
+{
+  "status": "candidate-validated-ready-for-integration",
+  "recordedAt": "2026-10-26T12:05:59.805256+00:00",
+  "provider": "Tripo Studio",
+  "taskId": "074490c7-8209-488c-bb08-fe9e4e631c4b",
+  "source": "child-v1.png",
+  "sourceSha256": "5281bb3fce3376ea88f4cd408df74aa17f61c8bc002b782009d73f43d3a0936f",
+  "settings": {
+    "model": "H3.1 - Макс.кач.",
+    "mode": "HD model, geometry and texture",
+    "parts": false,
+    "8K": false,
+    "rig": false
+  },
+  "includedCredits": 25,
+  "balanceBefore": 5650,
+  "balanceAfter": 5625,
+  "purchases": 0,
+  "topUps": 0,
+  "paidAPICalls": 0,
+  "orderCount": 1,
+  "contractDecision": "m0364",
+  "proof": "studio/preflight.jpg",
+  "next": "download, validate, orient +X/Y0, optimize <=4k triangles/512 WebP/200KB, inspect and verify all7instances",
+  "rawPath": "assets-src/raw/city-2026-10-26/child.glb",
+  "rawBytes": 662152,
+  "rawSha256": "7e2a5187291a8ec54e267c2cb9d254de34430b7a77ebb811885574317566453c",
+  "downloadedAt": "2026-10-26T12:07:34.613827+00:00",
+  "completeProof": "studio/complete.jpg"
+}
