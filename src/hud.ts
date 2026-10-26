@@ -50,8 +50,8 @@ const BASE = import.meta.env.BASE_URL;
 export const MAPS: { id: MapId; name: string; emoji: string; img: string; open: boolean }[] = [
   { id: 'lab', name: 'Лаборатория', emoji: '🔬', img: `${BASE}maps/lab.webp`, open: true },
   { id: 'farm', name: 'Ферма', emoji: '🐄', img: `${BASE}maps/farm.webp`, open: true },
-  // The city opens once its models are made; `?city` in the address opens it for a look.
-  { id: 'city', name: 'Город', emoji: '🏙️', img: `${BASE}maps/city.webp`, open: new URLSearchParams(location.search).has('city') },
+  { id: 'city', name: 'Город', emoji: '🏙️', img: `${BASE}maps/city.webp`, open: true },
+  // The factory opens once its hall is dressed; `?factory` in the address opens it for a look.
   { id: 'factory', name: 'Завод', emoji: '🏭', img: `${BASE}maps/factory.webp`, open: new URLSearchParams(location.search).has('factory') },
 ];
 

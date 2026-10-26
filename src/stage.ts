@@ -614,6 +614,17 @@ export class Stage {
     return Math.hypot(a.x - b.x, a.y - b.y);
   }
 
+  /** Where the view is heading: to come back to after a look elsewhere. */
+  viewGoal() {
+    return { target: this.goalTarget.clone(), distance: this.goalDistance };
+  }
+
+  /** Ease the view to this centre and distance. */
+  easeTo(target: THREE.Vector3, distance: number) {
+    this.goalTarget.copy(target).setY(0);
+    this.goalDistance = THREE.MathUtils.clamp(distance, MIN_DIST, MAX_DIST);
+  }
+
   /** Table area currently in view (roughly), for placing new parts. */
   viewCenter(): THREE.Vector3 {
     return this.goalTarget.clone();

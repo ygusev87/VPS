@@ -34,6 +34,8 @@ export interface MapHooks {
   helped?(name: string, at: THREE.Vector3): void;
   /** Something worth seeing is happening here (the camera may glance at it). */
   look?(at: THREE.Vector3): void;
+  /** A helped one's reward is happening here (the cat climbs down, the boat sails): show it close up for a moment. */
+  result?(points: THREE.Vector3[]): void;
   /** Bring this area into view, close up (the next one to help). */
   focus?(points: THREE.Vector3[], instant?: boolean): void;
   /** A part snapped onto its ring. */
@@ -370,6 +372,12 @@ export abstract class StoryMap {
   }
 
   /** What to show for a need: its points with room round them, and the nearest power. */
+  /** Where a need's reward plays out: the one helped and what was put for them (not the pole). */
+  protected resultView(n: Need): THREE.Vector3[] {
+    const pts = n.focus ?? [n.critter.group.position, ...slots(n).map((s) => s.spot)];
+    return pts.flatMap((p) => [p.clone().add(v(-2, -2.4)), p.clone().add(v(2, 1.6))]);
+  }
+
   private view(n: Need): THREE.Vector3[] {
     const src = this.nearestSource(n.spot);
     const pts = [...(n.focus ?? [n.critter.home, ...slots(n).map((s) => s.spot)]), ...(src ? [src.root.position] : [])];
@@ -781,6 +789,7 @@ export abstract class StoryMap {
         const top = n.critter.group.position.clone().setY(n.critter.height);
         this.hooks.cheer(top);
         this.hooks.helped?.(n.sticker ?? n.critter.name, top);
+        this.hooks.result?.(this.resultView(n));
         for (const h of n.critter.hearts) h.userData.t = Math.random() * -0.6;
         this.helpedNeed(n);
         this.moods();

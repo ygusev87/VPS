@@ -214,6 +214,8 @@ const hud = new Hud(stage, {
     sfx.unlock();
     if (id === 'open') return voice.say('mapPick', 0);
     sfx.pop();
+    // A locked card only says "soon" (it used to start its map anyway).
+    if (!HUD_MAPS.find((mp) => mp.id === id)?.open) return voice.say('soon', 0);
     if (id === 'farm' || id === 'city' || id === 'factory') void startMap(id);
     else if (id === 'lab') startLevel(FREE_PLAY);
     else voice.say('soon', 0);
@@ -495,6 +497,17 @@ async function startMap(name: MapName, fresh = false) {
     },
     helped: (who, at) => setTimeout(() => earnSticker(`${name}:${who}`, at), 1500),
     look: (at) => setTimeout(() => glance(at), 1200),
+    // The reward close up for three seconds, then back to where the child was (unless the view has moved on).
+    result: (pts) => {
+      const back = stage.viewGoal();
+      stage.frame(pts, false, MAP_PPU);
+      const shown = stage.viewGoal();
+      setTimeout(() => {
+        const now = stage.viewGoal();
+        if (map !== m || input.busy || now.target.distanceTo(shown.target) > 0.2 || Math.abs(now.distance - shown.distance) > 0.2) return;
+        stage.easeTo(back.target, back.distance);
+      }, 3200);
+    },
     focus: (pts, instant) => {
       if (instant) stage.frame(pts, true, MAP_PPU);
       else mapFocus = pts;
