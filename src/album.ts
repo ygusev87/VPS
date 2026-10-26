@@ -63,12 +63,12 @@ const SPECIAL: Sticker[] = [
   { id: 'machine:m-band', say: 'machineWorks', emoji: '🎺' },
   { id: 'machine:m-factory', say: 'machineWorks', emoji: '🏭' },
   // The factory.
-  { id: 'factory:breaker', say: 'breakerHappy', emoji: '💡' },
-  { id: 'factory:press', say: 'pressHappy', emoji: '⚙️' },
-  { id: 'factory:paint', say: 'paintHappy', emoji: '🎨' },
-  { id: 'factory:robot', say: 'robotHappy', emoji: '🤖' },
-  { id: 'factory:packer', say: 'packHappy', emoji: '🎁' },
-  { id: 'factory:lorry', say: 'loadHappy', emoji: '🚚' },
+  { id: 'factory:breaker', say: 'boxHappy', emoji: '💡' },
+  { id: 'factory:cart', say: 'cartHappy', emoji: '🛤️' },
+  { id: 'factory:lathe', say: 'latheHappy', emoji: '⚙️' },
+  { id: 'factory:press', say: 'press2Happy', emoji: '🔨' },
+  { id: 'factory:robot', say: 'plugHappy', emoji: '🤖' },
+  { id: 'factory:lorry', say: 'hoistHappy', emoji: '🚚' },
 ];
 
 export class Album {

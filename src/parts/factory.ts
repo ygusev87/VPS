@@ -122,6 +122,15 @@ export class Gear extends Part implements Geared {
     return this.root.localToWorld(out.set(0, GEAR_Y, 0));
   }
 
+  /** Taps on it (the factory sends a gear tapped on its shaft back into the drawer). */
+  taps = 0;
+
+  tap(): boolean {
+    super.tap();
+    this.taps++;
+    return false;
+  }
+
   /** It is turning (a gear chain got through to it). */
   get spinning() {
     return Math.abs(this.turn) > 0.3;

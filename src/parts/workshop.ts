@@ -323,6 +323,7 @@ export class SafetyPress extends Part {
   private caps: THREE.Mesh[] = [];
   private lamps: THREE.MeshStandardMaterial[] = [];
   private down = false;
+  private cycle = 0;
 
   constructor() {
     super();
@@ -406,8 +407,10 @@ export class SafetyPress extends Part {
 
   protected animate(dt: number) {
     const on = Math.abs(this.state.level) > 0.15;
-    // Down fast while both are held, back up slowly; a stamp each time it lands.
-    this.ramY = damp(this.ramY, on ? 1 : 0, on ? 9 : 3, dt);
+    // While both are held it keeps stamping, down and up; let go and it rises and stops.
+    if (on) this.cycle += dt * 1.4;
+    const target = on ? 0.5 - 0.5 * Math.cos(this.cycle * Math.PI * 2) : 0;
+    this.ramY = on ? target : damp(this.ramY, 0, 3, dt);
     const landed = this.ramY > 0.95;
     if (landed && !this.down) {
       this.strokes++;
