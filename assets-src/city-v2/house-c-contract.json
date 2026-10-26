@@ -1,0 +1,133 @@
+{
+  "status": "Reference pending Claude review; no Tripo order",
+  "reference": "house-c-v2.png",
+  "sourceRevision": "e76421b31a1ea8c6ab6113ef3bb9e5053aa0d1df",
+  "instances": [
+    [
+      -20,
+      -30,
+      0,
+      1
+    ],
+    [
+      6,
+      32,
+      0,
+      1
+    ],
+    [
+      50,
+      32.2,
+      0,
+      1
+    ]
+  ],
+  "fit": {
+    "width": 5,
+    "rotateY": -1.5707963267948966,
+    "normalisedFront": "+X",
+    "gameFrontAtYaw0": "+Z"
+  },
+  "targets": {
+    "fullXYZ": [
+      5,
+      4.2,
+      4
+    ],
+    "unmeasured": true,
+    "includes": "Entire roof/eaves/chimney; artistic target, not actual measured GLB",
+    "trianglesMax": 7000,
+    "materials": 1,
+    "baseColorPixels": 512,
+    "downloadBytesTarget": 200000,
+    "preserve": "Three centers and scales; no roads/task/pole/character-anchor changes"
+  },
+  "targetFootprints": [
+    {
+      "center": [
+        -20,
+        -30
+      ],
+      "rect": [
+        -22.5,
+        -32,
+        -17.5,
+        -28
+      ],
+      "minRoadGap": 13.0,
+      "boardGap": 5.5
+    },
+    {
+      "center": [
+        6,
+        32
+      ],
+      "rect": [
+        3.5,
+        30,
+        8.5,
+        34
+      ],
+      "minRoadGap": 0.5,
+      "boardGap": 3.5
+    },
+    {
+      "center": [
+        50,
+        32.2
+      ],
+      "rect": [
+        47.5,
+        30.200000000000003,
+        52.5,
+        34.2
+      ],
+      "minRoadGap": 1.2,
+      "boardGap": 2.5
+    }
+  ],
+  "criticalNeighbors": {
+    "southMiddle": "At6,32: road x±3 leaves0.5 gap, tram edgez29 leaves1.0 for depth4.",
+    "southEast": "At50,32.2: tram edgez29 leaves1.2, board rightedge55 leaves2.5. Nearby corner oak52,35 needs actual crown/bbox QA.",
+    "north": "At−20,−30 between house-a−26,−28 and bakery−12,−27; verify full eaves/neighbor bounds with GLB."
+  },
+  "orientationProposal": {
+    "currentYaw": [
+      0,
+      0,
+      0
+    ],
+    "proposedYaw": [
+      0,
+      3.141592653589793,
+      3.141592653589793
+    ],
+    "reason": "North entrance faces toward town; two southern cottages face north toward tram street, like southwest house A. Proposal only; src unchanged."
+  },
+  "style": {
+    "walls": "pistachio green",
+    "roof": "muted terracotta, simple single front-to-back ridge and two tile slopes",
+    "front": "full-width triangular gable with round opaque attic window; symmetric door and two lower windows",
+    "trim": "warm ivory",
+    "door": "deep teal, ground level",
+    "exclude": [
+      "cross-gable",
+      "dormer",
+      "extra storey",
+      "slab",
+      "steps",
+      "balcony",
+      "plants",
+      "transparent glass",
+      "detached props",
+      "text"
+    ]
+  },
+  "acceptance": [
+    "Claude reviews final image, full target dimensions and yaw proposal before one Tripo order.",
+    "Inspect raw front/back/roof/underside; canonical positive transforms and uniform fit only.",
+    "Measure full bbox including eaves/chimney; confirm all3positions, allroads/board/neighbor buildings and corner tree.",
+    "Actual model()/patched() and all14pole audit1180x660/390x844, alltaskring visibility against newhouseC.",
+    "Opaque material,<=7ktri/512WebP/Meshopt; tests/typecheck/browser visual QA. Physical iPad/PWA/FPS separately."
+  ]
+}

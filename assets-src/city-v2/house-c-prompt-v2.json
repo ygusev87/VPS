@@ -1,0 +1,35 @@
+{
+  "useCase": "stylized-concept",
+  "mode": "built-in image_gen",
+  "initialPrompt": "Use case: stylized-concept.\nAsset type: image-to-3D production reference for one small residential building, house C, in a children's tactile toy-town game.\nInput image 1 is a STYLE reference: house A, premium molded painted-toy surface, softly rounded substantial architecture, warm ivory trim and opaque painted blue windows. Input image 2 is the accepted town concept for the coherent toy-town family. Create a distinct companion cottage, not a duplicate of house A. Do not include surrounding scenery from either reference.\nSubject: ONE compact pistachio-green cottage, one full ground floor beneath a simple FRONT-FACING TRIANGULAR GABLE. The main roof ridge runs front to back; no cross-gable or projecting dormer. Warm muted terracotta-orange tile roof, broad softly rounded tile courses, short cream chimney toward the rear with a solid terracotta cap. Front gable filled by green wall with one small ROUND opaque blue attic window and a thick cream circular rim with a simple cross muntin. The front facade below is symmetrical: a central dark teal arched door at ground level, two small cream-framed softly arched opaque blue cross-pane windows, one each side. One matching window on the visible right side. Substantial simple cream corner stones, cream roof-edge trim, discreet cream window sills. Friendly low compact proportions: full width 5, height about 4.2, depth 4, including shallow roof eaves and chimney. The overall shape is lower than the two-storey house B and differs from house A's projecting dormer.\nMaterials: richly sculpted satin painted toy, soft rounded edges, subtle tactile surface, warm pistachio green, restrained earthy terracotta, warm ivory, deep teal door, deep painted blue windows. Consistent craftsmanship and chunky detail with reference house A. No tiny ornate details.\nComposition: one entire building centered with ample clean margins; elevated front-right three-quarter view showing entrance, roof and right wall clearly. Neutral soft studio daylight on plain warm off-white seamless background, gentle contact shadow. All sides and roof opaque, closed chimney top. All architecture attached to a single building; door touches the ground.\nExclude: text, numbers, logos, watermarks, people, animals, trees, flower boxes, plants, garden, furniture, stairs, porch, balcony, base slab, separate plinth, pavement, roads, detached props, transparent glass, open doors, open roof, interior/cutaway, multiple views, collage. Do not make a narrow tall tower.",
+  "editPrompt": "Edit this house-C image. Preserve the pistachio walls, symmetric ground-floor facade with centered teal arched door and two windows, round opaque blue attic window with ivory cross, cream rounded trim, toy materials, studio background, camera and lighting. CHANGE ONLY THE ROOF AND UPPER WALL STRUCTURE: remove the cross-gable/dormer completely. Make the entire FRONT WALL end in ONE wide triangle from the left exterior wall corner all the way to the right exterior wall corner, with the round window centered in this full-width triangular wall. The two eaves are at the SIDE walls. The SINGLE MAIN ROOF RIDGE starts at the center tip of this front triangle and runs directly BACK into depth. From the existing front-right viewpoint the viewer sees the green triangular FRONT END and the terracotta RIGHT ROOF SLOPE receding backward; there must be NO broad roof slope facing front and NO smaller triangle sitting on another roof. It is a simple classic gable-roof cottage, ONE roof ridge, TWO uninterrupted tile slopes, like an extruded triangular prism. Short capped chimney remains near the back. Keep a low compact cottage, full outer proportions about width5 height4.2 depth4. Use softer subdued terracotta rather than bright scarlet. Entire house within frame; no extra props, no labels, no slab.",
+  "initialGeneratedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-754b5ff5-3c84-47d7-ab19-7c835f7db4aa.png",
+  "initialReview": "Rejected: cross-gable/dormer silhouette repeats house A despite instruction for simple front-facing gable.",
+  "references": [
+    "assets-src/city-v2/house-a-v1.png",
+    "assets-src/city-v2/concept-v2.png"
+  ],
+  "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-a3e7a55f-29f0-4ad5-9d81-25dc2c256667.png",
+  "output": "house-c-v2.png",
+  "sourceRevision": "e76421b31a1ea8c6ab6113ef3bb9e5053aa0d1df",
+  "status": "Reference ready for Claude review; no Tripo order",
+  "inspection": "Final image has one full-width front gable and one ridge into depth, round attic window, symmetrical door/windows, no cross-gable, no base or detached props. Lower cottage silhouette. Hidden geometry and exact dimensions are not measurable from PNG.",
+  "sha256": "b99bf3eb60ba7a7f4d3cbe514f76c2f8f1b0bc00d51b4b5a6c9e49843fdc1519",
+  "createdAtUTC": "2026-10-26T01:55:23.389720+00:00",
+  "attempts": 2,
+  "verification": {
+    "tests": 21,
+    "typecheck": "passed",
+    "browser": "Static reference in IAB at1180x660 and390x660",
+    "imageLoaded": true,
+    "horizontalOverflow": false,
+    "bottomLinksReachable390": true,
+    "consoleIssue": "One MutationObserver.observe TypeError without source URL at2026-10-26T01:55:52.731Z; this static page does not load game code. Origin not established. UI displayed and scrolled normally.",
+    "screenshots": [
+      "qa/house-c-reference-1180.png",
+      "qa/house-c-reference-390.png",
+      "qa/house-c-reference-390-details.png"
+    ],
+    "limitations": "Image only; no generated GLB/runtime/iPad/FPS result. Projected footprints are targets."
+  }
+}
