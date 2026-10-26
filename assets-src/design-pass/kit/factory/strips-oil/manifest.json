@@ -1,0 +1,292 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "main: factory strips-oil",
+  "images": [
+    {
+      "name": "walkway-strip",
+      "source": "../sources/walkway-strip.png",
+      "sourceWidth": 887,
+      "sourceHeight": 1774,
+      "sourceSha256": "0956c75b0d2d643ef37dc1eedd504dbeab913b8a28da3d7d1fe318bac8643d49",
+      "output": "public/textures/kit/factory/walkway-strip.webp",
+      "width": 256,
+      "height": 2048,
+      "bytes": 180350,
+      "sha256": "472ab80b6a97c50efeb32ef79371812d553846eefe3f4fe805e78fbcc1699b36",
+      "sourceAspect": 0.5,
+      "outputAspect": 0.125,
+      "extract": {
+        "left": 289,
+        "top": 0,
+        "width": 310,
+        "height": 1770
+      },
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.04261970520019531,
+        "partialFraction": 0.95391845703125,
+        "opaqueFraction": 0.0034618377685546875,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.2490234375
+          },
+          "right": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.00390625
+          },
+          "top": {
+            "min": 0,
+            "max": 255,
+            "mean": 225.46484375
+          },
+          "bottom": {
+            "min": 0,
+            "max": 255,
+            "mean": 226.10546875
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.08728362438725784,
+        "y": 7.716079452614409
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 5.714649714052342,
+        "y": 4.477451937806349
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "hazard-strip",
+      "source": "../sources/hazard-strip.png",
+      "sourceWidth": 992,
+      "sourceHeight": 1586,
+      "sourceSha256": "485cefca1a52f2f0af3f57599e830565950661266cf9378a7e0ae05d802a1939",
+      "output": "public/textures/kit/factory/hazard-strip.webp",
+      "width": 128,
+      "height": 2048,
+      "bytes": 59684,
+      "sha256": "6412d2ece4b7ef21af0975304e1bb1f21c1a5e32dd6e67dde9c9f02566e14e4b",
+      "sourceAspect": 0.6254728877679697,
+      "outputAspect": 0.0625,
+      "extract": {
+        "left": 440,
+        "top": 85,
+        "width": 112,
+        "height": 1453
+      },
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.059661865234375,
+        "partialFraction": 0.9285430908203125,
+        "opaqueFraction": 0.0117950439453125,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.37744140625
+          },
+          "right": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.00439453125
+          },
+          "top": {
+            "min": 0,
+            "max": 255,
+            "mean": 225.3515625
+          },
+          "bottom": {
+            "min": 0,
+            "max": 255,
+            "mean": 225.5625
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.24615821589052225,
+        "y": 5.989552696078448
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 8.437625102124244,
+        "y": 3.6780825546362395
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "rail-strip",
+      "source": "../sources/rail-strip.png",
+      "sourceWidth": 887,
+      "sourceHeight": 1774,
+      "sourceSha256": "9748cfabe5c6dcd18ea5661d7bb13966796d3d7084048854cdb318cf2ad42e89",
+      "output": "public/textures/kit/factory/rail-strip.webp",
+      "width": 256,
+      "height": 2048,
+      "bytes": 89764,
+      "sha256": "27c6ac3426c2c0bd660bc5ff6026c8655ed0db09e2d13d3bdbe2425a73c7c301",
+      "sourceAspect": 0.5,
+      "outputAspect": 0.125,
+      "extract": {
+        "left": 238,
+        "top": 31,
+        "width": 412,
+        "height": 1573
+      },
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.47313880920410156,
+        "partialFraction": 0.5132484436035156,
+        "opaqueFraction": 0.013612747192382812,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "right": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0029296875
+          },
+          "top": {
+            "min": 0,
+            "max": 255,
+            "mean": 47.5
+          },
+          "bottom": {
+            "min": 0,
+            "max": 255,
+            "mean": 47.6015625
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.0025167228349673213,
+        "y": 1.0737694035947716
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 7.327078227124211,
+        "y": 3.1059405956392037
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "oil-patch-a",
+      "source": "../sources/oil-patch-a.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "41c8a8947a132e98ed2e4ca2fb01d4f3e1ed557606b4cdc00140c247979d6bfa",
+      "output": "public/textures/kit/factory/oil-patch-a.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 56584,
+      "sha256": "daa9e6d9b35d9a141007d23522f33830d04c876905aa4a5ec18331b376210265",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "extract": null,
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.6051979064941406,
+        "partialFraction": 0.39473724365234375,
+        "opaqueFraction": 0.000064849853515625,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.037109375
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.015625
+          },
+          "bottom": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.032209967320261323,
+        "y": 0.013562091503267926
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 2.496149918300643,
+        "y": 2.616751876531849
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "oil-patch-b",
+      "source": "../sources/oil-patch-b.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "0609a181218e80d1e3057e0c0815762ef698eea51bded76e010ed3a9d9992a1b",
+      "output": "public/textures/kit/factory/oil-patch-b.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 32470,
+      "sha256": "9303ec985020e800e96f03ccbced426e68e1249e4092ccd07f753d295796777a",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "extract": null,
+      "packaging": "optional declared transparent-frame crop; resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.8407707214355469,
+        "partialFraction": 0.15893173217773438,
+        "opaqueFraction": 0.00029754638671875,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0,
+        "y": 0
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.176458141850485,
+        "y": 1.802353324142153
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    }
+  ]
+}

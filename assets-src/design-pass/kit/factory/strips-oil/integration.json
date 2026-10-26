@@ -1,0 +1,48 @@
+{
+  "schemaVersion": 1,
+  "scope": "factory strips/oil; PNG references are not 3D models",
+  "sourceCodeSha256": {
+    "src/kit.ts": "c5dcf5d4510e4783c2181cdf830d817630244d0f3451d617fd56df58eb0b9f48",
+    "src/factory.ts": "bdbbeaf58e97f8b1a15ddd4c1ea92104605250c0e760175956970b2ed8b8680d",
+    "src/parts/workshop.ts": "811fa602106278b3eeb179bf379950415ad30c74a08db5972ff5962f08ea84b4"
+  },
+  "assets": [
+    {
+      "name": "walkway-strip",
+      "runtimeWidthFactor": 1.1,
+      "repeatLength": 6.4,
+      "paintedWidthAtLane1_6": 1.5840000000000003,
+      "notes": "Existing walkway ribbons mapping is suitable. Native transparent side margins included."
+    },
+    {
+      "name": "hazard-strip",
+      "recommendedRibbonWidth": 0.336,
+      "paintedWidth": 0.3,
+      "recommendedRepeatLength": 4.36,
+      "existingRepeatLength": 2.4,
+      "notes": "Full technical crop 112px includes native alpha; main painted band ~100px. 4.36 preserves diagonal aspect; existing2.4 makes diagonals shallower."
+    },
+    {
+      "name": "rail-strip",
+      "recommendedRibbonWidth": 1.273289183222958,
+      "laneWidth": 1.2,
+      "recommendedWidthFactor": 1.061074319352465,
+      "repeatLength": 4.2,
+      "gauge": 0.7,
+      "gaugeMeasurement": "Railhead row10 centers330.5/557 in original;226.5px; croppedwidth412. Source center positions vary subpixel with wear. Nominal mapping, not collision geometry.",
+      "sleepersPerRepeat": 7,
+      "sleeperSpacing": 0.6,
+      "notes": "Positive V follows track; rotate geometry, not asset. Runtime rail path is X, wheels Z±.35. Keep code collision/animation. Do not stack visible code ties/rails over decal."
+    },
+    {
+      "name": "oil-patch-a",
+      "decalSize": 1.6,
+      "notes": "Native alpha, full square retained; dry brown/grey oil residue intended for light workshop floor, not physically based wet material."
+    },
+    {
+      "name": "oil-patch-b",
+      "decalSize": 1.6,
+      "notes": "Native alpha, full square retained; horizontal smeared silhouette, no tiled repeat."
+    }
+  ]
+}

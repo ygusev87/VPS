@@ -1,0 +1,70 @@
+[
+  {
+    "name": "walkway-strip",
+    "alpha": true,
+    "prompt": "Use case: game texture asset. Create ONE narrow straight factory pedestrian walkway marking, orthographic exactly top-down, painterly realistic enamel/concrete detail like a warm miniature industrial workshop. Native transparent background. A continuous pale warm cream-yellow painted walkway surface with two stronger golden yellow boundary lines, one along each long side; lightly scuffed but very readable, no cross seams, no middle line, no arrows or text. The strip is vertical, occupies the middle ONE QUARTER of a tall portrait canvas, with transparent empty margins on left and right. It continues STRAIGHT through both TOP and BOTTOM canvas edges, CUT OFF there, absolutely NO rounded caps or transparent end margins. All four corners of the painted strip reach the image top/bottom. Appearance at top and bottom must MATCH for seamless vertical tiling, identical widths and brightness and line phase. A simple continuous directional ground decal, not a perspective path or scene. Physical width1.6 units; no objects, no railings, no cast shadows, no gradients across length. Crisp alpha side edges with very slight natural wear, avoid fuzzy halo. Generate long vertical texture, ideally256x2048 usable strip.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-497d986b-a7c2-4048-a522-93526b45704c.png",
+    "source": "../sources/walkway-strip.png",
+    "width": 256,
+    "height": 2048,
+    "extract": {
+      "left": 289,
+      "top": 0,
+      "width": 310,
+      "height": 1770
+    },
+    "packagingNote": "Preserved original PNG. Technical crop/resize/encode only; no painting, seam blend, alpha reconstruction or mirroring."
+  },
+  {
+    "name": "hazard-strip",
+    "alpha": true,
+    "prompt": "Use case: game texture asset. ONE thin straight industrial hazard marking strip viewed exactly orthographic from overhead. Alternating yellow and near-black diagonal painted stripes at45degrees, warm safety yellow, restrained worn paint texture, bold legible graphic. Native transparent background. Vertical very narrow band occupying the central ONE EIGHTH width of a tall portrait canvas, transparent margins left/right. Runs completely through top and bottom canvas edges, no end caps, no rounded corners, no end margins. Pattern must tile seamlessly vertically: exactly8 equal complete repetitions from top to bottom, same phase at opposite ends. Uniform width, no border, flat painted decal with no elevation/bevel or cast shadow. Used as .3 unit wide frame round machines, repeat2.4 world units. Ideally128x2048 usable stripe; simple continuous black/yellow band only. No writing, symbols, floor, objects or perspective.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-8d74e106-0367-4620-86d7-3fba9785dc29.png",
+    "source": "../sources/hazard-strip.png",
+    "width": 128,
+    "height": 2048,
+    "extract": {
+      "left": 440,
+      "top": 85,
+      "width": 112,
+      "height": 1453
+    },
+    "packagingNote": "Preserved original PNG. Technical crop/resize/encode only; no painting, seam blend, alpha reconstruction or mirroring."
+  },
+  {
+    "name": "rail-strip",
+    "alpha": true,
+    "prompt": "Use case: game texture asset. ONE continuous narrow pair of parallel steel rails and brown wooden sleepers for a miniature factory cart, strictly flat orthographic view from directly overhead, not perspective. Muted steel gray rail heads, warm brown timber sleepers, small bolts, painterly realistic miniature workshop surface. Native transparent background everywhere between sleepers/rails and outside track; NO ballast or ground, no shadow. A long vertical track segment occupies the central ONE QUARTER of a tall portrait canvas, leaving transparent margins on left/right. Both rails run uninterrupted THROUGH top and bottom image edges: no rail ends, buffers or end caps. Sleeper rhythm must tile vertically:8 equally spaced sleepers, first/last half-spacing to top/bottom edges. Track physical width1.2 units, rail centres ±.35 units from middle, rail head width.08, sleeper length1.0 and thickness.16 along track, sleeper spacing.6; eight sleepers in4.8 world units. Keep clear gap between rails. Desired usable texture256x2048; no objects, trains, wheels, plates, text or rendered scene. Same color/value at top/bottom edges, continuous rail highlights without longitudinal gradient.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-d328663d-10c1-4b9c-9aec-b821e53f4e4d.png",
+    "source": "../sources/rail-strip.png",
+    "width": 256,
+    "height": 2048,
+    "extract": {
+      "left": 238,
+      "top": 31,
+      "width": 412,
+      "height": 1573
+    },
+    "packagingNote": "Preserved original PNG. Technical crop/resize/encode only; no painting, seam blend, alpha reconstruction or mirroring."
+  },
+  {
+    "name": "oil-patch-a",
+    "alpha": true,
+    "prompt": "Use case: game ground decal. Create one small irregular subtle grey-brown machine oil stain with2or3 nearby small droplets, viewed exactly from directly overhead. Native transparent background, no floor or paper. Hand-painted realistic muted workshop wear in a clean miniature factory, thin semi-transparent oil film darker in middle, uneven softly feathered edges, low contrast brown charcoal, not pitch black. Loosely round flattened organic patch, centred, occupies about70% square canvas with wide fully transparent border on all sides. No drop shadow, no thick glossy raised puddle, no objects, symbols or text, no rainbow or bright reflection. Usable as512x512 texture, alpha must preserve thin translucent margins.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-f56caf08-8cd8-4645-afed-3dfc78ca6837.png",
+    "source": "../sources/oil-patch-a.png",
+    "width": 512,
+    "height": 512,
+    "packagingNote": "Preserved original PNG. Technical crop/resize/encode only; no painting, seam blend, alpha reconstruction or mirroring."
+  },
+  {
+    "name": "oil-patch-b",
+    "alpha": true,
+    "prompt": "Use case: game ground decal. One restrained elongated machine oil smear, exactly top-down, native transparent background. A thin grey-brown oil film brushed into two short overlapping scuffs with a few tiny droplets, painterly realistic surface wear for a warm miniature industrial workshop. Shape broad low horizontal oval, roughly2:1, centered within square canvas occupying70% width and45% height, generous completely transparent border. Muted brown/charcoal with translucent feathered edges and gentle uneven core, never solid black. No floor/paper, no perspective, no cast shadow, no raised liquid rim, no tire tracks or footprints, no objects/text/symbols, no rainbow sheen. Desired512x512 alpha decal. Visually related to a soft irregular workshop oil stain but clearly distinct elongated silhouette.",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-ea8e0979-23aa-4d98-a0a3-eccc2a28a66f.png",
+    "source": "../sources/oil-patch-b.png",
+    "width": 512,
+    "height": 512,
+    "packagingNote": "Preserved original PNG. Technical crop/resize/encode only; no painting, seam blend, alpha reconstruction or mirroring."
+  }
+]
