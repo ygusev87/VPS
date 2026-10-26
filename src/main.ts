@@ -9,7 +9,7 @@ import { keepMachinePicture, machinePictures, MACHINES } from './machines';
 import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap } from './farm';
 import type { MapHooks, MapProgress, StoryMap } from './storymap';
 import { loadGround } from './ground';
-import { loadKit } from './kit';
+import { forgetKits, loadKit } from './kit';
 import { Hud, MAPS as HUD_MAPS } from './hud';
 import { Input } from './input';
 import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
@@ -472,8 +472,9 @@ async function startMap(name: MapName, fresh = false) {
   hud.hideMapDone();
   const def = MAPS[name];
   // The city's lawns borrow the farm's painted flowers and shrubs.
-  await Promise.all([loadModels(def.models), loadGround(), loadKit(name), name === 'city' ? loadKit('farm') : null]);
+  await Promise.all([loadModels(def.models), loadGround(), loadKit(name), name === 'city' ? loadKit('farm', ['tuft-card', 'flower-card', 'shrub-card', 'blob-shadow']) : null]);
   leaveMap();
+  forgetKits(name === 'city' ? ['city', 'farm'] : [name]);
   // A view asked for by the map just left is not this one's.
   mapFocus = null;
   level = def.level;
@@ -602,6 +603,8 @@ window.addEventListener('pagehide', () => keepPlay(true));
 function startLevel(l: Level, instant = false, speak = true) {
   hud.hideMapDone();
   leaveMap();
+  // The lab table uses no map's painted kit.
+  forgetKits([]);
   if (progress.place !== 'lab') {
     progress.place = 'lab';
     saveProgress(progress);

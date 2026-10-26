@@ -9,7 +9,18 @@ import * as THREE from 'three';
 /** Where the camera looks from (see VIEW_DIR in stage.ts): cards face it, so their pictures show undistorted. */
 const VIEW = new THREE.Vector3(0, 1, 0.78).normalize();
 
-const images = new Map<string, HTMLImageElement>();
+type Picture = HTMLImageElement | HTMLCanvasElement;
+const images = new Map<string, Picture>();
+
+/**
+ * Pieces where the map uses one variant only (the rest are alternatives
+ * Codex kept): just that one is loaded. Each decoded picture costs its
+ * full size in memory on the iPad, so the others are not fetched at all.
+ */
+const ONE_VARIANT: Record<string, string> = { 'grass-main': 'a', 'grass-sunny': 'a', 'path-strip': 'a', 'paving-main': 'c', 'lawn-main': 'a', 'road-strip': 'a', 'factory-floor': 'a' };
+
+/** The longest side a kit picture keeps: 1024 is ample at the closest zoom (the 2048 originals cost four times the memory). */
+const MAX_SIDE = 1024;
 
 function loadImage(url: string): Promise<HTMLImageElement | null> {
   const img = new Image();
@@ -20,12 +31,25 @@ function loadImage(url: string): Promise<HTMLImageElement | null> {
   });
 }
 
+/** A picture brought down to MAX_SIDE on a canvas (drawn from the <img>: createImageBitmap turns WebP black on the iPad). */
+function fitted(img: HTMLImageElement): Picture {
+  const k = MAX_SIDE / Math.max(img.width, img.height);
+  if (k >= 1) return img;
+  const c = document.createElement('canvas');
+  c.width = Math.round(img.width * k);
+  c.height = Math.round(img.height * k);
+  const g = c.getContext('2d')!;
+  g.imageSmoothingQuality = 'high';
+  g.drawImage(img, 0, 0, c.width, c.height);
+  return c;
+}
+
 /**
  * Loads a map's kit: the pictures its kit.json lists (names without .webp,
- * variants as `name-a`, `name-b`…). No kit.json, no kit: the map keeps its
- * old look.
+ * variants as `name-a`, `name-b`…), or only those of the pieces in `only`.
+ * No kit.json, no kit: the map keeps its old look.
  */
-export async function loadKit(map: string) {
+export async function loadKit(map: string, only?: string[]) {
   const base = `${import.meta.env.BASE_URL}textures/kit/${map}/`;
   let files: string[] = [];
   try {
@@ -34,30 +58,50 @@ export async function loadKit(map: string) {
   } catch {
     // No kit for this map.
   }
+  const piece = (file: string) => file.replace(/-[a-d]$/, '');
+  files = files.filter((f) => (!only || only.includes(piece(f))) && (!ONE_VARIANT[piece(f)] || f === `${piece(f)}-${ONE_VARIANT[piece(f)]}`));
   await Promise.all(
     files.map(async (file) => {
       const key = `${map}/${file}`;
       if (images.has(key)) return;
       const img = await loadImage(`${base}${file}.webp`);
-      if (img) images.set(key, img);
+      if (img) images.set(key, fitted(img));
     }),
   );
 }
 
-function texture(img: HTMLImageElement, repeat: boolean): THREE.Texture {
-  const t = new THREE.Texture(img);
+const textures = new Map<string, THREE.Texture>();
+
+/** One texture per picture and wrap (a piece asked for twice is uploaded once). */
+function texture(key: string, img: Picture, repeat: boolean): THREE.Texture {
+  const id = `${key}|${repeat}`;
+  let t = textures.get(id);
+  if (t) return t;
+  t = new THREE.Texture(img);
   t.wrapS = t.wrapT = repeat ? THREE.RepeatWrapping : THREE.ClampToEdgeWrapping;
   t.colorSpace = THREE.SRGBColorSpace;
   t.anisotropy = 8;
   t.minFilter = THREE.LinearMipmapLinearFilter;
   t.needsUpdate = true;
+  textures.set(id, t);
   return t;
+}
+
+/** Drop the pictures and textures of every map but these (switching maps should not pile up memory on the iPad). */
+export function forgetKits(keep: string[]) {
+  const mine = (key: string) => keep.includes(key.split('/')[0]);
+  for (const key of [...images.keys()]) if (!mine(key)) images.delete(key);
+  for (const [id, t] of [...textures]) {
+    if (mine(id)) continue;
+    t.dispose();
+    textures.delete(id);
+  }
 }
 
 /** All loaded variants of a piece (a, b, c… or the plain name), as textures. */
 export function kitPieces(map: string, name: string, repeat = false): THREE.Texture[] {
-  const found = [name, ...'abcd'.split('').map((v) => `${name}-${v}`)].map((f) => images.get(`${map}/${f}`)).filter((i): i is HTMLImageElement => !!i);
-  return found.map((img) => texture(img, repeat));
+  const keys = [name, ...'abcd'.split('').map((v) => `${name}-${v}`)].map((f) => `${map}/${f}`).filter((k) => images.has(k));
+  return keys.map((k) => texture(k, images.get(k)!, repeat));
 }
 
 export function hasKit(map: string, name: string) {
