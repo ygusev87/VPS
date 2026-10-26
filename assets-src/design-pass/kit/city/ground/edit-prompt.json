@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "target": "paving-main-b",
+  "reason": "Visible periodic grout width/continuity defect in native 3x3 and 100% QA; main requested one targeted built-in correction.",
+  "tool": "image_gen.imagegen",
+  "intent": "edit",
+  "toolArguments": {
+    "prompt": "Use case: precise-object-edit.\nAsset type: opaque top-down repeating city pavement material.\nInput image 1 is the edit target: paving-main-b, warm cream limestone, regular 8 by 8 square slabs.\nPrimary request: repair only the periodic boundary joint defect. In the current image the top edge has nearly no grout while the bottom edge has a full grout line, and the left/right boundary grout widths differ. When tiled, every eighth joint becomes thin or interrupted. Make opposite boundaries match in both axes. Each outer edge must cut exactly through the centre of the same narrow sandy-beige grout line: half its normal width on each corresponding image edge, so two repeated copies combine into a joint exactly as wide and continuous as an interior joint. Match joint phase, intersection positions, colour and small bevels across all four edges. Keep exactly 8 equal whole square slabs across and 8 down, with matching four corners. Do not add an outer border or frame.\nInvariants: preserve warm cream/beige palette, stone mottling, softly painted style, regular slab size and alignment, all interior slabs as closely as possible, strict vertical orthographic top-down view, even diffuse light, full opacity. No cast shadows, objects, text, logos, dark border, perspective, new composition or sample grid. This is a local edge continuity correction, not a redesign. Output one square material image, requested2048x2048.",
+    "referenced_image_paths": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/paving-main-b.png"
+    ],
+    "transparent_background": false
+  }
+}

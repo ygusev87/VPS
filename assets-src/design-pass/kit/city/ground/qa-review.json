@@ -1,0 +1,90 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "method": "Actual encoded WebP displayed in Codex in-app browser: unblended 3x3 repeats, three 256x256 windows at one CSS pixel per encoded image pixel (corner, left/right and top/bottom), and neighbouring accepted road-strip-a. Native JPEG screenshots at actual 1024x768 and 390x844; full-page captures retain full seam/context views.",
+  "sourceSize": [
+    1254,
+    1254
+  ],
+  "exportSize": [
+    2048,
+    2048
+  ],
+  "upscaleDisclosure": "All four exports are Lanczos upscales (1.633174x), not native 2048 generations.",
+  "generationCalls": 5,
+  "repeatedGenerations": 0,
+  "seamRepairs": 1,
+  "referenceRoad": {
+    "path": "public/textures/kit/city/road-strip-a.webp",
+    "sha256": "503cef19b953034624678ff633910ba572fccbf0ac2aa15b1284f7053201de84"
+  },
+  "browserChecks": "qa/browser-checks.json",
+  "browserPassed": true,
+  "preferredPaving": "paving-main-a",
+  "integrationReviewRequired": [
+    "paving-main-b",
+    "lawn-main-a",
+    "lawn-main-b"
+  ],
+  "limitations": [
+    "No asset has pixel-identical opposite edges. The prompt requested seamlessness, but output verification takes precedence.",
+    "Paving variants have different grout widths; avoid alternating A and B as though they were a matched atlas.",
+    "Lawn A and B differ slightly in colour/detail; mixed adjacency is not guaranteed seamless.",
+    "This is material QA only. Runtime scale, gameplay, iPad/Safari, FPS and PWA behaviour are integration checks."
+  ],
+  "assets": [
+    {
+      "name": "paving-main-a",
+      "sha256": "34462d7988cdc56a796d7a0fbf7f6bb3a2e671205cddb0736b681180199dd0a1",
+      "status": "pass-with-limitations",
+      "note": "Preferred paving candidate. Regular warm cream grid reads continuously in 3x3 at both tested viewports; no empty boundary or large colour jump. At 100% the grout thickness/phase is slightly uneven. Edges are not pixel-identical; no mathematical seamlessness claim.",
+      "colourBesideRoad": "Warm cream paving, neutral grey road and yellow-green lawn remain clearly separated; no strong cast-shadow stripe or blank edge.",
+      "screenshots": [
+        "qa/paving-main-a-1024.jpg",
+        "qa/paving-main-a-390.jpg",
+        "qa/paving-main-a-seams.jpg"
+      ]
+    },
+    {
+      "name": "paving-main-b",
+      "sha256": "bf1b03d19b080d29bc63570054333d4a4a0946fe3fd7514daad97cc6a528fd49",
+      "status": "pass-with-limitations",
+      "note": "One targeted built-in edge edit repaired the conspicuous thin/interrupted boundary grout. The corrected 3x3 grid reads continuously at both tested viewports, and 100% joins show continuous grout. Small edge colour/width differences remain; no pixel-perfect seamlessness claim. Left/right boundary mean fell22.171 to11.216, top/bottom49.996 to23.269; still4.96x internal P95 top/bottom. Preserve A as preferred continuous paving; review B at game scale.",
+      "colourBesideRoad": "Warm cream paving, neutral grey road and yellow-green lawn remain clearly separated; no strong cast-shadow stripe or blank edge.",
+      "screenshots": [
+        "qa/paving-main-b-1024.jpg",
+        "qa/paving-main-b-390.jpg",
+        "qa/paving-main-b-seams.jpg"
+      ],
+      "targetedEdit": "edit-prompt.json",
+      "previousVersion": "iterations/paving-main-b-v1/"
+    },
+    {
+      "name": "lawn-main-a",
+      "sha256": "8ec5bf2230d8d45eb5424f6622e6045170e4ef5909042578522984df79afc71a",
+      "status": "conditional",
+      "note": "Calm fine lawn with clover and sparse flowers. 3x3 has no conspicuous colour blocks at tested viewports. At 100% both wrapping directions show cut leaves and small abrupt texture changes. Candidate for distant game use only after integration review; not seamless at pixel scale.",
+      "colourBesideRoad": "Warm cream paving, neutral grey road and yellow-green lawn remain clearly separated; no strong cast-shadow stripe or blank edge.",
+      "screenshots": [
+        "qa/lawn-main-a-1024.jpg",
+        "qa/lawn-main-a-390.jpg",
+        "qa/lawn-main-a-seams.jpg"
+      ]
+    },
+    {
+      "name": "lawn-main-b",
+      "sha256": "1120b7eb02b5384da6658e766ba969942ab38c14e5c5143c5b5b3857ab4e089b",
+      "status": "conditional",
+      "note": "Slightly brighter, finer and denser lawn than A. 3x3 reads as an even surface at tested viewports and colour fits beside the road. At 100% cut grass/flowers and local discontinuities remain at both seams. Candidate for distant game use only after integration review; not seamless at pixel scale.",
+      "colourBesideRoad": "Warm cream paving, neutral grey road and yellow-green lawn remain clearly separated; no strong cast-shadow stripe or blank edge.",
+      "screenshots": [
+        "qa/lawn-main-b-1024.jpg",
+        "qa/lawn-main-b-390.jpg",
+        "qa/lawn-main-b-seams.jpg"
+      ]
+    }
+  ],
+  "initialGenerations": 4,
+  "targetedEditCalls": 1,
+  "proceduralSeamRepairs": 0
+}

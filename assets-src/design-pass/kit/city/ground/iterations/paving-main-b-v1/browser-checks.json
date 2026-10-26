@@ -1,0 +1,111 @@
+{
+  "date": "2026-10-26",
+  "browser": "Codex in-app browser",
+  "checks": [
+    {
+      "name": "paving-main-a",
+      "caption": "paving-main-a · 2048×2048 · 312002 bytes · непрозрачный sRGB",
+      "height": 768,
+      "image": {
+        "complete": true,
+        "height": 2048,
+        "width": 2048
+      },
+      "ready": "true",
+      "scrollWidth": 1009,
+      "width": 1024
+    },
+    {
+      "name": "paving-main-b",
+      "caption": "paving-main-b · 2048×2048 · 205632 bytes · непрозрачный sRGB",
+      "height": 768,
+      "image": {
+        "complete": true,
+        "height": 2048,
+        "width": 2048
+      },
+      "scrollWidth": 1009,
+      "width": 1024,
+      "ready": "true"
+    },
+    {
+      "name": "lawn-main-a",
+      "caption": "lawn-main-a · 2048×2048 · 753092 bytes · непрозрачный sRGB",
+      "height": 768,
+      "image": {
+        "complete": true,
+        "height": 2048,
+        "width": 2048
+      },
+      "ready": "true",
+      "scrollWidth": 1009,
+      "width": 1024
+    },
+    {
+      "name": "lawn-main-b",
+      "caption": "lawn-main-b · 2048×2048 · 904920 bytes · непрозрачный sRGB",
+      "height": 768,
+      "image": {
+        "complete": true,
+        "height": 2048,
+        "width": 2048
+      },
+      "ready": "true",
+      "scrollWidth": 1024,
+      "width": 1024
+    },
+    {
+      "name": "paving-main-a",
+      "caption": "paving-main-a · 2048×2048 · 312002 bytes · непрозрачный sRGB",
+      "height": 844,
+      "image": {
+        "complete": true,
+        "height": 2048,
+        "width": 2048
+      },
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "name": "paving-main-b",
+      "caption": "paving-main-b · 2048×2048 · 205632 bytes · непрозрачный sRGB",
+      "height": 844,
+      "image": {
+        "complete": true,
+        "height": 2048,
+        "width": 2048
+      },
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "name": "lawn-main-a",
+      "caption": "lawn-main-a · 2048×2048 · 753092 bytes · непрозрачный sRGB",
+      "height": 844,
+      "image": {
+        "complete": true,
+        "height": 2048,
+        "width": 2048
+      },
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    },
+    {
+      "name": "lawn-main-b",
+      "caption": "lawn-main-b · 2048×2048 · 904920 bytes · непрозрачный sRGB",
+      "height": 844,
+      "image": {
+        "complete": true,
+        "height": 2048,
+        "width": 2048
+      },
+      "ready": "true",
+      "scrollWidth": 390,
+      "width": 390
+    }
+  ],
+  "consoleErrors": []
+}

@@ -1,0 +1,251 @@
+{
+  "date": "2026-10-26",
+  "generationCalls": 5,
+  "repeatedGenerations": 0,
+  "screenshotNote": "CSS viewport verified from browser DOM; native JPEGs saved unmodified. Paving A and lawn A tablet viewport captures are1009x757, B variants1024x768. All phone captures390x844.",
+  "tests": {
+    "command": "npm test",
+    "testFiles": 17,
+    "passed": 88,
+    "failed": 0,
+    "stage": "Before image-only B edit; game source unchanged"
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0,
+    "stage": "Before image-only B edit; game source unchanged"
+  },
+  "assets": [
+    {
+      "name": "paving-main-a",
+      "hashesMatch": true,
+      "opaque": true,
+      "size": [
+        2048,
+        2048
+      ],
+      "colourSpace": "srgb",
+      "status": "pass-with-limitations",
+      "screenshots": [
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/paving-main-a-1024.jpg",
+          "rasterSize": [
+            1009,
+            757
+          ],
+          "verifiedCssViewport": [
+            1024,
+            768
+          ],
+          "fullPage": false,
+          "format": "jpeg",
+          "sha256": "187fc4ef04955926c3029bb3f22eec26ffbe15410bf7d2fb80c77a462cd0a252"
+        },
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/paving-main-a-390.jpg",
+          "rasterSize": [
+            390,
+            844
+          ],
+          "verifiedCssViewport": [
+            390,
+            844
+          ],
+          "fullPage": false,
+          "format": "jpeg",
+          "sha256": "29cafdeba0adf11b0e922fb4a0ccde2ab120a5eaf06f56a63c23bd85849b1fee"
+        },
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/paving-main-a-seams.jpg",
+          "rasterSize": [
+            1009,
+            1370
+          ],
+          "verifiedCssViewport": [
+            1024,
+            768
+          ],
+          "fullPage": true,
+          "format": "jpeg",
+          "sha256": "e303784fd6840897310e4d5847aa11410efc83600211fbef3c5b612df0d9ba05"
+        }
+      ],
+      "sourceSha256": "8e54585eac2bb9b37b6f7f9c0b692c8783a4151f41c7eb33ca19268e882b8565",
+      "sha256": "34462d7988cdc56a796d7a0fbf7f6bb3a2e671205cddb0736b681180199dd0a1"
+    },
+    {
+      "name": "paving-main-b",
+      "hashesMatch": true,
+      "opaque": true,
+      "size": [
+        2048,
+        2048
+      ],
+      "colourSpace": "srgb",
+      "status": "pass-with-limitations",
+      "screenshots": [
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/paving-main-b-1024.jpg",
+          "rasterSize": [
+            1024,
+            768
+          ],
+          "verifiedCssViewport": [
+            1024,
+            768
+          ],
+          "fullPage": false,
+          "format": "jpeg",
+          "sha256": "16323da12bce9e9f636258a5ddc58dc7c6923347f1b8af015c66fb4c056b4842"
+        },
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/paving-main-b-390.jpg",
+          "rasterSize": [
+            390,
+            844
+          ],
+          "verifiedCssViewport": [
+            390,
+            844
+          ],
+          "fullPage": false,
+          "format": "jpeg",
+          "sha256": "b72e310f35c8800252613175720df011a8a6d4462b1be3d26277eb86f90ec553"
+        },
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/paving-main-b-seams.jpg",
+          "rasterSize": [
+            1024,
+            1377
+          ],
+          "verifiedCssViewport": [
+            1024,
+            768
+          ],
+          "fullPage": true,
+          "format": "jpeg",
+          "sha256": "221d2353e9c7ff8c5d0829a9903573b0a2f1a81e9fc788181ae3591e777f56df"
+        }
+      ],
+      "sourceSha256": "a2df86010d7711bd58ee4e2a6e3e7f987eee7ceacb0a2e029ec182dc285eebb8",
+      "sha256": "bf1b03d19b080d29bc63570054333d4a4a0946fe3fd7514daad97cc6a528fd49"
+    },
+    {
+      "name": "lawn-main-a",
+      "hashesMatch": true,
+      "opaque": true,
+      "size": [
+        2048,
+        2048
+      ],
+      "colourSpace": "srgb",
+      "status": "conditional",
+      "screenshots": [
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/lawn-main-a-1024.jpg",
+          "rasterSize": [
+            1009,
+            757
+          ],
+          "verifiedCssViewport": [
+            1024,
+            768
+          ],
+          "fullPage": false,
+          "format": "jpeg",
+          "sha256": "9434074a71244533f8e318e54da85af9d32150a94cba4bd45acfd4651a552c55"
+        },
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/lawn-main-a-390.jpg",
+          "rasterSize": [
+            390,
+            844
+          ],
+          "verifiedCssViewport": [
+            390,
+            844
+          ],
+          "fullPage": false,
+          "format": "jpeg",
+          "sha256": "dc09a5d81354aa510dac27c10c213d87f100514117698e3d914e1e2aa457cac6"
+        },
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/lawn-main-a-seams.jpg",
+          "rasterSize": [
+            1009,
+            1370
+          ],
+          "verifiedCssViewport": [
+            1024,
+            768
+          ],
+          "fullPage": true,
+          "format": "jpeg",
+          "sha256": "dfe04722c0aebcdc662ec845e15121b9b5eb4c58b7f430b0b559ec83ce32e5d0"
+        }
+      ],
+      "sourceSha256": "f64409691e0fbcb7202be3f06cde41a59140c0c4dddf046e5648b3577b073db1",
+      "sha256": "8ec5bf2230d8d45eb5424f6622e6045170e4ef5909042578522984df79afc71a"
+    },
+    {
+      "name": "lawn-main-b",
+      "hashesMatch": true,
+      "opaque": true,
+      "size": [
+        2048,
+        2048
+      ],
+      "colourSpace": "srgb",
+      "status": "conditional",
+      "screenshots": [
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/lawn-main-b-1024.jpg",
+          "rasterSize": [
+            1024,
+            768
+          ],
+          "verifiedCssViewport": [
+            1024,
+            768
+          ],
+          "fullPage": false,
+          "format": "jpeg",
+          "sha256": "98bd99188cc2cd026332b82382d49b99ab4872b9d9ae50f958db238b52b3aad7"
+        },
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/lawn-main-b-390.jpg",
+          "rasterSize": [
+            390,
+            844
+          ],
+          "verifiedCssViewport": [
+            390,
+            844
+          ],
+          "fullPage": false,
+          "format": "jpeg",
+          "sha256": "46edde870760b50fa107c8429044a7792e5b6e525f6da025b9fd83e023001b87"
+        },
+        {
+          "path": "assets-src/design-pass/kit/city/ground/qa/lawn-main-b-seams.jpg",
+          "rasterSize": [
+            1024,
+            1377
+          ],
+          "verifiedCssViewport": [
+            1024,
+            768
+          ],
+          "fullPage": true,
+          "format": "jpeg",
+          "sha256": "946071c6fd8c07768a33717027690e5057f3987cadb29aa4b1e37c8a7770589c"
+        }
+      ],
+      "sourceSha256": "8fa3e2197840b962927e3c12f3bc594cbc8998d92714f38a01e8b2a001833a14",
+      "sha256": "1120b7eb02b5384da6658e766ba969942ab38c14e5c5143c5b5b3857ab4e089b"
+    }
+  ],
+  "initialGenerations": 4,
+  "targetedEditCalls": 1,
+  "postEditBuildVerified": true
+}

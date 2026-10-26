@@ -1,0 +1,88 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "intent": "generate",
+  "plannedCalls": 4,
+  "target": "CITY-KIT ground4",
+  "sourceReferencePolicy": "City-a, accepted city road-strip-a and farm grass-main-a inspected visually; new-generation calls omit referenced_image_paths. Cues described in prompts.",
+  "assets": [
+    {
+      "name": "paving-main-a",
+      "targetSize": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a seamless opaque square ground texture for a colourful, warm painterly mobile city game, final export2048x2048, covering an8x8 metre patch.\nCamera: strict orthographic TOP DOWN, looking vertically down. The image itself is a flat material tile, not a perspective scene. North is up, east right. Entire square is filled edge to edge with the material, full opacity.\nStyle: softly hand-painted game art matching cheerful cream-and-colour town buildings, light warm limestone sidewalks, warm gray asphalt and lively lawns. Soft rounded details, restrained grain, no black outlines and no photoreal noise.\nLighting: diffuse even daylight with only very subtle lower-left/SW surface highlights. No cast shadows of any objects, no vignette, no central spotlight, no directional brightness gradient across the tile.\nTiling: perfectly seamless repeat in BOTH axes; corresponding left/right and top/bottom edges must match in colour, texture scale, orientation and phase. Features crossing an edge continue on the opposite edge. Uniform distribution with no distinct central feature or outer border. Do not draw a sample grid, multiple texture swatches or a frame.\nNo text, labels, logos, watermarks, objects, props, buildings, road markings, pavement kerbs, dirt paths or perspective.\n\nMaterial: warm pale beige limestone paving with LARGE regular square slabs in a straight axis-aligned8 by8 grid. Exactly8 whole equal squares across and8 down, narrow soft sandy-beige joints; texture borders lie on the centre of joint lines so adjacent copies create ordinary joints. Full slabs, not cobblestones or bricks. Very subtle natural stone mottling and a few faint warm beige stains, gentle tiny rounded bevels, low contrast joints. Soft cream highlights, warm sand midtones, no heavy dark grout. Keep this suitable next to cream sandstone kerbs and neutral warm gray asphalt. Corners and edge joints match when repeated.\nProduce one finished square material image, requested resolution2048x2048.",
+        "transparent_background": false
+      }
+    },
+    {
+      "name": "paving-main-b",
+      "targetSize": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a seamless opaque square ground texture for a colourful, warm painterly mobile city game, final export2048x2048, covering an8x8 metre patch.\nCamera: strict orthographic TOP DOWN, looking vertically down. The image itself is a flat material tile, not a perspective scene. North is up, east right. Entire square is filled edge to edge with the material, full opacity.\nStyle: softly hand-painted game art matching cheerful cream-and-colour town buildings, light warm limestone sidewalks, warm gray asphalt and lively lawns. Soft rounded details, restrained grain, no black outlines and no photoreal noise.\nLighting: diffuse even daylight with only very subtle lower-left/SW surface highlights. No cast shadows of any objects, no vignette, no central spotlight, no directional brightness gradient across the tile.\nTiling: perfectly seamless repeat in BOTH axes; corresponding left/right and top/bottom edges must match in colour, texture scale, orientation and phase. Features crossing an edge continue on the opposite edge. Uniform distribution with no distinct central feature or outer border. Do not draw a sample grid, multiple texture swatches or a frame.\nNo text, labels, logos, watermarks, objects, props, buildings, road markings, pavement kerbs, dirt paths or perspective.\n\nMaterial: a second variation of the SAME large-square city paving: warm cream-beige limestone slabs on a straight axis-aligned8 by8 grid. Exactly8 equal complete squares each way, narrow soft sandy joints, tile borders centred on joint lines. Slightly warmer and smoother stone than variant A, understated varied pale honey/cream slabs with faint distributed wear, no pronounced damaged slab, dark patches or repeated landmarks. Low contrast soft seams, tiny rounded bevels and broad calm stone areas, compatible with cream kerbs and warm gray asphalt. Seam width, spacing and edge phases precisely match in both directions.\nProduce one finished square material image, requested resolution2048x2048.",
+        "transparent_background": false
+      }
+    },
+    {
+      "name": "lawn-main-a",
+      "targetSize": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a seamless opaque square ground texture for a colourful, warm painterly mobile city game, final export2048x2048, covering an8x8 metre patch.\nCamera: strict orthographic TOP DOWN, looking vertically down. The image itself is a flat material tile, not a perspective scene. North is up, east right. Entire square is filled edge to edge with the material, full opacity.\nStyle: softly hand-painted game art matching cheerful cream-and-colour town buildings, light warm limestone sidewalks, warm gray asphalt and lively lawns. Soft rounded details, restrained grain, no black outlines and no photoreal noise.\nLighting: diffuse even daylight with only very subtle lower-left/SW surface highlights. No cast shadows of any objects, no vignette, no central spotlight, no directional brightness gradient across the tile.\nTiling: perfectly seamless repeat in BOTH axes; corresponding left/right and top/bottom edges must match in colour, texture scale, orientation and phase. Features crossing an edge continue on the opposite edge. Uniform distribution with no distinct central feature or outer border. Do not draw a sample grid, multiple texture swatches or a frame.\nNo text, labels, logos, watermarks, objects, props, buildings, road markings, pavement kerbs, dirt paths or perspective.\n\nMaterial: lush tidy urban lawn, short fine yellow-green and natural green grass with small soft leaf clusters and occasional tiny clover leaves. Sparse very small cream-white and pale-yellow meadow flowers, each just a small accent among the grass, not large flowering bushes. Finer, shorter and more even than wild farm grass. Gentle painterly variation, densely filled but visually calm, no soil holes, paths, long shadows, large tufts or isolated dark spots. Uniform microdetail and colour on all four tile edges, natural seamless wrap.\nProduce one finished square material image, requested resolution2048x2048.",
+        "transparent_background": false
+      }
+    },
+    {
+      "name": "lawn-main-b",
+      "targetSize": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: a seamless opaque square ground texture for a colourful, warm painterly mobile city game, final export2048x2048, covering an8x8 metre patch.\nCamera: strict orthographic TOP DOWN, looking vertically down. The image itself is a flat material tile, not a perspective scene. North is up, east right. Entire square is filled edge to edge with the material, full opacity.\nStyle: softly hand-painted game art matching cheerful cream-and-colour town buildings, light warm limestone sidewalks, warm gray asphalt and lively lawns. Soft rounded details, restrained grain, no black outlines and no photoreal noise.\nLighting: diffuse even daylight with only very subtle lower-left/SW surface highlights. No cast shadows of any objects, no vignette, no central spotlight, no directional brightness gradient across the tile.\nTiling: perfectly seamless repeat in BOTH axes; corresponding left/right and top/bottom edges must match in colour, texture scale, orientation and phase. Features crossing an edge continue on the opposite edge. Uniform distribution with no distinct central feature or outer border. Do not draw a sample grid, multiple texture swatches or a frame.\nNo text, labels, logos, watermarks, objects, props, buildings, road markings, pavement kerbs, dirt paths or perspective.\n\nMaterial: a second variation of tidy urban lawn in the same palette: fine short grass, small rounded clover leaves and sparse tiny white/yellow flowers. Warm fresh green with a slightly lighter sunny yellow-green mix, still natural not neon, finer and more uniform than a wild meadow. Small painterly leaf shapes and soft mottling spread evenly, no identifiable patch in the centre, bare soil, path, stripes from mowing or tall clump. Seamless wrap in both axes with equal edge colours and detail density.\nProduce one finished square material image, requested resolution2048x2048.",
+        "transparent_background": false
+      }
+    }
+  ],
+  "references": [
+    {
+      "path": "assets-src/design-pass/variants/city-a.png",
+      "sha256": "d4b70219ba0bdb45888d6ef954507517554a25eef994b3ed0084a433f2cdb0b1"
+    },
+    {
+      "path": "assets-src/design-pass/kit/CITY-KIT.md",
+      "sha256": "c0d432f38fcdc50f58b5342b5d17c7159b943b982d127cca6bf3b741d859c409"
+    },
+    {
+      "path": "public/textures/kit/city/road-strip-a.webp",
+      "sha256": "503cef19b953034624678ff633910ba572fccbf0ac2aa15b1284f7053201de84"
+    },
+    {
+      "path": "public/textures/kit/farm/grass-main-a.webp",
+      "sha256": "a318c1bf8194af9f1bec881e6c5f63a3d5f3b2d253602fc9444ba879ca0ae831"
+    }
+  ]
+}

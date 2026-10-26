@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 1,
+  "status": "visually reviewed; see per-asset seam limitations",
+  "generationCalls": 5,
+  "initialGenerations": 4,
+  "targetedEditCalls": 1,
+  "repeatedGenerations": 0,
+  "artworkEdits": 1,
+  "processing": "Resize/encode only. No periodic blending, mirroring, colour correction, procedural drawing or painted seam repair.",
+  "kitJsonOwner": "main; never written here",
+  "totalBytes": 2166034,
+  "assets": [
+    {
+      "name": "paving-main-a",
+      "path": "public/textures/kit/city/paving-main-a.webp",
+      "size": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "bytes": 312002,
+      "sha256": "34462d7988cdc56a796d7a0fbf7f6bb3a2e671205cddb0736b681180199dd0a1",
+      "source": "assets-src/design-pass/kit/city/sources/paving-main-a.png",
+      "sourceSha256": "8e54585eac2bb9b37b6f7f9c0b692c8783a4151f41c7eb33ca19268e882b8565",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "opaque": true,
+      "transform": {
+        "operation": "uniform Lanczos resize, sRGB conversion, WebP encoding only",
+        "scale": 1.633174,
+        "upscaled": true,
+        "proceduralSeamEdits": false,
+        "sourceImageEdits": 0
+      },
+      "meanRGB": [
+        232.383674,
+        207.591161,
+        171.855447
+      ],
+      "edgeBandPixels": 32,
+      "edgeMeanRGB": {
+        "left": [
+          228.055649,
+          202.339233,
+          166.416428
+        ],
+        "right": [
+          224.109924,
+          199.197632,
+          164.511154
+        ],
+        "top": [
+          227.551956,
+          202.777435,
+          167.137634
+        ],
+        "bottom": [
+          225.333694,
+          199.776382,
+          164.025589
+        ]
+      },
+      "seams": {
+        "method": "First/last line absolute RGB differences compared with internal adjacent-line mean distribution at encoded2048 resolution. Diagnostic only; not a perceptual or seamlessness guarantee.",
+        "leftRight": {
+          "boundaryMean": 14.527507,
+          "boundaryMax": 62,
+          "interiorMedian": 1.349284,
+          "interiorP95": 7.431966,
+          "boundaryToP95": 1.954733,
+          "pixelIdentical": false
+        },
+        "topBottom": {
+          "boundaryMean": 14.011719,
+          "boundaryMax": 57,
+          "interiorMedian": 1.362793,
+          "interiorP95": 7.073242,
+          "boundaryToP95": 1.980947,
+          "pixelIdentical": false
+        }
+      },
+      "visualReview": {
+        "status": "pass-with-limitations",
+        "note": "Preferred paving candidate. Regular warm cream grid reads continuously in 3x3 at both tested viewports; no empty boundary or large colour jump. At 100% the grout thickness/phase is slightly uneven. Edges are not pixel-identical; no mathematical seamlessness claim.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "paving-main-b",
+      "path": "public/textures/kit/city/paving-main-b.webp",
+      "size": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "bytes": 196020,
+      "sha256": "bf1b03d19b080d29bc63570054333d4a4a0946fe3fd7514daad97cc6a528fd49",
+      "source": "assets-src/design-pass/kit/city/sources/paving-main-b.png",
+      "sourceSha256": "a2df86010d7711bd58ee4e2a6e3e7f987eee7ceacb0a2e029ec182dc285eebb8",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "opaque": true,
+      "transform": {
+        "operation": "uniform Lanczos resize, sRGB conversion, WebP encoding only",
+        "scale": 1.633174,
+        "upscaled": true,
+        "proceduralSeamEdits": false,
+        "sourceImageEdits": 1
+      },
+      "meanRGB": [
+        235.736688,
+        208.186444,
+        169.906883
+      ],
+      "edgeBandPixels": 32,
+      "edgeMeanRGB": {
+        "left": [
+          227.159714,
+          199.734879,
+          162.555801
+        ],
+        "right": [
+          226.984741,
+          200.468933,
+          164.373917
+        ],
+        "top": [
+          227.269424,
+          198.640228,
+          160.001007
+        ],
+        "bottom": [
+          226.195999,
+          200.124039,
+          164.652328
+        ]
+      },
+      "seams": {
+        "method": "First/last line absolute RGB differences compared with internal adjacent-line mean distribution at encoded2048 resolution. Diagnostic only; not a perceptual or seamlessness guarantee.",
+        "leftRight": {
+          "boundaryMean": 11.21582,
+          "boundaryMax": 46,
+          "interiorMedian": 0.83431,
+          "interiorP95": 4.868652,
+          "boundaryToP95": 2.303681,
+          "pixelIdentical": false
+        },
+        "topBottom": {
+          "boundaryMean": 23.26888,
+          "boundaryMax": 59,
+          "interiorMedian": 0.81543,
+          "interiorP95": 4.687337,
+          "boundaryToP95": 4.9642,
+          "pixelIdentical": false
+        }
+      },
+      "visualReview": {
+        "status": "pass-with-limitations",
+        "note": "One targeted built-in edge edit repaired the conspicuous thin/interrupted boundary grout. The corrected 3x3 grid reads continuously at both tested viewports, and 100% joins show continuous grout. Small edge colour/width differences remain; no pixel-perfect seamlessness claim. Left/right boundary mean fell22.171 to11.216, top/bottom49.996 to23.269; still4.96x internal P95 top/bottom. Preserve A as preferred continuous paving; review B at game scale.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "lawn-main-a",
+      "path": "public/textures/kit/city/lawn-main-a.webp",
+      "size": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "bytes": 753092,
+      "sha256": "8ec5bf2230d8d45eb5424f6622e6045170e4ef5909042578522984df79afc71a",
+      "source": "assets-src/design-pass/kit/city/sources/lawn-main-a.png",
+      "sourceSha256": "f64409691e0fbcb7202be3f06cde41a59140c0c4dddf046e5648b3577b073db1",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "opaque": true,
+      "transform": {
+        "operation": "uniform Lanczos resize, sRGB conversion, WebP encoding only",
+        "scale": 1.633174,
+        "upscaled": true,
+        "proceduralSeamEdits": false,
+        "sourceImageEdits": 0
+      },
+      "meanRGB": [
+        129.80797,
+        168.361742,
+        34.658649
+      ],
+      "edgeBandPixels": 32,
+      "edgeMeanRGB": {
+        "left": [
+          131.906708,
+          170.680511,
+          36.523193
+        ],
+        "right": [
+          129.508713,
+          168.823944,
+          33.977295
+        ],
+        "top": [
+          126.758347,
+          167.63504,
+          33.059464
+        ],
+        "bottom": [
+          129.565277,
+          168.494003,
+          34.370789
+        ]
+      },
+      "seams": {
+        "method": "First/last line absolute RGB differences compared with internal adjacent-line mean distribution at encoded2048 resolution. Diagnostic only; not a perceptual or seamlessness guarantee.",
+        "leftRight": {
+          "boundaryMean": 20.790853,
+          "boundaryMax": 129,
+          "interiorMedian": 6.263021,
+          "interiorP95": 7.645182,
+          "boundaryToP95": 2.719471,
+          "pixelIdentical": false
+        },
+        "topBottom": {
+          "boundaryMean": 18.544271,
+          "boundaryMax": 118,
+          "interiorMedian": 5.191732,
+          "interiorP95": 6.652507,
+          "boundaryToP95": 2.787561,
+          "pixelIdentical": false
+        }
+      },
+      "visualReview": {
+        "status": "conditional",
+        "note": "Calm fine lawn with clover and sparse flowers. 3x3 has no conspicuous colour blocks at tested viewports. At 100% both wrapping directions show cut leaves and small abrupt texture changes. Candidate for distant game use only after integration review; not seamless at pixel scale.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "lawn-main-b",
+      "path": "public/textures/kit/city/lawn-main-b.webp",
+      "size": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "bytes": 904920,
+      "sha256": "1120b7eb02b5384da6658e766ba969942ab38c14e5c5143c5b5b3857ab4e089b",
+      "source": "assets-src/design-pass/kit/city/sources/lawn-main-b.png",
+      "sourceSha256": "8fa3e2197840b962927e3c12f3bc594cbc8998d92714f38a01e8b2a001833a14",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "opaque": true,
+      "transform": {
+        "operation": "uniform Lanczos resize, sRGB conversion, WebP encoding only",
+        "scale": 1.633174,
+        "upscaled": true,
+        "proceduralSeamEdits": false,
+        "sourceImageEdits": 0
+      },
+      "meanRGB": [
+        131.63347,
+        171.243714,
+        37.41516
+      ],
+      "edgeBandPixels": 32,
+      "edgeMeanRGB": {
+        "left": [
+          127.371399,
+          168.201324,
+          43.049957
+        ],
+        "right": [
+          128.194519,
+          169.523514,
+          40.194839
+        ],
+        "top": [
+          132.863617,
+          173.642471,
+          36.229523
+        ],
+        "bottom": [
+          135.239304,
+          174.108932,
+          37.183594
+        ]
+      },
+      "seams": {
+        "method": "First/last line absolute RGB differences compared with internal adjacent-line mean distribution at encoded2048 resolution. Diagnostic only; not a perceptual or seamlessness guarantee.",
+        "leftRight": {
+          "boundaryMean": 21.107422,
+          "boundaryMax": 189,
+          "interiorMedian": 8.080404,
+          "interiorP95": 9.625651,
+          "boundaryToP95": 2.192831,
+          "pixelIdentical": false
+        },
+        "topBottom": {
+          "boundaryMean": 20.611328,
+          "boundaryMax": 153,
+          "interiorMedian": 6.532878,
+          "interiorP95": 8.072103,
+          "boundaryToP95": 2.553403,
+          "pixelIdentical": false
+        }
+      },
+      "visualReview": {
+        "status": "conditional",
+        "note": "Slightly brighter, finer and denser lawn than A. 3x3 reads as an even surface at tested viewports and colour fits beside the road. At 100% cut grass/flowers and local discontinuities remain at both seams. Candidate for distant game use only after integration review; not seamless at pixel scale.",
+        "record": "qa-review.json"
+      }
+    }
+  ]
+}
