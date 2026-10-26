@@ -91,7 +91,8 @@
         "preserve cellOf/tap mapping; fixed two-by-two GLB not a general variable grid",
         "keep code-driven indicator; static red pixel on reference is not a functional lamp",
         "door separate or code; current constructor displays it open, no swing animation to claim"
-      ]
+      ],
+      "integrationDecision": "Claude m0417 prefers low tray rim below rotating tile swept volume rather than a larger opening"
     },
     {
       "name": "safety-press",
@@ -280,7 +281,7 @@
         "floor lamps"
       ],
       "clearance": "Open front and shaft over full cabin travel; sparse mesh must preserve real openings.",
-      "runtimeNote": "Do not infer collision or triangle budget from image; inspect generated mesh before acceptance.",
+      "runtimeNote": "Generate/extract static tower only. Cabin visible in PNG is a reference for clearance, not part of the delivered GLB. Integration must be factory-only.",
       "runtimeGeometry": {
         "towerCentreZ": -0.25,
         "cabinCentreZ": -0.23,
@@ -358,15 +359,24 @@
       },
       "acceptanceCases": [
         "bottom/middle/top travel, entire shell envelope clear of mesh and guide rails",
-        "roof must be separately hideable if model replaces Lift globally; farm calls driver=false for kitten",
-        "alternative is factory-only visual; explicitly preserve original farm Lift, integrator chooses",
+        "factory-only skin selected by integrator; farm Lift and driver=false kitten behavior remain unchanged",
+        "GLB static shaft contains no baked cabin, rope or pulley; existing code supplies these",
         "cabinFloor() world location unchanged so rider follows platform",
         "pulley and rope must remain animated separately; static reference top motor is decor only",
         "inspect existing roof/top shell overlap in real mesh rather than inheriting it as desired tolerance"
+      ],
+      "integrationDecision": "Claude m0417: factory-only skin; preserve original farm Lift; cabin/rope/pulley remain code.",
+      "deliveryExclude": [
+        "cabin",
+        "passenger",
+        "cabin window",
+        "rope",
+        "pulley",
+        "floor lamps"
       ]
     }
   ],
-  "integrationDecision": "Claude m0410; 2026-10-26",
+  "integrationDecision": "Claude m0410 + m0417;2026-10-26",
   "coordinateBasis": {
     "space": "Part.root local; absolute Y includes PLATE_TOP=0.16 unless named relative",
     "plateTop": 0.16,
