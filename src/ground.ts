@@ -282,9 +282,12 @@ const PAINTED = `
     // Earth brown, not the red-orange the day grading makes of it.
     soil = mix(vec3(dot(soil, vec3(0.2126, 0.7152, 0.0722))), soil, 0.7) * vec3(0.92, 0.94, 1.0);
     // (Linear light: deep amber between the rows, ripe gold on them; after the browning above.)
-    float row = smoothstep(0.25, 0.75, 0.5 + 0.5 * sin(p.x * 6.0 + gNoise(p * 0.8) * 1.5));
-    vec3 gold = mix(vec3(0.3, 0.13, 0.015), vec3(0.66, 0.4, 0.05), row) * (0.85 + gNoise(p * 3.0) * 0.3);
-    soil = mix(soil, gold, wheat * 0.8);
+    // Gentle rows (low contrast), broken along their length by short stalk clumps, some earth showing between.
+    float row = smoothstep(0.2, 0.8, 0.5 + 0.5 * sin(p.x * 6.0 + gNoise(p * 0.8) * 1.5));
+    float clumps = gFbm(vec2(p.x * 2.2, p.y * 1.1) + 31.0);
+    vec3 gold = mix(vec3(0.42, 0.22, 0.03), vec3(0.6, 0.36, 0.05), row * 0.6 + clumps * 0.4) * (0.92 + gFbm(p * 1.5 + 7.0) * 0.12);
+    float cover = wheat * mix(0.45, 0.78, smoothstep(0.3, 0.7, clumps)) * mix(0.8, 1.0, row);
+    soil = mix(soil, gold, cover);
   } else soil *= 0.82 + 0.18 * smoothstep(-0.6, 0.6, sin(p.x * 5.2 + gNoise(p * 1.3) * 1.2));
   col = mix(col, soil, bed);
   // Mud: a ragged churned edge, darker and wet towards the middle, puddles that shine.
