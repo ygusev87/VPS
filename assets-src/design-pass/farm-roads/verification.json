@@ -1,0 +1,64 @@
+{
+  "status": "pass",
+  "revision": "293df34e91649ec27bd49581f4aac414d0273615",
+  "candidateSourceSha256": "df23f2c9ad83d7cd069090dbe932d10ec4279131573cdca34fe9d72050689f5c",
+  "views": [
+    {
+      "viewport": [
+        1180,
+        820
+      ],
+      "tasksCompared": 17,
+      "terminalsPerTask": 32,
+      "workingContoursPerTask": 18,
+      "cameraAndWorldAndScreenCoordinatesIdentical": true,
+      "proceduralFlowerBatches": 8,
+      "proceduralFlowerCount": 80
+    },
+    {
+      "viewport": [
+        390,
+        844
+      ],
+      "tasksCompared": 17,
+      "terminalsPerTask": 32,
+      "workingContoursPerTask": 18,
+      "cameraAndWorldAndScreenCoordinatesIdentical": true,
+      "proceduralFlowerBatches": 8,
+      "proceduralFlowerCount": 80
+    },
+    {
+      "viewport": [
+        1024,
+        768
+      ],
+      "tasksCompared": 17,
+      "terminalsPerTask": 32,
+      "workingContoursPerTask": 18,
+      "cameraAndWorldAndScreenCoordinatesIdentical": true,
+      "proceduralFlowerBatches": 8,
+      "proceduralFlowerCount": 80
+    }
+  ],
+  "totalTaskViews": 102,
+  "retainedInstances": 686,
+  "renderStatesBeforeAfter": {
+    "before": [
+      1430795,
+      2267987,
+      2858673,
+      3695865
+    ],
+    "after": [
+      1430795,
+      2267987,
+      2858673,
+      3695865
+    ]
+  },
+  "sceneAndShadowsTriangles": 2267987,
+  "fullFrameTriangles": 3695865,
+  "geometry": "All212 mesh position/index hashes equal;8 batches of80 unseeded procedural flowers differ in placement between native loads, total count unchanged. No claim of a pixel-identical scene.",
+  "checks": "21 tests/typecheck pass in candidate snapshot; unchanged native layout validator pass in road-pass.",
+  "deviceLimitations": "Browser viewport checks; real iPad/PWA/FPS and full gameplay robot remain integrator checks."
+}

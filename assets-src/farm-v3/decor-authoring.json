@@ -479,7 +479,7 @@
           -4
         ]
       ],
-      "width": 2.0
+      "width": 1.4
     },
     {
       "name": "barn-entry",
@@ -497,7 +497,7 @@
           -20.8
         ]
       ],
-      "width": 1.8
+      "width": 1.4
     },
     {
       "name": "kitten-lift",
@@ -511,7 +511,7 @@
           -16
         ]
       ],
-      "width": 1.6
+      "width": 1.0
     },
     {
       "name": "farmhouse-porch",
@@ -525,7 +525,7 @@
           -21
         ]
       ],
-      "width": 1.8
+      "width": 1.0
     },
     {
       "name": "rabbit-entry",
@@ -539,7 +539,7 @@
           -12.5
         ]
       ],
-      "width": 1.6
+      "width": 1.2
     },
     {
       "name": "dog-entry",
@@ -557,7 +557,7 @@
           -13.8
         ]
       ],
-      "width": 1.6
+      "width": 1.2
     },
     {
       "name": "hen-entry",
@@ -571,7 +571,7 @@
           -19.4
         ]
       ],
-      "width": 1.6
+      "width": 1.2
     },
     {
       "name": "nest-entry",
@@ -589,7 +589,7 @@
           -14
         ]
       ],
-      "width": 1.8
+      "width": 1.2
     },
     {
       "name": "hill-entry",
@@ -611,7 +611,7 @@
           -22
         ]
       ],
-      "width": 1.8
+      "width": 1.2
     },
     {
       "name": "horse-yard",
@@ -645,7 +645,7 @@
           2.5
         ]
       ],
-      "width": 1.8
+      "width": 1.4
     },
     {
       "name": "courtyard",
@@ -667,7 +667,7 @@
           13
         ]
       ],
-      "width": 1.8
+      "width": 1.2
     },
     {
       "name": "south-loop",
@@ -693,7 +693,7 @@
           13
         ]
       ],
-      "width": 1.8
+      "width": 1.4
     },
     {
       "name": "orchard-entry",
@@ -707,7 +707,7 @@
           25
         ]
       ],
-      "width": 1.6
+      "width": 1.2
     },
     {
       "name": "apiary-entry",
@@ -721,7 +721,7 @@
           23
         ]
       ],
-      "width": 1.6
+      "width": 1.2
     },
     {
       "name": "garden-north",
@@ -739,7 +739,7 @@
           26
         ]
       ],
-      "width": 1.6
+      "width": 1.2
     },
     {
       "name": "garden-cross",
@@ -753,7 +753,7 @@
           26
         ]
       ],
-      "width": 1.4
+      "width": 1.0
     },
     {
       "name": "garden-south",
@@ -767,7 +767,7 @@
           35.5
         ]
       ],
-      "width": 1.6
+      "width": 1.2
     },
     {
       "name": "shed-entry",
@@ -781,7 +781,7 @@
           26
         ]
       ],
-      "width": 1.8
+      "width": 1.4
     },
     {
       "name": "tractor-gate",
@@ -795,7 +795,7 @@
           21
         ]
       ],
-      "width": 1.8
+      "width": 1.4
     }
   ],
   "pens": [

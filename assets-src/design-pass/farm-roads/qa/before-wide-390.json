@@ -1,0 +1,3027 @@
+{
+  "source": {
+    "revision": "293df34e91649ec27bd49581f4aac414d0273615",
+    "mode": "before",
+    "hashes": {
+      "src/farm-decor.ts": "a2009f5730edb1a860fa2fba587b4e6bfe83ff5c64f2a1df2907c007fb1367ef",
+      "src/decor.ts": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342",
+      "src/traces.ts": "84e68749d7e99360952adadd0bd216ebcdbbddd2668703643e2936e77cf62274",
+      "src/ground.ts": "5701a8451b206c576b2addc1ea7ac5bcab4810201263b31ad7cd2008a80d1cb1",
+      "src/fx.ts": "389ad414e98d1b84e773f5a1217a2abd462008d2810264c106086997561a1414",
+      "src/main.ts": "ea4d4ff3b6650438694c0c10bce4706d8eb84824cb6c87eab36b8ab56824c6dd",
+      "src/city-decor.ts": "94fcc0dcfe2bd08b53c2bf3dee8cfbcdab334137122e86c7fa41a05d23e98924",
+      "src/levels.ts": "7a61cf1a434ef91a613df7d3d897633a63d0f01cddcf55a342c3a79793799e5f",
+      "src/stage.ts": "a70d990075a5898867bd5a59e7dacde73f7e2e2f7ee501382958fc638bf1998f",
+      "src/hints.ts": "ec815709ea23c0694c45d79131429596875a9e889b308dbd6508d9312992cfab",
+      "src/audio.ts": "6a576c13fe5b9a7cf3d6f6d6ac33e645383176a2c66491431e740d45b7943229",
+      "src/hud.ts": "6cccc5715195caab1044d1d55086af1cb8f03290b31de2c9121050d71b0d666c",
+      "src/input.ts": "1d4303d15fd76f7bb4eca486fe895319582de76a8786906c6ed9c8f76f7ab52f",
+      "src/saves.ts": "c93ccd6f92737ac04a95daad1858af2af47927987004d6ee03d4f6975e946b6b",
+      "src/storage.ts": "0e605d658702b95d792546559684280272aeeef23ec26a4e0f55f3c501916cd3",
+      "src/thumbs.ts": "8dddc1cf9cf3add5d21aca35e7f113ddfdf4a01a1c55625011ef277a6d397d2b",
+      "src/life.ts": "6342bbf585a792760380c4a4ec56ff69621cc9d3542255e89c86c5aa21c110a8",
+      "src/wires.ts": "c6f2a6b96791cd974b4bec5f1bf26754eff2b1e9327e07a22280ea19e0457c73",
+      "src/bend.ts": "fe6c3d984e159d72758f8148d34c1c0bc43e085fbda257711a61d96ad1c9ab5d",
+      "src/voice.ts": "f82a92fcdfd3b6bcb635e0ab4317737c4f66334416ae8984269ef412024a06f2",
+      "src/album.ts": "37915dc4b3d125b517c3ab9d4ecc07ae92c229282b07a75637f0b6b5ec180336",
+      "src/factory.ts": "30da8c0fc0aae40916de57d315ed0357947c37399625cd37de3c90a907df26ad",
+      "src/rig.ts": "a2308bc1c15256f5b123dea34aca70a5f8393b6437aaac05b024a71fe8e27d74",
+      "src/vite-env.d.ts": "ac9a146097010b2f79fee6fb001d0efcf5eed1a366124171d870b51d320fc5f1",
+      "src/style.css": "9c270d89d5f8e4f249d98b3fd6e33dae75c90b8548087d5809be367b27271825",
+      "src/farm.ts": "faff58451d23d89d2620bb9cc6ecc61944c1c581ce2886694d38e615dc343449",
+      "src/machines.ts": "1f2e104a080c6f05a51e32c7141e75583282da54d29cb87432b59072b4e1d8e5",
+      "src/pest.ts": "cb38aa96a857defc6c53f615676713ff7629895d591effc6e7a8a17cf774dbb5",
+      "src/audio.test.ts": "ca4a215acb58990714de72dcc61936d9e9ed19897377ec93efe66982328de5d8",
+      "src/theme.ts": "3b0c6d60df06bd624c767bccaf197932a93f379f890cf36bd3cb74922348585e",
+      "src/storymap.ts": "170333b2820f4fbda5cf1c2d09c3a65dfa69e759d23f3efd57fe10c21290dcfb",
+      "src/shelf.ts": "f30bf1c15f7baed41d9dbc8095b6e751bc605108fb4bc90f098c75d9413e52f2",
+      "src/world.ts": "11480f58ff6d81baf224f8fa70e59a33bb0e15083b2ff30e1404d4db1cd115ac",
+      "src/perf.ts": "09b0d28be9cf1c5dfe116ad19216fba70733f171e6b7a162fd6df90a9507b05e",
+      "src/city.ts": "4aaa6515d6800936f012a823517e9078e2b95114ea9b4092e8bc5d937cc7e85a",
+      "src/circuit/solver.test.ts": "173e67ccde72ae83fe697042dc7dda972b462613e6596704ee2420568fe2fc9f",
+      "src/circuit/solver.ts": "33ed156accb4085b1dac494f4203acf0fb782a3e5a9dc625f5f98b87cd814fa4",
+      "src/parts/base.ts": "d571fc597e53eaf04256e84b707c11557fb09b6162391698a602c2143806aecf",
+      "src/parts/beam.ts": "a5c0bf653734ebd93ef5608091ca3e8ce07cc8ee3cf0cb501f0e0f0cbef0f36d",
+      "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+      "src/parts/more.ts": "d9f4fc117ab64a748844847f7bbd3767718c7b9755126dd93b6e2f44f37bdd74",
+      "src/parts/factory.ts": "0e1a8aee0fb26dd0037178bfb58d5c2a290a3d689e28063d60b99c12d7fa262d",
+      "src/parts/wind.ts": "779a9dfb12bc46b2f8715d0731eeafd5d7da0f0476ea8d1936c318d7907cdf96",
+      "src/parts/mech.ts": "74886b941f819264e1b78fb4ae6b6faa4e0b6641a273b779ef071795f6432973",
+      "src/parts/farm.ts": "40d2d5266b3da12f6065844b4298a92bc2a4b3a53223011c6cb6b147bd2a3861",
+      "src/parts/chain.ts": "1ff393ec53f8e24c5d20d67f410ed89f05fa413cbeabfbe9a3498eca5735fabc",
+      "src/parts/models.ts": "6e0f2d9bad7c0cd71ae14c603baec9bfb2e78d599fe927f6a1023e70cceb3069",
+      "src/parts/fun.ts": "ac5cb3cfc89da7b3df58f1d679d0a1625b029145c557a683a1c408ce4ae6b7c3",
+      "src/parts/tester.ts": "7a61400ce5b6ee4b09bd7de679e9d13d38740969e99b7537632304ea01a4e935",
+      "src/parts/toys.ts": "5c855e501bea46ee8b45f884985eb292341870aaa98f1d08610eea4733a63f0a",
+      "src/parts/band.ts": "0a2e4210219fcf97e0d5eac75f3d13e1d368e7ab65edadf2e7e406dfdd992a49",
+      "src/parts/kit.ts": "32edbaa0e6375aea7c96994014cba9e91d7690a1bb2887c32cad3cf9f52b6509",
+      "src/parts/factory.test.ts": "e94133d8057706a0b877bcae9961ace6205ab90742e4e3631117b411311077a7",
+      "src/parts/extra.ts": "762ae4b68c6f3ae1b38e2bc34e355c042a5e036b7e0730b6abcaafcb53f1a75a",
+      "src/parts/city.ts": "ba2741fd3bb5f685408aa99d47ba89e26c8b404fd9b60c7f1a1b519d3e3dbc6b",
+      "src/parts/catalog.ts": "699d9e82d82b54e5725f7aa0f5645a3de848db16c4a91307c48206af85f55905",
+      "src/parts/beam.test.ts": "bd55e699cd197c6687119e1d00b2a1a8d1ca99639c8c53979d7e7ab06af3179f"
+    }
+  },
+  "viewport": [
+    390,
+    844
+  ],
+  "area": "wide",
+  "paths": [
+    {
+      "points": [
+        [
+          -38.5,
+          -19
+        ],
+        [
+          -29,
+          -19
+        ],
+        [
+          -29,
+          -12
+        ],
+        [
+          -8,
+          -12
+        ],
+        [
+          -8,
+          -9
+        ],
+        [
+          32,
+          -9
+        ],
+        [
+          32,
+          13
+        ],
+        [
+          -28,
+          13
+        ],
+        [
+          -28,
+          -4
+        ],
+        [
+          -47,
+          -4
+        ]
+      ],
+      "width": 2
+    },
+    {
+      "points": [
+        [
+          -29,
+          -19
+        ],
+        [
+          -16,
+          -19
+        ],
+        [
+          -16,
+          -20.8
+        ]
+      ],
+      "width": 1.8
+    },
+    {
+      "points": [
+        [
+          -19,
+          -19
+        ],
+        [
+          -19,
+          -16
+        ]
+      ],
+      "width": 1.6
+    },
+    {
+      "points": [
+        [
+          -38.5,
+          -19
+        ],
+        [
+          -38.5,
+          -21
+        ]
+      ],
+      "width": 1.8
+    },
+    {
+      "points": [
+        [
+          -43,
+          -4
+        ],
+        [
+          -43,
+          -12.5
+        ]
+      ],
+      "width": 1.6
+    },
+    {
+      "points": [
+        [
+          -34,
+          -4
+        ],
+        [
+          -34,
+          -11
+        ],
+        [
+          -38.5,
+          -13.8
+        ]
+      ],
+      "width": 1.6
+    },
+    {
+      "points": [
+        [
+          7,
+          -9
+        ],
+        [
+          7,
+          -19.4
+        ]
+      ],
+      "width": 1.6
+    },
+    {
+      "points": [
+        [
+          7,
+          -12
+        ],
+        [
+          16,
+          -12
+        ],
+        [
+          16,
+          -14
+        ]
+      ],
+      "width": 1.8
+    },
+    {
+      "points": [
+        [
+          32,
+          -9
+        ],
+        [
+          38,
+          -14
+        ],
+        [
+          44,
+          -17
+        ],
+        [
+          44,
+          -22
+        ]
+      ],
+      "width": 1.8
+    },
+    {
+      "points": [
+        [
+          32,
+          13
+        ],
+        [
+          36,
+          13
+        ],
+        [
+          36,
+          18
+        ],
+        [
+          39,
+          18
+        ],
+        [
+          39,
+          13
+        ],
+        [
+          42,
+          7
+        ],
+        [
+          42,
+          2.5
+        ]
+      ],
+      "width": 1.8
+    },
+    {
+      "points": [
+        [
+          -8,
+          -9
+        ],
+        [
+          -8.5,
+          -2
+        ],
+        [
+          -8.5,
+          10
+        ],
+        [
+          0,
+          13
+        ]
+      ],
+      "width": 1.8
+    },
+    {
+      "points": [
+        [
+          -28,
+          13
+        ],
+        [
+          -28,
+          35.5
+        ],
+        [
+          36,
+          35.5
+        ],
+        [
+          36,
+          13
+        ],
+        [
+          32,
+          13
+        ]
+      ],
+      "width": 1.8
+    },
+    {
+      "points": [
+        [
+          -28,
+          25
+        ],
+        [
+          -36,
+          25
+        ]
+      ],
+      "width": 1.6
+    },
+    {
+      "points": [
+        [
+          -20,
+          13
+        ],
+        [
+          -20,
+          23
+        ]
+      ],
+      "width": 1.6
+    },
+    {
+      "points": [
+        [
+          3,
+          13
+        ],
+        [
+          3,
+          26
+        ],
+        [
+          -1,
+          26
+        ]
+      ],
+      "width": 1.6
+    },
+    {
+      "points": [
+        [
+          3,
+          26
+        ],
+        [
+          15,
+          26
+        ]
+      ],
+      "width": 1.4
+    },
+    {
+      "points": [
+        [
+          11,
+          26
+        ],
+        [
+          11,
+          35.5
+        ]
+      ],
+      "width": 1.6
+    },
+    {
+      "points": [
+        [
+          36,
+          26
+        ],
+        [
+          38.5,
+          26
+        ]
+      ],
+      "width": 1.8
+    },
+    {
+      "points": [
+        [
+          30,
+          13
+        ],
+        [
+          30,
+          21
+        ]
+      ],
+      "width": 1.8
+    }
+  ],
+  "decorInstances": 686,
+  "geometry": [
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "1a2c60c5",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 900,
+      "positionHash": "c4690395",
+      "indices": 0,
+      "indexHash": null,
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 900,
+      "positionHash": "c4690395",
+      "indices": 0,
+      "indexHash": null,
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 900,
+      "positionHash": "f1755afd",
+      "indices": 0,
+      "indexHash": null,
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 900,
+      "positionHash": "f1755afd",
+      "indices": 0,
+      "indexHash": null,
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "6f3df85",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 50,
+      "positionHash": "38536041",
+      "indices": 144,
+      "indexHash": "dcc7815",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 50,
+      "positionHash": "38536041",
+      "indices": 144,
+      "indexHash": "dcc7815",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 50,
+      "positionHash": "38536041",
+      "indices": 144,
+      "indexHash": "dcc7815",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 50,
+      "positionHash": "38536041",
+      "indices": 144,
+      "indexHash": "dcc7815",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "e5f7a6e5",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5992,
+      "positionHash": "6d4f7169",
+      "indices": 24000,
+      "indexHash": "b380c46a",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5992,
+      "positionHash": "6d4f7169",
+      "indices": 24000,
+      "indexHash": "b380c46a",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5992,
+      "positionHash": "6d4f7169",
+      "indices": 24000,
+      "indexHash": "b380c46a",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 100,
+      "positionHash": "812ff8e5",
+      "indices": 192,
+      "indexHash": "48a14415",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5463,
+      "positionHash": "2966c402",
+      "indices": 22506,
+      "indexHash": "4dbe1c3c",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5356,
+      "positionHash": "c2b2b38c",
+      "indices": 21714,
+      "indexHash": "c1f9b5e2",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 165,
+      "positionHash": "2445310b",
+      "indices": 756,
+      "indexHash": "6abf890f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 165,
+      "positionHash": "2445310b",
+      "indices": 756,
+      "indexHash": "6abf890f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 165,
+      "positionHash": "2445310b",
+      "indices": 756,
+      "indexHash": "6abf890f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 36,
+      "positionHash": "c3b6dead",
+      "indices": 0,
+      "indexHash": null,
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 36,
+      "positionHash": "f5aa1d99",
+      "indices": 0,
+      "indexHash": null,
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 2733,
+      "positionHash": "f78ea37d",
+      "indices": 8082,
+      "indexHash": "8f3f9cb9",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 10619,
+      "positionHash": "5d9ec8f6",
+      "indices": 40668,
+      "indexHash": "bb71a0f1",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "SkinnedMesh",
+      "positions": 5662,
+      "positionHash": "ffcffb76",
+      "indices": 23997,
+      "indexHash": "593a1a09",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "SkinnedMesh",
+      "positions": 5720,
+      "positionHash": "ad826cd7",
+      "indices": 24000,
+      "indexHash": "5055cfb2",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 9388,
+      "positionHash": "e8a2f712",
+      "indices": 44943,
+      "indexHash": "71c28ad",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 9388,
+      "positionHash": "e8a2f712",
+      "indices": 44943,
+      "indexHash": "71c28ad",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5635,
+      "positionHash": "7ce44d41",
+      "indices": 23997,
+      "indexHash": "170317f6",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5635,
+      "positionHash": "7ce44d41",
+      "indices": 23997,
+      "indexHash": "170317f6",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5635,
+      "positionHash": "7ce44d41",
+      "indices": 23997,
+      "indexHash": "170317f6",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5896,
+      "positionHash": "c2e5a917",
+      "indices": 24000,
+      "indexHash": "3419c9a",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5896,
+      "positionHash": "c2e5a917",
+      "indices": 24000,
+      "indexHash": "3419c9a",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5624,
+      "positionHash": "76e6947d",
+      "indices": 23997,
+      "indexHash": "43d63f7c",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "SkinnedMesh",
+      "positions": 6207,
+      "positionHash": "897633d5",
+      "indices": 23961,
+      "indexHash": "f7256c1a",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "SkinnedMesh",
+      "positions": 10471,
+      "positionHash": "78eb854d",
+      "indices": 51021,
+      "indexHash": "54146f20",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 4978,
+      "positionHash": "59e9fef0",
+      "indices": 23292,
+      "indexHash": "d807395f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "SkinnedMesh",
+      "positions": 4762,
+      "positionHash": "ea5c428c",
+      "indices": 22578,
+      "indexHash": "9b7d2ded",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 4844,
+      "positionHash": "d8cb1207",
+      "indices": 23040,
+      "indexHash": "4d3b9b9f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 4844,
+      "positionHash": "d8cb1207",
+      "indices": 23040,
+      "indexHash": "4d3b9b9f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 3803,
+      "positionHash": "fbf8f5c1",
+      "indices": 14688,
+      "indexHash": "825dae36",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "SkinnedMesh",
+      "positions": 5186,
+      "positionHash": "3e9501d9",
+      "indices": 23760,
+      "indexHash": "179cc210",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "SkinnedMesh",
+      "positions": 6207,
+      "positionHash": "897633d5",
+      "indices": 23961,
+      "indexHash": "f7256c1a",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 4606,
+      "positionHash": "7be8a26d",
+      "indices": 17217,
+      "indexHash": "6f7043be",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 3771,
+      "positionHash": "837ec0db",
+      "indices": 17517,
+      "indexHash": "45ceb1b1",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 3771,
+      "positionHash": "837ec0db",
+      "indices": 17517,
+      "indexHash": "45ceb1b1",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 3771,
+      "positionHash": "837ec0db",
+      "indices": 17517,
+      "indexHash": "45ceb1b1",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 4731,
+      "positionHash": "5ad97607",
+      "indices": 22683,
+      "indexHash": "863a9fad",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 4731,
+      "positionHash": "5ad97607",
+      "indices": 22683,
+      "indexHash": "863a9fad",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5024,
+      "positionHash": "2f77ead",
+      "indices": 22653,
+      "indexHash": "518790a0",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "3015f85",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "c294fb0d",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 98,
+      "positionHash": "261af7c2",
+      "indices": 288,
+      "indexHash": "945612c5",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "8cc1df7d",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "c963f805",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "c0018205",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "c294fb0d",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "3015f85",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "88ff9fc5",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "705b58d",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "405f3aad",
+      "indices": 168,
+      "indexHash": "ba713a23",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "98dd9305",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "405f3aad",
+      "indices": 168,
+      "indexHash": "ba713a23",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "29bb73c5",
+      "indices": 168,
+      "indexHash": "ba713a23",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "6e7cd725",
+      "indices": 168,
+      "indexHash": "ba713a23",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "98dd9305",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "c294fb0d",
+      "indices": 168,
+      "indexHash": "dca0cf26",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 56,
+      "positionHash": "6e7cd725",
+      "indices": 168,
+      "indexHash": "ba713a23",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 582,
+      "positionHash": "d5b6df9b",
+      "indices": 1908,
+      "indexHash": "c55c50a9",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 165,
+      "positionHash": "a437f9c0",
+      "indices": 756,
+      "indexHash": "6abf890f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 63,
+      "positionHash": "e324896a",
+      "indices": 240,
+      "indexHash": "f7c7960d",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 63,
+      "positionHash": "fde9aec4",
+      "indices": 240,
+      "indexHash": "f7c7960d",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 63,
+      "positionHash": "fde9aec4",
+      "indices": 240,
+      "indexHash": "f7c7960d",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 18,
+      "positionHash": "f2c7d9d7",
+      "indices": 48,
+      "indexHash": "5d077d35",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 18,
+      "positionHash": "f2c7d9d7",
+      "indices": 48,
+      "indexHash": "5d077d35",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 2687,
+      "positionHash": "7d71be1a",
+      "indices": 10137,
+      "indexHash": "f9a0828d",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 26,
+      "positionHash": "3b8abbac",
+      "indices": 72,
+      "indexHash": "58348fd",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 64,
+      "positionHash": "2907ff4d",
+      "indices": 120,
+      "indexHash": "3a54e98b",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "e25a60f5",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 52,
+      "positionHash": "49ddd5d",
+      "indices": 96,
+      "indexHash": "6fe8708d",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "b12d9b25",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 40,
+      "positionHash": "c7f541ed",
+      "indices": 72,
+      "indexHash": "5bf86667",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 88,
+      "positionHash": "aeb95ef1",
+      "indices": 168,
+      "indexHash": "8435647f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 52,
+      "positionHash": "44ebd95",
+      "indices": 96,
+      "indexHash": "6fe8708d",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "d3e3c8e5",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "91be35f5",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "c8689dd5",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 165,
+      "positionHash": "81d56b7b",
+      "indices": 756,
+      "indexHash": "6abf890f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 27,
+      "positionHash": "8c3e96c3",
+      "indices": 36,
+      "indexHash": "2decc60f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 27,
+      "positionHash": "8c3e96c3",
+      "indices": 36,
+      "indexHash": "2decc60f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 112,
+      "positionHash": "41c71c95",
+      "indices": 216,
+      "indexHash": "a6f047f3",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 88,
+      "positionHash": "24a5b255",
+      "indices": 168,
+      "indexHash": "8435647f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "2c1408a5",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 100,
+      "positionHash": "2a1adcb5",
+      "indices": 192,
+      "indexHash": "48a14415",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "d16807e5",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "91d90515",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "823c50d5",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 24,
+      "positionHash": "111458c5",
+      "indices": 36,
+      "indexHash": "b6dbda65",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 20,
+      "positionHash": "4eeff7a6",
+      "indices": 54,
+      "indexHash": "9fa75847",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 2028,
+      "positionHash": "abf74671",
+      "indices": 8424,
+      "indexHash": "f35dc064",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5660,
+      "positionHash": "c41da25a",
+      "indices": 24000,
+      "indexHash": "9a955f5",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5660,
+      "positionHash": "c41da25a",
+      "indices": 24000,
+      "indexHash": "9a955f5",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5660,
+      "positionHash": "c41da25a",
+      "indices": 24000,
+      "indexHash": "9a955f5",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 9388,
+      "positionHash": "e8a2f712",
+      "indices": 44943,
+      "indexHash": "71c28ad",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 9388,
+      "positionHash": "e8a2f712",
+      "indices": 44943,
+      "indexHash": "71c28ad",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5720,
+      "positionHash": "41d9134c",
+      "indices": 24000,
+      "indexHash": "a4e4c0d6",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5720,
+      "positionHash": "41d9134c",
+      "indices": 24000,
+      "indexHash": "a4e4c0d6",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5896,
+      "positionHash": "c2e5a917",
+      "indices": 24000,
+      "indexHash": "3419c9a",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5896,
+      "positionHash": "c2e5a917",
+      "indices": 24000,
+      "indexHash": "3419c9a",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5896,
+      "positionHash": "c2e5a917",
+      "indices": 24000,
+      "indexHash": "3419c9a",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 5171,
+      "positionHash": "8aed00b4",
+      "indices": 23790,
+      "indexHash": "3bb2ec53",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 4738,
+      "positionHash": "4b21cdca",
+      "indices": 22626,
+      "indexHash": "5ce654fd",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 4731,
+      "positionHash": "5ad97607",
+      "indices": 22683,
+      "indexHash": "863a9fad",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 4731,
+      "positionHash": "5ad97607",
+      "indices": 22683,
+      "indexHash": "863a9fad",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 6477,
+      "positionHash": "37e9c65a",
+      "indices": 24000,
+      "indexHash": "3a1efcc0",
+      "count": 1,
+      "instances": "ec73348d"
+    },
+    {
+      "type": "Mesh",
+      "positions": 6699,
+      "positionHash": "3651a783",
+      "indices": 23997,
+      "indexHash": "4d0562c6",
+      "count": 1,
+      "instances": "160c9f19"
+    },
+    {
+      "type": "Mesh",
+      "positions": 5846,
+      "positionHash": "617419dd",
+      "indices": 18081,
+      "indexHash": "5e561bb3",
+      "count": 1,
+      "instances": "16a719d3"
+    },
+    {
+      "type": "Mesh",
+      "positions": 9388,
+      "positionHash": "f3da58f5",
+      "indices": 33003,
+      "indexHash": "cfafc507",
+      "count": 1,
+      "instances": "a65cea4"
+    },
+    {
+      "type": "Mesh",
+      "positions": 4055,
+      "positionHash": "68199755",
+      "indices": 14700,
+      "indexHash": "817c2944",
+      "count": 1,
+      "instances": "e89e0b81"
+    },
+    {
+      "type": "Mesh",
+      "positions": 2856,
+      "positionHash": "a589d9e4",
+      "indices": 8997,
+      "indexHash": "f6bc17b5",
+      "count": 1,
+      "instances": "10df5831"
+    },
+    {
+      "type": "Mesh",
+      "positions": 2145,
+      "positionHash": "76d4e4a1",
+      "indices": 8847,
+      "indexHash": "91db5c67",
+      "count": 1,
+      "instances": "1e1bdea2"
+    },
+    {
+      "type": "Mesh",
+      "positions": 2708,
+      "positionHash": "b285f6ac",
+      "indices": 8673,
+      "indexHash": "7a369a8e",
+      "count": 1,
+      "instances": "3ba4a650"
+    },
+    {
+      "type": "Mesh",
+      "positions": 3136,
+      "positionHash": "4ce9b233",
+      "indices": 9204,
+      "indexHash": "e9ba227c",
+      "count": 1,
+      "instances": "6a04cde2"
+    },
+    {
+      "type": "Mesh",
+      "positions": 3803,
+      "positionHash": "fbf8f5c1",
+      "indices": 14688,
+      "indexHash": "825dae36",
+      "count": 2,
+      "instances": "92e3ce0d"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1958,
+      "positionHash": "2adc8d2c",
+      "indices": 8448,
+      "indexHash": "df00a37c",
+      "count": 1,
+      "instances": "88573180"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1958,
+      "positionHash": "2adc8d2c",
+      "indices": 8448,
+      "indexHash": "df00a37c",
+      "count": 1,
+      "instances": "641010bf"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1958,
+      "positionHash": "2adc8d2c",
+      "indices": 8448,
+      "indexHash": "df00a37c",
+      "count": 1,
+      "instances": "59639538"
+    },
+    {
+      "type": "Mesh",
+      "positions": 5992,
+      "positionHash": "6d4f7169",
+      "indices": 24000,
+      "indexHash": "b380c46a",
+      "count": 3,
+      "instances": "24ee5ba3"
+    },
+    {
+      "type": "Mesh",
+      "positions": 581,
+      "positionHash": "835fe864",
+      "indices": 1797,
+      "indexHash": "51be03a4",
+      "count": 9,
+      "instances": "608f69c"
+    },
+    {
+      "type": "Mesh",
+      "positions": 581,
+      "positionHash": "835fe864",
+      "indices": 1797,
+      "indexHash": "51be03a4",
+      "count": 2,
+      "instances": "20fcec55"
+    },
+    {
+      "type": "Mesh",
+      "positions": 581,
+      "positionHash": "835fe864",
+      "indices": 1797,
+      "indexHash": "51be03a4",
+      "count": 8,
+      "instances": "deb5adca"
+    },
+    {
+      "type": "Mesh",
+      "positions": 581,
+      "positionHash": "835fe864",
+      "indices": 1797,
+      "indexHash": "51be03a4",
+      "count": 5,
+      "instances": "9d9bc132"
+    },
+    {
+      "type": "Mesh",
+      "positions": 581,
+      "positionHash": "835fe864",
+      "indices": 1797,
+      "indexHash": "51be03a4",
+      "count": 5,
+      "instances": "ddb2ed5"
+    },
+    {
+      "type": "Mesh",
+      "positions": 581,
+      "positionHash": "835fe864",
+      "indices": 1797,
+      "indexHash": "51be03a4",
+      "count": 5,
+      "instances": "fa7bf532"
+    },
+    {
+      "type": "Mesh",
+      "positions": 603,
+      "positionHash": "1462a2a7",
+      "indices": 1797,
+      "indexHash": "452a1c68",
+      "count": 13,
+      "instances": "b23e4250"
+    },
+    {
+      "type": "Mesh",
+      "positions": 603,
+      "positionHash": "1462a2a7",
+      "indices": 1797,
+      "indexHash": "452a1c68",
+      "count": 17,
+      "instances": "7333e7f5"
+    },
+    {
+      "type": "Mesh",
+      "positions": 603,
+      "positionHash": "1462a2a7",
+      "indices": 1797,
+      "indexHash": "452a1c68",
+      "count": 17,
+      "instances": "54307e50"
+    },
+    {
+      "type": "Mesh",
+      "positions": 603,
+      "positionHash": "1462a2a7",
+      "indices": 1797,
+      "indexHash": "452a1c68",
+      "count": 13,
+      "instances": "63a77e54"
+    },
+    {
+      "type": "Mesh",
+      "positions": 603,
+      "positionHash": "1462a2a7",
+      "indices": 1797,
+      "indexHash": "452a1c68",
+      "count": 9,
+      "instances": "12dbca"
+    },
+    {
+      "type": "Mesh",
+      "positions": 603,
+      "positionHash": "1462a2a7",
+      "indices": 1797,
+      "indexHash": "452a1c68",
+      "count": 7,
+      "instances": "3e73fae4"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1898,
+      "positionHash": "1d7f399e",
+      "indices": 8508,
+      "indexHash": "286b4300",
+      "count": 2,
+      "instances": "69938609"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1898,
+      "positionHash": "1d7f399e",
+      "indices": 8508,
+      "indexHash": "286b4300",
+      "count": 2,
+      "instances": "869f8619"
+    },
+    {
+      "type": "Mesh",
+      "positions": 768,
+      "positionHash": "3ae66d2d",
+      "indices": 2382,
+      "indexHash": "3d21ad91",
+      "count": 15,
+      "instances": "5793a97a"
+    },
+    {
+      "type": "Mesh",
+      "positions": 768,
+      "positionHash": "3ae66d2d",
+      "indices": 2382,
+      "indexHash": "3d21ad91",
+      "count": 15,
+      "instances": "25ce3c5e"
+    },
+    {
+      "type": "Mesh",
+      "positions": 768,
+      "positionHash": "3ae66d2d",
+      "indices": 2382,
+      "indexHash": "3d21ad91",
+      "count": 32,
+      "instances": "33132032"
+    },
+    {
+      "type": "Mesh",
+      "positions": 768,
+      "positionHash": "3ae66d2d",
+      "indices": 2382,
+      "indexHash": "3d21ad91",
+      "count": 8,
+      "instances": "1dfe3b72"
+    },
+    {
+      "type": "Mesh",
+      "positions": 768,
+      "positionHash": "3ae66d2d",
+      "indices": 2382,
+      "indexHash": "3d21ad91",
+      "count": 35,
+      "instances": "39d7799b"
+    },
+    {
+      "type": "Mesh",
+      "positions": 768,
+      "positionHash": "3ae66d2d",
+      "indices": 2382,
+      "indexHash": "3d21ad91",
+      "count": 6,
+      "instances": "b3b5d38d"
+    },
+    {
+      "type": "Mesh",
+      "positions": 768,
+      "positionHash": "3ae66d2d",
+      "indices": 2382,
+      "indexHash": "3d21ad91",
+      "count": 8,
+      "instances": "befe7c51"
+    },
+    {
+      "type": "Mesh",
+      "positions": 768,
+      "positionHash": "3ae66d2d",
+      "indices": 2382,
+      "indexHash": "3d21ad91",
+      "count": 37,
+      "instances": "32bd8e46"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 16,
+      "instances": "872199c"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 39,
+      "instances": "30f712b4"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 57,
+      "instances": "27667cbc"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 10,
+      "instances": "5378a875"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 69,
+      "instances": "535a6074"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 9,
+      "instances": "1d899505"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 11,
+      "instances": "99c9d5d6"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 80,
+      "instances": "6608b2fd"
+    },
+    {
+      "type": "Mesh",
+      "positions": 757,
+      "positionHash": "916817c9",
+      "indices": 2766,
+      "indexHash": "1da14297",
+      "count": 2,
+      "instances": "c82e7000"
+    },
+    {
+      "type": "Mesh",
+      "positions": 757,
+      "positionHash": "916817c9",
+      "indices": 2766,
+      "indexHash": "1da14297",
+      "count": 2,
+      "instances": "8283ea9e"
+    },
+    {
+      "type": "Mesh",
+      "positions": 757,
+      "positionHash": "916817c9",
+      "indices": 2766,
+      "indexHash": "1da14297",
+      "count": 1,
+      "instances": "c17f95ec"
+    },
+    {
+      "type": "Mesh",
+      "positions": 757,
+      "positionHash": "916817c9",
+      "indices": 2766,
+      "indexHash": "1da14297",
+      "count": 3,
+      "instances": "7aa235d1"
+    },
+    {
+      "type": "Mesh",
+      "positions": 757,
+      "positionHash": "916817c9",
+      "indices": 2766,
+      "indexHash": "1da14297",
+      "count": 1,
+      "instances": "95c86f83"
+    },
+    {
+      "type": "Mesh",
+      "positions": 757,
+      "positionHash": "916817c9",
+      "indices": 2766,
+      "indexHash": "1da14297",
+      "count": 2,
+      "instances": "7330ee15"
+    },
+    {
+      "type": "Mesh",
+      "positions": 3129,
+      "positionHash": "3d745212",
+      "indices": 8826,
+      "indexHash": "af373db2",
+      "count": 4,
+      "instances": "fff9d169"
+    },
+    {
+      "type": "Mesh",
+      "positions": 3129,
+      "positionHash": "3d745212",
+      "indices": 8826,
+      "indexHash": "af373db2",
+      "count": 2,
+      "instances": "c48a4673"
+    },
+    {
+      "type": "Mesh",
+      "positions": 4019,
+      "positionHash": "71d259e4",
+      "indices": 10395,
+      "indexHash": "86ad7bfa",
+      "count": 4,
+      "instances": "4d0fbee9"
+    },
+    {
+      "type": "Mesh",
+      "positions": 4019,
+      "positionHash": "71d259e4",
+      "indices": 10395,
+      "indexHash": "86ad7bfa",
+      "count": 2,
+      "instances": "12af6ad3"
+    },
+    {
+      "type": "Mesh",
+      "positions": 2168,
+      "positionHash": "916db4c8",
+      "indices": 6060,
+      "indexHash": "9541d904",
+      "count": 6,
+      "instances": "16295c2f"
+    },
+    {
+      "type": "Mesh",
+      "positions": 2256,
+      "positionHash": "ce50cdf2",
+      "indices": 6732,
+      "indexHash": "11d08df2",
+      "count": 6,
+      "instances": "a63273c7"
+    },
+    {
+      "type": "Mesh",
+      "positions": 2991,
+      "positionHash": "cba225ff",
+      "indices": 9018,
+      "indexHash": "a27279c0",
+      "count": 6,
+      "instances": "26a10c03"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1780,
+      "positionHash": "c25bfaf4",
+      "indices": 5793,
+      "indexHash": "a18d906e",
+      "count": 6,
+      "instances": "c87c02cf"
+    },
+    {
+      "type": "Mesh",
+      "positions": 3129,
+      "positionHash": "3d745212",
+      "indices": 8826,
+      "indexHash": "af373db2",
+      "count": 18,
+      "instances": "1f03abf7"
+    },
+    {
+      "type": "Mesh",
+      "positions": 582,
+      "positionHash": "d5b6df9b",
+      "indices": 1908,
+      "indexHash": "c55c50a9",
+      "count": 3,
+      "instances": "84363e51"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1840,
+      "positionHash": "4124f151",
+      "indices": 6276,
+      "indexHash": "b4a181c5",
+      "count": 1,
+      "instances": "f32dac9f"
+    },
+    {
+      "type": "Mesh",
+      "positions": 696,
+      "positionHash": "cb612052",
+      "indices": 1200,
+      "indexHash": "7034664b",
+      "count": 4,
+      "instances": "57472a19"
+    },
+    {
+      "type": "Mesh",
+      "positions": 696,
+      "positionHash": "cb612052",
+      "indices": 1200,
+      "indexHash": "7034664b",
+      "count": 3,
+      "instances": "e793e812"
+    },
+    {
+      "type": "Mesh",
+      "positions": 757,
+      "positionHash": "916817c9",
+      "indices": 2766,
+      "indexHash": "1da14297",
+      "count": 1,
+      "instances": "13e80549"
+    },
+    {
+      "type": "Mesh",
+      "positions": 757,
+      "positionHash": "916817c9",
+      "indices": 2766,
+      "indexHash": "1da14297",
+      "count": 1,
+      "instances": "e4187dbf"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1624,
+      "positionHash": "f92f3879",
+      "indices": 8676,
+      "indexHash": "16195fc",
+      "count": 1,
+      "instances": "4a917bdb"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1624,
+      "positionHash": "f92f3879",
+      "indices": 8676,
+      "indexHash": "16195fc",
+      "count": 1,
+      "instances": "6844dae7"
+    },
+    {
+      "type": "Mesh",
+      "positions": 2171,
+      "positionHash": "dc342bcf",
+      "indices": 4008,
+      "indexHash": "fd500fd4",
+      "count": 1,
+      "instances": "85ea1a18"
+    },
+    {
+      "type": "Mesh",
+      "positions": 2171,
+      "positionHash": "dc342bcf",
+      "indices": 4008,
+      "indexHash": "fd500fd4",
+      "count": 1,
+      "instances": "fae7d467"
+    },
+    {
+      "type": "Mesh",
+      "positions": 339,
+      "positionHash": "359e6799",
+      "indices": 876,
+      "indexHash": "973d7c89",
+      "count": 13,
+      "instances": "78b5b72"
+    },
+    {
+      "type": "Mesh",
+      "positions": 339,
+      "positionHash": "359e6799",
+      "indices": 876,
+      "indexHash": "973d7c89",
+      "count": 36,
+      "instances": "cc2ea234"
+    },
+    {
+      "type": "Mesh",
+      "positions": 339,
+      "positionHash": "359e6799",
+      "indices": 876,
+      "indexHash": "973d7c89",
+      "count": 71,
+      "instances": "6b67baf1"
+    },
+    {
+      "type": "Mesh",
+      "positions": 339,
+      "positionHash": "359e6799",
+      "indices": 876,
+      "indexHash": "973d7c89",
+      "count": 15,
+      "instances": "79e2ed83"
+    },
+    {
+      "type": "Mesh",
+      "positions": 339,
+      "positionHash": "359e6799",
+      "indices": 876,
+      "indexHash": "973d7c89",
+      "count": 62,
+      "instances": "85fd14a2"
+    },
+    {
+      "type": "Mesh",
+      "positions": 339,
+      "positionHash": "359e6799",
+      "indices": 876,
+      "indexHash": "973d7c89",
+      "count": 75,
+      "instances": "bad5d296"
+    },
+    {
+      "type": "Mesh",
+      "positions": 339,
+      "positionHash": "359e6799",
+      "indices": 876,
+      "indexHash": "973d7c89",
+      "count": 11,
+      "instances": "5c20d253"
+    },
+    {
+      "type": "Mesh",
+      "positions": 339,
+      "positionHash": "359e6799",
+      "indices": 876,
+      "indexHash": "973d7c89",
+      "count": 14,
+      "instances": "310e43dd"
+    },
+    {
+      "type": "Mesh",
+      "positions": 347,
+      "positionHash": "a7eb080e",
+      "indices": 978,
+      "indexHash": "49ebde4",
+      "count": 9,
+      "instances": "5ca61bd4"
+    },
+    {
+      "type": "Mesh",
+      "positions": 347,
+      "positionHash": "a7eb080e",
+      "indices": 978,
+      "indexHash": "49ebde4",
+      "count": 2,
+      "instances": "fd853c9e"
+    },
+    {
+      "type": "Mesh",
+      "positions": 347,
+      "positionHash": "a7eb080e",
+      "indices": 978,
+      "indexHash": "49ebde4",
+      "count": 16,
+      "instances": "c10e5a37"
+    },
+    {
+      "type": "Mesh",
+      "positions": 347,
+      "positionHash": "a7eb080e",
+      "indices": 978,
+      "indexHash": "49ebde4",
+      "count": 3,
+      "instances": "1d543e62"
+    },
+    {
+      "type": "Mesh",
+      "positions": 347,
+      "positionHash": "a7eb080e",
+      "indices": 978,
+      "indexHash": "49ebde4",
+      "count": 14,
+      "instances": "c32d1d5"
+    },
+    {
+      "type": "Mesh",
+      "positions": 347,
+      "positionHash": "a7eb080e",
+      "indices": 978,
+      "indexHash": "49ebde4",
+      "count": 16,
+      "instances": "9f8c71f5"
+    },
+    {
+      "type": "Mesh",
+      "positions": 347,
+      "positionHash": "a7eb080e",
+      "indices": 978,
+      "indexHash": "49ebde4",
+      "count": 2,
+      "instances": "b13083aa"
+    },
+    {
+      "type": "Mesh",
+      "positions": 347,
+      "positionHash": "a7eb080e",
+      "indices": 978,
+      "indexHash": "49ebde4",
+      "count": 2,
+      "instances": "85886c0"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 8,
+      "instances": "563980c2"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 20,
+      "instances": "c0cf6d8d"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 16,
+      "instances": "705d6949"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 14,
+      "instances": "4f573262"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 4,
+      "instances": "c6417a72"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 5,
+      "instances": "196d8e16"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 5,
+      "instances": "39303a3e"
+    },
+    {
+      "type": "Mesh",
+      "positions": 1035,
+      "positionHash": "5fa275b6",
+      "indices": 2922,
+      "indexHash": "d6fa6214",
+      "count": 8,
+      "instances": "756dd33c"
+    },
+    {
+      "type": "Mesh",
+      "positions": 2709,
+      "positionHash": "6930784",
+      "indices": 11586,
+      "indexHash": "62fa99af",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 393,
+      "positionHash": "8e3cad2d",
+      "indices": 1584,
+      "indexHash": "eaf9a19f",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 498,
+      "positionHash": "9d65beb",
+      "indices": 1848,
+      "indexHash": "7c0a40dc",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 99,
+      "positionHash": "357765be",
+      "indices": 420,
+      "indexHash": "daae0af7",
+      "count": 1,
+      "instances": null
+    },
+    {
+      "type": "Mesh",
+      "positions": 27,
+      "positionHash": "7e53378a",
+      "indices": 36,
+      "indexHash": "2decc60f",
+      "count": 1,
+      "instances": null
+    }
+  ],
+  "anchors": {
+    "terminals": [
+      {
+        "id": "p317.a",
+        "world": [
+          6.62,
+          0.48,
+          1.52
+        ],
+        "screen": [
+          0.2076888,
+          0.0068367,
+          0.9757386
+        ]
+      },
+      {
+        "id": "p317.b",
+        "world": [
+          5.38,
+          0.48,
+          1.52
+        ],
+        "screen": [
+          0.1928006,
+          0.0068367,
+          0.9757386
+        ]
+      },
+      {
+        "id": "p318.a",
+        "world": [
+          20.62,
+          0.48,
+          1.52
+        ],
+        "screen": [
+          0.3757812,
+          0.0068367,
+          0.9757386
+        ]
+      },
+      {
+        "id": "p318.b",
+        "world": [
+          19.38,
+          0.48,
+          1.52
+        ],
+        "screen": [
+          0.360893,
+          0.0068367,
+          0.9757386
+        ]
+      },
+      {
+        "id": "p319.a",
+        "world": [
+          22.12,
+          0.48,
+          -12.98
+        ],
+        "screen": [
+          0.3907916,
+          0.0696096,
+          0.9761948
+        ]
+      },
+      {
+        "id": "p319.b",
+        "world": [
+          20.88,
+          0.48,
+          -12.98
+        ],
+        "screen": [
+          0.3760716,
+          0.0696096,
+          0.9761948
+        ]
+      },
+      {
+        "id": "p320.a",
+        "world": [
+          3.12,
+          0.48,
+          -14.48
+        ],
+        "screen": [
+          0.1651994,
+          0.0760225,
+          0.9762414
+        ]
+      },
+      {
+        "id": "p320.b",
+        "world": [
+          1.88,
+          0.48,
+          -14.48
+        ],
+        "screen": [
+          0.1504966,
+          0.0760225,
+          0.9762414
+        ]
+      },
+      {
+        "id": "p321.a",
+        "world": [
+          -4.88,
+          0.48,
+          -9.48
+        ],
+        "screen": [
+          0.0701163,
+          0.0545877,
+          0.9760856
+        ]
+      },
+      {
+        "id": "p321.b",
+        "world": [
+          -6.12,
+          0.48,
+          -9.48
+        ],
+        "screen": [
+          0.055356,
+          0.0545877,
+          0.9760856
+        ]
+      },
+      {
+        "id": "p322.a",
+        "world": [
+          -47.38,
+          0.48,
+          -7.48
+        ],
+        "screen": [
+          -0.4366626,
+          0.0459668,
+          0.976023
+        ]
+      },
+      {
+        "id": "p322.b",
+        "world": [
+          -48.62,
+          0.48,
+          -7.48
+        ],
+        "screen": [
+          -0.4514459,
+          0.0459668,
+          0.976023
+        ]
+      },
+      {
+        "id": "p323.a",
+        "world": [
+          26.62,
+          0.48,
+          14.02
+        ],
+        "screen": [
+          0.4509994,
+          -0.0484403,
+          0.9753369
+        ]
+      },
+      {
+        "id": "p323.b",
+        "world": [
+          25.38,
+          0.48,
+          14.02
+        ],
+        "screen": [
+          0.4359631,
+          -0.0484403,
+          0.9753369
+        ]
+      },
+      {
+        "id": "p324.a",
+        "world": [
+          -34.88,
+          0.48,
+          -6.98
+        ],
+        "screen": [
+          -0.2877994,
+          0.0438074,
+          0.9760073
+        ]
+      },
+      {
+        "id": "p324.b",
+        "world": [
+          -36.12,
+          0.48,
+          -6.98
+        ],
+        "screen": [
+          -0.3025885,
+          0.0438074,
+          0.9760073
+        ]
+      },
+      {
+        "id": "p325.a",
+        "world": [
+          -22.88,
+          0.48,
+          -11.98
+        ],
+        "screen": [
+          -0.143615,
+          0.065326,
+          0.9761637
+        ]
+      },
+      {
+        "id": "p325.b",
+        "world": [
+          -24.12,
+          0.48,
+          -11.98
+        ],
+        "screen": [
+          -0.1583465,
+          0.065326,
+          0.9761637
+        ]
+      },
+      {
+        "id": "p326.a",
+        "world": [
+          -19.38,
+          0.48,
+          5.52
+        ],
+        "screen": [
+          -0.1052183,
+          -0.0107331,
+          0.9756109
+        ]
+      },
+      {
+        "id": "p326.b",
+        "world": [
+          -20.62,
+          0.48,
+          5.52
+        ],
+        "screen": [
+          -0.1201535,
+          -0.0107331,
+          0.9756109
+        ]
+      },
+      {
+        "id": "p327.a",
+        "world": [
+          -14.38,
+          0.48,
+          17.52
+        ],
+        "screen": [
+          -0.0466537,
+          -0.0641154,
+          0.975223
+        ]
+      },
+      {
+        "id": "p327.b",
+        "world": [
+          -15.62,
+          0.48,
+          17.52
+        ],
+        "screen": [
+          -0.061732,
+          -0.0641154,
+          0.975223
+        ]
+      },
+      {
+        "id": "p328.a",
+        "world": [
+          35.12,
+          0.48,
+          14.02
+        ],
+        "screen": [
+          0.5540704,
+          -0.0484403,
+          0.9753369
+        ]
+      },
+      {
+        "id": "p328.b",
+        "world": [
+          33.88,
+          0.48,
+          14.02
+        ],
+        "screen": [
+          0.5390342,
+          -0.0484403,
+          0.9753369
+        ]
+      },
+      {
+        "id": "p329.a",
+        "world": [
+          -25.88,
+          0.48,
+          15.02
+        ],
+        "screen": [
+          -0.1858658,
+          -0.05291,
+          0.9753045
+        ]
+      },
+      {
+        "id": "p329.b",
+        "world": [
+          -27.12,
+          0.48,
+          15.02
+        ],
+        "screen": [
+          -0.200914,
+          -0.05291,
+          0.9753045
+        ]
+      },
+      {
+        "id": "p330.a",
+        "world": [
+          39.72,
+          0.48,
+          -21.35
+        ],
+        "screen": [
+          0.5966672,
+          0.1052034,
+          0.9764534
+        ]
+      },
+      {
+        "id": "p330.b",
+        "world": [
+          38.8,
+          0.48,
+          -21.35
+        ],
+        "screen": [
+          0.5858166,
+          0.1052034,
+          0.9764534
+        ]
+      },
+      {
+        "id": "p331.a",
+        "world": [
+          -26.2,
+          0.48,
+          10.22
+        ],
+        "screen": [
+          -0.1885386,
+          -0.0315201,
+          0.9754599
+        ]
+      },
+      {
+        "id": "p331.b",
+        "world": [
+          -27.8,
+          0.48,
+          10.22
+        ],
+        "screen": [
+          -0.2078817,
+          -0.0315201,
+          0.9754599
+        ]
+      },
+      {
+        "id": "p332.a",
+        "world": [
+          28.6,
+          0.48,
+          17.35
+        ],
+        "screen": [
+          0.4759301,
+          -0.0633521,
+          0.9752286
+        ]
+      },
+      {
+        "id": "p332.b",
+        "world": [
+          27.6,
+          0.48,
+          17.35
+        ],
+        "screen": [
+          0.4637719,
+          -0.0633521,
+          0.9752286
+        ]
+      }
+    ],
+    "rings": [
+      {
+        "center": [
+          10,
+          0,
+          4
+        ],
+        "positions": 56,
+        "geometryHash": "3015f85"
+      },
+      {
+        "center": [
+          27,
+          0,
+          -13
+        ],
+        "positions": 56,
+        "geometryHash": "c294fb0d"
+      },
+      {
+        "center": [
+          28.3,
+          0,
+          17.4
+        ],
+        "positions": 98,
+        "geometryHash": "261af7c2"
+      },
+      {
+        "center": [
+          44,
+          0,
+          -22
+        ],
+        "positions": 56,
+        "geometryHash": "8cc1df7d"
+      },
+      {
+        "center": [
+          -19,
+          0,
+          -16
+        ],
+        "positions": 56,
+        "geometryHash": "c963f805"
+      },
+      {
+        "center": [
+          -15,
+          0,
+          5
+        ],
+        "positions": 56,
+        "geometryHash": "c0018205"
+      },
+      {
+        "center": [
+          -20,
+          0,
+          17
+        ],
+        "positions": 56,
+        "geometryHash": "c294fb0d"
+      },
+      {
+        "center": [
+          39,
+          0,
+          13
+        ],
+        "positions": 56,
+        "geometryHash": "3015f85"
+      },
+      {
+        "center": [
+          -23,
+          0,
+          -8
+        ],
+        "positions": 56,
+        "geometryHash": "88ff9fc5"
+      },
+      {
+        "center": [
+          7,
+          0,
+          -15
+        ],
+        "positions": 56,
+        "geometryHash": "705b58d"
+      },
+      {
+        "center": [
+          -43,
+          0,
+          -8
+        ],
+        "positions": 56,
+        "geometryHash": "405f3aad"
+      },
+      {
+        "center": [
+          16,
+          0,
+          4
+        ],
+        "positions": 56,
+        "geometryHash": "98dd9305"
+      },
+      {
+        "center": [
+          16,
+          0,
+          -14
+        ],
+        "positions": 56,
+        "geometryHash": "405f3aad"
+      },
+      {
+        "center": [
+          -31,
+          0,
+          15.5
+        ],
+        "positions": 56,
+        "geometryHash": "29bb73c5"
+      },
+      {
+        "center": [
+          -34,
+          0,
+          -10
+        ],
+        "positions": 56,
+        "geometryHash": "98dd9305"
+      },
+      {
+        "center": [
+          -30,
+          0,
+          -6.5
+        ],
+        "positions": 56,
+        "geometryHash": "6e7cd725"
+      },
+      {
+        "center": [
+          -33,
+          0,
+          4.5
+        ],
+        "positions": 56,
+        "geometryHash": "c294fb0d"
+      },
+      {
+        "center": [
+          -1,
+          0,
+          -10
+        ],
+        "positions": 56,
+        "geometryHash": "6e7cd725"
+      }
+    ],
+    "camera": [
+      0,
+      616.6329149405199,
+      480.97367365360554
+    ]
+  },
+  "renderCost": [
+    {
+      "frame": 698962,
+      "calls": 887,
+      "triangles": 2858673,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": false,
+      "aoRefresh": true
+    },
+    {
+      "frame": 698982,
+      "calls": 723,
+      "triangles": 2267987,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": true,
+      "aoRefresh": false
+    },
+    {
+      "frame": 699002,
+      "calls": 581,
+      "triangles": 1430795,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": false,
+      "aoRefresh": false
+    },
+    {
+      "frame": 699025,
+      "calls": 1029,
+      "triangles": 3695865,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": true,
+      "aoRefresh": true
+    },
+    {
+      "frame": 699045,
+      "calls": 581,
+      "triangles": 1430795,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": false,
+      "aoRefresh": false
+    },
+    {
+      "frame": 699065,
+      "calls": 723,
+      "triangles": 2267987,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": true,
+      "aoRefresh": false
+    },
+    {
+      "frame": 699088,
+      "calls": 887,
+      "triangles": 2858673,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": false,
+      "aoRefresh": true
+    },
+    {
+      "frame": 699108,
+      "calls": 723,
+      "triangles": 2267987,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": true,
+      "aoRefresh": false
+    },
+    {
+      "frame": 699128,
+      "calls": 581,
+      "triangles": 1430795,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": false,
+      "aoRefresh": false
+    },
+    {
+      "frame": 699151,
+      "calls": 1029,
+      "triangles": 3695865,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": true,
+      "aoRefresh": true
+    },
+    {
+      "frame": 699171,
+      "calls": 581,
+      "triangles": 1430795,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": false,
+      "aoRefresh": false
+    },
+    {
+      "frame": 699191,
+      "calls": 723,
+      "triangles": 2267987,
+      "points": 0,
+      "lines": 0,
+      "shadowRefresh": true,
+      "aoRefresh": false
+    }
+  ],
+  "errors": [],
+  "contextLost": false
+}
