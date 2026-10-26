@@ -22,6 +22,34 @@
       "mode": "generate",
       "prompt": "Use case: stylized-concept. Asset: seamless production albedo texture for the packed-earth footpaths of a premium cozy 3D mobile farm. ONE square texture covering the entire image, exactly orthographic top-down. Warm medium light biscuit-brown and sandy ochre compacted EARTH, gentle broader worn patches, a few sparse flattened small rounded stones embedded in earth, softly modelled clay and shallow natural scuffs. Beautiful painterly toy-farm style, readable at mobile distance. Main earth roughly muted #b58d58, a small range of warmer tan and soft taupe, do NOT make it pale white sand or orange desert. Stones occupy less than 7 percent of the surface, varied naturally, no dense gravel. This is the surface MATERIAL only, NOT a picture of a road. No road silhouette, no borders, no grass edging, no landscape, no rails or wheel ruts, no objects. Seamless tiling in X and Y with consistent color/texture density right up to each edge. Even neutral ambient lighting, no cast shadows, no directional highlights, no vignette, no center glow, no perspective, no text or watermark. Smooth enough to read as traversable packed soil, with tactile hand-painted detail, not a flat fill and not a noisy photograph.",
       "source": "sources/path-earth-v1.png"
+    },
+    {
+      "id": "grass-base-v1",
+      "mode": "generate",
+      "prompt": "Use case: stylized-concept. Asset: a seamless square production base-color/albedo texture for a premium cozy children's 3D mobile farm. Full-frame orthographic overhead surface material only. Beautiful soft hand-painted, gently sculpted toy-farm art, not a photograph, not a flat fill, calm mobile-readable shapes. Strict seamless tile in both X and Y: texture density and average color match all opposing edges; no border, no central focus, no vignette, no directional sunlight or cast shadows. No scene, no objects, text or watermark. Lush middle green grass, fresh natural grassy green with modest moss-green and sage shifts, NOT neon lime. Broad soft interlocking patches and sparse small rounded blade clusters, subtle clover-leaf texture spread evenly, few slightly lighter soft tufts. Most grass quiet and fine; readable clumps not dense hair or long stripes. No white/yellow flowers, no soil holes or bare patches, no stones, no perfect repeated leaf icons. Even neutral ambient lighting; low to moderate contrast. Main palette around #6f963f, #7fa64a, #628a39.",
+      "source": "sources/grass-base-v1.png",
+      "status": "candidate"
+    },
+    {
+      "id": "grass-meadow-v1",
+      "mode": "generate",
+      "prompt": "Use case: stylized-concept. Asset: a seamless square production base-color/albedo texture for a premium cozy children's 3D mobile farm. Full-frame orthographic overhead surface material only. Beautiful soft hand-painted, gently sculpted toy-farm art, not a photograph, not a flat fill, calm mobile-readable shapes. Strict seamless tile in both X and Y: texture density and average color match all opposing edges; no border, no central focus, no vignette, no directional sunlight or cast shadows. No scene, no objects, text or watermark. Sun-kissed meadow grass compatible with a base green grass tile: slightly warmer and lighter than middle green, gentle golden-green and muted sage variations. Main palette around #88a448, #95ad55, #789841. No baked sunlight gradient; color variation only. Broad softly interlocking patches and sparse short rounded grass blades/clover leaves, no tall hair strands. No flowers, no stones, no soil holes, no big isolated objects, NOT yellow straw or neon. Calm painterly texture, not sharply outlined icons.",
+      "source": "sources/grass-meadow-v1.png",
+      "status": "candidate"
+    },
+    {
+      "id": "soil-furrows-v1",
+      "mode": "generate",
+      "prompt": "Use case: stylized-concept. Asset: a seamless square production base-color/albedo texture for a premium cozy children's 3D mobile farm. Full-frame orthographic overhead surface material only. Beautiful soft hand-painted, gently sculpted toy-farm art, not a photograph, not a flat fill, calm mobile-readable shapes. Strict seamless tile in both X and Y: texture density and average color match all opposing edges; no border, no central focus, no vignette, no directional sunlight or cast shadows. No scene, no objects, text or watermark. Rich dark warm brown cultivated garden soil with five subtle roughly parallel shallow furrows running vertically from top edge to bottom edge, soft rounded ridges, occasional tiny clay clods. Broad readable ridges with gently irregular organic edges, no hard geometric stripes. Rows connect seamlessly across top/bottom, equally seamless left/right. No plants, crops, seeds, grass, wooden frame or stones. No deep trenches, no white specular highlights, no harsh baked shadows. Chocolate and muted chestnut palette with restrained contrast, soil suitable below cute 3D vegetables.",
+      "source": "sources/soil-furrows-v1.png",
+      "status": "superseded-by-v2"
+    },
+    {
+      "id": "soil-furrows-v2",
+      "mode": "edit",
+      "prompt": "Use case: precise-object-edit. Correct ONLY the furrow layout of the supplied cultivated soil albedo for our 3D farm game. Preserve the same warm dark-brown hand-painted clay material, subtle clods and subdued contrast. The game has THREE planted columns per rectangular bed, so create THREE raised soil ridges whose centerlines are exactly at 1/6, 1/2 and 5/6 of the image width. Between them are soft shallow troughs. The ridges run absolutely VERTICALLY, straight from the top border to the bottom border, with gentle local organic waviness but NO diagonal slope. All ridge centerlines at the top and bottom must match exactly; seam colors also match top/bottom. They should look broad, low, soft and slightly rounded, not steep trenches or pipes. Entire square filled with cultivated soil, no borders or surrounding material. Exact overhead orthographic BASE COLOR, even ambient illumination; no directional light or baked strong shadows, no highlights or black stripes. No plants, objects, text, labels or frame. One rectangular bed will display this image once, three crop rows centered on those three raised ridges. Keep beautiful polished toy-farm texture art.",
+      "source": "sources/soil-furrows-v2.png",
+      "input": "sources/soil-furrows-v1.png"
     }
   ]
 }

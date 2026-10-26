@@ -4,11 +4,11 @@ import {createHash} from 'node:crypto';
 const root=new URL('.',import.meta.url).pathname.replace(/\/$/,'');
 await mkdir(root+'/candidates',{recursive:true});
 const report=[];
-for(const [id,size,quality] of [['pig-mud',1024,88],['path-earth',512,90]]){
- const src=root+'/sources/'+id+'-v1.png',out=root+'/candidates/'+id+'-v1.webp';
+for(const [id,size,quality,version] of [['pig-mud',1024,88,1],['path-earth',512,90,1],['grass-base',512,90,1],['grass-meadow',512,90,1],['soil-furrows',512,90,2]]){
+ const src=root+'/sources/'+id+'-v'+version+'.png',out=root+'/candidates/'+id+'-v'+version+'.webp';
  await sharp(src).resize(size,size,{fit:'fill'}).removeAlpha().webp({quality,effort:6}).toFile(out);
  const buf=await readFile(out),meta=await sharp(buf).metadata();
- report.push({id,sourceSize:await sharp(src).metadata().then(m=>[m.width,m.height]),size:[meta.width,meta.height],bytes:buf.length,sha256:createHash('sha256').update(buf).digest('hex'),processing:'Mechanical resize and WebP encoding; no painted or procedural replacement of artwork',quality});
+ report.push({id,version,sourceSize:await sharp(src).metadata().then(m=>[m.width,m.height]),size:[meta.width,meta.height],bytes:buf.length,sha256:createHash('sha256').update(buf).digest('hex'),processing:'Mechanical resize and WebP encoding; no painted or procedural replacement of artwork',quality});
 }
 const maskSrc=root+'/sources/pig-wetness-v1.png';
 const {data,info}=await sharp(maskSrc).resize(256,256,{fit:'fill'}).removeAlpha().raw().toBuffer({resolveWithObject:true});

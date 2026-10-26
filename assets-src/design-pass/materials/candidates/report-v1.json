@@ -3,6 +3,7 @@
   "assets": [
     {
       "id": "pig-mud",
+      "version": 1,
       "sourceSize": [
         1254,
         1254
@@ -18,6 +19,7 @@
     },
     {
       "id": "path-earth",
+      "version": 1,
       "sourceSize": [
         1254,
         1254
@@ -28,6 +30,54 @@
       ],
       "bytes": 65068,
       "sha256": "2adaff7a859b56297a89c5dbec1bb67427bf798378f625df424a20d69eedfc62",
+      "processing": "Mechanical resize and WebP encoding; no painted or procedural replacement of artwork",
+      "quality": 90
+    },
+    {
+      "id": "grass-base",
+      "version": 1,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 68212,
+      "sha256": "fd696f23381b82351b63ec08eddcb3f5dcd629ea1979393e43a74e06812b387f",
+      "processing": "Mechanical resize and WebP encoding; no painted or procedural replacement of artwork",
+      "quality": 90
+    },
+    {
+      "id": "grass-meadow",
+      "version": 1,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 54464,
+      "sha256": "f2cd09e9e5b779bcbb16939d46bfbce4fa9cfd8549f7337c136af745116c9438",
+      "processing": "Mechanical resize and WebP encoding; no painted or procedural replacement of artwork",
+      "quality": 90
+    },
+    {
+      "id": "soil-furrows",
+      "version": 2,
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 53334,
+      "sha256": "761c8785b58809cb27117e528d7d583aa84c6416a6ccc3d46407e567620d497e",
       "processing": "Mechanical resize and WebP encoding; no painted or procedural replacement of artwork",
       "quality": 90
     },
@@ -46,5 +96,5 @@
       "processing": "Resize generated registered mask; normalize 16..239 to0..255 to remove near-endpoint generator noise; enforce G<=R, B=0; lossless PNG"
     }
   ],
-  "totalBytes": 195305
+  "totalBytes": 371315
 }

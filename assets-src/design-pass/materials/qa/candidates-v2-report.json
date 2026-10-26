@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-26",
+  "status": "second-pack-preview-pass-awaiting-game-integration",
+  "assets": [
+    "grass-base-v1",
+    "grass-meadow-v1",
+    "soil-furrows-v2"
+  ],
+  "viewports": [
+    [
+      1180,
+      820
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "actualCssWidths": [
+    1179,
+    389
+  ],
+  "horizontalOverflow": false,
+  "allImgElementsLoaded": true,
+  "visualChecks": [
+    "Grass base and meadow inspected in 3x3 repeat; recognizable motifs need shader anti-repeat",
+    "Soil v2 three broad organic ridges inspected once at 6:5; not perfectly straight geometric rows",
+    "Soil v1 rejected for five diagonal rows"
+  ],
+  "tests": "21 passed; typecheck passed",
+  "limitations": [
+    "Candidate gallery only; no actual iPad/PWA or FPS claim",
+    "Second pack not yet verified in game shader",
+    "Earlier IAB MutationObserver error remains unattributed; no claim of zero console errors"
+  ]
+}

@@ -3,7 +3,7 @@
   "date": "2026-10-26",
   "request": "m0270",
   "reference": "../variants/farm-a.png",
-  "status": "accepted-m0274-in-production",
+  "status": "all-six-candidates-delivered-awaiting-scene-review",
   "assets": [
     {
       "id": "grass-base",
@@ -15,13 +15,15 @@
       "worldSpan": 7,
       "maxKiB": 100,
       "art": "Lush hand-painted middle green grass; broad soft tonal clusters; sparse readable blades; no flowers, harsh highlights or shadows.",
-      "status": "planned-not-generated",
+      "status": "candidate-ready-for-integration",
       "candidateFile": "candidates/grass-base-v1.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
       "alpha": "opaque",
       "colorSpace": "sRGB",
-      "generation": "builtin Image"
+      "generation": "builtin Image",
+      "bytes": 68212,
+      "sha256": "fd696f23381b82351b63ec08eddcb3f5dcd629ea1979393e43a74e06812b387f"
     },
     {
       "id": "grass-meadow",
@@ -33,13 +35,15 @@
       "worldSpan": 7,
       "maxKiB": 100,
       "art": "Compatible warmer meadow green; same brush scale and value range as grass-base; not a yellow carpet.",
-      "status": "planned-not-generated",
+      "status": "candidate-ready-for-integration",
       "candidateFile": "candidates/grass-meadow-v1.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
       "alpha": "opaque",
       "colorSpace": "sRGB",
-      "generation": "builtin Image"
+      "generation": "builtin Image",
+      "bytes": 54464,
+      "sha256": "f2cd09e9e5b779bcbb16939d46bfbce4fa9cfd8549f7337c136af745116c9438"
     },
     {
       "id": "path-earth",
@@ -51,7 +55,7 @@
       "worldSpan": 3.5,
       "maxKiB": 100,
       "art": "Warm compacted earth; sparse rounded pebbles and shallow wear; no grass frame, directional paired wheel tracks, cracks or white sand.",
-      "status": "candidate-ready-for-integration",
+      "status": "integrated-by-claude-m0280-awaiting-final-scene-review",
       "candidateFile": "candidates/path-earth-v1.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
@@ -67,17 +71,19 @@
         512,
         512
       ],
-      "tile": true,
-      "worldSpan": "per-bed UV, proposed 6x5",
+      "tile": false,
+      "worldSpan": "one6x5 garden bed;3 planted columns",
       "maxKiB": 100,
       "art": "Soft cultivated dark brown soil ridges with small clods; no plants; furrows must align with the planted rows.",
-      "status": "planned-not-generated",
-      "candidateFile": "candidates/soil-furrows-v1.webp",
+      "status": "candidate-ready-for-integration",
+      "candidateFile": "candidates/soil-furrows-v2.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
       "alpha": "opaque",
       "colorSpace": "sRGB",
-      "generation": "builtin Image"
+      "generation": "builtin Image",
+      "bytes": 53334,
+      "sha256": "761c8785b58809cb27117e528d7d583aa84c6416a6ccc3d46407e567620d497e"
     },
     {
       "id": "pig-mud",
@@ -92,7 +98,7 @@
       ],
       "maxKiB": 250,
       "art": "Single top-down wet pig-yard patch: two or three irregular puddles, soft churned edges, sparse grouped hoof prints; no animals, white reflection blobs or baked directional lighting.",
-      "status": "candidate-ready-for-integration",
+      "status": "integrated-by-claude-m0280-awaiting-final-scene-review",
       "candidateFile": "candidates/pig-mud-v1.webp",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
@@ -115,7 +121,7 @@
       ],
       "maxKiB": 32,
       "art": "Control mask registered to accepted pig-mud image: R wet soil, G puddles, B reserved 0, A opaque. Linear data, no color management.",
-      "status": "candidate-ready-for-integration",
+      "status": "integrated-by-claude-m0280-awaiting-final-scene-review",
       "candidateFile": "candidates/pig-wetness-v1.png",
       "sourceOwner": "codex",
       "integrationOwner": "claude",
@@ -134,7 +140,7 @@
     ],
     "higgsfieldCredits": 0,
     "tripoCredits": 0,
-    "actualCallsThisStep": 3
+    "actualCallsThisStep": 7
   },
   "firstPassAdditionalModels": [],
   "payloadTargetKiB": 682,
@@ -148,5 +154,6 @@
   "runtimeFilesNotChanged": [
     "src/ground.ts",
     "src/farm.ts"
-  ]
+  ],
+  "actualCandidateTotalBytes": 371315
 }
