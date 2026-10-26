@@ -1,0 +1,26 @@
+[
+  {
+    "name": "factory-floor-a",
+    "tool": "image_gen.imagegen",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-da611d43-94dd-4966-82eb-8087450aac13.png",
+    "sourcePath": "assets-src/design-pass/kit/factory/sources/factory-floor-a.png",
+    "sha256": "593c64c9d3d2a2509b703a9a93ba3fececa9d0eab73ef46bef34f52224c4cdb9",
+    "bytes": 3211174,
+    "callCount": 1,
+    "initialGenerations": 1,
+    "targetedEdits": [],
+    "sourcePreservedByteExact": true
+  },
+  {
+    "name": "factory-floor-b",
+    "tool": "image_gen.imagegen",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-472382c6-1632-4753-9e47-a2dc79772ae9.png",
+    "sourcePath": "assets-src/design-pass/kit/factory/sources/factory-floor-b.png",
+    "sha256": "9ebecdbc19bc3b5021b707fdcc64da71264a61692663fd176d8dfd69a06a8635",
+    "bytes": 3530494,
+    "callCount": 1,
+    "initialGenerations": 1,
+    "targetedEdits": [],
+    "sourcePreservedByteExact": true
+  }
+]

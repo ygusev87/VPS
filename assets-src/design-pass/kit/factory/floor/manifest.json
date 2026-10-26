@@ -1,0 +1,398 @@
+{
+  "schemaVersion": 2,
+  "status": "visually reviewed; see per-asset seam limitations",
+  "generationCalls": 4,
+  "initialGenerations": 2,
+  "targetedEditCalls": 2,
+  "repeatedGenerations": 0,
+  "artworkEdits": 2,
+  "processing": "Measured joint-centre crop followed by resize/encode. No periodic blending, mirroring, colour correction, procedural drawing or painted seam repair. Full source PNGs preserved byte-exact.",
+  "kitJsonOwner": "main; never written here",
+  "totalBytes": 923820,
+  "assets": [
+    {
+      "name": "factory-floor-a",
+      "path": "public/textures/kit/factory/factory-floor-a.webp",
+      "size": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "bytes": 393792,
+      "sha256": "85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365",
+      "source": "assets-src/design-pass/kit/factory/sources/factory-floor-a.png",
+      "sourceSha256": "0c54b851c359bd17e4c436f4e2f79187cbec33295ba563931ed2f7a76591ea36",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "opaque": true,
+      "transform": {
+        "operation": "joint-centre rectangle crop, Lanczos resize, sRGB conversion, WebP encoding",
+        "crop": {
+          "left": 7,
+          "top": 8,
+          "width": 1239,
+          "height": 1236
+        },
+        "scaleXY": [
+          1.652946,
+          1.656958
+        ],
+        "upscaled": true,
+        "sourceJointCentres": {
+          "x": [
+            7,
+            314,
+            626,
+            939,
+            1246
+          ],
+          "y": [
+            8,
+            313,
+            626,
+            939,
+            1244
+          ]
+        },
+        "gridCells": [
+          4,
+          4
+        ],
+        "averageSlabWorldSize": [
+          2,
+          2
+        ],
+        "effectiveSlabWorldSize": {
+          "x": [
+            1.982244,
+            2.014528,
+            2.020985,
+            1.982244
+          ],
+          "y": [
+            1.97411,
+            2.02589,
+            2.02589,
+            1.97411
+          ]
+        },
+        "proceduralSeamEdits": false,
+        "sourceImageEdits": 1
+      },
+      "meanRGB": [
+        181.350431,
+        172.904687,
+        162.580276
+      ],
+      "edgeBandPixels": 32,
+      "edgeMeanRGB": {
+        "left": [
+          167.649414,
+          159.567505,
+          150.022781
+        ],
+        "right": [
+          177.469391,
+          169.283295,
+          158.889282
+        ],
+        "top": [
+          172.817017,
+          164.398697,
+          154.681137
+        ],
+        "bottom": [
+          179.983612,
+          171.862686,
+          161.753632
+        ]
+      },
+      "jointPhase": {
+        "expectedGrid": [
+          4,
+          4
+        ],
+        "x": {
+          "darkJointCentresPixels": [
+            0,
+            507,
+            1024,
+            1542,
+            2047
+          ],
+          "normalised": [
+            0,
+            0.247559,
+            0.5,
+            0.75293,
+            0.999512
+          ],
+          "interiorSpacingPixels": [
+            507,
+            517,
+            518,
+            505
+          ],
+          "outerInsetsPixels": [
+            0,
+            0
+          ],
+          "repeatBoundaryDistanceBetweenOuterJointCentres": 1,
+          "note": "Minima of averaged luminance in five expected grid windows; 3px smoothing for measurement only. Separated inset minima can indicate a doubled repeat seam; adjacent minima 1–2px apart across the wrap belong to the same continuous joint. Visual review is required."
+        },
+        "y": {
+          "darkJointCentresPixels": [
+            0,
+            507,
+            1025,
+            1544,
+            2047
+          ],
+          "normalised": [
+            0,
+            0.247559,
+            0.500488,
+            0.753906,
+            0.999512
+          ],
+          "interiorSpacingPixels": [
+            507,
+            518,
+            519,
+            503
+          ],
+          "outerInsetsPixels": [
+            0,
+            0
+          ],
+          "repeatBoundaryDistanceBetweenOuterJointCentres": 1,
+          "note": "Minima of averaged luminance in five expected grid windows; 3px smoothing for measurement only. Separated inset minima can indicate a doubled repeat seam; adjacent minima 1–2px apart across the wrap belong to the same continuous joint. Visual review is required."
+        }
+      },
+      "seams": {
+        "method": "First/last line absolute RGB differences compared with internal adjacent-line mean distribution at encoded2048 resolution. Diagnostic only; not a perceptual or seamlessness guarantee.",
+        "leftRight": {
+          "boundaryMean": 18.721517,
+          "boundaryMax": 76,
+          "interiorMedian": 2.499023,
+          "interiorP95": 3.970052,
+          "boundaryToP95": 4.715685,
+          "pixelIdentical": false
+        },
+        "topBottom": {
+          "boundaryMean": 30.924316,
+          "boundaryMax": 67,
+          "interiorMedian": 2.35791,
+          "interiorP95": 3.856934,
+          "boundaryToP95": 8.01785,
+          "pixelIdentical": false
+        }
+      },
+      "visualReview": {
+        "status": "accepted-for-integration-review",
+        "note": "Joint-centre crop removes the separated double boundary lines in both axes. Four slab periods cover 8x8 world units (average 2x2 per slab). Opposite edge pixels are not identical; grout width/brightness and grain differ slightly. Thin horizontal interior joints become faint at reduced scale, especially the shifted-phase 390 view; native 1:1 joints remain visible.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "factory-floor-b",
+      "path": "public/textures/kit/factory/factory-floor-b.webp",
+      "size": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "bytes": 530028,
+      "sha256": "bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667",
+      "source": "assets-src/design-pass/kit/factory/sources/factory-floor-b.png",
+      "sourceSha256": "d3771c078dd528ce93ef6f0c153ea3d9a3fbe9684fd8086d1a935c73d608d19d",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "opaque": true,
+      "transform": {
+        "operation": "joint-centre rectangle crop, Lanczos resize, sRGB conversion, WebP encoding",
+        "crop": {
+          "left": 4,
+          "top": 4,
+          "width": 1245,
+          "height": 1244
+        },
+        "scaleXY": [
+          1.64498,
+          1.646302
+        ],
+        "upscaled": true,
+        "sourceJointCentres": {
+          "x": [
+            4,
+            313,
+            626,
+            938,
+            1249
+          ],
+          "y": [
+            4,
+            314,
+            626,
+            939,
+            1248
+          ]
+        },
+        "gridCells": [
+          4,
+          4
+        ],
+        "averageSlabWorldSize": [
+          2,
+          2
+        ],
+        "effectiveSlabWorldSize": {
+          "x": [
+            1.985542,
+            2.011245,
+            2.004819,
+            1.998394
+          ],
+          "y": [
+            1.993569,
+            2.006431,
+            2.012862,
+            1.987138
+          ]
+        },
+        "proceduralSeamEdits": false,
+        "sourceImageEdits": 1
+      },
+      "meanRGB": [
+        186.257706,
+        177.593821,
+        165.508354
+      ],
+      "edgeBandPixels": 32,
+      "edgeMeanRGB": {
+        "left": [
+          175.270493,
+          167.300873,
+          156.05423
+        ],
+        "right": [
+          181.243362,
+          172.572861,
+          160.831482
+        ],
+        "top": [
+          177.265747,
+          169.221481,
+          158.445908
+        ],
+        "bottom": [
+          183.306686,
+          174.91478,
+          163.350998
+        ]
+      },
+      "jointPhase": {
+        "expectedGrid": [
+          4,
+          4
+        ],
+        "x": {
+          "darkJointCentresPixels": [
+            1,
+            509,
+            1024,
+            1538,
+            2047
+          ],
+          "normalised": [
+            0.000488,
+            0.248535,
+            0.5,
+            0.750977,
+            0.999512
+          ],
+          "interiorSpacingPixels": [
+            508,
+            515,
+            514,
+            509
+          ],
+          "outerInsetsPixels": [
+            1,
+            0
+          ],
+          "repeatBoundaryDistanceBetweenOuterJointCentres": 2,
+          "note": "Minima of averaged luminance in five expected grid windows; 3px smoothing for measurement only. Separated inset minima can indicate a doubled repeat seam; adjacent minima 1–2px apart across the wrap belong to the same continuous joint. Visual review is required."
+        },
+        "y": {
+          "darkJointCentresPixels": [
+            1,
+            512,
+            1026,
+            1541,
+            2047
+          ],
+          "normalised": [
+            0.000488,
+            0.25,
+            0.500977,
+            0.752441,
+            0.999512
+          ],
+          "interiorSpacingPixels": [
+            511,
+            514,
+            515,
+            506
+          ],
+          "outerInsetsPixels": [
+            1,
+            0
+          ],
+          "repeatBoundaryDistanceBetweenOuterJointCentres": 2,
+          "note": "Minima of averaged luminance in five expected grid windows; 3px smoothing for measurement only. Separated inset minima can indicate a doubled repeat seam; adjacent minima 1–2px apart across the wrap belong to the same continuous joint. Visual review is required."
+        }
+      },
+      "seams": {
+        "method": "First/last line absolute RGB differences compared with internal adjacent-line mean distribution at encoded2048 resolution. Diagnostic only; not a perceptual or seamlessness guarantee.",
+        "leftRight": {
+          "boundaryMean": 11.084473,
+          "boundaryMax": 52,
+          "interiorMedian": 3.957194,
+          "interiorP95": 5.443848,
+          "boundaryToP95": 2.036147,
+          "pixelIdentical": false
+        },
+        "topBottom": {
+          "boundaryMean": 14.317057,
+          "boundaryMax": 52,
+          "interiorMedian": 3.868164,
+          "interiorP95": 5.399089,
+          "boundaryToP95": 2.651754,
+          "pixelIdentical": false
+        }
+      },
+      "visualReview": {
+        "status": "accepted-for-integration-review",
+        "note": "Joint-centre crop removes the separated double boundary lines in both axes. Four slab periods cover 8x8 world units (average 2x2 per slab). Opposite edge pixels are not identical; grout width/brightness and grain differ slightly. Wear is slightly stronger and colour slightly lighter than A; overall grid scale agrees.",
+        "record": "qa-review.json"
+      }
+    }
+  ]
+}

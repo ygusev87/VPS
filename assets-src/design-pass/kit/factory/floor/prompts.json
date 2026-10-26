@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "assets": [
+    {
+      "name": "factory-floor-a",
+      "targetSize": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "role": "base",
+      "toolArgs": {
+        "prompt": "Use case: stylized-concept. Create a square seamless repeatable base-color texture for the floor of a miniature industrial workshop, matching a sober realistic factory with teal machines and yellow safety accents. ONLY the light warm-grey concrete slab floor is visible. Strict orthographic straight-down view, no perspective, no lighting direction, no shadows, no ambient-occlusion darkened tile bevels. Entire square filled with material, no border or surrounding background. An 8x8 game-unit area contains exactly FOUR by FOUR large square concrete slabs, each2x2 units. Regular aligned grid, straight horizontal and vertical fine muted-grey expansion joints, no staggered brick pattern. Interior joints exactly at25%,50%,75% in both axes. Outer image edges pass through the CENTRE of a matching joint: each outer edge has HALF the normal joint width so two repetitions join into one ordinary full-width joint. Left/right and top/bottom edge strips match in colour, texture and joint phase. All sixteen slabs have closely matched brightness, with gentle pale warm greige mottling and fine concrete grain. Make the contrast of joints modest but clear at small game scale. Seamless horizontally and vertically, no boundary frame or extra border line, no vignette, no bright centre, no dark corners. Matte dry material, soft painterly realism with convincing concrete, not paper and not shiny ceramic. No objects, equipment, markings, yellow lines, hazard stripes, rails, oil puddles, letters, numbers or decorative props. Deliver one2048x2048 square texture; no montage or repeat demonstration. Variant A is the clean baseline: quiet pale warm grey concrete with subtle pores and slight soft wear, an evenly lit workshop floor. Keep every slab simple and unobtrusive, free of conspicuous cracks or stains.",
+        "transparent_background": false
+      }
+    },
+    {
+      "name": "factory-floor-b",
+      "targetSize": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "role": "slightly-worn",
+      "toolArgs": {
+        "prompt": "Use case: stylized-concept. Create a square seamless repeatable base-color texture for the floor of a miniature industrial workshop, matching a sober realistic factory with teal machines and yellow safety accents. ONLY the light warm-grey concrete slab floor is visible. Strict orthographic straight-down view, no perspective, no lighting direction, no shadows, no ambient-occlusion darkened tile bevels. Entire square filled with material, no border or surrounding background. An 8x8 game-unit area contains exactly FOUR by FOUR large square concrete slabs, each2x2 units. Regular aligned grid, straight horizontal and vertical fine muted-grey expansion joints, no staggered brick pattern. Interior joints exactly at25%,50%,75% in both axes. Outer image edges pass through the CENTRE of a matching joint: each outer edge has HALF the normal joint width so two repetitions join into one ordinary full-width joint. Left/right and top/bottom edge strips match in colour, texture and joint phase. All sixteen slabs have closely matched brightness, with gentle pale warm greige mottling and fine concrete grain. Make the contrast of joints modest but clear at small game scale. Seamless horizontally and vertically, no boundary frame or extra border line, no vignette, no bright centre, no dark corners. Matte dry material, soft painterly realism with convincing concrete, not paper and not shiny ceramic. No objects, equipment, markings, yellow lines, hazard stripes, rails, oil puddles, letters, numbers or decorative props. Deliver one2048x2048 square texture; no montage or repeat demonstration. Variant B has the SAME pale warm-grey palette, identical4x4 scale and same joint positions as baseline A, with only slightly more soft diffuse wear and a few faint short scuffs within slab interiors. No strong dark spots, no prominent crack network, no changed layout or colour family. Keep the perimeter and matching joint widths uniform for repeatability.",
+        "transparent_background": false
+      }
+    }
+  ]
+}

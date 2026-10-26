@@ -1,0 +1,22 @@
+[
+  {
+    "name": "factory-floor-a",
+    "toolArgs": {
+      "prompt": "Repair only the seamless-tiling edge defect in this floor texture. The existing four outer grout lines are incorrectly inset about10pixels from each edge on the1254x1254 original, leaving a thin extra strip that becomes a DOUBLE seam when repeated. Reframe/crop the original precisely THROUGH THE CENTRES of those four outer grout lines (roughlyx10..1244,y10..1244), then fill the square output with that corrected full4x4 slab field. The final image edges themselves must cut through a grout line: there must be NO visible grout line inset parallel to any image edge, and NO concrete strip outside the border grout. At each edge keep only a half-width grout, so adjacent repetitions form one ordinary single-width joint. Maintain the same four-by-four square grid, interior lines at one-quarter, one-half and three-quarters, same pale warm-grey concrete colour, same soft concrete wear and grain, straight top-down view. Match opposite-edge grout colours. No extra objects, marks, shadows, frame or border. Do not add cracks or change material; this is only a repair of the documented doubled outer seam. Same square texture on an opaque background.",
+      "referenced_image_paths": [
+        "/Users/gusev/gameios/assets-src/design-pass/kit/factory/sources/factory-floor-a.png"
+      ],
+      "transparent_background": false
+    }
+  },
+  {
+    "name": "factory-floor-b",
+    "toolArgs": {
+      "prompt": "Fix this texture's FOUR OUTER EDGES for seamless repeating. Change only the narrow outer20pixels, preserving all interior4x4 concrete slabs, scuffs, colour and the three interior grid lines in each direction. MOVE each currently inset outer grout line outward until its centre is exactly ON the physical image edge. Fill its old inset location with matching concrete. There must be no second grout line inside the outer20px strip and no tiny concrete strip outside it. Every pixel at the very top, bottom, left and right rim belongs to the same muted-grey half-width expansion joint. Each half-joint at an image edge is only half the width of a normal interior joint. When repeated, opposite half-joints form ONE ordinary line. Preserve straight grid alignment through corners and identical opposing edge colour. Same square canvas, opaque material, no shadow, no perspective, no border frame. This is a localized seam repair, not a new design. The key requirement is that the outermost line is AT THE EDGE, never inset from it.",
+      "referenced_image_paths": [
+        "/Users/gusev/gameios/assets-src/design-pass/kit/factory/sources/factory-floor-b.png"
+      ],
+      "transparent_background": false
+    }
+  }
+]

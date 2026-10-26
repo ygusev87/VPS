@@ -1,0 +1,117 @@
+{
+  "schemaVersion": 1,
+  "status": "pass-with-documented-visual-limitations",
+  "generationCalls": 4,
+  "sourceChecks": [
+    {
+      "name": "factory-floor-a",
+      "stage": "initial",
+      "path": "assets-src/design-pass/kit/factory/floor/iterations/v1/factory-floor-a.png",
+      "sha256": "593c64c9d3d2a2509b703a9a93ba3fececa9d0eab73ef46bef34f52224c4cdb9",
+      "matchesGeneratedSource": true
+    },
+    {
+      "name": "factory-floor-a",
+      "stage": "selected",
+      "path": "assets-src/design-pass/kit/factory/sources/factory-floor-a.png",
+      "sha256": "0c54b851c359bd17e4c436f4e2f79187cbec33295ba563931ed2f7a76591ea36",
+      "matchesGeneratedSource": true
+    },
+    {
+      "name": "factory-floor-b",
+      "stage": "initial",
+      "path": "assets-src/design-pass/kit/factory/floor/iterations/v1/factory-floor-b.png",
+      "sha256": "9ebecdbc19bc3b5021b707fdcc64da71264a61692663fd176d8dfd69a06a8635",
+      "matchesGeneratedSource": true
+    },
+    {
+      "name": "factory-floor-b",
+      "stage": "selected",
+      "path": "assets-src/design-pass/kit/factory/sources/factory-floor-b.png",
+      "sha256": "d3771c078dd528ce93ef6f0c153ea3d9a3fbe9684fd8086d1a935c73d608d19d",
+      "matchesGeneratedSource": true
+    }
+  ],
+  "finalBytes": 923820,
+  "outputChecks": [
+    {
+      "name": "factory-floor-a",
+      "sha256": "85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365",
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 393792,
+      "opaque": true
+    },
+    {
+      "name": "factory-floor-b",
+      "sha256": "bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667",
+      "size": [
+        2048,
+        2048
+      ],
+      "bytes": 530028,
+      "opaque": true
+    }
+  ],
+  "browser": {
+    "screenshots": 8,
+    "viewports": [
+      [
+        390,
+        844
+      ],
+      [
+        1024,
+        768
+      ]
+    ],
+    "modes": [
+      "repeat",
+      "phase",
+      "seams",
+      "single"
+    ],
+    "errorCount": 0,
+    "horizontalOverflowCount": 0,
+    "allAssetHashesMatch": true,
+    "record": "qa/browser-checks.json"
+  },
+  "slabScale": {
+    "meanWorldSizeBoth": [
+      2,
+      2
+    ],
+    "worldCoverageBoth": [
+      8,
+      8
+    ],
+    "maximumInteriorJointPhaseDifferencePixels": {
+      "x": 4,
+      "y": 5
+    },
+    "meanRGBDifferenceBminusA": [
+      4.907275,
+      4.689134,
+      2.928078
+    ]
+  },
+  "checks": [
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "testFilesPassed": 17,
+      "testsPassed": 88
+    },
+    {
+      "command": "npm run typecheck",
+      "exitCode": 0
+    }
+  ],
+  "limitations": [
+    "Edges are not pixel-identical.",
+    "A has some faint interior joints when downsampled.",
+    "Native game renderer, mixed A/B grid and physical iPad not exercised in this asset QA."
+  ]
+}

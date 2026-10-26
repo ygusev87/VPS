@@ -1,0 +1,296 @@
+{
+  "schemaVersion": 1,
+  "status": "encoded; visual seam review pending",
+  "generationCalls": 4,
+  "initialGenerations": 2,
+  "targetedEditCalls": 2,
+  "repeatedGenerations": 0,
+  "artworkEdits": 2,
+  "processing": "Resize/encode only. No periodic blending, mirroring, colour correction, procedural drawing or painted seam repair.",
+  "kitJsonOwner": "main; never written here",
+  "totalBytes": 942940,
+  "assets": [
+    {
+      "name": "factory-floor-a",
+      "path": "public/textures/kit/factory/factory-floor-a.webp",
+      "size": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "bytes": 409402,
+      "sha256": "03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76",
+      "source": "assets-src/design-pass/kit/factory/sources/factory-floor-a.png",
+      "sourceSha256": "0c54b851c359bd17e4c436f4e2f79187cbec33295ba563931ed2f7a76591ea36",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "opaque": true,
+      "transform": {
+        "operation": "uniform Lanczos resize, sRGB conversion, WebP encoding only",
+        "scale": 1.633174,
+        "upscaled": true,
+        "proceduralSeamEdits": false,
+        "sourceImageEdits": 1
+      },
+      "meanRGB": [
+        180.915355,
+        172.513976,
+        162.230855
+      ],
+      "edgeBandPixels": 32,
+      "edgeMeanRGB": {
+        "left": [
+          163.704834,
+          156.248856,
+          147.253723
+        ],
+        "right": [
+          166.920731,
+          159.100754,
+          149.783264
+        ],
+        "top": [
+          168.375763,
+          160.622604,
+          151.464996
+        ],
+        "bottom": [
+          168.858215,
+          161.257782,
+          152.193985
+        ]
+      },
+      "jointPhase": {
+        "expectedGrid": [
+          4,
+          4
+        ],
+        "x": {
+          "darkJointCentresPixels": [
+            13,
+            513,
+            1023,
+            1535,
+            2036
+          ],
+          "normalised": [
+            0.006348,
+            0.250488,
+            0.499512,
+            0.749512,
+            0.994141
+          ],
+          "interiorSpacingPixels": [
+            500,
+            510,
+            512,
+            501
+          ],
+          "outerInsetsPixels": [
+            13,
+            11
+          ],
+          "repeatBoundaryDistanceBetweenOuterJointCentres": 25,
+          "note": "Minima of averaged luminance in five expected grid windows; 3px smoothing for measurement only. Narrow distance between two inset outer joints predicts a doubled seam at repeat boundary."
+        },
+        "y": {
+          "darkJointCentresPixels": [
+            14,
+            512,
+            1024,
+            1534,
+            2033
+          ],
+          "normalised": [
+            0.006836,
+            0.25,
+            0.5,
+            0.749023,
+            0.992676
+          ],
+          "interiorSpacingPixels": [
+            498,
+            512,
+            510,
+            499
+          ],
+          "outerInsetsPixels": [
+            14,
+            14
+          ],
+          "repeatBoundaryDistanceBetweenOuterJointCentres": 29,
+          "note": "Minima of averaged luminance in five expected grid windows; 3px smoothing for measurement only. Narrow distance between two inset outer joints predicts a doubled seam at repeat boundary."
+        }
+      },
+      "seams": {
+        "method": "First/last line absolute RGB differences compared with internal adjacent-line mean distribution at encoded2048 resolution. Diagnostic only; not a perceptual or seamlessness guarantee.",
+        "leftRight": {
+          "boundaryMean": 7.502767,
+          "boundaryMax": 62,
+          "interiorMedian": 2.54362,
+          "interiorP95": 3.942708,
+          "boundaryToP95": 1.902947,
+          "pixelIdentical": false
+        },
+        "topBottom": {
+          "boundaryMean": 7.664876,
+          "boundaryMax": 70,
+          "interiorMedian": 2.415527,
+          "interiorP95": 3.852539,
+          "boundaryToP95": 1.989565,
+          "pixelIdentical": false
+        }
+      },
+      "visualReview": "pending"
+    },
+    {
+      "name": "factory-floor-b",
+      "path": "public/textures/kit/factory/factory-floor-b.webp",
+      "size": [
+        2048,
+        2048
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "bytes": 533538,
+      "sha256": "e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6",
+      "source": "assets-src/design-pass/kit/factory/sources/factory-floor-b.png",
+      "sourceSha256": "d3771c078dd528ce93ef6f0c153ea3d9a3fbe9684fd8086d1a935c73d608d19d",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "opaque": true,
+      "transform": {
+        "operation": "uniform Lanczos resize, sRGB conversion, WebP encoding only",
+        "scale": 1.633174,
+        "upscaled": true,
+        "proceduralSeamEdits": false,
+        "sourceImageEdits": 1
+      },
+      "meanRGB": [
+        185.672176,
+        177.09106,
+        165.123522
+      ],
+      "edgeBandPixels": 32,
+      "edgeMeanRGB": {
+        "left": [
+          168.55249,
+          161.848267,
+          152.147858
+        ],
+        "right": [
+          169.087433,
+          161.907867,
+          152.125183
+        ],
+        "top": [
+          170.741287,
+          163.816956,
+          153.952225
+        ],
+        "bottom": [
+          170.098099,
+          163.568512,
+          154.511902
+        ]
+      },
+      "jointPhase": {
+        "expectedGrid": [
+          4,
+          4
+        ],
+        "x": {
+          "darkJointCentresPixels": [
+            8,
+            512,
+            1023,
+            1533,
+            2040
+          ],
+          "normalised": [
+            0.003906,
+            0.25,
+            0.499512,
+            0.748535,
+            0.996094
+          ],
+          "interiorSpacingPixels": [
+            504,
+            511,
+            510,
+            507
+          ],
+          "outerInsetsPixels": [
+            8,
+            7
+          ],
+          "repeatBoundaryDistanceBetweenOuterJointCentres": 16,
+          "note": "Minima of averaged luminance in five expected grid windows; 3px smoothing for measurement only. Narrow distance between two inset outer joints predicts a doubled seam at repeat boundary."
+        },
+        "y": {
+          "darkJointCentresPixels": [
+            8,
+            515,
+            1024,
+            1535,
+            2039
+          ],
+          "normalised": [
+            0.003906,
+            0.251465,
+            0.5,
+            0.749512,
+            0.995605
+          ],
+          "interiorSpacingPixels": [
+            507,
+            509,
+            511,
+            504
+          ],
+          "outerInsetsPixels": [
+            8,
+            8
+          ],
+          "repeatBoundaryDistanceBetweenOuterJointCentres": 17,
+          "note": "Minima of averaged luminance in five expected grid windows; 3px smoothing for measurement only. Narrow distance between two inset outer joints predicts a doubled seam at repeat boundary."
+        }
+      },
+      "seams": {
+        "method": "First/last line absolute RGB differences compared with internal adjacent-line mean distribution at encoded2048 resolution. Diagnostic only; not a perceptual or seamlessness guarantee.",
+        "leftRight": {
+          "boundaryMean": 9.323405,
+          "boundaryMax": 46,
+          "interiorMedian": 3.963704,
+          "interiorP95": 5.527344,
+          "boundaryToP95": 1.686779,
+          "pixelIdentical": false
+        },
+        "topBottom": {
+          "boundaryMean": 10.74707,
+          "boundaryMax": 50,
+          "interiorMedian": 3.877279,
+          "interiorP95": 5.510742,
+          "boundaryToP95": 1.950204,
+          "pixelIdentical": false
+        }
+      },
+      "visualReview": "pending"
+    }
+  ]
+}

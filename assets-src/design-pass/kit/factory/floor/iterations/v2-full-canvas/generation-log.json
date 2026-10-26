@@ -1,0 +1,66 @@
+[
+  {
+    "name": "factory-floor-a",
+    "tool": "image_gen.imagegen",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-c5881ddf-510d-4588-a786-88a0a65c4e91.png",
+    "sourcePath": "assets-src/design-pass/kit/factory/sources/factory-floor-a.png",
+    "sha256": "0c54b851c359bd17e4c436f4e2f79187cbec33295ba563931ed2f7a76591ea36",
+    "bytes": 2882371,
+    "callCount": 2,
+    "initialGenerations": 1,
+    "targetedEdits": [
+      {
+        "promptRecord": "correction-prompts.json",
+        "index": 0,
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-c5881ddf-510d-4588-a786-88a0a65c4e91.png",
+        "sha256": "0c54b851c359bd17e4c436f4e2f79187cbec33295ba563931ed2f7a76591ea36",
+        "reason": "Visible doubled outer grout lines in native browser2x2 and100% crops; outer centres32px apart across repeat seam."
+      }
+    ],
+    "sourcePreservedByteExact": true,
+    "initialGeneration": {
+      "name": "factory-floor-a",
+      "tool": "image_gen.imagegen",
+      "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-da611d43-94dd-4966-82eb-8087450aac13.png",
+      "sourcePath": "assets-src/design-pass/kit/factory/floor/iterations/v1/factory-floor-a.png",
+      "sha256": "593c64c9d3d2a2509b703a9a93ba3fececa9d0eab73ef46bef34f52224c4cdb9",
+      "bytes": 3211174,
+      "callCount": 1,
+      "initialGenerations": 1,
+      "targetedEdits": [],
+      "sourcePreservedByteExact": true
+    }
+  },
+  {
+    "name": "factory-floor-b",
+    "tool": "image_gen.imagegen",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-348d7a34-bf06-4321-a18e-5bacdd57b672.png",
+    "sourcePath": "assets-src/design-pass/kit/factory/sources/factory-floor-b.png",
+    "sha256": "d3771c078dd528ce93ef6f0c153ea3d9a3fbe9684fd8086d1a935c73d608d19d",
+    "bytes": 3239905,
+    "callCount": 2,
+    "initialGenerations": 1,
+    "targetedEdits": [
+      {
+        "promptRecord": "correction-prompts.json",
+        "index": 1,
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-348d7a34-bf06-4321-a18e-5bacdd57b672.png",
+        "sha256": "d3771c078dd528ce93ef6f0c153ea3d9a3fbe9684fd8086d1a935c73d608d19d",
+        "reason": "Visible doubled outer grout lines in native browser2x2 and100% crops; outer centres32px apart across repeat seam."
+      }
+    ],
+    "sourcePreservedByteExact": true,
+    "initialGeneration": {
+      "name": "factory-floor-b",
+      "tool": "image_gen.imagegen",
+      "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-472382c6-1632-4753-9e47-a2dc79772ae9.png",
+      "sourcePath": "assets-src/design-pass/kit/factory/floor/iterations/v1/factory-floor-b.png",
+      "sha256": "9ebecdbc19bc3b5021b707fdcc64da71264a61692663fd176d8dfd69a06a8635",
+      "bytes": 3530494,
+      "callCount": 1,
+      "initialGenerations": 1,
+      "targetedEdits": [],
+      "sourcePreservedByteExact": true
+    }
+  }
+]

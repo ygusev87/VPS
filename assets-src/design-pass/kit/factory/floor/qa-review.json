@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted-for-integration-review",
+  "method": "Human-model visual review of eight native IAB screenshots of SHA-bound final WebPs at 390x844 and 1024x768; repeat 2x2, shifted phase, seams at 1:1, single tiles.",
+  "pixelPerfectSeamless": false,
+  "sourcePNGModified": false,
+  "assets": [
+    {
+      "name": "factory-floor-a",
+      "sha256": "85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365",
+      "status": "accepted-for-integration-review",
+      "note": "Joint-centre crop removes the separated double boundary lines in both axes. Four slab periods cover 8x8 world units (average 2x2 per slab). Opposite edge pixels are not identical; grout width/brightness and grain differ slightly. Thin horizontal interior joints become faint at reduced scale, especially the shifted-phase 390 view; native 1:1 joints remain visible.",
+      "doubleBoundaryResolvedVisually": true,
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "screenshotPaths": [
+        "qa/repeat-390.jpg",
+        "qa/phase-390.jpg",
+        "qa/seams-390.jpg",
+        "qa/single-390.jpg",
+        "qa/repeat-1024.jpg",
+        "qa/phase-1024.jpg",
+        "qa/seams-1024.jpg",
+        "qa/single-1024.jpg"
+      ]
+    },
+    {
+      "name": "factory-floor-b",
+      "sha256": "bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667",
+      "status": "accepted-for-integration-review",
+      "note": "Joint-centre crop removes the separated double boundary lines in both axes. Four slab periods cover 8x8 world units (average 2x2 per slab). Opposite edge pixels are not identical; grout width/brightness and grain differ slightly. Wear is slightly stronger and colour slightly lighter than A; overall grid scale agrees.",
+      "doubleBoundaryResolvedVisually": true,
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "screenshotPaths": [
+        "qa/repeat-390.jpg",
+        "qa/phase-390.jpg",
+        "qa/seams-390.jpg",
+        "qa/single-390.jpg",
+        "qa/repeat-1024.jpg",
+        "qa/phase-1024.jpg",
+        "qa/seams-1024.jpg",
+        "qa/single-1024.jpg"
+      ]
+    }
+  ]
+}

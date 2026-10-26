@@ -1,0 +1,273 @@
+{
+  "checks": [
+    {
+      "view": "repeat",
+      "backgrounds": [
+        {
+          "asset": "factory-floor-a",
+          "axis": null,
+          "size": [
+            370,
+            370
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76\")"
+        },
+        {
+          "asset": "factory-floor-b",
+          "axis": null,
+          "size": [
+            370,
+            370
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6\")"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "view": "phase",
+      "backgrounds": [
+        {
+          "asset": "factory-floor-a",
+          "axis": null,
+          "size": [
+            370,
+            370
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76\")"
+        },
+        {
+          "asset": "factory-floor-b",
+          "axis": null,
+          "size": [
+            370,
+            370
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6\")"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "view": "seams",
+      "backgrounds": [
+        {
+          "asset": "factory-floor-a",
+          "axis": "lr",
+          "size": [
+            370,
+            280
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76\")"
+        },
+        {
+          "asset": "factory-floor-a",
+          "axis": "tb",
+          "size": [
+            370,
+            280
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76\")"
+        },
+        {
+          "asset": "factory-floor-b",
+          "axis": "lr",
+          "size": [
+            370,
+            280
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6\")"
+        },
+        {
+          "asset": "factory-floor-b",
+          "axis": "tb",
+          "size": [
+            370,
+            280
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6\")"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "view": "single",
+      "backgrounds": [
+        {
+          "asset": "factory-floor-a",
+          "axis": null,
+          "size": [
+            370,
+            370
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76\")"
+        },
+        {
+          "asset": "factory-floor-b",
+          "axis": null,
+          "size": [
+            370,
+            370
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6\")"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "view": "repeat",
+      "backgrounds": [
+        {
+          "asset": "factory-floor-a",
+          "axis": null,
+          "size": [
+            494,
+            494
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76\")"
+        },
+        {
+          "asset": "factory-floor-b",
+          "axis": null,
+          "size": [
+            494,
+            494
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6\")"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "view": "phase",
+      "backgrounds": [
+        {
+          "asset": "factory-floor-a",
+          "axis": null,
+          "size": [
+            494,
+            494
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76\")"
+        },
+        {
+          "asset": "factory-floor-b",
+          "axis": null,
+          "size": [
+            494,
+            494
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6\")"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "view": "seams",
+      "backgrounds": [
+        {
+          "asset": "factory-floor-a",
+          "axis": "lr",
+          "size": [
+            494,
+            320
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76\")"
+        },
+        {
+          "asset": "factory-floor-a",
+          "axis": "tb",
+          "size": [
+            494,
+            320
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76\")"
+        },
+        {
+          "asset": "factory-floor-b",
+          "axis": "lr",
+          "size": [
+            494,
+            320
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6\")"
+        },
+        {
+          "asset": "factory-floor-b",
+          "axis": "tb",
+          "size": [
+            494,
+            320
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6\")"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "view": "single",
+      "backgrounds": [
+        {
+          "asset": "factory-floor-a",
+          "axis": null,
+          "size": [
+            494,
+            494
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=03b90bfd58ceb90975200bbcfe4ca821ddbb208b1d338e652975d339a77f9e76\")"
+        },
+        {
+          "asset": "factory-floor-b",
+          "axis": null,
+          "size": [
+            494,
+            494
+          ],
+          "url": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=e36c7dce7ce81dfad8ba3230e36cd95e5d945ef3e4a09fbcc7a1f03e3da625b6\")"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ]
+    }
+  ],
+  "consoleErrors": []
+}

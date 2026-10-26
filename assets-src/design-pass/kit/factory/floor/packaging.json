@@ -1,0 +1,87 @@
+{
+  "method": "Rectangle from first outer joint centre to final corresponding joint centre, exclusive right/bottom; retains four complete slab periods. No blending, drawing, mirroring or colour correction.",
+  "assets": [
+    {
+      "name": "factory-floor-a",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceJointCentres": {
+        "x": [
+          7,
+          314,
+          626,
+          939,
+          1246
+        ],
+        "y": [
+          8,
+          313,
+          626,
+          939,
+          1244
+        ]
+      },
+      "crop": {
+        "left": 7,
+        "top": 8,
+        "width": 1239,
+        "height": 1236
+      },
+      "gridCells": [
+        4,
+        4
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "averageSlabWorldSize": [
+        2,
+        2
+      ]
+    },
+    {
+      "name": "factory-floor-b",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceJointCentres": {
+        "x": [
+          4,
+          313,
+          626,
+          938,
+          1249
+        ],
+        "y": [
+          4,
+          314,
+          626,
+          939,
+          1248
+        ]
+      },
+      "crop": {
+        "left": 4,
+        "top": 4,
+        "width": 1245,
+        "height": 1244
+      },
+      "gridCells": [
+        4,
+        4
+      ],
+      "worldCoverage": [
+        8,
+        8
+      ],
+      "averageSlabWorldSize": [
+        2,
+        2
+      ]
+    }
+  ]
+}

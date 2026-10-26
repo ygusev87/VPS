@@ -1,0 +1,217 @@
+{
+  "stage": "joint-centre-crop",
+  "checks": [
+    {
+      "view": "repeat",
+      "assets": [
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365\")",
+          "name": "factory-floor-a"
+        },
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667\")",
+          "name": "factory-floor-b"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "summary": "2048×2048 · 8×8 игровых единиц · 923820 bytes суммарно",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/repeat-390.jpg"
+    },
+    {
+      "view": "phase",
+      "assets": [
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365\")",
+          "name": "factory-floor-a"
+        },
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667\")",
+          "name": "factory-floor-b"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "summary": "2048×2048 · 8×8 игровых единиц · 923820 bytes суммарно",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/phase-390.jpg"
+    },
+    {
+      "view": "seams",
+      "assets": [
+        {
+          "axis": "lr",
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365\")",
+          "name": "factory-floor-a"
+        },
+        {
+          "axis": "tb",
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365\")",
+          "name": "factory-floor-a"
+        },
+        {
+          "axis": "lr",
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667\")",
+          "name": "factory-floor-b"
+        },
+        {
+          "axis": "tb",
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667\")",
+          "name": "factory-floor-b"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "summary": "2048×2048 · 8×8 игровых единиц · 923820 bytes суммарно",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/seams-390.jpg"
+    },
+    {
+      "view": "single",
+      "assets": [
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365\")",
+          "name": "factory-floor-a"
+        },
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667\")",
+          "name": "factory-floor-b"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "summary": "2048×2048 · 8×8 игровых единиц · 923820 bytes суммарно",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/single-390.jpg"
+    },
+    {
+      "view": "repeat",
+      "assets": [
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365\")",
+          "name": "factory-floor-a"
+        },
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667\")",
+          "name": "factory-floor-b"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "summary": "2048×2048 · 8×8 игровых единиц · 923820 bytes суммарно",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/repeat-1024.jpg"
+    },
+    {
+      "view": "phase",
+      "assets": [
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365\")",
+          "name": "factory-floor-a"
+        },
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667\")",
+          "name": "factory-floor-b"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "summary": "2048×2048 · 8×8 игровых единиц · 923820 bytes суммарно",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/phase-1024.jpg"
+    },
+    {
+      "view": "seams",
+      "assets": [
+        {
+          "axis": "lr",
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365\")",
+          "name": "factory-floor-a"
+        },
+        {
+          "axis": "tb",
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365\")",
+          "name": "factory-floor-a"
+        },
+        {
+          "axis": "lr",
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667\")",
+          "name": "factory-floor-b"
+        },
+        {
+          "axis": "tb",
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667\")",
+          "name": "factory-floor-b"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "summary": "2048×2048 · 8×8 игровых единиц · 923820 bytes суммарно",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/seams-1024.jpg"
+    },
+    {
+      "view": "single",
+      "assets": [
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-a.webp?v=85732aa329ecd639e307956e109d31c7ded9d6024b0fec79c270919c19336365\")",
+          "name": "factory-floor-a"
+        },
+        {
+          "axis": null,
+          "backgroundImage": "url(\"/public/textures/kit/factory/factory-floor-b.webp?v=bbb87efb626db418864d89b8acf6dbd5dcfaef002c67eadf2d161cad6d530667\")",
+          "name": "factory-floor-b"
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "summary": "2048×2048 · 8×8 игровых единиц · 923820 bytes суммарно",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/single-1024.jpg"
+    }
+  ]
+}
