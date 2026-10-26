@@ -1,0 +1,16 @@
+{
+  "date": "2026-10-26",
+  "tool": "builtin image_gen edit",
+  "edits": [
+    {
+      "id": "paving",
+      "source": "/Users/gusev/gameios/assets-src/design-pass/city-materials/sources/paving-v1.png",
+      "prompt": "Edit this albedo texture to fix tiling ONLY, preserving its warm cream/honey limestone palette and restrained hand-painted material. Output a square repeatable 1024x1024 flat top-down material. The current TOP edge is grout but BOTTOM edge cuts through large stone faces, creating a dark horizontal stripe at every repeat. Rebuild a regular running bond of EXACTLY 12 complete equal-height courses, no partial extra course at either vertical edge. TOP and BOTTOM boundaries both cut exactly along the centerline of the same narrow horizontal mortar joint, with matching color. Use SIX equal full stone widths horizontally; alternating courses offset by HALF a stone. The LEFT and RIGHT boundary cuts match exactly for each course: same joint location, same face/mortar color. The seam should be invisible when copied into a 3x3 grid; no grid of samples in output, just ONE seamless tile. Reduce mortar contrast: soft muted beige/taupe, not a dark brown line. No perspective, directional shadows, extra stones, border, plants or objects. Preserve the original natural painted stone-face variation but make all four boundary colors and geometry periodic. No baked bevel highlights."
+    },
+    {
+      "id": "quay-stone",
+      "source": "/Users/gusev/gameios/assets-src/design-pass/city-materials/sources/quay-stone-v1.png",
+      "prompt": "Edit this albedo texture to fix LEFT/RIGHT tiling ONLY and slightly soften the mortar contrast. Preserve the warm light gray-beige limestone palette, flat orthographic hand-painted style and 4-stone by 8-course scale. Output a single square1024x1024 seamless texture, not a sample grid. EXACTLY eight complete equal-height courses; TOP and BOTTOM each cut through the center of the same horizontal mortar joint, matching color. EXACTLY FOUR full stone widths across the image, alternating rows offset by exactly half a stone. For each row the LEFT and RIGHT boundaries must cut matching geometry and matching color; if the left is a vertical grout, the right is that same grout; if the left is half a stone, right is matching half a stone. No vertical seam or doubled grout on repeat. Narrow low contrast gray-beige mortar. Surface flat evenly lit, no directional lighting, painted beveled shadows, deep dark grout, waterline, dirt bands, moss, borders or text. Preserve gentle material variation but all four boundaries must be periodic."
+    }
+  ]
+}

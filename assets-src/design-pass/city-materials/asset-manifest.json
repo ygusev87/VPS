@@ -1,0 +1,103 @@
+{
+  "schema": 1,
+  "request": "m0305",
+  "selected": "A",
+  "reference": "../variants/city-a.png",
+  "status": "integrated-by-claude-final-lawns-game-review-pending",
+  "runtimeOwner": "claude",
+  "assets": [
+    {
+      "id": "asphalt",
+      "file": "candidates/asphalt-v1.webp",
+      "size": [
+        512,
+        512
+      ],
+      "worldSpan": 6,
+      "maxKiB": 100,
+      "sRGB": true,
+      "repeat": true,
+      "roughness": 0.94,
+      "notes": "No baked road markings. Current roadMarks geometry remains authoritative; soft edge only in city mask.",
+      "wrapping": "RepeatWrapping",
+      "bytes": 74378,
+      "sha256": "37424790e0e5d696e76259f325bd2d33f97cb5ee5167e884a1618fc6ac15f802"
+    },
+    {
+      "id": "paving",
+      "file": "candidates/paving-v2.webp",
+      "size": [
+        512,
+        512
+      ],
+      "worldSpan": 4,
+      "maxKiB": 100,
+      "sRGB": true,
+      "repeat": true,
+      "roughness": 0.88,
+      "notes": "8 pavers across /12 courses in source; do not use old paving span0.75 or stones become noise.",
+      "wrapping": "MirroredRepeatWrapping on both axes",
+      "intrinsicallySeamless": false,
+      "bytes": 26840,
+      "sha256": "9d6c17bbff5071cd990c792e363917e7a06586e41756bf16108d16cb124d5169"
+    },
+    {
+      "id": "quay-stone",
+      "file": "candidates/quay-stone-v2.webp",
+      "size": [
+        512,
+        512
+      ],
+      "worldSpan": [
+        2,
+        1
+      ],
+      "maxKiB": 100,
+      "sRGB": true,
+      "repeat": true,
+      "roughness": 0.86,
+      "notes": "4 stones x8 courses; UV on bank longitudinal/vertical axes; no stretch of single tile over entire54.5-unit canal.",
+      "wrapping": "MirroredRepeatWrapping on both axes",
+      "intrinsicallySeamless": false,
+      "bytes": 30016,
+      "sha256": "1556390014ba85de3ac4c49962f5a1af7bae4492554d11e1d80963b066438d11"
+    },
+    {
+      "id": "grass-base",
+      "file": "../materials/candidates/grass-base-v2.webp",
+      "reuse": true,
+      "size": [
+        512,
+        512
+      ],
+      "worldSpan": 7,
+      "sRGB": true
+    },
+    {
+      "id": "grass-meadow",
+      "file": "../materials/candidates/grass-meadow-v2.webp",
+      "reuse": true,
+      "size": [
+        512,
+        512
+      ],
+      "worldSpan": 7,
+      "sRGB": true
+    }
+  ],
+  "newTextureTargetKiB": 300,
+  "newRGBA8MipMemoryMiB": 4,
+  "cost": {
+    "builtinImageCallsStarted": 5,
+    "TripoCredits": 0,
+    "HiggsfieldCredits": 0
+  },
+  "markings": "existing city.ts roadMarks; tune opacity/edge through code, not repeat-tile artwork",
+  "water": "existing water geometry/material, no new bitmap in first pass",
+  "actualNewBytes": 131234,
+  "runtimeNames": {
+    "asphalt": "asphalt-a",
+    "paving": "paving-a",
+    "quay-stone": "quay"
+  }
+}

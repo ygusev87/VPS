@@ -1,0 +1,52 @@
+{
+  "date": "2026-10-26",
+  "scope": "City A materials and ground mask only",
+  "staticBrowser": {
+    "viewports": [
+      [
+        390,
+        844
+      ],
+      [
+        1024,
+        768
+      ],
+      [
+        1180,
+        820
+      ]
+    ],
+    "checked": [
+      "material previews load",
+      "mirrored stone sampler visible",
+      "responsive card layout",
+      "protected region overlay toggles"
+    ],
+    "screenshots": "Actual 1280x720 browser screenshots of iframe viewports; full iframe heights are not all visible",
+    "console": [
+      {
+        "level": "error",
+        "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+        "timestamp": "2026-10-26T07:42:27.039Z"
+      }
+    ]
+  },
+  "gameReview": [
+    "claude-qa/city-target-vs-game-1-lawns.png",
+    "claude-qa/city-target-vs-game-2-textures.png"
+  ],
+  "gameReviewLimit": "Claude screenshots precede final narrow-strip removal; final gameplay robot and day/night view are Claude next step. No iPad/PWA/FPS approval.",
+  "lawns": {
+    "newRectangles": 31,
+    "oldArea": 611.75,
+    "addedArea": 1450.6235425536727,
+    "protectedExclusions": 107,
+    "maskExpansionAllowance": 0.55,
+    "overlaps": 0,
+    "scope": "Conservative 2D bounds including real building GLBs, task/pole pads and route AABBs; not a rendered gameplay/FPS check."
+  },
+  "dataScope": "Only SOIL changed in city-decor; other exports compared exactly with HEAD",
+  "textureReport": "../../candidates/report-v2.json",
+  "wrap": "Asphalt Repeat; paving/quay MirroredRepeat (not intrinsically seamless)",
+  "tests": "21 passed /4 files; typecheck passed"
+}

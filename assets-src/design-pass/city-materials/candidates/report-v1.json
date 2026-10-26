@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-26",
+  "assets": [
+    {
+      "id": "asphalt",
+      "source": "sources/asphalt-v1.png",
+      "file": "candidates/asphalt-v1.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "bytes": 74378,
+      "sha256": "37424790e0e5d696e76259f325bd2d33f97cb5ee5167e884a1618fc6ac15f802",
+      "encoding": "mechanical resize and WebP90, no artwork changes",
+      "edgeMeanAbsoluteRGB": {
+        "horizontal": 7.293619791666667,
+        "vertical": 6.932291666666667,
+        "interiorHorizontal": 7.652994791666667,
+        "interiorVertical": 7.4453125
+      },
+      "note": "Edge deltas are diagnostics, not a seamlessness proof. Inspect repeated preview."
+    },
+    {
+      "id": "paving",
+      "source": "sources/paving-v1.png",
+      "file": "candidates/paving-v1.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "bytes": 28296,
+      "sha256": "a363111fef18cf00e87af662245de678fe413555dca8d23482ca52a3ab96e089",
+      "encoding": "mechanical resize and WebP90, no artwork changes",
+      "edgeMeanAbsoluteRGB": {
+        "horizontal": 2.7630208333333335,
+        "vertical": 42.610677083333336,
+        "interiorHorizontal": 1.642578125,
+        "interiorVertical": 1.8053385416666667
+      },
+      "note": "Edge deltas are diagnostics, not a seamlessness proof. Inspect repeated preview."
+    },
+    {
+      "id": "quay-stone",
+      "source": "sources/quay-stone-v1.png",
+      "file": "candidates/quay-stone-v1.webp",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "dimensions": [
+        512,
+        512
+      ],
+      "bytes": 33882,
+      "sha256": "a923b3735ef23032787ec18d136f481981e537abe07636bfc187c82bfb4c8ffd",
+      "encoding": "mechanical resize and WebP90, no artwork changes",
+      "edgeMeanAbsoluteRGB": {
+        "horizontal": 19.314453125,
+        "vertical": 7.551432291666667,
+        "interiorHorizontal": 7.731119791666667,
+        "interiorVertical": 5.953776041666667
+      },
+      "note": "Edge deltas are diagnostics, not a seamlessness proof. Inspect repeated preview."
+    }
+  ],
+  "totalBytes": 136556
+}

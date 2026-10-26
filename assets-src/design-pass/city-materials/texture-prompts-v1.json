@@ -1,0 +1,25 @@
+{
+  "date": "2026-10-26",
+  "request": "m0305",
+  "reference": "assets-src/design-pass/variants/city-a.png (visually inspected style reference; not an edit target)",
+  "tool": "builtin image_gen",
+  "specs": [
+    {
+      "id": "asphalt",
+      "prompt": "Use case: stylized-concept. Asset type: production-ready seamless albedo texture for a cozy toy-town mobile game, matching a warm garden town with cream stone paths, soft dark roads and lush farm-style grass. Generate a single square 1024x1024 image, a perfectly orthographic flat top-down material swatch covering the entire image edge to edge. No scene, no perspective, no objects, no border, no labels, no UI. Lighting is completely diffuse and even, no directional shadows, no ambient-occlusion vignette, no highlight hotspot, no painted depth bevel. Tile must repeat seamlessly on all four edges, same color/value at every edge. Restrained hand-painted stylization with broad quiet color variation and legible soft material shapes, not photoreal scanned noise. Opaque. Material: soft clean medium-dark neutral slate asphalt with a very slight warm blue-gray cast, value near #737981. Very fine sparse rounded aggregate blended into broad matte areas, subtly worn lighter patches with exceptionally low contrast. It covers a 6x6 world-unit road square. No lane markings, no arrows, no zebra crossing, no curbs, no cracks, no potholes, no oil spills, no moss, no tire tracks. Markings are separate game geometry; this texture must work rotated through any junction. The surface should read as quiet painted asphalt from an isometric camera, not gravel or chalk."
+    },
+    {
+      "id": "paving",
+      "prompt": "Use case: stylized-concept. Asset type: production-ready seamless albedo texture for a cozy toy-town mobile game, matching a warm garden town with cream stone paths, soft dark roads and lush farm-style grass. Generate a single square 1024x1024 image, a perfectly orthographic flat top-down material swatch covering the entire image edge to edge. No scene, no perspective, no objects, no border, no labels, no UI. Lighting is completely diffuse and even, no directional shadows, no ambient-occlusion vignette, no highlight hotspot, no painted depth bevel. Tile must repeat seamlessly on all four edges, same color/value at every edge. Restrained hand-painted stylization with broad quiet color variation and legible soft material shapes, not photoreal scanned noise. Opaque. Material: warm pale honey-beige limestone sidewalk pavers, near #d7c396, a gentle cream-and-sand palette, neither bright white nor orange. A regular running-bond grid of softly rectangular small paving stones, approximately eight stones across and twelve courses high in the square. Narrow low-contrast muted taupe joints, edges slightly irregular and softened by hand painting, subtly varied pale stone faces. This tile covers 4x4 world units so each paver feels small alongside toy houses. The bond pattern must continue perfectly across top/bottom and left/right edges, use an even number of rows. Flat albedo, no directional relief/shadows. No grass, flowers, weeds, large cracks, dirty blobs, border trim or decorative motif."
+    },
+    {
+      "id": "quay-stone",
+      "prompt": "Use case: stylized-concept. Asset type: production-ready seamless albedo texture for a cozy toy-town mobile game, matching a warm garden town with cream stone paths, soft dark roads and lush farm-style grass. Generate a single square 1024x1024 image, a perfectly orthographic flat top-down material swatch covering the entire image edge to edge. No scene, no perspective, no objects, no border, no labels, no UI. Lighting is completely diffuse and even, no directional shadows, no ambient-occlusion vignette, no highlight hotspot, no painted depth bevel. Tile must repeat seamlessly on all four edges, same color/value at every edge. Restrained hand-painted stylization with broad quiet color variation and legible soft material shapes, not photoreal scanned noise. Opaque. Material: warm light gray-beige dressed limestone masonry for a narrow canal bank and low curbs. Regular running bond, four broad rectangular stones per row, eight evenly spaced rows, subtle cream/sand face variation near #c8c0aa. Narrow soft muted gray-beige joints, friendly softened toy stone, no deep black grout or painted bevel shadows. Slightly quieter and grayer than the town's honey sidewalk. Uniform scale and low contrast, all four edges seamless with even number of courses. No algae, waterline, moss, grass, painted water, reflections, cracks, trim, perspective or border. This will wrap a 0.4-unit bank via separate wall UVs; it is material only."
+    }
+  ],
+  "sources": {
+    "asphalt": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-8fae7ad6-aa60-41c1-805a-8f18c43db57b.png",
+    "paving": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-d17575db-2b53-472e-b0ae-ce7495fd1e19.png",
+    "quay-stone": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-0ceb9c13-b270-456d-b2e2-4663c2d9e1b5.png"
+  }
+}

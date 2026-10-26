@@ -2,8 +2,8 @@
   "status": "proposal for art direction; anchors copied from current source, no gameplay changes",
   "source": {
     "path": "src/city.ts",
-    "sha256": "f56b2fc8ac07438113222809f21b35945e9b113c76860c637bdf6de8d53efbfd",
-    "decorSha256": "a31e8894982fdd28c0b4aaedd4883bbf56a3e94de321e22426a17adbf558e569",
+    "sha256": "4aaa6515d6800936f012a823517e9078e2b95114ea9b4092e8bc5d937cc7e85a",
+    "decorSha256": "24e887b12105e4b0d7bf3d760796134acc96c64fb357800e732e80805dc67c4a",
     "referenceCommit": "3166f41",
     "extractor": "assets-src/city-v2/build-layout.mjs"
   },
