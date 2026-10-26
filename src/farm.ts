@@ -461,8 +461,8 @@ export class FarmMap extends StoryMap {
     add({ critter: cow, phase: 'evening', ask: 'cowSleepy', thanks: 'cowSleep', icon: 'musicbox', kinds: ['musicbox'], spot: COW_MUSIC, met: near(['musicbox'], cow.home, 4.5 * K), sticker: 'cow' });
     add({ critter: get('nest'), phase: 'evening', ask: 'eggsCold', thanks: 'chicksHatched', icon: 'heater', kinds: ['heater', 'bulb'], spot: NEST_SPOT, met: () => this.warmth >= 1, sticker: 'chick' });
     add({ critter: get('goose'), phase: 'evening', ask: 'geeseDark', thanks: 'geeseHappy', icon: 'led', kinds: ['led', 'bulb'], spot: GEESE_SPOT, met: near(['led', 'bulb'], GEESE, 4 * K) });
-    // Night: the dog warns about the fox; a button on the path and a bell chase it off.
-    add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], hintPhrase: 'foxTip', spot: FOX_BUTTON.clone(), focus: [DOG.clone(), FOX_BUTTON.clone(), BELL_SPOT.clone()], met: () => this.foxChased, sticker: 'fox' });
+    // Night: the dog warns about the fox; a button on the path and a bell (its own place by the kennel) chase it off.
+    add({ critter: get('dog'), phase: 'night', ask: 'foxTip', thanks: 'foxScared', icon: 'button', kinds: ['button'], hintPhrase: 'foxTip', spot: FOX_BUTTON.clone(), more: [{ icon: 'bell', kinds: ['bell', 'buzzer'], spot: BELL_SPOT.clone(), hintPhrase: 'foxTip' }], focus: [DOG.clone(), FOX_BUTTON.clone(), BELL_SPOT.clone()], met: () => this.foxChased, sticker: 'fox' });
     // Morning: the ducklings want a fountain, the rooster a bell.
     add({ critter: get('duck'), phase: 'morning', ask: 'ducksAsk', thanks: 'ducksHappy', icon: 'pump', kinds: ['pump'], spot: DUCK_PUMP, met: () => this.fountainLevel > 0.95 });
     add({

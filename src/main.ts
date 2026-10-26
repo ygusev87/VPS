@@ -372,7 +372,9 @@ const input = new Input(stage, world, {
   },
   // A tap on a drawer item (no drag) puts the part in a free spot.
   onSpawnTap: (part) => {
-    const at = map?.spotFor(part) ?? freeSpot(world);
+    const spot = map?.spotFor(part);
+    if (map && !spot) return backToDrawer(part);
+    const at = spot ?? freeSpot(world);
     part.root.position.set(at.x, 0, at.z);
     world.separate(part);
     part.appear();
@@ -436,6 +438,15 @@ function applyNight(on: boolean) {
 }
 
 /** Open a map (loading its models the first time); `fresh` starts its story over. */
+/** A part no ring on the map wants now goes back into its drawer (maps are not for putting things anywhere). */
+function backToDrawer(part: Part) {
+  setTimeout(() => {
+    if (!world.parts.includes(part)) return;
+    world.removePart(part);
+    voice.say('notNeeded', 4000);
+  }, 250);
+}
+
 /** Everyone on a map is helped: a card that says so, and where to go next. */
 function mapDone(name: MapName) {
   const order: MapName[] = ['farm', 'city', 'factory'];
@@ -672,8 +683,10 @@ world.on((e) => {
       break;
     case 'drop':
       sfx.drop();
-      // Onto a map's ring if it wants it; else a gear or a pipe lines itself up with its neighbour.
-      if (!map?.snap(e.part) && (fitGear(e.part, world.parts) || fitPipe(e.part, world.parts))) world.markDirty();
+      if (map) {
+        // On a map a part goes only onto a ring that wants it; else back into the drawer.
+        if (!map.place(e.part)) backToDrawer(e.part);
+      } else if (fitGear(e.part, world.parts) || fitPipe(e.part, world.parts)) world.markDirty();
       break;
     case 'wireStart':
       sfx.wireStart();
@@ -1037,6 +1050,7 @@ function frame(now: number) {
   stage.update(dt);
   stage.busy = input.busy;
   if (map) {
+    map.carrying = input.carried?.kind ?? null;
     map.update(dt);
     // The camera moves on to the next animal once the finger is off the table.
     if (mapFocus && performance.now() - lastTouch > 1200 && !input.busy) {

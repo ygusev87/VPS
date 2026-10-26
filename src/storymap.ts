@@ -11,6 +11,7 @@ import { mat, mesh } from './parts/kit';
 import type { Stage } from './stage';
 import { bendable, type Pose } from './bend';
 import { Life } from './life';
+import { createPart } from './parts/catalog';
 import { Pest } from './pest';
 import { Rig } from './rig';
 import { thumb } from './thumbs';
@@ -124,6 +125,42 @@ export interface MapProgress {
   phase: Phase;
   /** Per need, in the order they are built. */
   done: boolean[];
+}
+
+/** The plate of a kind of part (its size and centre, part-local), measured once. */
+const plates = new Map<PartKind, { w: number; d: number; cx: number; cz: number } | null>();
+function plateOf(kind: PartKind) {
+  if (!plates.has(kind)) {
+    let r: { w: number; d: number; cx: number; cz: number } | null = null;
+    try {
+      const f = createPart(kind).plateRect();
+      r = { w: f.x1 - f.x0, d: f.z1 - f.z0, cx: (f.x0 + f.x1) / 2, cz: (f.z0 + f.z1) / 2 };
+    } catch {
+      r = null;
+    }
+    plates.set(kind, r);
+  }
+  return plates.get(kind)!;
+}
+
+/** A flat rounded-rectangle frame, w×d outside, `t` thick (in the XY plane, to lay down). */
+function outline(w: number, d: number, t: number): THREE.ShapeGeometry {
+  const rect = (hw: number, hd: number, r: number) => {
+    const p = new THREE.Path();
+    p.moveTo(-hw + r, -hd);
+    p.lineTo(hw - r, -hd);
+    p.quadraticCurveTo(hw, -hd, hw, -hd + r);
+    p.lineTo(hw, hd - r);
+    p.quadraticCurveTo(hw, hd, hw - r, hd);
+    p.lineTo(-hw + r, hd);
+    p.quadraticCurveTo(-hw, hd, -hw, hd - r);
+    p.lineTo(-hw, -hd + r);
+    p.quadraticCurveTo(-hw, -hd, -hw + r, -hd);
+    return p;
+  };
+  const shape = new THREE.Shape(rect(w / 2, d / 2, 0.22).getPoints(6));
+  shape.holes.push(rect(w / 2 - t, d / 2 - t, 0.14));
+  return new THREE.ShapeGeometry(shape, 6);
 }
 
 /** Four-legged characters whose head and tail move (their models face +X). */
@@ -371,6 +408,37 @@ export abstract class StoryMap {
     return false;
   }
 
+  /**
+   * On a story map parts go only on rings (the workbench is for putting them
+   * anywhere): a part let go glides onto the ring nearest it that wants it,
+   * however far. False if no ring wants it now — it goes back in the drawer.
+   */
+  place(part: Part): boolean {
+    if (part.pinned || this.snap(part)) return true;
+    let best: { n: Need; s: Slot; d: number } | null = null;
+    for (const n of this.needs) {
+      if (n.done || !this.isNow(n)) continue;
+      for (const s of slots(n)) {
+        if (!s.kinds.includes(part.kind) || this.taken(s, part)) continue;
+        const d = part.root.position.distanceTo(s.spot);
+        if (!best || d < best.d) best = { n, s, d };
+      }
+    }
+    if (!best) return false;
+    this.slides = this.slides.filter((sl) => sl.part !== part);
+    this.slides.push({ part, to: best.s.spot.clone() });
+    part.seated = true;
+    part.hop();
+    this.focused = best.n;
+    this.picked = true;
+    best.n.critter.hop = 1;
+    this.hooks.placed?.(best.s.spot.clone());
+    return true;
+  }
+
+  /** The kind of part a finger is carrying now (its rings light up), or null. */
+  carrying: PartKind | null = null;
+
   /** The part stands on a ring that wants its kind. */
   private onAnyRing(p: Part) {
     return this.needs.some((n) => slots(n).some((s) => s.kinds.includes(p.kind) && p.root.position.distanceTo(s.spot) < 1));
@@ -540,18 +608,25 @@ export abstract class StoryMap {
     return c;
   }
 
-  protected ring(spot: THREE.Vector3): THREE.Mesh {
-    const m = new THREE.Mesh(new THREE.RingGeometry(1.05, 1.25, 48), new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0, depthWrite: false }));
+  /**
+   * The mark where a part goes: the outline of that part's own plate (a ring
+   * only for a place with no part to put, like the farm's gate).
+   */
+  protected ring(spot: THREE.Vector3, kind?: PartKind): THREE.Mesh {
+    const plate = kind ? plateOf(kind) : null;
+    const geo = plate ? outline(plate.w + 0.3, plate.d + 0.3, 0.12) : new THREE.RingGeometry(1.05, 1.25, 48);
+    const m = new THREE.Mesh(geo, new THREE.MeshBasicMaterial({ color: '#ffffff', transparent: true, opacity: 0, depthWrite: false }));
     m.rotation.x = -Math.PI / 2;
     m.position.copy(spot).setY(0.03);
+    if (plate) m.position.add(new THREE.Vector3(plate.cx, 0, plate.cz));
     m.renderOrder = 3;
     this.scenery.add(m);
     return m;
   }
 
   protected addNeed(n: NeedSpec) {
-    const more = (n.more ?? []).map((s) => ({ ...s, ring: this.ring(s.spot), ready: false }));
-    this.needs.push({ day: 1, ...n, more, ring: this.ring(n.spot), done: false, held: 0, ready: false });
+    const more = (n.more ?? []).map((s) => ({ ...s, ring: this.ring(s.spot, s.kinds[0]), ready: false }));
+    this.needs.push({ day: 1, ...n, more, ring: this.ring(n.spot, n.kinds[0]), done: false, held: 0, ready: false });
   }
 
   // ───────────────────────── Story ─────────────────────────
@@ -673,7 +748,8 @@ export abstract class StoryMap {
     for (const n of this.needs) {
       const waiting = !n.done && this.isNow(n);
       // The rings of the one being helped are teal and bold: easy to find on grass or tarmac.
-      const lead = n === mine;
+      // While a part is carried, every ring that takes it lights up that way, and the rest step back.
+      const lead = this.carrying ? false : n === mine;
       for (const s of slots(n)) {
         const ringMat = s.ring.material as THREE.MeshBasicMaterial;
         if (!waiting) {
@@ -682,9 +758,16 @@ export abstract class StoryMap {
         }
         // Pulsing while it waits; green and steady once the right part stands on it.
         s.ready = s.kinds.some((k) => this.world.parts.some((p) => p.kind === k && p.root.position.distanceTo(s.spot) < 0.6));
-        ringMat.color.set(s.ready ? '#4fd27a' : lead ? '#1aa3a1' : '#ffffff');
-        ringMat.opacity = s.ready ? 0.9 : lead ? 0.85 + Math.sin(this.time * 4) * 0.15 : 0.35 + Math.sin(this.time * 3) * 0.2;
-        s.ring.scale.setScalar(s.ready ? 1 : 1 + Math.sin(this.time * (lead ? 4 : 3)) * (lead ? 0.1 : 0.05));
+        const wanted = !!this.carrying && !s.ready && s.kinds.includes(this.carrying) && !this.taken(s);
+        const bold = lead || wanted;
+        // Once its part stands on it the mark flashes green and goes: nothing blinks under a placed part.
+        const was = s.ring.userData.readyFor ?? 0;
+        s.ring.userData.readyFor = s.ready ? was + dt : 0;
+        const fade = s.ready ? Math.max(0, 1 - (was - 0.6) / 0.8) : 1;
+        ringMat.color.set(s.ready ? '#4fd27a' : bold ? '#1aa3a1' : '#ffffff');
+        ringMat.opacity = s.ready ? 0.9 * Math.min(1, fade) : this.carrying && !wanted ? 0.12 : bold ? 0.8 + Math.sin(this.time * 3) * 0.15 : 0.35 + Math.sin(this.time * 2.5) * 0.15;
+        // A plate's outline does not grow and shrink; it only breathes a little while wanted.
+        s.ring.scale.setScalar(s.ready || !s.kinds.length ? 1 : 1 + Math.max(0, Math.sin(this.time * 3)) * (wanted ? 0.05 : 0.02));
       }
       if (!waiting) continue;
       // The bubble shows the next part still missing from the chain.
