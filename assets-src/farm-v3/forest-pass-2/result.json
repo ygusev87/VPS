@@ -124,5 +124,11 @@
     "iPad hardware, FPS, PWA, night mode and full robot traversal are not tested by this pass.",
     "Snapshot includes shore/hay integration869bd6c. Later unrelated additions must be retained by applying only additions.json onto current authoring."
   ],
-  "scope": "Only this new folder. Shared public/runtime/authoring untouched; no new models, generation, chats, agents, push or publication."
+  "scope": "Only this new folder. Shared public/runtime/authoring untouched; no new models, generation, chats, agents, push or publication.",
+  "implementationRecordedInCommit": "967497a9e0405dd92f8e02f5596f3012e0484685",
+  "commitNote": "The 160 prepared forest-pass-2 files were included unchanged in a concurrent shared-index commit together with a one-line mouse hay-bale change in src/farm.ts. History was not rewritten. This chat did not push.",
+  "liveRuntimeDriftAtHandoff": [
+    "src/farm.ts"
+  ],
+  "liveRuntimeDriftNote": "QA uses the frozen runtime equivalent to 869bd6c. The later mouse toy hay-bale substitution is outside this candidate and must be retained during append-only integration."
 }

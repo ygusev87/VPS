@@ -15,7 +15,9 @@
   "candidateSourceSha256": "fd8fa61e6abfd2b567b1d4023198ed844279400acb4f7a08cdd44aa56ad80f5b",
   "snapshotVerified": true,
   "baselineEquivalentToIntegratedCommit": "869bd6cd9852a7384a24da8d5e7a33fe6f6c3975",
-  "liveRuntimeDrift": [],
+  "liveRuntimeDrift": [
+    "src/farm.ts"
+  ],
   "views": [
     {
       "width": 1180,
