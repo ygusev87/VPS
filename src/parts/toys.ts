@@ -214,9 +214,12 @@ export class Skittles extends Part {
     for (const [x, z] of PIN_SPOTS) {
       const g = new THREE.Group();
       const pin = mesh(geo, white);
-      const band = mesh(new THREE.CylinderGeometry(0.048, 0.048, 0.04, 14), red, false);
-      band.position.y = 0.38;
-      g.add(pin, band);
+      // Bold red neck stripes and a red cap, so the skittles stand out on the cream lane.
+      const band = mesh(new THREE.CylinderGeometry(0.052, 0.05, 0.07, 14), red, false);
+      band.position.y = 0.37;
+      const cap = mesh(new THREE.SphereGeometry(0.058, 12, 8, 0, Math.PI * 2, 0, Math.PI / 2), red, false);
+      cap.position.y = 0.5;
+      g.add(pin, band, cap);
       const home = new THREE.Vector3(x, PLATE_TOP + 0.04, z - 0.15);
       g.position.copy(home);
       this.pins.push({ g, home, angle: 0, v: 0, dir: 0, push: new THREE.Vector3(), delay: 0 });
@@ -354,7 +357,8 @@ export class Garland extends Part {
   glowLight() {
     if (this.shown < 0.05) return null;
     const mid = this.bulbs[GARLAND_N >> 1];
-    return { at: mid.glow.getWorldPosition(new THREE.Vector3()), color: new THREE.Color('#ffd9a0'), power: this.shown * 0.7 };
+    // Many small bulbs, not one lamp: a soft light on the table (enough for a light sensor close by).
+    return { at: mid.glow.getWorldPosition(new THREE.Vector3()), color: new THREE.Color('#ffc8e6'), power: Math.min(0.45, this.shown * 0.3) };
   }
 
   protected animate(dt: number) {
@@ -365,9 +369,12 @@ export class Garland extends Part {
     this.bulbs.forEach((b, i) => {
       const chase = 0.35 + 0.65 * Math.max(0, Math.sin(this.time * speed - i * 0.9)) ** 2;
       const k = this.shown * chase;
-      b.m.emissiveIntensity = k * (Part.night ? 2.2 : 3.2);
-      b.glow.material.opacity = Math.min(1, k * 0.9);
-      b.glow.scale.setScalar(0.35 + k * 0.25);
+      // At night the dark (and a lower bloom threshold) does the work: small
+      // glows, so each bulb and the running wave stay apart instead of one blur.
+      const night = Part.night;
+      b.m.emissiveIntensity = k * (night ? 0.8 : 3.2);
+      b.glow.material.opacity = Math.min(1, k * (night ? 0.3 : 0.9));
+      b.glow.scale.setScalar(night ? 0.18 + k * 0.1 : 0.35 + k * 0.25);
     });
   }
 }
