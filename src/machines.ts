@@ -68,6 +68,19 @@ export const MACHINES: Level[] = [
     goal: (w) => active(w, 'bell').length > 0 && through(w, 'target'),
   }),
   machine({
+    id: 'm-party',
+    title: 'Праздник',
+    task: 'Пушка лопает шарик, и загорается гирлянда',
+    icon: 'balloon',
+    parts: [at('battery', -4.6, 1.8), at('launcher', -3.6, -1.3), at('balloon', 1.4, -1.3), at('garland', 3.4, 1.9)],
+    loops: [
+      ['battery', 'launcher'],
+      ['battery', 'balloon', 'garland'],
+    ],
+    intro: 'mParty',
+    goal: (w) => active(w, 'garland').length > 0 && through(w, 'balloon'),
+  }),
+  machine({
     id: 'm-windsign',
     title: 'Ветряная вывеска',
     task: 'Ветер крутит ветряк, и вывеска светится',
