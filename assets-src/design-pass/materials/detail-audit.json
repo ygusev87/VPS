@@ -1,0 +1,257 @@
+{
+  "revision": "45fad6fb7f6649f29b0326719db3b56fa2681d7c",
+  "inputs": {
+    "layoutSha256": "3d9f0b1f5f3c3f598e9e81472460cccaa2ee8a69d0234baea4708a4352e0b855",
+    "models": {
+      "barn": "62f9dbe2a6d572e35e5e54c77597aa9df5c1ef159190db9ee249684680adc506",
+      "coop": "68b4ee6350758fd266a7d55930891ce6926da1c6eb3f60345dc507c579ec9192",
+      "stable": "272b7a91e2df1e0db74879b897e68658df18928dd62a5561c3d23ab334aa2781",
+      "doghouse": "667ccb2195f2d3155452aa2c02239355b490615c950f44eb5757f3917fa0d053",
+      "hutch": "1443f7d2942dc664b827e6cba7f14d4e44985f988ec2f533f86244443d6828ae",
+      "farmhouse": "02e0ef29270a0488a07d686095de4d4485f9f16d6593e0b1fcad2883d488bb1d",
+      "silo": "5cc76b051100449ec6bb5c635a8e1bf4bed8333d3943660f609624ae17f8d506",
+      "pigsty": "5afc12715208e2193fd4e34e02d8173661b0c876d6ad510335ae80c223b40582",
+      "tractor-shed": "e85bdce5384ab2e52a93778035a3c06426f47d34ff3f182e985b5f38498f31ce",
+      "beehive": "a1bcd49fb3df3c6deea424463add5761742a59253045ddfb60dd49216b72c775",
+      "haystack": "d5c32fb689208f15fabdaebdd65d72fde8785a99c418c26fb03b105c7c2d1b56",
+      "sack": "3edddc7a60234d82f47d2439e0eedf0b77efe89696f72d4a9df2c395ace1f327",
+      "cow": "0bc786fe4922259867408c9e030dd5d74cca30afb5dc9e18bff3b1df7e0433b3",
+      "sheep": "94c1e4c6d46d850e6b8345fe751c3bfa8eeebf5be7db721ba1f96189233f4eac",
+      "pig": "0bd937cdb15f59e8a037c98ab83da6f7e411774781c11b9af60711d3c5b824f3",
+      "hen": "0d57f56744a5345b25efe9dbad3967dbcf36148cf7f3ca609628342112c2ef35",
+      "horse": "a7a5177b60af0a10d9882c73cc4cd5fe26d012fa8e3bf7a2fd091c11fd84902f",
+      "goat": "e0463ea7bc376d4015c9ab2846dcec48e40e5b68dfec135646506598554a4b5c",
+      "goose": "565f966e6058acee2c07d939c005828808dc8d55ca855e15d093d82e8e610e5f",
+      "tree-oak-lite": "a3596a45266d3537b483b416b379a2db174e219d60f37c19c5cca8f6d3a39e38",
+      "tree-pine-lite": "bfe0ddc03c0d1c0b11efdd899ba77ae3c51d840da521cd5c46f35087a9844ac9",
+      "tree-oak": "1b7b86cbe8c7b432628c57fc49cc474581b9ba1a58c1c8d804b59edcd3ee2309",
+      "bush-lite": "fb18b4731aacf8757c0f05e24552d396e04548be8a0ed59e39c21f327d7e429b",
+      "flower-cluster": "c0cb8cdf97f9a61c52d4137b25e265ba0217bb300e0f8287b2efe1c422674f52",
+      "rock-cluster": "838ce9f743e9de3943160ed204fec6c24dfc9c4b8c332613cfce4e0eed3386c4",
+      "crop-wheat": "9c336618aab4bf4929a46d6b0a56034acbdabf93e4353bd91d6a1d69439492ce",
+      "crop-lavender": "2b5f33697ef15f0270fb4f924046e0ffad3fb1522090ecd5985973451a8551e3",
+      "crop-carrot": "f43b399e1cecdaf7098041b98534194bc0e4a3f5f62ca519d0d23e2d7b0cfc68",
+      "crop-sunflower": "6a0d08c402f1ed8c787751e200cd45b17271e5b854490c8c897c19679cbf5321",
+      "crop-tomato": "267368346e44ac8c20fd4e71dbe04d18fed1c8153c053094c4074e70e8b93bb4",
+      "crop-cabbage": "f440a7e2ccf5b858818a2304910fa0529815a6f9853e540429f8889808f168e7"
+    }
+  },
+  "scope": "Proposal only: measured decoded GLB mesh-box corners, fit then instance yaw/scale. Conservative circles against road/fence/pad/prop bounds. No runtime changes, no live collision/occlusion/FPS claim.",
+  "budget": {
+    "authoredInstancesBefore": 302,
+    "authoredInstancesAfter": 302,
+    "newAssetBytes": 0,
+    "additionalTriangles": 0,
+    "additionalBatches": 0,
+    "note": "Authoring budget only; dynamic culling and shadows can change rendered cost after relocation."
+  },
+  "results": [
+    {
+      "id": "haystack:10:4",
+      "model": "haystack",
+      "from": [
+        49.5,
+        26.5,
+        -0.4,
+        0.75
+      ],
+      "to": [
+        49,
+        -5,
+        -0.4,
+        0.75
+      ],
+      "height": 1.37969,
+      "conservativeRadius": 1.48613,
+      "bounds": {
+        "min": [
+          47.62333,
+          0,
+          -6.37757
+        ],
+        "max": [
+          50.37667,
+          1.37969,
+          -3.62243
+        ]
+      },
+      "nearest": {
+        "road": {
+          "id": "path9:0:5",
+          "gap": 7.87301
+        },
+        "fence": {
+          "id": "39:0",
+          "gap": 6.93387
+        },
+        "building": {
+          "id": "stable:2:0",
+          "gap": 0.51387
+        },
+        "decor": {
+          "id": "stable:2:0",
+          "gap": 0.51387
+        },
+        "workPad": {
+          "id": "sheepMill",
+          "gap": 13.81093
+        },
+        "poleReservedDisk": {
+          "id": "sheepMill",
+          "gap": 16.83696
+        },
+        "toyReservedDisk": {
+          "id": 1,
+          "gap": 47.89594
+        },
+        "travelReservedStrip": {
+          "id": "2:0",
+          "gap": 22.90897
+        },
+        "knownRuntimeKeep": {
+          "id": 3,
+          "gap": 15.07005
+        }
+      },
+      "boardEdge": 4.51387
+    },
+    {
+      "id": "flower-cluster:23:51",
+      "model": "flower-cluster",
+      "from": [
+        -47,
+        -22,
+        1.629,
+        1.1
+      ],
+      "to": [
+        -42.6,
+        -20,
+        1.629,
+        1.1
+      ],
+      "height": 0.55,
+      "conservativeRadius": 0.58919,
+      "bounds": {
+        "min": [
+          -43.06218,
+          0,
+          -20.41663
+        ],
+        "max": [
+          -42.13782,
+          0.55,
+          -19.58337
+        ]
+      },
+      "nearest": {
+        "road": {
+          "id": "path3:0:0",
+          "gap": 2.61081
+        },
+        "fence": {
+          "id": "0:0",
+          "gap": 1.33081
+        },
+        "building": {
+          "id": "farmhouse:5:0",
+          "gap": 0.47265
+        },
+        "decor": {
+          "id": "flower-cluster:23:52",
+          "gap": 0.32645
+        },
+        "workPad": {
+          "id": "rabbitCold",
+          "gap": 9.41081
+        },
+        "poleReservedDisk": {
+          "id": "rabbitCold",
+          "gap": 11.16984
+        },
+        "toyReservedDisk": {
+          "id": 3,
+          "gap": 8.48676
+        },
+        "travelReservedStrip": {
+          "id": "0:5",
+          "gap": 8.01906
+        },
+        "knownRuntimeKeep": {
+          "id": 37,
+          "gap": 8.40595
+        }
+      },
+      "boardEdge": 11.81081
+    },
+    {
+      "id": "flower-cluster:23:52",
+      "model": "flower-cluster",
+      "from": [
+        -45,
+        -22,
+        2.426,
+        1.1
+      ],
+      "to": [
+        -41.1,
+        -19.7,
+        2.426,
+        1.1
+      ],
+      "height": 0.55,
+      "conservativeRadius": 0.58919,
+      "bounds": {
+        "min": [
+          -41.68437,
+          0,
+          -20.28915
+        ],
+        "max": [
+          -40.51563,
+          0.55,
+          -19.11085
+        ]
+      },
+      "nearest": {
+        "road": {
+          "id": "path0:0:0",
+          "gap": 1.1034
+        },
+        "fence": {
+          "id": "4:0",
+          "gap": 0.59573
+        },
+        "building": {
+          "id": "farmhouse:5:0",
+          "gap": 0.77265
+        },
+        "decor": {
+          "id": "flower-cluster:23:51",
+          "gap": 0.44864
+        },
+        "workPad": {
+          "id": "foxTip",
+          "gap": 8.64661
+        },
+        "poleReservedDisk": {
+          "id": "foxTip",
+          "gap": 11.43467
+        },
+        "toyReservedDisk": {
+          "id": 3,
+          "gap": 7.0682
+        },
+        "travelReservedStrip": {
+          "id": "0:5",
+          "gap": 7.35349
+        },
+        "knownRuntimeKeep": {
+          "id": 37,
+          "gap": 6.98738
+        }
+      },
+      "boardEdge": 13.31081
+    }
+  ]
+}
