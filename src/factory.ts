@@ -284,7 +284,7 @@ export class FactoryMap extends StoryMap {
       else fallback();
     };
     const racks = [[-24, 19], [-6, 20], [12, 19], [28, 19]] as const;
-    card('rack-steel-card', racks.map(([x, z]) => ({ x, z, size: 3.2 })), () => racks.forEach(([x, z]) => hall.add(rack(x, z))));
+    card('rack-steel-card', racks.map(([x, z]) => ({ x, z, size: 5.5 })), () => racks.forEach(([x, z]) => hall.add(rack(x, z))));
     for (const [x, z, s] of [[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [36, 22, 1], [-14, 23.5, 0.9], [20, 23.5, 1]] as const) hall.add(crate(x, z, s));
     const barrels = [[-38, 20.5], [38, 12], [-30, 24], [4, 24]] as const;
     card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.2 })), () => [[-38, 19], [-38, 22], [38, 12], [-30, 24], [4, 24]].forEach(([x, z]) => hall.add(barrel(x, z))));
@@ -298,7 +298,7 @@ export class FactoryMap extends StoryMap {
     }
     const pallets = [[36, -14, 3], [38.2, -14, 2], [36, -10.5, 2]] as const;
     card('pallet-card', pallets.map(([x, z]) => ({ x, z, size: 1.9 })), () => pallets.forEach(([x, z, n]) => hall.add(stack(x, z, n))));
-    card('forklift-card', [{ x: 33, z: -18, size: 3.1 }], () => hall.add(forklift(33, -18)));
+    card('forklift-card', [{ x: 33, z: -18, size: 4 }], () => hall.add(forklift(33, -18)));
     this.scenery.add(bakeGroup(hall));
   }
 
