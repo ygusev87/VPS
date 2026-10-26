@@ -35,6 +35,12 @@ const LIMIT = 36;
 /** Largest on-screen scale `frame()` will choose, in CSS pixels per table unit. */
 const MAX_PPU = 46;
 
+/**
+ * The table's paper: a shade darker than the cream panels (C.bg), so the parts'
+ * cream plates stand out on it by day, and the panels read as cards above it.
+ */
+const TABLE = '#ece0ca';
+
 export class Stage {
   readonly renderer: THREE.WebGLRenderer;
   readonly scene = new THREE.Scene();
@@ -117,7 +123,7 @@ export class Stage {
 
     // The paper background is drawn by the scene (so glow can spill over it);
     // the grid fades into it with distance.
-    this.scene.fog = new THREE.Fog(C.bg, 30, 80);
+    this.scene.fog = new THREE.Fog(TABLE, 30, 80);
     this.scene.add(this.world);
     this.backdrop.frustumCulled = false;
     this.backdrop.renderOrder = -100;
@@ -329,7 +335,7 @@ export class Stage {
     canvas.height = h;
     const ctx = canvas.getContext('2d')!;
     const k = this.nightK;
-    ctx.fillStyle = '#' + new THREE.Color(C.bg).lerp(new THREE.Color(C.night), k).getHexString();
+    ctx.fillStyle = '#' + new THREE.Color(TABLE).lerp(new THREE.Color(C.night), k).getHexString();
     ctx.fillRect(0, 0, w, h);
     ctx.save();
     ctx.translate(w * 0.5, h * 0.45);
@@ -337,7 +343,7 @@ export class Stage {
     const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 0.6);
     const glow = new THREE.Color('#fffaf0').lerp(new THREE.Color('#2a3352'), k);
     const rgb = `${Math.round(glow.r * 255)},${Math.round(glow.g * 255)},${Math.round(glow.b * 255)}`;
-    g.addColorStop(0, `rgba(${rgb},${0.55 + 0.1 * k})`);
+    g.addColorStop(0, `rgba(${rgb},${0.22 + 0.4 * k})`);
     g.addColorStop(1, `rgba(${rgb},0)`);
     ctx.fillStyle = g;
     ctx.fillRect(-1, -1, 2, 2);
@@ -362,7 +368,7 @@ export class Stage {
     const m = this.backdrop.material as THREE.ShaderMaterial;
     (m.uniforms.map.value as THREE.Texture | null)?.dispose();
     m.uniforms.map.value = tex;
-    const base = new THREE.Color(C.bg).lerp(new THREE.Color(C.night), k);
+    const base = new THREE.Color(TABLE).lerp(new THREE.Color(C.night), k);
     const [r, gg, b] = untone(base.r, base.g, base.b);
     (this.scene.fog as THREE.Fog).color.setRGB(r, gg, b, THREE.LinearSRGBColorSpace);
   }
