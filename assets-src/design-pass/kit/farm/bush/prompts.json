@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "intent": "generate",
+  "plannedCalls": 2,
+  "sourceReferencePolicy": "Farm-a and current oak-card-a/b visually inspected; new-generation calls omit reference paths as required. Style described in prompt.",
+  "assets": [
+    {
+      "name": "bush-card-a",
+      "targetSize": [
+        512,
+        512
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: ONE transparent forest-edge bush card for a warm, colourful, softly painted mobile farm game. Final export 512x512px.\nStyle anchor described from the farm concept and existing oak cards: overlapping rounded cloud-like leafy lobes, softly brushed groups of small oval leaves, luminous yellow-green highlights, natural leaf green midtones and soft deep green shade. Matte painterly illustration, friendly volume, no black outlines, no photoreal veins or tiny noisy texture. This is dense broad forest undergrowth, visibly wider and fuller than a small meadow shrub with a few large leaves.\nCamera: orthographic three-quarter elevated view, 52 degrees above the horizon, looking down from the south. Show substantial rounded TOP surfaces and compressed vertical depth.\nLight: warm sun from lower-left/SW of image, soft form shade toward upper-right. No cast shadow outside the foliage.\nComposition: square RGBA canvas, one complete bush, about 1.6-1.8 times wider than tall, safely inside the sides. Ground contact at bottom centre near the bottom edge. Keep all foliage intact. True transparent background, with no ground plane, soil patch, rocks, pot, base, pedestal, baked shadow, text or watermark. No flowers, berries, insects, trunk like a tree, or separate disconnected bushes. Quiet broad shapes readable at64-128px.\n\nSubject: a broad dense green bush made of three connected rounded mounds, a slightly taller central dome and two lower spreading shoulders. Many small rounded leaf dabs merge into clear soft masses. Low foliage reaches the bottom contact point; barely any stem visible. Cheerful yellow-green light on the lower-left lobes, naturally darker green tucked between lobes.",
+        "transparent_background": true
+      }
+    },
+    {
+      "name": "bush-card-b",
+      "targetSize": [
+        512,
+        512
+      ],
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept.\nAsset type: ONE transparent forest-edge bush card for a warm, colourful, softly painted mobile farm game. Final export 512x512px.\nStyle anchor described from the farm concept and existing oak cards: overlapping rounded cloud-like leafy lobes, softly brushed groups of small oval leaves, luminous yellow-green highlights, natural leaf green midtones and soft deep green shade. Matte painterly illustration, friendly volume, no black outlines, no photoreal veins or tiny noisy texture. This is dense broad forest undergrowth, visibly wider and fuller than a small meadow shrub with a few large leaves.\nCamera: orthographic three-quarter elevated view, 52 degrees above the horizon, looking down from the south. Show substantial rounded TOP surfaces and compressed vertical depth.\nLight: warm sun from lower-left/SW of image, soft form shade toward upper-right. No cast shadow outside the foliage.\nComposition: square RGBA canvas, one complete bush, about 1.6-1.8 times wider than tall, safely inside the sides. Ground contact at bottom centre near the bottom edge. Keep all foliage intact. True transparent background, with no ground plane, soil patch, rocks, pot, base, pedestal, baked shadow, text or watermark. No flowers, berries, insects, trunk like a tree, or separate disconnected bushes. Quiet broad shapes readable at64-128px.\n\nSubject: a broad dense asymmetrical forest-edge bush with four connected soft leafy lobes, the largest mound slightly to the left and a long lower shoulder spreading right. A shallow soft dip between the two main tops, continuous low foliage along the base. Small rounded leaves painted in groups, not a collection of large individual pointed leaves. Warm light on the lower-left surfaces, deeper soft green on the far-right and in overlaps.",
+        "transparent_background": true
+      }
+    }
+  ],
+  "references": [
+    {
+      "path": "assets-src/design-pass/variants/farm-a.png",
+      "sha256": "ca3391bcba1eec82614cbda6292e574e9c4737b24c47c5bcb1af62e4bdc6c2c4"
+    },
+    {
+      "path": "public/textures/kit/farm/tree-oak-card-a.webp",
+      "sha256": "6b0f00d209164fb252173517c66579075f10046e504d1432aa63e994ca8c1c44"
+    },
+    {
+      "path": "public/textures/kit/farm/tree-oak-card-b.webp",
+      "sha256": "6e10d5f6664314a392b112132d3bc92896022829c722c44f4d565590ce24568a"
+    },
+    {
+      "path": "public/textures/kit/farm/grass-main-a.webp",
+      "sha256": "a318c1bf8194af9f1bec881e6c5f63a3d5f3b2d253602fc9444ba879ca0ae831"
+    }
+  ]
+}

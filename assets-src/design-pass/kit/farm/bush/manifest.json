@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "status": "visually reviewed; runtime acceptance pending",
+  "generationCalls": 2,
+  "repeatedGenerations": 0,
+  "artworkEdits": 0,
+  "alphaPolicy": "Native generated alpha retained within a technical rectangular crop; discarded distant residue measured per file. No pixel alpha thresholding, chroma key, repaint, color grading or procedural art. Full originals retained.",
+  "kitJsonOwner": "main; never written here",
+  "totalBytes": 80364,
+  "assets": [
+    {
+      "name": "bush-card-a",
+      "path": "public/textures/kit/farm/bush-card-a.webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 39048,
+      "sha256": "d776f2e96fce4a757ca8d7f9ebdfcf26ed5db277961e471f14311404cedfff87",
+      "source": "assets-src/design-pass/kit/farm/sources/bush-card-a.png",
+      "sourceSha256": "4bcc2eb11502c402f4843a1481a7ba380338558cbbda477c488392a4b8c51f60",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          0,
+          237,
+          1254,
+          806
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 19324,
+          "discardedAlphaMax": 2,
+          "discardedFractionOfTotalAlpha": 0.00011481301464108717,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          508,
+          326
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 186,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.550978,
+        "nearOpaqueFraction": 0.415224,
+        "boundsAnyAlpha": [
+          0,
+          49,
+          1253,
+          1253
+        ],
+        "boundsAlphaAbove16": [
+          8,
+          245,
+          1245,
+          1034
+        ],
+        "boundsAlphaAbove128": [
+          9,
+          246,
+          1244,
+          1033
+        ],
+        "edgeMax": {
+          "left": 2,
+          "right": 2,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 639.960338,
+        "baseY": 1034,
+        "baseBandPixels": 16
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.568806,
+        "nearOpaqueFraction": 0.407162,
+        "boundsAnyAlpha": [
+          2,
+          186,
+          509,
+          510
+        ],
+        "boundsAlphaAbove16": [
+          5,
+          188,
+          506,
+          508
+        ],
+        "boundsAlphaAbove128": [
+          6,
+          189,
+          506,
+          507
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0
+        },
+        "baseCentroidX": 261.457775,
+        "baseY": 508,
+        "baseBandPixels": 7
+      },
+      "pivot": {
+        "pixels": [
+          256.5,
+          508
+        ],
+        "normalizedTopLeft": [
+          0.500977,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.500977,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Pass: broad three-mound forest-edge silhouette, small rounded leaf groups match oak cards; clean alpha on white/black/grass, no soil or cast-shadow patch. Readable64/96/128px.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "bush-card-b",
+      "path": "public/textures/kit/farm/bush-card-b.webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 41316,
+      "sha256": "6aaddeffbb59f43aa4c6ea4d51d42134ebbb27985589d61984b4e9dfd300c6cb",
+      "source": "assets-src/design-pass/kit/farm/sources/bush-card-b.png",
+      "sourceSha256": "4082dc6702f8676db52e81f80205a5e3f4ec6e1f7c12269202dcf8493e5a3472",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 85,
+      "alphaQuality": 100,
+      "transform": {
+        "operation": "rectangular margin crop around alpha>16 plus8 source pixels; retained alpha unchanged; uniform Lanczos resize; transparent packing",
+        "sourceRect": [
+          14,
+          250,
+          1227,
+          755
+        ],
+        "cropAudit": {
+          "discardedNonzeroPixels": 24132,
+          "discardedAlphaMax": 2,
+          "discardedFractionOfTotalAlpha": 0.000153853284768265,
+          "discardedAlphaAbove16Pixels": 0
+        },
+        "resized": [
+          508,
+          312
+        ],
+        "padding": {
+          "left": 2,
+          "right": 2,
+          "top": 200,
+          "bottom": 0
+        }
+      },
+      "sourceAlpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.575014,
+        "nearOpaqueFraction": 0.387177,
+        "boundsAnyAlpha": [
+          14,
+          41,
+          1236,
+          1227
+        ],
+        "boundsAlphaAbove16": [
+          22,
+          258,
+          1232,
+          996
+        ],
+        "boundsAlphaAbove128": [
+          23,
+          259,
+          1231,
+          995
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 0
+        },
+        "baseCentroidX": 560.910916,
+        "baseY": 996,
+        "baseBandPixels": 15
+      },
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "transparentFraction": 0.577171,
+        "nearOpaqueFraction": 0.396313,
+        "boundsAnyAlpha": [
+          2,
+          200,
+          508,
+          511
+        ],
+        "boundsAlphaAbove16": [
+          5,
+          202,
+          506,
+          508
+        ],
+        "boundsAlphaAbove128": [
+          6,
+          203,
+          505,
+          507
+        ],
+        "edgeMax": {
+          "left": 0,
+          "right": 0,
+          "top": 0,
+          "bottom": 1
+        },
+        "baseCentroidX": 231.252526,
+        "baseY": 508,
+        "baseBandPixels": 7
+      },
+      "pivot": {
+        "pixels": [
+          256,
+          508
+        ],
+        "normalizedTopLeft": [
+          0.5,
+          0.992188
+        ],
+        "threeSpriteCenter": [
+          0.5,
+          0.007813
+        ],
+        "criterion": "X midpoint of visible silhouette bounds alpha>128, Y immediately below its last row. This is a bottom-centre placement anchor, not an exact botanical root hidden by lower leaves. Lowest-band centroid is separately reported in alpha.baseCentroidX."
+      },
+      "visualReview": {
+        "status": "pass",
+        "note": "Pass: broad asymmetric continuous bush, larger left mound and lower right shoulder; distinguishable from A and the small meadow shrubs. Clean alpha, no base/cast shadow, readable64/96/128px.",
+        "record": "qa-review.json"
+      }
+    }
+  ]
+}

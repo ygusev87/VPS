@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "method": "Native browser screenshots saved before interruption, visually inspected after verified owner resume. White/black/grass backgrounds and64/96/128CSSpx previews.",
+  "resumeAuthorization": {
+    "sourceThreadId": "01a16ded-c4fb-7140-b5ed-bbd17857db93",
+    "sourceUserMessageId": "01a1788e-7dca-7322-8abd-2bb5663369f5",
+    "quote": "Продолжать оба чата"
+  },
+  "grassBackground": {
+    "path": "public/textures/kit/farm/grass-main-a.webp",
+    "sha256": "a318c1bf8194af9f1bec881e6c5f63a3d5f3b2d253602fc9444ba879ca0ae831"
+  },
+  "readyNames": [
+    "bush-card-a",
+    "bush-card-b"
+  ],
+  "limitations": [
+    "52-degree artistic camera cue is not a measured raster projection; compare in the game.",
+    "Bottom-centre placement anchor is measured from the silhouette; botanical root is hidden.",
+    "This is asset QA, not gameplay/device/FPS verification."
+  ],
+  "assets": [
+    {
+      "name": "bush-card-a",
+      "sha256": "d776f2e96fce4a757ca8d7f9ebdfcf26ed5db277961e471f14311404cedfff87",
+      "status": "pass",
+      "note": "Pass: broad three-mound forest-edge silhouette, small rounded leaf groups match oak cards; clean alpha on white/black/grass, no soil or cast-shadow patch. Readable64/96/128px.",
+      "screenshots": [
+        "qa/bush-card-a.jpg"
+      ]
+    },
+    {
+      "name": "bush-card-b",
+      "sha256": "6aaddeffbb59f43aa4c6ea4d51d42134ebbb27985589d61984b4e9dfd300c6cb",
+      "status": "pass",
+      "note": "Pass: broad asymmetric continuous bush, larger left mound and lower right shoulder; distinguishable from A and the small meadow shrubs. Clean alpha, no base/cast shadow, readable64/96/128px.",
+      "screenshots": [
+        "qa/bush-card-b.jpg"
+      ]
+    }
+  ]
+}
