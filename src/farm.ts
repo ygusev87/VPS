@@ -1007,6 +1007,7 @@ function groundPlan(): GroundPlan {
     // A bright, juicy farm, like the toy farms of the mobile games.
     saturation: 1,
     painted: true,
+    tiles: { lane: 'path-earth' },
   };
 }
 

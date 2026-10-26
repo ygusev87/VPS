@@ -5,29 +5,56 @@
 import * as THREE from 'three';
 
 /** Seamless ground tiles (public/textures/farm), seen from straight above. */
-const TILES = ['grass', 'grass-light', 'path', 'soil', 'mud', 'pond-bed', 'asphalt', 'paving'] as const;
+const TILES = ['grass', 'grass-light', 'path', 'path-earth', 'soil', 'mud', 'pond-bed', 'asphalt', 'paving'] as const;
 export type Tile = (typeof TILES)[number];
 const images = new Map<Tile, HTMLImageElement>();
 
 /** Stand-in colours for tiles that failed to load (or are not made yet). */
-const FLAT: Record<Tile, string> = { grass: '#a3c17f', 'grass-light': '#b6d28f', path: '#d6bd86', soil: '#9a7650', mud: '#8a6a46', 'pond-bed': '#c9e6f0', asphalt: '#767b84', paving: '#d8cdbd' };
+const FLAT: Record<Tile, string> = { grass: '#a3c17f', 'grass-light': '#b6d28f', path: '#d6bd86', 'path-earth': '#c8954f', soil: '#9a7650', mud: '#8a6a46', 'pond-bed': '#c9e6f0', asphalt: '#767b84', paving: '#d8cdbd' };
 /** How many world units one tile covers. */
-const SIZE: Record<Tile, number> = { grass: 7, 'grass-light': 7, path: 3.5, soil: 14, mud: 3, 'pond-bed': 4, asphalt: 6, paving: 0.75 };
+const SIZE: Record<Tile, number> = { grass: 7, 'grass-light': 7, path: 3.5, 'path-earth': 3.5, soil: 14, mud: 3, 'pond-bed': 4, asphalt: 6, paving: 0.75 };
+
+/** Single painted pictures, laid once over a place (not tiled): the pig yard's mud and its wetness. */
+const PICTURES = ['pig-mud.webp', 'pig-wetness.png'] as const;
+type Picture = (typeof PICTURES)[number];
+const pictures = new Map<Picture, HTMLImageElement>();
+
+function loadImage(file: string): Promise<HTMLImageElement | null> {
+  const img = new Image();
+  // The load event, not decode(): decode() can wait forever while the page is hidden.
+  return new Promise((done) => {
+    img.onload = () => done(img);
+    img.onerror = () => done(null);
+    img.src = `${import.meta.env.BASE_URL}textures/farm/${file}`;
+  });
+}
 
 /** Loads the tiles once; any that fail leave a flat colour in their place. */
 export async function loadGround() {
-  await Promise.all(
-    TILES.filter((name) => !images.has(name)).map(async (name) => {
-      const img = new Image();
-      // The load event, not decode(): decode() can wait forever while the page is hidden.
-      const ok = await new Promise<boolean>((done) => {
-        img.onload = () => done(true);
-        img.onerror = () => done(false);
-        img.src = `${import.meta.env.BASE_URL}textures/farm/${name}.webp`;
-      });
-      if (ok) images.set(name, img);
+  await Promise.all([
+    ...TILES.filter((name) => !images.has(name)).map(async (name) => {
+      const img = await loadImage(`${name}.webp`);
+      if (img) images.set(name, img);
     }),
-  );
+    ...PICTURES.filter((name) => !pictures.has(name)).map(async (name) => {
+      const img = await loadImage(name);
+      if (img) pictures.set(name, img);
+    }),
+  ]);
+}
+
+/** A picture laid once over a box (clamped), or a 1-pixel stand-in when it is missing. */
+function pictureTexture(name: Picture, data: boolean): THREE.Texture | null {
+  const img = pictures.get(name);
+  if (!img) return null;
+  const t = new THREE.Texture(img);
+  t.wrapS = t.wrapT = THREE.ClampToEdgeWrapping;
+  t.colorSpace = data ? THREE.NoColorSpace : THREE.SRGBColorSpace;
+  t.anisotropy = 8;
+  t.generateMipmaps = true;
+  t.minFilter = THREE.LinearMipmapLinearFilter;
+  t.needsUpdate = true;
+  return t;
 }
 
 function tileTexture(name: Tile): THREE.Texture {
@@ -217,8 +244,15 @@ const PAINTED = `
   // (Colours here are linear: #3a2616 for the water, a grey sheen.)
   muck = mix(muck, vec3(0.042, 0.019, 0.008), pool * 0.9);
   muck = mix(muck, vec3(0.2, 0.19, 0.18), pool * 0.08);
+  float wet = mix(deep * 0.35, 0.75, max(pool, damp * 0.4));
+  // The yard's own painting, where there is one: puddles and hoof prints drawn for it, wetness from its mask.
+  vec2 yuv = vec2((p.x - uYard.x) / (2.0 * uYard.z) + 0.5, 0.5 - (p.y - uYard.y) / (2.0 * uYard.w));
+  float inYard = uHasYard * step(0.0, yuv.x) * step(yuv.x, 1.0) * step(0.0, yuv.y) * step(yuv.y, 1.0);
+  vec4 wm = texture2D(tPigWet, yuv);
+  muck = mix(muck, texture2D(tPigMud, yuv).rgb, inYard);
+  wet = mix(wet, max(wm.r * 0.6, wm.g), inYard);
   col = mix(col, muck, mud);
-  vWet = mud * mix(deep * 0.35, 0.75, max(pool, damp * 0.4));
+  vWet = mud * wet;
   // Paths: the shoulder wanders in and out, grass tongues reach over it, a darker rim, pebbles.
   // (The mask ramps across the edge: ~0.92 at the path's width, ~0.2 1.8 units out.)
   float wander = (gNoise(p / 2.6) - 0.5) * 0.3 + (texture2D(tGrass, p / 1.5).g - 0.5) * 0.2;
@@ -228,25 +262,22 @@ const PAINTED = `
   // Trodden grass just outside the edge, darker and a touch yellower.
   float rim = smoothstep(edge - 0.32, edge - 0.04, m.r) * (1.0 - lane);
   col = mix(col, col * vec3(0.82, 0.8, 0.62), rim * 0.55);
-  vec3 earth = texture2D(tSand, p / uScale.y).rgb * vec3(0.96, 0.82, 0.64);
+  vec3 earth = texture2D(tSand, p / uScale.y).rgb;
+  // A shade lighter and less orange than the tile: the target's paths are warm tan (the day grading adds colour).
+  earth = mix(vec3(dot(earth, vec3(0.2126, 0.7152, 0.0722))), earth, 0.72) * vec3(1.16, 1.08, 1.0);
   earth *= mix(0.88, 1.06, gNoise(p / 3.0 + 5.0));
   // Worn darker towards the shoulders.
   earth *= mix(0.9, 1.0, smoothstep(edge, 1.0, m.r));
-  // Pebbles: a few small rounded stones per cell, lighter with a soft dark foot.
-  vec2 cell = floor(p * 1.5);
-  vec2 inCell = fract(p * 1.5) - 0.5 - (vec2(gHash(cell), gHash(cell + 3.1)) - 0.5) * 0.5;
-  float here = step(0.84, gHash(cell + 9.7));
-  float rr = 0.05 + gHash(cell + 4.4) * 0.05;
-  float stone = here * (1.0 - smoothstep(rr, rr + 0.03, length(inCell * vec2(1.0, 1.3))));
-  float foot = here * (1.0 - smoothstep(rr + 0.02, rr + 0.09, length((inCell - vec2(0.03, -0.04)) * vec2(1.0, 1.3))));
-  earth *= 1.0 - foot * 0.22;
-  earth = mix(earth, vec3(0.42, 0.33, 0.24) * (0.9 + gHash(cell + 1.7) * 0.25), stone * 0.85);
   col = mix(col, earth, lane);`;
 
 /** The board's top: tiles blended by the mask, a little less colourful than painted (the day grading adds it back). */
 export function groundMaterial(plan: GroundPlan): THREE.MeshStandardMaterial {
   const mat = new THREE.MeshStandardMaterial({ roughness: 0.92 });
   const painted = !!plan.painted;
+  // The pig yard's own painted mud (one picture over its ellipse, north at the top) and its wetness.
+  const pigMud = painted && plan.mud[0] ? pictureTexture('pig-mud.webp', false) : null;
+  const pigWet = pigMud ? pictureTexture('pig-wetness.png', true) : null;
+  const yard = plan.mud[0] ?? { x: 0, z: 0, rx: 1, rz: 1 };
   const t = { base: 'grass', hill: 'grass-light', lane: 'path', field: 'soil', mud: 'mud', ...plan.tiles } as const;
   const uniforms = {
     tGrass: { value: tileTexture(t.base) },
@@ -260,6 +291,10 @@ export function groundMaterial(plan: GroundPlan): THREE.MeshStandardMaterial {
     uSaturation: { value: plan.saturation ?? 0.8 },
     // World units per tile of each part.
     uScale: { value: new THREE.Vector4(SIZE[t.base], SIZE[t.lane], SIZE[t.field], SIZE[t.mud]) },
+    tPigMud: { value: pigMud ?? tileTexture(t.mud) },
+    tPigWet: { value: pigWet ?? tileTexture(t.mud) },
+    uYard: { value: new THREE.Vector4(yard.x, yard.z, yard.rx, yard.rz) },
+    uHasYard: { value: pigMud && pigWet ? 1 : 0 },
   };
   mat.onBeforeCompile = (shader) => {
     Object.assign(shader.uniforms, uniforms);
@@ -276,6 +311,9 @@ uniform vec2 uBoard;
 uniform vec4 uHill[4];
 uniform vec4 uScale;
 uniform float uSaturation;
+uniform sampler2D tPigMud, tPigWet;
+uniform vec4 uYard;
+uniform float uHasYard;
 float vWet;
 ${painted ? NOISE : ''}`,
       )
