@@ -1,0 +1,272 @@
+{
+  "schemaVersion": 1,
+  "sha256": "c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+  "status": "conditional-for-integration",
+  "note": "Artwork and mobile/background QA pass. Geometry is approximate: runtime centre offset0.276208, diameter6.713773x7.214783. The requested exact6.8 circle at(-3,1) is not achieved; inspect against actual fountain before accepting integration.",
+  "visuallyReviewed": [
+    "alpha-390.jpg",
+    "alpha-1024.jpg",
+    "geometry-390.jpg",
+    "geometry-1024.jpg",
+    "runtime-390.jpg",
+    "runtime-1024.jpg"
+  ],
+  "visualFindings": {
+    "alpha": "Clean organic edges on white, black and frozen pavingA/C; no white matte or guide blue. Interior native alpha250..255, not normalized.",
+    "art": "Strict overhead lawn, five small flower clusters, two north/south approaches. No fountain, water, trees or device drawings. Final paving has more explicit stone joints than initial generation.",
+    "geometry": "Residual offset is visible with overlays. Device-zone paths do not intersect; fountain margin is tight, particularly nominal mapping."
+  },
+  "geometry": {
+    "method": "Read-only threshold segmentation of the connected pale stone pad/path component, then quadratic least-squares fit to squared horizontal chord lengths. Fit excludes the narrow paths; browser overlays independently verify geometry. This mask is never written to an image.",
+    "threshold": "alpha>220,R>170,G>145,B>100,R-G>3,B/G>0.64",
+    "connectedPixels": 151675,
+    "fitRows": 395,
+    "chordFitRmsPixels": 0.885226,
+    "uvCentre": [
+      0.407959,
+      0.542032
+    ],
+    "pixelCentre": [
+      835.5,
+      555.041123
+    ],
+    "worldCentre": [
+      -3.037354,
+      0.71455
+    ],
+    "worldDiameter": [
+      6.593884,
+      6.968824
+    ],
+    "nominalCentreError": 0.287884,
+    "nominalDiameterError": [
+      -0.206116,
+      0.168824
+    ],
+    "runtimeCentre": [
+      -3.092578,
+      0.739769
+    ],
+    "runtimeCentreError": 0.276208,
+    "runtimeDiameter": [
+      6.713773,
+      7.214783
+    ],
+    "basinFootprint": {
+      "nominal": {
+        "boundarySamples": 3600,
+        "boundaryOnConnectedPaving": 2971,
+        "fraction": 0.825278,
+        "fittedMinimumMarginWorld": -0.036598,
+        "note": "Read-only 6.4-diameter basin footprint at (-3,1). Ellipse-fit margin is approximate; final model/runtime check belongs to integration."
+      },
+      "runtime": {
+        "boundarySamples": 3600,
+        "boundaryOnConnectedPaving": 3572,
+        "fraction": 0.992222,
+        "fittedMinimumMarginWorld": 0.009099,
+        "note": "Read-only 6.4-diameter basin footprint at (-3,1). Ellipse-fit margin is approximate; final model/runtime check belongs to integration."
+      }
+    },
+    "clearZones": [
+      {
+        "name": "Ferris wheel",
+        "reservedRadius": 2.6,
+        "pavedPixels": 0,
+        "totalPixels": 79395,
+        "pavedFraction": 0
+      },
+      {
+        "name": "Wind generator",
+        "reservedRadius": 2.6,
+        "pavedPixels": 0,
+        "totalPixels": 79388,
+        "pavedFraction": 0
+      },
+      {
+        "name": "Kitten pole",
+        "reservedRadius": 2,
+        "pavedPixels": 0,
+        "totalPixels": 46982,
+        "pavedFraction": 0
+      },
+      {
+        "name": "North lamp",
+        "reservedRadius": 1.2,
+        "pavedPixels": 0,
+        "totalPixels": 16919,
+        "pavedFraction": 0
+      },
+      {
+        "name": "West lamp",
+        "reservedRadius": 1.2,
+        "pavedPixels": 0,
+        "totalPixels": 16910,
+        "pavedFraction": 0
+      },
+      {
+        "name": "South lamp",
+        "reservedRadius": 1.2,
+        "pavedPixels": 0,
+        "totalPixels": 16911,
+        "pavedFraction": 0
+      },
+      {
+        "name": "Cat house",
+        "reservedRadius": 1.6,
+        "pavedPixels": 0,
+        "totalPixels": 22860,
+        "pavedFraction": 0
+      }
+    ]
+  },
+  "browser": {
+    "checks": [
+      {
+        "mode": "alpha",
+        "images": [
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          },
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          },
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          },
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          }
+        ],
+        "overflow": false,
+        "ready": "true",
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      {
+        "mode": "geometry",
+        "images": [
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          }
+        ],
+        "overflow": false,
+        "ready": "true",
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      {
+        "mode": "runtime",
+        "images": [
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          }
+        ],
+        "overflow": false,
+        "ready": "true",
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      {
+        "mode": "alpha",
+        "images": [
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          },
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          },
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          },
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          }
+        ],
+        "overflow": false,
+        "ready": "true",
+        "viewport": [
+          1024,
+          768
+        ]
+      },
+      {
+        "mode": "geometry",
+        "images": [
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          }
+        ],
+        "overflow": false,
+        "ready": "true",
+        "viewport": [
+          1024,
+          768
+        ]
+      },
+      {
+        "mode": "runtime",
+        "images": [
+          {
+            "complete": true,
+            "height": 1024,
+            "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+            "width": 2048
+          }
+        ],
+        "overflow": false,
+        "ready": "true",
+        "viewport": [
+          1024,
+          768
+        ]
+      }
+    ],
+    "consoleErrors": []
+  },
+  "limitations": [
+    "Not a live-game/WebGL/PWA or physical iPad test.",
+    "Nominal basin circumference:82.53% connected paving; runtime99.22% under threshold segmentation. Ellipse-fit runtime minimum margin0.0091 is too small to claim robust6.8 clearance.",
+    "Fallback torus outer diameter7.1 exceeds requested6.8 and needs separate integration review.",
+    "One initial generation and four corrective edits; no local paint, crop, alpha normalization or geometric image transforms."
+  ]
+}

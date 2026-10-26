@@ -1,0 +1,53 @@
+{
+  "at": "2026-10-26T15:36:17.699850+00:00",
+  "tests": {
+    "command": "npm test",
+    "exitCode": 0,
+    "files": 17,
+    "tests": 88
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  },
+  "browserChecks": 6,
+  "browserConsoleErrors": [],
+  "horizontalOverflow": false,
+  "sourceHashVerified": true,
+  "sourceNativeAlpha": true,
+  "exportSize": [
+    2048,
+    1024
+  ],
+  "exportSha256": "c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+  "exportBytes": 367260,
+  "geometryStatus": "FAIL revised0.10 runtime-clearance criterion; candidate only",
+  "screenshots": [
+    {
+      "path": "qa/alpha-1024.jpg",
+      "sha256": "a0886080f24a49904e9fcb59f4567296b8fc8e0a52fd6d03835be25408071d2b"
+    },
+    {
+      "path": "qa/alpha-390.jpg",
+      "sha256": "e4b7544874e2f00064eebfe15176906bcbecb9b349d08f30f680978dae4fa6f5"
+    },
+    {
+      "path": "qa/geometry-1024.jpg",
+      "sha256": "00d198024bd9019643c76e026a2052d2a888cf0c7cf77f7bd6566b21c006a941"
+    },
+    {
+      "path": "qa/geometry-390.jpg",
+      "sha256": "16548f4003846a067dbab9ffddbabbd96136a5fc3bd2a3b34133728eae21546e"
+    },
+    {
+      "path": "qa/runtime-1024.jpg",
+      "sha256": "f3e80571043349d83d524d52b9b7ed4b7775822a21e010565aad93e86538fc80"
+    },
+    {
+      "path": "qa/runtime-390.jpg",
+      "sha256": "cf5044e38b4d7fda5dcfa7ad58d392a13e71ae989f8b850d64bc71789e6dd7ed"
+    }
+  ],
+  "generationCalls": 6,
+  "selectedCall": 5
+}

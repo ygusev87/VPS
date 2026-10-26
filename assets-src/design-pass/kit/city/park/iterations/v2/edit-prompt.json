@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "intent": "edit",
+  "reason": "Measured fountain-pad centre error0.997 world units and undersized6.346x6.591 pad.",
+  "toolArguments": {
+    "referenced_image_paths": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/park-lawn.png"
+    ],
+    "transparent_background": true,
+    "prompt": "Use case: precise-object-edit.\nInput image1 is the edit target, the existing transparent2:1 top-down park ground.\nRepair ONLY the location and size of the blank circular stone fountain pad. Measurement shows its current centre is U40.625%,V50.043% and diameter19.23% of width by38.77% of height. This is too high and slightly too small.\nTARGET: centre exactly U40.91% from LEFT,V55.88% from TOP, diameter20.61% of FULL image width and40.00% of FULL image height. In the supplied1774x887 image this is centre(x725.7,y495.7), width365.6px,height354.8px. Move ONLY the pad about5px RIGHT and52px DOWN and enlarge it to this size. It must be visibly left of centre and below the image horizontal midline. Do not leave the circle at50%height. This shape maps to a6.8metre circle on a33x17metre ground.\nRemove the old pad outline and restore matching grass wherever the previous pad is no longer present. Keep the two narrow vertical north/south stone paths connected to the corrected pad, extending/shortening their endpoints as needed. Keep their existing width and U-position. The pad must remain flat, pale cream stone, completely empty, without a fountain, basin, water, rings, pedestal, plant or central mark.\nPRESERVE all existing grass, five tiny flower clusters, exact overall park outline, its outer native transparency, image framing and2:1 aspect ratio, colours, lighting and texture everywhere outside this local circle/path-end edit. Do not shift or scale the whole park. No new paths, objects, shadows, outlines, labels, text or watermarks. Strict orthographic vertical top-down. Output one edited park image with genuine transparent outer background."
+  }
+}

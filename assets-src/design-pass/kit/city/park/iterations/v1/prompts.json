@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "name": "park-lawn",
+  "tool": "image_gen.imagegen",
+  "intent": "generate",
+  "plannedCalls": 1,
+  "toolArguments": {
+    "transparent_background": true,
+    "prompt": "Use case: stylized-concept.\nAsset type: one finished transparent park-ground decal for a warm softly watercolour-painted toy-town game. Requested output2048x1024, LANDSCAPE2:1, strict orthographic TOP DOWN with north at top. It is a flat ground surface, never a diorama or perspective scene.\nThe FULL image rectangle maps to33 metres east-west by17 metres north-south. X runs from-16.5 at the left to+16.5 at the right; Z from-8.5 at the top to+8.5 at the bottom. Keep the grass close to the outer rectangle with a very narrow soft natural alpha edge (about1% of the image), slight rounded corners and full genuine transparency outside. No large transparent margins, white/black backdrop, checkerboard, frame, kerb or raised turf block.\nPalette/style: warm fresh yellow-green short lawn, fine clover and tiny sparse cream flower flecks, soft hand-painted wash, restrained texture and cheerful city-a atmosphere. Even diffuse daylight, no cast shadows, vignette or directional dark band. Entire interior is opaque grass/stone.\nCRITICAL LAYOUT: a flat EMPTY pale warm-beige circular stone pad for a separately rendered fountain is centred at X=-3,Z=+1: exactly40.91% from the LEFT and55.88% from the TOP, visibly left of and slightly below image centre. Its diameter in the game is6.8metres, hence its image extent is20.61% of image width and40.00% of image height. The pad is plain pale limestone with minimal subtle texture, flush with grass. It contains absolutely NO fountain, basin, water, pedestal, plants, ornament, central dot, rings or shadows. Do not centre this pad at50%/50%.\nOnly TWO narrow pedestrian approaches of the same pale limestone: one goes straight south from the TOP edge at U40.91% into the pad's north edge (V35.88%); the other continues from the pad's south edge (V75.88%) straight to the BOTTOM edge, also U40.91%. Path width1.2metres =3.64% of image width. Gentle painted edges, no heavy outlines or raised border. No horizontal path, cross path, looping path or extra path through the rest of the lawn.\nKeep the whole eastern half and western third calm mostly plain grass for game devices. In particular leave clear plain grass around game positions X7,Z-3 (U71.21%,V32.35%) and X12,Z3 (U86.36%,V67.65%), each with radius2.6metres, and around X-8.5,Z1 (U24.24%,V55.88%) radius2metres. The far-left strip contains game lamps and a cat house, so do not add paths or large flower beds there.\nAdd just five SMALL low flat flower clusters, each about1.2metres across (3.64% image width), at approximate X/Z centres(-8,-6),(3,-6.3),(12,-6.8),(8,6.8),(-7.5,6.5). Fine pink/cream/yellow flower dots mixed with low green leaves; no visible soil ring, edging, pot, tall shrub or cast shadow. Do not add any other large decorative patch.\nNo trees, bushes, toys, game devices, buildings, benches, people, animals, lamp posts, fountain, drawn water, text, numbers, labels, coordinate lines, symbols, logos or watermark. Preserve the empty round pad and specified device clearances. Produce only this one complete top-down2:1 park ground image with native alpha at its external boundary."
+  },
+  "sourceReferencePolicy": "city-a, city-layout-guide and accepted lawn/paving materials inspected visually; new generation omits referenced_image_paths. Layout is specified numerically from read-only source.",
+  "references": [
+    {
+      "path": "src/city.ts",
+      "sha256": "f486a5dc01ccdaf79b725952519c27f5141ec42a2c907fcf196ecd88f3808ead"
+    },
+    {
+      "path": "src/city-decor.ts",
+      "sha256": "94fcc0dcfe2bd08b53c2bf3dee8cfbcdab334137122e86c7fa41a05d23e98924"
+    },
+    {
+      "path": "src/kit.ts",
+      "sha256": "52487fc87541df87c3760cb40ffc4c9b7a0d0b07a48df6cda945d8d2a60e93a3"
+    },
+    {
+      "path": "assets-src/design-pass/kit/CITY-KIT.md",
+      "sha256": "c0d432f38fcdc50f58b5342b5d17c7159b943b982d127cca6bf3b741d859c409"
+    },
+    {
+      "path": "assets-src/design-pass/kit/city-layout-guide.json",
+      "sha256": "506fef5d08eccf26ff73f7288d6bbbe24672db4e552e8055c28d3b1222c73163"
+    },
+    {
+      "path": "assets-src/design-pass/kit/city-layout-guide.png",
+      "sha256": "29b5a0629a7ce5474c0278af406cb4e5f0888e17fc095522df742fa9ed364a82"
+    },
+    {
+      "path": "assets-src/design-pass/variants/city-a.png",
+      "sha256": "d4b70219ba0bdb45888d6ef954507517554a25eef994b3ed0084a433f2cdb0b1"
+    },
+    {
+      "path": "public/textures/kit/city/lawn-main-a.webp",
+      "sha256": "8ec5bf2230d8d45eb5424f6622e6045170e4ef5909042578522984df79afc71a"
+    },
+    {
+      "path": "public/textures/kit/city/paving-main-a.webp",
+      "sha256": "34462d7988cdc56a796d7a0fbf7f6bb3a2e671205cddb0736b681180199dd0a1"
+    },
+    {
+      "path": "public/textures/kit/city/paving-main-c.webp",
+      "sha256": "115c25499b5ab7b5f0643f687515a127994a381e4c66cff35e36cb3e7ec1c458"
+    }
+  ]
+}

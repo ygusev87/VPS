@@ -1,0 +1,143 @@
+{
+  "checks": [
+    {
+      "mode": "alpha",
+      "images": [
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        },
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        },
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        },
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "mode": "geometry",
+      "images": [
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "mode": "runtime",
+      "images": [
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "mode": "alpha",
+      "images": [
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        },
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        },
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        },
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "mode": "geometry",
+      "images": [
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "mode": "runtime",
+      "images": [
+        {
+          "complete": true,
+          "height": 1024,
+          "src": "http://127.0.0.1:33342/public/textures/kit/city/park-lawn.webp?v=c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+          "width": 2048
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ]
+    }
+  ],
+  "consoleErrors": []
+}

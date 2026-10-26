@@ -1,0 +1,7 @@
+{
+  "referenced_image_paths": [
+    "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/park-lawn.png"
+  ],
+  "transparent_background": true,
+  "prompt": "Make only the circular pale stone pad larger in this existing top-down transparent park image. KEEP ITS CURRENT CENTRE unchanged. Widen the pad horizontally by 12 percent and increase its vertical height by 4 percent, extending the SAME cream paving stones outwards into the grass. This is a small outward expansion, not a relocation: current image pad is too narrow for the fountain footprint. At the 1774x887 canvas, target pad width about397px, height about378px, centre about(724,481). Preserve the whole original canvas, grass, all five flower clusters, and irregular transparent exterior exactly. North and south narrow paths meet the newly enlarged disk. Maintain flat orthographic overhead view, no perspective, no depth, no curb, no fountain, no basin, no water. No new objects. Native alpha exterior. All other artwork unchanged."
+}

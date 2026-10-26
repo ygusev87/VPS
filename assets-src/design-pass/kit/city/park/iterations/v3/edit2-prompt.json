@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "intent": "edit",
+  "reason": "First edit still measured0.555 world-unit centre error. Native browser guide marks exact requested circle; guide is diagnostic only, never baked into export.",
+  "toolArguments": {
+    "referenced_image_paths": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/park-lawn.png",
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/park/iterations/v2/target-guide.jpg"
+    ],
+    "transparent_background": true,
+    "prompt": "Use case: precise-object-edit.\nImage1 is the ACTUAL TRANSPARENT EDIT TARGET. Image2 is ONLY a diagnostic placement guide: its BLUE ELLIPSE marks the exact desired outside boundary of the empty stone pad. Image2's white backdrop and blue line must NOT appear in the result.\nCorrect the remaining geometry error by making the pale stone pad boundary follow the BLUE ELLIPSE in image2 exactly. The current pad sits too high: its upper crescent lies outside the blue ellipse, while grass remains inside the lower crescent. Restore matching grass in that upper crescent outside the guide and extend matching pale stone into the lower crescent inside it. Also slightly expand the left/right extent to meet the guide. The corrected centre is40.91% image width,55.88% image height; the pad spans20.61% of full width and40% of full height. In this1774x887 frame its bounding box is approximately x543..909,y318..673, centre726,496. Treat the guide as an exact geometric boundary, not an approximate suggestion.\nKeep the two vertical paths connected to the relocated pad. Preserve all five flower clusters, the overall grass/alpha silhouette, framing,2:1 aspect ratio and ground style of image1; change only the pad and immediately adjoining path ends/grass. Do not shift the whole park, recenter the pad, add a second pad, or draw a visible border. The pad is empty pale warm-beige stone: no fountain, water, pedestal, objects or marks. Remove all guide lines/labels from final output. Preserve image1's native outer transparency; no white rectangular background. One edited top-down park ground texture."
+  }
+}

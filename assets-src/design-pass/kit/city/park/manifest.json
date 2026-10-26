@@ -1,0 +1,181 @@
+{
+  "schemaVersion": 1,
+  "name": "park-lawn",
+  "path": "public/textures/kit/city/park-lawn.webp",
+  "size": [
+    2048,
+    1024
+  ],
+  "worldCoverage": [
+    33,
+    17
+  ],
+  "bytes": 367260,
+  "sha256": "c36ce28c13c64f63f1ce1b7ba5d129a20bb7a4a3c870245725cc666787649d19",
+  "format": "WebP",
+  "colourSpace": "sRGB",
+  "quality": 85,
+  "alphaQuality": 100,
+  "source": "assets-src/design-pass/kit/city/sources/park-lawn.png",
+  "sourceSha256": "fa44458d774a10fd47d370542bfc5d8205661853b727ae317298d51849ab4c31",
+  "sourceSize": [
+    1774,
+    887
+  ],
+  "generationCalls": 6,
+  "initialGenerations": 1,
+  "targetedEdits": 5,
+  "transform": {
+    "operation": "Full original canvas retained; sRGB conversion, Lanczos resize to2048x1024, WebP encoding. No crop, padding, alpha thresholding, repaint or local geometry edit.",
+    "scaleXY": [
+      1.154453,
+      1.154453
+    ],
+    "upscaled": true
+  },
+  "sourceAlpha": {
+    "zeroFraction": 0.101556,
+    "opaqueFraction": 0.00052,
+    "partialFraction": 0.897924,
+    "edgeMax": {
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "bottom": 0
+    },
+    "boundsAlphaAbove16": [
+      18,
+      18,
+      1759,
+      871
+    ],
+    "central84PercentAlphaMin": 250
+  },
+  "alpha": {
+    "zeroFraction": 0.101293,
+    "opaqueFraction": 0.000721,
+    "partialFraction": 0.897986,
+    "edgeMax": {
+      "left": 0,
+      "right": 0,
+      "top": 0,
+      "bottom": 0
+    },
+    "boundsAlphaAbove16": [
+      21,
+      21,
+      2032,
+      1006
+    ],
+    "central84PercentAlphaMin": 250
+  },
+  "geometry": {
+    "method": "Read-only threshold segmentation of the connected pale stone pad/path component, then quadratic least-squares fit to squared horizontal chord lengths. Fit excludes the narrow paths; browser overlays independently verify geometry. This mask is never written to an image.",
+    "threshold": "alpha>220,R>170,G>145,B>100,R-G>3,B/G>0.64",
+    "connectedPixels": 151675,
+    "fitRows": 395,
+    "chordFitRmsPixels": 0.885226,
+    "uvCentre": [
+      0.407959,
+      0.542032
+    ],
+    "pixelCentre": [
+      835.5,
+      555.041123
+    ],
+    "worldCentre": [
+      -3.037354,
+      0.71455
+    ],
+    "worldDiameter": [
+      6.593884,
+      6.968824
+    ],
+    "nominalCentreError": 0.287884,
+    "nominalDiameterError": [
+      -0.206116,
+      0.168824
+    ],
+    "runtimeCentre": [
+      -3.092578,
+      0.739769
+    ],
+    "runtimeCentreError": 0.276208,
+    "runtimeDiameter": [
+      6.713773,
+      7.214783
+    ],
+    "basinFootprint": {
+      "nominal": {
+        "boundarySamples": 3600,
+        "boundaryOnConnectedPaving": 2971,
+        "fraction": 0.825278,
+        "fittedMinimumMarginWorld": -0.036598,
+        "note": "Read-only 6.4-diameter basin footprint at (-3,1). Ellipse-fit margin is approximate; final model/runtime check belongs to integration."
+      },
+      "runtime": {
+        "boundarySamples": 3600,
+        "boundaryOnConnectedPaving": 3572,
+        "fraction": 0.992222,
+        "fittedMinimumMarginWorld": 0.009099,
+        "note": "Read-only 6.4-diameter basin footprint at (-3,1). Ellipse-fit margin is approximate; final model/runtime check belongs to integration."
+      }
+    },
+    "clearZones": [
+      {
+        "name": "Ferris wheel",
+        "reservedRadius": 2.6,
+        "pavedPixels": 0,
+        "totalPixels": 79395,
+        "pavedFraction": 0
+      },
+      {
+        "name": "Wind generator",
+        "reservedRadius": 2.6,
+        "pavedPixels": 0,
+        "totalPixels": 79388,
+        "pavedFraction": 0
+      },
+      {
+        "name": "Kitten pole",
+        "reservedRadius": 2,
+        "pavedPixels": 0,
+        "totalPixels": 46982,
+        "pavedFraction": 0
+      },
+      {
+        "name": "North lamp",
+        "reservedRadius": 1.2,
+        "pavedPixels": 0,
+        "totalPixels": 16919,
+        "pavedFraction": 0
+      },
+      {
+        "name": "West lamp",
+        "reservedRadius": 1.2,
+        "pavedPixels": 0,
+        "totalPixels": 16910,
+        "pavedFraction": 0
+      },
+      {
+        "name": "South lamp",
+        "reservedRadius": 1.2,
+        "pavedPixels": 0,
+        "totalPixels": 16911,
+        "pavedFraction": 0
+      },
+      {
+        "name": "Cat house",
+        "reservedRadius": 1.6,
+        "pavedPixels": 0,
+        "totalPixels": 22860,
+        "pavedFraction": 0
+      }
+    ]
+  },
+  "visualReview": {
+    "status": "needs-geometry-repair",
+    "note": "Visual/mobile/background QA passes. Revised acceptance is NOT met: runtime minimum fitted basin margin0.0091 <0.10. Enlarged call6 was rejected (diameter>7.6, overlap reserved pole zone). Selected call5 is the best retained candidate, not a ready-to-integrate asset.",
+    "record": "qa-review.json"
+  }
+}

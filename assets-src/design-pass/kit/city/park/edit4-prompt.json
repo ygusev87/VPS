@@ -1,0 +1,7 @@
+{
+  "referenced_image_paths": [
+    "/Users/gusev/gameios/assets-src/design-pass/kit/city/park/iterations/v3/target-guide.jpg"
+  ],
+  "transparent_background": true,
+  "prompt": "Edit this exact image. Replace the solid BLUE disk with pale cream stone paving, keeping the disk's exact outline, size and position. The entire blue area becomes paving. Remove the obsolete cream crescent just above and left of the blue disk and restore green grass there; retain the two narrow cream vertical paths connecting the disk to the top and bottom edges. Do not move, shrink or enlarge the disk. Preserve every other part of the lawn and all five flower clusters. Remove the white exterior background to transparent alpha. No blue remains. Same landscape 2:1 full canvas. Strict flat overhead view. Only this precise localized repair, no other redesign."
+}

@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "name": "park-lawn",
+  "path": "public/textures/kit/city/park-lawn.webp",
+  "size": [
+    2048,
+    1024
+  ],
+  "worldCoverage": [
+    33,
+    17
+  ],
+  "bytes": 393154,
+  "sha256": "4c1070bdb2583c843b7b817cb27fc13fca277bc777ebf3573eeedf20603dd2e8",
+  "format": "WebP",
+  "colourSpace": "sRGB",
+  "quality": 85,
+  "alphaQuality": 100,
+  "source": "assets-src/design-pass/kit/city/sources/park-lawn.png",
+  "sourceSha256": "672bf0176500630719f0a3a0702077b6379c96031be50565525cc305676626a4",
+  "sourceSize": [
+    1774,
+    887
+  ],
+  "generationCalls": 2,
+  "initialGenerations": 1,
+  "targetedEdits": 1,
+  "transform": {
+    "operation": "Full original canvas retained; sRGB conversion, Lanczos resize to2048x1024, WebP encoding. No crop, padding, alpha thresholding, repaint or local geometry edit.",
+    "scaleXY": [
+      1.154453,
+      1.154453
+    ],
+    "upscaled": true
+  },
+  "sourceAlpha": {
+    "zeroFraction": 0.097401,
+    "opaqueFraction": 0.000146,
+    "partialFraction": 0.902453,
+    "edgeMax": {
+      "left": 1,
+      "right": 0,
+      "top": 1,
+      "bottom": 0
+    },
+    "boundsAlphaAbove16": [
+      16,
+      16,
+      1758,
+      870
+    ],
+    "central84PercentAlphaMin": 250
+  },
+  "alpha": {
+    "zeroFraction": 0.097607,
+    "opaqueFraction": 0.00026,
+    "partialFraction": 0.902133,
+    "edgeMax": {
+      "left": 1,
+      "right": 0,
+      "top": 1,
+      "bottom": 0
+    },
+    "boundsAlphaAbove16": [
+      19,
+      19,
+      2031,
+      1005
+    ],
+    "central84PercentAlphaMin": 250
+  },
+  "geometry": {
+    "method": "Read-only threshold segmentation of the connected pale stone pad/path component, then quadratic least-squares fit to squared horizontal chord lengths. Fit excludes the narrow paths; browser overlays independently verify geometry. This mask is never written to an image.",
+    "threshold": "alpha>220,R>170,G>145,B>100,R-G>3,B/G>0.64",
+    "connectedPixels": 159253,
+    "fitRows": 381,
+    "chordFitRmsPixels": 0.818417,
+    "uvCentre": [
+      0.407959,
+      0.526257
+    ],
+    "pixelCentre": [
+      835.5,
+      538.8876
+    ],
+    "worldCentre": [
+      -3.037354,
+      0.446376
+    ],
+    "worldDiameter": [
+      6.512539,
+      6.760487
+    ],
+    "nominalCentreError": 0.554883,
+    "nominalDiameterError": [
+      -0.287461,
+      -0.039513
+    ],
+    "runtimeCentre": [
+      -3.092578,
+      0.462131
+    ],
+    "runtimeCentreError": 0.545778,
+    "runtimeDiameter": [
+      6.630949,
+      6.999093
+    ],
+    "clearZones": [
+      {
+        "name": "Ferris wheel",
+        "reservedRadius": 2.6,
+        "pavedPixels": 0,
+        "totalPixels": 79395,
+        "pavedFraction": 0
+      },
+      {
+        "name": "Wind generator",
+        "reservedRadius": 2.6,
+        "pavedPixels": 0,
+        "totalPixels": 79388,
+        "pavedFraction": 0
+      },
+      {
+        "name": "Kitten pole",
+        "reservedRadius": 2,
+        "pavedPixels": 0,
+        "totalPixels": 46982,
+        "pavedFraction": 0
+      },
+      {
+        "name": "North lamp",
+        "reservedRadius": 1.2,
+        "pavedPixels": 0,
+        "totalPixels": 16919,
+        "pavedFraction": 0
+      },
+      {
+        "name": "West lamp",
+        "reservedRadius": 1.2,
+        "pavedPixels": 0,
+        "totalPixels": 16910,
+        "pavedFraction": 0
+      },
+      {
+        "name": "South lamp",
+        "reservedRadius": 1.2,
+        "pavedPixels": 0,
+        "totalPixels": 16911,
+        "pavedFraction": 0
+      },
+      {
+        "name": "Cat house",
+        "reservedRadius": 1.6,
+        "pavedPixels": 0,
+        "totalPixels": 22860,
+        "pavedFraction": 0
+      }
+    ]
+  },
+  "visualReview": "pending"
+}

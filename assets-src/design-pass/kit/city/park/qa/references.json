@@ -1,0 +1,12 @@
+[
+  {
+    "source": "public/textures/kit/city/paving-main-a.webp",
+    "snapshot": "qa/reference-paving-a.webp",
+    "sha256": "34462d7988cdc56a796d7a0fbf7f6bb3a2e671205cddb0736b681180199dd0a1"
+  },
+  {
+    "source": "public/textures/kit/city/paving-main-c.webp",
+    "snapshot": "qa/reference-paving-c.webp",
+    "sha256": "115c25499b5ab7b5f0643f687515a127994a381e4c66cff35e36cb3e7ec1c458"
+  }
+]

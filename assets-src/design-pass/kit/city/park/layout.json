@@ -1,0 +1,192 @@
+{
+  "schemaVersion": 1,
+  "source": "src/city.ts constants; src/city-decor.ts PATHS and SOIL[0]; read-only layout-guide for footprints",
+  "field": {
+    "x0": -16.5,
+    "x1": 16.5,
+    "z0": -8.5,
+    "z1": 8.5
+  },
+  "size": [
+    2048,
+    1024
+  ],
+  "worldCoverage": [
+    33,
+    17
+  ],
+  "north": "image top",
+  "fountain": {
+    "x": -3,
+    "z": 1,
+    "basinRadius": 3.2,
+    "requestedClearPadDiameter": 6.8,
+    "uv": [
+      0.4090909090909091,
+      0.5588235294117647
+    ]
+  },
+  "runtimeDecal": {
+    "growEachSide": 0.3,
+    "width": 33.6,
+    "depth": 17.6,
+    "requestedUvWorldPosition": [
+      -3.0545454545454547,
+      1.035294117647059
+    ]
+  },
+  "existingPaths": [
+    {
+      "points": [
+        [
+          -33,
+          -2
+        ],
+        [
+          -33,
+          -9
+        ],
+        [
+          -45,
+          -9
+        ]
+      ],
+      "width": 4,
+      "intersectsPark": false
+    }
+  ],
+  "requestedPaths": [
+    {
+      "points": [
+        [
+          -3,
+          -8.5
+        ],
+        [
+          -3,
+          -2.4
+        ]
+      ],
+      "width": 1.2
+    },
+    {
+      "points": [
+        [
+          -3,
+          4.4
+        ],
+        [
+          -3,
+          8.5
+        ]
+      ],
+      "width": 1.2
+    }
+  ],
+  "clearZones": [
+    {
+      "name": "Ferris wheel",
+      "x": 7,
+      "z": -3,
+      "radius": 2.6,
+      "uv": [
+        0.7121212121212122,
+        0.3235294117647059
+      ]
+    },
+    {
+      "name": "Wind generator",
+      "x": 12,
+      "z": 3,
+      "radius": 2.6,
+      "uv": [
+        0.8636363636363636,
+        0.6764705882352942
+      ]
+    },
+    {
+      "name": "Kitten pole",
+      "x": -8.5,
+      "z": 1,
+      "radius": 2,
+      "uv": [
+        0.24242424242424243,
+        0.5588235294117647
+      ]
+    },
+    {
+      "name": "North lamp",
+      "x": -11.5,
+      "z": -2.5,
+      "radius": 1.2,
+      "uv": [
+        0.15151515151515152,
+        0.35294117647058826
+      ]
+    },
+    {
+      "name": "West lamp",
+      "x": -15.2,
+      "z": 1,
+      "radius": 1.2,
+      "uv": [
+        0.03939393939393942,
+        0.5588235294117647
+      ]
+    },
+    {
+      "name": "South lamp",
+      "x": -11.5,
+      "z": 4.5,
+      "radius": 1.2,
+      "uv": [
+        0.15151515151515152,
+        0.7647058823529411
+      ]
+    },
+    {
+      "name": "Cat house",
+      "x": -15.8,
+      "z": 7,
+      "radius": 1.6,
+      "uv": [
+        0.02121212121212119,
+        0.9117647058823529
+      ]
+    }
+  ],
+  "requestedFlowerCentres": [
+    [
+      -8,
+      -6
+    ],
+    [
+      3,
+      -6.3
+    ],
+    [
+      12,
+      -6.8
+    ],
+    [
+      8,
+      6.8
+    ],
+    [
+      -7.5,
+      6.5
+    ]
+  ],
+  "note": "Clearance radii are conservative art reservations, not measured complete device meshes. Path/no-path read-only verification and art placement do not change runtime.",
+  "revisedAcceptance": {
+    "source": "Main delegation: sufficient runtime basin clearance supersedes exact pad-centre requirement",
+    "basinCentre": [
+      -3,
+      1
+    ],
+    "basinRadius": 3.2,
+    "minimumExtraMargin": 0.1,
+    "maximumPadDiameter": 7.6,
+    "deviceZonesMustBeClear": true
+  }
+}

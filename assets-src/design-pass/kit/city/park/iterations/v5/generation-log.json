@@ -1,0 +1,44 @@
+[
+  {
+    "name": "park-lawn",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-97e34517-cf1c-4e83-8797-391c7424febc.png",
+    "sourcePath": "assets-src/design-pass/kit/city/sources/park-lawn.png",
+    "tool": "image_gen.imagegen",
+    "callCount": 5,
+    "outputHint": "Built-in edit output copied byte-exact; initial source preserved in iterations/v1/",
+    "bytes": 2957305,
+    "sha256": "fa44458d774a10fd47d370542bfc5d8205661853b727ae317298d51849ab4c31",
+    "initialGeneration": {
+      "name": "park-lawn",
+      "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-8b9331af-d8f2-4458-b69f-40ed8fb71646.png",
+      "sourcePath": "assets-src/design-pass/kit/city/park/iterations/v1/original.png",
+      "tool": "image_gen.imagegen",
+      "callCount": 1,
+      "outputHint": "Generated images are saved to /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802 as /Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-8b9331af-d8f2-4458-b69f-40ed8fb71646.png by default.\nIf you need to use a generated image at another path, copy it and leave the original in place unless the user explicitly asks you to delete it.\nThe generated image is already displayed to the user. There is no need to render it in the final response as a Markdown image or file link.",
+      "bytes": 3241015,
+      "sha256": "63a4ccfd30a388e21d421d789425ed97f26c97b61cddb27c4352e28a30fd06e2"
+    },
+    "targetedEdits": [
+      {
+        "promptRecord": "edit-prompt.json",
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-26eea04e-c2bb-4b75-9e7a-9911a0ef9636.png",
+        "sha256": "672bf0176500630719f0a3a0702077b6379c96031be50565525cc305676626a4"
+      },
+      {
+        "promptRecord": "edit2-prompt.json",
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-b4e2a9bd-cc3e-4c81-995f-fed68f25ca87.png",
+        "sha256": "75780aadeb1711000a167dec8d31b4fd8833e522c152e6af7bd0471d2ac03796"
+      },
+      {
+        "promptRecord": "edit3-prompt.json",
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-897efe36-24a6-46a8-bebb-998ef17a5774.png",
+        "sha256": "86c3723b806aefc2173d87267c934c5337e4e7f7c55c09f644489cf5411c08d6"
+      },
+      {
+        "promptRecord": "edit4-prompt.json",
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-97e34517-cf1c-4e83-8797-391c7424febc.png",
+        "sha256": "fa44458d774a10fd47d370542bfc5d8205661853b727ae317298d51849ab4c31"
+      }
+    ]
+  }
+]
