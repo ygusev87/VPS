@@ -1,0 +1,77 @@
+{
+  "status": "applied",
+  "currentRevision": "7c85f2e7d45f2a8fae29d39930bb08e66d31191a",
+  "handoffRevision": "e7e6522a7ec154f9226bdab9d432429545afe5c5",
+  "currentHashes": {
+    "assets-src/farm-v3/decor-authoring.json": "d948d03dfc3362ce69b28e95450e53c34fc58c2c732a5bf5082214839cd163c8",
+    "assets-src/farm-v3/decor-layout.json": "ff7e27689639f02358264656ad3eab85dba2f314e5bbbbb0141af92befeb847a",
+    "src/farm-decor.ts": "df23f2c9ad83d7cd069090dbe932d10ec4279131573cdca34fe9d72050689f5c"
+  },
+  "handoffHashes": {
+    "additions.json": "3b497802100a4976e5832927ca5f6923a31769747a2fd9f286cb2d49e741b70f",
+    "field-wheat-replacement.json": "23c5a7859fb7672124b438a7fd8cf3fdeb82cefb0f7d576b7b62e28121e9f1ab"
+  },
+  "candidateHashes": {
+    "assets-src/farm-v3/decor-authoring.json": "3561a2036f4af1dd3c792d3743666f88a0ce92343e4b3796edb4d98212f550f1",
+    "assets-src/farm-v3/decor-layout.json": "c99e9ba6fc5fad9d3ca5a472acaa6667a88819026364bbff4d848504b28ca845",
+    "src/farm-decor.ts": "2dbaddb74906c561b0fc8a7db6eee4e2a5ffb6fbcf19bdf7923a83107a797b81"
+  },
+  "currentPathWidths": {
+    "yard-spine": 1.4,
+    "barn-entry": 1.4,
+    "kitten-lift": 1.0,
+    "farmhouse-porch": 1.0,
+    "rabbit-entry": 1.2,
+    "dog-entry": 1.2,
+    "hen-entry": 1.2,
+    "nest-entry": 1.2,
+    "hill-entry": 1.2,
+    "horse-yard": 1.4,
+    "courtyard": 1.2,
+    "south-loop": 1.4,
+    "orchard-entry": 1.2,
+    "apiary-entry": 1.2,
+    "garden-north": 1.2,
+    "garden-cross": 1.0,
+    "garden-south": 1.2,
+    "shed-entry": 1.4,
+    "tractor-gate": 1.4
+  },
+  "preservedOtherJSONBytes": true,
+  "preservedOtherTSBytes": true,
+  "beforeInstances": 686,
+  "afterInstances": 763,
+  "changes": [
+    {
+      "model": "bush-lite",
+      "fit": {
+        "width": 2.3
+      },
+      "before": 166,
+      "after": 171
+    },
+    {
+      "model": "flower-cluster",
+      "fit": {
+        "height": 0.5
+      },
+      "before": 293,
+      "after": 357
+    },
+    {
+      "model": "crop-wheat",
+      "fit": {
+        "width": 1.4
+      },
+      "before": 18,
+      "after": 26
+    }
+  ],
+  "reviewRequired": "Child native QA and visual review, then main validation on the merged candidate. Staging does not approve the preliminary handoff.",
+  "nativeCandidateHashes": {
+    "assets-src/farm-v3/decor-authoring.json": "8df4c90620e9a4b32e325287253e0da420fb949ed3b1b4cfd8928a9c79943307",
+    "assets-src/farm-v3/decor-layout.json": "7e4ebe3566f43df03e2fed38297f0656753b38177f916f0ef1d828a8bdfdca50",
+    "src/farm-decor.ts": "57abf1e143a6ba95df54f78964c311e96e1899ebf73cec61ae7e79caaa13d77f"
+  },
+  "formattingNote": "Preserved the original formatting of existing item arrays after QA. JSON payloads are exactly equal; native QA source retained at qa/native-farm-decor.ts."
+}
