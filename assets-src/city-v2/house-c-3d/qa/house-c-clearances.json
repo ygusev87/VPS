@@ -1,0 +1,280 @@
+{
+  "viewport": [
+    1180,
+    660
+  ],
+  "houses": [
+    {
+      "instance": [
+        -20,
+        -30,
+        0,
+        1
+      ],
+      "box": {
+        "min": [
+          -22.5,
+          0,
+          -31.758247627185888
+        ],
+        "max": [
+          -17.5,
+          4.018219550157171,
+          -28.241752372814112
+        ]
+      },
+      "nearest": [
+        {
+          "name": "house-a@-26,-28",
+          "kind": "other-decor-full-bbox",
+          "gap": 1
+        },
+        {
+          "name": "bakery@-12,-27",
+          "kind": "other-decor-full-bbox",
+          "gap": 2
+        },
+        {
+          "name": "baker:heater",
+          "kind": "task-square4",
+          "gap": 5.89357
+        },
+        {
+          "name": "house-b@-5.75,-33",
+          "kind": "other-decor-full-bbox",
+          "gap": 9.5
+        },
+        {
+          "name": "grandma:button",
+          "kind": "task-square4",
+          "gap": 10
+        },
+        {
+          "name": "baker:belt",
+          "kind": "task-square4",
+          "gap": 10.43718
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 10.65382
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 10.92899
+        }
+      ],
+      "overlaps": []
+    },
+    {
+      "instance": [
+        6,
+        32,
+        0,
+        1
+      ],
+      "box": {
+        "min": [
+          3.5,
+          0,
+          30.241752372814112
+        ],
+        "max": [
+          8.5,
+          4.018219550157171,
+          33.75824762718589
+        ]
+      },
+      "nearest": [
+        {
+          "name": "house-a@14.5,21",
+          "kind": "other-decor-full-bbox",
+          "gap": 8.09548
+        },
+        {
+          "name": "tree-oak-lite@-4,22",
+          "kind": "other-decor-full-bbox",
+          "gap": 9.32395
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 9.52535
+        },
+        {
+          "name": "tree-oak-lite@20,33",
+          "kind": "other-decor-full-bbox",
+          "gap": 10.60227
+        },
+        {
+          "name": "car:trafficLight",
+          "kind": "task-square4",
+          "gap": 10.74175
+        },
+        {
+          "name": "house-b@-14,32",
+          "kind": "other-decor-full-bbox",
+          "gap": 15
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 18.25046
+        },
+        {
+          "name": "house-b@29,21",
+          "kind": "other-decor-full-bbox",
+          "gap": 19.47049
+        }
+      ],
+      "overlaps": []
+    },
+    {
+      "instance": [
+        50,
+        32.2,
+        0,
+        1
+      ],
+      "box": {
+        "min": [
+          47.5,
+          0,
+          30.441752372814115
+        ],
+        "max": [
+          52.5,
+          4.018219550157171,
+          33.95824762718589
+        ]
+      },
+      "nearest": [
+        {
+          "name": "tree-oak-lite@53.8,35",
+          "kind": "other-decor-full-bbox",
+          "gap": 0.30252
+        },
+        {
+          "name": "firefighter:pump",
+          "kind": "task-square4",
+          "gap": 14.51944
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 17.63795
+        },
+        {
+          "name": "house-b@29,21",
+          "kind": "other-decor-full-bbox",
+          "gap": 17.72312
+        },
+        {
+          "name": "firefighter:ladder",
+          "kind": "task-square4",
+          "gap": 19.04705
+        },
+        {
+          "name": "cat",
+          "kind": "fixed-critter-current-bbox",
+          "gap": 22.18742
+        },
+        {
+          "name": "firefighter:firetruck",
+          "kind": "task-square4",
+          "gap": 24.96509
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 25.0687
+        }
+      ],
+      "overlaps": []
+    }
+  ],
+  "sourceTriangles": 6372,
+  "houseBatches": [
+    {
+      "count": 1,
+      "trianglesEach": 6372,
+      "matrices": [
+        [
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          -20,
+          2.0091097354888916,
+          -30,
+          1
+        ]
+      ]
+    },
+    {
+      "count": 1,
+      "trianglesEach": 6372,
+      "matrices": [
+        [
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          6,
+          2.0091097354888916,
+          32,
+          1
+        ]
+      ]
+    },
+    {
+      "count": 1,
+      "trianglesEach": 6372,
+      "matrices": [
+        [
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          50,
+          2.0091097354888916,
+          32.20000076293945,
+          1
+        ]
+      ]
+    }
+  ],
+  "reservations": 98,
+  "skippedDecor": [
+    "bench"
+  ],
+  "limitations": [
+    "Task reservations are conservative4x4 squares; initial fixed critter poses only.",
+    "No arbitrary player parts or all animated trajectories."
+  ]
+}

@@ -1,6 +1,6 @@
 {
-  "status": "Reference pending Claude review; no Tripo order",
-  "reference": "house-c-v2.png",
+  "status": "Installed GLB ready for Claude review; m0262 palette; complete QA on 501dcaa",
+  "reference": "house-c-v3.png",
   "sourceRevision": "e76421b31a1ea8c6ab6113ef3bb9e5053aa0d1df",
   "instances": [
     [
@@ -88,7 +88,7 @@
   ],
   "criticalNeighbors": {
     "southMiddle": "At6,32: road x±3 leaves0.5 gap, tram edgez29 leaves1.0 for depth4.",
-    "southEast": "At50,32.2: tram edgez29 leaves1.2, board rightedge55 leaves2.5. Nearby corner oak52,35 needs actual crown/bbox QA.",
+    "southEast": "Oak moved (52,35) to (53.8,35) in owned city-decor.ts; canopy-house gap0.3025, board gap0.2025.",
     "north": "At−20,−30 between house-a−26,−28 and bakery−12,−27; verify full eaves/neighbor bounds with GLB."
   },
   "orientationProposal": {
@@ -102,11 +102,12 @@
       3.141592653589793,
       3.141592653589793
     ],
-    "reason": "North entrance faces toward town; two southern cottages face north toward tram street, like southwest house A. Proposal only; src unchanged."
+    "reason": "North entrance faces toward town; two southern cottages face north toward tram street, like southwest house A. Proposal only; src unchanged.",
+    "status": "Not accepted/applied; all runtime yaw remain0"
   },
   "style": {
-    "walls": "pistachio green",
-    "roof": "muted terracotta, simple single front-to-back ridge and two tile slopes",
+    "walls": "light butter yellow",
+    "roof": "muted deep turquoise, simple single front-to-back ridge and two tile slopes",
     "front": "full-width triangular gable with round opaque attic window; symmetric door and two lower windows",
     "trim": "warm ivory",
     "door": "deep teal, ground level",
@@ -124,10 +125,38 @@
     ]
   },
   "acceptance": [
-    "Claude reviews final image, full target dimensions and yaw proposal before one Tripo order.",
+    "m0262 accepted silhouette and requested yellow/turquoise palette; v3 followed that request; one Tripo order completed.",
     "Inspect raw front/back/roof/underside; canonical positive transforms and uniform fit only.",
     "Measure full bbox including eaves/chimney; confirm all3positions, allroads/board/neighbor buildings and corner tree.",
     "Actual model()/patched() and all14pole audit1180x660/390x844, alltaskring visibility against newhouseC.",
     "Opaque material,<=7ktri/512WebP/Meshopt; tests/typecheck/browser visual QA. Physical iPad/PWA/FPS separately."
-  ]
+  ],
+  "referenceReview": "m0262",
+  "measured": {
+    "file": "house-c-3d/measurements.json",
+    "fullXYZ": [
+      5,
+      4.0182,
+      3.5165
+    ],
+    "bytes": 130324,
+    "triangles": 6372,
+    "cornerTree": {
+      "previousCenter": [
+        52,
+        35
+      ],
+      "center": [
+        53.8,
+        35
+      ],
+      "fittedSize": [
+        1.995,
+        3,
+        3.1189
+      ],
+      "houseGap": 0.3025,
+      "boardGap": 0.2025
+    }
+  }
 }

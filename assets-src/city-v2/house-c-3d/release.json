@@ -1,0 +1,114 @@
+{
+  "date": "2026-10-26",
+  "model": "house-c",
+  "status": "ready for Claude review; dev only",
+  "approval": "m0262 silhouette and requested yellow/turquoise palette; m0263 execution decision",
+  "reference": {
+    "path": "assets-src/city-v2/house-c-v3.png",
+    "sha256": "48fbd13ef2d5149c5dcc6b7f26c524bff6d76290e09f11d98b8366000c544309"
+  },
+  "raw": {
+    "path": "assets-src/raw/city-v2-2026-10-26/house-c.glb",
+    "bytes": 968372,
+    "sha256": "b9b2a197c0807ea8c3edfaa55d13ae3c7eb753742404540b477a7c544b27ba2f",
+    "ignored": true
+  },
+  "canonical": {
+    "bytes": 814728,
+    "sha256": "4fbe1d9a13fed32f90b3e2f5ebe0fbc10213764c58027914a884e9ee7ff3d425",
+    "yawDegrees": 90
+  },
+  "installed": {
+    "path": "public/models/house-c.glb",
+    "bytes": 130324,
+    "sha256": "b60f10f9be9f2465c97ba8471383bf20698d8ced935d02f5ed50319bfce190c4",
+    "triangles": 6372,
+    "materialCount": 1,
+    "alphaMode": "OPAQUE",
+    "texture": "512x512 WebP",
+    "compression": "EXT_meshopt_compression",
+    "geometryPreserved": true
+  },
+  "fittedSizeXYZ": [
+    5,
+    4.0182,
+    3.5165
+  ],
+  "instances": [
+    [
+      -20,
+      -30,
+      0,
+      1
+    ],
+    [
+      6,
+      32,
+      0,
+      1
+    ],
+    [
+      50,
+      32.2,
+      0,
+      1
+    ]
+  ],
+  "cornerTree": {
+    "previousCenter": [
+      52,
+      35
+    ],
+    "center": [
+      53.8,
+      35
+    ],
+    "fittedSize": [
+      1.995,
+      3,
+      3.1189
+    ],
+    "houseGap": 0.3025,
+    "boardGap": 0.2025
+  },
+  "snapshot": {
+    "baseCommit": "501dcaaedcbee55cb5890d22ebba7f8806e94009",
+    "snapshotPath": "Temporary isolated checkout (not required to reproduce; use baseCommit plus installed model and decorChange)",
+    "src": "git archive of committed src only; excludes colleague uncommitted changes",
+    "public": "Current public copied with new house-c GLB",
+    "houseCSha256": "b60f10f9be9f2465c97ba8471383bf20698d8ced935d02f5ed50319bfce190c4",
+    "qaOnlyConfigChange": "Build label plus Vite fs allow for symlinked node_modules/fonts",
+    "decorChange": "Only SE oak (52,35) -> (53.8,35): full canopy clears house by 0.3025, board edge by 0.2025.",
+    "previousBaseCommit": "be76d79cf046900f71779ca5bbe3a9aeff048a7f"
+  },
+  "checks": {
+    "unitTests": 21,
+    "testFiles": 4,
+    "typecheck": "passed",
+    "gltfValidatorErrors": 0,
+    "gltfValidatorWarnings": 0,
+    "poleTerminalChecks": 56,
+    "blockedPoleTerminals": 0,
+    "outlineSamples": 20832,
+    "outlineOccluders": "three house-c instances only",
+    "blockedOutlineSamples": 0,
+    "reservations": 98,
+    "overlaps": 0,
+    "skippedDecor": [
+      "bench: procedural fallback, GLB absent"
+    ],
+    "positiveControlBlockedTerminals": 2,
+    "consoleWarningsOrErrors": 0
+  },
+  "knownDetails": [
+    "Tripo adds a similar back door and round attic window; closed opaque surfaces inspected.",
+    "Three spatial InstancedMesh batches, one instance each; source geometry shared.",
+    "All centers, scales and yaw0 preserved. South-facing yawPI proposal not applied."
+  ],
+  "limitations": [
+    "Desktop IAB, not a physical iPad/PWA/touch/FPS test.",
+    "Current fixed critter poses only; not all moving trajectories or arbitrary player parts/wires.",
+    "Task outline vertices and edge midpoint sampling, not continuous pixel occlusion proof.",
+    "Texture memory estimate is inventory, not measured GPU allocation."
+  ]
+}

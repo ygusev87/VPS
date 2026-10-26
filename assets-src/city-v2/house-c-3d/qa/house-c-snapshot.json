@@ -1,0 +1,10 @@
+{
+  "baseCommit": "501dcaaedcbee55cb5890d22ebba7f8806e94009",
+  "snapshotPath": "Temporary isolated checkout (not required to reproduce; use baseCommit plus installed model and decorChange)",
+  "src": "git archive of committed src only; excludes colleague uncommitted changes",
+  "public": "Current public copied with new house-c GLB",
+  "houseCSha256": "b60f10f9be9f2465c97ba8471383bf20698d8ced935d02f5ed50319bfce190c4",
+  "qaOnlyConfigChange": "Build label plus Vite fs allow for symlinked node_modules/fonts",
+  "decorChange": "Only SE oak (52,35) -> (53.8,35): full canopy clears house by 0.3025, board edge by 0.2025.",
+  "previousBaseCommit": "be76d79cf046900f71779ca5bbe3a9aeff048a7f"
+}

@@ -1,0 +1,14 @@
+{
+  "useCase": "precise-object-edit",
+  "mode": "built-in image_gen",
+  "prompt": "Use case: precise-object-edit. Edit this existing toy cottage reference by changing ONLY its two main paint colors. Replace every pistachio-green wall surface, including the front triangular gable and right wall, with LIGHT WARM BUTTER YELLOW, a clear pale sunny yellow that remains distinct from the existing ivory trim. Replace ALL terracotta roof tiles, ridge tiles and the small chimney cap with MUTED DEEP TURQUOISE/TEAL, clearly greenish turquoise rather than royal blue. Keep the warm ivory trim and chimney, opaque deep blue windows, deep teal door, brass knob, satin painted toy finish, neutral soft light and warm off-white background. Preserve exactly the geometry and silhouette: one full-width triangular front gable with round attic window, one simple roof ridge going into depth, no dormer or cross-gable, centered door and two ground-floor windows, right-side window, closed capped chimney. Preserve camera, composition, dimensions, detailed tile sculpting, all edges and shadow. No added props, no pedestal, no steps, no writing. A color-only paint variation, not a redesign.",
+  "editTarget": "assets-src/city-v2/house-c-v2.png",
+  "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-5a7c5204-346b-4869-babe-2d5bb2c4e0e7.png",
+  "output": "house-c-v3.png",
+  "sha256": "48fbd13ef2d5149c5dcc6b7f26c524bff6d76290e09f11d98b8366000c544309",
+  "review": "m0262 accepted silhouette, requested distinct light-yellow+blue/turquoise or brick-pink+slate-blue palette, then one order",
+  "decision": "m0263 chose light yellow + muted turquoise; unchanged geometry, centers and scales",
+  "sourceRevision": "be76d79cf046900f71779ca5bbe3a9aeff048a7f",
+  "createdAtUTC": "2026-10-26T03:23:24.130755+00:00",
+  "inspection": "Yellow walls and turquoise roof/cap, preserved single ridge, round attic window, symmetric front, opaque windows, ground-level door, no slab/steps/props. Actual GLB dimensions still unmeasured."
+}

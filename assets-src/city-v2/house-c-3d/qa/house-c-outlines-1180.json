@@ -1,0 +1,602 @@
+{
+  "buildLabel": "версия QA 501dcaa + house-c + SE oak",
+  "viewport": [
+    1180,
+    660
+  ],
+  "scope": "Actual task outline geometry (vertices and triangle-edge midpoints), scale1 and maximum carrying pulse1.05; occluders only three new house-c meshes. Other scenery excluded intentionally.",
+  "checkedSlots": 31,
+  "checkedSamples": 10416,
+  "blockedSamples": 0,
+  "results": [
+    {
+      "task": "car",
+      "slot": [
+        "trafficLight"
+      ],
+      "spot": [
+        5.5,
+        0,
+        17.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "tram",
+      "slot": [
+        "switch"
+      ],
+      "spot": [
+        -26.5,
+        0,
+        34.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "baker",
+      "slot": [
+        "heater"
+      ],
+      "spot": [
+        -12,
+        0,
+        -21.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "baker",
+      "slot": [
+        "belt"
+      ],
+      "spot": [
+        -8.5,
+        0,
+        -18.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "car4",
+      "slot": [
+        "barrier"
+      ],
+      "spot": [
+        -34,
+        0,
+        -4.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "car4",
+      "slot": [
+        "button"
+      ],
+      "spot": [
+        -29.5,
+        0,
+        -8.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "child",
+      "slot": [
+        "ferris"
+      ],
+      "spot": [
+        7,
+        0,
+        -3
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "child",
+      "slot": [
+        "windGen"
+      ],
+      "spot": [
+        12,
+        0,
+        3
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "car7",
+      "slot": [
+        "carWash"
+      ],
+      "spot": [
+        -38,
+        0,
+        8
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "car7",
+      "slot": [
+        "pump"
+      ],
+      "spot": [
+        -33.5,
+        0,
+        9
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "grandma",
+      "slot": [
+        "lift"
+      ],
+      "spot": [
+        -38.6,
+        0,
+        -26.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "grandma",
+      "slot": [
+        "button"
+      ],
+      "spot": [
+        -34.5,
+        0,
+        -27.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "builder",
+      "slot": [
+        "towerCrane"
+      ],
+      "spot": [
+        -34,
+        0,
+        20
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "builder",
+      "slot": [
+        "switch"
+      ],
+      "spot": [
+        -29.5,
+        0,
+        21.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "boat",
+      "slot": [
+        "drawbridge"
+      ],
+      "spot": [
+        35.9,
+        0,
+        0
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "boat",
+      "slot": [
+        "button"
+      ],
+      "spot": [
+        31.5,
+        0,
+        -8.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "kitten",
+      "slot": [
+        "duskLamp"
+      ],
+      "spot": [
+        -11.5,
+        0,
+        -2.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "kitten",
+      "slot": [
+        "duskLamp"
+      ],
+      "spot": [
+        -15.2,
+        0,
+        1
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "kitten",
+      "slot": [
+        "duskLamp"
+      ],
+      "spot": [
+        -11.5,
+        0,
+        4.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "child6",
+      "slot": [
+        "neon"
+      ],
+      "spot": [
+        43,
+        0,
+        -9.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "child6",
+      "slot": [
+        "lightSensor"
+      ],
+      "spot": [
+        43,
+        0,
+        -7.6
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "child6",
+      "slot": [
+        "musicbox"
+      ],
+      "spot": [
+        46.5,
+        0,
+        -6.8
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "firefighter",
+      "slot": [
+        "firetruck"
+      ],
+      "spot": [
+        25.5,
+        0,
+        13.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "firefighter",
+      "slot": [
+        "ladder"
+      ],
+      "spot": [
+        43.5,
+        0,
+        9.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "firefighter",
+      "slot": [
+        "pump"
+      ],
+      "spot": [
+        44,
+        0,
+        14
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "shopkeeper",
+      "slot": [
+        "domino"
+      ],
+      "spot": [
+        48,
+        0,
+        -33
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "shopkeeper",
+      "slot": [
+        "bell"
+      ],
+      "spot": [
+        50.5,
+        0,
+        -29.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "child3",
+      "slot": [
+        "laser"
+      ],
+      "spot": [
+        17,
+        0,
+        -22
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "child3",
+      "slot": [
+        "mirror"
+      ],
+      "spot": [
+        24,
+        0,
+        -22
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "child3",
+      "slot": [
+        "lightSensor"
+      ],
+      "spot": [
+        24,
+        0,
+        -16.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    },
+    {
+      "task": "child3",
+      "slot": [
+        "bell"
+      ],
+      "spot": [
+        17,
+        0,
+        -17.5
+      ],
+      "geometry": 56,
+      "uniqueVerticesAndEdgeMidpoints": 168,
+      "scales": [
+        1,
+        1.05
+      ],
+      "samples": 336,
+      "blocked": []
+    }
+  ]
+}

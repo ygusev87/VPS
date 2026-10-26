@@ -1,0 +1,28 @@
+{
+  "provider": "Tripo Studio UI",
+  "task": "96eba82e-09c5-4c55-a2c6-2ddcb2344a21",
+  "approval": "m0262; color edit confirmed in m0263",
+  "reference": "assets-src/city-v2/house-c-v3.png",
+  "referenceSha256": "48fbd13ef2d5149c5dcc6b7f26c524bff6d76290e09f11d98b8366000c544309",
+  "orders": 1,
+  "includedCredits": 25,
+  "balanceBefore": 5725,
+  "balanceAfter": 5700,
+  "settings": {
+    "model": "H3.1 HD maximum quality",
+    "triangles": 7000,
+    "texture": true,
+    "textureSize": 2048,
+    "delight": true,
+    "PBR": false,
+    "Ultra": false,
+    "AIEnhance": false,
+    "segmentation": false
+  },
+  "status": "Completed and exported GLB; no duplicate generation",
+  "createdAtUTC": "2026-10-26T03:25:10.707814+00:00",
+  "trianglesReported": 6372,
+  "verticesReported": 4898,
+  "rawBytes": 968372,
+  "rawSha256": "b9b2a197c0807ea8c3edfaa55d13ae3c7eb753742404540b477a7c544b27ba2f"
+}

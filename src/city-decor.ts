@@ -17,7 +17,7 @@ export const DECOR: DecorGroup[] = [
   // East of STATION_POLE so the near roof cannot hide either terminal.
   { model: 'house-b', fit: { width: 5, rotateY: -Math.PI / 2 }, items: [[-48, -14, 0, 1], [-5.75, -33, 0, 0.9], [29, 21, 0, 1], [-14, 32, 0, 1]] },
   { model: 'house-c', fit: { width: 5, rotateY: -Math.PI / 2 }, items: [[-20, -30, 0, 1], [6, 32, 0, 1], [50, 32.2, 0, 1]] },
-  { model: 'tree-oak-lite', fit: { height: 3 }, items: [[-14, -9, 0, 1], [14, -9, 0, 1], [-14, 9, 0, 0.9], [14, 9, 0, 1], [2, -9, 0, 0.9], [-52, -35, 0, 1], [52, 35, 0, 1], [-52, 12, 0, 1], [-4, 22, 0, 1], [20, 33, 0, 0.9]] },
+  { model: 'tree-oak-lite', fit: { height: 3 }, items: [[-14, -9, 0, 1], [14, -9, 0, 1], [-14, 9, 0, 0.9], [14, 9, 0, 1], [2, -9, 0, 0.9], [-52, -35, 0, 1], [53.8, 35, 0, 1], [-52, 12, 0, 1], [-4, 22, 0, 1], [20, 33, 0, 0.9]] },
   { model: 'bush-lite', fit: { width: 1.8 }, items: [[-10, 8.5, 0, 0.8], [10, 8.5, 0, 0.8], [-3, -8.5, 0, 0.8], [17, -6, 0, 0.8], [-17, -8, 0, 0.8]] },
   // A small planted boundary behind the tram, outside the substation work court.
   { model: 'tree-oak-lite', fit: { height: 3.6 }, items: [[-44.5, 35, 0.4, 1], [-40, 35.1, 1.3, 1], [-35.3, 35.2, -0.6, 1]] },
