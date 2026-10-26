@@ -5,7 +5,7 @@
 // its right one (src/parts/tiles.ts).
 import * as THREE from 'three';
 import type { CircuitElement, ElementKind } from '../circuit/solver';
-import { Part, type PartKind } from './base';
+import { Part, type PartKind, type PlugShape } from './base';
 import { basePlate, damp, mat, mesh, PLATE_TOP } from './kit';
 import type { Geared } from './factory';
 import { flow, hintTile, makePuzzle, opens, turn, type Side, type TileGrid } from './tiles';
@@ -566,4 +566,46 @@ export class Lathe extends Part implements Geared {
       if (Math.random() < dt * 6) this.effects.push({ kind: 'sparks', at: this.root.localToWorld(new THREE.Vector3(0.3 + (Math.random() - 0.5), PLATE_TOP + 0.8, 0.35)), n: 3, color: '#e8b878' });
     } else if (s === 'fast' && Math.random() < dt * 4) this.effects.push({ kind: 'sparks', at: this.root.localToWorld(new THREE.Vector3(0.3, PLATE_TOP + 0.8, 0.35)), n: 4 });
   }
+}
+
+const SOCKETS: PlugShape[] = ['round', 'square', 'triangle'];
+
+/**
+ * The power board of the factory floor: fed from a pole through two plain
+ * posts, it hands the power on through three pairs of shaped sockets — round,
+ * square, triangle. A machine with triangle plugs takes power only from the
+ * triangle pair.
+ */
+export class SocketBoard extends Part {
+  readonly kind: PartKind = 'socketBoard';
+  readonly elementKind: ElementKind = 'wire';
+  readonly radius = 2;
+
+  constructor() {
+    super();
+    const plate = basePlate(3.4, 2);
+    const board = mesh(new THREE.BoxGeometry(2.6, 0.9, 0.18), mat('#f6eddd', 0.6));
+    board.position.set(0, PLATE_TOP + 0.45, -0.75);
+    const frame = mesh(new THREE.BoxGeometry(2.75, 1.0, 0.12), mat('#8d97a3', 0.4, 0.6));
+    frame.position.set(0, PLATE_TOP + 0.45, -0.85);
+    this.body.add(plate, frame, board);
+    this.addTerminal('p', 'plus', -1.45, 0.75);
+    this.addTerminal('n', 'minus', -1.45, -0.05);
+    SOCKETS.forEach((shape, i) => {
+      const x = -0.6 + i * 0.9;
+      this.addTerminal(`${shape}+`, 'plus', x, -0.05).shaped(shape);
+      this.addTerminal(`${shape}-`, 'minus', x, 0.7).shaped(shape);
+    });
+    this.pickable(plate, board, frame);
+  }
+
+  elements(): CircuitElement[] {
+    const t = (k: string) => this.terminal(k).id;
+    return SOCKETS.flatMap((shape): CircuitElement[] => [
+      { id: `${this.id}#${shape}+`, kind: 'wire', a: t('p'), b: t(`${shape}+`) },
+      { id: `${this.id}#${shape}-`, kind: 'wire', a: t('n'), b: t(`${shape}-`) },
+    ]);
+  }
+
+  protected animate() {}
 }

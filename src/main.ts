@@ -13,7 +13,7 @@ import { loadKit } from './kit';
 import { Hud, MAPS as HUD_MAPS } from './hud';
 import { Input } from './input';
 import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
-import { Part, type PartKind, type PartSound, type Terminal } from './parts/base';
+import { fits, Part, type PartKind, type PartSound, type Terminal } from './parts/base';
 import type { BandVoice } from './audio';
 import { Bells, Maracas, Piano, Tuba } from './parts/band';
 import { Drum, MusicBox } from './parts/extra';
@@ -777,7 +777,9 @@ function updateHint(dt: number) {
   // Free play is the child's own experiment: nudge later than in missions.
   const free = level === FREE_PLAY || !!level.sandbox;
   const wait = QUICK_HINTS ? 300 : free ? (hintShownOnce ? 9000 : 4000) : hintShownOnce ? 6000 : 1600;
-  const h = map ? map.hint(trayLeft) : free ? sandboxHint(world) : levelHint(world, level, trayLeft);
+  const raw = map ? map.hint(trayLeft) : free ? sandboxHint(world) : levelHint(world, level, trayLeft);
+  // Never ask for a wire the posts can't take (shaped sockets join only their own shape).
+  const h = raw?.type === 'connect' && !fits(raw.from, raw.to) ? null : raw;
   if (!h) return setHint(null);
   // Keep showing a hint that is already up; new ones wait for the child to pause.
   if (currentHint && hintKey(currentHint) === hintKey(h)) return;

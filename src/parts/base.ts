@@ -83,7 +83,8 @@ export type PartKind =
   | 'safetyPress'
   | 'smallGear'
   | 'shaftMotor'
-  | 'lathe';
+  | 'lathe'
+  | 'socketBoard';
 
 /** Light colours a bulb or LED can take (tap to cycle). */
 export type LightColor = 'warm' | 'red' | 'green' | 'blue' | 'yellow';
@@ -151,9 +152,21 @@ function collarMat(color: string) {
   return m;
 }
 
+/** A socket's shape (the factory's plugs): a wire joins only posts of one shape. */
+export type PlugShape = 'round' | 'square' | 'triangle';
+const PLUG_COLOR: Record<PlugShape, string> = { round: '#2f7fe0', square: '#f5c33b', triangle: '#e8483f' };
+
+/** Can a wire run between these two posts? Plain posts take plain posts; a shaped socket only its own shape. */
+export function fits(a: Terminal, b: Terminal) {
+  return a.shape === b.shape;
+}
+
 export class Terminal {
   readonly id: string;
   readonly post = new THREE.Group();
+  /** A shaped socket (see PlugShape), or a plain post. */
+  shape: PlugShape | undefined;
+  private collar!: THREE.Mesh;
   private ring: THREE.Mesh;
   private ringMat: THREE.MeshBasicMaterial;
   private highlight: Highlight = 'none';
@@ -174,6 +187,7 @@ export class Terminal {
     const ring = new THREE.Mesh(collarGeo, collarMat(collarColor));
     ring.position.y = 0.09;
     metal.receiveShadow = ring.receiveShadow = true;
+    this.collar = ring;
     this.post.add(metal, ring);
 
     this.ringMat = new THREE.MeshBasicMaterial({ color: C.teal, transparent: true, opacity: 0, depthWrite: false });
@@ -184,6 +198,16 @@ export class Terminal {
     this.post.add(this.ring);
 
     this.post.position.copy(local).setY(PLATE_TOP);
+  }
+
+  /** Make it a shaped socket: a big coloured cap of its shape round the post. */
+  shaped(shape: PlugShape) {
+    this.shape = shape;
+    const geo = shape === 'round' ? new THREE.CylinderGeometry(0.24, 0.24, 0.12, 28) : shape === 'square' ? new THREE.BoxGeometry(0.42, 0.12, 0.42) : new THREE.CylinderGeometry(0.3, 0.3, 0.12, 3);
+    this.collar.geometry = geo;
+    this.collar.material = collarMat(PLUG_COLOR[shape]);
+    this.collar.position.y = 0.06;
+    return this;
   }
 
   /** World position of the post top, where wires clip on. */

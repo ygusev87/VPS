@@ -5,7 +5,7 @@
 //  • tap a wire → it comes off
 //  • drag empty table → pan; two fingers → pinch-zoom; mouse wheel → zoom
 import * as THREE from 'three';
-import type { LightColor, Part, PartKind, Terminal } from './parts/base';
+import { fits, type LightColor, type Part, type PartKind, type Terminal } from './parts/base';
 import type { Stage } from './stage';
 import { tidyRoute, Wire } from './wires';
 import type { World } from './world';
@@ -90,7 +90,7 @@ export class Input {
     let bestD = Infinity;
     const v = new THREE.Vector3();
     for (const t of this.world.terminals()) {
-      if (t === exclude) continue;
+      if (t === exclude || (exclude && !fits(exclude, t))) continue;
       t.attachPoint(v);
       const p = this.stage.project(v);
       const d = Math.hypot(p.x - x, p.y - y);
@@ -165,7 +165,7 @@ export class Input {
     this.stage.world.add(wire.group);
     this.world.loose.add(wire);
     this.mode = { kind: 'wire', wire, from: t, target: null };
-    for (const o of this.world.terminals()) o.setHighlight(o === t ? 'target' : 'available');
+    for (const o of this.world.terminals()) o.setHighlight(o === t ? 'target' : fits(t, o) ? 'available' : 'none');
     this.world.emit({ type: 'wireStart', terminal: t });
   }
 
