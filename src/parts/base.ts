@@ -80,7 +80,10 @@ export type PartKind =
   | 'wireBox'
   | 'reverser'
   | 'railCart'
-  | 'safetyPress';
+  | 'safetyPress'
+  | 'smallGear'
+  | 'shaftMotor'
+  | 'lathe';
 
 /** Light colours a bulb or LED can take (tap to cycle). */
 export type LightColor = 'warm' | 'red' | 'green' | 'blue' | 'yellow';

@@ -15,6 +15,8 @@ import { glowFor, sprite } from './models';
 /** Teeth meet when the centres are this close to the sum of the radii. */
 const MESH_TOL = 0.35;
 const GEAR_Y = PLATE_TOP + 0.35;
+/** Axles this close are one shaft (a gear set on a bare motor or a machine). */
+const AXLE_TOL = 0.25;
 
 /** Something with a gear lying flat (its axle upright) that can turn or be turned. */
 export interface Geared {
@@ -27,7 +29,7 @@ export interface Geared {
   drive?(): number;
 }
 
-const isGeared = (p: Part): p is Part & Geared => typeof (p as unknown as Geared).gearAt === 'function';
+export const isGeared = (p: Part): p is Part & Geared => typeof (p as unknown as Geared).gearAt === 'function';
 
 /** A flat gear on its axle, teeth round the rim. */
 function gearMesh(r: number, color: string): THREE.Group {
@@ -98,15 +100,15 @@ export class Gear extends Part implements Geared {
   turn = 0;
   private wheel: THREE.Group;
 
-  constructor(big = false) {
+  constructor(size: boolean | 'small' = false) {
     super();
-    this.kind = big ? 'bigGear' : 'gear';
-    this.gearR = big ? 1.0 : 0.6;
+    this.kind = size === 'small' ? 'smallGear' : size ? 'bigGear' : 'gear';
+    this.gearR = size === 'small' ? 0.4 : size ? 1.0 : 0.6;
     this.radius = this.gearR + 0.2;
     const plate = basePlate(this.gearR * 2 + 0.2, this.gearR * 2 + 0.2);
     const peg = mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.4, 10), mat(C.metal, 0.3, 0.8));
     peg.position.set(0, PLATE_TOP + 0.2, 0);
-    this.wheel = gearMesh(this.gearR, big ? '#e05a4a' : '#3f86d6');
+    this.wheel = gearMesh(this.gearR, size === 'small' ? '#4cc46a' : size ? '#e05a4a' : '#3f86d6');
     this.wheel.position.set(0, GEAR_Y, 0);
     this.body.add(plate, peg, this.wheel);
     this.pickable(plate, this.wheel);
@@ -497,8 +499,11 @@ export function turnGears(parts: Part[]) {
     for (const o of gears) {
       if (done.has(o)) continue;
       o.gearAt(b);
-      if (Math.abs(Math.hypot(a.x - b.x, a.z - b.z) - (g.gearR + o.gearR)) > MESH_TOL) continue;
-      o.turn = (-g.turn * g.gearR) / o.gearR;
+      const d = Math.hypot(a.x - b.x, a.z - b.z);
+      // On one axle (a gear set on a motor's or a machine's shaft): the same turning.
+      if (d < AXLE_TOL) o.turn = g.turn;
+      else if (g.gearR > 0 && o.gearR > 0 && Math.abs(d - (g.gearR + o.gearR)) <= MESH_TOL) o.turn = (-g.turn * g.gearR) / o.gearR;
+      else continue;
       done.add(o);
       queue.push(o);
     }
@@ -535,6 +540,18 @@ export function fitGear(part: Part, parts: Part[]): boolean {
   if (!isGeared(part) || (part as Part & Geared).drive) return false;
   const me = part as Part & Geared;
   const a = me.gearAt();
+  // A bare shaft (gearR 0: a motor or machine without its own gear) takes a gear let go over it.
+  for (const o of parts) {
+    if (o === part || !isGeared(o) || o.gearR > 0) continue;
+    const b = o.gearAt();
+    const d = Math.hypot(a.x - b.x, a.z - b.z);
+    if (d < 0.9) {
+      if (d < 0.05) return false;
+      part.root.position.x += b.x - a.x;
+      part.root.position.z += b.z - a.z;
+      return true;
+    }
+  }
   let best: { o: Part & Geared; d: number } | null = null;
   for (const o of parts) {
     if (o === part || !isGeared(o)) continue;

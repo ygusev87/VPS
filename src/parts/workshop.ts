@@ -7,6 +7,7 @@ import * as THREE from 'three';
 import type { CircuitElement, ElementKind } from '../circuit/solver';
 import { Part, type PartKind } from './base';
 import { basePlate, damp, mat, mesh, PLATE_TOP } from './kit';
+import type { Geared } from './factory';
 import { flow, hintTile, makePuzzle, opens, turn, type Side, type TileGrid } from './tiles';
 
 const TILE = 1;
@@ -417,5 +418,152 @@ export class SafetyPress extends Part {
     this.ram.position.y = PLATE_TOP + 1.4 - this.ramY * 0.75;
     this.caps.forEach((c, i) => (c.position.y = PLATE_TOP + (this.held[i] ? 0.32 : 0.38)));
     this.lamps.forEach((m, i) => (m.emissiveIntensity = damp(m.emissiveIntensity, this.held[i] ? 2.4 : 0, 12, dt)));
+  }
+}
+
+/** The height of a shaft's top, where a gear set on it turns. */
+const SHAFT_Y = PLATE_TOP + 0.35;
+
+/**
+ * A motor with a bare shaft: no gear of its own, so a gear set on the shaft
+ * turns with it — the size of that gear sets how fast the next one goes.
+ */
+export class ShaftMotor extends Part implements Geared {
+  readonly kind: PartKind = 'shaftMotor';
+  readonly elementKind: ElementKind = 'motor';
+  readonly radius = 1.1;
+  readonly gearR = 0;
+  turn = 0;
+  private speed = 0;
+  private shaft: THREE.Mesh;
+
+  constructor() {
+    super();
+    const plate = basePlate(1.8, 1.6);
+    // A flat motor under the shaft, so the gear set on it turns in plain sight above.
+    const can = mesh(new THREE.BoxGeometry(1.1, 0.24, 0.9), mat('#2f8f8c', 0.4, 0.3));
+    can.position.set(0, PLATE_TOP + 0.12, -0.1);
+    this.shaft = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.5, 12), mat('#c9ced6', 0.25, 0.9));
+    this.shaft.position.set(0, PLATE_TOP + 0.25, -0.35);
+    const collar = mesh(new THREE.BoxGeometry(0.06, 0.04, 0.2), mat('#2b3242', 0.5), false);
+    collar.position.y = 0.2;
+    this.shaft.add(collar);
+    this.body.add(plate, can, this.shaft);
+    this.addTerminal('a', 'plus', 0.65, 0.55);
+    this.addTerminal('b', 'minus', -0.65, 0.55);
+    this.pickable(plate, can);
+  }
+
+  protected electrical(): Partial<CircuitElement> {
+    return { r: 8 };
+  }
+
+  gearAt(out = new THREE.Vector3()) {
+    return this.root.localToWorld(out.set(0, SHAFT_Y, -0.35));
+  }
+
+  drive() {
+    return this.speed;
+  }
+
+  protected animate(dt: number) {
+    const l = this.state.level;
+    this.speed = damp(this.speed, Math.abs(l) > 0.15 ? 2.2 * Math.sign(l) * Math.min(1.5, Math.abs(l)) : 0, 3, dt);
+    this.shaft.rotation.y += this.turn * dt;
+  }
+}
+
+/** How fast a lathe wants to turn (radians a second at its shaft), by what it makes. */
+export const LATHE_SPEED = { slow: [0.5, 1.4], fast: [3.6, 9] } as const;
+
+/**
+ * A lathe on a bare shaft, turned through gears: it shapes a wooden toy only
+ * at its own speed — a dial with a green band says whether the gears make it
+ * too slow, too fast or just right. Swap a small and a big gear to change it.
+ */
+export class Lathe extends Part implements Geared {
+  readonly kind: PartKind = 'lathe';
+  readonly elementKind: ElementKind = 'wire';
+  readonly radius = 1.8;
+  readonly gearR = 0;
+  turn = 0;
+  /** The speed it needs. */
+  want: keyof typeof LATHE_SPEED = 'slow';
+  /** Seconds of good turning (a toy is done after a few). */
+  made = 0;
+  private spindle = new THREE.Group();
+  private needle = new THREE.Group();
+  private band: THREE.Mesh;
+  private shown = 0;
+
+  constructor() {
+    super();
+    const plate = basePlate(3.2, 1.7);
+    const bed = mesh(new THREE.BoxGeometry(2.4, 0.3, 0.6), mat('#8d97a3', 0.4, 0.6));
+    bed.position.set(0.3, PLATE_TOP + 0.15, 0.2);
+    const head = mesh(new THREE.BoxGeometry(0.6, 0.7, 0.6), mat('#2f8f8c', 0.45, 0.3));
+    head.position.set(-0.7, PLATE_TOP + 0.65, 0.2);
+    const tail = mesh(new THREE.BoxGeometry(0.4, 0.5, 0.5), mat('#2f8f8c', 0.45, 0.3));
+    tail.position.set(1.3, PLATE_TOP + 0.55, 0.2);
+    // The workpiece between the centres: a wooden spindle that turns.
+    const wood = mesh(new THREE.CylinderGeometry(0.16, 0.16, 1.5, 16), mat('#d9a066', 0.7));
+    wood.rotation.z = Math.PI / 2;
+    const ring = mesh(new THREE.TorusGeometry(0.17, 0.03, 6, 16), mat('#e8483f', 0.5));
+    ring.rotation.y = Math.PI / 2;
+    this.spindle.add(wood, ring);
+    this.spindle.position.set(0.3, PLATE_TOP + 0.75, 0.2);
+    // The shaft at the back left takes the gear; the dial stands on the head.
+    const shaft = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.5, 12), mat('#c9ced6', 0.25, 0.9));
+    shaft.position.set(-1.1, PLATE_TOP + 0.25, -0.45);
+    const face = mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.05, 24), mat('#f6eddd', 0.6));
+    face.rotation.x = Math.PI / 2;
+    face.position.set(-0.7, PLATE_TOP + 1.25, 0.5);
+    this.band = mesh(new THREE.RingGeometry(0.18, 0.27, 24, 1, 0, 1), mat('#4cc46a', 0.5), false);
+    this.band.position.set(-0.7, PLATE_TOP + 1.25, 0.53);
+    const pin = mesh(new THREE.BoxGeometry(0.03, 0.24, 0.02), mat('#e8483f', 0.4), false);
+    pin.position.y = 0.12;
+    this.needle.add(pin);
+    this.needle.position.set(-0.7, PLATE_TOP + 1.25, 0.55);
+    this.body.add(plate, bed, head, tail, this.spindle, shaft, face, this.band, this.needle);
+    this.pickable(plate, bed, head, tail);
+    this.setWant('slow');
+  }
+
+  elements(): CircuitElement[] {
+    return [];
+  }
+
+  /** Which speed it needs; the dial's green band moves to it. */
+  setWant(want: keyof typeof LATHE_SPEED) {
+    this.want = want;
+    const [lo, hi] = LATHE_SPEED[want];
+    const a = (v: number) => Math.PI * 0.75 - Math.min(1, v / 6) * Math.PI * 1.5;
+    this.band.geometry.dispose();
+    this.band.geometry = new THREE.RingGeometry(0.18, 0.27, 24, 1, a(hi) + Math.PI / 2, a(lo) - a(hi));
+  }
+
+  gearAt(out = new THREE.Vector3()) {
+    return this.root.localToWorld(out.set(-1.1, SHAFT_Y, -0.45));
+  }
+
+  /** How it is turning: 'still', 'slow', 'fast' (too fast) or 'ok'. */
+  get speed(): 'still' | 'slow' | 'fast' | 'ok' {
+    const v = Math.abs(this.turn);
+    const [lo, hi] = LATHE_SPEED[this.want];
+    return v < 0.2 ? 'still' : v < lo ? 'slow' : v > hi ? 'fast' : 'ok';
+  }
+
+  protected animate(dt: number) {
+    const v = Math.abs(this.turn);
+    this.shown = damp(this.shown, v, 4, dt);
+    this.needle.rotation.z = Math.PI * 0.75 - Math.min(1, this.shown / 6) * Math.PI * 1.5;
+    this.spindle.rotation.x += this.turn * 2 * dt;
+    const s = this.speed;
+    // Too fast it shakes and throws sparks; just right it throws curls of wood.
+    this.spindle.position.y = PLATE_TOP + 0.75 + (s === 'fast' ? Math.sin(this.time * 60) * 0.03 : 0);
+    if (s === 'ok') {
+      this.made += dt;
+      if (Math.random() < dt * 6) this.effects.push({ kind: 'sparks', at: this.root.localToWorld(new THREE.Vector3(0.3 + (Math.random() - 0.5), PLATE_TOP + 0.8, 0.35)), n: 3, color: '#e8b878' });
+    } else if (s === 'fast' && Math.random() < dt * 4) this.effects.push({ kind: 'sparks', at: this.root.localToWorld(new THREE.Vector3(0.3, PLATE_TOP + 0.8, 0.35)), n: 4 });
   }
 }

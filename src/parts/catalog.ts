@@ -13,7 +13,7 @@ import { Bell, Belt, Domino, Laser, Launcher, LightSensor, Magnet, Mirror, Targe
 import { Gate, Heater, Pole, Pump, Solar } from './farm';
 import { Barrier, CarWash, Drawbridge, DuskLamp, FerrisWheel, FireLadder, NeonSign, Substation, TowerCrane } from './city';
 import { Gear, GearMotor, Packer, PaintBooth, PaintTank, Pipe, Press, RobotArm } from './factory';
-import { RailCart, Reverser, SafetyPress, WireBox } from './workshop';
+import { Lathe, RailCart, Reverser, SafetyPress, ShaftMotor, WireBox } from './workshop';
 import type { PhraseId } from '../voice';
 import { Balloon, Garland, Kettle, Skittles } from './toys';
 
@@ -135,6 +135,9 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'reverser', name: 'Переключатель вперёд-назад', say: 'reverser' },
       { kind: 'railCart', name: 'Тележка на рельсах', say: 'railCart' },
       { kind: 'safetyPress', name: 'Пресс на две руки', say: 'safetyPress' },
+      { kind: 'smallGear', name: 'Маленькая шестерёнка', say: 'smallGear' },
+      { kind: 'shaftMotor', name: 'Мотор с валом', say: 'shaftMotor' },
+      { kind: 'lathe', name: 'Токарный станок', say: 'lathe' },
     ],
   },
   {
@@ -297,6 +300,12 @@ function make(kind: PartKind): Part {
       return new RailCart();
     case 'safetyPress':
       return new SafetyPress();
+    case 'smallGear':
+      return new Gear('small');
+    case 'shaftMotor':
+      return new ShaftMotor();
+    case 'lathe':
+      return new Lathe();
     case 'belt':
       return new Belt();
     case 'mirror':
