@@ -1,0 +1,14 @@
+{
+  "revision": "1bc43e37e6b9dfc8453765e953d06fe8d712c00c",
+  "capturedAt": "2026-10-26T08:32:18.036741+00:00",
+  "files": {
+    "public/models/hayloft.glb": {
+      "sha256": "b1bd6bda98530cfaee5dd239f85e2b31e65928b8a38dd46c0efb8762394c6791",
+      "bytes": 84784
+    },
+    "public/models/haystack.glb": {
+      "sha256": "d5c32fb689208f15fabdaebdd65d72fde8785a99c418c26fb03b105c7c2d1b56",
+      "bytes": 47256
+    }
+  }
+}

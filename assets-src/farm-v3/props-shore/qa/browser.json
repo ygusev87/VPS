@@ -1,0 +1,542 @@
+[
+  {
+    "file": "desktop-source-three.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "source",
+    "view": "three",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 2694,
+        "bounds": {
+          "min": [
+            -0.8999855448416978,
+            0,
+            -0.5851441852981004
+          ],
+          "max": [
+            0.8999855448416978,
+            2.3406481742858887,
+            0.5851441852981004
+          ]
+        },
+        "determinants": [
+          1.6029442973679606
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "desktop-source-top-game.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "source-top",
+    "view": "game",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 2694,
+        "bounds": {
+          "min": [
+            -0.8999855448416978,
+            0,
+            -0.5851441852981004
+          ],
+          "max": [
+            0.8999855448416978,
+            2.3406481742858887,
+            0.5851441852981004
+          ]
+        },
+        "determinants": [
+          1.6029442973679606
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "desktop-candidate-game.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "candidate",
+    "view": "game",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -1.4,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            1.4,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "desktop-candidate-three.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "candidate",
+    "view": "three",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -1.4,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            1.4,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "desktop-candidate-front.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "candidate",
+    "view": "front",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -1.4,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            1.4,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "desktop-candidate-back.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "candidate",
+    "view": "back",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -1.4,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            1.4,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "desktop-candidate-left.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "candidate",
+    "view": "left",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -1.4,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            1.4,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "desktop-candidate-right.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "candidate",
+    "view": "right",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -1.4,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            1.4,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "desktop-candidate-top.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "candidate",
+    "view": "top",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -1.4,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            1.4,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "desktop-candidate-bottom.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "candidate",
+    "view": "bottom",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -1.4,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            1.4,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "desktop-compare-game.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "compare",
+    "view": "game",
+    "viewport": [
+      1024,
+      768
+    ],
+    "canvas": [
+      1024,
+      568
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -3.25,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            -0.4500000000000002,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      },
+      {
+        "triangles": 2816,
+        "bounds": {
+          "min": [
+            0.4500000000000002,
+            0,
+            -1.4022681420798433
+          ],
+          "max": [
+            3.25,
+            1.8395916121538176,
+            1.4022681420798433
+          ]
+        },
+        "determinants": [
+          2.7573582938655403
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "mobile-candidate-game.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "candidate",
+    "view": "game",
+    "viewport": [
+      390,
+      844
+    ],
+    "canvas": [
+      390,
+      625
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -1.4,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            1.4,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "mobile-candidate-three.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "candidate",
+    "view": "three",
+    "viewport": [
+      390,
+      844
+    ],
+    "canvas": [
+      390,
+      625
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -1.4,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            1.4,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  },
+  {
+    "file": "mobile-compare-game.jpg",
+    "capture": "actual viewport, getScreenshot",
+    "mode": "compare",
+    "view": "game",
+    "viewport": [
+      390,
+      844
+    ],
+    "canvas": [
+      390,
+      625
+    ],
+    "objects": [
+      {
+        "triangles": 636,
+        "bounds": {
+          "min": [
+            -3.25,
+            0,
+            -0.7745780816064943
+          ],
+          "max": [
+            -0.4500000000000002,
+            1.3473189489425335,
+            0.7745780816064943
+          ]
+        },
+        "determinants": [
+          2.7439999999999993
+        ]
+      },
+      {
+        "triangles": 2816,
+        "bounds": {
+          "min": [
+            0.4500000000000002,
+            0,
+            -1.4022681420798433
+          ],
+          "max": [
+            3.25,
+            1.8395916121538176,
+            1.4022681420798433
+          ]
+        },
+        "determinants": [
+          2.7573582938655403
+        ]
+      }
+    ],
+    "contextLost": false,
+    "errors": []
+  }
+]

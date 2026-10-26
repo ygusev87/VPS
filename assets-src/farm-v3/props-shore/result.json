@@ -1,0 +1,66 @@
+{
+  "status": "ready-for-integration-review",
+  "createdAt": "2026-10-26T09:00:27.956770+00:00",
+  "baseRevisionAtQA": "244d3d18e385fbb0e588025ea7ee994aeb138380",
+  "candidate": "candidate/hay-bale.glb",
+  "sha256": "f89caa01a91e7fd8dba0948584bcac1fd3dba52d64a7f92f4a0c08914816c421",
+  "bytes": 49592,
+  "triangles": 636,
+  "fit": {
+    "width": 2.8,
+    "size": [
+      2.8,
+      1.3473189711570739,
+      1.5491561174392698
+    ]
+  },
+  "source": "public/models/hayloft.glb",
+  "method": "Extract the exposed front-right quarter of the smaller bale, reconstruct hidden sides from that quarter, cap the ground-contact face. Original material and embedded texture bytes unchanged.",
+  "validationPassed": true,
+  "browser": {
+    "snapshots": 14,
+    "viewports": [
+      [
+        1024,
+        768
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "views": [
+      "game",
+      "three",
+      "front",
+      "back",
+      "left",
+      "right",
+      "top",
+      "bottom"
+    ],
+    "errors": [],
+    "contextLost": false,
+    "cameraDirection": [
+      0,
+      1,
+      0.78
+    ],
+    "environment": "isolated three.js asset viewer, not integrated farm runtime"
+  },
+  "checks": {
+    "npm test": "21/21 passed (4 files)",
+    "npm run typecheck": "passed",
+    "gltf-validator": "0 errors / 0 warnings; meshopt file has one unsupported-extension informational notice; uncompressed file has 0 notices"
+  },
+  "limits": [
+    "iPad hardware, full farm integration, camera occlusion and frame-rate testing remain for integration.",
+    "The front-right quarter is mirrored in baked geometry; this is a reconstructed bale, not an original detachable object.",
+    "Bottom contact cap has one flat sample from the original atlas."
+  ],
+  "scope": [
+    "Only assets-src/farm-v3/props-shore added",
+    "No public/runtime/layout/source models changed",
+    "No generation/API orders or push"
+  ]
+}

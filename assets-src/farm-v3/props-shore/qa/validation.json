@@ -1,0 +1,139 @@
+{
+  "candidateSha256": "f89caa01a91e7fd8dba0948584bcac1fd3dba52d64a7f92f4a0c08914816c421",
+  "bytes": 49592,
+  "triangles": 636,
+  "materials": 1,
+  "textures": [
+    {
+      "bytes": 38544,
+      "size": [
+        512,
+        512
+      ],
+      "sha256": "4931dd901dccb72c3fe52e227ce303c9a1d0391c5947ec0c9c28b90e37b4374b"
+    }
+  ],
+  "bounds": {
+    "min": [
+      -0.23131999373435974,
+      -1.8352383363007263e-9,
+      -0.12798242263557036
+    ],
+    "max": [
+      0.23131999373435974,
+      0.22261558099778905,
+      0.12798242263557036
+    ]
+  },
+  "fitWidth2_8": {
+    "size": [
+      2.8,
+      1.3473189711570739,
+      1.5491561174392698
+    ]
+  },
+  "determinants": [
+    0.012377687550164676
+  ],
+  "normalLength": {
+    "min": 0.9996742253152059,
+    "max": 1.0003032523116573
+  },
+  "degenerate": 0,
+  "flippedNormals": 0,
+  "nonfinite": 0,
+  "area": 0.4635807718452852,
+  "signedVolume": 0.01805949043696251,
+  "components": [
+    {
+      "triangles": 636,
+      "area": 0.4635807718452852
+    }
+  ],
+  "edgeCounts": {
+    "boundary": 0,
+    "nonmanifold": 0,
+    "inconsistentWinding": 0
+  },
+  "sourceIntegrity": [
+    {
+      "name": "public/models/hayloft.glb",
+      "originalSha256": "b1bd6bda98530cfaee5dd239f85e2b31e65928b8a38dd46c0efb8762394c6791",
+      "liveSha256": "b1bd6bda98530cfaee5dd239f85e2b31e65928b8a38dd46c0efb8762394c6791",
+      "copySha256": "b1bd6bda98530cfaee5dd239f85e2b31e65928b8a38dd46c0efb8762394c6791",
+      "unchanged": true
+    },
+    {
+      "name": "public/models/haystack.glb",
+      "originalSha256": "d5c32fb689208f15fabdaebdd65d72fde8785a99c418c26fb03b105c7c2d1b56",
+      "liveSha256": "d5c32fb689208f15fabdaebdd65d72fde8785a99c418c26fb03b105c7c2d1b56",
+      "copySha256": "d5c32fb689208f15fabdaebdd65d72fde8785a99c418c26fb03b105c7c2d1b56",
+      "unchanged": true
+    }
+  ],
+  "materialProperties": [
+    {
+      "baseColor": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "metallic": 0,
+      "roughness": 0.8999999761581421,
+      "alphaMode": "OPAQUE",
+      "alphaCutoff": 0.5,
+      "doubleSided": false,
+      "emissive": [
+        0,
+        0,
+        0
+      ],
+      "normalScale": 1,
+      "occlusionStrength": 1
+    }
+  ],
+  "validation": {
+    "compressed": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 1,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/0"
+        }
+      ],
+      "truncated": false
+    },
+    "uncompressed": {
+      "numErrors": 0,
+      "numWarnings": 0,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [],
+      "truncated": false
+    }
+  },
+  "assertions": {
+    "sourceUnchanged": true,
+    "materialUnchanged": true,
+    "textureUnchanged": true,
+    "finite": true,
+    "positiveDeterminants": true,
+    "normalsUnit": true,
+    "noDegenerate": true,
+    "closedManifold": true,
+    "withinBudget": true,
+    "outwardNormals": true,
+    "singleConnectedComponent": true,
+    "positiveVolume": true,
+    "centerXZ": true,
+    "baseY0": true,
+    "validator": true
+  },
+  "passed": true
+}

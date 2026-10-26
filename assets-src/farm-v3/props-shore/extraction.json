@@ -1,0 +1,86 @@
+{
+  "status": "candidate-needs-visual-review",
+  "source": "original/hayloft.glb",
+  "sourceSha256": "b1bd6bda98530cfaee5dd239f85e2b31e65928b8a38dd46c0efb8762394c6791",
+  "sourceTriangles": 2694,
+  "selection": {
+    "min": [
+      -0.365,
+      1.975,
+      -0.18
+    ],
+    "max": [
+      -0.23,
+      2.218,
+      0.08
+    ]
+  },
+  "selectedOriginalSurfaceTriangles": 141,
+  "reconstruction": {
+    "method": "Exposed front-right quarter reflected in geometry about X/Z cut planes; triangle winding and normals corrected; positive node transforms only",
+    "mirrorPlanes": {
+      "x": -0.365,
+      "z": -0.18
+    },
+    "contactCap": {
+      "triangles": 74,
+      "uv": [
+        0.016828839571921463,
+        0.04368140206009299
+      ],
+      "contourVertices": 76
+    }
+  },
+  "rotationYDegrees": 90,
+  "translationBeforeRotation": [
+    0.365,
+    -1.975,
+    0.18
+  ],
+  "candidateSha256": "f89caa01a91e7fd8dba0948584bcac1fd3dba52d64a7f92f4a0c08914816c421",
+  "bytes": 49592,
+  "triangles": 636,
+  "preOptimizationTriangles": 638,
+  "bounds": {
+    "min": [
+      -0.23131999373435974,
+      0,
+      -0.12798242641713334
+    ],
+    "max": [
+      0.23131999373435974,
+      0.22261557916255073,
+      0.12798242641713334
+    ]
+  },
+  "fit": {
+    "width": 2.8
+  },
+  "textureHashesBefore": [
+    "4931dd901dccb72c3fe52e227ce303c9a1d0391c5947ec0c9c28b90e37b4374b"
+  ],
+  "textureHashesAfter": [
+    "4931dd901dccb72c3fe52e227ce303c9a1d0391c5947ec0c9c28b90e37b4374b"
+  ],
+  "materialUnchanged": true,
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "notes": [
+    "This is an extraction plus reconstruction of hidden sides, not a detachable original object. Visible geometry/UVs are copied from the same source bale; the only new face is the flat ground-contact cap.",
+    "All material properties and embedded texture bytes are preserved. Geometry reflections are baked with corrected winding and normals; nodes use positive transforms.",
+    "Positive 90 degree yaw; bottom y0 and XZ centered. Runtime/public untouched."
+  ]
+}

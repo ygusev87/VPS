@@ -1,0 +1,38 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Тюк сена · исходник и кандидат</title>
+<style>*{box-sizing:border-box}body{margin:0;background:#eee7db;color:#25372f;font:14px system-ui}header{display:flex;gap:8px;flex-wrap:wrap;padding:8px;align-items:center}select,button{font:inherit;padding:6px}canvas{display:block;width:100%;height:74vh;min-height:400px}pre{margin:8px;white-space:pre-wrap;font-size:12px;max-height:150px;overflow:auto}</style>
+<header><b>Тюк сена · QA</b><select id="model"><option value="source">Сеновал целиком</option><option value="source-top">Тюки на сеновале крупно</option><option value="candidate">Кандидат</option><option value="compare">Кандидат и старый стог</option></select><select id="view"><option value="game">Игровая камера</option><option value="three">Три четверти</option><option value="front">Спереди</option><option value="back">Сзади</option><option value="left">Слева</option><option value="right">Справа</option><option value="top">Сверху</option><option value="bottom">Снизу</option></select><button id="show">Показать</button><button id="reload">Обновить модель</button><span id="status">Загрузка</span></header><canvas id="stage"></canvas><pre id="report"></pre>
+<script type="module">
+import * as THREE from 'three';
+import {GLTFLoader} from 'three/examples/jsm/loaders/GLTFLoader.js';
+import {MeshoptDecoder} from 'three/examples/jsm/libs/meshopt_decoder.module.js';
+import {RoomEnvironment} from 'three/examples/jsm/environments/RoomEnvironment.js';
+const $=s=>document.getElementById(s),canvas=$('stage');
+const renderer=new THREE.WebGLRenderer({canvas,antialias:true,preserveDrawingBuffer:true});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.toneMapping=THREE.NeutralToneMapping;
+const scene=new THREE.Scene();scene.background=new THREE.Color('#eee7db');scene.environment=new THREE.PMREMGenerator(renderer).fromScene(new RoomEnvironment(),.04).texture;scene.environmentIntensity=.6;
+scene.add(new THREE.HemisphereLight('#fffaf0','#ad9c78',1.5));const sun=new THREE.DirectionalLight('#fff4e6',2.6);sun.position.set(-3,6,5);scene.add(sun);
+const ground=new THREE.Mesh(new THREE.PlaneGeometry(20,20),new THREE.MeshStandardMaterial({color:'#c3ce92',roughness:1}));ground.rotation.x=-Math.PI/2;ground.position.y=-.005;scene.add(ground);
+const camera=new THREE.OrthographicCamera(),loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder),cache=new Map(),errors=[];let active=[],revision=0,request=0;
+addEventListener('error',e=>errors.push(e.message));addEventListener('unhandledrejection',e=>errors.push(String(e.reason)));
+async function load(name){if(cache.has(name))return cache.get(name).clone(true);const old=window.createImageBitmap;window.createImageBitmap=undefined;let gltf;try{gltf=await loader.loadAsync('../'+name+'.glb'+(name.startsWith('candidate')?'?v='+revision:''));}finally{window.createImageBitmap=old;}cache.set(name,gltf.scene);return gltf.scene.clone(true);}
+function fitWidth(o,width){o.updateMatrixWorld(true);let b=new THREE.Box3().setFromObject(o),s=b.getSize(new THREE.Vector3()),c=b.getCenter(new THREE.Vector3());o.position.sub(new THREE.Vector3(c.x,b.min.y,c.z));const root=new THREE.Group().add(o);root.scale.setScalar(width/s.x);return root;}
+async function show(){
+ const ticket=++request;let next=[]; $('status').textContent='Загрузка';try{
+ const mode=$('model').value,view=$('view').value;
+ if(mode.startsWith('source'))next=[await load('original/hayloft')];
+ else {const bale=fitWidth(await load('candidate/hay-bale'),2.8);next=[bale];if(mode==='compare'){bale.position.x=-1.85;const old=fitWidth(await load('original/haystack'),2.8);old.position.x=1.85;next.push(old);}}
+ if(ticket!==request)return;for(const o of active)scene.remove(o);active=next;for(const o of active)scene.add(o);scene.updateMatrixWorld(true);
+ let box=new THREE.Box3();for(const o of active)box.union(new THREE.Box3().setFromObject(o));
+ if(mode==='source-top')box=new THREE.Box3(new THREE.Vector3(-.9,1.90,-.6),new THREE.Vector3(.3,2.4,.5));
+ const center=box.getCenter(new THREE.Vector3()),directions={game:[0,1,.78],three:[1,.7,1],front:[0,0,1],back:[0,0,-1],left:[-1,0,0],right:[1,0,0],top:[0,1,0],bottom:[0,-1,0]};
+ camera.up.set(0,1,0);if(view==='top')camera.up.set(0,0,-1);if(view==='bottom')camera.up.set(0,0,1);
+ camera.position.copy(center).addScaledVector(new THREE.Vector3(...directions[view]).normalize(),15);camera.lookAt(center);camera.updateMatrixWorld(true);
+ const w=canvas.clientWidth,h=canvas.clientHeight,points=[];
+ for(const x of [box.min.x,box.max.x])for(const y of [box.min.y,box.max.y])for(const z of [box.min.z,box.max.z])points.push(new THREE.Vector3(x,y,z).applyMatrix4(camera.matrixWorldInverse));
+ const pw=Math.max(...points.map(p=>p.x))-Math.min(...points.map(p=>p.x)),ph=Math.max(...points.map(p=>p.y))-Math.min(...points.map(p=>p.y));
+ const span=Math.max(ph*1.2,pw*1.2*h/w);camera.left=-span*w/h/2;camera.right=span*w/h/2;camera.top=span/2;camera.bottom=-span/2;camera.near=.001;camera.far=100;camera.updateProjectionMatrix();renderer.setSize(w,h,false);ground.visible=!mode.startsWith('source')&&view!=='bottom';renderer.render(scene,camera);
+ const objects=active.map(o=>{let triangles=0;const determinants=[];o.traverse(m=>{if(m.isMesh){triangles+=(m.geometry.index?.count??m.geometry.attributes.position.count)/3;determinants.push(m.matrixWorld.determinant());}});const b=new THREE.Box3().setFromObject(o);return{triangles,bounds:{min:b.min.toArray(),max:b.max.toArray()},determinants};});
+ $('report').textContent=JSON.stringify({mode,view,viewport:[innerWidth,innerHeight],canvas:[w,h],objects,contextLost:renderer.getContext().isContextLost(),errors},null,2);$('status').textContent='Готово';
+ }catch(e){$('status').textContent='Ошибка';$('report').textContent=e.stack;console.error(e);}
+}
+$('show').onclick=show;$('reload').onclick=()=>{revision++;cache.delete('candidate/hay-bale');show();};addEventListener('resize',show);show();
+</script></html>
