@@ -1,0 +1,31 @@
+{
+  "useCase": "stylized-concept",
+  "prompt": "Use case: stylized-concept.\nAsset type: image-to-3D reference for one small residential building, house B, in an existing children's tactile toy-town game.\nReference image 1: house A. Use its premium molded painted-toy surface, soft chunky architectural edges, clear opaque blue window inserts and thick warm cream trim. Create a companion house with a different silhouette and palette, not a recolor of the gabled attic house.\nReference image 2: approved town concept. Match the warm peach houses with blue tiled roofs, translated into one standalone compact building; do not include any surroundings.\nSubject: one charming compact two-level family house with soft apricot-peach walls, a low deep cornflower-blue HIP ROOF sloping down on all four sides, a short cream chimney with a closed blue cap. The low roof has a few broad rounded tile courses, a short central ridge, no front gable and no dormers. The front is a simple balanced facade: two cream-framed rounded-square four-pane opaque blue windows upstairs, one larger matching window at lower left, a deep teal front door at lower right, tiny brass knob. One window per floor on the visible right wall. A broad cream horizontal band separates floors, with a cream cornice beneath the roof and simple substantial rounded cream corner trim. The wall silhouette is slightly wider than tall, comfortable and friendly, not a narrow tower.\nFull outer dimensions including roof and chimney approximately width 5, height 4.8, depth 4. Shallow eaves, compact footprint. Door touches ground level. All architecture attached to one solid house. Fully closed opaque roof and closed walls; opaque painted windows. No foundation slab or visible plinth, steps, veranda, balcony or garden objects.\nStyle: high-quality sculpted toy product render with satin painted surfaces, restrained tactile texture, rich but gentle peach walls, deep blue roof, warm cream detailing, broad readable shapes attractive at small tablet size. Coherent design with house A while clearly different due to its two full floors and low hip roof.\nComposition: ONE whole building centered with ample unclipped margins, elevated front-right three-quarter view showing entrance and right side, plain warm off-white seamless studio background, soft neutral daylight, gentle contact shadow. All roof and chimney visible.\nExclude: text, signs, numbers, watermark, people, animals, vehicles, trees, plants, flowerboxes, fences, detached props, base tile, pavement, roads, stairs, transparent glass, open doors, cutaways, roof holes, multiple views or collage.",
+  "references": [
+    "assets-src/city-v2/house-a-v1.png",
+    "assets-src/city-v2/concept-v2.png"
+  ],
+  "mode": "built-in image_gen; companion design from style references",
+  "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-e362ef02-b7a4-4807-9009-9739d9b13e19.png",
+  "output": "house-b-v1.png",
+  "sourceRevision": "9a7f655",
+  "status": "Reference ready for review; no Tripo order",
+  "inspection": "One peach two-storey house, low blue hip roof, capped chimney, cream trim, opaque blue windows, ground-level door. No base, stairs, garden or detached props. Hidden geometry and dimensions still require GLB inspection.",
+  "sha256": "927815b240742635246a12e1f767be9083558b9751abd5d3c9354847be6fbd1c",
+  "createdAtUTC": "2026-10-26T01:11:37.875624+00:00",
+  "verification": {
+    "tests": 21,
+    "typecheck": "passed",
+    "browser": "IAB static reference at1180x660 and390x844",
+    "imageLoaded": true,
+    "horizontalOverflow390": false,
+    "bottomLinksReachable": true,
+    "consoleErrorsWarnings": 0,
+    "screenshots": [
+      "qa/house-b-reference-1180.png",
+      "qa/house-b-reference-390.png",
+      "qa/house-b-reference-390-details.png"
+    ],
+    "limitations": "Image reference only, no generated GLB/runtime/iPad/FPS result."
+  }
+}

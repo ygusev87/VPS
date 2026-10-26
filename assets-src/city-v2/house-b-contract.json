@@ -1,0 +1,176 @@
+{
+  "status": "Image reference pending Claude review; no Tripo order",
+  "reference": "house-b-v1.png",
+  "sourceRevision": "9a7f655",
+  "instances": [
+    [
+      -48,
+      -14,
+      0,
+      1
+    ],
+    [
+      -5.75,
+      -33,
+      0,
+      0.9
+    ],
+    [
+      29,
+      21,
+      0,
+      1
+    ],
+    [
+      -14,
+      32,
+      0,
+      1
+    ]
+  ],
+  "fit": {
+    "width": 5,
+    "rotateY": -1.5707963267948966,
+    "normalisedFront": "+X",
+    "gameFront": "+Z"
+  },
+  "targets": {
+    "fullXYZ": [
+      5,
+      4.8,
+      4
+    ],
+    "unmeasured": true,
+    "includes": "Full roof/eaves/chimney; artistic target, not measured GLB geometry",
+    "trianglesMax": 7000,
+    "materials": 1,
+    "baseColorPixels": 512,
+    "downloadBytesTarget": 200000,
+    "preserve": "All four centers, existing scale0.9 for north-road house, other scales1; no task/road/pole changes"
+  },
+  "criticalNeighbors": {
+    "northRoadHouse": {
+      "center": [
+        -5.75,
+        -33
+      ],
+      "scale": 0.9,
+      "roadEdgeX": -3,
+      "targetMaxX": -3.5,
+      "targetGap": 0.5
+    },
+    "fireStationHouse": {
+      "center": [
+        29,
+        21
+      ],
+      "STATION_POLE": [
+        24,
+        17.5
+      ],
+      "harbor": {
+        "center": [
+          37,
+          19.5
+        ],
+        "radii": [
+          5,
+          3.2
+        ]
+      },
+      "targetMaxX": 31.5,
+      "conservativeHarborLeft": 32,
+      "targetGap": 0.5,
+      "note": "Old house at26,21 hid pole. Never restore that center; actual runtime rays required."
+    },
+    "southHouse": {
+      "center": [
+        -14,
+        32
+      ],
+      "tramRoadZ": 27,
+      "roadWidth": 4,
+      "targetMinZ": 30,
+      "targetGap": 1
+    }
+  },
+  "style": {
+    "walls": "warm apricot peach",
+    "roof": "low cornflower-blue hip roof, broad tiles, closed capped chimney",
+    "trim": "warm cream",
+    "windows": "opaque painted blue",
+    "door": "deep teal, at ground level",
+    "exclude": [
+      "base slab",
+      "stairs",
+      "porch",
+      "balcony",
+      "plants",
+      "glass transparency",
+      "detached props",
+      "text"
+    ]
+  },
+  "acceptance": [
+    "Claude reviews reference before one Tripo order.",
+    "Inspect front/back/roof/underside; test actual model()/patched() and four placements.",
+    "Uniform fit only. Measure full bbox including eaves/chimney and all instances.",
+    "Check full roads, board, harbor and task/part/character reservations.",
+    "Repeat actual14pole audit at1180x660/390x844; especially STATION_POLE and nearby task rings.",
+    "Validate opaque material, <=7ktri,512WebP/Meshopt. Tests/typecheck and visual mobile QA. Real iPad/PWA/FPS separate."
+  ],
+  "targetFootprints": [
+    {
+      "center": [
+        -48,
+        -14
+      ],
+      "scale": 1,
+      "rect": {
+        "x0": -50.5,
+        "x1": -45.5,
+        "z0": -16,
+        "z1": -12
+      }
+    },
+    {
+      "center": [
+        -5.75,
+        -33
+      ],
+      "scale": 0.9,
+      "rect": {
+        "x0": -8.0,
+        "x1": -3.5,
+        "z0": -34.8,
+        "z1": -31.2
+      }
+    },
+    {
+      "center": [
+        29,
+        21
+      ],
+      "scale": 1,
+      "rect": {
+        "x0": 26.5,
+        "x1": 31.5,
+        "z0": 19,
+        "z1": 23
+      }
+    },
+    {
+      "center": [
+        -14,
+        32
+      ],
+      "scale": 1,
+      "rect": {
+        "x0": -16.5,
+        "x1": -11.5,
+        "z0": 30,
+        "z1": 34
+      }
+    }
+  ]
+}
