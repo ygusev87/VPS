@@ -1,6 +1,6 @@
 {
-  "status": "applied-verified",
-  "implementationCommit": null,
+  "status": "committed",
+  "implementationCommit": "660760cedfea689554aca08c380c65363d251bf9",
   "baselineRevision": "1f9cc847805acb94092fadfa0d47fc326b006cba",
   "acceptedDensityRevision": "22f0d7e",
   "sourceSha256": "bffcc4d3da3549f732481b41bdef7f2db9d474e23cf5fb0ca2f6e2df052eb954",
