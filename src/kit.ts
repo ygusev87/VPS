@@ -66,9 +66,25 @@ export function hasKit(map: string, name: string) {
 
 type Rect = { x0: number; z0: number; x1: number; z1: number };
 
+/**
+ * How much colour the ground pieces give up before the game's grading makes
+ * saturated colours richer still (FinishShader's vibrance): painted to look
+ * right on their own, they would come out loud on the map.
+ */
+const MUTE = Number(new URLSearchParams(location.search).get('mute') ?? 0.15);
+const MUTED = `vec3 kCol = diffuseColor.rgb; diffuseColor.rgb = mix(vec3(dot(kCol, vec3(0.2126, 0.7152, 0.0722))), kCol, ${(1 - MUTE).toFixed(3)});`;
+
+function muted(mat: THREE.MeshStandardMaterial) {
+  mat.onBeforeCompile = (shader) => {
+    shader.fragmentShader = shader.fragmentShader.replace('#include <map_fragment>', `#include <map_fragment>\n${MUTED}`);
+  };
+  mat.customProgramCacheKey = () => 'kit-muted';
+  return mat;
+}
+
 /** A painted material laid flat over the ground: alpha-blended, never writing depth, above the board by `lift`. */
 function flatMaterial(map: THREE.Texture, lift: number) {
-  return new THREE.MeshStandardMaterial({
+  return muted(new THREE.MeshStandardMaterial({
     map,
     transparent: true,
     depthWrite: false,
@@ -76,7 +92,7 @@ function flatMaterial(map: THREE.Texture, lift: number) {
     polygonOffset: true,
     polygonOffsetFactor: -1 - lift,
     polygonOffsetUnits: -1 - lift,
-  });
+  }));
 }
 
 /**
@@ -126,10 +142,22 @@ export function ribbons(lanes: { pts: [number, number][]; w: number }[], map: TH
   return m;
 }
 
-/** Every corner, crossing and loose end of the lanes, where a round patch hides the join. */
-export function laneJoints(lanes: { pts: [number, number][]; w: number }[]): { x: number; z: number; w: number }[] {
+/**
+ * The loose ends of the lanes, where a round patch closes the strip (corners
+ * and crossings close up by themselves: the strips run past each other). An
+ * end is a point only one stretch of lane reaches, lying on no other lane.
+ */
+export function laneEnds(lanes: { pts: [number, number][]; w: number }[]): { x: number; z: number; w: number }[] {
+  const segs = lanes.flatMap(({ pts }) => pts.slice(1).map((b, i) => [pts[i], b] as const));
+  const near = (x: number, z: number, [a, b]: (typeof segs)[number]) => {
+    const dx = b[0] - a[0];
+    const dz = b[1] - a[1];
+    const t = Math.max(0, Math.min(1, ((x - a[0]) * dx + (z - a[1]) * dz) / (dx * dx + dz * dz || 1)));
+    return Math.hypot(x - a[0] - dx * t, z - a[1] - dz * t) < 0.3;
+  };
   const out: { x: number; z: number; w: number }[] = [];
-  for (const { pts, w } of lanes) for (const [x, z] of pts) if (!out.some((p) => Math.hypot(p.x - x, p.z - z) < 0.3)) out.push({ x, z, w });
+  for (const { pts, w } of lanes)
+    for (const [x, z] of [pts[0], pts[pts.length - 1]]) if (segs.filter((s) => near(x, z, s)).length === 1 && !out.some((p) => Math.hypot(p.x - x, p.z - z) < 0.3)) out.push({ x, z, w });
   return out;
 }
 
@@ -240,8 +268,9 @@ export function standees(spots: { x: number; z: number; size: number }[], maps: 
  * the meadows: `tile` world units per picture, sampled twice (once turned) so
  * the repeat does not show.
  */
-export function grassMaterial(main: THREE.Texture, sunny: THREE.Texture | null, meadows: { x: number; z: number; rx: number; rz: number }[], tile: number): THREE.MeshStandardMaterial {
-  const mat = new THREE.MeshStandardMaterial({ roughness: 0.95 });
+export function grassMaterial(main: THREE.Texture, sunny: THREE.Texture | null, meadows: { x: number; z: number; rx: number; rz: number }[], tile: number, tone?: THREE.ColorRepresentation): THREE.MeshStandardMaterial {
+  // `tone` evens the picture out under the game's own sun and grading, to match the map's target.
+  const mat = new THREE.MeshStandardMaterial({ roughness: 0.95, color: tone ?? '#ffffff' });
   const uniforms = {
     tMain: { value: main },
     tSunny: { value: sunny ?? main },
@@ -275,12 +304,24 @@ float kNoise(vec2 q) { vec2 i = floor(q); vec2 f = fract(q); vec2 u = f * f * (3
   vec3 b = mix(texture2D(tSunny, p).rgb, texture2D(tSunny, q).rgb, k);
   float sun = 0.0;
   for (int i = 0; i < 4; i++) sun = max(sun, 1.0 - smoothstep(0.6, 1.0 + kNoise(vGround / 3.0) * 0.25, length((vGround - uMeadow[i].xy) / uMeadow[i].zw)));
+  // Only a hint of the sunny meadow: a whole patch of it reads as a spotlight.
+  sun *= 0.55;
   diffuseColor.rgb *= mix(a, b, sun);
+  ${MUTED}
 }`,
       );
   };
   mat.customProgramCacheKey = () => 'kit-grass';
   return mat;
+}
+
+/** Evens a laid piece out under the game's sun and grading (multiplies its picture by `tone`). */
+export function toned<T extends THREE.Object3D>(o: T, tone: THREE.ColorRepresentation): T {
+  o.traverse((n) => {
+    const m = (n as THREE.Mesh).material as THREE.MeshStandardMaterial | undefined;
+    if (m?.color) m.color.set(tone);
+  });
+  return o;
 }
 
 /** A rectangle, for the field and beds (re-exported for maps). */

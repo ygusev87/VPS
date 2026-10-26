@@ -19,7 +19,7 @@ import { Lift } from './parts/more';
 import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import { boardEdge, flowers, groundMaterial, groundPicture, onLane, pond, type Ellipse, type GroundPlan } from './ground';
-import { cards, decal, grassMaterial, hasKit, kitPieces, laneJoints, ovalMask, patches, ribbons, standees } from './kit';
+import { cards, decal, grassMaterial, hasKit, kitPieces, laneEnds, ovalMask, patches, ribbons, standees, toned } from './kit';
 import { AMBIENT, WIND_RANGE } from './parts/wind';
 import { isActive } from './world';
 import { dressing } from './decor';
@@ -286,7 +286,7 @@ export class FarmMap extends StoryMap {
     const plan = (this.plan = groundPlan());
     // Codex's painted kit when it has come (and ?oldground does not ask for the old shader look).
     this.kit = hasKit('farm', 'grass-main') && !new URLSearchParams(location.search).has('oldground');
-    const top = this.kit ? grassMaterial(kitPieces('farm', 'grass-main', true)[0], kitPieces('farm', 'grass-sunny', true)[0] ?? null, [plan.hill, ...(plan.meadows ?? [])], 12) : groundMaterial(plan);
+    const top = this.kit ? grassMaterial(kitPieces('farm', 'grass-main', true)[0], kitPieces('farm', 'grass-sunny', true)[0] ?? null, [plan.hill, ...(plan.meadows ?? [])], 12, new URLSearchParams(location.search).get('tone') ?? GRASS_TONE) : groundMaterial(plan);
     const side = mat('#000000', 1);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
@@ -314,9 +314,10 @@ export class FarmMap extends StoryMap {
    */
   private layKit(plan: GroundPlan) {
     const strip = kitPieces('farm', 'path-strip', true);
-    if (strip.length) this.scenery.add(ribbons(plan.lanes, strip[0], 2.2 / 1.4, 8.8));
+    // The painted path is wider than the lane it marks (a child's path reads better broad), its shoulders wider still.
+    if (strip.length) this.scenery.add(toned(ribbons(plan.lanes, strip[0], PATH_WIDE, 8.8), PATH_TONE));
     const patch = kitPieces('farm', 'path-patch');
-    if (patch.length) this.scenery.add(patches(laneJoints(plan.lanes).map((j) => ({ x: j.x, z: j.z, size: j.w * 2 })), patch));
+    if (patch.length) this.scenery.add(toned(patches(laneEnds(plan.lanes).map((j) => ({ x: j.x, z: j.z, size: j.w * PATH_WIDE * 0.56 })), patch), PATH_TONE));
     const soil = kitPieces('farm', 'bed-soil');
     (plan.fields ?? []).forEach((f, i) => soil.length && this.scenery.add(decal(f, soil[i % soil.length], 0.35)));
     const mud = groundPicture('pig-mud.webp');
@@ -1049,6 +1050,12 @@ function pathAt(s: number): { at: THREE.Vector3; dir: THREE.Vector3 } {
 }
 
 // ───────────────────────── Scenery helpers ─────────────────────────
+
+/** The kit's grass under the game's sun and grading comes out brighter and greener than farm-a: toned down to it. */
+const GRASS_TONE = '#b4a4d0';
+const PATH_TONE = new URLSearchParams(location.search).get('ptone') ?? '#c8d4f0';
+/** How much wider the painted path is than its lane (the picture includes grassy shoulders). */
+const PATH_WIDE = Number(new URLSearchParams(location.search).get('pwide') ?? 3.6);
 
 /** Trees and bushes that the painted kit draws as cards: its picture, and the card's width per unit of the model's height. */
 const CARDS: Record<string, { card: string; wide: number }> = {
