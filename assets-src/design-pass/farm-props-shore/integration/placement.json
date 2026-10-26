@@ -1,0 +1,91 @@
+{
+  "scope": "Candidate only. East bank/pump left clear; review in actual farm required.",
+  "groups": [
+    {
+      "model": "pond-dock",
+      "fit": {
+        "depth": 3.95
+      },
+      "items": [
+        [
+          -47.5,
+          4.6,
+          1.5707963267948966,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "pond-reeds",
+      "fit": {
+        "height": 0.85
+      },
+      "items": [
+        [
+          -44.8,
+          0.8,
+          0.3,
+          1
+        ],
+        [
+          -44.7,
+          7.6,
+          1.2,
+          0.9
+        ],
+        [
+          -40.5,
+          -1.1,
+          2.2,
+          0.9
+        ]
+      ]
+    },
+    {
+      "model": "rock-cluster",
+      "fit": {
+        "width": 1.6
+      },
+      "items": [
+        [
+          -43.5,
+          -1.2,
+          0.8,
+          0.85
+        ],
+        [
+          -46.4,
+          6.9,
+          -0.4,
+          0.85
+        ]
+      ]
+    },
+    {
+      "model": "hay-bale",
+      "fit": {
+        "width": 2.8
+      },
+      "items": [
+        [
+          -24,
+          -25,
+          0.3,
+          1
+        ],
+        [
+          -24,
+          -22,
+          -0.15,
+          0.8
+        ],
+        [
+          -7,
+          -22,
+          0.1,
+          0.9
+        ]
+      ]
+    }
+  ]
+}

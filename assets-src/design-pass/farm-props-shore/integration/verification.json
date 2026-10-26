@@ -1,0 +1,129 @@
+{
+  "dateUtc": "2026-10-26T09:17:25.420651+00:00",
+  "source": {
+    "revision": "4571f12289357c278f2eb5f44db4a0b8d693829e",
+    "snapshot": "/private/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/farm-props-integration-ht2bdgjz",
+    "runtimeHashes": {
+      "src/farm.ts": "7d281bcd4bcafaa651dc90c859925d0d3a8e924f84f2098fa213585585b44521",
+      "src/farm-decor.ts": "db3c36eb00e402694c7bbff2a347c40a373a745d02228b14c33f70381d912095",
+      "src/ground.ts": "5701a8451b206c576b2addc1ea7ac5bcab4810201263b31ad7cd2008a80d1cb1",
+      "src/stage.ts": "a70d990075a5898867bd5a59e7dacde73f7e2e2f7ee501382958fc638bf1998f"
+    },
+    "publicHashes": {
+      "pond-dock.glb": "514963d387cc28dd5dedcc1fce2c8c6d2cd67d97c3f54c51473a49d798565a2d",
+      "pond-reeds.glb": "3baeda516f23c4d655c527ff592bdb49b1f2cb6c5e7bbbeb0333d8ca256fba3e",
+      "hay-bale.glb": "f89caa01a91e7fd8dba0948584bcac1fd3dba52d64a7f92f4a0c08914816c421"
+    }
+  },
+  "acceptance": [
+    {
+      "model": "pond-dock",
+      "planned": 1,
+      "accepted": 1
+    },
+    {
+      "model": "pond-reeds",
+      "planned": 3,
+      "accepted": 3
+    },
+    {
+      "model": "rock-cluster",
+      "planned": 2,
+      "accepted": 2
+    },
+    {
+      "model": "hay-bale",
+      "planned": 3,
+      "accepted": 3
+    }
+  ],
+  "viewports": [
+    [
+      1180,
+      820
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      1024,
+      768
+    ]
+  ],
+  "views": 51,
+  "rays": 93840,
+  "newOcclusions": 0,
+  "inheritedHaySackAabbOverlaps": [
+    {
+      "added": "hay-bale",
+      "position": [
+        -24,
+        -22,
+        -0.15,
+        0.8
+      ],
+      "existing": "sack",
+      "existingPosition": [
+        -22.7,
+        -23,
+        0.3,
+        1
+      ]
+    },
+    {
+      "added": "hay-bale",
+      "position": [
+        -24,
+        -25,
+        0.3,
+        1
+      ],
+      "existing": "sack",
+      "existingPosition": [
+        -22.6,
+        -24.5,
+        -0.2,
+        0.95
+      ]
+    }
+  ],
+  "replacementHayBoundsNestedInsideOld": true,
+  "counts": {
+    "before": 639,
+    "unchangedInstances": 636,
+    "hayReplacements": 3,
+    "shoreAdditions": 6,
+    "after": 645
+  },
+  "terrainArraysUnchanged": true,
+  "renderCost": {
+    "shadow=False,ao=True": {
+      "triangles": 2802217,
+      "calls": 879
+    },
+    "shadow=True,ao=False": {
+      "triangles": 2218199,
+      "calls": 717
+    },
+    "shadow=False,ao=False": {
+      "triangles": 1402567,
+      "calls": 577
+    },
+    "shadow=True,ao=True": {
+      "triangles": 3617849,
+      "calls": 1019
+    }
+  },
+  "checks": {
+    "test": "21/21",
+    "typecheck": "pass",
+    "layoutValidator": "pass",
+    "authoringEmissionStable": true,
+    "missingModelRejectedWithoutWriting": true
+  },
+  "limitations": [
+    "Physical iPad/FPS/PWA/end-to-end robot remain Claude checks.",
+    "The interactive mouse haystack is still the existing toy and was not part of the three delegated decor replacements."
+  ]
+}

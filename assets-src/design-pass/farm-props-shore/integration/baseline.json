@@ -1,0 +1,10 @@
+{
+  "revision": "4571f12289357c278f2eb5f44db4a0b8d693829e",
+  "files": {
+    "src/farm-decor.ts": "bffcc4d3da3549f732481b41bdef7f2db9d474e23cf5fb0ca2f6e2df052eb954",
+    "assets-src/farm-v3/decor-authoring.json": "dfb987082d7a9fbc73693eb0dc1a6366063dcca5d0c099744369b070e5ab9c22",
+    "assets-src/farm-v3/decor-layout.json": "5f1c889f6d0e01703ada24f2ea15b8a6dee96150933139e6df31410ab4aba99d",
+    "assets-src/farm-v3/model-bounds.json": "5209b23c0547f89515375abfc41bdb71d40a4eefe2bc6a4d2e03b4afaa373f3c",
+    "assets-src/farm-v3/build-decor.py": "a02ebac6aebcbf92c148f0463bd0a844e1c34f2192a984602626868a7e7eb98f"
+  }
+}

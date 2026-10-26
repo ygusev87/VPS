@@ -3,6 +3,29 @@ import json, math, random, subprocess, sys
 
 ROOT=Path(__file__).resolve().parents[2]
 OUT=ROOT/'assets-src/farm-v3'
+# Re-emit accepted authoring without regenerating procedural placement or terrain.
+# The default below is the original layout generator and can reset later passes.
+if '--from-authoring' in sys.argv:
+    author=json.loads((OUT/'decor-authoring.json').read_text())
+    payload=json.loads((OUT/'decor-layout.json').read_text())
+    active=[g for g in author['groups'] if g['category']!='future-toy']
+    missing=[g['model'] for g in active if not (ROOT/'public/models'/f"{g['model']}.glb").is_file()]
+    if missing:raise SystemExit('Missing accepted model(s): '+', '.join(missing))
+    payload['DECOR']=[{k:v for k,v in g.items() if k!='category'} for g in active]
+    types={'DECOR':'DecorGroup[]','PATHS':'{ points: [number, number][]; width: number }[]','FENCES':'[number, number][][]','SOIL':'{ x0: number; z0: number; x1: number; z1: number }[]','MUD':'{ x: number; z: number; rx: number; rz: number }[]','MEADOW':'{ x: number; z: number; rx: number; rz: number }[]','PONDS':'{ x: number; z: number; rx: number; rz: number }[]'}
+    def compact(v):return json.dumps(v,ensure_ascii=False,separators=(', ', ': '))
+    def literal(name,value):
+        if name=='DECOR':return '[\n'+',\n'.join('  { model: '+compact(g['model'])+', fit: '+compact(g['fit'])+', items: [\n'+',\n'.join('    '+compact(p) for p in g['items'])+'\n  ] }' for g in value)+'\n]'
+        return '[\n'+',\n'.join('  '+compact(row) for row in value)+'\n]'
+    old=(ROOT/'src/farm-decor.ts').read_text()
+    header=old.split('export const DECOR:',1)[0]
+    if header==old:raise SystemExit('Runtime header not recognized')
+    source=header+'\n\n'.join('export const '+name+': '+types[name]+' = '+literal(name,value)+';' for name,value in payload.items())+'\n'
+    (ROOT/'src/farm-decor.ts').write_text(source)
+    (OUT/'decor-layout.json').write_text(json.dumps(payload,ensure_ascii=False,indent=2)+'\n')
+    print(json.dumps({'mode':'from-authoring','groups':len(active),'instances':sum(len(g['items']) for g in active),'terrain':'preserved from decor-layout.json'}))
+    raise SystemExit(0)
+
 # Opt-in additive pass: preserve the accepted authoring and manual placements.
 # This only prepares density-pass/candidate; it never applies unreviewed runtime data.
 if '--density-candidate' in sys.argv:

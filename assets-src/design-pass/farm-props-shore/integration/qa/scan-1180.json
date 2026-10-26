@@ -1,0 +1,278 @@
+{
+  "source": {
+    "revision": "4571f12289357c278f2eb5f44db4a0b8d693829e",
+    "snapshot": "/private/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/farm-props-integration-ht2bdgjz",
+    "runtimeHashes": {
+      "src/farm.ts": "7d281bcd4bcafaa651dc90c859925d0d3a8e924f84f2098fa213585585b44521",
+      "src/farm-decor.ts": "db3c36eb00e402694c7bbff2a347c40a373a745d02228b14c33f70381d912095",
+      "src/ground.ts": "5701a8451b206c576b2addc1ea7ac5bcab4810201263b31ad7cd2008a80d1cb1",
+      "src/stage.ts": "a70d990075a5898867bd5a59e7dacde73f7e2e2f7ee501382958fc638bf1998f"
+    },
+    "publicHashes": {
+      "pond-dock.glb": "514963d387cc28dd5dedcc1fce2c8c6d2cd67d97c3f54c51473a49d798565a2d",
+      "pond-reeds.glb": "3baeda516f23c4d655c527ff592bdb49b1f2cb6c5e7bbbeb0333d8ca256fba3e",
+      "hay-bale.glb": "f89caa01a91e7fd8dba0948584bcac1fd3dba52d64a7f92f4a0c08914816c421"
+    }
+  },
+  "viewport": [
+    1180,
+    820
+  ],
+  "acceptance": [
+    {
+      "model": "pond-dock",
+      "planned": 1,
+      "accepted": 1
+    },
+    {
+      "model": "pond-reeds",
+      "planned": 3,
+      "accepted": 3
+    },
+    {
+      "model": "rock-cluster",
+      "planned": 2,
+      "accepted": 2
+    },
+    {
+      "model": "hay-bale",
+      "planned": 3,
+      "accepted": 3
+    }
+  ],
+  "results": [
+    {
+      "task": "cow",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "pig",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "tractor",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "sheep",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "kitten",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "goat",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "beehive",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "horse",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "puppy",
+      "phase": "day",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "hen",
+      "phase": "evening",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "rabbit",
+      "phase": "evening",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "cow",
+      "phase": "evening",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "nest",
+      "phase": "evening",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "goose",
+      "phase": "evening",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "dog",
+      "phase": "night",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "duck",
+      "phase": "morning",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    },
+    {
+      "task": "rooster",
+      "phase": "morning",
+      "sampledTargets": 1840,
+      "addedOcclusions": []
+    }
+  ],
+  "addedOcclusions": 0,
+  "staticOverlaps": [
+    {
+      "added": "hay-bale",
+      "position": [
+        -24,
+        -22,
+        -0.15,
+        0.8
+      ],
+      "existing": "sack",
+      "existingPosition": [
+        -22.7,
+        -23,
+        0.3,
+        1
+      ]
+    },
+    {
+      "added": "hay-bale",
+      "position": [
+        -24,
+        -25,
+        0.3,
+        1
+      ],
+      "existing": "sack",
+      "existingPosition": [
+        -22.6,
+        -24.5,
+        -0.2,
+        0.95
+      ]
+    }
+  ],
+  "workOverlaps": [],
+  "pairOverlaps": [],
+  "duckClearance": [
+    {
+      "model": "pond-dock",
+      "item": [
+        -47.5,
+        4.6,
+        1.5707963267948966,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 0.7250000000000014
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -44.8,
+        0.8,
+        0.3,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 0.5640579270014079
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -44.7,
+        7.6,
+        1.2,
+        0.9
+      ],
+      "minClearanceWithBodyRadius075": 1.6246050763565418
+    },
+    {
+      "model": "pond-reeds",
+      "item": [
+        -40.5,
+        -1.1,
+        2.2,
+        0.9
+      ],
+      "minClearanceWithBodyRadius075": 0.8682357936703784
+    },
+    {
+      "model": "rock-cluster",
+      "item": [
+        -43.5,
+        -1.2,
+        0.8,
+        0.85
+      ],
+      "minClearanceWithBodyRadius075": 0.8574225028765994
+    },
+    {
+      "model": "rock-cluster",
+      "item": [
+        -46.4,
+        6.9,
+        -0.4,
+        0.85
+      ],
+      "minClearanceWithBodyRadius075": 1.5733466945521144
+    },
+    {
+      "model": "hay-bale",
+      "item": [
+        -24,
+        -25,
+        0.3,
+        1
+      ],
+      "minClearanceWithBodyRadius075": 27.25883759541282
+    },
+    {
+      "model": "hay-bale",
+      "item": [
+        -24,
+        -22,
+        -0.15,
+        0.8
+      ],
+      "minClearanceWithBodyRadius075": 25.07775999231776
+    },
+    {
+      "model": "hay-bale",
+      "item": [
+        -7,
+        -22,
+        0.1,
+        0.9
+      ],
+      "minClearanceWithBodyRadius075": 35.87135690571806
+    }
+  ],
+  "errors": [],
+  "contextLost": false
+}
