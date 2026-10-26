@@ -4,6 +4,7 @@
 // from it (sparks, feathers on end) and wobbles away dizzy — the wire stays
 // where it was: the joke is always on her, never on the child's work.
 import * as THREE from 'three';
+import { model } from './parts/assets';
 import { mat, mesh } from './parts/kit';
 import type { Stage } from './stage';
 import type { PhraseId } from './voice';
@@ -59,6 +60,32 @@ export class Pest {
   }
 
   private build() {
+    // An invisible ball round her, so a child's finger need not hit her exactly.
+    const hit = new THREE.Mesh(new THREE.SphereGeometry(1.5, 10, 8), new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false }));
+    hit.position.y = 0.5;
+    const sculpt = model('crow', { height: 0.57 });
+    if (sculpt) {
+      // Codex's crow (beak +X): a body and two wings on shoulder hinges, folded while she walks.
+      this.head = new THREE.Group();
+      for (const [name, side, fold] of [
+        ['wing-left', -1, new THREE.Euler(0.28, -1.05, 0)],
+        ['wing-right', 1, new THREE.Euler(-0.28, 1.05, 0)],
+      ] as const) {
+        const wing = sculpt.getObjectByName(name);
+        if (!wing) continue;
+        wing.userData.side = side;
+        wing.userData.fold = fold;
+        wing.rotation.copy(fold);
+        this.wings.push(wing);
+      }
+      // (The same reach as before, when the whole drawn crow was scaled to 0.62.)
+      hit.scale.setScalar(0.62);
+      hit.position.y = 0.31;
+      this.body.add(sculpt, this.head, hit);
+      this.root.add(this.body);
+      this.root.traverse((o) => (o.userData.pest = true));
+      return;
+    }
     const black = mat('#2a2f3e', 0.55);
     const body = mesh(new THREE.SphereGeometry(0.32, 18, 12), black);
     body.scale.set(1.35, 0.95, 0.9);
@@ -98,9 +125,6 @@ export class Pest {
       leg.position.set(0.02, 0.12, z);
       return leg;
     });
-    // An invisible ball round her, so a child's finger need not hit her exactly.
-    const hit = new THREE.Mesh(new THREE.SphereGeometry(1.5, 10, 8), new THREE.MeshBasicMaterial({ colorWrite: false, depthWrite: false }));
-    hit.position.y = 0.5;
     this.body.add(body, tail, head, ...this.wings, ...legs, hit);
     this.root.add(this.body);
     // A crow's size beside the farm's animals: about half the dog's height.
@@ -167,8 +191,17 @@ export class Pest {
   update(dt: number, time: number) {
     this.t += dt;
     this.clock = time;
-    const flap = (speed: number, amp: number) => this.wings.forEach((w) => (w.rotation.x = w.userData.side * (0.2 + Math.sin(time * speed) * amp)));
-    const fold = () => this.wings.forEach((w) => (w.rotation.x = THREE.MathUtils.damp(w.rotation.x, 0, 8, dt)));
+    const flap = (speed: number, amp: number) =>
+      this.wings.forEach((w) => {
+        w.rotation.x = w.userData.side * (0.2 + Math.sin(time * speed) * amp);
+        w.rotation.y = THREE.MathUtils.damp(w.rotation.y, 0, 12, dt);
+      });
+    const fold = () =>
+      this.wings.forEach((w) => {
+        const f = (w.userData.fold as THREE.Euler | undefined) ?? new THREE.Euler();
+        w.rotation.x = THREE.MathUtils.damp(w.rotation.x, f.x, 8, dt);
+        w.rotation.y = THREE.MathUtils.damp(w.rotation.y, f.y, 8, dt);
+      });
     if (this.feather.visible) {
       // The lost feather see-saws down to the grass.
       const f = this.feather;

@@ -463,9 +463,19 @@ const TOY_BUILDERS: Record<ToyKind, (body?: THREE.Object3D) => { root: THREE.Gro
     root.add(mouse);
     return { root, parts: { mouse } };
   },
-  frog: () => {
+  frog: (sculpt) => {
     const root = new THREE.Group();
     const frog = new THREE.Group();
+    if (sculpt) {
+      // The sculpted frog faces +X; it leaps along local −X, so it is turned to face its leap.
+      sculpt.rotation.y = Math.PI;
+      frog.add(sculpt);
+      const lily = mesh(new THREE.CircleGeometry(0.42, 18).rotateX(-Math.PI / 2), mat('#3f9a4f', 0.6), false);
+      lily.position.y = 0.012;
+      frog.userData.out = new THREE.Vector3(-2.5, 0, 0);
+      root.add(lily, frog);
+      return { root, parts: { frog } };
+    }
     const green = mat('#5cb85c', 0.5);
     const body = mesh(new THREE.SphereGeometry(0.28, 14, 10), green);
     body.scale.set(1.1, 0.7, 1);
