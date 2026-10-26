@@ -33,7 +33,7 @@ import { activeAt, isActive } from './world';
 
 /** Model files the city needs (each falls back to a stand-in until it is made). */
 export const CITY_MODELS = ['pole', 'baker', 'grandma', 'child', 'kitten', 'raccoon', 'raccoon-rig', 'tram', 'car', 'fountain-basin', 'bench', 'street-lamp', 'bins', 'pigeon',
-  'tree-oak', 'tree-pine', 'bush', 'flower-cluster', 'boat', 'builder', 'counter', 'hydrant', 'basket',
+  'tree-oak', 'tree-pine', 'bush', 'flower-cluster', 'boat', 'builder', 'firefighter', 'shopkeeper', 'counter', 'hydrant', 'basket',
   ...DECOR.map((g) => g.model)].filter((m, i, all) => all.indexOf(m) === i);
 
 /** What the drawers offer in the city: its own devices, and the parts their chains need (power from the poles). */
