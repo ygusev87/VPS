@@ -287,7 +287,7 @@ export class FactoryMap extends StoryMap {
     card('rack-steel-card', racks.map(([x, z]) => ({ x, z, size: 5.5 })), () => racks.forEach(([x, z]) => hall.add(rack(x, z))));
     for (const [x, z, s] of [[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [36, 22, 1], [-14, 23.5, 0.9], [20, 23.5, 1]] as const) hall.add(crate(x, z, s));
     const barrels = [[-38, 20.5], [38, 12], [-30, 24], [4, 24]] as const;
-    card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.2 })), () => [[-38, 19], [-38, 22], [38, 12], [-30, 24], [4, 24]].forEach(([x, z]) => hall.add(barrel(x, z))));
+    card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.6 })), () => [[-38, 19], [-38, 22], [38, 12], [-30, 24], [4, 24]].forEach(([x, z]) => hall.add(barrel(x, z))));
     // Yellow and black safety lines round every station.
     for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.5, LATHE.z - 2, 11, 9], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11]] as const) {
       const strip = kitPieces('factory', 'hazard-strip', true);
@@ -297,7 +297,7 @@ export class FactoryMap extends StoryMap {
       } else hall.add(hazard(cx, cz, w, d));
     }
     const pallets = [[36, -14, 3], [38.2, -14, 2], [36, -10.5, 2]] as const;
-    card('pallet-card', pallets.map(([x, z]) => ({ x, z, size: 1.9 })), () => pallets.forEach(([x, z, n]) => hall.add(stack(x, z, n))));
+    card('pallet-card', pallets.map(([x, z]) => ({ x, z, size: 2.6 })), () => pallets.forEach(([x, z, n]) => hall.add(stack(x, z, n))));
     card('forklift-card', [{ x: 33, z: -18, size: 4 }], () => hall.add(forklift(33, -18)));
     this.scenery.add(bakeGroup(hall));
   }
