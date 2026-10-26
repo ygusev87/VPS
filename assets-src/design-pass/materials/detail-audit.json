@@ -1,7 +1,8 @@
 {
-  "revision": "45fad6fb7f6649f29b0326719db3b56fa2681d7c",
+  "mode": "integrated",
+  "revision": "b3bdc1a91f55175c48d57f2b0668a7ebac4ed27f",
   "inputs": {
-    "layoutSha256": "3d9f0b1f5f3c3f598e9e81472460cccaa2ee8a69d0234baea4708a4352e0b855",
+    "layoutSha256": "15f842b35fc9af0c2edf4532fae254fb56e91c235c26505f7642d2a04543c70b",
     "models": {
       "barn": "62f9dbe2a6d572e35e5e54c77597aa9df5c1ef159190db9ee249684680adc506",
       "coop": "68b4ee6350758fd266a7d55930891ce6926da1c6eb3f60345dc507c579ec9192",

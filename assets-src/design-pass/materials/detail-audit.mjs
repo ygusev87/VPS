@@ -54,7 +54,7 @@ const same = (a,b) => a.every((n,i)=>n===b[i]);
 const items = layout.DECOR.flatMap((g,groupIndex) => {
   const base = fitBox(g);
   return g.items.map((p,index) => {
-    const move = moves.find(m => m.model===g.model && same(m.from,p));
+    const move = moves.find(m => m.model===g.model && (same(m.from,p)||same(m.to,p)));
     const q = move?.to ?? p;
     const yaw = new Matrix4().makeRotationY(q[2]);
     const points = base.map(v=>v.clone().multiplyScalar(q[3]).applyMatrix4(yaw).add(new Vector3(q[0],0,q[1])));
@@ -99,7 +99,14 @@ const results=items.filter(v=>v.move).map(v=>{
   };
 });
 if(results.length!==moves.length) throw Error('Original placements changed; re-review proposal.');
+const applied=items.filter(v=>v.move && same(v.original,v.move.to)).length;
+if(applied!==0 && applied!==moves.length) throw Error('Partially applied proposal.');
+for(const m of moves) {
+  const g=author.groups.find(g=>g.model===m.model);
+  if(!g.items.some(p=>same(p,applied?m.to:m.from))) throw Error('Authoring placement mismatch: '+m.model);
+}
 const report={
+  mode:applied?'integrated':'proposal',
   revision:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),
   inputs:{layoutSha256:sha(layoutBytes),models:hashes},
   scope:'Proposal only: measured decoded GLB mesh-box corners, fit then instance yaw/scale. Conservative circles against road/fence/pad/prop bounds. No runtime changes, no live collision/occlusion/FPS claim.',
