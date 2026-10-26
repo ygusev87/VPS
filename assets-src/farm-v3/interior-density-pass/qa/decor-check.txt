@@ -1,0 +1,110 @@
+(node:48287) ExperimentalWarning: stripTypeScriptTypes is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+{
+  "status": "pass",
+  "roadComponents": 1,
+  "paths": 19,
+  "fenceRuns": 64,
+  "minRoadClearance": 0.3984405600525154,
+  "minFoxClearance": 1.2000000000000028,
+  "minPoleClearance": 1.7000000000000002,
+  "workingPadFenceConflicts": [],
+  "gate": {
+    "root": [
+      30,
+      17
+    ],
+    "posts": [
+      [
+        28.4,
+        16.4
+      ],
+      [
+        31.6,
+        16.4
+      ]
+    ],
+    "exception": "Gate motor plate occupies the gate-side working square; static fences meet the existing gate posts."
+  },
+  "buildingFootprints": [
+    {
+      "model": "barn",
+      "x0": -21.25,
+      "x1": -10.75,
+      "z0": -32.842875,
+      "z1": -21.157125
+    },
+    {
+      "model": "coop",
+      "x0": 5.7,
+      "x1": 10.3,
+      "z0": -27.341,
+      "z1": -19.659
+    },
+    {
+      "model": "stable",
+      "x0": 37,
+      "x1": 47,
+      "z0": -10.375,
+      "z1": 2.375000000000001
+    },
+    {
+      "model": "doghouse",
+      "x0": -40,
+      "x1": -37,
+      "z0": -18.0215,
+      "z1": -14.9785
+    },
+    {
+      "model": "hutch",
+      "x0": -45.5,
+      "x1": -42.5,
+      "z0": -15.521,
+      "z1": -13.479
+    },
+    {
+      "model": "farmhouse",
+      "x0": -44,
+      "x1": -33,
+      "z0": -29.93817,
+      "z1": -21.06183
+    },
+    {
+      "model": "silo",
+      "x0": -10.26097,
+      "x1": -4.93903,
+      "z0": -29.683128,
+      "z1": -24.316872
+    },
+    {
+      "model": "pigsty",
+      "x0": 22,
+      "x1": 32,
+      "z0": -30.95921,
+      "z1": -22.04079
+    },
+    {
+      "model": "tractor-shed",
+      "x0": 38.511185,
+      "x1": 47.488815,
+      "z0": 21,
+      "z1": 31
+    }
+  ],
+  "buildingConflicts": [],
+  "minBuildingGap": 0.48902999999999963,
+  "cropRouteClearance": 0.08209231967517905,
+  "gardenToyClearance": 0.09615099714943343,
+  "fieldCropInstances": 26,
+  "gardenCropInstances": 36,
+  "gardenCropModels": [
+    "crop-wheat",
+    "crop-lavender",
+    "crop-carrot",
+    "crop-sunflower",
+    "crop-tomato",
+    "crop-cabbage"
+  ],
+  "instances": 763,
+  "trianglesBeforeIntegrationCulling": 974738
+}

@@ -1,0 +1,612 @@
+{
+  "source": {
+    "baseRevision": "e7e6522a7ec154f9226bdab9d432429545afe5c5",
+    "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714",
+    "snapshot": "/Users/gusev/gameios/assets-src/farm-v3/interior-density-pass/.snapshot"
+  },
+  "mode": "after",
+  "area": "field",
+  "cameraContract": "Scenic overview bounds",
+  "camera": {
+    "type": "PerspectiveCamera",
+    "position": [
+      28.75,
+      25.7955103801989,
+      46.12049809655514
+    ],
+    "direction": [
+      0,
+      -0.7885023060177911,
+      -0.6150317986938769
+    ],
+    "fov": 26,
+    "aspect": 1.7878787878787878,
+    "projectionMatrix": [
+      2.422689895786053,
+      0,
+      0,
+      0,
+      0,
+      4.3314758742841555,
+      0,
+      0,
+      0,
+      -0.027272727272727233,
+      -1.0043714761367943,
+      -1,
+      0,
+      0,
+      -1.3114428410383032,
+      0
+    ]
+  },
+  "viewport": [
+    1180,
+    660
+  ],
+  "quality": 2,
+  "budget": {
+    "before": {
+      "batches": 85,
+      "instances": 1021,
+      "triangles": 858040
+    },
+    "after": {
+      "batches": 85,
+      "instances": 1098,
+      "triangles": 947882
+    },
+    "additions": {
+      "batches": 12,
+      "instances": 95,
+      "triangles": 142798
+    }
+  },
+  "keep": [
+    [
+      10,
+      4
+    ],
+    [
+      27,
+      -13
+    ],
+    [
+      28.3,
+      17.4
+    ],
+    [
+      44,
+      -22
+    ],
+    [
+      -19,
+      -16
+    ],
+    [
+      -15,
+      5
+    ],
+    [
+      -20,
+      17
+    ],
+    [
+      39,
+      13
+    ],
+    [
+      -23,
+      -8
+    ],
+    [
+      7,
+      -15
+    ],
+    [
+      -43,
+      -8
+    ],
+    [
+      16,
+      4
+    ],
+    [
+      16,
+      -14
+    ],
+    [
+      -31,
+      15.5
+    ],
+    [
+      -34,
+      -10
+    ],
+    [
+      -30,
+      -6.5
+    ],
+    [
+      -33,
+      4.5
+    ],
+    [
+      -1,
+      -10
+    ],
+    [
+      12.5,
+      0.5
+    ],
+    [
+      30.5,
+      -16
+    ],
+    [
+      46.5,
+      -27
+    ],
+    [
+      49,
+      -25
+    ],
+    [
+      -36.7,
+      5.6
+    ],
+    [
+      -35.4,
+      4.4
+    ],
+    [
+      -36.1,
+      2.7
+    ],
+    [
+      9.5,
+      -17.5
+    ],
+    [
+      11,
+      -16.2
+    ],
+    [
+      -41,
+      -11.5
+    ],
+    [
+      -36.5,
+      -14
+    ],
+    [
+      30,
+      12
+    ],
+    [
+      -21,
+      -16.05
+    ],
+    [
+      -12,
+      1.5
+    ],
+    [
+      -17.5,
+      1
+    ],
+    [
+      -12.5,
+      6
+    ],
+    [
+      -16,
+      21.5
+    ],
+    [
+      42.5,
+      9.5
+    ],
+    [
+      -20,
+      -5.8
+    ],
+    [
+      17,
+      -17.5
+    ],
+    [
+      17.9,
+      -17.5
+    ],
+    [
+      16.54563850586013,
+      -16.723111570016012
+    ],
+    [
+      16.558765260793372,
+      -18.28441819517223
+    ],
+    [
+      -33.5,
+      12.5
+    ],
+    [
+      -32.2,
+      13.1
+    ],
+    [
+      1,
+      -13
+    ],
+    [
+      6,
+      1
+    ],
+    [
+      20,
+      1
+    ],
+    [
+      21.5,
+      -13.5
+    ],
+    [
+      2.5,
+      -15
+    ],
+    [
+      -5.5,
+      -10
+    ],
+    [
+      -48,
+      -8
+    ],
+    [
+      26,
+      13.5
+    ],
+    [
+      -35.5,
+      -7.5
+    ],
+    [
+      -23.5,
+      -12.5
+    ],
+    [
+      -20,
+      5
+    ],
+    [
+      -15,
+      17
+    ],
+    [
+      34.5,
+      13.5
+    ],
+    [
+      -26.5,
+      14.5
+    ],
+    [
+      39,
+      -22
+    ],
+    [
+      -27,
+      9.5
+    ],
+    [
+      30,
+      17
+    ],
+    [
+      -30,
+      -6.5
+    ],
+    [
+      -7.5,
+      -18.5
+    ],
+    [
+      -1.5,
+      -3.2
+    ],
+    [
+      8.3,
+      25.2
+    ],
+    [
+      -32.5,
+      -21.6
+    ],
+    [
+      -34.6,
+      8.4
+    ]
+  ],
+  "occlusion": {
+    "sampledTargets": 2209,
+    "animalUpperBodySamples": 369,
+    "terminalCount": 32,
+    "actualOutlineVertices": 1050,
+    "authorPadSamples": 612,
+    "workingCircles": 18,
+    "addedOcclusions": []
+  },
+  "errors": [],
+  "contextLost": false,
+  "candidateNewAndReplacementInstances": 95,
+  "fieldReplacement": {
+    "before": 18,
+    "after": 26
+  },
+  "expectedAddedPrimitiveInstances": 95,
+  "taskAreas": [
+    {
+      "id": "task-cowHot",
+      "ask": "cowHot",
+      "critter": "cow",
+      "spot": [
+        10,
+        4
+      ],
+      "nearestNewPlant": 3.049921474398972
+    },
+    {
+      "id": "task-pigThirsty",
+      "ask": "pigThirsty",
+      "critter": "pig",
+      "spot": [
+        27,
+        -13
+      ],
+      "nearestNewPlant": 15.499502088776918
+    },
+    {
+      "id": "task-gateStuck",
+      "ask": "gateStuck",
+      "critter": "tractor",
+      "spot": [
+        28.3,
+        17.4
+      ],
+      "nearestNewPlant": 6.641586030459896
+    },
+    {
+      "id": "task-sheepMill",
+      "ask": "sheepMill",
+      "critter": "sheep",
+      "spot": [
+        44,
+        -22
+      ],
+      "nearestNewPlant": 2.9312618443257503
+    },
+    {
+      "id": "task-kittenStuck",
+      "ask": "kittenStuck",
+      "critter": "kitten",
+      "spot": [
+        -19,
+        -16
+      ],
+      "nearestNewPlant": 14.390677433672122
+    },
+    {
+      "id": "task-goatsAsk",
+      "ask": "goatsAsk",
+      "critter": "goat",
+      "spot": [
+        -15,
+        5
+      ],
+      "nearestNewPlant": 4.429248694756258
+    },
+    {
+      "id": "task-beesAsk",
+      "ask": "beesAsk",
+      "critter": "beehive",
+      "spot": [
+        -20,
+        17
+      ],
+      "nearestNewPlant": 7.927345394266608
+    },
+    {
+      "id": "task-horseHot",
+      "ask": "horseHot",
+      "critter": "horse",
+      "spot": [
+        39,
+        13
+      ],
+      "nearestNewPlant": 4.861753181723647
+    },
+    {
+      "id": "task-puppyAsk",
+      "ask": "puppyAsk",
+      "critter": "puppy",
+      "spot": [
+        -23,
+        -8
+      ],
+      "nearestNewPlant": 11.247915229054671
+    },
+    {
+      "id": "task-henDark",
+      "ask": "henDark",
+      "critter": "hen",
+      "spot": [
+        7,
+        -15
+      ],
+      "nearestNewPlant": 7.668401919565772
+    },
+    {
+      "id": "task-rabbitCold",
+      "ask": "rabbitCold",
+      "critter": "rabbit",
+      "spot": [
+        -43,
+        -8
+      ],
+      "nearestNewPlant": 4.579546811639768
+    },
+    {
+      "id": "task-cowSleepy",
+      "ask": "cowSleepy",
+      "critter": "cow",
+      "spot": [
+        16,
+        4
+      ],
+      "nearestNewPlant": 3.049997540982616
+    },
+    {
+      "id": "task-eggsCold",
+      "ask": "eggsCold",
+      "critter": "nest",
+      "spot": [
+        16,
+        -14
+      ],
+      "nearestNewPlant": 7.117346485875197
+    },
+    {
+      "id": "task-geeseDark",
+      "ask": "geeseDark",
+      "critter": "goose",
+      "spot": [
+        -31,
+        15.5
+      ],
+      "nearestNewPlant": 7.648940580237238
+    },
+    {
+      "id": "task-foxTip",
+      "ask": "foxTip",
+      "critter": "dog",
+      "spot": [
+        -34,
+        -10
+      ],
+      "nearestNewPlant": 6.500558899048605
+    },
+    {
+      "id": "task-15",
+      "ask": "ducksAsk",
+      "critter": "duck",
+      "spot": [
+        -33,
+        4.5
+      ],
+      "nearestNewPlant": 14.311192962153784
+    },
+    {
+      "id": "task-roosterAsk",
+      "ask": "roosterAsk",
+      "critter": "rooster",
+      "spot": [
+        -1,
+        -10
+      ],
+      "nearestNewPlant": 4.540048568022152
+    }
+  ],
+  "renderCost": {
+    "method": "12 synchronous complete Stage.render frames, info.autoReset=false with info.reset before each. Includes composer and shadow passes when scheduled; no timing/FPS claim.",
+    "samples": [
+      {
+        "frame": 636408,
+        "calls": 140,
+        "triangles": 1027677,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636428,
+        "calls": 144,
+        "triangles": 946275,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636448,
+        "calls": 85,
+        "triangles": 514379,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636471,
+        "calls": 199,
+        "triangles": 1459573,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636491,
+        "calls": 85,
+        "triangles": 514379,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636511,
+        "calls": 144,
+        "triangles": 946275,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636534,
+        "calls": 140,
+        "triangles": 1027677,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636554,
+        "calls": 144,
+        "triangles": 946275,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636574,
+        "calls": 85,
+        "triangles": 514379,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636597,
+        "calls": 199,
+        "triangles": 1459573,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636617,
+        "calls": 85,
+        "triangles": 514379,
+        "points": 0,
+        "lines": 0
+      },
+      {
+        "frame": 636637,
+        "calls": 144,
+        "triangles": 946275,
+        "points": 0,
+        "lines": 0
+      }
+    ],
+    "minTriangles": 514379,
+    "maxTriangles": 1459573,
+    "maxCalls": 199
+  }
+}

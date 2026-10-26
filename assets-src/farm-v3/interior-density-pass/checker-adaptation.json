@@ -1,0 +1,9 @@
+{
+  "path": "scripts/check-farm-decor.mjs",
+  "scope": "isolated snapshot only",
+  "before": "fieldCrops.length == 18",
+  "after": "fieldCrops.length == 26",
+  "originalSha256": "277942f935d87b25a818a414452d0125f78bc9597cfccb4435f01276e3e2b308",
+  "adaptedSha256": "4f6cdb9c1d9e8c9c5ead7072696af3c8d8c0ba16421fccb8449a65ac203b528b",
+  "allOtherAssertionsUnchanged": true
+}

@@ -1,0 +1,565 @@
+{
+  "status": "pass",
+  "sourceRevision": "e7e6522a7ec154f9226bdab9d432429545afe5c5",
+  "preservedNonFieldInstances": 668,
+  "originalFieldInstances": 18,
+  "replacementFieldInstances": 26,
+  "addedLowPlants": 69,
+  "totalInstances": 763,
+  "netAddedInstances": 77,
+  "additionalGeometryTriangles": 89842,
+  "unchangedDatasets": [
+    "PATHS",
+    "FENCES",
+    "SOIL",
+    "MUD",
+    "MEADOW",
+    "PONDS"
+  ],
+  "candidateSourceSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714",
+  "snapshotVerified": true,
+  "runtimeHashCount": 404,
+  "checkerAdaptation": {
+    "path": "scripts/check-farm-decor.mjs",
+    "scope": "isolated snapshot only",
+    "before": "fieldCrops.length == 18",
+    "after": "fieldCrops.length == 26",
+    "originalSha256": "277942f935d87b25a818a414452d0125f78bc9597cfccb4435f01276e3e2b308",
+    "adaptedSha256": "4f6cdb9c1d9e8c9c5ead7072696af3c8d8c0ba16421fccb8449a65ac203b528b",
+    "allOtherAssertionsUnchanged": true
+  },
+  "liveRuntimeDrift": [
+    "src/farm-decor.ts",
+    "src/ground.ts"
+  ],
+  "views": [
+    {
+      "width": 1180,
+      "area": "wide",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "cowPen",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "poultry",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "westPens",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "horsePen",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "apiary",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "field",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "task-cowHot",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-pigThirsty",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-gateStuck",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-sheepMill",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-kittenStuck",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-goatsAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-beesAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-horseHot",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-puppyAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-henDark",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-rabbitCold",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-cowSleepy",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-eggsCold",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-geeseDark",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-foxTip",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-15",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-roosterAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "wide",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1024,
+      "area": "cowPen",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1024,
+      "area": "poultry",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1024,
+      "area": "westPens",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1024,
+      "area": "horsePen",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1024,
+      "area": "apiary",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1024,
+      "area": "field",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1024,
+      "area": "task-cowHot",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-pigThirsty",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-gateStuck",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-sheepMill",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-kittenStuck",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-goatsAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-beesAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-horseHot",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-puppyAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-henDark",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-rabbitCold",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-cowSleepy",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-eggsCold",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-geeseDark",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-foxTip",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-15",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1024,
+      "area": "task-roosterAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "wide",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "cowPen",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "poultry",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "westPens",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "horsePen",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "apiary",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "field",
+      "rays": 2209,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "task-cowHot",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-pigThirsty",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-gateStuck",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-sheepMill",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-kittenStuck",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-goatsAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-beesAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-horseHot",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-puppyAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-henDark",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-rabbitCold",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-cowSleepy",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-eggsCold",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-geeseDark",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-foxTip",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-15",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-roosterAsk",
+      "rays": 2209,
+      "exactGameplayCamera": true
+    }
+  ],
+  "rays": 159048,
+  "completeNativeScreenshots": 95,
+  "dressing": {
+    "before": {
+      "batches": 85,
+      "instances": 1021,
+      "triangles": 858040
+    },
+    "after": {
+      "batches": 85,
+      "instances": 1098,
+      "triangles": 947882
+    },
+    "additions": {
+      "batches": 12,
+      "instances": 95,
+      "triangles": 142798
+    }
+  },
+  "budget": {
+    "sceneAndShadowsBefore": 2267987,
+    "sceneAndShadowsAfter": 2385335,
+    "sceneAndShadowsDelta": 117348,
+    "sceneAndShadowsCap": 2600000,
+    "remaining": 214665,
+    "fullFrameBefore": 3695865,
+    "fullFrameAfter": 3903055,
+    "fullFrameDelta": 207190,
+    "statesBefore": [
+      1430795,
+      2267987,
+      2858673,
+      3695865
+    ],
+    "statesAfter": [
+      1520637,
+      2385335,
+      3038357,
+      3903055
+    ]
+  },
+  "console": {
+    "entries": 0,
+    "logs": [],
+    "pageErrorArraysEmpty": true
+  },
+  "wheat": {
+    "before": 18,
+    "after": 26,
+    "rows": 9,
+    "scale": 0.82,
+    "beforeFootprintArea": 20.151191399120492,
+    "afterFootprintArea": 21.12969558298459,
+    "centerFeasibility": [
+      {
+        "scale": 0.64,
+        "tested": 2400,
+        "valid": 480,
+        "centerRegionAreaEstimate": 19.2,
+        "centerBounds": {
+          "x0": 27.09999999999999,
+          "z0": 23.699999999999992,
+          "x1": 30.899999999999977,
+          "z1": 30.29999999999997
+        },
+        "gridStep": 0.2
+      },
+      {
+        "scale": 0.82,
+        "tested": 2400,
+        "valid": 430,
+        "centerRegionAreaEstimate": 17.2,
+        "centerBounds": {
+          "x0": 27.09999999999999,
+          "z0": 23.89999999999999,
+          "x1": 30.899999999999977,
+          "z1": 30.09999999999997
+        },
+        "gridStep": 0.2
+      },
+      {
+        "scale": 1,
+        "tested": 2400,
+        "valid": 371,
+        "centerRegionAreaEstimate": 14.84,
+        "centerBounds": {
+          "x0": 27.29999999999999,
+          "z0": 24.29999999999999,
+          "x1": 30.699999999999978,
+          "z1": 29.89999999999997
+        },
+        "gridStep": 0.2
+      }
+    ]
+  },
+  "scope": "Isolated candidate only. Append additions and explicitly replace the field-wheat items. Preserve current roads and all unrelated shared work. No iPad/FPS/robot claim."
+}

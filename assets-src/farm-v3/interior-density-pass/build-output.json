@@ -1,0 +1,1584 @@
+{
+  "before": 686,
+  "after": 763,
+  "counts": [
+    {
+      "model": "bush-lite",
+      "fit": {
+        "width": 2.3
+      },
+      "before": 166,
+      "after": 171,
+      "delta": 5,
+      "trianglesPerInstance": 794
+    },
+    {
+      "model": "flower-cluster",
+      "fit": {
+        "height": 0.5
+      },
+      "before": 293,
+      "after": 357,
+      "delta": 64,
+      "trianglesPerInstance": 974
+    },
+    {
+      "model": "crop-wheat",
+      "fit": {
+        "width": 1.4
+      },
+      "before": 18,
+      "after": 26,
+      "delta": 8,
+      "trianglesPerInstance": 2942
+    }
+  ],
+  "plants": 69,
+  "field": {
+    "originalWheatCheck": [
+      {
+        "p": [
+          27.5,
+          24.7,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 12.118347603814929,
+          "road": 2.6312325121014344,
+          "fence": 4.6000000000000005,
+          "workPad": 4.568347603814929,
+          "pole": 9.198023435637964,
+          "toy": 17.150126253486686,
+          "building": 9.961184930801393,
+          "animalRoam": 13.983455282479817,
+          "travel": 0.34847416910050744,
+          "runtimeKeep": 4.993704787094863,
+          "runtimeRoute": 0.036935006554339275,
+          "critterHome": 5.373288783928246,
+          "actualAnimalBodies": 16.659343141680647,
+          "movingAnimals": 40.2955693551196,
+          "movingOrbits": 41.00909056693505,
+          "puppyReturn": 45.98905256124869,
+          "foxBody": 67.25757062944903,
+          "decor": 3.468555901737135,
+          "wheat": 24.875000000000004,
+          "field": 2.7000000000000006,
+          "tractorBody": 0.21534161106016436
+        }
+      },
+      {
+        "p": [
+          27.5,
+          26.5,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 10.318347603814928,
+          "road": 4.278489326297535,
+          "fence": 4.6000000000000005,
+          "workPad": 6.36834760381493,
+          "pole": 10.99378265217883,
+          "toy": 17.17036791106082,
+          "building": 9.961184930801393,
+          "animalRoam": 15.757977998754532,
+          "travel": 0.6275983306264253,
+          "runtimeKeep": 6.785097153287426,
+          "runtimeRoute": 0.33860714788436913,
+          "critterHome": 7.101052276918857,
+          "actualAnimalBodies": 17.988321575333703,
+          "movingAnimals": 41.08451760781122,
+          "movingOrbits": 42.76339446276929,
+          "puppyReturn": 47.23081821263602,
+          "foxBody": 68.18366298921858,
+          "decor": 4.013910588328409,
+          "wheat": 24.875000000000004,
+          "field": 2.7000000000000006,
+          "tractorBody": 0.49755421372995257
+        }
+      },
+      {
+        "p": [
+          27.5,
+          28.3,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 8.518347603814927,
+          "road": 5.668347603814927,
+          "fence": 4.068347603814927,
+          "workPad": 8.16834760381493,
+          "pole": 12.79060154628896,
+          "toy": 17.341444003468137,
+          "building": 9.961184930801393,
+          "animalRoam": 17.536366213904085,
+          "travel": 0.3484741691005079,
+          "runtimeKeep": 8.579318368498559,
+          "runtimeRoute": 0.03693500655433972,
+          "critterHome": 8.850855932068056,
+          "actualAnimalBodies": 19.380698821322717,
+          "movingAnimals": 41.93170443365492,
+          "movingOrbits": 44.52119776431794,
+          "puppyReturn": 48.50657224297616,
+          "foxBody": 69.11964933410582,
+          "decor": 3.5480229162033687,
+          "wheat": 24.875000000000004,
+          "field": 2.168347603814927,
+          "tractorBody": 0.21534073662052855
+        }
+      },
+      {
+        "p": [
+          29,
+          24.7,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 12.118347603814929,
+          "road": 2.182087149873199,
+          "fence": 4.1000000000000005,
+          "workPad": 4.568347603814929,
+          "pole": 9.411235630781256,
+          "toy": 18.650116784532717,
+          "building": 8.461184930801393,
+          "animalRoam": 14.299572705484096,
+          "travel": 1.7390182882218543,
+          "runtimeKeep": 4.983484846919642,
+          "runtimeRoute": 1.422151576380508,
+          "critterHome": 5.042274471846272,
+          "actualAnimalBodies": 15.645639651047984,
+          "movingAnimals": 41.660264750375866,
+          "movingOrbits": 41.37637699579124,
+          "puppyReturn": 47.09967608311309,
+          "foxBody": 68.54381001801785,
+          "decor": 3.889022523548559,
+          "wheat": 26.375000000000004,
+          "field": 3.168347603814927,
+          "tractorBody": -0.5423890752753776
+        }
+      },
+      {
+        "p": [
+          29,
+          26.5,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 10.318347603814928,
+          "road": 3.9772184740364,
+          "fence": 4.1000000000000005,
+          "workPad": 6.36834760381493,
+          "pole": 11.1770638837849,
+          "toy": 18.668841813677712,
+          "building": 8.461184930801393,
+          "animalRoam": 16.048697142606684,
+          "travel": 2.127591333905214,
+          "runtimeKeep": 6.776883367283711,
+          "runtimeRoute": 1.8322777855979078,
+          "critterHome": 6.830097511996008,
+          "actualAnimalBodies": 17.03906278462326,
+          "movingAnimals": 42.425539572622846,
+          "movingOrbits": 43.11636782693199,
+          "puppyReturn": 48.31374649801873,
+          "foxBody": 69.46990237778739,
+          "decor": 3.8215933409174045,
+          "wheat": 26.375000000000004,
+          "field": 3.7000000000000006,
+          "tractorBody": 1.1116416568159901
+        }
+      },
+      {
+        "p": [
+          29,
+          28.3,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 8.518347603814927,
+          "road": 5.2,
+          "fence": 4.068347603814927,
+          "workPad": 8.16834760381493,
+          "pole": 12.951268428011844,
+          "toy": 18.827216828264124,
+          "building": 8.461184930801393,
+          "animalRoam": 17.80539980311161,
+          "travel": 1.7390182882218548,
+          "runtimeKeep": 8.572453936730522,
+          "runtimeRoute": 1.422151576380508,
+          "critterHome": 8.621772418638558,
+          "actualAnimalBodies": 18.4905545376084,
+          "movingAnimals": 43.24819046211054,
+          "movingOrbits": 44.8609024460925,
+          "puppyReturn": 49.562435283345735,
+          "foxBody": 70.39719735870845,
+          "decor": 3.525407951464655,
+          "wheat": 26.375000000000004,
+          "field": 2.168347603814927,
+          "tractorBody": 1.6025767265183815
+        }
+      },
+      {
+        "p": [
+          30.5,
+          24.7,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 12.118347603814929,
+          "road": 2.168347603814927,
+          "fence": 2.6000000000000005,
+          "workPad": 4.568347603814929,
+          "pole": 9.662651114040012,
+          "toy": 20.150108636817336,
+          "building": 6.961184930801393,
+          "animalRoam": 14.719594949347375,
+          "travel": 0.3484741691005083,
+          "runtimeKeep": 5.274303246854759,
+          "runtimeRoute": 0.03693500655433972,
+          "critterHome": 4.9938276142687785,
+          "actualAnimalBodies": 14.697789240085678,
+          "movingAnimals": 43.03337319382359,
+          "movingOrbits": 41.79210667073091,
+          "puppyReturn": 48.23075685673958,
+          "foxBody": 69.83195075822118,
+          "decor": 2.4197775121934786,
+          "wheat": 27.875000000000004,
+          "field": 2.2000000000000006,
+          "tractorBody": -0.5423890752753776
+        }
+      },
+      {
+        "p": [
+          30.5,
+          26.5,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 10.318347603814928,
+          "road": 3.7000000000000006,
+          "fence": 2.6000000000000005,
+          "workPad": 6.36834760381493,
+          "pole": 11.394358833367674,
+          "toy": 20.167528379464294,
+          "building": 6.961184930801393,
+          "animalRoam": 16.436034533178773,
+          "travel": 0.6275983306264284,
+          "runtimeKeep": 7.012157870918436,
+          "runtimeRoute": 0.33860714788437224,
+          "critterHome": 6.790759719944831,
+          "actualAnimalBodies": 16.157177826224984,
+          "movingAnimals": 43.776209450029114,
+          "movingOrbits": 43.51617053080367,
+          "puppyReturn": 49.417848940822836,
+          "foxBody": 70.75614176635622,
+          "decor": 2.3215933409174045,
+          "wheat": 27.875000000000004,
+          "field": 2.2000000000000006,
+          "tractorBody": 0.49755487992069203
+        }
+      },
+      {
+        "p": [
+          30.5,
+          28.3,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 8.518347603814927,
+          "road": 3.7000000000000006,
+          "fence": 2.6000000000000005,
+          "workPad": 8.16834760381493,
+          "pole": 13.1424357846339,
+          "toy": 20.314950471551622,
+          "building": 6.961184930801393,
+          "animalRoam": 18.164624303532115,
+          "travel": 0.3484741691005092,
+          "runtimeKeep": 8.7698021565134,
+          "runtimeRoute": 0.036935006554339275,
+          "critterHome": 8.588667462466784,
+          "actualAnimalBodies": 17.66810682437059,
+          "movingAnimals": 44.575532024579864,
+          "movingOrbits": 45.245911588399245,
+          "puppyReturn": 50.64008696368671,
+          "foxBody": 71.68223412612576,
+          "decor": 2.3800757406837265,
+          "wheat": 27.875000000000004,
+          "field": 2.168347603814927,
+          "tractorBody": 0.2153426204716432
+        }
+      },
+      {
+        "p": [
+          27.5,
+          25.6,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 11.218347603814927,
+          "road": 3.440387840948134,
+          "fence": 4.6000000000000005,
+          "workPad": 5.468347603814931,
+          "pole": 10.095740070788748,
+          "toy": 17.150000000000002,
+          "building": 9.961184930801393,
+          "animalRoam": 14.87017185115656,
+          "travel": 0.5583989362567477,
+          "runtimeKeep": 5.888931969618396,
+          "runtimeRoute": 0.2560160504726324,
+          "critterHome": 6.233614497747568,
+          "actualAnimalBodies": 17.31514946526562,
+          "movingAnimals": 40.68256117904329,
+          "movingOrbits": 41.88577877700159,
+          "puppyReturn": 46.6055205409208,
+          "foxBody": 67.7206168093338,
+          "decor": 3.6613354110636926,
+          "wheat": 24.875000000000004,
+          "field": 2.7000000000000006,
+          "tractorBody": 0.4275989398313219
+        }
+      },
+      {
+        "p": [
+          29,
+          25.6,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 11.218347603814927,
+          "road": 3.0791293047989874,
+          "fence": 4.1000000000000005,
+          "workPad": 5.468347603814931,
+          "pole": 10.292869115711886,
+          "toy": 18.650000000000002,
+          "building": 8.461184930801393,
+          "animalRoam": 15.173070211540336,
+          "travel": 2.0338846708396914,
+          "runtimeKeep": 5.8798238134239575,
+          "runtimeRoute": 1.7282299115286077,
+          "critterHome": 5.935555253489954,
+          "actualAnimalBodies": 16.334331067463328,
+          "movingAnimals": 42.035542385091404,
+          "movingOrbits": 42.245770820332226,
+          "puppyReturn": 47.70222201573969,
+          "foxBody": 69.00685619790262,
+          "decor": 3.8215933409174045,
+          "wheat": 26.375000000000004,
+          "field": 3.7000000000000006,
+          "tractorBody": 0.33092284564324326
+        }
+      },
+      {
+        "p": [
+          30.5,
+          25.6,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 11.218347603814927,
+          "road": 3.0683476038149293,
+          "fence": 2.6000000000000005,
+          "workPad": 5.468347603814931,
+          "pole": 10.526018959388674,
+          "toy": 20.150000000000002,
+          "building": 6.961184930801393,
+          "animalRoam": 15.576114464362567,
+          "travel": 0.5583989362567437,
+          "runtimeKeep": 6.139994110716453,
+          "runtimeRoute": 0.2560160504726337,
+          "critterHome": 5.892133546437319,
+          "actualAnimalBodies": 15.420301270164414,
+          "movingAnimals": 43.39755629077892,
+          "movingOrbits": 42.65338770271391,
+          "puppyReturn": 48.81975237309766,
+          "foxBody": 70.29309558647144,
+          "decor": 2.3215933409174045,
+          "wheat": 27.875000000000004,
+          "field": 2.2000000000000006,
+          "tractorBody": 0.2631721662951535
+        }
+      },
+      {
+        "p": [
+          27.5,
+          27.4,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 9.41834760381493,
+          "road": 5.133873043298473,
+          "fence": 4.6000000000000005,
+          "workPad": 7.268347603814928,
+          "pole": 11.892086094343872,
+          "toy": 17.234322781525243,
+          "building": 9.961184930801393,
+          "animalRoam": 16.64674572494487,
+          "travel": 0.5583989362567473,
+          "runtimeKeep": 7.681948963187564,
+          "runtimeRoute": 0.2560160504726328,
+          "critterHome": 7.973871953701039,
+          "actualAnimalBodies": 18.67730601915906,
+          "movingAnimals": 41.50103352953151,
+          "movingOrbits": 43.64188399784031,
+          "puppyReturn": 47.86460983302724,
+          "foxBody": 68.6479413549133,
+          "decor": 4.1394684961911645,
+          "wheat": 24.875000000000004,
+          "field": 2.7000000000000006,
+          "tractorBody": 0.4275993100244123
+        }
+      },
+      {
+        "p": [
+          29,
+          27.4,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 9.41834760381493,
+          "road": 4.875882622672853,
+          "fence": 4.1000000000000005,
+          "workPad": 7.268347603814928,
+          "pole": 12.06332269900654,
+          "toy": 18.728024137048894,
+          "building": 8.461184930801393,
+          "animalRoam": 16.926209777086093,
+          "travel": 2.0338846708396905,
+          "runtimeKeep": 7.6744700608062075,
+          "runtimeRoute": 1.7282299115286086,
+          "critterHome": 7.725577234011785,
+          "actualAnimalBodies": 17.75826890531846,
+          "movingAnimals": 42.82988089025687,
+          "movingOrbits": 43.98809952504704,
+          "puppyReturn": 48.933922729690636,
+          "foxBody": 69.93294855767216,
+          "decor": 3.8251887948728562,
+          "wheat": 26.375000000000004,
+          "field": 3.0683476038149293,
+          "tractorBody": 1.9024287791138033
+        }
+      },
+      {
+        "p": [
+          30.5,
+          27.4,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 9.41834760381493,
+          "road": 3.7000000000000006,
+          "fence": 2.6000000000000005,
+          "workPad": 7.268347603814928,
+          "pole": 12.26673671694921,
+          "toy": 20.222599594112854,
+          "building": 6.961184930801393,
+          "animalRoam": 17.298979039590037,
+          "travel": 0.5583989362567442,
+          "runtimeKeep": 7.889140588936165,
+          "runtimeRoute": 0.25601605047263415,
+          "critterHome": 7.68962321822484,
+          "actualAnimalBodies": 16.906892639220494,
+          "movingAnimals": 44.168984510394345,
+          "movingOrbits": 44.38037115153297,
+          "puppyReturn": 50.02472943766573,
+          "foxBody": 71.21918794624098,
+          "decor": 2.3268593310472108,
+          "wheat": 27.875000000000004,
+          "field": 2.2000000000000006,
+          "tractorBody": 0.4275994872597796
+        }
+      },
+      {
+        "p": [
+          29,
+          29.2,
+          0,
+          1
+        ],
+        "gaps": {
+          "board": 7.618347603814929,
+          "road": 4.768347603814928,
+          "fence": 3.1683476038149285,
+          "workPad": 9.068347603814928,
+          "pole": 13.840610044649177,
+          "toy": 18.965833840176284,
+          "building": 8.461184930801393,
+          "animalRoam": 18.686088183078386,
+          "travel": 1.1888344240343833,
+          "runtimeKeep": 9.47074447740074,
+          "runtimeRoute": 0.8676635317436923,
+          "critterHome": 9.51852592320409,
+          "actualAnimalBodies": 19.234677570462175,
+          "movingAnimals": 43.68009311755546,
+          "movingOrbits": 45.73471769859322,
+          "puppyReturn": 50.19897994077608,
+          "foxBody": 70.86869903530024,
+          "decor": 2.6260466941306957,
+          "wheat": 26.375000000000004,
+          "field": 1.2683476038149286,
+          "tractorBody": 1.0406245619610042
+        }
+      },
+      {
+        "p": [
+          28.25,
+          30,
+          0,
+          0.58
+        ],
+        "gaps": {
+          "board": 6.999641610212656,
+          "road": 4.149641610212655,
+          "fence": 2.549641610212656,
+          "workPad": 10.049641610212657,
+          "pole": 14.75393495340967,
+          "toy": 18.716568585121337,
+          "building": 9.505184930801393,
+          "animalRoam": 19.679037515542607,
+          "travel": 0.4401136610273352,
+          "runtimeKeep": 10.544099205958657,
+          "runtimeRoute": 0.08447209401428406,
+          "critterHome": 10.74027395868518,
+          "actualAnimalBodies": 20.63191176719351,
+          "movingAnimals": 43.46337156836448,
+          "movingOrbits": 46.584516133747194,
+          "puppyReturn": 50.586800675427774,
+          "foxBody": 71.00784369290086,
+          "decor": 2.3127220790560656,
+          "wheat": 25.919000000000004,
+          "field": 0.649641610212656,
+          "tractorBody": 0.2935461996699161
+        }
+      },
+      {
+        "p": [
+          29.75,
+          30,
+          0,
+          0.58
+        ],
+        "gaps": {
+          "board": 6.999641610212656,
+          "road": 4.149641610212655,
+          "fence": 2.549641610212656,
+          "workPad": 10.049641610212657,
+          "pole": 14.990153358554425,
+          "toy": 20.180192167776358,
+          "building": 8.005184930801393,
+          "animalRoam": 19.973089399248924,
+          "travel": 0.4401136610273343,
+          "runtimeKeep": 10.62715812406358,
+          "runtimeRoute": 0.08447209401428583,
+          "critterHome": 10.625417960286116,
+          "actualAnimalBodies": 19.817694480516504,
+          "movingAnimals": 44.93833825054829,
+          "movingOrbits": 46.941938226096234,
+          "puppyReturn": 51.630792418653215,
+          "foxBody": 72.27407637830817,
+          "decor": 2.1683074092200942,
+          "wheat": 27.419000000000004,
+          "field": 0.649641610212656,
+          "tractorBody": 0.293545781589814
+        }
+      }
+    ],
+    "before": 18,
+    "after": 26,
+    "selected": {
+      "scale": 0.82,
+      "phaseX": "per-row-best-of-six",
+      "phaseZ": 0.6666666666666666,
+      "count": 26,
+      "footprintArea": 21.12969558298459,
+      "estimatedSceneShadowDelta": 117348,
+      "items": [
+        [
+          27.817,
+          24.024,
+          0,
+          0.82
+        ],
+        [
+          27.817,
+          24.767,
+          0,
+          0.82
+        ],
+        [
+          27.226,
+          25.509,
+          0,
+          0.82
+        ],
+        [
+          28.409,
+          25.509,
+          0,
+          0.82
+        ],
+        [
+          29.592,
+          25.509,
+          0,
+          0.82
+        ],
+        [
+          30.775,
+          25.509,
+          0,
+          0.82
+        ],
+        [
+          27.226,
+          26.252,
+          0,
+          0.82
+        ],
+        [
+          28.409,
+          26.252,
+          0,
+          0.82
+        ],
+        [
+          29.592,
+          26.252,
+          0,
+          0.82
+        ],
+        [
+          30.775,
+          26.252,
+          0,
+          0.82
+        ],
+        [
+          27.226,
+          26.995,
+          0,
+          0.82
+        ],
+        [
+          28.409,
+          26.995,
+          0,
+          0.82
+        ],
+        [
+          29.592,
+          26.995,
+          0,
+          0.82
+        ],
+        [
+          30.775,
+          26.995,
+          0,
+          0.82
+        ],
+        [
+          27.226,
+          27.738,
+          0,
+          0.82
+        ],
+        [
+          28.409,
+          27.738,
+          0,
+          0.82
+        ],
+        [
+          29.592,
+          27.738,
+          0,
+          0.82
+        ],
+        [
+          30.775,
+          27.738,
+          0,
+          0.82
+        ],
+        [
+          27.817,
+          28.481,
+          0,
+          0.82
+        ],
+        [
+          29,
+          28.481,
+          0,
+          0.82
+        ],
+        [
+          30.183,
+          28.481,
+          0,
+          0.82
+        ],
+        [
+          27.817,
+          29.224,
+          0,
+          0.82
+        ],
+        [
+          29,
+          29.224,
+          0,
+          0.82
+        ],
+        [
+          30.183,
+          29.224,
+          0,
+          0.82
+        ],
+        [
+          28.409,
+          29.967,
+          0,
+          0.82
+        ],
+        [
+          29.592,
+          29.967,
+          0,
+          0.82
+        ]
+      ]
+    },
+    "variants": [
+      {
+        "scale": 1.04,
+        "phaseX": 0,
+        "phaseZ": 0,
+        "count": 11,
+        "footprintArea": 14.379757136784281,
+        "estimatedSceneShadowDelta": 29088
+      },
+      {
+        "scale": 1.04,
+        "phaseX": 0,
+        "phaseZ": 0.3333333333333333,
+        "count": 12,
+        "footprintArea": 15.687007785582848,
+        "estimatedSceneShadowDelta": 34972
+      },
+      {
+        "scale": 1.04,
+        "phaseX": 0,
+        "phaseZ": 0.6666666666666666,
+        "count": 12,
+        "footprintArea": 15.687007785582848,
+        "estimatedSceneShadowDelta": 34972
+      },
+      {
+        "scale": 1.04,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0,
+        "count": 10,
+        "footprintArea": 13.07250648798571,
+        "estimatedSceneShadowDelta": 23204
+      },
+      {
+        "scale": 1.04,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.3333333333333333,
+        "count": 10,
+        "footprintArea": 13.07250648798571,
+        "estimatedSceneShadowDelta": 23204
+      },
+      {
+        "scale": 1.04,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.6666666666666666,
+        "count": 9,
+        "footprintArea": 11.765255839187141,
+        "estimatedSceneShadowDelta": 17320
+      },
+      {
+        "scale": 1.04,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0,
+        "count": 10,
+        "footprintArea": 13.07250648798571,
+        "estimatedSceneShadowDelta": 23204
+      },
+      {
+        "scale": 1.04,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.3333333333333333,
+        "count": 9,
+        "footprintArea": 11.765255839187141,
+        "estimatedSceneShadowDelta": 17320
+      },
+      {
+        "scale": 1.04,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.6666666666666666,
+        "count": 9,
+        "footprintArea": 11.765255839187141,
+        "estimatedSceneShadowDelta": 17320
+      },
+      {
+        "scale": 1,
+        "phaseX": 0,
+        "phaseZ": 0,
+        "count": 15,
+        "footprintArea": 18.12940063977308,
+        "estimatedSceneShadowDelta": 52624
+      },
+      {
+        "scale": 1,
+        "phaseX": 0,
+        "phaseZ": 0.3333333333333333,
+        "count": 14,
+        "footprintArea": 16.920773930454875,
+        "estimatedSceneShadowDelta": 46740
+      },
+      {
+        "scale": 1,
+        "phaseX": 0,
+        "phaseZ": 0.6666666666666666,
+        "count": 14,
+        "footprintArea": 16.920773930454875,
+        "estimatedSceneShadowDelta": 46740
+      },
+      {
+        "scale": 1,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0,
+        "count": 10,
+        "footprintArea": 12.086267093182054,
+        "estimatedSceneShadowDelta": 23204
+      },
+      {
+        "scale": 1,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.3333333333333333,
+        "count": 10,
+        "footprintArea": 12.086267093182054,
+        "estimatedSceneShadowDelta": 23204
+      },
+      {
+        "scale": 1,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.6666666666666666,
+        "count": 10,
+        "footprintArea": 12.086267093182054,
+        "estimatedSceneShadowDelta": 23204
+      },
+      {
+        "scale": 1,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0,
+        "count": 10,
+        "footprintArea": 12.086267093182054,
+        "estimatedSceneShadowDelta": 23204
+      },
+      {
+        "scale": 1,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.3333333333333333,
+        "count": 9,
+        "footprintArea": 10.877640383863849,
+        "estimatedSceneShadowDelta": 17320
+      },
+      {
+        "scale": 1,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.6666666666666666,
+        "count": 10,
+        "footprintArea": 12.086267093182054,
+        "estimatedSceneShadowDelta": 23204
+      },
+      {
+        "scale": 0.94,
+        "phaseX": 0,
+        "phaseZ": 0,
+        "count": 15,
+        "footprintArea": 16.019138405303494,
+        "estimatedSceneShadowDelta": 52624
+      },
+      {
+        "scale": 0.94,
+        "phaseX": 0,
+        "phaseZ": 0.3333333333333333,
+        "count": 15,
+        "footprintArea": 16.019138405303494,
+        "estimatedSceneShadowDelta": 52624
+      },
+      {
+        "scale": 0.94,
+        "phaseX": 0,
+        "phaseZ": 0.6666666666666666,
+        "count": 17,
+        "footprintArea": 18.155023526010623,
+        "estimatedSceneShadowDelta": 64392
+      },
+      {
+        "scale": 0.94,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0,
+        "count": 14,
+        "footprintArea": 14.951195844949925,
+        "estimatedSceneShadowDelta": 46740
+      },
+      {
+        "scale": 0.94,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.3333333333333333,
+        "count": 13,
+        "footprintArea": 13.883253284596359,
+        "estimatedSceneShadowDelta": 40856
+      },
+      {
+        "scale": 0.94,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.6666666666666666,
+        "count": 12,
+        "footprintArea": 12.815310724242792,
+        "estimatedSceneShadowDelta": 34972
+      },
+      {
+        "scale": 0.94,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0,
+        "count": 14,
+        "footprintArea": 14.951195844949925,
+        "estimatedSceneShadowDelta": 46740
+      },
+      {
+        "scale": 0.94,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.3333333333333333,
+        "count": 12,
+        "footprintArea": 12.815310724242792,
+        "estimatedSceneShadowDelta": 34972
+      },
+      {
+        "scale": 0.94,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.6666666666666666,
+        "count": 12,
+        "footprintArea": 12.815310724242792,
+        "estimatedSceneShadowDelta": 34972
+      },
+      {
+        "scale": 0.88,
+        "phaseX": 0,
+        "phaseZ": 0,
+        "count": 18,
+        "footprintArea": 16.84728942652833,
+        "estimatedSceneShadowDelta": 70276
+      },
+      {
+        "scale": 0.88,
+        "phaseX": 0,
+        "phaseZ": 0.3333333333333333,
+        "count": 17,
+        "footprintArea": 15.911328902832306,
+        "estimatedSceneShadowDelta": 64392
+      },
+      {
+        "scale": 0.88,
+        "phaseX": 0,
+        "phaseZ": 0.6666666666666666,
+        "count": 17,
+        "footprintArea": 15.911328902832306,
+        "estimatedSceneShadowDelta": 64392
+      },
+      {
+        "scale": 0.88,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0,
+        "count": 16,
+        "footprintArea": 14.97536837913629,
+        "estimatedSceneShadowDelta": 58508
+      },
+      {
+        "scale": 0.88,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.3333333333333333,
+        "count": 16,
+        "footprintArea": 14.97536837913629,
+        "estimatedSceneShadowDelta": 58508
+      },
+      {
+        "scale": 0.88,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.6666666666666666,
+        "count": 16,
+        "footprintArea": 14.97536837913629,
+        "estimatedSceneShadowDelta": 58508
+      },
+      {
+        "scale": 0.88,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0,
+        "count": 15,
+        "footprintArea": 14.039407855440274,
+        "estimatedSceneShadowDelta": 52624
+      },
+      {
+        "scale": 0.88,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.3333333333333333,
+        "count": 16,
+        "footprintArea": 14.97536837913629,
+        "estimatedSceneShadowDelta": 58508
+      },
+      {
+        "scale": 0.88,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.6666666666666666,
+        "count": 15,
+        "footprintArea": 14.039407855440274,
+        "estimatedSceneShadowDelta": 52624
+      },
+      {
+        "scale": 0.82,
+        "phaseX": 0,
+        "phaseZ": 0,
+        "count": 19,
+        "footprintArea": 15.440931387565662,
+        "estimatedSceneShadowDelta": 76160
+      },
+      {
+        "scale": 0.82,
+        "phaseX": 0,
+        "phaseZ": 0.3333333333333333,
+        "count": 20,
+        "footprintArea": 16.253611986911224,
+        "estimatedSceneShadowDelta": 82044
+      },
+      {
+        "scale": 0.82,
+        "phaseX": 0,
+        "phaseZ": 0.6666666666666666,
+        "count": 21,
+        "footprintArea": 17.066292586256782,
+        "estimatedSceneShadowDelta": 87928
+      },
+      {
+        "scale": 0.82,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0,
+        "count": 17,
+        "footprintArea": 13.815570188874538,
+        "estimatedSceneShadowDelta": 64392
+      },
+      {
+        "scale": 0.82,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.3333333333333333,
+        "count": 18,
+        "footprintArea": 14.628250788220102,
+        "estimatedSceneShadowDelta": 70276
+      },
+      {
+        "scale": 0.82,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.6666666666666666,
+        "count": 18,
+        "footprintArea": 14.628250788220102,
+        "estimatedSceneShadowDelta": 70276
+      },
+      {
+        "scale": 0.82,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0,
+        "count": 17,
+        "footprintArea": 13.815570188874538,
+        "estimatedSceneShadowDelta": 64392
+      },
+      {
+        "scale": 0.82,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.3333333333333333,
+        "count": 19,
+        "footprintArea": 15.440931387565662,
+        "estimatedSceneShadowDelta": 76160
+      },
+      {
+        "scale": 0.82,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.6666666666666666,
+        "count": 19,
+        "footprintArea": 15.440931387565662,
+        "estimatedSceneShadowDelta": 76160
+      },
+      {
+        "scale": 0.76,
+        "phaseX": 0,
+        "phaseZ": 0,
+        "count": 23,
+        "footprintArea": 16.056364107950493,
+        "estimatedSceneShadowDelta": 99696
+      },
+      {
+        "scale": 0.76,
+        "phaseX": 0,
+        "phaseZ": 0.3333333333333333,
+        "count": 24,
+        "footprintArea": 16.754466895252687,
+        "estimatedSceneShadowDelta": 105580
+      },
+      {
+        "scale": 0.76,
+        "phaseX": 0,
+        "phaseZ": 0.6666666666666666,
+        "count": 21,
+        "footprintArea": 14.660158533346102,
+        "estimatedSceneShadowDelta": 87928
+      },
+      {
+        "scale": 0.76,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0,
+        "count": 26,
+        "footprintArea": 18.15067246985708,
+        "estimatedSceneShadowDelta": 117348
+      },
+      {
+        "scale": 0.76,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.3333333333333333,
+        "count": 25,
+        "footprintArea": 17.452569682554884,
+        "estimatedSceneShadowDelta": 111464
+      },
+      {
+        "scale": 0.76,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.6666666666666666,
+        "count": 24,
+        "footprintArea": 16.754466895252687,
+        "estimatedSceneShadowDelta": 105580
+      },
+      {
+        "scale": 0.76,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0,
+        "count": 27,
+        "footprintArea": 18.848775257159275,
+        "estimatedSceneShadowDelta": 123232
+      },
+      {
+        "scale": 0.76,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.3333333333333333,
+        "count": 25,
+        "footprintArea": 17.452569682554884,
+        "estimatedSceneShadowDelta": 111464
+      },
+      {
+        "scale": 0.76,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.6666666666666666,
+        "count": 25,
+        "footprintArea": 17.452569682554884,
+        "estimatedSceneShadowDelta": 111464
+      },
+      {
+        "scale": 0.7,
+        "phaseX": 0,
+        "phaseZ": 0,
+        "count": 27,
+        "footprintArea": 15.990131364279852,
+        "estimatedSceneShadowDelta": 123232
+      },
+      {
+        "scale": 0.7,
+        "phaseX": 0,
+        "phaseZ": 0.3333333333333333,
+        "count": 26,
+        "footprintArea": 15.397904276713934,
+        "estimatedSceneShadowDelta": 117348
+      },
+      {
+        "scale": 0.7,
+        "phaseX": 0,
+        "phaseZ": 0.6666666666666666,
+        "count": 27,
+        "footprintArea": 15.990131364279852,
+        "estimatedSceneShadowDelta": 123232
+      },
+      {
+        "scale": 0.7,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0,
+        "count": 30,
+        "footprintArea": 17.766812626977618,
+        "estimatedSceneShadowDelta": 140884
+      },
+      {
+        "scale": 0.7,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.3333333333333333,
+        "count": 28,
+        "footprintArea": 16.582358451845774,
+        "estimatedSceneShadowDelta": 129116
+      },
+      {
+        "scale": 0.7,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.6666666666666666,
+        "count": 28,
+        "footprintArea": 16.582358451845774,
+        "estimatedSceneShadowDelta": 129116
+      },
+      {
+        "scale": 0.7,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0,
+        "count": 30,
+        "footprintArea": 17.766812626977618,
+        "estimatedSceneShadowDelta": 140884
+      },
+      {
+        "scale": 0.7,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.3333333333333333,
+        "count": 29,
+        "footprintArea": 17.174585539411694,
+        "estimatedSceneShadowDelta": 135000
+      },
+      {
+        "scale": 0.7,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.6666666666666666,
+        "count": 30,
+        "footprintArea": 17.766812626977618,
+        "estimatedSceneShadowDelta": 140884
+      },
+      {
+        "scale": 0.64,
+        "phaseX": 0,
+        "phaseZ": 0,
+        "count": 37,
+        "footprintArea": 18.316979505059265,
+        "estimatedSceneShadowDelta": 182072
+      },
+      {
+        "scale": 0.64,
+        "phaseX": 0,
+        "phaseZ": 0.3333333333333333,
+        "count": 38,
+        "footprintArea": 18.812033005196003,
+        "estimatedSceneShadowDelta": 187956
+      },
+      {
+        "scale": 0.64,
+        "phaseX": 0,
+        "phaseZ": 0.6666666666666666,
+        "count": 40,
+        "footprintArea": 19.80214000546948,
+        "estimatedSceneShadowDelta": 199724
+      },
+      {
+        "scale": 0.64,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0,
+        "count": 35,
+        "footprintArea": 17.32687250478579,
+        "estimatedSceneShadowDelta": 170304
+      },
+      {
+        "scale": 0.64,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.3333333333333333,
+        "count": 33,
+        "footprintArea": 16.336765504512318,
+        "estimatedSceneShadowDelta": 158536
+      },
+      {
+        "scale": 0.64,
+        "phaseX": 0.3333333333333333,
+        "phaseZ": 0.6666666666666666,
+        "count": 34,
+        "footprintArea": 16.831819004649052,
+        "estimatedSceneShadowDelta": 164420
+      },
+      {
+        "scale": 0.64,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0,
+        "count": 36,
+        "footprintArea": 17.82192600492253,
+        "estimatedSceneShadowDelta": 176188
+      },
+      {
+        "scale": 0.64,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.3333333333333333,
+        "count": 33,
+        "footprintArea": 16.336765504512318,
+        "estimatedSceneShadowDelta": 158536
+      },
+      {
+        "scale": 0.64,
+        "phaseX": 0.6666666666666666,
+        "phaseZ": 0.6666666666666666,
+        "count": 34,
+        "footprintArea": 16.831819004649052,
+        "estimatedSceneShadowDelta": 164420
+      },
+      {
+        "scale": 1.04,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0,
+        "count": 14,
+        "footprintArea": 18.301509083179994,
+        "estimatedSceneShadowDelta": 46740
+      },
+      {
+        "scale": 1.04,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.3333333333333333,
+        "count": 14,
+        "footprintArea": 18.301509083179994,
+        "estimatedSceneShadowDelta": 46740
+      },
+      {
+        "scale": 1.04,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.6666666666666666,
+        "count": 14,
+        "footprintArea": 18.301509083179994,
+        "estimatedSceneShadowDelta": 46740
+      },
+      {
+        "scale": 1,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0,
+        "count": 16,
+        "footprintArea": 19.338027349091284,
+        "estimatedSceneShadowDelta": 58508
+      },
+      {
+        "scale": 1,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.3333333333333333,
+        "count": 16,
+        "footprintArea": 19.338027349091284,
+        "estimatedSceneShadowDelta": 58508
+      },
+      {
+        "scale": 1,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.6666666666666666,
+        "count": 15,
+        "footprintArea": 18.12940063977308,
+        "estimatedSceneShadowDelta": 52624
+      },
+      {
+        "scale": 0.94,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0,
+        "count": 17,
+        "footprintArea": 18.155023526010623,
+        "estimatedSceneShadowDelta": 64392
+      },
+      {
+        "scale": 0.94,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.3333333333333333,
+        "count": 16,
+        "footprintArea": 17.08708096565706,
+        "estimatedSceneShadowDelta": 58508
+      },
+      {
+        "scale": 0.94,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.6666666666666666,
+        "count": 18,
+        "footprintArea": 19.222966086364192,
+        "estimatedSceneShadowDelta": 70276
+      },
+      {
+        "scale": 0.88,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0,
+        "count": 20,
+        "footprintArea": 18.719210473920363,
+        "estimatedSceneShadowDelta": 82044
+      },
+      {
+        "scale": 0.88,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.3333333333333333,
+        "count": 18,
+        "footprintArea": 16.84728942652833,
+        "estimatedSceneShadowDelta": 70276
+      },
+      {
+        "scale": 0.88,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.6666666666666666,
+        "count": 18,
+        "footprintArea": 16.84728942652833,
+        "estimatedSceneShadowDelta": 70276
+      },
+      {
+        "scale": 0.82,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0,
+        "count": 23,
+        "footprintArea": 18.691653784947906,
+        "estimatedSceneShadowDelta": 99696
+      },
+      {
+        "scale": 0.82,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.3333333333333333,
+        "count": 25,
+        "footprintArea": 20.31701498363903,
+        "estimatedSceneShadowDelta": 111464
+      },
+      {
+        "scale": 0.82,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.6666666666666666,
+        "count": 26,
+        "footprintArea": 21.12969558298459,
+        "estimatedSceneShadowDelta": 117348
+      },
+      {
+        "scale": 0.76,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0,
+        "count": 29,
+        "footprintArea": 20.244980831763666,
+        "estimatedSceneShadowDelta": 135000
+      },
+      {
+        "scale": 0.76,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.3333333333333333,
+        "count": 29,
+        "footprintArea": 20.244980831763666,
+        "estimatedSceneShadowDelta": 135000
+      },
+      {
+        "scale": 0.76,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.6666666666666666,
+        "count": 27,
+        "footprintArea": 18.848775257159275,
+        "estimatedSceneShadowDelta": 123232
+      },
+      {
+        "scale": 0.7,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0,
+        "count": 33,
+        "footprintArea": 19.543493889675375,
+        "estimatedSceneShadowDelta": 158536
+      },
+      {
+        "scale": 0.7,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.3333333333333333,
+        "count": 32,
+        "footprintArea": 18.95126680210946,
+        "estimatedSceneShadowDelta": 152652
+      },
+      {
+        "scale": 0.7,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.6666666666666666,
+        "count": 35,
+        "footprintArea": 20.72794806480722,
+        "estimatedSceneShadowDelta": 170304
+      },
+      {
+        "scale": 0.64,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0,
+        "count": 42,
+        "footprintArea": 20.792247005742947,
+        "estimatedSceneShadowDelta": 211492
+      },
+      {
+        "scale": 0.64,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.3333333333333333,
+        "count": 42,
+        "footprintArea": 20.792247005742947,
+        "estimatedSceneShadowDelta": 211492
+      },
+      {
+        "scale": 0.64,
+        "phaseX": "per-row-best-of-six",
+        "phaseZ": 0.6666666666666666,
+        "count": 41,
+        "footprintArea": 20.297193505606213,
+        "estimatedSceneShadowDelta": 205608
+      }
+    ],
+    "fieldArea": 95,
+    "beforeFootprintArea": 20.151191399120492,
+    "afterFootprintArea": 21.12969558298459,
+    "centerFeasibility": [
+      {
+        "scale": 0.64,
+        "tested": 2400,
+        "valid": 480,
+        "centerRegionAreaEstimate": 19.2,
+        "centerBounds": {
+          "x0": 27.09999999999999,
+          "z0": 23.699999999999992,
+          "x1": 30.899999999999977,
+          "z1": 30.29999999999997
+        },
+        "gridStep": 0.2
+      },
+      {
+        "scale": 0.82,
+        "tested": 2400,
+        "valid": 430,
+        "centerRegionAreaEstimate": 17.2,
+        "centerBounds": {
+          "x0": 27.09999999999999,
+          "z0": 23.89999999999999,
+          "x1": 30.899999999999977,
+          "z1": 30.09999999999997
+        },
+        "gridStep": 0.2
+      },
+      {
+        "scale": 1,
+        "tested": 2400,
+        "valid": 371,
+        "centerRegionAreaEstimate": 14.84,
+        "centerBounds": {
+          "x0": 27.29999999999999,
+          "z0": 24.29999999999999,
+          "x1": 30.699999999999978,
+          "z1": 29.89999999999997
+        },
+        "gridStep": 0.2
+      }
+    ],
+    "method": "Best total non-overlapping full-bounds area among 72 regular grids and 24 layouts allowing per-row lateral phase; candidate scales .64..1.04, phases 0/1/3/2/3, fixed spacing +.035. All reservations retained; not a proof of global optimum or pixel coverage."
+  },
+  "additionalTriangles": 89842,
+  "estimatedSceneShadowDelta": 117348
+}

@@ -1,0 +1,12 @@
+
+> electro-table@0.1.0 test
+> vitest run
+
+
+ RUN  v5.0.5 /Users/gusev/gameios/assets-src/farm-v3/interior-density-pass/.snapshot
+
+
+ Test Files  4 passed (4)
+      Tests  21 passed (21)
+   Start at  17:35:47
+   Duration  323ms (import 48%, transform 28%, worker 13%, tests 10%, environment 1%)

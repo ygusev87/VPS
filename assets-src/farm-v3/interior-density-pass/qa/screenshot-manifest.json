@@ -1,0 +1,1525 @@
+{
+  "method": "Native in-app browser screenshots. 17 wide task captures use getScreenshot (1280\u00d7720, complete 1180\u00d7660 game). Other captures use tab.screenshot({fullPage:false}) at 1280\u00d71024; PNG captures encoded to JPEG without resizing. fullPage is not used. Game starts at y=47.",
+  "screenshots": [
+    {
+      "file": "after-apiary-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "57481e25a421762f7e8cf3f0f5b283b72f23f1732714623ba96d52401037938d",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-apiary-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "3f672263f5573214df718bb7424e63e8866788c66dc15917532382539d5d1e4e",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-apiary-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "1215fbbe9a48f81c227572f751d1c1dbcd90c08f385d99d4bd000dfb644fb974",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-budget-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        820
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "557a90eae2c81a4fe07a3f978eb596d9402ff0b3de896a1582cc62169ec89b46",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-cowPen-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "0a7833660810e161f383dec233e76948f0555f0e80a2da12d3b28fdcacf14a03",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-cowPen-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "c88971e0db2c02726c4cfb0e6d2247ebdb6b57e1a543288eee8071f3c5453c97",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-cowPen-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "d406894a07d6e0a79c750b1f0b4ca90cbeefbf8642d9f9a2d9e1ff62ceed0259",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-field-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "6f8ba74d1ed765395ed1b3940354b2fd370b1178dbb6b140e7515bf8af77a6b5",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-field-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "fbae25fd31cf79722abf55d50acbada1b61182826c63f787754d4bb940665b59",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-field-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "306766dc4247fe76aa4935f61ce9173c4f311b20d907960281576a51608dd64c",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-horsePen-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "58bf0f22b5251d7c8d9cc4dec1df34b7f41d0b12515063c56e7b2429b2d4da92",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-horsePen-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "2e63d567b07fc1de5a461bc3e2cb40380bd64e7fdb366a6465842c5379cd121a",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-horsePen-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "d93e666b44c1c9df7e56cafcc8de559cd6c5b64d151aa825e687f2daff20396d",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-poultry-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "f676418c147cac197b73af9a3e715ae119b77643603b248425e75d5681ab6387",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-poultry-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "34b074e9fc3b16064f336306196e03d55dae76b836a74670b8c25adfdcb47eea",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-poultry-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "39ca4b785987f6dc4a5ccdd69bc76b74ccf7902e6abc1579a26a36ba13839c74",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-15-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "255fabc2102dff9fda9ba838e94bbf4e773d4eea067ecd8de2c9963673a940be",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-15-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "672fe46ef502f0c0c4d1340dc147f3da53dd90722dcdffc182939d4c1ff4ff47",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-15-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "7b86f764896372fa33a61aed6727ff6f56380f39890c9333d28cf46c9dda458a",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-beesAsk-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "6fdb0076b41a684c3ace5b6a08f21a7085be06502412c832b716c901cf7837e0",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-beesAsk-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "6b0e396eb5d1a74d984e0ca3fd2b4899911912e1f3c447bf4bb1ba84dbd50f70",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-beesAsk-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "c3e7a75a1c15cfdf471446d6cfef8393ae85750cafb6378aaa8df6cf8ce57321",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-cowHot-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "c742042b56db04a82f4be1044bb803eb4413785932a1732314bf6dbcb03016ec",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-cowHot-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "068ffe080eb08892907cf7c73d1af8d71794a58100ae238d9d8b997cbd46f69e",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-cowHot-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "8b0ea30b9a0d63b70b3b6dee5649433452e2d9c5e93076080dac3f7b05d8142f",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-cowSleepy-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "406ab8f7f90d44eab17d2a898dccbeb84ab4b699f40568def1b1d2d2cae6d2cc",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-cowSleepy-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "7edd71ac0d60b978bea6a597e398adb617ce1850b1ec92886c0c67bcf4dfc69a",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-cowSleepy-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "3e269431590a56596a0e678cc0a8966ba662659c3c0a7c9630584c2ff6f28862",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-eggsCold-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "1e25d972ed6617aa9fd8980c48217986424757315187d96b258c54451ad7ad09",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-eggsCold-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "f2476e6185d9f5e92d44c6110488800b6ffd23636edb7e52da46a672aa9cf720",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-eggsCold-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "773867ab0451022bbfa9d58ff4a232f537d1ee49071abe5e830f0322eded1746",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-foxTip-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "ca67915ac6e61e71c32d4b661e1990335c3266f08735d79d01820c1320d1322e",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-foxTip-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "f73f405a6ce9992cfbf239bf33f8c44fb9d5fdaac795943ea07c6893589fc8de",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-foxTip-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "3dbe147c17fc13a1d625ea0bdc090abee2b6a5d0e7d32122fa9ebada8c782e26",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-gateStuck-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "8b8de3d0b6c1bda4488afe5f16b81b27b540f2c41a30fd90405599c7191d384e",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-gateStuck-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "e4fa87f032cfdb792bd2363e1d0e4e1067cf12d0889d679f22a1b5e6404e8fc2",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-gateStuck-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "f6626cc936533552892baa843868dd6db6875372c823060cac65324664da1184",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-geeseDark-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "88e7d3669cbb9ddb84553a8ede99015b920f42c3c2f7407acd4a8ddcf781e715",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-geeseDark-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "6754f267b9f4a02720a228ef1ea38530bb0a8882c51e5957c659227d651b7e13",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-geeseDark-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "36b9eaa0d4aacf0e41a6f56210bea76bfc5633310e02a6a5a8223c839a125b89",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-goatsAsk-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "d345cd8fcb9d974b793fdd7beca18422a9658f6261f09563c36fa952bcc28da2",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-goatsAsk-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "a12731eb2d4e5fb22e49fb1c897c182b9aadcfeea7742529d634e4f27d6110b3",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-goatsAsk-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "41df82d1ec9bb199f0b4ee0eda8ccfb0e15a55714c2003d99952be092719b3df",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-henDark-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "e2933aa5922505be9a963504679420853962a5f8277b461980869db22cd1474f",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-henDark-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "ed257c8be84df813bebdbb126a4326ba13a71f585c077c1bc1a33a83f5f9c432",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-henDark-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "7947028d03d0b1656ade1be2bd11b19f223430fdeb7f2667c7c9ef2bc08ea95d",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-horseHot-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "18d986e9040068b41de73ffd0a11b9596241d715b3cc9331b78adcb14c26a0a6",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-horseHot-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "1e105eb0f3e8cc8d65539ca9d9df1aff771731e3c62e6bd2c4becefe6ac2cee6",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-horseHot-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "ee5fbb24174af5b4e3e127959b94613f410f7fe27d799500088726fd4457f548",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-kittenStuck-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "4b5404f97c7e069a7c82bf870313929f3885a971a70ab6a0729d10b3f9ec581d",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-kittenStuck-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "9a8dd24a9f5fc0ac10c4eb7013dcd80602dfac86a322da971f8dd2f333909042",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-kittenStuck-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "73cc90ec93859884d586dd8473f96f4ffd6d05edf098b39f4d81f6e2943f92ed",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-pigThirsty-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "13bccd151b82f4b51012504537326ad8196b4242af7f247dca052871677357cd",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-pigThirsty-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "6a75e115537e04b9a7ee2bacb4cf6b721f16900dc7411fc127018c2a0ecfecea",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-pigThirsty-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "2f47caf4d2fc50df39b09006ee423606ac2812f485c096970160e2927d584d3e",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-puppyAsk-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "93d552b4ac8160b519f831be4dcd44aecb49a05db75eafb77bc0167fc7acc74f",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-puppyAsk-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "a756f74436add83e8b9740ab556911f279b64471a9c2354d94426e635f37e54a",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-puppyAsk-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "43d580e909b5a9773532acc10af100f098d2e4434a1c5fd5b3c9c1a205fd1e17",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-rabbitCold-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "dfbb2e3f6843c05a9d83148bd5e6636047ec47a0d24e6c1eb57c36398e690c1a",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-rabbitCold-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "ff6769de5d1677addcc220204f40cbbeb208ffe312f46f156c5e3722f3ef696a",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-rabbitCold-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "968634f5828d85e73e8c5d23c669464f862eb57d28d8495820b9023f735c81ff",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-roosterAsk-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "002dc96781c785d57c59650e0f7b3f0e5a4c9cde434a320b87c986e7ce95f5d9",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-roosterAsk-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "6a1d1ffb62a229678e817a473c2ea25e66e1e2cd44f073c6e04b4de150025d8c",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-roosterAsk-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "10979466308980c85ddfef0fab3829825a8613878e2d04a134255de8d11f6331",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-sheepMill-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "c1d98e91f7d3da75104e3c8ca505d6e37bc5b03fe36ff199f96ce25ce1987dfa",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-sheepMill-1180.jpg",
+      "size": [
+        1280,
+        720
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "93d21030ef69d9be03946e4623ebf4f76385700999d82fefe63c9640d9c480e7",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-task-sheepMill-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "00109a034ff1d5e8a5b30ea8ef8534431f15ee3a8fd6cd5ecb2f87958cafe37f",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-westPens-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "54ccfa2b15a2b85979f755f47366cd081006f40d18b1a54f91e043ef9e876e29",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-westPens-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "204bf5a0e83a67402ac4dc0be4f8f13575ae40caf8c550187337271d58b5e616",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-westPens-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "6fdb0a021a95c1940bc5fcf197e69c3dae17562bd5624df1ae38421e5e935a4e",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-wide-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "a681809d298bbf25609ef12490d507cfc5df3470bf9f2aeb04d84662b3081527",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-wide-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "d03b08b9cf5c6f622cd6ee212d50377e7017fe7be147559ae512019a747ff449",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "after-wide-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "be161681fecb9af931cf3a19146fe9599eaa5a74c8faf2221556eda69f5c00a6",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-apiary-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "07a7541bd24ff16dabf899d1ded8b650077ec0338d38ea00ef54d6608bf944c7",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-apiary-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "f6ac206013353b6184e6d70f1efc749eccc98a9881e24ce59bca6a5bd56bfa88",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-apiary-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "2b73ef0880c97f80459aa80ec77e82ad75470408e88c312f5160ca05f9e04dad",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-budget-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        820
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "2ceb4947a62ba88994c6e6b06a5943c24febb5e33b0a48d59843816c4bbb1d5c",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-cowPen-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "03fc25881bcba96d72959f449499d78f3651cb58ba2a761fa990c2a8928f48b7",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-cowPen-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "37f7609e4c7caa25ea2d7352a8985259eeed3cd917c8c2553b1e2994c69597b7",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-cowPen-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "e1a6e8519db18c7c3a42fa9b6ad189ebee30f012468479e73c150a47083bd02a",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-field-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "aef9e2cf25d830e75a90262b1710cd2fb3e62217b2536cae35566530e887e54a",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-field-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "9f22498cc8a0084cccd5cc47b4b187b1c9177a6e91633b891202052bbcd2b7d0",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-field-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "d8ee71f00b8ebc7936ada280e952d8d8527e3a519af63146cf78012ec35ff479",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-horsePen-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "73bdd5ae2a92aa441829c099cc3d33cc8f7f3bee0eed196f6f27584b8c3d4142",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-horsePen-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "8c19606387e556dd947cf0d3f6f23e9e1fee88cd2063bf3e70c2aa1263421330",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-horsePen-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "072ef7d2be7b090fcbc61abfcfd4e76ad2a58b55c52585628eb3c7cde5521bab",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-poultry-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "85ba30118bfec13cc68b2dba24f00aecf45f1b68664a538c83d5b1b4de3cec0b",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-poultry-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "27f6af5248d825e03f3f83dc2bf8940a78de11e6919e472a491b80cfed7b52d2",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-poultry-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "79504293a704b443746c8de7b5e57d0a58ac0c7c338dfc5d7fb66a186483cbf8",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-westPens-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "ed99c906263b3d0a47de40044a3ba9ca4e08d49d34e538dedc2c92377ec14acd",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-westPens-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "a8c3f9c844fdcc4a91361b4ddf4b7ebaa0b0cf7cd43d02470a251fde0a9f0758",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-westPens-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "9d0d62d650ec944624ed7924b5976dfb468bd8c9a5a809f0431150e91f92421e",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-wide-1024.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1024,
+        768
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "396f718c74c2b476e5be0dec080e8a790082c000853fd56f41ddd6011fb76e5f",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-wide-1180.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        1180,
+        660
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "b8c2c8a4b31b3f158d020b35c48ae278513600d721e28fdfdb84599d57384044",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    },
+    {
+      "file": "before-wide-390.jpg",
+      "size": [
+        1280,
+        1024
+      ],
+      "gameViewport": [
+        390,
+        844
+      ],
+      "sourceFormat": "JPEG",
+      "format": "JPEG",
+      "completeGameViewport": true,
+      "sha256": "01acd4fa599c44955a06696260711194371a00bfaa70cf1779401c602b3461c7",
+      "candidateDecorSha256": "afeefd0faa6684364e068e15c30be8e272b958ccf6dd845395be4247d0585714"
+    }
+  ]
+}
