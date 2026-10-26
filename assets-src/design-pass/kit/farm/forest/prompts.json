@@ -1,0 +1,99 @@
+[
+  {
+    "name": "tree-oak-card-a",
+    "prompt": "Use case: background-extraction / stylized painted game sprite. Edit the supplied approved farm concept into ONE isolated tree cutout: retain/repaint one of its round deciduous trees in the same painterly children's farm style, remove the entire map and ALL other content. Output an isolated sprite on REAL TRANSPARENT background, 1024x1024 square canvas. It must look like a tree from the supplied farm, not a photoreal tree and not low-poly polygon geometry. Camera: view down from about52 degrees above horizon, the same3/4game camera, northup and viewer from south. Foliage should be big soft overlapping rounded masses with small restrained painted leaf suggestions; NO black contours or noisy individually detailed leaves. Soft light from bottom-left, gentle canopy shading toward top-right. A short warm brown trunk visible at the bottom, its ground contact at bottom center almost touching bottomedge with only1% safety margin, whole canopy uncropped withinimage, about90%width and96%height. No roots sticking out, grass mound, pedestal, pot, shadow on ground, terrain, falling leaves, text, border or other tree. One complete tree. All cast ground shadow must be absent; only self-shading on foliage and trunk. Transparent margins on sides/top. Do not output the whole farm scene. Choose a broad lush mature oak with a warm emerald/chartreuse round crown, several distinct large rounded lobes, welcoming toy-like fullness.",
+    "tool": "image_gen (built-in)",
+    "referencedImages": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png"
+    ],
+    "transparentBackground": true,
+    "width": 1024,
+    "height": 1024,
+    "anchorBottom": true,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-3f0a5851-f2ae-45ab-b5f0-fdf10c4cfbc2.png",
+    "source": "../sources/tree-oak-card-a.png"
+  },
+  {
+    "name": "tree-oak-card-b",
+    "prompt": "Use case: background-extraction / stylized painted game sprite. Edit the supplied approved farm concept into ONE isolated tree cutout: retain/repaint one of its round deciduous trees in the same painterly children's farm style, remove the entire map and ALL other content. Output an isolated sprite on REAL TRANSPARENT background, 1024x1024 square canvas. It must look like a tree from the supplied farm, not a photoreal tree and not low-poly polygon geometry. Camera: view down from about52 degrees above horizon, the same3/4game camera, northup and viewer from south. Foliage should be big soft overlapping rounded masses with small restrained painted leaf suggestions; NO black contours or noisy individually detailed leaves. Soft light from bottom-left, gentle canopy shading toward top-right. A short warm brown trunk visible at the bottom, its ground contact at bottom center almost touching bottomedge with only1% safety margin, whole canopy uncropped withinimage, about90%width and96%height. No roots sticking out, grass mound, pedestal, pot, shadow on ground, terrain, falling leaves, text, border or other tree. One complete tree. All cast ground shadow must be absent; only self-shading on foliage and trunk. Transparent margins on sides/top. Do not output the whole farm scene. Choose a slightly taller compact round deciduous tree with a soft asymmetric crown: left lobe slightly lower, fresh apple-green highlights, keep palette compatible with other farm trees.",
+    "tool": "image_gen (built-in)",
+    "referencedImages": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png"
+    ],
+    "transparentBackground": true,
+    "width": 1024,
+    "height": 1024,
+    "anchorBottom": true,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-2eb3127e-31b6-4100-af0e-7626484cfb6f.png",
+    "source": "../sources/tree-oak-card-b.png"
+  },
+  {
+    "name": "tree-oak-card-c",
+    "prompt": "Use case: background-extraction / stylized painted game sprite. Edit the supplied approved farm concept into ONE isolated tree cutout: retain/repaint one of its round deciduous trees in the same painterly children's farm style, remove the entire map and ALL other content. Output an isolated sprite on REAL TRANSPARENT background, 1024x1024 square canvas. It must look like a tree from the supplied farm, not a photoreal tree and not low-poly polygon geometry. Camera: view down from about52 degrees above horizon, the same3/4game camera, northup and viewer from south. Foliage should be big soft overlapping rounded masses with small restrained painted leaf suggestions; NO black contours or noisy individually detailed leaves. Soft light from bottom-left, gentle canopy shading toward top-right. A short warm brown trunk visible at the bottom, its ground contact at bottom center almost touching bottomedge with only1% safety margin, whole canopy uncropped withinimage, about90%width and96%height. No roots sticking out, grass mound, pedestal, pot, shadow on ground, terrain, falling leaves, text, border or other tree. One complete tree. All cast ground shadow must be absent; only self-shading on foliage and trunk. Transparent margins on sides/top. Do not output the whole farm scene. Choose a broad slightly squat round deciduous tree with a gently scalloped crown and a small visible trunk fork, slightly deeper leafy green shade with warm sunlit tips.",
+    "tool": "image_gen (built-in)",
+    "referencedImages": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png"
+    ],
+    "transparentBackground": true,
+    "width": 1024,
+    "height": 1024,
+    "anchorBottom": true,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-aac6d533-3cf6-4141-a46f-75e6f934e14e.png",
+    "source": "../sources/tree-oak-card-c.png"
+  },
+  {
+    "name": "tree-pine-card-a",
+    "prompt": "Use case: background-extraction / painted game sprite. Edit the provided farm concept by isolating and repainting ONE of its soft tiered evergreen conifers, deleting the entire map and all other objects. One whole tree on REAL TRANSPARENT background, square1024x1024 canvas. Same warm hand-painted mobile farm style, soft rounded stylised needle masses, no black outlines, no polygon facets, no photoreal leaf noise. View from the farm camera:3/4downward about52degrees above horizon, viewer from south. Full tree fits insidecanvas: softly rounded cone with several overlapping tiers, crown width about70%of complete tree height, crown top at3%canvas and short trunk ground contact at98%height bottom-center. Trunk small warm brown, no exposed roots. Warm light lower-left and soft shade upper-right. No ground/cast shadow, pedestal, snow, ornaments, berries, labels, border or other trees. Keep the tree uncropped, clean alpha margins. Variant A: full deep emerald conifer with4softly rounded tiers, warm fresh green lit edges.",
+    "tool": "image_gen (built-in)",
+    "referencedImages": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png"
+    ],
+    "transparentBackground": true,
+    "width": 1024,
+    "height": 1024,
+    "anchorBottom": true,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-647d1a99-a230-4db9-bcbd-285cc12a87f2.png",
+    "source": "../sources/tree-pine-card-a.png"
+  },
+  {
+    "name": "tree-pine-card-b",
+    "prompt": "Use case: background-extraction / painted game sprite. Edit the provided farm concept by isolating and repainting ONE of its soft tiered evergreen conifers, deleting the entire map and all other objects. One whole tree on REAL TRANSPARENT background, square1024x1024 canvas. Same warm hand-painted mobile farm style, soft rounded stylised needle masses, no black outlines, no polygon facets, no photoreal leaf noise. View from the farm camera:3/4downward about52degrees above horizon, viewer from south. Full tree fits insidecanvas: softly rounded cone with several overlapping tiers, crown width about70%of complete tree height, crown top at3%canvas and short trunk ground contact at98%height bottom-center. Trunk small warm brown, no exposed roots. Warm light lower-left and soft shade upper-right. No ground/cast shadow, pedestal, snow, ornaments, berries, labels, border or other trees. Keep the tree uncropped, clean alpha margins. Variant B: slightly slimmer medium-green conifer,5uneven fluffy tiers, gently curved organic tip, same scale and light.",
+    "tool": "image_gen (built-in)",
+    "referencedImages": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png"
+    ],
+    "transparentBackground": true,
+    "width": 1024,
+    "height": 1024,
+    "anchorBottom": true,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-d31b181b-9269-4a46-9cea-593afec3a3c1.png",
+    "source": "../sources/tree-pine-card-b.png"
+  },
+  {
+    "name": "blob-shadow",
+    "prompt": "Use case: stylized-concept. Game shadow decal512x512 on REAL TRANSPARENT background. ONE very soft flat diffuse oval contact shadow, viewed straight down, centered slightly toward upper-right. Shadow itself is neutral charcoal black with faint green undertone and translucent opacity: center about30percent opaque, broad soft smooth feather out to fullytransparent all edges. Oval about76percentwidth by60percentheight, subtly organic, no sharp outline, no visible object, no background, no white shape, no gradient rectangle, no ground texture, no text or border. Reusable ambient shadow to place underneath painted tree cards on greengrass. It must contain only the translucent dark shadow and transparent surroundings.",
+    "tool": "image_gen (built-in)",
+    "referencedImages": [],
+    "transparentBackground": true,
+    "width": 512,
+    "height": 512,
+    "anchorBottom": false,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-491dac6f-8608-452e-aa2d-5c146a1d2091.png",
+    "source": "../sources/blob-shadow.png"
+  },
+  {
+    "name": "path-strip-c",
+    "prompt": "Use case: precise-object-edit. Image1 is target farm path strip; image2 is farm style reference. Create variant C of the target path: keep its warm sandy palette, vertical centerline, flat top-down orthographic camera and soft transparent grassy sides. Increase READABLE small-scale contrast for a distant mobile game camera: scattered tiny rounded gray-beige pebbles in small clusters, a few soft worn foot scuffs and two intermittent shallow wheel-worn streaks, gently darker brown soil immediately inside both grass verges. Avoid large boulders or deep trenches. Central sand remains bright honey-beige so roads remain welcoming and readable. Keep approx64%width opaque path and18%feathered alpha sides each. Make it a continuous endless strip through top/bottom with matching colors and verge width: no endcaps. Aim512x2048 aspect1:4; exactly top-down, no height or castshadow. Keep native transparentbackground, no rectangular backing/checkerboard, no text. This changes texture contrast and tiny details only, not the path structure.",
+    "tool": "image_gen (built-in)",
+    "referencedImages": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/farm/sources/path-strip-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png"
+    ],
+    "transparentBackground": true,
+    "width": 512,
+    "height": 2048,
+    "anchorBottom": false,
+    "generatedSource": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-324f948c-b16f-46db-9901-1427469f8113.png",
+    "source": "../sources/path-strip-c.png"
+  }
+]

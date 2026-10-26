@@ -7,5 +7,19 @@
   "path-strip-b",
   "path-patch-a",
   "path-patch-b",
-  "path-patch-c"
+  "path-patch-c",
+  "wheat-ground",
+  "wheat-card-a",
+  "wheat-card-b",
+  "wheat-card-c",
+  "bed-soil-a",
+  "bed-soil-b",
+  "ruts-strip",
+  "tree-oak-card-a",
+  "tree-oak-card-b",
+  "tree-oak-card-c",
+  "tree-pine-card-a",
+  "tree-pine-card-b",
+  "blob-shadow",
+  "path-strip-c"
 ]

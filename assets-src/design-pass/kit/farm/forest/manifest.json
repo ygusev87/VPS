@@ -1,0 +1,491 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "main: five tree cards, soft shadow, contrasted path C",
+  "images": [
+    {
+      "name": "tree-oak-card-a",
+      "source": "../sources/tree-oak-card-a.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "54edda242246cd4de5fa214befeeb94aee3d23c811f8ed6e831975bd1ef3b554",
+      "output": "public/textures/kit/farm/tree-oak-card-a.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 157618,
+      "sha256": "6b0f00d209164fb252173517c66579075f10046e504d1432aa63e994ca8c1c44",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "sourceAnchor": {
+        "threshold": 16,
+        "bounds": [
+          10,
+          24,
+          1243,
+          1245
+        ],
+        "removedBottomRows": 8
+      },
+      "alphaBounds": {
+        "minX": 8,
+        "minY": 26,
+        "maxX": 1015,
+        "maxY": 1023
+      },
+      "contactMarginBottom": 0,
+      "packaging": "trim empty bottom by alpha16, contain south; sRGB; WebP85/alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "mean": 160.31732749938965,
+        "transparentFraction": 0.35195446014404297,
+        "partialFraction": 0.6469945907592773,
+        "opaqueFraction": 0.0010509490966796875,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0478515625
+          },
+          "right": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0224609375
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 210,
+            "mean": 3.591796875
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.027941176470588216,
+        "y": 0.6692159415849673
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.6534620098039519,
+        "y": 1.4840209960937527
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required.",
+      "contactMarginBottomAlphaTest045": 0
+    },
+    {
+      "name": "tree-oak-card-b",
+      "source": "../sources/tree-oak-card-b.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "afdbf8eec61dc27628a6bbad837d48d9f4e2d10b6297960fc978ada18cce4617",
+      "output": "public/textures/kit/farm/tree-oak-card-b.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 141074,
+      "sha256": "6e10d5f6664314a392b112132d3bc92896022829c722c44f4d565590ce24568a",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "sourceAnchor": {
+        "threshold": 16,
+        "bounds": [
+          47,
+          25,
+          1218,
+          1239
+        ],
+        "removedBottomRows": 14
+      },
+      "alphaBounds": {
+        "minX": 38,
+        "minY": 31,
+        "maxX": 994,
+        "maxY": 1023
+      },
+      "contactMarginBottom": 0,
+      "packaging": "trim empty bottom by alpha16, contain south; sRGB; WebP85/alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "mean": 146.0883674621582,
+        "transparentFraction": 0.4046945571899414,
+        "partialFraction": 0.5946903228759766,
+        "opaqueFraction": 0.0006151199340820312,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.095703125
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 139,
+            "mean": 1.3212890625
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.0466630923202607,
+        "y": 0.24438572303921546
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.0268245123569708,
+        "y": 0.9561684602225737
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required.",
+      "contactMarginBottomAlphaTest045": 0
+    },
+    {
+      "name": "tree-oak-card-c",
+      "source": "../sources/tree-oak-card-c.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "680c5dbfdb79d75a5897642cb86a6e92a5efafc07077c35132f59f5d93c0bd4c",
+      "output": "public/textures/kit/farm/tree-oak-card-c.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 147474,
+      "sha256": "5aa37806791c659c2e0edeb6df73c7b0c6e37802f1ebf0edc4b2b7cf26ccef40",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "sourceAnchor": {
+        "threshold": 16,
+        "bounds": [
+          19,
+          39,
+          1241,
+          1253
+        ],
+        "removedBottomRows": 0
+      },
+      "alphaBounds": {
+        "minX": 15,
+        "minY": 31,
+        "maxX": 1013,
+        "maxY": 1023
+      },
+      "contactMarginBottom": 0,
+      "packaging": "trim empty bottom by alpha16, contain south; sRGB; WebP85/alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "mean": 158.47180938720703,
+        "transparentFraction": 0.35873985290527344,
+        "partialFraction": 0.6401786804199219,
+        "opaqueFraction": 0.0010814666748046875,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0048828125
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 45,
+            "mean": 0.626953125
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.0021241830065359124,
+        "y": 0.1620698018790847
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 1.3545696582668934,
+        "y": 1.3290931851255494
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required.",
+      "contactMarginBottomAlphaTest045": 1
+    },
+    {
+      "name": "tree-pine-card-a",
+      "source": "../sources/tree-pine-card-a.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "67c6f1ff8fd2317028a6d08965f2a0bd81a379d1b4c8f8d3e3377cc17ac3cba5",
+      "output": "public/textures/kit/farm/tree-pine-card-a.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 101308,
+      "sha256": "4689f0dc785d369d04045861ed4aac30c2e2ac39e37ef2da1bdf17fc34101567",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "sourceAnchor": {
+        "threshold": 16,
+        "bounds": [
+          184,
+          41,
+          1080,
+          1218
+        ],
+        "removedBottomRows": 35
+      },
+      "alphaBounds": {
+        "minX": 150,
+        "minY": 63,
+        "maxX": 882,
+        "maxY": 1023
+      },
+      "contactMarginBottom": 0,
+      "packaging": "trim empty bottom by alpha16, contain south; sRGB; WebP85/alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "mean": 96.71659564971924,
+        "transparentFraction": 0.6054010391235352,
+        "partialFraction": 0.3938722610473633,
+        "opaqueFraction": 0.0007266998291015625,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.060546875
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 140,
+            "mean": 2.40234375
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.029521548202613917,
+        "y": 0.5730775122549022
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 0.8835903192656751,
+        "y": 0.7646161247701552
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required.",
+      "contactMarginBottomAlphaTest045": 0
+    },
+    {
+      "name": "tree-pine-card-b",
+      "source": "../sources/tree-pine-card-b.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "0be995c3da6a917d55989f47057e4954dd6ce5a9aad36b44517f0e56aa101ab2",
+      "output": "public/textures/kit/farm/tree-pine-card-b.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 87106,
+      "sha256": "0b39881672cbb3d483bf5c6966b8af4d9c5f665125ff8aa0a1b41b9034db0d40",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "sourceAnchor": {
+        "threshold": 16,
+        "bounds": [
+          242,
+          47,
+          1016,
+          1199
+        ],
+        "removedBottomRows": 54
+      },
+      "alphaBounds": {
+        "minX": 198,
+        "minY": 82,
+        "maxX": 830,
+        "maxY": 1023
+      },
+      "contactMarginBottom": 0,
+      "packaging": "trim empty bottom by alpha16, contain south; sRGB; WebP85/alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "mean": 81.60661888122559,
+        "transparentFraction": 0.6641817092895508,
+        "partialFraction": 0.33516693115234375,
+        "opaqueFraction": 0.0006513595581054688,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.0205078125
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 63,
+            "mean": 0.5712890625
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.009999234068627294,
+        "y": 0.1466413909313724
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 0.7329694361467868,
+        "y": 0.633542528339403
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required.",
+      "contactMarginBottomAlphaTest045": 1
+    },
+    {
+      "name": "blob-shadow",
+      "source": "../sources/blob-shadow.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "61c221c6bfedf454e930d129ec8b56904b94182d85b260e6c56bbe42266678a4",
+      "output": "public/textures/kit/farm/blob-shadow.webp",
+      "width": 512,
+      "height": 512,
+      "bytes": 24284,
+      "sha256": "5298638d609d06aaf0dfa57d42db4478b18f5d564fcdbc24502ab0b63dab6d4c",
+      "sourceAspect": 1,
+      "outputAspect": 1,
+      "sourceAnchor": null,
+      "alphaBounds": {
+        "minX": 46,
+        "minY": 102,
+        "maxX": 485,
+        "maxY": 392
+      },
+      "contactMarginBottom": null,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP85/alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 140,
+        "mean": 31.276691436767578,
+        "transparentFraction": 0.5410041809082031,
+        "partialFraction": 0.4589958190917969,
+        "opaqueFraction": 0,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "right": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "top": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          },
+          "bottom": {
+            "min": 0,
+            "max": 0,
+            "mean": 0
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0,
+        "y": 0
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 0.12986366421568593,
+        "y": 0.17217626633986818
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "path-strip-c",
+      "source": "../sources/path-strip-c.png",
+      "sourceWidth": 887,
+      "sourceHeight": 1774,
+      "sourceSha256": "8926cdf06bcfa80d83c89803ce5b1519aebaab7ed9998cab5ba990451155890e",
+      "output": "public/textures/kit/farm/path-strip-c.webp",
+      "width": 512,
+      "height": 2048,
+      "bytes": 184396,
+      "sha256": "154bc2d573e603f3c250f059db96862aea550b2b10bdadae8f3499ca92e853f7",
+      "sourceAspect": 0.5,
+      "outputAspect": 0.25,
+      "sourceAnchor": null,
+      "alphaBounds": {
+        "minX": 92,
+        "minY": 0,
+        "maxX": 415,
+        "maxY": 2047
+      },
+      "contactMarginBottom": null,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP85/alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "mean": 139.00230884552002,
+        "transparentFraction": 0.39116954803466797,
+        "partialFraction": 0.608820915222168,
+        "opaqueFraction": 9.5367431640625e-06,
+        "edges": {
+          "left": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.22314453125
+          },
+          "right": {
+            "min": 0,
+            "max": 1,
+            "mean": 0.03076171875
+          },
+          "top": {
+            "min": 0,
+            "max": 253,
+            "mean": 143.45703125
+          },
+          "bottom": {
+            "min": 0,
+            "max": 253,
+            "mean": 140.56640625
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 0.12094311683006038,
+        "y": 5.786468545751681
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 2.786243234273005,
+        "y": 1.5968429266237922
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    }
+  ]
+}
