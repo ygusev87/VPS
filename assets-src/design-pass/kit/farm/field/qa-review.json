@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-26",
+  "method": "Native in-app browser screenshots; each encoded WebP on white, black, and the current grass-main-a. Ruts additionally viewed as three vertical repeats and a 100% boundary close-up. Human-model visual review, not runtime or device/FPS acceptance.",
+  "grassBackground": {
+    "path": "public/textures/kit/farm/grass-main-a.webp",
+    "sha256": "a318c1bf8194af9f1bec881e6c5f63a3d5f3b2d253602fc9444ba879ca0ae831"
+  },
+  "readyNames": [
+    "wheat-ground",
+    "wheat-card-a",
+    "wheat-card-b",
+    "wheat-card-c",
+    "bed-soil-a",
+    "bed-soil-b"
+  ],
+  "conditionalNames": [
+    "ruts-strip"
+  ],
+  "assets": [
+    {
+      "name": "wheat-ground",
+      "sha256": "514d2bd3808d85431b66c118354e04c3909ddb951476dd8095b23c1f88371955",
+      "status": "pass",
+      "note": "Pass: golden stubble/soil rows run vertically; irregular alpha perimeter, no white/black matte or separate cast-shadow patch.",
+      "screenshots": [
+        "qa/wheat-ground.jpg"
+      ]
+    },
+    {
+      "name": "wheat-card-a",
+      "sha256": "bfdfa16ea7295d7e8144c6bcca91fb0f425c1a9556cae6e968314e8f918a7754",
+      "status": "pass",
+      "note": "Pass alpha/silhouette: intact ears and stems, no base/shadow. Visible stem pivot measured. View reads fairly frontal; exact 52-degree elevation is not verified from the raster.",
+      "screenshots": [
+        "qa/wheat-card-a.jpg"
+      ]
+    },
+    {
+      "name": "wheat-card-b",
+      "sha256": "486bd0a1ef58dbf01c8fc0d97906ca96efea3dcb6240cd5478c87b53643801b5",
+      "status": "pass",
+      "note": "Pass alpha/silhouette: intact ears and stems, no base/shadow. Visible base is 11 pixels above the bottom because faint original fringe was preserved. View reads fairly frontal; exact elevation is not verified.",
+      "screenshots": [
+        "qa/wheat-card-b.jpg"
+      ]
+    },
+    {
+      "name": "wheat-card-c",
+      "sha256": "09a3b1e331e481578f41005dad5a30ac2d76a0a6109f2991d89a1ec3268931ba",
+      "status": "pass",
+      "note": "Pass alpha/silhouette: intact ears and stems, no base/shadow. Visible stem pivot measured. View reads fairly frontal; exact elevation is not verified.",
+      "screenshots": [
+        "qa/wheat-card-c.jpg"
+      ]
+    },
+    {
+      "name": "bed-soil-a",
+      "sha256": "687a6860004aae1ca9f6f757a052d18168034d992ad0e1ea609c27c3a1e38cc3",
+      "status": "pass",
+      "note": "Pass: horizontal dark-earth furrows, no vegetation/frame, clean irregular alpha perimeter on all three backgrounds.",
+      "screenshots": [
+        "qa/bed-soil-a.jpg"
+      ]
+    },
+    {
+      "name": "bed-soil-b",
+      "sha256": "0611c9185d0b66c3e0d35f92685b1c746041eac961ec901d428fcbfed8bc3b2f",
+      "status": "pass",
+      "note": "Pass: horizontal dark-earth furrows, distinct clods and spacing, no vegetation/frame, clean irregular alpha perimeter.",
+      "screenshots": [
+        "qa/bed-soil-b.jpg"
+      ]
+    },
+    {
+      "name": "ruts-strip",
+      "sha256": "fd2c99571296f8581c9bcb150d7d14b056f63479150ebf9b1d9d3790fe27502a",
+      "status": "conditional",
+      "note": "Conditional: two lighter tractor tracks, alpha sides and no faded end caps. Three repeats show no empty horizontal gap at 25%, but the 100% join has a small change of edge contour and tread/soil detail. Not verified seamless; no seam editing or extra generation.",
+      "screenshots": [
+        "qa/ruts-strip.jpg",
+        "qa/ruts-repeat-full.jpg"
+      ]
+    }
+  ]
+}

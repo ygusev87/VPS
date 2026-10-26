@@ -1,0 +1,23 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Набор 1 — поле: проверка альфы</title>
+<style>body{margin:0;background:#eee7d9;color:#18213d;font:14px system-ui}header{padding:12px}nav{display:flex;gap:9px;flex-wrap:wrap}a{color:#125f62}h1{font-size:21px;margin:5px 0}main{padding:8px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}.panel{margin:0;border:1px solid #bba98c}.panel img{display:block;width:100%;height:460px;object-fit:contain}.panel figcaption{padding:7px;background:#ede3d1;color:#17203a}.white{background:#fff}.black{background:#000}.grass{background:#85ae48 url('/public/textures/kit/farm/grass-main-a.webp') repeat;background-size:256px}.extra{display:flex;align-items:flex-start;gap:22px;padding:14px}.repeat{width:64px;height:768px;background-image:url('/public/textures/kit/farm/ruts-strip.webp');background-repeat:repeat-y;background-size:64px 256px}.seam{width:256px;height:256px;background-image:url('/public/textures/kit/farm/ruts-strip.webp');background-repeat:repeat-y;background-size:256px 1024px;background-position:0 128px}.baseline{position:relative}.baseline:after{content:'';position:absolute;bottom:0;left:0;right:0;border-bottom:1px dashed #c44}pre{padding:12px;white-space:pre-wrap;font-size:12px}#contact{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;padding:8px}#contact figure{margin:0;background:#85ae48}#contact img{width:100%;height:180px;object-fit:contain;display:block}#contact figcaption{padding:4px;background:#eee3cf;font-size:11px}.legend{max-width:500px;line-height:1.5}</style>
+<header><h1>Поле и грядки · проверка готовых WebP</h1><nav id="nav"></nav><p id="caption"></p></header><div id="contact"></div><main id="panels"></main><div id="extra"></div><pre id="metrics"></pre>
+<script type="module">
+const names=['wheat-ground','wheat-card-a','wheat-card-b','wheat-card-c','bed-soil-a','bed-soil-b','ruts-strip'];
+const selected=new URLSearchParams(location.search).get('asset')??'all';
+for(const n of ['all',...names]){const a=document.createElement('a');a.href='?asset='+n;a.textContent=n;nav.append(a);}
+const manifest=await fetch('manifest.json').then(r=>r.json());
+if(selected==='all'){
+ caption.textContent='Семь ассетов на траве. Выберите имя для проверки на белом, чёрном и травяном фоне.';
+ for(const name of names){const f=document.createElement('figure'),i=new Image(),c=document.createElement('figcaption');i.src='/public/textures/kit/farm/'+name+'.webp';i.alt=name;c.textContent=name;f.append(i,c);contact.append(f);}
+ metrics.textContent='Эталон стиля: farm-a. Здесь проверяется изображение/альфа; это не игровой кадр и не проверка FPS.';
+}else{
+ const item=manifest.assets.find(x=>x.name===selected);if(!item)throw Error('Unknown asset');
+ caption.textContent=selected+' · '+item.size.join('×')+' · '+item.bytes+' bytes · без цветокоррекции и изменения нарисованной альфы';
+ for(const [bg,title] of [['white','Белый фон'],['black','Чёрный фон'],['grass','Трава grass-main-a']]){const f=document.createElement('figure');f.className='panel '+bg+(selected.startsWith('wheat-card')?' baseline':'');const img=new Image();img.src='/public/textures/kit/farm/'+selected+'.webp';img.alt=selected+' / '+title;const cap=document.createElement('figcaption');cap.textContent=title;f.append(img,cap);panels.append(f);}
+ if(selected==='ruts-strip'){
+  extra.className='extra';extra.innerHTML='<div><b>3× вертикально, 25%</b><div class="repeat grass"></div></div><div><b>Стык 100%, линия y=128</b><div class="seam white"></div><div class="seam black"></div></div><div class="legend">Три настоящих повтора исходного WebP. В увеличенном окне нижние128 строк одного тайла переходят в верхние128 следующего. Ничего не смешивается и не дорисовывается. Сравните ширину, фазу следов, цвет и альфу. Цифровой отчёт ниже не заменяет визуальное ревью.</div>';
+ }
+ metrics.textContent=JSON.stringify({name:item.name,pivot:item.pivot,alpha:{min:item.alpha.alphaMin,max:item.alpha.alphaMax,transparentFraction:item.alpha.transparentFraction,edges:item.alpha.edges},verticalSeam:item.verticalSeam},null,2);
+}
+await Promise.all([...document.images].map(i=>i.decode()));document.body.dataset.ready='true';
+</script></html>

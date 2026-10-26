@@ -1,0 +1,135 @@
+{
+  "mode": "builtin; one call per asset; no edits/API/Tripo/Higgsfield",
+  "sources": [
+    {
+      "path": "assets-src/design-pass/variants/farm-a.png",
+      "sha256": "ca3391bcba1eec82614cbda6292e574e9c4737b24c47c5bcb1af62e4bdc6c2c4",
+      "bytes": 1584576
+    },
+    {
+      "path": "assets-src/design-pass/kit/FARM-KIT.md",
+      "sha256": "10a7713b6f71ff2f33ba8420b5c28be5e03e06b5cb63364fc6e9d346cf184348",
+      "bytes": 5470
+    },
+    {
+      "path": "assets-src/design-pass/kit/farm-layout-guide.png",
+      "sha256": "f59c2337a40b21c6e398cdc32766241e6136f81c12e36df5e1ce1a2a42f0cc47",
+      "bytes": 142787
+    },
+    {
+      "path": "assets-src/design-pass/kit/farm-layout-guide.json",
+      "sha256": "263d157f96324ddf4a080be7cd3c58bd8acebd6e6a8d20ccfbc1a088bac6a3c9",
+      "bytes": 14748
+    }
+  ],
+  "assets": [
+    {
+      "name": "wheat-ground",
+      "targetSize": [
+        1024,
+        1024
+      ],
+      "tool": "built-in image_gen.imagegen",
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept. Asset type: finished hand-painted raster art for a warm, colourful mobile farming game. Match the inspected farm-a style: softly painted golden crops and warm rich earth, rounded readable forms, subtle brushwork, clean premium farm-game detail, no black outlines, no photographic noise, no photorealism, no plastic product render. Light comes from the LOWER LEFT (southwest); tiny form-shadows go UPPER RIGHT. Image top is north, right is east. Absolutely no text, lettering, grid, UI, frame, watermark, buildings, animals, tools or large objects. This is ONE production asset, not a sheet of variants. Genuine transparent RGBA background; no white background and no painted checkerboard.\nPrimary request: a square top-down orthographic ground decal beneath a wheat field, 1024 x 1024 composition. Flat earth viewed EXACTLY from overhead, no perspective and no raised block. Warm tawny brown loose soil with abundant fine golden cut stubble, arranged in many soft parallel rows running VERTICALLY from north to south. The field covers 9.5 by 10 game units. No standing wheat heads: standing wheat will be separate cards. Fill most of the square with quiet evenly distributed soil and chopped golden stems; irregular softly feathered alpha at the outer perimeter, modest transparent margin, no hard rectangle, no grassy frame. Keep the inner area solid and coherent with subtle painted furrow depth, lit lower-left, no big cast shadows.",
+        "transparent_background": true
+      },
+      "callCountPlanned": 1,
+      "referencesRole": "Farm-a and layout-guide inspected as visual/specification guidance; no edit target and no raster input passed to this new-image call."
+    },
+    {
+      "name": "wheat-card-a",
+      "targetSize": [
+        512,
+        512
+      ],
+      "tool": "built-in image_gen.imagegen",
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept. Asset type: finished hand-painted raster art for a warm, colourful mobile farming game. Match the inspected farm-a style: softly painted golden crops and warm rich earth, rounded readable forms, subtle brushwork, clean premium farm-game detail, no black outlines, no photographic noise, no photorealism, no plastic product render. Light comes from the LOWER LEFT (southwest); tiny form-shadows go UPPER RIGHT. Image top is north, right is east. Absolutely no text, lettering, grid, UI, frame, watermark, buildings, animals, tools or large objects. This is ONE production asset, not a sheet of variants. Genuine transparent RGBA background; no white background and no painted checkerboard.\nPrimary request: one dense rooted clump of ripe golden wheat for a transparent 512 x 512 sprite. Camera is orthographic, 52 degrees ABOVE the horizon, looking from the south. A small upright fan of about 12 distinct plump golden seed heads on slender wheat stems; honey-gold highlights, warm amber inner shading, a few curled narrow golden leaves. Natural standing wheat, NOT a tied sheaf. Compact silhouette about 0.9 game units wide and 1.1 high, full intact ears and stem ends. Base sits at bottom centre very near the bottom image edge, with a small clear safety margin; full tips visible with breathing room above. No soil clump, grass, ground plane, pedestal, rope or detached grains. NO CAST SHADOW on background. Only subtle self-shading, illuminated from lower left. Dense enough to plant hundreds in rows, readable at small size.",
+        "transparent_background": true
+      },
+      "callCountPlanned": 1,
+      "referencesRole": "Farm-a and layout-guide inspected as visual/specification guidance; no edit target and no raster input passed to this new-image call."
+    },
+    {
+      "name": "wheat-card-b",
+      "targetSize": [
+        512,
+        512
+      ],
+      "tool": "built-in image_gen.imagegen",
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept. Asset type: finished hand-painted raster art for a warm, colourful mobile farming game. Match the inspected farm-a style: softly painted golden crops and warm rich earth, rounded readable forms, subtle brushwork, clean premium farm-game detail, no black outlines, no photographic noise, no photorealism, no plastic product render. Light comes from the LOWER LEFT (southwest); tiny form-shadows go UPPER RIGHT. Image top is north, right is east. Absolutely no text, lettering, grid, UI, frame, watermark, buildings, animals, tools or large objects. This is ONE production asset, not a sheet of variants. Genuine transparent RGBA background; no white background and no painted checkerboard.\nPrimary request: one dense rooted clump of ripe golden wheat, variant B, for a transparent 512 x 512 sprite. Orthographic camera 52 degrees ABOVE the horizon from the south. Same warm painted golden-wheat family: about 11 plump ripe ears, clustered compactly with a gentle small rightward lean and varied ear heights; honey-gold lit faces, warm amber undersides, slender stems and a few narrow curled straw leaves. Natural standing wheat, not a tied harvest sheaf. Approximate world silhouette 0.9 wide by 1.1 high, with comparable scale to variant A. Full tips and stem ends visible, base at bottom centre near bottom edge with small safety margin. No ground/soil/base/rope/grass/detached debris. Absolutely no cast shadow or glow; true transparent background. Lower-left light, subtle upper-right self-shadow. No large empty holes in the clump.",
+        "transparent_background": true
+      },
+      "callCountPlanned": 1,
+      "referencesRole": "Farm-a and layout-guide inspected as visual/specification guidance; no edit target and no raster input passed to this new-image call."
+    },
+    {
+      "name": "wheat-card-c",
+      "targetSize": [
+        512,
+        512
+      ],
+      "tool": "built-in image_gen.imagegen",
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept. Asset type: finished hand-painted raster art for a warm, colourful mobile farming game. Match the inspected farm-a style: softly painted golden crops and warm rich earth, rounded readable forms, subtle brushwork, clean premium farm-game detail, no black outlines, no photographic noise, no photorealism, no plastic product render. Light comes from the LOWER LEFT (southwest); tiny form-shadows go UPPER RIGHT. Image top is north, right is east. Absolutely no text, lettering, grid, UI, frame, watermark, buildings, animals, tools or large objects. This is ONE production asset, not a sheet of variants. Genuine transparent RGBA background; no white background and no painted checkerboard.\nPrimary request: one dense rooted clump of ripe golden wheat, variant C, for a transparent 512 x 512 sprite. Orthographic view from south at 52 degrees above the horizon. Warm softly hand-painted farm-game wheat: a slightly broader balanced clump of about 13 plump ears, alternating tall central ears and shorter side ears, subtly splayed stems and a few narrow golden leaves. Honey yellow and ochre, lower-left highlights, warm amber self-shadow upper-right. Keep total scale close to 0.9 world units wide by 1.1 high. This is living rooted standing wheat, no bundle tie. Place intact stem roots at bottom centre close to lower edge; show all tips, preserve a small safety margin. True transparency, no ground patch, no soil clod, no rope, no shadow footprint, no detached objects. Clear silhouette for hundreds of repeated small sprites.",
+        "transparent_background": true
+      },
+      "callCountPlanned": 1,
+      "referencesRole": "Farm-a and layout-guide inspected as visual/specification guidance; no edit target and no raster input passed to this new-image call."
+    },
+    {
+      "name": "bed-soil-a",
+      "targetSize": [
+        1024,
+        848
+      ],
+      "tool": "built-in image_gen.imagegen",
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept. Asset type: finished hand-painted raster art for a warm, colourful mobile farming game. Match the inspected farm-a style: softly painted golden crops and warm rich earth, rounded readable forms, subtle brushwork, clean premium farm-game detail, no black outlines, no photographic noise, no photorealism, no plastic product render. Light comes from the LOWER LEFT (southwest); tiny form-shadows go UPPER RIGHT. Image top is north, right is east. Absolutely no text, lettering, grid, UI, frame, watermark, buildings, animals, tools or large objects. This is ONE production asset, not a sheet of variants. Genuine transparent RGBA background; no white background and no painted checkerboard.\nPrimary request: one empty cultivated-soil garden-bed decal, orthographic STRICT TOP VIEW, target 1024 x 854, width:height 6:5. Warm dark chocolate-brown loose fertile earth, soft rounded small clods, about six broad shallow gently irregular furrows running HORIZONTALLY left-to-right (east-west, x direction). Bare soil only, no plants or grass. Nearly rectangular overall patch with softly irregular rounded corners and natural feathered transparent perimeter; not a raised floating soil slab, no vertical side walls, no wooden rim. Fill most of frame. Bright subtle lower-left clay highlights and tiny upper-right form shadows; preserve dark rich soil colour while remaining painterly and readable. No heavy cast shadow beneath the patch.",
+        "transparent_background": true
+      },
+      "callCountPlanned": 1,
+      "referencesRole": "Farm-a and layout-guide inspected as visual/specification guidance; no edit target and no raster input passed to this new-image call.",
+      "originalRequestedSize": [
+        1024,
+        854
+      ],
+      "targetAmendment": "Claude m0375/m0376: multiples of16, final height848; actual tool prompt retained unchanged."
+    },
+    {
+      "name": "bed-soil-b",
+      "targetSize": [
+        1024,
+        848
+      ],
+      "tool": "built-in image_gen.imagegen",
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept. Asset type: finished hand-painted raster art for a warm, colourful mobile farming game. Match the inspected farm-a style: softly painted golden crops and warm rich earth, rounded readable forms, subtle brushwork, clean premium farm-game detail, no black outlines, no photographic noise, no photorealism, no plastic product render. Light comes from the LOWER LEFT (southwest); tiny form-shadows go UPPER RIGHT. Image top is north, right is east. Absolutely no text, lettering, grid, UI, frame, watermark, buildings, animals, tools or large objects. This is ONE production asset, not a sheet of variants. Genuine transparent RGBA background; no white background and no painted checkerboard.\nPrimary request: variant B of an empty garden-bed soil decal. Strict orthographic overhead view, 1024 x 854 composition, world footprint 6 by 5. The same warm dark chocolate-brown fertile soil as variant A, with a different natural distribution of small rounded loose clods and six or seven softly uneven shallow cultivation ridges running HORIZONTALLY left-to-right. Gentle tonal variation only, no prominent unique rock or hole. A broad softly rectangular patch, softly irregular rounded corners, transparent feathered edges. No plants, grass, wooden frame, border, vertical dirt sides, raised block or ground outside the patch. Lower-left warm highlights and tiny upper-right self-shadows, no cast shadow or outline.",
+        "transparent_background": true
+      },
+      "callCountPlanned": 1,
+      "referencesRole": "Farm-a and layout-guide inspected as visual/specification guidance; no edit target and no raster input passed to this new-image call.",
+      "originalRequestedSize": [
+        1024,
+        854
+      ],
+      "targetAmendment": "Claude m0375/m0376: multiples of16, final height848; actual tool prompt retained unchanged."
+    },
+    {
+      "name": "ruts-strip",
+      "targetSize": [
+        256,
+        1024
+      ],
+      "tool": "built-in image_gen.imagegen",
+      "toolArguments": {
+        "prompt": "Use case: stylized-concept. Asset type: finished hand-painted raster art for a warm, colourful mobile farming game. Match the inspected farm-a style: softly painted golden crops and warm rich earth, rounded readable forms, subtle brushwork, clean premium farm-game detail, no black outlines, no photographic noise, no photorealism, no plastic product render. Light comes from the LOWER LEFT (southwest); tiny form-shadows go UPPER RIGHT. Image top is north, right is east. Absolutely no text, lettering, grid, UI, frame, watermark, buildings, animals, tools or large objects. This is ONE production asset, not a sheet of variants. Genuine transparent RGBA background; no white background and no painted checkerboard.\nPrimary request: a very TALL NARROW continuous tractor-wheel-rut decal, target 256 pixels wide by 1024 tall, aspect ratio 1:4, strict orthographic TOP DOWN. Exactly TWO parallel wheel tracks in golden cut wheat stubble, running perfectly vertically top-to-bottom, separated by a narrow strip of less-disturbed stubble. The tracks are LIGHTER sandy ochre than the surrounding wheat ground, subtle repeating tractor tread impressions and flattened straw; warm softly painted mobile-farm texture. Feather only the left and right outer edges to actual transparency. CRITICAL: this strip will REPEAT VERTICALLY. Do NOT fade or round off the top or bottom; both tracks must continue all the way through both ends with identical position, width, colour and repeating tread phase at top and bottom. Make the first and last horizontal scanlines match seamlessly in colour and alpha. No border, no caps, no horizon, no tractor, no standing plants, no perspective, no dramatic shadow. Uniform quiet detail with small lower-left lit clods and upper-right micro-shading, no conspicuous unique marks. Single continuous tile, not multiple panels.",
+        "transparent_background": true
+      },
+      "callCountPlanned": 1,
+      "referencesRole": "Farm-a and layout-guide inspected as visual/specification guidance; no edit target and no raster input passed to this new-image call."
+    }
+  ]
+}
