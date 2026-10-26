@@ -180,7 +180,7 @@ export class FactoryMap extends StoryMap {
     };
     // Codex's painted kit (factory-industrial-b's floor) when it has come.
     this.kit = hasKit('factory', 'factory-floor') && !new URLSearchParams(location.search).has('oldground');
-    const top = this.kit ? grassMaterial(kitPieces('factory', 'factory-floor', true)[0], null, [], 8, undefined, false) : groundMaterial(plan);
+    const top = this.kit ? grassMaterial(kitPieces('factory', 'factory-floor', true)[0], null, [], 8, '#e6f2f0', false) : groundMaterial(plan);
     const side = mat('#6a6f78', 0.8);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
