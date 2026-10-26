@@ -1,0 +1,373 @@
+{
+  "schemaVersion": 1,
+  "status": "reviewed; see per-asset notes",
+  "generationCalls": 4,
+  "initialGenerations": 2,
+  "targetedEditCalls": 2,
+  "totalBytes": 268172,
+  "kitJsonOwner": "main; never edited here",
+  "assets": [
+    {
+      "name": "pallet-card",
+      "path": "public/textures/kit/factory/pallet-card.webp",
+      "sha256": "aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+      "bytes": 152294,
+      "size": [
+        1024,
+        976
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 88,
+      "alphaQuality": 100,
+      "nativeAlpha": true,
+      "source": "assets-src/design-pass/kit/factory/sources/pallet-card.png",
+      "sourceSha256": "ac1612945ade87a7d1ec615ccf2147431633620252beae23b34e68ca6f7eb36d",
+      "sourceSize": [
+        1292,
+        1218
+      ],
+      "sourceAlpha": {
+        "boxes": [
+          {
+            "threshold": 1,
+            "left": 0,
+            "top": 18,
+            "right": 1287,
+            "bottom": 1217,
+            "pixels": 957398,
+            "width": 1288,
+            "height": 1200
+          },
+          {
+            "threshold": 8,
+            "left": 37,
+            "top": 22,
+            "right": 1264,
+            "bottom": 1206,
+            "pixels": 942136,
+            "width": 1228,
+            "height": 1185
+          },
+          {
+            "threshold": 128,
+            "left": 38,
+            "top": 23,
+            "right": 1264,
+            "bottom": 1206,
+            "pixels": 937557,
+            "width": 1227,
+            "height": 1184
+          }
+        ],
+        "transparentPixels": 616258,
+        "opaquePixels": 866,
+        "semiTransparentPixels": 956532,
+        "transparentFraction": 0.391609,
+        "outerEdgeOrder": [
+          "left",
+          "top",
+          "right",
+          "bottom"
+        ],
+        "outerEdgeNonzero": [
+          5,
+          0,
+          0,
+          51
+        ],
+        "outerEdgeVisible": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alphaPreservedFromGenerator": true
+      },
+      "transform": {
+        "operation": "alpha-bounds crop with2% margin, proportional Lanczos resize, sRGB, WebP encode",
+        "boundsThreshold": 8,
+        "thresholdForMeasurementOnly": true,
+        "alphaUnmodifiedWithinCrop": true,
+        "crop": {
+          "left": 12,
+          "top": 0,
+          "width": 1278,
+          "height": 1218
+        },
+        "requestedMarginSourcePixels": 25,
+        "scale": 0.801252,
+        "upscaled": false,
+        "proceduralDrawing": false
+      },
+      "alpha": {
+        "boxes": [
+          {
+            "threshold": 1,
+            "left": 15,
+            "top": 14,
+            "right": 1010,
+            "bottom": 975,
+            "pixels": 614639,
+            "width": 996,
+            "height": 962
+          },
+          {
+            "threshold": 8,
+            "left": 20,
+            "top": 18,
+            "right": 1003,
+            "bottom": 967,
+            "pixels": 605167,
+            "width": 984,
+            "height": 950
+          },
+          {
+            "threshold": 128,
+            "left": 20,
+            "top": 18,
+            "right": 1003,
+            "bottom": 966,
+            "pixels": 601799,
+            "width": 984,
+            "height": 949
+          }
+        ],
+        "transparentPixels": 384785,
+        "opaquePixels": 1500,
+        "semiTransparentPixels": 613139,
+        "transparentFraction": 0.385007,
+        "outerEdgeOrder": [
+          "left",
+          "top",
+          "right",
+          "bottom"
+        ],
+        "outerEdgeNonzero": [
+          0,
+          0,
+          0,
+          40
+        ],
+        "outerEdgeVisible": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alphaPreservedFromGenerator": true
+      },
+      "aspect": 1.04918,
+      "visibleAspect": 1.035789,
+      "visibleWidthFactor": 0.960938,
+      "visibleWorldWidth": 1.9,
+      "visibleWorldHeight": 1.83435,
+      "requestedVisibleWorldHeightApprox": 1.8,
+      "rectangleWorldSize": [
+        1.977236,
+        1.884553
+      ],
+      "anchor": {
+        "definition": "Bottom centre of alpha>=8 visible bounding box. Image coordinates top-left origin. Sprite centre uses bottom-left origin.",
+        "normalisedTopLeft": [
+          0.5,
+          0.991803
+        ],
+        "spriteCenter": [
+          0.5,
+          0.008197
+        ]
+      },
+      "camera": {
+        "requestedElevationDegrees": 52,
+        "projection": "orthographic three-quarter, image-model approximation; no exact camera calibration"
+      },
+      "visualReview": {
+        "status": "accepted-for-integration-review",
+        "note": "One wooden pallet with exactly three crates; bottom support complete after framing correction. Visible projected height1.83435 at width1.9, close to requested approx1.8. Three crates and pallet openings readable at60.8px visible width. No visible floor/base plate/cast shadow/text or noticeable coloured edge halo on tested white/dark/floor backgrounds. Native alpha retained; only crop and proportional resizing applied.",
+        "record": "qa-review.json"
+      }
+    },
+    {
+      "name": "barrels-card",
+      "path": "public/textures/kit/factory/barrels-card.webp",
+      "sha256": "aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+      "bytes": 115878,
+      "size": [
+        767,
+        768
+      ],
+      "format": "WebP",
+      "colourSpace": "sRGB",
+      "quality": 88,
+      "alphaQuality": 100,
+      "nativeAlpha": true,
+      "source": "assets-src/design-pass/kit/factory/sources/barrels-card.png",
+      "sourceSha256": "44f66b83fd82abf2f3d64ff3f4a37ee1290ba5789fe15786e1f1ce08ab7082da",
+      "sourceSize": [
+        1312,
+        1199
+      ],
+      "sourceAlpha": {
+        "boxes": [
+          {
+            "threshold": 1,
+            "left": 0,
+            "top": 0,
+            "right": 1295,
+            "bottom": 1198,
+            "pixels": 940205,
+            "width": 1296,
+            "height": 1199
+          },
+          {
+            "threshold": 8,
+            "left": 109,
+            "top": 40,
+            "right": 1208,
+            "bottom": 1141,
+            "pixels": 877810,
+            "width": 1100,
+            "height": 1102
+          },
+          {
+            "threshold": 128,
+            "left": 109,
+            "top": 41,
+            "right": 1206,
+            "bottom": 1140,
+            "pixels": 872808,
+            "width": 1098,
+            "height": 1100
+          }
+        ],
+        "transparentPixels": 632883,
+        "opaquePixels": 129,
+        "semiTransparentPixels": 940076,
+        "transparentFraction": 0.402319,
+        "outerEdgeOrder": [
+          "left",
+          "top",
+          "right",
+          "bottom"
+        ],
+        "outerEdgeNonzero": [
+          74,
+          6,
+          0,
+          18
+        ],
+        "outerEdgeVisible": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alphaPreservedFromGenerator": true
+      },
+      "transform": {
+        "operation": "alpha-bounds crop with2% margin, proportional Lanczos resize, sRGB, WebP encode",
+        "boundsThreshold": 8,
+        "thresholdForMeasurementOnly": true,
+        "alphaUnmodifiedWithinCrop": true,
+        "crop": {
+          "left": 86,
+          "top": 17,
+          "width": 1146,
+          "height": 1148
+        },
+        "requestedMarginSourcePixels": 23,
+        "scale": 0.66899,
+        "upscaled": false,
+        "proceduralDrawing": false
+      },
+      "alpha": {
+        "boxes": [
+          {
+            "threshold": 1,
+            "left": 0,
+            "top": 0,
+            "right": 766,
+            "bottom": 767,
+            "pixels": 417629,
+            "width": 767,
+            "height": 768
+          },
+          {
+            "threshold": 8,
+            "left": 15,
+            "top": 15,
+            "right": 750,
+            "bottom": 752,
+            "pixels": 392930,
+            "width": 736,
+            "height": 738
+          },
+          {
+            "threshold": 128,
+            "left": 16,
+            "top": 16,
+            "right": 749,
+            "bottom": 751,
+            "pixels": 390668,
+            "width": 734,
+            "height": 736
+          }
+        ],
+        "transparentPixels": 171427,
+        "opaquePixels": 828,
+        "semiTransparentPixels": 416801,
+        "transparentFraction": 0.29102,
+        "outerEdgeOrder": [
+          "left",
+          "top",
+          "right",
+          "bottom"
+        ],
+        "outerEdgeNonzero": [
+          2,
+          16,
+          58,
+          61
+        ],
+        "outerEdgeVisible": [
+          0,
+          0,
+          0,
+          0
+        ],
+        "alphaPreservedFromGenerator": true
+      },
+      "aspect": 0.998698,
+      "visibleAspect": 0.99729,
+      "visibleWidthFactor": 0.959583,
+      "visibleWorldWidth": 2.2,
+      "visibleWorldHeight": 2.205978,
+      "requestedVisibleWorldHeightApprox": null,
+      "rectangleWorldSize": [
+        2.292663,
+        2.295652
+      ],
+      "anchor": {
+        "definition": "Bottom centre of alpha>=8 visible bounding box. Image coordinates top-left origin. Sprite centre uses bottom-left origin.",
+        "normalisedTopLeft": [
+          0.499348,
+          0.980469
+        ],
+        "spriteCenter": [
+          0.499348,
+          0.019531
+        ]
+      },
+      "camera": {
+        "requestedElevationDegrees": 52,
+        "projection": "orthographic three-quarter, image-model approximation; no exact camera calibration"
+      },
+      "visualReview": {
+        "status": "accepted-for-integration-review",
+        "note": "Exactly three upright blue drums, all three lids distinguishable. Targeted camera correction opens lid ellipses for the requested higher three-quarter view; no exact camera calibration claimed. Three-drum group readable at70.4px visible width. No visible floor/base plate/cast shadow/text or noticeable coloured edge halo on tested white/dark/floor backgrounds. Native alpha retained; only crop and proportional resizing applied.",
+        "record": "qa-review.json"
+      }
+    }
+  ]
+}

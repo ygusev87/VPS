@@ -1,0 +1,24 @@
+[
+  {
+    "name": "pallet-card",
+    "reason": "Native alpha>=128 reaches final source row for a visible bottom pallet support; object is clipped at bottom. Add framing margin while preserving object.",
+    "toolArgs": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "/Users/gusev/gameios/assets-src/design-pass/kit/factory/sources/pallet-card.png"
+      ],
+      "prompt": "Edit this same transparent pallet-and-three-crates sprite. Correct ONLY the framing: the bottom front wooden pallet support is cut off at the image edge. Restore its complete lower outline and place the entire unchanged object safely inside the canvas with 5 percent transparent margin around EVERY extremity. Keep precisely this pallet, exactly these three crates, wood grain, steel corners, proportions, colours, orthographic camera, lighting and internal self shading. Make all empty surrounding pixels truly transparent and remove isolated faint coloured specks outside the object, with clean native antialiased alpha edges. No cast shadow, ground, floor, platform, labels, writing or new objects. Preserve the nearly square visible silhouette. The full bottom edge must be intact and separated from the bottom image boundary by transparent pixels."
+    }
+  },
+  {
+    "name": "barrels-card",
+    "reason": "Top lids are visibly flattened relative to requested approximately52deg downward camera; correct elevation while preserving exactly three barrels.",
+    "toolArgs": {
+      "transparent_background": true,
+      "referenced_image_paths": [
+        "/Users/gusev/gameios/assets-src/design-pass/kit/factory/sources/barrels-card.png"
+      ],
+      "prompt": "Edit this same transparent group of exactly THREE blue steel drums. Change ONLY camera elevation to an orthographic view looking DOWN 52 degrees from the horizontal ground plane. This means the circular top lids project as relatively open ellipses with minor-to-major ratio about sin(52 degrees)=0.79, not the current flatter ovals. Keep exactly the same three drums, their steel hoops, cobalt blue paint, mild wear, lid fittings and two-front/one-rear triangular layout; keep all three top lids visibly distinct. Preserve soft neutral upper-left lighting and object-only self shading. Full group safely inside the canvas with about 4 percent transparent margin, bottom centre ground-contact anchor. True native transparent alpha including gaps; clean antialiased object edges, no stray low-opacity pixels outside. No ground patch, floor, pallet, base slab, cast/drop shadow, writing, labels, people, or extra drums."
+    }
+  }
+]

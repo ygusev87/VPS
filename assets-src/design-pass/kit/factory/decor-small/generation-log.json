@@ -1,0 +1,66 @@
+[
+  {
+    "name": "pallet-card",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-8979882c-91ca-4d09-b302-69eb9f723cc8.png",
+    "sourcePath": "assets-src/design-pass/kit/factory/sources/pallet-card.png",
+    "tool": "image_gen.imagegen",
+    "initialGenerations": 1,
+    "targetedEdits": [
+      {
+        "reason": "Native alpha>=128 reaches final source row for a visible bottom pallet support; object is clipped at bottom. Add framing margin while preserving object.",
+        "inputSha256": "eaea9ed10b90c4d4e9cd4d7849df9057d10e4042e5c71b72c19f6d246bc7c4d9",
+        "archivedInputPath": "assets-src/design-pass/kit/factory/decor-small/iterations/v1/pallet-card.png",
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-8979882c-91ca-4d09-b302-69eb9f723cc8.png",
+        "sha256": "ac1612945ade87a7d1ec615ccf2147431633620252beae23b34e68ca6f7eb36d"
+      }
+    ],
+    "callCount": 2,
+    "bytes": 1729747,
+    "sha256": "ac1612945ade87a7d1ec615ccf2147431633620252beae23b34e68ca6f7eb36d",
+    "sourcePreservedByteExact": true,
+    "initialGeneration": {
+      "name": "pallet-card",
+      "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-d3d0efae-b6b1-4460-bdce-08b41cc26ac6.png",
+      "sourcePath": "assets-src/design-pass/kit/factory/decor-small/iterations/v1/pallet-card.png",
+      "tool": "image_gen.imagegen",
+      "initialGenerations": 1,
+      "targetedEdits": [],
+      "callCount": 1,
+      "bytes": 1911019,
+      "sha256": "eaea9ed10b90c4d4e9cd4d7849df9057d10e4042e5c71b72c19f6d246bc7c4d9",
+      "sourcePreservedByteExact": true
+    }
+  },
+  {
+    "name": "barrels-card",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-acd4585e-0bd5-4d75-8a0e-664af73706e7.png",
+    "sourcePath": "assets-src/design-pass/kit/factory/sources/barrels-card.png",
+    "tool": "image_gen.imagegen",
+    "initialGenerations": 1,
+    "targetedEdits": [
+      {
+        "reason": "Top lids are visibly flattened relative to requested approximately52deg downward camera; correct elevation while preserving exactly three barrels.",
+        "inputSha256": "04b734b48c0a669e7a38317a9f48fec872f7b8cd1415910182c841e4ebcf1625",
+        "archivedInputPath": "assets-src/design-pass/kit/factory/decor-small/iterations/v1/barrels-card.png",
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-acd4585e-0bd5-4d75-8a0e-664af73706e7.png",
+        "sha256": "44f66b83fd82abf2f3d64ff3f4a37ee1290ba5789fe15786e1f1ce08ab7082da"
+      }
+    ],
+    "callCount": 2,
+    "bytes": 1714952,
+    "sha256": "44f66b83fd82abf2f3d64ff3f4a37ee1290ba5789fe15786e1f1ce08ab7082da",
+    "sourcePreservedByteExact": true,
+    "initialGeneration": {
+      "name": "barrels-card",
+      "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-f3bba49c-8722-4dd9-973b-74d4da510857.png",
+      "sourcePath": "assets-src/design-pass/kit/factory/decor-small/iterations/v1/barrels-card.png",
+      "tool": "image_gen.imagegen",
+      "initialGenerations": 1,
+      "targetedEdits": [],
+      "callCount": 1,
+      "bytes": 1761601,
+      "sha256": "04b734b48c0a669e7a38317a9f48fec872f7b8cd1415910182c841e4ebcf1625",
+      "sourcePreservedByteExact": true
+    }
+  }
+]

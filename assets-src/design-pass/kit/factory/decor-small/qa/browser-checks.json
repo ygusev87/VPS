@@ -1,0 +1,388 @@
+{
+  "checks": [
+    {
+      "view": "white",
+      "assets": [
+        {
+          "name": "pallet-card",
+          "naturalSize": [
+            1024,
+            976
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            285.9375305175781
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/pallet-card.webp?v=aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+          "withinPanel": true
+        },
+        {
+          "name": "barrels-card",
+          "naturalSize": [
+            767,
+            768
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            300.390625
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/barrels-card.webp?v=aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/white-390.jpg"
+    },
+    {
+      "view": "dark",
+      "assets": [
+        {
+          "name": "pallet-card",
+          "naturalSize": [
+            1024,
+            976
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            285.9375305175781
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/pallet-card.webp?v=aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+          "withinPanel": true
+        },
+        {
+          "name": "barrels-card",
+          "naturalSize": [
+            767,
+            768
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            300.390625
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/barrels-card.webp?v=aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/dark-390.jpg"
+    },
+    {
+      "view": "floor",
+      "assets": [
+        {
+          "name": "pallet-card",
+          "naturalSize": [
+            1024,
+            976
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            285.9375305175781
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/pallet-card.webp?v=aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+          "withinPanel": true
+        },
+        {
+          "name": "barrels-card",
+          "naturalSize": [
+            767,
+            768
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            300.390625
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/barrels-card.webp?v=aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/floor-390.jpg"
+    },
+    {
+      "view": "small",
+      "assets": [
+        {
+          "name": "pallet-card",
+          "naturalSize": [
+            1024,
+            976
+          ],
+          "ppu": "32",
+          "renderedSize": [
+            63.265625,
+            60.296875
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/pallet-card.webp?v=aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+          "withinPanel": true
+        },
+        {
+          "name": "pallet-card",
+          "naturalSize": [
+            1024,
+            976
+          ],
+          "ppu": "70",
+          "renderedSize": [
+            138.40625,
+            131.9140625
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/pallet-card.webp?v=aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+          "withinPanel": true
+        },
+        {
+          "name": "barrels-card",
+          "naturalSize": [
+            767,
+            768
+          ],
+          "ppu": "32",
+          "renderedSize": [
+            73.359375,
+            73.453125
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/barrels-card.webp?v=aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+          "withinPanel": true
+        },
+        {
+          "name": "barrels-card",
+          "naturalSize": [
+            767,
+            768
+          ],
+          "ppu": "70",
+          "renderedSize": [
+            160.484375,
+            160.6875
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/barrels-card.webp?v=aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        390,
+        844
+      ],
+      "errors": [],
+      "screenshot": "qa/small-390.jpg"
+    },
+    {
+      "view": "white",
+      "assets": [
+        {
+          "name": "pallet-card",
+          "naturalSize": [
+            1024,
+            976
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            285.9375
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/pallet-card.webp?v=aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+          "withinPanel": true
+        },
+        {
+          "name": "barrels-card",
+          "naturalSize": [
+            767,
+            768
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            300.390625
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/barrels-card.webp?v=aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/white-1024.jpg"
+    },
+    {
+      "view": "dark",
+      "assets": [
+        {
+          "name": "pallet-card",
+          "naturalSize": [
+            1024,
+            976
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            285.9375
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/pallet-card.webp?v=aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+          "withinPanel": true
+        },
+        {
+          "name": "barrels-card",
+          "naturalSize": [
+            767,
+            768
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            300.390625
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/barrels-card.webp?v=aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/dark-1024.jpg"
+    },
+    {
+      "view": "floor",
+      "assets": [
+        {
+          "name": "pallet-card",
+          "naturalSize": [
+            1024,
+            976
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            285.9375
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/pallet-card.webp?v=aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+          "withinPanel": true
+        },
+        {
+          "name": "barrels-card",
+          "naturalSize": [
+            767,
+            768
+          ],
+          "ppu": "preview",
+          "renderedSize": [
+            300,
+            300.390625
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/barrels-card.webp?v=aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/floor-1024.jpg"
+    },
+    {
+      "view": "small",
+      "assets": [
+        {
+          "name": "pallet-card",
+          "naturalSize": [
+            1024,
+            976
+          ],
+          "ppu": "32",
+          "renderedSize": [
+            63.265625,
+            60.296875
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/pallet-card.webp?v=aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+          "withinPanel": true
+        },
+        {
+          "name": "pallet-card",
+          "naturalSize": [
+            1024,
+            976
+          ],
+          "ppu": "70",
+          "renderedSize": [
+            138.40625,
+            131.9140625
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/pallet-card.webp?v=aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+          "withinPanel": true
+        },
+        {
+          "name": "barrels-card",
+          "naturalSize": [
+            767,
+            768
+          ],
+          "ppu": "32",
+          "renderedSize": [
+            73.359375,
+            73.453125
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/barrels-card.webp?v=aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+          "withinPanel": true
+        },
+        {
+          "name": "barrels-card",
+          "naturalSize": [
+            767,
+            768
+          ],
+          "ppu": "70",
+          "renderedSize": [
+            160.484375,
+            160.68748474121094
+          ],
+          "src": "http://127.0.0.1:33346/public/textures/kit/factory/barrels-card.webp?v=aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+          "withinPanel": true
+        }
+      ],
+      "overflow": false,
+      "ready": "true",
+      "viewport": [
+        1024,
+        768
+      ],
+      "errors": [],
+      "screenshot": "qa/small-1024.jpg"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen.imagegen",
+  "mode": "built-in",
+  "useCase": "stylized-concept",
+  "assets": [
+    {
+      "name": "pallet-card",
+      "targetLongSide": 1024,
+      "visibleWorldWidth": 1.9,
+      "requestedVisibleWorldHeightApprox": 1.8,
+      "toolArgs": {
+        "transparent_background": true,
+        "prompt": "Use case: stylized-concept. Asset type: one transparent 2.5D sprite card for a children's miniature industrial factory game. Primary request: one wooden shipping pallet carrying exactly THREE wooden shipping crates, two crates side by side on the pallet and one on top, a compact stable stacked cluster. Clearly show the low slatted wooden pallet with fork openings. Style: polished tactile miniature 3D illustration, softly bevelled solid forms, warm honey-brown timber with restrained grain, simple wood bracing and a few small metal corners, clean readable surfaces, matching a neat toy-scale steel-and-yellow factory diorama. Camera: orthographic three-quarter view, looking DOWN about 52 degrees from horizontal, see crate tops and two sides, no dramatic perspective. Composition: the complete single pallet-and-crates object fills the canvas with only a small transparent safety margin, projected visible width about 1.9 and height about 1.8 units (nearly square silhouette); centred bottom ground-contact anchor. Lighting: soft neutral upper-left object lighting, self shading only. Backdrop: actual native transparent alpha, including gaps under the pallet. No floor, ground patch, base slab, display plate, drop shadow or cast shadow outside the object's silhouette. No people, tools, labels, symbols, text, logo, watermark, background scene, extra pallets or extra crates. Keep all outer edges fully in frame, readable when only 61 pixels wide."
+      }
+    },
+    {
+      "name": "barrels-card",
+      "targetLongSide": 768,
+      "visibleWorldWidth": 2.2,
+      "toolArgs": {
+        "transparent_background": true,
+        "prompt": "Use case: stylized-concept. Asset type: one transparent 2.5D sprite card for a children's miniature industrial factory game. Primary request: a compact group of exactly THREE upright closed steel drums, all three unmistakably countable, arranged in a shallow triangular cluster with two drums in front and one centred behind; all three circular top lids visible. The group stands directly on the ground, no pallet. Style: polished tactile miniature 3D illustration, softly bevelled cylinders, saturated medium cobalt-blue painted steel matching small blue barrels in a neat toy industrial factory diorama; raised horizontal steel hoops, subtly lighter top rims, restrained wear, clean readable forms. Camera: orthographic three-quarter view, looking DOWN about 52 degrees from horizontal, clear top lids and side walls, no dramatic perspective. Composition: complete single cluster, visible group width 2.2 game units, balanced broad compact silhouette; fill the canvas tightly with only a small transparent safety margin; centred bottom ground-contact anchor. Lighting: soft neutral upper-left object lighting, self shading only. Backdrop: actual native transparent alpha, including gaps between drums. No floor, ground patch, platform, base slab, display plate, drop shadow or cast shadow outside the object silhouettes. No labels, hazard signs, writing, logo, text, watermark, people, tools, background scene, additional drums or extra objects. Keep outer edges fully in frame and the three separate lids clearly readable when the whole group is only 70 pixels wide."
+      }
+    }
+  ]
+}

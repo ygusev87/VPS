@@ -1,0 +1,26 @@
+[
+  {
+    "name": "pallet-card",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-d3d0efae-b6b1-4460-bdce-08b41cc26ac6.png",
+    "sourcePath": "assets-src/design-pass/kit/factory/sources/pallet-card.png",
+    "tool": "image_gen.imagegen",
+    "initialGenerations": 1,
+    "targetedEdits": [],
+    "callCount": 1,
+    "bytes": 1911019,
+    "sha256": "eaea9ed10b90c4d4e9cd4d7849df9057d10e4042e5c71b72c19f6d246bc7c4d9",
+    "sourcePreservedByteExact": true
+  },
+  {
+    "name": "barrels-card",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-f3bba49c-8722-4dd9-973b-74d4da510857.png",
+    "sourcePath": "assets-src/design-pass/kit/factory/sources/barrels-card.png",
+    "tool": "image_gen.imagegen",
+    "initialGenerations": 1,
+    "targetedEdits": [],
+    "callCount": 1,
+    "bytes": 1761601,
+    "sha256": "04b734b48c0a669e7a38317a9f48fec872f7b8cd1415910182c841e4ebcf1625",
+    "sourcePreservedByteExact": true
+  }
+]

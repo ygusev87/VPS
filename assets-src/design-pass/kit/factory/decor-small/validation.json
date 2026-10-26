@@ -1,0 +1,157 @@
+{
+  "schemaVersion": 1,
+  "status": "pass",
+  "generationCalls": 4,
+  "initialGenerations": 2,
+  "targetedEdits": 2,
+  "totalBytes": 268172,
+  "sourceChecks": [
+    {
+      "name": "pallet-card",
+      "stage": "initial",
+      "path": "assets-src/design-pass/kit/factory/decor-small/iterations/v1/pallet-card.png",
+      "sha256": "eaea9ed10b90c4d4e9cd4d7849df9057d10e4042e5c71b72c19f6d246bc7c4d9",
+      "byteExact": true
+    },
+    {
+      "name": "pallet-card",
+      "stage": "selected",
+      "path": "assets-src/design-pass/kit/factory/sources/pallet-card.png",
+      "sha256": "ac1612945ade87a7d1ec615ccf2147431633620252beae23b34e68ca6f7eb36d",
+      "byteExact": true
+    },
+    {
+      "name": "barrels-card",
+      "stage": "initial",
+      "path": "assets-src/design-pass/kit/factory/decor-small/iterations/v1/barrels-card.png",
+      "sha256": "04b734b48c0a669e7a38317a9f48fec872f7b8cd1415910182c841e4ebcf1625",
+      "byteExact": true
+    },
+    {
+      "name": "barrels-card",
+      "stage": "selected",
+      "path": "assets-src/design-pass/kit/factory/sources/barrels-card.png",
+      "sha256": "44f66b83fd82abf2f3d64ff3f4a37ee1290ba5789fe15786e1f1ce08ab7082da",
+      "byteExact": true
+    }
+  ],
+  "alphaEncodingChecks": [
+    {
+      "name": "pallet-card",
+      "differentAlphaPixels": 0,
+      "maxAlphaDifference": 0,
+      "resampledAlphaPreservedExactly": true
+    },
+    {
+      "name": "barrels-card",
+      "differentAlphaPixels": 0,
+      "maxAlphaDifference": 0,
+      "resampledAlphaPreservedExactly": true
+    }
+  ],
+  "browser": {
+    "screenshots": 8,
+    "renderedInstances": 20,
+    "consoleErrors": 0,
+    "horizontalOverflows": 0,
+    "clippedImages": 0,
+    "allHashesAndDimensionsMatch": true,
+    "record": "qa/browser-checks.json"
+  },
+  "smallScaleChecks": [
+    {
+      "name": "pallet-card",
+      "viewport": [
+        390,
+        844
+      ],
+      "ppu": 32,
+      "visiblePixels": 60.794343156249994,
+      "expectedPixels": 60.8
+    },
+    {
+      "name": "pallet-card",
+      "viewport": [
+        390,
+        844
+      ],
+      "ppu": 70,
+      "visiblePixels": 132.9998250625,
+      "expectedPixels": 133
+    },
+    {
+      "name": "barrels-card",
+      "viewport": [
+        390,
+        844
+      ],
+      "ppu": 32,
+      "visiblePixels": 70.394409140625,
+      "expectedPixels": 70.4
+    },
+    {
+      "name": "barrels-card",
+      "viewport": [
+        390,
+        844
+      ],
+      "ppu": 70,
+      "visiblePixels": 153.998078015625,
+      "expectedPixels": 154
+    },
+    {
+      "name": "pallet-card",
+      "viewport": [
+        1024,
+        768
+      ],
+      "ppu": 32,
+      "visiblePixels": 60.794343156249994,
+      "expectedPixels": 60.8
+    },
+    {
+      "name": "pallet-card",
+      "viewport": [
+        1024,
+        768
+      ],
+      "ppu": 70,
+      "visiblePixels": 132.9998250625,
+      "expectedPixels": 133
+    },
+    {
+      "name": "barrels-card",
+      "viewport": [
+        1024,
+        768
+      ],
+      "ppu": 32,
+      "visiblePixels": 70.394409140625,
+      "expectedPixels": 70.4
+    },
+    {
+      "name": "barrels-card",
+      "viewport": [
+        1024,
+        768
+      ],
+      "ppu": 70,
+      "visiblePixels": 153.998078015625,
+      "expectedPixels": 154
+    }
+  ],
+  "tests": {
+    "command": "npm test",
+    "exitCode": 0,
+    "passedFiles": 17,
+    "passedTests": 88
+  },
+  "typecheck": {
+    "command": "npm run typecheck",
+    "exitCode": 0
+  },
+  "limitations": [
+    "Image-model camera is approximate; no calibrated52-degree camera claim.",
+    "Fixed-view cards; game integration/terminal occlusion/iPad/PWA/FPS not tested in this asset QA."
+  ]
+}

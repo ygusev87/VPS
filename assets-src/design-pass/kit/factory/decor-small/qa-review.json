@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "status": "accepted-for-integration-review",
+  "method": "Visual inspection of all eight native IAB screenshots: white/dark/factory floor and32/70px per world unit at390x844 and1024x768. No synthesized screenshots.",
+  "assets": [
+    {
+      "name": "pallet-card",
+      "sha256": "aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+      "status": "accepted-for-integration-review",
+      "note": "One wooden pallet with exactly three crates; bottom support complete after framing correction. Visible projected height1.83435 at width1.9, close to requested approx1.8. Three crates and pallet openings readable at60.8px visible width. No visible floor/base plate/cast shadow/text or noticeable coloured edge halo on tested white/dark/floor backgrounds. Native alpha retained; only crop and proportional resizing applied.",
+      "exactItemCount": 3,
+      "testPixelsPerWorldUnit": [
+        32,
+        70
+      ],
+      "visibleWidthPixels": [
+        60.8,
+        133.0
+      ],
+      "screenshotPaths": [
+        "qa/white-390.jpg",
+        "qa/dark-390.jpg",
+        "qa/floor-390.jpg",
+        "qa/small-390.jpg",
+        "qa/white-1024.jpg",
+        "qa/dark-1024.jpg",
+        "qa/floor-1024.jpg",
+        "qa/small-1024.jpg"
+      ]
+    },
+    {
+      "name": "barrels-card",
+      "sha256": "aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+      "status": "accepted-for-integration-review",
+      "note": "Exactly three upright blue drums, all three lids distinguishable. Targeted camera correction opens lid ellipses for the requested higher three-quarter view; no exact camera calibration claimed. Three-drum group readable at70.4px visible width. No visible floor/base plate/cast shadow/text or noticeable coloured edge halo on tested white/dark/floor backgrounds. Native alpha retained; only crop and proportional resizing applied.",
+      "exactItemCount": 3,
+      "testPixelsPerWorldUnit": [
+        32,
+        70
+      ],
+      "visibleWidthPixels": [
+        70.4,
+        154.0
+      ],
+      "screenshotPaths": [
+        "qa/white-390.jpg",
+        "qa/dark-390.jpg",
+        "qa/floor-390.jpg",
+        "qa/small-390.jpg",
+        "qa/white-1024.jpg",
+        "qa/dark-1024.jpg",
+        "qa/floor-1024.jpg",
+        "qa/small-1024.jpg"
+      ]
+    }
+  ]
+}
