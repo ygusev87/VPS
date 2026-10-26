@@ -4,23 +4,24 @@
   "assets": [
     {
       "name": "factory-cabinet",
-      "source": "concepts/factory-cabinet.png",
+      "source": "concepts/factory-cabinet-v2.png",
       "width": 1536,
       "height": 1024,
-      "bytes": 1909265,
-      "sha256": "90fa9c3567e246c3b61156f3eb7956623a75e843d5064a40937af0ab704cf22d",
-      "preview": "previews/factory-cabinet.webp",
+      "bytes": 2022252,
+      "sha256": "2ef5f81694b930cd766078d2a91b458e0519f0a210dea54d5c7158126aceb53b",
+      "preview": "previews/factory-cabinet-v2.webp",
       "previewWidth": 1024,
       "previewHeight": 683,
-      "previewBytes": 87436,
-      "previewSha256": "32050eeca81aa6a6d6f7646bc11f8eab41c131e5da977ad1a32112624c395283",
+      "previewBytes": 75858,
+      "previewSha256": "151c65dce1bc21e3bc7b0be7501f02a77ff3d528917f9e90b49e52534750a86d",
       "referenceImages": [
         {
           "path": "/Users/gusev/gameios/assets-src/design-pass/variants/factory-industrial-b.png",
           "sha256": "202b9e941ae208c9fab86bcdce36240ce88a41996fc0a55e9fc40de2607d5398"
         }
       ],
-      "generation": "built-in image_gen; one initial call, no correction",
+      "generation": "built-in image_gen: initial + one targeted correction for m0410",
+      "correctionRecord": "corrections.json",
       "status": "reference-only; no GLB generated; no external upload",
       "packaging": "original PNG preserved byte-for-byte; only resize/sRGB/WebP for local review"
     },
@@ -43,28 +44,30 @@
         }
       ],
       "generation": "built-in image_gen; one initial call, no correction",
+      "correctionRecord": null,
       "status": "reference-only; no GLB generated; no external upload",
       "packaging": "original PNG preserved byte-for-byte; only resize/sRGB/WebP for local review"
     },
     {
       "name": "lathe",
-      "source": "concepts/lathe.png",
+      "source": "concepts/lathe-v2.png",
       "width": 1774,
       "height": 887,
-      "bytes": 1834199,
-      "sha256": "bb77198439039c98ddad7cf0dd6a59492c89fa5654a429d684b0f499eef978dc",
-      "preview": "previews/lathe.webp",
+      "bytes": 1996053,
+      "sha256": "29ae559e9cc0d2e78f1c4f0b12311bc3e1cb1d537a2c52aae4fd8515bb8d8993",
+      "preview": "previews/lathe-v2.webp",
       "previewWidth": 1024,
       "previewHeight": 512,
-      "previewBytes": 67930,
-      "previewSha256": "bba65fa9ffc523fd3969a6e24a1fd170db516231721bdd9fbc0082b81627acd8",
+      "previewBytes": 62364,
+      "previewSha256": "d7d170d5f9e6c4eaf4c5c26704a121cb067f585eb008158bd0c9298bf6c2b0e0",
       "referenceImages": [
         {
           "path": "/Users/gusev/gameios/assets-src/design-pass/variants/factory-industrial-b.png",
           "sha256": "202b9e941ae208c9fab86bcdce36240ce88a41996fc0a55e9fc40de2607d5398"
         }
       ],
-      "generation": "built-in image_gen; one initial call, no correction",
+      "generation": "built-in image_gen: initial + one targeted correction for m0410",
+      "correctionRecord": "corrections.json",
       "status": "reference-only; no GLB generated; no external upload",
       "packaging": "original PNG preserved byte-for-byte; only resize/sRGB/WebP for local review"
     },
@@ -87,6 +90,7 @@
         }
       ],
       "generation": "built-in image_gen; one initial call, no correction",
+      "correctionRecord": null,
       "status": "reference-only; no GLB generated; no external upload",
       "packaging": "original PNG preserved byte-for-byte; only resize/sRGB/WebP for local review"
     }

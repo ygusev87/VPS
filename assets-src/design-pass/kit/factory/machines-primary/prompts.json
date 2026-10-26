@@ -8,7 +8,11 @@
     "alpha": false,
     "kind": "model-reference-only",
     "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-302f653e-3946-4efb-bc61-837fe1565d0e.png",
-    "status": "reference-only; GLB not created"
+    "status": "reference-only; GLB not created",
+    "selectedSource": "concepts/factory-cabinet-v2.png",
+    "selectedPreview": "previews/factory-cabinet-v2.webp",
+    "generationLabel": "built-in image_gen: initial + one targeted correction for m0410",
+    "correctionRecord": "corrections.json"
   },
   {
     "name": "safety-press",
@@ -30,7 +34,11 @@
     "alpha": false,
     "kind": "model-reference-only",
     "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-5aca3a9f-205a-44b1-896f-819e051b5d1f.png",
-    "status": "reference-only; GLB not created"
+    "status": "reference-only; GLB not created",
+    "selectedSource": "concepts/lathe-v2.png",
+    "selectedPreview": "previews/lathe-v2.webp",
+    "generationLabel": "built-in image_gen: initial + one targeted correction for m0410",
+    "correctionRecord": "corrections.json"
   },
   {
     "name": "hoist",

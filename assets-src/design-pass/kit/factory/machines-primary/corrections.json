@@ -1,0 +1,14 @@
+[
+  {
+    "name": "factory-cabinet-v2",
+    "prompt": "Use case: precise-object-edit. This is the edit target: the supplied teal open horizontal machine tray. Correct ONLY the hinge location: REMOVE all three large hinge knuckles from the LEFT side of the tray completely, restoring the plain teal/steel left wall. Put two small hinge knuckles spaced across the BACK edge (the far upper long rim with the red indicator light), their common rotation axis running left-right along that rear rim, so a separate code lid could open upwards behind the tray. Do not draw a lid or door. Preserve the exact tray shape, wide empty square interior, steel rim, yellow front corners, all palette, same camera and lighting, same scale, pure white background, no cast shadow. The empty tray floor must remain entirely empty, no tiles, wires, circuits, labels or controls. Only change the hinges as described.",
+    "path": "/Users/gusev/gameios/assets-src/design-pass/kit/factory/machines-primary/concepts/factory-cabinet.png",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-41a98fd6-54db-4987-b8f7-8d974950d4c3.png"
+  },
+  {
+    "name": "lathe-v2",
+    "prompt": "Use case: precise-object-edit. Supplied image is the edit target. Correct ONLY the gauge provision on this teal/steel/yellow lathe BODY reference: remove the entire circular gauge, metal ring and all dial markings from the front of the large LEFT headstock, replacing that circular area with plain continuous teal painted metal matching the surrounding face. Leave the existing flat TOP of that left headstock as a plain flat unobstructed teal mounting area; do NOT add a gauge or gauge bracket. Everything else must stay: identical low bed, four feet, steel rails, larger left and smaller right headstocks, yellow accents, bolts, ventilation slits, hollow circular spindle bearing openings at their inward-facing ends, wide EMPTY span between the headstocks. No spindle, chuck, workpiece, lever, needle, wheel, base plate, text or wires. Keep composition, camera, scale, lighting, white background and lack of background shadow unchanged. Static body only; runtime will add a dial above the left headstock later.",
+    "path": "/Users/gusev/gameios/assets-src/design-pass/kit/factory/machines-primary/concepts/lathe.png",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-621ecee1-a780-495b-832c-0d7f8482e64d.png"
+  }
+]

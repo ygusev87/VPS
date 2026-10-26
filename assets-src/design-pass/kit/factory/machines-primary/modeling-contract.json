@@ -31,7 +31,8 @@
         "door"
       ],
       "clearance": "Open tray for two-by-two interactive tiles; keep top-down visibility and tap access.",
-      "runtimeNote": "Decision m0410: door pivot on north/rear -Z, opens upward behind tiles. Tiles centred X/Z ±0.5, Y=PLATE_TOP+0.17; connectors outside left/right. Reference left hinges are not final geometry; remove/reposition during modeling or correct reference before conversion."
+      "runtimeNote": "m0410: selected v2 has rear/north -Z hinges, door opens upward behind tiles. Tiles X/Z ±0.5,Y=PLATE_TOP+0.17; connectors left/right outside.",
+      "selectedReference": "concepts/factory-cabinet-v2.png"
     },
     {
       "name": "safety-press",
@@ -62,7 +63,8 @@
         "dial needle"
       ],
       "clearance": "Empty axial span between headstock and tailstock; no baked rotating cylinder.",
-      "runtimeNote": "Decision m0410: leave empty/flat mount on top of headstock for code dial facing south. Centre(-0.7,PLATE_TOP+1.25,+0.5), radius0.3. Reference static dial is not an accepted replacement."
+      "runtimeNote": "m0410: selected v2 has no static dial and leaves flat top mounting area. Code dial centre(-0.7,PLATE_TOP+1.25,+0.5), r0.3, south-facing.",
+      "selectedReference": "concepts/lathe-v2.png"
     },
     {
       "name": "hoist",

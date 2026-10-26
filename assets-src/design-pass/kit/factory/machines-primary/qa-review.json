@@ -49,5 +49,34 @@
   "errors": [],
   "horizontalOverflow": false,
   "geometryValidation": "not applicable until GLB exists",
-  "runtimeValidation": "pending integration"
+  "runtimeValidation": "pending integration",
+  "correctedFrames": [
+    {
+      "path": "qa/factory-corrected1024.jpg",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "path": "qa/factory-cabinet-v2-390.jpg",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "path": "qa/factory-lathe-v2-390.jpg",
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "selectedReferenceVersion": {
+    "factory-cabinet": 2,
+    "lathe": 2,
+    "safety-press": 1,
+    "hoist": 1
+  }
 }
