@@ -1,0 +1,105 @@
+{
+  "status": "visually-accepted-with-minor-geometric-notes",
+  "date": "2026-10-26",
+  "scope": "Isolated model review only. Game placement and gameplay cameras belong to integrator.",
+  "sourceFiles": [
+    {
+      "path": "assets-src/design-pass/farm-props-shore/storage-props/farm-crate.glb",
+      "sha256": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f",
+      "matchesSnapshot": true
+    },
+    {
+      "path": "assets-src/design-pass/farm-props-shore/storage-props/farm-barrel.glb",
+      "sha256": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b",
+      "matchesSnapshot": true
+    },
+    {
+      "path": "assets-src/design-pass/farm-props-shore/storage-props/build.mjs",
+      "sha256": "99167e2264649c979914b970c4970249c96d825fc57f1d3548828b0946c30783",
+      "matchesSnapshot": true
+    },
+    {
+      "path": "assets-src/design-pass/farm-props-shore/storage-props/models.json",
+      "sha256": "fc8700c508e1ec65ceb3912109a639ccfc640ffb24530170b2f42646d7e7d649",
+      "matchesSnapshot": true
+    }
+  ],
+  "regularViews": 24,
+  "normalViews": 6,
+  "viewports": [
+    [
+      1180,
+      960
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "sampleCanvasCssSizes": [
+    48,
+    72,
+    104
+  ],
+  "consoleWarningErrorCount": 0,
+  "pageErrors": 0,
+  "webglContextLoss": false,
+  "topology": [
+    {
+      "name": "farm-crate",
+      "triangles": 2892,
+      "closedComponentCount": 33,
+      "degenerateTriangles": 0,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "inconsistentWindingEdges": 0,
+      "nonPositiveVolumes": 0,
+      "faceNormalDot": {
+        "min": 0.9382247198006387,
+        "reversedCount": 0
+      }
+    },
+    {
+      "name": "farm-barrel",
+      "triangles": 1336,
+      "closedComponentCount": 22,
+      "degenerateTriangles": 0,
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "inconsistentWindingEdges": 0,
+      "nonPositiveVolumes": 0,
+      "faceNormalDot": {
+        "min": 0.47770473795533547,
+        "reversedCount": 0
+      }
+    }
+  ],
+  "notes": [
+    {
+      "model": "farm-barrel",
+      "severity": "minor",
+      "kind": "local-hoop-clearance",
+      "maximumGap": 0.005901298034966973,
+      "details": "28-segment hoops bridge flat faces of 14 staves. Contact remains near stave edges. Integrator accepted this for current game size; no GLB changes requested."
+    },
+    {
+      "model": "farm-crate",
+      "severity": "minor",
+      "kind": "nail-head-clearance",
+      "maximumGap": 0.002018809318542536,
+      "details": "Eight nail heads sit about 0.00202 units above wooden side faces. Not distinguishable in reviewed miniature sizes."
+    }
+  ],
+  "intentionalOpenings": "Crate open top, handles and board spacing; barrel stave seams cause narrow radial light slits around lid/bottom. Each constituent solid is closed; this is not a watertight Boolean union.",
+  "notRepeated": [
+    "npm checks",
+    "game placement review",
+    "gameplay camera occlusion audit"
+  ],
+  "unverified": [
+    "iPad hardware",
+    "FPS/GPU time",
+    "in-game illumination"
+  ],
+  "pushPerformed": false
+}

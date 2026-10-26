@@ -1,0 +1,29 @@
+{
+  "sourceFiles": [
+    {
+      "source": "assets-src/design-pass/farm-props-shore/storage-props/farm-crate.glb",
+      "snapshot": "inputs/farm-crate.glb",
+      "bytes": 21120,
+      "sha256": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f"
+    },
+    {
+      "source": "assets-src/design-pass/farm-props-shore/storage-props/farm-barrel.glb",
+      "snapshot": "inputs/farm-barrel.glb",
+      "bytes": 22076,
+      "sha256": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b"
+    },
+    {
+      "source": "assets-src/design-pass/farm-props-shore/storage-props/build.mjs",
+      "snapshot": "inputs/build.mjs",
+      "bytes": 6147,
+      "sha256": "99167e2264649c979914b970c4970249c96d825fc57f1d3548828b0946c30783"
+    },
+    {
+      "source": "assets-src/design-pass/farm-props-shore/storage-props/models.json",
+      "snapshot": "inputs/models.json",
+      "bytes": 2326,
+      "sha256": "fc8700c508e1ec65ceb3912109a639ccfc640ffb24530170b2f42646d7e7d649"
+    }
+  ],
+  "scope": "Frozen read-only model inspection. No game placement or shared files changed."
+}

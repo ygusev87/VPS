@@ -1,0 +1,202 @@
+[
+  {
+    "path": "qa/browser-logs.json",
+    "bytes": 2,
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  {
+    "path": "qa/desktop.json",
+    "bytes": 6721,
+    "sha256": "ef945e18c61e4302760c9afcabcbf2ddd7a3fdb61df671a9bd7dacc3b4a51bf4"
+  },
+  {
+    "path": "qa/farm-barrel-bottom-1180.jpg",
+    "bytes": 42667,
+    "sha256": "7e5a1a9abb73560145412abf979c99353bf111414e4d7b7f5d8a9966589749ab"
+  },
+  {
+    "path": "qa/farm-barrel-bottom-390.jpg",
+    "bytes": 29311,
+    "sha256": "ba822b9729a16d7663b16361a6c0500f6e1cabb95e28282380e200dc7bc0c183"
+  },
+  {
+    "path": "qa/farm-barrel-bottom-normals.jpg",
+    "bytes": 42495,
+    "sha256": "5afafa76878e82ca92477d9261b0030899ab7cd1ca5972f6e32f990a7c8168af"
+  },
+  {
+    "path": "qa/farm-barrel-front-1180.jpg",
+    "bytes": 42539,
+    "sha256": "d742ab42f0ec0ad61d2142f4d195176af21f6398da0cb8c748bc2dda33c75599"
+  },
+  {
+    "path": "qa/farm-barrel-front-390.jpg",
+    "bytes": 29431,
+    "sha256": "f467327d41405cc797309228a0ee35d309d689945eb2747dbcb3a92aebe1e835"
+  },
+  {
+    "path": "qa/farm-barrel-front-normals.jpg",
+    "bytes": 46142,
+    "sha256": "32aaad3e3296587778fd1d81ca3a7e3ee2edeb35becc94598fae820aa59c96e2"
+  },
+  {
+    "path": "qa/farm-barrel-left-1180.jpg",
+    "bytes": 40731,
+    "sha256": "3db83c1ae6ca36113da88b898ea214d84017109ff8b60d7220fa6bf8e669fb41"
+  },
+  {
+    "path": "qa/farm-barrel-left-390.jpg",
+    "bytes": 28162,
+    "sha256": "0f86e8fd22db891c94c1df59ef56a63edd0477fedefe0225c4032d8757ad8b37"
+  },
+  {
+    "path": "qa/farm-barrel-mobile-six-views.jpg",
+    "bytes": 132605,
+    "sha256": "e6bb323dd53423a4df805f9dcde59c36b1312fea5f86e8e80f38b7944cee42d4"
+  },
+  {
+    "path": "qa/farm-barrel-rear-1180.jpg",
+    "bytes": 41605,
+    "sha256": "a06afdaedf184c7f498dacbdb8c9d37ffc0dc586195195192df668cdc9dbda52"
+  },
+  {
+    "path": "qa/farm-barrel-rear-390.jpg",
+    "bytes": 28721,
+    "sha256": "4ef5906b209c9fa9d2accdf28a17c92ca00a9e3050399aeb3650edc504edeaab"
+  },
+  {
+    "path": "qa/farm-barrel-right-1180.jpg",
+    "bytes": 43002,
+    "sha256": "aa761336aab7537dcf4c90aa3bac6730fea1cb6d7183eef289a4b6c2564dad54"
+  },
+  {
+    "path": "qa/farm-barrel-right-390.jpg",
+    "bytes": 29674,
+    "sha256": "076b3c1bdfa9b85d485471e104bcf8653429a0de5b705d1c34f41f2c30fa8577"
+  },
+  {
+    "path": "qa/farm-barrel-six-views.jpg",
+    "bytes": 115554,
+    "sha256": "31bebf97126c9efee6235981c0d121a653e80b07251b0e37f48076f12b69f2e6"
+  },
+  {
+    "path": "qa/farm-barrel-top-1180.jpg",
+    "bytes": 43536,
+    "sha256": "bab3106d8cebf000b2a7258e7887777561941835b28a2f1072635a7c41310501"
+  },
+  {
+    "path": "qa/farm-barrel-top-390.jpg",
+    "bytes": 29938,
+    "sha256": "baa189673bac3dd9b33bed2042b30a07947e0f5b24d6af130ead7d889bef0c11"
+  },
+  {
+    "path": "qa/farm-barrel-top-normals.jpg",
+    "bytes": 44441,
+    "sha256": "dd6733c118aed44da9597a3142eb472dd1c22c60de0de32bcf2857faf99f9509"
+  },
+  {
+    "path": "qa/farm-crate-bottom-1180.jpg",
+    "bytes": 38297,
+    "sha256": "815e5d0bb9e49deec2f726dea5091fce29418f375e46c3444e6806ad24cae5fd"
+  },
+  {
+    "path": "qa/farm-crate-bottom-390.jpg",
+    "bytes": 27040,
+    "sha256": "c217a5a096ebc7cec3dac508c4db81171bbf4010d0b481ecd69b29054a516fe4"
+  },
+  {
+    "path": "qa/farm-crate-bottom-normals.jpg",
+    "bytes": 42530,
+    "sha256": "a2691576be97894319c408758206c34688047b39c02329636ff893285acd06d0"
+  },
+  {
+    "path": "qa/farm-crate-front-1180.jpg",
+    "bytes": 41749,
+    "sha256": "9e3d07b00d5462d5a5b9fe0b4553c0242bf6147c03ed5611826a255c41b3784a"
+  },
+  {
+    "path": "qa/farm-crate-front-390.jpg",
+    "bytes": 28848,
+    "sha256": "56dbc4302e0e8e821c44368b8f16c6f859af4bc924f387960d69bd6df32146e8"
+  },
+  {
+    "path": "qa/farm-crate-front-normals.jpg",
+    "bytes": 47375,
+    "sha256": "200e5e740c7aa65f78d79757aed672cb870ebb303727be3d8a40c27a9425cedc"
+  },
+  {
+    "path": "qa/farm-crate-left-1180.jpg",
+    "bytes": 40896,
+    "sha256": "7410fa6779edd9d8beb774198b0a54e05d5dc6ef05f37ddaa0bcf59930804e2a"
+  },
+  {
+    "path": "qa/farm-crate-left-390.jpg",
+    "bytes": 28446,
+    "sha256": "48a359cbd3fd9eeaac3c1fa57782875bda4db76c0116bd7ff3c108bdeaebedcd"
+  },
+  {
+    "path": "qa/farm-crate-mobile-six-views.jpg",
+    "bytes": 119909,
+    "sha256": "33ab38e5717e9c935f995bdeb837b98de8ae36562d13ddc0ee051b3833f3194f"
+  },
+  {
+    "path": "qa/farm-crate-rear-1180.jpg",
+    "bytes": 41724,
+    "sha256": "2c68dc9716e06c7785bba3f4293094046c18b2a496ecd64ac7a988a64fcc174f"
+  },
+  {
+    "path": "qa/farm-crate-rear-390.jpg",
+    "bytes": 28921,
+    "sha256": "3aaecf9275da4a2bbe91934cc11277cd2e1afdceb1a5763ecbe751113101abab"
+  },
+  {
+    "path": "qa/farm-crate-right-1180.jpg",
+    "bytes": 41324,
+    "sha256": "3c637cc48d249b03252d6effcb958f28ef115ac0629646fcf9391a92f6caa250"
+  },
+  {
+    "path": "qa/farm-crate-right-390.jpg",
+    "bytes": 28904,
+    "sha256": "e8c19cddfa090cc1f52081839ed5668731fa98712280e2d899c8c8b2092bb844"
+  },
+  {
+    "path": "qa/farm-crate-six-views.jpg",
+    "bytes": 104721,
+    "sha256": "ef99d5c81f72d3f3a3bc87345a7f2db1a166c952d107911e3306a4ee90ccf0e1"
+  },
+  {
+    "path": "qa/farm-crate-top-1180.jpg",
+    "bytes": 37619,
+    "sha256": "7e324ec18e216f27cc5847ca2308de9bc3822807306e43c400a240c9d38953cd"
+  },
+  {
+    "path": "qa/farm-crate-top-390.jpg",
+    "bytes": 27010,
+    "sha256": "11dead701eb0322405d043cf7a68bec2167c2285f083cf42437512928d09772c"
+  },
+  {
+    "path": "qa/farm-crate-top-normals.jpg",
+    "bytes": 42138,
+    "sha256": "99313fcf105f4fb0a49a9f356fe1f01434942f945f7e32827776e32088d38dd1"
+  },
+  {
+    "path": "qa/mobile-readability.jpg",
+    "bytes": 30719,
+    "sha256": "5effc19afa8b2564fb3d665e80ea1649cc204ddff2c6705c07d3a6f38fd12c18"
+  },
+  {
+    "path": "qa/mobile.json",
+    "bytes": 6704,
+    "sha256": "6a193bd4e6202b7d2f6a50c4cb8ca2f61e94dae53c729fc6bd8e4fcee9162a62"
+  },
+  {
+    "path": "qa/normals-six-views.jpg",
+    "bytes": 120122,
+    "sha256": "3fbe15ac48a7ac1d08ae246e4a199dd950d1831f8bf16a74eaeb4838853e20c1"
+  },
+  {
+    "path": "qa/normals.json",
+    "bytes": 3120,
+    "sha256": "6b50ee8ae835a6b3a4fd6bb823c1be31a904757072c8b9ed8034c2b07983a616"
+  }
+]

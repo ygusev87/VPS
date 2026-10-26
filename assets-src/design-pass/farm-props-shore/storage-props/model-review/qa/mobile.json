@@ -1,0 +1,350 @@
+[
+  {
+    "name": "farm-crate",
+    "view": "front",
+    "shading": "pbr",
+    "frame": 16,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f",
+    "bytes": 21120,
+    "triangles": 2892,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.350000023841858,
+      0.8700201575813629,
+      1.0000061213626386
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 2892,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-crate",
+    "view": "rear",
+    "shading": "pbr",
+    "frame": 17,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f",
+    "bytes": 21120,
+    "triangles": 2892,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.350000023841858,
+      0.8700201575813629,
+      1.0000061213626386
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 2892,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-crate",
+    "view": "left",
+    "shading": "pbr",
+    "frame": 18,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f",
+    "bytes": 21120,
+    "triangles": 2892,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.350000023841858,
+      0.8700201575813629,
+      1.0000061213626386
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 2892,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-crate",
+    "view": "right",
+    "shading": "pbr",
+    "frame": 19,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f",
+    "bytes": 21120,
+    "triangles": 2892,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.350000023841858,
+      0.8700201575813629,
+      1.0000061213626386
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 2892,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-crate",
+    "view": "top",
+    "shading": "pbr",
+    "frame": 20,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f",
+    "bytes": 21120,
+    "triangles": 2892,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.350000023841858,
+      0.8700201575813629,
+      1.0000061213626386
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 2892,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-crate",
+    "view": "bottom",
+    "shading": "pbr",
+    "frame": 21,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "409f3b2962716a635b7ec8fc390cae9e8407cb736135969b5428a6d06534668f",
+    "bytes": 21120,
+    "triangles": 2892,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.350000023841858,
+      0.8700201575813629,
+      1.0000061213626386
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 2892,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-barrel",
+    "view": "front",
+    "shading": "pbr",
+    "frame": 22,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b",
+    "bytes": 22076,
+    "triangles": 1336,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.091224751146646,
+      1.3200000524520874,
+      1.091224751146646
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 1336,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-barrel",
+    "view": "rear",
+    "shading": "pbr",
+    "frame": 23,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b",
+    "bytes": 22076,
+    "triangles": 1336,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.091224751146646,
+      1.3200000524520874,
+      1.091224751146646
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 1336,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-barrel",
+    "view": "left",
+    "shading": "pbr",
+    "frame": 24,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b",
+    "bytes": 22076,
+    "triangles": 1336,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.091224751146646,
+      1.3200000524520874,
+      1.091224751146646
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 1336,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-barrel",
+    "view": "right",
+    "shading": "pbr",
+    "frame": 25,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b",
+    "bytes": 22076,
+    "triangles": 1336,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.091224751146646,
+      1.3200000524520874,
+      1.091224751146646
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 1336,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-barrel",
+    "view": "top",
+    "shading": "pbr",
+    "frame": 26,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b",
+    "bytes": 22076,
+    "triangles": 1336,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.091224751146646,
+      1.3200000524520874,
+      1.091224751146646
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 1336,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  },
+  {
+    "name": "farm-barrel",
+    "view": "bottom",
+    "shading": "pbr",
+    "frame": 27,
+    "viewport": [
+      390,
+      440
+    ],
+    "sha256": "64a90611bf94fffd347b027659f49ba7be9939bd70e075beb955b495af101a8b",
+    "bytes": 22076,
+    "triangles": 1336,
+    "meshes": 1,
+    "animations": 0,
+    "size": [
+      1.091224751146646,
+      1.3200000524520874,
+      1.091224751146646
+    ],
+    "doubleSided": false,
+    "calls": 1,
+    "renderTriangles": 1336,
+    "contextLost": false,
+    "errors": [],
+    "screen": [
+      390,
+      844
+    ]
+  }
+]
