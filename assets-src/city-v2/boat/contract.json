@@ -1,0 +1,105 @@
+{
+  "status": "reference-ready-for-claude-review-no-3d-order",
+  "task": "city-boat-model",
+  "request": "m0135",
+  "sourceRevision": "609e891ecb8c1a873721192bc46eec33266f0b33",
+  "sourceHashes": {
+    "src/city.ts": "dff29bac7a5e5929ab803384e99584bcf8141ff1980abc75eb208ef481ec3694",
+    "src/parts/city.ts": "ba2741fd3bb5f685408aa99d47ba89e26c8b404fd9b60c7f1a1b519d3e3dbc6b",
+    "src/storymap.ts": "170333b2820f4fbda5cf1c2d09c3a65dfa69e759d23f3efd57fe10c21290dcfb",
+    "src/parts/kit.ts": "32edbaa0e6375aea7c96994014cba9e91d7690a1bb2887c32cad3cf9f52b6509"
+  },
+  "reference": "boat-v1.png",
+  "runtimeName": "boat",
+  "destination": "public/models/boat.glb",
+  "fit": {
+    "width": 3,
+    "normalizedLongAxis": "+X bow",
+    "up": "+Y",
+    "centerXZ": true,
+    "bottomY": 0,
+    "yaw": -1.5707963267948966,
+    "worldForwardAfterYaw": "+Z"
+  },
+  "geometryTargets": {
+    "trianglesMax": 4000,
+    "materials": 1,
+    "texturePixels": 512,
+    "bytesTarget": 150000,
+    "bytesMax": 200000,
+    "fullXYZAtFit": [
+      3,
+      1.5,
+      1.3
+    ],
+    "dimensionStatus": "Proposed maximum envelope; unmeasured, not a generated GLB. Include funnel and deck edges.",
+    "hull": "closed simple solid underside, no pedestal/water plane",
+    "static": true,
+    "separateMovingParts": false
+  },
+  "runtime": {
+    "pathXZ": [
+      [
+        37,
+        -10
+      ],
+      [
+        37,
+        19
+      ]
+    ],
+    "canalWidth": 3.2,
+    "harbor": {
+      "x": 37,
+      "z": 19.5,
+      "rx": 5,
+      "rz": 3.2
+    },
+    "groupY": {
+      "base": 0.05,
+      "amplitude": 0.04,
+      "frequency": 2
+    },
+    "rotationZ": {
+      "amplitude": 0.04,
+      "frequency": 1.6
+    },
+    "progressPerSecond": 0.18,
+    "advanceWhen": "Drawbridge.up > 0.85",
+    "bridgeSpotXZ": [
+      35.9,
+      0
+    ],
+    "bridgeHingeWorldXYZ": [
+      34.7,
+      0.21,
+      0
+    ],
+    "bridgeSpanLocalLength": 3,
+    "bridgeAngleRadians": "up*1.15",
+    "speechAnchorHeight": 1.4,
+    "currentGeometry": "STAND_INS.boat:cream hull/coral stripe/blue cabin/yellow funnel; replaced by model(boat,fit) when loaded",
+    "loader": "boat is already in CITY_MODELS; City.critterModel falls back to STAND_INS.boat",
+    "animation": "Only existing whole-boat translation/bob/rotation; no skeleton or paid clip needed."
+  },
+  "preserve": [
+    "existing route and root yaw",
+    "bridge/device/button/pole placement",
+    "canal and harbor geometry",
+    "existing tap/voice/task completion",
+    "no new light/transparency/water mesh"
+  ],
+  "acceptanceAfterGLB": [
+    "actual decoded fullXYZ after fit, including funnel, within agreed envelope",
+    "actual world boat vs raised span at first up>0.85 while crossing z0; sample bob/rotation extrema",
+    "centered travel along entire route within canal/harbor",
+    "bow points+Z in game, no sideways/backwards sailing",
+    "viewport390x844/1024x768 with bridge/button/pole/boat touch target visible",
+    "whole task bridgeAsk→bridgeHappy; no new floating pedestal or water quad",
+    "on-water visual placement at groupY0.01…0.09; bottomY0 alone is not proof of correct draft"
+  ],
+  "spend": {
+    "ordersMade": 0,
+    "note": "Check accepted reference, included-credit price and existing owner budget before any 3D order. No purchases, paid extra credits or rig required."
+  }
+}

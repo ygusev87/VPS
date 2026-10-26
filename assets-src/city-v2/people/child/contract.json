@@ -1,5 +1,5 @@
 {
-  "status": "reference-ready-for-claude-review-no-3d-order",
+  "status": "reference-accepted-m0364-static-model-ready-for-priced-generation",
   "task": "city-child-model",
   "request": "m0135",
   "sourceRevision": "271bc6cd785782826d29489bb89930d453d37ed3",
@@ -70,15 +70,18 @@
     "bytesTarget": 150000,
     "bytesMax": 200000,
     "root": "centered XZ, feet Y0",
-    "forwardProposal": "+X",
+    "forwardProposal": "+X accepted m0364",
     "pose": "neutral A with separate arm/leg silhouettes; no attached prop/pedestal",
     "fit": "existing height1.15/1.2 unchanged",
-    "dimensionsNote": "No 3D geometry generated; width/depth not measured. Validate actual bounds after generation."
+    "dimensionsNote": "No 3D geometry generated; width/depth not measured. Validate actual bounds after generation.",
+    "static": true
   },
   "animation": {
-    "current": "Whole-character bob/hop/spin/flip; child3/4/5 translate to SCHOOL_DOOR. Child has no RigSpec and is absent from LOOKERS.",
-    "requiredResolution": "A static GLB alone does not provide walking limbs. Claude must choose human rig/independent limb nodes and integrate school walking/dancing without reusing quadruped pose().",
-    "noClaim": "Image A pose is only preparation; no skin weights, skeleton, animations or verified limb movement yet."
+    "decision": "m0364, Claude,2026-10-26: static GLB without rig or independent limbs",
+    "runtimeCommit": "609e891",
+    "current": "Whole-character bob/hop/spin/flip; children entering school hop and face SCHOOL_DOOR. No walking-limb animation is required by the accepted integration contract.",
+    "requiredResolution": null,
+    "noClaim": "The reference is not a GLB; new geometry, fit and mobile school-entry/tap checks remain."
   },
   "preserve": [
     "all7 centers/yaws/fit heights",
@@ -89,12 +92,20 @@
   "acceptanceAfterGLB": [
     "actual fit bounds, root orientation, no floor/pedestal",
     "all7 instances and nearby pads/terminals at390x844 and1024x768",
-    "school entry movement and tap/hop with correctly animated limbs",
+    "school entry hopping and facing the door, plus tap/hop/spin/flip, using accepted whole-body code",
     "no added material variants or clones without deliberate integration",
     "decoded triangle/texture/file-size budgets"
   ],
   "spend": {
     "ordersMade": 0,
     "note": "No Tripo/API order authorised by this artifact. Check existing owner budget and agreed animation contract before spending; no purchases or paid extra credits."
+  },
+  "integrationDecision": {
+    "message": "m0364",
+    "referenceAccepted": true,
+    "forward": "+X",
+    "bottomY": 0,
+    "trianglesMax": 4000,
+    "fitUnchanged": true
   }
 }

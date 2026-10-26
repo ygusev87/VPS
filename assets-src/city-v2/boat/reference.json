@@ -1,0 +1,29 @@
+{
+  "date": "2026-10-26",
+  "mode": "builtin-image-generation",
+  "request": "m0135 priority3 boat",
+  "output": "boat-v1.png",
+  "sha256": "ac667f62627a243466622eb3be66d4015489762f2cacb42dfe5ca62f190934ba",
+  "size": [
+    1536,
+    1024
+  ],
+  "prompt": "Use case: stylized-concept.\nAsset type: single image-to-3D reference for a small toy canal boat in the children's game Электро-стол.\nPrimary request: one charming compact canal tugboat, with a long low rounded cream-white hull, a broad coral-red stripe around the hull, one squat blue wheelhouse with opaque dark teal windows, a cream rounded roof and one short chunky golden-yellow funnel. A clean, instantly readable, friendly toy silhouette matching rounded cream/coral/teal miniature city vehicles. This is a little motorboat, not a sailing ship.\nComposition: complete isolated boat in a near-isometric three-quarter product view from a little above the bow; rounded bow pointing toward the right of the picture, stern to the left. See both the long side and front of the hull. Generous pale warm cream empty margins around the entire object. Only one boat, one cabin and one funnel. Length about 2.2 times total height, and 2.5 times beam: low, broad and stable, not tall or top-heavy.\nMaterials and light: softly rounded solid hand-painted toy 3D forms, semi-matte clean painted finish, broad subtle color variation, soft neutral studio fill, no baked hard shadow, black ambient occlusion, dirty weathering or metallic mirror finish. Simple large shapes that survive a small game viewport and low-poly 3D conversion.\nConstraints: no water, no waves, no splash, no background scene, no dock, no stand, no base or plinth. No humans, wheels, visible propeller, sail, mast, ropes, antennas, railings or thin separate parts. No text, numbers, logos, flags, labels or watermark. No transparent windows/interior. The underside must be a closed simple solid hull with a shallow curved bottom; only a very faint contact shadow allowed.\n",
+  "styleReviewedAgainst": "assets-src/city-v1/car-v1.png",
+  "styleImagePassedToGenerator": false,
+  "inspection": {
+    "singleBoat": true,
+    "completeSilhouette": true,
+    "creamHullCoralStripeBlueCabinYellowFunnel": true,
+    "opaqueWindows": true,
+    "noWaterBaseFiguresText": true,
+    "simpleSolidParts": true
+  },
+  "limits": "A reference image cannot prove closed hidden hull geometry or actual bridge clearance. Funnel/cabin height must be constrained and measured on GLB.",
+  "cost": {
+    "builtinCalls": 1,
+    "tripoOrders": 0,
+    "higgsfieldCredits": 0,
+    "openaiApiCalls": 0
+  }
+}
