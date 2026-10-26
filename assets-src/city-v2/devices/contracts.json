@@ -1,0 +1,5451 @@
+{
+  "schemaVersion": 1,
+  "status": "Technical contracts measured; artwork/GLB generation NOT performed",
+  "sourceRevision": "fb787044a2f69c31c8d1d2d5e8fabe34f4b62fa5",
+  "measurementFile": "measurements.json",
+  "measurementSha256": "93c2c68dd045bc30c493f2bb05b7707e129d96f99173576f31a1a1ac8e0be183",
+  "scope": "Только документация, CPU-замеры и ограничения будущих ассетов. Не интеграция runtime и не приёмка полной сцены.",
+  "frames": {
+    "units": "Единицы игры, не утверждение о метрах",
+    "up": "+Y",
+    "board": "XZ",
+    "canonicalYaw": 0,
+    "canonicalYawEvidence": "src/storymap.ts:FRONT не содержит эти 8 kinds; seat вызывает yawFor -> 0",
+    "hierarchy": "root -> body -> art / plate / terminals; body управляет общими bounce/drag/shake",
+    "assetRule": "Все отдельные движущиеся ассеты сохраняют origin соответствующей группы; геометрию не центрировать заново после задания pivot. Все платы и клеммы остаются кодовыми."
+  },
+  "measurementLimits": {
+    "bounds": "Точные AABB вершин в указанных позах. Sweep — объединение конечной выборки, не гарантированная непрерывная оболочка. Числа округлены до 1e-6.",
+    "world": "Только канонические точки задания после завершения snap, без bounce/drag/shake; реальные координаты во время перехода отличаются.",
+    "static": "Статические bounds включают управляемые по материалу стекло/буквы; assetPlan уточняет, какие из них оставить кодом.",
+    "notMeasured": [
+      "Рендер/ракурс на телефоне и планшете",
+      "Полная сцена, провода и соседний декор",
+      "Коллизии нового GLB с лодкой/машиной/котом",
+      "FPS, PWA, iPad",
+      "Ресурсы/качество ещё не созданных ассетов"
+    ]
+  },
+  "terminals": {
+    "actualOpaqueSize": [
+      0.34,
+      0.36,
+      0.34
+    ],
+    "opaqueY": [
+      0.16,
+      0.52
+    ],
+    "attachY": 0.48,
+    "highlightRing": {
+      "majorRadius": 0.24,
+      "tubeRadius": 0.025,
+      "outerRadius": 0.265,
+      "centreY": 0.22,
+      "defaultVisible": false
+    },
+    "inputSource": "src/input.ts:terminalAt",
+    "touchRadiusCssPx": "max(24,pixelsPerUnit(attachPoint)*0.42)",
+    "unseatedCentreRule": "Если не seated/pinned, d>max(12,ppu*0.22) и касание ближе к центру детали, выбирается перемещение.",
+    "visibilityDiagnostic": "320 параллельных лучей по собственному непрозрачному корпусу; 0 перекрытых. Это не проверка экранной доступности на устройстве.",
+    "authoringReserveProposal": {
+      "status": "Предлагаемый запас для НОВОГО декора; не существующее правило runtime",
+      "radiusXZ": 0.3,
+      "minY": 0.16,
+      "maxY": 1.0,
+      "anchor": "terminal post x,z",
+      "exception": "У моста a уже есть broad-phase overlap. Не переносить клемму самостоятельно: нужна отдельная ревизия геометрии/согласование интегратора."
+    }
+  },
+  "deliveryProposal": {
+    "format": "GLB, +Y up, meshopt-compatible; no rig needed for these code-driven rigid nodes",
+    "staticBodyTarget": {
+      "trianglesMax": 4000,
+      "materialsMax": 2,
+      "textureMaxPx": 512,
+      "compressedBytesTarget": 200000
+    },
+    "status": "Ориентиры будущей поставки, не измерения и не разрешение на генерации/покупки.",
+    "requiredFutureChecks": [
+      "Проверить размеры и pivot на распакованной геометрии",
+      "Не объединять статический корпус с движущимися узлами",
+      "Сохранить fallback, electrical(), getters, glowLight(), события и hit meshes",
+      "Пересчитать footprint: Part.footprint() кеширует текущий AABB, это не swept envelope",
+      "В игре проверить клеммы/провода при начале, середине и конце движения на мобильных ракурсах",
+      "Отдельно принять зазор моста для финальной лодки и зазор автомойки для машины"
+    ]
+  },
+  "firstSequence": [
+    {
+      "order": 1,
+      "kind": "barrier",
+      "next": "Подготовить static-only Image корпуса по этим ограничениям при отдельном разрешённом этапе. Стрелу и жёлтый маячок пока оставить кодовыми.",
+      "review": "Проверить пропорции 0.36×0.90×0.36, посадку оси и отсутствие нарисованных клемм/стрелы; затем отдельный GLB и fit по высоте 0.9.",
+      "imagePromptDraft": "An isolated compact toy parking-barrier motor housing only, dark navy softly rounded rectangular casing, subtle brass fasteners, height 2.5 times its width, square footprint. Clean lateral axle mounting seat, no projecting arm. Three-quarter top product view, pure white background, soft studio lighting, warm toy-town materials. No barrier arm, lamp, base plate, terminals, wires, vehicle, road, text, label, logos or background shadow."
+    },
+    {
+      "order": 2,
+      "kind": "drawbridge",
+      "next": "После проверки шлагбаума — static-only Image башенки с крышей. Пролёт и оба ограждения оставить кодовыми.",
+      "review": "Проверить 1.60 высоты и максимум 0.59397 по ширине/глубине, нижний центр [-1.6,0.16,-0.3]; до интеграции разобрать overlap клеммы a и проверить финальную лодку.",
+      "imagePromptDraft": "One isolated small toy drawbridge control tower only, a simple square warm sand-coloured tower with a coral four-sided pyramidal roof, softly rounded masonry edges, restrained toy-town details. Overall height about 2.69 times roof width, no broad foundation. Three-quarter top product view, pure white background, soft studio lighting. No bridge deck, railings, lift mechanism, moving leaf, water, banks, boat, base plate, electrical terminals, wires, text, logos or background shadow."
+    }
+  ],
+  "referenceGlobalConstraints": [
+    "Стиль из assets-src/README.md: тёплый игрушечный product render, бирюза/коралл/крем/тёмно-синий/латунь.",
+    "Image задаёт внешний вид; размеры/пивоты проверяются по геометрии будущего GLB. Из картинки их нельзя считать измеренными.",
+    "Один референс — одна статическая или одна отдельная движущаяся сборка. Общий концепт не подавать как задание на монолитную модель.",
+    "Никаких плат, клемм, проводов, воды/спрайтов, света, персонажей, машин и окружения в корпусе.",
+    "Материал с управляемой эмиссией должен оставаться отдельным и иметь экземпляр на устройство.",
+    "Никаких Image/Tripo-заказов в этом пакете."
+  ],
+  "devices": [
+    {
+      "kind": "barrier",
+      "class": "Barrier",
+      "source": {
+        "path": "src/parts/city.ts",
+        "line": 65
+      },
+      "label": "Шлагбаум",
+      "plateNominal": [
+        1.5,
+        1.2
+      ],
+      "sourceSelectors": {
+        "static": [
+          "body.children[1] post",
+          "body.children[2] beacon"
+        ],
+        "moving": [
+          "arm"
+        ]
+      },
+      "motion": {
+        "input": "abs(state.level) > 0.15",
+        "state": "open in [0,1]",
+        "equation": "open = damp(open, powered ? 1 : 0, 2.5, dt); arm.rotation.z = 1.4 * open",
+        "axis": "+Z",
+        "rangeRadians": [
+          0,
+          1.4
+        ],
+        "off": "Возврат вниз с тем же damp; знак питания не меняет направление."
+      },
+      "connections": [
+        {
+          "name": "armHinge",
+          "body": [
+            -0.3,
+            0.91,
+            -0.2
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "postBottom",
+          "body": [
+            -0.4,
+            0.16,
+            -0.2
+          ]
+        },
+        {
+          "name": "beaconCentre",
+          "body": [
+            -0.4,
+            1.11,
+            -0.2
+          ]
+        }
+      ],
+      "game": {
+        "source": "src/city.ts:updateParking",
+        "gate": "barrier.open > 0.8",
+        "wiring": "PARK_POLE(-28.5,-4.5) -> button(-29.5,-8.5) -> barrier",
+        "route": [
+          [
+            -33,
+            0,
+            1.5
+          ],
+          [
+            -33,
+            0,
+            -7.5
+          ]
+        ],
+        "collision": "Движение машин разрешает значение open, не вычисленная коллизия стрелы."
+      },
+      "assetPlan": {
+        "firstStaticAsset": "barrier-body (предлагаемое имя)",
+        "staticMembers": [
+          "post"
+        ],
+        "binding": {
+          "parent": "body",
+          "fit": {
+            "height": 0.9
+          },
+          "holderPosition": [
+            -0.4,
+            0.16,
+            -0.2
+          ],
+          "note": "model() даёт нижний центр; после fit проверить ширину/глубину <=0.36. Это план, загрузки в runtime ещё нет."
+        },
+        "keepCode": [
+          "plate/label/shadow",
+          "terminals",
+          "beacon: сейчас обычный жёлтый материал без эмиссии",
+          "arm: 6 красно-кремовых сегментов 0.42×0.10×0.08",
+          "animate/electrical/pickables"
+        ],
+        "optionalSeparateAssets": [
+          {
+            "name": "barrier-arm",
+            "parent": "arm",
+            "origin": "шарнир [0,0,0]; +X от 0 до 2.52",
+            "dimensions": [
+              2.52,
+              0.1,
+              0.08
+            ]
+          }
+        ],
+        "forbidden": "Нельзя включать стрелу, плату или клеммы в цельный корпус."
+      },
+      "referenceConstraints": [
+        "Один компактный тёмно-синий корпус, высота/ширина=2.5; сглаженные углы, мелкая латунная фурнитура.",
+        "Посадка оси +Z у body[-0.3,0.91,-0.2] остаётся доступной; корпус не расширять в сектор подъёма.",
+        "На Image для static-only отсутствуют стрела, фонарик, провода, плата, клеммы, текст, дорога и машина."
+      ],
+      "electrical": {
+        "elementKind": "motor",
+        "override": {
+          "r": 9
+        },
+        "note": "Пустой override означает solver defaults; произвольное сопротивление не назначалось."
+      },
+      "measured": {
+        "layoutRadius": 1.5,
+        "restSolidsBody": {
+          "min": [
+            -0.75,
+            0,
+            -0.6
+          ],
+          "max": [
+            2.22,
+            1.2,
+            0.62
+          ],
+          "size": [
+            2.97,
+            1.2,
+            1.22
+          ]
+        },
+        "sampledSweepSolidsBody": {
+          "min": [
+            -0.75,
+            0,
+            -0.6
+          ],
+          "max": [
+            2.220495,
+            3.401832,
+            0.62
+          ],
+          "size": [
+            2.970495,
+            3.401832,
+            1.22
+          ]
+        },
+        "sampledSweepArtBody": {
+          "min": [
+            -0.58,
+            0.16,
+            -0.38
+          ],
+          "max": [
+            2.220495,
+            3.401832,
+            -0.02
+          ],
+          "size": [
+            2.800495,
+            3.241832,
+            0.36
+          ]
+        },
+        "staticArtBody": {
+          "min": [
+            -0.58,
+            0.16,
+            -0.38
+          ],
+          "max": [
+            -0.22,
+            1.2,
+            -0.02
+          ],
+          "size": [
+            0.36,
+            1.04,
+            0.36
+          ]
+        },
+        "staticMembers": [
+          {
+            "key": "post",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.58,
+                0.16,
+                -0.38
+              ],
+              "max": [
+                -0.22,
+                1.06,
+                -0.02
+              ],
+              "size": [
+                0.36,
+                0.9,
+                0.36
+              ]
+            },
+            "translation": [
+              -0.4,
+              0.61,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "beacon",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.49,
+                1.02,
+                -0.29
+              ],
+              "max": [
+                -0.31,
+                1.2,
+                -0.11
+              ],
+              "size": [
+                0.18,
+                0.18,
+                0.18
+              ]
+            },
+            "translation": [
+              -0.4,
+              1.11,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "groups": [
+          {
+            "key": "arm",
+            "parent": "body",
+            "meshCount": 6,
+            "restTransformInParent": {
+              "translation": [
+                -0.3,
+                0.91,
+                -0.2
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                0,
+                -0.05,
+                -0.04
+              ],
+              "max": [
+                2.52,
+                0.05,
+                0.04
+              ],
+              "size": [
+                2.52,
+                0.1,
+                0.08
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -0.3,
+                0.86,
+                -0.24
+              ],
+              "max": [
+                2.22,
+                0.96,
+                -0.16
+              ],
+              "size": [
+                2.52,
+                0.1,
+                0.08
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -0.349272,
+                0.86,
+                -0.24
+              ],
+              "max": [
+                2.220495,
+                3.401832,
+                -0.16
+              ],
+              "size": [
+                2.569768,
+                2.541832,
+                0.08
+              ]
+            }
+          }
+        ],
+        "terminals": [
+          {
+            "key": "a",
+            "polarity": "none",
+            "postBaseBody": [
+              0.55,
+              0.16,
+              0.45
+            ],
+            "attachPointBody": [
+              0.55,
+              0.48,
+              0.45
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                0.38,
+                0.16,
+                0.28
+              ],
+              "max": [
+                0.72,
+                0.52,
+                0.62
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          },
+          {
+            "key": "b",
+            "polarity": "none",
+            "postBaseBody": [
+              -0.55,
+              0.16,
+              0.45
+            ],
+            "attachPointBody": [
+              -0.55,
+              0.48,
+              0.45
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                -0.72,
+                0.16,
+                0.28
+              ],
+              "max": [
+                -0.38,
+                0.52,
+                0.62
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          }
+        ],
+        "canonicalPlacements": [
+          {
+            "position": [
+              -34,
+              0,
+              -4.5
+            ],
+            "yawRadians": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "restSolidsWorld": {
+              "min": [
+                -34.75,
+                0,
+                -5.1
+              ],
+              "max": [
+                -31.78,
+                1.2,
+                -3.88
+              ],
+              "size": [
+                2.97,
+                1.2,
+                1.22
+              ]
+            },
+            "sampledSweepSolidsWorld": {
+              "min": [
+                -34.75,
+                0,
+                -5.1
+              ],
+              "max": [
+                -31.779505,
+                3.401832,
+                -3.88
+              ],
+              "size": [
+                2.970495,
+                3.401832,
+                1.22
+              ]
+            },
+            "terminals": [
+              {
+                "key": "a",
+                "attachPointWorld": [
+                  -33.45,
+                  0.48,
+                  -4.05
+                ]
+              },
+              {
+                "key": "b",
+                "attachPointWorld": [
+                  -34.55,
+                  0.48,
+                  -4.05
+                ]
+              }
+            ],
+            "groupRestPivotsWorld": {
+              "arm": [
+                -34.3,
+                0.91,
+                -4.7
+              ]
+            }
+          }
+        ],
+        "sampling": {
+          "parameterSteps": 1024,
+          "phaseSteps": 0,
+          "meaning": "f=open from 0 to 1; original animate(0)",
+          "continuousGuarantee": false,
+          "note": "Exact transformed geometry vertices at sampled poses; union is NOT a guaranteed continuous swept envelope. Generic Part.update bounce/drag/shake is excluded."
+        },
+        "terminalDiagnostics": {
+          "method": "Five points around each attachPoint, parallel rays along negative VIEW_DIR from 20 units toward the body, sampled at 0/.25/.5/.75/1 (one state for static devices). Own opaque art only; excludes terminal itself, plate, wires and scene. Not a perspective screenshot, touch test, or visibility guarantee.",
+          "cameraDirection": [
+            0,
+            0.788502,
+            0.615032
+          ],
+          "checks": [
+            {
+              "key": "a",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            },
+            {
+              "key": "b",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            }
+          ],
+          "overlapMeaning": "Per-mesh AABB overlap is only a broad-phase warning, NOT proof of triangle intersection."
+        }
+      }
+    },
+    {
+      "kind": "ferris",
+      "class": "FerrisWheel",
+      "source": {
+        "path": "src/parts/city.ts",
+        "line": 103
+      },
+      "label": "Колесо обозрения",
+      "plateNominal": [
+        2.4,
+        1.5
+      ],
+      "sourceSelectors": {
+        "static": [
+          "body.children[1..4] legs"
+        ],
+        "moving": [
+          "wheel (без cabins)",
+          "cabins[0..7] как дети wheel"
+        ]
+      },
+      "motion": {
+        "input": "abs(level)>0.15; sign(level) задаёт направление",
+        "equation": "turnV=damp(turnV, powered ? 0.7*sign(level)*min(1.5,abs(level)) : 0, 1.5, dt); wheel.rotation.z += turnV*dt",
+        "axis": "+Z",
+        "speedRangeRadPerSecond": [
+          -1.05,
+          1.05
+        ],
+        "cabins": "a_i=i*2*pi/8; hang.position=(1.05*cos(a_i),1.05*sin(a_i),0); hang.rotation.z=-wheel.rotation.z+sin(time*2+hang.id)*0.06*abs(turnV)",
+        "maximumSwayRadians": 0.063,
+        "off": "Плавная остановка; кабины сохраняют компенсацию вращения колеса."
+      },
+      "connections": [
+        {
+          "name": "wheelAxle",
+          "body": [
+            0,
+            1.91,
+            -0.15
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "eightHangers",
+          "parent": "wheel",
+          "formula": "[1.05*cos(i*pi/4),1.05*sin(i*pi/4),0], i=0..7"
+        },
+        {
+          "name": "cabinBodyCentre",
+          "parent": "cabinN",
+          "local": [
+            0,
+            -0.16,
+            0
+          ]
+        }
+      ],
+      "game": {
+        "source": "src/city.ts:updateFerris",
+        "gate": "abs(wheel.spin)>0.4 накапливает rideT; задание rideT>3",
+        "wiring": "windGen(12,3) -> ferris; отдельного столба для колеса нет",
+        "children": "Дети реагируют hop; текущий код не усаживает их в кабины."
+      },
+      "assetPlan": {
+        "firstStaticAsset": "ferris-support",
+        "staticMembers": [
+          "leg0",
+          "leg1",
+          "leg2",
+          "leg3"
+        ],
+        "binding": {
+          "parent": "body",
+          "frame": "Сохранить четыре опоры в измеренных координатах; ось [0,1.91,-0.15]. Нижний край текущих наклонённых опор y=0.128667."
+        },
+        "keepCode": [
+          "plate/terminals",
+          "wheel rim/spokes/hub в первом проходе",
+          "8 независимых hang-групп и качание",
+          "electrical/spin getter"
+        ],
+        "optionalSeparateAssets": [
+          {
+            "name": "ferris-wheel",
+            "parent": "wheel",
+            "origin": "центр оси; плоскость XY",
+            "size": [
+              2.2,
+              2.2,
+              0.3
+            ]
+          },
+          {
+            "name": "ferris-cabin",
+            "instances": 8,
+            "parent": "cabinN",
+            "origin": "точка подвеса, корпус ниже неё",
+            "bounds": {
+              "min": [
+                -0.13,
+                -0.27,
+                -0.11
+              ],
+              "max": [
+                0.13,
+                -0.05,
+                0.11
+              ]
+            }
+          }
+        ],
+        "forbidden": "Не объединять колесо с кабинками; не добавлять сплошной щит перед колесом."
+      },
+      "referenceConstraints": [
+        "Для static-only показать только четыре стойки/опору без колеса, кабин и платы.",
+        "Если позже делается отдельное колесо: чистое отверстие оси, никакой рамы и кабин. Одна кабина — отдельный референс."
+      ],
+      "electrical": {
+        "elementKind": "motor",
+        "override": {
+          "r": 8
+        },
+        "note": "Пустой override означает solver defaults; произвольное сопротивление не назначалось."
+      },
+      "measured": {
+        "layoutRadius": 1.7,
+        "restSolidsBody": {
+          "min": [
+            -1.2,
+            0,
+            -0.75
+          ],
+          "max": [
+            1.2,
+            3.01,
+            0.75
+          ],
+          "size": [
+            2.4,
+            3.01,
+            1.5
+          ]
+        },
+        "sampledSweepSolidsBody": {
+          "min": [
+            -1.2,
+            0,
+            -0.75
+          ],
+          "max": [
+            1.2,
+            3.01,
+            0.75
+          ],
+          "size": [
+            2.4,
+            3.01,
+            1.5
+          ]
+        },
+        "sampledSweepArtBody": {
+          "min": [
+            -1.193591,
+            0.128667,
+            -0.415
+          ],
+          "max": [
+            1.193591,
+            3.01,
+            0.115
+          ],
+          "size": [
+            2.387181,
+            2.881333,
+            0.53
+          ]
+        },
+        "staticArtBody": {
+          "min": [
+            -0.619234,
+            0.128667,
+            -0.415
+          ],
+          "max": [
+            0.619234,
+            1.991333,
+            0.115
+          ],
+          "size": [
+            1.238468,
+            1.862665,
+            0.53
+          ]
+        },
+        "staticMembers": [
+          {
+            "key": "leg0",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.619234,
+                0.128667,
+                -0.415
+              ],
+              "max": [
+                -0.080766,
+                1.991333,
+                -0.335
+              ],
+              "size": [
+                0.538468,
+                1.862665,
+                0.08
+              ]
+            },
+            "translation": [
+              -0.35,
+              1.06,
+              -0.375
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0.245
+            ]
+          },
+          {
+            "key": "leg1",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                0.080766,
+                0.128667,
+                -0.415
+              ],
+              "max": [
+                0.619234,
+                1.991333,
+                -0.335
+              ],
+              "size": [
+                0.538468,
+                1.862665,
+                0.08
+              ]
+            },
+            "translation": [
+              0.35,
+              1.06,
+              -0.375
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              -0.245
+            ]
+          },
+          {
+            "key": "leg2",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.619234,
+                0.128667,
+                0.035
+              ],
+              "max": [
+                -0.080766,
+                1.991333,
+                0.115
+              ],
+              "size": [
+                0.538468,
+                1.862665,
+                0.08
+              ]
+            },
+            "translation": [
+              -0.35,
+              1.06,
+              0.075
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0.245
+            ]
+          },
+          {
+            "key": "leg3",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                0.080766,
+                0.128667,
+                0.035
+              ],
+              "max": [
+                0.619234,
+                1.991333,
+                0.115
+              ],
+              "size": [
+                0.538468,
+                1.862665,
+                0.08
+              ]
+            },
+            "translation": [
+              0.35,
+              1.06,
+              0.075
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              -0.245
+            ]
+          }
+        ],
+        "groups": [
+          {
+            "key": "wheel",
+            "parent": "body",
+            "meshCount": 10,
+            "restTransformInParent": {
+              "translation": [
+                0,
+                1.91,
+                -0.15
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -1.1,
+                -1.1,
+                -0.15
+              ],
+              "max": [
+                1.1,
+                1.1,
+                0.15
+              ],
+              "size": [
+                2.2,
+                2.2,
+                0.3
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -1.1,
+                0.81,
+                -0.3
+              ],
+              "max": [
+                1.1,
+                3.01,
+                0
+              ],
+              "size": [
+                2.2,
+                2.2,
+                0.3
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.1,
+                0.81,
+                -0.3
+              ],
+              "max": [
+                1.1,
+                3.01,
+                0
+              ],
+              "size": [
+                2.2,
+                2.2,
+                0.3
+              ]
+            }
+          },
+          {
+            "key": "cabin0",
+            "parent": "wheel",
+            "meshCount": 1,
+            "restTransformInParent": {
+              "translation": [
+                1.05,
+                0,
+                0
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.13,
+                -0.27,
+                -0.11
+              ],
+              "max": [
+                0.13,
+                -0.05,
+                0.11
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                0.92,
+                1.64,
+                -0.26
+              ],
+              "max": [
+                1.18,
+                1.86,
+                -0.04
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.193591,
+                0.5855,
+                -0.26
+              ],
+              "max": [
+                1.193591,
+                2.915135,
+                -0.04
+              ],
+              "size": [
+                2.387181,
+                2.329635,
+                0.22
+              ]
+            }
+          },
+          {
+            "key": "cabin1",
+            "parent": "wheel",
+            "meshCount": 1,
+            "restTransformInParent": {
+              "translation": [
+                0.742462,
+                0.742462,
+                0
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.13,
+                -0.27,
+                -0.11
+              ],
+              "max": [
+                0.13,
+                -0.05,
+                0.11
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                0.612462,
+                2.382462,
+                -0.26
+              ],
+              "max": [
+                0.872462,
+                2.602462,
+                -0.04
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.193422,
+                0.58555,
+                -0.26
+              ],
+              "max": [
+                1.193422,
+                2.915069,
+                -0.04
+              ],
+              "size": [
+                2.386844,
+                2.329519,
+                0.22
+              ]
+            }
+          },
+          {
+            "key": "cabin2",
+            "parent": "wheel",
+            "meshCount": 1,
+            "restTransformInParent": {
+              "translation": [
+                0,
+                1.05,
+                0
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.13,
+                -0.27,
+                -0.11
+              ],
+              "max": [
+                0.13,
+                -0.05,
+                0.11
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -0.13,
+                2.69,
+                -0.26
+              ],
+              "max": [
+                0.13,
+                2.91,
+                -0.04
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.193538,
+                0.585515,
+                -0.26
+              ],
+              "max": [
+                1.193538,
+                2.915114,
+                -0.04
+              ],
+              "size": [
+                2.387076,
+                2.329599,
+                0.22
+              ]
+            }
+          },
+          {
+            "key": "cabin3",
+            "parent": "wheel",
+            "meshCount": 1,
+            "restTransformInParent": {
+              "translation": [
+                -0.742462,
+                0.742462,
+                0
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.13,
+                -0.27,
+                -0.11
+              ],
+              "max": [
+                0.13,
+                -0.05,
+                0.11
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -0.872462,
+                2.382462,
+                -0.26
+              ],
+              "max": [
+                -0.612462,
+                2.602462,
+                -0.04
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.193576,
+                0.585504,
+                -0.26
+              ],
+              "max": [
+                1.193576,
+                2.915129,
+                -0.04
+              ],
+              "size": [
+                2.387151,
+                2.329625,
+                0.22
+              ]
+            }
+          },
+          {
+            "key": "cabin4",
+            "parent": "wheel",
+            "meshCount": 1,
+            "restTransformInParent": {
+              "translation": [
+                -1.05,
+                0,
+                0
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.13,
+                -0.27,
+                -0.11
+              ],
+              "max": [
+                0.13,
+                -0.05,
+                0.11
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -1.18,
+                1.64,
+                -0.26
+              ],
+              "max": [
+                -0.92,
+                1.86,
+                -0.04
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.193347,
+                0.585572,
+                -0.26
+              ],
+              "max": [
+                1.193347,
+                2.915039,
+                -0.04
+              ],
+              "size": [
+                2.386694,
+                2.329467,
+                0.22
+              ]
+            }
+          },
+          {
+            "key": "cabin5",
+            "parent": "wheel",
+            "meshCount": 1,
+            "restTransformInParent": {
+              "translation": [
+                -0.742462,
+                -0.742462,
+                0
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.13,
+                -0.27,
+                -0.11
+              ],
+              "max": [
+                0.13,
+                -0.05,
+                0.11
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -0.872462,
+                0.897538,
+                -0.26
+              ],
+              "max": [
+                -0.612462,
+                1.117538,
+                -0.04
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.19357,
+                0.585506,
+                -0.26
+              ],
+              "max": [
+                1.19357,
+                2.915127,
+                -0.04
+              ],
+              "size": [
+                2.38714,
+                2.329621,
+                0.22
+              ]
+            }
+          },
+          {
+            "key": "cabin6",
+            "parent": "wheel",
+            "meshCount": 1,
+            "restTransformInParent": {
+              "translation": [
+                0,
+                -1.05,
+                0
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.13,
+                -0.27,
+                -0.11
+              ],
+              "max": [
+                0.13,
+                -0.05,
+                0.11
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -0.13,
+                0.59,
+                -0.26
+              ],
+              "max": [
+                0.13,
+                0.81,
+                -0.04
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.193547,
+                0.585513,
+                -0.26
+              ],
+              "max": [
+                1.193547,
+                2.915118,
+                -0.04
+              ],
+              "size": [
+                2.387094,
+                2.329605,
+                0.22
+              ]
+            }
+          },
+          {
+            "key": "cabin7",
+            "parent": "wheel",
+            "meshCount": 1,
+            "restTransformInParent": {
+              "translation": [
+                0.742462,
+                -0.742462,
+                0
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.13,
+                -0.27,
+                -0.11
+              ],
+              "max": [
+                0.13,
+                -0.05,
+                0.11
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                0.612462,
+                0.897538,
+                -0.26
+              ],
+              "max": [
+                0.872462,
+                1.117538,
+                -0.04
+              ],
+              "size": [
+                0.26,
+                0.22,
+                0.22
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.193405,
+                0.585555,
+                -0.26
+              ],
+              "max": [
+                1.193405,
+                2.915062,
+                -0.04
+              ],
+              "size": [
+                2.38681,
+                2.329507,
+                0.22
+              ]
+            }
+          }
+        ],
+        "terminals": [
+          {
+            "key": "a",
+            "polarity": "none",
+            "postBaseBody": [
+              0.95,
+              0.16,
+              0.5
+            ],
+            "attachPointBody": [
+              0.95,
+              0.48,
+              0.5
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                0.78,
+                0.16,
+                0.33
+              ],
+              "max": [
+                1.12,
+                0.52,
+                0.67
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          },
+          {
+            "key": "b",
+            "polarity": "none",
+            "postBaseBody": [
+              -0.95,
+              0.16,
+              0.5
+            ],
+            "attachPointBody": [
+              -0.95,
+              0.48,
+              0.5
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                -1.12,
+                0.16,
+                0.33
+              ],
+              "max": [
+                -0.78,
+                0.52,
+                0.67
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          }
+        ],
+        "canonicalPlacements": [
+          {
+            "position": [
+              7,
+              0,
+              -3
+            ],
+            "yawRadians": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "restSolidsWorld": {
+              "min": [
+                5.8,
+                0,
+                -3.75
+              ],
+              "max": [
+                8.2,
+                3.01,
+                -2.25
+              ],
+              "size": [
+                2.4,
+                3.01,
+                1.5
+              ]
+            },
+            "sampledSweepSolidsWorld": {
+              "min": [
+                5.8,
+                0,
+                -3.75
+              ],
+              "max": [
+                8.2,
+                3.01,
+                -2.25
+              ],
+              "size": [
+                2.4,
+                3.01,
+                1.5
+              ]
+            },
+            "terminals": [
+              {
+                "key": "a",
+                "attachPointWorld": [
+                  7.95,
+                  0.48,
+                  -2.5
+                ]
+              },
+              {
+                "key": "b",
+                "attachPointWorld": [
+                  6.05,
+                  0.48,
+                  -2.5
+                ]
+              }
+            ],
+            "groupRestPivotsWorld": {
+              "wheel": [
+                7,
+                1.91,
+                -3.15
+              ],
+              "cabin0": [
+                8.05,
+                1.91,
+                -3.15
+              ],
+              "cabin1": [
+                7.742462,
+                2.652462,
+                -3.15
+              ],
+              "cabin2": [
+                7,
+                2.96,
+                -3.15
+              ],
+              "cabin3": [
+                6.257538,
+                2.652462,
+                -3.15
+              ],
+              "cabin4": [
+                5.95,
+                1.91,
+                -3.15
+              ],
+              "cabin5": [
+                6.257538,
+                1.167538,
+                -3.15
+              ],
+              "cabin6": [
+                7,
+                0.86,
+                -3.15
+              ],
+              "cabin7": [
+                7.742462,
+                1.167538,
+                -3.15
+              ]
+            }
+          }
+        ],
+        "sampling": {
+          "parameterSteps": 256,
+          "phaseSteps": 16,
+          "meaning": "f=wheel angle/(2*pi), 0..1; s=independent sway phase/(2*pi), 0..1; turnV=1.05, time=s*pi, original animate(0). This explores angle/phase combinations, not a single elapsed-time trajectory.",
+          "continuousGuarantee": false,
+          "note": "Exact transformed geometry vertices at sampled poses; union is NOT a guaranteed continuous swept envelope. Generic Part.update bounce/drag/shake is excluded."
+        },
+        "terminalDiagnostics": {
+          "method": "Five points around each attachPoint, parallel rays along negative VIEW_DIR from 20 units toward the body, sampled at 0/.25/.5/.75/1 (one state for static devices). Own opaque art only; excludes terminal itself, plate, wires and scene. Not a perspective screenshot, touch test, or visibility guarantee.",
+          "cameraDirection": [
+            0,
+            0.788502,
+            0.615032
+          ],
+          "checks": [
+            {
+              "key": "a",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            },
+            {
+              "key": "b",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            }
+          ],
+          "overlapMeaning": "Per-mesh AABB overlap is only a broad-phase warning, NOT proof of triangle intersection."
+        }
+      }
+    },
+    {
+      "kind": "carWash",
+      "class": "CarWash",
+      "source": {
+        "path": "src/parts/city.ts",
+        "line": 167
+      },
+      "label": "Автомойка",
+      "plateNominal": [
+        2.6,
+        1.6
+      ],
+      "sourceSelectors": {
+        "static": [
+          "body.children[1..4] posts/beam/sign"
+        ],
+        "moving": [
+          "brushes[0]",
+          "brushes[1]"
+        ],
+        "effects": [
+          "spray[0..9]"
+        ]
+      },
+      "motion": {
+        "input": "abs(level)>0.15",
+        "equation": "speed=damp(speed,powered?1:0,3,dt); brush0.rotation.y+=12*speed*dt; brush1.rotation.y-=12*speed*dt",
+        "axis": "+Y / -Y",
+        "speedRangeRadPerSecond": [
+          0,
+          12
+        ],
+        "off": "Щётки затухают; фаза брызг продолжает идти, opacity зависит от speed.",
+        "spray": "t=(t+1.4*dt)%1; p=(-0.8+1.6*t,1.56-1.1*t*t,-0.2+sin(9*t+sprite.id)*0.25); opacity=0.9*speed*(1-t); size=0.22"
+      },
+      "connections": [
+        {
+          "name": "brush0Axle",
+          "body": [
+            -0.6,
+            0.91,
+            -0.2
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "brush1Axle",
+          "body": [
+            0.6,
+            0.91,
+            -0.2
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "carPath",
+          "world": [
+            [
+              -38,
+              0,
+              14
+            ],
+            [
+              -38,
+              0,
+              8
+            ],
+            [
+              -38,
+              0,
+              3.6
+            ]
+          ]
+        }
+      ],
+      "game": {
+        "source": "src/city.ts:updateWash",
+        "gate": "wash.running (speed>0.5) && pump.pumping near WASH_PUMP (<0.8)",
+        "wiring": "pole(-34.5,5.5) -> wash; отдельная петля pole -> pump(-33.5,9)",
+        "progress": "washed+=dt*0.2, до 1; автомобиль едет по заданному пути.",
+        "collision": "Проход автомобиля через щётки не рассчитывается геометрически."
+      },
+      "assetPlan": {
+        "firstStaticAsset": "car-wash-frame",
+        "staticMembers": [
+          "postLeft",
+          "postRight",
+          "beam",
+          "sign"
+        ],
+        "binding": {
+          "parent": "body",
+          "frame": "Арка остаётся открытой вдоль Z; верх балки y=1.82, низ y=1.60; щётки R≈0.251247, H=1.2."
+        },
+        "keepCode": [
+          "plate/terminals",
+          "2 отдельные brush-группы",
+          "10 водяных спрайтов",
+          "speed/running/electrical"
+        ],
+        "optionalSeparateAssets": [
+          {
+            "name": "car-wash-brush",
+            "instances": 2,
+            "origin": "центр вертикального вала",
+            "boundsEnvelope": "R=sqrt(0.25^2+0.025^2), y ±0.6"
+          }
+        ],
+        "forbidden": "Не замыкать арку сплошной стеной, не встраивать щётки/машину/брызги в рамку."
+      },
+      "referenceConstraints": [
+        "Открытая синяя П-образная рама, маленькая жёлтая табличка без надписей; без автомобиля, воды, щёток, платы и клемм.",
+        "Текущий свободный зазор между вращающимися щётками ≈0.697506; совместимость с шириной автомобиля не подтверждена."
+      ],
+      "electrical": {
+        "elementKind": "motor",
+        "override": {
+          "r": 8
+        },
+        "note": "Пустой override означает solver defaults; произвольное сопротивление не назначалось."
+      },
+      "measured": {
+        "layoutRadius": 1.7,
+        "restSolidsBody": {
+          "min": [
+            -1.3,
+            0,
+            -0.8
+          ],
+          "max": [
+            1.3,
+            2.16,
+            0.8
+          ],
+          "size": [
+            2.6,
+            2.16,
+            1.6
+          ]
+        },
+        "sampledSweepSolidsBody": {
+          "min": [
+            -1.3,
+            0,
+            -0.8
+          ],
+          "max": [
+            1.3,
+            2.16,
+            0.8
+          ],
+          "size": [
+            2.6,
+            2.16,
+            1.6
+          ]
+        },
+        "sampledSweepArtBody": {
+          "min": [
+            -1.15,
+            0.16,
+            -0.451247
+          ],
+          "max": [
+            1.15,
+            2.16,
+            0.051247
+          ],
+          "size": [
+            2.3,
+            2,
+            0.502494
+          ]
+        },
+        "staticArtBody": {
+          "min": [
+            -1.15,
+            0.16,
+            -0.4
+          ],
+          "max": [
+            1.15,
+            2.16,
+            0
+          ],
+          "size": [
+            2.3,
+            2,
+            0.4
+          ]
+        },
+        "staticMembers": [
+          {
+            "key": "postLeft",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -1.07,
+                0.16,
+                -0.27
+              ],
+              "max": [
+                -0.93,
+                1.66,
+                -0.13
+              ],
+              "size": [
+                0.14,
+                1.5,
+                0.14
+              ]
+            },
+            "translation": [
+              -1,
+              0.91,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "postRight",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                0.93,
+                0.16,
+                -0.27
+              ],
+              "max": [
+                1.07,
+                1.66,
+                -0.13
+              ],
+              "size": [
+                0.14,
+                1.5,
+                0.14
+              ]
+            },
+            "translation": [
+              1,
+              0.91,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "beam",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -1.15,
+                1.6,
+                -0.4
+              ],
+              "max": [
+                1.15,
+                1.82,
+                0
+              ],
+              "size": [
+                2.3,
+                0.22,
+                0.4
+              ]
+            },
+            "translation": [
+              0,
+              1.71,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "sign",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.45,
+                1.86,
+                -0.08
+              ],
+              "max": [
+                0.45,
+                2.16,
+                -0.02
+              ],
+              "size": [
+                0.9,
+                0.3,
+                0.06
+              ]
+            },
+            "translation": [
+              0,
+              2.01,
+              -0.05
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "groups": [
+          {
+            "key": "brush0",
+            "parent": "body",
+            "meshCount": 7,
+            "restTransformInParent": {
+              "translation": [
+                -0.6,
+                0.91,
+                -0.2
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.25,
+                -0.6,
+                -0.25
+              ],
+              "max": [
+                0.25,
+                0.6,
+                0.25
+              ],
+              "size": [
+                0.5,
+                1.2,
+                0.5
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -0.85,
+                0.31,
+                -0.45
+              ],
+              "max": [
+                -0.35,
+                1.51,
+                0.05
+              ],
+              "size": [
+                0.5,
+                1.2,
+                0.5
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -0.851247,
+                0.31,
+                -0.451247
+              ],
+              "max": [
+                -0.348753,
+                1.51,
+                0.051247
+              ],
+              "size": [
+                0.502494,
+                1.2,
+                0.502494
+              ]
+            }
+          },
+          {
+            "key": "brush1",
+            "parent": "body",
+            "meshCount": 7,
+            "restTransformInParent": {
+              "translation": [
+                0.6,
+                0.91,
+                -0.2
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.25,
+                -0.6,
+                -0.25
+              ],
+              "max": [
+                0.25,
+                0.6,
+                0.25
+              ],
+              "size": [
+                0.5,
+                1.2,
+                0.5
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                0.35,
+                0.31,
+                -0.45
+              ],
+              "max": [
+                0.85,
+                1.51,
+                0.05
+              ],
+              "size": [
+                0.5,
+                1.2,
+                0.5
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                0.348753,
+                0.31,
+                -0.451247
+              ],
+              "max": [
+                0.851247,
+                1.51,
+                0.051247
+              ],
+              "size": [
+                0.502494,
+                1.2,
+                0.502494
+              ]
+            }
+          }
+        ],
+        "terminals": [
+          {
+            "key": "a",
+            "polarity": "none",
+            "postBaseBody": [
+              1.05,
+              0.16,
+              0.6
+            ],
+            "attachPointBody": [
+              1.05,
+              0.48,
+              0.6
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                0.88,
+                0.16,
+                0.43
+              ],
+              "max": [
+                1.22,
+                0.52,
+                0.77
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          },
+          {
+            "key": "b",
+            "polarity": "none",
+            "postBaseBody": [
+              -1.05,
+              0.16,
+              0.6
+            ],
+            "attachPointBody": [
+              -1.05,
+              0.48,
+              0.6
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                -1.22,
+                0.16,
+                0.43
+              ],
+              "max": [
+                -0.88,
+                0.52,
+                0.77
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          }
+        ],
+        "canonicalPlacements": [
+          {
+            "position": [
+              -38,
+              0,
+              8
+            ],
+            "yawRadians": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "restSolidsWorld": {
+              "min": [
+                -39.3,
+                0,
+                7.2
+              ],
+              "max": [
+                -36.7,
+                2.16,
+                8.8
+              ],
+              "size": [
+                2.6,
+                2.16,
+                1.6
+              ]
+            },
+            "sampledSweepSolidsWorld": {
+              "min": [
+                -39.3,
+                0,
+                7.2
+              ],
+              "max": [
+                -36.7,
+                2.16,
+                8.8
+              ],
+              "size": [
+                2.6,
+                2.16,
+                1.6
+              ]
+            },
+            "terminals": [
+              {
+                "key": "a",
+                "attachPointWorld": [
+                  -36.95,
+                  0.48,
+                  8.6
+                ]
+              },
+              {
+                "key": "b",
+                "attachPointWorld": [
+                  -39.05,
+                  0.48,
+                  8.6
+                ]
+              }
+            ],
+            "groupRestPivotsWorld": {
+              "brush0": [
+                -38.6,
+                0.91,
+                7.8
+              ],
+              "brush1": [
+                -37.4,
+                0.91,
+                7.8
+              ]
+            }
+          }
+        ],
+        "sampling": {
+          "parameterSteps": 1024,
+          "phaseSteps": 0,
+          "meaning": "f=brush rotation/(2*pi), opposite signs for the two brushes; geometry only, no water sprites",
+          "continuousGuarantee": false,
+          "note": "Exact transformed geometry vertices at sampled poses; union is NOT a guaranteed continuous swept envelope. Generic Part.update bounce/drag/shake is excluded."
+        },
+        "terminalDiagnostics": {
+          "method": "Five points around each attachPoint, parallel rays along negative VIEW_DIR from 20 units toward the body, sampled at 0/.25/.5/.75/1 (one state for static devices). Own opaque art only; excludes terminal itself, plate, wires and scene. Not a perspective screenshot, touch test, or visibility guarantee.",
+          "cameraDirection": [
+            0,
+            0.788502,
+            0.615032
+          ],
+          "checks": [
+            {
+              "key": "a",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            },
+            {
+              "key": "b",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            }
+          ],
+          "overlapMeaning": "Per-mesh AABB overlap is only a broad-phase warning, NOT proof of triangle intersection."
+        }
+      }
+    },
+    {
+      "kind": "drawbridge",
+      "class": "Drawbridge",
+      "source": {
+        "path": "src/parts/city.ts",
+        "line": 232
+      },
+      "label": "Разводной мост",
+      "plateNominal": [
+        1.3,
+        1.6
+      ],
+      "plateCentre": [
+        -1.6,
+        0,
+        0
+      ],
+      "sourceSelectors": {
+        "static": [
+          "body.children[1] tower",
+          "body.children[2] roof"
+        ],
+        "moving": [
+          "span (deck + both rails)"
+        ]
+      },
+      "motion": {
+        "input": "abs(level)>0.15",
+        "state": "up in [0,1]",
+        "equation": "up=damp(up,powered?1:0,1.4,dt); span.rotation.z=1.15*up",
+        "axis": "+Z",
+        "rangeRadians": [
+          0,
+          1.15
+        ],
+        "off": "Пролёт плавно опускается."
+      },
+      "connections": [
+        {
+          "name": "hinge",
+          "body": [
+            -1.2,
+            0.21,
+            0
+          ],
+          "world": [
+            34.7,
+            0.21,
+            0
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "closedDeckFreeEndCentre",
+          "body": [
+            1.8,
+            0.21,
+            0
+          ],
+          "world": [
+            37.7,
+            0.21,
+            0
+          ]
+        },
+        {
+          "name": "towerBottomCentre",
+          "body": [
+            -1.6,
+            0.16,
+            -0.3
+          ]
+        }
+      ],
+      "game": {
+        "source": "src/city.ts:updateBoat",
+        "gate": "bridge.up>0.85; boat=min(1,boat+dt*0.18)",
+        "wiring": "pole(31,-4.5) -> button(31.5,-8.5) -> drawbridge",
+        "boatRouteWorld": [
+          [
+            37,
+            0,
+            -10
+          ],
+          [
+            37,
+            0,
+            19
+          ]
+        ],
+        "boatRootY": "0.05+sin(time*2)*0.04",
+        "boatRoll": "rotation.z=sin(time*1.6)*0.04",
+        "canal": {
+          "x": 37,
+          "width": 3.2,
+          "edgesX": [
+            35.4,
+            38.6
+          ]
+        },
+        "collision": "Порог up управляет лодкой; коллизия корпуса лодки с мостом не проверяется этим кодом."
+      },
+      "assetPlan": {
+        "firstStaticAsset": "drawbridge-tower",
+        "staticMembers": [
+          "tower",
+          "roof"
+        ],
+        "binding": {
+          "parent": "body",
+          "fit": {
+            "height": 1.6
+          },
+          "holderPosition": [
+            -1.6,
+            0.16,
+            -0.3
+          ],
+          "targetBoundsBody": {
+            "min": [
+              -1.896985,
+              0.16,
+              -0.596985
+            ],
+            "max": [
+              -1.303015,
+              1.76,
+              -0.003015
+            ]
+          },
+          "note": "Равномерный fit по высоте; ширина/глубина проверяются отдельно. Граница крыши меньше диаметра описанной окружности конуса."
+        },
+        "keepCode": [
+          "plate, offset x=-1.6",
+          "terminals",
+          "span/deck/both rails в первом проходе",
+          "up/electrical/pickables"
+        ],
+        "optionalSeparateAssets": [
+          {
+            "name": "drawbridge-leaf",
+            "parent": "span",
+            "origin": "шарнир у левого торца; длина +X от 0 до 3",
+            "bounds": {
+              "min": [
+                0,
+                -0.05,
+                -0.5
+              ],
+              "max": [
+                3,
+                0.275,
+                0.5
+              ]
+            },
+            "note": "Оба ограждения двигаются вместе с настилом."
+          }
+        ],
+        "forbidden": "Не включать пролёт/ограждения/воду/берега/лодку/плату/клеммы в башню."
+      },
+      "referenceConstraints": [
+        "Одна песочно-кремовая квадратная башенка с коралловой четырёхскатной крышей; 1.6 по высоте, максимум 0.59397 по X/Z; без моста целиком.",
+        "Петля пролёта остаётся по body[-1.2,0.21,0]; не добавлять декор в её сектор."
+      ],
+      "reviewFlags": [
+        "Фактический закрытый настил x=34.7..37.7, тогда как канал x=35.4..38.6: геометрия не перекрывает канал целиком. Это существующее состояние, не разрешение сдвигать точки.",
+        "У клеммы a в 5/5 контрольных позах есть пересечение AABB с мешами пролёта. Оно не доказывает коллизию треугольников; новую модель нельзя автоматически принять по нулю перекрытых лучей.",
+        "Просвет под принятой лодкой ещё не измерен: нужно проверить финальный GLB, его поворот, fit, ватерлинию и качку у порога up=0.85 и при up=1."
+      ],
+      "electrical": {
+        "elementKind": "motor",
+        "override": {
+          "r": 9
+        },
+        "note": "Пустой override означает solver defaults; произвольное сопротивление не назначалось."
+      },
+      "measured": {
+        "layoutRadius": 1.9,
+        "restSolidsBody": {
+          "min": [
+            -2.25,
+            0,
+            -0.8
+          ],
+          "max": [
+            1.8,
+            1.76,
+            0.8
+          ],
+          "size": [
+            4.05,
+            1.76,
+            1.6
+          ]
+        },
+        "sampledSweepSolidsBody": {
+          "min": [
+            -2.25,
+            0,
+            -0.8
+          ],
+          "max": [
+            1.800417,
+            3.060626,
+            0.8
+          ],
+          "size": [
+            4.050417,
+            3.060626,
+            1.6
+          ]
+        },
+        "sampledSweepArtBody": {
+          "min": [
+            -1.896985,
+            0.16,
+            -0.596985
+          ],
+          "max": [
+            1.800417,
+            3.060626,
+            0.5
+          ],
+          "size": [
+            3.697401,
+            2.900626,
+            1.096985
+          ]
+        },
+        "staticArtBody": {
+          "min": [
+            -1.896985,
+            0.16,
+            -0.596985
+          ],
+          "max": [
+            -1.303015,
+            1.76,
+            -0.003015
+          ],
+          "size": [
+            0.59397,
+            1.6,
+            0.59397
+          ]
+        },
+        "staticMembers": [
+          {
+            "key": "tower",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -1.85,
+                0.16,
+                -0.55
+              ],
+              "max": [
+                -1.35,
+                1.36,
+                -0.05
+              ],
+              "size": [
+                0.5,
+                1.2,
+                0.5
+              ]
+            },
+            "translation": [
+              -1.6,
+              0.76,
+              -0.3
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "roof",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -1.896985,
+                1.36,
+                -0.596985
+              ],
+              "max": [
+                -1.303015,
+                1.76,
+                -0.003015
+              ],
+              "size": [
+                0.59397,
+                0.4,
+                0.59397
+              ]
+            },
+            "translation": [
+              -1.6,
+              1.56,
+              -0.3
+            ],
+            "rotationXYZ": [
+              0,
+              0.785398,
+              0
+            ]
+          }
+        ],
+        "groups": [
+          {
+            "key": "span",
+            "parent": "body",
+            "meshCount": 3,
+            "restTransformInParent": {
+              "translation": [
+                -1.2,
+                0.21,
+                0
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                0,
+                -0.05,
+                -0.5
+              ],
+              "max": [
+                3,
+                0.275,
+                0.5
+              ],
+              "size": [
+                3,
+                0.325,
+                1
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -1.2,
+                0.16,
+                -0.5
+              ],
+              "max": [
+                1.8,
+                0.485,
+                0.5
+              ],
+              "size": [
+                3,
+                0.325,
+                1
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.45101,
+                0.16,
+                -0.5
+              ],
+              "max": [
+                1.800417,
+                3.060626,
+                0.5
+              ],
+              "size": [
+                3.251427,
+                2.900626,
+                1
+              ]
+            }
+          }
+        ],
+        "terminals": [
+          {
+            "key": "a",
+            "polarity": "none",
+            "postBaseBody": [
+              -1.15,
+              0.16,
+              0.6
+            ],
+            "attachPointBody": [
+              -1.15,
+              0.48,
+              0.6
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                -1.32,
+                0.16,
+                0.43
+              ],
+              "max": [
+                -0.98,
+                0.52,
+                0.77
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          },
+          {
+            "key": "b",
+            "polarity": "none",
+            "postBaseBody": [
+              -2.05,
+              0.16,
+              0.6
+            ],
+            "attachPointBody": [
+              -2.05,
+              0.48,
+              0.6
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                -2.22,
+                0.16,
+                0.43
+              ],
+              "max": [
+                -1.88,
+                0.52,
+                0.77
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          }
+        ],
+        "canonicalPlacements": [
+          {
+            "position": [
+              35.9,
+              0,
+              0
+            ],
+            "yawRadians": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "restSolidsWorld": {
+              "min": [
+                33.65,
+                0,
+                -0.8
+              ],
+              "max": [
+                37.7,
+                1.76,
+                0.8
+              ],
+              "size": [
+                4.05,
+                1.76,
+                1.6
+              ]
+            },
+            "sampledSweepSolidsWorld": {
+              "min": [
+                33.65,
+                0,
+                -0.8
+              ],
+              "max": [
+                37.700417,
+                3.060626,
+                0.8
+              ],
+              "size": [
+                4.050417,
+                3.060626,
+                1.6
+              ]
+            },
+            "terminals": [
+              {
+                "key": "a",
+                "attachPointWorld": [
+                  34.75,
+                  0.48,
+                  0.6
+                ]
+              },
+              {
+                "key": "b",
+                "attachPointWorld": [
+                  33.85,
+                  0.48,
+                  0.6
+                ]
+              }
+            ],
+            "groupRestPivotsWorld": {
+              "span": [
+                34.7,
+                0.21,
+                0
+              ]
+            }
+          }
+        ],
+        "sampling": {
+          "parameterSteps": 1024,
+          "phaseSteps": 0,
+          "meaning": "f=up from 0 to 1; original animate(0)",
+          "continuousGuarantee": false,
+          "note": "Exact transformed geometry vertices at sampled poses; union is NOT a guaranteed continuous swept envelope. Generic Part.update bounce/drag/shake is excluded."
+        },
+        "terminalDiagnostics": {
+          "method": "Five points around each attachPoint, parallel rays along negative VIEW_DIR from 20 units toward the body, sampled at 0/.25/.5/.75/1 (one state for static devices). Own opaque art only; excludes terminal itself, plate, wires and scene. Not a perspective screenshot, touch test, or visibility guarantee.",
+          "cameraDirection": [
+            0,
+            0.788502,
+            0.615032
+          ],
+          "checks": [
+            {
+              "key": "a",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 5,
+              "overlapExamples": [
+                {
+                  "parameter": 0,
+                  "meshCount": 2
+                },
+                {
+                  "parameter": 0.25,
+                  "meshCount": 2
+                },
+                {
+                  "parameter": 0.5,
+                  "meshCount": 2
+                },
+                {
+                  "parameter": 0.75,
+                  "meshCount": 2
+                }
+              ]
+            },
+            {
+              "key": "b",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            }
+          ],
+          "overlapMeaning": "Per-mesh AABB overlap is only a broad-phase warning, NOT proof of triangle intersection."
+        }
+      }
+    },
+    {
+      "kind": "towerCrane",
+      "class": "TowerCrane",
+      "source": {
+        "path": "src/parts/city.ts",
+        "line": 275
+      },
+      "label": "Башенный кран",
+      "plateNominal": [
+        1.6,
+        1.6
+      ],
+      "sourceSelectors": {
+        "static": [
+          "mast"
+        ],
+        "moving": [
+          "top",
+          "hook",
+          "cable — все дети body; hook/cable НЕ дети top"
+        ]
+      },
+      "motion": {
+        "input": "abs(level)>0.15",
+        "equation": "if powered: cycle=(cycle+0.25*dt)%1; h=(cycle<0.5 ? 2*cycle : 2-2*cycle); top.rotation.y=sin(2*pi*cycle)*0.6",
+        "axis": "+Y",
+        "rangeRadians": [
+          -0.6,
+          0.6
+        ],
+        "hook": "p=rotateY([1.6,0,0],top.rotation.y)+[-0.4,0,-0.3]; y=0.46+1.9*h; hook.position=[p.x,y,p.z]",
+        "cable": "len=2.76-y; cable.scale.y=max(0.01,len); cable.position=[p.x,y+len/2,p.z]",
+        "cableLengthRange": [
+          0.4,
+          2.3
+        ],
+        "off": "cycle и достигнутая поза сохраняются; крюк не опускается автоматически.",
+        "event": "При переходе before<0.5 && cycle>=0.5: lifts++, ding. Текущий код не считает несколько пересечений за один очень большой dt."
+      },
+      "connections": [
+        {
+          "name": "slewAxis",
+          "body": [
+            -0.4,
+            2.81,
+            -0.3
+          ],
+          "axis": [
+            0,
+            1,
+            0
+          ]
+        },
+        {
+          "name": "cableTop",
+          "parent": "body",
+          "formula": "[p.x,2.76,p.z]"
+        },
+        {
+          "name": "hookAnchor",
+          "parent": "body",
+          "formula": "[p.x,0.46+1.9*h,p.z]"
+        },
+        {
+          "name": "blockCentre",
+          "parent": "hook",
+          "local": [
+            0,
+            -0.18,
+            0
+          ]
+        }
+      ],
+      "game": {
+        "source": "src/city.ts:updateCrane",
+        "gate": "Увеличение lifts добавляет один этаж, максимум 3; builder.hop=1",
+        "wiring": "pole(-31,17) -> switch(-29.5,21.5) -> towerCrane",
+        "site": [
+          -41,
+          0,
+          20.5
+        ],
+        "builder": [
+          -37.5,
+          0,
+          16.2
+        ],
+        "collision": "Кран не переносит физический блок в SITE; этажи включаются по счётчику."
+      },
+      "assetPlan": {
+        "firstStaticAsset": "tower-crane-mast",
+        "staticMembers": [
+          "mast"
+        ],
+        "binding": {
+          "parent": "body",
+          "fit": {
+            "height": 2.6
+          },
+          "holderPosition": [
+            -0.4,
+            0.16,
+            -0.3
+          ],
+          "maxWidthDepth": [
+            0.22,
+            0.22
+          ]
+        },
+        "keepCode": [
+          "plate/terminals",
+          "top yaw node",
+          "hook translation node",
+          "растягиваемый cable",
+          "cycle/lifts/ding"
+        ],
+        "optionalSeparateAssets": [
+          {
+            "name": "tower-crane-top",
+            "parent": "top",
+            "origin": "ось поворота; геометрия x=-0.8..1.9, y=-0.33..0.06, z=±0.15"
+          },
+          {
+            "name": "tower-crane-load",
+            "parent": "hook",
+            "origin": "якорь крюка, блок ниже: центр y=-0.18"
+          }
+        ],
+        "forbidden": "Не запекать трос/крюк/груз вместе со стрелой. Сейчас hook содержит прямоугольный блок, отдельной изогнутой формы крюка нет."
+      },
+      "referenceConstraints": [
+        "Жёлтая вертикальная башня/мачта отдельно от стрелы, кабины и груза.",
+        "Для top отдельно: длинная стрела + кабина + противовес; ни троса, ни башни, ни груза."
+      ],
+      "reviewFlags": [
+        "В constructor cable/hook ещё находятся в начале координат; исходная рабочая поза получается после animate(0). В замерах сохранены оба состояния.",
+        "Точка троса по высоте y=2.76, ось top y=2.81: не выравнивать автоматически."
+      ],
+      "electrical": {
+        "elementKind": "motor",
+        "override": {
+          "r": 9
+        },
+        "note": "Пустой override означает solver defaults; произвольное сопротивление не назначалось."
+      },
+      "measured": {
+        "layoutRadius": 1.6,
+        "restSolidsBody": {
+          "min": [
+            -1.2,
+            0,
+            -0.8
+          ],
+          "max": [
+            1.5,
+            2.87,
+            0.8
+          ],
+          "size": [
+            2.7,
+            2.87,
+            1.6
+          ]
+        },
+        "sampledSweepSolidsBody": {
+          "min": [
+            -1.207724,
+            0,
+            -1.418866
+          ],
+          "max": [
+            1.50042,
+            2.87,
+            0.818866
+          ],
+          "size": [
+            2.708145,
+            2.87,
+            2.237733
+          ]
+        },
+        "sampledSweepArtBody": {
+          "min": [
+            -1.207724,
+            0.15,
+            -1.418866
+          ],
+          "max": [
+            1.50042,
+            2.87,
+            0.818866
+          ],
+          "size": [
+            2.708145,
+            2.72,
+            2.237733
+          ]
+        },
+        "staticArtBody": {
+          "min": [
+            -0.51,
+            0.16,
+            -0.41
+          ],
+          "max": [
+            -0.29,
+            2.76,
+            -0.19
+          ],
+          "size": [
+            0.22,
+            2.6,
+            0.22
+          ]
+        },
+        "staticMembers": [
+          {
+            "key": "mast",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.51,
+                0.16,
+                -0.41
+              ],
+              "max": [
+                -0.29,
+                2.76,
+                -0.19
+              ],
+              "size": [
+                0.22,
+                2.6,
+                0.22
+              ]
+            },
+            "translation": [
+              -0.4,
+              1.46,
+              -0.3
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "groups": [
+          {
+            "key": "top",
+            "parent": "body",
+            "meshCount": 3,
+            "restTransformInParent": {
+              "translation": [
+                -0.4,
+                2.81,
+                -0.3
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.8,
+                -0.33,
+                -0.15
+              ],
+              "max": [
+                1.9,
+                0.06,
+                0.15
+              ],
+              "size": [
+                2.7,
+                0.39,
+                0.3
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -1.2,
+                2.48,
+                -0.45
+              ],
+              "max": [
+                1.5,
+                2.87,
+                -0.15
+              ],
+              "size": [
+                2.7,
+                0.39,
+                0.3
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -1.207724,
+                2.48,
+                -1.418866
+              ],
+              "max": [
+                1.50042,
+                2.87,
+                0.818866
+              ],
+              "size": [
+                2.708145,
+                0.39,
+                2.237733
+              ]
+            }
+          },
+          {
+            "key": "cable",
+            "parent": "body",
+            "meshCount": 1,
+            "restTransformInParent": {
+              "translation": [
+                1.2,
+                1.61,
+                -0.3
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                2.3,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.00866,
+                -0.5,
+                -0.01
+              ],
+              "max": [
+                0.00866,
+                0.5,
+                0.01
+              ],
+              "size": [
+                0.017321,
+                1,
+                0.02
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                1.19134,
+                0.46,
+                -0.31
+              ],
+              "max": [
+                1.20866,
+                2.76,
+                -0.29
+              ],
+              "size": [
+                0.017321,
+                2.3,
+                0.02
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                0.911877,
+                0.46,
+                -1.213428
+              ],
+              "max": [
+                1.20866,
+                2.76,
+                0.613428
+              ],
+              "size": [
+                0.296784,
+                2.3,
+                1.826856
+              ]
+            }
+          },
+          {
+            "key": "hook",
+            "parent": "body",
+            "meshCount": 1,
+            "restTransformInParent": {
+              "translation": [
+                1.2,
+                0.46,
+                -0.3
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                -0.18,
+                -0.31,
+                -0.18
+              ],
+              "max": [
+                0.18,
+                -0.05,
+                0.18
+              ],
+              "size": [
+                0.36,
+                0.26,
+                0.36
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                1.02,
+                0.15,
+                -0.48
+              ],
+              "max": [
+                1.38,
+                0.41,
+                -0.12
+              ],
+              "size": [
+                0.36,
+                0.26,
+                0.36
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                0.740537,
+                0.15,
+                -1.383428
+              ],
+              "max": [
+                1.38,
+                2.31,
+                0.783428
+              ],
+              "size": [
+                0.639463,
+                2.16,
+                2.166856
+              ]
+            }
+          }
+        ],
+        "terminals": [
+          {
+            "key": "a",
+            "polarity": "none",
+            "postBaseBody": [
+              0.6,
+              0.16,
+              0.6
+            ],
+            "attachPointBody": [
+              0.6,
+              0.48,
+              0.6
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                0.43,
+                0.16,
+                0.43
+              ],
+              "max": [
+                0.77,
+                0.52,
+                0.77
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          },
+          {
+            "key": "b",
+            "polarity": "none",
+            "postBaseBody": [
+              -0.6,
+              0.16,
+              0.6
+            ],
+            "attachPointBody": [
+              -0.6,
+              0.48,
+              0.6
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                -0.77,
+                0.16,
+                0.43
+              ],
+              "max": [
+                -0.43,
+                0.52,
+                0.77
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          }
+        ],
+        "canonicalPlacements": [
+          {
+            "position": [
+              -34,
+              0,
+              20
+            ],
+            "yawRadians": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "restSolidsWorld": {
+              "min": [
+                -35.2,
+                0,
+                19.2
+              ],
+              "max": [
+                -32.5,
+                2.87,
+                20.8
+              ],
+              "size": [
+                2.7,
+                2.87,
+                1.6
+              ]
+            },
+            "sampledSweepSolidsWorld": {
+              "min": [
+                -35.207724,
+                0,
+                18.581134
+              ],
+              "max": [
+                -32.49958,
+                2.87,
+                20.818866
+              ],
+              "size": [
+                2.708145,
+                2.87,
+                2.237733
+              ]
+            },
+            "terminals": [
+              {
+                "key": "a",
+                "attachPointWorld": [
+                  -33.4,
+                  0.48,
+                  20.6
+                ]
+              },
+              {
+                "key": "b",
+                "attachPointWorld": [
+                  -34.6,
+                  0.48,
+                  20.6
+                ]
+              }
+            ],
+            "groupRestPivotsWorld": {
+              "top": [
+                -34.4,
+                2.81,
+                19.7
+              ],
+              "cable": [
+                -32.8,
+                1.61,
+                19.7
+              ],
+              "hook": [
+                -32.8,
+                0.46,
+                19.7
+              ]
+            }
+          }
+        ],
+        "sampling": {
+          "parameterSteps": 2048,
+          "phaseSteps": 0,
+          "meaning": "f=cycle from 0 to 1, endpoint 1 wraps to 0; original animate(0)",
+          "continuousGuarantee": false,
+          "note": "Exact transformed geometry vertices at sampled poses; union is NOT a guaranteed continuous swept envelope. Generic Part.update bounce/drag/shake is excluded."
+        },
+        "terminalDiagnostics": {
+          "method": "Five points around each attachPoint, parallel rays along negative VIEW_DIR from 20 units toward the body, sampled at 0/.25/.5/.75/1 (one state for static devices). Own opaque art only; excludes terminal itself, plate, wires and scene. Not a perspective screenshot, touch test, or visibility guarantee.",
+          "cameraDirection": [
+            0,
+            0.788502,
+            0.615032
+          ],
+          "checks": [
+            {
+              "key": "a",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            },
+            {
+              "key": "b",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            }
+          ],
+          "overlapMeaning": "Per-mesh AABB overlap is only a broad-phase warning, NOT proof of triangle intersection."
+        }
+      }
+    },
+    {
+      "kind": "duskLamp",
+      "class": "DuskLamp",
+      "source": {
+        "path": "src/parts/city.ts",
+        "line": 338
+      },
+      "label": "Сумеречный фонарь",
+      "plateNominal": [
+        1.2,
+        1.2
+      ],
+      "sourceSelectors": {
+        "static": [
+          "pole",
+          "arm",
+          "glass head",
+          "sensor eye"
+        ],
+        "effects": [
+          "halo sprite"
+        ]
+      },
+      "motion": {
+        "type": "Нет механического движения",
+        "equation": "dark=max(Part.night?1:0,DuskLamp.dark); shown=damp(shown,state.level>0.12 && dark>0.4 ? 1 : 0,6,dt)",
+        "material": "glass.emissiveIntensity=3*shown; halo.opacity=0.7*shown",
+        "off": "Плавное гашение при отсутствии положительного level или достаточной темноты.",
+        "glowLight": "null if shown<0.05; at=halo.getWorldPosition(); color=#ffd36b; power=shown"
+      },
+      "connections": [
+        {
+          "name": "headCentre",
+          "body": [
+            0.45,
+            2.21,
+            -0.2
+          ]
+        },
+        {
+          "name": "sensorEyeCentre",
+          "body": [
+            0,
+            1.56,
+            -0.12
+          ]
+        },
+        {
+          "name": "poleFoot",
+          "body": [
+            0,
+            0.16,
+            -0.2
+          ]
+        }
+      ],
+      "game": {
+        "source": "src/city.ts:buildNeeds/lamp",
+        "gate": "lit := shown>0.5; три фонаря на пути котёнка",
+        "wiring": "pole(-8.5,1) -> каждый из 3 duskLamp отдельной петлёй",
+        "darkness": "Статический DuskLamp.dark задаётся картой; sensor eye декоративный, отдельный LightSensor здесь не нужен."
+      },
+      "assetPlan": {
+        "firstStaticAsset": "dusk-lamp-shell",
+        "staticMembers": [
+          "pole",
+          "arm"
+        ],
+        "keepCode": [
+          "plate/terminals",
+          "glass sphere R0.17 с отдельным материалом",
+          "sensor eye R0.06",
+          "halo size1.6",
+          "glowLight/lit/dark logic"
+        ],
+        "optionalSeparateAssets": [],
+        "binding": {
+          "parent": "body",
+          "frame": "Столб и кронштейн в исходных координатах; head отдельно в [0.45,2.21,-0.2]."
+        },
+        "forbidden": "Не запекать яркое свечение в albedo; голова должна иметь независимый управляемый emissive-материал."
+      },
+      "referenceConstraints": [
+        "Тёмно-синяя стойка с коротким кронштейном +X, пустое посадочное место головы; без светового ореола/платы/клемм.",
+        "Если модель включает плафон, mesh/material головы должен быть отделим от корпуса и не разделять материал с другими экземплярами."
+      ],
+      "electrical": {
+        "elementKind": "bulb",
+        "override": {},
+        "note": "Пустой override означает solver defaults; произвольное сопротивление не назначалось."
+      },
+      "measured": {
+        "layoutRadius": 0.9,
+        "restSolidsBody": {
+          "min": [
+            -0.62,
+            0,
+            -0.6
+          ],
+          "max": [
+            0.62,
+            2.38,
+            0.6
+          ],
+          "size": [
+            1.24,
+            2.38,
+            1.2
+          ]
+        },
+        "sampledSweepSolidsBody": {
+          "min": [
+            -0.62,
+            0,
+            -0.6
+          ],
+          "max": [
+            0.62,
+            2.38,
+            0.6
+          ],
+          "size": [
+            1.24,
+            2.38,
+            1.2
+          ]
+        },
+        "sampledSweepArtBody": {
+          "min": [
+            -0.076085,
+            0.16,
+            -0.37
+          ],
+          "max": [
+            0.62,
+            2.38,
+            -0.03
+          ],
+          "size": [
+            0.696085,
+            2.22,
+            0.34
+          ]
+        },
+        "staticArtBody": {
+          "min": [
+            -0.076085,
+            0.16,
+            -0.37
+          ],
+          "max": [
+            0.62,
+            2.38,
+            -0.03
+          ],
+          "size": [
+            0.696085,
+            2.22,
+            0.34
+          ]
+        },
+        "staticMembers": [
+          {
+            "key": "pole",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.076085,
+                0.16,
+                -0.28
+              ],
+              "max": [
+                0.076085,
+                2.36,
+                -0.12
+              ],
+              "size": [
+                0.152169,
+                2.2,
+                0.16
+              ]
+            },
+            "translation": [
+              0,
+              1.26,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "arm",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.03,
+                2.28,
+                -0.23
+              ],
+              "max": [
+                0.47,
+                2.34,
+                -0.17
+              ],
+              "size": [
+                0.5,
+                0.06,
+                0.06
+              ]
+            },
+            "translation": [
+              0.22,
+              2.31,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "glassHead",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                0.28,
+                2.04,
+                -0.37
+              ],
+              "max": [
+                0.62,
+                2.38,
+                -0.03
+              ],
+              "size": [
+                0.34,
+                0.34,
+                0.34
+              ]
+            },
+            "translation": [
+              0.45,
+              2.21,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "sensorEye",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.06,
+                1.5,
+                -0.177063
+              ],
+              "max": [
+                0.06,
+                1.62,
+                -0.062937
+              ],
+              "size": [
+                0.12,
+                0.12,
+                0.114127
+              ]
+            },
+            "translation": [
+              0,
+              1.56,
+              -0.12
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "groups": [],
+        "terminals": [
+          {
+            "key": "a",
+            "polarity": "none",
+            "postBaseBody": [
+              0.45,
+              0.16,
+              0.4
+            ],
+            "attachPointBody": [
+              0.45,
+              0.48,
+              0.4
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                0.28,
+                0.16,
+                0.23
+              ],
+              "max": [
+                0.62,
+                0.52,
+                0.57
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          },
+          {
+            "key": "b",
+            "polarity": "none",
+            "postBaseBody": [
+              -0.45,
+              0.16,
+              0.4
+            ],
+            "attachPointBody": [
+              -0.45,
+              0.48,
+              0.4
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                -0.62,
+                0.16,
+                0.23
+              ],
+              "max": [
+                -0.28,
+                0.52,
+                0.57
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          }
+        ],
+        "canonicalPlacements": [
+          {
+            "position": [
+              -11.5,
+              0,
+              -2.5
+            ],
+            "yawRadians": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "restSolidsWorld": {
+              "min": [
+                -12.12,
+                0,
+                -3.1
+              ],
+              "max": [
+                -10.88,
+                2.38,
+                -1.9
+              ],
+              "size": [
+                1.24,
+                2.38,
+                1.2
+              ]
+            },
+            "sampledSweepSolidsWorld": {
+              "min": [
+                -12.12,
+                0,
+                -3.1
+              ],
+              "max": [
+                -10.88,
+                2.38,
+                -1.9
+              ],
+              "size": [
+                1.24,
+                2.38,
+                1.2
+              ]
+            },
+            "terminals": [
+              {
+                "key": "a",
+                "attachPointWorld": [
+                  -11.05,
+                  0.48,
+                  -2.1
+                ]
+              },
+              {
+                "key": "b",
+                "attachPointWorld": [
+                  -11.95,
+                  0.48,
+                  -2.1
+                ]
+              }
+            ],
+            "groupRestPivotsWorld": {}
+          },
+          {
+            "position": [
+              -15.2,
+              0,
+              1
+            ],
+            "yawRadians": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "restSolidsWorld": {
+              "min": [
+                -15.82,
+                0,
+                0.4
+              ],
+              "max": [
+                -14.58,
+                2.38,
+                1.6
+              ],
+              "size": [
+                1.24,
+                2.38,
+                1.2
+              ]
+            },
+            "sampledSweepSolidsWorld": {
+              "min": [
+                -15.82,
+                0,
+                0.4
+              ],
+              "max": [
+                -14.58,
+                2.38,
+                1.6
+              ],
+              "size": [
+                1.24,
+                2.38,
+                1.2
+              ]
+            },
+            "terminals": [
+              {
+                "key": "a",
+                "attachPointWorld": [
+                  -14.75,
+                  0.48,
+                  1.4
+                ]
+              },
+              {
+                "key": "b",
+                "attachPointWorld": [
+                  -15.65,
+                  0.48,
+                  1.4
+                ]
+              }
+            ],
+            "groupRestPivotsWorld": {}
+          },
+          {
+            "position": [
+              -11.5,
+              0,
+              4.5
+            ],
+            "yawRadians": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "restSolidsWorld": {
+              "min": [
+                -12.12,
+                0,
+                3.9
+              ],
+              "max": [
+                -10.88,
+                2.38,
+                5.1
+              ],
+              "size": [
+                1.24,
+                2.38,
+                1.2
+              ]
+            },
+            "sampledSweepSolidsWorld": {
+              "min": [
+                -12.12,
+                0,
+                3.9
+              ],
+              "max": [
+                -10.88,
+                2.38,
+                5.1
+              ],
+              "size": [
+                1.24,
+                2.38,
+                1.2
+              ]
+            },
+            "terminals": [
+              {
+                "key": "a",
+                "attachPointWorld": [
+                  -11.05,
+                  0.48,
+                  4.9
+                ]
+              },
+              {
+                "key": "b",
+                "attachPointWorld": [
+                  -11.95,
+                  0.48,
+                  4.9
+                ]
+              }
+            ],
+            "groupRestPivotsWorld": {}
+          }
+        ],
+        "sampling": {
+          "parameterSteps": 0,
+          "phaseSteps": 0,
+          "meaning": "single static pose; light intensity changes do not move solid geometry",
+          "continuousGuarantee": false,
+          "note": "Exact transformed geometry vertices at sampled poses; union is NOT a guaranteed continuous swept envelope. Generic Part.update bounce/drag/shake is excluded."
+        },
+        "terminalDiagnostics": {
+          "method": "Five points around each attachPoint, parallel rays along negative VIEW_DIR from 20 units toward the body, sampled at 0/.25/.5/.75/1 (one state for static devices). Own opaque art only; excludes terminal itself, plate, wires and scene. Not a perspective screenshot, touch test, or visibility guarantee.",
+          "cameraDirection": [
+            0,
+            0.788502,
+            0.615032
+          ],
+          "checks": [
+            {
+              "key": "a",
+              "rayCount": 5,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            },
+            {
+              "key": "b",
+              "rayCount": 5,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            }
+          ],
+          "overlapMeaning": "Per-mesh AABB overlap is only a broad-phase warning, NOT proof of triangle intersection."
+        }
+      }
+    },
+    {
+      "kind": "neon",
+      "class": "NeonSign",
+      "source": {
+        "path": "src/parts/city.ts",
+        "line": 387
+      },
+      "label": "Неоновая вывеска",
+      "plateNominal": [
+        2.3,
+        1
+      ],
+      "sourceSelectors": {
+        "static": [
+          "board/legs",
+          "4 letters with independent materials"
+        ],
+        "effects": [
+          "glowLight root-space anchor"
+        ]
+      },
+      "motion": {
+        "type": "Нет механического движения",
+        "equation": "level=damp(level,state.level>0.12?1:0,8,dt); n=floor(time*3)%6; letter[i].emissiveIntensity=level*(n>=4 || i<=n ? 2.6 : 0.4)",
+        "channels": 4,
+        "colours": [
+          "#ff4fa0",
+          "#4fe0ff",
+          "#ffe04f",
+          "#7dff6b"
+        ],
+        "cycleSeconds": 2,
+        "glowLight": "null if level<0.05; root.localToWorld([0,1.21,0]); color=#ff7fd0; power=0.7*level"
+      },
+      "connections": [
+        {
+          "name": "letterCentres",
+          "body": [
+            [
+              -0.68,
+              1.21,
+              -0.13
+            ],
+            [
+              -0.23,
+              1.21,
+              -0.13
+            ],
+            [
+              0.22,
+              1.21,
+              -0.13
+            ],
+            [
+              0.67,
+              1.21,
+              -0.13
+            ]
+          ]
+        },
+        {
+          "name": "lightForSensor",
+          "root": [
+            0,
+            1.21,
+            0
+          ],
+          "world": [
+            43,
+            1.21,
+            -9.5
+          ]
+        }
+      ],
+      "game": {
+        "source": "src/city.ts:loops; src/parts/chain.ts:shine",
+        "wiring": "pole(40.5,-11.5) -> neon; отдельная петля pole -> lightSensor(43,-7.6) -> musicbox(46.5,-6.8)",
+        "lightRule": "shine использует расстояние eye/light и power, без occlusion raycast: min(1.5,power)*max(0,1-d/5)^1.5. Внешний вид света не заменяет glowLight()."
+      },
+      "assetPlan": {
+        "firstStaticAsset": "neon-frame",
+        "staticMembers": [
+          "board",
+          "legLeft",
+          "legRight"
+        ],
+        "binding": {
+          "parent": "body",
+          "frame": "board центр [0,1.21,-0.2], размер [2,0.7,0.1]; стойки x=±0.8."
+        },
+        "keepCode": [
+          "plate/terminals",
+          "4 буквы: чётные Box(0.1,0.42,0.06), нечётные Torus(0.16,0.045)",
+          "4 независимых emissive-материала",
+          "time phase and glowLight"
+        ],
+        "optionalSeparateAssets": [],
+        "forbidden": "Не генерировать единое светящееся слово или запечённый bloom; материалы букв нельзя слить с рамкой или между собой."
+      },
+      "referenceConstraints": [
+        "Тёмная узкая панель на двух стойках; чистая поверхность без букв, текста, сияния, платы и клемм.",
+        "Существующие знаки — полосы и кольца, не читаемая надпись. Читаемый текст не вводить без отдельного решения."
+      ],
+      "reviewFlags": [
+        "glowLight использует root, а не body; общая подпрыгивающая анимация корпуса не двигает световой якорь. z якоря 0, физические буквы z=-0.13."
+      ],
+      "electrical": {
+        "elementKind": "bulb",
+        "override": {},
+        "note": "Пустой override означает solver defaults; произвольное сопротивление не назначалось."
+      },
+      "measured": {
+        "layoutRadius": 1.5,
+        "restSolidsBody": {
+          "min": [
+            -1.17,
+            0,
+            -0.5
+          ],
+          "max": [
+            1.17,
+            1.56,
+            0.52
+          ],
+          "size": [
+            2.34,
+            1.56,
+            1.02
+          ]
+        },
+        "sampledSweepSolidsBody": {
+          "min": [
+            -1.17,
+            0,
+            -0.5
+          ],
+          "max": [
+            1.17,
+            1.56,
+            0.52
+          ],
+          "size": [
+            2.34,
+            1.56,
+            1.02
+          ]
+        },
+        "sampledSweepArtBody": {
+          "min": [
+            -1,
+            0.16,
+            -0.25
+          ],
+          "max": [
+            1,
+            1.56,
+            -0.085
+          ],
+          "size": [
+            2,
+            1.4,
+            0.165
+          ]
+        },
+        "staticArtBody": {
+          "min": [
+            -1,
+            0.16,
+            -0.25
+          ],
+          "max": [
+            1,
+            1.56,
+            -0.085
+          ],
+          "size": [
+            2,
+            1.4,
+            0.165
+          ]
+        },
+        "staticMembers": [
+          {
+            "key": "letter0",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.73,
+                1,
+                -0.16
+              ],
+              "max": [
+                -0.63,
+                1.42,
+                -0.1
+              ],
+              "size": [
+                0.1,
+                0.42,
+                0.06
+              ]
+            },
+            "translation": [
+              -0.68,
+              1.21,
+              -0.13
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "letter1",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.435,
+                1.005,
+                -0.175
+              ],
+              "max": [
+                -0.025,
+                1.415,
+                -0.085
+              ],
+              "size": [
+                0.41,
+                0.41,
+                0.09
+              ]
+            },
+            "translation": [
+              -0.23,
+              1.21,
+              -0.13
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "letter2",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                0.17,
+                1,
+                -0.16
+              ],
+              "max": [
+                0.27,
+                1.42,
+                -0.1
+              ],
+              "size": [
+                0.1,
+                0.42,
+                0.06
+              ]
+            },
+            "translation": [
+              0.22,
+              1.21,
+              -0.13
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "letter3",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                0.465,
+                1.005,
+                -0.175
+              ],
+              "max": [
+                0.875,
+                1.415,
+                -0.085
+              ],
+              "size": [
+                0.41,
+                0.41,
+                0.09
+              ]
+            },
+            "translation": [
+              0.67,
+              1.21,
+              -0.13
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "board",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -1,
+                0.86,
+                -0.25
+              ],
+              "max": [
+                1,
+                1.56,
+                -0.15
+              ],
+              "size": [
+                2,
+                0.7,
+                0.1
+              ]
+            },
+            "translation": [
+              0,
+              1.21,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "legLeft",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -0.835,
+                0.16,
+                -0.235
+              ],
+              "max": [
+                -0.765,
+                0.86,
+                -0.165
+              ],
+              "size": [
+                0.07,
+                0.7,
+                0.07
+              ]
+            },
+            "translation": [
+              -0.8,
+              0.51,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          },
+          {
+            "key": "legRight",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                0.765,
+                0.16,
+                -0.235
+              ],
+              "max": [
+                0.835,
+                0.86,
+                -0.165
+              ],
+              "size": [
+                0.07,
+                0.7,
+                0.07
+              ]
+            },
+            "translation": [
+              0.8,
+              0.51,
+              -0.2
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "groups": [],
+        "terminals": [
+          {
+            "key": "a",
+            "polarity": "none",
+            "postBaseBody": [
+              1,
+              0.16,
+              0.35
+            ],
+            "attachPointBody": [
+              1,
+              0.48,
+              0.35
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                0.83,
+                0.16,
+                0.18
+              ],
+              "max": [
+                1.17,
+                0.52,
+                0.52
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          },
+          {
+            "key": "b",
+            "polarity": "none",
+            "postBaseBody": [
+              -1,
+              0.16,
+              0.35
+            ],
+            "attachPointBody": [
+              -1,
+              0.48,
+              0.35
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                -1.17,
+                0.16,
+                0.18
+              ],
+              "max": [
+                -0.83,
+                0.52,
+                0.52
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          }
+        ],
+        "canonicalPlacements": [
+          {
+            "position": [
+              43,
+              0,
+              -9.5
+            ],
+            "yawRadians": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "restSolidsWorld": {
+              "min": [
+                41.83,
+                0,
+                -10
+              ],
+              "max": [
+                44.17,
+                1.56,
+                -8.98
+              ],
+              "size": [
+                2.34,
+                1.56,
+                1.02
+              ]
+            },
+            "sampledSweepSolidsWorld": {
+              "min": [
+                41.83,
+                0,
+                -10
+              ],
+              "max": [
+                44.17,
+                1.56,
+                -8.98
+              ],
+              "size": [
+                2.34,
+                1.56,
+                1.02
+              ]
+            },
+            "terminals": [
+              {
+                "key": "a",
+                "attachPointWorld": [
+                  44,
+                  0.48,
+                  -9.15
+                ]
+              },
+              {
+                "key": "b",
+                "attachPointWorld": [
+                  42,
+                  0.48,
+                  -9.15
+                ]
+              }
+            ],
+            "groupRestPivotsWorld": {}
+          }
+        ],
+        "sampling": {
+          "parameterSteps": 0,
+          "phaseSteps": 0,
+          "meaning": "single static pose; light intensity changes do not move solid geometry",
+          "continuousGuarantee": false,
+          "note": "Exact transformed geometry vertices at sampled poses; union is NOT a guaranteed continuous swept envelope. Generic Part.update bounce/drag/shake is excluded."
+        },
+        "terminalDiagnostics": {
+          "method": "Five points around each attachPoint, parallel rays along negative VIEW_DIR from 20 units toward the body, sampled at 0/.25/.5/.75/1 (one state for static devices). Own opaque art only; excludes terminal itself, plate, wires and scene. Not a perspective screenshot, touch test, or visibility guarantee.",
+          "cameraDirection": [
+            0,
+            0.788502,
+            0.615032
+          ],
+          "checks": [
+            {
+              "key": "a",
+              "rayCount": 5,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            },
+            {
+              "key": "b",
+              "rayCount": 5,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            }
+          ],
+          "overlapMeaning": "Per-mesh AABB overlap is only a broad-phase warning, NOT proof of triangle intersection."
+        }
+      }
+    },
+    {
+      "kind": "ladder",
+      "class": "FireLadder",
+      "source": {
+        "path": "src/parts/city.ts",
+        "line": 430
+      },
+      "label": "Пожарная лестница",
+      "plateNominal": [
+        2.2,
+        1.2
+      ],
+      "sourceSelectors": {
+        "static": [
+          "turntable"
+        ],
+        "moving": [
+          "boom (inner ladder child)",
+          "outer as child of boom"
+        ]
+      },
+      "motion": {
+        "input": "abs(level)>0.15",
+        "equation": "if powered: reach=min(1,reach+0.3*dt); boom.rotation.z=0.75*reach; outer.position.x=0.1+1.3*reach",
+        "axis": "+Z rotation then +X translation in boom frame",
+        "rangeRadians": [
+          0,
+          0.75
+        ],
+        "outerTranslationX": [
+          0.1,
+          1.4
+        ],
+        "off": "Поза удерживается, автоматического втягивания/опускания нет.",
+        "fixedOuterOffset": [
+          0,
+          0.05,
+          0
+        ]
+      },
+      "connections": [
+        {
+          "name": "elevationPivot",
+          "body": [
+            -0.7,
+            0.41,
+            -0.15
+          ],
+          "axis": [
+            0,
+            0,
+            1
+          ]
+        },
+        {
+          "name": "outerSlide",
+          "parent": "boom",
+          "localAtRest": [
+            0.1,
+            0.05,
+            0
+          ],
+          "axis": [
+            1,
+            0,
+            0
+          ]
+        },
+        {
+          "name": "turntableCentre",
+          "body": [
+            -0.7,
+            0.26,
+            -0.15
+          ],
+          "note": "В текущем коде yaw не анимируется."
+        }
+      ],
+      "game": {
+        "source": "src/city.ts:updateFire",
+        "gate": "ladder.reach>0.95 && phase=evening -> catDown+=0.4*dt",
+        "wiring": "pole(40.5,12.5) -> ladder; pump/firetruck в отдельных петлях",
+        "catRouteWorld": {
+          "roof": [
+            47,
+            3.7,
+            8
+          ],
+          "foot": [
+            42.5,
+            0,
+            10.7
+          ]
+        },
+        "collision": "Кот интерполируется между крышей и тротуаром; его путь не берётся из геометрии лестницы."
+      },
+      "assetPlan": {
+        "firstStaticAsset": "fire-ladder-base",
+        "staticMembers": [
+          "turntable"
+        ],
+        "binding": {
+          "parent": "body",
+          "frame": "Центр [-0.7,0.26,-0.15], H0.2, радиусы 0.30/0.34; сохранить шарнир выше в y0.41."
+        },
+        "keepCode": [
+          "plate/terminals",
+          "boom elevation",
+          "outer local extension",
+          "rungs/rails в первом проходе",
+          "reach/electrical/pickables"
+        ],
+        "optionalSeparateAssets": [
+          {
+            "name": "fire-ladder-inner",
+            "parent": "boom",
+            "bounds": {
+              "min": [
+                0,
+                -0.025,
+                -0.14
+              ],
+              "max": [
+                1.6,
+                0.025,
+                0.14
+              ]
+            }
+          },
+          {
+            "name": "fire-ladder-outer",
+            "parent": "outer",
+            "bounds": {
+              "min": [
+                0,
+                -0.025,
+                -0.14
+              ],
+              "max": [
+                1.5,
+                0.025,
+                0.14
+              ]
+            }
+          }
+        ],
+        "forbidden": "Не делать лестницу цельным жёстким мешем и не добавлять автомобиль под её плату."
+      },
+      "referenceConstraints": [
+        "Низкая коралловая опора с посадкой шарнира, без лестницы, машины, платы и клемм.",
+        "Две секции при отдельном изготовлении имеют открытые промежутки между ступенями; начало каждой — локальный x=0."
+      ],
+      "reviewFlags": [
+        "Максимальная sampled y непрозрачной лестницы 2.441629; крыша для кота y3.7. Текущая механика не доказывает физического достижения крыши.",
+        "Конструктор оставляет outer.x=0.1; initial reach=0. При выключении reach не уменьшается."
+      ],
+      "electrical": {
+        "elementKind": "motor",
+        "override": {
+          "r": 9
+        },
+        "note": "Пустой override означает solver defaults; произвольное сопротивление не назначалось."
+      },
+      "measured": {
+        "layoutRadius": 1.6,
+        "restSolidsBody": {
+          "min": [
+            -1.17,
+            0,
+            -0.6
+          ],
+          "max": [
+            1.12,
+            0.52,
+            0.6
+          ],
+          "size": [
+            2.29,
+            0.52,
+            1.2
+          ]
+        },
+        "sampledSweepSolidsBody": {
+          "min": [
+            -1.17,
+            0,
+            -0.6
+          ],
+          "max": [
+            1.465564,
+            2.441629,
+            0.6
+          ],
+          "size": [
+            2.635564,
+            2.441629,
+            1.2
+          ]
+        },
+        "sampledSweepArtBody": {
+          "min": [
+            -1.04,
+            0.16,
+            -0.49
+          ],
+          "max": [
+            1.465564,
+            2.441629,
+            0.19
+          ],
+          "size": [
+            2.505564,
+            2.281629,
+            0.68
+          ]
+        },
+        "staticArtBody": {
+          "min": [
+            -1.04,
+            0.16,
+            -0.49
+          ],
+          "max": [
+            -0.36,
+            0.36,
+            0.19
+          ],
+          "size": [
+            0.68,
+            0.2,
+            0.68
+          ]
+        },
+        "staticMembers": [
+          {
+            "key": "turntable",
+            "parent": "body",
+            "boundsBody": {
+              "min": [
+                -1.04,
+                0.16,
+                -0.49
+              ],
+              "max": [
+                -0.36,
+                0.36,
+                0.19
+              ],
+              "size": [
+                0.68,
+                0.2,
+                0.68
+              ]
+            },
+            "translation": [
+              -0.7,
+              0.26,
+              -0.15
+            ],
+            "rotationXYZ": [
+              0,
+              0,
+              0
+            ]
+          }
+        ],
+        "groups": [
+          {
+            "key": "boom",
+            "parent": "body",
+            "meshCount": 8,
+            "restTransformInParent": {
+              "translation": [
+                -0.7,
+                0.41,
+                -0.15
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                0,
+                -0.025,
+                -0.14
+              ],
+              "max": [
+                1.6,
+                0.025,
+                0.14
+              ],
+              "size": [
+                1.6,
+                0.05,
+                0.28
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -0.7,
+                0.385,
+                -0.29
+              ],
+              "max": [
+                0.9,
+                0.435,
+                -0.01
+              ],
+              "size": [
+                1.6,
+                0.05,
+                0.28
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -0.717041,
+                0.385,
+                -0.29
+              ],
+              "max": [
+                0.900195,
+                1.518914,
+                -0.01
+              ],
+              "size": [
+                1.617236,
+                1.133914,
+                0.28
+              ]
+            }
+          },
+          {
+            "key": "outer",
+            "parent": "boom",
+            "meshCount": 8,
+            "restTransformInParent": {
+              "translation": [
+                0.1,
+                0.05,
+                0
+              ],
+              "rotationXYZ": [
+                0,
+                0,
+                0
+              ],
+              "scale": [
+                1,
+                1,
+                1
+              ]
+            },
+            "geometryBoundsInOwnFrame": {
+              "min": [
+                0,
+                -0.025,
+                -0.14
+              ],
+              "max": [
+                1.5,
+                0.025,
+                0.14
+              ],
+              "size": [
+                1.5,
+                0.05,
+                0.28
+              ]
+            },
+            "restBoundsBody": {
+              "min": [
+                -0.6,
+                0.435,
+                -0.29
+              ],
+              "max": [
+                0.9,
+                0.485,
+                -0.01
+              ],
+              "size": [
+                1.5,
+                0.05,
+                0.28
+              ]
+            },
+            "sampledSweepBoundsBody": {
+              "min": [
+                -0.6,
+                0.435,
+                -0.29
+              ],
+              "max": [
+                1.465564,
+                2.441629,
+                -0.01
+              ],
+              "size": [
+                2.065564,
+                2.006629,
+                0.28
+              ]
+            }
+          }
+        ],
+        "terminals": [
+          {
+            "key": "a",
+            "polarity": "none",
+            "postBaseBody": [
+              0.95,
+              0.16,
+              0.42
+            ],
+            "attachPointBody": [
+              0.95,
+              0.48,
+              0.42
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                0.78,
+                0.16,
+                0.25
+              ],
+              "max": [
+                1.12,
+                0.52,
+                0.59
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          },
+          {
+            "key": "b",
+            "polarity": "none",
+            "postBaseBody": [
+              -1,
+              0.16,
+              0.42
+            ],
+            "attachPointBody": [
+              -1,
+              0.48,
+              0.42
+            ],
+            "opaqueBoundsBody": {
+              "min": [
+                -1.17,
+                0.16,
+                0.25
+              ],
+              "max": [
+                -0.83,
+                0.52,
+                0.59
+              ],
+              "size": [
+                0.34,
+                0.36,
+                0.34
+              ]
+            }
+          }
+        ],
+        "canonicalPlacements": [
+          {
+            "position": [
+              43.5,
+              0,
+              9.5
+            ],
+            "yawRadians": 0,
+            "scale": [
+              1,
+              1,
+              1
+            ],
+            "restSolidsWorld": {
+              "min": [
+                42.33,
+                0,
+                8.9
+              ],
+              "max": [
+                44.62,
+                0.52,
+                10.1
+              ],
+              "size": [
+                2.29,
+                0.52,
+                1.2
+              ]
+            },
+            "sampledSweepSolidsWorld": {
+              "min": [
+                42.33,
+                0,
+                8.9
+              ],
+              "max": [
+                44.965564,
+                2.441629,
+                10.1
+              ],
+              "size": [
+                2.635564,
+                2.441629,
+                1.2
+              ]
+            },
+            "terminals": [
+              {
+                "key": "a",
+                "attachPointWorld": [
+                  44.45,
+                  0.48,
+                  9.92
+                ]
+              },
+              {
+                "key": "b",
+                "attachPointWorld": [
+                  42.5,
+                  0.48,
+                  9.92
+                ]
+              }
+            ],
+            "groupRestPivotsWorld": {
+              "boom": [
+                42.8,
+                0.41,
+                9.35
+              ],
+              "outer": [
+                42.9,
+                0.46,
+                9.35
+              ]
+            }
+          }
+        ],
+        "sampling": {
+          "parameterSteps": 1024,
+          "phaseSteps": 0,
+          "meaning": "f=reach from 0 to 1; original animate(0)",
+          "continuousGuarantee": false,
+          "note": "Exact transformed geometry vertices at sampled poses; union is NOT a guaranteed continuous swept envelope. Generic Part.update bounce/drag/shake is excluded."
+        },
+        "terminalDiagnostics": {
+          "method": "Five points around each attachPoint, parallel rays along negative VIEW_DIR from 20 units toward the body, sampled at 0/.25/.5/.75/1 (one state for static devices). Own opaque art only; excludes terminal itself, plate, wires and scene. Not a perspective screenshot, touch test, or visibility guarantee.",
+          "cameraDirection": [
+            0,
+            0.788502,
+            0.615032
+          ],
+          "checks": [
+            {
+              "key": "a",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            },
+            {
+              "key": "b",
+              "rayCount": 25,
+              "artOccludedRays": 0,
+              "examples": [],
+              "opaqueAabbOverlapPoses": 0,
+              "overlapExamples": []
+            }
+          ],
+          "overlapMeaning": "Per-mesh AABB overlap is only a broad-phase warning, NOT proof of triangle intersection."
+        }
+      }
+    }
+  ]
+}
