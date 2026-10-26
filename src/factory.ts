@@ -284,7 +284,7 @@ export class FactoryMap extends StoryMap {
       const strip = kitPieces('factory', 'hazard-strip', true);
       if (this.kit && strip.length) {
         const [x0, x1, z0, z1] = [cx - w / 2, cx + w / 2, cz - d / 2, cz + d / 2];
-        hall.add(ribbons([{ pts: [[x0, z0], [x1, z0], [x1, z1], [x0, z1], [x0, z0]], w: 0.3 }], strip[0], 1, 2.4, 0.0075, 2, 0.5));
+        hall.add(ribbons([{ pts: [[x0, z0], [x1, z0], [x1, z1], [x0, z1], [x0, z0]], w: 0.3 }], strip[0], 1.12, 4.36, 0.0075, 2, 0.5));
       } else hall.add(hazard(cx, cz, w, d));
     }
     for (const [x, z, n] of [[36, -14, 3], [38.2, -14, 2], [36, -10.5, 2]] as const) hall.add(stack(x, z, n));
