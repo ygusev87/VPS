@@ -1,0 +1,381 @@
+{
+  "status": "pass",
+  "preservedInstances": 645,
+  "totalInstances": 678,
+  "addedInstances": 33,
+  "additionalGeometryTriangles": 20352,
+  "unchangedDatasets": [
+    "PATHS",
+    "FENCES",
+    "SOIL",
+    "MUD",
+    "MEADOW",
+    "PONDS"
+  ],
+  "candidateSourceSha256": "fd8fa61e6abfd2b567b1d4023198ed844279400acb4f7a08cdd44aa56ad80f5b",
+  "snapshotVerified": true,
+  "baselineEquivalentToIntegratedCommit": "869bd6cd9852a7384a24da8d5e7a33fe6f6c3975",
+  "liveRuntimeDrift": [],
+  "views": [
+    {
+      "width": 1180,
+      "area": "wide",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "northwest",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "north",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "northeast",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "west",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "east",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 1180,
+      "area": "task-cowHot",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-pigThirsty",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-gateStuck",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-sheepMill",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-kittenStuck",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-goatsAsk",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-beesAsk",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-horseHot",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-puppyAsk",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-henDark",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-rabbitCold",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-cowSleepy",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-eggsCold",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-geeseDark",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-foxTip",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-15",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 1180,
+      "area": "task-roosterAsk",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "wide",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "northwest",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "north",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "northeast",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "west",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "east",
+      "rays": 1840,
+      "exactGameplayCamera": false
+    },
+    {
+      "width": 390,
+      "area": "task-cowHot",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-pigThirsty",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-gateStuck",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-sheepMill",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-kittenStuck",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-goatsAsk",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-beesAsk",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-horseHot",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-puppyAsk",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-henDark",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-rabbitCold",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-cowSleepy",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-eggsCold",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-geeseDark",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-foxTip",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-15",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    },
+    {
+      "width": 390,
+      "area": "task-roosterAsk",
+      "rays": 1840,
+      "exactGameplayCamera": true
+    }
+  ],
+  "rays": 84640,
+  "budget": {
+    "sceneAndShadowsBefore": 2218199,
+    "sceneAndShadowsAfter": 2256507,
+    "sceneAndShadowsCap": 2600000,
+    "remaining": 343493,
+    "fullFrameBefore": 3617849,
+    "fullFrameAfter": 3676509,
+    "fullFrameDelta": 58660,
+    "statesBefore": [
+      1402567,
+      2218199,
+      2802217,
+      3617849
+    ],
+    "statesAfter": [
+      1422919,
+      2256507,
+      2842921,
+      3676509
+    ]
+  },
+  "console": {
+    "entries": 2,
+    "logs": [
+      {
+        "level": "error",
+        "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+        "timestamp": "2026-10-26T09:15:10.837Z"
+      },
+      {
+        "level": "error",
+        "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+        "timestamp": "2026-10-26T09:21:32.223Z"
+      }
+    ],
+    "pageErrorArraysEmpty": true,
+    "note": "Two identical MutationObserver.observe errors without URL across page loads. Not caught by scene window handlers; origin unconfirmed. No WebGL loss or failed assertions."
+  },
+  "canopyCoverage": [
+    {
+      "region": "north",
+      "bounds": {
+        "x0": -54.5,
+        "x1": 54.5,
+        "z0": -37.25,
+        "z1": -29.5
+      },
+      "samples": 13516,
+      "beforeFraction": 0.463302752293578,
+      "afterFraction": 0.5418762947617638,
+      "additionalCoveredArea": 66.375,
+      "method": "0.25-unit grid union of full canopy footprint bounding polygons; not rendered pixel coverage"
+    },
+    {
+      "region": "west",
+      "bounds": {
+        "x0": -54.75,
+        "x1": -48,
+        "z0": -29,
+        "z1": 20
+      },
+      "samples": 5292,
+      "beforeFraction": 0.35978835978835977,
+      "afterFraction": 0.532312925170068,
+      "additionalCoveredArea": 57.0625,
+      "method": "0.25-unit grid union of full canopy footprint bounding polygons; not rendered pixel coverage"
+    },
+    {
+      "region": "east",
+      "bounds": {
+        "x0": 48,
+        "x1": 54.75,
+        "z0": -29,
+        "z1": 20
+      },
+      "samples": 5292,
+      "beforeFraction": 0.35676492819349964,
+      "afterFraction": 0.5207860922146637,
+      "additionalCoveredArea": 54.25,
+      "method": "0.25-unit grid union of full canopy footprint bounding polygons; not rendered pixel coverage"
+    }
+  ],
+  "scope": "Isolated candidate only. Apply additions onto current authoring; do not overwrite unrelated runtime/layout work. No iPad/FPS/robot claim."
+}

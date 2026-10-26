@@ -502,7 +502,7 @@ export class FarmMap extends StoryMap {
     const loop = Array.from({ length: 25 }, (_, i) => v(FIELD.x + Math.cos((i / 24) * Math.PI * 2) * 4.2, FIELD.z + Math.sin((i / 24) * Math.PI * 2) * 6));
     const lines = [FOX_PATH, [LAUNCH_SPOT, v(LAUNCH_SPOT.x + 15, LAUNCH_SPOT.z)], [TRACTOR_AT, v(TRACTOR_AT.x, FIELD.z - 6)], loop];
     // The toys to poke, and the herd: animals in the dressing wander about instead of standing still.
-    const bodies: Partial<Record<ToyKind, () => THREE.Object3D | null>> = { mouse: () => model('haystack', { width: 2.2 }), well: () => model('well', { width: 2.8 }), frog: () => model('frog', { height: 0.47 }) };
+    const bodies: Partial<Record<ToyKind, () => THREE.Object3D | null>> = { mouse: () => model('hay-bale', { width: 2.2 }) ?? model('haystack', { width: 2.2 }), well: () => model('well', { width: 2.8 }), frog: () => model('frog', { height: 0.47 }) };
     for (const [kind, x, z, yaw] of TOYS) this.life.addToy(kind, x, z, yaw, bodies[kind]?.() ?? undefined);
     keep.push(...this.life.toySpots);
     const herd = DECOR.filter((g) => HERD[g.model]);

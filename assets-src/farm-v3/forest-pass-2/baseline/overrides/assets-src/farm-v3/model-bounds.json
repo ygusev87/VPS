@@ -1,0 +1,406 @@
+{
+  "barn": {
+    "fit": {
+      "width": 14,
+      "rotateY": -1.5707963267948966
+    },
+    "size": [
+      14,
+      14.816,
+      15.581
+    ],
+    "triangles": 8000
+  },
+  "coop": {
+    "fit": {
+      "width": 6,
+      "rotateY": -1.5707963267948966
+    },
+    "size": [
+      6,
+      7.672,
+      10.02
+    ],
+    "triangles": 7999
+  },
+  "stable": {
+    "fit": {
+      "width": 12,
+      "rotateY": -1.5707963267948966
+    },
+    "size": [
+      12,
+      9.588,
+      15.3
+    ],
+    "triangles": 6027
+  },
+  "doghouse": {
+    "fit": {
+      "width": 3,
+      "rotateY": -1.5707963267948966
+    },
+    "size": [
+      3,
+      3.001,
+      3.043
+    ],
+    "triangles": 11001
+  },
+  "hutch": {
+    "fit": {
+      "width": 3,
+      "rotateY": -1.5707963267948966
+    },
+    "size": [
+      3,
+      1.926,
+      2.042
+    ],
+    "triangles": 4900
+  },
+  "beehive": {
+    "fit": {
+      "height": 1.7
+    },
+    "size": [
+      1.394,
+      1.7,
+      1.174
+    ],
+    "triangles": 4896
+  },
+  "haystack": {
+    "fit": {
+      "width": 2.8
+    },
+    "size": [
+      2.8,
+      1.84,
+      2.805
+    ],
+    "triangles": 2816
+  },
+  "tree-oak": {
+    "fit": {
+      "height": 5.2
+    },
+    "size": [
+      3.499,
+      5.2,
+      5.42
+    ],
+    "triangles": 2836
+  },
+  "tree-pine": {
+    "fit": {
+      "height": 6.2
+    },
+    "size": [
+      3.22,
+      6.2,
+      3.065
+    ],
+    "triangles": 1686
+  },
+  "bush": {
+    "fit": {
+      "width": 2.3
+    },
+    "size": [
+      2.3,
+      0.984,
+      0.745
+    ],
+    "triangles": 1748
+  },
+  "rock-cluster": {
+    "fit": {
+      "width": 2.6
+    },
+    "size": [
+      2.6,
+      1.824,
+      2.628
+    ],
+    "triangles": 922
+  },
+  "flower-cluster": {
+    "fit": {
+      "height": 0.5
+    },
+    "size": [
+      0.712,
+      0.5,
+      0.8
+    ],
+    "triangles": 974
+  },
+  "cow": {
+    "fit": {
+      "height": 1.65
+    },
+    "size": [
+      1.896,
+      1.65,
+      0.963
+    ],
+    "triangles": 8000
+  },
+  "sheep": {
+    "fit": {
+      "height": 1.2
+    },
+    "size": [
+      0.79,
+      1.2,
+      1.405
+    ],
+    "triangles": 14981
+  },
+  "pig": {
+    "fit": {
+      "height": 1.2
+    },
+    "size": [
+      1.362,
+      1.2,
+      0.953
+    ],
+    "triangles": 8000
+  },
+  "hen": {
+    "fit": {
+      "height": 0.7
+    },
+    "size": [
+      0.635,
+      0.7,
+      0.395
+    ],
+    "triangles": 8000
+  },
+  "horse": {
+    "fit": {
+      "height": 1.8
+    },
+    "size": [
+      2.003,
+      1.8,
+      0.696
+    ],
+    "triangles": 7930
+  },
+  "goat": {
+    "fit": {
+      "height": 1.2
+    },
+    "size": [
+      1.3,
+      1.2,
+      0.757
+    ],
+    "triangles": 7542
+  },
+  "goose": {
+    "fit": {
+      "height": 0.85
+    },
+    "size": [
+      0.763,
+      0.85,
+      0.481
+    ],
+    "triangles": 7561
+  },
+  "sack": {
+    "fit": {
+      "height": 1.25
+    },
+    "size": [
+      0.864,
+      1.25,
+      1.085
+    ],
+    "triangles": 8000
+  },
+  "tree-pine-lite": {
+    "fit": {
+      "height": 6.2
+    },
+    "size": [
+      3.215,
+      6.2,
+      3.065
+    ],
+    "triangles": 599
+  },
+  "tree-oak-lite": {
+    "fit": {
+      "height": 5.2
+    },
+    "size": [
+      3.458,
+      5.2,
+      5.406
+    ],
+    "triangles": 599
+  },
+  "bush-lite": {
+    "fit": {
+      "width": 2.3
+    },
+    "size": [
+      2.3,
+      0.984,
+      0.742
+    ],
+    "triangles": 794
+  },
+  "crop-wheat": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1,
+      1.294985,
+      0.616646
+    ],
+    "triangles": 2942
+  },
+  "crop-cabbage": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1,
+      0.662343,
+      0.789789
+    ],
+    "triangles": 1931
+  },
+  "crop-lavender": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1,
+      1.009427,
+      0.627984
+    ],
+    "triangles": 3465
+  },
+  "crop-carrot": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1,
+      0.588031,
+      0.50911
+    ],
+    "triangles": 2020
+  },
+  "crop-sunflower": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1,
+      1.219237,
+      0.436688
+    ],
+    "triangles": 2244
+  },
+  "crop-tomato": {
+    "fit": {
+      "width": 1
+    },
+    "size": [
+      1,
+      0.763665,
+      0.799799
+    ],
+    "triangles": 3006
+  },
+  "farmhouse": {
+    "fit": {
+      "width": 1,
+      "rotateY": -1.5707963267948966
+    },
+    "size": [
+      1,
+      0.775872,
+      0.80694
+    ],
+    "triangles": 2999
+  },
+  "silo": {
+    "fit": {
+      "height": 1
+    },
+    "size": [
+      0.443495,
+      1,
+      0.447188
+    ],
+    "triangles": 2949
+  },
+  "tractor-shed": {
+    "fit": {
+      "depth": 1,
+      "rotateY": 3.141592653589793
+    },
+    "size": [
+      0.897763,
+      0.629627,
+      1
+    ],
+    "triangles": 3068
+  },
+  "pigsty": {
+    "fit": {
+      "width": 1,
+      "rotateY": -1.5707963267948966
+    },
+    "size": [
+      1,
+      0.573595,
+      0.891842
+    ],
+    "triangles": 2891
+  },
+  "hay-bale": {
+    "fit": {
+      "width": 2.8
+    },
+    "size": [
+      2.8,
+      1.3473189489425335,
+      1.5491561632129887
+    ],
+    "triangles": 636
+  },
+  "pond-dock": {
+    "fit": {
+      "depth": 3.95
+    },
+    "size": [
+      2.3141621143223365,
+      0.6563844721823786,
+      3.95
+    ],
+    "triangles": 2092
+  },
+  "pond-reeds": {
+    "fit": {
+      "height": 0.85
+    },
+    "size": [
+      0.7050691244239631,
+      0.85,
+      0.6632007812738426
+    ],
+    "triangles": 400
+  }
+}

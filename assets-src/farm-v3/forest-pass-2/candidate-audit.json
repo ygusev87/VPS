@@ -1,0 +1,3022 @@
+{
+  "status": "numerical-candidate",
+  "canopyCoverage": [
+    {
+      "region": "north",
+      "bounds": {
+        "x0": -54.5,
+        "x1": 54.5,
+        "z0": -37.25,
+        "z1": -29.5
+      },
+      "samples": 13516,
+      "beforeFraction": 0.463302752293578,
+      "afterFraction": 0.5418762947617638,
+      "additionalCoveredArea": 66.375,
+      "method": "0.25-unit grid union of full canopy footprint bounding polygons; not rendered pixel coverage"
+    },
+    {
+      "region": "west",
+      "bounds": {
+        "x0": -54.75,
+        "x1": -48,
+        "z0": -29,
+        "z1": 20
+      },
+      "samples": 5292,
+      "beforeFraction": 0.35978835978835977,
+      "afterFraction": 0.532312925170068,
+      "additionalCoveredArea": 57.0625,
+      "method": "0.25-unit grid union of full canopy footprint bounding polygons; not rendered pixel coverage"
+    },
+    {
+      "region": "east",
+      "bounds": {
+        "x0": 48,
+        "x1": 54.75,
+        "z0": -29,
+        "z1": 20
+      },
+      "samples": 5292,
+      "beforeFraction": 0.35676492819349964,
+      "afterFraction": 0.5207860922146637,
+      "additionalCoveredArea": 54.25,
+      "method": "0.25-unit grid union of full canopy footprint bounding polygons; not rendered pixel coverage"
+    }
+  ],
+  "sourceRevision": "4571f12289357c278f2eb5f44db4a0b8d693829e",
+  "modelHashes": {
+    "barn": "62f9dbe2a6d572e35e5e54c77597aa9df5c1ef159190db9ee249684680adc506",
+    "coop": "68b4ee6350758fd266a7d55930891ce6926da1c6eb3f60345dc507c579ec9192",
+    "stable": "272b7a91e2df1e0db74879b897e68658df18928dd62a5561c3d23ab334aa2781",
+    "doghouse": "667ccb2195f2d3155452aa2c02239355b490615c950f44eb5757f3917fa0d053",
+    "hutch": "1443f7d2942dc664b827e6cba7f14d4e44985f988ec2f533f86244443d6828ae",
+    "farmhouse": "02e0ef29270a0488a07d686095de4d4485f9f16d6593e0b1fcad2883d488bb1d",
+    "silo": "5cc76b051100449ec6bb5c635a8e1bf4bed8333d3943660f609624ae17f8d506",
+    "pigsty": "5afc12715208e2193fd4e34e02d8173661b0c876d6ad510335ae80c223b40582",
+    "tractor-shed": "e85bdce5384ab2e52a93778035a3c06426f47d34ff3f182e985b5f38498f31ce",
+    "beehive": "a1bcd49fb3df3c6deea424463add5761742a59253045ddfb60dd49216b72c775",
+    "haystack": "d5c32fb689208f15fabdaebdd65d72fde8785a99c418c26fb03b105c7c2d1b56",
+    "sack": "3edddc7a60234d82f47d2439e0eedf0b77efe89696f72d4a9df2c395ace1f327",
+    "cow": "0bc786fe4922259867408c9e030dd5d74cca30afb5dc9e18bff3b1df7e0433b3",
+    "sheep": "94c1e4c6d46d850e6b8345fe751c3bfa8eeebf5be7db721ba1f96189233f4eac",
+    "pig": "0bd937cdb15f59e8a037c98ab83da6f7e411774781c11b9af60711d3c5b824f3",
+    "hen": "0d57f56744a5345b25efe9dbad3967dbcf36148cf7f3ca609628342112c2ef35",
+    "horse": "a7a5177b60af0a10d9882c73cc4cd5fe26d012fa8e3bf7a2fd091c11fd84902f",
+    "goat": "e0463ea7bc376d4015c9ab2846dcec48e40e5b68dfec135646506598554a4b5c",
+    "goose": "565f966e6058acee2c07d939c005828808dc8d55ca855e15d093d82e8e610e5f",
+    "tree-oak-lite": "a3596a45266d3537b483b416b379a2db174e219d60f37c19c5cca8f6d3a39e38",
+    "tree-pine-lite": "bfe0ddc03c0d1c0b11efdd899ba77ae3c51d840da521cd5c46f35087a9844ac9",
+    "tree-oak": "1b7b86cbe8c7b432628c57fc49cc474581b9ba1a58c1c8d804b59edcd3ee2309",
+    "bush-lite": "fb18b4731aacf8757c0f05e24552d396e04548be8a0ed59e39c21f327d7e429b",
+    "flower-cluster": "c0cb8cdf97f9a61c52d4137b25e265ba0217bb300e0f8287b2efe1c422674f52",
+    "rock-cluster": "838ce9f743e9de3943160ed204fec6c24dfc9c4b8c332613cfce4e0eed3386c4",
+    "crop-wheat": "9c336618aab4bf4929a46d6b0a56034acbdabf93e4353bd91d6a1d69439492ce",
+    "crop-lavender": "2b5f33697ef15f0270fb4f924046e0ffad3fb1522090ecd5985973451a8551e3",
+    "crop-carrot": "f43b399e1cecdaf7098041b98534194bc0e4a3f5f62ca519d0d23e2d7b0cfc68",
+    "crop-sunflower": "6a0d08c402f1ed8c787751e200cd45b17271e5b854490c8c897c19679cbf5321",
+    "crop-tomato": "267368346e44ac8c20fd4e71dbe04d18fed1c8153c053094c4074e70e8b93bb4",
+    "crop-cabbage": "f440a7e2ccf5b858818a2304910fa0529815a6f9853e540429f8889808f168e7",
+    "hay-bale": "f89caa01a91e7fd8dba0948584bcac1fd3dba52d64a7f92f4a0c08914816c421",
+    "pond-dock": "514963d387cc28dd5dedcc1fce2c8c6d2cd67d97c3f54c51473a49d798565a2d",
+    "pond-reeds": "3baeda516f23c4d655c527ff592bdb49b1f2cb6c5e7bbbeb0333d8ca256fba3e",
+    "tractor": "c5011b89177f9830e62a96bd7a71ddd0cdaadd0edc7931fdca1660e4e61d4802"
+  },
+  "models": [
+    {
+      "model": "barn",
+      "fit": {
+        "width": 10.5,
+        "rotateY": -1.5707963267948966
+      },
+      "radius": 7.854915448839213,
+      "size": [
+        10.5,
+        11.111962228751231,
+        11.68540914275798
+      ],
+      "triangles": 8000,
+      "primitives": 1,
+      "bytes": 166436
+    },
+    {
+      "model": "coop",
+      "fit": {
+        "width": 4.6,
+        "rotateY": -1.5707963267948966
+      },
+      "radius": 4.477133082892229,
+      "size": [
+        4.6,
+        5.8822321525716275,
+        7.682374800002426
+      ],
+      "triangles": 7999,
+      "primitives": 1,
+      "bytes": 146336
+    },
+    {
+      "model": "stable",
+      "fit": {
+        "width": 10,
+        "rotateY": -1.5707963267948966
+      },
+      "radius": 8.102008688976545,
+      "size": [
+        10,
+        7.9901940145718,
+        12.750301140953725
+      ],
+      "triangles": 6027,
+      "primitives": 1,
+      "bytes": 149988
+    },
+    {
+      "model": "doghouse",
+      "fit": {
+        "width": 3,
+        "rotateY": -1.5707963267948966
+      },
+      "radius": 2.136710597056486,
+      "size": [
+        3,
+        3.0011145170501696,
+        3.0433745583305956
+      ],
+      "triangles": 11001,
+      "primitives": 1,
+      "bytes": 199976
+    },
+    {
+      "model": "hutch",
+      "fit": {
+        "width": 3,
+        "rotateY": -1.5707963267948966
+      },
+      "radius": 1.8145238330683395,
+      "size": [
+        3,
+        1.9255959391593933,
+        2.0420545935630807
+      ],
+      "triangles": 4900,
+      "primitives": 1,
+      "bytes": 94512
+    },
+    {
+      "model": "farmhouse",
+      "fit": {
+        "width": 11,
+        "rotateY": -1.5707963267948966
+      },
+      "radius": 7.06734377705492,
+      "size": [
+        11,
+        8.53459256887436,
+        8.876338899135591
+      ],
+      "triangles": 2999,
+      "primitives": 1,
+      "bytes": 84820
+    },
+    {
+      "model": "silo",
+      "fit": {
+        "height": 12
+      },
+      "radius": 3.7788791281893546,
+      "size": [
+        5.321939706802368,
+        12,
+        5.366252660751343
+      ],
+      "triangles": 2949,
+      "primitives": 1,
+      "bytes": 65788
+    },
+    {
+      "model": "pigsty",
+      "fit": {
+        "width": 10,
+        "rotateY": -1.5707963267948966
+      },
+      "radius": 6.6995949705881035,
+      "size": [
+        10,
+        5.73595404624939,
+        8.918424248695374
+      ],
+      "triangles": 2891,
+      "primitives": 1,
+      "bytes": 84380
+    },
+    {
+      "model": "tractor-shed",
+      "fit": {
+        "depth": 10,
+        "rotateY": 3.141592653589793
+      },
+      "radius": 6.71933484248735,
+      "size": [
+        8.977630138397219,
+        6.296273469924926,
+        10
+      ],
+      "triangles": 3068,
+      "primitives": 1,
+      "bytes": 84856
+    },
+    {
+      "model": "beehive",
+      "fit": {
+        "height": 1.7
+      },
+      "radius": 0.9112164171422302,
+      "size": [
+        1.394106888771057,
+        1.7,
+        1.1737663388252257
+      ],
+      "triangles": 4896,
+      "primitives": 1,
+      "bytes": 112148
+    },
+    {
+      "model": "haystack",
+      "fit": {
+        "width": 2.8
+      },
+      "radius": 1.9815034652102559,
+      "size": [
+        2.8,
+        1.8395916580453142,
+        2.8045363129332106
+      ],
+      "triangles": 2816,
+      "primitives": 1,
+      "bytes": 47256
+    },
+    {
+      "model": "sack",
+      "fit": {
+        "height": 1.25
+      },
+      "radius": 0.6937506894602038,
+      "size": [
+        0.8642460405826569,
+        1.25,
+        1.0854671150445938
+      ],
+      "triangles": 8000,
+      "primitives": 1,
+      "bytes": 142264
+    },
+    {
+      "model": "cow",
+      "fit": {
+        "height": 1.65
+      },
+      "radius": 1.0635095389223392,
+      "size": [
+        1.8963715112760244,
+        1.65,
+        0.9633199098616789
+      ],
+      "triangles": 8000,
+      "primitives": 1,
+      "bytes": 138184
+    },
+    {
+      "model": "sheep",
+      "fit": {
+        "height": 1.2
+      },
+      "radius": 0.8060684004761419,
+      "size": [
+        0.7900933005619085,
+        1.2,
+        1.4052535861515718
+      ],
+      "triangles": 14981,
+      "primitives": 1,
+      "bytes": 178172
+    },
+    {
+      "model": "pig",
+      "fit": {
+        "height": 1.2
+      },
+      "radius": 0.8310140218885597,
+      "size": [
+        1.3616040106081522,
+        1.2,
+        0.9530853773914449
+      ],
+      "triangles": 8000,
+      "primitives": 1,
+      "bytes": 118340
+    },
+    {
+      "model": "hen",
+      "fit": {
+        "height": 0.7
+      },
+      "radius": 0.3738257725895388,
+      "size": [
+        0.6346293449401855,
+        0.7,
+        0.39525741934776304
+      ],
+      "triangles": 8000,
+      "primitives": 1,
+      "bytes": 130024
+    },
+    {
+      "model": "horse",
+      "fit": {
+        "height": 1.8
+      },
+      "radius": 1.0604352133406305,
+      "size": [
+        2.0033490749657097,
+        1.8,
+        0.6961923948199888
+      ],
+      "triangles": 7930,
+      "primitives": 1,
+      "bytes": 112720
+    },
+    {
+      "model": "goat",
+      "fit": {
+        "height": 1.2
+      },
+      "radius": 0.7521934542816313,
+      "size": [
+        1.29997682563053,
+        1.2,
+        0.7571262929525705
+      ],
+      "triangles": 7542,
+      "primitives": 1,
+      "bytes": 97872
+    },
+    {
+      "model": "goose",
+      "fit": {
+        "height": 0.85
+      },
+      "radius": 0.451154333567372,
+      "size": [
+        0.763254201412201,
+        0.85,
+        0.4812524855136873
+      ],
+      "triangles": 7561,
+      "primitives": 1,
+      "bytes": 105436
+    },
+    {
+      "model": "tree-oak-lite",
+      "fit": {
+        "height": 5.2
+      },
+      "radius": 3.208690649415573,
+      "size": [
+        3.4579224013719916,
+        5.2,
+        5.406066536834103
+      ],
+      "triangles": 599,
+      "primitives": 1,
+      "bytes": 25672
+    },
+    {
+      "model": "tree-pine-lite",
+      "fit": {
+        "height": 6.2
+      },
+      "radius": 2.2209671892613914,
+      "size": [
+        3.2153265714645385,
+        6.2,
+        3.0647114157676696
+      ],
+      "triangles": 599,
+      "primitives": 1,
+      "bytes": 22140
+    },
+    {
+      "model": "tree-oak",
+      "fit": {
+        "height": 5.2
+      },
+      "radius": 3.2256897300380705,
+      "size": [
+        3.4988677426916452,
+        5.2,
+        5.420168028488065
+      ],
+      "triangles": 2836,
+      "primitives": 1,
+      "bytes": 47276
+    },
+    {
+      "model": "bush-lite",
+      "fit": {
+        "width": 2.3
+      },
+      "radius": 1.2082884057160272,
+      "size": [
+        2.3,
+        0.9839594662189483,
+        0.7415143191814427
+      ],
+      "triangles": 794,
+      "primitives": 1,
+      "bytes": 28728
+    },
+    {
+      "model": "flower-cluster",
+      "fit": {
+        "height": 0.5
+      },
+      "radius": 0.5356227470671988,
+      "size": [
+        0.712157486155969,
+        0.5,
+        0.8002491009774771
+      ],
+      "triangles": 974,
+      "primitives": 1,
+      "bytes": 43180
+    },
+    {
+      "model": "rock-cluster",
+      "fit": {
+        "width": 2.6
+      },
+      "radius": 1.848371464776973,
+      "size": [
+        2.6,
+        1.8241462229581418,
+        2.627909489919143
+      ],
+      "triangles": 922,
+      "primitives": 1,
+      "bytes": 27448
+    },
+    {
+      "model": "crop-wheat",
+      "fit": {
+        "width": 1.8
+      },
+      "radius": 1.0573573824969336,
+      "size": [
+        1.7999999999999998,
+        2.330972678773259,
+        1.109963304475903
+      ],
+      "triangles": 2942,
+      "primitives": 1,
+      "bytes": 85804
+    },
+    {
+      "model": "crop-lavender",
+      "fit": {
+        "width": 1.8
+      },
+      "radius": 1.0627488679973776,
+      "size": [
+        1.8,
+        1.816968077870399,
+        1.1303718970846854
+      ],
+      "triangles": 3465,
+      "primitives": 1,
+      "bytes": 105056
+    },
+    {
+      "model": "crop-carrot",
+      "fit": {
+        "width": 1.8
+      },
+      "radius": 1.0099238360404947,
+      "size": [
+        1.8,
+        1.0584551453590394,
+        0.9163976311683655
+      ],
+      "triangles": 2020,
+      "primitives": 1,
+      "bytes": 63364
+    },
+    {
+      "model": "crop-sunflower",
+      "fit": {
+        "width": 1.8
+      },
+      "radius": 0.9820714635262691,
+      "size": [
+        1.8000000000000003,
+        2.194626966328063,
+        0.7860390816559379
+      ],
+      "triangles": 2244,
+      "primitives": 1,
+      "bytes": 76728
+    },
+    {
+      "model": "crop-tomato",
+      "fit": {
+        "width": 1.8
+      },
+      "radius": 1.1524491100986896,
+      "size": [
+        1.8,
+        1.374596393108368,
+        1.4396373867988588
+      ],
+      "triangles": 3006,
+      "primitives": 1,
+      "bytes": 78976
+    },
+    {
+      "model": "crop-cabbage",
+      "fit": {
+        "width": 1.8
+      },
+      "radius": 1.1468436418254235,
+      "size": [
+        1.8,
+        1.192217767238617,
+        1.4216192722320558
+      ],
+      "triangles": 1931,
+      "primitives": 1,
+      "bytes": 59324
+    },
+    {
+      "model": "crop-wheat",
+      "fit": {
+        "width": 1.4
+      },
+      "radius": 0.8223890752753926,
+      "size": [
+        1.4,
+        1.8129787501569792,
+        0.8633047923701467
+      ],
+      "triangles": 2942,
+      "primitives": 1,
+      "bytes": 85804
+    },
+    {
+      "model": "hay-bale",
+      "fit": {
+        "width": 2.8
+      },
+      "radius": 1.5999909903027199,
+      "size": [
+        2.8,
+        1.3473189711570739,
+        1.5491561174392698
+      ],
+      "triangles": 636,
+      "primitives": 1,
+      "bytes": 49592
+    },
+    {
+      "model": "pond-dock",
+      "fit": {
+        "depth": 3.95
+      },
+      "radius": 2.2889870211770917,
+      "size": [
+        2.3141621232032774,
+        0.6563844531774521,
+        3.95
+      ],
+      "triangles": 2092,
+      "primitives": 1,
+      "bytes": 18216
+    },
+    {
+      "model": "pond-reeds",
+      "fit": {
+        "height": 0.85
+      },
+      "radius": 0.4839828859522396,
+      "size": [
+        0.7050691395998,
+        0.85,
+        0.663200756907463
+      ],
+      "triangles": 400,
+      "primitives": 1,
+      "bytes": 8700
+    },
+    {
+      "model": "rock-cluster",
+      "fit": {
+        "width": 1.6
+      },
+      "radius": 1.1374593629396756,
+      "size": [
+        1.6,
+        1.122551521820395,
+        1.6171750707194725
+      ],
+      "triangles": 922,
+      "primitives": 1,
+      "bytes": 27448
+    }
+  ],
+  "tractor": {
+    "fit": {
+      "depth": 3.8,
+      "rotateY": 3.141592653589793
+    },
+    "size": [
+      2.3964110493659976,
+      2.8898647189140316,
+      3.8
+    ],
+    "sweepSamples": 8400,
+    "dt": [
+      0.008333333333333333,
+      0.016666666666666666,
+      0.05
+    ],
+    "duration": 42
+  },
+  "counts": [
+    {
+      "model": "barn",
+      "fit": {
+        "width": 10.5,
+        "rotateY": -1.5707963267948966
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 8000
+    },
+    {
+      "model": "coop",
+      "fit": {
+        "width": 4.6,
+        "rotateY": -1.5707963267948966
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 7999
+    },
+    {
+      "model": "stable",
+      "fit": {
+        "width": 10,
+        "rotateY": -1.5707963267948966
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 6027
+    },
+    {
+      "model": "doghouse",
+      "fit": {
+        "width": 3,
+        "rotateY": -1.5707963267948966
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 11001
+    },
+    {
+      "model": "hutch",
+      "fit": {
+        "width": 3,
+        "rotateY": -1.5707963267948966
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 4900
+    },
+    {
+      "model": "farmhouse",
+      "fit": {
+        "width": 11,
+        "rotateY": -1.5707963267948966
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 2999
+    },
+    {
+      "model": "silo",
+      "fit": {
+        "height": 12
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 2949
+    },
+    {
+      "model": "pigsty",
+      "fit": {
+        "width": 10,
+        "rotateY": -1.5707963267948966
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 2891
+    },
+    {
+      "model": "tractor-shed",
+      "fit": {
+        "depth": 10,
+        "rotateY": 3.141592653589793
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 3068
+    },
+    {
+      "model": "beehive",
+      "fit": {
+        "height": 1.7
+      },
+      "before": 2,
+      "after": 2,
+      "added": 0,
+      "trianglesPerInstance": 4896
+    },
+    {
+      "model": "haystack",
+      "fit": {
+        "width": 2.8
+      },
+      "before": 3,
+      "after": 3,
+      "added": 0,
+      "trianglesPerInstance": 2816
+    },
+    {
+      "model": "sack",
+      "fit": {
+        "height": 1.25
+      },
+      "before": 3,
+      "after": 3,
+      "added": 0,
+      "trianglesPerInstance": 8000
+    },
+    {
+      "model": "cow",
+      "fit": {
+        "height": 1.65
+      },
+      "before": 3,
+      "after": 3,
+      "added": 0,
+      "trianglesPerInstance": 8000
+    },
+    {
+      "model": "sheep",
+      "fit": {
+        "height": 1.2
+      },
+      "before": 2,
+      "after": 2,
+      "added": 0,
+      "trianglesPerInstance": 14981
+    },
+    {
+      "model": "pig",
+      "fit": {
+        "height": 1.2
+      },
+      "before": 2,
+      "after": 2,
+      "added": 0,
+      "trianglesPerInstance": 8000
+    },
+    {
+      "model": "hen",
+      "fit": {
+        "height": 0.7
+      },
+      "before": 3,
+      "after": 3,
+      "added": 0,
+      "trianglesPerInstance": 8000
+    },
+    {
+      "model": "horse",
+      "fit": {
+        "height": 1.8
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 7930
+    },
+    {
+      "model": "goat",
+      "fit": {
+        "height": 1.2
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 7542
+    },
+    {
+      "model": "goose",
+      "fit": {
+        "height": 0.85
+      },
+      "before": 2,
+      "after": 2,
+      "added": 0,
+      "trianglesPerInstance": 7561
+    },
+    {
+      "model": "tree-oak-lite",
+      "fit": {
+        "height": 5.2
+      },
+      "before": 14,
+      "after": 34,
+      "added": 20,
+      "trianglesPerInstance": 599
+    },
+    {
+      "model": "tree-pine-lite",
+      "fit": {
+        "height": 6.2
+      },
+      "before": 66,
+      "after": 76,
+      "added": 10,
+      "trianglesPerInstance": 599
+    },
+    {
+      "model": "tree-oak",
+      "fit": {
+        "height": 5.2
+      },
+      "before": 4,
+      "after": 4,
+      "added": 0,
+      "trianglesPerInstance": 2836
+    },
+    {
+      "model": "bush-lite",
+      "fit": {
+        "width": 2.3
+      },
+      "before": 163,
+      "after": 166,
+      "added": 3,
+      "trianglesPerInstance": 794
+    },
+    {
+      "model": "flower-cluster",
+      "fit": {
+        "height": 0.5
+      },
+      "before": 293,
+      "after": 293,
+      "added": 0,
+      "trianglesPerInstance": 974
+    },
+    {
+      "model": "rock-cluster",
+      "fit": {
+        "width": 2.6
+      },
+      "before": 11,
+      "after": 11,
+      "added": 0,
+      "trianglesPerInstance": 922
+    },
+    {
+      "model": "crop-wheat",
+      "fit": {
+        "width": 1.8
+      },
+      "before": 6,
+      "after": 6,
+      "added": 0,
+      "trianglesPerInstance": 2942
+    },
+    {
+      "model": "crop-lavender",
+      "fit": {
+        "width": 1.8
+      },
+      "before": 6,
+      "after": 6,
+      "added": 0,
+      "trianglesPerInstance": 3465
+    },
+    {
+      "model": "crop-carrot",
+      "fit": {
+        "width": 1.8
+      },
+      "before": 6,
+      "after": 6,
+      "added": 0,
+      "trianglesPerInstance": 2020
+    },
+    {
+      "model": "crop-sunflower",
+      "fit": {
+        "width": 1.8
+      },
+      "before": 6,
+      "after": 6,
+      "added": 0,
+      "trianglesPerInstance": 2244
+    },
+    {
+      "model": "crop-tomato",
+      "fit": {
+        "width": 1.8
+      },
+      "before": 6,
+      "after": 6,
+      "added": 0,
+      "trianglesPerInstance": 3006
+    },
+    {
+      "model": "crop-cabbage",
+      "fit": {
+        "width": 1.8
+      },
+      "before": 6,
+      "after": 6,
+      "added": 0,
+      "trianglesPerInstance": 1931
+    },
+    {
+      "model": "crop-wheat",
+      "fit": {
+        "width": 1.4
+      },
+      "before": 18,
+      "after": 18,
+      "added": 0,
+      "trianglesPerInstance": 2942
+    },
+    {
+      "model": "hay-bale",
+      "fit": {
+        "width": 2.8
+      },
+      "before": 3,
+      "after": 3,
+      "added": 0,
+      "trianglesPerInstance": 636
+    },
+    {
+      "model": "pond-dock",
+      "fit": {
+        "depth": 3.95
+      },
+      "before": 1,
+      "after": 1,
+      "added": 0,
+      "trianglesPerInstance": 2092
+    },
+    {
+      "model": "pond-reeds",
+      "fit": {
+        "height": 0.85
+      },
+      "before": 3,
+      "after": 3,
+      "added": 0,
+      "trianglesPerInstance": 400
+    },
+    {
+      "model": "rock-cluster",
+      "fit": {
+        "width": 1.6
+      },
+      "before": 2,
+      "after": 2,
+      "added": 0,
+      "trianglesPerInstance": 922
+    }
+  ],
+  "instancesBefore": 645,
+  "instancesAfter": 678,
+  "added": [
+    {
+      "id": "new:0",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        -49.5,
+        -32.6,
+        1.571,
+        1.02
+      ],
+      "r": 3.2728644624038847,
+      "height": 5.304,
+      "footprint": [
+        [
+          -52.25745306252759,
+          -34.36297884196706
+        ],
+        [
+          -46.743265309328706,
+          -34.36410193427582
+        ],
+        [
+          -46.74254693747241,
+          -30.837021158032943
+        ],
+        [
+          -52.256734690671294,
+          -30.835898065724177
+        ]
+      ],
+      "box": {
+        "x0": -52.25745306252759,
+        "x1": -46.74254693747241,
+        "z0": -34.36410193427582,
+        "z1": -30.835898065724177
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 2.4925469374724116,
+        "road": 11.733805564992156,
+        "fence": 12.636255599272339,
+        "workPad": 20.609756588004725,
+        "pole": 21.23676457486771,
+        "toy": 15.625650300947326,
+        "building": 2.536086987263208,
+        "animalRoam": 37.21610386426371,
+        "travel": 17.658854094378317,
+        "runtimeKeep": 16.476856731316587,
+        "runtimeRoute": 18.4101185567822,
+        "critterHome": 17.519865651004682,
+        "decor": 2.6225469374724115,
+        "treeCrown": 0.911533467626056,
+        "treeSpacing": 0.3052962849013783,
+        "understoryTrunk": 0.11953641971981943,
+        "soil": 66.07575162735019,
+        "pond": 2.7741338811837153,
+        "mud": 7.6961964093332185,
+        "tractorBody": 85.80529594930282
+      }
+    },
+    {
+      "id": "new:1",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        -46.301,
+        -30.851,
+        1.719,
+        0.64
+      ],
+      "r": 2.0535620156259666,
+      "height": 3.3280000000000003,
+      "footprint": [
+        [
+          -48.17537044511641,
+          -31.68995910895342
+        ],
+        [
+          -44.75341536348025,
+          -32.20085137879317
+        ],
+        [
+          -44.4266295548836,
+          -30.012040891046578
+        ],
+        [
+          -47.84858463651975,
+          -29.50114862120683
+        ]
+      ],
+      "box": {
+        "x0": -48.17537044511641,
+        "x1": -44.4266295548836,
+        "z0": -32.20085137879317,
+        "z1": -29.50114862120683
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 5.049148621206832,
+        "road": 9.686186485626665,
+        "fence": 11.301148621206831,
+        "workPad": 19.408100668958777,
+        "pole": 19.901681763144072,
+        "toy": 13.244756746587543,
+        "building": 0.08297779038459863,
+        "animalRoam": 34.933901914419486,
+        "travel": 15.4953462341798,
+        "runtimeKeep": 13.633510409754361,
+        "runtimeRoute": 15.817708249805769,
+        "critterHome": 15.540431982526387,
+        "decor": 0.306629554883597,
+        "treeCrown": 1.19219621037132,
+        "treeSpacing": 0.5113276555047224,
+        "understoryTrunk": 0.33139501720519415,
+        "soil": 63.89172354578045,
+        "pond": 3.056242816955022,
+        "mud": 8.59144890336169,
+        "tractorBody": 83.37869775452552
+      }
+    },
+    {
+      "id": "new:2",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        -30.988,
+        -31.105,
+        1.65,
+        0.64
+      ],
+      "r": 2.0535620156259666,
+      "height": 3.3280000000000003,
+      "footprint": [
+        [
+          -32.800068021083575,
+          -32.07119171958159
+        ],
+        [
+          -29.351032070962034,
+          -32.344940704760894
+        ],
+        [
+          -29.175931978916424,
+          -30.138808280418406
+        ],
+        [
+          -32.624967929037965,
+          -29.865059295239107
+        ]
+      ],
+      "box": {
+        "x0": -32.800068021083575,
+        "x1": -29.175931978916424,
+        "z0": -32.344940704760894,
+        "z1": -29.865059295239107
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 4.905059295239106,
+        "road": 9.535096527203585,
+        "fence": 13.243652568721274,
+        "workPad": 14.335454560505548,
+        "pole": 16.929537538283114,
+        "toy": 6.916004000549864,
+        "building": 0.018071815699418292,
+        "animalRoam": 26.390911426581056,
+        "travel": 0.3089516704790033,
+        "runtimeKeep": 6.643308766685185,
+        "runtimeRoute": 0.6313136861049695,
+        "critterHome": 14.017614044943913,
+        "decor": 0.07993197891642467,
+        "treeCrown": 2.3670638978530634,
+        "treeSpacing": 1.7448113155875469,
+        "understoryTrunk": 5.065401896961766,
+        "soil": 55.539804117521186,
+        "pond": 3.1270169821108285,
+        "mud": 6.768495114066639,
+        "tractorBody": 70.45189886308441
+      }
+    },
+    {
+      "id": "new:3",
+      "gi": 20,
+      "model": "tree-pine-lite",
+      "p": [
+        -6.62,
+        -32.046,
+        -2.667,
+        0.72
+      ],
+      "r": 1.5990963762682018,
+      "height": 4.4639999999999995,
+      "footprint": [
+        [
+          -8.153767519373313,
+          -32.49840072624779
+        ],
+        [
+          -6.094592517611392,
+          -33.556316588680716
+        ],
+        [
+          -5.086232480626688,
+          -31.593599273752208
+        ],
+        [
+          -7.145407482388608,
+          -30.535683411319283
+        ]
+      ],
+      "box": {
+        "x0": -8.153767519373313,
+        "x1": -5.086232480626688,
+        "z0": -33.556316588680716,
+        "z1": -30.535683411319283
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 3.6936834113192845,
+        "road": 12.060066114513905,
+        "fence": 2.1586137710579445,
+        "workPad": 15.645417908508634,
+        "pole": 16.62638452342383,
+        "toy": 10.690905739646507,
+        "building": 0.5025570809436118,
+        "animalRoam": 14.493551889350549,
+        "travel": 17.800237202825834,
+        "runtimeKeep": 10.13895398898984,
+        "runtimeRoute": 17.213733579094033,
+        "critterHome": 17.01466768594134,
+        "decor": 0.7325570809436118,
+        "treeCrown": 0.057054602631274154,
+        "treeSpacing": 0.5576231386664583,
+        "understoryTrunk": 3.0429211864550143,
+        "soil": 50.31280740780017,
+        "pond": 4.401903105382781,
+        "mud": 4.3980174791209965,
+        "tractorBody": 53.35190902551024
+      }
+    },
+    {
+      "id": "new:4",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        2.359,
+        -31.088,
+        1.441,
+        0.64
+      ],
+      "r": 2.0535620156259666,
+      "height": 3.3280000000000003,
+      "footprint": [
+        [
+          0.5003892316267473,
+          -30.214682781740354
+        ],
+        [
+          0.7868317616474156,
+          -32.409137382082996
+        ],
+        [
+          4.217610768373253,
+          -31.961317218259648
+        ],
+        [
+          3.9311682383525843,
+          -29.766862617917006
+        ]
+      ],
+      "box": {
+        "x0": 0.5003892316267473,
+        "x1": 4.217610768373253,
+        "z0": -32.409137382082996,
+        "z1": -29.766862617917006
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 4.840862617917004,
+        "road": 9.811547942827662,
+        "fence": 0.06686261791700615,
+        "workPad": 12.511525375203103,
+        "pole": 13.236053184823245,
+        "toy": 12.835909224802377,
+        "building": 2.652110268431781,
+        "animalRoam": 9.805863778332975,
+        "travel": 22.001864773898845,
+        "runtimeKeep": 12.368966937202996,
+        "runtimeRoute": 22.32422678952481,
+        "critterHome": 11.396604921577032,
+        "decor": 2.305675217915792,
+        "treeCrown": 1.4838062794846203,
+        "treeSpacing": 0.0798217880221932,
+        "understoryTrunk": 0.8643289996772999,
+        "soil": 48.83569933154953,
+        "pond": 4.57107805674071,
+        "mud": 3.0346564667159663,
+        "tractorBody": 46.79028185351522
+      }
+    },
+    {
+      "id": "new:5",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        5.245,
+        -31.109,
+        1.747,
+        0.64
+      ],
+      "r": 2.0535620156259666,
+      "height": 3.3280000000000003,
+      "footprint": [
+        [
+          3.34787647439617,
+          -31.895154743433046
+        ],
+        [
+          6.754187122832316,
+          -32.501648979570554
+        ],
+        [
+          7.1421235256038305,
+          -30.322845256566957
+        ],
+        [
+          3.7358128771676844,
+          -29.71635102042945
+        ]
+      ],
+      "box": {
+        "x0": 3.34787647439617,
+        "x1": 7.1421235256038305,
+        "z0": -32.501648979570554,
+        "z1": -29.71635102042945
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 4.748351020429446,
+        "road": 9.728805418368598,
+        "fence": 0.016351020429449636,
+        "workPad": 12.479035658308186,
+        "pole": 13.16814886246304,
+        "toy": 14.52608330868215,
+        "building": 2.332696038531077,
+        "animalRoam": 9.786436059884272,
+        "travel": 23.332051474586716,
+        "runtimeKeep": 11.277478269741556,
+        "runtimeRoute": 23.654413490212683,
+        "critterHome": 10.30511625411559,
+        "decor": 2.2551636204282355,
+        "treeCrown": 0.9783717296834475,
+        "treeSpacing": 0.22930687035525876,
+        "understoryTrunk": 1.173729786180414,
+        "soil": 48.855437984374035,
+        "pond": 4.75552217913385,
+        "mud": 2.7571413496598898,
+        "tractorBody": 45.3121246671009
+      }
+    },
+    {
+      "id": "new:6",
+      "gi": 20,
+      "model": "tree-pine-lite",
+      "p": [
+        11.331,
+        -33.321,
+        -1.705,
+        1
+      ],
+      "r": 2.2209671892613914,
+      "height": 6.2,
+      "footprint": [
+        [
+          9.597315679869707,
+          -31.932823522058516
+        ],
+        [
+          10.027530192159357,
+          -35.11923850359832
+        ],
+        [
+          13.064684320130292,
+          -34.709176477941476
+        ],
+        [
+          12.634469807840642,
+          -31.522761496401678
+        ]
+      ],
+      "box": {
+        "x0": 9.597315679869707,
+        "x1": 13.064684320130292,
+        "z0": -35.11923850359832,
+        "z1": -31.522761496401678
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 2.130761496401682,
+        "road": 11.799129430393315,
+        "fence": 1.8227614964016778,
+        "workPad": 14.57847203013198,
+        "pole": 16.760076314898658,
+        "toy": 20.39302074763043,
+        "building": 4.106329028655337,
+        "animalRoam": 11.867772118207801,
+        "travel": 28.385595745242387,
+        "runtimeKeep": 11.789432213343398,
+        "runtimeRoute": 27.72656293450378,
+        "critterHome": 11.798465024082008,
+        "decor": 4.061574096400464,
+        "treeCrown": 0.767192143076612,
+        "treeSpacing": 0.14262319803155754,
+        "understoryTrunk": 1.1178739898619505,
+        "soil": 50.90422950048369,
+        "pond": 5.225185587901166,
+        "mud": 2.4344473092314076,
+        "tractorBody": 44.48310724590368
+      }
+    },
+    {
+      "id": "new:7",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        14.58,
+        -31.136,
+        1.751,
+        0.64
+      ],
+      "r": 2.0535620156259666,
+      "height": 3.3280000000000003,
+      "footprint": [
+        [
+          12.67974704077605,
+          -31.914559980337035
+        ],
+        [
+          16.08360446828806,
+          -32.53467457078692
+        ],
+        [
+          16.48025295922395,
+          -30.357440019662963
+        ],
+        [
+          13.07639553171194,
+          -29.737325429213083
+        ]
+      ],
+      "box": {
+        "x0": 12.67974704077605,
+        "x1": 16.48025295922395,
+        "z0": -32.53467457078692,
+        "z1": -29.737325429213083
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 4.715325429213081,
+        "road": 10.99094990762885,
+        "fence": 0.03732542921308307,
+        "workPad": 13.073722728568859,
+        "pole": 15.988949495916874,
+        "toy": 22.094946915689402,
+        "building": 3.3174036597496848,
+        "animalRoam": 10.519432732653561,
+        "travel": 29.02492226681449,
+        "runtimeKeep": 10.021825295811079,
+        "runtimeRoute": 29.347284282440455,
+        "critterHome": 9.049463280185114,
+        "decor": 2.276138029211869,
+        "treeCrown": 0.8272125681427398,
+        "treeSpacing": 1.2369429550060866,
+        "understoryTrunk": 0.34029287328055413,
+        "soil": 48.88243798437403,
+        "pond": 5.385805239707091,
+        "mud": 1.9778550666579138,
+        "tractorBody": 41.46649408969929
+      }
+    },
+    {
+      "id": "new:8",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        17.726,
+        -33.444,
+        1.467,
+        0.7
+      ],
+      "r": 2.246083454590901,
+      "height": 3.6399999999999997,
+      "footprint": [
+        [
+          15.718663698970987,
+          -32.436283839785155
+        ],
+        [
+          15.969456555929735,
+          -34.843802133903495
+        ],
+        [
+          19.73333630102901,
+          -34.45171616021485
+        ],
+        [
+          19.482543444070263,
+          -32.04419786609651
+        ]
+      ],
+      "box": {
+        "x0": 15.718663698970987,
+        "x1": 19.73333630102901,
+        "z0": -34.843802133903495,
+        "z1": -32.04419786609651
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 2.4061978660965053,
+        "road": 14.683105338140086,
+        "fence": 2.484111381781579,
+        "workPad": 15.812548533053718,
+        "pole": 17.05361641752082,
+        "toy": 25.72999909950091,
+        "building": 2.3913101923700384,
+        "animalRoam": 10.842641933601312,
+        "travel": 32.68711999673441,
+        "runtimeKeep": 12.098451895207404,
+        "runtimeRoute": 33.07720345132532,
+        "critterHome": 11.058368440616505,
+        "decor": 2.1466636989709906,
+        "treeCrown": 0.28168694881530465,
+        "treeSpacing": 0.04796562648865077,
+        "understoryTrunk": 2.1490945229959126,
+        "soil": 50.9979165454091,
+        "pond": 5.647575223530583,
+        "mud": 2.0422629042539002,
+        "tractorBody": 42.58545195156152
+      }
+    },
+    {
+      "id": "new:9",
+      "gi": 20,
+      "model": "tree-pine-lite",
+      "p": [
+        20.435,
+        -33.252,
+        -1.079,
+        0.8
+      ],
+      "r": 1.776773751409113,
+      "height": 4.960000000000001,
+      "footprint": [
+        [
+          18.7470760161162,
+          -33.806831134964746
+        ],
+        [
+          20.90827627398439,
+          -34.96458124834411
+        ],
+        [
+          22.122923983883798,
+          -32.69716886503526
+        ],
+        [
+          19.961723726015606,
+          -31.539418751655894
+        ]
+      ],
+      "box": {
+        "x0": 18.7470760161162,
+        "x1": 22.122923983883798,
+        "z0": -34.96458124834411,
+        "z1": -31.539418751655894
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 2.2854187516558895,
+        "road": 16.75870968222665,
+        "fence": 2.629768333595215,
+        "workPad": 15.362755029576608,
+        "pole": 16.50488671029724,
+        "toy": 29.01447108579255,
+        "building": 1.1239386558823985,
+        "animalRoam": 10.305313101050295,
+        "travel": 35.002329958775796,
+        "runtimeKeep": 11.827361545402255,
+        "runtimeRoute": 34.39510371018491,
+        "critterHome": 11.784587793993143,
+        "decor": 0.4602066273082076,
+        "treeCrown": 0.054541543482889754,
+        "treeSpacing": 0.46766441129617564,
+        "understoryTrunk": 4.8534228188245185,
+        "soil": 51.33086856186526,
+        "pond": 6.153000941285528,
+        "mud": 2.1332488228270856,
+        "tractorBody": 42.2765010864757
+      }
+    },
+    {
+      "id": "new:10",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        23.891,
+        -33.394,
+        1.745,
+        0.94
+      ],
+      "r": 3.016169210450639,
+      "height": 4.888,
+      "footprint": [
+        [
+          21.106914722587153,
+          -34.554235266729755
+        ],
+        [
+          26.111705057074484,
+          -35.4350158636214
+        ],
+        [
+          26.675085277412844,
+          -32.23376473327024
+        ],
+        [
+          21.670294942925512,
+          -31.352984136378595
+        ]
+      ],
+      "box": {
+        "x0": 21.106914722587153,
+        "x1": 26.675085277412844,
+        "z0": -35.4350158636214,
+        "z1": -31.352984136378595
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 1.8149841363785981,
+        "road": 17.155911458406393,
+        "fence": 3.9115222458032886,
+        "workPad": 15.485600617650169,
+        "pole": 14.419783504622382,
+        "toy": 30.526406765306305,
+        "building": 0.09495799526169596,
+        "animalRoam": 8.797202659926848,
+        "travel": 36.50012957911326,
+        "runtimeKeep": 13.189475602333346,
+        "runtimeRoute": 37.16109878956391,
+        "critterHome": 11.878506391882707,
+        "decor": 0.27377201203090806,
+        "treeCrown": 0.2634024728110078,
+        "treeSpacing": 0.31347113765823353,
+        "understoryTrunk": 6.014458722100867,
+        "soil": 50.50182700124734,
+        "pond": 5.580453998274163,
+        "mud": 1.4868725972617,
+        "tractorBody": 40.65571528683091
+      }
+    },
+    {
+      "id": "new:11",
+      "gi": 20,
+      "model": "tree-pine-lite",
+      "p": [
+        29.708,
+        -33.368,
+        -0.398,
+        1
+      ],
+      "r": 2.2209671892613914,
+      "height": 6.2,
+      "footprint": [
+        [
+          27.63209146934789,
+          -32.578507106972175
+        ],
+        [
+          28.819898353099486,
+          -35.40367451242782
+        ],
+        [
+          31.783908530652106,
+          -34.15749289302783
+        ],
+        [
+          30.59610164690051,
+          -31.33232548757218
+        ]
+      ],
+      "box": {
+        "x0": 27.63209146934789,
+        "x1": 31.783908530652106,
+        "z0": -35.40367451242782,
+        "z1": -31.33232548757218
+      },
+      "region": "north/second-row",
+      "gaps": {
+        "board": 1.8463254875721802,
+        "road": 15.232690839730376,
+        "fence": 4.01903203226313,
+        "workPad": 13.257724540037161,
+        "pole": 10.958575020089569,
+        "toy": 36.497961812648406,
+        "building": 0.023113363224494088,
+        "animalRoam": 6.725951573336741,
+        "travel": 41.89797249418283,
+        "runtimeKeep": 10.552393810274946,
+        "runtimeRoute": 41.23893968344423,
+        "critterHome": 10.561426621013554,
+        "decor": 0.25311336322449407,
+        "treeCrown": 0.9644515636550453,
+        "treeSpacing": 0.4311573676849749,
+        "understoryTrunk": 0.24928692520667328,
+        "soil": 51.947032810738605,
+        "pond": 6.514287679750053,
+        "mud": 1.7787966545933678,
+        "tractorBody": 41.14869947740528
+      }
+    },
+    {
+      "id": "new:12",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        -50.95,
+        -29,
+        -0.151,
+        0.87
+      ],
+      "r": 2.7915608649915487,
+      "height": 4.524,
+      "footprint": [
+        [
+          -52.79082980274988,
+          -26.901391484754676
+        ],
+        [
+          -52.08333062585878,
+          -31.551151456782392
+        ],
+        [
+          -49.10917019725012,
+          -31.098608515245324
+        ],
+        [
+          -49.81666937414123,
+          -26.448848543217608
+        ]
+      ],
+      "box": {
+        "x0": -52.79082980274988,
+        "x1": -49.10917019725012,
+        "z0": -31.551151456782392,
+        "z1": -26.448848543217608
+      },
+      "region": "west/second-row",
+      "gaps": {
+        "board": 1.959170197250117,
+        "road": 11.460133604804952,
+        "fence": 8.248848543217608,
+        "workPad": 16.839571822466922,
+        "pole": 16.938077035807282,
+        "toy": 16.63272422099567,
+        "building": 4.8755948611804945,
+        "animalRoam": 36.38079013817995,
+        "travel": 17.460590190193606,
+        "runtimeKeep": 16.419094625150816,
+        "runtimeRoute": 18.042551055185154,
+        "critterHome": 15.439323367947653,
+        "decor": 4.989170197250123,
+        "treeCrown": 0.6825432042809383,
+        "treeSpacing": 0.04163796497268102,
+        "understoryTrunk": 1.1984902578848553,
+        "soil": 64.87081825628594,
+        "pond": 2.6189698403708146,
+        "mud": 8.21856954258392,
+        "tractorBody": 85.91891546386182
+      }
+    },
+    {
+      "id": "new:13",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        -50.95,
+        -25.709,
+        0.142,
+        1.03
+      ],
+      "r": 3.3049513688980405,
+      "height": 5.356000000000001,
+      "footprint": [
+        [
+          -53.10692421704422,
+          -28.213072976713985
+        ],
+        [
+          -49.58111250251906,
+          -28.71713074350524
+        ],
+        [
+          -48.79307578295579,
+          -23.204927023286015
+        ],
+        [
+          -52.318887497480944,
+          -22.70086925649476
+        ]
+      ],
+      "box": {
+        "x0": -53.10692421704422,
+        "x1": -48.79307578295579,
+        "z0": -28.71713074350524,
+        "z1": -22.70086925649476
+      },
+      "region": "west/second-row",
+      "gaps": {
+        "board": 1.6430757829557834,
+        "road": 9.42659072310156,
+        "fence": 4.710969576684856,
+        "workPad": 13.438905399832802,
+        "pole": 13.564127039641189,
+        "toy": 15.021930528169674,
+        "building": 4.443075782955789,
+        "animalRoam": 33.74561591693992,
+        "travel": 14.243473591720335,
+        "runtimeKeep": 13.554016949906398,
+        "runtimeRoute": 15.006024960618376,
+        "critterHome": 12.141465581008358,
+        "decor": 4.673075782955789,
+        "treeCrown": 0.3025976653903144,
+        "treeSpacing": 0.34147344349966247,
+        "understoryTrunk": 0.3741324808336177,
+        "soil": 62.02073200029698,
+        "pond": 2.109078292034729,
+        "mud": 7.619907852651277,
+        "tractorBody": 84.00608085542709
+      }
+    },
+    {
+      "id": "new:14",
+      "gi": 20,
+      "model": "tree-pine-lite",
+      "p": [
+        -51.5,
+        -22.771,
+        -2.846,
+        0.93
+      ],
+      "r": 2.065499486013094,
+      "height": 5.766000000000001,
+      "footprint": [
+        [
+          -53.34542142117601,
+          -23.69874344782653
+        ],
+        [
+          -50.4848560110802,
+          -24.56982484096711
+        ],
+        [
+          -49.65457857882399,
+          -21.84325655217347
+        ],
+        [
+          -52.5151439889198,
+          -20.97217515903289
+        ]
+      ],
+      "box": {
+        "x0": -53.34542142117601,
+        "x1": -49.65457857882399,
+        "z0": -24.56982484096711,
+        "z1": -20.97217515903289
+      },
+      "region": "west/second-row",
+      "gaps": {
+        "board": 1.4045785788239868,
+        "road": 10.086407148139319,
+        "fence": 3.2302961807570125,
+        "workPad": 12.425086542222296,
+        "pole": 12.124859971720008,
+        "toy": 15.806303213898449,
+        "building": 5.304578578823987,
+        "animalRoam": 32.45169403415666,
+        "travel": 13.634569569893435,
+        "runtimeKeep": 11.223601350461074,
+        "runtimeRoute": 12.993669055906526,
+        "critterHome": 11.43857273531851,
+        "decor": 5.33114786225135,
+        "treeCrown": 0.06410046125851787,
+        "treeSpacing": 0.12194017464899076,
+        "understoryTrunk": 2.2605912823113083,
+        "soil": 61.65326490285788,
+        "pond": 2.238364148140432,
+        "mud": 8.967790420019858,
+        "tractorBody": 84.59183463068177
+      }
+    },
+    {
+      "id": "new:15",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        -51.5,
+        -20.022,
+        -0.18,
+        0.64
+      ],
+      "r": 2.0535620156259666,
+      "height": 3.3280000000000003,
+      "footprint": [
+        [
+          -52.89836829783732,
+          -18.518110690368022
+        ],
+        [
+          -52.278946994796655,
+          -21.922094348004602
+        ],
+        [
+          -50.10163170216268,
+          -21.525889309631975
+        ],
+        [
+          -50.721053005203345,
+          -18.121905651995394
+        ]
+      ],
+      "box": {
+        "x0": -52.89836829783732,
+        "x1": -50.10163170216268,
+        "z0": -21.922094348004602,
+        "z1": -18.121905651995394
+      },
+      "region": "west/second-row",
+      "gaps": {
+        "board": 1.8516317021626776,
+        "road": 8.550941454594797,
+        "fence": 0.052438941326119926,
+        "workPad": 9.634575929966058,
+        "pole": 8.881273943801988,
+        "toy": 16.251787720939173,
+        "building": 5.483006317651543,
+        "animalRoam": 29.94233336949114,
+        "travel": 11.830680086309629,
+        "runtimeKeep": 9.539921515263716,
+        "runtimeRoute": 12.153042101935595,
+        "critterHome": 9.569547242233336,
+        "decor": 4.4816317021626775,
+        "treeCrown": 1.1244855196783825,
+        "treeSpacing": 0.8072694310743687,
+        "understoryTrunk": 1.1933726183921434,
+        "soil": 59.85932299223694,
+        "pond": 1.9401902014785266,
+        "mud": 8.946280068881459,
+        "tractorBody": 83.59950389709024
+      }
+    },
+    {
+      "id": "new:16",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        -52.1,
+        -10.45,
+        -0.155,
+        0.64
+      ],
+      "r": 2.0535620156259666,
+      "height": 3.3280000000000003,
+      "footprint": [
+        [
+          -53.4603380140189,
+          -8.911625065324806
+        ],
+        [
+          -52.92620099723107,
+          -12.330028953020713
+        ],
+        [
+          -50.7396619859811,
+          -11.988374934675193
+        ],
+        [
+          -51.27379900276893,
+          -8.569971046979285
+        ]
+      ],
+      "box": {
+        "x0": -53.4603380140189,
+        "x1": -50.7396619859811,
+        "z0": -12.330028953020713,
+        "z1": -8.569971046979285
+      },
+      "region": "west/second-row",
+      "gaps": {
+        "board": 1.2896619859810983,
+        "road": 5.056995547888591,
+        "fence": 0.0396619859811011,
+        "workPad": 5.677817744739079,
+        "pole": 1.7230448243930623,
+        "toy": 19.267191995012908,
+        "building": 5.097562705919189,
+        "animalRoam": 21.846128606761745,
+        "travel": 9.30129815813241,
+        "runtimeKeep": 1.795043293635701,
+        "runtimeRoute": 9.623660173758376,
+        "critterHome": 7.195989544862914,
+        "decor": 5.119661985981101,
+        "treeCrown": 3.18628962878138,
+        "treeSpacing": 2.0796343738515235,
+        "understoryTrunk": 0.886392536095023,
+        "soil": 54.6745725050133,
+        "pond": 0.9642135936354488,
+        "mud": 9.075730952604289,
+        "tractorBody": 81.00588341608615
+      }
+    },
+    {
+      "id": "new:17",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        -49.55,
+        -1.74,
+        -0.083,
+        0.7
+      ],
+      "r": 2.246083454590901,
+      "height": 3.6399999999999997,
+      "footprint": [
+        [
+          -50.91297242810623,
+          0.04527226080763058
+        ],
+        [
+          -50.59924046861684,
+          -3.725946959010664
+        ],
+        [
+          -48.187027571893765,
+          -3.525272260807631
+        ],
+        [
+          -48.50075953138315,
+          0.245946959010664
+        ]
+      ],
+      "box": {
+        "x0": -50.91297242810623,
+        "x1": -48.187027571893765,
+        "z0": -3.725946959010664,
+        "z1": 0.245946959010664
+      },
+      "region": "west/second-row",
+      "gaps": {
+        "board": 3.8370275718937705,
+        "road": 0.07843689042310781,
+        "fence": 2.076217455306969,
+        "workPad": 3.7350244270808624,
+        "pole": 2.874828857207173,
+        "toy": 14.765821311512704,
+        "building": 9.960008228385021,
+        "animalRoam": 13.206749185407451,
+        "travel": 10.034847777220158,
+        "runtimeKeep": 3.343038688052662,
+        "runtimeRoute": 10.424931231811058,
+        "critterHome": 8.829281665512655,
+        "decor": 2.8322438213161023,
+        "treeCrown": 1.2118537847871853,
+        "treeSpacing": 1.0721236385596584,
+        "understoryTrunk": 0.6209661627925799,
+        "soil": 48.02598902118523,
+        "pond": 0.03926199507682826,
+        "mud": 8.81391828708134,
+        "tractorBody": 75.29838999694893
+      }
+    },
+    {
+      "id": "new:18",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        -50.25,
+        7.627,
+        0.013,
+        0.64
+      ],
+      "r": 2.0535620156259666,
+      "height": 3.3280000000000003,
+      "footprint": [
+        [
+          -51.37893027088587,
+          5.911589438210389
+        ],
+        [
+          -49.166046935817626,
+          5.882820334176715
+        ],
+        [
+          -49.12106972911413,
+          9.34241056178961
+        ],
+        [
+          -51.333953064182374,
+          9.371179665823284
+        ]
+      ],
+      "box": {
+        "x0": -51.37893027088587,
+        "x1": -49.12106972911413,
+        "z0": 5.882820334176715,
+        "z1": 9.371179665823284
+      },
+      "region": "west/second-row",
+      "gaps": {
+        "board": 3.371069729114133,
+        "road": 8.917405649956992,
+        "fence": 9.45834724554289,
+        "workPad": 12.291956407395913,
+        "pole": 12.331703624738797,
+        "toy": 13.18209370822945,
+        "building": 19.35580954334386,
+        "animalRoam": 8.743378300087143,
+        "travel": 18.029905330307276,
+        "runtimeKeep": 10.719574759114897,
+        "runtimeRoute": 18.352267345933242,
+        "critterHome": 9.747212743488932,
+        "decor": 0.005739272575076559,
+        "treeCrown": 2.5266446336679054,
+        "treeSpacing": 0.9547657147100554,
+        "understoryTrunk": 0.4081756104869617,
+        "soil": 45.62287925771848,
+        "pond": 0.045316378715622996,
+        "mud": 9.695001911651993,
+        "tractorBody": 73.62962496235248
+      }
+    },
+    {
+      "id": "new:19",
+      "gi": 20,
+      "model": "tree-pine-lite",
+      "p": [
+        -50.95,
+        10.418,
+        0.795,
+        0.73
+      ],
+      "r": 1.6213060481608157,
+      "height": 4.526,
+      "footprint": [
+        [
+          -52.570392006644006,
+          10.472433873709846
+        ],
+        [
+          -50.92669172907819,
+          8.796861503045012
+        ],
+        [
+          -49.329607993356,
+          10.363566126290152
+        ],
+        [
+          -50.97330827092181,
+          12.039138496954987
+        ]
+      ],
+      "box": {
+        "x0": -52.570392006644006,
+        "x1": -49.329607993356,
+        "z0": 8.796861503045012,
+        "z1": 12.039138496954987
+      },
+      "region": "west/second-row",
+      "gaps": {
+        "board": 2.1796079933559938,
+        "road": 12.185760055496532,
+        "fence": 7.035159873607667,
+        "workPad": 15.639660761503658,
+        "pole": 15.44992905643687,
+        "toy": 13.50991061784192,
+        "building": 22.57731499123662,
+        "animalRoam": 9.262071848632623,
+        "travel": 21.238982709960684,
+        "runtimeKeep": 11.582060702956813,
+        "runtimeRoute": 20.6498887581215,
+        "critterHome": 11.521154654795998,
+        "decor": 2.919780441443373,
+        "treeCrown": 0.13865273854113314,
+        "treeSpacing": 0.45411234618809826,
+        "understoryTrunk": 0.5947563274582618,
+        "soil": 46.09651134787674,
+        "pond": 0.3373373590362303,
+        "mud": 10.661271562370123,
+        "tractorBody": 74.18299749158135
+      }
+    },
+    {
+      "id": "new:20",
+      "gi": 20,
+      "model": "tree-pine-lite",
+      "p": [
+        -48.8,
+        13.549,
+        2.464,
+        1.03
+      ],
+      "r": 2.2875962049392333,
+      "height": 6.386,
+      "footprint": [
+        [
+          -51.079563490340696,
+          13.740537699574055
+        ],
+        [
+          -49.10059689943231,
+          11.281239452476505
+        ],
+        [
+          -46.5204365096593,
+          13.357462300425944
+        ],
+        [
+          -48.49940310056768,
+          15.816760547523494
+        ]
+      ],
+      "box": {
+        "x0": -51.079563490340696,
+        "x1": -46.5204365096593,
+        "z0": 11.281239452476505,
+        "z1": 15.816760547523494
+      },
+      "region": "west/second-row",
+      "gaps": {
+        "board": 3.6704365096593037,
+        "road": 14.224940406297494,
+        "fence": 2.9832394524765062,
+        "workPad": 13.221187832713808,
+        "pole": 17.712625620530645,
+        "toy": 11.56019903181058,
+        "building": 24.6706395607152,
+        "animalRoam": 6.457600166871264,
+        "travel": 22.369842900460586,
+        "runtimeKeep": 10.2730514677135,
+        "runtimeRoute": 21.70303910539982,
+        "critterHome": 10.28985526277427,
+        "decor": 3.1573788824210736,
+        "treeCrown": 0.06253220929260417,
+        "treeSpacing": 0.9224569621774958,
+        "understoryTrunk": 0.7459975264189794,
+        "soil": 42.77447843818776,
+        "pond": 0.38401391861432943,
+        "mud": 9.656691483451759,
+        "tractorBody": 70.86545782060534
+      }
+    },
+    {
+      "id": "new:21",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        -49.55,
+        16.901,
+        0.105,
+        0.7
+      ],
+      "r": 2.246083454590901,
+      "height": 3.6399999999999997,
+      "footprint": [
+        [
+          -50.9519154236332,
+          15.146142732309455
+        ],
+        [
+          -48.544700746125095,
+          14.892452192467015
+        ],
+        [
+          -48.14808457636679,
+          18.655857267690546
+        ],
+        [
+          -50.5552992538749,
+          18.909547807532984
+        ]
+      ],
+      "box": {
+        "x0": -50.9519154236332,
+        "x1": -48.14808457636679,
+        "z0": 14.892452192467015,
+        "z1": 18.909547807532984
+      },
+      "region": "west/second-row",
+      "gaps": {
+        "board": 3.798084576366797,
+        "road": 12.704893501318264,
+        "fence": 0.05296054417304419,
+        "workPad": 14.892118757962448,
+        "pole": 20.364422743230815,
+        "toy": 14.032022440838249,
+        "building": 28.184329381378078,
+        "animalRoam": 8.070898872822205,
+        "travel": 25.779611259625533,
+        "runtimeKeep": 13.536454776865096,
+        "runtimeRoute": 26.169694714216433,
+        "critterHome": 12.496371322274197,
+        "decor": 6.768591622411583,
+        "treeCrown": 1.0487060153511352,
+        "treeSpacing": 1.6214086290144436,
+        "understoryTrunk": 0.8733315610462934,
+        "soil": 43.2092152630826,
+        "pond": 0.7518102387126737,
+        "mud": 10.080671632361671,
+        "tractorBody": 71.20099487200454
+      }
+    },
+    {
+      "id": "new:22",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        49.55,
+        -20.022,
+        0.078,
+        0.64
+      ],
+      "r": 2.0535620156259666,
+      "height": 3.3280000000000003,
+      "footprint": [
+        [
+          48.312030567428145,
+          -21.660459226236497
+        ],
+        [
+          50.51837215685441,
+          -21.83290372959219
+        ],
+        [
+          50.78796943257185,
+          -18.3835407737635
+        ],
+        [
+          48.58162784314558,
+          -18.211096270407808
+        ]
+      ],
+      "box": {
+        "x0": 48.312030567428145,
+        "x1": 50.78796943257185,
+        "z0": -21.83290372959219,
+        "z1": -18.211096270407808
+      },
+      "region": "east/second-row",
+      "gaps": {
+        "board": 3.962030567428151,
+        "road": 3.2120305674281453,
+        "fence": 0.01109627040780764,
+        "workPad": 2.0120305674281456,
+        "pole": 7.718218779668356,
+        "toy": 50.93290790171091,
+        "building": 7.643972207011958,
+        "animalRoam": 5.045557771053615,
+        "travel": 34.21458004924713,
+        "runtimeKeep": 2.0270915250612163,
+        "runtimeRoute": 34.5369420648731,
+        "critterHome": 1.05472950943525,
+        "decor": 6.665268154020599,
+        "treeCrown": 3.0433771326390784,
+        "treeSpacing": 2.243209352798809,
+        "understoryTrunk": 0.09435577282754681,
+        "soil": 41.796488881052916,
+        "pond": 7.555464802246755,
+        "mud": 1.7408565487709966,
+        "tractorBody": 33.1170741443441
+      }
+    },
+    {
+      "id": "new:23",
+      "gi": 20,
+      "model": "tree-pine-lite",
+      "p": [
+        49.55,
+        -13.696,
+        -1.293,
+        1.03
+      ],
+      "r": 2.2875962049392333,
+      "height": 6.386,
+      "footprint": [
+        [
+          47.57807594715987,
+          -14.85557402811676
+        ],
+        [
+          50.61370927339598,
+          -15.72124541193006
+        ],
+        [
+          51.52192405284013,
+          -12.53642597188324
+        ],
+        [
+          48.48629072660401,
+          -11.67075458806994
+        ]
+      ],
+      "box": {
+        "x0": 47.57807594715987,
+        "x1": 51.52192405284013,
+        "z0": -15.72124541193006,
+        "z1": -11.67075458806994
+      },
+      "region": "east/second-row",
+      "gaps": {
+        "board": 3.228075947159873,
+        "road": 3.0714733886879064,
+        "fence": 2.0787545880699403,
+        "workPad": 5.081026135895582,
+        "pole": 9.563610949104346,
+        "toy": 49.093135753044756,
+        "building": 1.6217124269001308,
+        "animalRoam": 10.82087607232309,
+        "travel": 28.749969760924465,
+        "runtimeKeep": 5.783538526042297,
+        "runtimeRoute": 28.083165965863696,
+        "critterHome": 7.1297761049213895,
+        "decor": 1.175604017593078,
+        "treeCrown": 2.116832624234432,
+        "treeSpacing": 1.6798230722923957,
+        "understoryTrunk": 1.0222721928348815,
+        "soil": 35.740860682568005,
+        "pond": 7.171259245693021,
+        "mud": 1.6781353637120509,
+        "tractorBody": 27.660154058569344
+      }
+    },
+    {
+      "id": "new:24",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        49.55,
+        -10.45,
+        -0.019,
+        0.87
+      ],
+      "r": 2.7915608649915487,
+      "height": 4.524,
+      "footprint": [
+        [
+          48.00139680299738,
+          -8.127363523668496
+        ],
+        [
+          48.090753706317784,
+          -12.829792494594242
+        ],
+        [
+          51.09860319700262,
+          -12.772636476331503
+        ],
+        [
+          51.00924629368221,
+          -8.070207505405756
+        ]
+      ],
+      "box": {
+        "x0": 48.00139680299738,
+        "x1": 51.09860319700262,
+        "z0": -12.829792494594242,
+        "z1": -8.070207505405756
+      },
+      "region": "east/second-row",
+      "gaps": {
+        "board": 3.6513968029973825,
+        "road": 4.741651866030293,
+        "fence": 4.9702075054057575,
+        "workPad": 7.1688102620871685,
+        "pole": 11.312571728402155,
+        "toy": 48.39602694429152,
+        "building": 0.6513968029973768,
+        "animalRoam": 12.158733621084608,
+        "travel": 25.7276346229621,
+        "runtimeKeep": 9.354649880504123,
+        "runtimeRoute": 26.309595487953647,
+        "critterHome": 9.868830613262048,
+        "decor": 0.8813968029973768,
+        "treeCrown": 0.6348087798231661,
+        "treeSpacing": 0.09090975377930288,
+        "understoryTrunk": 3.8920899311858457,
+        "soil": 32.31714910861128,
+        "pond": 6.741396487124178,
+        "mud": 1.6726665761151427,
+        "tractorBody": 24.656207087977005
+      }
+    },
+    {
+      "id": "new:25",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        52.1,
+        -7.57,
+        0.175,
+        0.7
+      ],
+      "r": 2.246083454590901,
+      "height": 3.6399999999999997,
+      "footprint": [
+        [
+          50.57877815291096,
+          -9.22250566623113
+        ],
+        [
+          52.96235372358437,
+          -9.643942366703367
+        ],
+        [
+          53.621221847089046,
+          -5.917494333768869
+        ],
+        [
+          51.23764627641563,
+          -5.496057633296632
+        ]
+      ],
+      "box": {
+        "x0": 50.57877815291096,
+        "x1": 53.621221847089046,
+        "z0": -9.643942366703367,
+        "z1": -5.496057633296632
+      },
+      "region": "east/second-row",
+      "gaps": {
+        "board": 1.1287781529109537,
+        "road": 9.086743350896073,
+        "fence": 8.370093464239476,
+        "workPad": 11.40980757689872,
+        "pole": 15.643331028656371,
+        "toy": 51.075849620200735,
+        "building": 3.2287781529109565,
+        "animalRoam": 11.087713855043253,
+        "travel": 26.023315252022346,
+        "runtimeKeep": 13.44195757790066,
+        "runtimeRoute": 26.413398706613247,
+        "critterHome": 13.557444442413129,
+        "decor": 0.08211240348535143,
+        "treeCrown": 0.4861356694611252,
+        "treeSpacing": 0.38172817573887996,
+        "understoryTrunk": 6.77730337189365,
+        "soil": 31.64504295683764,
+        "pond": 7.286749733746495,
+        "mud": 2.355388983219776,
+        "tractorBody": 25.01785493514473
+      }
+    },
+    {
+      "id": "new:26",
+      "gi": 20,
+      "model": "tree-pine-lite",
+      "p": [
+        50.25,
+        -1.74,
+        2.371,
+        0.73
+      ],
+      "r": 1.6213060481608157,
+      "height": 4.526,
+      "footprint": [
+        [
+          48.628762163686254,
+          -1.7548721184623282
+        ],
+        [
+          50.18713491086164,
+          -3.3600868132203487
+        ],
+        [
+          51.871237836313746,
+          -1.7251278815376718
+        ],
+        [
+          50.31286508913836,
+          -0.11991318677965102
+        ]
+      ],
+      "box": {
+        "x0": 48.628762163686254,
+        "x1": 51.871237836313746,
+        "z0": -3.3600868132203487,
+        "z1": -0.11991318677965102
+      },
+      "region": "east/second-row",
+      "gaps": {
+        "board": 2.878762163686254,
+        "road": 6.776828331707283,
+        "fence": 3.65063452201056,
+        "workPad": 14.204548440058659,
+        "pole": 19.18687876698974,
+        "toy": 47.15746528708575,
+        "building": 1.2787621636862538,
+        "animalRoam": 5.664885394774733,
+        "travel": 21.6001078872864,
+        "runtimeKeep": 10.192442194942416,
+        "runtimeRoute": 21.011013935447213,
+        "critterHome": 10.131536146781599,
+        "decor": 0.1423430508152751,
+        "treeCrown": 1.0992746269726663,
+        "treeSpacing": 0.028820696312951144,
+        "understoryTrunk": 3.3776944595613814,
+        "soil": 26.421747965171384,
+        "pond": 7.521533502788934,
+        "mud": 3.138461493018121,
+        "tractorBody": 20.701287581828357
+      }
+    },
+    {
+      "id": "new:27",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        50.25,
+        1.605,
+        0.171,
+        0.78
+      ],
+      "r": 2.502778706544147,
+      "height": 4.056,
+      "footprint": [
+        [
+          48.56230322230289,
+          -0.2431290107786226
+        ],
+        [
+          51.22014458034954,
+          -0.7021022402895825
+        ],
+        [
+          51.93769677769711,
+          3.4531290107786226
+        ],
+        [
+          49.27985541965046,
+          3.9121022402895824
+        ]
+      ],
+      "box": {
+        "x0": 48.56230322230289,
+        "x1": 51.93769677769711,
+        "z0": -0.7021022402895825,
+        "z1": 3.9121022402895824
+      },
+      "region": "east/second-row",
+      "gaps": {
+        "board": 2.812303222302887,
+        "road": 5.8333849957100306,
+        "fence": 0.005647202214065006,
+        "workPad": 10.599279812098736,
+        "pole": 16.01737522096953,
+        "toy": 44.829250115645436,
+        "building": 1.2123032223028871,
+        "animalRoam": 1.9925658393732673,
+        "travel": 19.00943834276807,
+        "runtimeKeep": 7.790760714732477,
+        "runtimeRoute": 19.48981704931222,
+        "critterHome": 6.66038200818833,
+        "decor": 1.442303222302887,
+        "treeCrown": 0.4792591999034328,
+        "treeSpacing": 0.027342261424225356,
+        "understoryTrunk": 1.4218357248327838,
+        "soil": 22.923936358013,
+        "pond": 6.848753312982811,
+        "mud": 3.021317466603347,
+        "tractorBody": 18.245965478021215
+      }
+    },
+    {
+      "id": "new:28",
+      "gi": 20,
+      "model": "tree-pine-lite",
+      "p": [
+        50.95,
+        13.549,
+        -2.582,
+        0.73
+      ],
+      "r": 1.6213060481608157,
+      "height": 4.526,
+      "footprint": [
+        [
+          49.361603247631386,
+          13.22399375564818
+        ],
+        [
+          51.35077832573234,
+          11.978009855083098
+        ],
+        [
+          52.53839675236862,
+          13.874006244351818
+        ],
+        [
+          50.54922167426766,
+          15.119990144916901
+        ]
+      ],
+      "box": {
+        "x0": 49.361603247631386,
+        "x1": 52.53839675236862,
+        "z0": 11.978009855083098,
+        "z1": 15.119990144916901
+      },
+      "region": "east/second-row",
+      "gaps": {
+        "board": 2.2116032476313805,
+        "road": 8.267872739867508,
+        "fence": 0.16160324763138617,
+        "workPad": 8.061603247631385,
+        "pole": 13.264165988609282,
+        "toy": 41.4224208670803,
+        "building": 6.2787709633253055,
+        "animalRoam": 2.7360352289365664,
+        "travel": 17.93731451975544,
+        "runtimeKeep": 5.909600053361796,
+        "runtimeRoute": 17.381071218723644,
+        "critterHome": 5.848694005200981,
+        "decor": 3.6079658898224354,
+        "treeCrown": 0.6993331843544834,
+        "treeSpacing": 0.9300381690926534,
+        "understoryTrunk": 0.8922627614872537,
+        "soil": 17.152884342999492,
+        "pond": 7.651915519779179,
+        "mud": 5.556999567204526,
+        "tractorBody": 17.63002426526364
+      }
+    },
+    {
+      "id": "new:29",
+      "gi": 19,
+      "model": "tree-oak-lite",
+      "p": [
+        50.25,
+        16.901,
+        -0.177,
+        0.64
+      ],
+      "r": 2.0535620156259666,
+      "height": 3.3280000000000003,
+      "footprint": [
+        [
+          48.8561496559767,
+          18.409077640736015
+        ],
+        [
+          49.4653562359686,
+          15.00325103989268
+        ],
+        [
+          51.6438503440233,
+          15.392922359263984
+        ],
+        [
+          51.0346437640314,
+          18.798748960107318
+        ]
+      ],
+      "box": {
+        "x0": 48.8561496559767,
+        "x1": 51.6438503440233,
+        "z0": 15.00325103989268,
+        "z1": 18.798748960107318
+      },
+      "region": "east/second-row",
+      "gaps": {
+        "board": 3.106149655976701,
+        "road": 8.764635348413025,
+        "fence": 0.08258086759199407,
+        "workPad": 8.033668936010026,
+        "pole": 13.396231094884993,
+        "toy": 39.770772140215584,
+        "building": 2.579587435789157,
+        "animalRoam": 4.501755105366311,
+        "travel": 15.50313085610503,
+        "runtimeKeep": 7.735016729797882,
+        "runtimeRoute": 15.827143000500538,
+        "critterHome": 6.762654714171915,
+        "decor": 0.9647194799258162,
+        "treeCrown": 2.1837593602743213,
+        "treeSpacing": 1.2026887535524746,
+        "understoryTrunk": 1.2719065102607758,
+        "soil": 14.990692128870975,
+        "pond": 7.313746161435567,
+        "mud": 5.577713064467146,
+        "tractorBody": 15.22951208893881
+      }
+    },
+    {
+      "id": "new:30",
+      "gi": 22,
+      "model": "bush-lite",
+      "p": [
+        -30.988,
+        -28.405,
+        2.15,
+        0.84
+      ],
+      "r": 1.0149622608014628,
+      "height": 0.8265259516239165,
+      "footprint": [
+        [
+          -31.777387928428684,
+          -29.042977342311065
+        ],
+        [
+          -31.2561070812792,
+          -29.383911121511634
+        ],
+        [
+          -30.198612071571315,
+          -27.767022657688937
+        ],
+        [
+          -30.7198929187208,
+          -27.42608887848837
+        ]
+      ],
+      "box": {
+        "x0": -31.777387928428684,
+        "x1": -30.198612071571315,
+        "z0": -29.383911121511634,
+        "z1": -27.42608887848837
+      },
+      "region": "north/second-row/understory",
+      "gaps": {
+        "board": 7.866088878488366,
+        "road": 7.226088878488368,
+        "fence": 12.537048502661273,
+        "workPad": 13.116750561856122,
+        "pole": 14.980560393615436,
+        "toy": 4.7419695370927615,
+        "building": 0.8726120715713158,
+        "animalRoam": 24.98444922219104,
+        "travel": 1.0386140356012472,
+        "runtimeKeep": 4.354951800148958,
+        "runtimeRoute": 0.6875762964027101,
+        "critterHome": 12.508596634602673,
+        "decor": 0.3650970344376426,
+        "soil": 54.20521609510064,
+        "pond": 3.339846089257372,
+        "mud": 7.809141544546369,
+        "tractorBody": 69.99255398885464
+      }
+    },
+    {
+      "id": "new:31",
+      "gi": 22,
+      "model": "bush-lite",
+      "p": [
+        -47.75,
+        -25.709,
+        0.642,
+        0.76
+      ],
+      "r": 0.9182991883441807,
+      "height": 0.7478091943264007,
+      "footprint": [
+        [
+          -48.61871308733903,
+          -25.41132405001501
+        ],
+        [
+          -47.218740300554266,
+          -26.458023718622055
+        ],
+        [
+          -46.88128691266097,
+          -26.006675949984988
+        ],
+        [
+          -48.281259699445734,
+          -24.959976281377944
+        ]
+      ],
+      "box": {
+        "x0": -48.61871308733903,
+        "x1": -46.88128691266097,
+        "z0": -26.458023718622055,
+        "z1": -24.959976281377944
+      },
+      "region": "west/second-row/understory",
+      "gaps": {
+        "board": 6.131286912660968,
+        "road": 8.662826147202466,
+        "fence": 6.759976281377944,
+        "workPad": 15.015598439323137,
+        "pole": 15.362308288774697,
+        "toy": 13.691283395789393,
+        "building": 2.5312869126609683,
+        "animalRoam": 33.69653503258604,
+        "travel": 14.871089914555016,
+        "runtimeKeep": 13.206803571337353,
+        "runtimeRoute": 14.515389102899196,
+        "critterHome": 12.912504382993173,
+        "decor": 0.04477659461160839,
+        "soil": 62.153931537306704,
+        "pond": 3.014209768120529,
+        "mud": 10.1887755967034,
+        "tractorBody": 83.48396954107972
+      }
+    },
+    {
+      "id": "new:32",
+      "gi": 22,
+      "model": "bush-lite",
+      "p": [
+        46.35,
+        -13.696,
+        -0.793,
+        0.84
+      ],
+      "r": 1.0149622608014628,
+      "height": 0.8265259516239165,
+      "footprint": [
+        [
+          45.45026088183525,
+          -14.165699808489768
+        ],
+        [
+          45.894033288942346,
+          -14.602776019344624
+        ],
+        [
+          47.249739118164754,
+          -13.226300191510232
+        ],
+        [
+          46.80596671105766,
+          -12.789223980655375
+        ]
+      ],
+      "box": {
+        "x0": 45.45026088183525,
+        "x1": 47.249739118164754,
+        "z0": -14.602776019344624,
+        "z1": -12.789223980655375
+      },
+      "region": "east/second-row/understory",
+      "gaps": {
+        "board": 7.500260881835246,
+        "road": 1.9551669206527762,
+        "fence": 3.2747636141171226,
+        "workPad": 5.097223980655376,
+        "pole": 8.51170695822561,
+        "toy": 46.86383172039224,
+        "building": 2.0640734101785134,
+        "animalRoam": 10.062461149956013,
+        "travel": 28.191677672060464,
+        "runtimeKeep": 6.014116801063588,
+        "runtimeRoute": 27.84063993286193,
+        "critterHome": 8.174623664741475,
+        "decor": 0.13311368635840287,
+        "soil": 35.78415821523148,
+        "pond": 7.920572711905699,
+        "mud": 1.7337987505825025,
+        "tractorBody": 27.09371325305663
+      }
+    }
+  ],
+  "rejectionCounts": {
+    "treeCrown": 331,
+    "treeSpacing": 137,
+    "understoryTrunk": 57,
+    "building": 657,
+    "travel": 120,
+    "fence": 965,
+    "decor": 310,
+    "animalRoam": 170,
+    "pole": 3,
+    "road": 24,
+    "pond": 2,
+    "runtimeKeep": 9,
+    "workPad": 2
+  },
+  "additionalTriangles": 20352,
+  "additionalModelBytes": 0,
+  "additionalModelTypes": 0,
+  "notes": [
+    "Conservative decoded GLB bounding boxes with actual fit; no FPS claim.",
+    "Gameplay reservations use full rotated GLB bounding polygons. Tree/tree AABB overlap up to 2.6 is intentional in forest groves; trunk centers remain at least max(1.7, 0.4*(r1+r2)) apart. Low understory clears the trunk center by 0.4.",
+    "Known home/filter estimates need live runtime comparison.",
+    "All accepted instances and non-DECOR exports remain unchanged."
+  ]
+}
