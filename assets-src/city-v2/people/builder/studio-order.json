@@ -1,0 +1,27 @@
+{
+  "status": "blocked-before-upload-no-order",
+  "provider": "Tripo Studio",
+  "source": "builder-v1.png",
+  "sourceSha256": "3ca822c3405991bced848efa9a07bbeaa59d36766935ed3b883f3ae3f04bcb30",
+  "plannedSettings": {
+    "model": "H3.1 - Макс.кач.",
+    "mode": "HD model, geometry and texture",
+    "parts": false,
+    "8K": false,
+    "rig": false,
+    "animation": false
+  },
+  "plannedIncludedCredits": 25,
+  "trioBudgetMax": 75,
+  "balanceObserved": 5600,
+  "orderCount": 0,
+  "spentCredits": 0,
+  "purchases": 0,
+  "paidAPICalls": 0,
+  "taskId": null,
+  "rawPath": "assets-src/raw/city-adults-2026-10-26/builder.glb",
+  "decision": "Claude m0368 accepts appearance and static GLB; main delegation sets 25 each / 75 total. Automatic approval review requires direct owner authorization for file upload to Tripo.",
+  "blocker": "Automatic approval review rejected firefighter-v1.png upload before any order; no alternate upload path attempted. Same explicit owner authorization is needed for all three references.",
+  "preflightProof": "../firefighter/studio/preflight-before-upload.jpg",
+  "preflightNote": "Price25 and balance5600 observed with empty image input, not proof of submission."
+}

@@ -1,5 +1,5 @@
 {
-  "status": "reference-ready-for-review-no-GLB-no-rig",
+  "status": "reference-accepted-m0368-static-GLB-upload-awaits-owner-authorization",
   "request": "m0135; main delegation for three separate adult references",
   "sourceRevision": "609e891ecb8c1a873721192bc46eec33266f0b33",
   "sourceHashes": {
@@ -110,8 +110,12 @@
     "inCITY_MODELS": true,
     "currentFallback": "STAND_INS.builder procedural person",
     "modelLookup": "CityMap.critterModel tries model(base, fit) before STAND_INS; StoryMap tags meshes with the same critter name for picking.",
-    "integrationNeeded": "Existing preload name; replace fallback only after GLB validates.",
-    "noRuntimeEditsInThisDelivery": true
+    "integrationNeeded": "Preload name is now present. Main/Claude will install the validated candidate and verify actual loading and interactions; this executor does not edit src/public.",
+    "noRuntimeEditsInThisDelivery": true,
+    "atReferenceRevisionInCITY_MODELS": true,
+    "verifiedRevision": "bbfe61ca13c9e70d53aa84f9af1f49949010620e",
+    "verifiedCitySourceSha256": "5f2854bcc0771a2f9b6dc98edc1814c9d791186844520afe0b660381cfa84017",
+    "integrationAcknowledged": "Main reported fb78704 added firefighter/shopkeeper; verified in current source. Builder is also present."
   },
   "geometryTargets": {
     "measured": false,
@@ -146,9 +150,9 @@
     "builderSpecific": "updateCrane sets builder.hop=1 after a lift.",
     "initialModelScope": "Reference prepared for a static humanoid GLB; no rig or articulated-limb order in this task. Preserve current whole-body responses.",
     "ifArticulatedMotionIsRequired": "Any future arm gesture or walking cycle needs a separate agreed human rig or named limb nodes with shoulder/hip pivots and rest transforms, plus runtime integration. Do not reuse quadruped pose()/RIGS for humans.",
-    "relatedDecision": "m0364 explicitly accepts static child + whole-body skipping, without rig. It does not supply a tested adult rig.",
+    "relatedDecision": "Claude m0368 accepted all three adults as static GLB with existing whole-body reactions, without rig.",
     "noClaim": "A-pose in an image proves neither joints, skin weights, hidden geometry nor working animation.",
-    "decisionOwner": "Claude: final adult animation contract. Static GLB with current whole-body responses is the proposal; a paid rig is not an established requirement."
+    "decisionOwner": "Claude m0368: static contract accepted; no human rig required for this delivery."
   },
   "preserve": [
     "строителя и место строящегося дома SITE",
@@ -182,5 +186,18 @@
     "APICalls": 0,
     "additionalPurchases": 0,
     "promptRecord": "prompt.json"
+  },
+  "GLBStage": {
+    "status": "blocked-before-upload",
+    "decision": "m0368",
+    "orderRecord": "studio-order.json",
+    "sourceGLBExists": false,
+    "candidateExists": false,
+    "visualQAComplete": false,
+    "offlinePreparation": [
+      "build.mjs",
+      "qa.html"
+    ],
+    "note": "Prepared scripts do not imply a generated or validated model. Raw-source yaw must be inspected visually; build requires an explicit yaw argument."
   }
 }
