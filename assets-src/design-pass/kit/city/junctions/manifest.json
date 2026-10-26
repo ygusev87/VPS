@@ -1,0 +1,346 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "images": [
+    {
+      "name": "road-corner",
+      "source": "../sources/road-corner.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "e17acb36b6c22e5f3b66afbdefa257137db3eeb149e1461cf312011e91a83b81",
+      "crop": {
+        "left": 25,
+        "top": 16,
+        "width": 1223,
+        "height": 1224
+      },
+      "discardedAlphaFraction": 0.00008859146403279927,
+      "output": "public/textures/kit/city/road-corner.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 125206,
+      "sha256": "b372186998fabbf63ec477b9fea04453a79786f07d9940db8e91f39174798879",
+      "packaging": "outer framing trim for corner/end at alpha>=16 bounds only; retain native alpha; sRGB; resize-fill Lanczos3; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroFraction": 0.2135000228881836,
+        "partialFraction": 0.7856969833374023,
+        "opaqueFraction": 0.0008029937744140625,
+        "visible16Fraction": 0.7842140197753906,
+        "visible114Fraction": 0.7821750640869141,
+        "edges": {
+          "left": {
+            "alphaMin": 0,
+            "alphaMax": 215,
+            "alphaMean": 3.6962890625,
+            "curbIndices": null
+          },
+          "right": {
+            "alphaMin": 0,
+            "alphaMax": 44,
+            "alphaMean": 3.6201171875,
+            "curbIndices": null
+          },
+          "top": {
+            "alphaMin": 0,
+            "alphaMax": 51,
+            "alphaMean": 1.3671875,
+            "curbIndices": null
+          },
+          "bottom": {
+            "alphaMin": 0,
+            "alphaMax": 183,
+            "alphaMean": 138.6787109375,
+            "curbIndices": null
+          }
+        }
+      },
+      "centerMeanRGB": [
+        122.32891884249223,
+        122.75645678197756,
+        123.91658026204166
+      ]
+    },
+    {
+      "name": "road-tee",
+      "source": "../sources/road-tee.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "f5ad3742c615b69d61402e6cb9ed50c485666be1bc3d36f34ed06a16fd93d199",
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "discardedAlphaFraction": 0,
+      "output": "public/textures/kit/city/road-tee.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 175988,
+      "sha256": "3f3d381be2d82a60d8bbcb8dd639858a11e603fb055207417324d89534e100a0",
+      "packaging": "outer framing trim for corner/end at alpha>=16 bounds only; retain native alpha; sRGB; resize-fill Lanczos3; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "visible16Fraction": 1,
+        "visible114Fraction": 1,
+        "edges": {
+          "left": {
+            "alphaMin": 255,
+            "alphaMax": 255,
+            "alphaMean": 255,
+            "curbIndices": {
+              "first": 0,
+              "last": 1023,
+              "count": 180
+            }
+          },
+          "right": {
+            "alphaMin": 255,
+            "alphaMax": 255,
+            "alphaMean": 255,
+            "curbIndices": {
+              "first": 0,
+              "last": 1023,
+              "count": 179
+            }
+          },
+          "top": {
+            "alphaMin": 255,
+            "alphaMax": 255,
+            "alphaMean": 255,
+            "curbIndices": {
+              "first": 0,
+              "last": 1023,
+              "count": 994
+            }
+          },
+          "bottom": {
+            "alphaMin": 255,
+            "alphaMax": 255,
+            "alphaMean": 255,
+            "curbIndices": {
+              "first": 0,
+              "last": 1023,
+              "count": 174
+            }
+          }
+        }
+      },
+      "centerMeanRGB": [
+        113.5343340559902,
+        114.85446319162975,
+        116.52938542746725
+      ]
+    },
+    {
+      "name": "road-cross",
+      "source": "../sources/road-cross.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "9184eeb9cd562ec8c0ab4228e8db310e42d813a424e17e26d83727aa4a0be053",
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 1254,
+        "height": 1254
+      },
+      "discardedAlphaFraction": 0,
+      "output": "public/textures/kit/city/road-cross.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 195536,
+      "sha256": "6f6ab9883687e22f67f16b4ab47b4eb9ccf8712e564b728067594d45d1e170ec",
+      "packaging": "outer framing trim for corner/end at alpha>=16 bounds only; retain native alpha; sRGB; resize-fill Lanczos3; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "zeroFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "visible16Fraction": 1,
+        "visible114Fraction": 1,
+        "edges": {
+          "left": {
+            "alphaMin": 255,
+            "alphaMax": 255,
+            "alphaMean": 255,
+            "curbIndices": {
+              "first": 0,
+              "last": 1023,
+              "count": 180
+            }
+          },
+          "right": {
+            "alphaMin": 255,
+            "alphaMax": 255,
+            "alphaMean": 255,
+            "curbIndices": {
+              "first": 0,
+              "last": 1023,
+              "count": 180
+            }
+          },
+          "top": {
+            "alphaMin": 255,
+            "alphaMax": 255,
+            "alphaMean": 255,
+            "curbIndices": {
+              "first": 0,
+              "last": 1023,
+              "count": 175
+            }
+          },
+          "bottom": {
+            "alphaMin": 255,
+            "alphaMax": 255,
+            "alphaMean": 255,
+            "curbIndices": {
+              "first": 0,
+              "last": 1023,
+              "count": 176
+            }
+          }
+        }
+      },
+      "centerMeanRGB": [
+        114.31532189650297,
+        116.28028089358092,
+        118.08191158450373
+      ]
+    },
+    {
+      "name": "road-end",
+      "source": "../sources/road-end.png",
+      "sourceWidth": 1254,
+      "sourceHeight": 1254,
+      "sourceSha256": "65359dd317d12faa702545e3b305ac24854b4ef79b31e47578c3da894c5158f4",
+      "crop": {
+        "left": 48,
+        "top": 4,
+        "width": 1158,
+        "height": 1250
+      },
+      "discardedAlphaFraction": 0.000023451757641883946,
+      "output": "public/textures/kit/city/road-end.webp",
+      "width": 1024,
+      "height": 1024,
+      "bytes": 133676,
+      "sha256": "c09e42dbb190882bc1cd40ddd373b1867f9ed85eaf5e560675ce39a94ed4eb3f",
+      "packaging": "outer framing trim for corner/end at alpha>=16 bounds only; retain native alpha; sRGB; resize-fill Lanczos3; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroFraction": 0.10664176940917969,
+        "partialFraction": 0.8920478820800781,
+        "opaqueFraction": 0.0013103485107421875,
+        "visible16Fraction": 0.8913717269897461,
+        "visible114Fraction": 0.8903770446777344,
+        "edges": {
+          "left": {
+            "alphaMin": 0,
+            "alphaMax": 177,
+            "alphaMean": 85.310546875,
+            "curbIndices": {
+              "first": 430,
+              "last": 1016,
+              "count": 304
+            }
+          },
+          "right": {
+            "alphaMin": 0,
+            "alphaMax": 188,
+            "alphaMean": 89.8837890625,
+            "curbIndices": {
+              "first": 456,
+              "last": 1018,
+              "count": 297
+            }
+          },
+          "top": {
+            "alphaMin": 0,
+            "alphaMax": 102,
+            "alphaMean": 2.85546875,
+            "curbIndices": null
+          },
+          "bottom": {
+            "alphaMin": 2,
+            "alphaMax": 254,
+            "alphaMean": 251.1025390625,
+            "curbIndices": null
+          }
+        }
+      },
+      "centerMeanRGB": [
+        115.84937317372042,
+        116.20430766330475,
+        118.05283250070694
+      ]
+    },
+    {
+      "name": "zebra",
+      "source": "../sources/zebra.png",
+      "sourceWidth": 1774,
+      "sourceHeight": 887,
+      "sourceSha256": "03de44b4798af18251a1ad4126ea439c9d166356dad1e6da79bb0bbdf393b104",
+      "crop": {
+        "left": 0,
+        "top": 0,
+        "width": 1774,
+        "height": 887
+      },
+      "discardedAlphaFraction": 0,
+      "output": "public/textures/kit/city/zebra.webp",
+      "width": 1024,
+      "height": 512,
+      "bytes": 46182,
+      "sha256": "bb5e157a342f23ab4187e097c8cff1e7f3542327db6eebc361cdae6f3f0abb82",
+      "packaging": "outer framing trim for corner/end at alpha>=16 bounds only; retain native alpha; sRGB; resize-fill Lanczos3; WebP quality85 alpha100",
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zeroFraction": 0.5883102416992188,
+        "partialFraction": 0.4020061492919922,
+        "opaqueFraction": 0.009683609008789062,
+        "visible16Fraction": 0.36874961853027344,
+        "visible114Fraction": 0.36376380920410156,
+        "edges": {
+          "left": {
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "alphaMean": 0,
+            "curbIndices": null
+          },
+          "right": {
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "alphaMean": 0,
+            "curbIndices": null
+          },
+          "top": {
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "alphaMean": 0,
+            "curbIndices": null
+          },
+          "bottom": {
+            "alphaMin": 0,
+            "alphaMax": 0,
+            "alphaMean": 0,
+            "curbIndices": null
+          }
+        }
+      },
+      "centerMeanRGB": [
+        239.8798773690078,
+        236.53637123745818,
+        229.75278706800447
+      ]
+    }
+  ]
+}

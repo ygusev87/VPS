@@ -1,5 +1,10 @@
 [
   "road-strip-a",
   "road-strip-b",
-  "road-lane-strip"
+  "road-lane-strip",
+  "road-corner",
+  "road-tee",
+  "road-cross",
+  "road-end",
+  "zebra"
 ]

@@ -1,0 +1,205 @@
+[
+  {
+    "name": "road-corner",
+    "transparent_background": true,
+    "width": 1024,
+    "height": 1024,
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+    ],
+    "prompt": "Create one production 2D game road-texture sprite, in the exact hand-painted material style of the supplied straight road. STRICT ORTHOGRAPHIC TOP VIEW, no perspective, no volumetric base, no scenery, no text or symbols except road paint. Match reference medium warm gray fine-grained asphalt, pale warm ivory/beige rectangular stone curb, softly worn off-white center dashes. Neutral even lighting with only tiny material creases, NO cast shadows or overall gradient; tile will rotate by 90 degrees. Road strip is 7 world units wide, asphalt about 84% of total width, curb stones about 8% on each side. Every OPEN edge must carry asphalt from 8% to92% along that edge, with a curb segment in the two remaining 8% bands; the asphalt MUST run flush through the image border at openings. Do not put a curb across an open entry. This is a VERY WIDE road filling nearly all the tile, not a narrow road within a decorative scene. Preserve asphalt color/grain/scale and curb block size of reference. No white side lines, arrows, stop lines, crosswalks, traffic, plants, buildings or furniture. 1024x1024 square canvas with native alpha outside the road. A single 90-degree quarter-annulus road bend connecting BOTTOM edge to RIGHT edge, NO entry at TOP or LEFT. Geometry: center of both circular arcs is the lower-right image corner (100%,100%). OUTER curb follows a quarter circle of radius100% from (0%,100%) to(100%,0%); outer asphalt boundary radius92%. INNER curb is quarter circle radius8%-16% at lower-right. Thus at bottom: curb x0-8%, asphalt x8-92%, curb x92-100%; at right: curb y0-8%, asphalt y8-92%, curb y92-100%. The northwest outside the outer arc and small southeast inside the inner arc are fully transparent. No pavement, grass or baked checkerboard outside. Center dashes follow a rounded quarter circle of radius50% from (50%,100%) to(100%,50%), at most two short dashes, each same thin width as reference. Image is a WIDE fan-like smooth turn occupying most of canvas; no thin L-shape. No margin around entry edges.",
+    "source": "../sources/road-corner.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-52f403c9-8859-404b-88ad-2ea2d66c099c.png",
+    "attempts": [
+      {
+        "version": 1,
+        "prompt": "Create one production 2D game road-texture sprite, in the exact hand-painted material style of the supplied straight road. STRICT ORTHOGRAPHIC TOP VIEW, no perspective, no volumetric base, no scenery, no text or symbols except road paint. Match reference medium warm gray fine-grained asphalt, pale warm ivory/beige rectangular stone curb, softly worn off-white center dashes. Neutral even lighting with only tiny material creases, NO cast shadows or overall gradient; tile will rotate by 90 degrees. Road strip is 7 world units wide, asphalt about 84% of total width, curb stones about 8% on each side. Every OPEN edge must carry asphalt from 8% to92% along that edge, with a curb segment in the two remaining 8% bands; the asphalt MUST run flush through the image border at openings. Do not put a curb across an open entry. This is a VERY WIDE road filling nearly all the tile, not a narrow road within a decorative scene. Preserve asphalt color/grain/scale and curb block size of reference. No white side lines, arrows, stop lines, crosswalks, traffic, plants, buildings or furniture. 1024x1024 square canvas with native alpha outside the road. A single 90-degree quarter-annulus road bend connecting BOTTOM edge to RIGHT edge, NO entry at TOP or LEFT. Geometry: center of both circular arcs is the lower-right image corner (100%,100%). OUTER curb follows a quarter circle of radius100% from (0%,100%) to(100%,0%); outer asphalt boundary radius92%. INNER curb is quarter circle radius8%-16% at lower-right. Thus at bottom: curb x0-8%, asphalt x8-92%, curb x92-100%; at right: curb y0-8%, asphalt y8-92%, curb y92-100%. The northwest outside the outer arc and small southeast inside the inner arc are fully transparent. No pavement, grass or baked checkerboard outside. Center dashes follow a rounded quarter circle of radius50% from (50%,100%) to(100%,50%), at most two short dashes, each same thin width as reference. Image is a WIDE fan-like smooth turn occupying most of canvas; no thin L-shape. No margin around entry edges.",
+        "refs": [
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-5b397911-d933-430f-973c-7c6bf001ab3c.png",
+        "rejection": "Entry geometry or alpha edge contamination; see README for targeted repair.",
+        "sha256": "70b1b0b63249aa4bb5c7f4d01802079a7e62fae86c880c093b9ad777d9fdf534",
+        "bytes": 2226148,
+        "preservedSource": "../sources/road-corner-v1.png"
+      },
+      {
+        "version": 2,
+        "prompt": "Correct this road corner sprite: its bottom and right road openings are much TOO NARROW. Keep the OUTER curved curb and all asphalt material/color, but shrink the INNER curved curb in lower-right drastically so it occupies only the bottom-right 8%x8% corner, not 30%x30%. Asphalt must extend flush to bottom border from x8% to92%, and flush to right border from y8% to92%. Both openings must be the FULL WIDTH of reference2 road. Outer arc can stay, but its ends must meet exact bottom-left and top-right image corners with zero margin. Entire northwestern outside of outer arc stays transparent. Lower-right transparent hole nearly disappears, only around1% radius at extreme corner; inner curb radius8% max. This is a quarter annulus of VERY WIDE road, NOT a narrow L curve. Preserve two small curved center dashes, same exact gray asphalt and beige stone curb. Native transparent1024x1024, no shading gradient, no white halo or background.",
+        "refs": [
+          "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-5b397911-d933-430f-973c-7c6bf001ab3c.png",
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-f0b18803-0f34-4155-8c0a-eddbd985ce57.png",
+        "sha256": "462773cfcc2ee2b141074c0e6cb7c6f04695ebec10de0a35c6388390aafec27d",
+        "bytes": 2389171,
+        "preservedSource": "../sources/road-corner-v2.png"
+      },
+      {
+        "version": 3,
+        "prompt": "Make a precise COLOR MATCH edit of IMAGE1 only. Do not change its road geometry, outline, centerline, curb stones, framing, alpha, texture detail or dimensions. The asphalt is currently about RGB(107,109,111) and visibly TOO DARK compared to straight road IMAGE2. Lighten ONLY GRAY ASPHALT by approximately+10 red,+10 green,+9 blue in sRGB, aiming for average RGB(118,119,120) / hex777778, neutral warm gray. Match the asphalt VALUE and warmth of IMAGE2 exactly so these road textures meet without a dark square. Keep beige curbs and off-white markings unchanged, no painted halos, no new features, no global gradient or cast shadow. Preserve transparent outer regions. This is just an asphalt tone correction, NOT a redraw or a different road. Preserve existing entry widths and positions.",
+        "refs": [
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-corner.png",
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-52f403c9-8859-404b-88ad-2ea2d66c099c.png",
+        "reason": "Targeted asphalt lightening after joined browser comparison.",
+        "sha256": "e17acb36b6c22e5f3b66afbdefa257137db3eeb149e1461cf312011e91a83b81",
+        "bytes": 2285065,
+        "preservedSource": "../sources/road-corner.png"
+      }
+    ]
+  },
+  {
+    "name": "road-tee",
+    "transparent_background": false,
+    "width": 1024,
+    "height": 1024,
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+    ],
+    "prompt": "Create one production 2D game road-texture sprite, in the exact hand-painted material style of the supplied straight road. STRICT ORTHOGRAPHIC TOP VIEW, no perspective, no volumetric base, no scenery, no text or symbols except road paint. Match reference medium warm gray fine-grained asphalt, pale warm ivory/beige rectangular stone curb, softly worn off-white center dashes. Neutral even lighting with only tiny material creases, NO cast shadows or overall gradient; tile will rotate by 90 degrees. Road strip is 7 world units wide, asphalt about 84% of total width, curb stones about 8% on each side. Every OPEN edge must carry asphalt from 8% to92% along that edge, with a curb segment in the two remaining 8% bands; the asphalt MUST run flush through the image border at openings. Do not put a curb across an open entry. This is a VERY WIDE road filling nearly all the tile, not a narrow road within a decorative scene. Preserve asphalt color/grain/scale and curb block size of reference. No white side lines, arrows, stop lines, crosswalks, traffic, plants, buildings or furniture. 1024x1024 opaque square texture. T-junction with LEFT, RIGHT and BOTTOM open, TOP closed by a full straight row of beige curb blocks from left to right along topmost8% of image. Upper left and upper right entries: asphalt spans y8%-92% flush at left/right edges. Bottom entry asphalt x8%-92% flush to bottom edge. Remaining lower-left and lower-right corner8%x8% blocks are pale curb/pavement with gently rounded inside corners; there is NO curb spanning bottom center. Most of canvas is continuous gray asphalt, no huge sidewalks. Center intersection stays unmarked. One very short centerline dash aligned horizontally at left edge center and at right edge center, one short vertical dash at bottom center; all three end before center intersection. Edges must mate with supplied straight-road texture.",
+    "source": "../sources/road-tee.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-15406a8f-8cbc-4a59-87ae-bf4fbd017059.png",
+    "attempts": [
+      {
+        "version": 1,
+        "prompt": "Create one production 2D game road-texture sprite, in the exact hand-painted material style of the supplied straight road. STRICT ORTHOGRAPHIC TOP VIEW, no perspective, no volumetric base, no scenery, no text or symbols except road paint. Match reference medium warm gray fine-grained asphalt, pale warm ivory/beige rectangular stone curb, softly worn off-white center dashes. Neutral even lighting with only tiny material creases, NO cast shadows or overall gradient; tile will rotate by 90 degrees. Road strip is 7 world units wide, asphalt about 84% of total width, curb stones about 8% on each side. Every OPEN edge must carry asphalt from 8% to92% along that edge, with a curb segment in the two remaining 8% bands; the asphalt MUST run flush through the image border at openings. Do not put a curb across an open entry. This is a VERY WIDE road filling nearly all the tile, not a narrow road within a decorative scene. Preserve asphalt color/grain/scale and curb block size of reference. No white side lines, arrows, stop lines, crosswalks, traffic, plants, buildings or furniture. 1024x1024 opaque square texture. T-junction with LEFT, RIGHT and BOTTOM open, TOP closed by a full straight row of beige curb blocks from left to right along topmost8% of image. Upper left and upper right entries: asphalt spans y8%-92% flush at left/right edges. Bottom entry asphalt x8%-92% flush to bottom edge. Remaining lower-left and lower-right corner8%x8% blocks are pale curb/pavement with gently rounded inside corners; there is NO curb spanning bottom center. Most of canvas is continuous gray asphalt, no huge sidewalks. Center intersection stays unmarked. One very short centerline dash aligned horizontally at left edge center and at right edge center, one short vertical dash at bottom center; all three end before center intersection. Edges must mate with supplied straight-road texture.",
+        "refs": [
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-04eac83c-0a44-4606-b900-75cf669a37a8.png",
+        "rejection": "Entry geometry or alpha edge contamination; see README for targeted repair.",
+        "sha256": "e866c1961d2b903747dd7a0fb52fc0d874d0b49a592f09aa3eb36fa94910c654",
+        "bytes": 2976672,
+        "preservedSource": "../sources/road-tee-v1.png"
+      },
+      {
+        "version": 2,
+        "prompt": "Edit this four-way road intersection into a T junction. Keep all pixels/material/perspective of the BOTTOM half and both bottom tiny stone corners essentially unchanged. The bottom opening must stay EXACTLY AS WIDE as in this reference, asphalt from x8% to92%. Keep the left and right openings. ONLY close the top opening with one horizontal row of pale beige curb blocks along the TOPMOST 8% of the square; remove the top center white dash. Rest of image remains asphalt. NO additional stones at bottom, NO bigger corner pavements. Opaque square1024x1024. Same asphalt and stone style as image2, no lighting shift.",
+        "refs": [
+          "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-f7d537b9-9133-4e9c-85dc-67fc64668a31.png",
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-15406a8f-8cbc-4a59-87ae-bf4fbd017059.png",
+        "sha256": "f5ad3742c615b69d61402e6cb9ed50c485666be1bc3d36f34ed06a16fd93d199",
+        "bytes": 2809058,
+        "preservedSource": "../sources/road-tee.png"
+      }
+    ]
+  },
+  {
+    "name": "road-cross",
+    "transparent_background": false,
+    "width": 1024,
+    "height": 1024,
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+    ],
+    "prompt": "Create one production 2D game road-texture sprite, in the exact hand-painted material style of the supplied straight road. STRICT ORTHOGRAPHIC TOP VIEW, no perspective, no volumetric base, no scenery, no text or symbols except road paint. Match reference medium warm gray fine-grained asphalt, pale warm ivory/beige rectangular stone curb, softly worn off-white center dashes. Neutral even lighting with only tiny material creases, NO cast shadows or overall gradient; tile will rotate by 90 degrees. Road strip is 7 world units wide, asphalt about 84% of total width, curb stones about 8% on each side. Every OPEN edge must carry asphalt from 8% to92% along that edge, with a curb segment in the two remaining 8% bands; the asphalt MUST run flush through the image border at openings. Do not put a curb across an open entry. This is a VERY WIDE road filling nearly all the tile, not a narrow road within a decorative scene. Preserve asphalt color/grain/scale and curb block size of reference. No white side lines, arrows, stop lines, crosswalks, traffic, plants, buildings or furniture. 1024x1024 opaque square texture. Four-way intersection, OPEN LEFT, RIGHT, TOP and BOTTOM. Almost ENTIRE square is warm gray asphalt. Only the FOUR tiny corner patches (each approximately8% by8% of image) contain beige curb blocks with small rounded inner corners. NO continuous curb along any edge, NO sidewalks enclosing the square. At each edge asphalt fills central84%, flush to image border. Four short off-white thin centerline dash fragments centered on each edge, stopping well before the central unmarked intersection area. No roundabout, no central box, no crosswalk. Match reference material exactly.",
+    "source": "../sources/road-cross.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-f7d537b9-9133-4e9c-85dc-67fc64668a31.png",
+    "attempts": [
+      {
+        "version": 1,
+        "prompt": "Create one production 2D game road-texture sprite, in the exact hand-painted material style of the supplied straight road. STRICT ORTHOGRAPHIC TOP VIEW, no perspective, no volumetric base, no scenery, no text or symbols except road paint. Match reference medium warm gray fine-grained asphalt, pale warm ivory/beige rectangular stone curb, softly worn off-white center dashes. Neutral even lighting with only tiny material creases, NO cast shadows or overall gradient; tile will rotate by 90 degrees. Road strip is 7 world units wide, asphalt about 84% of total width, curb stones about 8% on each side. Every OPEN edge must carry asphalt from 8% to92% along that edge, with a curb segment in the two remaining 8% bands; the asphalt MUST run flush through the image border at openings. Do not put a curb across an open entry. This is a VERY WIDE road filling nearly all the tile, not a narrow road within a decorative scene. Preserve asphalt color/grain/scale and curb block size of reference. No white side lines, arrows, stop lines, crosswalks, traffic, plants, buildings or furniture. 1024x1024 opaque square texture. Four-way intersection, OPEN LEFT, RIGHT, TOP and BOTTOM. Almost ENTIRE square is warm gray asphalt. Only the FOUR tiny corner patches (each approximately8% by8% of image) contain beige curb blocks with small rounded inner corners. NO continuous curb along any edge, NO sidewalks enclosing the square. At each edge asphalt fills central84%, flush to image border. Four short off-white thin centerline dash fragments centered on each edge, stopping well before the central unmarked intersection area. No roundabout, no central box, no crosswalk. Match reference material exactly.",
+        "refs": [
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-f7d537b9-9133-4e9c-85dc-67fc64668a31.png",
+        "accepted": true,
+        "sha256": "9184eeb9cd562ec8c0ab4228e8db310e42d813a424e17e26d83727aa4a0be053",
+        "bytes": 3036115,
+        "preservedSource": "../sources/road-cross.png"
+      }
+    ]
+  },
+  {
+    "name": "road-end",
+    "transparent_background": true,
+    "width": 1024,
+    "height": 1024,
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+    ],
+    "prompt": "Create one production 2D game road-texture sprite, in the exact hand-painted material style of the supplied straight road. STRICT ORTHOGRAPHIC TOP VIEW, no perspective, no volumetric base, no scenery, no text or symbols except road paint. Match reference medium warm gray fine-grained asphalt, pale warm ivory/beige rectangular stone curb, softly worn off-white center dashes. Neutral even lighting with only tiny material creases, NO cast shadows or overall gradient; tile will rotate by 90 degrees. Road strip is 7 world units wide, asphalt about 84% of total width, curb stones about 8% on each side. Every OPEN edge must carry asphalt from 8% to92% along that edge, with a curb segment in the two remaining 8% bands; the asphalt MUST run flush through the image border at openings. Do not put a curb across an open entry. This is a VERY WIDE road filling nearly all the tile, not a narrow road within a decorative scene. Preserve asphalt color/grain/scale and curb block size of reference. No white side lines, arrows, stop lines, crosswalks, traffic, plants, buildings or furniture. 1024x1024 square native transparent background. Rounded DEAD END road entering only BOTTOM edge. Bottom entry fills entire image width including curbs: x0-8% beige curb, x8-92% asphalt, x92-100% beige curb. Vertical sides run from bottom to y50%, then a large smooth SEMICIRCULAR cap in upper half: outer semicircle centered(50%,50%), radius50%, reaches top edge at center; asphalt radius42% inside curb. Outside the dome upper-left and upper-right is transparent, NO other background. Road inside cap gray asphalt. One small thin vertical center dash in lower-middle and no more markings. Flush cut bottom entry, no margin, curb wraps only sides/cap, never across bottom. Upper half is the rounded end, not a bulb wider than the entry.",
+    "source": "../sources/road-end.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-2c40a605-97d4-4f7e-9b3f-026b253132c8.png",
+    "attempts": [
+      {
+        "version": 1,
+        "prompt": "Create one production 2D game road-texture sprite, in the exact hand-painted material style of the supplied straight road. STRICT ORTHOGRAPHIC TOP VIEW, no perspective, no volumetric base, no scenery, no text or symbols except road paint. Match reference medium warm gray fine-grained asphalt, pale warm ivory/beige rectangular stone curb, softly worn off-white center dashes. Neutral even lighting with only tiny material creases, NO cast shadows or overall gradient; tile will rotate by 90 degrees. Road strip is 7 world units wide, asphalt about 84% of total width, curb stones about 8% on each side. Every OPEN edge must carry asphalt from 8% to92% along that edge, with a curb segment in the two remaining 8% bands; the asphalt MUST run flush through the image border at openings. Do not put a curb across an open entry. This is a VERY WIDE road filling nearly all the tile, not a narrow road within a decorative scene. Preserve asphalt color/grain/scale and curb block size of reference. No white side lines, arrows, stop lines, crosswalks, traffic, plants, buildings or furniture. 1024x1024 square native transparent background. Rounded DEAD END road entering only BOTTOM edge. Bottom entry fills entire image width including curbs: x0-8% beige curb, x8-92% asphalt, x92-100% beige curb. Vertical sides run from bottom to y50%, then a large smooth SEMICIRCULAR cap in upper half: outer semicircle centered(50%,50%), radius50%, reaches top edge at center; asphalt radius42% inside curb. Outside the dome upper-left and upper-right is transparent, NO other background. Road inside cap gray asphalt. One small thin vertical center dash in lower-middle and no more markings. Flush cut bottom entry, no margin, curb wraps only sides/cap, never across bottom. Upper half is the rounded end, not a bulb wider than the entry.",
+        "refs": [
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-c0bd0e30-69ad-4393-8838-60009c578012.png",
+        "rejection": "Entry geometry or alpha edge contamination; see README for targeted repair.",
+        "sha256": "22df52a26c60db898d98fa00aa6079f434940eac78d8fb1f079fc1a8eb15b402",
+        "bytes": 2388524,
+        "preservedSource": "../sources/road-end-v1.png"
+      },
+      {
+        "version": 2,
+        "prompt": "Fix framing of this dead-end road texture without redesigning it. Zoom/crop the road horizontally to remove ALL transparent empty side margins: at the bottom edge the left curb must touch x0 and right curb touch x100%, full-width asphalt from x8% to92%, curbs only8% each. Road vertical side curbs must touch left/right canvas edges in the lower half. Keep the semi-circular upper cap, whose apex touches top center, native transparent corners outside it. Square1024x1024. Material and curb scale must match supplied straight road image2. Zero blank margin at bottom. No additional paint, no white halo.",
+        "refs": [
+          "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-c0bd0e30-69ad-4393-8838-60009c578012.png",
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-3ebfd015-f218-4d9b-81a3-1d8079e36b73.png",
+        "sha256": "54b7359bb4da426b90df0522944d6c19f036d2013b8e0ea69ff5707e71511a4f",
+        "bytes": 2812475,
+        "preservedSource": "../sources/road-end-v2.png"
+      },
+      {
+        "version": 3,
+        "prompt": "Make a precise COLOR MATCH edit of IMAGE1 only. Do not change its road geometry, outline, centerline, curb stones, framing, alpha, texture detail or dimensions. The asphalt is currently about RGB(107,109,111) and visibly TOO DARK compared to straight road IMAGE2. Lighten ONLY GRAY ASPHALT by approximately+10 red,+10 green,+9 blue in sRGB, aiming for average RGB(118,119,120) / hex777778, neutral warm gray. Match the asphalt VALUE and warmth of IMAGE2 exactly so these road textures meet without a dark square. Keep beige curbs and off-white markings unchanged, no painted halos, no new features, no global gradient or cast shadow. Preserve transparent outer regions. This is just an asphalt tone correction, NOT a redraw or a different road. Preserve existing entry widths and positions.",
+        "refs": [
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-end.png",
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-2c40a605-97d4-4f7e-9b3f-026b253132c8.png",
+        "reason": "Targeted asphalt lightening after joined browser comparison.",
+        "sha256": "65359dd317d12faa702545e3b305ac24854b4ef79b31e47578c3da894c5158f4",
+        "bytes": 2462267,
+        "preservedSource": "../sources/road-end.png"
+      }
+    ]
+  },
+  {
+    "name": "zebra",
+    "transparent_background": true,
+    "width": 1024,
+    "height": 512,
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+    ],
+    "prompt": "Create one production 2D game road-texture sprite, in the exact hand-painted material style of the supplied straight road. STRICT ORTHOGRAPHIC TOP VIEW, no perspective, no volumetric base, no scenery, no text or symbols except road paint. Match reference medium warm gray fine-grained asphalt, pale warm ivory/beige rectangular stone curb, softly worn off-white center dashes. Neutral even lighting with only tiny material creases, NO cast shadows or overall gradient; tile will rotate by 90 degrees. Road strip is 7 world units wide, asphalt about 84% of total width, curb stones about 8% on each side. Every OPEN edge must carry asphalt from 8% to92% along that edge, with a curb segment in the two remaining 8% bands; the asphalt MUST run flush through the image border at openings. Do not put a curb across an open entry. This is a VERY WIDE road filling nearly all the tile, not a narrow road within a decorative scene. Preserve asphalt color/grain/scale and curb block size of reference. No white side lines, arrows, stop lines, crosswalks, traffic, plants, buildings or furniture. OVERRIDE road and curb geometry above: output only a pedestrian crosswalk PAINT DECAL,1024x512 horizontal rectangular canvas, native transparent alpha everywhere except paint. Exactly SEVEN parallel off-white vertical rectangular painted bars spaced evenly in one horizontal row across the width; each bar long axis vertical, so traffic travels up/down and pedestrians cross left/right. Bars span y12%-88%, total group spans x5%-95%, equal bar width and equal gap width, crisp softly worn edges, same off-white fine chalky paint texture as reference center dash. No asphalt, no stones/curbs, no shadow, no numbers, no outline or frame, no checkerboard. Transparent spaces between every bar. Keep bars separate, straight, uniform, bright and readable at small tablet size.",
+    "source": "../sources/zebra.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-75dce210-1d99-439d-ab1e-e1d371076cef.png",
+    "attempts": [
+      {
+        "version": 1,
+        "prompt": "Create one production 2D game road-texture sprite, in the exact hand-painted material style of the supplied straight road. STRICT ORTHOGRAPHIC TOP VIEW, no perspective, no volumetric base, no scenery, no text or symbols except road paint. Match reference medium warm gray fine-grained asphalt, pale warm ivory/beige rectangular stone curb, softly worn off-white center dashes. Neutral even lighting with only tiny material creases, NO cast shadows or overall gradient; tile will rotate by 90 degrees. Road strip is 7 world units wide, asphalt about 84% of total width, curb stones about 8% on each side. Every OPEN edge must carry asphalt from 8% to92% along that edge, with a curb segment in the two remaining 8% bands; the asphalt MUST run flush through the image border at openings. Do not put a curb across an open entry. This is a VERY WIDE road filling nearly all the tile, not a narrow road within a decorative scene. Preserve asphalt color/grain/scale and curb block size of reference. No white side lines, arrows, stop lines, crosswalks, traffic, plants, buildings or furniture. OVERRIDE road and curb geometry above: output only a pedestrian crosswalk PAINT DECAL,1024x512 horizontal rectangular canvas, native transparent alpha everywhere except paint. Exactly SEVEN parallel off-white vertical rectangular painted bars spaced evenly in one horizontal row across the width; each bar long axis vertical, so traffic travels up/down and pedestrians cross left/right. Bars span y12%-88%, total group spans x5%-95%, equal bar width and equal gap width, crisp softly worn edges, same off-white fine chalky paint texture as reference center dash. No asphalt, no stones/curbs, no shadow, no numbers, no outline or frame, no checkerboard. Transparent spaces between every bar. Keep bars separate, straight, uniform, bright and readable at small tablet size.",
+        "refs": [
+          "/Users/gusev/gameios/assets-src/design-pass/kit/city/sources/road-strip-a.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-45adf3c7-ef64-40b5-8278-90e371dc09a9.png",
+        "rejection": "Entry geometry or alpha edge contamination; see README for targeted repair.",
+        "sha256": "c7cf78d7498d8be856d39a837d74835e2de69d067e52ddcfb3720a41b4afc07a",
+        "bytes": 1516960,
+        "preservedSource": "../sources/zebra-v1.png"
+      },
+      {
+        "version": 2,
+        "prompt": "Clean this crosswalk decal. Keep ONLY the seven main separate vertical off-white painted rectangular bars in their current positions, equal thickness, with gently rounded crisp edges and subtle internal paint texture. REMOVE EVERY stray white blotch, splatter, halo and speck in the gaps and outside these seven rectangles. All gaps and outer margins must be pure transparent alpha0. No shadows, no stones, no dark outline, no grain outside bars. Bright off-white paint, minimal wear strictly inside bars. 1024x512 landscape, native transparent background. This is a tidy new road marking, not grunge.",
+        "refs": [
+          "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-45adf3c7-ef64-40b5-8278-90e371dc09a9.png"
+        ],
+        "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-75dce210-1d99-439d-ab1e-e1d371076cef.png",
+        "sha256": "03de44b4798af18251a1ad4126ea439c9d166356dad1e6da79bb0bbdf393b104",
+        "bytes": 1165426,
+        "preservedSource": "../sources/zebra.png"
+      }
+    ]
+  }
+]
