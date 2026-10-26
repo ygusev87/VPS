@@ -1,0 +1,80 @@
+{
+  "status": "Installed on dev; Claude review pending",
+  "task": "dc282456-dbbb-49f5-8884-06865a473544",
+  "provider": "Tripo Studio UI",
+  "reference": "../house-a-v1.png",
+  "referenceSha256": "5ef44092d5afbcff1edbf5cbca8a4285f09208c086e97c48b3987f882898bc2a",
+  "approval": "m0249",
+  "generation": {
+    "orders": 1,
+    "includedCredits": 25,
+    "balanceBefore": 5775,
+    "balanceAfter": 5750,
+    "model": "H3.1 HD maximum quality",
+    "trianglesRequested": 7000,
+    "texture": true,
+    "resolution": 2048,
+    "delight": true,
+    "PBR": false,
+    "Ultra": false,
+    "segmentation": false,
+    "AIEnhance": false
+  },
+  "raw": {
+    "path": "assets-src/raw/city-v2-2026-10-26/house-a.glb",
+    "bytes": 828640,
+    "sha256": "4c46b30bf3ddd5d50508ea35444731b7b00f375f0924f2b39d8ceb9bdc5c1dc5",
+    "front": "+Z",
+    "git": "ignored original backup"
+  },
+  "canonical": {
+    "yawDegrees": 90,
+    "front": "+X",
+    "bytes": 681444,
+    "uniformScaleOnly": true
+  },
+  "final": {
+    "path": "public/models/house-a.glb",
+    "bytes": 112888,
+    "sha256": "fe8e4e4a465b861e6b7ebd76121751766b2999decb68a096d4535799c176ecc1",
+    "triangles": 6474,
+    "materials": 1,
+    "alpha": "OPAQUE",
+    "texture": "512x512 WebP",
+    "compression": "Meshopt",
+    "sizeAtRuntime": [
+      5,
+      4.7705,
+      3.8839
+    ],
+    "instances": 4,
+    "spatialBatches": 4,
+    "note": "Existing patched() makes one batch per42-unit map patch; shared geometry/material, no4x texture payload."
+  },
+  "qa": {
+    "buildBase": "d002612",
+    "viewports": [
+      [
+        1180,
+        660
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "poleTerminalsChecked": 56,
+    "staticOcclusions": 0,
+    "taskReservationsChecked": 62,
+    "houseReservationOverlaps": 0,
+    "minRoadGap": 1.258,
+    "tests": "21 passed",
+    "typecheck": "passed",
+    "console": "One QA-only start click occurred before __game was ready; retry after loading passed. Not a production error.",
+    "limitations": [
+      "No physical iPad or Home-screen PWA/FPS measurement.",
+      "Current fixed critter poses; no arbitrary user-added parts or complete animated trajectory sweep.",
+      "Geometric visibility plus visual spot checks; not pixel-perfect hit-target or fingertip ergonomics proof."
+    ]
+  }
+}

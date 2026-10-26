@@ -1,0 +1,820 @@
+{
+  "historicalRoofControl": false,
+  "source": "Actual main.ts q=1; current local scene via THREE.Raycaster",
+  "buildLabel": "версия d002612 · 26.10, 07:58",
+  "viewport": [
+    1180,
+    660
+  ],
+  "checkedPoles": 14,
+  "blockedTerminals": 0,
+  "outsideCanvas": 0,
+  "outsidePlayArea": 0,
+  "results": [
+    {
+      "name": "LIGHT_POLE",
+      "control": false,
+      "centerXZ": [
+        10.5,
+        19.5
+      ],
+      "task": "car",
+      "phase": "day",
+      "camera": [
+        6,
+        21.56833,
+        34.1733
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            11.12,
+            0.48,
+            20.02
+          ],
+          "screen": {
+            "x": 878.89125,
+            "y": 419.38242
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            9.88,
+            0.48,
+            20.02
+          ],
+          "screen": {
+            "x": 808.9254,
+            "y": 419.38242
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "SUB_POLE",
+      "control": false,
+      "centerXZ": [
+        -23.5,
+        31.5
+      ],
+      "task": "tram",
+      "phase": "day",
+      "camera": [
+        -21,
+        28.95284,
+        52.93322
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            -22.88,
+            0.48,
+            32.02
+          ],
+          "screen": {
+            "x": 513.90245,
+            "y": 358.60107
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            -24.12,
+            0.48,
+            32.02
+          ],
+          "screen": {
+            "x": 463.71046,
+            "y": 358.60107
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "BAKERY_POLE",
+      "control": false,
+      "centerXZ": [
+        -12.5,
+        -17
+      ],
+      "task": "baker",
+      "phase": "day",
+      "camera": [
+        -8.75,
+        23.9683,
+        -1.10473
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            -11.88,
+            0.48,
+            -16.48
+          ],
+          "screen": {
+            "x": 430.08279,
+            "y": 435.91635
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            -13.12,
+            0.48,
+            -16.48
+          ],
+          "screen": {
+            "x": 366.72901,
+            "y": 435.91635
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "PARK_POLE",
+      "control": false,
+      "centerXZ": [
+        -28.5,
+        -4.5
+      ],
+      "task": "car4",
+      "phase": "day",
+      "camera": [
+        -34,
+        37.0642,
+        24.26007
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            -27.88,
+            0.48,
+            -3.98
+          ],
+          "screen": {
+            "x": 779.28483,
+            "y": 324.45895
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            -29.12,
+            0.48,
+            -3.98
+          ],
+          "screen": {
+            "x": 740.933,
+            "y": 324.45895
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "WASH_POLE",
+      "control": false,
+      "centerXZ": [
+        -34.5,
+        5.5
+      ],
+      "task": "car7",
+      "phase": "day",
+      "camera": [
+        -35.75,
+        30.79897,
+        33.3732
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            -33.88,
+            0.48,
+            6.02
+          ],
+          "screen": {
+            "x": 655.62671,
+            "y": 214.74151
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            -35.12,
+            0.48,
+            6.02
+          ],
+          "screen": {
+            "x": 612.10953,
+            "y": 214.74151
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "CRANE_POLE",
+      "control": false,
+      "centerXZ": [
+        -31,
+        17
+      ],
+      "task": "builder",
+      "phase": "day",
+      "camera": [
+        -36,
+        23.04524,
+        35.92528
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            -30.38,
+            0.48,
+            17.52
+          ],
+          "screen": {
+            "x": 865.9342,
+            "y": 286.10816
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            -31.62,
+            0.48,
+            17.52
+          ],
+          "screen": {
+            "x": 805.05192,
+            "y": 286.10816
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "HOUSE_POLE",
+      "control": false,
+      "centerXZ": [
+        -34,
+        -23
+      ],
+      "task": "grandma",
+      "phase": "day",
+      "camera": [
+        -37.225,
+        23.41446,
+        -7.38672
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            -33.38,
+            0.48,
+            -22.48
+          ],
+          "screen": {
+            "x": 790.8276,
+            "y": 432.38439
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            -34.62,
+            0.48,
+            -22.48
+          ],
+          "screen": {
+            "x": 726.06135,
+            "y": 432.38439
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "BRIDGE_POLE",
+      "control": false,
+      "centerXZ": [
+        31,
+        -4.5
+      ],
+      "task": "boat",
+      "phase": "day",
+      "camera": [
+        34,
+        33.56816,
+        20.78317
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            31.62,
+            0.48,
+            -3.98
+          ],
+          "screen": {
+            "x": 507.66887,
+            "y": 345.7704
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            30.38,
+            0.48,
+            -3.98
+          ],
+          "screen": {
+            "x": 464.77366,
+            "y": 345.7704
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "KITTEN_POLE",
+      "control": false,
+      "centerXZ": [
+        -8.5,
+        1
+      ],
+      "task": "kitten",
+      "phase": "evening",
+      "camera": [
+        -11.85,
+        33.56816,
+        25.28317
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            -7.88,
+            0.48,
+            1.52
+          ],
+          "screen": {
+            "x": 729.4089,
+            "y": 373.89006
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            -9.12,
+            0.48,
+            1.52
+          ],
+          "screen": {
+            "x": 685.86557,
+            "y": 373.89006
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "CLUB_POLE",
+      "control": false,
+      "centerXZ": [
+        40.5,
+        -11.5
+      ],
+      "task": "child6",
+      "phase": "evening",
+      "camera": [
+        44.75,
+        23.78369,
+        9.00128
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            41.12,
+            0.48,
+            -10.98
+          ],
+          "screen": {
+            "x": 420.79008,
+            "y": 250.9284
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            39.88,
+            0.48,
+            -10.98
+          ],
+          "screen": {
+            "x": 362.98835,
+            "y": 250.9284
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "STATION_POLE",
+      "control": false,
+      "centerXZ": [
+        24,
+        17.5
+      ],
+      "task": "firefighter",
+      "phase": "evening",
+      "camera": [
+        36,
+        32.6451,
+        37.81318
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            24.62,
+            0.48,
+            18.02
+          ],
+          "screen": {
+            "x": 156.64109,
+            "y": 476.2597
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            23.38,
+            0.48,
+            18.02
+          ],
+          "screen": {
+            "x": 109.42097,
+            "y": 476.2597
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "FIRE_POLE",
+      "control": false,
+      "centerXZ": [
+        40.5,
+        12.5
+      ],
+      "task": "firefighter",
+      "phase": "evening",
+      "camera": [
+        36,
+        32.6451,
+        37.81318
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            41.12,
+            0.48,
+            13.02
+          ],
+          "screen": {
+            "x": 770.20953,
+            "y": 325.4538
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            39.88,
+            0.48,
+            13.02
+          ],
+          "screen": {
+            "x": 726.56504,
+            "y": 325.4538
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "SHOP_POLE",
+      "control": false,
+      "centerXZ": [
+        53,
+        -31
+      ],
+      "task": "shopkeeper",
+      "phase": "night",
+      "camera": [
+        50.25,
+        42.8919,
+        7.05568
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            53.62,
+            0.48,
+            -30.48
+          ],
+          "screen": {
+            "x": 675.21574,
+            "y": 228.43586
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            52.38,
+            0.48,
+            -30.48
+          ],
+          "screen": {
+            "x": 643.86039,
+            "y": 228.43586
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    },
+    {
+      "name": "SCHOOL_POLE",
+      "control": false,
+      "centerXZ": [
+        20.5,
+        -19.2
+      ],
+      "task": "child3",
+      "phase": "morning",
+      "camera": [
+        17.5,
+        31.72203,
+        3.34319
+      ],
+      "insets": {
+        "left": 12,
+        "top": 76.5,
+        "bottom": 102,
+        "right": 12
+      },
+      "terminals": [
+        {
+          "terminal": "a",
+          "world": [
+            21.12,
+            0.48,
+            -18.68
+          ],
+          "screen": {
+            "x": 725.52817,
+            "y": 386.49333
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        },
+        {
+          "terminal": "b",
+          "world": [
+            19.88,
+            0.48,
+            -18.68
+          ],
+          "screen": {
+            "x": 679.10416,
+            "y": 386.49333
+          },
+          "insideCanvas": true,
+          "insidePlayArea": true,
+          "opaqueHits": [],
+          "dynamicHits": [],
+          "transparentHits": []
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "Rays use actual focused perspective camera and loaded scenery meshes; sprites/own pole excluded.",
+    "Opaque=opacity>=.9, visible hierarchy/material, depthTest enabled. This is a conservative geometry check, not pixel segmentation.",
+    "Moving critters/life extras are listed separately.",
+    "No player-added parts/wires; those can create later occlusion.",
+    "Desktop IAB, not physical iPad or touch/FPS/PWA test."
+  ]
+}

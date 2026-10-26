@@ -1,0 +1,363 @@
+{
+  "viewport": [
+    1180,
+    660
+  ],
+  "houses": [
+    {
+      "instance": [
+        -26,
+        -28,
+        0,
+        1
+      ],
+      "box": {
+        "min": [
+          -28.5,
+          0,
+          -29.941969054231393
+        ],
+        "max": [
+          -23.5,
+          4.7705008087405005,
+          -26.058030945768607
+        ]
+      },
+      "nearest": [
+        {
+          "name": "grandma:button",
+          "kind": "task-square4",
+          "gap": 4
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 4.54908
+        },
+        {
+          "name": "grandma:lift",
+          "kind": "task-square4",
+          "gap": 8.1
+        },
+        {
+          "name": "baker:heater",
+          "kind": "task-square4",
+          "gap": 9.83837
+        },
+        {
+          "name": "grandma",
+          "kind": "fixed-critter-current-bbox",
+          "gap": 11.6315
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 12.43505
+        },
+        {
+          "name": "baker:belt",
+          "kind": "task-square4",
+          "gap": 14.13831
+        },
+        {
+          "name": "car4:button",
+          "kind": "task-square4",
+          "gap": 15.55803
+        }
+      ],
+      "overlaps": []
+    },
+    {
+      "instance": [
+        24,
+        -29,
+        0,
+        1
+      ],
+      "box": {
+        "min": [
+          21.5,
+          0,
+          -30.941969054231393
+        ],
+        "max": [
+          26.5,
+          4.7705008087405005,
+          -27.058030945768607
+        ]
+      },
+      "nearest": [
+        {
+          "name": "child3:mirror",
+          "kind": "task-square4",
+          "gap": 3.05803
+        },
+        {
+          "name": "child3:laser",
+          "kind": "task-square4",
+          "gap": 3.94988
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 6.61803
+        },
+        {
+          "name": "child3:bell",
+          "kind": "task-square4",
+          "gap": 7.96077
+        },
+        {
+          "name": "child3:lightSensor",
+          "kind": "task-square4",
+          "gap": 8.55803
+        },
+        {
+          "name": "child5",
+          "kind": "fixed-critter-current-bbox",
+          "gap": 10.32948
+        },
+        {
+          "name": "child4",
+          "kind": "fixed-critter-current-bbox",
+          "gap": 11.87873
+        },
+        {
+          "name": "child3",
+          "kind": "fixed-critter-current-bbox",
+          "gap": 13.19446
+        }
+      ],
+      "overlaps": []
+    },
+    {
+      "instance": [
+        -50,
+        32.2,
+        3.141592653589793,
+        1
+      ],
+      "box": {
+        "min": [
+          -52.5,
+          0,
+          30.25803094576861
+        ],
+        "max": [
+          -47.5,
+          4.7705008087405005,
+          34.141969054231396
+        ]
+      },
+      "nearest": [
+        {
+          "name": "builder:towerCrane",
+          "kind": "task-square4",
+          "gap": 14.15786
+        },
+        {
+          "name": "substation",
+          "kind": "actual-part-bbox",
+          "gap": 15.96
+        },
+        {
+          "name": "builder",
+          "kind": "fixed-critter-current-bbox",
+          "gap": 16.63948
+        },
+        {
+          "name": "builder:switch",
+          "kind": "task-square4",
+          "gap": 17.36868
+        },
+        {
+          "name": "tram:switch",
+          "kind": "task-square4",
+          "gap": 19
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 19.3536
+        },
+        {
+          "name": "car7:carWash",
+          "kind": "task-square4",
+          "gap": 21.6018
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 22.67
+        }
+      ],
+      "overlaps": []
+    },
+    {
+      "instance": [
+        14.5,
+        21,
+        0,
+        1
+      ],
+      "box": {
+        "min": [
+          12,
+          0,
+          19.058030945768607
+        ],
+        "max": [
+          17,
+          4.7705008087405005,
+          22.941969054231393
+        ]
+      },
+      "nearest": [
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 0.17
+        },
+        {
+          "name": "car:trafficLight",
+          "kind": "task-square4",
+          "gap": 4.5
+        },
+        {
+          "name": "pole",
+          "kind": "actual-part-bbox",
+          "gap": 5.67891
+        },
+        {
+          "name": "firefighter:firetruck",
+          "kind": "task-square4",
+          "gap": 7.4101
+        },
+        {
+          "name": "firefighter",
+          "kind": "fixed-critter-current-bbox",
+          "gap": 12.62098
+        },
+        {
+          "name": "child:windGen",
+          "kind": "task-square4",
+          "gap": 14.05803
+        },
+        {
+          "name": "child2",
+          "kind": "fixed-critter-current-bbox",
+          "gap": 17.94359
+        },
+        {
+          "name": "child",
+          "kind": "fixed-critter-current-bbox",
+          "gap": 19.51085
+        }
+      ],
+      "overlaps": []
+    }
+  ],
+  "houseBatches": [
+    {
+      "count": 1,
+      "trianglesEach": 6474,
+      "matrices": [
+        [
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          -26,
+          2.3852503299713135,
+          -28,
+          1
+        ]
+      ]
+    },
+    {
+      "count": 1,
+      "trianglesEach": 6474,
+      "matrices": [
+        [
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          24,
+          2.3852503299713135,
+          -29,
+          1
+        ]
+      ]
+    },
+    {
+      "count": 1,
+      "trianglesEach": 6474,
+      "matrices": [
+        [
+          -2.5,
+          0,
+          -3.0616169991140216e-16,
+          0,
+          0,
+          2.5,
+          0,
+          0,
+          3.0616169991140216e-16,
+          0,
+          -2.5,
+          0,
+          -50,
+          2.3852503299713135,
+          32.20000076293945,
+          1
+        ]
+      ]
+    },
+    {
+      "count": 1,
+      "trianglesEach": 6474,
+      "matrices": [
+        [
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          0,
+          0,
+          0,
+          2.5,
+          0,
+          14.5,
+          2.3852503299713135,
+          21,
+          1
+        ]
+      ]
+    }
+  ],
+  "reservations": 62,
+  "limitations": [
+    "Task reservations are conservative4x4 squares; initial fixed critter poses only.",
+    "No arbitrary player parts or all animated trajectories."
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "status": "Reference pending review; no Tripo order",
+  "status": "Reference approved m0249; installed GLB, Claude review pending",
   "reference": "house-a-v1.png",
   "sourceRevision": "7454b85",
   "instancesXZ": [
@@ -25,7 +25,7 @@
     "rotateY": -1.5707963267948966,
     "scale": 1,
     "normalisedFront": "+X",
-    "gameFront": "+Z"
+    "gameFront": "yaw0:+Z; southwestern instance yawPI:-Z"
   },
   "targets": {
     "fullXYZ": [
@@ -115,5 +115,151 @@
         "z1": 23.1
       }
     }
-  ]
+  ],
+  "measured": {
+    "source": "house-a-3d/measurements.json",
+    "fullXYZ": [
+      5,
+      4.7705,
+      3.8839
+    ],
+    "instances": [
+      {
+        "center": [
+          -26,
+          -28
+        ],
+        "yaw": 0,
+        "scale": 1,
+        "worldBox": {
+          "min": [
+            -28.5,
+            0,
+            -29.942
+          ],
+          "max": [
+            -23.5,
+            4.7705,
+            -26.058
+          ]
+        },
+        "roadClearances": [
+          11.0693,
+          35.0616,
+          11.0693,
+          41.9825,
+          20.5,
+          43.228,
+          23.058,
+          49.2334,
+          51.058,
+          15.2642,
+          15.2642
+        ],
+        "boardClearance": 7.558
+      },
+      {
+        "center": [
+          24,
+          -29
+        ],
+        "yaw": 0,
+        "scale": 1,
+        "worldBox": {
+          "min": [
+            21.5,
+            0,
+            -30.942
+          ],
+          "max": [
+            26.5,
+            4.7705,
+            -27.058
+          ]
+        },
+        "roadClearances": [
+          12.058,
+          36.058,
+          40.3441,
+          12.058,
+          18.5,
+          43.2178,
+          47.9691,
+          24.058,
+          52.058,
+          54.9009,
+          54.9009
+        ],
+        "boardClearance": 6.558
+      },
+      {
+        "center": [
+          -50,
+          32.2
+        ],
+        "yaw": 3.141592653589793,
+        "scale": 1,
+        "worldBox": {
+          "min": [
+            -52.5,
+            0,
+            30.258
+          ],
+          "max": [
+            -47.5,
+            4.7705,
+            34.142
+          ]
+        },
+        "roadClearances": [
+          46.2757,
+          28.8627,
+          28.8627,
+          66.2801,
+          61.3677,
+          44.5,
+          27.258,
+          72.7959,
+          1.258,
+          32.7383,
+          37.2614
+        ],
+        "boardClearance": 2.5
+      },
+      {
+        "center": [
+          14.5,
+          21
+        ],
+        "yaw": 0,
+        "scale": 1,
+        "worldBox": {
+          "min": [
+            12,
+            0,
+            19.058
+          ],
+          "max": [
+            17,
+            4.7705,
+            22.942
+          ]
+        },
+        "roadClearances": [
+          28.058,
+          4.058,
+          29.2825,
+          4.058,
+          32.3358,
+          9,
+          35.8031,
+          16.3359,
+          2.058,
+          47.0341,
+          50.2794
+        ],
+        "boardClearance": 14.558
+      }
+    ]
+  }
 }
