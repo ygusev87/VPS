@@ -1,0 +1,200 @@
+{
+  "status": "reference-ready-for-review-no-GLB-no-rig",
+  "request": "m0135; main delegation for three separate adult references",
+  "sourceRevision": "609e891ecb8c1a873721192bc46eec33266f0b33",
+  "sourceHashes": {
+    "src/city.ts": "dff29bac7a5e5929ab803384e99584bcf8141ff1980abc75eb208ef481ec3694",
+    "src/storymap.ts": "170333b2820f4fbda5cf1c2d09c3a65dfa69e759d23f3efd57fe10c21290dcfb",
+    "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+    "src/rig.ts": "a2308bc1c15256f5b123dea34aca70a5f8393b6437aaac05b024a71fe8e27d74"
+  },
+  "sourceEvidence": [
+    {
+      "path": "src/city.ts",
+      "line": 410,
+      "text": "this.critter('firefighter', { height: 1.6 }, v(ENGINE_SPOT.x + 3, ENGINE_SPOT.z - 1), 1.6, 0.4);"
+    },
+    {
+      "path": "src/city.ts",
+      "line": 35,
+      "text": "export const CITY_MODELS = ['pole', 'baker', 'grandma', 'child', 'kitten', 'raccoon', 'raccoon-rig', 'tram', 'car', 'fountain-basin', 'bench', 'street-lamp', 'bins', 'pigeon',"
+    },
+    {
+      "path": "src/city.ts",
+      "line": 303,
+      "text": "protected critterModel(base: string, fit: Fit, name: string): THREE.Object3D {"
+    },
+    {
+      "path": "src/storymap.ts",
+      "line": 607,
+      "text": "protected critter(name: string, fit: Fit, p: THREE.Vector3, height: number, face = 0): Critter {"
+    },
+    {
+      "path": "src/storymap.ts",
+      "line": 191,
+      "text": "const LOOKERS = new Set(['cow', 'pig', 'sheep', 'goat', 'horse']);"
+    },
+    {
+      "path": "src/storymap.ts",
+      "line": 895,
+      "text": "private animateCritter(c: Critter, dt: number) {"
+    }
+  ],
+  "runtimeName": "firefighter",
+  "intendedDestination": "public/models/firefighter.glb",
+  "reference": {
+    "file": "firefighter-v1.png",
+    "sha256": "ea55b40aec3c001302e8958b8921e5363f5757636f8bc2ea04a42dbc2b162270",
+    "bytes": 1703129,
+    "pixels": [
+      1145,
+      1374
+    ],
+    "mode": "RGB"
+  },
+  "character": {
+    "adult": true,
+    "styleReferences": [
+      "assets-src/city-v1/characters-style-v1.png",
+      "assets-src/city-v1/baker-v1.png",
+      "assets-src/city-v2/people/child/child-v1.png"
+    ],
+    "palette": "Коралловая одежда, жёлтый шлем, светлые широкие полосы, тёмные ботинки.",
+    "pose": "спокойная низкая A-поза; руки/ноги разделены; без реквизита/подставки/текста"
+  },
+  "instances": [
+    {
+      "name": "firefighter",
+      "positionXYZ": [
+        28.5,
+        0,
+        12.5
+      ],
+      "fit": {
+        "height": 1.6
+      },
+      "critterHeight": 1.6,
+      "yawRadians": 0.4,
+      "expression": "v(ENGINE_SPOT.x + 3, ENGINE_SPOT.z - 1)"
+    }
+  ],
+  "taskContext": "Вечернее спасение: пожарная машина, лестница и насос; пожарный остаётся рядом с исходной площадкой.",
+  "fixedAnchorsXZ": {
+    "ENGINE_SPOT": [
+      25.5,
+      13.5
+    ],
+    "STATION_POLE": [
+      24,
+      17.5
+    ],
+    "LADDER_SPOT": [
+      43.5,
+      9.5
+    ],
+    "HYDRANT_SPOT": [
+      44,
+      14
+    ],
+    "FIRE_POLE": [
+      40.5,
+      12.5
+    ],
+    "BURNING": [
+      48,
+      8
+    ]
+  },
+  "loader": {
+    "inCITY_MODELS": false,
+    "currentFallback": "STAND_INS.firefighter procedural person",
+    "modelLookup": "CityMap.critterModel tries model(base, fit) before STAND_INS; StoryMap tags meshes with the same critter name for picking.",
+    "integrationNeeded": "Add firefighter to CITY_MODELS when its GLB is integrated. Copying the file alone will not preload it.",
+    "noRuntimeEditsInThisDelivery": true,
+    "integrationAcknowledged": "Claude m0364 confirmed that firefighter will be added to CITY_MODELS when its GLB is delivered; it is still absent in the pinned source."
+  },
+  "geometryTargets": {
+    "measured": false,
+    "trianglesTargetMax": 4000,
+    "materialTarget": 1,
+    "baseColorTargetPixels": [
+      512,
+      512
+    ],
+    "baseColorTargetEncoding": "WebP",
+    "GLBBytesTargetMax": 200000,
+    "orientationProposal": {
+      "forward": "+X",
+      "up": "+Y",
+      "feetY": 0,
+      "centerXZ": [
+        0,
+        0
+      ]
+    },
+    "widthDepth": null,
+    "note": "Only a raster reference exists. Target budgets and base/axes are requirements for future GLB, not measured properties of this PNG. PNG file size is not the GLB budget.",
+    "constraints": [
+      "uniform fit.height1.6; retain current center/yaw/critterHeight",
+      "no floor disc or detached accessories",
+      "closed leg/arm surfaces with clear silhouettes; avoid welding hands to torso",
+      "matte opaque materials; no baked emission on clothing bands"
+    ]
+  },
+  "animation": {
+    "current": "Whole-character bob/hop/spin/flip from StoryMap; these adults are absent from LOOKERS and RIGS. No separate limb movement or human animation clip is wired.",
+    "builderSpecific": null,
+    "initialModelScope": "Reference prepared for a static humanoid GLB; no rig or articulated-limb order in this task. Preserve current whole-body responses.",
+    "ifArticulatedMotionIsRequired": "Any future arm gesture or walking cycle needs a separate agreed human rig or named limb nodes with shoulder/hip pivots and rest transforms, plus runtime integration. Do not reuse quadruped pose()/RIGS for humans.",
+    "relatedDecision": "m0364 explicitly accepts static child + whole-body skipping, without rig. It does not supply a tested adult rig.",
+    "noClaim": "A-pose in an image proves neither joints, skin weights, hidden geometry nor working animation.",
+    "decisionOwner": "Claude: final adult animation contract. Static GLB with current whole-body responses is the proposal; a paid rig is not an established requirement."
+  },
+  "preserve": [
+    "двор пожарной части и площадку машины",
+    "видимость кольца/клемм машины и STATION_POLE",
+    "лестницу/насос/путь спуска котёнка через канал"
+  ],
+  "acceptanceAfterGLB": [
+    "decode GLB, measure full fitted bounds including headwear and arms",
+    "check axes/feet/no pedestal, texture/material/triangle/file-size limits",
+    "verify configured preload and actual GLB rendering instead of fallback",
+    "check task camera at390x844 and1024x768: character, rings, poles, terminals and nearby moving parts",
+    "verify real tap and whole-body hop/spin/flip with safe clearance; no limb-animation claim without implementation"
+  ],
+  "visualReferenceReview": {
+    "result": "pass-for-reference-review",
+    "observation": "Взрослый корпус и длинные ноги относительно child-v1; цельная красно-коралловая форма и жёлтый шлем читаются. Пустые кисти отделены от корпуса, обе ноги/ботинки видны. Поля шлема целиком внутри изображения; запас сверху небольшой, обрезки нет.",
+    "oneCompleteCharacter": true,
+    "matteToyStyle": true,
+    "handsEmpty": true,
+    "armAndLegSilhouettesSeparated": true,
+    "textOrPedestalObserved": false,
+    "reviewLimits": "Single visible view only. Back/underside surfaces, future 3D bounds, topology, weights and real game scale remain unmeasured."
+  },
+  "generation": {
+    "tool": "built-in image_gen.imagegen",
+    "callsForCharacter": 1,
+    "totalCallsInTrio": 3,
+    "editsOrRegenerations": 0,
+    "TripoOrders": 0,
+    "HiggsfieldOrders": 0,
+    "APICalls": 0,
+    "additionalPurchases": 0,
+    "promptRecord": "prompt.json"
+  },
+  "fixedPathsXYZ": {
+    "catDescent": [
+      [
+        47,
+        3.7,
+        8
+      ],
+      [
+        42.5,
+        0,
+        10.7
+      ]
+    ]
+  }
+}

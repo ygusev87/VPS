@@ -1,0 +1,49 @@
+{
+  "date": "2026-10-26",
+  "timezone": "Asia/Bangkok",
+  "tool": "built-in image_gen.imagegen",
+  "invocationCountForCharacter": 1,
+  "workflow": "New character derived from approved style reference images; no CLI/API/Higgsfield/Tripo",
+  "toolArguments": {
+    "prompt": "Use case: stylized-concept.\nAsset type: one image-to-3D character reference for the existing children's toy-town game.\nReference images, in order: (1) accepted city character style sheet, palette and soft sculpted visual language; (2) existing baker, the primary ADULT body and material reference; (3) new child, only for consistent finish and facial language, NOT for age or proportions. Create a distinct new adult character. Do not reproduce the character sheet or include any reference character beside the new subject.\nStyle: matte, softly rounded, dimensional toy-like 3D sculpture; smooth broad color regions, very subtle material texture, soft warm studio light. Visually belongs beside the baker. Clearly a grown adult: adult-sized torso, broader shoulders and longer limbs than the child, approximately four head lengths tall excluding headwear. Friendly expressive dark eyes and a gentle closed-mouth smile, never an infant or child wearing a costume.\nComposition: a single complete standing character, centered, near-front three-quarter view with a very small turn, all of headwear, hands and both feet fully inside the portrait canvas with generous clean margin. Warm cream seamless background, very faint contact shadow directly under shoes. No pedestal, platform, disc or scenery.\nPose: calm symmetric low A-pose, straight relaxed arms angled roughly 20–25 degrees away from torso, clear visible air gaps between both arms/hands and body. Legs separately readable, feet about shoulder width, clear gap between legs. Both hands empty; simple rounded fingers and distinct thumbs, wrists connected. Feet flat, upright balanced stance; no waving, walking or action pose.\nConstraints: one character only, no additional views, no inset, no annotations, no lettering/numerals/logos/watermarks, no detachable tools or small floating accessories, no backpack or handheld prop. Clothing details should be broad shallow forms suitable for a later low-poly model; no tiny hardware. This is a visual reference, not a mesh, rig or animation.\nCharacter: A friendly adult woman shopkeeper, visibly mature adult rather than a child. Short neatly sculpted dark brown bob hair ending around the jaw, unobstructed face; no hat. Lavender cardigan over a cream blouse, simple dark muted plum trousers, rounded muted brown shoes. Broad simple clothing surfaces, minimal buttons as shallow attached shapes, no apron ties, glasses, jewelry, shopping bags, merchandise or props. Calm welcoming shopkeeper expression, adult torso and limb proportions like the baker.",
+    "referenced_image_paths": [
+      "/Users/gusev/gameios/assets-src/city-v1/characters-style-v1.png",
+      "/Users/gusev/gameios/assets-src/city-v1/baker-v1.png",
+      "/Users/gusev/gameios/assets-src/city-v2/people/child/child-v1.png"
+    ],
+    "transparent_background": false
+  },
+  "nativeOutputPath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-95c994c4-c7c5-47a3-8ddf-7936a10b5e83.png",
+  "projectOutput": "shopkeeper-v1.png",
+  "alterations": "None; original image bytes copied without editing.",
+  "new3DOrders": 0,
+  "externalPaidOrders": 0,
+  "output": {
+    "path": "assets-src/city-v2/people/shopkeeper/shopkeeper-v1.png",
+    "sha256": "b948b92e27b252a4667b587137cb0d29b5607d834c37b8843c9ff13577b8a9bb",
+    "bytes": 1633813,
+    "format": "PNG",
+    "pixels": [
+      1145,
+      1374
+    ],
+    "mode": "RGB"
+  },
+  "references": [
+    {
+      "path": "assets-src/city-v1/characters-style-v1.png",
+      "role": "accepted character style sheet",
+      "sha256": "aaf4ea6322ce3feaa67d5eef1e23036dee7e05856ca7988460d63cabcba7cc65"
+    },
+    {
+      "path": "assets-src/city-v1/baker-v1.png",
+      "role": "primary adult baker body/material reference",
+      "sha256": "39572048b537f433f46d9762e9286ec7455aa532109cda7a368798e04232cb39"
+    },
+    {
+      "path": "assets-src/city-v2/people/child/child-v1.png",
+      "role": "finish consistency only, not age/proportions",
+      "sha256": "5281bb3fce3376ea88f4cd408df74aa17f61c8bc002b782009d73f43d3a0936f"
+    }
+  ]
+}
