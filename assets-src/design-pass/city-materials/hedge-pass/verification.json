@@ -1,0 +1,109 @@
+{
+  "dateUtc": "2026-10-26T08:43:30.581753+00:00",
+  "candidateSha256": "94fcc0dcfe2bd08b53c2bf3dee8cfbcdab334137122e86c7fa41a05d23e98924",
+  "preservedArrays": [
+    "FENCES",
+    "MEADOW",
+    "PATHS",
+    "PONDS",
+    "SOIL"
+  ],
+  "preservedOriginalGroups": 14,
+  "refinesPreviousGardenGroups": 3,
+  "planting": [
+    {
+      "model": "tree-oak-lite",
+      "planned": 11,
+      "drawn": 11,
+      "rejected": []
+    },
+    {
+      "model": "bush-lite",
+      "planned": 224,
+      "drawn": 224,
+      "rejected": []
+    },
+    {
+      "model": "flower-cluster",
+      "planned": 129,
+      "drawn": 129,
+      "rejected": []
+    }
+  ],
+  "staticAudit": "audit.json",
+  "qa": {
+    "views": 42,
+    "viewports": [
+      [
+        1180,
+        820
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        1024,
+        768
+      ]
+    ],
+    "rays": 80514,
+    "newOcclusions": 0,
+    "errors": [],
+    "contextLost": false
+  },
+  "renderCost": {
+    "quality": 2,
+    "viewport": [
+      1180,
+      820
+    ],
+    "before": {
+      "shadow=False,ao=True": {
+        "triangles": 1297051,
+        "calls": 908
+      },
+      "shadow=True,ao=False": {
+        "triangles": 976143,
+        "calls": 753
+      },
+      "shadow=False,ao=False": {
+        "triangles": 650448,
+        "calls": 613
+      },
+      "shadow=True,ao=True": {
+        "triangles": 1622746,
+        "calls": 1048
+      }
+    },
+    "after": {
+      "shadow=True,ao=False": {
+        "triangles": 1159963,
+        "calls": 757
+      },
+      "shadow=False,ao=True": {
+        "triangles": 1421699,
+        "calls": 910
+      },
+      "shadow=False,ao=False": {
+        "triangles": 712772,
+        "calls": 614
+      },
+      "shadow=True,ao=True": {
+        "triangles": 1868890,
+        "calls": 1053
+      }
+    },
+    "sceneAndShadowCap": 1500000,
+    "fpsMeasured": false
+  },
+  "tests": {
+    "vitest": "21/21",
+    "typecheck": "pass"
+  },
+  "limitations": [
+    "Desktop browser with mobile viewport, not physical iPad.",
+    "FPS, offline/PWA and end-to-end robot remain integration checks.",
+    "All replacement planting tested against 31 actual work rings and 30 terminals; existing scenery occlusion is outside this pass."
+  ]
+}

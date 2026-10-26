@@ -1,0 +1,11 @@
+{
+  "baseRevision": "3b2864ce558a73a532ce4e91482298cc0f6c10fe",
+  "candidateSha256": "94fcc0dcfe2bd08b53c2bf3dee8cfbcdab334137122e86c7fa41a05d23e98924",
+  "snapshot": "/private/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/city-hedge-bubhto1e",
+  "gameHashes": {
+    "src/city.ts": "4aaa6515d6800936f012a823517e9078e2b95114ea9b4092e8bc5d937cc7e85a",
+    "src/decor.ts": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342",
+    "src/ground.ts": "5701a8451b206c576b2addc1ea7ac5bcab4810201263b31ad7cd2008a80d1cb1",
+    "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+  }
+}

@@ -1,0 +1,443 @@
+{
+  "source": {
+    "baseRevision": "3b2864ce558a73a532ce4e91482298cc0f6c10fe",
+    "candidateSha256": "94fcc0dcfe2bd08b53c2bf3dee8cfbcdab334137122e86c7fa41a05d23e98924",
+    "snapshot": "/private/var/folders/8s/k3mvv94d5w51xqsn_d8rffnm0000gn/T/city-hedge-bubhto1e",
+    "gameHashes": {
+      "src/city.ts": "4aaa6515d6800936f012a823517e9078e2b95114ea9b4092e8bc5d937cc7e85a",
+      "src/decor.ts": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342",
+      "src/ground.ts": "5701a8451b206c576b2addc1ea7ac5bcab4810201263b31ad7cd2008a80d1cb1",
+      "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+    }
+  },
+  "mode": "after",
+  "area": "wide",
+  "viewport": [
+    1180,
+    820
+  ],
+  "quality": 2,
+  "budget": {
+    "before": {
+      "batches": 52,
+      "instances": 312,
+      "triangles": 376119
+    },
+    "after": {
+      "batches": 53,
+      "instances": 403,
+      "triangles": 438443
+    },
+    "additions": {
+      "batches": 21,
+      "instances": 364,
+      "triangles": 310091
+    }
+  },
+  "acceptance": [
+    {
+      "model": "tree-oak-lite",
+      "planned": 11,
+      "drawn": 11,
+      "rejected": []
+    },
+    {
+      "model": "bush-lite",
+      "planned": 224,
+      "drawn": 224,
+      "rejected": []
+    },
+    {
+      "model": "flower-cluster",
+      "planned": 129,
+      "drawn": 129,
+      "rejected": []
+    }
+  ],
+  "runtimeKeep": [
+    [
+      5.5,
+      17.5
+    ],
+    [
+      -26.5,
+      34.5
+    ],
+    [
+      -12,
+      -21.5
+    ],
+    [
+      -8.5,
+      -18.5
+    ],
+    [
+      -34,
+      -4.5
+    ],
+    [
+      -29.5,
+      -8.5
+    ],
+    [
+      7,
+      -3
+    ],
+    [
+      12,
+      3
+    ],
+    [
+      -38,
+      8
+    ],
+    [
+      -33.5,
+      9
+    ],
+    [
+      -38.6,
+      -26.5
+    ],
+    [
+      -34.5,
+      -27.5
+    ],
+    [
+      -34,
+      20
+    ],
+    [
+      -29.5,
+      21.5
+    ],
+    [
+      35.9,
+      0
+    ],
+    [
+      31.5,
+      -8.5
+    ],
+    [
+      -11.5,
+      -2.5
+    ],
+    [
+      -15.2,
+      1
+    ],
+    [
+      -11.5,
+      4.5
+    ],
+    [
+      43,
+      -9.5
+    ],
+    [
+      43,
+      -7.6
+    ],
+    [
+      46.5,
+      -6.8
+    ],
+    [
+      25.5,
+      13.5
+    ],
+    [
+      43.5,
+      9.5
+    ],
+    [
+      44,
+      14
+    ],
+    [
+      48,
+      -33
+    ],
+    [
+      50.5,
+      -29.5
+    ],
+    [
+      17,
+      -22
+    ],
+    [
+      24,
+      -22
+    ],
+    [
+      24,
+      -16.5
+    ],
+    [
+      17,
+      -17.5
+    ],
+    [
+      -6,
+      -21.8
+    ],
+    [
+      -5.2,
+      4.2
+    ],
+    [
+      -6.4,
+      3.4
+    ],
+    [
+      -40.45,
+      -26.75
+    ],
+    [
+      2.5,
+      1.5
+    ],
+    [
+      4,
+      2.5
+    ],
+    [
+      -37.5,
+      16.2
+    ],
+    [
+      -13,
+      -5.5
+    ],
+    [
+      49,
+      -8.3
+    ],
+    [
+      50.5,
+      -8.8
+    ],
+    [
+      28.5,
+      12.5
+    ],
+    [
+      47,
+      8
+    ],
+    [
+      47.5,
+      -19
+    ],
+    [
+      9,
+      -21.5
+    ],
+    [
+      10.6,
+      -21.5
+    ],
+    [
+      12.2,
+      -21.5
+    ],
+    [
+      10.5,
+      19.5
+    ],
+    [
+      -23.5,
+      31.5
+    ],
+    [
+      -12.5,
+      -17
+    ],
+    [
+      -28.5,
+      -4.5
+    ],
+    [
+      -34.5,
+      5.5
+    ],
+    [
+      -31,
+      17
+    ],
+    [
+      -34,
+      -23
+    ],
+    [
+      31,
+      -4.5
+    ],
+    [
+      -8.5,
+      1
+    ],
+    [
+      40.5,
+      -11.5
+    ],
+    [
+      24,
+      17.5
+    ],
+    [
+      40.5,
+      12.5
+    ],
+    [
+      53,
+      -31
+    ],
+    [
+      20.5,
+      -19.2
+    ],
+    [
+      -30,
+      31.5
+    ],
+    [
+      -3,
+      1
+    ],
+    [
+      -41,
+      20.5
+    ],
+    [
+      45,
+      -22.5
+    ]
+  ],
+  "renderCost": {
+    "method": "12 complete Stage.render calls; reset per call, includes scheduled AO/shadow passes. Not FPS.",
+    "samples": [
+      {
+        "frame": 45964,
+        "calls": 757,
+        "triangles": 1159963,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": false
+      },
+      {
+        "frame": 45987,
+        "calls": 910,
+        "triangles": 1421699,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": true
+      },
+      {
+        "frame": 46007,
+        "calls": 757,
+        "triangles": 1159963,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": false
+      },
+      {
+        "frame": 46027,
+        "calls": 614,
+        "triangles": 712772,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": false
+      },
+      {
+        "frame": 46050,
+        "calls": 1053,
+        "triangles": 1868890,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": true
+      },
+      {
+        "frame": 46070,
+        "calls": 614,
+        "triangles": 712772,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": false
+      },
+      {
+        "frame": 46090,
+        "calls": 757,
+        "triangles": 1159963,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": false
+      },
+      {
+        "frame": 46113,
+        "calls": 910,
+        "triangles": 1421699,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": true
+      },
+      {
+        "frame": 46133,
+        "calls": 757,
+        "triangles": 1159963,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": false
+      },
+      {
+        "frame": 46153,
+        "calls": 614,
+        "triangles": 712772,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": false
+      },
+      {
+        "frame": 46176,
+        "calls": 1053,
+        "triangles": 1868890,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": true,
+        "aoRefresh": true
+      },
+      {
+        "frame": 46196,
+        "calls": 614,
+        "triangles": 712772,
+        "points": 0,
+        "lines": 0,
+        "shadowRefresh": false,
+        "aoRefresh": false
+      }
+    ],
+    "minTriangles": 712772,
+    "maxTriangles": 1868890,
+    "maxCalls": 1053
+  },
+  "occlusion": {
+    "sampledTargets": 1917,
+    "terminalCount": 30,
+    "workingCircles": 31,
+    "addedOcclusions": []
+  },
+  "errors": [],
+  "contextLost": false
+}
