@@ -1,0 +1,5 @@
+{
+  "phaseAndUITapHarnessSha256": "146dda6f78d1c0494443114c124d805d50dbbd3582ca2eaf3d1290c2e1fc6ca9",
+  "finalHarnessSha256": "204a05e9c8a66808abf99d3f92d3330280f9ebfa0bd68c6043dceda08089108f",
+  "change": "Added one read-only authored UI button to report pest.feather identity. Previously captured phases and taps remain unchanged; no runtime or model edits."
+}

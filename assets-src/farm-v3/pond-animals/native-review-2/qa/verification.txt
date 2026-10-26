@@ -1,0 +1,120 @@
+{
+  "status": "pass-with-console-note",
+  "revision": "f8ce77eb68abfcfe06cffdb9b50227f8cc18c2c5",
+  "verifiedSnapshotFiles": 403,
+  "models": {
+    "frog": "380cc5a98dd466dbff9b4ae8a3daccdcb0c8f336934ebfd0e84f21fd396e84cc",
+    "crow": "381d8a6f12ef23e58988d5b37dac35760f6644449cad583a4ee5bd7fb095c167"
+  },
+  "geometry": {
+    "frog": [
+      {
+        "node": "body-mesh",
+        "mesh": "body-geometry",
+        "triangles": 2808
+      }
+    ],
+    "crow": [
+      {
+        "node": "body-mesh",
+        "mesh": "body-geometry",
+        "triangles": 3862
+      },
+      {
+        "node": "wing-left-mesh",
+        "mesh": "wing-left-geometry",
+        "triangles": 528
+      },
+      {
+        "node": "wing-right-mesh",
+        "mesh": "wing-right-geometry",
+        "triangles": 616
+      }
+    ]
+  },
+  "views": {
+    "standard": 12,
+    "shoulders": 4,
+    "ui": 2,
+    "total": 18
+  },
+  "frog": {
+    "steps": 480,
+    "facingMinimum": 0.9999999999999999,
+    "minimumVisibleY": 0,
+    "returnDelta": [
+      0,
+      0,
+      0
+    ],
+    "apex": [
+      -1.25,
+      1.2,
+      0
+    ]
+  },
+  "crow": {
+    "landingSteps": 336,
+    "fleeSteps": 276,
+    "pivotDriftAt1e6Precision": 0,
+    "mirrorError": 0,
+    "wingRanges": [
+      [
+        -1.199989,
+        0.799991
+      ],
+      [
+        -0.799991,
+        1.199989
+      ]
+    ],
+    "fold": [
+      [
+        0.279932,
+        -1.049924,
+        0
+      ],
+      [
+        -0.279932,
+        1.049924,
+        0
+      ]
+    ],
+    "visualFinding": "Four close views cover both wing extremes from front/rear: shoulder surfaces remain joined, no background-visible hole or detached pivot observed. Exactly body + left wing + right wing in GLB; tail belongs to body."
+  },
+  "feather": {
+    "geometry": {
+      "type": "ConeGeometry",
+      "parameters": {
+        "radius": 0.06,
+        "height": 0.4,
+        "radialSegments": 6,
+        "heightSegments": 1,
+        "openEnded": false,
+        "thetaStart": 0,
+        "thetaLength": 6.283185307179586
+      },
+      "triangles": 12
+    },
+    "parentIsScenery": true,
+    "insideSculpt": false,
+    "source": {
+      "file": "src/pest.ts",
+      "constructorLine": 57,
+      "tapEnablesLine": 148,
+      "updateBeginsLine": 205,
+      "sha256": "cb38aa96a857defc6c53f615676713ff7629895d591effc6e7a8a17cf774dbb5"
+    },
+    "meaning": "Original separately falling feather after the crow is scared. Not a GLB mesh, detached wing, or QA marker."
+  },
+  "console": {
+    "entries": 1,
+    "note": "One MutationObserver.observe TypeError without a source URL was captured. Origin unconfirmed; it is not attributed to the game or dismissed as an IAB bug."
+  },
+  "harness": {
+    "phaseAndUITapHarnessSha256": "146dda6f78d1c0494443114c124d805d50dbbd3582ca2eaf3d1290c2e1fc6ca9",
+    "finalHarnessSha256": "204a05e9c8a66808abf99d3f92d3330280f9ebfa0bd68c6043dceda08089108f",
+    "change": "Added one read-only authored UI button to report pest.feather identity. Previously captured phases and taps remain unchanged; no runtime or model edits."
+  },
+  "limits": "Controlled landing beside a real wire; automatic choose and peck/zapped not tested. Browser mouse clicks, not physical touchscreen. No iPad, PWA, FPS or thermal stability claim."
+}

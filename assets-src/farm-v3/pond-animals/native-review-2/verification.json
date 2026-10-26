@@ -1,0 +1,373 @@
+{
+  "status": "pass-with-console-note",
+  "revision": "f8ce77eb68abfcfe06cffdb9b50227f8cc18c2c5",
+  "verifiedSnapshotFiles": 403,
+  "models": {
+    "frog": "380cc5a98dd466dbff9b4ae8a3daccdcb0c8f336934ebfd0e84f21fd396e84cc",
+    "crow": "381d8a6f12ef23e58988d5b37dac35760f6644449cad583a4ee5bd7fb095c167"
+  },
+  "geometry": {
+    "frog": [
+      {
+        "node": "body-mesh",
+        "mesh": "body-geometry",
+        "triangles": 2808
+      }
+    ],
+    "crow": [
+      {
+        "node": "body-mesh",
+        "mesh": "body-geometry",
+        "triangles": 3862
+      },
+      {
+        "node": "wing-left-mesh",
+        "mesh": "wing-left-geometry",
+        "triangles": 528
+      },
+      {
+        "node": "wing-right-mesh",
+        "mesh": "wing-right-geometry",
+        "triangles": 616
+      }
+    ]
+  },
+  "views": {
+    "standard": 12,
+    "shoulders": 4,
+    "ui": 2,
+    "total": 18,
+    "images": [
+      {
+        "name": "frog-rest-1180",
+        "width": 1180,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "c23706c4e0f9617e2902c7186286c4e95bf6b53fe686bc97b94b80a058dae1bf",
+        "completeGameViewport": true
+      },
+      {
+        "name": "frog-apex-1180",
+        "width": 1180,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "a4fb9181f25c21e7a058256474d05a130ac0b87069aa5d441bba6c08c6e8efa9",
+        "completeGameViewport": true
+      },
+      {
+        "name": "frog-return-1180",
+        "width": 1180,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "7e02224ca66e5a4bd5241fc8b0485e3144da1efc804e29af58b8a10028d096b6",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-folded-1180",
+        "width": 1180,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "ab2c7696ece3254c44024a0c594d03142cbfac5bbcd97a4749eff7048091a2cf",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-up-1180",
+        "width": 1180,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "accab1b67b2cc89fc00ab1e0e96b3818941adc22ba3deabcd88bf15f975e1696",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-down-1180",
+        "width": 1180,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "140ecfd574dc2031499cd3201f7e1ddbf9f4494e795cfb03ef6bd898da163a11",
+        "completeGameViewport": true
+      },
+      {
+        "name": "frog-rest-390",
+        "width": 390,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "8df9010766ee7341378f064908aa1b226653f7846383f28e587e0ad45d66c0c4",
+        "completeGameViewport": true
+      },
+      {
+        "name": "frog-apex-390",
+        "width": 390,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "2b5339153a969826af261a7af08242569f6f7139f66ba9bfc587c0154120cd96",
+        "completeGameViewport": true
+      },
+      {
+        "name": "frog-return-390",
+        "width": 390,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "2a67e6c9ee96865d5ed8498fc736778cfb63c325759a0cfdd6fa565b77170c1f",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-folded-390",
+        "width": 390,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "09986205f4a1640c776a46819f2888573654ed12ee8606fd7ff1fc45a61867f3",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-up-390",
+        "width": 390,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "5f87e68de86353a3aeae649a20f4c6eabf5b48a0bd77e06b1e33f965f8f8cd9d",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-down-390",
+        "width": 390,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "65b8d78cfc4887c1139629eb622eff8cdc55b5d3c2022a9d91484eec7a7fa8d6",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-up-shoulders-front",
+        "width": 1180,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "2380bbebda6b80d4e249d52cc874fd18342d425ab40d4b0e6d9c9f57986ae5a4",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-up-shoulders-rear",
+        "width": 1180,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "61d4d1bd064fe7bf99a0383fb37ebc19618985e57842fd72dadbfc25d3049ef0",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-down-shoulders-front",
+        "width": 1180,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "a3102c5cd53e6a3d62f3552cac8507245e49e6f4cbdb405eba8aaa8accc25fef",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-down-shoulders-rear",
+        "width": 1180,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "a9228191ae8e604eea80b7f28cf4063a4cf1a1c83bf30836a0da65bad8a77096",
+        "completeGameViewport": true
+      },
+      {
+        "name": "frog-ui-tap-390",
+        "width": 390,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "02d34e6955e8ce7b87dfe009aa2eedc4a4971152e88a4a969edd68e6a428efab",
+        "completeGameViewport": true
+      },
+      {
+        "name": "crow-ui-tap-390",
+        "width": 390,
+        "size": [
+          1280,
+          1100
+        ],
+        "format": "jpeg",
+        "sha256": "a08859115cde040491caab1eafd997e61c9ff30ed84814f226ba658bd9155fac",
+        "completeGameViewport": true
+      }
+    ]
+  },
+  "frog": {
+    "steps": 480,
+    "facingMinimum": 0.9999999999999999,
+    "minimumVisibleY": 0,
+    "returnDelta": [
+      0,
+      0,
+      0
+    ],
+    "apex": [
+      -1.25,
+      1.2,
+      0
+    ]
+  },
+  "crow": {
+    "landingSteps": 336,
+    "fleeSteps": 276,
+    "pivotDriftAt1e6Precision": 0,
+    "mirrorError": 0,
+    "wingRanges": [
+      [
+        -1.199989,
+        0.799991
+      ],
+      [
+        -0.799991,
+        1.199989
+      ]
+    ],
+    "fold": [
+      [
+        0.279932,
+        -1.049924,
+        0
+      ],
+      [
+        -0.279932,
+        1.049924,
+        0
+      ]
+    ],
+    "visualFinding": "Four close views cover both wing extremes from front/rear: shoulder surfaces remain joined, no background-visible hole or detached pivot observed. Exactly body + left wing + right wing in GLB; tail belongs to body."
+  },
+  "ui": {
+    "frog": {
+      "before": -1,
+      "after": 0,
+      "events": [
+        {
+          "type": "pointerdown",
+          "isTrusted": true,
+          "pointerType": "mouse",
+          "x": 220,
+          "y": 411
+        },
+        {
+          "type": "pointerup",
+          "isTrusted": true,
+          "pointerType": "mouse",
+          "x": 220,
+          "y": 411
+        }
+      ],
+      "method": "Real mouse pointer events on the game canvas at 390×844 through unchanged Input/StoryMap raycast. No physical-touchscreen claim."
+    },
+    "crow": {
+      "before": "sneak",
+      "after": "flee",
+      "events": [
+        {
+          "type": "pointerdown",
+          "isTrusted": true,
+          "pointerType": "mouse",
+          "x": 220,
+          "y": 408
+        },
+        {
+          "type": "pointerup",
+          "isTrusted": true,
+          "pointerType": "mouse",
+          "x": 220,
+          "y": 408
+        }
+      ],
+      "method": "Real mouse pointer events on the game canvas at 390×844 through unchanged Input/StoryMap raycast. No physical-touchscreen claim."
+    }
+  },
+  "feather": {
+    "geometry": {
+      "type": "ConeGeometry",
+      "parameters": {
+        "radius": 0.06,
+        "height": 0.4,
+        "radialSegments": 6,
+        "heightSegments": 1,
+        "openEnded": false,
+        "thetaStart": 0,
+        "thetaLength": 6.283185307179586
+      },
+      "triangles": 12
+    },
+    "parentIsScenery": true,
+    "insideSculpt": false,
+    "source": {
+      "file": "src/pest.ts",
+      "constructorLine": 57,
+      "tapEnablesLine": 148,
+      "updateBeginsLine": 205,
+      "sha256": "cb38aa96a857defc6c53f615676713ff7629895d591effc6e7a8a17cf774dbb5"
+    },
+    "meaning": "Original separately falling feather after the crow is scared. Not a GLB mesh, detached wing, or QA marker."
+  },
+  "console": {
+    "entries": 1,
+    "logs": [
+      {
+        "level": "error",
+        "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+        "timestamp": "2026-10-26T11:09:37.038Z"
+      }
+    ],
+    "windowErrors": 0,
+    "contextLoss": false,
+    "note": "One MutationObserver.observe TypeError without a source URL was captured. Origin unconfirmed; it is not attributed to the game or dismissed as an IAB bug."
+  },
+  "harness": {
+    "phaseAndUITapHarnessSha256": "146dda6f78d1c0494443114c124d805d50dbbd3582ca2eaf3d1290c2e1fc6ca9",
+    "finalHarnessSha256": "204a05e9c8a66808abf99d3f92d3330280f9ebfa0bd68c6043dceda08089108f",
+    "change": "Added one read-only authored UI button to report pest.feather identity. Previously captured phases and taps remain unchanged; no runtime or model edits."
+  },
+  "limits": "Controlled landing beside a real wire; automatic choose and peck/zapped not tested. Browser mouse clicks, not physical touchscreen. No iPad, PWA, FPS or thermal stability claim."
+}

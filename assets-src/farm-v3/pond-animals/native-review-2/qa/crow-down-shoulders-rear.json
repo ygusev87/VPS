@@ -1,0 +1,159 @@
+{
+  "revision": "f8ce77eb68abfcfe06cffdb9b50227f8cc18c2c5",
+  "models": {
+    "frog": "380cc5a98dd466dbff9b4ae8a3daccdcb0c8f336934ebfd0e84f21fd396e84cc",
+    "crow": "381d8a6f12ef23e58988d5b37dac35760f6644449cad583a4ee5bd7fb095c167"
+  },
+  "quality": 2,
+  "contextLost": false,
+  "errors": [],
+  "frameRect": {
+    "x": 0,
+    "y": 158,
+    "width": 1180,
+    "height": 660,
+    "top": 158,
+    "right": 1180,
+    "bottom": 818,
+    "left": 0
+  },
+  "camera": {
+    "position": [
+      -21.234693,
+      2.063409,
+      9.033397
+    ],
+    "direction": [
+      0.611052,
+      -0.50322,
+      0.611052
+    ],
+    "fov": 26
+  },
+  "build": "версия f8ce77e pond native review",
+  "viewport": [
+    1180,
+    660
+  ],
+  "closeup": true,
+  "shoulderView": "rear",
+  "scenario": "Controlled land path beside an actual wire between two existing poles; original update/tap methods, automatic choose bypassed.",
+  "kind": "crow",
+  "act": "flee",
+  "t": 0.483509,
+  "clock": 103.083509,
+  "visible": true,
+  "root": [
+    -19.554299,
+    0.338113,
+    10.713211
+  ],
+  "bodyY": 0.05644260646543638,
+  "bounds": {
+    "min": [
+      -19.919302,
+      0.394555,
+      10.308564
+    ],
+    "max": [
+      -19.189297,
+      0.964555,
+      11.119018
+    ],
+    "size": [
+      0.730005,
+      0.57,
+      0.810454
+    ]
+  },
+  "wings": [
+    {
+      "name": "wing-left",
+      "rotation": [
+        0.8,
+        -0.003171,
+        0
+      ],
+      "pivotInSculpt": [
+        0.118187,
+        0.301724,
+        0.122617
+      ],
+      "worldPivot": [
+        -19.436112,
+        0.69628,
+        10.835828
+      ],
+      "bounds": {
+        "min": [
+          -19.482135,
+          0.397925,
+          10.761507
+        ],
+        "max": [
+          -19.397766,
+          0.757989,
+          11.119018
+        ],
+        "size": [
+          0.084369,
+          0.360064,
+          0.35751
+        ]
+      },
+      "meshes": [
+        {
+          "name": "wing-left-mesh",
+          "triangles": 528
+        }
+      ]
+    },
+    {
+      "name": "wing-right",
+      "rotation": [
+        -0.8,
+        0.003171,
+        0
+      ],
+      "pivotInSculpt": [
+        0.11652,
+        0.304204,
+        -0.122617
+      ],
+      "worldPivot": [
+        -19.437779,
+        0.698759,
+        10.590595
+      ],
+      "bounds": {
+        "min": [
+          -19.482744,
+          0.399606,
+          10.308564
+        ],
+        "max": [
+          -19.397432,
+          0.759337,
+          10.665731
+        ],
+        "size": [
+          0.085312,
+          0.359731,
+          0.357167
+        ]
+      },
+      "meshes": [
+        {
+          "name": "wing-right-mesh",
+          "triangles": 616
+        }
+      ]
+    }
+  ],
+  "bodyMeshes": [
+    {
+      "name": "body-mesh",
+      "triangles": 3862
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+> electro-table@0.1.0 test
+> vitest run --config qa-vite.config.mjs
+
+
+ RUN  v5.0.5 /Users/gusev/gameios/assets-src/farm-v3/pond-animals/native-review-2/.snapshot
+
+
+ Test Files  4 passed (4)
+      Tests  21 passed (21)
+   Start at  17:56:51
+   Duration  260ms (transform 67%, import 24%, tests 5%, worker 4%)
