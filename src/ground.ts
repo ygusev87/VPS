@@ -6,14 +6,16 @@ import * as THREE from 'three';
 import { RoundedBoxGeometry } from 'three/examples/jsm/geometries/RoundedBoxGeometry.js';
 
 /** Seamless ground tiles (public/textures/farm), seen from straight above. */
-const TILES = ['grass', 'grass-light', 'grass-base', 'grass-meadow', 'path', 'path-earth', 'soil', 'mud', 'pond-bed', 'asphalt', 'paving'] as const;
+const TILES = ['grass', 'grass-light', 'grass-base', 'grass-meadow', 'path', 'path-earth', 'soil', 'mud', 'pond-bed', 'asphalt', 'paving', 'asphalt-a', 'paving-a', 'quay'] as const;
 export type Tile = (typeof TILES)[number];
 const images = new Map<Tile, HTMLImageElement>();
 
 /** Stand-in colours for tiles that failed to load (or are not made yet). */
-const FLAT: Record<Tile, string> = { grass: '#a3c17f', 'grass-light': '#b6d28f', 'grass-base': '#7fb04a', 'grass-meadow': '#9cc455', path: '#d6bd86', 'path-earth': '#c8954f', soil: '#9a7650', mud: '#8a6a46', 'pond-bed': '#c9e6f0', asphalt: '#767b84', paving: '#d8cdbd' };
+const FLAT: Record<Tile, string> = { grass: '#a3c17f', 'grass-light': '#b6d28f', 'grass-base': '#7fb04a', 'grass-meadow': '#9cc455', path: '#d6bd86', 'path-earth': '#c8954f', soil: '#9a7650', mud: '#8a6a46', 'pond-bed': '#c9e6f0', asphalt: '#767b84', paving: '#d8cdbd', 'asphalt-a': '#6f737a', 'paving-a': '#d9c6a4', quay: '#c9bfae' };
 /** How many world units one tile covers. */
-const SIZE: Record<Tile, number> = { grass: 7, 'grass-light': 7, 'grass-base': 7, 'grass-meadow': 7, path: 3.5, 'path-earth': 3.5, soil: 14, mud: 3, 'pond-bed': 4, asphalt: 6, paving: 0.75 };
+const SIZE: Record<Tile, number> = { grass: 7, 'grass-light': 7, 'grass-base': 7, 'grass-meadow': 7, path: 3.5, 'path-earth': 3.5, soil: 14, mud: 3, 'pond-bed': 4, asphalt: 6, paving: 0.75, 'asphalt-a': 6, 'paving-a': 4, quay: 2 };
+/** Tiles that are not seamless by plain repeat: mirrored at every other tile (Codex's paving and quay stone). */
+const MIRRORED: Partial<Record<Tile, true>> = { 'paving-a': true, quay: true };
 
 /** Single painted pictures, laid once over a place (not tiled): the pig yard's mud and its wetness. */
 const PICTURES = ['pig-mud.webp', 'pig-wetness.png', 'soil-bed.webp'] as const;
@@ -66,7 +68,7 @@ function tileTexture(name: Tile): THREE.Texture {
     const hex = parseInt(FLAT[name].slice(1), 16);
     t = new THREE.DataTexture(new Uint8Array([hex >> 16, (hex >> 8) & 255, hex & 255, 255]), 1, 1);
   }
-  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.wrapS = t.wrapT = MIRRORED[name] ? THREE.MirroredRepeatWrapping : THREE.RepeatWrapping;
   t.colorSpace = THREE.SRGBColorSpace;
   t.anisotropy = 8;
   t.generateMipmaps = !!img;
@@ -337,7 +339,8 @@ const CITY = `
   vec3 g2 = texture2D(tHillGrass, p / uScale.z).rgb;
   vec3 green = mix(g1, g2, smoothstep(0.45, 0.8, gFbm(p / 14.0)));
   green = mix(vec3(dot(green, vec3(0.2126, 0.7152, 0.0722))), green, 0.8) * vec3(0.92, 0.93, 0.7);
-  green *= mix(0.84, 1.08, smoothstep(0.15, 0.85, gFbm(p / 9.0 + 3.3)));
+  // The target's lawns are a sunny yellow-green, lighter than the farm's fields.
+  green *= vec3(1.12, 1.1, 0.95) * mix(0.86, 1.08, smoothstep(0.15, 0.85, gFbm(p / 9.0 + 3.3)));
   col = mix(col, vec3(0.74, 0.7, 0.62) * (0.95 + gNoise(p * 3.0) * 0.08), kerb);
   col = mix(col, green, lawn);
   // Asphalt: crisp at the kerb, a darker worn band along its edges.
@@ -464,6 +467,13 @@ export function boardEdge(width: number, depth: number, look: 'farm' | 'city'): 
   side.position.y = -0.5;
   g.add(side);
   return g;
+}
+
+/** A tiled material for building parts (the canal's stone banks): `repeat` tiles over the mesh's UVs. */
+export function tiledMaterial(name: Tile, repeat: [number, number], roughness = 0.85): THREE.MeshStandardMaterial {
+  const t = tileTexture(name);
+  t.repeat.set(...repeat);
+  return new THREE.MeshStandardMaterial({ map: t, roughness });
 }
 
 /** A pond: a sandy bed with a rim of shore, clear water over it, deeper in the middle. */

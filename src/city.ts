@@ -15,7 +15,7 @@
 import * as THREE from 'three';
 import { DECOR, FENCES, MEADOW, PATHS, PONDS, SOIL } from './city-decor';
 import { dressing } from './decor';
-import { boardEdge, flowers, groundMaterial, onLane, pond, type GroundPlan } from './ground';
+import { boardEdge, flowers, groundMaterial, onLane, pond, tiledMaterial, type GroundPlan } from './ground';
 import { sandboxHint, type Hint } from './hints';
 import { clipsOf, hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
@@ -994,7 +994,7 @@ function cityPlan(): GroundPlan {
     mud: [],
     hill: MEADOW[0] ?? { x: 0, z: 0, rx: 0.01, rz: 0.01 },
     meadows: MEADOW.slice(1),
-    tiles: { base: 'paving', hill: 'grass-meadow', lane: 'asphalt', field: 'grass-base', mud: 'grass' },
+    tiles: { base: 'paving-a', hill: 'grass-meadow', lane: 'asphalt-a', field: 'grass-base', mud: 'grass' },
     // The painted city of its target (assets-src/design-pass/variants/city-a.png).
     painted: 'city',
   };
@@ -1056,7 +1056,8 @@ function canal(): THREE.Group {
   water.userData.noAO = true;
   g.add(water);
   for (const dx of [-1, 1]) {
-    const bank = mesh(new THREE.BoxGeometry(0.4, 0.22, len), mat('#c9c1b4', 0.8));
+    // Quay stone along the canal, one tile per two units of length.
+    const bank = mesh(new THREE.BoxGeometry(0.4, 0.22, len), tiledMaterial('quay', [1, len / 2]));
     bank.position.set(CANAL.x + dx * (CANAL.w / 2 + 0.2), 0.11, mid);
     g.add(bank);
   }
