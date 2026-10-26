@@ -1,0 +1,41 @@
+[
+  {
+    "name": "factory-a",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/factory-now-whole.png",
+      "/Users/gusev/gameios/assets-src/design-pass/kit/factory-now-line.png",
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png"
+    ],
+    "prompt": "Use case: style-transfer. Edit IMAGE 1 (factory-now-whole) into one polished concept-art mockup of this exact children's toy-factory game level. IMAGE 2 is only a close-up of the existing upper production line to preserve its stations, not the camera framing. Images 3 and 4 are approved game art references: match their warm cheerful painterly toy-like mobile-game finish, soft readable forms and vivid controlled colors. Maintain IMAGE 1 camera, perspective, entire visible rectangular hall outline, rear window wall, floor coordinates and scale. Keep the six existing task zones in exactly the same locations, all electrical poles/contact stands and small figures in place, long horizontal conveyor through the middle and truck on the right. Keep all white placement outlines and playable paths clear. You may restyle existing machines but don't relocate or bury the gameplay stations. The empty lower half gets themed scenery in separated islands with wide walkways; additions must not intrude into the six upper zones. Warm cream walls, bright windows, yellow safety lanes, uncluttered readable floor, cheerful blue/teal/red toy materials, rich hand-painted polish like the reference maps. High oblique overhead camera identical to IMAGE 1, not eye-level, not a different room. Light from lower left, soft upper-right shadows. No headings, letters, text, UI, watermarks or labels. Single full-width landscape image, same composition as IMAGE 1. VARIANT A \u2014 BUSY TOY WAREHOUSE. Warm sandy cream stone/concrete floor with subtle square seams, golden yellow route markings, teal and tomato-red machinery. Fill lower half with three organized shipping/packing islands: low wooden shelving of colorful toy cars and teddy bears; packing tables with boxes/ribbons; stacks of small cartons on pallets and a tiny forklift lane. Cheerful functional handmade warehouse, orderly and spacious, no giant shelves blocking upper line.",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-630a0684-c2bc-44cc-ad9a-72dae3198b1f.png",
+    "sha256": "5a868826f04543db554a737329a1d77179ff7c1246eec91f1b769bd6b1e108d0",
+    "bytes": 2185077
+  },
+  {
+    "name": "factory-b",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/factory-now-whole.png",
+      "/Users/gusev/gameios/assets-src/design-pass/kit/factory-now-line.png",
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png"
+    ],
+    "prompt": "Use case: style-transfer. Edit IMAGE 1 (factory-now-whole) into one polished concept-art mockup of this exact children's toy-factory game level. IMAGE 2 is only a close-up of the existing upper production line to preserve its stations, not the camera framing. Images 3 and 4 are approved game art references: match their warm cheerful painterly toy-like mobile-game finish, soft readable forms and vivid controlled colors. Maintain IMAGE 1 camera, perspective, entire visible rectangular hall outline, rear window wall, floor coordinates and scale. Keep the six existing task zones in exactly the same locations, all electrical poles/contact stands and small figures in place, long horizontal conveyor through the middle and truck on the right. Keep all white placement outlines and playable paths clear. You may restyle existing machines but don't relocate or bury the gameplay stations. The empty lower half gets themed scenery in separated islands with wide walkways; additions must not intrude into the six upper zones. Warm cream walls, bright windows, yellow safety lanes, uncluttered readable floor, cheerful blue/teal/red toy materials, rich hand-painted polish like the reference maps. High oblique overhead camera identical to IMAGE 1, not eye-level, not a different room. Light from lower left, soft upper-right shadows. No headings, letters, text, UI, watermarks or labels. Single full-width landscape image, same composition as IMAGE 1. VARIANT B \u2014 COZY FACTORY WITH REST AND PLAY-TEST LOUNGE. Warm ivory and pale mint floor with yellow path boundaries, coral and turquoise machinery. Fill lower half with a cozy separated lounge island of rounded benches, low tables, plants and a tea nook, plus a colorful rug with finished toy trains/cars for gentle play testing and a tidy reading/rest corner. It must still clearly be a toy factory, upper production line stays visually dominant, no playground equipment obscuring stations.",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-63ed6ad8-667b-470b-b487-0eae44775451.png",
+    "sha256": "f987c8c393eed3658df871fc6649be7d0784dc48be49314720afba47d5727932",
+    "bytes": 2085489
+  },
+  {
+    "name": "factory-c",
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/kit/factory-now-whole.png",
+      "/Users/gusev/gameios/assets-src/design-pass/kit/factory-now-line.png",
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png",
+      "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png"
+    ],
+    "prompt": "Use case: style-transfer. Edit IMAGE 1 (factory-now-whole) into one polished concept-art mockup of this exact children's toy-factory game level. IMAGE 2 is only a close-up of the existing upper production line to preserve its stations, not the camera framing. Images 3 and 4 are approved game art references: match their warm cheerful painterly toy-like mobile-game finish, soft readable forms and vivid controlled colors. Maintain IMAGE 1 camera, perspective, entire visible rectangular hall outline, rear window wall, floor coordinates and scale. Keep the six existing task zones in exactly the same locations, all electrical poles/contact stands and small figures in place, long horizontal conveyor through the middle and truck on the right. Keep all white placement outlines and playable paths clear. You may restyle existing machines but don't relocate or bury the gameplay stations. The empty lower half gets themed scenery in separated islands with wide walkways; additions must not intrude into the six upper zones. Warm cream walls, bright windows, yellow safety lanes, uncluttered readable floor, cheerful blue/teal/red toy materials, rich hand-painted polish like the reference maps. High oblique overhead camera identical to IMAGE 1, not eye-level, not a different room. Light from lower left, soft upper-right shadows. No headings, letters, text, UI, watermarks or labels. Single full-width landscape image, same composition as IMAGE 1. VARIANT C \u2014 COLORFUL TOY STOREROOM / CREATIVE WORKSHOP. Warm pale ochre workshop floor, turquoise details, yellow safe walkways, sunny cream walls. Lower half arranged as three tidy modular toy-material storage and craft islands: low cubby shelves with colorful bins and toy parts, assembly benches with wooden blocks and paint pots, finished toys organized in open crates, a small wheeled supply trolley. More playful craft workshop than shipping warehouse. Keep clean aisle grid and all machinery/task footprints untouched.",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-0b81ed62-7b5a-4d4b-9145-0916aa54a353.png",
+    "sha256": "8d7c3a3bfb3b43e7eccee101a36c0c71b4f78112d4a3aeaea121042e4dc3d136",
+    "bytes": 2149275
+  }
+]
