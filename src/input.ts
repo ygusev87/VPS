@@ -95,7 +95,8 @@ export class Input {
       const ppu = this.stage.pixelsPerUnit(v);
       const radius = Math.max(24, ppu * 0.42);
       if (d >= radius || d >= bestD) continue;
-      if (!exclude && d > Math.max(12, ppu * 0.22)) {
+      // (A part that cannot be moved has no such doubt: near its post is the post.)
+      if (!exclude && !t.part.seated && !t.part.pinned && d > Math.max(12, ppu * 0.22)) {
         const c = this.stage.project(t.part.root.position);
         if (Math.hypot(x - c.x, y - c.y) < Math.hypot(p.x - c.x, p.y - c.y) * 0.75) continue;
       }
@@ -122,16 +123,7 @@ export class Input {
     this.pointerId = e.pointerId;
 
     const t = this.terminalAt(x, y);
-    if (t) {
-      const wire = new Wire(t);
-      wire.freeEnd = t.attachPoint();
-      this.stage.world.add(wire.group);
-      this.world.loose.add(wire);
-      this.mode = { kind: 'wire', wire, from: t, target: null };
-      for (const o of this.world.terminals()) o.setHighlight(o === t ? 'target' : 'available');
-      this.world.emit({ type: 'wireStart', terminal: t });
-      return;
-    }
+    if (t) return this.startWire(t);
 
     // Wires lie on top of parts, so they get the first look — except over a
     // button or key, where the press goes to the part (unless a hint is
@@ -151,6 +143,17 @@ export class Input {
       const anchor = this.stage.screenToPlane(x, y);
       if (anchor) this.mode = { kind: 'pan', anchor, tap: { x, y } };
     }
+  }
+
+  /** A new wire from this post, following the finger. */
+  private startWire(t: Terminal) {
+    const wire = new Wire(t);
+    wire.freeEnd = t.attachPoint();
+    this.stage.world.add(wire.group);
+    this.world.loose.add(wire);
+    this.mode = { kind: 'wire', wire, from: t, target: null };
+    for (const o of this.world.terminals()) o.setHighlight(o === t ? 'target' : 'available');
+    this.world.emit({ type: 'wireStart', terminal: t });
   }
 
   /**
@@ -234,7 +237,18 @@ export class Input {
         this.hooks.onViewMoved?.();
         break;
       case 'press-part': {
-        if (Math.hypot(x - m.x, y - m.y) > TAP_MOVE && m.part.pinned) {
+        if (Math.hypot(x - m.x, y - m.y) > TAP_MOVE && m.part.seated && m.part.terminals.length) {
+          // On its ring: a drag from it is a wire from its post nearest the finger's start.
+          const v = new THREE.Vector3();
+          const near = [...m.part.terminals].sort((a, b) => {
+            const pa = this.stage.project(a.attachPoint(v)), da = Math.hypot(pa.x - m.x, pa.y - m.y);
+            const pb = this.stage.project(b.attachPoint(v)), db = Math.hypot(pb.x - m.x, pb.y - m.y);
+            return da - db;
+          })[0];
+          this.startWire(near);
+          break;
+        }
+        if (Math.hypot(x - m.x, y - m.y) > TAP_MOVE && (m.part.pinned || m.part.seated)) {
           // Built into the map: dragging it moves the view instead.
           const anchor = this.stage.screenToPlane(m.x, m.y);
           this.mode = anchor ? { kind: 'pan', anchor } : { kind: 'idle' };

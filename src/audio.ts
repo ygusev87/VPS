@@ -231,7 +231,8 @@ export class Sfx {
   }
 
   /** Buzzer part: beep-beep while on. */
-  setBuzzer(on: boolean) {
+  /** The buzzer's beeping; `soft`: it has gone on a while — now and then, quietly. */
+  setBuzzer(on: boolean, soft = false) {
     const ctx = this.ctx;
     if (!ctx || !this.master) return;
     if (!this.buzz) {
@@ -251,9 +252,9 @@ export class Sfx {
       const t0 = ctx.currentTime;
       g.setValueAtTime(0, t0);
       for (let i = 0; i < 20; i++) {
-        const t = t0 + i * 0.3;
-        g.setValueAtTime(0.05, t);
-        g.setValueAtTime(0, t + 0.16);
+        const t = t0 + i * (soft ? 2.4 : 0.3);
+        g.setValueAtTime(soft ? 0.012 : 0.05, t);
+        g.setValueAtTime(0, t + (soft ? 0.12 : 0.16));
       }
     } else {
       g.setValueAtTime(0, ctx.currentTime);

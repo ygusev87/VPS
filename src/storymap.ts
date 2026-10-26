@@ -258,6 +258,8 @@ export abstract class StoryMap {
     this.day = p.day ?? 1;
     this.phase = p.phase;
     this.restoreExtra(p);
+    // Parts left standing on their rings stay put, as when they were put there.
+    for (const part of this.world.parts) if (!part.pinned && this.onAnyRing(part)) part.seated = true;
     this.phaseT = 0;
     this.night = NIGHT[this.phase];
     this.stage.setNightAmount(this.night);
@@ -358,6 +360,7 @@ export abstract class StoryMap {
         if (!s.kinds.includes(part.kind) || part.root.position.distanceTo(s.spot) > SNAP_R || this.taken(s, part)) continue;
         this.slides = this.slides.filter((sl) => sl.part !== part);
         this.slides.push({ part, to: s.spot.clone() });
+        part.seated = true;
         this.focused = n;
         this.picked = true;
         n.critter.hop = 1;
@@ -378,6 +381,27 @@ export abstract class StoryMap {
     return this.world.parts.some((p) => p !== part && s.kinds.includes(p.kind) && p.root.position.distanceTo(s.spot) < 0.8);
   }
 
+  /**
+   * The drawer is out of this kind, but one lies somewhere on the map (put
+   * down by the wrong animal, say): it glides over to the ring that wants it.
+   * Returns the part, and where it is going (null: no ring wants it now).
+   */
+  fetch(kind: PartKind): { part: Part; to: THREE.Vector3 | null } | null {
+    const at = this.lastAt ?? new THREE.Vector3();
+    const lying = this.world.parts
+      .filter((p) => p.kind === kind && !p.pinned && !p.seated)
+      .sort((a, b) => a.root.position.distanceTo(at) - b.root.position.distanceTo(at));
+    const part = lying[0];
+    if (!part) return null;
+    const to = this.spotFor(part);
+    if (to) {
+      this.slides = this.slides.filter((sl) => sl.part !== part);
+      this.slides.push({ part, to });
+      this.hooks.placed?.(to.clone());
+    }
+    return { part, to };
+  }
+
   /** Where a part tapped in the drawer should go: the ring that wants it, if any. */
   spotFor(part: Part): THREE.Vector3 | null {
     const free = (n: Need) => (!n.done && this.isNow(n) ? slots(n).find((s) => s.kinds.includes(part.kind) && !this.taken(s, part)) : undefined);
@@ -386,6 +410,7 @@ export abstract class StoryMap {
     if (!n || !s) return null;
     this.focused = n;
     this.picked = true;
+    part.seated = true;
     return s.spot.clone();
   }
 

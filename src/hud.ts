@@ -67,6 +67,8 @@ export interface HudHooks {
   onPickLevel(level: Level): void;
   onNext(): void;
   onSpawn(item: CatalogItem, e: PointerEvent): void;
+  /** The drawer is out of this part (it may be lying on the table already). */
+  onEmpty?(item: CatalogItem): void;
   /** A place picked on the map screen. */
   onPickMap?(id: MapId): void;
   /** Parts as circles on screen, so hint badges can sit on empty table. */
@@ -253,12 +255,18 @@ export class Hud {
       this.hooks.onFlow(on);
     });
 
-    // A drawer: tap opens its variants, dragging takes the one on its face.
+    // A drawer: tap opens its variants, dragging takes the one on its face (a drawer of one kind is that part).
     this.sidebar.querySelectorAll<HTMLElement>('.group').forEach((el) => {
       const group = GROUPS.find((g) => g.id === el.dataset.group)!;
       const btn = el.querySelector<HTMLElement>('.part-btn')!;
       btn.addEventListener('pointerdown', (e) => {
         e.preventDefault();
+        // A drawer of one kind has nothing to open: it is that part (tap puts it on its ring).
+        const only = this.offered(group);
+        if (only.length === 1) {
+          this.take(only[0], e, btn);
+          return;
+        }
         const x0 = e.clientX;
         const y0 = e.clientY;
         const move = (m: PointerEvent) => {
@@ -342,6 +350,7 @@ export class Hud {
   private take(item: CatalogItem, e: PointerEvent, el: HTMLElement) {
     if ((this.trayLeft[item.kind] ?? 0) <= 0) {
       el.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-4px)' }, { transform: 'translateX(4px)' }, { transform: 'translateX(0)' }], 260);
+      this.hooks.onEmpty?.(item);
       return;
     }
     const g = GROUPS.find((gr) => gr.items.includes(item))!;
@@ -716,6 +725,41 @@ export class Hud {
     this.root.appendChild(win);
     setTimeout(() => win.remove(), 1700);
     this.burst(sx, sy, 90);
+  }
+
+  private doneCard: HTMLElement | null = null;
+
+  /**
+   * Everyone on a map is helped: a card with a big star, the next place to go
+   * (its picture) and a "play again" button, so the end is plain to see.
+   */
+  showMapDone(title: string, next: { name: string; img: string }, onGo: () => void, onAgain: () => void) {
+    this.hideMapDone();
+    const c = document.createElement('div');
+    c.className = 'map-done';
+    c.innerHTML = `<div class="map-done-card">
+  <div class="map-done-star">${ICON.star}</div>
+  <h2>${title}: всё сделано!</h2>
+  <div class="map-done-row">
+    <button class="map-done-go" aria-label="${next.name}"><img src="${next.img}" alt=""><span>${next.name} ▶</span></button>
+    <button class="map-done-again" aria-label="Ещё раз"><span class="again-icon">⟲</span><span>Ещё раз</span></button>
+  </div>
+</div>`;
+    c.querySelector('.map-done-go')!.addEventListener('click', () => {
+      this.hideMapDone();
+      onGo();
+    });
+    c.querySelector('.map-done-again')!.addEventListener('click', () => {
+      this.hideMapDone();
+      onAgain();
+    });
+    this.root.appendChild(c);
+    this.doneCard = c;
+  }
+
+  hideMapDone() {
+    this.doneCard?.remove();
+    this.doneCard = null;
   }
 
   showNext(show: boolean) {

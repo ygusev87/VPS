@@ -9,7 +9,7 @@ import { keepMachinePicture, machinePictures, MACHINES } from './machines';
 import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap } from './farm';
 import type { MapHooks, MapProgress, StoryMap } from './storymap';
 import { loadGround } from './ground';
-import { Hud } from './hud';
+import { Hud, MAPS as HUD_MAPS } from './hud';
 import { Input } from './input';
 import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
 import { Part, type PartKind, type PartSound, type Terminal } from './parts/base';
@@ -150,6 +150,9 @@ let currentKey = '';
 let spokenKey = '';
 let buzzerOn = false;
 let buzzerRefresh = 0;
+/** How long the buzzer has been sounding, and whether it has gone quiet. */
+let buzzerFor = 0;
+let buzzerSoft = false;
 
 const hud = new Hud(stage, {
   onRestart: () => {
@@ -218,6 +221,16 @@ const hud = new Hud(stage, {
   onSpawn: (item, e) => {
     input.spawnFromTray(item.kind, e, item.color);
     voice.say(item.say, 3000);
+  },
+  // "This one is gone, but I need it": the one already out on the map comes
+  // over to the ring that wants it (or, on the workbench, says where it is).
+  onEmpty: (item) => {
+    const got = map?.fetch(item.kind);
+    const part = got?.part ?? world.parts.find((p) => p.kind === item.kind && !p.pinned);
+    if (!part) return;
+    part.hop();
+    stage.glance(got?.to ?? part.root.position);
+    voice.say(got?.to ? 'fetchHere' : 'onTable', 0);
   },
 });
 const album = new Album();
@@ -423,7 +436,24 @@ function applyNight(on: boolean) {
 }
 
 /** Open a map (loading its models the first time); `fresh` starts its story over. */
+/** Everyone on a map is helped: a card that says so, and where to go next. */
+function mapDone(name: MapName) {
+  const order: MapName[] = ['farm', 'city', 'factory'];
+  const next = order.slice(order.indexOf(name) + 1).find((id) => HUD_MAPS.find((mp) => mp.id === id)?.open);
+  const card = HUD_MAPS.find((mp) => mp.id === (next ?? 'lab'))!;
+  voice.say('mapAllDone', 0);
+  hud.showMapDone(MAPS[name].level.title, card, () => {
+    sfx.pop();
+    if (next) void startMap(next);
+    else startLevel(FREE_PLAY);
+  }, () => {
+    sfx.pop();
+    void startMap(name, true);
+  });
+}
+
 async function startMap(name: MapName, fresh = false) {
+  hud.hideMapDone();
   const def = MAPS[name];
   await Promise.all([loadModels(def.models), loadGround()]);
   leaveMap();
@@ -449,6 +479,8 @@ async function startMap(name: MapName, fresh = false) {
       hud.celebrate();
       progress.done.add(name);
       saveProgress(progress);
+      // Then the way on: the next map (or the workbench), or this one again.
+      setTimeout(() => map === m && mapDone(name), 3500);
     },
     helped: (who, at) => setTimeout(() => earnSticker(`${name}:${who}`, at), 1500),
     look: (at) => setTimeout(() => glance(at), 1200),
@@ -536,6 +568,7 @@ document.addEventListener('visibilitychange', () => {
 window.addEventListener('pagehide', () => keepPlay(true));
 
 function startLevel(l: Level, instant = false, speak = true) {
+  hud.hideMapDone();
   leaveMap();
   if (progress.place !== 'lab') {
     progress.place = 'lab';
@@ -1023,7 +1056,7 @@ function frame(now: number) {
     if (night !== Part.night) applyNight(night);
     fx.night = night;
     const [n, of] = map.score;
-    const score = `Помощь: ${n} из ${of}`;
+    const score = n >= of ? 'Всё сделано! ★' : `Помощь: ${n} из ${of}`;
     if (score !== mapScore) {
       mapScore = score;
       hud.setMapMode(mapName!, level.title, score);
@@ -1110,10 +1143,14 @@ function frame(now: number) {
   linkTraffic();
   watchCarry(dt);
   buzzerRefresh -= dt;
-  if (buzz !== buzzerOn || (buzz && buzzerRefresh <= 0)) {
+  // A buzzer that keeps going is tiring: after a few seconds it beeps now and then, quietly.
+  buzzerFor = buzz ? buzzerFor + dt : 0;
+  const soft = buzzerFor > 6;
+  if (buzz !== buzzerOn || soft !== buzzerSoft || (buzz && buzzerRefresh <= 0)) {
     buzzerOn = buzz;
+    buzzerSoft = soft;
     buzzerRefresh = 5;
-    sfx.setBuzzer(buzz);
+    sfx.setBuzzer(buzz, soft);
   }
 
   watchShorts(dt);

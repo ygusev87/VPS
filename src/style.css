@@ -1710,3 +1710,82 @@ body.on-map [data-v='night'],
 body.on-map .traces {
   display: none;
 }
+
+/* The end of a map: a big star, where to go next, or the same map again. */
+.map-done {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: #18213d33;
+  z-index: 30;
+  animation: map-done-in 0.35s ease-out;
+}
+@keyframes map-done-in {
+  from {
+    opacity: 0;
+  }
+}
+.map-done-card {
+  width: min(520px, calc(100% - 32px));
+  padding: 22px 22px 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--card);
+  box-shadow: 0 18px 40px #3c2d1440;
+  text-align: center;
+}
+.map-done-star svg,
+.map-done-star .star {
+  width: 76px;
+  height: 76px;
+}
+.map-done-card h2 {
+  margin: 4px 0 16px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--navy);
+}
+.map-done-row {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+.map-done-row button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: #fffaf1;
+  color: var(--navy);
+  font: inherit;
+  font-size: 17px;
+  font-weight: 700;
+  cursor: pointer;
+}
+.map-done-go {
+  flex: 1.4;
+  border-color: var(--teal) !important;
+  box-shadow: 0 0 0 3px #1aa3a133;
+}
+.map-done-go img {
+  width: 100%;
+  max-width: 220px;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.map-done-again {
+  flex: 1;
+  justify-content: center;
+}
+.again-icon {
+  font-size: 44px;
+  line-height: 1;
+  color: var(--teal-deep);
+}

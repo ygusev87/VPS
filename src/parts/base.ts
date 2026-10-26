@@ -276,6 +276,11 @@ export abstract class Part {
   locked = false;
   /** Built into a map: cannot be moved at all (wires and taps still work). */
   pinned = false;
+  /**
+   * Put on the ring a map character asked for: it stays there. A drag from
+   * it draws a wire from its nearest post instead of moving it.
+   */
+  seated = false;
   closed = false;
 
   state: ElectricState = { level: 0, current: 0, voltage: 0, reversed: false, shorted: false };
