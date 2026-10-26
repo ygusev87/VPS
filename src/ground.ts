@@ -105,9 +105,11 @@ export interface GroundPlan {
    * The painted look of a mobile farm game (the farm's design target,
    * assets-src/design-pass/variants/farm-a.png): broad patches in the grass,
    * paths with soft ragged shoulders and pebbles, wet mud with glossy
-   * puddles, furrows in the beds. Off for the city's asphalt and the factory floor.
+   * puddles, furrows in the beds. 'city': the city's own painted look (its target
+   * city-a): paved yards with lawns edged by a pale kerb, soft-shouldered asphalt.
+   * Off for the factory floor.
    */
-  painted?: boolean;
+  painted?: boolean | 'city';
 }
 
 /** Mask pixels per world unit: enough for soft lane edges, small enough for any board. */
@@ -155,11 +157,15 @@ function maskTexture(plan: GroundPlan): THREE.CanvasTexture {
     g.lineWidth = w * MASK_PX;
     g.stroke();
   }
-  g.fillStyle = 'rgb(0,255,0)';
   for (const f of [plan.field, ...(plan.fields ?? [])]) {
-    g.beginPath();
-    g.roundRect(X(f.x0), Z(f.z0), (f.x1 - f.x0) * MASK_PX, (f.z1 - f.z0) * MASK_PX, 0.8 * MASK_PX);
-    g.fill();
+    // The city's lawns: a ramp out past the edge, for a pale kerb round each.
+    const rings = plan.painted === 'city' ? [[0.5, 70], [0.25, 150], [0, 255]] : [[0, 255]];
+    for (const [grow, v] of rings) {
+      g.fillStyle = `rgb(0,${v},0)`;
+      g.beginPath();
+      g.roundRect(X(f.x0 - grow), Z(f.z0 - grow), (f.x1 - f.x0 + 2 * grow) * MASK_PX, (f.z1 - f.z0 + 2 * grow) * MASK_PX, (0.8 + grow) * MASK_PX);
+      g.fill();
+    }
   }
   for (const m of plan.mud) {
     // Painted: a ramp from the middle (1) out past the edge, for a churned ragged rim.
@@ -300,10 +306,36 @@ const PAINTED = `
   earth *= mix(0.9, 1.0, smoothstep(edge, 1.0, m.r));
   col = mix(col, earth, lane);`;
 
+/**
+ * The painted city (GroundPlan.painted 'city', target city-a): paving all over,
+ * gently uneven; lawns of the farm's grass in soft patches, each edged with a
+ * pale kerb stone; asphalt roads with a slightly darker, worn shoulder.
+ * (Slots: base = paving, field = lawn grass, hill = meadow grass, lane = asphalt.)
+ */
+const CITY = `
+  vec3 col = texture2D(tGrass, p / uScale.x).rgb * mix(0.93, 1.05, gNoise(p / 4.0 + 2.0));
+  // Lawns, a kerb ring round them (the mask ramps 1 inside, ~0.6 on the kerb, ~0.27 just outside).
+  float lawn = smoothstep(0.8, 0.92, m.g);
+  float kerb = smoothstep(0.42, 0.52, m.g) * (1.0 - lawn);
+  vec3 g1 = texture2D(tSoil, p / uScale.z).rgb;
+  vec3 g2 = texture2D(tHillGrass, p / uScale.z).rgb;
+  vec3 green = mix(g1, g2, smoothstep(0.45, 0.8, gFbm(p / 14.0)));
+  green = mix(vec3(dot(green, vec3(0.2126, 0.7152, 0.0722))), green, 0.8) * vec3(0.92, 0.93, 0.7);
+  green *= mix(0.84, 1.08, smoothstep(0.15, 0.85, gFbm(p / 9.0 + 3.3)));
+  col = mix(col, vec3(0.74, 0.7, 0.62) * (0.95 + gNoise(p * 3.0) * 0.08), kerb);
+  col = mix(col, green, lawn);
+  // Asphalt: crisp at the kerb, a darker worn band along its edges.
+  float lane = smoothstep(0.84, 0.9, m.r) * (1.0 - lawn);
+  vec3 asph = texture2D(tSand, p / uScale.y).rgb * mix(0.9, 1.04, gNoise(p / 3.0 + 9.0));
+  asph *= mix(0.9, 1.0, smoothstep(0.9, 1.0, m.r));
+  col = mix(col, col * 0.86, smoothstep(0.55, 0.84, m.r) * (1.0 - lane) * 0.5);
+  col = mix(col, asph, lane);`;
+
 /** The board's top: tiles blended by the mask, a little less colourful than painted (the day grading adds it back). */
 export function groundMaterial(plan: GroundPlan): THREE.MeshStandardMaterial {
   const mat = new THREE.MeshStandardMaterial({ roughness: 0.92 });
-  const painted = !!plan.painted;
+  const painted = plan.painted === true;
+  const city = plan.painted === 'city';
   // The pig yard's own painted mud (one picture over its ellipse, north at the top) and its wetness.
   const pigMud = painted && plan.mud[0] ? pictureTexture('pig-mud.webp', false) : null;
   const pigWet = pigMud ? pictureTexture('pig-wetness.png', true) : null;
@@ -358,7 +390,7 @@ uniform sampler2D tBed;
 uniform float uHasBed;
 uniform vec4 uBeds[8];
 float vWet;
-${painted ? NOISE : ''}`,
+${painted || city ? NOISE : ''}`,
       )
       .replace(
         '#include <map_fragment>',
@@ -368,7 +400,7 @@ ${painted ? NOISE : ''}`,
   float hill = 0.0;
   for (int i = 0; i < 4; i++) hill = max(hill, 1.0 - smoothstep(0.75, 1.0, length((p - uHill[i].xy) / uHill[i].zw)));
   vWet = 0.0;
-  ${painted ? PAINTED : PLAIN}
+  ${painted ? PAINTED : city ? CITY : PLAIN}
   col = max(mix(vec3(dot(col, vec3(0.2126, 0.7152, 0.0722))), col, uSaturation), 0.0);
   diffuseColor.rgb *= col;
 }`,
@@ -383,7 +415,7 @@ ${painted ? NOISE : ''}`,
     };
   }
   // Boards of a kind share one compiled shader.
-  mat.customProgramCacheKey = () => (painted ? 'farm-ground-painted' : 'farm-ground');
+  mat.customProgramCacheKey = () => (painted ? 'farm-ground-painted' : city ? 'city-ground-painted' : 'farm-ground');
   return mat;
 }
 

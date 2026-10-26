@@ -994,7 +994,9 @@ function cityPlan(): GroundPlan {
     mud: [],
     hill: MEADOW[0] ?? { x: 0, z: 0, rx: 0.01, rz: 0.01 },
     meadows: MEADOW.slice(1),
-    tiles: { base: 'paving', hill: 'grass-light', lane: 'asphalt', field: 'grass', mud: 'grass' },
+    tiles: { base: 'paving', hill: 'grass-meadow', lane: 'asphalt', field: 'grass-base', mud: 'grass' },
+    // The painted city of its target (assets-src/design-pass/variants/city-a.png).
+    painted: 'city',
   };
 }
 
