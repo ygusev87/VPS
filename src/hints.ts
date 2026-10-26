@@ -5,6 +5,7 @@ import type { Level } from './levels';
 import { PARAMS } from './circuit/solver';
 import type { Part, PartKind, Terminal } from './parts/base';
 import { ButtonPanel } from './parts/extra';
+import { WireBox } from './parts/workshop';
 import { Dynamo } from './parts/more';
 import { aimFor, Laser, LightSensor, Magnet, WindGen } from './parts/chain';
 import { Pole, Solar } from './parts/farm';
@@ -203,6 +204,12 @@ function switchHint(world: World): Hint | null {
       if (sw instanceof ButtonPanel) {
         const i = Number(el.id.split('#')[1]);
         return { type: 'tap', part: sw, phrase: 'tapPanel', local: sw.buttonPoint(i) };
+      }
+      // A wiring box closes by turning its tiles: point at the next one to turn.
+      if (sw instanceof WireBox) {
+        const at = sw.hintPoint();
+        if (at) return { type: 'tap', part: sw, phrase: 'turnTile', local: at };
+        continue;
       }
       return { type: 'tap', part: sw, phrase: SWITCH_PHRASE[sw.kind] ?? 'tapSwitch' };
     }

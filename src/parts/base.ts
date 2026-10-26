@@ -76,7 +76,8 @@ export type PartKind =
   | 'button'
   | 'panel'
   | 'tester'
-  | 'magnet';
+  | 'magnet'
+  | 'wireBox';
 
 /** Light colours a bulb or LED can take (tap to cycle). */
 export type LightColor = 'warm' | 'red' | 'green' | 'blue' | 'yellow';
