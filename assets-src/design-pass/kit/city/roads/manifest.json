@@ -1,0 +1,166 @@
+{
+  "schemaVersion": 1,
+  "tool": "built-in image_gen",
+  "scope": "main: city road-strip-a/b and road-lane-strip",
+  "images": [
+    {
+      "name": "road-strip-a",
+      "source": "../sources/road-strip-a.png",
+      "sourceWidth": 887,
+      "sourceHeight": 1774,
+      "sourceSha256": "a1af5187993f07d5f93915500f88fbab00d5a84ffca38b4723fcaf0320157a1e",
+      "output": "public/textures/kit/city/road-strip-a.webp",
+      "width": 1024,
+      "height": 2048,
+      "bytes": 207284,
+      "sha256": "503cef19b953034624678ff633910ba572fccbf0ac2aa15b1284f7053201de84",
+      "sourceAspect": 0.5,
+      "outputAspect": 0.5,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "transparentFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "edges": {
+          "left": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "right": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "top": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "bottom": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 8.156412760416666,
+        "y": 6.633138020833333
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 2.6861165364583335,
+        "y": 2.8333943684895835
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "road-strip-b",
+      "source": "../sources/road-strip-b.png",
+      "sourceWidth": 887,
+      "sourceHeight": 1774,
+      "sourceSha256": "05197eaf2ca63ae0152c090aea685803cfc5af35ba69e82954e6c16781abc37b",
+      "output": "public/textures/kit/city/road-strip-b.webp",
+      "width": 1024,
+      "height": 2048,
+      "bytes": 236362,
+      "sha256": "daf1a99c7afba7d92eb8fbfc120541674b66233ab8b944652b644ceea8633254",
+      "sourceAspect": 0.5,
+      "outputAspect": 0.5,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "transparentFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "edges": {
+          "left": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "right": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "top": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "bottom": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 11.699869791666666,
+        "y": 9.728190104166666
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 3.21759033203125,
+        "y": 3.0684407552083335
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    },
+    {
+      "name": "road-lane-strip",
+      "source": "../sources/road-lane-strip.png",
+      "sourceWidth": 768,
+      "sourceHeight": 2048,
+      "sourceSha256": "ecc5c916406e4ad52f5dd6b02956d1e36ff341ef7cd15ae2852f968b6be6a967",
+      "output": "public/textures/kit/city/road-lane-strip.webp",
+      "width": 768,
+      "height": 2048,
+      "bytes": 125160,
+      "sha256": "74507d51561a2cafe9cf26cfd46675d731fee7f4cb80e5676814eeddf719d005",
+      "sourceAspect": 0.375,
+      "outputAspect": 0.375,
+      "packaging": "resize-fill-lanczos3; sRGB; WebP quality85 alpha100",
+      "alpha": {
+        "min": 255,
+        "max": 255,
+        "transparentFraction": 0,
+        "partialFraction": 0,
+        "opaqueFraction": 1,
+        "edges": {
+          "left": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "right": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "top": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          },
+          "bottom": {
+            "min": 255,
+            "max": 255,
+            "mean": 255
+          }
+        }
+      },
+      "opposingEdgeMeanAbsoluteRgbDifference": {
+        "x": 23.071451822916668,
+        "y": 6.416232638888889
+      },
+      "sampledAdjacentPixelMeanAbsoluteRgbDifference": {
+        "x": 2.4149983723958335,
+        "y": 1.9989963107638888
+      },
+      "seamless": "Not guaranteed by prompt. Opposing-edge measurements and tiled visual review required."
+    }
+  ]
+}

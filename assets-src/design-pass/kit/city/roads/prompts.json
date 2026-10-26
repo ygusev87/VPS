@@ -1,0 +1,35 @@
+[
+  {
+    "name": "road-strip-a",
+    "width": 1024,
+    "height": 2048,
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png"
+    ],
+    "prompt": "Use case: style-transfer. Derive one production ground texture from the roads in the attached approved city-a map, matching its warm softly hand-painted toy-town style and restrained palette. The output is ONLY a flat orthographic straight-down road surface tile, not a map, perspective render, icon or scene. No horizon, no cars, people, buildings, trees, text or labels. Perfectly straight parallel road sides, constant width for the full image. Uniform soft lighting; no large cast shadows, vignette or top/bottom brightness gradient. Top and bottom edges must join seamlessly when repeated vertically, with identical curb width, road tone and marking cadence. Entire canvas filled by asphalt and its two narrow pale beige stone kerbs; no surrounding lawn or pavement margin. Gentle material detail, no giant cracks or potholes. Main request: road-strip-a. Portrait1:2 canvas. Warm medium grey asphalt occupies middle6/7 width, a straight pale beige stone kerb occupies1/14 width on EACH outer side. No extra inner white edge stripes. A narrow white dashed center line exactly at x50%, consistent long dashed rhythm with equal gaps (4 complete dashes over the tile, neither end cut awkwardly); both ends begin/end halfway through the same blank gap. Subtle tiny asphalt grains, small chamfered kerb stones with quiet transverse joints. Match the street visible around city-a park.",
+    "source": "../sources/road-strip-a.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-362253b0-48f2-4238-be68-acbd7bf7d971.png"
+  },
+  {
+    "name": "road-strip-b",
+    "width": 1024,
+    "height": 2048,
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png"
+    ],
+    "prompt": "Use case: style-transfer. Derive one production ground texture from the roads in the attached approved city-a map, matching its warm softly hand-painted toy-town style and restrained palette. The output is ONLY a flat orthographic straight-down road surface tile, not a map, perspective render, icon or scene. No horizon, no cars, people, buildings, trees, text or labels. Perfectly straight parallel road sides, constant width for the full image. Uniform soft lighting; no large cast shadows, vignette or top/bottom brightness gradient. Top and bottom edges must join seamlessly when repeated vertically, with identical curb width, road tone and marking cadence. Entire canvas filled by asphalt and its two narrow pale beige stone kerbs; no surrounding lawn or pavement margin. Gentle material detail, no giant cracks or potholes. Main request: road-strip-b, a quiet alternative to the map's main road. Portrait1:2 canvas. Warm light-medium grey asphalt occupies middle6/7 width; straight pale beige kerb stones take1/14 width on EACH side. Slightly softer/lighter asphalt than the reference, still grey not tan. No extra inner white edge lines. Narrow white dashed center line exactly x50%, four complete evenly spaced dashes separated by equal gaps, start and end at identical half-gap phase for vertical repetition. Keep variation subtle so toys remain prominent.",
+    "source": "../sources/road-strip-b.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-da7d975e-9229-4732-8d54-ae05bed585b8.png"
+  },
+  {
+    "name": "road-lane-strip",
+    "width": 768,
+    "height": 2048,
+    "refs": [
+      "/Users/gusev/gameios/assets-src/design-pass/variants/city-a.png"
+    ],
+    "prompt": "Use case: style-transfer. Derive one production ground texture from the roads in the attached approved city-a map, matching its warm softly hand-painted toy-town style and restrained palette. The output is ONLY a flat orthographic straight-down road surface tile, not a map, perspective render, icon or scene. No horizon, no cars, people, buildings, trees, text or labels. Perfectly straight parallel road sides, constant width for the full image. Uniform soft lighting; no large cast shadows, vignette or top/bottom brightness gradient. Top and bottom edges must join seamlessly when repeated vertically, with identical curb width, road tone and marking cadence. Entire canvas filled by asphalt and its two narrow pale beige stone kerbs; no surrounding lawn or pavement margin. Gentle material detail, no giant cracks or potholes. Main request: road-lane-strip, the narrow parking access lane from city-a with NO center line and NO painted markings at all. Tall portrait3:8 canvas. Warm medium grey asphalt takes middle80%width, pale beige kerb stones10%width each outer side. A quiet small-scale soft asphalt grain. Both kerbs run straight top to bottom with repeatable rhythm and exact matched edges, no taper, no rounded ends.",
+    "source": "../sources/road-lane-strip.png",
+    "generatedPath": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-26deb27d-0db6-4f86-bbf5-26de86adfb17.png"
+  }
+]
