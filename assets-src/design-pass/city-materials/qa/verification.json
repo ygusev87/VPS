@@ -1,0 +1,65 @@
+{
+  "date": "2026-10-26",
+  "baseCommit": "af57a03",
+  "test": "21 passed / 4 files",
+  "typecheck": "passed",
+  "browser": "IAB, static comparison page",
+  "viewports": [
+    [
+      390,
+      844
+    ],
+    [
+      1024,
+      768
+    ],
+    [
+      1180,
+      820
+    ],
+    [
+      1280,
+      720
+    ]
+  ],
+  "checked": [
+    "All variants load",
+    "B selection shows B only",
+    "Current selection shows source",
+    "All returns three cards",
+    "Visual responsive layout",
+    "1280 document scrollWidth equals clientWidth"
+  ],
+  "screenshotsNote": "Screenshots show the visible 1280x720 browser surface; smaller viewport is an iframe, height beyond screenshot is not captured.",
+  "images": [
+    {
+      "file": "assets-src/design-pass/variants/city-a.png",
+      "bytes": 2627424,
+      "dimensions": [
+        1513,
+        1040
+      ],
+      "sha256": "d4b70219ba0bdb45888d6ef954507517554a25eef994b3ed0084a433f2cdb0b1"
+    },
+    {
+      "file": "assets-src/design-pass/variants/city-b.png",
+      "bytes": 2649823,
+      "dimensions": [
+        1513,
+        1040
+      ],
+      "sha256": "13fc807f94dfd7c7d4e8a8a34500633e78926ac97ef547e3564f089209c65010"
+    },
+    {
+      "file": "assets-src/design-pass/variants/city-c.png",
+      "bytes": 2493283,
+      "dimensions": [
+        1512,
+        1040
+      ],
+      "sha256": "1cafd527dcf7f05b4198b9406ad59b454db8748200b20873257477fb08a7d0d5"
+    }
+  ],
+  "console": "One unattributed MutationObserver.observe TypeError without source URL also occurs on this static page. All images and selectors work; origin unresolved. See console.json.",
+  "limits": "Static page is not game WebGL/iPad/PWA/FPS validation."
+}

@@ -1,0 +1,66 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "style-transfer",
+  "generatedAt": "2026-10-26",
+  "referenceRevision": "963edd5 (screenshots of dbb82ca)",
+  "references": [
+    "/Users/gusev/gameios/assets-src/design-pass/claude-qa/city-overview.png",
+    "/Users/gusev/gameios/assets-src/design-pass/claude-qa/city-street.png",
+    "/Users/gusev/gameios/assets-src/design-pass/claude-qa/city-harbour.png",
+    "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png"
+  ],
+  "variants": [
+    {
+      "id": "a",
+      "title": "Тёплый садовый город",
+      "prompt": "Use case: style-transfer. Asset type: art-direction concept for an existing children's 3D mobile game, one complete city overview.\nInput images: image 1 is the EDIT TARGET and authoritative layout (current city-overview.png); image 2 is supporting street material/detail reference from the same game, NOT a second composition; image 3 is supporting harbour/building detail from the same game; image 4 is the approved FARM ART STYLE only, not its scene or layout.\nRepaint image 1 as a polished cozy toy-like 3D mobile town in the same family as image 4 (warm hand-painted mobile farm/town aesthetic). Preserve the exact high overhead perspective, composition, street widths, building footprints, positions and scales from image 1. Preserve each recognizable building including the teal star-front club, pink toy shop, blue-roof school, bakery, fire station, and mint/peach/yellow houses with red/blue/teal roofs. Do not move, add, delete or enlarge buildings. Preserve the central rectangular park, round central fountain, rounded rectangular road ring and all four road connections, west hook-shaped parking driveway, straight tram tracks across the lower board, straight north-south canal at the right and its round harbour at the bottom, cars, tram, boat, existing trees, electrical poles, people and small clear work areas.\nMain improvement: replace the vast undifferentiated cream ground around buildings with coherent material zones: clearly legible sidewalks along the SAME roads, paved entry courts leading to the SAME doors, restrained lawn patches between buildings. Make the central park grass layered and hand-painted, with irregular green patches and sparse tiny flowers; keep working squares empty and readable. Fine material detail should support large readable shapes, never make the field cluttered.\nKeep the roads asphalt with subdued fine grain, soft wear and existing simple white markings; no new road routes, random crosswalks, painted text, or decorative road scribbles. Refine canal water with gentle depth gradient and restrained ripples and low stone banks, not a giant glossy plastic blue stripe. No bridges added. Thin low board edge, only restrained existing-tree/bush grouping at free rear corners; don't grow a dense forest inside the town. Keep generous empty playable spaces and all electrical poles visible.\nSoft diffuse daylight, dimensional contact shadows, rounded convincing toy architecture, rich but controlled color, not neon. Remove game UI, build-label text, cursors, icons floating over people, and any screenshot header. No title, labels or letters. One cohesive landscape image, no collage, no split panels. Frame the complete same board, recovering only the tiny clipped corner margins, not inventing new geography. This is an art-direction render, not a new layout.\nVARIANT A — WARM GARDEN TOWN: closest to approved farm-a. Warm honey-limestone small rectangular paving with low-contrast joints, muted warm charcoal asphalt, lush medium/deep green garden lawns with a few sunny yellow-green patches, soft moss at some curb joins, clear turquoise canal. Small planted pockets at existing house edges, not scattered objects. Thin warm pale stone cap on the board. Cozy sunny look with moderate saturation and welcoming earthy warmth.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-c6fe44d4-6e59-4ed4-9e7e-34c85da4b2c9.png",
+      "destination": "assets-src/design-pass/variants/city-a.png",
+      "sha256": "d4b70219ba0bdb45888d6ef954507517554a25eef994b3ed0084a433f2cdb0b1",
+      "bytes": 2627424,
+      "size": [
+        1513,
+        1040
+      ]
+    },
+    {
+      "id": "b",
+      "title": "Город у воды",
+      "prompt": "Use case: style-transfer. Asset type: art-direction concept for an existing children's 3D mobile game, one complete city overview.\nInput images: image 1 is the EDIT TARGET and authoritative layout (current city-overview.png); image 2 is supporting street material/detail reference from the same game, NOT a second composition; image 3 is supporting harbour/building detail from the same game; image 4 is the approved FARM ART STYLE only, not its scene or layout.\nRepaint image 1 as a polished cozy toy-like 3D mobile town in the same family as image 4 (warm hand-painted mobile farm/town aesthetic). Preserve the exact high overhead perspective, composition, street widths, building footprints, positions and scales from image 1. Preserve each recognizable building including the teal star-front club, pink toy shop, blue-roof school, bakery, fire station, and mint/peach/yellow houses with red/blue/teal roofs. Do not move, add, delete or enlarge buildings. Preserve the central rectangular park, round central fountain, rounded rectangular road ring and all four road connections, west hook-shaped parking driveway, straight tram tracks across the lower board, straight north-south canal at the right and its round harbour at the bottom, cars, tram, boat, existing trees, electrical poles, people and small clear work areas.\nMain improvement: replace the vast undifferentiated cream ground around buildings with coherent material zones: clearly legible sidewalks along the SAME roads, paved entry courts leading to the SAME doors, restrained lawn patches between buildings. Make the central park grass layered and hand-painted, with irregular green patches and sparse tiny flowers; keep working squares empty and readable. Fine material detail should support large readable shapes, never make the field cluttered.\nKeep the roads asphalt with subdued fine grain, soft wear and existing simple white markings; no new road routes, random crosswalks, painted text, or decorative road scribbles. Refine canal water with gentle depth gradient and restrained ripples and low stone banks, not a giant glossy plastic blue stripe. No bridges added. Thin low board edge, only restrained existing-tree/bush grouping at free rear corners; don't grow a dense forest inside the town. Keep generous empty playable spaces and all electrical poles visible.\nSoft diffuse daylight, dimensional contact shadows, rounded convincing toy architecture, rich but controlled color, not neon. Remove game UI, build-label text, cursors, icons floating over people, and any screenshot header. No title, labels or letters. One cohesive landscape image, no collage, no split panels. Frame the complete same board, recovering only the tiny clipped corner margins, not inventing new geography. This is an art-direction render, not a new layout.\nVARIANT B — COOL WATERFRONT TOWN: slightly fresher and coastal while keeping the exact same buildings and layout. Soft cool blue-gray asphalt, pale ivory and light sand paving slabs with restrained narrow terracotta trim near building entrances, blue-teal canal with soft translucent depth gradients and cream quay stone. Grass a clean balanced jade green, no cyan grass; modest planting pockets. Edges pale limestone over a muted blue-gray stone side. Clear airy daylight, strong visual distinction between water, sidewalks, grass and roads; never neon or glossy plastic.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-e80e1d42-01ef-4a79-aee2-50875e34c7b2.png",
+      "destination": "assets-src/design-pass/variants/city-b.png",
+      "sha256": "13fc807f94dfd7c7d4e8a8a34500633e78926ac97ef547e3564f089209c65010",
+      "bytes": 2649823,
+      "size": [
+        1513,
+        1040
+      ]
+    },
+    {
+      "id": "c",
+      "title": "Спокойный сказочный город",
+      "prompt": "Use case: style-transfer. Asset type: art-direction concept for an existing children's 3D mobile game, one complete city overview.\nInput images: image 1 is the EDIT TARGET and authoritative layout (current city-overview.png); image 2 is supporting street material/detail reference from the same game, NOT a second composition; image 3 is supporting harbour/building detail from the same game; image 4 is the approved FARM ART STYLE only, not its scene or layout.\nRepaint image 1 as a polished cozy toy-like 3D mobile town in the same family as image 4 (warm hand-painted mobile farm/town aesthetic). Preserve the exact high overhead perspective, composition, street widths, building footprints, positions and scales from image 1. Preserve each recognizable building including the teal star-front club, pink toy shop, blue-roof school, bakery, fire station, and mint/peach/yellow houses with red/blue/teal roofs. Do not move, add, delete or enlarge buildings. Preserve the central rectangular park, round central fountain, rounded rectangular road ring and all four road connections, west hook-shaped parking driveway, straight tram tracks across the lower board, straight north-south canal at the right and its round harbour at the bottom, cars, tram, boat, existing trees, electrical poles, people and small clear work areas.\nMain improvement: replace the vast undifferentiated cream ground around buildings with coherent material zones: clearly legible sidewalks along the SAME roads, paved entry courts leading to the SAME doors, restrained lawn patches between buildings. Make the central park grass layered and hand-painted, with irregular green patches and sparse tiny flowers; keep working squares empty and readable. Fine material detail should support large readable shapes, never make the field cluttered.\nKeep the roads asphalt with subdued fine grain, soft wear and existing simple white markings; no new road routes, random crosswalks, painted text, or decorative road scribbles. Refine canal water with gentle depth gradient and restrained ripples and low stone banks, not a giant glossy plastic blue stripe. No bridges added. Thin low board edge, only restrained existing-tree/bush grouping at free rear corners; don't grow a dense forest inside the town. Keep generous empty playable spaces and all electrical poles visible.\nSoft diffuse daylight, dimensional contact shadows, rounded convincing toy architecture, rich but controlled color, not neon. Remove game UI, build-label text, cursors, icons floating over people, and any screenshot header. No title, labels or letters. One cohesive landscape image, no collage, no split panels. Frame the complete same board, recovering only the tiny clipped corner margins, not inventing new geography. This is an art-direction render, not a new layout.\nVARIANT C — SOFT STORYBOOK TOWN: calmer and more natural, not dark or desaturated to gray. Muted sage/olive meadow patches with deep green accents, warm taupe irregular small stone paving with broad clean courtyards, medium graphite asphalt and creamy restrained road markings. Canal subdued blue-green with quiet ripple detail; pale gray-beige stone banks. Keep the existing bright roof colors as the focal accents. Low warm stone board edge, minimal planting. Diffuse late-morning daylight, tactile painted surfaces, gentle contrast, quiet material noise and maximum readability for a child.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-f66b1229-5c36-475a-a8a8-aeda66e830e9.png",
+      "destination": "assets-src/design-pass/variants/city-c.png",
+      "sha256": "1cafd527dcf7f05b4198b9406ad59b454db8748200b20873257477fb08a7d0d5",
+      "bytes": 2493283,
+      "size": [
+        1512,
+        1040
+      ]
+    }
+  ],
+  "generationCalls": 3,
+  "externalTripoOrHiggsfieldCredits": 0,
+  "limitations": [
+    "Art direction only; generated decor and texture detail are not automatically authorized runtime additions.",
+    "Exact game coordinates remain authoritative in src/city-decor.ts and src/city.ts.",
+    "A/B/C retain the major topology visually but generative imagery is not a pixel-identical plan."
+  ],
+  "referenceSha256": {
+    "/Users/gusev/gameios/assets-src/design-pass/claude-qa/city-overview.png": "48a7619f176b034167ae523ac550c2a3a5900b454d872de9762baadf98da5056",
+    "/Users/gusev/gameios/assets-src/design-pass/claude-qa/city-street.png": "b38d7dd4b64e601e617f60bf749672271e76e2ef9a455cea20272fb2af187b3d",
+    "/Users/gusev/gameios/assets-src/design-pass/claude-qa/city-harbour.png": "f2aeee6e5f118e47d9d62a2a8365feb4e446f3f8e9c380af678ab7feb3923e07",
+    "/Users/gusev/gameios/assets-src/design-pass/variants/farm-a.png": "ca3391bcba1eec82614cbda6292e574e9c4737b24c47c5bcb1af62e4bdc6c2c4"
+  }
+}

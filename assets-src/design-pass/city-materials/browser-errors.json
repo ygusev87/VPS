@@ -1,0 +1,65 @@
+[
+  {
+    "level": "error",
+    "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+    "timestamp": "2026-10-26T06:16:00.152Z"
+  },
+  {
+    "level": "error",
+    "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+    "timestamp": "2026-10-26T06:16:05.286Z"
+  },
+  {
+    "level": "error",
+    "message": "Uncaught TypeError: Failed to execute 'observe' on 'MutationObserver': parameter 1 is not of type 'Node'.",
+    "timestamp": "2026-10-26T06:17:30.882Z"
+  },
+  {
+    "level": "error",
+    "message": "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Web page caused context loss and was blocked",
+    "timestamp": "2026-10-26T06:17:30.925Z",
+    "url": "http://localhost:5194/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Web page caused context loss and was blocked",
+    "timestamp": "2026-10-26T06:17:30.934Z",
+    "url": "http://localhost:5194/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+    "timestamp": "2026-10-26T06:17:30.934Z",
+    "url": "http://localhost:5194/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new WebGLRenderer (http://localhost:5194/.qa-vite/deps/three.module-CjtjXz_f.js?v=8696b3e8:51273:17)\n    at new Stage (http://localhost:5194/src/stage.ts:92:19)\n    at http://localhost:5194/src/main.ts:43:15",
+    "timestamp": "2026-10-26T06:17:30.935Z",
+    "url": "http://localhost:5194/.qa-vite/deps/three.module-CjtjXz_f.js?v=8696b3e8"
+  },
+  {
+    "level": "error",
+    "message": "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Web page caused context loss and was blocked",
+    "timestamp": "2026-10-26T06:17:39.473Z",
+    "url": "http://localhost:5194/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "THREE.WebGLRenderer: A WebGL context could not be created. Reason:  Web page caused context loss and was blocked",
+    "timestamp": "2026-10-26T06:17:39.474Z",
+    "url": "http://localhost:5194/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "THREE.WebGLRenderer: THREE.WebGLRenderer: Error creating WebGL context.",
+    "timestamp": "2026-10-26T06:17:39.474Z",
+    "url": "http://localhost:5194/@vite/client"
+  },
+  {
+    "level": "error",
+    "message": "Error: THREE.WebGLRenderer: Error creating WebGL context.\n    at new WebGLRenderer (http://localhost:5194/.qa-vite/deps/three.module-CjtjXz_f.js?v=8696b3e8:51273:17)\n    at new Stage (http://localhost:5194/src/stage.ts:92:19)\n    at http://localhost:5194/src/main.ts:43:15",
+    "timestamp": "2026-10-26T06:17:39.474Z",
+    "url": "http://localhost:5194/.qa-vite/deps/three.module-CjtjXz_f.js?v=8696b3e8"
+  }
+]
