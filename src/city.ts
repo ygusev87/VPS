@@ -16,6 +16,7 @@ import * as THREE from 'three';
 import { DECOR, FENCES, MEADOW, PATHS, PONDS, SOIL } from './city-decor';
 import { dressing } from './decor';
 import { boardEdge, flowers, groundMaterial, onLane, pond, tiledMaterial, type GroundPlan } from './ground';
+import { decal, grassMaterial, hasKit, kitPieces, ribbons, roadNet, roadRuns, roadTiles, tiledDecal } from './kit';
 import { sandboxHint, type Hint } from './hints';
 import { clipsOf, hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
@@ -197,6 +198,8 @@ export class CityMap extends StoryMap {
   protected readonly intro = 'cityIntro';
   readonly ownHints = true;
   private plan!: GroundPlan;
+  /** The ground is Codex's painted kit (src/kit.ts), not the old shader. */
+  private kit = false;
   /** The cars driving round the ring once the traffic light works (s: how far round). */
   private cars: { c: Critter; s: number }[] = [];
   private driving = false;
@@ -308,7 +311,8 @@ export class CityMap extends StoryMap {
 
   private buildBoard() {
     const plan = (this.plan = cityPlan());
-    const top = groundMaterial(plan);
+    this.kit = hasKit('city', 'paving-main') && !new URLSearchParams(location.search).has('oldground');
+    const top = this.kit ? grassMaterial(kitPieces('city', 'paving-main', true)[0], null, [], 8) : groundMaterial(plan);
     const side = mat('#000000', 1);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
@@ -317,9 +321,50 @@ export class CityMap extends StoryMap {
     this.scenery.add(board);
     // A light rim and a matte side round the board (see boardEdge).
     this.scenery.add(boardEdge(W, D, 'city'));
-    this.scenery.add(roadMarks());
-    this.scenery.add(canal());
+    // The kit's roads carry their own dashes and zebras.
+    this.scenery.add(roadMarks(!this.kit));
+    if (this.kit) this.layKit(plan);
+    if (!this.kit || !hasKit('city', 'canal-water')) this.scenery.add(canal());
     for (const p of [HARBOR, ...PONDS]) this.scenery.add(pond(p));
+  }
+
+  /**
+   * The painted kit over the paving (src/kit.ts): road strips between painted
+   * corner, tee and crossing tiles, the drives and the tram street, lawns with
+   * a stone kerb, the park's own picture, the canal and the harbour.
+   */
+  private layKit(plan: GroundPlan) {
+    const roads = plan.lanes.filter((l) => l.w === ROAD);
+    const net = roadNet(roads, plan);
+    const strip = kitPieces('city', 'road-strip', true);
+    if (strip.length) this.scenery.add(ribbons(roadRuns(net.segs, net.tiles, ROAD * 0.58, ROAD), strip[0], 7 / ROAD, 14, 0.006, 1, 0.02));
+    const tile = (n: string) => kitPieces('city', n)[0];
+    this.scenery.add(roadTiles(net.tiles, { corner: tile('road-corner'), tee: tile('road-tee'), cross: tile('road-cross'), end: tile('road-end') }, ROAD * 7 / 6));
+    const narrow = kitPieces('city', 'road-lane-strip', true);
+    if (narrow.length) this.scenery.add(ribbons(plan.lanes.filter((l) => l.w !== ROAD), narrow[0], 5 / 4, 10, 0.0055, 1, 0.1));
+    const lawn = kitPieces('city', 'lawn-main', true);
+    const kerb = kitPieces('city', 'kerb-strip', true);
+    const park = kitPieces('city', 'park-lawn');
+    for (const f of [plan.field, ...(plan.fields ?? [])]) {
+      if (f === plan.field && park.length) this.scenery.add(decal(f, park[0], 0.3, 0.005));
+      else if (lawn.length) this.scenery.add(tiledDecal(f, lawn[0], 8));
+      if (kerb.length) {
+        const loop: [number, number][] = [[f.x0, f.z0], [f.x1, f.z0], [f.x1, f.z1], [f.x0, f.z1], [f.x0, f.z0]];
+        this.scenery.add(ribbons([{ pts: loop, w: 0.5 }], kerb[0], 1, 4, 0.0065, 2, 0.5));
+      }
+    }
+    const water = kitPieces('city', 'canal-water', true);
+    if (water.length) this.scenery.add(ribbons([{ pts: [[CANAL.x, CANAL.z0], [CANAL.x, CANAL.z1]], w: CANAL.w }], water[0], 1, 6, 0.012, 1, 0));
+    const quay = kitPieces('city', 'quay-strip', true);
+    if (quay.length)
+      for (const dx of [-1, 1]) {
+        // Each bank runs so the picture's left side (its stone) is on the land.
+        const x = CANAL.x + dx * (CANAL.w / 2 + 0.3);
+        const pts: [number, number][] = dx < 0 ? [[x, CANAL.z1], [x, CANAL.z0]] : [[x, CANAL.z0], [x, CANAL.z1]];
+        this.scenery.add(ribbons([{ pts, w: 1.2 }], quay[0], 1, 6, 0.013, 2, 0));
+      }
+    const harbour = kitPieces('city', 'harbour-water');
+    if (harbour.length) this.scenery.add(decal({ x0: HARBOR.x - HARBOR.rx, z0: HARBOR.z - HARBOR.rz, x1: HARBOR.x + HARBOR.rx, z1: HARBOR.z + HARBOR.rz }, harbour[0], 0.6, 0.014, 2));
   }
 
   /** What works in the story: the balcony and basket, the fountain, the loaves, the building site, the smoke. */
@@ -1013,12 +1058,13 @@ function cityPlan(): GroundPlan {
   };
 }
 
-/** White dashes down the middle of every road, zebras at the crossings, rails on the tram line. */
-function roadMarks(): THREE.Group {
+/** White dashes down the middle of every road, zebras at the crossings (unless the kit's roads have them), rails on the tram line. */
+function roadMarks(paint = true): THREE.Group {
   const g = new THREE.Group();
   const white = new THREE.MeshBasicMaterial({ color: '#f4f1ea', transparent: true, opacity: 0.85, depthWrite: false });
   const dashes: THREE.Matrix4[] = [];
-  const dash = (x: number, z: number, along: 'x' | 'z', w = 1.2, d = 0.18) => dashes.push(new THREE.Matrix4().compose(v(x, z).setY(0.02), new THREE.Quaternion(), along === 'x' ? new THREE.Vector3(w, 1, d) : new THREE.Vector3(d, 1, w)));
+  const mark = (x: number, z: number, along: 'x' | 'z', w = 1.2, d = 0.18) => dashes.push(new THREE.Matrix4().compose(v(x, z).setY(0.02), new THREE.Quaternion(), along === 'x' ? new THREE.Vector3(w, 1, d) : new THREE.Vector3(d, 1, w)));
+  const dash = (x: number, z: number, along: 'x' | 'z', w = 1.2, d = 0.18) => paint && mark(x, z, along, w, d);
   // Not over the water (the drawbridge stands there).
   const dry = (x: number) => Math.abs(x - CANAL.x) > 2.5;
   for (let x = -RING.x + 3; x < RING.x - 2; x += 3) {
@@ -1041,7 +1087,7 @@ function roadMarks(): THREE.Group {
   for (const [x, z, along] of [[0, RING.z + ROAD / 2 + 1.6, 'x'], [0, -RING.z - ROAD / 2 - 1.6, 'x'], [RING.x + ROAD / 2 + 1.6, 0, 'z'], [-RING.x - ROAD / 2 - 1.6, 0, 'z']] as const)
     for (let k = -2; k <= 2; k++) along === 'x' ? dash(x + k * 1.1, z, 'z', 2.2, 0.55) : dash(x, z + k * 1.1, 'x', 2.2, 0.55);
   // Parking bays.
-  for (const s of PARK_SLOTS) dash(s.x - 1.7, s.z, 'z', 3, 0.14);
+  for (const s of PARK_SLOTS) mark(s.x - 1.7, s.z, 'z', 3, 0.14);
   const quad = new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2);
   const im = new THREE.InstancedMesh(quad, white, dashes.length);
   dashes.forEach((m, i) => im.setMatrixAt(i, m));

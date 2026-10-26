@@ -85,7 +85,7 @@ function flatMaterial(map: THREE.Texture, lift: number) {
  * lane (its grassy shoulders), `length` the world units one picture covers.
  * All lanes in one mesh. The corners are left to round patches on top.
  */
-export function ribbons(lanes: { pts: [number, number][]; w: number }[], map: THREE.Texture, wide: number, length: number, y = 0.006, order = 1): THREE.Mesh {
+export function ribbons(lanes: { pts: [number, number][]; w: number }[], map: THREE.Texture, wide: number, length: number, y = 0.006, order = 1, overlap = 0.3): THREE.Mesh {
   const pos: number[] = [];
   const uv: number[] = [];
   const index: number[] = [];
@@ -102,7 +102,7 @@ export function ribbons(lanes: { pts: [number, number][]; w: number }[], map: TH
       const dz = (bz - az) / len;
       const nx = -dz * half;
       const nz = dx * half;
-      const over = w * 0.3;
+      const over = w * overlap;
       const a = [ax - dx * over, az - dz * over];
       const b = [bx + dx * over, bz + dz * over];
       // Each segment starts the picture at a different place, so neighbours don't repeat the same pebbles.
@@ -285,3 +285,123 @@ float kNoise(vec2 q) { vec2 i = floor(q); vec2 f = fract(q); vec2 u = f * f * (3
 
 /** A rectangle, for the field and beds (re-exported for maps). */
 export type { Rect };
+
+/** A picture repeated over a rectangle every `tile` world units (a lawn, a yard), in world space. */
+export function tiledDecal(r: Rect, map: THREE.Texture, tile: number, y = 0.005, order = 0): THREE.Mesh {
+  const w = r.x1 - r.x0;
+  const d = r.z1 - r.z0;
+  const geo = new THREE.PlaneGeometry(w, d).rotateX(-Math.PI / 2);
+  const uv = geo.attributes.uv;
+  // World-anchored, so neighbouring lawns continue the same pattern.
+  for (let i = 0; i < uv.count; i++) uv.setXY(i, (r.x0 + uv.getX(i) * w) / tile, (-r.z1 + uv.getY(i) * d) / tile);
+  const t = map.clone();
+  t.wrapS = t.wrapT = THREE.RepeatWrapping;
+  t.needsUpdate = true;
+  const m = new THREE.Mesh(geo, flatMaterial(t, order));
+  m.position.set((r.x0 + r.x1) / 2, y, (r.z0 + r.z1) / 2);
+  m.receiveShadow = true;
+  m.renderOrder = order;
+  m.userData.noAO = true;
+  return m;
+}
+
+/** The four ways out of a road tile, as unit steps: east, south, west, north. */
+type Dir = [number, number];
+/** Which ways each painted road tile opens, as drawn (north at the top of the picture). */
+const TILE_WAYS: Record<'corner' | 'tee' | 'cross' | 'end', Dir[]> = {
+  corner: [[0, 1], [1, 0]],
+  tee: [[-1, 0], [1, 0], [0, 1]],
+  cross: [[1, 0], [0, 1], [-1, 0], [0, -1]],
+  end: [[0, 1]],
+};
+
+export interface RoadTile {
+  x: number;
+  z: number;
+  kind: keyof typeof TILE_WAYS;
+  /** Quarter turns about +y (counter-clockwise from above). */
+  turns: number;
+}
+
+/**
+ * A road network from lanes of one width: the straight runs between junctions
+ * (for the strip ribbons, cut back where a tile sits) and the tiles at the
+ * corners, tees, crossings and dead ends, each turned to fit. Roads that run
+ * off the board end in no tile. Axis-aligned roads only.
+ */
+export function roadNet(lanes: { pts: [number, number][]; w: number }[], board: { width: number; depth: number }) {
+  const key = (x: number, z: number) => `${Math.round(x * 10)},${Math.round(z * 10)}`;
+  const ways = new Map<string, { x: number; z: number; dirs: Dir[] }>();
+  const at = (x: number, z: number) => ways.get(key(x, z)) ?? ways.set(key(x, z), { x, z, dirs: [] }).get(key(x, z))!;
+  const segs: [number, number, number, number][] = [];
+  for (const { pts } of lanes) for (let i = 1; i < pts.length; i++) segs.push([...pts[i - 1], ...pts[i]]);
+  // A lane ending in the middle of another's run splits that run there (a tee).
+  for (const [x, z] of lanes.flatMap((l) => [l.pts[0], l.pts[l.pts.length - 1]])) {
+    for (let i = 0; i < segs.length; i++) {
+      const [ax, az, bx, bz] = segs[i];
+      const onX = az === bz && z === az && x > Math.min(ax, bx) + 0.01 && x < Math.max(ax, bx) - 0.01;
+      const onZ = ax === bx && x === ax && z > Math.min(az, bz) + 0.01 && z < Math.max(az, bz) - 0.01;
+      if (onX || onZ) segs.splice(i, 1, [ax, az, x, z], [x, z, bx, bz]);
+    }
+  }
+  for (const [ax, az, bx, bz] of segs) {
+    const len = Math.hypot(bx - ax, bz - az);
+    const d: Dir = [Math.round((bx - ax) / len), Math.round((bz - az) / len)];
+    at(ax, az).dirs.push(d);
+    at(bx, bz).dirs.push([-d[0], -d[1]]);
+  }
+  const edge = (x: number, z: number) => Math.abs(x) >= board.width / 2 - 0.5 || Math.abs(z) >= board.depth / 2 - 0.5;
+  const tiles: RoadTile[] = [];
+  const same = (a: Dir[], b: Dir[]) => a.length === b.length && a.every((d) => b.some((e) => e[0] === d[0] && e[1] === d[1]));
+  const turn = ([x, z]: Dir, k: number): Dir => {
+    let d: Dir = [x, z];
+    // A quarter turn counter-clockwise seen from above: east goes north (−z).
+    for (let i = 0; i < k; i++) d = [d[1], -d[0]];
+    return d;
+  };
+  for (const n of ways.values()) {
+    const dirs = n.dirs.filter((d, i) => n.dirs.findIndex((e) => e[0] === d[0] && e[1] === d[1]) === i);
+    if (edge(n.x, n.z) && dirs.length === 1) continue;
+    if (dirs.length === 2 && dirs[0][0] === -dirs[1][0] && dirs[0][1] === -dirs[1][1]) continue;
+    const kind = dirs.length >= 4 ? 'cross' : dirs.length === 3 ? 'tee' : dirs.length === 2 ? 'corner' : 'end';
+    for (let k = 0; k < 4; k++)
+      if (same(TILE_WAYS[kind].map((d) => turn(d, k)), dirs)) {
+        tiles.push({ x: n.x, z: n.z, kind, turns: k });
+        break;
+      }
+  }
+  return { segs, tiles };
+}
+
+/** Road tiles (one instanced draw per kind), `size` world units square, above the strips. */
+export function roadTiles(tiles: RoadTile[], maps: Partial<Record<RoadTile['kind'], THREE.Texture>>, size: number, y = 0.008, order = 3): THREE.Group {
+  const g = new THREE.Group();
+  for (const kind of Object.keys(TILE_WAYS) as RoadTile['kind'][]) {
+    const mine = tiles.filter((t) => t.kind === kind);
+    const map = maps[kind];
+    if (!mine.length || !map) continue;
+    const geo = new THREE.PlaneGeometry(1, 1).rotateX(-Math.PI / 2);
+    const im = new THREE.InstancedMesh(geo, flatMaterial(map, order), mine.length);
+    const m = new THREE.Matrix4();
+    const q = new THREE.Quaternion();
+    mine.forEach((t, i) => im.setMatrixAt(i, m.compose(new THREE.Vector3(t.x, y, t.z), q.setFromAxisAngle(new THREE.Vector3(0, 1, 0), (t.turns * Math.PI) / 2), new THREE.Vector3(size, 1, size))));
+    im.receiveShadow = true;
+    im.renderOrder = order;
+    im.userData.noAO = true;
+    g.add(im);
+  }
+  return g;
+}
+
+/** The straight runs between road tiles, cut back by half a tile where one sits, as lanes for `ribbons`. */
+export function roadRuns(segs: [number, number, number, number][], tiles: RoadTile[], half: number, w: number) {
+  const tiled = (x: number, z: number) => tiles.some((t) => Math.abs(t.x - x) < 0.05 && Math.abs(t.z - z) < 0.05);
+  return segs.map(([ax, az, bx, bz]) => {
+    const len = Math.hypot(bx - ax, bz - az);
+    const dx = (bx - ax) / len;
+    const dz = (bz - az) / len;
+    const a = tiled(ax, az) ? half : 0;
+    const b = tiled(bx, bz) ? half : 0;
+    return { pts: [[ax + dx * a, az + dz * a], [bx - dx * b, bz - dz * b]] as [number, number][], w };
+  });
+}
