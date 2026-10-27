@@ -270,7 +270,9 @@ export class RailCart extends Part {
   x = 0;
   private v = 0;
   private cart = new THREE.Group();
-  private wheels: THREE.Mesh[] = [];
+  private wheels: THREE.Object3D[] = [];
+  /** The axis the wheels roll about: the code-built ones lie on their side (y), the sculpted ones turn about z. */
+  private wheelAxis: 'y' | 'z' = 'y';
   private end: -1 | 1 | 0 = 0;
   /** What rides in the cart (the map hangs a load here). */
   readonly bed = new THREE.Group();
@@ -310,11 +312,19 @@ export class RailCart extends Part {
     this.cart.add(this.bed);
     this.cart.position.y = PLATE_TOP;
     this.body.add(plate, this.cart);
-    // A sculpted wagon rides on the code-built wheels' place (the model has its own).
+    // Codex's sculpted wagon, with four wheels of its own (turning about their local z) and its coil of steel as the load.
     const wagon = model('rail-cart', { width: 1.3 });
     if (wagon) {
       for (const o of [tub, rim, ...this.wheels]) o.removeFromParent();
+      wagon.position.y = 0.08;
       this.cart.add(wagon);
+      this.wheels = ['front-left', 'front-right', 'rear-left', 'rear-right'].map((n) => wagon.getObjectByName(`wheel-${n}`)).filter((o): o is THREE.Mesh => !!o);
+      this.wheelAxis = 'z';
+      const coil = wagon.getObjectByName('load-coil');
+      if (coil) {
+        this.root.updateMatrixWorld(true);
+        this.bed.attach(coil);
+      }
     }
     this.addTerminal('a', 'none', -RAIL - 0.2, 0.75);
     this.addTerminal('b', 'none', -RAIL + 0.6, 0.75);
@@ -332,13 +342,14 @@ export class RailCart extends Part {
     const before = this.x;
     this.x = THREE.MathUtils.clamp(this.x + this.v * dt, -RAIL, RAIL);
     const moved = this.x - before;
-    for (const w of this.wheels) w.rotation.y -= moved / 0.15;
+    for (const w of this.wheels) w.rotation[this.wheelAxis] -= moved / 0.15;
     const end = this.x >= RAIL - 1e-3 ? 1 : this.x <= -RAIL + 1e-3 ? -1 : 0;
     if (end && end !== this.end) this.sounds.push({ kind: 'clank' });
     if (end) this.v = 0;
     this.end = end;
     this.cart.position.x = this.x;
-    this.cart.position.y = PLATE_TOP + (Math.abs(moved) > 1e-4 ? Math.abs(Math.sin(this.time * 18)) * 0.015 : 0);
+    // The code-built tub rattles along; the sculpted wagon's wheels stay on the rails.
+    this.cart.position.y = PLATE_TOP + (this.wheelAxis === 'y' && Math.abs(moved) > 1e-4 ? Math.abs(Math.sin(this.time * 18)) * 0.015 : 0);
   }
 }
 

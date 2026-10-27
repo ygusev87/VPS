@@ -51,8 +51,8 @@ export const MAPS: { id: MapId; name: string; emoji: string; img: string; open: 
   { id: 'lab', name: 'Лаборатория', emoji: '🔬', img: `${BASE}maps/lab.webp`, open: true },
   { id: 'farm', name: 'Ферма', emoji: '🐄', img: `${BASE}maps/farm.webp`, open: true },
   { id: 'city', name: 'Город', emoji: '🏙️', img: `${BASE}maps/city.webp`, open: true },
-  // The factory opens once its hall is dressed; `?factory` in the address opens it for a look.
-  { id: 'factory', name: 'Завод', emoji: '🏭', img: `${BASE}maps/factory.webp`, open: new URLSearchParams(location.search).has('factory') },
+  // The real machine shop, its machines sculpted (Codex's GLBs) and its floor painted.
+  { id: 'factory', name: 'Завод', emoji: '🏭', img: `${BASE}maps/factory.webp`, open: true },
 ];
 
 export interface HudHooks {
