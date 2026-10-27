@@ -2,14 +2,16 @@
   "task": "factory-readability-night",
   "request": [
     "m0521",
-    "m0522"
+    "m0522",
+    "m0529",
+    "m0530"
   ],
   "status": "dispatched-active",
   "operator": "existing model worker only; no parallel Studio orders",
   "authorization": "Standing owner project Studio upload/generation authorization; owner requested next models directly, main priority based on Claude delegated m0521/m0522. Existing credits only; no purchases/topups/API. Codex usage reserve15% mandatory.",
   "scope": [
-    "assets-src/design-pass/kit/factory/readability-night/models/<these3ids>/",
-    "corresponding3public/models/*.glb",
+    "assets-src/design-pass/kit/factory/readability-night/models/<these4ids>/",
+    "corresponding4public/models/*.glb",
     "assets-src/raw/factory-interactive-2026-10-27/",
     "own progress.md only"
   ],
@@ -61,7 +63,7 @@
       "integration": "Claude rotates +Z asset to existing +X-facing truck convention and retains overall root/yaw/driveoff. Report fit transform and wheel axes. No source edits byworker."
     },
     {
-      "id": "factory-product-bunny",
+      "id": "factory-product-bear",
       "priority": 2,
       "targetXYZ": [
         0.55,
@@ -69,7 +71,7 @@
         0.5
       ],
       "fit": "uniform height.75",
-      "design": "Recognizable simple toy bunny, stout seated body, two unmistakable long ears, flat stable underside; neutral warm ivory/wood finish, dark eyes and nose, no baked brightly colored body so runtime tint can distinguish before/after paint. Matte tactile detail visible from overhead. Not a plain ball with tiny ear balls. No plinth.",
+      "design": "Recognizable simple neutral toy bear, stout seated body, two broad round ears, flat stable underside; warm ivory/wood finish for runtime tint, simple unadorned face; no printed star, bright body or plinth. Star and post-station face detail added by integrator.",
       "nodes": [
         "product"
       ],
@@ -89,8 +91,22 @@
         "package"
       ],
       "motion": "Whole package travels and occupies cargo anchors; no opening/rig needed."
+    },
+    {
+      "id": "factory-product-billet",
+      "priority": 4,
+      "targetXYZ": [
+        0.55,
+        0.75,
+        0.5
+      ],
+      "fit": "uniform contain",
+      "design": "Simple wooden block/billet before machining into the bear. Stable flat underside, natural neutral wood, no face, writing or plinth. Whole object, no animated parts.",
+      "nodes": [
+        "billet"
+      ]
     }
   ],
-  "delivery": "READY individually to own progress with exactfile/SHA/bounds and nativeimages; local commits only own explicit paths; no push. After these3 stop until new concrete card or owner instruction. Existing batch03 must be completed or its blocker saved first. Reserve15% takes precedence over overnight scope.",
-  "dispatch": "Existing model chat01a17696-ff06-7a43-886e-af0ed6098802 after batch03 confirmed completed, cursor97. Shared Codex24% atdispatch; reserve15%."
+  "delivery": "READY individually to own progress with exactfile/SHA/bounds and nativeimages; local commits only own explicit paths; no push. After these4 stop until new concrete card or owner instruction. Existing batch03 must be completed or its blocker saved first. Reserve15% takes precedence over overnight scope.",
+  "dispatch": "Existing model chat01a17696-ff06-7a43-886e-af0ed6098802 after batch03 confirmed completed, cursor97. Shared Codex24% atdispatch; reserve15%. Updated to4ids after m0529:bear replacesbunny beforeneworder; worker askedtoreportifalreadyspent."
 }

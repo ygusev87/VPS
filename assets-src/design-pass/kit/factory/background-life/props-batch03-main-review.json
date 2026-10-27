@@ -1,0 +1,133 @@
+{
+  "status": "accepted-assets-for-integration",
+  "createdAt": "2026-10-27T13:23:46.323241+00:00",
+  "workerCommits": [
+    "0222d60",
+    "8db038a"
+  ],
+  "mainNumericAudit": "props-batch03-main-audit.json",
+  "totalBytes": 485528,
+  "totalTriangles": 20103,
+  "framesIndependentlyInspected": [
+    "models/factory-control-cabinet/qa/1024-view0.jpg",
+    "models/factory-control-cabinet/qa/390-view0.jpg",
+    "models/factory-lockers/qa/1024-view0.jpg",
+    "models/factory-lockers/qa/390-view0.jpg",
+    "models/factory-fire-extinguisher/qa/1024-view0.jpg",
+    "models/factory-fire-extinguisher/qa/390-view0.jpg",
+    "models/factory-box-trolley/qa/1024-view0.jpg",
+    "models/factory-box-trolley/qa/390-view0.jpg",
+    "models/factory-loading-ramp/qa/1024-view0.jpg",
+    "models/factory-loading-ramp/qa/390-view0.jpg",
+    "models/factory-foreman-booth/qa/1024-view0.jpg",
+    "models/factory-foreman-booth/qa/390-view0.jpg",
+    "models/factory-control-cabinet/qa/1024-lamp-green.jpg",
+    "models/factory-control-cabinet/qa/1024-view6.jpg",
+    "models/factory-lockers/qa/1024-view6.jpg",
+    "models/factory-foreman-booth/qa/1024-view6.jpg",
+    "models/factory-box-trolley/qa/1024-view3.jpg"
+  ],
+  "provenance": "Worker raw Tripo plus documented uniform fit/contact snapping/source triangle partition; main did not alter GLBs. Main independently decoded actual public files and checked SHA/bounds/tri/material/texture/node names. Main read worker floor-contact and deck-ray evidence but did not repeat those probes or browser sessions.",
+  "nativeSizes": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "constraints": [
+    "All runtime scales uniform using actual dimensions. Tallpropsheight, trolley/rampdepth or contain.",
+    "Cabinet4nodes/4draws share1material; clone material per lamp before emissive, do not translate lamp faces. Body3058/red31/amber33/green28 triangles. Doors/buttons static.",
+    "Lockers have doors on both fronts; static closed bank. Booth has opaque windows and two opposing doors; width3.850181,depth2.585862. No interiors.",
+    "Extinguisher silhouette width.660967 includes hose; no removable hose/handle.",
+    "Trolley4casters static along with boxes, openend+Z/handle-Z; no independent wheel rotation.",
+    "Ramp lowentry+Z/highlanding-Z; worker180downwardrays of central1.4strip are static evidence, no vehicle physics or traversal acceptance.",
+    "FloorSnap1mm for tallprops/ramp,2mm trolley retained from worker."
+  ],
+  "items": [
+    {
+      "id": "factory-control-cabinet",
+      "size": [
+        1.2533859717062636,
+        2.0999999046325684,
+        0.9861994852286129
+      ],
+      "sha256": "78a76cb20e763c830a5b1ea3492bdb4452ff961ac80e7140de0af5b61a58b001",
+      "bytes": 70512,
+      "triangles": 3150,
+      "status": "accepted"
+    },
+    {
+      "id": "factory-lockers",
+      "size": [
+        1.9769280068361461,
+        2,
+        0.9917294839320048
+      ],
+      "sha256": "301300368da5c8777aee51046cf00261789de33579646f5c96abaad39b94b1e8",
+      "bytes": 90380,
+      "triangles": 3027,
+      "status": "accepted"
+    },
+    {
+      "id": "factory-fire-extinguisher",
+      "size": [
+        0.6609668407062698,
+        1.100000023841858,
+        0.3999908531167253
+      ],
+      "sha256": "858fe9596ba115ccdee115802a0bb10b5325be1a816c6a24fbb639f0f8109a90",
+      "bytes": 73140,
+      "triangles": 3862,
+      "status": "accepted"
+    },
+    {
+      "id": "factory-box-trolley",
+      "size": [
+        1.1281106158884988,
+        1.2078005490196952,
+        1.600000023841858
+      ],
+      "sha256": "a389222462a07917bb2d99fb726215e9a323938575bc5674a309f5b3b52213ad",
+      "bytes": 84968,
+      "triangles": 3544,
+      "status": "accepted"
+    },
+    {
+      "id": "factory-loading-ramp",
+      "size": [
+        2.2153813009765306,
+        1.058113332466621,
+        3.799999952316284
+      ],
+      "sha256": "b8c6f94a5a114ec92d6314ab368a3b0f3c623ad641fb073b08f0a15f8b4e4ab7",
+      "bytes": 71256,
+      "triangles": 3490,
+      "status": "accepted"
+    },
+    {
+      "id": "factory-foreman-booth",
+      "size": [
+        3.8501808643341064,
+        2.5999619124460818,
+        2.5858616987029843
+      ],
+      "sha256": "8a167c0c8a471e7d2b7688cc73f8510799c005d5127728d3904b491ff30ffe5c",
+      "bytes": 95272,
+      "triangles": 3030,
+      "status": "accepted"
+    }
+  ],
+  "spend": {
+    "source": "worker historical ledger, not live main balance",
+    "credits": 150,
+    "before": 4725,
+    "after": 4575,
+    "orders": 6,
+    "attemptsPerOrder": 1
+  },
+  "runtime": "Placement/fullfactory/nativeinteraction not yet accepted. New owner ruleenvironment-as-kit applies to future orders; this already authorized batch is retained."
+}

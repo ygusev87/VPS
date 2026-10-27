@@ -1,0 +1,375 @@
+{
+  "createdAt": "2026-10-27T13:22:49.972Z",
+  "status": "PASS",
+  "method": "Main independently decoded committed public GLBs with Meshopt, calculated transformed bounds/counts and decoded embedded WebP dimensions; matched worker SHA/bytes. Contact analysis and original browser capture belong to worker.",
+  "totalBytes": 485528,
+  "totalTriangles": 20103,
+  "items": [
+    {
+      "nodes": [
+        {
+          "name": "body",
+          "triangles": 3058
+        },
+        {
+          "name": "lamp-red",
+          "triangles": 31
+        },
+        {
+          "name": "lamp-amber",
+          "triangles": 33
+        },
+        {
+          "name": "lamp-green",
+          "triangles": 28
+        }
+      ],
+      "name": "factory-control-cabinet",
+      "publicPath": "public/models/factory-control-cabinet.glb",
+      "sha256": "78a76cb20e763c830a5b1ea3492bdb4452ff961ac80e7140de0af5b61a58b001",
+      "bytes": 70512,
+      "triangles": 3150,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.6266929858531318,
+          0,
+          -0.49309974261430645
+        ],
+        "max": [
+          0.6266929858531318,
+          2.0999999046325684,
+          0.49309974261430645
+        ]
+      },
+      "size": [
+        1.2533859717062636,
+        2.0999999046325684,
+        0.9861994852286129
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "nodes": [
+        {
+          "name": "factory-lockers",
+          "triangles": 3027
+        }
+      ],
+      "name": "factory-lockers",
+      "publicPath": "public/models/factory-lockers.glb",
+      "sha256": "301300368da5c8777aee51046cf00261789de33579646f5c96abaad39b94b1e8",
+      "bytes": 90380,
+      "triangles": 3027,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.9884640034180731,
+          0,
+          -0.4958647419660024
+        ],
+        "max": [
+          0.9884640034180731,
+          2,
+          0.4958647419660024
+        ]
+      },
+      "size": [
+        1.9769280068361461,
+        2,
+        0.9917294839320048
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "nodes": [
+        {
+          "name": "factory-fire-extinguisher",
+          "triangles": 3862
+        }
+      ],
+      "name": "factory-fire-extinguisher",
+      "publicPath": "public/models/factory-fire-extinguisher.glb",
+      "sha256": "858fe9596ba115ccdee115802a0bb10b5325be1a816c6a24fbb639f0f8109a90",
+      "bytes": 73140,
+      "triangles": 3862,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.3304834203531349,
+          0,
+          -0.19999542655836264
+        ],
+        "max": [
+          0.3304834203531349,
+          1.100000023841858,
+          0.19999542655836264
+        ]
+      },
+      "size": [
+        0.6609668407062698,
+        1.100000023841858,
+        0.3999908531167253
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "nodes": [
+        {
+          "name": "factory-box-trolley",
+          "triangles": 3544
+        }
+      ],
+      "name": "factory-box-trolley",
+      "publicPath": "public/models/factory-box-trolley.glb",
+      "sha256": "a389222462a07917bb2d99fb726215e9a323938575bc5674a309f5b3b52213ad",
+      "bytes": 84968,
+      "triangles": 3544,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.5640553079442494,
+          0.000005999332010286906,
+          -0.800000011920929
+        ],
+        "max": [
+          0.5640553079442494,
+          1.2078065483517055,
+          0.800000011920929
+        ]
+      },
+      "size": [
+        1.1281106158884988,
+        1.2078005490196952,
+        1.600000023841858
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "floorSnap": 0.002,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "nodes": [
+        {
+          "name": "factory-loading-ramp",
+          "triangles": 3490
+        }
+      ],
+      "name": "factory-loading-ramp",
+      "publicPath": "public/models/factory-loading-ramp.glb",
+      "sha256": "b8c6f94a5a114ec92d6314ab368a3b0f3c623ad641fb073b08f0a15f8b4e4ab7",
+      "bytes": 71256,
+      "triangles": 3490,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -1.1076906504882653,
+          -0.000016270019779107692,
+          -1.899999976158142
+        ],
+        "max": [
+          1.1076906504882653,
+          1.058097062446842,
+          1.899999976158142
+        ]
+      },
+      "size": [
+        2.2153813009765306,
+        1.058113332466621,
+        3.799999952316284
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "nodes": [
+        {
+          "name": "factory-foreman-booth",
+          "triangles": 3030
+        }
+      ],
+      "name": "factory-foreman-booth",
+      "publicPath": "public/models/factory-foreman-booth.glb",
+      "sha256": "8a167c0c8a471e7d2b7688cc73f8510799c005d5127728d3904b491ff30ffe5c",
+      "bytes": 95272,
+      "triangles": 3030,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -1.9250904321670532,
+          0.000018996093243073275,
+          -1.2929308493514922
+        ],
+        "max": [
+          1.9250904321670532,
+          2.599980908539325,
+          1.2929308493514922
+        ]
+      },
+      "size": [
+        3.8501808643341064,
+        2.5999619124460818,
+        2.5858616987029843
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    }
+  ]
+}
