@@ -1,0 +1,6 @@
+{
+  "visual": "Empty concave basin, integrated spout facing+Z and button; dry decorative asset. Four accent corners connect to its single base; no ground plate.",
+  "contacts": "Single connected base reachesY0; all four accent corners remain attached",
+  "geometry": "Uniform containment, rotation0, bottom1mm flattened only",
+  "additionalQA": "basin.json: three rim rays sit at least0.07724 above centre, proving actual concavity; no plumbing functionality claimed."
+}

@@ -1,0 +1,22 @@
+{
+  "name": "city-drinking-fountain",
+  "limit": 0.03,
+  "groups": [
+    {
+      "vertices": 235,
+      "min": [
+        -0.19185355265379847,
+        0,
+        -0.18924425455540667
+      ],
+      "max": [
+        0.1906611314798022,
+        0.02965621602150703,
+        0.19381754046979233
+      ]
+    }
+  ],
+  "pass_": true,
+  "tolerance": 0.0001,
+  "review": "Single connected base reachesY0; all four accent corners remain attached"
+}

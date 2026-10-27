@@ -1,0 +1,36 @@
+{
+  "common": {
+    "maxTriangles": 4000,
+    "targetMaxBytes": 150000,
+    "materials": 1,
+    "alphaMode": "OPAQUE",
+    "texture": "512 WebP",
+    "compression": "Meshopt",
+    "front": "+Z",
+    "baseY": 0,
+    "centerXZ": [
+      0,
+      0
+    ],
+    "skins": 0,
+    "animations": 0,
+    "groundPlate": false
+  },
+  "item": {
+    "id": "city-flower-planter",
+    "label": "\u0412\u0430\u0437\u043e\u043d \u0443 \u0441\u0435\u0432\u0435\u0440\u043d\u043e\u0433\u043e \u043a\u0440\u0430\u044f \u043f\u0430\u0440\u043a\u0430",
+    "reference": "assets-src/design-pass/kit/city/street-life/references/remaining/refs/city-flower-planter.png",
+    "referenceSha256": "5078a2f3a57ee412db4f57795363ac3d29d15337e3b922c061ac72902effd158",
+    "targetXYZ": [
+      0.9,
+      0.85,
+      0.9
+    ],
+    "scope": [
+      "models/city-flower-planter/",
+      "public/models/city-flower-planter.glb"
+    ],
+    "requirements": "Five broad blooms and compact connected leaves. Do not spend geometry on tiny stems; preserve pot silhouette."
+  },
+  "specialQA": null
+}

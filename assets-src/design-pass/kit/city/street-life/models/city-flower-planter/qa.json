@@ -1,0 +1,81 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":93316,\"triangles\":3820,\"materials\":1,\"bounds\":{\"min\":[-0.44999998807907104,0.0000010384854665645982,-0.44706105569438764],\"max\":[0.44999998807907104,0.8318837032976756,0.44706105569438764]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":93316,\"triangles\":3820,\"materials\":1,\"bounds\":{\"min\":[-0.44999998807907104,0.0000010384854665645982,-0.44706105569438764],\"max\":[0.44999998807907104,0.8318837032976756,0.44706105569438764]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":93316,\"triangles\":3820,\"materials\":1,\"bounds\":{\"min\":[-0.44999998807907104,0.0000010384854665645982,-0.44706105569438764],\"max\":[0.44999998807907104,0.8318837032976756,0.44706105569438764]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":93316,\"triangles\":3820,\"materials\":1,\"bounds\":{\"min\":[-0.44999998807907104,0.0000010384854665645982,-0.44706105569438764],\"max\":[0.44999998807907104,0.8318837032976756,0.44706105569438764]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":93316,\"triangles\":3820,\"materials\":1,\"bounds\":{\"min\":[-0.44999998807907104,0.0000010384854665645982,-0.44706105569438764],\"max\":[0.44999998807907104,0.8318837032976756,0.44706105569438764]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualPass": true
+}

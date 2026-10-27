@@ -1,0 +1,22 @@
+{
+  "name": "city-flower-planter",
+  "limit": 0.03,
+  "groups": [
+    {
+      "vertices": 87,
+      "min": [
+        -0.2889355067353,
+        1.0384854665645982e-06,
+        -0.28956723986471794
+      ],
+      "max": [
+        0.32159336286042683,
+        0.029692495568109212,
+        0.31513869827724367
+      ]
+    }
+  ],
+  "pass_": true,
+  "tolerance": 0.0001,
+  "review": "One connected pot base reaches Y0 within 0.0001; separate tiny stems were not added"
+}

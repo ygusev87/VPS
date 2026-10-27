@@ -1,0 +1,100 @@
+{
+  "name": "city-poster-column",
+  "source": "assets-src/raw/city-remaining-2026-10-27/city-poster-column.glb",
+  "sourceSha256": "879deac8c9537c5ebae4a891a4f673b7e32a39773f21c95ade3d1315f45722dd",
+  "sourceBytes": 711876,
+  "sourceTriangles": 3592,
+  "sourceBounds": {
+    "min": [
+      -0.2608642578125,
+      0,
+      -0.260009765625
+    ],
+    "max": [
+      0.2608642578125,
+      1,
+      0.260009765625
+    ]
+  },
+  "bytes": 80476,
+  "sha256": "cab75686b6f4e99cabb447409207d3395c77f02587b18c8468c0cc4f1b9f20a5",
+  "triangles": 3592,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.45000570550277635,
+      0,
+      -0.4483139547302096
+    ],
+    "max": [
+      0.45000570550277635,
+      1.7322999238967896,
+      0.4483139547302096
+    ]
+  },
+  "size": [
+    0.9000114110055527,
+    1.7322999238967896,
+    0.8966279094604191
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      0.9,
+      2.2,
+      0.9
+    ],
+    "height": 2.2,
+    "rotationY": 0.7853981633974483,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-contain",
+    "floorSnap": 0.001,
+    "rawReview": "Two pictorial posters; rotateY45deg to face music-note panel+Z"
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform contain in target XYZ envelope; preserve proportions; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.001 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}

@@ -1,0 +1,36 @@
+{
+  "common": {
+    "maxTriangles": 4000,
+    "targetMaxBytes": 150000,
+    "materials": 1,
+    "alphaMode": "OPAQUE",
+    "texture": "512 WebP",
+    "compression": "Meshopt",
+    "front": "+Z",
+    "baseY": 0,
+    "centerXZ": [
+      0,
+      0
+    ],
+    "skins": 0,
+    "animations": 0,
+    "groundPlate": false
+  },
+  "item": {
+    "id": "city-drinking-fountain",
+    "label": "\u041f\u0438\u0442\u044c\u0435\u0432\u043e\u0439 \u0444\u043e\u043d\u0442\u0430\u043d\u0447\u0438\u043a \u0443 \u043f\u043b\u043e\u0449\u0430\u0434\u043a\u0438",
+    "reference": "assets-src/design-pass/kit/city/street-life/references/remaining/refs/city-drinking-fountain.png",
+    "referenceSha256": "3d426d1d24b3967288fd8f4d15d5f1baa634a292ca8ff495097d80b6302acfc0",
+    "targetXYZ": [
+      0.7,
+      1,
+      0.7
+    ],
+    "scope": [
+      "models/city-drinking-fountain/",
+      "public/models/city-drinking-fountain.glb"
+    ],
+    "requirements": "Empty basin with integrated spout and button. Decorative dry asset, no new water interaction."
+  },
+  "specialQA": null
+}

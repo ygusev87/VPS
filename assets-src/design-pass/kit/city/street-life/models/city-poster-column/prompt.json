@@ -1,0 +1,21 @@
+{
+  "id": "city-poster-column",
+  "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, soft rounded bevels, clean coherent chunky geometry, warm cream, turquoise, coral and golden-yellow accents matching a miniature toy-town kiosk. Elevated three-quarter front-right view, whole object centred with generous white margin, plain pure white background, soft even neutral studio light, minimal contact shadow. No people, animals, readable text, logos, pavement, grass, diorama, surrounding props or broad ground plate. Simple robust forms suitable for fewer than 4000 triangles and one baked opaque texture; no glass or transparency. Subject: one round traditional advertising column, overall width:height:depth about .9:2.2:.9. Tall cream cylindrical drum, a sturdy low dark teal circular foot no wider than the column, a rounded turquoise cap with coral edge. On the drum, two large colorful flat pictorial posters molded into the surface: a golden musical note on coral rectangle on front, a simple coral theatre-star/sun pictogram on pale turquoise panel to the right. These are playful painted graphics on opaque drum, not separate 3D objects. No writing, numerals, logos, thin paper edges, distressed/torn posters, parasol, lantern, people or wide plinth.",
+  "method": "built-in image_gen",
+  "useCase": "stylized-concept",
+  "calls": 1,
+  "source": "refs/city-poster-column.png",
+  "sha256": "bd8a5f68b6f6be54ba22baccb92e32161ef033bf990d92c005c95c74acab5a48",
+  "bytes": 1479129,
+  "pixelSize": [
+    1024,
+    1536
+  ],
+  "visualReview": "accepted-as-reference-not-3d-geometry",
+  "reviewNotes": "Music note and sun/star are flat pictorial graphics. Cap/base are modestly wider than the cylinder: target width includes them.",
+  "targetXYZ": [
+    0.9,
+    2.2,
+    0.9
+  ]
+}

@@ -1,0 +1,100 @@
+{
+  "name": "city-flower-planter",
+  "source": "assets-src/raw/city-remaining-2026-10-27/city-flower-planter.glb",
+  "sourceSha256": "068d8c6c8eb7d4b9b0dda0c3e3ffbc756badc8f147ff187954e123b7f847d144",
+  "sourceBytes": 774696,
+  "sourceTriangles": 3820,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.496734619140625
+    ],
+    "max": [
+      0.5,
+      0.92431640625,
+      0.496734619140625
+    ]
+  },
+  "bytes": 93316,
+  "sha256": "b70711c1692b29deb98645ba99a95a0fb7809a419ee885079450b43e4f26e068",
+  "triangles": 3820,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.44999998807907104,
+      0.0000010384854665645982,
+      -0.44706105569438764
+    ],
+    "max": [
+      0.44999998807907104,
+      0.8318837032976756,
+      0.44706105569438764
+    ]
+  },
+  "size": [
+    0.8999999761581421,
+    0.8318826648122091,
+    0.8941221113887753
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      0.9,
+      0.85,
+      0.9
+    ],
+    "height": 0.85,
+    "rotationY": 0,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-contain",
+    "floorSnap": 0.001,
+    "rawReview": "Five broad blooms and compact leaves visible"
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform contain in target XYZ envelope; preserve proportions; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.001 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}

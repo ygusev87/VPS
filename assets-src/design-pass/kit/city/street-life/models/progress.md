@@ -128,3 +128,15 @@ public/models/city-bike-rack.glb:99,320bytes,3688tri,oneOPAQUE/512WebP/Meshopt;S
 ## READY — city-playground
 
 public/models/city-playground.glb:91,004bytes,3663tri,oneOPAQUE/512WebP/Meshopt;SHA `d967d613770cf2ec5ce9a397876dee5d66dff32f8e13dc8ae499ce671b30ad04`. ActualXYZ2.999163 × 1.463656 × 2.799994;uniform contain in target envelope [3.8, 2.5, 2.8]. Front+Z,centreXZ0,baseY0±.0001. 10 grounded low-surface groups:9 support feet andslide end; all within.0001.. Source gaps up to71.55mm corrected by flattening vertices only inbottom75mm; all higher geometry unchanged, normals recomputed. No split, added support or whole-model anisotropic scaling. Native390/1024 four views PASS,0errors/overflow,validator0errors/warnings,88tests/TypeScriptPASS. 98/98 front-to-back rays pass two declared central opening windows; side boundary identified inopenings.json. This is static geometry, no swing animation requested. Tripo25credits4875→4850,one attempt. Ready individually; rest ofcard continues.
+
+## READY — city-flower-planter
+
+public/models/city-flower-planter.glb:93,316bytes,3820tri,oneOPAQUE/512WebP/Meshopt;SHA `b70711c1692b29deb98645ba99a95a0fb7809a419ee885079450b43e4f26e068`. ActualXYZ0.900000 × 0.831883 × 0.894122;uniform contain in target envelope [0.9, 0.85, 0.9]. Front+Z,centreXZ0,baseY0±.0001. One connected pot base reaches Y0 within 0.0001; separate tiny stems were not added. Uniform containment, rotation0, bottom 1mm flattened only Native390/1024 four views PASS,0errors/overflow,validator0errors/warnings,88tests/TypeScriptPASS.  Tripo25credits4850→4825,one attempt. Ready individually; rest ofcard continues.
+
+## READY — city-poster-column
+
+public/models/city-poster-column.glb:80,476bytes,3592tri,oneOPAQUE/512WebP/Meshopt;SHA `cab75686b6f4e99cabb447409207d3395c77f02587b18c8468c0cc4f1b9f20a5`. ActualXYZ0.900011 × 1.732300 × 0.896628;uniform contain in target envelope [0.9, 2.2, 0.9]. Front+Z,centreXZ0,baseY0±.0001. One connected base reaches Y0 within0.0001. RotationY+pi/4 aligns music panel front; uniform containment; bottom1mm flattened only Native390/1024 four views PASS,0errors/overflow,validator0errors/warnings,88tests/TypeScriptPASS.  Tripo25credits4825→4800,one attempt. Ready individually; rest ofcard continues.
+
+## READY — city-drinking-fountain
+
+public/models/city-drinking-fountain.glb:73,952bytes,3808tri,oneOPAQUE/512WebP/Meshopt;SHA `6ddb7af396a093f641e47b679106db914f1b90c60d31c7adab68411c983b2421`. ActualXYZ0.698590 × 0.919343 × 0.699993;uniform contain in target envelope [0.7, 1, 0.7]. Front+Z,centreXZ0,baseY0±.0001. Single connected base reachesY0; all four accent corners remain attached. Uniform containment, rotation0, bottom1mm flattened only Native390/1024 four views PASS,0errors/overflow,validator0errors/warnings,88tests/TypeScriptPASS. basin.json: three rim rays sit at least0.07724 above centre, proving actual concavity; no plumbing functionality claimed. Tripo25credits4800→4775,one attempt. Ready individually; rest ofcard continues.

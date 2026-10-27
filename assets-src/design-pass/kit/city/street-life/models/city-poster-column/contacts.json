@@ -1,0 +1,22 @@
+{
+  "name": "city-poster-column",
+  "limit": 0.03,
+  "groups": [
+    {
+      "vertices": 180,
+      "min": [
+        -0.4239950373745614,
+        0,
+        -0.4242593734327749
+      ],
+      "max": [
+        0.4255810537238428,
+        0.028971231980207013,
+        0.42492021357830884
+      ]
+    }
+  ],
+  "pass_": true,
+  "tolerance": 0.0001,
+  "review": "One connected base reaches Y0 within0.0001"
+}

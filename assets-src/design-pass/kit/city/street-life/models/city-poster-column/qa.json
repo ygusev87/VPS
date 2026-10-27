@@ -1,0 +1,81 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":80476,\"triangles\":3592,\"materials\":1,\"bounds\":{\"min\":[-0.45000570550277635,0,-0.44831395473020946],\"max\":[0.45000570550277635,1.7322999238967896,0.44831395473020946]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":80476,\"triangles\":3592,\"materials\":1,\"bounds\":{\"min\":[-0.45000570550277635,0,-0.44831395473020946],\"max\":[0.45000570550277635,1.7322999238967896,0.44831395473020946]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":80476,\"triangles\":3592,\"materials\":1,\"bounds\":{\"min\":[-0.45000570550277635,0,-0.44831395473020946],\"max\":[0.45000570550277635,1.7322999238967896,0.44831395473020946]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":80476,\"triangles\":3592,\"materials\":1,\"bounds\":{\"min\":[-0.45000570550277635,0,-0.44831395473020946],\"max\":[0.45000570550277635,1.7322999238967896,0.44831395473020946]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":80476,\"triangles\":3592,\"materials\":1,\"bounds\":{\"min\":[-0.45000570550277635,0,-0.44831395473020946],\"max\":[0.45000570550277635,1.7322999238967896,0.44831395473020946]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualPass": true
+}

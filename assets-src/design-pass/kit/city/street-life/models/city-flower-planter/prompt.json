@@ -1,0 +1,21 @@
+{
+  "id": "city-flower-planter",
+  "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, soft rounded bevels, clean coherent chunky geometry, warm cream, turquoise, coral and golden-yellow accents matching a miniature toy-town kiosk. Elevated three-quarter front-right view, whole object centred with generous white margin, plain pure white background, soft even neutral studio light, minimal contact shadow. No people, animals, readable text, logos, pavement, grass, diorama, surrounding props or broad ground plate. Simple robust forms suitable for fewer than 4000 triangles and one baked opaque texture; no glass or transparency. Subject: one small round street flower planter, overall width:height:depth about .9:.85:.9. Low warm cream tapered circular pot with a substantial rounded turquoise rim and a simple coral band. A compact lush connected cluster of large dark-green rounded leaves and exactly five broad coral/yellow daisy-like blooms with simple thick petals, no fine stems. Flowers emerge from soil inside the pot. Wide flat grounded bottom and clean distinct silhouette. No saucer, feet, drainage fittings or extra pots. Pot and flowers one connected assembly.",
+  "method": "built-in image_gen",
+  "useCase": "stylized-concept",
+  "calls": 1,
+  "source": "refs/city-flower-planter.png",
+  "sha256": "5078a2f3a57ee412db4f57795363ac3d29d15337e3b922c061ac72902effd158",
+  "bytes": 1720622,
+  "pixelSize": [
+    1254,
+    1254
+  ],
+  "visualReview": "accepted-as-reference-not-3d-geometry",
+  "reviewNotes": "Five broad blooms and compact connected leaves. Do not spend geometry on tiny stems; preserve pot silhouette.",
+  "targetXYZ": [
+    0.9,
+    0.85,
+    0.9
+  ]
+}

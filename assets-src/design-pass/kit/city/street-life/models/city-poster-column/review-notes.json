@@ -1,0 +1,5 @@
+{
+  "visual": "Music note faces +Z; flat pictorial sun and music graphics are legible. Entire cap and base included in width; no ground plate.",
+  "contacts": "One connected base reaches Y0 within0.0001",
+  "geometry": "RotationY+pi/4 aligns music panel front; uniform containment; bottom1mm flattened only"
+}

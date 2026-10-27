@@ -1,0 +1,27 @@
+{
+  "method": "Downward rays into actual normalized mesh: basin centre versus three surrounding rim locations; proves concavity, does not claim plumbing holes",
+  "samples": [
+    {
+      "x": 0,
+      "z": 0,
+      "highestY": 0.594890887359484
+    },
+    {
+      "x": 0.28,
+      "z": 0,
+      "highestY": 0.6883591756499206
+    },
+    {
+      "x": -0.28,
+      "z": 0,
+      "highestY": 0.6885872178979284
+    },
+    {
+      "x": 0,
+      "z": 0.28,
+      "highestY": 0.6721313163678051
+    }
+  ],
+  "minimumDepth": 0.07724042900832107,
+  "pass": true
+}

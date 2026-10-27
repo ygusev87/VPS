@@ -1,0 +1,99 @@
+{
+  "name": "city-drinking-fountain",
+  "source": "assets-src/raw/city-remaining-2026-10-27/city-drinking-fountain.glb",
+  "sourceSha256": "cc140700181b0b0edb4645011dfc2b414a95fb038f60347e472c90567518ff8e",
+  "sourceBytes": 607356,
+  "sourceTriangles": 3808,
+  "sourceBounds": {
+    "min": [
+      -0.37994384765625,
+      0,
+      -0.380706787109375
+    ],
+    "max": [
+      0.37994384765625,
+      1,
+      0.380706787109375
+    ]
+  },
+  "bytes": 73952,
+  "sha256": "6ddb7af396a093f641e47b679106db914f1b90c60d31c7adab68411c983b2421",
+  "triangles": 3808,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.3492952330745049,
+      0,
+      -0.34999665729450263
+    ],
+    "max": [
+      0.3492952330745049,
+      0.9193426966667175,
+      0.34999665729450263
+    ]
+  },
+  "size": [
+    0.6985904661490098,
+    0.9193426966667175,
+    0.6999933145890053
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      0.7,
+      1,
+      0.7
+    ],
+    "height": 1,
+    "rotationY": 0,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-contain",
+    "floorSnap": 0.001
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform contain in target XYZ envelope; preserve proportions; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.001 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}
