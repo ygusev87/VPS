@@ -271,6 +271,7 @@ export class CityMap extends StoryMap {
 
   protected build() {
     this.buildBoard();
+    this.buildOutskirts();
     this.buildPlaces();
     this.placeParts();
     this.buildCritters();
@@ -513,6 +514,51 @@ export class CityMap extends StoryMap {
     const kerb = kitPieces('city', 'kerb-strip', true);
     if (kerb.length) this.scenery.add(ribbons(edges.map((pts) => ({ pts, w: 0.5 })), kerb[0], 1, 4, 0.0065, 2, 0.25));
     this.sowLawns(lawns);
+  }
+
+  /**
+   * The town goes on past the board (Codex's border sketch, city-a): lawn all
+   * round, a shallow back row of houses among trees behind the top edge, trees
+   * down the sides, and only low bushes along the front, so nothing hides the
+   * town from the camera.
+   */
+  private buildOutskirts() {
+    const lawn = kitPieces('city', 'lawn-main', true)[0];
+    if (!this.kit || !lawn) return;
+    const ground = mesh(new THREE.PlaneGeometry(W + 44, D + 40).rotateX(-Math.PI / 2), grassMaterial(lawn, null, [], 8, LAWN_TONE), false);
+    ground.position.y = -0.3;
+    ground.receiveShadow = true;
+    ground.userData.noAO = true;
+    this.scenery.add(ground);
+    let seed = 57;
+    const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+    // The back row: houses facing the town, a little apart, each its own way round.
+    const back = -D / 2 - 5.5;
+    const homes: Record<string, [number, number, number][]> = { 'house-a': [], 'house-b': [], 'house-c': [] };
+    const kinds = Object.keys(homes);
+    for (let x = -W / 2 + 4, i = 0; x < W / 2 - 3; x += 8.5 + rnd() * 3, i++) homes[kinds[i % 3]].push([x, back - rnd() * 1.5, 0.85 + rnd() * 0.2]);
+    for (const [name, items] of Object.entries(homes)) {
+      const row = instances(name, { width: 5, rotateY: -Math.PI / 2 }, items.map(([x, z, k]) => [x, z, k]));
+      if (row) this.scenery.add(row);
+    }
+    const tree = kitPieces('city', 'tree-round-card');
+    const bush = kitPieces('city', 'bush-card');
+    const shade = kitPieces('farm', 'blob-shadow')[0] ?? null;
+    if (tree.length) {
+      const trees: { x: number; z: number; size: number }[] = [];
+      // Behind and between the houses.
+      for (let x = -W / 2 - 10; x < W / 2 + 10; x += 2.8) trees.push({ x: x + (rnd() - 0.5), z: back - 4.5 - rnd() * 3, size: 3.4 + rnd() * 1.2 });
+      for (let x = -W / 2; x < W / 2; x += 8.5) trees.push({ x: x + 4.2 + rnd(), z: back + 0.5, size: 2.8 + rnd() });
+      // Down the sides.
+      for (let z = -D / 2 - 4; z < D / 2 + 4; z += 2.7) for (const x of [-W / 2 - 5, -W / 2 - 8.5, W / 2 + 5, W / 2 + 8.5]) trees.push({ x: x + (rnd() - 0.5), z: z + (rnd() - 0.5), size: 3.2 + rnd() * 1.2 });
+      this.scenery.add(standees(trees, tree, shade));
+    }
+    // The front edge: low bushes only.
+    if (bush.length) {
+      const low: { x: number; z: number; size: number }[] = [];
+      for (let x = -W / 2 - 2; x < W / 2 + 2; x += 2.2) low.push({ x: x + (rnd() - 0.5) * 0.6, z: D / 2 + 2.5 + rnd(), size: 1.6 + rnd() * 0.5 });
+      this.scenery.add(standees(low, bush, shade));
+    }
   }
 
   /** What works in the story: the balcony and basket, the fountain, the loaves, the building site, the smoke. */
