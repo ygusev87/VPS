@@ -321,6 +321,7 @@ export class FactoryMap extends StoryMap {
     this.robot.terminal('a').shaped('triangle');
     this.robot.terminal('b').shaped('triangle');
     this.hoist = this.pin('lift', HOIST) as Lift;
+    this.hoist.hoistSkin();
     // The machines of a real shop are big (industrial-b): shown half as large again. Not the lathe and its motor,
     // whose shafts must stay 1.4 apart for the child's gears.
     for (const p of [this.box, this.press, this.board, this.robot, this.cart, this.hoist]) p.root.scale.setScalar(MACHINE_SCALE);

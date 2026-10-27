@@ -180,6 +180,11 @@ export class Lift extends Part {
   private shell!: THREE.Object3D;
   private window_!: THREE.Object3D;
   private roof!: THREE.Object3D;
+  /** The code-built shaft (posts, bars, roof), replaced by a sculpted one in the factory. */
+  private frame: THREE.Object3D[] = [];
+  private tower!: THREE.Group;
+  /** Where the rope hangs from (part-local height). */
+  private ropeTop = PLATE_TOP + 2.22;
 
   constructor() {
     super();
@@ -189,6 +194,7 @@ export class Lift extends Part {
       const p = roundedBox(0.12, 2.45, 0.12, 0.03, C.navy2, 0.45);
       p.position.set(x, PLATE_TOP + 1.22, z);
       tower.add(p);
+      this.frame.push(p);
     };
     const W = 0.56;
     const D = 0.5;
@@ -207,6 +213,7 @@ export class Lift extends Part {
       const r = l.clone();
       r.position.x = W;
       tower.add(back, l, r);
+      this.frame.push(back, l, r);
     }
     const roof = (this.roof = roundedBox(W * 2 + 0.3, 0.32, D * 2 + 0.3, 0.08, C.red, 0.4));
     roof.position.set(0, PLATE_TOP + 2.6, ZC);
@@ -216,6 +223,8 @@ export class Lift extends Part {
     const floor = roundedBox(W * 2 + 0.16, 0.06, D * 2 + 0.16, 0.03, C.navy2, 0.5);
     floor.position.set(0, PLATE_TOP + 0.03, ZC);
     tower.add(roof, this.pulley, floor);
+    this.frame.push(roof);
+    this.tower = tower;
 
     // The cabin with a little passenger looking out of the open front.
     const shell = (this.shell = roundedBox(0.86, 0.72, 0.8, 0.08, '#ffb547', 0.4));
@@ -251,6 +260,22 @@ export class Lift extends Part {
 
   protected electrical(): Partial<CircuitElement> {
     return { r: 10 };
+  }
+
+  /**
+   * The factory's hoist: Codex's sculpted shaft (hoist.glb) instead of the
+   * code-built posts and roof; the cabin, rope, pulley and floor lamps stay,
+   * the pulley hung under its top beam. The farm's lift keeps its own look.
+   */
+  hoistSkin() {
+    const shaft = model('hoist', { height: 3 });
+    if (!shaft) return;
+    for (const o of this.frame) o.removeFromParent();
+    shaft.position.set(0, PLATE_TOP, -0.25);
+    this.tower.add(shaft);
+    this.pulley.position.y = 2.96;
+    this.ropeTop = 2.88;
+    this.pickable(shaft);
   }
 
   /** Where the cabin stands: at the top, at the bottom, or on its way. */
@@ -290,7 +315,7 @@ export class Lift extends Part {
     this.cabin.position.y = this.y;
     // The passenger bobs a little on the way.
     this.passenger.position.y = Math.abs(moved) > 1e-4 ? Math.sin(this.time * 14) * 0.012 : 0;
-    const ropeTop = PLATE_TOP + 2.22;
+    const ropeTop = this.ropeTop;
     const ropeBottom = this.y + 0.72;
     this.rope.scale.y = Math.max(0.01, ropeTop - ropeBottom);
     this.rope.position.y = (ropeTop + ropeBottom) / 2;
