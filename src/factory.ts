@@ -26,6 +26,9 @@ import type { PhraseId } from './voice';
 /** Model files the factory needs (each falls back to a code-built stand-in). */
 /** Codex's hall crew: the foreman, and the station workers in turn (whole figures facing +z, moved by code). */
 const CREW = ['factory-worker-technician', 'factory-worker-loader', 'factory-worker-inspector'];
+/** What the hall's furniture says when tapped. */
+const PROP_SOUND: Record<string, PhraseId> = { 'factory-control-cabinet': 'beep', 'factory-foreman-booth': 'hammer', 'factory-lockers': 'hammer' };
+
 /** Codex's hall furniture (static, but the cabinet's lamps light up): where the empty floor was. */
 const PROPS: [string, Fit, number, number, number][] = [
   ['factory-foreman-booth', { height: 2.6 }, 34, 5.6, 0],
@@ -286,10 +289,19 @@ export class FactoryMap extends StoryMap {
         }
       });
       this.scenery.add(m);
+      // A tap on it: it answers (the cabinet blinks all its lamps, the trolley rolls a little and back).
+      const lamps = this.cabinetLamps.slice(-3);
+      const trick =
+        name === 'factory-control-cabinet'
+          ? (k: number) => lamps.forEach((l, i) => (l.flash = k < 0 ? 0 : Math.sin(k * 12 + i * 2) > 0 ? 1 : 0))
+          : name === 'factory-box-trolley'
+            ? (k: number) => m.position.set(x + (k < 0 ? 0 : Math.sin(Math.min(1, k / 1.4) * Math.PI) * 0.5), m.position.y, z)
+            : undefined;
+      this.life.addProp(m, PROP_SOUND[name] ?? null, trick);
     }
   }
 
-  private cabinetLamps: { m: THREE.MeshStandardMaterial; color: string }[] = [];
+  private cabinetLamps: { m: THREE.MeshStandardMaterial; color: string; flash?: number }[] = [];
 
   /** A lever put on its place gets its supply from the station's pole at once; the child wires it on to the motor. */
   private layLevers() {
@@ -820,7 +832,7 @@ export class FactoryMap extends StoryMap {
     for (const l of this.cabinetLamps) {
       const on = l.color === 'red' ? !this.lit : l.color === 'green' ? this.lit : this.phase === 'evening' && !this.eveLit && Math.sin(this.time * 6) > 0;
       l.m.emissive.set(l.color === 'red' ? '#ff3b2f' : l.color === 'green' ? '#4cff6a' : '#ffb020');
-      l.m.emissiveIntensity = THREE.MathUtils.damp(l.m.emissiveIntensity, on ? 2.2 : 0, 8, dt);
+      l.m.emissiveIntensity = THREE.MathUtils.damp(l.m.emissiveIntensity, on || l.flash ? 2.2 : 0, 8, dt);
     }
     this.layLevers();
     this.autoHoist();

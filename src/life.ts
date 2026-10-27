@@ -156,8 +156,16 @@ export class Life {
   /** Meshes a finger can hit. */
   pickables(): THREE.Object3D[] {
     const out: THREE.Object3D[] = [];
-    for (const g of [...this.extras.map((e) => e.group), ...this.toys.map((t) => t.root)]) g.traverse((o) => (o as THREE.Mesh).isMesh && out.push(o));
+    for (const g of [...this.extras.map((e) => e.group), ...this.toys.map((t) => t.root), ...this.props.map((p) => p.root)]) g.traverse((o) => (o as THREE.Mesh).isMesh && out.push(o));
     return out;
+  }
+
+  /** Furniture that answers a tap (a model already on the board): a shake and a sound, and its own trick if it has one (`k`: seconds in). */
+  private props: { root: THREE.Object3D; t: number; y0: number; sound: PhraseId | null; trick?: (k: number) => void }[] = [];
+
+  addProp(root: THREE.Object3D, sound: PhraseId | null, trick?: (k: number) => void) {
+    root.traverse((o) => (o.userData.life = 'toy'));
+    this.props.push({ root, t: -1, y0: root.position.y, sound, trick });
   }
 
   /** A tap landed on this mesh: the animal runs off, the toy does its trick. True if it was ours. */
@@ -176,6 +184,15 @@ export class Life {
       if (extra.sound) this.hooks.say(extra.sound);
       return true;
     }
+    const prop = this.props.find((p) => owner(p.root));
+    if (prop) {
+      if (prop.t < 0) {
+        prop.t = 0;
+        if (prop.sound) this.hooks.say(prop.sound);
+        this.hooks.chime();
+      }
+      return true;
+    }
     const toy = this.toys.find((t) => owner(t.root));
     if (!toy) return false;
     if (toy.t < 0) {
@@ -190,6 +207,21 @@ export class Life {
     this.time += dt;
     for (const e of this.extras) this.moveExtra(e, dt, eye);
     for (const t of this.toys) if (t.t >= 0) this.playToy(t, dt);
+    for (const p of this.props) {
+      if (p.t < 0) continue;
+      p.t += dt;
+      // A little jump and a wobble that dies away.
+      const k = p.t;
+      p.root.position.y = p.y0 + Math.max(0, Math.sin(Math.min(1, k / 0.35) * Math.PI)) * 0.12;
+      p.root.rotation.z = Math.sin(k * 26) * 0.05 * Math.max(0, 1 - k / 0.8);
+      p.trick?.(k);
+      if (k > 1.6) {
+        p.t = -1;
+        p.root.position.y = p.y0;
+        p.root.rotation.z = 0;
+        p.trick?.(-1);
+      }
+    }
     const day = 1 - night;
     for (const f of this.flutters) {
       f.a += dt * f.k;
