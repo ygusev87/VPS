@@ -53,6 +53,7 @@ export function activeAt(kind: PartKind, l: number): boolean {
     case 'railCart':
     case 'safetyPress':
     case 'shaftMotor':
+    case 'gantry':
     case 'floorFan':
     case 'pcFan':
     case 'marbleRun':

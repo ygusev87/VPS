@@ -69,6 +69,12 @@ const SPECIAL: Sticker[] = [
   { id: 'factory:press', say: 'press2Happy', emoji: '🔨' },
   { id: 'factory:robot', say: 'plugHappy', emoji: '🤖' },
   { id: 'factory:lorry', say: 'hoistHappy', emoji: '🚚' },
+  { id: 'factory:store', say: 'storeHappy', emoji: '🔦' },
+  { id: 'factory:gantry', say: 'gantryHappy', emoji: '🏗️' },
+  { id: 'factory:paint', say: 'paintHappy2', emoji: '🎨' },
+  { id: 'factory:grinder', say: 'grinderHappy', emoji: '🪨' },
+  { id: 'factory:welder', say: 'welderHappy', emoji: '🔥' },
+  { id: 'factory:lorry2', say: 'lorry2Happy', emoji: '🚛' },
 ];
 
 export class Album {

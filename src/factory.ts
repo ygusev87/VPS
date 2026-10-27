@@ -15,30 +15,33 @@ import { type Hint } from './hints';
 import { model, type Fit } from './parts/assets';
 import type { Part, PartKind, Terminal } from './parts/base';
 import type { Substation } from './parts/city';
-import { Gear } from './parts/factory';
+import { Gear, PaintBooth, PaintTank } from './parts/factory';
 import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import type { Lift } from './parts/more';
-import { Lathe, RailCart, Reverser, SafetyPress, ShaftMotor, SocketBoard, WireBox, WORKSHOP_MODELS } from './parts/workshop';
+import { Gantry, Lathe, RailCart, Reverser, SafetyPress, ShaftMotor, SocketBoard, WireBox, WORKSHOP_MODELS } from './parts/workshop';
 import { StoryMap, blob, v, type Critter, type MapProgress, type NeedSpec, type Phase } from './storymap';
 import type { PhraseId } from './voice';
 
 /** Model files the factory needs (each falls back to a code-built stand-in). */
 export const FACTORY_MODELS = ['pole', 'child', 'kitten', 'flower-cluster', ...WORKSHOP_MODELS];
 
-/** What the drawers offer in the factory: two levers and the gears (a middle one that fits nowhere). */
+/** What the drawers offer in the factory: the levers and the gears (a middle one that fits nowhere). */
 export const FACTORY_TRAY: { kind: PartKind; count: number }[] = [
-  { kind: 'reverser', count: 2 },
-  { kind: 'smallGear', count: 1 },
-  { kind: 'bigGear', count: 1 },
+  // Two levers for the day line (cart, hoist), two for the evening's gantry.
+  { kind: 'reverser', count: 4 },
+  // A small and a big gear each for the lathe and the grinder; the middle one fits nowhere.
+  { kind: 'smallGear', count: 2 },
+  { kind: 'bigGear', count: 2 },
   { kind: 'gear', count: 1 },
 ];
 
 /** Bumped whenever the factory is laid out anew (a save on another layout starts it afresh). */
-export const FACTORY_LAYOUT = 2;
+export const FACTORY_LAYOUT = 3;
 
 export interface FactoryProgress extends MapProgress {
   loaded: number;
+  loaded2?: number;
 }
 
 const W = 80;
@@ -75,13 +78,6 @@ const HOIST_LEVER = v(20.5, -11);
 const HOIST_POLE = v(25, -13);
 const LORRY = v(32.5, -2.5);
 
-/**
- * The overhead crane over the stock, at the hall's south side: from the
- * camera a high beam hides a strip of floor north of it, so nothing the
- * child works at stands there.
- */
-const CRANE_Z = 24.5;
-
 /** Where the foreman and the four workers stand (by their stations). */
 const WORKER_SPOTS = [v(PANEL.x + 4, PANEL.z - 0.5), v(CART.x + 2, CART.z + 4.5), v(LATHE.x + 2.5, LATHE.z - 3.5), v(PRESS.x + 3.5, PRESS.z - 3), v(ROBOT.x + 3, ROBOT.z - 4)];
 
@@ -90,6 +86,38 @@ const MACHINE_SCALE = 1.5;
 
 /** Where each station stands on the line (a toy stops there till it works). */
 const STATIONS = [LATHE.x, PRESS.x, ROBOT.x, HOIST.x];
+
+// The evening shift: a second line along the south of the hall, z = EVE_Z.
+const EVE_Z = 13;
+/** E1. The store's lights: a big 3×3 wiring box between a pole and the store's own panel. */
+const EVE_BOX = v(-21, 19);
+const EVE_PANEL = v(-16.5, 22);
+const EVE_BOX_POLE = v(-25, 21.5);
+/** E2. The gantry crane over the line's start: a coil from the stand at its west end to the line at its east end, on two levers. */
+const GANTRY_AT = v(-24, EVE_Z);
+const MOVE_LEVER = v(-34.5, 18);
+const LIFT_LEVER = v(-30.5, 18);
+const CRANE_POLE = v(-37.5, 21);
+/** Where the evening's blanks get on the line (under the trolley's east end). */
+const EVE_START = GANTRY_AT.x + 5.5;
+/** E3. Paint: a pump tank, a 3×3 box of pipe tiles, the booth over the line. */
+const TANK = v(-11.5, 18);
+const PIPES = v(-6.5, 18.5);
+const BOOTH = v(-4, EVE_Z);
+const TANK_POLE = v(-14.5, 21.5);
+/** E4. The grinder: it wants to turn fast — the big gear on the motor, the small one on the stone. */
+const GRINDER = v(7, 17.5);
+const GRIND_SHAFT = v(GRINDER.x - 1.1, GRINDER.z - 0.45);
+const GMOTOR_SHAFT = v(GRIND_SHAFT.x - 1.4, GRIND_SHAFT.z);
+const GMOTOR = v(GMOTOR_SHAFT.x, GMOTOR_SHAFT.z + 0.35);
+const GRIND_POLE = v(1, 21.5);
+/** E5. The welding robot: square plugs, its own board of sockets. */
+const WELDER = v(18, 16.5);
+const BOARD2 = v(15.5, 21);
+const WELD_POLE = v(10.5, 22);
+const LORRY2 = v(33, EVE_Z);
+/** Where each evening station stands on its line. */
+const EVE_STATIONS = [BOOTH.x, GRINDER.x, WELDER.x, LORRY2.x - 3];
 /** Where new blanks get on the line (from the cart). */
 const LINE_START = -27;
 
@@ -132,6 +160,27 @@ export class FactoryMap extends StoryMap {
   loaded = 0;
   private lorry!: Critter;
   private drivenOff = 0;
+  // The evening shift.
+  private eveBox!: WireBox;
+  private evePanel!: Substation;
+  private gantry!: Gantry;
+  private coil!: THREE.Group;
+  private tank!: PaintTank;
+  private pipes!: WireBox;
+  private booth!: PaintBooth;
+  private gmotor!: ShaftMotor;
+  private grinder!: Lathe;
+  private welder!: Part;
+  private board2!: SocketBoard;
+  private eveLit = false;
+  private eveLamps: { glow: THREE.Sprite; bulb: THREE.MeshStandardMaterial; pool: THREE.Mesh }[] = [];
+  private eveToys: { m: THREE.Group; x: number; stage: number }[] = [];
+  private eveBlanks = 0;
+  private ground = 0;
+  /** Boxes in the second lorry. */
+  loaded2 = 0;
+  private lorry2!: Critter;
+  private drivenOff2 = 0;
 
   protected build() {
     this.buildBoard();
@@ -145,13 +194,15 @@ export class FactoryMap extends StoryMap {
   }
 
   protected saveExtra() {
-    return { loaded: this.loaded };
+    return { loaded: this.loaded, loaded2: this.loaded2 };
   }
 
   protected restoreExtra(m: MapProgress) {
     const p = m as FactoryProgress;
     this.loaded = p.loaded ?? 0;
+    this.loaded2 = p.loaded2 ?? 0;
     if (this.needs.find((n) => n.critter.name === 'lorry')?.done) this.drivenOff = 1;
+    if (this.needs.find((n) => n.critter.name === 'lorry2')?.done) this.drivenOff2 = 1;
   }
 
   protected voiceOf(base: string): PhraseId | null {
@@ -162,14 +213,15 @@ export class FactoryMap extends StoryMap {
     return model(MODEL_OF[base] ?? base, fit) ?? STAND_INS[base]?.() ?? blob(name);
   }
 
-  /** Dim till the wiring box lets the power through; then the hall's lamps are on, whatever the time. */
+  /** Dim till the wiring box lets the power through; in the evening the store is dark again till its own lights are on. */
   protected darkness() {
+    if (this.phase === 'evening') return this.eveLit ? 0.1 : DIM;
     return this.lit ? 0 : DIM;
   }
 
-  /** The factory works one long shift: when all its stations work, that is the end. */
-  protected after(_p: Phase) {
-    return { next: 'done' as Phase, wait: 4 };
+  /** Two shifts: the day line, then the evening shift on the second line; after it, the end. */
+  protected after(p: Phase) {
+    return { next: (p === 'day' ? 'evening' : 'done') as Phase, wait: 4 };
   }
 
   // ───────────────────────── Building ─────────────────────────
@@ -269,6 +321,24 @@ export class FactoryMap extends StoryMap {
         this.scenery.add(b, glow, pool);
       }
     }
+    // The store's own lamps, dark till the evening shift's box lets the power through.
+    for (let x = -28; x <= 28; x += 14) {
+      const z = 16;
+      const bulb = new THREE.MeshStandardMaterial({ color: '#f7f2dc', emissive: '#ffe9a8', emissiveIntensity: 0, roughness: 0.3 });
+      const shade = mesh(new THREE.ConeGeometry(0.55, 0.4, 16, 1, true), mat('#e8e4dc', 0.5));
+      shade.position.set(x, 4.6, z);
+      const b = mesh(new THREE.SphereGeometry(0.25, 12, 8), bulb, false);
+      b.position.set(x, 4.35, z);
+      const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowFor('rgba(255,235,170,0.9)'), transparent: true, depthWrite: false, opacity: 0 }));
+      glow.scale.setScalar(3.2);
+      glow.position.set(x, 4.2, z);
+      const pool = mesh(new THREE.CircleGeometry(3.2, 28).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: glowFor('rgba(255,240,190,0.55)'), transparent: true, opacity: 0, depthWrite: false }), false);
+      pool.position.set(x, 0.02, z + 3.5);
+      pool.renderOrder = 2;
+      this.eveLamps.push({ glow, bulb, pool });
+      hall.add(shade);
+      this.scenery.add(b, glow, pool);
+    }
     // The conveyor line the toys ride along.
     const belt = mesh(new THREE.BoxGeometry(57, 0.3, 1.4), mat('#3a3f4b', 0.7));
     belt.position.set(1.5, 0.35, LINE_Z);
@@ -278,22 +348,19 @@ export class FactoryMap extends StoryMap {
       leg.position.set(x, 0.12, LINE_Z);
       hall.add(leg);
     }
-    // The overhead crane over the stock (factory-industrial-b): two yellow gantry legs and a long beam with a hook.
-    const yellow = mat('#f2c230', 0.55, 0.2);
-    for (const x of [-W / 2 + 2, W / 2 - 2]) {
-      const leg = mesh(new THREE.BoxGeometry(0.7, 6, 0.7), yellow);
-      leg.position.set(x, 3, CRANE_Z);
+    // The evening line, along the south of the hall.
+    const belt2 = mesh(new THREE.BoxGeometry(EVE_STATIONS[3] - EVE_START + 4, 0.3, 1.4), mat('#3a3f4b', 0.7));
+    belt2.position.set((EVE_START + EVE_STATIONS[3] + 2) / 2, 0.35, EVE_Z);
+    hall.add(belt2);
+    for (let x = EVE_START; x <= EVE_STATIONS[3] + 2; x += 2) {
+      const leg = mesh(new THREE.BoxGeometry(0.12, 0.35, 1.3), mat('#8a90a0', 0.4, 0.5), false);
+      leg.position.set(x, 0.12, EVE_Z);
       hall.add(leg);
     }
-    const beam = mesh(new THREE.BoxGeometry(W - 3, 0.7, 1), yellow);
-    beam.position.set(0, 6.2, CRANE_Z);
-    const trolley = mesh(new THREE.BoxGeometry(1.4, 0.6, 1.4), mat('#2b3242', 0.4, 0.4));
-    trolley.position.set(8, 5.6, CRANE_Z);
-    const chain = mesh(new THREE.CylinderGeometry(0.05, 0.05, 3, 6), mat('#9aa3ad', 0.3, 0.8), false);
-    chain.position.set(8, 3.8, CRANE_Z);
-    const hook = mesh(new THREE.TorusGeometry(0.3, 0.08, 8, 14, Math.PI * 1.5), mat('#2b3242', 0.4, 0.5));
-    hook.position.set(8, 2.2, CRANE_Z);
-    hall.add(beam, trolley, chain, hook);
+    // The coil stand under the gantry's west end.
+    const stand = mesh(new THREE.BoxGeometry(1.6, 0.5, 1.4), mat('#2f6fb3', 0.5, 0.3));
+    stand.position.set(GANTRY_AT.x - 5.5, 0.25, EVE_Z);
+    hall.add(stand);
     // The stock: racks of steel bars and coils under the crane, crates and barrels.
     // The kit's painted stock (cards) when it has it, else the code-built stand-ins.
     const shade = kitPieces('farm', 'blob-shadow')[0] ?? null;
@@ -302,13 +369,13 @@ export class FactoryMap extends StoryMap {
       if (maps.length) this.scenery.add(standees(spots, maps, shade));
       else fallback();
     };
-    const racks = [[-24, 19], [-6, 20], [12, 19], [28, 19]] as const;
+    const racks = [[-30, 25], [-2, 25.2], [24, 25]] as const;
     card('rack-steel-card', racks.map(([x, z]) => ({ x, z, size: 5.5 })), () => racks.forEach(([x, z]) => hall.add(rack(x, z))));
-    for (const [x, z, s] of [[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [36, 22, 1], [-14, 23.5, 0.9], [20, 23.5, 1]] as const) hall.add(crate(x, z, s));
-    const barrels = [[-38, 20.5], [38, 12], [-30, 24], [4, 24]] as const;
-    card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.6 })), () => [[-38, 19], [-38, 22], [38, 12], [-30, 24], [4, 24]].forEach(([x, z]) => hall.add(barrel(x, z))));
+    for (const [x, z, s] of [[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [37, 22, 1], [-14, 25, 0.9], [16, 25, 1]] as const) hall.add(crate(x, z, s));
+    const barrels = [[-38, 25], [38, 8], [10, 25]] as const;
+    card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.6 })), () => [[-38, 25], [38, 8], [10, 25]].forEach(([x, z]) => hall.add(barrel(x, z))));
     // Yellow and black safety lines round every station.
-    for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.3, LATHE.z - 1, 8, 6], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11]] as const) {
+    for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.3, LATHE.z - 1, 8, 6], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11], [EVE_BOX.x + 1.5, EVE_BOX.z + 0.5, 11, 7], [-32, 18, 10, 6], [-8, 19, 11, 6], [GRINDER.x - 1.3, GRINDER.z + 0.5, 8, 6], [WELDER.x - 1, WELDER.z + 2, 10, 9]] as const) {
       const strip = kitPieces('factory', 'hazard-strip', true);
       if (this.kit && strip.length) {
         const [x0, x1, z0, z1] = [cx - w / 2, cx + w / 2, cz - d / 2, cz + d / 2];
@@ -341,6 +408,26 @@ export class FactoryMap extends StoryMap {
     // The machines of a real shop are big (industrial-b): shown half as large again. Not the lathe and its motor,
     // whose shafts must stay 1.4 apart for the child's gears.
     for (const p of [this.box, this.press, this.board, this.robot, this.cart, this.hoist]) p.root.scale.setScalar(MACHINE_SCALE);
+    // The evening shift's machines.
+    for (const p of [EVE_BOX_POLE, CRANE_POLE, TANK_POLE, GRIND_POLE, WELD_POLE]) this.poles.set(p, this.pin('pole', p));
+    this.eveBox = this.pin('bigWireBox', EVE_BOX) as WireBox;
+    this.evePanel = this.pin('substation', EVE_PANEL) as Substation;
+    this.gantry = this.pin('gantry', GANTRY_AT) as Gantry;
+    this.coil = coilMesh();
+    this.coil.position.set(GANTRY_AT.x - 5.5, 0.95, EVE_Z);
+    this.scenery.add(this.coil);
+    this.tank = this.pin('tank', TANK) as PaintTank;
+    this.pipes = this.pin('pipeBox', PIPES) as WireBox;
+    this.booth = this.pin('paintBooth', BOOTH) as PaintBooth;
+    this.booth.ownFeed = true;
+    this.gmotor = this.pin('shaftMotor', GMOTOR) as ShaftMotor;
+    this.grinder = this.pin('grinder', GRINDER) as Lathe;
+    this.welder = this.pin('robotArm', WELDER);
+    // The welder's plugs are squares.
+    this.welder.terminal('a').shaped('square');
+    this.welder.terminal('b').shaped('square');
+    this.board2 = this.pin('socketBoard', BOARD2) as SocketBoard;
+    for (const p of [this.welder, this.board2, this.tank, this.booth]) p.root.scale.setScalar(MACHINE_SCALE);
   }
 
   private buildCritters() {
@@ -350,6 +437,10 @@ export class FactoryMap extends StoryMap {
     for (const [name, at] of workers) this.critter(name, { height: 1.5 }, at, 1.5, 0.3);
     this.lorry = this.critter('lorry', { width: 5 }, LORRY, 2.2, Math.PI);
     this.lorry.roams = true;
+    // The evening shift's people, by their stations, and the second lorry.
+    for (const [name, at] of [['worker5', v(EVE_BOX.x + 4.5, EVE_BOX.z + 2)], ['worker6', v(-27, 20.5)], ['worker7', v(-2, 20.5)], ['worker8', v(GRINDER.x + 3, GRINDER.z + 3)], ['worker9', v(WELDER.x + 3.5, WELDER.z + 4)]] as const) this.critter(name, { height: 1.5 }, at, 1.5, 0.3);
+    this.lorry2 = this.critter('lorry2', { width: 5 }, LORRY2, 2.2, Math.PI);
+    this.lorry2.roams = true;
     const cat = this.critter('cat', { height: 0.6 }, v(-35.5, -21.5), 0.6, 0.5);
     cat.base = 1.05;
   }
@@ -364,6 +455,13 @@ export class FactoryMap extends StoryMap {
     add({ critter: get('worker3'), phase: 'day', ask: 'press2Ask', thanks: 'press2Happy', icon: 'safetyPress', kinds: ['safetyPress'], spot: PRESS, focus: [PRESS.clone(), PRESS_POLE.clone()], met: () => this.press.strokes >= 3, sticker: 'press' });
     add({ critter: get('worker4'), phase: 'day', ask: 'plugAsk', thanks: 'plugHappy', icon: 'socketBoard', kinds: ['socketBoard'], spot: BOARD, focus: [ROBOT.clone(), BOARD.clone(), ROBOT_POLE.clone()], met: () => Math.abs(this.robot.state.level) > 0.15, sticker: 'robot' });
     add({ critter: this.lorry, phase: 'day', ask: 'hoistAsk', thanks: 'hoistHappy', icon: 'reverser', kinds: ['reverser'], spot: HOIST_LEVER, focus: [HOIST.clone(), HOIST_LEVER.clone(), LORRY.clone()], met: () => this.loaded >= 3, sticker: 'lorry' });
+    // The evening shift.
+    add({ critter: get('worker5'), phase: 'evening', ask: 'storeAsk', thanks: 'storeHappy', icon: 'bigWireBox', kinds: ['bigWireBox'], spot: EVE_BOX, focus: [EVE_BOX.clone(), EVE_PANEL.clone(), EVE_BOX_POLE.clone()], met: () => this.eveLit, sticker: 'store' });
+    add({ critter: get('worker6'), phase: 'evening', ask: 'gantryAsk', thanks: 'gantryHappy', icon: 'reverser', kinds: ['reverser'], spot: MOVE_LEVER, more: [{ icon: 'reverser', kinds: ['reverser'], spot: LIFT_LEVER }], focus: [GANTRY_AT.clone(), MOVE_LEVER.clone(), CRANE_POLE.clone()], met: () => this.eveToys.length > 0 || this.loaded2 > 0, sticker: 'gantry' });
+    add({ critter: get('worker7'), phase: 'evening', ask: 'paintAsk2', thanks: 'paintHappy2', icon: 'pipeBox', kinds: ['pipeBox'], spot: PIPES, focus: [TANK.clone(), PIPES.clone(), BOOTH.clone(), TANK_POLE.clone()], met: () => this.booth.painting, sticker: 'paint' });
+    add({ critter: get('worker8'), phase: 'evening', ask: 'grinderAsk', thanks: 'grinderHappy', icon: 'smallGear', kinds: gears, spot: GRIND_SHAFT, more: [{ icon: 'bigGear', kinds: gears, spot: GMOTOR_SHAFT }], focus: [GRINDER.clone(), GMOTOR.clone(), GRIND_POLE.clone()], met: () => this.ground > 1.5, sticker: 'grinder' });
+    add({ critter: get('worker9'), phase: 'evening', ask: 'welderAsk', thanks: 'welderHappy', icon: 'socketBoard', kinds: ['socketBoard'], spot: BOARD2, focus: [WELDER.clone(), BOARD2.clone(), WELD_POLE.clone()], met: () => Math.abs(this.welder.state.level) > 0.15, sticker: 'welder' });
+    add({ critter: this.lorry2, phase: 'evening', ask: 'lorry2Ask', thanks: 'lorry2Happy', icon: 'gantry', kinds: ['gantry'], spot: GANTRY_AT, focus: [LORRY2.clone(), WELDER.clone()], met: () => this.loaded2 >= 3, sticker: 'lorry2' });
   }
 
   private on(at: THREE.Vector3, kinds: PartKind[]): Part | undefined {
@@ -434,6 +532,52 @@ export class FactoryMap extends StoryMap {
         const want = this.hoist.end === 'top' ? -1 : waiting || this.hoist.end !== 'bottom' ? 1 : 0;
         return want === 0 || lever.pos === want ? null : { type: 'tap', part: lever, phrase: 'tapReverser', local: lever.posPoint(want) };
       }
+      case 'worker5': {
+        const h = this.chainHint(pole(EVE_BOX_POLE), [this.eveBox, this.evePanel]);
+        if (h) return h;
+        const at = this.eveBox.hintPoint();
+        return at ? { type: 'tap', part: this.eveBox, phrase: 'turnTile', local: at } : null;
+      }
+      case 'worker6': {
+        const move = this.on(MOVE_LEVER, ['reverser']) as Reverser | undefined;
+        const lift = this.on(LIFT_LEVER, ['reverser']) as Reverser | undefined;
+        if (!move) return { type: 'drag', kind: 'reverser', to: MOVE_LEVER.clone(), phrase: 'placeHere' };
+        if (!lift) return { type: 'drag', kind: 'reverser', to: LIFT_LEVER.clone(), phrase: 'placeHere' };
+        const p = pole(CRANE_POLE);
+        const g = this.gantry;
+        const wires =
+          this.join(p.terminal('a'), move.terminal('p'), 'chainStart') ?? this.join(move.terminal('n'), p.terminal('b'), 'chainBack') ?? this.join(move.terminal('a'), g.terminal('a1')) ?? this.join(move.terminal('b'), g.terminal('b1')) ??
+          this.join(p.terminal('a'), lift.terminal('p'), 'chainStart') ?? this.join(lift.terminal('n'), p.terminal('b'), 'chainBack') ?? this.join(lift.terminal('a'), g.terminal('a2')) ?? this.join(lift.terminal('b'), g.terminal('b2'));
+        if (wires) return wires;
+        // Up, over to the coil, down to take it; up, over to the line, down to leave it.
+        const lever = (l: Reverser, pos: -1 | 0 | 1, phrase: PhraseId): Hint | null => (l.pos === pos ? null : { type: 'tap', part: l, phrase, local: l.posPoint(pos) });
+        const to = this.hooked ? 1 : -1;
+        if (g.end !== to) return g.high ? lever(move, to, this.hooked ? 'craneToLine' : 'craneToCoil') : lever(lift, 1, 'craneUp');
+        return g.low ? lever(lift, 1, 'craneUp') : lever(lift, -1, 'craneDown');
+      }
+      case 'worker7': {
+        const h = this.chainHint(pole(TANK_POLE), [this.tank, this.booth]);
+        if (h) return h;
+        const at = this.pipes.hintPoint();
+        return at ? { type: 'tap', part: this.pipes, phrase: 'turnPipe', local: at } : null;
+      }
+      case 'worker8': {
+        const h = this.chainHint(pole(GRIND_POLE), [this.gmotor]);
+        if (h) return h;
+        const onMotor = this.on(GMOTOR_SHAFT, ['smallGear', 'bigGear', 'gear']);
+        const onStone = this.on(GRIND_SHAFT, ['smallGear', 'bigGear', 'gear']);
+        const wrong = onMotor && onMotor.kind !== 'bigGear' ? onMotor : onStone && onStone.kind !== 'smallGear' ? onStone : null;
+        if (wrong) return { type: 'tap', part: wrong, phrase: this.grinder.speed === 'slow' ? 'grinderSlow' : 'gearBack' };
+        return null;
+      }
+      case 'worker9': {
+        const p = pole(WELD_POLE);
+        return this.join(p.terminal('a'), this.board2.terminal('p'), 'chainStart') ?? this.join(this.board2.terminal('n'), p.terminal('b'), 'chainBack') ?? this.join(this.welder.terminal('a'), this.board2.terminal('square+'), 'plugShape') ?? this.join(this.welder.terminal('b'), this.board2.terminal('square-'), 'plugShape');
+      }
+      case 'lorry2':
+        // Boxes come on their own once the line works: its first need is the crane's blanks.
+        if (!this.eveToys.length && !this.eveBlanks && !this.needs.find((m) => m.critter.name === 'worker6')?.done) return this.stationHint('worker6');
+        return null;
     }
     return null;
   }
@@ -441,6 +585,7 @@ export class FactoryMap extends StoryMap {
   // ───────────────────────── Story ─────────────────────────
 
   protected phaseBegins(p: Phase) {
+    if (p === 'evening') this.hooks.say('eveningShift');
     if (p === 'done') this.hooks.say('factoryDone');
   }
 
@@ -470,6 +615,91 @@ export class FactoryMap extends StoryMap {
     this.updateCart();
     this.updateLine(dt);
     this.updateLorry(dt);
+    this.updateEvening(dt);
+  }
+
+  /** The coil is on the gantry's hook. */
+  private hooked = false;
+  private coilBack = 0;
+
+  /**
+   * The evening shift: the store's lamps on its box, the gantry taking a coil
+   * from its stand to the line (three blanks), paint through the pipe tiles,
+   * the grinder at its speed, the welder on its square sockets, and boxes off
+   * the end into the second lorry.
+   */
+  private updateEvening(dt: number) {
+    const lit = this.evePanel.live && this.eveBox.closed;
+    if (lit && !this.eveLit) this.hooks.chime();
+    this.eveLit = lit;
+    for (const l of this.eveLamps) {
+      const on = this.eveLit ? 1 : 0;
+      l.bulb.emissiveIntensity = THREE.MathUtils.damp(l.bulb.emissiveIntensity, on * 2.5, 6, dt);
+      l.glow.material.opacity = THREE.MathUtils.damp(l.glow.material.opacity, on * 0.6, 6, dt);
+      const pm = l.pool.material as THREE.MeshBasicMaterial;
+      pm.opacity = THREE.MathUtils.damp(pm.opacity, on * 0.8, 6, dt);
+    }
+    // The gantry: the hook right down at the stand takes the coil, right down at the line's start leaves it there.
+    const g = this.gantry;
+    if (!this.hooked && this.coilBack <= 0 && g.end === -1 && g.low) {
+      this.hooked = true;
+      g.load.add(this.coil);
+      this.coil.position.set(0, 0, 0);
+      this.hooks.chime();
+    } else if (this.hooked && g.end === 1 && g.low) {
+      this.hooked = false;
+      this.scenery.add(this.coil);
+      this.coil.visible = false;
+      this.coilBack = 3;
+      this.eveBlanks += 3;
+      this.hooks.chime();
+    }
+    if (this.coilBack > 0) {
+      // A new coil is put on the stand.
+      this.coilBack -= dt;
+      if (this.coilBack <= 0) {
+        this.coil.visible = true;
+        this.coil.position.set(GANTRY_AT.x - 5.5, 0.95, EVE_Z);
+      }
+    }
+    // Paint runs through the joined pipe tiles while the tank pumps.
+    this.pipes.flowing = this.tank.pumping && this.pipes.closed;
+    this.booth.fed = this.pipes.flowing;
+    if (this.grinder.speed === 'ok') this.ground += dt;
+    // The second line.
+    if (this.eveBlanks > 0 && this.eveToys.length < 8 && !this.eveToys.some((t) => t.x < EVE_START + 1.5)) {
+      this.eveBlanks--;
+      const m = toyMesh();
+      m.position.set(EVE_START, 0.75, EVE_Z);
+      this.scenery.add(m);
+      this.eveToys.push({ m, x: EVE_START, stage: 0 });
+    }
+    const works = [() => this.booth.painting, () => this.grinder.speed === 'ok', () => Math.abs(this.welder.state.level) > 0.15, () => true];
+    const order = [...this.eveToys].sort((a, b) => b.x - a.x);
+    let ahead = Infinity;
+    for (const t of order) {
+      const next = EVE_STATIONS[t.stage] ?? Infinity;
+      const goal = Math.min(next, ahead - 1.2);
+      if (t.x < goal) t.x = Math.min(goal, t.x + dt * 2);
+      if (t.x >= next - 0.01 && t.stage < EVE_STATIONS.length && works[t.stage]?.()) {
+        t.stage++;
+        dressToy(t.m, t.stage === 1 ? 2 : t.stage === 3 ? 4 : 0);
+        this.hooks.chime();
+        if (t.stage === EVE_STATIONS.length) {
+          this.loaded2++;
+          t.m.removeFromParent();
+        }
+      }
+      t.m.position.x = t.x;
+      ahead = t.x;
+    }
+    this.eveToys = this.eveToys.filter((t) => t.stage < EVE_STATIONS.length);
+    // The second lorry waits for the evening; full, it drives off.
+    if (this.needs.find((n) => n.critter === this.lorry2)?.done) this.drivenOff2 = Math.min(1, this.drivenOff2 + dt * 0.15);
+    const p = this.lorry2.group.position;
+    p.set(LORRY2.x + this.drivenOff2 * 20, 0, LORRY2.z);
+    this.lorry2.home.copy(p);
+    this.lorry2.group.visible = this.phase !== 'day' && this.drivenOff2 < 1;
   }
 
   /** At the line's end of its rails the cart tips three blanks onto the line; back home it loads up again. */
@@ -540,6 +770,17 @@ export class FactoryMap extends StoryMap {
     this.lorry.home.copy(p);
     this.lorry.group.visible = this.drivenOff < 1;
   }
+}
+
+/** A coil of sheet steel, on its side (the evening line's raw stuff). */
+function coilMesh(): THREE.Group {
+  const g = new THREE.Group();
+  const coil = mesh(new THREE.CylinderGeometry(0.55, 0.55, 0.7, 24), mat('#c9ced6', 0.3, 0.85));
+  coil.rotation.x = Math.PI / 2;
+  const core = mesh(new THREE.CylinderGeometry(0.2, 0.2, 0.72, 14), mat('#2b3242', 0.5), false);
+  core.rotation.x = Math.PI / 2;
+  g.add(coil, core);
+  return g;
 }
 
 /** A rack of steel: bars on shelves, coils on the bottom. */

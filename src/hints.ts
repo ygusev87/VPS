@@ -38,7 +38,8 @@ export function hintKey(h: Hint | null): string {
     case 'tapWire':
       return `w:${h.wire.id}:${h.problem}`;
     case 'drag':
-      return `d:${h.kind}:${h.part?.id ?? ''}`;
+      // Where it goes too: the same part for another ring is a new hint (the camera looks for it again).
+      return `d:${h.kind}:${h.part?.id ?? ''}:${h.to.x.toFixed(1)},${h.to.z.toFixed(1)}`;
   }
 }
 
@@ -46,7 +47,7 @@ export function isProblem(h: Hint | null): boolean {
   return h?.type === 'tapWire';
 }
 
-const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher', 'laser', 'bell', 'belt', 'pump', 'heater', 'gate', 'substation', 'magnet', 'barrier', 'ferris', 'carWash', 'drawbridge', 'towerCrane', 'duskLamp', 'neon', 'ladder', 'gearMotor', 'tank', 'paintBooth', 'robotArm', 'packer', 'garland', 'kettle', 'railCart', 'safetyPress', 'shaftMotor'];
+const LOADS: PartKind[] = ['bulb', 'led', 'fan', 'carousel', 'windmill', 'buzzer', 'musicbox', 'xylophone', 'drum', 'track', 'helicopter', 'firetruck', 'trafficLight', 'disco', 'lift', 'crane', 'floorFan', 'pcFan', 'piano', 'tuba', 'maracas', 'bells', 'marbleRun', 'waterMill', 'conveyor', 'launcher', 'laser', 'bell', 'belt', 'pump', 'heater', 'gate', 'substation', 'magnet', 'barrier', 'ferris', 'carWash', 'drawbridge', 'towerCrane', 'duskLamp', 'neon', 'ladder', 'gearMotor', 'tank', 'paintBooth', 'robotArm', 'packer', 'garland', 'kettle', 'railCart', 'safetyPress', 'shaftMotor', 'gantry'];
 const POLAR: PartKind[] = ['led', 'buzzer', 'musicbox'];
 export const isPolar = (p: Part) => POLAR.includes(p.kind);
 const isBattery = (p: Part) => p.kind === 'battery' || p.kind === 'bigBattery';

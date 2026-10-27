@@ -4,7 +4,7 @@
 // lets the current through only when the pieces join from its left post to
 // its right one (src/parts/tiles.ts).
 import * as THREE from 'three';
-import type { CircuitElement, ElementKind } from '../circuit/solver';
+import type { CircuitElement, CircuitResult, ElementKind } from '../circuit/solver';
 import { Part, type PartKind, type PlugShape } from './base';
 import { model, type Fit } from './assets';
 import { basePlate, damp, mat, mesh, PLATE_TOP } from './kit';
@@ -14,7 +14,7 @@ import { flow, hintTile, makePuzzle, opens, turn, type Side, type TileGrid } fro
 const TILE = 1;
 
 /** The sculpted bodies of the factory's machines (Codex's GLBs, loaded with the factory). */
-export const WORKSHOP_MODELS = ['factory-cabinet', 'lever-box', 'rail-cart', 'lathe', 'shaft-motor', 'safety-press', 'socket-board', 'hoist'];
+export const WORKSHOP_MODELS = ['factory-cabinet', 'lever-box', 'rail-cart', 'lathe', 'shaft-motor', 'safety-press', 'socket-board', 'hoist', 'grinder', 'gantry-crane', 'paint-tank', 'paint-booth', 'robot-arm'];
 
 /**
  * Swap code-built stand-ins for a sculpted body when its model has loaded:
@@ -31,17 +31,24 @@ function sculpt(part: Part, name: string, fit: Fit, at: THREE.Vector3, standIns:
 }
 
 export class WireBox extends Part {
-  readonly kind: PartKind = 'wireBox';
-  readonly elementKind: ElementKind = 'switch';
+  readonly kind: PartKind;
+  readonly elementKind: ElementKind;
   readonly radius: number;
   grid: TileGrid;
+  /** A box of pipe tiles (the paint line's junction): no posts, it carries paint, not current. */
+  readonly pipes: boolean;
+  /** Paint is running through the joined pipes now (set by the map, from the tank's pump). */
+  flowing = false;
   private tiles: THREE.Group[] = [];
   private strips: THREE.MeshStandardMaterial[] = [];
   private shown: number[] = [];
   private lamp: THREE.MeshStandardMaterial;
 
-  constructor(size = 2, grid?: TileGrid) {
+  constructor(size = 2, grid?: TileGrid, pipes = false) {
     super();
+    this.pipes = pipes;
+    this.kind = pipes ? 'pipeBox' : size > 2 ? 'bigWireBox' : 'wireBox';
+    this.elementKind = pipes ? 'wire' : 'switch';
     this.grid = grid ?? makePuzzle(size, size);
     const { w, h } = this.grid;
     const half = { x: (w * TILE) / 2, z: (h * TILE) / 2 };
@@ -73,10 +80,16 @@ export class WireBox extends Part {
     // The posts at the way's two ends, just outside the tray.
     const inRow = Math.floor(this.grid.in.cell / w);
     const outRow = Math.floor(this.grid.out.cell / w);
-    this.addTerminal('a', 'none', -half.x - 0.5, -half.z + (inRow + 0.5) * TILE);
-    this.addTerminal('b', 'none', half.x + 0.5, -half.z + (outRow + 0.5) * TILE);
+    if (!pipes) {
+      this.addTerminal('a', 'none', -half.x - 0.5, -half.z + (inRow + 0.5) * TILE);
+      this.addTerminal('b', 'none', half.x + 0.5, -half.z + (outRow + 0.5) * TILE);
+    }
     this.pickable(plate, door, ...(body ? [body] : [tray]), ...this.tiles);
     this.closed = flow(this.grid).done;
+  }
+
+  elements(): CircuitElement[] {
+    return this.pipes ? [] : super.elements();
   }
 
   /** A tile's centre, part-local. */
@@ -103,21 +116,24 @@ export class WireBox extends Part {
   private tileMesh(sides: Side[]): THREE.Group {
     const g = new THREE.Group();
     const slab = mesh(new THREE.BoxGeometry(TILE - 0.06, 0.06, TILE - 0.06), mat('#2b3242', 0.7));
-    const copper = new THREE.MeshStandardMaterial({ color: '#c7743e', roughness: 0.3, metalness: 0.75, emissive: '#ffb347', emissiveIntensity: 0 });
+    // Copper strips for current; steel pipes that fill pink with paint for the paint line.
+    const copper = this.pipes
+      ? new THREE.MeshStandardMaterial({ color: '#9aa3ad', roughness: 0.3, metalness: 0.7, emissive: '#ff5fa8', emissiveIntensity: 0 })
+      : new THREE.MeshStandardMaterial({ color: '#c7743e', roughness: 0.3, metalness: 0.75, emissive: '#ffb347', emissiveIntensity: 0 });
     this.strips.push(copper);
     g.add(slab);
     for (const s of sides) {
-      const strip = mesh(new THREE.BoxGeometry(0.14, 0.05, TILE / 2), copper, false);
+      const strip = this.pipes ? mesh(new THREE.CylinderGeometry(0.13, 0.13, TILE / 2, 12).rotateX(Math.PI / 2), copper, false) : mesh(new THREE.BoxGeometry(0.14, 0.05, TILE / 2), copper, false);
       // Drawn running north from the centre, then turned to its side.
-      strip.position.set(0, 0.05, -TILE / 4);
+      strip.position.set(0, this.pipes ? 0.12 : 0.05, -TILE / 4);
       const arm = new THREE.Group();
       arm.add(strip);
       arm.rotation.y = -s * (Math.PI / 2);
       g.add(arm);
     }
     if (sides.length) {
-      const hub = mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.07, 14), copper, false);
-      hub.position.y = 0.05;
+      const hub = this.pipes ? mesh(new THREE.SphereGeometry(0.17, 14, 10), copper, false) : mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.07, 14), copper, false);
+      hub.position.y = this.pipes ? 0.12 : 0.05;
       g.add(hub);
     }
     return g;
@@ -141,7 +157,7 @@ export class WireBox extends Part {
 
   protected animate(dt: number) {
     const { lit } = flow(this.grid);
-    const live = Math.abs(this.state.current) > 0.01;
+    const live = this.pipes ? this.flowing : Math.abs(this.state.current) > 0.01;
     this.grid.tiles.forEach((t, i) => {
       // Turn smoothly the shortest way round to the tile's new quarter.
       const target = -t.turns * (Math.PI / 2);
@@ -536,7 +552,7 @@ export const LATHE_SPEED = { slow: [0.5, 1.4], fast: [3.6, 9] } as const;
  * too slow, too fast or just right. Swap a small and a big gear to change it.
  */
 export class Lathe extends Part implements Geared {
-  readonly kind: PartKind = 'lathe';
+  readonly kind: PartKind;
   readonly elementKind: ElementKind = 'wire';
   readonly radius = 1.8;
   readonly gearR = 0;
@@ -550,8 +566,10 @@ export class Lathe extends Part implements Geared {
   private band: THREE.Mesh;
   private shown = 0;
 
-  constructor() {
+  /** `grinder`: the sharpening machine — a stone wheel that wants to turn fast (the gears the other way round). */
+  constructor(grinder = false) {
     super();
+    this.kind = grinder ? 'grinder' : 'lathe';
     const plate = basePlate(3.2, 1.7);
     const bed = mesh(new THREE.BoxGeometry(2.4, 0.3, 0.6), mat('#8d97a3', 0.4, 0.6));
     bed.position.set(0.3, PLATE_TOP + 0.15, 0.2);
@@ -564,6 +582,13 @@ export class Lathe extends Part implements Geared {
     wood.rotation.z = Math.PI / 2;
     const ring = mesh(new THREE.TorusGeometry(0.17, 0.03, 6, 16), mat('#e8483f', 0.5));
     ring.rotation.y = Math.PI / 2;
+    if (grinder) {
+      // A grinding stone on the spindle instead of a workpiece.
+      wood.scale.set(0.5, 0.5, 0.5);
+      const stone = mesh(new THREE.CylinderGeometry(0.45, 0.45, 0.22, 28), mat('#b9b3a8', 0.9));
+      stone.rotation.z = Math.PI / 2;
+      this.spindle.add(stone);
+    }
     this.spindle.add(wood, ring);
     this.spindle.position.set(0.3, PLATE_TOP + 0.75, 0.2);
     // The shaft at the back left takes the gear; the dial stands on the head.
@@ -579,9 +604,9 @@ export class Lathe extends Part implements Geared {
     this.needle.add(pin);
     this.needle.position.set(-0.7, PLATE_TOP + 1.25, 0.55);
     this.body.add(plate, bed, head, tail, this.spindle, shaft, face, this.band, this.needle);
-    const body = sculpt(this, 'lathe', { width: 2.6 }, new THREE.Vector3(0.1, PLATE_TOP, 0.2), [bed, head, tail]);
+    const body = sculpt(this, grinder ? 'grinder' : 'lathe', { width: 2.6 }, new THREE.Vector3(0.1, PLATE_TOP, 0.2), [bed, head, tail]);
     this.pickable(plate, ...(body ? [body] : [bed, head, tail]));
-    this.setWant('slow');
+    this.setWant(grinder ? 'fast' : 'slow');
   }
 
   elements(): CircuitElement[] {
@@ -664,4 +689,109 @@ export class SocketBoard extends Part {
   }
 
   protected animate() {}
+}
+
+/** The gantry's span (part-local x) and its hook's travel. */
+const GANTRY = { half: 7, beamY: 5.8, hookTop: 4.6, hookLow: 0.7 };
+
+/**
+ * An overhead crane on two legs: two motors, each on a lever of its own —
+ * one drives the trolley along the beam (forward east, back west), the
+ * other winds the hook up or down. The map decides what the hook picks up
+ * (a coil from the stock) and where it lets it go.
+ */
+export class Gantry extends Part {
+  readonly kind: PartKind = 'gantry';
+  readonly elementKind: ElementKind = 'motor';
+  readonly radius = GANTRY.half + 1;
+  /** The trolley along the beam (part-local x) and the hook's height. */
+  trolleyX = -GANTRY.half + 1.5;
+  hookY = GANTRY.hookTop;
+  /** What hangs from the hook (the map hangs a coil here). */
+  readonly load = new THREE.Group();
+  private moveLevel = 0;
+  private liftLevel = 0;
+  private trolley = new THREE.Group();
+  private hook = new THREE.Group();
+  private cable: THREE.Mesh;
+
+  constructor() {
+    super();
+    const plate = basePlate(2.4, 1.4);
+    plate.position.set(-GANTRY.half - 1.6, 0, 1.2);
+    const yellow = mat('#f2c230', 0.55, 0.2);
+    const frame = new THREE.Group();
+    for (const x of [-GANTRY.half, GANTRY.half]) {
+      const leg = mesh(new THREE.BoxGeometry(0.6, GANTRY.beamY, 0.6), yellow);
+      leg.position.set(x, GANTRY.beamY / 2, 0);
+      frame.add(leg);
+    }
+    const beam = mesh(new THREE.BoxGeometry(GANTRY.half * 2 + 1, 0.7, 0.9), yellow);
+    beam.position.y = GANTRY.beamY + 0.35;
+    frame.add(beam);
+    const box = mesh(new THREE.BoxGeometry(1.4, 0.9, 0.7), mat('#2f8f8c', 0.45, 0.3));
+    box.position.set(-GANTRY.half - 1.6, PLATE_TOP + 0.45, 0.95);
+    const car = mesh(new THREE.BoxGeometry(1.3, 0.55, 1.2), mat('#2b3242', 0.4, 0.4));
+    this.trolley.add(car);
+    // Just under the beam (Codex's frame: its underside at 5.8).
+    this.trolley.position.y = GANTRY.beamY - 0.3;
+    this.cable = mesh(new THREE.CylinderGeometry(0.04, 0.04, 1, 6), mat('#9aa3ad', 0.3, 0.8), false);
+    const hook = mesh(new THREE.TorusGeometry(0.28, 0.08, 8, 16, Math.PI * 1.5), mat('#e8483f', 0.4, 0.3));
+    this.hook.add(hook, this.load);
+    this.load.position.y = -0.45;
+    this.body.add(plate, frame, box, this.trolley, this.cable, this.hook);
+    sculpt(this, 'gantry-crane', { width: GANTRY.half * 2 + 1 }, new THREE.Vector3(0, 0, 0), [frame]);
+    // The two pairs of posts on the control box: the trolley's (left) and the hook's (right).
+    this.addTerminal('a1', 'none', -GANTRY.half - 2.3, 1.55);
+    this.addTerminal('b1', 'none', -GANTRY.half - 1.9, 1.55);
+    this.addTerminal('a2', 'none', -GANTRY.half - 1.3, 1.55);
+    this.addTerminal('b2', 'none', -GANTRY.half - 0.9, 1.55);
+    this.pickable(plate, box);
+  }
+
+  elements(): CircuitElement[] {
+    const t = (k: string) => this.terminal(k).id;
+    return [
+      { id: `${this.id}#move`, kind: 'motor', a: t('a1'), b: t('b1'), r: 8 },
+      { id: `${this.id}#lift`, kind: 'motor', a: t('a2'), b: t('b2'), r: 8 },
+    ];
+  }
+
+  onSolved(r: CircuitResult) {
+    this.moveLevel = r.elements.get(`${this.id}#move`)?.level ?? 0;
+    this.liftLevel = r.elements.get(`${this.id}#lift`)?.level ?? 0;
+    this.state = { ...this.state, level: Math.max(Math.abs(this.moveLevel), Math.abs(this.liftLevel)) };
+  }
+
+  /** The trolley is at its west (−1) or east (1) end, or between (0). */
+  get end(): -1 | 0 | 1 {
+    return this.trolleyX <= -GANTRY.half + 1.51 ? -1 : this.trolleyX >= GANTRY.half - 1.51 ? 1 : 0;
+  }
+
+  /** The hook is right down (it can take or leave a load) / right up. */
+  get low() {
+    return this.hookY <= GANTRY.hookLow + 0.01;
+  }
+
+  get high() {
+    return this.hookY >= GANTRY.hookTop - 0.01;
+  }
+
+  /** The hook in the world. */
+  hookAt(out = new THREE.Vector3()) {
+    return this.hook.getWorldPosition(out);
+  }
+
+  protected animate(dt: number) {
+    const go = (l: number) => (Math.abs(l) > 0.15 ? Math.sign(l) * Math.min(1.5, Math.abs(l)) : 0);
+    const before = [this.trolleyX, this.hookY];
+    this.trolleyX = THREE.MathUtils.clamp(this.trolleyX + go(this.moveLevel) * 1.6 * dt, -GANTRY.half + 1.5, GANTRY.half - 1.5);
+    this.hookY = THREE.MathUtils.clamp(this.hookY + go(this.liftLevel) * 1.3 * dt, GANTRY.hookLow, GANTRY.hookTop);
+    if ((before[0] !== this.trolleyX && (this.end !== 0)) || (before[1] !== this.hookY && (this.low || this.high))) this.sounds.push({ kind: 'clank' });
+    this.trolley.position.x = this.trolleyX;
+    this.hook.position.set(this.trolleyX, this.hookY, 0);
+    const top = GANTRY.beamY - 0.55;
+    this.cable.scale.y = Math.max(0.01, top - this.hookY - 0.2);
+    this.cable.position.set(this.trolleyX, (top + this.hookY + 0.2) / 2, 0);
+  }
 }

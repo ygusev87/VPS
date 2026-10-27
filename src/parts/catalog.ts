@@ -13,7 +13,7 @@ import { Bell, Belt, Domino, Laser, Launcher, LightSensor, Magnet, Mirror, Targe
 import { Gate, Heater, Pole, Pump, Solar } from './farm';
 import { Barrier, CarWash, Drawbridge, DuskLamp, FerrisWheel, FireLadder, NeonSign, Substation, TowerCrane } from './city';
 import { Gear, GearMotor, Packer, PaintBooth, PaintTank, Pipe, Press, RobotArm } from './factory';
-import { Lathe, RailCart, Reverser, SafetyPress, ShaftMotor, SocketBoard, WireBox } from './workshop';
+import { Gantry, Lathe, RailCart, Reverser, SafetyPress, ShaftMotor, SocketBoard, WireBox } from './workshop';
 import type { PhraseId } from '../voice';
 import { Balloon, Garland, Kettle, Skittles } from './toys';
 
@@ -139,6 +139,10 @@ export const GROUPS: CatalogGroup[] = [
       { kind: 'shaftMotor', name: 'Мотор с валом', say: 'shaftMotor' },
       { kind: 'lathe', name: 'Токарный станок', say: 'lathe' },
       { kind: 'socketBoard', name: 'Щит с розетками', say: 'socketBoard' },
+      { kind: 'pipeBox', name: 'Трубы-головоломка', say: 'pipeBox' },
+      { kind: 'bigWireBox', name: 'Большой щиток', say: 'bigWireBox' },
+      { kind: 'grinder', name: 'Точильный станок', say: 'grinder' },
+      { kind: 'gantry', name: 'Кран-балка', say: 'gantry' },
     ],
   },
   {
@@ -309,6 +313,14 @@ function make(kind: PartKind): Part {
       return new Lathe();
     case 'socketBoard':
       return new SocketBoard();
+    case 'pipeBox':
+      return new WireBox(3, undefined, true);
+    case 'bigWireBox':
+      return new WireBox(3);
+    case 'grinder':
+      return new Lathe(true);
+    case 'gantry':
+      return new Gantry();
     case 'belt':
       return new Belt();
     case 'mirror':

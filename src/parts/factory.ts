@@ -7,6 +7,7 @@
 import * as THREE from 'three';
 import type { CircuitElement, ElementKind } from '../circuit/solver';
 import { C } from '../theme';
+import { model } from './assets';
 import { Part, type PartKind } from './base';
 import { basePlate, damp, mat, mesh, PLATE_TOP, roundedBox } from './kit';
 import { gearGeometry } from './mech';
@@ -294,9 +295,17 @@ export class PaintTank extends Part {
     this.wheel.position.set(-0.2, PLATE_TOP + 1.35, -0.15);
     this.wheel.rotation.x = Math.PI / 2;
     this.body.add(plate, tank, band, spout, this.wheel);
+    // Codex's sculpted tank and pump (paint-tank.glb): its outlet on the +x face where our spout was; the valve wheel stays ours, on top.
+    const sculpt = model('paint-tank', { width: 1.2 });
+    if (sculpt) {
+      for (const o of [tank, band, spout]) o.removeFromParent();
+      sculpt.position.set(0, PLATE_TOP, -0.15);
+      this.body.add(sculpt);
+      this.wheel.position.y = PLATE_TOP + 1.47;
+    }
     this.addTerminal('a', 'none', 0.7, 0.5);
     this.addTerminal('b', 'none', -0.7, 0.5);
-    this.pickable(plate, tank);
+    this.pickable(plate, sculpt ?? tank);
   }
 
   protected electrical(): Partial<CircuitElement> {
@@ -325,6 +334,8 @@ export class PaintBooth extends Part {
   readonly radius = 1.6;
   /** Paint reaches its inlet now (set by `runPipes`). */
   fed = false;
+  /** Fed by its map instead (the factory's pipe-tile box), so `runPipes` leaves `fed` alone. */
+  ownFeed = false;
   private spray: THREE.Sprite[] = [];
   private on = 0;
 
@@ -347,9 +358,16 @@ export class PaintBooth extends Part {
       this.spray.push(s);
     }
     this.body.add(plate, booth, stripe, door, inlet, ...this.spray);
+    // Codex's sculpted booth (paint-booth.glb): a tunnel along x the toys ride through.
+    const sculpt = model('paint-booth', { width: 2.2 });
+    if (sculpt) {
+      for (const o of [booth, stripe, door]) o.removeFromParent();
+      sculpt.position.set(0.2, PLATE_TOP, -0.15);
+      this.body.add(sculpt);
+    }
     this.addTerminal('a', 'none', 1.05, 0.6);
     this.addTerminal('b', 'none', -0.4, 0.6);
-    this.pickable(plate, booth);
+    this.pickable(plate, sculpt ?? booth);
   }
 
   protected electrical(): Partial<CircuitElement> {
@@ -386,6 +404,9 @@ export class RobotArm extends Part {
   private base = new THREE.Group();
   private upper = new THREE.Group();
   private claw = new THREE.Group();
+  /** The sculpted arm's own resting tilt (ours lies level). */
+  private armRest = 0;
+  private sculpted: THREE.Object3D | null = null;
   private t = 0;
 
   constructor() {
@@ -409,9 +430,25 @@ export class RobotArm extends Part {
     this.base.add(lower, this.upper);
     this.base.position.set(0, PLATE_TOP + 0.25, -0.15);
     this.body.add(plate, foot, this.base);
+    // Codex's sculpted arm (robot-arm.glb) when it has loaded: its turret and arm turn as ours did.
+    // At its own size and pivots: model() centres the bounding box, so its inner offset is undone.
+    const sculpt = model('robot-arm', {});
+    const turret = sculpt?.getObjectByName('turret');
+    const arm = sculpt?.getObjectByName('arm');
+    if (sculpt && turret && arm) {
+      foot.removeFromParent();
+      this.base.removeFromParent();
+      sculpt.children[0].position.set(0, 0, 0);
+      sculpt.position.set(0, PLATE_TOP, -0.15);
+      this.body.add(sculpt);
+      this.base = turret as THREE.Group;
+      this.upper = arm as THREE.Group;
+      this.armRest = arm.rotation.z;
+      this.sculpted = sculpt;
+    }
     this.addTerminal('a', 'none', 0.7, 0.55);
     this.addTerminal('b', 'none', -0.7, 0.55);
-    this.pickable(plate, foot, lower);
+    this.pickable(plate, ...(this.sculpted ? [this.sculpted] : [foot, lower]));
   }
 
   protected electrical(): Partial<CircuitElement> {
@@ -429,7 +466,7 @@ export class RobotArm extends Part {
     }
     // Round from the line to the box and back, dipping at each end.
     this.base.rotation.y = Math.sin(this.t * Math.PI * 2) * 1.4;
-    this.upper.rotation.z = -0.3 - Math.abs(Math.cos(this.t * Math.PI * 2)) * 0.4;
+    this.upper.rotation.z = this.armRest - 0.3 - Math.abs(Math.cos(this.t * Math.PI * 2)) * 0.4;
   }
 }
 
@@ -525,7 +562,7 @@ export function runPipes(parts: Part[]) {
   const booths = parts.filter((p): p is PaintBooth => p instanceof PaintBooth);
   if (!pipes.length && !booths.length) return;
   for (const p of pipes) p.flowing = false;
-  for (const b of booths) b.fed = false;
+  for (const b of booths) if (!b.ownFeed) b.fed = false;
   for (const tank of parts) {
     if (!(tank instanceof PaintTank) || !tank.pumping) continue;
     let at = tank.outlet();

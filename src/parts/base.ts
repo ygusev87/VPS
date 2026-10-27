@@ -84,7 +84,11 @@ export type PartKind =
   | 'smallGear'
   | 'shaftMotor'
   | 'lathe'
-  | 'socketBoard';
+  | 'socketBoard'
+  | 'pipeBox'
+  | 'bigWireBox'
+  | 'grinder'
+  | 'gantry';
 
 /** Light colours a bulb or LED can take (tap to cycle). */
 export type LightColor = 'warm' | 'red' | 'green' | 'blue' | 'yellow';
