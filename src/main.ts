@@ -149,6 +149,7 @@ let lastTouch = performance.now();
 let viewAsks = 0;
 /** The hint whose hand the camera last went to find. */
 let hintLook = '';
+let hintLookAt = 0;
 let levelStart = performance.now();
 let hintShownOnce = false;
 let currentHint: Hint | null = null;
@@ -1091,11 +1092,14 @@ function frame(now: number) {
       mapFocus = null;
     }
     // The hand drifted off screen (the view moved after it appeared) and the child has
-    // left the table alone a while: bring it back into view, once for each hint.
-    if (!mapFocus && currentHint && hintLook !== currentKey && performance.now() - lastTouch > 5000 && !input.busy) {
+    // left the table alone a while: bring it back into view — once for each hint, and again
+    // if something has taken the view away since (a result shown, then the view going back).
+    const again = hintLook === currentKey && performance.now() - hintLookAt > 8000;
+    if (!mapFocus && currentHint && (hintLook !== currentKey || again) && performance.now() - lastTouch > 5000 && !input.busy) {
       const pts = hintPoints(currentHint);
       if (pts.some((p) => !stage.inView(p))) {
         hintLook = currentKey;
+        hintLookAt = performance.now();
         mapFocus = pts.flatMap((p) => [p.clone().add(new THREE.Vector3(-2.5, 0, -2.5)), p.clone().add(new THREE.Vector3(2.5, 0, 2.5))]);
       }
     }
