@@ -1,0 +1,55 @@
+{
+  "createdAt": "2026-10-27T14:02:12.045992+00:00",
+  "status": "accepted-for-integration",
+  "method": "Main inspected the emitted source and native IAB repeat preview of final public WebP at1180x820 and390x844. Single tile, 320/640px repeats and larger detail all viewed.",
+  "viewports": [
+    [
+      1180,
+      820
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "screenshots": [
+    "qa/repeat-1180.jpg",
+    "qa/repeat-390.jpg"
+  ],
+  "loadedDimensions": [
+    1024,
+    256
+  ],
+  "consoleErrorsWarnings": [],
+  "horizontalOverflow": false,
+  "verticalScroll": "Landscape QA page intentionally scrolls; asset has no clipping. Portrait page fits.",
+  "visual": "Brick/panel wall, blue windows, pipes, small box, extinguisher and wear readable. Lower thin painted base strip retained. No prominent joint in reviewed repeats; nonzero edge differences mean exact pixel-perfect seamlessness is not claimed.",
+  "sourceAspect": "Generator returned2172x724 (3:1), full frame encoded1024x256 (4:1) per requested long wall. No crop/retouch; vertical dimensions compressed25% relative to uniform scale.",
+  "integration": {
+    "surface": "XY plane facing+Z; U along worldX, V upright; normal wallback as existing factory inner wall",
+    "aspect": 4,
+    "suggestedWorldTile": [
+      16,
+      4
+    ],
+    "uv": "repeatU=wallLength/16, repeatV=1 for4-high wall. For another wall height H use repeatU=wallLength/(4*H),repeatV=1. Do not stretch one tile across entire factory.",
+    "material": "sRGB map, MeshBasicMaterial white or equivalent unlit; opaque FrontSide depthTest/depthWrite, no castShadow, decorative noninteractive",
+    "placement": "Claude owns final wall planes and map positions. Keep interactive clock/tool-board/signs legible; prevent duplicate old windows/pipes from floating over painted duplicates. Keep world corners/doors/exits clear.",
+    "pending": "Full factory native screenshots, clock tap and all interactive occlusion are not tested by this fixture."
+  },
+  "publicAsset": {
+    "sourceSha256": "05eea309a3b57693ef6e211da5812ec45af91ee65be0944b0a623533e935c152",
+    "publicPath": "public/textures/kit/factory/factory-wall-back.webp",
+    "sha256": "16dc94407478a54d58c90104c840c2da9a7522e329b65f420be8ea142a99bee1",
+    "bytes": 41310,
+    "width": 1024,
+    "height": 256,
+    "hasAlpha": false,
+    "encoding": "Only full-frame resize2172x724 to1024x256 and WebP90, no crop/repaint. Generator returned3:1, encoded4:1 as requested; windows vertically compressed25%.",
+    "leftRightEdgeRgbMeanAbsoluteDifference": 7.315104166666667,
+    "leftRightEdgeRgbMaxDifference": 52,
+    "seamNote": "Edge differences are nonzero: visually reviewed repeating illustration, not mathematically seamless or continuous brick-mortar proof."
+  },
+  "generation": "generation.json; one built-in image_gen call; no Tripo orders",
+  "next": "Claude integrates wall. Main next:9floor decals per m0537 (3oil,tyre tracks,arrows,cable channel,grate,hazard corner,dust)."
+}

@@ -1,0 +1,13 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: horizontal repeating back-wall texture for the hand-painted factory environment of a tactile children's toy-making game. Create a very wide 4:1 rectangle, fully opaque, filled edge-to-edge. Strict straight-on orthographic elevation, NO perspective, NO floor or ceiling planes. A believable clean but gently worn factory wall: warm light cream brick and plaster panels, a desaturated teal lower painted band, broad rectangular high windows in chunky teal frames with muted sky-blue glass, a few modest exposed pipes with elbow joints and clamps, one small wall-mounted electrical box and one red fire extinguisher. Industrial details are painted into the wall, never protruding toward the camera. Subtle dust near the bottom and a few scuffs, readable friendly shapes and softly brushed material, consistent with a handcrafted toy factory. Even neutral ambient lighting, no directional light gradient. Perfect horizontal tiling: identical plain wall/bricks and teal paint at both left and right boundaries; pipes either finish inside the tile or meet across the edges at identical heights; do not cut a window or extinguisher at an edge. Keep the bottom continuous and the top straight; no rounded panel edge or frame around the entire image. Moderately spaced details, large calm wall areas between windows. No people, machines, clocks, hanging signs, words, letters, numbers, logos, symbols resembling interface buttons, perspective, vignette, cast shadows, white border. Windows must look like daylight windows, not holes. Output a single flat material tile at 4:1 aspect ratio, not a mockup.",
+  "transparent_background": false,
+  "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-ae737584-fb09-4540-997b-37e3e651550d.png",
+  "sourceDimensions": [
+    2172,
+    724
+  ],
+  "requestedAspect": "4:1",
+  "deliveredAspect": "3:1",
+  "encoding": "Resize full image to1024x256 for requested4:1 wall tile, no crop/repaint. Windows vertically compressed25%; retain source."
+}
