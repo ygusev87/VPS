@@ -98,8 +98,10 @@ const GANTRY_AT = v(-24, EVE_Z);
 const MOVE_LEVER = v(-34.5, 18);
 const LIFT_LEVER = v(-30.5, 18);
 const CRANE_POLE = v(-37.5, 21);
-/** Where the evening's blanks get on the line (under the trolley's east end). */
-const EVE_START = GANTRY_AT.x + 5.5;
+/** Where the hook leaves a coil (the trolley's east end): a hopper there feeds the line. */
+const DROP = v(GANTRY_AT.x + 5.5, EVE_Z);
+/** Where the evening's blanks get on the line: just past the gantry's east leg (the belt never runs through it). */
+const EVE_START = GANTRY_AT.x + 8.2;
 /** E3. Paint: a pump tank, a 3×3 box of pipe tiles, the booth over the line. */
 const TANK = v(-11.5, 18);
 const PIPES = v(-6.5, 18.5);
@@ -349,18 +351,25 @@ export class FactoryMap extends StoryMap {
       hall.add(leg);
     }
     // The evening line, along the south of the hall.
-    const belt2 = mesh(new THREE.BoxGeometry(EVE_STATIONS[3] - EVE_START + 4, 0.3, 1.4), mat('#3a3f4b', 0.7));
-    belt2.position.set((EVE_START + EVE_STATIONS[3] + 2) / 2, 0.35, EVE_Z);
+    const [b0, b1] = [EVE_START - 0.4, EVE_STATIONS[3] + 2];
+    const belt2 = mesh(new THREE.BoxGeometry(b1 - b0, 0.3, 1.4), mat('#3a3f4b', 0.7));
+    belt2.position.set((b0 + b1) / 2, 0.35, EVE_Z);
     hall.add(belt2);
     for (let x = EVE_START; x <= EVE_STATIONS[3] + 2; x += 2) {
       const leg = mesh(new THREE.BoxGeometry(0.12, 0.35, 1.3), mat('#8a90a0', 0.4, 0.5), false);
       leg.position.set(x, 0.12, EVE_Z);
       hall.add(leg);
     }
-    // The coil stand under the gantry's west end.
+    // The coil stand under the gantry's west end, and the hopper under its east end that cuts a coil into blanks
+    // and feeds them to the belt beyond the leg.
     const stand = mesh(new THREE.BoxGeometry(1.6, 0.5, 1.4), mat('#2f6fb3', 0.5, 0.3));
     stand.position.set(GANTRY_AT.x - 5.5, 0.25, EVE_Z);
-    hall.add(stand);
+    const hopper = mesh(new THREE.CylinderGeometry(0.9, 0.5, 1.1, 16, 1, true), mat('#8d97a3', 0.4, 0.6));
+    hopper.position.set(DROP.x, 0.75, DROP.z);
+    (hopper.material as THREE.MeshStandardMaterial).side = THREE.DoubleSide;
+    const chute = mesh(new THREE.BoxGeometry(EVE_START - DROP.x + 0.4, 0.12, 0.7), mat('#8d97a3', 0.4, 0.6));
+    chute.position.set((DROP.x + EVE_START) / 2, 0.42, DROP.z + 1.1);
+    hall.add(stand, hopper, chute);
     // The stock: racks of steel bars and coils under the crane, crates and barrels.
     // The kit's painted stock (cards) when it has it, else the code-built stand-ins.
     const shade = kitPieces('farm', 'blob-shadow')[0] ?? null;
