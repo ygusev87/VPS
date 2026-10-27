@@ -271,7 +271,21 @@ export class World {
    * then its newest. Wires in `keep` (a task's planned ones) go only when
    * nothing else will do. Null when nothing this small fixes it.
    */
-  culprit(fixed: (r: CircuitResult, without: Set<Wire>) => boolean, among: Wire[] = this.wires, keep?: Set<Wire>): Wire | null {
+  culprit(fixed: (r: CircuitResult, without: Set<Wire>) => boolean, among: Wire[] = this.wires, keep?: Set<Wire>, tag?: string): Wire | null {
+    // Hundreds of trial circuits: asked four times a second, so answered again only when the wiring changes.
+    const key = tag && [tag, ...this.elements().map((e) => (e.kind === 'wire' ? e.id : e.kind === 'switch' ? `${e.id}${e.closed ? 1 : 0}` : '')), '|', ...among.map((w) => w.id), '|', ...[...(keep ?? [])].map((w) => w.id)].join(',');
+    if (key && this.culprits.has(key)) return this.culprits.get(key)!;
+    const found = this.findCulprit(fixed, among, keep);
+    if (key) {
+      if (this.culprits.size > 64) this.culprits.clear();
+      this.culprits.set(key, found);
+    }
+    return found;
+  }
+
+  private culprits = new Map<string, Wire | null>();
+
+  private findCulprit(fixed: (r: CircuitResult, without: Set<Wire>) => boolean, among: Wire[], keep?: Set<Wire>): Wire | null {
     const cand = among.filter((w) => w.b);
     const most = cand.length > 30 ? 1 : cand.length > 14 ? 2 : 3;
     const order = (w: Wire) => this.wires.indexOf(w);

@@ -83,7 +83,7 @@ export function problemHint(world: World, keep?: Set<Wire>): Hint | null {
   if (r.shorted.size) {
     const battery = world.parts.find((p) => [...r.shorted].some((id) => partIdOf(id) === p.id)) ?? null;
     const wire =
-      world.culprit((res) => res.shorted.size === 0, world.wires, keep) ??
+      world.culprit((res) => res.shorted.size === 0, world.wires, keep, 'short') ??
       (battery ? newestOf(touching(battery)) : undefined) ??
       null;
     if (wire) return { type: 'tapWire', wire, at: battery, problem: 'short', phrase: batteriesFight(world) ? 'batteryFight' : 'short', u: clearSpot(world, wire) };
@@ -92,7 +92,7 @@ export function problemHint(world: World, keep?: Set<Wire>): Hint | null {
   // 2. LED or buzzer the wrong way round inside a working loop.
   for (const p of world.parts) {
     if (!isPolar(p) || !p.state.reversed) continue;
-    const wire = world.culprit((res) => !res.elements.get(p.id)?.reversed, touching(p), keep) ?? newestOf(touching(p));
+    const wire = world.culprit((res) => !res.elements.get(p.id)?.reversed, touching(p), keep, `reversed:${p.id}`) ?? newestOf(touching(p));
     if (wire) return { type: 'tapWire', wire, at: p, problem: 'reversed', phrase: reversedPhrase(p), u: clearSpot(world, wire) };
   }
 
@@ -114,7 +114,7 @@ export function problemHint(world: World, keep?: Set<Wire>): Hint | null {
     }
     // A plain gadget: whichever wire on its legs leaves the most working once it is off (see World.culprit).
     const legs = world.wires.filter((w) => w.touches(a) || w.touches(b));
-    const wire = (isPolar(p) ? null : world.culprit((_, off) => !world.wired(a, b, off), legs, keep)) ?? newestOf(world.wiresAt(wrong));
+    const wire = (isPolar(p) ? null : world.culprit((_, off) => !world.wired(a, b, off), legs, keep, `bypass:${p.id}`)) ?? newestOf(world.wiresAt(wrong));
     if (wire) return { type: 'tapWire', wire, at: p, problem: 'bypass', phrase: 'bypass', u: clearSpot(world, wire) };
   }
 
@@ -274,7 +274,7 @@ export function sandboxHint(world: World): Hint | null {
         // Both legs on one side of a switch: pressing it would run current round the gadget, not through it.
         if (near.has(off)) {
           const legs = world.wires.filter((w) => near.has(w.a) && w.b && near.has(w.b));
-          const wire = world.culprit((_, cut) => !reach(world, on, cut).has(off), legs);
+          const wire = world.culprit((_, cut) => !reach(world, on, cut).has(off), legs, undefined, `round:${p.id}:${on.key}`);
           if (wire) return { type: 'tapWire', wire, at: p, problem: 'bypass', phrase: 'bypass', u: clearSpot(world, wire) };
           continue;
         }
