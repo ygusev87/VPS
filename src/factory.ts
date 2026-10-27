@@ -520,7 +520,7 @@ export class FactoryMap extends StoryMap {
         const onMotor = this.on(MOTOR_SHAFT, ['smallGear', 'bigGear', 'gear']);
         const onLathe = this.on(LATHE_SHAFT, ['smallGear', 'bigGear', 'gear']);
         const wrong = onMotor && onMotor.kind !== 'smallGear' ? onMotor : onLathe && onLathe.kind !== 'bigGear' ? onLathe : null;
-        if (wrong) return { type: 'tap', part: wrong, phrase: this.lathe.speed === 'fast' ? 'latheFast' : 'gearBack' };
+        if (wrong) return { type: 'tap', part: wrong, phrase: this.lathe.speed === 'fast' ? 'latheFast' : this.lathe.speed === 'slow' ? 'latheSlow' : 'gearBack' };
         return null;
       }
       case 'worker3':
