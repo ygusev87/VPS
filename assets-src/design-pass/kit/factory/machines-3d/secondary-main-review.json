@@ -86,6 +86,34 @@
       ],
       "integrationNotes": "Width2.6 at(0,.16,-.8); measured overall2.6x1.100003x.238282, panel2.6x.998794x.206662,feet~.1; front clearance to nearest runtime row .54086 after radius allowance. All8 active terminals remain code.",
       "gameReview": "Accepted main m0461 after Claude game screenshot review."
+    },
+    {
+      "name": "rail-cart",
+      "assetCommit": "7a17cee",
+      "file": "public/models/rail-cart.glb",
+      "sha256": "f2f5e36894b66f14fedd2da54e6f6ea5f9c2f82da222372ca6de6f85660019df",
+      "bytes": 112308,
+      "triangles": 3929,
+      "verdict": "accepted",
+      "reviewedEvidence": [
+        "secondary/rail-cart-report.json",
+        "secondary/rail-cart-geometry.json",
+        "secondary/qa/rail-cart-1024-loaded.jpg",
+        "secondary/qa/rail-cart-1024-unloaded.jpg",
+        "secondary/qa/rail-cart-1024-back.jpg",
+        "secondary/qa/rail-cart-390-loaded.jpg",
+        "secondary/qa/rail-cart-390-unloaded.jpg",
+        "secondary/rail-cart-qa.json"
+      ],
+      "checks": [
+        "Main visually inspected all5 native frames.",
+        "Actual public SHA matches final report.",
+        "Reviewed validator:4 wheel pivots,37 spin samples,zero chassis intersections outside axle.",
+        "No residual chassis inside load envelope; coil support gaps .00266.. .00647."
+      ],
+      "integrationNotes": "Wagon localY+.08 on cartY.16; four exact wheel groups rotateZ, no child double rotation; preserve coil world transform when attaching bed; keep wheels on rail during travel.",
+      "handoff": "m0464",
+      "gameReview": "pending Claude motion/unload review"
     }
   ],
   "physicalDeviceTest": false,

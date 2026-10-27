@@ -26,7 +26,7 @@
       "triangles": 3434,
       "sha256": "7df3ae6b6a938e0a98d3d0720799ac2618c51a36f5e3d38d64a1a8f1a38bb499",
       "assetQA": "passed",
-      "gameReview": "Model and code door accepted; m0461 requests removal of ceiling-lamp overlap on puzzle tiles and column overlap on hint bubble."
+      "gameReview": "Main accepted updated factory-cabinet-check.png and diff a416f5c: four tiles and hint bubble unobstructed; m0461 resolved."
     },
     {
       "name": "hoist",

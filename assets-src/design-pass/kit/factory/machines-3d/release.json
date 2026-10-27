@@ -1,0 +1,78 @@
+{
+  "date": "2026-10-27",
+  "models": [
+    {
+      "name": "safety-press",
+      "file": "public/models/safety-press.glb",
+      "bytes": 107740,
+      "triangles": 3739,
+      "sha256": "19e547fade4084ab248223382a8465da46c500a0a7ee96222523c83043b772d0"
+    },
+    {
+      "name": "lathe",
+      "file": "public/models/lathe.glb",
+      "bytes": 110232,
+      "triangles": 3900,
+      "sha256": "89c2383176dfebd1064c7e456bf3a2fc06d81f3dec0022e38ea3a4a61d51defa"
+    },
+    {
+      "name": "factory-cabinet",
+      "file": "public/models/factory-cabinet.glb",
+      "bytes": 90648,
+      "triangles": 3434,
+      "sha256": "7df3ae6b6a938e0a98d3d0720799ac2618c51a36f5e3d38d64a1a8f1a38bb499"
+    },
+    {
+      "name": "hoist",
+      "file": "public/models/hoist.glb",
+      "bytes": 150148,
+      "triangles": 2952,
+      "sha256": "931611689ef6bea702a7849c0a02c25c11321d6a3db3d4d86deb953ffce64074"
+    },
+    {
+      "name": "lever-box",
+      "file": "public/models/lever-box.glb",
+      "bytes": 82708,
+      "triangles": 3900,
+      "sha256": "35e6bb74a3101d992071e37381a031914a126693a8e0ccd2edbf232fc7ee751e"
+    },
+    {
+      "name": "shaft-motor",
+      "file": "public/models/shaft-motor.glb",
+      "bytes": 93824,
+      "triangles": 3579,
+      "sha256": "7527ad1bc4f9813ec9fecbf4509436ef0d6ee4b74e0450482645b1ea04c26214"
+    },
+    {
+      "name": "socket-board",
+      "file": "public/models/socket-board.glb",
+      "bytes": 104804,
+      "triangles": 3115,
+      "sha256": "f0a9dae890374cad60411db48796932c0c1af89020c5fa3943dc42bea8ed4eb9"
+    },
+    {
+      "name": "rail-cart",
+      "file": "public/models/rail-cart.glb",
+      "bytes": 112308,
+      "triangles": 3929,
+      "sha256": "f2f5e36894b66f14fedd2da54e6f6ea5f9c2f82da222372ca6de6f85660019df"
+    }
+  ],
+  "modelCount": 8,
+  "totalBytes": 852412,
+  "totalTriangles": 28548,
+  "studioCreditsUsed": 200,
+  "creditCeiling": null,
+  "authorization": "Owner allows necessary existing Studio credits for project models and justified iterations; no top-ups/purchases/API.",
+  "assetQA": "All8 accepted; geometry reports and native390/1024 evidence retained.",
+  "gameQA": "7 accepted including cabinet obstruction fix a416f5c; rail-cart integration pending.",
+  "physicalDeviceTest": false,
+  "assetCommits": [
+    "1577818",
+    "6f6e56d",
+    "611bf6f",
+    "1a4aa2a",
+    "08f7251",
+    "7a17cee"
+  ]
+}
