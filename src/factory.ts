@@ -368,9 +368,10 @@ export class FactoryMap extends StoryMap {
     const back = mesh(new THREE.BoxGeometry(W, 5, 0.6), wall);
     back.position.set(0, 2.5, -D / 2 + 0.3);
     hall.add(back);
+    // The side walls are low: tall, they filled a quarter of the screen whenever the view came near an end of the hall.
     for (const x of [-W / 2 + 0.3, W / 2 - 0.3]) {
-      const s = mesh(new THREE.BoxGeometry(0.6, 5, D), wall);
-      s.position.set(x, 2.5, 0);
+      const s = mesh(new THREE.BoxGeometry(0.6, 1.2, D), wall);
+      s.position.set(x, 0.6, 0);
       hall.add(s);
     }
     for (let x = -36; x <= 36; x += 8) {

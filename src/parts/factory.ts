@@ -36,7 +36,8 @@ export const isGeared = (p: Part): p is Part & Geared => typeof (p as unknown as
 function gearMesh(r: number, color: string): THREE.Group {
   const g = new THREE.Group();
   const teeth = Math.round(r * 14);
-  const wheel = mesh(gearGeometry(teeth, r, 0.12), mat(color, 0.4, 0.25));
+  // Metal, as a real gear: copper, brass or steel (the colour still tells the sizes apart).
+  const wheel = mesh(gearGeometry(teeth, r, 0.12), mat(color, 0.35, 0.65));
   wheel.rotation.x = -Math.PI / 2;
   const hub = mesh(new THREE.CylinderGeometry(r * 0.3, r * 0.3, 0.2, 16), mat(C.metal, 0.3, 0.8));
   // Spokes show it turning.
@@ -109,7 +110,7 @@ export class Gear extends Part implements Geared {
     const plate = basePlate(this.gearR * 2 + 0.2, this.gearR * 2 + 0.2);
     const peg = mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.4, 10), mat(C.metal, 0.3, 0.8));
     peg.position.set(0, PLATE_TOP + 0.2, 0);
-    this.wheel = gearMesh(this.gearR, size === 'small' ? '#4cc46a' : size ? '#e05a4a' : '#3f86d6');
+    this.wheel = gearMesh(this.gearR, size === 'small' ? '#d9ad4c' : size ? '#c4553f' : '#8d97a3');
     this.wheel.position.set(0, GEAR_Y, 0);
     this.body.add(plate, peg, this.wheel);
     this.pickable(plate, this.wheel);

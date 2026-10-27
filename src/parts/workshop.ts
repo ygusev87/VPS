@@ -116,9 +116,9 @@ export class WireBox extends Part {
   private tileMesh(sides: Side[]): THREE.Group {
     const g = new THREE.Group();
     const slab = mesh(new THREE.BoxGeometry(TILE - 0.06, 0.06, TILE - 0.06), mat('#2b3242', 0.7));
-    // Copper strips for current; steel pipes that fill pink with paint for the paint line.
+    // Copper strips for current; brass pipes (they read on the dark tiles) that fill pink with paint for the paint line.
     const copper = this.pipes
-      ? new THREE.MeshStandardMaterial({ color: '#9aa3ad', roughness: 0.3, metalness: 0.7, emissive: '#ff5fa8', emissiveIntensity: 0 })
+      ? new THREE.MeshStandardMaterial({ color: '#c9a24a', roughness: 0.3, metalness: 0.7, emissive: '#ff3f9a', emissiveIntensity: 0 })
       : new THREE.MeshStandardMaterial({ color: '#c7743e', roughness: 0.3, metalness: 0.75, emissive: '#ffb347', emissiveIntensity: 0 });
     this.strips.push(copper);
     g.add(slab);
@@ -594,16 +594,27 @@ export class Lathe extends Part implements Geared {
     // The shaft at the back left takes the gear; the dial stands on the head.
     const shaft = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.5, 12), mat('#c9ced6', 0.25, 0.9));
     shaft.position.set(-1.1, PLATE_TOP + 0.25, -0.45);
-    const face = mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.05, 24), mat('#f6eddd', 0.6));
+    // The speed dial: big, on a post above the head and tipped to the camera, so the needle in the green is seen from afar.
+    const dial = new THREE.Group();
+    const face = mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.05, 32), mat('#f6eddd', 0.6));
     face.rotation.x = Math.PI / 2;
-    face.position.set(-0.7, PLATE_TOP + 1.25, 0.5);
-    this.band = mesh(new THREE.RingGeometry(0.18, 0.27, 24, 1, 0, 1), mat('#4cc46a', 0.5), false);
-    this.band.position.set(-0.7, PLATE_TOP + 1.25, 0.53);
-    const pin = mesh(new THREE.BoxGeometry(0.03, 0.24, 0.02), mat('#e8483f', 0.4), false);
+    face.position.z = -0.05;
+    const rim = mesh(new THREE.TorusGeometry(0.31, 0.025, 8, 32), mat('#2b3242', 0.4, 0.5));
+    rim.position.z = -0.03;
+    this.band = mesh(new THREE.RingGeometry(0.16, 0.28, 32, 1, 0, 1), mat('#4cc46a', 0.5), false);
+    this.band.position.z = -0.02;
+    const pin = mesh(new THREE.BoxGeometry(0.04, 0.26, 0.02), mat('#e8483f', 0.4), false);
     pin.position.y = 0.12;
-    this.needle.add(pin);
-    this.needle.position.set(-0.7, PLATE_TOP + 1.25, 0.55);
-    this.body.add(plate, bed, head, tail, this.spindle, shaft, face, this.band, this.needle);
+    const hub = mesh(new THREE.CylinderGeometry(0.04, 0.04, 0.03, 12), mat('#2b3242', 0.4), false);
+    hub.rotation.x = Math.PI / 2;
+    this.needle.add(pin, hub);
+    dial.add(face, rim, this.band, this.needle);
+    dial.position.set(-0.7, PLATE_TOP + 1.95, 0.45);
+    dial.rotation.x = -0.55;
+    dial.scale.setScalar(2.4);
+    const stand = mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.2, 10), mat('#2b3242', 0.5, 0.4));
+    stand.position.set(-0.7, PLATE_TOP + 1.2, 0.35);
+    this.body.add(plate, bed, head, tail, this.spindle, shaft, stand, dial);
     const body = sculpt(this, grinder ? 'grinder' : 'lathe', { width: 2.6 }, new THREE.Vector3(0.1, PLATE_TOP, 0.2), [bed, head, tail]);
     this.pickable(plate, ...(body ? [body] : [bed, head, tail]));
     this.setWant(grinder ? 'fast' : 'slow');
@@ -619,7 +630,7 @@ export class Lathe extends Part implements Geared {
     const [lo, hi] = LATHE_SPEED[want];
     const a = (v: number) => Math.PI * 0.75 - Math.min(1, v / 6) * Math.PI * 1.5;
     this.band.geometry.dispose();
-    this.band.geometry = new THREE.RingGeometry(0.18, 0.27, 24, 1, a(hi) + Math.PI / 2, a(lo) - a(hi));
+    this.band.geometry = new THREE.RingGeometry(0.16, 0.28, 32, 1, a(hi) + Math.PI / 2, a(lo) - a(hi));
   }
 
   gearAt(out = new THREE.Vector3()) {
@@ -644,7 +655,10 @@ export class Lathe extends Part implements Geared {
     if (s === 'ok') {
       this.made += dt;
       if (Math.random() < dt * 6) this.effects.push({ kind: 'sparks', at: this.root.localToWorld(new THREE.Vector3(0.3 + (Math.random() - 0.5), PLATE_TOP + 0.8, 0.35)), n: 3, color: '#e8b878' });
-    } else if (s === 'fast' && Math.random() < dt * 4) this.effects.push({ kind: 'sparks', at: this.root.localToWorld(new THREE.Vector3(0.3, PLATE_TOP + 0.8, 0.35)), n: 4 });
+    } else if (s === 'fast' && Math.random() < dt * 10) this.effects.push({ kind: 'sparks', at: this.root.localToWorld(new THREE.Vector3(0.3, PLATE_TOP + 0.8, 0.35)), n: 8, color: '#ff8a3c' });
+    // The wrong speed shows on the whole machine, not only on its dial: too fast it shakes, too slow it labours in puffs of dust.
+    this.body.position.x = s === 'fast' ? Math.sin(this.time * 55) * 0.04 : 0;
+    if (s === 'slow' && Math.random() < dt * 1.5) this.effects.push({ kind: 'dust', at: this.root.localToWorld(new THREE.Vector3(0.3, PLATE_TOP + 0.5, 0.4)), radius: 0.5 });
   }
 }
 
