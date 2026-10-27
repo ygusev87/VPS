@@ -1,0 +1,8 @@
+{
+  "tool": "built-in image_gen",
+  "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-a7d6b95a-7726-4c22-85ab-8490f22b921c.png",
+  "path": "refs/city-tram-shelter.png",
+  "bytes": 1378432,
+  "sha256": "6e59ec638d6e53a0677702ef33132a1e18a4ecfb18cdf1e66bf40bac06cf7e0e",
+  "review": "Accepted: coherent compact toy asset, no ground or platform, no readable text"
+}

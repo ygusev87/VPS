@@ -1,29 +1,43 @@
-# City street life — model worker
+# City street life — первая тройка готова
 
-2026-10-27, Asia/Bangkok. Task city-street-life, Claude m0492/main m0493.
-Status: working. Project active (peek revision1045). Codex remaining42%; reserve15%.
+27 октября 2026, Asia/Bangkok. Задача city-street-life, Claude m0492 / main m0493.
 
-Exclusive scope: this progress file, city-icecream-kiosk/, city-flower-kiosk/, city-tram-shelter/, corresponding local raw files and public GLBs. No shared manifest/layout/src edits. No push.
-Standing owner authorization: factory/machines-3d/evening-paint/authorization.json; project reference uploads and model generation in Tripo using existing credits, including future models. No purchases/topups/subscriptions/paid APIs.
+**Все три GLB готовы к приёмке и интеграции.** Заказов сверх этой тройки нет. Проект active; последний доступный остаток Codex — 41%, резерв 15% соблюдён.
 
-| Model | Stage | Intended XYZ | Contract |
-|---|---|---|---|
-| city-icecream-kiosk | reference ready | 2.8×3.0×2.2 | striped parasol, front+Z, baseY0, centreXZ0 |
-| city-flower-kiosk | reference ready | 2.7×2.7×2.0 | flower/news kiosk, front+Z, baseY0, centreXZ0 |
-| city-tram-shelter | reference ready | 3.8×2.7×1.8 | opaque roof, openfront+Z, rearbench, no glass |
+| Модель | Байты | Треугольники | Размер XYZ | SHA256 |
+| --- | ---: | ---: | --- | --- |
+| city-icecream-kiosk | 85,388 | 3090 | 2.8 × 3 × 2.2 | `d3bc60629630c1ae50a5ab3e270211017dcae7826e426fea336a305f004ed0d7` |
+| city-flower-kiosk | 113,000 | 3299 | 2.7 × 2.7 × 2 | `f666d3eadac981bfd1896e5bcbdb915ac62334221966a61a42a80f6111004134` |
+| city-tram-shelter | 80,576 | 2996 | 3.8 × 2.7 × 1.8 | `fc3fea6aa94d68f8946680fa6031dd0c299f894877ca7170936e23dfb3d72b83` |
 
-Targets: one opaque material,512WebP,Meshopt,<=4000tri,<=150KB each,no skeleton. Sources: city-a.png and city-green-blocks.png visually reviewed. Icecream ordered: task61b5b0ba-6f7b-4e47-a788-7744efa191b1,25credits,balance5275→5250. Flower/shelter references ready; settings checked.
+Файлы: `public/models/<имя>.glb`. У каждой модели один непрозрачный материал (OPAQUE), одна текстура 512×512 WebP, сжатие Meshopt, нет скелета и анимаций. Фасад или открытая сторона направлены в +Z; центр XZ=(0,0), основание Y=0 с погрешностью квантования менее 0.00005. Ширина всех моделей меньше 4.
 
-Icecream raw downloaded and front+Z checked in native loader; optimizing. Flower orderfb86c6a3-ef11-46d6-8298-59c60ae9c678,25credits,5250→5225. Shelter order requested at25credits, before5225. All3 reference prompts and SHA saved.
+- **Мороженое:** полосатый зонт и эмблема на фасаде +Z; загружать с шириной 2.8. Коммит `c59defc`.
+- **Цветочный киоск:** цветы и прилавок со стороны +Z, газетная стойка +X; ширина 2.7. Коммит `ad74009`.
+- **Остановка:** непрозрачная крыша на четырёх стойках, открытый вход +Z, скамья сзади (−Z); ширина 3.8. Нет стекла, альфа-панелей, пола или подставки. Свободный объём перед скамьёй: X[−1.25,1.25], Y[0.02,1.65], Z[0.25,0.8]. Проверка пересечения треугольников нашла 0 препятствий; 49 из 49 лучей проходят свободно. Это проверка подхода к скамье, а не прохода сквозь заднюю часть.
 
-All3 orders placed,75credits total,live balance5200. Shelter taskee550979-7fbd-43c7-acb9-2b51d46010e9. Icecream candidate85,388B/3090tri/1mat/512WebP/Meshopt; native final QA underway.
+## Проверки и материалы для приёмки
 
-## READY — city-icecream-kiosk
+В каждой папке модели: `README.md`, `report.json`, `qa.json`, `order.json`, `prompt.json`, `reference.json`, `refs/`, `studio/`, `qa/`. Точные промпты встроенного image_gen сохранены, исходные PNG скопированы в проект, SHA записаны.
 
-public/models/city-icecream-kiosk.glb: 85388bytes,3090tri,1opaque material,512WebP/Meshopt,no skin. SHA256 `d3bc60629630c1ae50a5ab3e270211017dcae7826e426fea336a305f004ed0d7`. XYZ2.8×3.0×2.2;front+Z,baseY0,centreXZ0,width2.8. QA native390×844and1024×768 allPASS,0browsererrors/overflow. Evidence city-icecream-kiosk/qa/*.jpg,report.json,qa.json,README.md. Ready for main to accept and pass to Claude; other2 still generating.
+Нативные браузерные кадры `qa/390.jpg` (390×844) и `qa/1024-view{0,3,6,7}.jpg` (1024×768) просмотрены: форма целая, текстуры загружены, объект помещается в кадр. Ошибок браузера и прокрутки нет. Валидатор GLB: 0 ошибок, 0 предупреждений; только информационное сообщение о неподдерживаемой проверке расширения Meshopt. Последние проверки проекта: **17 файлов / 88 тестов PASS, TypeScript PASS**.
 
-Icecream commitc59defc;88tests and TypeScriptPASS. Flower3439tri and shelter3442tri completed in Studio on first attempt, raw downloaded; orientation/optimization/QA now underway. No retries or extra credits.
+Проверка размещения в городе и проверка на физическом iPad остаются интегратору. Модели готовы для передачи Claude по одной; первая и вторая уже были отмечены READY в ходе работы.
 
-## READY — city-flower-kiosk
+## Фактические заказы
 
-public/models/city-flower-kiosk.glb:113000bytes,3299tri,1OPAQUE material,512WebP/Meshopt,no skin. SHA256 `f666d3eadac981bfd1896e5bcbdb915ac62334221966a61a42a80f6111004134`. XYZ2.7×2.7×2.0;front+Z,newsrack+X,baseY0,centreXZ0,width2.7. Native390×844and1024×768allPASS,0browsererrors/overflow,validator0errors/0warnings. Evidence city-flower-kiosk/qa/*.jpg,report.json,qa.json,README.md. Ready for main to accept/pass to Claude. Shelter final QA underway;clearfrontvolume2.5×1.63×.55passed0obstructionsand49/49rays. Codexremaining41%.
+| Модель | Tripo task | Кредиты | Баланс до → после | Попытки |
+| --- | --- | ---: | --- | ---: |
+| Мороженое | 61b5b0ba-6f7b-4e47-a788-7744efa191b1 | 25 | 5275 → 5250 | 1 |
+| Цветы | fb86c6a3-ef11-46d6-8298-59c60ae9c678 | 25 | 5250 → 5225 | 1 |
+| Остановка | ee550979-7fbd-43c7-acb9-2b51d46010e9 | 25 | 5225 → 5200 | 1 |
+
+Всего **75 включённых кредитов**. Повторов, покупок, пополнений, подписок и платного API не было. Живая цена и баланс проверены перед каждым заказом. Настройки: H3.1, 4000 треугольников, 2K, delight ON; Ultra, AI enhancement и PBR OFF.
+
+Постоянное разрешение владельца на загрузки референсов и генерацию остальных моделей проекта зафиксировано в `assets-src/design-pass/kit/factory/machines-3d/evening-paint/authorization.json`.
+
+## Исходники и границы работы
+
+Raw сохранены локально и остаются ignored: `assets-src/raw/city-street-life-2026-10-27/`. Source SHA и размеры находятся в `report.json`. Локальные изменения перечислены в отчётах: нормализация размеров и основания, мягкое упрощение сетки, roughness 0.72 / metallic 0, текстура 512 WebP, Meshopt. Поворот не потребовался: все исходники уже смотрели в +Z. Разрезов или добавления геометрии не было. Кандидаты ignored, проверенные финалы — в public.
+
+Изменены только три собственные папки, этот progress, соответствующие raw и три public GLB. Общие manifest/layout/src и курсор read/ack не тронуты. Git push не выполнялся. Следующие предметы и пешеходы — по новой конкретной карточке main.

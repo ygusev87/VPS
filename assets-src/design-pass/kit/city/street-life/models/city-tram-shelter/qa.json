@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":80576,\"triangles\":2996,\"materials\":1,\"bounds\":{\"min\":[-1.899999976158142,-0.000010640696057162558,-0.8999877813028512],\"max\":[1.899999976158142,2.700010688379773,0.8999877813028512]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":80576,\"triangles\":2996,\"materials\":1,\"bounds\":{\"min\":[-1.899999976158142,-0.000010640696057162558,-0.8999877813028512],\"max\":[1.899999976158142,2.700010688379773,0.8999877813028512]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":80576,\"triangles\":2996,\"materials\":1,\"bounds\":{\"min\":[-1.899999976158142,-0.000010640696057162558,-0.8999877813028512],\"max\":[1.899999976158142,2.700010688379773,0.8999877813028512]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":80576,\"triangles\":2996,\"materials\":1,\"bounds\":{\"min\":[-1.899999976158142,-0.000010640696057162558,-0.8999877813028512],\"max\":[1.899999976158142,2.700010688379773,0.8999877813028512]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":80576,\"triangles\":2996,\"materials\":1,\"bounds\":{\"min\":[-1.899999976158142,-0.000010640696057162558,-0.8999877813028512],\"max\":[1.899999976158142,2.700010688379773,0.8999877813028512]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualReview": "PASS: open side and tram icon +Z, bench behind entry,4 intact posts,opaque roof,no glass or floor, textures decoded,native1024x768and390x844",
+  "integration": "Standalone GLTFLoader;game placement and physical iPad pending integrator"
+}

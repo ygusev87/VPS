@@ -1,0 +1,96 @@
+{
+  "name": "city-tram-shelter",
+  "source": "assets-src/raw/city-street-life-2026-10-27/city-tram-shelter.glb",
+  "sourceSha256": "f07513d1e47f3468557fc178602d78aae824badb79f2172d5f02182cdaaf789a",
+  "sourceBytes": 712232,
+  "sourceTriangles": 3442,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.3388672173023224
+    ],
+    "max": [
+      0.5,
+      0.6163939833641052,
+      0.3388672173023224
+    ]
+  },
+  "bytes": 80576,
+  "sha256": "fc3fea6aa94d68f8946680fa6031dd0c299f894877ca7170936e23dfb3d72b83",
+  "triangles": 2996,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -1.899999976158142,
+      -0.000010640696057162558,
+      -0.8999877813028512
+    ],
+    "max": [
+      1.899999976158142,
+      2.700010688379773,
+      0.8999877813028512
+    ]
+  },
+  "size": [
+    3.799999952316284,
+    2.70002132907583,
+    1.7999755626057024
+  ],
+  "contract": {
+    "reviewed": true,
+    "size": [
+      3.8,
+      2.7,
+      1.8
+    ],
+    "rotationY": 0,
+    "targetTriangles": 2600,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "rawOrientationReview": "Native GLTFLoader +Z view shows front service face/icon; rotation0. Raw mesh intact, no ground platform."
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Normalize XYZ; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}
