@@ -1,0 +1,82 @@
+{
+  "native": true,
+  "visual": "PASS: front/three-quarter/back/bottom, two arms/two legs/continuous cane, clean face",
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":78444,\"triangles\":3770,\"materials\":1,\"bounds\":{\"min\":[-0.46104539735864325,0,-0.40447018623250186],\"max\":[0.46104539735864325,1.5499999523162842,0.40447018623250186]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":78444,\"triangles\":3770,\"materials\":1,\"bounds\":{\"min\":[-0.46104539735864325,0,-0.40447018623250186],\"max\":[0.46104539735864325,1.5499999523162842,0.40447018623250186]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":78444,\"triangles\":3770,\"materials\":1,\"bounds\":{\"min\":[-0.46104539735864325,0,-0.40447018623250186],\"max\":[0.46104539735864325,1.5499999523162842,0.40447018623250186]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":78444,\"triangles\":3770,\"materials\":1,\"bounds\":{\"min\":[-0.46104539735864325,0,-0.40447018623250186],\"max\":[0.46104539735864325,1.5499999523162842,0.40447018623250186]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":78444,\"triangles\":3770,\"materials\":1,\"bounds\":{\"min\":[-0.46104539735864325,0,-0.40447018623250186],\"max\":[0.46104539735864325,1.5499999523162842,0.40447018623250186]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": []
+}

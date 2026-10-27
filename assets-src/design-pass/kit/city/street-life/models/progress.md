@@ -56,3 +56,11 @@ Raw сохранены локально и остаются ignored: `assets-src
 ## READY — city-ped-stroller
 
 `public/models/city-ped-stroller.glb`: 84,508 байт, 3830 треугольников, один OPAQUE материал,512WebP/Meshopt,без скелета. SHA `85c8c331ee92c8f90c8d130f871a04664c56949aafcb0ac58e35f6481d821096`. Фактические XYZ0.613×1.600×1.411; масштаб по росту1.6,не растягивать до плановой ширины. Направлениехода+Z,центрXZ0,низY0. Две подошвы и четыре колеса на земле (contacts.json,6 групп). Локально: поворот−0.4063 и исправление зазоров до5мм под опорами. Native390/1024,4ракурса,0ошибок/overflow;88тестов иTypeScriptPASS. Контракт/промпт/rawистория/QA в папке модели. Готова к передаче Claude; остальные пять продолжаются.
+
+## READY — city-ped-senior
+
+`public/models/city-ped-senior.glb`: 78,444 байт,3770 треугольников;XYZ 0.922091 × 1.550000 × 0.808940;SHA `d237e3f5147a0e8721ef8158d7541d9f5bbf7eece890a3cda322d1e43108895f`. Один OPAQUE материал,512WebP/Meshopt,без скелета;front+Z,центрXZ0,основаниеY0;3 опоры подтверждены. Elderly man, two arms/two legs, continuous thick cane. Uniform height1.55 scale; floor snap2mm closes small sole/cane gaps. Native390/1024 и4ракурса PASS,ошибок/overflow0,88тестов/TypeScriptPASS. Промпты,rawистория,контракт иQA в папке модели. Готово к передаче Claude.
+
+## READY — city-ped-balloon
+
+`public/models/city-ped-balloon.glb`: 72,964 байт,3840 треугольников;XYZ 0.827680 × 1.800000 × 0.646510;SHA `3ee3864d8d854e8db766771e039a436c926272771415a0ad6ab551c8cdc3c415`. Один OPAQUE материал,512WebP/Meshopt,без скелета;front+Z,центрXZ0,основаниеY0;2 опоры подтверждены. Girl with balloon, two arms/two legs and continuous thick cord. Total height1.8. Child uniformly enlarged by1.112189 to body height≈1.05 (previously0.944084); a smooth transition on cord only keeps balloon and total height unchanged. Floor snap4mm closes the small rear-sole gap. Normals recomputed after child scaling. Native390/1024 и4ракурса PASS,ошибок/overflow0,88тестов/TypeScriptPASS. Промпты,rawистория,контракт иQA в папке модели. Готово к передаче Claude.

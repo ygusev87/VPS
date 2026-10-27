@@ -1,0 +1,16 @@
+{
+  "reviewed": true,
+  "height": 1.55,
+  "rotationY": 0,
+  "targetTriangles": 3900,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "uniform",
+  "groundContacts": [],
+  "floorSnap": 0.002,
+  "rawOrientationReview": "Native +Z face and accessories visually confirmed; no raw mesh defects."
+}
