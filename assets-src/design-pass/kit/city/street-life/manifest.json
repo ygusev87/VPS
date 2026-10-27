@@ -1,7 +1,7 @@
 {
   "task": "city-street-life",
   "request": "m0492",
-  "status": "working",
+  "status": "first3props-and6people-accepted; remaining8props-queued",
   "owners": {
     "main": [
       "manifest/layout/border concept",
@@ -180,9 +180,18 @@
         1.6,
         1.7
       ],
-      "status": "working-model-worker",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-ped-stroller.glb",
-      "motion": "static step pose; runtime root walk/bob by Claude"
+      "motion": "static step pose; runtime root walk/bob by Claude",
+      "actualXYZ": [
+        0.6129093386414075,
+        1.600000023841858,
+        1.4109805807347127
+      ],
+      "bytes": 84508,
+      "triangles": 3830,
+      "sha256": "85c8c331ee92c8f90c8d130f871a04664c56949aafcb0ac58e35f6481d821096",
+      "mainReview": "pedestrians-main-review.json"
     },
     {
       "id": "city-ped-senior",
@@ -192,9 +201,18 @@
         1.55,
         0.8
       ],
-      "status": "working-model-worker",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-ped-senior.glb",
-      "motion": "static step pose; runtime root walk/bob by Claude"
+      "motion": "static step pose; runtime root walk/bob by Claude",
+      "actualXYZ": [
+        0.9220907947172865,
+        1.5499999523162842,
+        0.8089403724650037
+      ],
+      "bytes": 78444,
+      "triangles": 3770,
+      "sha256": "d237e3f5147a0e8721ef8158d7541d9f5bbf7eece890a3cda322d1e43108895f",
+      "mainReview": "pedestrians-main-review.json"
     },
     {
       "id": "city-ped-balloon",
@@ -204,9 +222,18 @@
         1.8,
         0.7
       ],
-      "status": "working-model-worker",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-ped-balloon.glb",
-      "motion": "static step pose; runtime root walk/bob by Claude"
+      "motion": "static step pose; runtime root walk/bob by Claude",
+      "actualXYZ": [
+        0.8276802661686896,
+        1.7999999523162842,
+        0.6465101913147481
+      ],
+      "bytes": 72964,
+      "triangles": 3840,
+      "sha256": "3ee3864d8d854e8db766771e039a436c926272771415a0ad6ab551c8cdc3c415",
+      "mainReview": "pedestrians-main-review.json"
     },
     {
       "id": "city-ped-dog-walker",
@@ -216,9 +243,18 @@
         1.6,
         1.2
       ],
-      "status": "working-model-worker",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-ped-dog-walker.glb",
-      "motion": "static step pose; runtime root walk/bob by Claude"
+      "motion": "static step pose; runtime root walk/bob by Claude",
+      "actualXYZ": [
+        1.4420850460561416,
+        1.600000023841858,
+        0.9035920420298954
+      ],
+      "bytes": 79348,
+      "triangles": 3832,
+      "sha256": "9f40413256edabcfdeac74a8bfb64e23b049b0e6db3207f5bf3000ce5490f5ae",
+      "mainReview": "pedestrians-main-review.json"
     },
     {
       "id": "city-ped-postman",
@@ -228,9 +264,18 @@
         1.6,
         0.75
       ],
-      "status": "working-model-worker",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-ped-postman.glb",
-      "motion": "static step pose; runtime root walk/bob by Claude"
+      "motion": "static step pose; runtime root walk/bob by Claude",
+      "actualXYZ": [
+        0.8933378226931605,
+        1.600000023841858,
+        0.7582751051435961
+      ],
+      "bytes": 85460,
+      "triangles": 3853,
+      "sha256": "efccc2628deba611273c6c8f14ef72c092fb3404a89e6ad18508a51f67d1d46b",
+      "mainReview": "pedestrians-main-review.json"
     },
     {
       "id": "city-ped-icecream-vendor",
@@ -240,9 +285,18 @@
         1.6,
         0.7
       ],
-      "status": "working-model-worker",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-ped-icecream-vendor.glb",
-      "motion": "stationary at kiosk"
+      "motion": "stationary at kiosk",
+      "actualXYZ": [
+        0.8114017272310603,
+        1.600000023841858,
+        0.6198431440976758
+      ],
+      "bytes": 76504,
+      "triangles": 3710,
+      "sha256": "422acd5598e29b43e79ed28fbb756bdc52f0fbda1b0ff598487645883049517f",
+      "mainReview": "pedestrians-main-review.json"
     }
   ],
   "spending": {
@@ -250,18 +304,19 @@
     "noNewCap": true,
     "lastHistoricalBalance": 5275,
     "liveBalanceRequiredPerOrder": true,
-    "newOrdersConfirmedByMain": 3,
+    "newOrdersConfirmedByMain": 9,
     "ledgerOwner": "model worker",
     "reportedByWorker": {
-      "spent": 75,
-      "balance": 5200,
-      "attempts": 3,
+      "spent": 225,
+      "balance": 5050,
+      "attempts": 9,
       "retries": 0
     }
   },
   "acceptanceLimitations": [
-    "No new GLB delivered yet",
-    "Footprints and placements preliminary until measured bounds/native screenshots",
-    "No physical iPad or performance result"
+    "Asset QA accepted for first3props and6people; full game movement remains with Claude.",
+    "Flowers/shelter placement statically accepted; park PLAZA and walking footprint fixes pending.",
+    "Remaining8props not generated.",
+    "No physical iPad/PWA or performance result."
   ]
 }

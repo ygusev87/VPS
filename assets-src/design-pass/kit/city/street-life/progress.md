@@ -11,3 +11,8 @@ Main проверил новую тройку в изолированной те
 Существующий модельный worker ACTIVE делает следующие6 city-ped-* из manifest.json; его область только соответствующие6папок/public/raw и models/progress.md. Main не дублирует Tripo. Остальные8городскихпредметов queued. Задача factory-background-life принята отдельно; main инвентаризацияготовыхассетов/контрактсвободныхзон, генерацийзаводаещёнет.
 
 Обрамление border-concept-v1.png — imagegen эскизпоcity-a, не runtimeкадр. Точныйпромпт border-generation.json. Приинтеграциисохранитьоткрытыевыходыдорогииканала.
+
+
+## Шесть пешеходов приняты как ассеты
+
+477228байт/22835tri, все<=4000tri/1OPAQUE/512WebP/Meshopt. Main независимо сверилGLB/SHA/байты и осмотрел12nativeкадров worker1024/390. Отчёт pedestrians-main-review.json, размеры/пределы вmanifest. Общий расходcity225 (75props+150people), последнийStudioбаланс5050; новыхзаказовпомимо9не было. Nativeигровыемаршруты/анимация ещёClaude; m0503/m0504 не закрыты. Worker закончил, cursor:85.

@@ -1,0 +1,220 @@
+{
+  "task": "city-street-life",
+  "status": "six-pedestrian-assets-accepted",
+  "totalBytes": 477228,
+  "totalTriangles": 22835,
+  "assets": [
+    {
+      "id": "city-ped-balloon",
+      "bytes": 72964,
+      "triangles": 3840,
+      "sha256": "3ee3864d8d854e8db766771e039a436c926272771415a0ad6ab551c8cdc3c415",
+      "reportedSize": [
+        0.8276802661686896,
+        1.7999999523162842,
+        0.6465101913147481
+      ],
+      "checks": {
+        "hash": true,
+        "bytes": true,
+        "triangles": true,
+        "materials": true,
+        "opaque": true,
+        "textures": true,
+        "meshopt": true,
+        "noRig": true
+      },
+      "status": "accepted-for-integration",
+      "mainViewedFrames": [
+        "models/city-ped-balloon/qa/1024-view3.jpg",
+        "models/city-ped-balloon/qa/390-view0.jpg"
+      ],
+      "workerNativeChecks": 5,
+      "workerGroundContactGroups": 2,
+      "workerContactPass": true
+    },
+    {
+      "id": "city-ped-dog-walker",
+      "bytes": 79348,
+      "triangles": 3832,
+      "sha256": "9f40413256edabcfdeac74a8bfb64e23b049b0e6db3207f5bf3000ce5490f5ae",
+      "reportedSize": [
+        1.4420850460561416,
+        1.600000023841858,
+        0.9035920420298954
+      ],
+      "checks": {
+        "hash": true,
+        "bytes": true,
+        "triangles": true,
+        "materials": true,
+        "opaque": true,
+        "textures": true,
+        "meshopt": true,
+        "noRig": true
+      },
+      "status": "accepted-for-integration",
+      "mainViewedFrames": [
+        "models/city-ped-dog-walker/qa/1024-view3.jpg",
+        "models/city-ped-dog-walker/qa/390-view0.jpg"
+      ],
+      "workerNativeChecks": 5,
+      "workerGroundContactGroups": 6,
+      "workerContactPass": true
+    },
+    {
+      "id": "city-ped-icecream-vendor",
+      "bytes": 76504,
+      "triangles": 3710,
+      "sha256": "422acd5598e29b43e79ed28fbb756bdc52f0fbda1b0ff598487645883049517f",
+      "reportedSize": [
+        0.8114017272310603,
+        1.600000023841858,
+        0.6198431440976758
+      ],
+      "checks": {
+        "hash": true,
+        "bytes": true,
+        "triangles": true,
+        "materials": true,
+        "opaque": true,
+        "textures": true,
+        "meshopt": true,
+        "noRig": true
+      },
+      "status": "accepted-for-integration",
+      "mainViewedFrames": [
+        "models/city-ped-icecream-vendor/qa/1024-view3.jpg",
+        "models/city-ped-icecream-vendor/qa/390-view0.jpg"
+      ],
+      "workerNativeChecks": 5,
+      "workerGroundContactGroups": 2,
+      "workerContactPass": true
+    },
+    {
+      "id": "city-ped-postman",
+      "bytes": 85460,
+      "triangles": 3853,
+      "sha256": "efccc2628deba611273c6c8f14ef72c092fb3404a89e6ad18508a51f67d1d46b",
+      "reportedSize": [
+        0.8933378226931605,
+        1.600000023841858,
+        0.7582751051435961
+      ],
+      "checks": {
+        "hash": true,
+        "bytes": true,
+        "triangles": true,
+        "materials": true,
+        "opaque": true,
+        "textures": true,
+        "meshopt": true,
+        "noRig": true
+      },
+      "status": "accepted-for-integration",
+      "mainViewedFrames": [
+        "models/city-ped-postman/qa/1024-view3.jpg",
+        "models/city-ped-postman/qa/390-view0.jpg"
+      ],
+      "workerNativeChecks": 5,
+      "workerGroundContactGroups": 2,
+      "workerContactPass": true
+    },
+    {
+      "id": "city-ped-senior",
+      "bytes": 78444,
+      "triangles": 3770,
+      "sha256": "d237e3f5147a0e8721ef8158d7541d9f5bbf7eece890a3cda322d1e43108895f",
+      "reportedSize": [
+        0.9220907947172865,
+        1.5499999523162842,
+        0.8089403724650037
+      ],
+      "checks": {
+        "hash": true,
+        "bytes": true,
+        "triangles": true,
+        "materials": true,
+        "opaque": true,
+        "textures": true,
+        "meshopt": true,
+        "noRig": true
+      },
+      "status": "accepted-for-integration",
+      "mainViewedFrames": [
+        "models/city-ped-senior/qa/1024-view3.jpg",
+        "models/city-ped-senior/qa/390-view0.jpg"
+      ],
+      "workerNativeChecks": 5,
+      "workerGroundContactGroups": 3,
+      "workerContactPass": true
+    },
+    {
+      "id": "city-ped-stroller",
+      "bytes": 84508,
+      "triangles": 3830,
+      "sha256": "85c8c331ee92c8f90c8d130f871a04664c56949aafcb0ac58e35f6481d821096",
+      "reportedSize": [
+        0.6129093386414075,
+        1.600000023841858,
+        1.4109805807347127
+      ],
+      "checks": {
+        "hash": true,
+        "bytes": true,
+        "triangles": true,
+        "materials": true,
+        "opaque": true,
+        "textures": true,
+        "meshopt": true,
+        "noRig": true
+      },
+      "status": "accepted-for-integration",
+      "mainViewedFrames": [
+        "models/city-ped-stroller/qa/1024-view3.jpg",
+        "models/city-ped-stroller/qa/390.jpg"
+      ],
+      "workerNativeChecks": 5,
+      "workerGroundContactGroups": 6,
+      "workerContactPass": true
+    }
+  ],
+  "mainIndependentChecks": "SHA256/bytes, GLB accessor triangle counts, embedded WebP size, one opaque material, Meshopt extension, no skins/animation; reviewed 12 native worker screenshots",
+  "workerEvidence": "report.json/qa.json/contacts.json and validation0errors/0warnings; main did not repeat worker geometric contact computation or native live runner",
+  "integrationContract": {
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scale": "uniform height from final measured bounds, never force the preliminary target width",
+    "balloon": "total height1.8 includes balloon; child about1.05",
+    "groups": [
+      "stroller+mother move as one static group",
+      "walker+dog+leash move as one static group"
+    ],
+    "vendor": "stationary at kiosk",
+    "routes": "must avoid expanded prop footprints and PLAZAS; lookahead along full oriented footprint, especially dog/stroller, not only root point",
+    "bobbing": "avoid vertically bouncing grounded stroller wheels/dog paws; any visual root motion must preserve the intended contact envelope"
+  },
+  "knownSourceLimitations": [
+    "Minor soft colour blend at vendor back waist noted by worker.",
+    "Local rotations, floor snaps and child/cord adjustment were performed; assets are not untouched Tripo meshes.",
+    "Uniform scale uses actual dimensions; stroller much narrower than preliminary target."
+  ],
+  "spending": {
+    "cityFirstThree": 75,
+    "citySixPeople": 150,
+    "cityTotal": 225,
+    "lastObservedStudioBalance": 5050,
+    "retries": 0,
+    "ledger": "models/progress.md and per-model order.json"
+  },
+  "pending": [
+    "Claude city placement, animation and native gameplay capture",
+    "park-lawn must show icecream PLAZA (m0504)",
+    "pavementRuns must avoid shelter/props (m0503)",
+    "physical iPad/PWA not checked"
+  ]
+}
