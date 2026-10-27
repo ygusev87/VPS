@@ -1,7 +1,7 @@
 {
   "task": "factory-background-life",
   "request": "m0497",
-  "status": "three-wall-assets-and-four-workers-ready; forklift-pending",
+  "status": "three-wall-assets-and-four-workers-ready; forklift-candidate-articulation-blocked",
   "sourceSha256": "89f9536164c05093a11c28e485ba52da0400d120b516745dbcc1a5cd815b180a",
   "referenceFrame": {
     "path": "assets-src/design-pass/kit/factory-whole-check.jpg",
@@ -47,7 +47,15 @@
       "groundY": 0,
       "movingNode": "forks",
       "contractNext": "measure carriage pivot and a collision-free vertical travel; do not claim independent forks on an unsplit mesh",
-      "status": "delegated-worker-batch-01"
+      "status": "candidate-articulation-blocked-not-published",
+      "candidate": "assets-src/design-pass/kit/factory/background-life/models/factory-forklift/static-candidate.glb",
+      "sha256": "eb5b5415248c1d86ce1160da4d6b4fd064a393dc7682936abc36bafcbae802bc",
+      "actualXYZ": [
+        1.605266696311631,
+        2.1999513526225787,
+        3.791794538497925
+      ],
+      "next": "Main review remesh or fixed-fork integration decision with Claude; no valid moving forks group."
     },
     {
       "id": "factory-worker-foreman",
@@ -303,5 +311,6 @@
     "limits": "no invented credit cap; live price/balance before each future Studio order; no purchases/API/topups"
   },
   "next": "Claude integrates all3wall assets, preserving clock interaction; main next city props placement/references; accept factory worker READY.",
-  "workersMainReview": "workers-main-review.json"
+  "workersMainReview": "workers-main-review.json",
+  "forkliftMainTriage": "forklift-main-triage.json"
 }

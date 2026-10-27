@@ -1,0 +1,22 @@
+{
+  "reviewedAt": "2026-10-27T11:37:52.189988+00:00",
+  "status": "reference-gallery-pass",
+  "images": 8,
+  "imagesLoaded": 8,
+  "nativeViewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "horizontalOverflow": false,
+  "consoleErrors": 0,
+  "consoleWarnings": 0,
+  "visualScope": "All eight full imagegen outputs inspected; gallery at native sizes. These are PNG references, not geometry acceptance.",
+  "validation": "88 tests/17files and TypeScript PASS18:34 Bangkok",
+  "tripoOrdersByMain": 0
+}

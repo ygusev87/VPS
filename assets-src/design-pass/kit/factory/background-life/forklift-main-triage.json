@@ -1,0 +1,89 @@
+{
+  "reviewedAt": "2026-10-27T11:37:52.191161+00:00",
+  "status": "candidate-preserved-not-accepted-for-runtime",
+  "workerCommit": null,
+  "candidate": "assets-src/design-pass/kit/factory/background-life/models/factory-forklift/static-candidate.glb",
+  "sha256": "eb5b5415248c1d86ce1160da4d6b4fd064a393dc7682936abc36bafcbae802bc",
+  "bytes": 100228,
+  "mainChecks": [
+    "Confirmed saved candidate SHA/byte size",
+    "Read worker topology/segmentation/cap-failure evidence",
+    "Inspected native 1024 oblique/front and390 static frames"
+  ],
+  "staticVisual": "Four wheels, two blades and open cabin readable. Source diagonal mast webbing visible; not silently removed.",
+  "articulation": "No independent closed carriage; no forks group, pivot or accepted travel. Local split experiment is rejected, not an animated asset.",
+  "sourceRequest": "Claude m0497 requested forks node if possible, otherwise background driving with pallet. Static-only alternative requires explicit integration decision; main has not published the candidate.",
+  "workerEvidence": {
+    "triangles": 3590,
+    "materials": 1,
+    "texture": "512WebP/Meshopt",
+    "actualXYZ": [
+      1.605266696311631,
+      2.1999513526225787,
+      3.791794538497925
+    ],
+    "forkTips": [
+      {
+        "sourcePart": "tripo_part_12",
+        "bounds": {
+          "min": [
+            -0.5132598202779823,
+            0.08412570227027667,
+            0.7588102816231197
+          ],
+          "max": [
+            -0.298981882741821,
+            0.7256574794866401,
+            1.8958973280033664
+          ]
+        },
+        "tipCentroid": [
+          -0.39690773348945746,
+          0.1322984578818641,
+          1.8860768637351848
+        ],
+        "tipBandZ": 0.02
+      },
+      {
+        "sourcePart": "tripo_part_13",
+        "bounds": {
+          "min": [
+            0.2990403624602225,
+            0.08482000060816854,
+            0.7579422391943247
+          ],
+          "max": [
+            0.5059122815524406,
+            0.7255417630969914,
+            1.8931200216475121
+          ]
+        },
+        "tipCentroid": [
+          0.3845177412914493,
+          0.13385071220878356,
+          1.8878962532005163
+        ],
+        "tipBandZ": 0.02
+      }
+    ],
+    "floorContacts": {
+      "groups": 4,
+      "maxMinimumY": 2.4347530568347153e-05,
+      "tolerance": 0.0001,
+      "passed": true
+    },
+    "independentContactOrSweptCheckByMain": false
+  },
+  "next": "Main can investigate a reviewed local interface remesh; Claude can clarify whether fixed forks meet the intended background-driving action. Preserve source and candidate while city batch runs independently.",
+  "tripo": {
+    "paidOrders": 1,
+    "cost": 25,
+    "freeSegmentation": 0,
+    "noMainOrders": true
+  },
+  "limitations": [
+    "No articulation acceptance.",
+    "No pallet contact/cargo sweep or full factory route accepted.",
+    "No physical iPad/PWA."
+  ]
+}

@@ -1,7 +1,7 @@
 {
   "task": "city-street-life",
   "request": "m0492",
-  "status": "first3props-and6people-accepted; remaining8props-queued",
+  "status": "first3props-and6people-accepted; remaining8references-ready-models-queued",
   "owners": {
     "main": [
       "manifest/layout/border concept",
@@ -90,8 +90,9 @@
         2.4,
         1.6
       ],
-      "status": "queued",
-      "publicPath": "public/models/city-fruit-stall.glb"
+      "status": "reference-ready-model-queued",
+      "publicPath": "public/models/city-fruit-stall.glb",
+      "reference": "references/remaining/refs/city-fruit-stall.png"
     },
     {
       "id": "city-street-bin",
@@ -101,7 +102,7 @@
         0.9,
         0.76
       ],
-      "status": "queued",
+      "status": "reference-ready-model-queued",
       "publicPath": "public/models/city-street-bin.glb",
       "preliminaryTargetXYZ": [
         0.65,
@@ -118,7 +119,8 @@
         "animationOwner": "Claude",
         "movingGeometry": "existing procedural lid/cat, no generated cap",
         "requiredQA": "Closed/open/halfway lid and cat on native 390/1024; continuous hinge sweep; verify top opening, rest and tap/sound."
-      }
+      },
+      "reference": "references/remaining/refs/city-street-bin.png"
     },
     {
       "id": "city-flower-planter",
@@ -128,8 +130,9 @@
         0.85,
         0.9
       ],
-      "status": "queued",
-      "publicPath": "public/models/city-flower-planter.glb"
+      "status": "reference-ready-model-queued",
+      "publicPath": "public/models/city-flower-planter.glb",
+      "reference": "references/remaining/refs/city-flower-planter.png"
     },
     {
       "id": "city-bike-rack",
@@ -139,8 +142,9 @@
         1.3,
         1.6
       ],
-      "status": "queued",
-      "publicPath": "public/models/city-bike-rack.glb"
+      "status": "reference-ready-model-queued",
+      "publicPath": "public/models/city-bike-rack.glb",
+      "reference": "references/remaining/refs/city-bike-rack.png"
     },
     {
       "id": "city-poster-column",
@@ -150,8 +154,9 @@
         2.2,
         0.9
       ],
-      "status": "queued",
-      "publicPath": "public/models/city-poster-column.glb"
+      "status": "reference-ready-model-queued",
+      "publicPath": "public/models/city-poster-column.glb",
+      "reference": "references/remaining/refs/city-poster-column.png"
     },
     {
       "id": "city-drinking-fountain",
@@ -161,8 +166,9 @@
         1,
         0.7
       ],
-      "status": "queued",
-      "publicPath": "public/models/city-drinking-fountain.glb"
+      "status": "reference-ready-model-queued",
+      "publicPath": "public/models/city-drinking-fountain.glb",
+      "reference": "references/remaining/refs/city-drinking-fountain.png"
     },
     {
       "id": "city-playground",
@@ -172,8 +178,9 @@
         2.5,
         2.8
       ],
-      "status": "queued",
-      "publicPath": "public/models/city-playground.glb"
+      "status": "reference-ready-model-queued",
+      "publicPath": "public/models/city-playground.glb",
+      "reference": "references/remaining/refs/city-playground.png"
     },
     {
       "id": "city-postbox",
@@ -183,7 +190,7 @@
         1.22,
         0.6
       ],
-      "status": "queued",
+      "status": "reference-ready-model-queued",
       "publicPath": "public/models/city-postbox.glb",
       "preliminaryTargetXYZ": [
         0.65,
@@ -200,7 +207,8 @@
         "animationOwner": "Claude",
         "movingGeometry": "existing procedural flag/letter, generated shell only",
         "requiredQA": "Flag sweep and letter emergence, clear surrounding basket/house/route. Existing position is a known clearance concern."
-      }
+      },
+      "reference": "references/remaining/refs/city-postbox.png"
     }
   ],
   "pedestrians": [
@@ -352,5 +360,6 @@
     "No physical iPad/PWA or performance result."
   ],
   "remainingPropsProposal": "remaining-layout-proposal.json",
-  "remainingPropsPreflight": "remaining-layout-preflight.json"
+  "remainingPropsPreflight": "remaining-layout-preflight.json",
+  "remainingReferences": "references/remaining/index.html"
 }

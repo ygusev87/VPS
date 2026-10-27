@@ -1,0 +1,177 @@
+{
+  "createdAt": "2026-10-27T11:31:52.371277+00:00",
+  "method": "built-in image_gen",
+  "imageCalls": 8,
+  "postProcessing": "None: original PNG copied byte-for-byte; no crop, recolour, generated geometry or manual repaint.",
+  "tripoOrders": 0,
+  "items": [
+    {
+      "id": "city-fruit-stall",
+      "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, softly rounded bevels, clean coherent chunky geometry, warm cream with turquoise, coral and golden-yellow accents, matching a friendly cream pastel toy-town kiosk. Elevated three-quarter view showing the whole front and right side. Center object with generous white margins, plain pure white studio background, soft even neutral light, minimal contact shadow. No people, animals, readable text, numbers, logos, pavement, grass, diorama, broad baseplate or separate decorative props. Make the object reconstructible under 4000 triangles with one baked opaque texture; no glass or translucent materials. Subject: compact open-front fruit stall, width:height:depth about 2.4:2.4:1.6. Warm cream wooden counter with dark turquoise panels, four sturdy corner posts supporting a simple coral/cream striped pitched canvas awning. The counter holds exactly three inset shallow produce trays: a clustered mound of red apples, golden pears, and orange citrus. Fruits form simple large rounded grouped shapes, not hundreds of tiny fruit. Empty back opening under awning, low connected counter body, legs all on the same floor. Front service side faces camera. No price signs, emblems, wheels, cash register or extra crates on the ground.",
+      "method": "built-in image_gen",
+      "useCase": "stylized-concept",
+      "calls": 1,
+      "source": "refs/city-fruit-stall.png",
+      "sha256": "df04dfa22a47491bfe075f719ec259d146f6dd8faad2f6823707888941f6f001",
+      "bytes": 1646909,
+      "pixelSize": [
+        1374,
+        1145
+      ],
+      "visualReview": "accepted-as-reference-not-3d-geometry",
+      "reviewNotes": "Connected counter, three large produce trays and open canopy. Keep apples/pears/citrus readable after simplification.",
+      "targetXYZ": [
+        2.4,
+        2.4,
+        1.6
+      ]
+    },
+    {
+      "id": "city-bike-rack",
+      "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, softly rounded bevels, clean coherent chunky geometry, warm cream with turquoise, coral and golden-yellow accents, matching a friendly cream pastel toy-town kiosk. Elevated three-quarter view showing the whole front and right side. Center object with generous white margins, plain pure white studio background, soft even neutral light, minimal contact shadow. No people, animals, readable text, numbers, logos, pavement, grass, diorama, broad baseplate or separate decorative props. Make the object reconstructible under 4000 triangles with one baked opaque texture; no glass or translucent materials. Subject: a compact bicycle parking rack holding exactly TWO small cheerful city bicycles side by side, one coral and one turquoise. Overall width:height:depth about 2.5:1.3:1.6. The rack is a low simple dark teal metal rail with sturdy wheel slots; both bicycles securely docked and static. Each bicycle has exactly two circular thick rubber tires on a common ground plane, simple solid cream disc-style wheel centres rather than thin spoke webs, coherent thick frame triangles, thick front fork, one curved handlebar and one saddle. Clear separation between the two bicycles, visible silhouette of both. Bikes parallel, facing front, viewed three-quarter from front-right. No rider, basket, pannier, cables, chains or floating pieces. Low-poly toy engineering with robust broad tubes, not a photoreal fragile bicycle.",
+      "method": "built-in image_gen",
+      "useCase": "stylized-concept",
+      "calls": 1,
+      "source": "refs/city-bike-rack.png",
+      "sha256": "d4b80d68c174c31a872847a8cf9992b5996551b59aeee1a3d0506bfda80549db",
+      "bytes": 1621073,
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "visualReview": "accepted-as-reference-not-3d-geometry",
+      "reviewNotes": "Two bicycles / four wheels, chunky disc centres and one rack. Reference uses simplified toy bikes without a visible drivetrain; accepted as static toy design. Do not add thin spokes or chains. All four wheels must share ground plane.",
+      "targetXYZ": [
+        2.5,
+        1.3,
+        1.6
+      ]
+    },
+    {
+      "id": "city-playground",
+      "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, softly rounded bevels, clean coherent chunky geometry, warm cream with turquoise, coral and golden-yellow accents, matching a friendly cream pastel toy-town kiosk. Elevated three-quarter view showing the whole front and right side. Center object with generous white margins, plain pure white studio background, soft even neutral light, minimal contact shadow. No people, animals, readable text, numbers, logos, pavement, grass, diorama, broad baseplate or separate decorative props. Make the object reconstructible under 4000 triangles with one baked opaque texture; no glass or translucent materials. Subject: ONE compact playground set consisting of a small slide and one small swing attached side by side, overall width:height:depth about 3.8:2.5:2.8. Left side a short rounded coral slide chute facing forward, cream ladder behind, sturdy turquoise platform with two safe rounded side rails. Right side a simple turquoise A-frame supporting exactly one golden-yellow swing seat on TWO thick dark teal rods; seat level and stationary. Two A-shaped side supports with paired feet reaching one ground plane, rigid connected top beam. All visible supports physically coherent and chunky, widely separated openings so silhouette reads from above. No person, no toddler, no ropes, thin chains, broad ground plate, fence or landscaping. The slide and swing share one compact play structure but their paths do not intersect.",
+      "method": "built-in image_gen",
+      "useCase": "stylized-concept",
+      "calls": 1,
+      "source": "refs/city-playground.png",
+      "sha256": "cf6dcc6c2d2e7ee81638d0c545198d288c329ac71e19775e1f009849a4c28e6c",
+      "bytes": 1384387,
+      "pixelSize": [
+        1536,
+        1024
+      ],
+      "visualReview": "accepted-as-reference-not-3d-geometry",
+      "reviewNotes": "Connected slide and one stationary swing. Source shows a large set; fit actual GLB uniformly to declared bounds and verify every foot. No animated seat requested.",
+      "targetXYZ": [
+        3.8,
+        2.5,
+        2.8
+      ]
+    },
+    {
+      "id": "city-flower-planter",
+      "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, soft rounded bevels, clean coherent chunky geometry, warm cream, turquoise, coral and golden-yellow accents matching a miniature toy-town kiosk. Elevated three-quarter front-right view, whole object centred with generous white margin, plain pure white background, soft even neutral studio light, minimal contact shadow. No people, animals, readable text, logos, pavement, grass, diorama, surrounding props or broad ground plate. Simple robust forms suitable for fewer than 4000 triangles and one baked opaque texture; no glass or transparency. Subject: one small round street flower planter, overall width:height:depth about .9:.85:.9. Low warm cream tapered circular pot with a substantial rounded turquoise rim and a simple coral band. A compact lush connected cluster of large dark-green rounded leaves and exactly five broad coral/yellow daisy-like blooms with simple thick petals, no fine stems. Flowers emerge from soil inside the pot. Wide flat grounded bottom and clean distinct silhouette. No saucer, feet, drainage fittings or extra pots. Pot and flowers one connected assembly.",
+      "method": "built-in image_gen",
+      "useCase": "stylized-concept",
+      "calls": 1,
+      "source": "refs/city-flower-planter.png",
+      "sha256": "5078a2f3a57ee412db4f57795363ac3d29d15337e3b922c061ac72902effd158",
+      "bytes": 1720622,
+      "pixelSize": [
+        1254,
+        1254
+      ],
+      "visualReview": "accepted-as-reference-not-3d-geometry",
+      "reviewNotes": "Five broad blooms and compact connected leaves. Do not spend geometry on tiny stems; preserve pot silhouette.",
+      "targetXYZ": [
+        0.9,
+        0.85,
+        0.9
+      ]
+    },
+    {
+      "id": "city-poster-column",
+      "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, soft rounded bevels, clean coherent chunky geometry, warm cream, turquoise, coral and golden-yellow accents matching a miniature toy-town kiosk. Elevated three-quarter front-right view, whole object centred with generous white margin, plain pure white background, soft even neutral studio light, minimal contact shadow. No people, animals, readable text, logos, pavement, grass, diorama, surrounding props or broad ground plate. Simple robust forms suitable for fewer than 4000 triangles and one baked opaque texture; no glass or transparency. Subject: one round traditional advertising column, overall width:height:depth about .9:2.2:.9. Tall cream cylindrical drum, a sturdy low dark teal circular foot no wider than the column, a rounded turquoise cap with coral edge. On the drum, two large colorful flat pictorial posters molded into the surface: a golden musical note on coral rectangle on front, a simple coral theatre-star/sun pictogram on pale turquoise panel to the right. These are playful painted graphics on opaque drum, not separate 3D objects. No writing, numerals, logos, thin paper edges, distressed/torn posters, parasol, lantern, people or wide plinth.",
+      "method": "built-in image_gen",
+      "useCase": "stylized-concept",
+      "calls": 1,
+      "source": "refs/city-poster-column.png",
+      "sha256": "bd8a5f68b6f6be54ba22baccb92e32161ef033bf990d92c005c95c74acab5a48",
+      "bytes": 1479129,
+      "pixelSize": [
+        1024,
+        1536
+      ],
+      "visualReview": "accepted-as-reference-not-3d-geometry",
+      "reviewNotes": "Music note and sun/star are flat pictorial graphics. Cap/base are modestly wider than the cylinder: target width includes them.",
+      "targetXYZ": [
+        0.9,
+        2.2,
+        0.9
+      ]
+    },
+    {
+      "id": "city-drinking-fountain",
+      "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, soft rounded bevels, clean coherent chunky geometry, warm cream, turquoise, coral and golden-yellow accents matching a miniature toy-town kiosk. Elevated three-quarter front-right view, whole object centred with generous white margin, plain pure white background, soft even neutral studio light, minimal contact shadow. No people, animals, readable text, logos, pavement, grass, diorama, surrounding props or broad ground plate. Simple robust forms suitable for fewer than 4000 triangles and one baked opaque texture; no glass or transparency. Subject: one short friendly public drinking fountain, overall width:height:depth about .7:1:.7. Turquoise chunky tapered pedestal with narrow grounded foot supports one wide shallow warm cream round basin; one small thick curved coral drinking spout rises from the back rim and points down toward centre, with a simple yellow push button molded beside it. Basin visibly hollow and EMPTY, no water jet or puddle. Bowl and pedestal structurally connected, all edges rounded. No pipes to ground, loose parts, sink cabinet, separate faucet assembly, glass or broad baseplate.",
+      "method": "built-in image_gen",
+      "useCase": "stylized-concept",
+      "calls": 1,
+      "source": "refs/city-drinking-fountain.png",
+      "sha256": "3d426d1d24b3967288fd8f4d15d5f1baa634a292ca8ff495097d80b6302acfc0",
+      "bytes": 1384837,
+      "pixelSize": [
+        1145,
+        1374
+      ],
+      "visualReview": "accepted-as-reference-not-3d-geometry",
+      "reviewNotes": "Empty basin with integrated spout and button. Decorative dry asset, no new water interaction.",
+      "targetXYZ": [
+        0.7,
+        1,
+        0.7
+      ]
+    },
+    {
+      "id": "city-street-bin",
+      "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, soft rounded bevels, clean coherent chunky geometry, warm cream, turquoise, coral and golden-yellow accents matching a miniature toy-town kiosk. Elevated three-quarter front-right view, whole object centred with generous white margin, plain pure white background, soft even neutral studio light, minimal contact shadow. No people, animals, readable text, logos, pavement, grass, diorama, surrounding props or broad ground plate. Simple robust forms suitable for fewer than 4000 triangles and one baked opaque texture; no glass or transparency. Subject: the STATIC OPEN BODY ONLY of a miniature street trash bin; a hinged lid and a cat will be added later by game code, so they MUST NOT appear. Overall width:height:depth .76:.9:.76, a round slightly tapered cylinder, top diameter .76 and base diameter .64. Teal painted metal shell with eight broad shallow vertical ribs, cream rolled upper rim, small low coral foot ring flush with bottom. The top is a WIDE visibly empty circular opening with at least .56 inner diameter relative to .76 exterior, thick walls and a dark visible interior descending deep into the bin, no plate sealing the opening. NO LID anywhere in frame, NO HANDLE above rim, NO CAT, no contents, no side apertures. No black opaque disk pretending to be hollow; show inner side wall and depth. Leave rear rim uncluttered for a coded hinge. One grounded body only.",
+      "method": "built-in image_gen",
+      "useCase": "stylized-concept",
+      "calls": 1,
+      "source": "refs/city-street-bin.png",
+      "sha256": "f54d5b9c1ca3d8c8fc1ba4fca4747a26825f009469c429e1e46917a9717d0385",
+      "bytes": 1491738,
+      "pixelSize": [
+        1295,
+        1214
+      ],
+      "visualReview": "accepted-as-reference-not-3d-geometry",
+      "reviewNotes": "Open shell only: image suggests depth but does not prove geometric openness. Require real unobstructed top opening >=.56 after fitting; preserve coded .84 lid/cat.",
+      "targetXYZ": [
+        0.76,
+        0.9,
+        0.76
+      ]
+    },
+    {
+      "id": "city-postbox",
+      "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, soft rounded bevels, clean coherent chunky geometry, warm cream, turquoise, coral and golden-yellow accents matching a miniature toy-town kiosk. Elevated three-quarter front-right view, whole object centred with generous white margin, plain pure white background, soft even neutral studio light, minimal contact shadow. No people, animals, readable text, logos, pavement, grass, diorama, surrounding props or broad ground plate. Simple robust forms suitable for fewer than 4000 triangles and one baked opaque texture; no glass or transparency. Subject: the STATIC BODY AND POST ONLY of a small toy mailbox, without flag or letter; those are animated later in code. Overall width:height:depth approximately .44:1.22:.60, a narrow warm wooden square support post holds a dark turquoise rural-style elongated mailbox with rounded semicircular roof and flat lower box, closed cream front door facing camera, coral trim outline, a single simple circular brass knob. Post rises from ground to the underside of the mailbox; the box upper silhouette is about the top third of total height. Mailbox width less than its front-to-back depth. Narrow side walls entirely clean and empty so a coded flag can be attached at the right. NO FLAG, no flagpole, NO LETTER, no envelope symbol, no printed words, no mail slot, no broad foot, no ground patch, no second mailbox. One coherent grounded object.",
+      "method": "built-in image_gen",
+      "useCase": "stylized-concept",
+      "calls": 1,
+      "source": "refs/city-postbox.png",
+      "sha256": "22c5d06ff5708a76080e7e9db688c0cdcaeda2be5379baf4db07c99e3e5a1f55",
+      "bytes": 1261153,
+      "pixelSize": [
+        1024,
+        1536
+      ],
+      "visualReview": "accepted-as-reference-not-3d-geometry",
+      "reviewNotes": "Shell/post only, no flag or letter. Native assembly must preserve coded flag pivot (.24,.95,.1) and letter; geometry cannot fill their motion clearance.",
+      "targetXYZ": [
+        0.44,
+        1.22,
+        0.6
+      ]
+    }
+  ]
+}
