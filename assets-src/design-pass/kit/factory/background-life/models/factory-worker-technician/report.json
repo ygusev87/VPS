@@ -1,0 +1,95 @@
+{
+  "name": "factory-worker-technician",
+  "source": "assets-src/raw/factory-background-2026-10-27/factory-worker-technician.glb",
+  "sourceSha256": "4c4b4d04d06b658ce441f6d9069bc2568885f8dad1edd2cae81b3b958d915ca1",
+  "sourceBytes": 723464,
+  "sourceTriangles": 3771,
+  "sourceBounds": {
+    "min": [
+      -0.27069091796875,
+      0,
+      -0.223724365234375
+    ],
+    "max": [
+      0.27069091796875,
+      1,
+      0.223724365234375
+    ]
+  },
+  "bytes": 84836,
+  "sha256": "48a73b88d2a99a8e641d9a029b8f5ce7123c29b3b742fcea4cfd3b3647adf8d5",
+  "triangles": 3771,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.43309427812937895,
+      0,
+      -0.35796991408382395
+    ],
+    "max": [
+      0.43309427812937895,
+      1.600000023841858,
+      0.35796991408382395
+    ]
+  },
+  "size": [
+    0.8661885562587579,
+    1.600000023841858,
+    0.7159398281676479
+  ],
+  "contract": {
+    "reviewed": true,
+    "height": 1.6,
+    "rotationY": 0,
+    "targetTriangles": 3900,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform",
+    "floorSnap": 0.0005,
+    "rawOrientationReview": "Native +Z front, two arms/two legs and intact accessories confirmed."
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform scale by total height; preserve anatomy; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.0005 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}
