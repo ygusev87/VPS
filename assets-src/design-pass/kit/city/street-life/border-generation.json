@@ -1,0 +1,9 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "edit",
+  "source": "assets-src/design-pass/variants/city-a.png",
+  "output": "border-concept-v1.png",
+  "prompt": "Use case: precise-object-edit. Asset type: concept mockup for a children's toy city game; proposal, not a gameplay screenshot. Edit the provided City A image to propose a shallow city background framing the board. Keep all roads, tram track, canal, park, task poles, houses, vehicles and existing objects INSIDE the rectangular board exactly in their original positions and preserve the same high isometric camera. Add a slim continuous ground extension BEHIND the far/top edge of the board, with a discontinuous second row of small pastel toy townhouse silhouettes and a few round green tree crowns; these should read as the town continuing beyond the board rather than a dense forest. Leave wide gaps around the road and canal exits, visually continuing these exits outwards. The new background row should stay behind existing houses and never cover a task pole. Add only a very low sparse grass-and-flower fringe on outside left/right edges. Keep the entire foreground/bottom rim low and open with nothing blocking the tram or bottom row of houses. Do not add anything within playable streets or sidewalks. Warm cream studio backdrop, same charming handpainted toy/clay rendering and saturated coral/teal/blue/yellow palette. No text, no labels, no UI. Extend the composition upward only as needed, preserve the full original board within the frame. Do not turn this into a tall wall or distant skyline; the back row is a shallow toy town continuation.",
+  "status": "proposal, not runtime screenshot",
+  "review": "Shallow back row and open foreground achieved; real road/canal continuity still requires implementation review."
+}

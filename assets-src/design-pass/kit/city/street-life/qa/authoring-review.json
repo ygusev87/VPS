@@ -1,0 +1,31 @@
+{
+  "status": "pass",
+  "scope": "authoring layout page and JSON contracts only, no new GLBs or runtime integration",
+  "nativeViewports": [
+    [
+      390,
+      844
+    ],
+    [
+      1024,
+      768
+    ]
+  ],
+  "horizontalOverflow": false,
+  "browserWarnings": 0,
+  "browserErrors": 0,
+  "tests": {
+    "files": 17,
+    "tests": 88,
+    "pass": true
+  },
+  "typecheck": "pass",
+  "sourceSha256": "f1c57f8d904677d3c30199307dcb70150d86398dc6379a8ff71d20045b9ba2f5",
+  "physicalIPad": false,
+  "notes": [
+    "Model target dimensions are provisional",
+    "Min anchor clearance 0.329 after normal keep radius at icecream; native model occlusion pending",
+    "Shelter pad needs three bushes and two flower clusters relocated by main",
+    "Explicit paving courts needed from Claude"
+  ]
+}

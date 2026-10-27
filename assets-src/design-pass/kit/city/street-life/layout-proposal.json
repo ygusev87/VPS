@@ -1,0 +1,85 @@
+{
+  "status": "proposal-not-integrated",
+  "items": [
+    {
+      "id": "city-icecream-kiosk",
+      "position": [
+        -7,
+        7
+      ],
+      "yaw": 0,
+      "xyz": [
+        2.8,
+        3,
+        2.2
+      ],
+      "pad": [
+        -8.8,
+        5.6,
+        -5.2,
+        8.45
+      ],
+      "label": "Киоск у южного края парка",
+      "access": "front +Z, vendor in front; preserve lower park walkway"
+    },
+    {
+      "id": "city-flower-kiosk",
+      "position": [
+        -26,
+        -18
+      ],
+      "yaw": 0,
+      "xyz": [
+        2.7,
+        2.7,
+        2
+      ],
+      "pad": [
+        -27.8,
+        -19.6,
+        -24.2,
+        -15.7
+      ],
+      "label": "Цветы у северо-западного тротуара",
+      "access": "front +Z toward ring; apron must connect to existing sidewalk"
+    },
+    {
+      "id": "city-tram-shelter",
+      "position": [
+        -13,
+        23.6
+      ],
+      "yaw": 0,
+      "xyz": [
+        3.8,
+        2.7,
+        1.8
+      ],
+      "pad": [
+        -15.3,
+        22.2,
+        -10.7,
+        24.8
+      ],
+      "label": "Остановка севернее трамвая",
+      "access": "front +Z toward rails; keep road edge z25 free"
+    }
+  ],
+  "integrationNeeds": [
+    "Explicit paved aprons: greenBlocks only derives courts from DECOR widths >=4.5, all first three fit widths <=4.",
+    "Keep existing dressing keep/lines checks; do not enlarge fit above4 to bypass filters.",
+    "Main to relocate only existing shrubs overlapping approved pads.",
+    "Claude to preserve free pedestrian access outside prop footprint, and keep tram/cars on road.",
+    "Native game-camera occlusion check after final models required."
+  ],
+  "frame": {
+    "source": "border-concept-v1.png",
+    "scope": "visual proposal only",
+    "implementation": "reuse existing small house/tree assets behind far edge; very low foreground",
+    "notAcceptedAsRuntime": true,
+    "caveats": [
+      "Generated concept is based on city-a, not current gameplay screenshot",
+      "Road and canal exits need real geometric continuation/opening; picture alone does not verify connectivity"
+    ]
+  }
+}

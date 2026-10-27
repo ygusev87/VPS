@@ -1,0 +1,261 @@
+{
+  "task": "city-street-life",
+  "request": "m0492",
+  "status": "working",
+  "owners": {
+    "main": [
+      "manifest/layout/border concept",
+      "src/city-decor.ts after model acceptance"
+    ],
+    "modelWorker": "first three models only, sole Tripo operator",
+    "claude": [
+      "src/city.ts CITY_MODELS/life",
+      "pedestrian routes and runtime integration"
+    ]
+  },
+  "modelContract": {
+    "dimensions": "XYZ in world units; targets, not measured",
+    "groundY": 0,
+    "front": "+Z",
+    "center": "XZ=0",
+    "materials": 1,
+    "texture": "512 WebP",
+    "compression": "Meshopt",
+    "trianglesMax": 4000,
+    "bytesTargetMax": 150000,
+    "rig": false,
+    "noPlate": true,
+    "nativeReview": [
+      [
+        390,
+        844
+      ],
+      [
+        1024,
+        768
+      ]
+    ]
+  },
+  "reuse": [
+    {
+      "id": "bench",
+      "source": "src/city.ts codeBench + existing DECOR bench",
+      "reason": "Already exists as procedural geometry; no bench GLB required."
+    }
+  ],
+  "existingReplacementNotes": {
+    "city-postbox": "Replace corresponding life.addToy mailbox; do not duplicate.",
+    "city-street-bin": "Coordinate life.addToy trashcan replacement.",
+    "pedestrians": "Replace procedural walkers only; existing task characters untouched."
+  },
+  "props": [
+    {
+      "id": "city-icecream-kiosk",
+      "label": "Киоск мороженого",
+      "targetXYZ": [
+        2.8,
+        3,
+        2.2
+      ],
+      "status": "working",
+      "publicPath": "public/models/city-icecream-kiosk.glb"
+    },
+    {
+      "id": "city-flower-kiosk",
+      "label": "Газетно-цветочный киоск",
+      "targetXYZ": [
+        2.7,
+        2.7,
+        2
+      ],
+      "status": "working",
+      "publicPath": "public/models/city-flower-kiosk.glb"
+    },
+    {
+      "id": "city-tram-shelter",
+      "label": "Остановка со скамьёй",
+      "targetXYZ": [
+        3.8,
+        2.7,
+        1.8
+      ],
+      "status": "working",
+      "publicPath": "public/models/city-tram-shelter.glb"
+    },
+    {
+      "id": "city-fruit-stall",
+      "label": "Фруктовый прилавок",
+      "targetXYZ": [
+        2.4,
+        2.4,
+        1.6
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-fruit-stall.glb"
+    },
+    {
+      "id": "city-street-bin",
+      "label": "Уличная урна",
+      "targetXYZ": [
+        0.65,
+        0.95,
+        0.65
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-street-bin.glb"
+    },
+    {
+      "id": "city-flower-planter",
+      "label": "Вазон с цветами",
+      "targetXYZ": [
+        0.9,
+        0.85,
+        0.9
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-flower-planter.glb"
+    },
+    {
+      "id": "city-bike-rack",
+      "label": "Велопарковка с двумя велосипедами",
+      "targetXYZ": [
+        2.5,
+        1.3,
+        1.6
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-bike-rack.glb"
+    },
+    {
+      "id": "city-poster-column",
+      "label": "Афишная тумба",
+      "targetXYZ": [
+        0.9,
+        2.2,
+        0.9
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-poster-column.glb"
+    },
+    {
+      "id": "city-drinking-fountain",
+      "label": "Питьевой фонтанчик",
+      "targetXYZ": [
+        0.7,
+        1,
+        0.7
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-drinking-fountain.glb"
+    },
+    {
+      "id": "city-playground",
+      "label": "Горка с небольшой качелью",
+      "targetXYZ": [
+        3.8,
+        2.5,
+        2.8
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-playground.glb"
+    },
+    {
+      "id": "city-postbox",
+      "label": "Городской почтовый ящик",
+      "targetXYZ": [
+        0.65,
+        1.1,
+        0.5
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-postbox.glb"
+    }
+  ],
+  "pedestrians": [
+    {
+      "id": "city-ped-stroller",
+      "label": "Мама с коляской",
+      "targetXYZ": [
+        1.1,
+        1.6,
+        1.7
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-ped-stroller.glb",
+      "motion": "static step pose; runtime root walk/bob by Claude"
+    },
+    {
+      "id": "city-ped-senior",
+      "label": "Дедушка с тростью",
+      "targetXYZ": [
+        0.8,
+        1.55,
+        0.8
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-ped-senior.glb",
+      "motion": "static step pose; runtime root walk/bob by Claude"
+    },
+    {
+      "id": "city-ped-balloon",
+      "label": "Ребёнок с шариком",
+      "targetXYZ": [
+        0.8,
+        1.8,
+        0.7
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-ped-balloon.glb",
+      "motion": "static step pose; runtime root walk/bob by Claude"
+    },
+    {
+      "id": "city-ped-dog-walker",
+      "label": "Человек с собакой",
+      "targetXYZ": [
+        1.5,
+        1.6,
+        1.2
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-ped-dog-walker.glb",
+      "motion": "static step pose; runtime root walk/bob by Claude"
+    },
+    {
+      "id": "city-ped-postman",
+      "label": "Почтальон с сумкой",
+      "targetXYZ": [
+        0.85,
+        1.6,
+        0.75
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-ped-postman.glb",
+      "motion": "static step pose; runtime root walk/bob by Claude"
+    },
+    {
+      "id": "city-ped-icecream-vendor",
+      "label": "Продавец мороженого",
+      "targetXYZ": [
+        0.85,
+        1.6,
+        0.7
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-ped-icecream-vendor.glb",
+      "motion": "stationary at kiosk"
+    }
+  ],
+  "spending": {
+    "standingOwnerApproval": true,
+    "noNewCap": true,
+    "lastHistoricalBalance": 5275,
+    "liveBalanceRequiredPerOrder": true,
+    "newOrdersConfirmedByMain": 0,
+    "ledgerOwner": "model worker"
+  },
+  "acceptanceLimitations": [
+    "No new GLB delivered yet",
+    "Footprints and placements preliminary until measured bounds/native screenshots",
+    "No physical iPad or performance result"
+  ]
+}

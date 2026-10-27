@@ -1,0 +1,132 @@
+{
+  "generatedAt": "2026-10-27T10:10:44.674Z",
+  "status": "preflight-pass-integration-pending",
+  "sourceSha256": "f1c57f8d904677d3c30199307dcb70150d86398dc6379a8ff71d20045b9ba2f5",
+  "checks": [
+    "current source named anchors plus computed non-roaming critter homes",
+    "same 1.6 + width/2 keep/line rule, with conservative extra anchors",
+    "axis-aligned full proposed footprint gap to current road lanes",
+    "nearby DECOR footprint estimates for manual relocation"
+  ],
+  "limitations": [
+    "proposed model dimensions, not measured GLB bounds",
+    "not actual instantiated world.parts capture; future placements may change keep list",
+    "existing decor bounds are conservative square estimates",
+    "no rendered occlusion, gameplay route or physical iPad check",
+    "paved courts need Claude integration before placement is accepted"
+  ],
+  "items": [
+    {
+      "id": "city-icecream-kiosk",
+      "position": [
+        -7,
+        7
+      ],
+      "proposedBounds": [
+        -8.4,
+        5.9,
+        -5.6,
+        8.1
+      ],
+      "filterRadius": 3,
+      "nearestPoint": {
+        "name": "pigeon",
+        "distance": 3.329,
+        "margin": 0.329
+      },
+      "nearestProtectedLine": {
+        "name": "KITTEN_WAY",
+        "distance": 7.582,
+        "margin": 4.582
+      },
+      "roadFootprintGap": 0.9,
+      "passesAnchorAndLinePreflight": true,
+      "existingDecorNearPad": []
+    },
+    {
+      "id": "city-flower-kiosk",
+      "position": [
+        -26,
+        -18
+      ],
+      "proposedBounds": [
+        -27.35,
+        -19,
+        -24.65,
+        -17
+      ],
+      "filterRadius": 2.95,
+      "nearestPoint": {
+        "name": "HOUSE_POLE",
+        "distance": 9.434,
+        "margin": 6.484
+      },
+      "nearestProtectedLine": {
+        "name": "PARK_WAY",
+        "distance": 12.619,
+        "margin": 9.669
+      },
+      "roadFootprintGap": 2.593,
+      "passesAnchorAndLinePreflight": true,
+      "existingDecorNearPad": []
+    },
+    {
+      "id": "city-tram-shelter",
+      "position": [
+        -13,
+        23.6
+      ],
+      "proposedBounds": [
+        -14.9,
+        22.700000000000003,
+        -11.1,
+        24.5
+      ],
+      "filterRadius": 3.5,
+      "nearestPoint": {
+        "name": "SUB_POLE",
+        "distance": 13.14,
+        "margin": 9.64
+      },
+      "nearestProtectedLine": {
+        "name": "KITTEN_WAY",
+        "distance": 17.673,
+        "margin": 14.173
+      },
+      "roadFootprintGap": 0.5,
+      "passesAnchorAndLinePreflight": true,
+      "existingDecorNearPad": [
+        {
+          "model": "bush-lite",
+          "x": -14.4,
+          "z": 23.03,
+          "estimatedSize": 1.692
+        },
+        {
+          "model": "bush-lite",
+          "x": -12.6,
+          "z": 23.03,
+          "estimatedSize": 1.764
+        },
+        {
+          "model": "bush-lite",
+          "x": -10.8,
+          "z": 23.03,
+          "estimatedSize": 1.62
+        },
+        {
+          "model": "flower-cluster",
+          "x": -13.629,
+          "z": 22.15,
+          "estimatedSize": 0.498
+        },
+        {
+          "model": "flower-cluster",
+          "x": -11.057,
+          "z": 22.15,
+          "estimatedSize": 0.463
+        }
+      ]
+    }
+  ]
+}

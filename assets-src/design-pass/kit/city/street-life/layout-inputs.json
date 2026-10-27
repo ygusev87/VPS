@@ -1,0 +1,841 @@
+{
+  "plan": {
+    "lanes": [
+      {
+        "pts": [
+          [
+            -20,
+            -12
+          ],
+          [
+            20,
+            -12
+          ],
+          [
+            20,
+            12
+          ],
+          [
+            -20,
+            12
+          ],
+          [
+            -20,
+            -12
+          ]
+        ],
+        "w": 6
+      },
+      {
+        "pts": [
+          [
+            0,
+            -12
+          ],
+          [
+            0,
+            -37.5
+          ]
+        ],
+        "w": 6
+      },
+      {
+        "pts": [
+          [
+            0,
+            12
+          ],
+          [
+            0,
+            37.5
+          ]
+        ],
+        "w": 6
+      },
+      {
+        "pts": [
+          [
+            -20,
+            0
+          ],
+          [
+            -55,
+            0
+          ]
+        ],
+        "w": 6
+      },
+      {
+        "pts": [
+          [
+            20,
+            0
+          ],
+          [
+            55,
+            0
+          ]
+        ],
+        "w": 6
+      },
+      {
+        "pts": [
+          [
+            -55,
+            27
+          ],
+          [
+            55,
+            27
+          ]
+        ],
+        "w": 4
+      },
+      {
+        "pts": [
+          [
+            -33,
+            -2
+          ],
+          [
+            -33,
+            -9
+          ],
+          [
+            -45,
+            -9
+          ]
+        ],
+        "w": 4
+      }
+    ],
+    "field": {
+      "x0": -16.5,
+      "z0": -8.5,
+      "x1": 16.5,
+      "z1": 8.5
+    },
+    "width": 110,
+    "depth": 75
+  },
+  "keep": [
+    {
+      "name": "CROSS",
+      "x": 0,
+      "z": 12
+    },
+    {
+      "name": "LIGHT_SPOT",
+      "x": 5.5,
+      "z": 17.5
+    },
+    {
+      "name": "LIGHT_POLE",
+      "x": 10.5,
+      "z": 19.5
+    },
+    {
+      "name": "SUBSTATION",
+      "x": -30,
+      "z": 31.5
+    },
+    {
+      "name": "TRAM_SWITCH",
+      "x": -26.5,
+      "z": 34.5
+    },
+    {
+      "name": "SUB_POLE",
+      "x": -23.5,
+      "z": 31.5
+    },
+    {
+      "name": "OVEN_SPOT",
+      "x": -12,
+      "z": -21.5
+    },
+    {
+      "name": "BELT_SPOT",
+      "x": -8.5,
+      "z": -18.5
+    },
+    {
+      "name": "COUNTER",
+      "x": -5,
+      "z": -18.6
+    },
+    {
+      "name": "BAKER",
+      "x": -6,
+      "z": -21.8
+    },
+    {
+      "name": "BAKERY_POLE",
+      "x": -12.5,
+      "z": -17
+    },
+    {
+      "name": "BARRIER_SPOT",
+      "x": -34,
+      "z": -4.5
+    },
+    {
+      "name": "PARK_BUTTON",
+      "x": -29.5,
+      "z": -8.5
+    },
+    {
+      "name": "PARK_POLE",
+      "x": -28.5,
+      "z": -4.5
+    },
+    {
+      "name": "FERRIS_SPOT",
+      "x": 7,
+      "z": -3
+    },
+    {
+      "name": "WIND_SPOT",
+      "x": 12,
+      "z": 3
+    },
+    {
+      "name": "FOUNTAIN",
+      "x": -3,
+      "z": 1
+    },
+    {
+      "name": "WASH_SPOT",
+      "x": -38,
+      "z": 8
+    },
+    {
+      "name": "WASH_PUMP",
+      "x": -33.5,
+      "z": 9
+    },
+    {
+      "name": "WASH_POLE",
+      "x": -34.5,
+      "z": 5.5
+    },
+    {
+      "name": "CRANE_SPOT",
+      "x": -34,
+      "z": 20
+    },
+    {
+      "name": "CRANE_SWITCH",
+      "x": -29.5,
+      "z": 21.5
+    },
+    {
+      "name": "CRANE_POLE",
+      "x": -31,
+      "z": 17
+    },
+    {
+      "name": "SITE",
+      "x": -41,
+      "z": 20.5
+    },
+    {
+      "name": "BUILDER",
+      "x": -37.5,
+      "z": 16.2
+    },
+    {
+      "name": "LIFT_SPOT",
+      "x": -38.6,
+      "z": -26.5
+    },
+    {
+      "name": "LIFT_BUTTON",
+      "x": -34.5,
+      "z": -27.5
+    },
+    {
+      "name": "HOUSE_POLE",
+      "x": -34,
+      "z": -23
+    },
+    {
+      "name": "BALCONY",
+      "x": -40.1,
+      "z": -26.75
+    },
+    {
+      "name": "GRANDMA",
+      "x": -40.45,
+      "z": -26.75
+    },
+    {
+      "name": "BASKET",
+      "x": -38.2,
+      "z": -24.3
+    },
+    {
+      "name": "BRIDGE_SPOT",
+      "x": 35.9,
+      "z": 0
+    },
+    {
+      "name": "BRIDGE_BUTTON",
+      "x": 31.5,
+      "z": -8.5
+    },
+    {
+      "name": "BRIDGE_POLE",
+      "x": 31,
+      "z": -4.5
+    },
+    {
+      "name": "KITTEN",
+      "x": -13,
+      "z": -5.5
+    },
+    {
+      "name": "KITTEN_POLE",
+      "x": -8.5,
+      "z": 1
+    },
+    {
+      "name": "NEON_SPOT",
+      "x": 43,
+      "z": -9.5
+    },
+    {
+      "name": "CLUB_SENSOR",
+      "x": 43,
+      "z": -7.6
+    },
+    {
+      "name": "MUSIC_SPOT",
+      "x": 46.5,
+      "z": -6.8
+    },
+    {
+      "name": "CLUB_POLE",
+      "x": 40.5,
+      "z": -11.5
+    },
+    {
+      "name": "ENGINE_SPOT",
+      "x": 25.5,
+      "z": 13.5
+    },
+    {
+      "name": "STATION_POLE",
+      "x": 24,
+      "z": 17.5
+    },
+    {
+      "name": "BURNING",
+      "x": 48,
+      "z": 8
+    },
+    {
+      "name": "LADDER_SPOT",
+      "x": 43.5,
+      "z": 9.5
+    },
+    {
+      "name": "HYDRANT_SPOT",
+      "x": 44,
+      "z": 14
+    },
+    {
+      "name": "FIRE_POLE",
+      "x": 40.5,
+      "z": 12.5
+    },
+    {
+      "name": "BINS",
+      "x": 45,
+      "z": -22.5
+    },
+    {
+      "name": "DOMINO_SPOT",
+      "x": 48,
+      "z": -33
+    },
+    {
+      "name": "ALARM_SPOT",
+      "x": 50.5,
+      "z": -29.5
+    },
+    {
+      "name": "SHOP_POLE",
+      "x": 53,
+      "z": -31
+    },
+    {
+      "name": "SHOPKEEPER",
+      "x": 47.5,
+      "z": -19
+    },
+    {
+      "name": "LASER_SPOT",
+      "x": 17,
+      "z": -22
+    },
+    {
+      "name": "MIRROR_SPOT",
+      "x": 24,
+      "z": -22
+    },
+    {
+      "name": "SCHOOL_SENSOR",
+      "x": 24,
+      "z": -16.5
+    },
+    {
+      "name": "SCHOOL_BELL",
+      "x": 17,
+      "z": -17.5
+    },
+    {
+      "name": "SCHOOL_POLE",
+      "x": 20.5,
+      "z": -19.2
+    },
+    {
+      "name": "SCHOOL_DOOR",
+      "x": 11,
+      "z": -25.5
+    },
+    {
+      "name": "pigeon",
+      "x": -5.2,
+      "z": 4.2
+    },
+    {
+      "name": "pigeon2",
+      "x": -6.4,
+      "z": 3.4
+    },
+    {
+      "name": "child",
+      "x": 2.5,
+      "z": 1.5
+    },
+    {
+      "name": "child2",
+      "x": 4,
+      "z": 2.5
+    },
+    {
+      "name": "child6",
+      "x": 49,
+      "z": -8.3
+    },
+    {
+      "name": "child7",
+      "x": 50.5,
+      "z": -8.8
+    },
+    {
+      "name": "firefighter",
+      "x": 28.5,
+      "z": 12.5
+    },
+    {
+      "name": "cat",
+      "x": 47,
+      "z": 8
+    },
+    {
+      "name": "schoolChild0",
+      "x": 9,
+      "z": -21.5
+    },
+    {
+      "name": "schoolChild1",
+      "x": 10.6,
+      "z": -21.5
+    },
+    {
+      "name": "schoolChild2",
+      "x": 12.2,
+      "z": -21.5
+    }
+  ],
+  "paths": [
+    {
+      "name": "RACCOON_PATH",
+      "points": [
+        [
+          56,
+          -37
+        ],
+        [
+          52,
+          -34
+        ],
+        [
+          48,
+          -33
+        ],
+        [
+          45.5,
+          -29
+        ],
+        [
+          45.3,
+          -24
+        ]
+      ]
+    },
+    {
+      "name": "KITTEN_WAY",
+      "points": [
+        [
+          -13,
+          -5.5
+        ],
+        [
+          -13.5,
+          -2
+        ],
+        [
+          -13.6,
+          2.5
+        ],
+        [
+          -14.6,
+          6
+        ]
+      ]
+    },
+    {
+      "name": "WASH_WAY",
+      "points": [
+        [
+          -38,
+          14
+        ],
+        [
+          -38,
+          8
+        ],
+        [
+          -38,
+          3.6
+        ]
+      ]
+    },
+    {
+      "name": "PARK_WAY",
+      "points": [
+        [
+          -33,
+          1.5
+        ],
+        [
+          -33,
+          -7.5
+        ]
+      ]
+    },
+    {
+      "name": "BOAT_WAY",
+      "points": [
+        [
+          37,
+          -10
+        ],
+        [
+          37,
+          19
+        ]
+      ]
+    },
+    {
+      "name": "schoolLaser",
+      "points": [
+        [
+          17,
+          -22
+        ],
+        [
+          24,
+          -22
+        ],
+        [
+          24,
+          -16.5
+        ]
+      ]
+    }
+  ],
+  "buildings": [
+    {
+      "model": "bakery",
+      "fit": {
+        "width": 7,
+        "rotateY": -1.5707963267948966
+      },
+      "items": [
+        [
+          -12,
+          -27,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "school",
+      "fit": {
+        "width": 9,
+        "rotateY": -1.5707963267948966
+      },
+      "items": [
+        [
+          11,
+          -27.754,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "grandma-house",
+      "fit": {
+        "width": 6.2,
+        "rotateY": -1.5707963267948966
+      },
+      "items": [
+        [
+          -44,
+          -27,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "club",
+      "fit": {
+        "width": 7,
+        "rotateY": -1.5707963267948966
+      },
+      "items": [
+        [
+          48.5,
+          -13,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "toy-shop",
+      "fit": {
+        "width": 6,
+        "rotateY": -1.5707963267948966
+      },
+      "items": [
+        [
+          49.75,
+          -22.4,
+          0,
+          0.9
+        ]
+      ]
+    },
+    {
+      "model": "fire-station",
+      "fit": {
+        "width": 7,
+        "rotateY": -1.5707963267948966
+      },
+      "items": [
+        [
+          29,
+          8,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "house-a",
+      "fit": {
+        "width": 5,
+        "rotateY": -1.5707963267948966
+      },
+      "items": [
+        [
+          -26,
+          -28,
+          0,
+          1
+        ],
+        [
+          24,
+          -29,
+          0,
+          1
+        ],
+        [
+          -50,
+          32.2,
+          3.141592653589793,
+          1
+        ],
+        [
+          14.5,
+          21,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "house-b",
+      "fit": {
+        "width": 5,
+        "rotateY": -1.5707963267948966
+      },
+      "items": [
+        [
+          -48,
+          -14,
+          0,
+          1
+        ],
+        [
+          -5.75,
+          -33,
+          0,
+          0.9
+        ],
+        [
+          29,
+          21,
+          0,
+          1
+        ],
+        [
+          -14,
+          32,
+          0,
+          1
+        ]
+      ]
+    },
+    {
+      "model": "house-c",
+      "fit": {
+        "width": 5,
+        "rotateY": -1.5707963267948966
+      },
+      "items": [
+        [
+          -20,
+          -30,
+          0,
+          1
+        ],
+        [
+          6,
+          32,
+          0,
+          1
+        ],
+        [
+          50,
+          32.2,
+          0,
+          1
+        ]
+      ]
+    }
+  ],
+  "layout": {
+    "status": "proposal-not-integrated",
+    "items": [
+      {
+        "id": "city-icecream-kiosk",
+        "position": [
+          -7,
+          7
+        ],
+        "yaw": 0,
+        "xyz": [
+          2.8,
+          3,
+          2.2
+        ],
+        "pad": [
+          -8.8,
+          5.6,
+          -5.2,
+          8.45
+        ],
+        "label": "Киоск у южного края парка",
+        "access": "front +Z, vendor in front; preserve lower park walkway"
+      },
+      {
+        "id": "city-flower-kiosk",
+        "position": [
+          -26,
+          -18
+        ],
+        "yaw": 0,
+        "xyz": [
+          2.7,
+          2.7,
+          2
+        ],
+        "pad": [
+          -27.8,
+          -19.6,
+          -24.2,
+          -15.7
+        ],
+        "label": "Цветы у северо-западного тротуара",
+        "access": "front +Z toward ring; apron must connect to existing sidewalk"
+      },
+      {
+        "id": "city-tram-shelter",
+        "position": [
+          -13,
+          23.6
+        ],
+        "yaw": 0,
+        "xyz": [
+          3.8,
+          2.7,
+          1.8
+        ],
+        "pad": [
+          -15.3,
+          22.2,
+          -10.7,
+          24.8
+        ],
+        "label": "Остановка севернее трамвая",
+        "access": "front +Z toward rails; keep road edge z25 free"
+      }
+    ],
+    "integrationNeeds": [
+      "Explicit paved aprons: greenBlocks only derives courts from DECOR widths >=4.5, all first three fit widths <=4.",
+      "Keep existing dressing keep/lines checks; do not enlarge fit above4 to bypass filters.",
+      "Main to relocate only existing shrubs overlapping approved pads.",
+      "Claude to preserve free pedestrian access outside prop footprint, and keep tram/cars on road.",
+      "Native game-camera occlusion check after final models required."
+    ],
+    "frame": {
+      "source": "border-concept-v1.png",
+      "scope": "visual proposal only",
+      "implementation": "reuse existing small house/tree assets behind far edge; very low foreground",
+      "notAcceptedAsRuntime": true,
+      "caveats": [
+        "Generated concept is based on city-a, not current gameplay screenshot",
+        "Road and canal exits need real geometric continuation/opening; picture alone does not verify connectivity"
+      ]
+    }
+  }
+}
