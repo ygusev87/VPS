@@ -1,0 +1,37 @@
+{
+  "name": "paint-tank",
+  "sha256": "5f24446ff4dc2b6e122a5cfb137de2845b946fc137f1a423d93eff9f0a289e06",
+  "bytes": 95868,
+  "triangles": 3907,
+  "materials": 1,
+  "loader": "GLTFLoader + MeshoptDecoder, WebP through ImageLoader",
+  "fallback": false,
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "screenshots": [
+    "qa/paint-tank-1024.jpg",
+    "qa/paint-tank-1024-outlet.jpg",
+    "qa/paint-tank-1024-bottom.jpg",
+    "qa/paint-tank-390.jpg"
+  ],
+  "screenshotsVisuallyInspected": 4,
+  "horizontalOverflow": false,
+  "verticalOverflow": false,
+  "browserErrors": [],
+  "geometryPass": true,
+  "physicalIPadTest": "not performed",
+  "gameIntegrationQA": "pending integrator",
+  "repositoryChecks": {
+    "testFilesPassed": 17,
+    "testsPassed": 88,
+    "typecheck": "pass"
+  }
+}

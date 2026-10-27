@@ -1,0 +1,49 @@
+{
+  "paint-tank": {
+    "reviewed": true,
+    "rotationY": 0,
+    "size": [
+      1.2,
+      1.4,
+      1.0
+    ],
+    "cutUV": [
+      0.02,
+      0.02
+    ],
+    "outlet": {
+      "endCentre": [
+        0.6,
+        0.509,
+        0.001
+      ],
+      "boreCentre": [
+        0.56,
+        0.509,
+        0.001
+      ],
+      "boreRadius": 0.09,
+      "boreLength": 0.22,
+      "outerRadiusApprox": 0.116,
+      "axis": "+X",
+      "measurement": "Raw rim x>.47: Y [.239151,.386482], Z [-.071915,.073196]; normalized to target dimensions."
+    }
+  },
+  "paint-booth": {
+    "reviewed": false,
+    "rotationY": 0,
+    "size": [
+      2.2,
+      1.8,
+      1.6
+    ],
+    "cutUV": [
+      0.02,
+      0.02
+    ],
+    "tunnelAxis": "X",
+    "clearWidthZ": 1.4,
+    "clearHeightY": 1.0,
+    "floorY": 0
+  }
+}

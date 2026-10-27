@@ -1,0 +1,18 @@
+[
+  {
+    "name": "paint-tank",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-1b85ecde-ac58-4f5a-9636-e3a911ff1eba.png",
+    "reference": "assets-src/design-pass/kit/factory/machines-3d/evening-paint/refs/paint-tank.png",
+    "bytes": 2048046,
+    "sha256": "03b35e4e293cc9713589540bc9ea3f0785bb77a3545b6f1fe164106ff22d8e2d",
+    "review": "Visually inspected: standalone industrial-b object, no floor/conveyor/decor; outlet/tunnel visible."
+  },
+  {
+    "name": "paint-booth",
+    "sourcePath": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-8b0b62ea-7908-4dfc-b5e8-248b5061a59f.png",
+    "reference": "assets-src/design-pass/kit/factory/machines-3d/evening-paint/refs/paint-booth.png",
+    "bytes": 1660286,
+    "sha256": "e5659fc1126d240a5198e50bbf661125a061cd630c37a0f745181ad8e5b54393",
+    "review": "Visually inspected: standalone industrial-b object, no floor/conveyor/decor; outlet/tunnel visible."
+  }
+]

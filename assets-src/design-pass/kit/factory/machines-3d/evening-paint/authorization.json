@@ -1,0 +1,8 @@
+{
+  "date": "2026-10-27",
+  "destination": "https://studio.tripo3d.ai",
+  "specificApproval": "Разрешаю загрузить paint-tank.png и paint-booth.png в Tripo Studio. Продолжай создание моделей.",
+  "standingApproval": "Не только для этих, но и для дургих. Этот чат создан для генерации моделей, не нужно каждый раз спрашивать разрешение и останавливать работу",
+  "scope": "Reference uploads and model generation for this game project in Tripo Studio, including subsequent project models. Existing Studio credits only; no purchases, topups or paid APIs.",
+  "source": "Direct user messages in this chat; approval arrived after the earlier auto-review rejection."
+}

@@ -1,0 +1,90 @@
+{
+  "name": "paint-tank",
+  "source": "assets-src/raw/factory-evening-2026-10-27/paint-tank.glb",
+  "sourceSha256": "0ee16b8ba7c11989f40e44a0c1189a014fa3c4c4d5a9035fa7f4186463ad7922",
+  "sourceBytes": 1057072,
+  "sourceTriangles": 3886,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.323150634765625
+    ],
+    "max": [
+      0.5,
+      0.8604736328125,
+      0.323150634765625
+    ]
+  },
+  "outputSha256": "5f24446ff4dc2b6e122a5cfb137de2845b946fc137f1a423d93eff9f0a289e06",
+  "bytes": 95868,
+  "cutTriangles": 3907,
+  "triangles": 3907,
+  "materials": 1,
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "bounds": {
+    "min": [
+      -0.5999999897820608,
+      0,
+      -0.49999999148505075
+    ],
+    "max": [
+      0.5999999897820608,
+      1.399999976158142,
+      0.49999999148505075
+    ]
+  },
+  "contract": {
+    "reviewed": true,
+    "rotationY": 0,
+    "size": [
+      1.2,
+      1.4,
+      1
+    ],
+    "cutUV": [
+      0.02,
+      0.02
+    ],
+    "outlet": {
+      "endCentre": [
+        0.6,
+        0.509,
+        0.001
+      ],
+      "boreCentre": [
+        0.56,
+        0.509,
+        0.001
+      ],
+      "boreRadius": 0.09,
+      "boreLength": 0.22,
+      "outerRadiusApprox": 0.116,
+      "axis": "+X",
+      "measurement": "Raw rim x>.47: Y [.239151,.386482], Z [-.071915,.073196]; normalized to target dimensions."
+    }
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  }
+}

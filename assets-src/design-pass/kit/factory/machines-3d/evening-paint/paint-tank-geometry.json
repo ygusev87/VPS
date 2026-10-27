@@ -1,0 +1,46 @@
+{
+  "name": "paint-tank",
+  "sha256": "5f24446ff4dc2b6e122a5cfb137de2845b946fc137f1a423d93eff9f0a289e06",
+  "triangles": 3907,
+  "bounds": {
+    "min": [
+      -0.5999999897820608,
+      0,
+      -0.49999999148505075
+    ],
+    "max": [
+      0.5999999897820608,
+      1.399999976158142,
+      0.49999999148505075
+    ],
+    "size": [
+      1.1999999795641216,
+      1.399999976158142,
+      0.9999999829701015
+    ]
+  },
+  "floor": {
+    "minimumY": 0,
+    "verticesBelowFloor": 0
+  },
+  "dimensionsPass": true,
+  "outlet": {
+    "endCentre": [
+      0.6,
+      0.509,
+      0.001
+    ],
+    "boreCentre": [
+      0.56,
+      0.509,
+      0.001
+    ],
+    "boreRadius": 0.09,
+    "boreLength": 0.22,
+    "outerRadiusApprox": 0.116,
+    "axis": "+X",
+    "measurement": "Raw rim x>.47: Y [.239151,.386482], Z [-.071915,.073196]; normalized to target dimensions.",
+    "boreObstructions": 0
+  },
+  "pass": true
+}

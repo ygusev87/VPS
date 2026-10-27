@@ -1,0 +1,63 @@
+{
+  "authorization": "authorization.json",
+  "totalOrderedCredits": 50,
+  "orders": [
+    {
+      "name": "paint-tank",
+      "taskId": "3f1d0865-a6df-4c5a-861a-30102cd7b42f",
+      "priceCredits": 25,
+      "observedBalanceBefore": 5400,
+      "observedBalanceAfter": 5325,
+      "balanceNote": "Shared account: concurrent main-thread orders also visible; balance delta must not be attributed solely to this order.",
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "PBR": false,
+        "ultra": false,
+        "aiEnhancement": false
+      },
+      "status": "downloaded",
+      "raw": "assets-src/raw/factory-evening-2026-10-27/paint-tank.glb",
+      "rawBytes": 1057072,
+      "rawSha256": "0ee16b8ba7c11989f40e44a0c1189a014fa3c4c4d5a9035fa7f4186463ad7922"
+    },
+    {
+      "name": "paint-booth",
+      "taskId": "b45cca5c-c3ab-4c13-b005-37e67249520d",
+      "priceCredits": 25,
+      "observedBalanceBefore": 5325,
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "PBR": false,
+        "ultra": false,
+        "aiEnhancement": false
+      },
+      "status": "free retry generating",
+      "observedBalanceAfter": 5300,
+      "raw": "assets-src/raw/factory-evening-2026-10-27/paint-booth.glb",
+      "rawBytes": 640124,
+      "rawSha256": "8595f20749d89cb4fd0c804a8c7e4fa8a00a2b4861f7c8eee061f741b6f7446c",
+      "attempts": [
+        {
+          "attempt": 1,
+          "rawSha256": "8595f20749d89cb4fd0c804a8c7e4fa8a00a2b4861f7c8eee061f741b6f7446c",
+          "rawBytes": 640124,
+          "result": "rejected: broken triangles visible in both Studio and native GLTFLoader",
+          "preservedLocalCopy": "candidate/paint-booth-rejected-v1.glb"
+        },
+        {
+          "attempt": 2,
+          "kind": "Studio Free Retry",
+          "additionalCredits": 0,
+          "observedBalance": 5300,
+          "status": "generating"
+        }
+      ]
+    }
+  ]
+}
