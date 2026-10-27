@@ -251,6 +251,23 @@ export class FactoryMap extends StoryMap {
     this.layChain(pole(GRIND_POLE), [this.gmotor]);
   }
 
+  /** The belts' painted decks (Codex's factory-conveyor-deck: rubber slats between yellow edges, 4.2 long a picture), running while their line has power. */
+  private decks: { tex: THREE.Texture; line: 'day' | 'evening' }[] = [];
+
+  private beltDeck(len: number, x: number, z: number, line: 'day' | 'evening') {
+    const pic = kitPieces('factory', 'factory-conveyor-deck', true)[0];
+    if (!pic) return;
+    const tex = pic.clone();
+    tex.wrapS = THREE.RepeatWrapping;
+    tex.repeat.set(len / 4.2, 1);
+    tex.needsUpdate = true;
+    const deck = new THREE.Mesh(new THREE.PlaneGeometry(len, 1.4).rotateX(-Math.PI / 2), new THREE.MeshStandardMaterial({ map: tex, roughness: 0.8 }));
+    deck.position.set(x, 0.501, z);
+    deck.receiveShadow = true;
+    this.scenery.add(deck);
+    this.decks.push({ tex, line });
+  }
+
   /** Codex's furniture of the hall; a control cabinet's lamps go green once the hall has power. */
   private placeProps() {
     for (const [name, fit, x, z, yaw] of PROPS) {
@@ -491,6 +508,7 @@ export class FactoryMap extends StoryMap {
     const belt = mesh(new THREE.BoxGeometry(57, 0.3, 1.4), mat('#3a3f4b', 0.7));
     belt.position.set(1.5, 0.35, LINE_Z);
     hall.add(belt);
+    this.beltDeck(57, 1.5, LINE_Z, 'day');
     for (let x = -26; x <= 29; x += 2) {
       const leg = mesh(new THREE.BoxGeometry(0.12, 0.35, 1.3), mat('#8a90a0', 0.4, 0.5), false);
       leg.position.set(x, 0.12, LINE_Z);
@@ -501,6 +519,7 @@ export class FactoryMap extends StoryMap {
     const belt2 = mesh(new THREE.BoxGeometry(b1 - b0, 0.3, 1.4), mat('#3a3f4b', 0.7));
     belt2.position.set((b0 + b1) / 2, 0.35, EVE_Z);
     hall.add(belt2);
+    this.beltDeck(b1 - b0, (b0 + b1) / 2, EVE_Z, 'evening');
     for (let x = EVE_START; x <= EVE_STATIONS[3] + 2; x += 2) {
       const leg = mesh(new THREE.BoxGeometry(0.12, 0.35, 1.3), mat('#8a90a0', 0.4, 0.5), false);
       leg.position.set(x, 0.12, EVE_Z);
@@ -592,11 +611,15 @@ export class FactoryMap extends StoryMap {
     this.critter('foreman', { height: 1.6 }, foreman, 1.6, 0.4);
     const workers: [string, THREE.Vector3][] = ['worker', 'worker2', 'worker3', 'worker4'].map((n, i) => [n, rest[i]]);
     for (const [name, at] of workers) this.critter(name, { height: 1.5 }, at, 1.5, 0.3);
-    this.lorry = this.critter('lorry', { width: 5 }, LORRY, 2.2, Math.PI);
+    // Codex's lorry is modelled cab to +z and fitted by its length; the stand-in's cab is to +x.
+    const made = hasModel('factory-delivery-lorry');
+    const lorryFit: Fit = made ? { depth: 5.4 } : { width: 5 };
+    // The day's lorry stands beside the hoist and drives off south; the evening's drives off east.
+    this.lorry = this.critter('lorry', lorryFit, LORRY, 2.2, made ? 0 : Math.PI);
     this.lorry.roams = true;
     // The evening shift's people, by their stations, and the second lorry.
     for (const [name, at] of [['worker5', v(EVE_BOX.x + 4.5, EVE_BOX.z + 2)], ['worker6', v(-27, 20.5)], ['worker7', v(-2, 20.5)], ['worker8', v(GRINDER.x + 3, GRINDER.z + 3)], ['worker9', v(WELDER.x + 3.5, WELDER.z + 4)]] as const) this.critter(name, { height: 1.5 }, at, 1.5, 0.3);
-    this.lorry2 = this.critter('lorry2', { width: 5 }, LORRY2, 2.2, Math.PI);
+    this.lorry2 = this.critter('lorry2', lorryFit, LORRY2, 2.2, made ? Math.PI / 2 : Math.PI);
     this.lorry2.roams = true;
     const cat = this.critter('cat', { height: 0.6 }, v(-35.5, -21.5), 0.6, 0.5);
     cat.base = 1.05;
@@ -769,6 +792,8 @@ export class FactoryMap extends StoryMap {
       this.gearTaps.set(g, g.taps);
     }
     if (this.lathe.speed === 'ok') this.turned += dt;
+    // The belts run while their line has power (the toys ride them at 2 a second: the slats keep pace).
+    for (const d of this.decks) if (d.line === 'day' ? this.lit : this.eveLit) d.tex.offset.x -= (dt * 2) / 4.2;
     // The cabinets: red while the hall is dark, green once it has power, amber blinking at the turn of the shift.
     for (const l of this.cabinetLamps) {
       const on = l.color === 'red' ? !this.lit : l.color === 'green' ? this.lit : this.phase === 'evening' && !this.eveLit && Math.sin(this.time * 6) > 0;
