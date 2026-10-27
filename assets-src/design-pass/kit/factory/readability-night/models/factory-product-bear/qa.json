@@ -1,0 +1,150 @@
+{
+  "date": "2026-10-27",
+  "pass": true,
+  "loader": "src/parts/assets.ts",
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":52348,\"triangles\":3784,\"materials\":1,\"bounds\":{\"min\":[-0.29726935636463514,0,-0.3196089053010651],\"max\":[0.29726935636463514,0.75,0.3196089053010651]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":52348,\"triangles\":3784,\"materials\":1,\"bounds\":{\"min\":[-0.29726935636463514,0,-0.3196089053010651],\"max\":[0.29726935636463514,0.75,0.3196089053010651]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":52348,\"triangles\":3784,\"materials\":1,\"bounds\":{\"min\":[-0.29726935636463514,0,-0.3196089053010651],\"max\":[0.29726935636463514,0.75,0.3196089053010651]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":52348,\"triangles\":3784,\"materials\":1,\"bounds\":{\"min\":[-0.29726935636463514,0,-0.3196089053010651],\"max\":[0.29726935636463514,0.75,0.3196089053010651]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":52348,\"triangles\":3784,\"materials\":1,\"bounds\":{\"min\":[-0.29726935636463514,0,-0.3196089053010651],\"max\":[0.29726935636463514,0.75,0.3196089053010651]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":52348,\"triangles\":3784,\"materials\":1,\"bounds\":{\"min\":[-0.29726935636463514,0,-0.3196089053010651],\"max\":[0.29726935636463514,0.75,0.3196089053010651]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "visualReview": "Passed front, rear, underside and oblique at1180x820; oblique/rear390x844. No clipping or overflow.",
+  "consoleErrors": [],
+  "validation": "npm test17files88tests; npm run typecheck passed",
+  "tint": {
+    "checks": [
+      {
+        "data": {
+          "loaded": "true",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":0,\"probeVisible\":false}",
+          "stats": "{\"bytes\":52348,\"triangles\":3784,\"materials\":1,\"bounds\":{\"min\":[-0.29726935636463514,0,-0.3196089053010651],\"max\":[0.29726935636463514,0.75,0.3196089053010651]}}",
+          "tint": "26b7b0"
+        },
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "loaded": "true",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":0,\"probeVisible\":false}",
+          "stats": "{\"bytes\":52348,\"triangles\":3784,\"materials\":1,\"bounds\":{\"min\":[-0.29726935636463514,0,-0.3196089053010651],\"max\":[0.29726935636463514,0.75,0.3196089053010651]}}",
+          "tint": "ef745d"
+        },
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "loaded": "true",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":0,\"probeVisible\":false}",
+          "stats": "{\"bytes\":52348,\"triangles\":3784,\"materials\":1,\"bounds\":{\"min\":[-0.29726935636463514,0,-0.3196089053010651],\"max\":[0.29726935636463514,0.75,0.3196089053010651]}}",
+          "tint": "e9bd4e"
+        },
+        "viewport": [
+          1180,
+          820
+        ]
+      }
+    ],
+    "visualReview": "Teal/coral/yellow remain distinct; warm atlas shifts teal towardgreen. Dark facial marks retained. Whole material multiply affects every texel."
+  }
+}

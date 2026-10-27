@@ -1,0 +1,15 @@
+{
+  "id": "factory-product-box",
+  "priority": 3,
+  "targetXYZ": [
+    0.7,
+    0.65,
+    0.7
+  ],
+  "fit": "uniform contain",
+  "design": "Finished toy parcel: sturdy rounded ochre cardboard box, broad teal ribbon and a large simple star seal; bow low and integrated, no thin floating loops. Flat underside. No writing. Readable distinct finished state from unboxed bunny.",
+  "nodes": [
+    "package"
+  ],
+  "motion": "Whole package travels and occupies cargo anchors; no opening/rig needed."
+}

@@ -1,0 +1,15 @@
+{
+  "id": "factory-product-bunny",
+  "priority": 2,
+  "targetXYZ": [
+    0.55,
+    0.75,
+    0.5
+  ],
+  "fit": "uniform height.75",
+  "design": "Recognizable simple toy bunny, stout seated body, two unmistakable long ears, flat stable underside; neutral warm ivory/wood finish, dark eyes and nose, no baked brightly colored body so runtime tint can distinguish before/after paint. Matte tactile detail visible from overhead. Not a plain ball with tiny ear balls. No plinth.",
+  "nodes": [
+    "product"
+  ],
+  "motion": "Whole product travels; no rig or moving ears. Atlas neutral body; document tint limits."
+}

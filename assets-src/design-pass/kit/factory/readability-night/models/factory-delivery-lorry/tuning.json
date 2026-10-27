@@ -1,0 +1,21 @@
+{
+  "reviewed": true,
+  "targetXYZ": [
+    1.9,
+    2.2,
+    5
+  ],
+  "height": 2.2,
+  "depth": 5,
+  "rotationY": 1.5707963267948966,
+  "targetTriangles": 4000,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "uniform-depth",
+  "floorSnap": 0,
+  "nodeName": "body"
+}

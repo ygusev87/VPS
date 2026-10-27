@@ -1,0 +1,14 @@
+{
+  "id": "factory-product-billet",
+  "priority": 4,
+  "targetXYZ": [
+    0.55,
+    0.75,
+    0.5
+  ],
+  "fit": "uniform contain",
+  "design": "Simple wooden block/billet before machining into the bear. Stable flat underside, natural neutral wood, no face, writing or plinth. Whole object, no animated parts.",
+  "nodes": [
+    "billet"
+  ]
+}

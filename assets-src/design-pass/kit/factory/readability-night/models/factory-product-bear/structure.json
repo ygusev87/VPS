@@ -1,0 +1,66 @@
+{
+  "sha256": "e2adf0de223205d4036a00f55f95f4ab2a8377bd7dc8404c467edc7c0b000075",
+  "bytes": 52348,
+  "scenes": 1,
+  "nodeCount": 1,
+  "meshCount": 1,
+  "primitiveCount": 1,
+  "skins": 0,
+  "animations": 0,
+  "nodes": [
+    {
+      "name": "product",
+      "children": [],
+      "mesh": "factory-product-bear",
+      "primitives": 1,
+      "localMatrix": [
+        0.375,
+        0,
+        0,
+        0,
+        0,
+        0.375,
+        0,
+        0,
+        0,
+        0,
+        0.375,
+        0,
+        0,
+        0.375,
+        0,
+        1
+      ],
+      "worldMatrix": [
+        0.375,
+        0,
+        0,
+        0,
+        0,
+        0.375,
+        0,
+        0,
+        0,
+        0,
+        0.375,
+        0,
+        0,
+        0.375,
+        0,
+        1
+      ],
+      "transformedBounds": {
+        "min": [
+          -0.29726935636463514,
+          0,
+          -0.3196089053010651
+        ],
+        "max": [
+          0.29726935636463514,
+          0.75,
+          0.3196089053010651
+        ]
+      }
+    }
+  ]
+}

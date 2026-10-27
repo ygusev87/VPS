@@ -1,0 +1,22 @@
+{
+  "id": "factory-delivery-lorry",
+  "priority": 1,
+  "why": "Current live truck is a closed primitive white box, concealing the loading objective. One model reused for both day/evening trucks.",
+  "targetXYZ": [
+    1.9,
+    2.2,
+    5
+  ],
+  "fit": "uniform depth5",
+  "design": "Friendly red/teal cab at +Z, open rear cargo bed toward -Z. Clearly separate cab, windscreen, door, chunky four tyres. Three boxes must visibly fit in open bed, no canopy or closed van. Low side walls. No cargo generated into truck.",
+  "nodes": [
+    "body",
+    "wheel-front-left",
+    "wheel-front-right",
+    "wheel-rear-left",
+    "wheel-rear-right"
+  ],
+  "wheelAxes": "localX, actual axle-centre pivots; four tyre contacts onY0; independent rotations without body intersections except intended axle seating",
+  "cargoRequirement": "Usable interior at leastX[-.70,.70],Z[-2.0,.40], all above actual flat deck; no triangles crossing space above deck up todeck+.8 except outer side rails. Report deckY and measured freeBox; candidate three cargo anchorsZ[-1.6,-.8,0],X0,boxbottom=deckY; verify with .7x.65x.7 cargo probes. Adjust anchors based actual surface; do not claim placeholder coordinates measured.",
+  "integration": "Claude rotates +Z asset to existing +X-facing truck convention and retains overall root/yaw/driveoff. Report fit transform and wheel axes. No source edits byworker."
+}

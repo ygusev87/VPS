@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Create ONE finished toy parcel for a children's 3D factory game, one complete object isolated on pure white with soft even studio lighting, entire object centred with margin, front three-quarter slightly top view. Sturdy compact rounded ochre cardboard box, width.70 depth.70 total height.65, tactile matte painted wood/clay toy aesthetic. Broad flat turquoise/teal ribbon wraps across lid and down sides, big simple warm cream five-point STAR SEAL on the front face, no text or logos. A very low compact teal ribbon bow integrated into the top surface, thick flattened loops pressed against lid, no tall loops, no loose tails or floating thin geometry. Box has a FLAT stable underside, closed lid, no exposed contents or openings, no ground plate or props. Chunky clean silhouette, subtly varied matte surface, limited color palette ochre/teal/cream, no shiny metal or photorealistic paper fibres. Clearly recognizable finished packaged toy, suited to low-poly reconstruction under4000 triangles.",
+  "transparent_background": false
+}

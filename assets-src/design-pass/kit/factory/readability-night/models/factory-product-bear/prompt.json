@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. One recognisable small seated TOY BEAR, complete freestanding object for a children's factory game, isolated on pure white studio background, no floor platform or ground plate. Friendly tactile matte neutral ivory/wood sculpture, smooth rounded robust toy forms and very subtle wood texture. Stout seated pear-shaped body, round head, two clearly recognizable BIG ROUND BEAR EARS on top sides with shallow ivory inset, NOT rabbit ears. Broad flat feet, short chunky forepaws resting against belly, small attached tail. Very simple modest face: tiny dark dot eyes and small neutral dark nose, no stars or decorative face symbols. Body entirely neutral warm ivory/wood so runtime tint can produce teal, coral or yellow; no colored patches, clothes, bright paint, bow, text or logo. Height .75, width about .55, depth .50, flat stable underside. Entire body centred with margin, three-quarter slightly elevated front view, readable from overhead. Single sturdy sculpture suitable for4000 triangles, no individual fur hairs or fine whiskers.",
+  "transparent_background": false
+}

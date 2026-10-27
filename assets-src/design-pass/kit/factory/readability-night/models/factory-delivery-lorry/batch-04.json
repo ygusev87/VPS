@@ -1,0 +1,79 @@
+{
+  "date": "2026-10-27",
+  "status": "READY",
+  "items": [
+    {
+      "name": "factory-delivery-lorry",
+      "label": "Грузовик",
+      "file": "public/models/factory-delivery-lorry.glb",
+      "bytes": 94776,
+      "triangles": 3508,
+      "sha256": "5c4ee9484b819cd3b5671c3d835cff7eaff66721122d7334b9589a937b164ab6",
+      "size": [
+        2.044902646260953,
+        2.048371031780431,
+        5
+      ],
+      "taskId": "92ee28a5-61f3-4b3a-97b5-d712cde9b91b",
+      "credits": 25,
+      "status": "READY"
+    },
+    {
+      "name": "factory-product-bear",
+      "label": "Мишка",
+      "file": "public/models/factory-product-bear.glb",
+      "bytes": 52348,
+      "triangles": 3784,
+      "sha256": "e2adf0de223205d4036a00f55f95f4ab2a8377bd7dc8404c467edc7c0b000075",
+      "size": [
+        0.5945387127292703,
+        0.75,
+        0.6392178106021302
+      ],
+      "taskId": "a585ab95-f932-4c81-a9d3-473e95009d7b",
+      "credits": 25,
+      "status": "READY"
+    },
+    {
+      "name": "factory-product-box",
+      "label": "Подарочная коробка",
+      "file": "public/models/factory-product-box.glb",
+      "bytes": 76224,
+      "triangles": 3668,
+      "sha256": "15791557134c812b7c55db80bb74fc86b8669afc71bec2d64152e940b1dead86",
+      "size": [
+        0.6744498923808818,
+        0.633219386780961,
+        0.699999988079071
+      ],
+      "taskId": "5dc706c4-6468-4bb2-987c-d63c982af0e4",
+      "credits": 25,
+      "status": "READY"
+    },
+    {
+      "name": "factory-product-billet",
+      "label": "Деревянная заготовка",
+      "file": "public/models/factory-product-billet.glb",
+      "bytes": 48236,
+      "triangles": 3850,
+      "sha256": "259cc82e6ae97bcf353c62d684553458452fd7a9462df6602c27fcec634d1dc8",
+      "size": [
+        0.5499950809431028,
+        0.7112233638763428,
+        0.4662987617467413
+      ],
+      "taskId": "cb953d42-15a0-452d-8b6a-9187065686c6",
+      "credits": 25,
+      "status": "READY"
+    }
+  ],
+  "bytes": 271584,
+  "triangles": 14810,
+  "credits": 100,
+  "balanceBefore": 4575,
+  "balanceAfter": 4475,
+  "sourceAuthorization": "Owner standing project upload/generation permission; included credits only.",
+  "checks": "Native production loader1180x820/390x844; npm test17files88tests; typecheck pass",
+  "integration": "Assets ready; gameplay integration belongs to main/Claude.",
+  "supersededBunny": "reference only, no Studio order/charge"
+}

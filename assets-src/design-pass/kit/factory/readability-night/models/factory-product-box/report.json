@@ -1,0 +1,107 @@
+{
+  "name": "factory-product-box",
+  "source": "assets-src/raw/factory-interactive-2026-10-27/factory-product-box.glb",
+  "sourceSha256": "34cb4a03fd5b07738b8dbe3a6cd12f6d56f55ad289a5bd70b9ef7d40379c4ad8",
+  "sourceBytes": 655948,
+  "sourceTriangles": 3668,
+  "sourceBounds": {
+    "min": [
+      -0.48175048828125,
+      0,
+      -0.5
+    ],
+    "max": [
+      0.48175048828125,
+      0.90460205078125,
+      0.5
+    ]
+  },
+  "bytes": 76224,
+  "sha256": "15791557134c812b7c55db80bb74fc86b8669afc71bec2d64152e940b1dead86",
+  "triangles": 3668,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.3372249461904409,
+      0.000001030343421526414,
+      -0.3499999940395355
+    ],
+    "max": [
+      0.3372249461904409,
+      0.6332204171243825,
+      0.3499999940395355
+    ]
+  },
+  "size": [
+    0.6744498923808818,
+    0.633219386780961,
+    0.699999988079071
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      0.7,
+      0.65,
+      0.7
+    ],
+    "height": 0.65,
+    "depth": 5,
+    "rotationY": 0,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-contain",
+    "floorSnap": 0.001,
+    "nodeName": "package"
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform scale to configured dominant dimension or contain envelope; preserve proportions; centreXZ0; baseY0",
+    "Simplification not applied: source already within triangle budget",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.001 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true,
+  "structure": {
+    "nodeCount": 1,
+    "meshCount": 1,
+    "primitiveCount": 1,
+    "details": "structure.json"
+  }
+}

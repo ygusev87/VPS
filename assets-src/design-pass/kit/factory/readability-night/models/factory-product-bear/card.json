@@ -1,0 +1,15 @@
+{
+  "id": "factory-product-bear",
+  "priority": 2,
+  "targetXYZ": [
+    0.55,
+    0.75,
+    0.5
+  ],
+  "fit": "uniform height.75",
+  "design": "Recognizable simple neutral toy bear, stout seated body, two broad round ears, flat stable underside; warm ivory/wood finish for runtime tint, simple unadorned face; no printed star, bright body or plinth. Star and post-station face detail added by integrator.",
+  "nodes": [
+    "product"
+  ],
+  "motion": "Whole product travels; no rig or moving ears. Atlas neutral body; document tint limits."
+}

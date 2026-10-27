@@ -1,0 +1,21 @@
+{
+  "reviewed": true,
+  "targetXYZ": [
+    0.55,
+    0.75,
+    0.5
+  ],
+  "height": 0.75,
+  "depth": 5,
+  "rotationY": 0,
+  "targetTriangles": 4000,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "uniform-height",
+  "floorSnap": 0.002,
+  "nodeName": "product"
+}

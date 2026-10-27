@@ -1,0 +1,110 @@
+{
+  "method": "Conservative continuous full360 sweep: maximum tyre radius over all vertices, min distance to body triangles clipped to wheel axial interval. Excludes0.2mm axial interface at intended axle seating.",
+  "wheels": [
+    {
+      "name": "wheel-front-left",
+      "pivot": [
+        -0.7880065309610279,
+        0.3826607004800044,
+        1.6254921109653004
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "fullRotationSweptCylinder": {
+        "x": [
+          -0.9158116516579335,
+          -0.6602014102641223
+        ],
+        "radius": 0.3862619627789153,
+        "fullRotationMinimumY": -0.00360126229891089
+      },
+      "minimumBodyRadialDistance": 0.45226926052785393,
+      "clearance": 0.06600729774893865,
+      "nearTriangle": 590,
+      "restFloorY": 1.3510247309778123e-8,
+      "conservativeContinuousRotationPass": true
+    },
+    {
+      "name": "wheel-rear-left",
+      "pivot": [
+        -0.8412231818597979,
+        0.38075655384991003,
+        -1.7969298379467147
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "fullRotationSweptCylinder": {
+        "x": [
+          -1.022250613812102,
+          -0.660195749907494
+        ],
+        "radius": 0.3901443536607811,
+        "fullRotationMinimumY": -0.009387799810871067
+      },
+      "minimumBodyRadialDistance": 0.4090363377592891,
+      "clearance": 0.018891984098508008,
+      "nearTriangle": 2127,
+      "restFloorY": -3.137852422341325e-9,
+      "conservativeContinuousRotationPass": true
+    },
+    {
+      "name": "wheel-front-right",
+      "pivot": [
+        0.7931565294351024,
+        0.3799935911130101,
+        1.6240424817651906
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "fullRotationSweptCylinder": {
+        "x": [
+          0.6602016365751384,
+          0.9261114222950664
+        ],
+        "radius": 0.38851442875946507,
+        "fullRotationMinimumY": -0.008520837646454948
+      },
+      "minimumBodyRadialDistance": 0.45830923451759603,
+      "clearance": 0.06979480575813096,
+      "nearTriangle": 560,
+      "restFloorY": 3.3806950572312644e-9,
+      "conservativeContinuousRotationPass": true
+    },
+    {
+      "name": "wheel-rear-right",
+      "pivot": [
+        0.8412231818597979,
+        0.38510544145023956,
+        -1.7847987304300057
+      ],
+      "axis": [
+        1,
+        0,
+        0
+      ],
+      "fullRotationSweptCylinder": {
+        "x": [
+          0.6601943312707446,
+          1.0222520324488513
+        ],
+        "radius": 0.38759635702219547,
+        "fullRotationMinimumY": -0.0024909155719559095
+      },
+      "minimumBodyRadialDistance": 0.39374372641385486,
+      "clearance": 0.006147369391659385,
+      "nearTriangle": 2079,
+      "restFloorY": 1.0370375058688097e-8,
+      "conservativeContinuousRotationPass": true
+    }
+  ],
+  "pass": true
+}

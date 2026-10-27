@@ -1,0 +1,361 @@
+{
+  "date": "2026-10-27",
+  "pass": true,
+  "loader": "src/parts/assets.ts",
+  "checks": [
+    {
+      "data": {
+        "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+        "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "data": {
+        "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+        "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "data": {
+        "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+        "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "data": {
+        "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+        "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "data": {
+        "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+        "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "data": {
+        "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+        "loaded": "true",
+        "runtimeLoader": "src/parts/assets.ts",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+        "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "visualReview": "Passed front, rear, underside and oblique at1180x820; oblique/rear390x844. No clipping or overflow.",
+  "consoleErrors": [],
+  "validation": "npm test17files88tests; npm run typecheck passed",
+  "motion": {
+    "checks": [
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "loaded": "true",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":1,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "loaded": "true",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":2,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "loaded": "true",
+          "phase": "90",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":1,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[1.5707963267948966,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[1.5707963267948966,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[1.5707963267948966,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[1.5707963267948966,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "loaded": "true",
+          "phase": "90",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":2,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[1.5707963267948966,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[1.5707963267948966,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[1.5707963267948966,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[1.5707963267948966,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "loaded": "true",
+          "phase": "180",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":1,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[3.141592653589793,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[3.141592653589793,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[3.141592653589793,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[3.141592653589793,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "loaded": "true",
+          "phase": "180",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":2,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[3.141592653589793,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[3.141592653589793,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[3.141592653589793,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[3.141592653589793,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "loaded": "true",
+          "phase": "270",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":1,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[4.71238898038469,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[4.71238898038469,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[4.71238898038469,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[4.71238898038469,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "loaded": "true",
+          "phase": "270",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":2,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[4.71238898038469,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[4.71238898038469,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[4.71238898038469,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[4.71238898038469,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          1180,
+          820
+        ]
+      }
+    ],
+    "bodyMatrixUnchanged": true,
+    "pivotsUnchanged": true,
+    "axesLocalX": true,
+    "visualReview": "Both sides phase0/90/180/270 inspected; no visible body intersections."
+  },
+  "cargo": {
+    "checks": [
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "cargo": "3",
+          "cargoType": "bounding-box probes",
+          "loaded": "true",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":6,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "cargo": "3",
+          "cargoType": "actual GLBs",
+          "loaded": "true",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":6,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "cargo": "3",
+          "cargoType": "bounding-box probes",
+          "loaded": "true",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":6,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      {
+        "data": {
+          "bodyMatrix": "[2.5,0,0,0,0,2.5,0,0,0,0,2.5,0,0.004004871822143485,1.0249328165028648,0,1]",
+          "cargo": "3",
+          "cargoType": "actual GLBs",
+          "loaded": "true",
+          "runtimeLoader": "src/parts/assets.ts",
+          "state": "{\"view\":6,\"probeVisible\":false}",
+          "stats": "{\"bytes\":94776,\"triangles\":3508,\"materials\":5,\"bounds\":{\"min\":[-1.0224513231304766,0,-2.5],\"max\":[1.0224513231304766,2.0483710317804307,2.5]}}",
+          "wheels": "[{\"name\":\"wheel-front-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.7880065309610279,0.3826607004800044,1.6254921109653004]},{\"name\":\"wheel-front-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.7931565294351024,0.3799935911130101,1.6240424817651906]},{\"name\":\"wheel-rear-left\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[-0.8412231818597979,0.38075655384991003,-1.7969298379467147]},{\"name\":\"wheel-rear-right\",\"rotation\":[0,0,0,\"XYZ\"],\"position\":[0.8412231818597979,0.38510544145023956,-1.7847987304300057]}]"
+        },
+        "overflow": [
+          false,
+          false
+        ],
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    ],
+    "visualReview": "Three actual packageGLBs and three .7x.65x.7 probes fit visibly at1180/390."
+  }
+}

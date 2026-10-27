@@ -1,0 +1,128 @@
+{
+  "name": "factory-delivery-lorry",
+  "source": "assets-src/raw/factory-interactive-2026-10-27/factory-delivery-lorry.glb",
+  "sourceSha256": "784800b33d92cd338e25a337b20134ff9588777a9d0e67c9c3ecec99d4a58570",
+  "sourceBytes": 715860,
+  "sourceTriangles": 3104,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.2044830322265625
+    ],
+    "max": [
+      0.5,
+      0.4096679389476776,
+      0.2044830322265625
+    ]
+  },
+  "bytes": 94776,
+  "sha256": "5c4ee9484b819cd3b5671c3d835cff7eaff66721122d7334b9589a937b164ab6",
+  "triangles": 3508,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -1.022450613812102,
+      -3.137852422341325e-9,
+      -2.5
+    ],
+    "max": [
+      1.0224520324488513,
+      2.0483710286425785,
+      2.5
+    ]
+  },
+  "size": [
+    2.044902646260953,
+    2.048371031780431,
+    5
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      1.9,
+      2.2,
+      5
+    ],
+    "height": 2.2,
+    "depth": 5,
+    "rotationY": 1.5707963267948966,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-depth",
+    "floorSnap": 0,
+    "nodeName": "body"
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform scale to configured dominant dimension or contain envelope; preserve proportions; centreXZ0; baseY0",
+    "Simplification not applied: source already within triangle budget",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits",
+    "Planar x=±.66 cut; select only isolated outboard tire components; restore unselected original body triangles; cap both interfaces; recenter actual wheel bounds; move each wheel vertically by original minY to ground.",
+    "Validate continuous full-rotation swept cylinder clearance vs body",
+    "Verify375 cargo floor samples, free volume and3cargo probes"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true,
+  "articulation": {
+    "details": "articulation.json",
+    "motion": "motion.json",
+    "cargo": "cargo.json",
+    "body": "body",
+    "wheelNodes": [
+      "wheel-front-left",
+      "wheel-rear-left",
+      "wheel-front-right",
+      "wheel-rear-right"
+    ],
+    "wheelAxis": [
+      1,
+      0,
+      0
+    ],
+    "sourceTopologyNote": "Body retains exactly12 original non-manifold edge incidences; no new cut boundary defects. Four wheel surfaces closed with0 boundary/nonmanifold edges."
+  },
+  "structure": {
+    "nodeCount": 5,
+    "meshCount": 5,
+    "primitiveCount": 5,
+    "details": "structure.json"
+  }
+}
