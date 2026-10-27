@@ -1,0 +1,122 @@
+{
+  "createdAt": "2026-10-27T13:55:02.996032+00:00",
+  "status": "accepted-for-integration",
+  "workerCommit": "df9cc98",
+  "mainNumericalAudit": "priority04-main-audit.json",
+  "totalBytes": 271584,
+  "totalTriangles": 14810,
+  "visual": {
+    "method": "Main independently inspected the following existing native worker captures through view_image. No main browser run or gameplay playthrough in this review.",
+    "frames": [
+      "models/factory-delivery-lorry/qa/1180-cargo-actual.jpg",
+      "models/factory-delivery-lorry/qa/390-cargo-actual.jpg",
+      "models/factory-delivery-lorry/qa/1180-wheel-view2-phase90.jpg",
+      "models/factory-product-bear/qa/1180-view0.jpg",
+      "models/factory-product-bear/qa/390-view0.jpg",
+      "models/factory-product-box/qa/1180-view0.jpg",
+      "models/factory-product-billet/qa/390-view0.jpg",
+      "models/factory-delivery-lorry/qa/1180-view7.jpg",
+      "models/factory-delivery-lorry/qa/1180-wheel-view1-phase270.jpg",
+      "models/factory-product-bear/qa/tint-26b7b0.jpg",
+      "models/factory-product-bear/qa/1180-view6.jpg",
+      "models/factory-product-box/qa/390-view0.jpg",
+      "models/factory-product-billet/qa/1180-view7.jpg"
+    ],
+    "result": "PASS: open-bed cargo readable at 1180x820 and 390x844; four tyre silhouettes; round-ear bear, gift box and plain billet readable; no visible clipping in inspected views."
+  },
+  "checks": {
+    "publicGLBDecodedByMain": true,
+    "shaBytesBoundsTrianglesAtlasBudgetVerifiedByMain": true,
+    "nodeNamesAndTransformsInspectedByMain": true,
+    "workerMotionAndCargoReportsReadByMain": true,
+    "workerSweepAndContactNumericsRepeatedByMain": false,
+    "tests": "88 passed / 17 files, 2026-10-27 20:54 Bangkok",
+    "typecheck": "PASS"
+  },
+  "contracts": {
+    "lorry": {
+      "dimensionsXYZ": [
+        2.044902646260953,
+        2.048371031780431,
+        5
+      ],
+      "front": "+Z",
+      "rig": "body plus four wheel nodes, rotate wheel.rotation.x only; preserve node translations and quantization scales",
+      "fitting": "model(id,{}) or model(id,{depth:5}), then rotate returned holder Y+pi/2 to game +X. Do not combine fit.rotateY=pi/2 with fit.depth=5: model() rotates before fitting, so depth would use original width. Attach cargo in the same unrotated asset frame and rotate/scale common parent.",
+      "cargoPositions": [
+        [
+          0,
+          0.89319735,
+          -1.6
+        ],
+        [
+          0,
+          0.893318972,
+          -0.8
+        ],
+        [
+          0,
+          0.893422794,
+          0
+        ]
+      ],
+      "cargoSizeXYZ": [
+        0.6744498923808818,
+        0.633219386780961,
+        0.699999988079071
+      ],
+      "materialNote": "1 material in GLB; production loader clones to 5 mesh materials / 5 draws, shared texture.",
+      "workerSweep": "Conservative full-rotation cylinder vs clipped body triangles: min gap .006147, excludes .0002 at intended axle interface. 375 deck samples, variation .001724; volume X±.7 Z[-2,.4], deck+.005 through deck+.8 clear. Actual three packages shown.",
+      "limitations": [
+        "Source body retains 12 original nonmanifold edge incidences; wheel cut boundaries closed. No claim of global watertightness or zero self-intersections.",
+        "Wheel radial floor envelope reaches -.009388 in some phases; rest contacts near zero. Painted/sculpted hub differs from axis by up to .020676. Constant tyre-floor contact not guaranteed.",
+        "Route, loading trajectory, turning clearance and final gameplay remain for Claude and targeted integration QA."
+      ]
+    },
+    "bear": {
+      "dimensionsXYZ": [
+        0.5945387127292703,
+        0.75,
+        0.6392178106021302
+      ],
+      "fit": "uniform height .75, whole-object animation only",
+      "notes": [
+        "Actual depth .639218 and width .594539 exceed preliminary .5/.55; use actual footprint.",
+        "Warm ivory atlas shifts colour multiplication; teal sample looks green. Face already present and tinted with body. Add requested station markings without duplicate eyes; independent body colour requires mask or atlas edit.",
+        "Local 2mm lower contact snap documented."
+      ]
+    },
+    "box": {
+      "dimensionsXYZ": [
+        0.6744498923808818,
+        0.633219386780961,
+        0.699999988079071
+      ],
+      "fit": "released size already uniform-contained in .7x.65x.7; do not independently stretch to envelope",
+      "notes": [
+        "Single package mesh including low bow and star. 1mm contact snap."
+      ]
+    },
+    "billet": {
+      "dimensionsXYZ": [
+        0.5499950809431028,
+        0.7112233638763428,
+        0.4662987617467413
+      ],
+      "fit": "released size already uniform-contained in .55x.75x.5; actual height .711223",
+      "notes": [
+        "Plain wooden block, no platform or face. 1mm contact snap."
+      ]
+    }
+  },
+  "spend": {
+    "source": "worker order.json and progress ledger; main did not open live Studio balance",
+    "orders": 4,
+    "credits": 100,
+    "balanceBefore": 4575,
+    "balanceAfter": 4475,
+    "bunnyOrders": 0,
+    "mainNewOrders": 0
+  },
+  "integrationStatus": "Pending Claude. This accepts assets only, not new 11-station flow, final lorry loading, machine clearances, physical iPad or PWA."
+}

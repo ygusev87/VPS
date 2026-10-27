@@ -1,0 +1,397 @@
+{
+  "createdAt": "2026-10-27T13:53:52.721Z",
+  "status": "PASS",
+  "method": "Main independently decoded committed public GLBs with Meshopt, calculated transformed bounds/counts and decoded embedded WebP dimensions; matched worker SHA/bytes. Contact analysis and original browser capture belong to worker.",
+  "totalBytes": 271584,
+  "totalTriangles": 14810,
+  "items": [
+    {
+      "nodes": [
+        {
+          "name": "body",
+          "translation": [
+            0.0040055811405181885,
+            1.0249328133650124,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            2.5,
+            2.5,
+            2.5
+          ],
+          "triangles": 2774
+        },
+        {
+          "name": "wheel-front-left",
+          "translation": [
+            -0.7880065309610279,
+            0.3826607004800044,
+            1.6254921109653004
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            0.3826606869697571,
+            0.3826606869697571,
+            0.3826606869697571
+          ],
+          "triangles": 188
+        },
+        {
+          "name": "wheel-rear-left",
+          "translation": [
+            -0.8412231818597979,
+            0.38075655384991003,
+            -1.7969298379467147
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            0.38075655698776245,
+            0.38075655698776245,
+            0.38075655698776245
+          ],
+          "triangles": 170
+        },
+        {
+          "name": "wheel-front-right",
+          "translation": [
+            0.7931565294351024,
+            0.3799935911130101,
+            1.6240424817651906
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            0.37999358773231506,
+            0.37999358773231506,
+            0.37999358773231506
+          ],
+          "triangles": 176
+        },
+        {
+          "name": "wheel-rear-right",
+          "translation": [
+            0.8412231818597979,
+            0.38510544145023956,
+            -1.7847987304300057
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            0.3851054310798645,
+            0.3851054310798645,
+            0.3851054310798645
+          ],
+          "triangles": 200
+        }
+      ],
+      "name": "factory-delivery-lorry",
+      "publicPath": "public/models/factory-delivery-lorry.glb",
+      "sha256": "5c4ee9484b819cd3b5671c3d835cff7eaff66721122d7334b9589a937b164ab6",
+      "bytes": 94776,
+      "triangles": 3508,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -1.022450613812102,
+          -3.137852422341325e-9,
+          -2.5
+        ],
+        "max": [
+          1.0224520324488513,
+          2.0483710286425785,
+          2.5
+        ]
+      },
+      "size": [
+        2.044902646260953,
+        2.048371031780431,
+        5
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 6,
+        "qaConsole": [],
+        "workerQaPass": true,
+        "contactEvidencePresent": false,
+        "floorSnap": 0,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "nodes": [
+        {
+          "name": "product",
+          "translation": [
+            0,
+            0.375,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            0.375,
+            0.375,
+            0.375
+          ],
+          "triangles": 3784
+        }
+      ],
+      "name": "factory-product-bear",
+      "publicPath": "public/models/factory-product-bear.glb",
+      "sha256": "e2adf0de223205d4036a00f55f95f4ab2a8377bd7dc8404c467edc7c0b000075",
+      "bytes": 52348,
+      "triangles": 3784,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.29726935636463514,
+          0,
+          -0.3196089053010651
+        ],
+        "max": [
+          0.29726935636463514,
+          0.75,
+          0.3196089053010651
+        ]
+      },
+      "size": [
+        0.5945387127292703,
+        0.75,
+        0.6392178106021302
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 6,
+        "qaConsole": [],
+        "workerQaPass": true,
+        "contactEvidencePresent": true,
+        "floorSnap": 0.002,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "nodes": [
+        {
+          "name": "package",
+          "translation": [
+            0,
+            0.316610723733902,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            0.3499999940395355,
+            0.3499999940395355,
+            0.3499999940395355
+          ],
+          "triangles": 3668
+        }
+      ],
+      "name": "factory-product-box",
+      "publicPath": "public/models/factory-product-box.glb",
+      "sha256": "15791557134c812b7c55db80bb74fc86b8669afc71bec2d64152e940b1dead86",
+      "bytes": 76224,
+      "triangles": 3668,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.3372249461904409,
+          0.000001030343421526414,
+          -0.3499999940395355
+        ],
+        "max": [
+          0.3372249461904409,
+          0.6332204171243825,
+          0.3499999940395355
+        ]
+      },
+      "size": [
+        0.6744498923808818,
+        0.633219386780961,
+        0.699999988079071
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 6,
+        "qaConsole": [],
+        "workerQaPass": true,
+        "contactEvidencePresent": true,
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "nodes": [
+        {
+          "name": "billet",
+          "translation": [
+            0,
+            0.3556116819381714,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            1
+          ],
+          "scale": [
+            0.3556116819381714,
+            0.3556116819381714,
+            0.3556116819381714
+          ],
+          "triangles": 3850
+        }
+      ],
+      "name": "factory-product-billet",
+      "publicPath": "public/models/factory-product-billet.glb",
+      "sha256": "259cc82e6ae97bcf353c62d684553458452fd7a9462df6602c27fcec634d1dc8",
+      "bytes": 48236,
+      "triangles": 3850,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.2749975404715514,
+          0,
+          -0.23314938087337064
+        ],
+        "max": [
+          0.2749975404715514,
+          0.7112233638763428,
+          0.23314938087337064
+        ]
+      },
+      "size": [
+        0.5499950809431028,
+        0.7112233638763428,
+        0.4662987617467413
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 6,
+        "qaConsole": [],
+        "workerQaPass": true,
+        "contactEvidencePresent": true,
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    }
+  ]
+}
