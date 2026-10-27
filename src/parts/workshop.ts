@@ -367,8 +367,9 @@ export class SafetyPress extends Part {
     anvil.position.set(0, PLATE_TOP + 0.15, -0.35);
     frame.add(top, anvil);
     const head = mesh(new THREE.BoxGeometry(1, 0.35, 0.7), mat('#e8483f', 0.4, 0.3));
-    const rod = mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.9, 12), mat('#c9ced6', 0.25, 0.9));
-    rod.position.y = 0.6;
+    // Long enough to stay in the beam's sleeve with the ram right down.
+    const rod = mesh(new THREE.CylinderGeometry(0.1, 0.1, 1.5, 12), mat('#c9ced6', 0.25, 0.9));
+    rod.position.y = 0.85;
     this.ram.add(head, rod);
     this.ram.position.set(0, PLATE_TOP + 1.4, -0.35);
     // Yellow-black guard stripes on the base, and the two buttons wide apart.

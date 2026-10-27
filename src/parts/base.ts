@@ -524,6 +524,9 @@ export abstract class Part {
    * the turned corners, still relative to the part's position.
    */
   turned(f: Footprint): Footprint {
+    // A part shown bigger (the factory's machines) takes more room too.
+    const k = this.root.scale.x;
+    if (k !== 1) f = { x0: f.x0 * k, x1: f.x1 * k, z0: f.z0 * k, z1: f.z1 * k };
     const a = this.root.rotation.y;
     if (Math.abs(a) < 1e-4) return f;
     const c = Math.cos(a);

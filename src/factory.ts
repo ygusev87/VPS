@@ -75,6 +75,9 @@ const HOIST_LEVER = v(20.5, -11);
 const HOIST_POLE = v(25, -13);
 const LORRY = v(32.5, -2.5);
 
+/** How much bigger than a table part the factory's own machines are. */
+const MACHINE_SCALE = 1.5;
+
 /** Where each station stands on the line (a toy stops there till it works). */
 const STATIONS = [LATHE.x, PRESS.x, ROBOT.x, HOIST.x];
 /** Where new blanks get on the line (from the cart). */
@@ -318,6 +321,9 @@ export class FactoryMap extends StoryMap {
     this.robot.terminal('a').shaped('triangle');
     this.robot.terminal('b').shaped('triangle');
     this.hoist = this.pin('lift', HOIST) as Lift;
+    // The machines of a real shop are big (industrial-b): shown half as large again. Not the lathe and its motor,
+    // whose shafts must stay 1.4 apart for the child's gears.
+    for (const p of [this.box, this.press, this.board, this.robot, this.cart, this.hoist]) p.root.scale.setScalar(MACHINE_SCALE);
   }
 
   private buildCritters() {
