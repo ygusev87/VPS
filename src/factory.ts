@@ -19,12 +19,12 @@ import { Gear } from './parts/factory';
 import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import type { Lift } from './parts/more';
-import { Lathe, RailCart, Reverser, SafetyPress, ShaftMotor, SocketBoard, WireBox } from './parts/workshop';
+import { Lathe, RailCart, Reverser, SafetyPress, ShaftMotor, SocketBoard, WireBox, WORKSHOP_MODELS } from './parts/workshop';
 import { StoryMap, blob, v, type Critter, type MapProgress, type NeedSpec, type Phase } from './storymap';
 import type { PhraseId } from './voice';
 
 /** Model files the factory needs (each falls back to a code-built stand-in). */
-export const FACTORY_MODELS = ['pole', 'child', 'kitten', 'flower-cluster'];
+export const FACTORY_MODELS = ['pole', 'child', 'kitten', 'flower-cluster', ...WORKSHOP_MODELS];
 
 /** What the drawers offer in the factory: two levers and the gears (a middle one that fits nowhere). */
 export const FACTORY_TRAY: { kind: PartKind; count: number }[] = [

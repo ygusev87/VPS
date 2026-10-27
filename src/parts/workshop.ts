@@ -6,11 +6,29 @@
 import * as THREE from 'three';
 import type { CircuitElement, ElementKind } from '../circuit/solver';
 import { Part, type PartKind, type PlugShape } from './base';
+import { model, type Fit } from './assets';
 import { basePlate, damp, mat, mesh, PLATE_TOP } from './kit';
 import type { Geared } from './factory';
 import { flow, hintTile, makePuzzle, opens, turn, type Side, type TileGrid } from './tiles';
 
 const TILE = 1;
+
+/** The sculpted bodies of the factory's machines (Codex's GLBs, loaded with the factory). */
+export const WORKSHOP_MODELS = ['factory-cabinet', 'lever-box', 'rail-cart', 'lathe', 'shaft-motor', 'safety-press', 'socket-board', 'hoist'];
+
+/**
+ * Swap code-built stand-ins for a sculpted body when its model has loaded:
+ * the model stands at `at` (part-local) and the stand-ins go. Moving and
+ * electric bits (tiles, levers, rams, dials, posts) stay code-built.
+ */
+function sculpt(part: Part, name: string, fit: Fit, at: THREE.Vector3, standIns: THREE.Object3D[]): THREE.Group | null {
+  const m = model(name, fit);
+  if (!m) return null;
+  m.position.copy(at);
+  for (const o of standIns) o.removeFromParent();
+  part.body.add(m);
+  return m;
+}
 
 export class WireBox extends Part {
   readonly kind: PartKind = 'wireBox';
@@ -42,6 +60,7 @@ export class WireBox extends Part {
     const lamp = mesh(new THREE.SphereGeometry(0.1, 14, 10), this.lamp, false);
     lamp.position.set(half.x * 0.7, PLATE_TOP + 0.5, -half.z - 0.14);
     this.body.add(plate, tray, door, stripe, lamp);
+    const body = sculpt(this, 'factory-cabinet', { width: w * TILE + 0.5 }, new THREE.Vector3(0, PLATE_TOP, -0.1), [tray, door, stripe]);
     this.grid.tiles.forEach((t, i) => {
       const g = this.tileMesh(t.shape === 'blank' ? [] : ([0, 1, 2, 3] as Side[]).filter((s) => opens({ shape: t.shape, turns: 0 }, s)));
       g.position.copy(this.cellAt(i));
@@ -55,7 +74,7 @@ export class WireBox extends Part {
     const outRow = Math.floor(this.grid.out.cell / w);
     this.addTerminal('a', 'none', -half.x - 0.5, -half.z + (inRow + 0.5) * TILE);
     this.addTerminal('b', 'none', half.x + 0.5, -half.z + (outRow + 0.5) * TILE);
-    this.pickable(plate, tray, door, ...this.tiles);
+    this.pickable(plate, ...(body ? [body] : [tray, door]), ...this.tiles);
     this.closed = flow(this.grid).done;
   }
 
@@ -184,11 +203,12 @@ export class Reverser extends Part {
     this.lever.add(stick, knob);
     this.lever.position.set(0, PLATE_TOP + 0.35, -0.35);
     this.body.add(plate, box, this.lever);
+    const body = sculpt(this, 'lever-box', { width: 1.5 }, new THREE.Vector3(0, PLATE_TOP, 0), [box]);
     this.addTerminal('p', 'plus', -1.05, -0.45);
     this.addTerminal('n', 'minus', -1.05, 0.45);
     this.addTerminal('a', 'none', 1.05, -0.45);
     this.addTerminal('b', 'none', 1.05, 0.45);
-    this.pickable(plate, box, this.lever);
+    this.pickable(plate, body ?? box, this.lever);
   }
 
   elements(): CircuitElement[] {
@@ -279,9 +299,15 @@ export class RailCart extends Part {
     this.cart.add(this.bed);
     this.cart.position.y = PLATE_TOP;
     this.body.add(plate, this.cart);
+    // A sculpted wagon rides on the code-built wheels' place (the model has its own).
+    const wagon = model('rail-cart', { width: 1.3 });
+    if (wagon) {
+      for (const o of [tub, rim, ...this.wheels]) o.removeFromParent();
+      this.cart.add(wagon);
+    }
     this.addTerminal('a', 'none', -RAIL - 0.2, 0.75);
     this.addTerminal('b', 'none', -RAIL + 0.6, 0.75);
-    this.pickable(plate, tub);
+    this.pickable(plate, wagon ?? tub);
   }
 
   /** The cart's place in the world. */
@@ -359,9 +385,10 @@ export class SafetyPress extends Part {
       this.body.add(stand, cap, bulb);
     }
     this.body.add(plate, frame, this.ram);
+    const body = sculpt(this, 'safety-press', { width: 1.9 }, new THREE.Vector3(0, PLATE_TOP, -0.35), [frame]);
     this.addTerminal('a', 'plus', -1.75, -0.75);
     this.addTerminal('b', 'minus', 1.75, -0.75);
-    this.pickable(plate, frame, ...this.caps);
+    this.pickable(plate, body ?? frame, ...this.caps);
   }
 
   elements(): CircuitElement[] {
@@ -452,9 +479,10 @@ export class ShaftMotor extends Part implements Geared {
     collar.position.y = 0.2;
     this.shaft.add(collar);
     this.body.add(plate, can, this.shaft);
+    const body = sculpt(this, 'shaft-motor', { width: 1.1 }, new THREE.Vector3(0, PLATE_TOP, -0.1), [can]);
     this.addTerminal('a', 'plus', 0.65, 0.55);
     this.addTerminal('b', 'minus', -0.65, 0.55);
-    this.pickable(plate, can);
+    this.pickable(plate, body ?? can);
   }
 
   protected electrical(): Partial<CircuitElement> {
@@ -528,7 +556,8 @@ export class Lathe extends Part implements Geared {
     this.needle.add(pin);
     this.needle.position.set(-0.7, PLATE_TOP + 1.25, 0.55);
     this.body.add(plate, bed, head, tail, this.spindle, shaft, face, this.band, this.needle);
-    this.pickable(plate, bed, head, tail);
+    const body = sculpt(this, 'lathe', { width: 2.6 }, new THREE.Vector3(0.1, PLATE_TOP, 0.2), [bed, head, tail]);
+    this.pickable(plate, ...(body ? [body] : [bed, head, tail]));
     this.setWant('slow');
   }
 
@@ -592,6 +621,7 @@ export class SocketBoard extends Part {
     const frame = mesh(new THREE.BoxGeometry(2.75, 1.0, 0.12), mat('#8d97a3', 0.4, 0.6));
     frame.position.set(0, PLATE_TOP + 0.45, -0.85);
     this.body.add(plate, frame, board);
+    const body = sculpt(this, 'socket-board', { width: 2.6 }, new THREE.Vector3(0, PLATE_TOP, -0.8), [frame, board]);
     this.addTerminal('p', 'plus', -1.45, 0.75);
     this.addTerminal('n', 'minus', -1.45, -0.05);
     SOCKETS.forEach((shape, i) => {
@@ -599,7 +629,7 @@ export class SocketBoard extends Part {
       this.addTerminal(`${shape}+`, 'plus', x, -0.05).shaped(shape);
       this.addTerminal(`${shape}-`, 'minus', x, 0.7).shaped(shape);
     });
-    this.pickable(plate, board, frame);
+    this.pickable(plate, ...(body ? [body] : [board, frame]));
   }
 
   elements(): CircuitElement[] {
