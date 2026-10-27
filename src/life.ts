@@ -13,6 +13,8 @@ import type { PhraseId } from './voice';
 export interface LifeHooks {
   say(id: PhraseId): void;
   chime(): void;
+  /** Something on the ground here a passer-by must not walk over (a part, a wire). */
+  blocked?(x: number, z: number): boolean;
 }
 
 /** How a herd animal moves about. */
@@ -258,6 +260,17 @@ export class Life {
     // grazers and peckers stay where they stand and move as they would there
     // (head, tail, a peck). Hoppers, ducks on the water and people do go about.
     const walks = e.gait !== 'graze' && e.gait !== 'peck';
+    // A passer-by does not walk over a part or a wire in the way: back the way it came, after a pause.
+    if (e.route && walks && dist > 0.05 && e.wait <= 0 && e.flee <= 0) {
+      const ahead = to.clone().normalize().multiplyScalar(0.7).add(p);
+      if (this.hooks.blocked?.(ahead.x, ahead.z)) {
+        e.dir = -e.dir;
+        const back = e.leg + e.dir;
+        e.leg = Math.max(0, Math.min(e.route.length - 1, back));
+        e.target.copy(e.route[e.leg]);
+        e.wait = 1 + this.rnd() * 2;
+      }
+    }
     if (walks && dist > 0.05 && (e.wait <= 0 || e.flee > 0)) {
       moving = true;
       p.addScaledVector(to.normalize(), Math.min(dist, speed * dt));

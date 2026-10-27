@@ -282,9 +282,24 @@ export abstract class StoryMap {
     return model(base, fit) ?? blob(name);
   }
 
+  /** Points along the wires on the board (re-read twice a second): what passers-by keep off. */
+  private wirePoints: THREE.Vector3[] = [];
+  private wiresAt = -1;
+
+  /** Is there a part or a wire on the ground here (for the townsfolk and the hall's people to walk round)? */
+  private underfoot(x: number, z: number): boolean {
+    const now = performance.now();
+    if (now - this.wiresAt > 500) {
+      this.wiresAt = now;
+      this.wirePoints = this.world.wires.filter((w) => w.b).flatMap((w) => w.samples(16));
+    }
+    if (this.wirePoints.some((p) => Math.abs(p.x - x) < 0.5 && Math.abs(p.z - z) < 0.5)) return true;
+    return this.world.parts.some((p) => Math.hypot(p.root.position.x - x, p.root.position.z - z) < p.radius * p.root.scale.x * 0.8 + 0.4);
+  }
+
   /** Lay the map out on the table (the world must be empty). */
   start() {
-    this.life = new Life(this.scenery, { say: (id) => this.hooks.say(id), chime: () => this.hooks.chime() });
+    this.life = new Life(this.scenery, { say: (id) => this.hooks.say(id), chime: () => this.hooks.chime(), blocked: (x, z) => this.underfoot(x, z) });
     this.stage.world.add(this.scenery);
     this.stage.showGrid(false);
     // The view may roam to the map's corners, and parts may stand anywhere on its board.

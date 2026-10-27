@@ -98,6 +98,8 @@ let map: StoryMap | null = null;
 let mapName: MapName | null = null;
 /** On a map the view comes in closer than on the workbench. */
 const MAP_PPU = 62;
+/** How close the view comes on this map: the factory's levers, tiles and sockets are small things to press, so closer. */
+const mapPpu = () => (mapName === 'factory' ? 92 : MAP_PPU);
 /** A close-up the map asked for, shown once the finger is off the table. */
 let mapFocus: THREE.Vector3[] | null = null;
 let snapSaid = 0;
@@ -139,7 +141,7 @@ const MAPS: Record<MapName, { level: Level; models: string[]; tray(): Level['tra
     models: FACTORY_MODELS,
     tray: () => FACTORY_TRAY,
     make: (hooks) => new FactoryMap(stage, world, hooks),
-    move: 'cityMove',
+    move: 'factoryMove',
   },
 };
 let won = false;
@@ -510,7 +512,7 @@ async function startMap(name: MapName, fresh = false) {
     // The reward close up for three seconds, then back to where the child was (unless the view has moved on).
     result: (pts) => {
       const back = stage.viewGoal();
-      stage.frame(pts, false, MAP_PPU);
+      stage.frame(pts, false, mapPpu());
       const shown = stage.viewGoal();
       const asks = viewAsks;
       setTimeout(() => {
@@ -523,7 +525,7 @@ async function startMap(name: MapName, fresh = false) {
     },
     focus: (pts, instant) => {
       viewAsks++;
-      if (instant) stage.frame(pts, true, MAP_PPU);
+      if (instant) stage.frame(pts, true, mapPpu());
       else mapFocus = pts;
     },
     zap: (at) => {
@@ -842,7 +844,8 @@ function playPartSound(snd: PartSound, from?: Part) {
       sfx.clank();
       break;
     case 'liftTop':
-      if (!liftSaid && !troubled()) {
+      // "Swap the wires" is the farm lift's lesson; the factory's hoist goes back on its lever.
+      if (!liftSaid && !troubled() && mapName !== 'factory') {
         liftSaid = true;
         setTimeout(() => voice.say('liftSwap', 0), 900);
       }
@@ -1088,7 +1091,7 @@ function frame(now: number) {
     map.update(dt);
     // The camera moves on to the next animal once the finger is off the table.
     if (mapFocus && performance.now() - lastTouch > 1200 && !input.busy) {
-      stage.frame(mapFocus, false, MAP_PPU);
+      stage.frame(mapFocus, false, mapPpu());
       mapFocus = null;
     }
     // The hand drifted off screen (the view moved after it appeared) and the child has
