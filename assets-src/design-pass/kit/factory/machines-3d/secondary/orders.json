@@ -1,8 +1,6 @@
 {
   "date": "2026-10-27",
   "service": "Tripo Studio",
-  "budgetIncludedCredits": 100,
-  "maximumOrders": 4,
   "observedInitialBalance": 5500,
   "ownerAuthorization": {
     "thread": "01a16ded-c4fb-7140-b5ed-bbd17857db93",
@@ -92,5 +90,14 @@
     }
   ],
   "creditsSpent": 100,
-  "observedFinalBalance": 5400
+  "observedFinalBalance": 5400,
+  "initialBudgetIncludedCredits": 100,
+  "initialMaximumOrders": 4,
+  "currentSpendingAuthorization": {
+    "userMessage": "01a17b24-4efe-76f3-9614-5d60705f4821",
+    "scope": "Necessary existing Studio credits and justified iterations within this project; original 100/200 ceilings removed",
+    "purchases": false,
+    "topups": false,
+    "paidApi": false
+  }
 }

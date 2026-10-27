@@ -1,0 +1,28 @@
+{
+  "name": "socket-board",
+  "loader": "GLTFLoader with MeshoptDecoder; WebP via ImageLoader",
+  "fallback": false,
+  "bytes": 104804,
+  "triangles": 3115,
+  "materials": 1,
+  "viewports": [
+    [
+      390,
+      844
+    ],
+    [
+      1024,
+      768
+    ]
+  ],
+  "screenshots": [
+    "qa/socket-board-1024-terminals.jpg",
+    "qa/socket-board-390-terminals.jpg"
+  ],
+  "screenshotsVisuallyInspected": 2,
+  "browserErrors": [],
+  "horizontalOverflow": false,
+  "geometryReport": "socket-board-geometry.json",
+  "physicalIPadTest": "not performed",
+  "gameIntegrationQA": "pending integrator"
+}

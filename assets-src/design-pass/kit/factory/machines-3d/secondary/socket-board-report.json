@@ -1,0 +1,113 @@
+{
+  "name": "socket-board",
+  "source": "assets-src/raw/factory-2026-10-27/socket-board.glb",
+  "sourceSha256": "6bfda001463e90ef9e7b1d3a1630090254c41d02e58afc73d70b09619180afc6",
+  "sourceBytes": 1195500,
+  "sourceTriangles": 3115,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.08875279873609543
+    ],
+    "max": [
+      0.5,
+      0.479400634765625,
+      0.08875279873609543
+    ]
+  },
+  "outputSha256": "f0a9dae890374cad60411db48796932c0c1af89020c5fa3943dc42bea8ed4eb9",
+  "bytes": 104804,
+  "cutTriangles": 3115,
+  "triangles": 3115,
+  "materials": 1,
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "bounds": {
+    "min": [
+      -1.2999999523162842,
+      -0.000001493830609100577,
+      -0.11914120477327193
+    ],
+    "max": [
+      1.2999999523162842,
+      1.100001517672467,
+      0.11914120477327193
+    ]
+  },
+  "nodes": [
+    {
+      "name": "socket-board-body",
+      "translation": [
+        0,
+        0.550000011920929,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1.2999999523162842,
+        1.2999999523162842,
+        1.2999999523162842
+      ],
+      "bounds": {
+        "min": [
+          -1.2999999523162842,
+          -0.000001493830609100577,
+          -0.11914120477327193
+        ],
+        "max": [
+          1.2999999523162842,
+          1.100001517672467,
+          0.11914120477327193
+        ]
+      }
+    }
+  ],
+  "details": {
+    "panelY": [
+      0.1,
+      1.1
+    ],
+    "panelTargetSize": [
+      2.6,
+      1,
+      0.2
+    ],
+    "feetHeight": 0.1,
+    "placement": [
+      0,
+      0.16,
+      -0.8
+    ],
+    "fit": {
+      "width": 2.6
+    }
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  }
+}

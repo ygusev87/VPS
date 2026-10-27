@@ -1,6 +1,6 @@
 {
   "destination": "https://studio.tripo3d.ai",
-  "purpose": "Four approved factory image-to-3D models using H3.1, max 25 included credits each",
+  "purpose": "Four approved factory image-to-3D models using H3.1; necessary existing Studio credits authorized, no purchases or API",
   "files": [
     {
       "name": "lever-box",
