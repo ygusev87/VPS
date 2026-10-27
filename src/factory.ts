@@ -410,8 +410,19 @@ export class FactoryMap extends StoryMap {
     this.scenery.add(board);
     const walk = kitPieces('factory', 'walkway-strip', true);
     if (this.kit && walk.length) this.scenery.add(ribbons(plan.lanes, walk[0], 1.1, 6.4, 0.006, 1, 0.1));
+    // A working floor: oil and grime where machines stand and things drive (a real shop is never spotless).
     const oil = kitPieces('factory', 'oil-patch');
-    if (this.kit && oil.length) this.scenery.add(patches([LATHE, PRESS, ROBOT, HOIST, CART].map((p, i) => ({ x: p.x + (i % 2 ? 1.5 : -1.8), z: p.z + 2.2, size: 1.6 })), oil, 0.007, 1));
+    const spots: { x: number; z: number; size: number }[] = [
+      ...[LATHE, PRESS, ROBOT, HOIST, CART, GRINDER, WELDER, TANK].map((p, i) => ({ x: p.x + (i % 2 ? 1.5 : -1.8), z: p.z + 2.2, size: 1.6 })),
+      // Under the lorries, along the rails, round the coil stand and the hopper, by the loading ramp.
+      { x: LORRY.x + 0.4, z: LORRY.z + 1.2, size: 2.2 }, { x: LORRY2.x - 0.6, z: LORRY2.z + 0.8, size: 2 },
+      { x: CART.x - 2.5, z: CART.z + 0.9, size: 1.2 }, { x: CART.x + 3.2, z: CART.z - 0.7, size: 1 },
+      { x: GANTRY_AT.x - 5.5, z: EVE_Z + 1.6, size: 1.5 }, { x: DROP.x + 0.8, z: EVE_Z - 1.4, size: 1.2 },
+      { x: 36.2, z: -7.5, size: 1.8 }, { x: 34, z: -16, size: 1.4 },
+      // Grime along the walkways where people and trolleys go.
+      { x: -14, z: 1.6, size: 1 }, { x: 6, z: 0.8, size: 0.9 }, { x: 27, z: 1.4, size: 1.1 }, { x: -26, z: 9.6, size: 1 }, { x: 12, z: 10.3, size: 0.9 },
+    ];
+    if (this.kit && oil.length) this.scenery.add(patches(spots, oil, 0.007, 1));
   }
 
   /** The hall: walls with windows, pillars, lamps, the conveyor, the overhead crane over the stock, racks of steel. */
@@ -545,7 +556,17 @@ export class FactoryMap extends StoryMap {
     };
     const racks = [[-30, 25], [-2, 25.2], [24, 25]] as const;
     card('rack-steel-card', racks.map(([x, z]) => ({ x, z, size: 5.5 })), () => racks.forEach(([x, z]) => hall.add(rack(x, z))));
-    for (const [x, z, s] of [[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [37, 22, 1], [-14, 25, 0.9], [16, 25, 1]] as const) hall.add(crate(x, z, s));
+    // Loose goods by the walls: painted pallets of boxes (plain code crates only without the kit).
+    const goods = [[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [37, 22, 1], [-14, 25, 0.9], [16, 25, 1]] as const;
+    card('pallet-card', goods.map(([x, z, k]) => ({ x, z, size: 2.4 * k })), () => goods.forEach(([x, z, k]) => hall.add(crate(x, z, k))));
+    // Storage bays in the middle aisle, between the pillars: marked out on the floor, stacked with pallets and drums.
+    const bays = [[-22.5, 5.6], [22.5, 5.6]] as const;
+    const tape = kitPieces('factory', 'hazard-strip', true);
+    for (const [x, z] of bays) {
+      if (this.kit && tape.length) hall.add(ribbons([{ pts: [[x - 3.2, z - 1.9], [x + 3.2, z - 1.9], [x + 3.2, z + 1.9], [x - 3.2, z + 1.9], [x - 3.2, z - 1.9]], w: 0.22 }], tape[0], 1.12, 4.36, 0.0075, 2, 0.5));
+    }
+    card('pallet-card', bays.flatMap(([x, z]) => [{ x: x - 1.6, z: z + 0.2, size: 2.5 }, { x: x + 0.6, z: z - 0.3, size: 2.2 }]), () => bays.forEach(([x, z]) => hall.add(stack(x, z, 2))));
+    card('barrels-card', bays.map(([x, z]) => ({ x: x + 2.3, z: z + 0.5, size: 2 })), () => bays.forEach(([x, z]) => hall.add(barrel(x + 2.3, z))));
     const barrels = [[-38, 25], [38, 8], [10, 25]] as const;
     card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.6 })), () => [[-38, 25], [38, 8], [10, 25]].forEach(([x, z]) => hall.add(barrel(x, z))));
     // Yellow and black safety lines round every station.
