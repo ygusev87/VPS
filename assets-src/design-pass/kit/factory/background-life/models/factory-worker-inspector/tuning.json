@@ -1,0 +1,15 @@
+{
+  "reviewed": true,
+  "height": 1.6,
+  "rotationY": 0,
+  "targetTriangles": 4000,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "uniform",
+  "floorSnap": 0.002,
+  "rawOrientationReview": "Native +Z front and intact two arms/two legs confirmed."
+}

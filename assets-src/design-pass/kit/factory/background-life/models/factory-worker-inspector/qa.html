@@ -1,0 +1,35 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Factory background life · GLB QA</title>
+<style>body{margin:0;background:#ece7df;font:13px Arial;color:#222}header{padding:8px;display:flex;gap:5px;flex-wrap:wrap}button,select{padding:6px}#status{flex-basis:100%;white-space:pre-wrap}canvas{display:block}</style>
+<header><select id="model"><option>factory-worker-inspector</option></select><button id="source">Raw / Final</button><button id="view">Ракурс</button><button id="probe">Контур</button><div id="status">Загрузка…</div></header>
+<script type="module">
+import * as T from 'three';
+import {GLTFLoader} from 'three/addons/loaders/GLTFLoader.js';
+import {MeshoptDecoder} from 'three/addons/libs/meshopt_decoder.module.js';
+import {RoomEnvironment} from 'three/addons/environments/RoomEnvironment.js';
+const params=new URLSearchParams(location.search),name=params.get('m')||'factory-worker-inspector',raw=params.has('raw'),candidate=params.has('candidate');
+const selector=document.querySelector('#model'),status=document.querySelector('#status');selector.value=name;
+selector.onchange=()=>location.search='?m='+selector.value;
+document.querySelector('#source').onclick=()=>location.search='?m='+name+(raw?'':'&raw=1');
+const renderer=new T.WebGLRenderer({antialias:true});renderer.setPixelRatio(1);renderer.outputColorSpace=T.SRGBColorSpace;renderer.toneMapping=T.NeutralToneMapping;document.body.appendChild(renderer.domElement);
+const scene=new T.Scene();scene.background=new T.Color('#ece7df');scene.environment=new T.PMREMGenerator(renderer).fromScene(new RoomEnvironment(),.04).texture;
+const camera=new T.OrthographicCamera(-1,1,1,-1,.01,100),probe=new T.Group();scene.add(probe);probe.visible=false;
+let asset,bounds,stats,view=Number(params.get('view')||0);
+const dirs=[[3,3.2,5],[-6,0,0],[6,0,0],[0,0,6],[0,0,-6],[.001,6,.001],[-3,2.6,-4],[3,-2.6,4]];
+function draw(){
+  status.textContent=`${name} · ${raw?'RAW':candidate?'CANDIDATE':'FINAL'} · ${stats.triangles} tri · ${stats.materials} mat\nBBox ${bounds.getSize(new T.Vector3()).toArray().map(v=>v.toFixed(3)).join(' × ')} · ракурс ${view}`;
+  const height=Math.max(100,innerHeight-document.querySelector('header').offsetHeight);renderer.setSize(innerWidth,height);
+  const display=bounds.clone();if(probe.visible)display.expandByObject(probe);
+  const centre=display.getCenter(new T.Vector3());camera.position.copy(centre).add(new T.Vector3(...dirs[view]).normalize().multiplyScalar(10));camera.up.set(0,1,0);if(view===5)camera.up.set(0,0,-1);camera.lookAt(centre);camera.updateMatrixWorld(true);
+  let ex=0,ey=0;for(const x of [display.min.x,display.max.x])for(const y of [display.min.y,display.max.y])for(const z of [display.min.z,display.max.z]){const p=new T.Vector3(x,y,z).applyMatrix4(camera.matrixWorldInverse);ex=Math.max(ex,Math.abs(p.x));ey=Math.max(ey,Math.abs(p.y));}
+  const aspect=innerWidth/height,half=Math.max(ey,ex/aspect)*1.12;camera.left=-half*aspect;camera.right=half*aspect;camera.top=half;camera.bottom=-half;camera.updateProjectionMatrix();renderer.render(scene,camera);
+  document.body.dataset.state=JSON.stringify({view,probeVisible:probe.visible});
+}
+try {
+  const url=raw?`/assets-src/raw/factory-background-2026-10-27/${name}.glb`:candidate?`./candidate/${name}.glb`:`/models/${name}.glb`;
+  const response=await fetch(url);if(!response.ok)throw Error(`${response.status}: ${url}`);const bytes=await response.arrayBuffer();
+  const loader=new GLTFLoader().setMeshoptDecoder(MeshoptDecoder),original=window.createImageBitmap;window.createImageBitmap=undefined;let promise;try{promise=loader.parseAsync(bytes,'')}finally{window.createImageBitmap=original}asset=(await promise).scene;scene.add(asset);asset.updateMatrixWorld(true);bounds=new T.Box3().setFromObject(asset);
+  let triangles=0;const materials=new Set();asset.traverse(o=>{if(o.isMesh){triangles+=(o.geometry.index?.count||o.geometry.attributes.position.count)/3;for(const m of [].concat(o.material)){m.envMapIntensity=1.2;materials.add(m)}}});
+  stats={bytes:bytes.byteLength,triangles,materials:materials.size,bounds:{min:bounds.min.toArray(),max:bounds.max.toArray()}};document.body.dataset.stats=JSON.stringify(stats);document.body.dataset.loaded='true';
+  document.querySelector('#view').onclick=()=>{view=(view+1)%dirs.length;draw()};document.querySelector('#probe').onclick=()=>{probe.visible=!probe.visible;draw()};addEventListener('resize',draw);draw();
+}catch(e){status.textContent='Ошибка загрузки: '+e.message;document.body.dataset.error=e.message;console.error(e)}
+</script></html>
