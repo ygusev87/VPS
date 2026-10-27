@@ -1,0 +1,100 @@
+{
+  "name": "city-fruit-stall",
+  "source": "assets-src/raw/city-remaining-2026-10-27/city-fruit-stall.glb",
+  "sourceSha256": "033c11b80a6edde2e01ad2a1ae9184e4452c52f62aa6970d2de7ce3b532dbbee",
+  "sourceBytes": 838352,
+  "sourceTriangles": 3284,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.3670958876609802
+    ],
+    "max": [
+      0.5,
+      0.9530029296875,
+      0.3670958876609802
+    ]
+  },
+  "bytes": 96604,
+  "sha256": "3ffb69ac79bd94c27a9afa2d5b11e560871994bb4a016351d7b1a7083e97c9be",
+  "triangles": 3284,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -1.089633584022522,
+      0.0000015800260524390097,
+      -0.7999913062175302
+    ],
+    "max": [
+      1.089633584022522,
+      2.07684645006428,
+      0.7999913062175302
+    ]
+  },
+  "size": [
+    2.179267168045044,
+    2.0768448700382276,
+    1.5999826124350605
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      2.4,
+      2.4,
+      1.6
+    ],
+    "height": 2.4,
+    "rotationY": 0,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-contain",
+    "floorSnap": 0.009,
+    "rawReview": "Front service side+Z; three trays and four connected canopy posts visible"
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform contain in target XYZ envelope; preserve proportions; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.009 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}

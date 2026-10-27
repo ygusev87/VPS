@@ -112,3 +112,11 @@ Native QA: 1024×768, ракурсы спереди/три четверти/сз
 Завершены ровно шесть имён второй карточки. Новые модели сверх карточки не заказывались. Общие src / manifest / layout, coordination read/ack не изменялись; push не выполнялся. Первая тройка и её история сохранены. Доставка — через этот progress и финальный ответ; сообщений в другие чаты не отправлял.
 
 Временные вкладки закрыты, viewport сброшен, локальный QA-сервер остановлен.
+
+# Новая карточка worker-batch-02 — восемь оставшихся предметов
+
+27 октября 2026. Main явно передал карточку после завершения заводской партии. Работа начата: fruit-stall, далее bike-rack/playground и пять оставшихся. Все восемь входных SHA проверены; готовые референсы используются без изменения. Проект active revision1076, Codex remaining34%, резерв15%. Живой баланс Tripo4925 подтверждён; новых заказов пока нет. Единственный операторStudio; повторных разрешений не требуется. Статические bin/postbox будут проверены вместе с существующими кодовыми moving parts; неподтверждённые проёмы/стыки не выдаются за READY.
+
+## READY — city-fruit-stall
+
+public/models/city-fruit-stall.glb: 96,604bytes,3284tri,oneOPAQUE/512WebP/Meshopt;SHA `3ffb69ac79bd94c27a9afa2d5b11e560871994bb4a016351d7b1a7083e97c9be`. ActualXYZ 2.179267 × 2.076845 × 1.599983,uniform fit within2.4×2.4×1.6,depth-limited. Runtime fit depth1.6 or actualheight2.076845; do not inflate toheight2.4. Front+Z,centreXZ0,4 feet grounded after9mm floor snap. Three produce trays/open canopy preserved, no ground plate. Native390/1024 four views PASS,0errors/overflow,validator0errors/warnings,88tests/TypeScriptPASS. Tripo25credits4925→4900,one attempt. Ready individually; seven remaining continue.

@@ -1,0 +1,20 @@
+{
+  "reviewed": true,
+  "targetXYZ": [
+    2.4,
+    2.4,
+    1.6
+  ],
+  "height": 2.4,
+  "rotationY": 0,
+  "targetTriangles": 4000,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "uniform-contain",
+  "floorSnap": 0.009,
+  "rawReview": "Front service side+Z; three trays and four connected canopy posts visible"
+}

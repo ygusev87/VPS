@@ -1,0 +1,36 @@
+{
+  "common": {
+    "maxTriangles": 4000,
+    "targetMaxBytes": 150000,
+    "materials": 1,
+    "alphaMode": "OPAQUE",
+    "texture": "512 WebP",
+    "compression": "Meshopt",
+    "front": "+Z",
+    "baseY": 0,
+    "centerXZ": [
+      0,
+      0
+    ],
+    "skins": 0,
+    "animations": 0,
+    "groundPlate": false
+  },
+  "item": {
+    "id": "city-fruit-stall",
+    "label": "\u0424\u0440\u0443\u043a\u0442\u044b \u0440\u044f\u0434\u043e\u043c \u0441 \u0446\u0432\u0435\u0442\u043e\u0447\u043d\u044b\u043c \u043a\u0438\u043e\u0441\u043a\u043e\u043c",
+    "reference": "assets-src/design-pass/kit/city/street-life/references/remaining/refs/city-fruit-stall.png",
+    "referenceSha256": "df04dfa22a47491bfe075f719ec259d146f6dd8faad2f6823707888941f6f001",
+    "targetXYZ": [
+      2.4,
+      2.4,
+      1.6
+    ],
+    "scope": [
+      "models/city-fruit-stall/",
+      "public/models/city-fruit-stall.glb"
+    ],
+    "requirements": "Connected counter, three large produce trays and open canopy. Keep apples/pears/citrus readable after simplification."
+  },
+  "specialQA": null
+}

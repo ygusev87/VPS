@@ -1,0 +1,85 @@
+{
+  "visualPass": true,
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":96604,\"triangles\":3284,\"materials\":1,\"bounds\":{\"min\":[-1.089633584022522,0.0000015800260524390097,-0.7999913062175302],\"max\":[1.089633584022522,2.07684645006428,0.7999913062175302]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":96604,\"triangles\":3284,\"materials\":1,\"bounds\":{\"min\":[-1.089633584022522,0.0000015800260524390097,-0.7999913062175302],\"max\":[1.089633584022522,2.07684645006428,0.7999913062175302]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":96604,\"triangles\":3284,\"materials\":1,\"bounds\":{\"min\":[-1.089633584022522,0.0000015800260524390097,-0.7999913062175302],\"max\":[1.089633584022522,2.07684645006428,0.7999913062175302]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":96604,\"triangles\":3284,\"materials\":1,\"bounds\":{\"min\":[-1.089633584022522,0.0000015800260524390097,-0.7999913062175302],\"max\":[1.089633584022522,2.07684645006428,0.7999913062175302]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":96604,\"triangles\":3284,\"materials\":1,\"bounds\":{\"min\":[-1.089633584022522,0.0000015800260524390097,-0.7999913062175302],\"max\":[1.089633584022522,2.07684645006428,0.7999913062175302]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "notes": [
+    "Three large fruit groups and trays; open canopy; four grounded feet; no added ground plate.",
+    "Uniform target envelope fit retains original proportions."
+  ]
+}

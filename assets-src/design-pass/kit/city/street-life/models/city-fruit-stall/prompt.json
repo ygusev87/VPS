@@ -1,0 +1,21 @@
+{
+  "id": "city-fruit-stall",
+  "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, softly rounded bevels, clean coherent chunky geometry, warm cream with turquoise, coral and golden-yellow accents, matching a friendly cream pastel toy-town kiosk. Elevated three-quarter view showing the whole front and right side. Center object with generous white margins, plain pure white studio background, soft even neutral light, minimal contact shadow. No people, animals, readable text, numbers, logos, pavement, grass, diorama, broad baseplate or separate decorative props. Make the object reconstructible under 4000 triangles with one baked opaque texture; no glass or translucent materials. Subject: compact open-front fruit stall, width:height:depth about 2.4:2.4:1.6. Warm cream wooden counter with dark turquoise panels, four sturdy corner posts supporting a simple coral/cream striped pitched canvas awning. The counter holds exactly three inset shallow produce trays: a clustered mound of red apples, golden pears, and orange citrus. Fruits form simple large rounded grouped shapes, not hundreds of tiny fruit. Empty back opening under awning, low connected counter body, legs all on the same floor. Front service side faces camera. No price signs, emblems, wheels, cash register or extra crates on the ground.",
+  "method": "built-in image_gen",
+  "useCase": "stylized-concept",
+  "calls": 1,
+  "source": "refs/city-fruit-stall.png",
+  "sha256": "df04dfa22a47491bfe075f719ec259d146f6dd8faad2f6823707888941f6f001",
+  "bytes": 1646909,
+  "pixelSize": [
+    1374,
+    1145
+  ],
+  "visualReview": "accepted-as-reference-not-3d-geometry",
+  "reviewNotes": "Connected counter, three large produce trays and open canopy. Keep apples/pears/citrus readable after simplification.",
+  "targetXYZ": [
+    2.4,
+    2.4,
+    1.6
+  ]
+}
