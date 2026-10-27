@@ -1,5 +1,5 @@
 {
-  "status": "proposal-not-integrated",
+  "status": "placed-in-city-decor-awaiting-native-review",
   "items": [
     {
       "id": "city-icecream-kiosk",
@@ -14,10 +14,10 @@
         2.2
       ],
       "pad": [
-        -8.8,
-        5.6,
-        -5.2,
-        8.45
+        -9,
+        5.5,
+        -5,
+        8.5
       ],
       "label": "Киоск у южного края парка",
       "access": "front +Z, vendor in front; preserve lower park walkway"
@@ -35,10 +35,10 @@
         2
       ],
       "pad": [
-        -27.8,
-        -19.6,
-        -24.2,
-        -15.7
+        -28,
+        -19.5,
+        -24,
+        -15.5
       ],
       "label": "Цветы у северо-западного тротуара",
       "access": "front +Z toward ring; apron must connect to existing sidewalk"
@@ -56,10 +56,10 @@
         1.8
       ],
       "pad": [
-        -15.3,
-        22.2,
-        -10.7,
-        24.8
+        -15.5,
+        22,
+        -10.5,
+        25
       ],
       "label": "Остановка севернее трамвая",
       "access": "front +Z toward rails; keep road edge z25 free"
@@ -70,7 +70,8 @@
     "Keep existing dressing keep/lines checks; do not enlarge fit above4 to bypass filters.",
     "Main to relocate only existing shrubs overlapping approved pads.",
     "Claude to preserve free pedestrian access outside prop footprint, and keep tram/cars on road.",
-    "Native game-camera occlusion check after final models required."
+    "Native game-camera occlusion check after final models required.",
+    "Claude new pavementRuns must exclude plaza/prop footprints: tram route z24.1 otherwise crosses shelter posts."
   ],
   "frame": {
     "source": "border-concept-v1.png",

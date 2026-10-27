@@ -57,7 +57,7 @@
         3,
         2.2
       ],
-      "status": "working",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-icecream-kiosk.glb"
     },
     {
@@ -68,7 +68,7 @@
         2.7,
         2
       ],
-      "status": "working",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-flower-kiosk.glb"
     },
     {
@@ -79,7 +79,7 @@
         2.7,
         1.8
       ],
-      "status": "working",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-tram-shelter.glb"
     },
     {
@@ -180,7 +180,7 @@
         1.6,
         1.7
       ],
-      "status": "queued",
+      "status": "working-model-worker",
       "publicPath": "public/models/city-ped-stroller.glb",
       "motion": "static step pose; runtime root walk/bob by Claude"
     },
@@ -192,7 +192,7 @@
         1.55,
         0.8
       ],
-      "status": "queued",
+      "status": "working-model-worker",
       "publicPath": "public/models/city-ped-senior.glb",
       "motion": "static step pose; runtime root walk/bob by Claude"
     },
@@ -204,7 +204,7 @@
         1.8,
         0.7
       ],
-      "status": "queued",
+      "status": "working-model-worker",
       "publicPath": "public/models/city-ped-balloon.glb",
       "motion": "static step pose; runtime root walk/bob by Claude"
     },
@@ -216,7 +216,7 @@
         1.6,
         1.2
       ],
-      "status": "queued",
+      "status": "working-model-worker",
       "publicPath": "public/models/city-ped-dog-walker.glb",
       "motion": "static step pose; runtime root walk/bob by Claude"
     },
@@ -228,7 +228,7 @@
         1.6,
         0.75
       ],
-      "status": "queued",
+      "status": "working-model-worker",
       "publicPath": "public/models/city-ped-postman.glb",
       "motion": "static step pose; runtime root walk/bob by Claude"
     },
@@ -240,7 +240,7 @@
         1.6,
         0.7
       ],
-      "status": "queued",
+      "status": "working-model-worker",
       "publicPath": "public/models/city-ped-icecream-vendor.glb",
       "motion": "stationary at kiosk"
     }
@@ -250,8 +250,14 @@
     "noNewCap": true,
     "lastHistoricalBalance": 5275,
     "liveBalanceRequiredPerOrder": true,
-    "newOrdersConfirmedByMain": 0,
-    "ledgerOwner": "model worker"
+    "newOrdersConfirmedByMain": 3,
+    "ledgerOwner": "model worker",
+    "reportedByWorker": {
+      "spent": 75,
+      "balance": 5200,
+      "attempts": 3,
+      "retries": 0
+    }
   },
   "acceptanceLimitations": [
     "No new GLB delivered yet",

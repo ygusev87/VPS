@@ -1,0 +1,51 @@
+{
+  "scope": "first three new props only, static placement review",
+  "snapshot": "/private/tmp/electro-city-street-ltnqmlpv",
+  "citySourceSha256": "eccfc55b9114f9ef1b3aa227a4a73b57cd00b5bd0710d86bf85b845307f7b875",
+  "nativeViewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "cameraControl": "UI pan/show-all/zoom only",
+  "browserErrors": 0,
+  "browserWarnings": 0,
+  "tests": {
+    "files": 17,
+    "tests": 88,
+    "pass": true
+  },
+  "typecheck": "pass",
+  "findings": [
+    {
+      "id": "park-plaza",
+      "status": "open",
+      "evidence": [
+        "icecream-1024.jpg"
+      ],
+      "detail": "Icecream PLAZA remains covered by the park-lawn decal: greenBlocks excludes the entire park. Add a real paving overlay at the correct height or clip park lawn locally."
+    },
+    {
+      "id": "pedestrian-prop-path",
+      "status": "open-code-inference",
+      "detail": "Snapshot pavementRuns only excludes keep; tram pavement z24.1 crosses shelter footprint. Claude m0503 asked to exclude expanded prop/plaza bounds. No person-post intersection observed."
+    }
+  ],
+  "models": {
+    "city-flower-kiosk": "static placement accepted, footprint clear and paving visible in native1024/390",
+    "city-tram-shelter": "static placement accepted, platform and tram separation visible in native1024/390; future pedestrian route pending",
+    "city-icecream-kiosk": "asset accepted; in-map paving fix pending, mobile close-up acceptance deferred"
+  },
+  "notTested": [
+    "full14-task playthrough",
+    "physical iPad",
+    "offline PWA",
+    "sustained frame time",
+    "future pedestrian GLBs"
+  ]
+}

@@ -1,7 +1,7 @@
 {
-  "generatedAt": "2026-10-27T10:10:44.674Z",
+  "generatedAt": "2026-10-27T10:32:15.322Z",
   "status": "preflight-pass-integration-pending",
-  "sourceSha256": "f1c57f8d904677d3c30199307dcb70150d86398dc6379a8ff71d20045b9ba2f5",
+  "sourceSha256": "eccfc55b9114f9ef1b3aa227a4a73b57cd00b5bd0710d86bf85b845307f7b875",
   "checks": [
     "current source named anchors plus computed non-roaming critter homes",
     "same 1.6 + width/2 keep/line rule, with conservative extra anchors",
@@ -98,33 +98,9 @@
       "existingDecorNearPad": [
         {
           "model": "bush-lite",
-          "x": -14.4,
-          "z": 23.03,
-          "estimatedSize": 1.692
-        },
-        {
-          "model": "bush-lite",
-          "x": -12.6,
-          "z": 23.03,
-          "estimatedSize": 1.764
-        },
-        {
-          "model": "bush-lite",
-          "x": -10.8,
+          "x": -16.2,
           "z": 23.03,
           "estimatedSize": 1.62
-        },
-        {
-          "model": "flower-cluster",
-          "x": -13.629,
-          "z": 22.15,
-          "estimatedSize": 0.498
-        },
-        {
-          "model": "flower-cluster",
-          "x": -11.057,
-          "z": 22.15,
-          "estimatedSize": 0.463
         }
       ]
     }

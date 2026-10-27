@@ -1,0 +1,61 @@
+{
+  "scope": "asset-only main acceptance",
+  "models": [
+    {
+      "id": "city-icecream-kiosk",
+      "bytes": 85388,
+      "sha256": "d3bc60629630c1ae50a5ab3e270211017dcae7826e426fea336a305f004ed0d7",
+      "triangles": 3090,
+      "materials": 1,
+      "skins": 0,
+      "externalImages": [],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "visualReview": [
+        "qa/1024-view3.jpg",
+        "qa/390.jpg"
+      ],
+      "decision": "accepted for integration; full city placement pending"
+    },
+    {
+      "id": "city-flower-kiosk",
+      "bytes": 113000,
+      "sha256": "f666d3eadac981bfd1896e5bcbdb915ac62334221966a61a42a80f6111004134",
+      "triangles": 3299,
+      "materials": 1,
+      "skins": 0,
+      "externalImages": [],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "visualReview": [
+        "qa/1024-view3.jpg",
+        "qa/390.jpg"
+      ],
+      "decision": "accepted for integration; full city placement pending"
+    },
+    {
+      "id": "city-tram-shelter",
+      "bytes": 80576,
+      "sha256": "fc3fea6aa94d68f8946680fa6031dd0c299f894877ca7170936e23dfb3d72b83",
+      "triangles": 2996,
+      "materials": 1,
+      "skins": 0,
+      "visualReview": [
+        "qa/1024-view3.jpg",
+        "qa/390.jpg"
+      ],
+      "geometryEvidence": "worker validated front approach only,49/49rays,no obstructing triangles",
+      "decision": "accepted for integration; full city placement pending"
+    }
+  ],
+  "runtimeAcceptance": false,
+  "physicalIPad": false
+}

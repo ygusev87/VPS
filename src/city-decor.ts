@@ -6,6 +6,10 @@
 import type { DecorGroup } from './decor';
 
 export const DECOR: DecorGroup[] = [
+  // Street-life props: front +Z, dimensions and clearances in street-life/layout-proposal.json.
+  { model: 'city-icecream-kiosk', fit: { width: 2.8 }, items: [[-7, 7, 0, 1]] },
+  { model: 'city-flower-kiosk', fit: { width: 2.7 }, items: [[-26, -18, 0, 1]] },
+  { model: 'city-tram-shelter', fit: { width: 3.8 }, items: [[-13, 23.6, 0, 1]] },
   { model: 'bakery', fit: { width: 7, rotateY: -Math.PI / 2 }, items: [[-12, -27, 0, 1]] },
   { model: 'school', fit: { width: 9, rotateY: -Math.PI / 2 }, items: [[11, -27.754, 0, 1]] },
   { model: 'grandma-house', fit: { width: 6.2, rotateY: -Math.PI / 2 }, items: [[-44, -27, 0, 1]] },
@@ -177,9 +181,6 @@ export const DECOR: DecorGroup[] = [
     [-19.8, 23.03, 0, 0.94],
     [-18, 23.03, 0, 0.98],
     [-16.2, 23.03, 0, 0.9],
-    [-14.4, 23.03, 0, 0.94],
-    [-12.6, 23.03, 0, 0.98],
-    [-10.8, 23.03, 0, 0.9],
     [-9, 23.03, 0, 0.94],
     [-7.2, 23.03, 0, 0.98],
     [-21.88, 19.088, 1.571, 0.94],
@@ -344,8 +345,6 @@ export const DECOR: DecorGroup[] = [
     [-5.914, 17.85, 6.193, 0.967],
     [-18.771, 22.15, 5.735, 0.875],
     [-16.2, 22.15, 1.137, 0.937],
-    [-13.629, 22.15, 0.844, 0.958],
-    [-11.057, 22.15, 1.778, 0.89],
     [-8.486, 22.15, 0.587, 0.964],
     [-5.914, 22.15, 1.845, 0.864],
     [-21, 19.878, 1.191, 0.974],
@@ -441,3 +440,10 @@ export const SOIL: Rect[] = [
 ];
 export const MEADOW: Ellipse[] = [];
 export const PONDS: Ellipse[] = [];
+
+// Explicit paved aprons for compact street props; aligned to the 0.5-unit lawn grid.
+export const PLAZAS: { x0: number; z0: number; x1: number; z1: number }[] = [
+  { x0: -9, z0: 5.5, x1: -5, z1: 8.5 },
+  { x0: -28, z0: -19.5, x1: -24, z1: -15.5 },
+  { x0: -15.5, z0: 22, x1: -10.5, z1: 25 },
+];
