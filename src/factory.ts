@@ -916,7 +916,9 @@ export class FactoryMap extends StoryMap {
         this.hooks.say('lorry2Happy');
         this.hooks.helped?.('lorry2', this.lorry2.group.position.clone().setY(2.2));
       }
+      const was = this.drivenOff2;
       this.drivenOff2 = Math.min(1, this.drivenOff2 + dt * 0.15);
+      this.roll(this.lorry2, (this.drivenOff2 - was) * 20);
     }
     const p = this.lorry2.group.position;
     p.set(LORRY2.x + this.drivenOff2 * 20, 0, LORRY2.z);
@@ -1026,12 +1028,28 @@ export class FactoryMap extends StoryMap {
     held.forEach((b, i) => (b.visible = i < n));
   }
 
+  /** A lorry's wheels (Codex's model has them as their own nodes) turn as it drives: `dist` is how far it went this frame. */
+  private roll(lorry: Critter, dist: number) {
+    if (!dist) return;
+    let wheels = lorry.group.userData.wheels as THREE.Object3D[] | undefined;
+    if (!wheels) {
+      wheels = [];
+      lorry.group.traverse((o) => /^wheel-/.test(o.name) && wheels!.push(o));
+      lorry.group.userData.wheels = wheels;
+    }
+    for (const w of wheels) w.rotation.x += dist / 0.45;
+  }
+
   /** Loaded up, the lorry hoots and drives off out of the hall. */
   private updateLorry(dt: number) {
     this.cargo(this.lorry, Math.min(3, this.loaded));
     this.cargo(this.lorry2, Math.min(3, this.loaded2));
     // Full (three boxes), it drives off.
-    if (this.loaded >= 3) this.drivenOff = Math.min(1, this.drivenOff + dt * 0.15);
+    if (this.loaded >= 3) {
+      const was = this.drivenOff;
+      this.drivenOff = Math.min(1, this.drivenOff + dt * 0.15);
+      this.roll(this.lorry, (this.drivenOff - was) * 40);
+    }
     const p = this.lorry.group.position;
     p.set(LORRY.x, 0, LORRY.z + this.drivenOff * 40);
     this.lorry.home.copy(p);
