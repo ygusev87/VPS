@@ -1,0 +1,49 @@
+{
+  "createdAt": "2026-10-27T14:45:18.135828+00:00",
+  "status": "lathe-bigGear-overlap-confirmed-in-fixture",
+  "sourceSHA": {
+    "src/parts/factory.ts": "853e315e8cf2d3c28f49cd8f8bd7ae52f4a54e84a23b3d8c3c7f0575904e6aec",
+    "src/parts/mech.ts": "74886b941f819264e1b78fb4ae6b6faa4e0b6641a273b779ef071795f6432973",
+    "src/parts/workshop.ts": "643917d90206f8e448ccef0c4fb442f4e4d46afdd7a168664901d04889e72e0a",
+    "src/parts/kit.ts": "32edbaa0e6375aea7c96994014cba9e91d7690a1bb2887c32cad3cf9f52b6509"
+  },
+  "loaderSHA": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+  "fixtureSHA": "97d23697acf00de39406ca1bfc1ef55e01f511ebb7c54f2077efa58883d09092",
+  "method": "Unmodified game loadModels/model, new Lathe(false), new Gear(true), gear root at(-1.1,0,-.45), actual gearAtY.51. Native IAB view switching and phase buttons; no injected game state. Read-only extracted source geometry plus decoded GLB body calculation.",
+  "frames": [
+    "qa/lathe-1180-oblique.jpg",
+    "qa/lathe-1180-top.jpg",
+    "qa/lathe-1180-top90.jpg",
+    "qa/lathe-390-oblique.jpg",
+    "qa/lathe-390-side.jpg"
+  ],
+  "viewports": [
+    [
+      1180,
+      820
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "observations": "Gear extends under the headstock/foot and hub meets its rear edge; top views0/90deg and rear/low side views recorded. Some full gear or dial bounds are cropped by diagnostic camera; these are contact-focused frames, not full-model presentation approval.",
+  "consoleErrorsWarnings": [],
+  "overflow390": false,
+  "confirmedWitness": {
+    "bodyTriangleIndex": 877,
+    "pointPartLocal": [
+      -1.0541581469161045,
+      0.5055610827967162,
+      -0.20586565752128666
+    ],
+    "radiusFromGearAxis": 0.24840099168819588,
+    "hubGuaranteedInteriorRadius": 0.2942355841209691,
+    "radialInteriorMargin": 0.04583459243277324,
+    "verticalInteriorMargin": 0.09556108279671618,
+    "meaning": "A point on the rendered lathe body surface is strictly inside the current16-sided hub at everyYrotation; this confirms a local overlap beyond a conservative outer rim sweep. Not a global penetration maximum."
+  },
+  "limits": "No actual full factory playthrough or physical iPad. Swept rim/body counts are conservative cylinder intersections, not exact per-phase tooth triangle collisions. The strict hub interior witness independently confirms a local surface overlap for every rotation. Not a global penetration maximum. No old accepted asset has been changed.",
+  "checks": "88tests/17files and TypeScript PASS",
+  "next": "Claude coordinate runtime axis/shaft placement with station spots and motor separation1.4; then main check corrected assembly before any cosmetic gear order."
+}
