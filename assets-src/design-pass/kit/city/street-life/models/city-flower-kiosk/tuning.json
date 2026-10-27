@@ -1,0 +1,17 @@
+{
+  "reviewed": true,
+  "size": [
+    2.7,
+    2.7,
+    2
+  ],
+  "rotationY": 0,
+  "targetTriangles": 3300,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "rawOrientationReview": "Native GLTFLoader +Z view shows front service face/icon; rotation0. Raw mesh intact, no ground platform."
+}

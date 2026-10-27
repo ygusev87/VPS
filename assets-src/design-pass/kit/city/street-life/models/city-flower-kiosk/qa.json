@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":113000,\"triangles\":3299,\"materials\":1,\"bounds\":{\"min\":[-1.350000023841858,0,-1.0000061213626386],\"max\":[1.350000023841858,2.700000047683716,1.0000061213626386]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":113000,\"triangles\":3299,\"materials\":1,\"bounds\":{\"min\":[-1.350000023841858,0,-1.0000061213626386],\"max\":[1.350000023841858,2.700000047683716,1.0000061213626386]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":113000,\"triangles\":3299,\"materials\":1,\"bounds\":{\"min\":[-1.350000023841858,0,-1.0000061213626386],\"max\":[1.350000023841858,2.700000047683716,1.0000061213626386]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":113000,\"triangles\":3299,\"materials\":1,\"bounds\":{\"min\":[-1.350000023841858,0,-1.0000061213626386],\"max\":[1.350000023841858,2.700000047683716,1.0000061213626386]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":113000,\"triangles\":3299,\"materials\":1,\"bounds\":{\"min\":[-1.350000023841858,0,-1.0000061213626386],\"max\":[1.350000023841858,2.700000047683716,1.0000061213626386]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualReview": "PASS: flowers and serving face +Z, newspaper rack +X, no ground/platform, textures decoded, native 1024x768 and390x844",
+  "integration": "Standalone GLTFLoader; game placement and physical iPad pending integrator"
+}

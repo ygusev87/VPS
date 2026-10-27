@@ -21,3 +21,9 @@ All3 orders placed,75credits total,live balance5200. Shelter taskee550979-7fbd-4
 ## READY — city-icecream-kiosk
 
 public/models/city-icecream-kiosk.glb: 85388bytes,3090tri,1opaque material,512WebP/Meshopt,no skin. SHA256 `d3bc60629630c1ae50a5ab3e270211017dcae7826e426fea336a305f004ed0d7`. XYZ2.8×3.0×2.2;front+Z,baseY0,centreXZ0,width2.8. QA native390×844and1024×768 allPASS,0browsererrors/overflow. Evidence city-icecream-kiosk/qa/*.jpg,report.json,qa.json,README.md. Ready for main to accept and pass to Claude; other2 still generating.
+
+Icecream commitc59defc;88tests and TypeScriptPASS. Flower3439tri and shelter3442tri completed in Studio on first attempt, raw downloaded; orientation/optimization/QA now underway. No retries or extra credits.
+
+## READY — city-flower-kiosk
+
+public/models/city-flower-kiosk.glb:113000bytes,3299tri,1OPAQUE material,512WebP/Meshopt,no skin. SHA256 `f666d3eadac981bfd1896e5bcbdb915ac62334221966a61a42a80f6111004134`. XYZ2.7×2.7×2.0;front+Z,newsrack+X,baseY0,centreXZ0,width2.7. Native390×844and1024×768allPASS,0browsererrors/overflow,validator0errors/0warnings. Evidence city-flower-kiosk/qa/*.jpg,report.json,qa.json,README.md. Ready for main to accept/pass to Claude. Shelter final QA underway;clearfrontvolume2.5×1.63×.55passed0obstructionsand49/49rays. Codexremaining41%.

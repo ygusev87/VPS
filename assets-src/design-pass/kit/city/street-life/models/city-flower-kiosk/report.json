@@ -1,0 +1,96 @@
+{
+  "name": "city-flower-kiosk",
+  "source": "assets-src/raw/city-street-life-2026-10-27/city-flower-kiosk.glb",
+  "sourceSha256": "0e0d31041fdcd52bfe3f58b8c1174461fdb6a6f76eee7ef94646a673f4a6318b",
+  "sourceBytes": 966320,
+  "sourceTriangles": 3439,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.370391845703125
+    ],
+    "max": [
+      0.5,
+      0.88238525390625,
+      0.370391845703125
+    ]
+  },
+  "bytes": 113000,
+  "sha256": "f666d3eadac981bfd1896e5bcbdb915ac62334221966a61a42a80f6111004134",
+  "triangles": 3299,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -1.350000023841858,
+      0,
+      -1.0000061213626386
+    ],
+    "max": [
+      1.350000023841858,
+      2.700000047683716,
+      1.0000061213626386
+    ]
+  },
+  "size": [
+    2.700000047683716,
+    2.700000047683716,
+    2.000012242725277
+  ],
+  "contract": {
+    "reviewed": true,
+    "size": [
+      2.7,
+      2.7,
+      2
+    ],
+    "rotationY": 0,
+    "targetTriangles": 3300,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "rawOrientationReview": "Native GLTFLoader +Z view shows front service face/icon; rotation0. Raw mesh intact, no ground platform."
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Normalize XYZ; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}
