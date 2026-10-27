@@ -1,13 +1,13 @@
 {
   "task": "city-street-life",
   "request": "m0492",
-  "status": "first3props-and6people-accepted; fruit-bike-playground-accepted; five-remaining-props-in-worker",
+  "status": "all11cityprops-and6people-assets-accepted;6props-placed;runtime-integration-review-pending",
   "owners": {
     "main": [
       "manifest/layout/border concept",
       "src/city-decor.ts after model acceptance"
     ],
-    "modelWorker": "Sole Tripo operator; active worker-batch-02, eight remaining city props, accepted individually.",
+    "modelWorker": "Batch02 complete and idle; no active orders or next dispatch.",
     "claude": [
       "src/city.ts CITY_MODELS/life",
       "pedestrian routes and runtime integration"
@@ -117,7 +117,7 @@
         0.9,
         0.76
       ],
-      "status": "reference-ready-model-queued",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-street-bin.glb",
       "preliminaryTargetXYZ": [
         0.65,
@@ -135,7 +135,20 @@
         "movingGeometry": "existing procedural lid/cat, no generated cap",
         "requiredQA": "Closed/open/halfway lid and cat on native 390/1024; continuous hinge sweep; verify top opening, rest and tap/sound."
       },
-      "reference": "references/remaining/refs/city-street-bin.png"
+      "reference": "references/remaining/refs/city-street-bin.png",
+      "actualXYZ": [
+        0.7600024213475689,
+        0.8999999761581421,
+        0.7600024213475689
+      ],
+      "bytes": 85484,
+      "triangles": 3536,
+      "sha256": "178e7322c967191c2a9252ff33113c617c87b0400fd182bed2cef105feac29d1",
+      "runtimeFit": {
+        "height": 0.9,
+        "uniform": true
+      },
+      "mainReview": "remaining-props-main-review.json"
     },
     {
       "id": "city-flower-planter",
@@ -145,9 +158,22 @@
         0.85,
         0.9
       ],
-      "status": "reference-ready-model-queued",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-flower-planter.glb",
-      "reference": "references/remaining/refs/city-flower-planter.png"
+      "reference": "references/remaining/refs/city-flower-planter.png",
+      "actualXYZ": [
+        0.8999999761581421,
+        0.8318826648122091,
+        0.8941221113887753
+      ],
+      "bytes": 93316,
+      "triangles": 3820,
+      "sha256": "b70711c1692b29deb98645ba99a95a0fb7809a419ee885079450b43e4f26e068",
+      "runtimeFit": {
+        "width": 0.9,
+        "uniform": true
+      },
+      "mainReview": "remaining-props-main-review.json"
     },
     {
       "id": "city-bike-rack",
@@ -184,9 +210,22 @@
         2.2,
         0.9
       ],
-      "status": "reference-ready-model-queued",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-poster-column.glb",
-      "reference": "references/remaining/refs/city-poster-column.png"
+      "reference": "references/remaining/refs/city-poster-column.png",
+      "actualXYZ": [
+        0.9000114110055527,
+        1.7322999238967896,
+        0.8966279094604191
+      ],
+      "bytes": 80476,
+      "triangles": 3592,
+      "sha256": "cab75686b6f4e99cabb447409207d3395c77f02587b18c8468c0cc4f1b9f20a5",
+      "runtimeFit": {
+        "width": 0.9,
+        "uniform": true
+      },
+      "mainReview": "remaining-props-main-review.json"
     },
     {
       "id": "city-drinking-fountain",
@@ -196,9 +235,22 @@
         1,
         0.7
       ],
-      "status": "reference-ready-model-queued",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-drinking-fountain.glb",
-      "reference": "references/remaining/refs/city-drinking-fountain.png"
+      "reference": "references/remaining/refs/city-drinking-fountain.png",
+      "actualXYZ": [
+        0.6985904661490098,
+        0.9193426966667175,
+        0.6999933145890053
+      ],
+      "bytes": 73952,
+      "triangles": 3808,
+      "sha256": "6ddb7af396a093f641e47b679106db914f1b90c60d31c7adab68411c983b2421",
+      "runtimeFit": {
+        "depth": 0.7,
+        "uniform": true
+      },
+      "mainReview": "remaining-props-main-review.json"
     },
     {
       "id": "city-playground",
@@ -235,7 +287,7 @@
         1.22,
         0.6
       ],
-      "status": "reference-ready-model-queued",
+      "status": "accepted-for-integration",
       "publicPath": "public/models/city-postbox.glb",
       "preliminaryTargetXYZ": [
         0.65,
@@ -253,7 +305,20 @@
         "movingGeometry": "existing procedural flag/letter, generated shell only",
         "requiredQA": "Flag sweep and letter emergence, clear surrounding basket/house/route. Existing position is a known clearance concern."
       },
-      "reference": "references/remaining/refs/city-postbox.png"
+      "reference": "references/remaining/refs/city-postbox.png",
+      "actualXYZ": [
+        0.44001465920333543,
+        1.2200000286102295,
+        0.6000030659216239
+      ],
+      "bytes": 67388,
+      "triangles": 3501,
+      "sha256": "2352c8426f5b526c22c8c757a5864a0dd2c947a6f71b4f524cc981c6576e5fe6",
+      "runtimeFit": {
+        "height": 1.22,
+        "uniform": true
+      },
+      "mainReview": "remaining-props-main-review.json"
     }
   ],
   "pedestrians": [
@@ -396,6 +461,14 @@
       "balance": 5050,
       "attempts": 9,
       "retries": 0
+    },
+    "remainingBatch02": {
+      "credits": 200,
+      "balanceBefore": 4925,
+      "balanceAfter": 4725,
+      "attempts": 8,
+      "retries": 0,
+      "basis": "worker recorded order ledger; not live main read"
     }
   },
   "acceptanceLimitations": [

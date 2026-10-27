@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-10-27T12:00:47.352422+00:00",
+  "checkedAt": "2026-10-27T12:23:38.338229+00:00",
   "items": [
     {
       "name": "city-fruit-stall",
@@ -106,14 +106,222 @@
         "Full city placement/routes/lawn masking not yet accepted.",
         "Physical iPad/PWA not checked."
       ]
+    },
+    {
+      "name": "city-flower-planter",
+      "status": "accepted-for-integration",
+      "workerCommit": "b6d1c94",
+      "sha256": "b70711c1692b29deb98645ba99a95a0fb7809a419ee885079450b43e4f26e068",
+      "bytes": 93316,
+      "triangles": 3820,
+      "size": [
+        0.8999999761581421,
+        0.8318826648122091,
+        0.8941221113887753
+      ],
+      "mainNumericAudit": "remaining-props-main-audit.json",
+      "visualFrames": [
+        "1024-view0.jpg",
+        "390-view0.jpg"
+      ],
+      "visualResult": "Five broad blooms, compact connected foliage and intact pot silhouette; no ground plate.",
+      "localGeometryChanges": "Uniform containment, rotation0, bottom 1mm flattened only",
+      "floorContacts": {
+        "workerEvidence": "One connected pot base reaches Y0 within 0.0001; separate tiny stems were not added",
+        "mainRepeated": false
+      },
+      "runtimeFit": {
+        "width": 0.9,
+        "uniformOnly": true
+      },
+      "spend": {
+        "credits": 25,
+        "balanceBefore": 4850,
+        "balanceAfter": 4825,
+        "basis": "worker recorded live order ledger; main did not reopen Studio"
+      },
+      "limitations": [
+        "Main inspected saved native worker frames and independent decoded public geometry; not a new main browser assembly session.",
+        "No full city integration, tap/sound/rest or physical iPad/PWA acceptance."
+      ]
+    },
+    {
+      "name": "city-poster-column",
+      "status": "accepted-for-integration",
+      "workerCommit": "b6d1c94",
+      "sha256": "cab75686b6f4e99cabb447409207d3395c77f02587b18c8468c0cc4f1b9f20a5",
+      "bytes": 80476,
+      "triangles": 3592,
+      "size": [
+        0.9000114110055527,
+        1.7322999238967896,
+        0.8966279094604191
+      ],
+      "mainNumericAudit": "remaining-props-main-audit.json",
+      "visualFrames": [
+        "1024-view0.jpg",
+        "390-view0.jpg"
+      ],
+      "visualResult": "Music note faces +Z; flat pictorial sun and music graphics are legible. Entire cap and base included in width; no ground plate.",
+      "localGeometryChanges": "RotationY+pi/4 aligns music panel front; uniform containment; bottom1mm flattened only",
+      "floorContacts": {
+        "workerEvidence": "One connected base reaches Y0 within0.0001",
+        "mainRepeated": false
+      },
+      "runtimeFit": {
+        "width": 0.9,
+        "uniformOnly": true
+      },
+      "spend": {
+        "credits": 25,
+        "balanceBefore": 4825,
+        "balanceAfter": 4800,
+        "basis": "worker recorded live order ledger; main did not reopen Studio"
+      },
+      "limitations": [
+        "Main inspected saved native worker frames and independent decoded public geometry; not a new main browser assembly session.",
+        "No full city integration, tap/sound/rest or physical iPad/PWA acceptance."
+      ]
+    },
+    {
+      "name": "city-drinking-fountain",
+      "status": "accepted-for-integration",
+      "workerCommit": "b6d1c94",
+      "sha256": "6ddb7af396a093f641e47b679106db914f1b90c60d31c7adab68411c983b2421",
+      "bytes": 73952,
+      "triangles": 3808,
+      "size": [
+        0.6985904661490098,
+        0.9193426966667175,
+        0.6999933145890053
+      ],
+      "mainNumericAudit": "remaining-props-main-audit.json",
+      "visualFrames": [
+        "1024-view0.jpg",
+        "390-view0.jpg"
+      ],
+      "visualResult": "Empty concave basin, integrated spout facing+Z and button; dry decorative asset. Four accent corners connect to its single base; no ground plate.",
+      "localGeometryChanges": "Uniform containment, rotation0, bottom1mm flattened only",
+      "floorContacts": {
+        "workerEvidence": "Single connected base reachesY0; all four accent corners remain attached",
+        "mainRepeated": false
+      },
+      "runtimeFit": {
+        "depth": 0.7,
+        "uniformOnly": true
+      },
+      "spend": {
+        "credits": 25,
+        "balanceBefore": 4800,
+        "balanceAfter": 4775,
+        "basis": "worker recorded live order ledger; main did not reopen Studio"
+      },
+      "limitations": [
+        "Main inspected saved native worker frames and independent decoded public geometry; not a new main browser assembly session.",
+        "No full city integration, tap/sound/rest or physical iPad/PWA acceptance."
+      ],
+      "additionalWorkerEvidence": "basin.json: three rim rays sit at least0.07724 above centre, proving actual concavity; no plumbing functionality claimed.",
+      "mainRepeatedAdditionalNumericalQA": false
+    },
+    {
+      "name": "city-street-bin",
+      "status": "accepted-for-integration",
+      "workerCommit": "40a402b",
+      "sha256": "178e7322c967191c2a9252ff33113c617c87b0400fd182bed2cef105feac29d1",
+      "bytes": 85484,
+      "triangles": 3536,
+      "size": [
+        0.7600024213475689,
+        0.8999999761581421,
+        0.7600024213475689
+      ],
+      "mainNumericAudit": "remaining-props-main-audit.json",
+      "visualFrames": [
+        "1024-view0.jpg",
+        "assembly-1024-k0.jpg",
+        "assembly-1024-k0.125.jpg",
+        "assembly-390-k0.6.jpg"
+      ],
+      "visualResult": "Open shell only, no generated lid or cat; exterior top .76/bottom .64/height .9; no ground plate.",
+      "localGeometryChanges": "Dimensional XYZ fit (not uniform), bottom diameter fit.64 in Y0..05 with linear blend to unmodified profile byY.15, bottom1mm snap; recomputed area-weighted smooth normals across UV seams; no triangles cut or added",
+      "floorContacts": {
+        "workerEvidence": "One connected bottom ring/base meetsY0 within.0001",
+        "mainRepeated": false
+      },
+      "runtimeFit": {
+        "height": 0.9,
+        "uniformOnly": true
+      },
+      "spend": {
+        "credits": 25,
+        "balanceBefore": 4775,
+        "balanceAfter": 4750,
+        "basis": "worker recorded live order ledger; main did not reopen Studio"
+      },
+      "limitations": [
+        "Main inspected saved native worker frames and independent decoded public geometry; not a new main browser assembly session.",
+        "No full city integration, tap/sound/rest or physical iPad/PWA acceptance."
+      ],
+      "additionalWorkerEvidence": "shell-clearance.json: entire free cylinder aboveY.5 diameter.58253; cat radial clearance.02085. Continuous lid sweep certified with inflated convex planes: contact limited to top12.1mm rim atangles0..0.26rad, no deeper collision and no contact beyond.26; contact narrower than original coded shell baseline. Own native assembly preserves exact geometry/pivots/motion from src/life.ts. See assembly.mjs and assembly screenshots.",
+      "mainRepeatedAdditionalNumericalQA": false,
+      "assemblySourceReviewed": "Moving-part dimensions/pivots/formulas in assembly.mjs compared with the frozen src/life.ts; toy rest/tap/sound remain runtime integration checks."
+    },
+    {
+      "name": "city-postbox",
+      "status": "accepted-for-integration",
+      "workerCommit": "40a402b",
+      "sha256": "2352c8426f5b526c22c8c757a5864a0dd2c947a6f71b4f524cc981c6576e5fe6",
+      "bytes": 67388,
+      "triangles": 3501,
+      "size": [
+        0.44001465920333543,
+        1.2200000286102295,
+        0.6000030659216239
+      ],
+      "mainNumericAudit": "remaining-props-main-audit.json",
+      "visualFrames": [
+        "1024-view0.jpg",
+        "assembly-1024-k0.125.jpg",
+        "assembly-390-k0.6.jpg"
+      ],
+      "visualResult": "Static shell/post only, no generated flag or letter; front door+Z, back has smaller painted door treatment; no ground plate.",
+      "localGeometryChanges": "Dimensional XYZ fit to .44×1.22×.6 (not uniform); source normals transformed via inverse transpose; bottom1mm snap only; no triangles cut or added",
+      "floorContacts": {
+        "workerEvidence": "Single post base meetsY0 within.0001",
+        "mainRepeated": false
+      },
+      "runtimeFit": {
+        "height": 1.22,
+        "uniformOnly": true
+      },
+      "spend": {
+        "credits": 25,
+        "balanceBefore": 4750,
+        "balanceAfter": 4725,
+        "basis": "worker recorded live order ledger; main did not reopen Studio"
+      },
+      "limitations": [
+        "Main inspected saved native worker frames and independent decoded public geometry; not a new main browser assembly session.",
+        "No full city integration, tap/sound/rest or physical iPad/PWA acceptance."
+      ],
+      "additionalWorkerEvidence": "shell-clearance.json: continuous flag rotation0..-pi/2 has >=.0069595 lateral separation in sweptY/Z region; original pivot(.24,.95,.1). Letter emergence intersection intentionally retained; letter fully beyond shell atf>.06529 by conservative sphere bound. Own native assembly preserves geometry and motion from src/life.ts.",
+      "mainRepeatedAdditionalNumericalQA": false,
+      "assemblySourceReviewed": "Moving-part dimensions/pivots/formulas in assembly.mjs compared with the frozen src/life.ts; toy rest/tap/sound remain runtime integration checks."
     }
   ],
   "validation": {
     "tests": 88,
     "testFiles": 17,
     "typecheck": "PASS",
-    "time": "2026-10-27 18:57 Asia/Bangkok"
+    "time": "2026-10-27 18:57 Asia/Bangkok",
+    "newFiveReview": {
+      "numeric": "PASS all five independent decoded public GLBs",
+      "savedNativeFramesInspected": 13,
+      "tests": "88/88 in17files and typecheck passed19:18:59 Bangkok; no runtime changes during this acceptance",
+      "workerBatchFinal": "40a402b",
+      "spending": "8 orders,200credits,4925→4725; no retries. Five accepted now cost125. Ledger historical, not a fresh main balance read."
+    }
   },
-  "totalBytes": 286928,
-  "totalTriangles": 10635
+  "totalBytes": 687544,
+  "totalTriangles": 28892
 }

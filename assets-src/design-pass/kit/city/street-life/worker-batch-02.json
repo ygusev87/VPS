@@ -1,7 +1,7 @@
 {
   "task": "city-street-life",
-  "status": "dispatched-active",
-  "prerequisite": "Do not start until main explicitly dispatches after existing factory-batch-01 is finished/stopped. Sole current worker remains on factory forklift.",
+  "status": "completed-assets-accepted-awaiting-runtime-integration",
+  "prerequisite": "Historical: dispatched after factory-batch-01 finished. Batch now complete; no further orders authorized by this card.",
   "base": "/Users/gusev/gameios",
   "operatorThread": "01a17696-ff06-7a43-886e-af0ed6098802",
   "authorization": "Standing owner authorization covers project reference uploads and necessary existing Studio credits; check live price/balance before each order, ledger actual cost. No purchases, topups, paid API. Suitable free retries first.",
@@ -183,5 +183,12 @@
     "authorization": "Main direct task message after worker idle cursor90; owner standing project authorization.",
     "previousBatch": "factory-batch-01 completed with four accepted workers and preserved blocked forklift candidate",
     "mainReferenceCommit": "b2e215e"
+  },
+  "completion": {
+    "workerCommit": "40a402b",
+    "mainReview": "remaining-props-main-review.json",
+    "checkedAt": "2026-10-27T12:23:38.338229+00:00",
+    "cursor": "eeba883f-88df-49a6-8966-cbe9a745f984:94",
+    "workerStatus": "idle"
   }
 }

@@ -51,6 +51,12 @@
   "limitations": [
     "Only new3placements reviewed; oldacceptedassets unchanged.",
     "Snapshot freezes prior city/life source while Claude may edit concurrently; this is not acceptance of his newer uncommitted changes.",
-    "No complete14-task playthrough, no moving pedestrian collision observation, no physical iPad/PWA."
-  ]
+    "No complete14-task playthrough, no moving pedestrian collision observation, no physical iPad/PWA.",
+    "Snapshot font requests were blocked by Vite allow list; screenshots may use fallback fonts. This does not test final typography."
+  ],
+  "serverDiagnostics": {
+    "fontRequests": "On shutdown the Vite snapshot log showed font files outside serving allow list; saved frames may use fallback font. Browser captured error/warn list was empty.",
+    "scope": "3D placement/paving/occlusion evidence retained; typography and full UI styling are not accepted by this run.",
+    "nextSnapshot": "Include the project font directory in Vite fs allow paths before the next full styling review."
+  }
 }

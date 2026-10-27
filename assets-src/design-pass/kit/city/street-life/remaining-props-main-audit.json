@@ -1,9 +1,9 @@
 {
-  "createdAt": "2026-10-27T12:00:09.584Z",
+  "createdAt": "2026-10-27T12:20:57.435Z",
   "status": "PASS",
   "method": "Main independently decoded committed public GLBs with Meshopt, calculated transformed bounds/counts and decoded embedded WebP dimensions; matched worker SHA/bytes. Contact analysis and original browser capture belong to worker.",
-  "totalBytes": 286928,
-  "totalTriangles": 10635,
+  "totalBytes": 687544,
+  "totalTriangles": 28892,
   "items": [
     {
       "name": "city-fruit-stall",
@@ -164,6 +164,276 @@
         "qaConsole": [],
         "contactPass": true,
         "floorSnap": 0.075,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "name": "city-flower-planter",
+      "publicPath": "public/models/city-flower-planter.glb",
+      "sha256": "b70711c1692b29deb98645ba99a95a0fb7809a419ee885079450b43e4f26e068",
+      "bytes": 93316,
+      "triangles": 3820,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.44999998807907104,
+          0.0000010384854665645982,
+          -0.44706105569438764
+        ],
+        "max": [
+          0.44999998807907104,
+          0.8318837032976756,
+          0.44706105569438764
+        ]
+      },
+      "size": [
+        0.8999999761581421,
+        0.8318826648122091,
+        0.8941221113887753
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "name": "city-poster-column",
+      "publicPath": "public/models/city-poster-column.glb",
+      "sha256": "cab75686b6f4e99cabb447409207d3395c77f02587b18c8468c0cc4f1b9f20a5",
+      "bytes": 80476,
+      "triangles": 3592,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.45000570550277635,
+          0,
+          -0.4483139547302096
+        ],
+        "max": [
+          0.45000570550277635,
+          1.7322999238967896,
+          0.4483139547302096
+        ]
+      },
+      "size": [
+        0.9000114110055527,
+        1.7322999238967896,
+        0.8966279094604191
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "name": "city-drinking-fountain",
+      "publicPath": "public/models/city-drinking-fountain.glb",
+      "sha256": "6ddb7af396a093f641e47b679106db914f1b90c60d31c7adab68411c983b2421",
+      "bytes": 73952,
+      "triangles": 3808,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.3492952330745049,
+          0,
+          -0.34999665729450263
+        ],
+        "max": [
+          0.3492952330745049,
+          0.9193426966667175,
+          0.34999665729450263
+        ]
+      },
+      "size": [
+        0.6985904661490098,
+        0.9193426966667175,
+        0.6999933145890053
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "name": "city-street-bin",
+      "publicPath": "public/models/city-street-bin.glb",
+      "sha256": "178e7322c967191c2a9252ff33113c617c87b0400fd182bed2cef105feac29d1",
+      "bytes": 85484,
+      "triangles": 3536,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.38000121067378445,
+          0,
+          -0.38000121067378445
+        ],
+        "max": [
+          0.38000121067378445,
+          0.8999999761581421,
+          0.38000121067378445
+        ]
+      },
+      "size": [
+        0.7600024213475689,
+        0.8999999761581421,
+        0.7600024213475689
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.001,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "name": "city-postbox",
+      "publicPath": "public/models/city-postbox.glb",
+      "sha256": "2352c8426f5b526c22c8c757a5864a0dd2c947a6f71b4f524cc981c6576e5fe6",
+      "bytes": 67388,
+      "triangles": 3501,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.22000732960166772,
+          0,
+          -0.30000153296081195
+        ],
+        "max": [
+          0.22000732960166772,
+          1.2200000286102295,
+          0.30000153296081195
+        ]
+      },
+      "size": [
+        0.44001465920333543,
+        1.2200000286102295,
+        0.6000030659216239
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.001,
         "contactAuditIndependentlyRepeated": false
       }
     }
