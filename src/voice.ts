@@ -124,18 +124,18 @@ export const PHRASES = {
   chainWow: 'Вот это цепочка! Здорово придумал!',
   farm: 'Ферма',
   farmIntro: 'Добро пожаловать на ферму! Животным нужна твоя помощь. Нажми на того, кто зовёт, и он расскажет, что ему нужно.',
-  cowHot: 'Му-у! Мне так жарко! Поставь рядом со мной вентилятор и включи его!',
-  cowHappy: 'Му-у! Какой приятный ветерок! Спасибо!',
-  pigThirsty: 'Хрю-хрю! Я хочу пить! Поставь насос у корыта, пусть он нальёт воды!',
-  pigHappy: 'Хрю! Вкусная водичка! Спасибо!',
+  cowHot: 'Мне так жарко! Поставь рядом со мной вентилятор и включи его!',
+  cowHappy: 'Какой приятный ветерок! Спасибо!',
+  pigThirsty: 'Я хочу пить! Поставь насос у корыта, пусть он нальёт воды!',
+  pigHappy: 'Вкусная водичка! Спасибо!',
   gateStuck: 'Трактору нужно в поле, а ворота закрыты! Подключи мотор у ворот, и они откроются.',
   gateHappy: 'Ворота открылись! Трактор поехал в поле!',
   evening: 'Наступает вечер. Солнце садится, и солнечная батарея засыпает до утра.',
-  henDark: 'Ко-ко-ко! Темно! Мы не видим зёрнышки! Зажги нам свет!',
-  henHappy: 'Ко-ко! Светло! Спасибо!',
+  henDark: 'Темно! Мы не видим зёрнышки! Зажги нам свет!',
+  henHappy: 'Светло! Спасибо!',
   rabbitCold: 'Брр, нам холодно! Поставь к нам обогреватель!',
   rabbitHappy: 'Тепло! Спасибо!',
-  foxComes: 'Гав! Гав! Ночью к кроликам крадётся лиса!',
+  foxComes: 'Ночью к кроликам крадётся лиса!',
   foxTip: 'Поставь на дорожке кнопку и подключи к ней звонок. Лиса наступит на кнопку, звонок зазвенит, и она убежит!',
   foxScared: 'Ура! Лиса испугалась звонка и убежала!',
   morning: 'Наступило утро! Ты помог всем на ферме! Ты настоящий электрик!',
@@ -147,16 +147,16 @@ export const PHRASES = {
   mapPick: 'Куда отправимся?',
   lab: 'Лаборатория',
   poleWeak: 'Столбу не хватает сил на всё сразу. Подключи что-нибудь к солнечной батарее или к ветряку!',
-  placeHere: 'Поставь его на кружок рядом!',
+  placeHere: 'Поставь его на подсвеченное место рядом!',
   soon: 'Эта карта скоро откроется!',
   snapOk: 'Отлично, на месте! Теперь подключи провода к столбу.',
   farmMove: 'Ферма большая! Двигай её пальчиком, чтобы посмотреть, кто ещё зовёт на помощь.',
-  sheepMill: 'Бе-е! Хочу хлебушка, а муки нет! Поставь мельницу на кружок и подключи её к солнечной батарее.',
-  sheepHappy: 'Бе-е! Мельница мелет муку! Спасибо!',
-  cowSleepy: 'Му-у… Нам не спится. Включи нам музыку, пожалуйста!',
-  cowSleep: 'Му-у… Какая красивая песенка. Спокойной ночи!',
-  ducksAsk: 'Кря-кря! Доброе утро! Сделай нам фонтан: поставь насос у пруда и подключи его к ветряку!',
-  ducksHappy: 'Кря-кря! Фонтан! Ура, как весело!',
+  sheepMill: 'Хочу хлебушка, а муки нет! Поставь мельницу на подсвеченное место и подключи её к солнечной батарее.',
+  sheepHappy: 'Мельница мелет муку! Спасибо!',
+  cowSleepy: 'Нам не спится. Включи нам музыку, пожалуйста!',
+  cowSleep: 'Какая красивая песенка. Спокойной ночи!',
+  ducksAsk: 'Доброе утро! Сделай нам фонтан: поставь насос у пруда и подключи его к ветряку!',
+  ducksHappy: 'Фонтан! Ура, как весело!',
   stSheep: 'Овечка',
   stDuck: 'Утята',
   album: 'Мои наклейки',
@@ -172,7 +172,7 @@ export const PHRASES = {
   tester: 'Тестер',
   testerTip: 'Тестер показывает, сколько вольт. Подключи его к батарейке: плюс к плюсу, минус к минусу. Потом нажми на него!',
   testerBack: 'Стрелка ушла назад: провода наоборот. Поменяй их местами!',
-  v0: 'Ноль вольт. Тока нет.',
+  v0: 'Ноль вольт.',
   v1: 'Один вольт',
   v2: 'Два вольта',
   v3: 'Три вольта',
@@ -205,7 +205,7 @@ export const PHRASES = {
   next: 'Нажми на стрелку, чтобы играть дальше!',
   // The farm's second day.
   dayTwo: 'Наступил новый день! На ферме проснулись новые друзья, и им тоже нужна твоя помощь!',
-  kittenStuck: 'Мяу! Я залез на сеновал и не могу слезть! Поставь рядом лифт и подними его ко мне!',
+  kittenStuck: 'Я залез на сеновал и не могу слезть! Поставь рядом лифт и подними его ко мне!',
   kittenRide: 'Мяу! Я в лифте! Теперь поменяй провода местами, и лифт поедет вниз!',
   kittenHappy: 'Мур-мур! Я на земле! Спасибо!',
   liftUp: 'Лифт едет вниз, а котёнок наверху. Поменяй провода местами, и лифт поедет вверх!',
@@ -445,18 +445,33 @@ export class Voice {
   private saidAt = -1e9;
   private ctx: AudioContext | null = null;
   private out: AudioNode | null = null;
-  private raw = new Map<PhraseId, Promise<ArrayBuffer | null>>();
+  /** The MP3 of each take: a phrase's first take is its id, more takes of it are `<id>--v02`… (variants.json says how many). */
+  private raw = new Map<string, Promise<ArrayBuffer | null>>();
+  /** Takes beyond the first, per phrase (praise said a few different ways). */
+  private takes = new Map<PhraseId, string[]>();
+  /** The take of each phrase said last (the next time, another one). */
+  private lastTake = new Map<PhraseId, string>();
+  /** A take picked while it was still being decoded: said as soon as it is ready. */
+  private chosen = new Map<PhraseId, string>();
   /** Decoded clips, least recently said first; their sound takes far more memory than the MP3s, so only some stay. */
-  private clips = new Map<PhraseId, AudioBuffer>();
+  private clips = new Map<string, AudioBuffer>();
   private clipBytes = 0;
   /** Clips waiting to be decoded ahead of need, one at a time. */
-  private ahead: PhraseId[] = [];
+  private ahead: string[] = [];
   private playing: AudioBufferSourceNode | null = null;
   private endsAt = 0;
 
   constructor() {
     // Fetch every clip up front (a few MB of MP3) so they also work offline later.
     for (const id of Object.keys(PHRASES) as PhraseId[]) this.raw.set(id, fetchClip(id));
+    void fetchTakes().then((more) => {
+      for (const [id, n] of Object.entries(more)) {
+        if (!(id in PHRASES) || n < 2) continue;
+        const keys = Array.from({ length: n - 1 }, (_, i) => `${id}--v${String(i + 2).padStart(2, '0')}`);
+        for (const k of keys) this.raw.set(k, fetchClip(k));
+        this.takes.set(id as PhraseId, keys);
+      }
+    });
     if (!('speechSynthesis' in window)) return;
     const pick = () => {
       const voices = speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().startsWith('ru'));
@@ -504,10 +519,10 @@ export class Voice {
   /** Bytes made ready by the latest `prepare`. */
   private batch = 0;
 
-  private decoding = new Map<PhraseId, Promise<AudioBuffer | null>>();
+  private decoding = new Map<string, Promise<AudioBuffer | null>>();
 
-  /** Decode a clip (or find it decoded); also used to jump the queue for a phrase that is wanted now. */
-  private decode(id: PhraseId): Promise<AudioBuffer | null> {
+  /** Decode a take (or find it decoded); also used to jump the queue for a phrase that is wanted now. */
+  private decode(id: string): Promise<AudioBuffer | null> {
     const ctx = this.ctx;
     if (!ctx) return Promise.resolve(null);
     const have = this.clips.get(id);
@@ -533,7 +548,7 @@ export class Voice {
   }
 
   /** Keep a decoded clip, letting the least recently said ones go beyond the budget. */
-  private keep(id: PhraseId, clip: AudioBuffer) {
+  private keep(id: string, clip: AudioBuffer) {
     const bytes = (c: AudioBuffer) => c.length * c.numberOfChannels * 4;
     const old = this.clips.get(id);
     if (old) this.clipBytes -= bytes(old);
@@ -556,17 +571,20 @@ export class Voice {
     this.last = { id, at: now };
     this.saidAt = now;
     this.stop();
-    const clip = this.clips.get(id);
+    const take = this.pickTake(id);
+    const clip = this.clips.get(take);
     // Said now: the most recently used, the last to be let go.
-    if (clip) this.keep(id, clip);
+    if (clip) this.keep(take, clip);
     // Not decoded yet: decode it now and speak a moment later (better than the robot voice).
-    if (!clip && this.ctx && this.raw.has(id)) {
+    if (!clip && this.ctx && this.raw.has(take)) {
       const asked = this.last;
-      void this.decode(id).then((c) => {
+      void this.decode(take).then((c) => {
         // Something else was said meanwhile, or the sound was turned off.
         if (this.last !== asked || !this.enabled) return;
         if (c) {
           this.last = null;
+          // The take that was chosen, now decoded: that one, not a new pick.
+          this.chosen.set(id, take);
           this.say(id, 0);
         } else this.speak(id);
       });
@@ -582,6 +600,24 @@ export class Voice {
       return;
     }
     this.speak(id);
+  }
+
+  /** Which take to say: the one decoded and ready, or else another than last time (praise varies). */
+  private pickTake(id: PhraseId): string {
+    const chosen = this.chosen.get(id);
+    if (chosen) {
+      this.chosen.delete(id);
+      return chosen;
+    }
+    const all = [id, ...(this.takes.get(id) ?? [])];
+    if (all.length === 1) return id;
+    const fresh = all.filter((t) => t !== this.lastTake.get(id));
+    const ready = fresh.filter((t) => this.clips.has(t));
+    // Mostly one already decoded (no wait); now and then another, so every take gets its turn.
+    const pool = ready.length && Math.random() < 0.7 ? ready : fresh;
+    const take = pool[Math.floor(Math.random() * pool.length)];
+    this.lastTake.set(id, take);
+    return take;
   }
 
   /** The browser's own voice, for a phrase without a clip. */
@@ -615,7 +651,18 @@ export class Voice {
   }
 }
 
-async function fetchClip(id: PhraseId): Promise<ArrayBuffer | null> {
+/** How many takes each phrase has (public/voice/variants.json; none on an older build). */
+async function fetchTakes(): Promise<Record<string, number>> {
+  try {
+    if (import.meta.env.VITE_MODELS_AS_JS) return {};
+    const r = await fetch(`${import.meta.env.BASE_URL}voice/variants.json`);
+    return r.ok ? ((await r.json()) as Record<string, number>) : {};
+  } catch {
+    return {};
+  }
+}
+
+async function fetchClip(id: string): Promise<ArrayBuffer | null> {
   try {
     if (import.meta.env.VITE_MODELS_AS_JS) {
       // Preview host: clips ship as JS modules holding base64.
