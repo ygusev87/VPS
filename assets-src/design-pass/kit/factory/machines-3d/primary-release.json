@@ -1,0 +1,58 @@
+{
+  "date": "2026-10-27",
+  "models": [
+    {
+      "name": "safety-press",
+      "file": "public/models/safety-press.glb",
+      "bytes": 107740,
+      "triangles": 3739,
+      "sha256": "19e547fade4084ab248223382a8465da46c500a0a7ee96222523c83043b772d0",
+      "assetQA": "passed",
+      "gameReview": "accepted by Claude; main reviewed isolated runtime fixture"
+    },
+    {
+      "name": "lathe",
+      "file": "public/models/lathe.glb",
+      "bytes": 110232,
+      "triangles": 3900,
+      "sha256": "89c2383176dfebd1064c7e456bf3a2fc06d81f3dec0022e38ea3a4a61d51defa",
+      "assetQA": "passed",
+      "gameReview": "accepted by Claude; main reviewed isolated runtime fixture"
+    },
+    {
+      "name": "factory-cabinet",
+      "file": "public/models/factory-cabinet.glb",
+      "bytes": 90648,
+      "triangles": 3434,
+      "sha256": "7df3ae6b6a938e0a98d3d0720799ac2618c51a36f5e3d38d64a1a8f1a38bb499",
+      "assetQA": "passed",
+      "gameReview": "accepted by Claude; main reviewed isolated runtime fixture"
+    },
+    {
+      "name": "hoist",
+      "file": "public/models/hoist.glb",
+      "bytes": 150148,
+      "triangles": 2952,
+      "sha256": "931611689ef6bea702a7849c0a02c25c11321d6a3db3d4d86deb953ffce64074",
+      "assetQA": "passed",
+      "gameReview": "sent to Claude; factory integration pending"
+    }
+  ],
+  "tests": "88 passed; typecheck passed",
+  "nativeViewports": [
+    [
+      390,
+      844
+    ],
+    [
+      1024,
+      768
+    ]
+  ],
+  "realDeviceTest": false,
+  "localCommits": [
+    "1577818",
+    "6f6e56d",
+    "611bf6f"
+  ]
+}
