@@ -82,7 +82,7 @@ export function capture(world: World, pic: string, withMap = false): Invention |
       return s;
     }),
     wires: world.wires
-      .filter((w) => w.b && known(w.a.part) && known(w.b.part))
+      .filter((w) => w.b && !w.fixed && known(w.a.part) && known(w.b.part))
       .map((w) => ({
         a: [index(w.a.part), w.a.key] as [number, string],
         b: [index(w.b!.part), w.b!.key] as [number, string],

@@ -55,6 +55,8 @@ export class Wire {
   dying = false;
   /** Pulse red: this is the wire a hint asks to take off. */
   alert = false;
+  /** Laid by the map as part of the building (a station's own supply): it stays, and is not the child's to take off or keep. */
+  fixed = false;
   private alertT = 0;
   private baseColor = new THREE.Color();
   /** Called once the removal animation is over. */

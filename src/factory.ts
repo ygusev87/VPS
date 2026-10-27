@@ -39,7 +39,7 @@ export const FACTORY_TRAY: { kind: PartKind; count: number }[] = [
 ];
 
 /** Bumped whenever the factory is laid out anew (a save on another layout starts it afresh). */
-export const FACTORY_LAYOUT = 3;
+export const FACTORY_LAYOUT = 4;
 
 export interface FactoryProgress extends MapProgress {
   loaded: number;
@@ -85,6 +85,8 @@ const WORKER_SPOTS = [v(PANEL.x + 4, PANEL.z - 0.5), v(CART.x + 2, CART.z + 4.5)
 
 /** How much bigger than a table part the factory's own machines are. */
 const MACHINE_SCALE = 1.5;
+/** A lever on its station's place is shown larger still: its arrows are what the child presses again and again. */
+const LEVER_SCALE = 1.7;
 
 /** Where each station stands on the line (a toy stops there till it works). */
 const STATIONS = [LATHE.x, PRESS.x, ROBOT.x, HOIST.x];
@@ -98,7 +100,7 @@ const EVE_BOX_POLE = v(-25, 21.5);
 /** E2. The gantry crane over the line's start: a coil from the stand at its west end to the line at its east end, on two levers. */
 const GANTRY_AT = v(-24, EVE_Z);
 const MOVE_LEVER = v(-34.5, 18);
-const LIFT_LEVER = v(-30.5, 18);
+const LIFT_LEVER = v(-29.6, 18);
 const CRANE_POLE = v(-37.5, 21);
 /** Where the hook leaves a coil (the trolley's east end): a hopper there feeds the line. */
 const DROP = v(GANTRY_AT.x + 5.5, EVE_Z);
@@ -151,6 +153,9 @@ export class FactoryMap extends StoryMap {
   private lamps: { glow: THREE.Sprite; bulb: THREE.MeshStandardMaterial; pool: THREE.Mesh }[] = [];
   /** Toys on the line: how far along (x) and what has been done to them. */
   private toys: { m: THREE.Group; x: number; stage: number }[] = [];
+  /** Toys gone through each station of the day line (lathe, press, robot, hoist) and of the evening's (paint, grinder, welder, end). */
+  private passed = [0, 0, 0, 0];
+  private evePassed = [0, 0, 0, 0];
   /** Blanks the cart has brought (at its far end), still to go on the line. */
   private blanks = 0;
   private cartWasHome = true;
@@ -192,6 +197,7 @@ export class FactoryMap extends StoryMap {
     this.placeParts();
     this.buildCritters();
     this.buildNeeds();
+    this.layBuilding();
     this.wallClock();
     this.life.addToy('soda', -W / 2 + 2.5, -20, Math.PI / 2);
     // People about the hall on the yellow walkways, each its own stretch and back, clear of the stations.
@@ -205,6 +211,39 @@ export class FactoryMap extends StoryMap {
       if (made) made.rotation.y = Math.PI / 2;
       who.add(made ?? worker('#3f86d6', '#f2c230'));
       this.life.addWalker(who, way, 'hammer');
+    }
+  }
+
+  /**
+   * The wires that are part of the building, laid already: each station's
+   * supply from its pole (panel and box, press, motors, socket boards, paint).
+   * The child runs only the wire that is the puzzle — through a lever to a
+   * motor, a plug to the socket of its shape — and turns, presses, holds.
+   */
+  private layBuilding() {
+    const pole = (at: THREE.Vector3) => this.poles.get(at)!;
+    this.layChain(pole(PANEL_POLE), [this.box, this.panel]);
+    this.layChain(pole(LATHE_POLE), [this.motor]);
+    this.layChain(pole(PRESS_POLE), [this.press]);
+    for (const [at, board] of [[ROBOT_POLE, this.board], [WELD_POLE, this.board2]] as const) {
+      this.lay(pole(at).terminal('a'), board.terminal('p'));
+      this.lay(board.terminal('n'), pole(at).terminal('b'));
+    }
+    this.layChain(pole(EVE_BOX_POLE), [this.eveBox, this.evePanel]);
+    this.layChain(pole(TANK_POLE), [this.tank, this.booth]);
+    this.layChain(pole(GRIND_POLE), [this.gmotor]);
+  }
+
+  /** A lever put on its place gets its supply from the station's pole at once; the child wires it on to the motor. */
+  private layLevers() {
+    for (const [spot, at] of [[CART_LEVER, CART_POLE], [HOIST_LEVER, HOIST_POLE], [MOVE_LEVER, CRANE_POLE], [LIFT_LEVER, CRANE_POLE]] as const) {
+      const lever = this.on(spot, ['reverser']);
+      if (!lever?.seated) continue;
+      // Bigger on its place, so its three arrows are big enough for a child's finger.
+      if (lever.root.scale.x !== LEVER_SCALE) lever.root.scale.setScalar(LEVER_SCALE);
+      const pole = this.poles.get(at)!;
+      this.lay(pole.terminal('a'), lever.terminal('p'));
+      this.lay(lever.terminal('n'), pole.terminal('b'));
     }
   }
 
@@ -258,8 +297,8 @@ export class FactoryMap extends StoryMap {
     const p = m as FactoryProgress;
     this.loaded = p.loaded ?? 0;
     this.loaded2 = p.loaded2 ?? 0;
-    if (this.needs.find((n) => n.critter.name === 'lorry')?.done) this.drivenOff = 1;
-    if (this.needs.find((n) => n.critter.name === 'lorry2')?.done) this.drivenOff2 = 1;
+    if (this.loaded >= 3) this.drivenOff = 1;
+    if (this.needs.find((n) => n.critter.name === 'worker9')?.done && this.loaded2 > 0) this.drivenOff2 = 1;
   }
 
   protected voiceOf(base: string): PhraseId | null {
@@ -524,19 +563,19 @@ export class FactoryMap extends StoryMap {
     const get = (name: string) => this.critters.get(name)!;
     const add = (n: NeedSpec) => this.addNeed(n);
     const gears: PartKind[] = ['smallGear', 'bigGear', 'gear'];
-    add({ critter: get('foreman'), phase: 'day', ask: 'boxAsk', thanks: 'boxHappy', icon: 'wireBox', kinds: ['wireBox'], spot: BOX, focus: [PANEL.clone(), BOX.clone(), PANEL_POLE.clone()], met: () => this.lit, sticker: 'breaker' });
-    add({ critter: get('worker'), phase: 'day', ask: 'cartAsk', thanks: 'cartHappy', icon: 'reverser', kinds: ['reverser'], spot: CART_LEVER, focus: [CART.clone(), CART_LEVER.clone(), CART_POLE.clone(), v(LINE_START, LINE_Z)], met: () => this.toys.length > 0 || this.loaded > 0, sticker: 'cart' });
-    add({ critter: get('worker2'), phase: 'day', ask: 'latheAsk', thanks: 'latheHappy', icon: 'bigGear', kinds: gears, spot: LATHE_SHAFT, more: [{ icon: 'smallGear', kinds: gears, spot: MOTOR_SHAFT }], focus: [LATHE.clone(), MOTOR.clone(), LATHE_POLE.clone()], met: () => this.turned > 1.5, sticker: 'lathe' });
-    add({ critter: get('worker3'), phase: 'day', ask: 'press2Ask', thanks: 'press2Happy', icon: 'safetyPress', kinds: ['safetyPress'], spot: PRESS, focus: [PRESS.clone(), PRESS_POLE.clone()], met: () => this.press.strokes >= 3, sticker: 'press' });
-    add({ critter: get('worker4'), phase: 'day', ask: 'plugAsk', thanks: 'plugHappy', icon: 'socketBoard', kinds: ['socketBoard'], spot: BOARD, focus: [ROBOT.clone(), BOARD.clone(), ROBOT_POLE.clone()], met: () => Math.abs(this.robot.state.level) > 0.15, sticker: 'robot' });
-    add({ critter: this.lorry, phase: 'day', ask: 'hoistAsk', thanks: 'hoistHappy', icon: 'reverser', kinds: ['reverser'], spot: HOIST_LEVER, focus: [HOIST.clone(), HOIST_LEVER.clone(), LORRY.clone()], met: () => this.loaded >= 3, sticker: 'lorry' });
+    // One line of work, station by station: each waits for the one before it, and counts once a toy has gone through it.
+    add({ critter: get('foreman'), phase: 'day', ask: 'boxAsk', thanks: 'boxHappy', icon: 'bulb', kinds: [], spot: BOX, focus: [PANEL.clone(), BOX.clone()], met: () => this.lit, sticker: 'breaker' });
+    add({ critter: get('worker'), phase: 'day', after: 'foreman', ask: 'cartAsk', thanks: 'cartHappy', icon: 'reverser', kinds: ['reverser'], spot: CART_LEVER, focus: [CART.clone(), CART_LEVER.clone(), v(LINE_START, LINE_Z)], met: () => this.toys.length > 0 || this.passed[0] > 0, sticker: 'cart' });
+    add({ critter: get('worker2'), phase: 'day', after: 'worker', ask: 'latheAsk', thanks: 'latheHappy', icon: 'bigGear', kinds: gears, spot: LATHE_SHAFT, more: [{ icon: 'smallGear', kinds: gears, spot: MOTOR_SHAFT }], focus: [LATHE.clone(), MOTOR.clone()], met: () => this.passed[0] > 0, sticker: 'lathe' });
+    add({ critter: get('worker3'), phase: 'day', after: 'worker2', ask: 'press2Ask', thanks: 'press2Happy', icon: 'safetyPress', kinds: [], spot: PRESS, focus: [PRESS.clone()], met: () => this.passed[1] > 0, sticker: 'press' });
+    add({ critter: get('worker4'), phase: 'day', after: 'worker3', ask: 'plugAsk', thanks: 'plugHappy', icon: 'robotArm', kinds: [], spot: BOARD, focus: [ROBOT.clone(), BOARD.clone()], met: () => this.passed[2] > 0, sticker: 'robot' });
+    add({ critter: this.lorry, phase: 'day', after: 'worker4', ask: 'hoistAsk', thanks: 'hoistHappy', icon: 'reverser', kinds: ['reverser'], spot: HOIST_LEVER, focus: [HOIST.clone(), HOIST_LEVER.clone(), LORRY.clone()], met: () => this.loaded >= 1, sticker: 'lorry' });
     // The evening shift.
-    add({ critter: get('worker5'), phase: 'evening', ask: 'storeAsk', thanks: 'storeHappy', icon: 'bigWireBox', kinds: ['bigWireBox'], spot: EVE_BOX, focus: [EVE_BOX.clone(), EVE_PANEL.clone(), EVE_BOX_POLE.clone()], met: () => this.eveLit, sticker: 'store' });
-    add({ critter: get('worker6'), phase: 'evening', ask: 'gantryAsk', thanks: 'gantryHappy', icon: 'reverser', kinds: ['reverser'], spot: MOVE_LEVER, more: [{ icon: 'reverser', kinds: ['reverser'], spot: LIFT_LEVER }], focus: [GANTRY_AT.clone(), MOVE_LEVER.clone(), CRANE_POLE.clone()], met: () => this.eveToys.length > 0 || this.loaded2 > 0, sticker: 'gantry' });
-    add({ critter: get('worker7'), phase: 'evening', ask: 'paintAsk2', thanks: 'paintHappy2', icon: 'pipeBox', kinds: ['pipeBox'], spot: PIPES, focus: [TANK.clone(), PIPES.clone(), BOOTH.clone(), TANK_POLE.clone()], met: () => this.booth.painting, sticker: 'paint' });
-    add({ critter: get('worker8'), phase: 'evening', ask: 'grinderAsk', thanks: 'grinderHappy', icon: 'smallGear', kinds: gears, spot: GRIND_SHAFT, more: [{ icon: 'bigGear', kinds: gears, spot: GMOTOR_SHAFT }], focus: [GRINDER.clone(), GMOTOR.clone(), GRIND_POLE.clone()], met: () => this.ground > 1.5, sticker: 'grinder' });
-    add({ critter: get('worker9'), phase: 'evening', ask: 'welderAsk', thanks: 'welderHappy', icon: 'socketBoard', kinds: ['socketBoard'], spot: BOARD2, focus: [WELDER.clone(), BOARD2.clone(), WELD_POLE.clone()], met: () => Math.abs(this.welder.state.level) > 0.15, sticker: 'welder' });
-    add({ critter: this.lorry2, phase: 'evening', ask: 'lorry2Ask', thanks: 'lorry2Happy', icon: 'gantry', kinds: ['gantry'], spot: GANTRY_AT, focus: [LORRY2.clone(), WELDER.clone()], met: () => this.loaded2 >= 3, sticker: 'lorry2' });
+    add({ critter: get('worker5'), phase: 'evening', ask: 'storeAsk', thanks: 'storeHappy', icon: 'bulb', kinds: [], spot: EVE_BOX, focus: [EVE_BOX.clone(), EVE_PANEL.clone()], met: () => this.eveLit, sticker: 'store' });
+    add({ critter: get('worker6'), phase: 'evening', after: 'worker5', ask: 'gantryAsk', thanks: 'gantryHappy', icon: 'reverser', kinds: ['reverser'], spot: MOVE_LEVER, more: [{ icon: 'reverser', kinds: ['reverser'], spot: LIFT_LEVER }], focus: [GANTRY_AT.clone(), MOVE_LEVER.clone(), DROP.clone()], met: () => this.eveToys.length > 0 || this.evePassed[0] > 0, sticker: 'gantry' });
+    add({ critter: get('worker7'), phase: 'evening', after: 'worker6', ask: 'paintAsk2', thanks: 'paintHappy2', icon: 'paintBooth', kinds: [], spot: PIPES, focus: [TANK.clone(), PIPES.clone(), BOOTH.clone()], met: () => this.evePassed[0] > 0, sticker: 'paint' });
+    add({ critter: get('worker8'), phase: 'evening', after: 'worker7', ask: 'grinderAsk', thanks: 'grinderHappy', icon: 'smallGear', kinds: gears, spot: GRIND_SHAFT, more: [{ icon: 'bigGear', kinds: gears, spot: GMOTOR_SHAFT }], focus: [GRINDER.clone(), GMOTOR.clone()], met: () => this.evePassed[1] > 0, sticker: 'grinder' });
+    add({ critter: get('worker9'), phase: 'evening', after: 'worker8', ask: 'welderAsk', thanks: 'welderHappy', icon: 'robotArm', kinds: [], spot: BOARD2, focus: [WELDER.clone(), BOARD2.clone()], met: () => this.evePassed[2] > 0, sticker: 'welder' });
   }
 
   private on(at: THREE.Vector3, kinds: PartKind[]): Part | undefined {
@@ -687,6 +726,8 @@ export class FactoryMap extends StoryMap {
       this.gearTaps.set(g, g.taps);
     }
     if (this.lathe.speed === 'ok') this.turned += dt;
+    this.layLevers();
+    this.autoHoist();
     this.updateCart();
     this.updateLine(dt);
     this.updateLorry(dt);
@@ -757,6 +798,7 @@ export class FactoryMap extends StoryMap {
       const goal = Math.min(next, ahead - 1.2);
       if (t.x < goal) t.x = Math.min(goal, t.x + dt * 2);
       if (t.x >= next - 0.01 && t.stage < EVE_STATIONS.length && works[t.stage]?.()) {
+        this.evePassed[t.stage]++;
         t.stage++;
         dressToy(t.m, t.stage === 1 ? 2 : t.stage === 3 ? 4 : 0);
         this.hooks.chime();
@@ -770,11 +812,26 @@ export class FactoryMap extends StoryMap {
     }
     this.eveToys = this.eveToys.filter((t) => t.stage < EVE_STATIONS.length);
     // The second lorry waits for the evening; full, it drives off.
-    if (this.needs.find((n) => n.critter === this.lorry2)?.done) this.drivenOff2 = Math.min(1, this.drivenOff2 + dt * 0.15);
+    // The evening's last station done and a box aboard: the second lorry drives off (the end of the shift).
+    if (this.needs.find((n) => n.critter.name === 'worker9')?.done && this.loaded2 > 0) this.drivenOff2 = Math.min(1, this.drivenOff2 + dt * 0.15);
     const p = this.lorry2.group.position;
     p.set(LORRY2.x + this.drivenOff2 * 20, 0, LORRY2.z);
     this.lorry2.home.copy(p);
     this.lorry2.group.visible = this.phase !== 'day' && this.drivenOff2 < 1;
+  }
+
+  /** Once the child has lifted the first box, the driver works the hoist lever for the rest: up with a box, down for the next. */
+  private autoHoist() {
+    if (!this.needs.find((n) => n.critter === this.lorry)?.done) return;
+    const lever = this.on(HOIST_LEVER, ['reverser']) as Reverser | undefined;
+    if (!lever) return;
+    const waiting = this.toys.some((t) => t.stage === STATIONS.length - 1 && t.x >= HOIST.x - 0.1);
+    const want = this.hoist.end === 'top' ? -1 : waiting || this.hoist.end !== 'bottom' ? 1 : 0;
+    if (lever.pos !== want) {
+      lever.pos = want;
+      lever.closed = want !== 0;
+      this.world.markDirty();
+    }
   }
 
   /** At the line's end of its rails the cart tips three blanks onto the line; back home it loads up again. */
@@ -822,6 +879,7 @@ export class FactoryMap extends StoryMap {
       const goal = Math.min(next, ahead - 1.2);
       if (t.x < goal) t.x = Math.min(goal, t.x + dt * 2);
       if (t.x >= next - 0.01 && t.stage < STATIONS.length && works[t.stage]?.()) {
+        this.passed[t.stage]++;
         t.stage++;
         dressToy(t.m, t.stage + 1);
         this.hooks.chime();
@@ -839,7 +897,8 @@ export class FactoryMap extends StoryMap {
 
   /** Loaded up, the lorry hoots and drives off out of the hall. */
   private updateLorry(dt: number) {
-    if (this.needs.find((n) => n.critter === this.lorry)?.done) this.drivenOff = Math.min(1, this.drivenOff + dt * 0.15);
+    // Full (three boxes), it drives off.
+    if (this.loaded >= 3) this.drivenOff = Math.min(1, this.drivenOff + dt * 0.15);
     const p = this.lorry.group.position;
     p.set(LORRY.x, 0, LORRY.z + this.drivenOff * 40);
     this.lorry.home.copy(p);

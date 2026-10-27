@@ -6,7 +6,7 @@
 import * as THREE from 'three';
 import { isPolar, sandboxHint, type Hint } from './hints';
 import { model, type Fit } from './parts/assets';
-import { MAP_BOARD, type Part, type PartKind } from './parts/base';
+import { MAP_BOARD, type Part, type PartKind, type Terminal } from './parts/base';
 import { mat, mesh } from './parts/kit';
 import type { Stage } from './stage';
 import { bendable, type Pose } from './bend';
@@ -17,6 +17,7 @@ import { Rig } from './rig';
 import { thumb } from './thumbs';
 import type { PhraseId } from './voice';
 import type { World } from './world';
+import { Wire } from './wires';
 
 export type Phase = 'day' | 'evening' | 'night' | 'morning' | 'done';
 /** How dark each part of the day is (0 day .. 1 night). */
@@ -107,6 +108,11 @@ export interface Need extends Slot {
   more: Slot[];
   /** Sticker earned (defaults to the character's name). */
   sticker?: string;
+  /**
+   * Whose need comes first (a character's name): a line of work waits for the
+   * station before it, and its worker calls out once that one is done.
+   */
+  after?: string;
   /**
    * What the camera shows for this need (with the nearest power): the character
    * and its ring unless set (the farm's dog is far from the fox's button).
@@ -368,7 +374,7 @@ export abstract class StoryMap {
 
   /** Is this need for the day and the part of the day it is now? */
   protected isNow(n: Need) {
-    return n.day === this.day && n.phase === this.phase;
+    return n.day === this.day && n.phase === this.phase && (!n.after || !!this.needs.find((m) => m.critter.name === n.after)?.done);
   }
 
   /** The one to help next (first unmet need of this part of the day). */
@@ -594,6 +600,24 @@ export abstract class StoryMap {
     }
     const back = src.terminal('b')!;
     return this.world.wired(at, back) ? null : { type: 'connect', from: at, to: back, phrase: 'chainBack' };
+  }
+
+  /** A wire the map lays itself (a station's own supply, part of the building): fixed, not the child's to take off. */
+  protected lay(a: Terminal, b: Terminal) {
+    if (this.world.wired(a, b)) return;
+    const w = new Wire(a);
+    w.fixed = true;
+    this.stage.world.add(w.group);
+    this.world.attachWire(w, b);
+  }
+
+  /** Lay a whole loop from a source through these parts, the way its chain hint would have the child wire it. */
+  protected layChain(src: Part, chain: Part[]) {
+    for (let i = 0; i < 8; i++) {
+      const h = this.chainHint(src, chain);
+      if (h?.type !== 'connect') return;
+      this.lay(h.from, h.to);
+    }
   }
 
   /** Which parts of the map the child cannot throw away (none; all are pinned or theirs). */
@@ -855,7 +879,17 @@ export abstract class StoryMap {
           this.focused = null;
           this.picked = false;
         }
-        if (!this.toldToLook && this.needs.some((x) => !x.done && this.isNow(x))) {
+        // Next along the line: its worker calls once the thanks are said, and the view goes to them.
+        const next = this.needs.find((x) => x.after === n.critter.name && !x.done && this.isNow(x));
+        if (next) {
+          setTimeout(() => {
+            if (this.gone || next.done) return;
+            this.focused = next;
+            this.picked = true;
+            this.hooks.say(next.ask);
+            this.hooks.focus?.(this.view(next));
+          }, 4200);
+        } else if (!this.toldToLook && this.needs.some((x) => !x.done && this.isNow(x))) {
           this.toldToLook = true;
           setTimeout(() => !this.gone && this.hooks.say('lookAround'), 3600);
         }

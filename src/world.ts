@@ -286,7 +286,8 @@ export class World {
   private culprits = new Map<string, Wire | null>();
 
   private findCulprit(fixed: (r: CircuitResult, without: Set<Wire>) => boolean, among: Wire[], keep?: Set<Wire>): Wire | null {
-    const cand = among.filter((w) => w.b);
+    // The map's own laid wires are right where they are: never the culprit.
+    const cand = among.filter((w) => w.b && !w.fixed);
     const most = cand.length > 30 ? 1 : cand.length > 14 ? 2 : 3;
     const order = (w: Wire) => this.wires.indexOf(w);
     // Gadgets that run without these wires, as wired now and with every switch pressed.

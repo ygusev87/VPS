@@ -75,7 +75,7 @@ const reversedPhrase = (p: Part): PhraseId => (p.kind === 'led' ? 'reversed' : p
 export function problemHint(world: World, keep?: Set<Wire>): Hint | null {
   const r = world.result;
   // Of several wires that would do, one the task does not want (see plannedWires); else the newest.
-  const newestOf = (ws: Wire[]) => ws.filter((w) => !keep?.has(w)).at(-1) ?? ws.at(-1);
+  const newestOf = (ws: Wire[]) => ws.filter((w) => !w.fixed && !keep?.has(w)).at(-1) ?? ws.filter((w) => !w.fixed).at(-1);
   if (!r) return null;
   const touching = (p: Part) => world.wires.filter((w) => p.terminals.some((t) => w.touches(t)));
 

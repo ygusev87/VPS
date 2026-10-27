@@ -108,6 +108,13 @@ export class Input {
     return best;
   }
 
+  /** Is the finger on the post itself (not just within its generous reach)? */
+  private onPost(t: Terminal, x: number, y: number) {
+    const v = t.attachPoint();
+    const p = this.stage.project(v);
+    return Math.hypot(p.x - x, p.y - y) < Math.max(12, this.stage.pixelsPerUnit(v) * 0.2);
+  }
+
   private down(e: PointerEvent) {
     this.hooks.onTouch();
     if (!this.enabled) return;
@@ -135,15 +142,17 @@ export class Input {
     if (this.hooks.grabTap?.(x, y)) return;
     this.pointerId = e.pointerId;
 
+    // A finger right on a button, an arrow or a key presses it, even when a post is within reach
+    // (on a small lever the posts' reach covers its arrows); only a touch on the post itself starts a wire.
+    const hit = this.stage.raycast(x, y, this.world.parts.flatMap((p) => p.pickables))[0];
+    const part = hit?.object.userData.part as Part | undefined;
+    const control = !!part && part.controlAt(hit!.object, hit!.point);
     const t = this.terminalAt(x, y);
-    if (t) return this.startWire(t);
+    if (t && !(control && !this.onPost(t, x, y))) return this.startWire(t);
 
     // Wires lie on top of parts, so they get the first look — except over a
     // button or key, where the press goes to the part (unless a hint is
     // pointing at that very wire).
-    const hit = this.stage.raycast(x, y, this.world.parts.flatMap((p) => p.pickables))[0];
-    const part = hit?.object.userData.part as Part | undefined;
-    const control = !!part && part.controlAt(hit!.object, hit!.point);
     let wire = this.wireAt(x, y);
     if (wire && control && wire !== this.hooks.preferredWire?.()) wire = null;
     if (wire) this.mode = { kind: 'press-wire', wire, x, y };
@@ -187,6 +196,7 @@ export class Input {
     let bestD = 16;
     for (let i = this.world.wires.length - 1; i >= 0; i--) {
       const w = this.world.wires[i];
+      if (w.fixed) continue;
       const d = dist(w);
       if (d < bestD - 3) {
         best = w;
