@@ -1,0 +1,97 @@
+{
+  "source": "assets-src/raw/factory-2026-10-27/safety-press.glb",
+  "sourceSha256": "a9fe650f67215cb21a5a07d15ca849a3eed021ffa454ac3a53cd9c1f9afca23b",
+  "outputSha256": "19e547fade4084ab248223382a8465da46c500a0a7ee96222523c83043b772d0",
+  "sourceBytes": 934996,
+  "bytes": 107740,
+  "sourceTriangles": 3507,
+  "cutTriangles": 3739,
+  "triangles": 3739,
+  "bounds": {
+    "min": [
+      -0.9499862469755727,
+      0,
+      -0.399992362079969
+    ],
+    "max": [
+      0.9499862469755727,
+      2.299999952316284,
+      0.399992362079969
+    ]
+  },
+  "materials": 1,
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "landmarks": [
+    [
+      0,
+      0
+    ],
+    [
+      0.2312,
+      0.3
+    ],
+    [
+      0.35,
+      0.45
+    ],
+    [
+      0.6,
+      1.8
+    ],
+    [
+      0.6996,
+      1.925
+    ],
+    [
+      0.87573,
+      2.15
+    ],
+    [
+      0.9508056640625,
+      2.3
+    ]
+  ],
+  "columnShiftMaximum": 0.13,
+  "bore": {
+    "radius": 0.13,
+    "axisXZ": [
+      0,
+      0
+    ],
+    "cutY": [
+      1.35,
+      2.85
+    ]
+  },
+  "placement": [
+    0,
+    0.16,
+    -0.35
+  ],
+  "fit": {
+    "width": 1.9
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  }
+}

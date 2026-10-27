@@ -1,0 +1,35 @@
+{
+  "triangleCount": 3739,
+  "headSweepIntersections": 0,
+  "headTriangleIds": [],
+  "rodSweepIntersections": 0,
+  "rodTriangleIds": [],
+  "minimumRadialRodClearance": 0.02887257776184693,
+  "phases": [
+    {
+      "phase": 0,
+      "headY": [
+        1.3849999999999998,
+        1.7349999999999999
+      ],
+      "intersections": 0
+    },
+    {
+      "phase": 0.5,
+      "headY": [
+        1.0099999999999998,
+        1.3599999999999999
+      ],
+      "intersections": 0
+    },
+    {
+      "phase": 1,
+      "headY": [
+        0.6349999999999999,
+        0.985
+      ],
+      "intersections": 0
+    }
+  ],
+  "method": "Triangle-AABB SAT for full head sweep; Y-clipped projected triangle distance to vertical rod axis for full rod sweep. Coordinates include model transforms; runtime translation removed from moving envelopes."
+}
