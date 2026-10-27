@@ -195,7 +195,8 @@ export class Reverser extends Part {
       return new THREE.ExtrudeGeometry(shape, { depth: 0.03, bevelEnabled: false }).rotateX(-Math.PI / 2);
     };
     sign(-0.5, '#ff9a3c', arrow(-1));
-    sign(0, '#e8483f', new THREE.CylinderGeometry(0.11, 0.11, 0.03, 16));
+    // A square stop, as on the sculpted lid.
+    sign(0, '#e8483f', new THREE.BoxGeometry(0.2, 0.03, 0.2));
     sign(0.5, '#4cc46a', arrow(1));
     // The lever: a stubby handle on a pivot at the back, swinging over the arrows.
     const stick = mesh(new THREE.CylinderGeometry(0.06, 0.06, 0.75, 12), mat('#2b3242', 0.4, 0.5));
