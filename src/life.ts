@@ -38,6 +38,8 @@ interface Extra {
   route?: THREE.Vector3[];
   leg: number;
   dir: number;
+  /** Rolls or walks without a bounce (a pram's wheels, a dog's paws must stay on the ground). */
+  flat?: boolean;
 }
 
 export type ToyKind = 'mouse' | 'frog' | 'scarecrow' | 'mailbox' | 'well' | 'trashcan' | 'hydrant' | 'clock' | 'soda';
@@ -89,7 +91,7 @@ export class Life {
   }
 
   /** A passer-by walking a way along the pavements and back, stopping now and then; startled, steps aside and walks on. */
-  addWalker(model: THREE.Object3D, route: THREE.Vector3[], sound: PhraseId | null) {
+  addWalker(model: THREE.Object3D, route: THREE.Vector3[], sound: PhraseId | null, flat = false) {
     // Somewhere along the way to begin with, so the town does not start with everyone at a corner.
     const at = Math.floor(this.rnd() * route.length);
     this.addExtra(model, route[at].x, route[at].z, 0, 'stroll', sound, 1.5);
@@ -97,6 +99,7 @@ export class Life {
     e.route = route.map((p) => p.clone().setY(0));
     e.leg = at;
     e.dir = this.rnd() < 0.5 ? 1 : -1;
+    e.flat = flat;
   }
 
   /** A thing placed to be tapped. */
@@ -283,7 +286,7 @@ export class Life {
     if (e.gait === 'hop' && moving) y += Math.abs(Math.sin(e.step * 0.8)) * 0.35;
     if (e.gait === 'peck' && !moving) tilt = Math.max(0, Math.sin(this.time * 5 + e.home.x)) * 0.35;
     if (e.gait === 'waddle' && moving) roll = Math.sin(e.step) * 0.12;
-    if (e.gait === 'stroll' && moving) y += Math.abs(Math.sin(e.step * 0.9)) * 0.06;
+    if (e.gait === 'stroll' && moving && !e.flat) y += Math.abs(Math.sin(e.step * 0.9)) * 0.06;
     if (e.gait === 'graze' && !moving && !e.pose) tilt = 0.12 + Math.sin(this.time * 0.8 + e.home.z) * 0.06;
     if (e.pose) this.graze(e, e.pose, moving, dt, eye);
     p.y = y;

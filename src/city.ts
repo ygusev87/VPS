@@ -35,9 +35,19 @@ import { StoryMap, blob, boxHouse, instances, v, type Critter, type MapProgress,
 import type { PhraseId } from './voice';
 import { activeAt, isActive } from './world';
 
+/** Codex's townsfolk who walk (city-ped-*), at their own heights; a pram and a dog roll and trot without a bounce. */
+const PEOPLE: { model: string; height: number; flat?: boolean }[] = [
+  { model: 'city-ped-stroller', height: 1.6, flat: true },
+  { model: 'city-ped-senior', height: 1.55 },
+  { model: 'city-ped-balloon', height: 1.8 },
+  { model: 'city-ped-dog-walker', height: 1.6, flat: true },
+  { model: 'city-ped-postman', height: 1.6 },
+];
+
 /** Model files the city needs (each falls back to a stand-in until it is made). */
 export const CITY_MODELS = ['pole', 'baker', 'grandma', 'child', 'kitten', 'raccoon', 'raccoon-rig', 'tram', 'car', 'fountain-basin', 'bench', 'street-lamp', 'bins', 'pigeon',
   'tree-oak', 'tree-pine', 'bush', 'flower-cluster', 'boat', 'builder', 'firefighter', 'shopkeeper', 'counter', 'hydrant', 'basket',
+  ...PEOPLE.map((p) => p.model), 'city-ped-icecream-vendor',
   ...DECOR.map((g) => g.model)].filter((m, i, all) => all.indexOf(m) === i);
 
 /** What the drawers offer in the city: its own devices, and the parts their chains need (power from the poles). */
@@ -444,8 +454,8 @@ export class CityMap extends StoryMap {
       ...[...this.critters.values()].filter((c) => !c.roams).map((c) => P(c.home.x, c.home.z, 1.2)),
       P(SUBSTATION.x, SUBSTATION.z, 2.6), P(BINS.x, BINS.z, 1.6), P(COUNTER.x, COUNTER.z, 1.8),
       { x0: SITE.x - 4.2, z0: SITE.z - 3.6, x1: SITE.x + 4.2, z1: SITE.z + 3.6 },
-      // Paved pads Codex lays under kiosks, the tram shelter and the like (city-decor's PLAZAS, when it has them).
-      ...((CITY_DECOR as { PLAZAS?: Rect[] }).PLAZAS ?? []),
+      // Paved pads Codex lays under kiosks, the tram shelter and the like.
+      ...plazas(),
     ];
     // Buildings stand on an apron, with a path from it straight to the nearest road.
     for (const g of DECOR) {
@@ -488,6 +498,15 @@ export class CityMap extends StoryMap {
       if (lines.some((l) => l.some((a, i) => i > 0 && toSegment(x, z, l[i - 1], a) < 1))) return false;
       return true;
     };
+    // The park is one picture of its own: a pad inside it (a kiosk's) is paving laid over it, with its kerb.
+    const pave = kitPieces('city', 'paving-main-c', true)[0] ?? kitPieces('city', 'paving-main', true)[0];
+    const inPark = plazas().filter((r) => r.x0 < park.x1 && r.x1 > park.x0 && r.z0 < park.z1 && r.z1 > park.z0);
+    if (pave && inPark.length) {
+      this.scenery.add(toned(tiledRects(inPark, pave, PAVING_TILE, 0.0062, 1), PAVING_TONE));
+      const kerb = kitPieces('city', 'kerb-strip', true);
+      // Each pad's own kerb, run the other way round from a lawn's: the paving is inside, the grass out.
+      if (kerb.length) this.scenery.add(ribbons(inPark.map((r) => ({ pts: [[r.x0, r.z0], [r.x0, r.z1], [r.x1, r.z1], [r.x1, r.z0], [r.x0, r.z0]] as [number, number][], w: 0.5 })), kerb[0], 1, 4, 0.0066, 2, 0.25));
+    }
     // Strips of lawn under a metre between courts read as mistakes: smoothed away.
     const { rects: lawns, edges } = cellRegion({ x0: -W / 2, z0: -D / 2, x1: W / 2, z1: D / 2 }, 0.5, inside, 2);
     this.scenery.add(toned(tiledRects(lawns, lawn[0], 8), LAWN_TONE));
@@ -709,13 +728,20 @@ export class CityMap extends StoryMap {
     this.life.addToy('trashcan', 15.2, -6.8, 0.3);
     this.life.addToy('trashcan', 52, -17, -0.4);
     this.life.addToy('hydrant', 8, -16.4, 0);
-    // Townsfolk walking the pavements, each its own stretch and back (clear of the tasks, the poles and the people waiting).
+    // Townsfolk walking the pavements, each its own stretch and back (clear of the tasks, the poles and the people waiting):
+    // Codex's people where they are made, else little code figures.
     const looks: [string, string][] = [['#3f86d6', '#7a4a2a'], ['#ff8fb1', '#f2c230'], ['#5cb85c', '#3a2a1a'], ['#b388ff', '#d9dde3'], ['#f2c230', '#7a4a2a'], ['#ff8f2a', '#5a3a2a'], ['#e8483f', '#3a2a1a'], ['#1aa3a1', '#d9dde3']];
     const ways = pavementRuns(this.plan, keep);
     looks.forEach(([body, hair], i) => {
       const way = ways[(i * 5) % ways.length];
-      if (way) this.life.addWalker(person(body, hair, 1.25), way, 'passerby');
+      const who = PEOPLE[i % PEOPLE.length];
+      const made = who && facingX(model(who.model, { height: who.height }));
+      if (way) this.life.addWalker(made ?? person(body, hair, 1.25), way, 'passerby', !!who?.flat);
     });
+    // The ice-cream seller keeps to the kiosk, facing the park.
+    const seller = facingX(model('city-ped-icecream-vendor', { height: 1.6 }));
+    const kiosk = DECOR.find((g) => g.model === 'city-icecream-kiosk')?.items[0];
+    if (seller && kiosk) this.life.addExtra(seller, kiosk[0] + 1.9, kiosk[1] + 0.6, -Math.PI / 2, 'stroll', 'passerby', 0);
     this.life.addFlutters([v(8, 4), v(-8, -4), v(-40, 20), v(14, -26)], [v(-12, 2), v(6, 4)]);
     const houses = DECOR.filter((g) => g.model.startsWith('house')).flatMap((g) => g.items).slice(0, 4);
     for (const [x, z] of houses) this.life.addSmoke(v(x + 1, z).setY(3.6));
@@ -1222,6 +1248,20 @@ function cityPlan(): GroundPlan {
   };
 }
 
+/** A figure modelled facing +z, turned to face +x as the town's life walks it (null passes through). */
+function facingX(m: THREE.Object3D | null): THREE.Object3D | null {
+  if (!m) return null;
+  const g = new THREE.Group();
+  m.rotation.y += Math.PI / 2;
+  g.add(m);
+  return g;
+}
+
+/** Paved pads Codex lays under kiosks, the tram shelter and the like (city-decor's PLAZAS, when it has them). */
+function plazas(): Rect[] {
+  return (CITY_DECOR as { PLAZAS?: Rect[] }).PLAZAS ?? [];
+}
+
 /**
  * Straight stretches of pavement to walk: along each side of the roads and the
  * tram street, cut where a crossing road, the canal, a task's ring, a pole or
@@ -1234,7 +1274,10 @@ function pavementRuns(plan: GroundPlan, keep: THREE.Vector3[]): THREE.Vector3[][
     onLane(plan, x, z, 0.3) ||
     (Math.abs(x - CANAL.x) < CANAL.w / 2 + 1 && z < CANAL.z1 + 1) ||
     ((x - HARBOR.x) / (HARBOR.rx + 1)) ** 2 + ((z - HARBOR.z) / (HARBOR.rz + 1)) ** 2 < 1 ||
-    keep.some((k) => Math.hypot(x - k.x, z - k.z) < 1.8);
+    keep.some((k) => Math.hypot(x - k.x, z - k.z) < 1.8) ||
+    // Not through a kiosk, the tram shelter's posts or a building (a walker's half-width round them).
+    plazas().some((r) => x > r.x0 - 0.6 && x < r.x1 + 0.6 && z > r.z0 - 0.6 && z < r.z1 + 0.6) ||
+    DECOR.some((g) => (g.fit.width ?? 0) >= 2.5 && g.items.some(([gx, gz, , sc]) => Math.hypot(x - gx, z - gz) < ((g.fit.width ?? 0) * sc) / 2 + 0.6));
   for (const { pts, w } of plan.lanes) {
     if (w < 4) continue;
     for (let i = 1; i < pts.length; i++) {
