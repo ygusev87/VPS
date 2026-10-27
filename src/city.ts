@@ -14,9 +14,11 @@
 // sensor rings the school bell.
 import * as THREE from 'three';
 import { DECOR, FENCES, MEADOW, PATHS, PONDS, SOIL } from './city-decor';
-import { dressing } from './decor';
+import { dressing, toSegment } from './decor';
 import { boardEdge, flowers, groundMaterial, onLane, pond, tiledMaterial, type GroundPlan } from './ground';
-import { cards, decal, grassMaterial, hasKit, kitPieces, ribbons, roadNet, roadRuns, roadTiles, standees, tiledDecal, toned } from './kit';
+import { cards, cellRegion, decal, grassMaterial, hasKit, kitPieces, ribbons, roadNet, roadRuns, roadTiles, standees, tiledDecal, tiledRects, toned } from './kit';
+
+type Rect = { x0: number; z0: number; x1: number; z1: number };
 import { sandboxHint, type Hint } from './hints';
 import { clipsOf, hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind } from './parts/base';
@@ -262,6 +264,7 @@ export class CityMap extends StoryMap {
     this.placeParts();
     this.buildCritters();
     this.buildNeeds();
+    if (this.kit && GREEN) this.greenBlocks();
     this.dress();
     this.sowFlowers();
     // A steady breeze for the park's wind generator.
@@ -313,7 +316,7 @@ export class CityMap extends StoryMap {
     const plan = (this.plan = cityPlan());
     this.kit = hasKit('city', 'paving-main') && !new URLSearchParams(location.search).has('oldground');
     // Paving C is the one with readable joints (Codex's paving-contrast).
-    const top = this.kit ? grassMaterial((kitPieces('city', 'paving-main-c', true)[0] ?? kitPieces('city', 'paving-main', true)[0]), null, [], 8, PAVING_TONE, false) : groundMaterial(plan);
+    const top = this.kit ? grassMaterial((kitPieces('city', 'paving-main-c', true)[0] ?? kitPieces('city', 'paving-main', true)[0]), null, [], PAVING_TILE, PAVING_TONE, false) : groundMaterial(plan);
     const side = mat('#000000', 1);
     const board = mesh(new THREE.BoxGeometry(W, 0.5, D), [side, side, top, side, side, side] as unknown as THREE.Material);
     board.position.y = -0.26;
@@ -365,10 +368,10 @@ export class CityMap extends StoryMap {
     const lawn = kitPieces('city', 'lawn-main', true);
     const kerb = kitPieces('city', 'kerb-strip', true);
     const park = kitPieces('city', 'park-lawn');
-    for (const f of [plan.field, ...(plan.fields ?? [])]) {
+    for (const f of GREEN ? [plan.field] : [plan.field, ...(plan.fields ?? [])]) {
       if (f === plan.field && park.length) {
         // The picture's paved circle sits a little off its middle: move the whole lawn so it rings the fountain (Codex's park review).
-        const lawn = toned(decal(f, park[0], 0.3, 0.005), LAWN_TONE);
+        const lawn = toned(decal(f, park[0], 0.3, 0.005), GREEN ? PARK_TONE : LAWN_TONE);
         lawn.position.x += 0.092578;
         lawn.position.z += 0.260231;
         this.scenery.add(lawn);
@@ -389,11 +392,16 @@ export class CityMap extends StoryMap {
         const pts: [number, number][] = dx < 0 ? [[x, CANAL.z1], [x, CANAL.z0]] : [[x, CANAL.z0], [x, CANAL.z1]];
         this.scenery.add(ribbons([{ pts, w: 1.2 }], quay[0], 1, 6, 0.013, 2, 0));
       }
-    // The farm's painted tufts, flowers and shrubs on every lawn, thicker at the edges (city-a's full lawns).
-    const lawns = [plan.field, ...(plan.fields ?? [])];
+    if (!GREEN) this.sowLawns([plan.field, ...(plan.fields ?? [])]);
+    const harbour = kitPieces('city', 'harbour-water');
+    if (harbour.length) this.scenery.add(decal({ x0: HARBOR.x - HARBOR.rx, z0: HARBOR.z - HARBOR.rz, x1: HARBOR.x + HARBOR.rx, z1: HARBOR.z + HARBOR.rz }, harbour[0], 0.6, 0.014, 2));
+  }
+
+  /** The farm's painted tufts, flowers and shrubs on the lawns, thicker at the edges (city-a's full lawns). */
+  private sowLawns(lawns: Rect[]) {
     let seed = 31;
     const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
-    const free = (x: number, z: number) => !onLane(plan, x, z, 0.6) && !(Math.abs(x - SITE.x) < 4 && Math.abs(z - SITE.z) < 3.5) && this.needs.every((n) => [n.spot, ...n.more.map((m) => m.spot)].every((t) => Math.hypot(x - t.x, z - t.z) > 2.4));
+    const free = (x: number, z: number) => !onLane(this.plan, x, z, 0.6) && !(Math.abs(x - SITE.x) < 4 && Math.abs(z - SITE.z) < 3.5) && this.needs.every((n) => [n.spot, ...n.more.map((m) => m.spot)].every((t) => Math.hypot(x - t.x, z - t.z) > 2.4));
     const sow = (n: number, size: number, edge: number) => {
       const out: { x: number; z: number; size: number }[] = [];
       for (const f of lawns) {
@@ -416,8 +424,73 @@ export class CityMap extends StoryMap {
     if (shrub.length) this.scenery.add(standees(sow(0.03, 1.1, 0.7), shrub, kitPieces('farm', 'blob-shadow')[0] ?? null));
     const beds = kitPieces('city', 'flowerbed-card');
     if (beds.length) this.scenery.add(standees(sow(0.012, 1.4, 0.8), beds, null));
-    const harbour = kitPieces('city', 'harbour-water');
-    if (harbour.length) this.scenery.add(decal({ x0: HARBOR.x - HARBOR.rx, z0: HARBOR.z - HARBOR.rz, x1: HARBOR.x + HARBOR.rx, z1: HARBOR.z + HARBOR.rz }, harbour[0], 0.6, 0.014, 2));
+  }
+
+  /**
+   * Green blocks as in city-a: every block is lawn, with paving only where
+   * people walk — pavements along the roads and the canal, a court round each
+   * task and pole, an apron round each building and a path from its door to
+   * the road. Worked out on a grid, so it follows the tasks wherever they are.
+   */
+  private greenBlocks() {
+    const plan = this.plan;
+    const lawn = kitPieces('city', 'lawn-main', true);
+    if (!lawn.length) return;
+    const P = (x: number, z: number, h: number): Rect => ({ x0: x - h, z0: z - h, x1: x + h, z1: z + h });
+    const courts: Rect[] = [
+      ...this.needs.flatMap((n) => [n.spot, ...n.more.map((m) => m.spot)]).map((t) => P(t.x, t.z, 2.2)),
+      ...[...this.poles.keys()].map((t) => P(t.x, t.z, 1.4)),
+      ...[...this.critters.values()].filter((c) => !c.roams).map((c) => P(c.home.x, c.home.z, 1.2)),
+      P(SUBSTATION.x, SUBSTATION.z, 2.6), P(BINS.x, BINS.z, 1.6), P(COUNTER.x, COUNTER.z, 1.8),
+      { x0: SITE.x - 4.2, z0: SITE.z - 3.6, x1: SITE.x + 4.2, z1: SITE.z + 3.6 },
+    ];
+    // Buildings stand on an apron, with a path from it straight to the nearest road.
+    for (const g of DECOR) {
+      const size = (g.fit.width ?? 0);
+      if (size < 4.5) continue;
+      for (const [x, z, , sc] of g.items) {
+        const h = (size * sc) / 2 + 0.6;
+        courts.push(P(x, z, h));
+        let best: Rect | null = null;
+        let far = 14;
+        for (const [dx, dz] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+          for (let d = h; d < far; d += 0.5)
+            if (onLane(plan, x + dx * d, z + dz * d, 0)) {
+              far = d;
+              best = dx ? { x0: Math.min(x, x + dx * d), x1: Math.max(x, x + dx * d), z0: z - 0.8, z1: z + 0.8 } : { x0: x - 0.8, x1: x + 0.8, z0: Math.min(z, z + dz * d), z1: Math.max(z, z + dz * d) };
+              break;
+            }
+        }
+        if (best) courts.push(best);
+      }
+    }
+    // The raccoon runs over the grass at night; the cars keep to paving.
+    const lines = [WASH_WAY, PARK_WAY];
+    const park = plan.field;
+    const inside = (x: number, z: number) => {
+      if (Math.abs(x) > W / 2 - 0.8 || Math.abs(z) > D / 2 - 0.8) return false;
+      if (x > park.x0 - 0.5 && x < park.x1 + 0.5 && z > park.z0 - 0.5 && z < park.z1 + 0.5) return false;
+      // Pavements: square-cornered, as wide as a lane's kerb and walk.
+      for (const { pts, w } of plan.lanes) {
+        const m = w / 2 + (w >= ROAD ? 1.8 : 1.3);
+        for (let i = 1; i < pts.length; i++) {
+          const [ax, az] = pts[i - 1];
+          const [bx, bz] = pts[i];
+          if (x > Math.min(ax, bx) - m && x < Math.max(ax, bx) + m && z > Math.min(az, bz) - m && z < Math.max(az, bz) + m) return false;
+        }
+      }
+      if (Math.abs(x - CANAL.x) < CANAL.w / 2 + 1.4 && z < CANAL.z1 + 1) return false;
+      if (((x - HARBOR.x) / (HARBOR.rx + 1.4)) ** 2 + ((z - HARBOR.z) / (HARBOR.rz + 1.4)) ** 2 < 1) return false;
+      if (courts.some((r) => x > r.x0 && x < r.x1 && z > r.z0 && z < r.z1)) return false;
+      if (lines.some((l) => l.some((a, i) => i > 0 && toSegment(x, z, l[i - 1], a) < 1))) return false;
+      return true;
+    };
+    // Strips of lawn under a metre between courts read as mistakes: smoothed away.
+    const { rects: lawns, edges } = cellRegion({ x0: -W / 2, z0: -D / 2, x1: W / 2, z1: D / 2 }, 0.5, inside, 2);
+    this.scenery.add(toned(tiledRects(lawns, lawn[0], 8), LAWN_TONE));
+    const kerb = kitPieces('city', 'kerb-strip', true);
+    if (kerb.length) this.scenery.add(ribbons(edges.map((pts) => ({ pts, w: 0.5 })), kerb[0], 1, 4, 0.0065, 2, 0.25));
+    this.sowLawns(lawns);
   }
 
   /** What works in the story: the balcony and basket, the fountain, the loaves, the building site, the smoke. */
@@ -1105,7 +1178,13 @@ const CITY_CARDS: Record<string, { card: string; wide: number }> = {
 };
 
 /** The kit's paving and lawns under the game's sun and grading, evened to city-a. */
+/** World units one paving picture covers: city-a's slabs are small beside a house. */
+const PAVING_TILE = Number(new URLSearchParams(location.search).get('ptile') ?? 5);
 const PAVING_TONE = new URLSearchParams(location.search).get('tone') ?? '#e8dcd4';
+/** Lawn over every block (city-a), not just the traced patches; `?oldlawns` shows the patches. */
+const GREEN = !new URLSearchParams(location.search).has('oldlawns');
+/** The park's picture is darker than the block lawns: lifted to match them. */
+const PARK_TONE = new URLSearchParams(location.search).get('pktone') ?? '#d4cce8';
 const LAWN_TONE = new URLSearchParams(location.search).get('ltone') ?? '#a898c8';
 
 /** Paving everywhere, asphalt roads (the ring, the roads out of it, the tram line, the drives), grass in the park and on the lawns. */

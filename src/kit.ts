@@ -392,6 +392,110 @@ export function tiledDecal(r: Rect, map: THREE.Texture, tile: number, y = 0.005,
   return m;
 }
 
+/**
+ * A region on a grid of square cells (`inside(x, z)` asked at each cell's
+ * middle), as the fewest rectangles that cover it and its outline: the
+ * outline's runs go so the region lies on their left (as a lawn's kerb loop
+ * runs), straight runs merged.
+ */
+export function cellRegion(r: Rect, cell: number, inside: (x: number, z: number) => boolean, smooth = 0) {
+  const nx = Math.round((r.x1 - r.x0) / cell);
+  const nz = Math.round((r.z1 - r.z0) / cell);
+  let on = new Uint8Array(nx * nz);
+  for (let j = 0; j < nz; j++) for (let i = 0; i < nx; i++) on[j * nx + i] = inside(r.x0 + (i + 0.5) * cell, r.z0 + (j + 0.5) * cell) ? 1 : 0;
+  // `smooth` cells of opening (shrink, then grow back): slivers and specks narrower than twice that go.
+  const grow = (src: Uint8Array, keep: 0 | 1) => {
+    const out = new Uint8Array(nx * nz);
+    for (let j = 0; j < nz; j++)
+      for (let i = 0; i < nx; i++) {
+        let v = src[j * nx + i];
+        for (let dj = -1; dj <= 1 && v !== keep; dj++)
+          for (let di = -1; di <= 1; di++) {
+            const ii = i + di, jj = j + dj;
+            if (ii >= 0 && jj >= 0 && ii < nx && jj < nz && src[jj * nx + ii] === keep) { v = keep; break; }
+          }
+        out[j * nx + i] = v;
+      }
+    return out;
+  };
+  const was = on;
+  for (let k = 0; k < smooth; k++) on = grow(on, 0);
+  for (let k = 0; k < smooth; k++) on = grow(on, 1);
+  // Growing back never claims a cell that was out to begin with.
+  for (let n = 0; n < on.length; n++) on[n] &= was[n];
+  const at = (i: number, j: number) => i >= 0 && j >= 0 && i < nx && j < nz && on[j * nx + i] === 1;
+  // Rectangles: runs along each row, grown down while the rows below repeat the run.
+  const used = new Uint8Array(nx * nz);
+  const rects: Rect[] = [];
+  for (let j = 0; j < nz; j++)
+    for (let i = 0; i < nx; i++) {
+      if (!at(i, j) || used[j * nx + i]) continue;
+      let i1 = i;
+      while (at(i1 + 1, j) && !used[j * nx + i1 + 1]) i1++;
+      let j1 = j;
+      const rowFree = (jj: number) => { for (let k = i; k <= i1; k++) if (!at(k, jj) || used[jj * nx + k]) return false; return true; };
+      while (rowFree(j1 + 1)) j1++;
+      for (let jj = j; jj <= j1; jj++) for (let k = i; k <= i1; k++) used[jj * nx + k] = 1;
+      rects.push({ x0: r.x0 + i * cell, z0: r.z0 + j * cell, x1: r.x0 + (i1 + 1) * cell, z1: r.z0 + (j1 + 1) * cell });
+    }
+  // Outline: the cell sides between in and out, joined along each line.
+  const edges: [number, number][][] = [];
+  const X = (i: number) => r.x0 + i * cell;
+  const Z = (j: number) => r.z0 + j * cell;
+  for (let j = 0; j <= nz; j++)
+    for (const below of [true, false]) {
+      // A side along x at line j: the region below it (+z) runs east, above it (−z) runs west.
+      let start = -1;
+      for (let i = 0; i <= nx; i++) {
+        const edge = i < nx && (below ? at(i, j) && !at(i, j - 1) : at(i, j - 1) && !at(i, j));
+        if (edge && start < 0) start = i;
+        if (!edge && start >= 0) {
+          edges.push(below ? [[X(start), Z(j)], [X(i), Z(j)]] : [[X(i), Z(j)], [X(start), Z(j)]]);
+          start = -1;
+        }
+      }
+    }
+  for (let i = 0; i <= nx; i++)
+    for (const right of [true, false]) {
+      // A side along z at line i: the region east of it (+x) runs north, west of it runs south.
+      let start = -1;
+      for (let j = 0; j <= nz; j++) {
+        const edge = j < nz && (right ? at(i, j) && !at(i - 1, j) : at(i - 1, j) && !at(i, j));
+        if (edge && start < 0) start = j;
+        if (!edge && start >= 0) {
+          edges.push(right ? [[X(i), Z(j)], [X(i), Z(start)]] : [[X(i), Z(start)], [X(i), Z(j)]]);
+          start = -1;
+        }
+      }
+    }
+  return { rects, edges };
+}
+
+/** Rectangles of one tiled picture as a single mesh, the pattern anchored to the world (one draw, one texture). */
+export function tiledRects(rects: Rect[], map: THREE.Texture, tile: number, y = 0.005, order = 0): THREE.Mesh {
+  const pos: number[] = [];
+  const uv: number[] = [];
+  const index: number[] = [];
+  for (const r of rects) {
+    const n = pos.length / 3;
+    for (const [x, z] of [[r.x0, r.z0], [r.x1, r.z0], [r.x1, r.z1], [r.x0, r.z1]]) {
+      pos.push(x, y, z);
+      uv.push(x / tile, -z / tile);
+    }
+    index.push(n, n + 2, n + 1, n, n + 3, n + 2);
+  }
+  const geo = new THREE.BufferGeometry();
+  geo.setAttribute('position', new THREE.Float32BufferAttribute(pos, 3));
+  geo.setAttribute('uv', new THREE.Float32BufferAttribute(uv, 2));
+  geo.setAttribute('normal', new THREE.Float32BufferAttribute(pos.map((_, i) => (i % 3 === 1 ? 1 : 0)), 3));
+  geo.setIndex(index);
+  const m = new THREE.Mesh(geo, flatMaterial(map, order));
+  m.receiveShadow = true;
+  m.renderOrder = order;
+  m.userData.noAO = true;
+  return m;
+}
+
 /** The four ways out of a road tile, as unit steps: east, south, west, north. */
 type Dir = [number, number];
 /** Which ways each painted road tile opens, as drawn (north at the top of the picture). */
