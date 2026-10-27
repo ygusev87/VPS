@@ -542,6 +542,8 @@ async function startMap(name: MapName, fresh = false) {
   }));
   mapName = name;
   m.start();
+  // This map's asks and thanks decoded ahead, so a character answers a tap at once.
+  voice.prepare([level.intro, def.move, ...m.phrases()]);
   // The workbench's parts are not on the map: give their textures' video memory back for now.
   setTimeout(() => map === m && releaseUnused(stage.scene), 1500);
   mapScore = '';

@@ -308,6 +308,12 @@ export abstract class StoryMap {
   }
 
   /** How far the story got, to carry on next time (the parts and wires are saved with the table). */
+  /** What the characters ask, first the ones of the part of day now (for the voice to have ready). */
+  phrases(): PhraseId[] {
+    const now = this.needs.filter((n) => n.phase === this.phase);
+    return [...now, ...this.needs.filter((n) => !now.includes(n))].map((n) => n.ask);
+  }
+
   progress(): MapProgress {
     return { layout: this.layout, day: this.day, phase: this.phase, done: this.needs.map((n) => n.done), ...this.saveExtra() };
   }

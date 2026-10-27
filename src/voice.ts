@@ -426,6 +426,12 @@ export type PhraseId = keyof typeof PHRASES;
  * through WebAudio; the browser's speech synthesis stands in for any clip
  * that is missing or not loaded yet.
  */
+/** How much decoded voice to keep (a phrase is ~0.2–1 MB of sound, all ~400 of them ~90 MB; one decodes in a few ms). */
+const CLIP_BUDGET = 32 * 1024 * 1024;
+
+/** Phrases any table may need at once, decoded first: problems, the next wire, praise. */
+const COMMON: PhraseId[] = ['short', 'reversed', 'bypass', 'wrongWire', 'switchBeside', 'connect', 'toPlus', 'toMinus', 'toPair', 'holdButton', 'tapSwitch', 'weak', 'drag', 'placeHere', 'needPower', 'needBattery', 'newSticker', 'winChain'];
+
 export class Voice {
   enabled = true;
   private voice: SpeechSynthesisVoice | null = null;
@@ -434,12 +440,16 @@ export class Voice {
   private ctx: AudioContext | null = null;
   private out: AudioNode | null = null;
   private raw = new Map<PhraseId, Promise<ArrayBuffer | null>>();
-  readonly clips = new Map<PhraseId, AudioBuffer>();
+  /** Decoded clips, least recently said first; their sound takes far more memory than the MP3s, so only some stay. */
+  private clips = new Map<PhraseId, AudioBuffer>();
+  private clipBytes = 0;
+  /** Clips waiting to be decoded ahead of need, one at a time. */
+  private ahead: PhraseId[] = [];
   private playing: AudioBufferSourceNode | null = null;
   private endsAt = 0;
 
   constructor() {
-    // Fetch every clip up front (about 1 MB) so they also work offline later.
+    // Fetch every clip up front (a few MB of MP3) so they also work offline later.
     for (const id of Object.keys(PHRASES) as PhraseId[]) this.raw.set(id, fetchClip(id));
     if (!('speechSynthesis' in window)) return;
     const pick = () => {
@@ -460,39 +470,76 @@ export class Voice {
     if (!first) this.stop();
     this.ctx = ctx;
     this.out = out;
-    if (!first) return;
-    // Decode one clip at a time in the background: decoding all ~200 at once
-    // on the first touch made the first seconds of play stutter on an iPad.
-    const queue = [...this.raw.keys()];
+    if (first) this.prepare(COMMON);
+  }
+
+  /**
+   * Decode these clips ahead of need (the open map's or task's phrases), one at
+   * a time in the background: decoding many at once on a touch made an iPad stutter.
+   */
+  prepare(ids: PhraseId[]) {
+    this.ahead = [...new Set([...ids.filter((id) => this.raw.has(id)), ...this.ahead])];
+    this.batch = 0;
+    if (this.pumping || !this.ctx) return;
+    this.pumping = true;
     const next = () => {
-      const id = queue.shift();
-      if (!id) return;
-      void this.decode(id).then(() => setTimeout(next, 15));
+      const id = this.ahead.shift();
+      // Ahead of need only up to three quarters of the budget at a time: more would push out what was just made ready.
+      if (!id || this.batch > CLIP_BUDGET * 0.75) return void ((this.pumping = false), (this.ahead.length = 0));
+      void this.decode(id).then((c) => {
+        if (c) this.batch += c.length * c.numberOfChannels * 4;
+        setTimeout(next, 15);
+      });
     };
     next();
   }
 
+  private pumping = false;
+  /** Bytes made ready by the latest `prepare`. */
+  private batch = 0;
+
   private decoding = new Map<PhraseId, Promise<AudioBuffer | null>>();
 
-  /** Decode a clip (once); also used to jump the queue for a phrase that is wanted now. */
+  /** Decode a clip (or find it decoded); also used to jump the queue for a phrase that is wanted now. */
   private decode(id: PhraseId): Promise<AudioBuffer | null> {
     const ctx = this.ctx;
     if (!ctx) return Promise.resolve(null);
+    const have = this.clips.get(id);
+    if (have) return Promise.resolve(have);
     let p = this.decoding.get(id);
     if (!p) {
       p = (this.raw.get(id) ?? Promise.resolve(null)).then(async (buf) => {
         if (!buf) return null;
         try {
+          // A copy: decoding takes the bytes over, and the MP3 stays for the next time.
           const clip = await ctx.decodeAudioData(buf.slice(0));
-          this.clips.set(id, clip);
+          this.keep(id, clip);
           return clip;
         } catch {
           return null; // Undecodable clip: synthesis covers it.
+        } finally {
+          this.decoding.delete(id);
         }
       });
       this.decoding.set(id, p);
     }
     return p;
+  }
+
+  /** Keep a decoded clip, letting the least recently said ones go beyond the budget. */
+  private keep(id: PhraseId, clip: AudioBuffer) {
+    const bytes = (c: AudioBuffer) => c.length * c.numberOfChannels * 4;
+    const old = this.clips.get(id);
+    if (old) this.clipBytes -= bytes(old);
+    this.clips.delete(id);
+    this.clips.set(id, clip);
+    this.clipBytes += bytes(clip);
+    for (const [other, c] of this.clips) {
+      if (this.clipBytes <= CLIP_BUDGET) break;
+      if (other === id || c === this.playing?.buffer) continue;
+      this.clips.delete(other);
+      this.clipBytes -= bytes(c);
+    }
   }
 
   /** Say a phrase; the same phrase is not repeated within `cooldown` ms. */
@@ -504,11 +551,14 @@ export class Voice {
     this.saidAt = now;
     this.stop();
     const clip = this.clips.get(id);
+    // Said now: the most recently used, the last to be let go.
+    if (clip) this.keep(id, clip);
     // Not decoded yet: decode it now and speak a moment later (better than the robot voice).
     if (!clip && this.ctx && this.raw.has(id)) {
       const asked = this.last;
       void this.decode(id).then((c) => {
-        if (this.last !== asked) return; // Something else was said meanwhile.
+        // Something else was said meanwhile, or the sound was turned off.
+        if (this.last !== asked || !this.enabled) return;
         if (c) {
           this.last = null;
           this.say(id, 0);
