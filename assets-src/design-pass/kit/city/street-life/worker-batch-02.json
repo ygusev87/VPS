@@ -1,6 +1,6 @@
 {
   "task": "city-street-life",
-  "status": "prepared-not-dispatched",
+  "status": "dispatched-active",
   "prerequisite": "Do not start until main explicitly dispatches after existing factory-batch-01 is finished/stopped. Sole current worker remains on factory forklift.",
   "base": "/Users/gusev/gameios",
   "operatorThread": "01a17696-ff06-7a43-886e-af0ed6098802",
@@ -176,5 +176,12 @@
     "Document original task/price/balance/order/retry and all local geometry edits; do not call modified mesh untouched Tripo.",
     "Own exact-path local commits only, no push. Publish READY individually in progress; stop after eight.",
     "Main handles final manifest/layout/runtime acceptance with Claude; do not claim complete game or physical iPad QA."
-  ]
+  ],
+  "dispatch": {
+    "at": "2026-10-27T11:40:43.086345+00:00",
+    "threadId": "01a17696-ff06-7a43-886e-af0ed6098802",
+    "authorization": "Main direct task message after worker idle cursor90; owner standing project authorization.",
+    "previousBatch": "factory-batch-01 completed with four accepted workers and preserved blocked forklift candidate",
+    "mainReferenceCommit": "b2e215e"
+  }
 }

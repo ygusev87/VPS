@@ -1,7 +1,7 @@
 {
   "reviewedAt": "2026-10-27T11:37:52.191161+00:00",
   "status": "candidate-preserved-not-accepted-for-runtime",
-  "workerCommit": null,
+  "workerCommit": "66567d0",
   "candidate": "assets-src/design-pass/kit/factory/background-life/models/factory-forklift/static-candidate.glb",
   "sha256": "eb5b5415248c1d86ce1160da4d6b4fd064a393dc7682936abc36bafcbae802bc",
   "bytes": 100228,
