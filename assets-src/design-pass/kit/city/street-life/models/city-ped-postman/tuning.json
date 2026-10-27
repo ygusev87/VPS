@@ -1,0 +1,16 @@
+{
+  "reviewed": true,
+  "height": 1.6,
+  "rotationY": 0,
+  "targetTriangles": 3900,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "uniform",
+  "groundContacts": [],
+  "floorSnap": 0.005,
+  "rawOrientationReview": "Native +Z face confirmed; intact limbs/accessories. Uniform height scaling."
+}

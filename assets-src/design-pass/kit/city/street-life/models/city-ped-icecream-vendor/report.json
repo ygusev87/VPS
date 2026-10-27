@@ -1,0 +1,96 @@
+{
+  "name": "city-ped-icecream-vendor",
+  "source": "assets-src/raw/city-street-people-2026-10-27/city-ped-icecream-vendor.glb",
+  "sourceSha256": "4ad4aea7d8fa0dc3ecc6872fb0a7822459e481f22d27a2063772cd3bb79924a1",
+  "sourceBytes": 667244,
+  "sourceTriangles": 3710,
+  "sourceBounds": {
+    "min": [
+      -0.253570556640625,
+      0,
+      -0.1936950981616974
+    ],
+    "max": [
+      0.253570556640625,
+      1,
+      0.1936950981616974
+    ]
+  },
+  "bytes": 76504,
+  "sha256": "422acd5598e29b43e79ed28fbb756bdc52f0fbda1b0ff598487645883049517f",
+  "triangles": 3710,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.40570086361553015,
+      0,
+      -0.3099215720488379
+    ],
+    "max": [
+      0.40570086361553015,
+      1.600000023841858,
+      0.3099215720488379
+    ]
+  },
+  "size": [
+    0.8114017272310603,
+    1.600000023841858,
+    0.6198431440976758
+  ],
+  "contract": {
+    "reviewed": true,
+    "height": 1.6,
+    "rotationY": 0,
+    "targetTriangles": 3900,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform",
+    "groundContacts": [],
+    "floorSnap": 0.0005,
+    "rawOrientationReview": "Native +Z face and standing pose confirmed; intact limbs and cone."
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform scale by total height; preserve anatomy; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.0005 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}

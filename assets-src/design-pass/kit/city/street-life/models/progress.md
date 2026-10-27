@@ -64,3 +64,15 @@ Raw сохранены локально и остаются ignored: `assets-src
 ## READY — city-ped-balloon
 
 `public/models/city-ped-balloon.glb`: 72,964 байт,3840 треугольников;XYZ 0.827680 × 1.800000 × 0.646510;SHA `3ee3864d8d854e8db766771e039a436c926272771415a0ad6ab551c8cdc3c415`. Один OPAQUE материал,512WebP/Meshopt,без скелета;front+Z,центрXZ0,основаниеY0;2 опоры подтверждены. Girl with balloon, two arms/two legs and continuous thick cord. Total height1.8. Child uniformly enlarged by1.112189 to body height≈1.05 (previously0.944084); a smooth transition on cord only keeps balloon and total height unchanged. Floor snap4mm closes the small rear-sole gap. Normals recomputed after child scaling. Native390/1024 и4ракурса PASS,ошибок/overflow0,88тестов/TypeScriptPASS. Промпты,rawистория,контракт иQA в папке модели. Готово к передаче Claude.
+
+## READY — city-ped-dog-walker
+
+`public/models/city-ped-dog-walker.glb`: 79,348 байт,3832 треугольников;XYZ 1.442085 × 1.600000 × 0.903592;SHA `9f40413256edabcfdeac74a8bfb64e23b049b0e6db3207f5bf3000ce5490f5ae`. Один OPAQUE материал,512WebP/Meshopt,без скелета;front+Z,центрXZ0,основаниеY0;6 опоры подтверждены. One group: woman and dog, continuous thick leash. Two human arms/legs and four dog legs. Translate/rotate as one static group. Uniform height1.6 scale; bottom9mm snapped toY0, removing source contact gaps up to8.4mm. Native390/1024 и4ракурса PASS,ошибок/overflow0,88тестов/TypeScriptPASS. Промпты,rawистория,контракт иQA в папке модели. Готово к передаче Claude.
+
+## READY — city-ped-postman
+
+`public/models/city-ped-postman.glb`: 85,460 байт,3853 треугольников;XYZ 0.893338 × 1.600000 × 0.758275;SHA `efccc2628deba611273c6c8f14ef72c092fb3404a89e6ad18508a51f67d1d46b`. Один OPAQUE материал,512WebP/Meshopt,без скелета;front+Z,центрXZ0,основаниеY0;2 опоры подтверждены. Postman with cap/envelope/satchel; two arms/two legs. Uniform height1.6 scale; bottom5mm snapped toY0, removing a4.25mm rear-sole gap. Native390/1024 и4ракурса PASS,ошибок/overflow0,88тестов/TypeScriptPASS. Промпты,rawистория,контракт иQA в папке модели. Готово к передаче Claude.
+
+## READY — city-ped-icecream-vendor
+
+`public/models/city-ped-icecream-vendor.glb`: 76,504 байт,3710 треугольников;XYZ 0.811402 × 1.600000 × 0.619843;SHA `422acd5598e29b43e79ed28fbb756bdc52f0fbda1b0ff598487645883049517f`. Один OPAQUE материал,512WebP/Meshopt,без скелета;front+Z,центрXZ0,основаниеY0;2 опоры подтверждены. Standing vendor with two arms/two legs and intact two-scoop cone. Uniform height1.6 scale; bottom0.5mm snapped toY0, removing a0.244mm sole gap. Minor soft color blend at back waist in original texture. Native390/1024 и4ракурса PASS,ошибок/overflow0,88тестов/TypeScriptPASS. Промпты,rawистория,контракт иQA в папке модели. Готово к передаче Claude.

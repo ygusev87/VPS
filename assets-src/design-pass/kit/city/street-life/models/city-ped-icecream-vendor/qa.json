@@ -1,0 +1,82 @@
+{
+  "native": true,
+  "visual": "PASS: front/three-quarter/back/bottom, two arms/two legs/intact cone, clean face. Minor soft color blend at back waist in source texture.",
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":76504,\"triangles\":3710,\"materials\":1,\"bounds\":{\"min\":[-0.40570086361553015,0,-0.3099215720488379],\"max\":[0.40570086361553015,1.600000023841858,0.3099215720488379]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":76504,\"triangles\":3710,\"materials\":1,\"bounds\":{\"min\":[-0.40570086361553015,0,-0.3099215720488379],\"max\":[0.40570086361553015,1.600000023841858,0.3099215720488379]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":76504,\"triangles\":3710,\"materials\":1,\"bounds\":{\"min\":[-0.40570086361553015,0,-0.3099215720488379],\"max\":[0.40570086361553015,1.600000023841858,0.3099215720488379]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":76504,\"triangles\":3710,\"materials\":1,\"bounds\":{\"min\":[-0.40570086361553015,0,-0.3099215720488379],\"max\":[0.40570086361553015,1.600000023841858,0.3099215720488379]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":76504,\"triangles\":3710,\"materials\":1,\"bounds\":{\"min\":[-0.40570086361553015,0,-0.3099215720488379],\"max\":[0.40570086361553015,1.600000023841858,0.3099215720488379]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": []
+}

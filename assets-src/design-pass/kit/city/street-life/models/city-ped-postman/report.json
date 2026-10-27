@@ -1,0 +1,96 @@
+{
+  "name": "city-ped-postman",
+  "source": "assets-src/raw/city-street-people-2026-10-27/city-ped-postman.glb",
+  "sourceSha256": "c062c3710ce7204b6b84dcc7a3b0c6c9a4c444a231b40c43cfa7b7fd82c93201",
+  "sourceBytes": 728636,
+  "sourceTriangles": 3853,
+  "sourceBounds": {
+    "min": [
+      -0.2791748046875,
+      0,
+      -0.2369537353515625
+    ],
+    "max": [
+      0.2791748046875,
+      1,
+      0.2369537353515625
+    ]
+  },
+  "bytes": 85460,
+  "sha256": "efccc2628deba611273c6c8f14ef72c092fb3404a89e6ad18508a51f67d1d46b",
+  "triangles": 3853,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.44666891134658027,
+      0,
+      -0.37913755257179804
+    ],
+    "max": [
+      0.44666891134658027,
+      1.600000023841858,
+      0.37913755257179804
+    ]
+  },
+  "size": [
+    0.8933378226931605,
+    1.600000023841858,
+    0.7582751051435961
+  ],
+  "contract": {
+    "reviewed": true,
+    "height": 1.6,
+    "rotationY": 0,
+    "targetTriangles": 3900,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform",
+    "groundContacts": [],
+    "floorSnap": 0.005,
+    "rawOrientationReview": "Native +Z face confirmed; intact limbs/accessories. Uniform height scaling."
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform scale by total height; preserve anatomy; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.005 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}
