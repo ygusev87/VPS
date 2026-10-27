@@ -1,0 +1,86 @@
+{
+  "source": "assets-src/raw/factory-2026-10-27/hoist-rejected-4.glb",
+  "sourceSha256": "b99d8a664a89db7047e06fd3004083304e4c93e6e49544907dc95d8ad2f28d3d",
+  "outputSha256": "931611689ef6bea702a7849c0a02c25c11321d6a3db3d4d86deb953ffce64074",
+  "bytes": 150148,
+  "triangles": 2952,
+  "materials": 1,
+  "bounds": {
+    "min": [
+      -0.6499984741390978,
+      -2.9802316170446375e-10,
+      -0.6499984741390978
+    ],
+    "max": [
+      0.6499984741390978,
+      3,
+      0.6499984741390978
+    ]
+  },
+  "texture": [
+    512,
+    512
+  ],
+  "patches": {
+    "yellow": {
+      "score": 43.88134765625,
+      "x": 1072,
+      "y": 1600,
+      "size": 32,
+      "mean": [
+        197.546875,
+        152.015625,
+        7.546875
+      ],
+      "variance": 7.604736328125
+    },
+    "teal": {
+      "score": 693.97412109375,
+      "x": 1600,
+      "y": 256,
+      "size": 32,
+      "mean": [
+        73.265625,
+        108.8125,
+        92.65625
+      ],
+      "variance": 46.979248046875
+    },
+    "dark": {
+      "score": 363.0732421875,
+      "x": 608,
+      "y": 1632,
+      "size": 32,
+      "mean": [
+        75.984375,
+        101.421875,
+        77.1875
+      ],
+      "variance": 38.63037109375
+    }
+  },
+  "construction": "Manual structural rebuild after one paid and three free unusable Tripo results. Original generated atlas reused without repainting, UV patches selected by colour/variance; bevelled posts, sparse rear/side grids, open front. No cabin, rope, pulley, farm lift, global base plate.",
+  "placement": [
+    0,
+    0.16,
+    -0.25
+  ],
+  "fit": {
+    "height": 3
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  }
+}

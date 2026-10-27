@@ -1,0 +1,39 @@
+{
+  "fullCabinSweepIntersections": 0,
+  "triangleIds": [],
+  "phases": [
+    {
+      "phase": 0,
+      "intersections": 0
+    },
+    {
+      "phase": 0.5,
+      "intersections": 0
+    },
+    {
+      "phase": 1,
+      "intersections": 0
+    }
+  ],
+  "ropeEnvelopeIntersections": 0,
+  "cabinModelSweptBounds": {
+    "min": [
+      -0.43,
+      0.08,
+      -0.38
+    ],
+    "max": [
+      0.43,
+      2.47,
+      0.42
+    ]
+  },
+  "placement": [
+    0,
+    0.16,
+    -0.25
+  ],
+  "pulleyProposedRuntimeY": 2.96,
+  "ropeTopProposedRuntimeY": 2.88,
+  "method": "Exact triangle-box SAT against complete cabin swept AABB and proposed rope envelope, after meshopt decode."
+}

@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "ownerAuthorized": true,
-  "authorizedScope": "8 factory bodies from prepared primary/secondary refs",
-  "creditBudget": 200,
+  "authorizedScope": "Necessary project models and justified iterations using existing Tripo Studio credits; no purchases or API",
+  "creditBudget": null,
   "creditUsed": 100,
   "service": "Tripo Studio",
   "balanceBefore": 5600,
@@ -78,7 +78,7 @@
       "id": "24c0e3b0-ae76-446b-92a8-470e91b7c602",
       "url": "https://studio.tripo3d.ai/ru/workspace/generate/24c0e3b0-ae76-446b-92a8-470e91b7c602",
       "credits": 25,
-      "status": "four-results-rejected-local-repair",
+      "status": "local-reconstruction-qa-passed",
       "source": "assets-src/design-pass/kit/factory/machines-primary/concepts/hoist.png",
       "sourceSha256": "d8b432be56af6965a8df39f00c392a6e900d117b95b670081c0ed09538571c1e",
       "balanceBefore": 5525,
@@ -93,9 +93,13 @@
         "parts": false
       },
       "rejectionReason": "Studio visibly shows collapsed stretched triangular sheets instead of tower",
-      "freeRetriesUsed": 3
+      "freeRetriesUsed": 3,
+      "output": "public/models/hoist.glb",
+      "outputSha256": "931611689ef6bea702a7849c0a02c25c11321d6a3db3d4d86deb953ffce64074"
     }
   ],
-  "parallelSecondaryBudget": 100,
-  "secondaryLog": "secondary/generation-log.json (owned by second chat)"
+  "parallelSecondaryBudget": null,
+  "secondaryLog": "secondary/generation-log.json (owned by second chat)",
+  "authorizationUpdate": "2026-10-27 owner explicitly removed former200/100 ceilings; authorizes necessary existing credits within project",
+  "creditUsedMeaning": "100 spent by main; secondary log records its own actual spending, not a separate ceiling"
 }
