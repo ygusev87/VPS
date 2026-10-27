@@ -488,7 +488,23 @@ export class FactoryMap extends StoryMap {
       // Grime along the walkways where people and trolleys go.
       { x: -14, z: 1.6, size: 1 }, { x: 6, z: 0.8, size: 0.9 }, { x: 27, z: 1.4, size: 1.1 }, { x: -26, z: 9.6, size: 1 }, { x: 12, z: 10.3, size: 0.9 },
     ];
-    if (this.kit && oil.length) this.scenery.add(patches(spots, oil, 0.007, 1));
+    const stains = ['a', 'c'].map((v) => kitPieces('factory', `factory-floor-oil-${v}`)[0]).filter(Boolean);
+    if (this.kit && stains.length) {
+      // Codex's painted stains (contract: a/c 2.8 square at .42/.38, the streak b 5 × 1.667 at .40, dust 3.4 at .22).
+      const g = new THREE.Group();
+      spots.forEach((p, i) => g.add(floorDecal(stains[i % stains.length], p.size * 1.6, p.size * 1.6, p.x, p.z, i * 1.7, i % 2 ? 0.38 : 0.42)));
+      const streak = kitPieces('factory', 'factory-floor-oil-b')[0];
+      // Streaks where things drive: along the cart's rails, out of the lorries' places, along the belt's feet.
+      if (streak)
+        for (const [x, z, turn] of [[CART.x - 1, CART.z + 1.2, 0], [LORRY.x, LORRY.z + 4, Math.PI / 2], [LORRY2.x - 4, LORRY2.z + 1.5, 0], [-6, LINE_Z + 1.1, 0], [14, EVE_Z - 1.2, 0]] as const) g.add(floorDecal(streak, 5, 1.667, x, z, turn, 0.4));
+      const dust = kitPieces('factory', 'factory-floor-dust')[0];
+      // Dust along the walls, in the corners and round the machines' feet.
+      if (dust) {
+        const at: [number, number][] = [[-37, -23], [37, -23], [-37, 23], [37, 23], [-20, -23.5], [5, -23.5], [28, -23.5], [-38, 8], [38, -2], [38, 14], ...[LATHE, PRESS, ROBOT, HOIST, GRINDER, WELDER, BOOTH].map((p): [number, number] => [p.x + 1.2, p.z - 1.4])];
+        at.forEach(([x, z], i) => g.add(floorDecal(dust, 3.4, 3.4, x, z, i * 2.3, 0.22)));
+      }
+      this.scenery.add(g);
+    } else if (this.kit && oil.length) this.scenery.add(patches(spots, oil, 0.007, 1));
   }
 
   /** The hall: walls with windows, pillars, lamps, the conveyor, the overhead crane over the stock, racks of steel. */
@@ -1266,6 +1282,19 @@ function giftBox(): THREE.Group {
   bow.position.y = 0.64;
   g.add(box, bow);
   return g;
+}
+
+/** A painted mark on the floor (a stain, dust): soft-edged, over the floor and under everything else. */
+function floorDecal(map: THREE.Texture, w: number, d: number, x: number, z: number, turn: number, opacity: number): THREE.Mesh {
+  const m = new THREE.Mesh(
+    new THREE.PlaneGeometry(w, d).rotateX(-Math.PI / 2),
+    new THREE.MeshBasicMaterial({ map, transparent: true, opacity, depthWrite: false, polygonOffset: true, polygonOffsetFactor: -2, polygonOffsetUnits: -2 }),
+  );
+  m.position.set(x, 0.012, z);
+  m.rotation.y = turn;
+  m.renderOrder = 1;
+  m.userData.noAO = true;
+  return m;
 }
 
 /** A painted frame of yellow and black stripes on the floor. */
