@@ -1,0 +1,128 @@
+{
+  "sha256": "60f83ae983fd7710eb17ef20db4b9d2d2f9d6355a2b30618526d8580a32f1f05",
+  "method": "Exact triangle polygons clipped to each axial slab, minimum radial distance of their convex projection; conservative continuous rotational swept volumes, including spindle vibration. Fitting reproduces model(width2.6).",
+  "volumes": [
+    {
+      "name": "stone including .03 vertical vibration",
+      "axis": "x",
+      "uv": [
+        "y",
+        "z"
+      ],
+      "centre": [
+        0.75,
+        0
+      ],
+      "range": [
+        0.09,
+        0.31
+      ],
+      "radius": 0.48,
+      "minimumSurfaceRadius": 0.4878095706086851,
+      "clearance": 0.00780957060868509,
+      "intersections": 0
+    },
+    {
+      "name": "wood spindle including .03 vibration",
+      "axis": "x",
+      "uv": [
+        "y",
+        "z"
+      ],
+      "centre": [
+        0.75,
+        0
+      ],
+      "range": [
+        -0.175,
+        0.575
+      ],
+      "radius": 0.11,
+      "minimumSurfaceRadius": 0.11725340509183195,
+      "clearance": 0.007253405091831949,
+      "intersections": 0
+    },
+    {
+      "name": "small input gear rim with bevel",
+      "axis": "y",
+      "uv": [
+        "x",
+        "z"
+      ],
+      "centre": [
+        -1.2,
+        -0.65
+      ],
+      "range": [
+        0.28,
+        0.42
+      ],
+      "radius": 0.411,
+      "minimumSurfaceRadius": 0.4340499544095164,
+      "clearance": 0.023049954409516404,
+      "intersections": 0
+    },
+    {
+      "name": "small gear hub",
+      "axis": "y",
+      "uv": [
+        "x",
+        "z"
+      ],
+      "centre": [
+        -1.2,
+        -0.65
+      ],
+      "range": [
+        0.25,
+        0.45
+      ],
+      "radius": 0.121,
+      "minimumSurfaceRadius": 0.29583660814229656,
+      "clearance": 0.17483660814229657,
+      "intersections": 0
+    },
+    {
+      "name": "rear input shaft",
+      "axis": "y",
+      "uv": [
+        "x",
+        "z"
+      ],
+      "centre": [
+        -1.2,
+        -0.65
+      ],
+      "range": [
+        0,
+        0.5
+      ],
+      "radius": 0.08,
+      "minimumSurfaceRadius": 0.14966272045885998,
+      "clearance": 0.06966272045885998,
+      "intersections": 0
+    },
+    {
+      "name": "gauge face and needle envelope",
+      "axis": "z",
+      "uv": [
+        "x",
+        "y"
+      ],
+      "centre": [
+        -0.8,
+        1.25
+      ],
+      "range": [
+        0.275,
+        0.36
+      ],
+      "radius": 0.3,
+      "minimumSurfaceRadius": 0.31908080929588295,
+      "clearance": 0.01908080929588296,
+      "intersections": 0
+    }
+  ],
+  "pass": true,
+  "limits": "Correct small input gear checked; incorrect larger gears and full factory neighbours not covered."
+}

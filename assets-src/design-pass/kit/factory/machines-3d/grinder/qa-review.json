@@ -1,0 +1,25 @@
+{
+  "status": "asset-accepted-for-integration",
+  "sha256": "60f83ae983fd7710eb17ef20db4b9d2d2f9d6355a2b30618526d8580a32f1f05",
+  "bytes": 104888,
+  "triangles": 3800,
+  "screenshots": [
+    "grinder-minus-1024.png",
+    "grinder-minus-390.png",
+    "grinder-plus-1024.png",
+    "grinder-plus-390.png",
+    "grinder-top-1024.png",
+    "grinder-top-390.png",
+    "grinder-zero-1024.png",
+    "grinder-zero-390.png"
+  ],
+  "visual": "Actual new Lathe(true), code wheel and small input Gear, three spindle/vibration phases plus complete top view at390x844/1024x768; wheel readable, guard aperture open, gauge visible, input gear free.",
+  "browserWarnings": 0,
+  "browserErrors": 0,
+  "geometry": "Six conservative swept volumes all clear; geometry-review.json",
+  "remaining": "Whole factory gameplay integration by Claude; real iPad/PWA",
+  "checks": {
+    "vitest": "88/88, 17 files",
+    "typecheck": "PASS"
+  }
+}
