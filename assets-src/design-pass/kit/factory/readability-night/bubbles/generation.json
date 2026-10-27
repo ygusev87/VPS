@@ -1,0 +1,66 @@
+{
+  "provider": "built-in image_gen",
+  "totalCalls": 10,
+  "items": [
+    {
+      "id": "factory-bubble-dark-lamp",
+      "prompt": "Square transparent-background task pictogram for a child's tactile toy-factory game. One very large simple centered composition occupying 84% of canvas, readable at90px. Soft stylized3D painted product illustration, thick rounded forms, muted teal/ochre/coral industrial kit palette, clean silhouette, few large details, soft studio light, slight three-quarter overhead view. No words, letters, numbers, border, speech-bubble outline, scenic background, ground shadow or tiny decorations. True transparent background, never checkerboard. One unlit factory pendant lamp: thick teal metal dome shade, large obvious gray/off bulb visible below, short dark suspension stub above. Clearly switched OFF: no yellow rays or glow.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-70963610-e96d-4e9f-8ff8-bb3f0e75c832.png",
+      "calls": 1
+    },
+    {
+      "id": "factory-bubble-empty-belt",
+      "prompt": "Square transparent-background task pictogram for a child's tactile toy-factory game. One very large simple centered composition occupying 84% of canvas, readable at90px. Soft stylized3D painted product illustration, thick rounded forms, muted teal/ochre/coral industrial kit palette, clean silhouette, few large details, soft studio light, slight three-quarter overhead view. No words, letters, numbers, border, speech-bubble outline, scenic background, ground shadow or tiny decorations. True transparent background, never checkerboard. One short EMPTY conveyor transport belt in three-quarter overhead perspective, large charcoal slatted top, chunky teal side rails, two small supports. NO product or package on it. Whole belt isolated.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-3a57fa9c-48aa-4619-9eb4-0fb77024c9c8.png",
+      "calls": 1
+    },
+    {
+      "id": "factory-bubble-gears",
+      "prompt": "Square transparent-background task pictogram for a child's tactile toy-factory game. One very large simple centered composition occupying 84% of canvas, readable at90px. Soft stylized3D painted product illustration, thick rounded forms, muted teal/ochre/coral industrial kit palette, clean silhouette, few large details, soft studio light, slight three-quarter overhead view. No words, letters, numbers, border, speech-bubble outline, scenic background, ground shadow or tiny decorations. True transparent background, never checkerboard. Two visibly meshing chunky steel toothed cogwheels on two aligned short shafts: LEFT wheel is clearly LARGE, mounted to a simple ochre lathe stand; RIGHT wheel clearly SMALL, attached to a small teal electric MOTOR with rounded vented housing. Large wheel on lathe, small wheel on motor conveys slow driven speed. Keep left/right mechanically coherent; no arrows or speed writing.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-e11b72af-5b32-4686-ad18-13bcfa53a74a.png",
+      "calls": 1
+    },
+    {
+      "id": "factory-bubble-gears-fast",
+      "prompt": "Square transparent-background task pictogram for a child's tactile toy-factory game. One very large simple centered composition occupying 84% of canvas, readable at90px. Soft stylized3D painted product illustration, thick rounded forms, muted teal/ochre/coral industrial kit palette, clean silhouette, few large details, soft studio light, slight three-quarter overhead view. No words, letters, numbers, border, speech-bubble outline, scenic background, ground shadow or tiny decorations. True transparent background, never checkerboard. Two visibly meshing chunky steel toothed cogwheels on two aligned short shafts: LEFT wheel clearly SMALL, mounted to a simple ochre lathe stand; RIGHT wheel clearly LARGE, attached to a teal electric MOTOR with rounded vented housing. Big gear onmotor,right;smallgear onlathe,left. A few broad motion arcs at left output, no fire or sparks. Clearly distinct from slowratio. No text.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-ce115131-c222-4474-8e27-fd50ded3f683.png",
+      "calls": 1
+    },
+    {
+      "id": "factory-bubble-two-hands",
+      "prompt": "Square transparent-background task pictogram for a child's tactile toy-factory game. One very large simple centered composition occupying 84% of canvas, readable at90px. Soft stylized3D painted product illustration, thick rounded forms, muted teal/ochre/coral industrial kit palette, clean silhouette, few large details, soft studio light, slight three-quarter overhead view. No words, letters, numbers, border, speech-bubble outline, scenic background, ground shadow or tiny decorations. True transparent background, never checkerboard. Two separate friendly human hands, one LEFT and one RIGHT, each pressing a DIFFERENT large green round pushbutton simultaneously on a single small teal controlpanel. Palms/fingers anatomically simple but correct, five digits each where visible. Two buttons spaced apart and equally depressed; show clear hand-to-button contact, no third hand or thirdbutton.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-0ce7ab43-232d-471c-9fd2-f8deb3b91c25.png",
+      "calls": 1
+    },
+    {
+      "id": "factory-bubble-triangle-plug",
+      "prompt": "Square true-transparent-background task pictogram for a child's tactile toy-factory game. One large simple centered composition occupying84%canvas, readable at90px. Soft stylized3D painted product illustration, thick rounded forms, muted teal/ochre/coral kit palette, clean silhouette, softstudio light, slightthreequarter overhead view. No words, letters, numbers, border, speechbubble outline, scene, ground shadow or tiny decoration. Do not render checkerboard. Shape-matching connector puzzle: on LEFT a chunky teal connector with one broad solid coral TRIANGULAR plug tip; on RIGHT a flat ochre socket plate with a clearly visible matching TRIANGULAR hole. A single thick simple curved coral arrow points from plugtip toward hole; small separation, both triangle shapes clearly visible. This is a toy-shaped connector, not a normal two-pin electricalplug. No square or round pin, no extra cables.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-054c3506-36dd-4d1b-82a3-8faba98ecc5b.png",
+      "calls": 1
+    },
+    {
+      "id": "factory-bubble-square-plug",
+      "prompt": "Square true-transparent-background task pictogram for a child's tactile toy-factory game. One large simple centered composition occupying84%canvas, readable at90px. Soft stylized3D painted product illustration, thick rounded forms, muted teal/ochre/coral kit palette, clean silhouette, softstudio light, slightthreequarter overhead view. No words, letters, numbers, border, speechbubble outline, scene, ground shadow or tiny decoration. Do not render checkerboard. Shape-matching connector puzzle: on LEFT a chunky teal connector with one broad solid coral SQUARE plug tip; on RIGHT a flat ochre socket plate with a clearly visible matching SQUARE hole. A single thick simple curved coral arrow points from plugtip toward hole; small separation, both square shapes clearly visible. This is a toy-shaped connector, not a normal two-pin electricalplug. No triangle or round pin, no extra cables.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-13977081-9fa2-439c-9b5d-e9d7b92877de.png",
+      "calls": 1
+    },
+    {
+      "id": "factory-bubble-box-lorry",
+      "prompt": "Square true-transparent-background task pictogram for a child's tactile toy-factory game. One large simple centered composition occupying84%canvas, readable at90px. Soft stylized3D painted product illustration, thick rounded forms, muted teal/ochre/coral kit palette, clean silhouette, softstudio light, slightthreequarter overhead view. No words, letters, numbers, border, speechbubble outline, scene, ground shadow or tiny decoration. Do not render checkerboard. Loadinggoal: one large ochre parcel with teal ribbon LEFT, a short broad curved arrow arcs toward the clearly OPEN rear bed of a friendly red/teal toy truck RIGHT. Truckcab at right, rearcargo atleft; open empty cargo floor seenfromabove, no roof overbed. Box andtruck large, just these twoobjects plusarrow; no background.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-012d2248-9fb8-44b3-ab02-9b0c896491df.png",
+      "calls": 1
+    },
+    {
+      "id": "factory-bubble-coil",
+      "prompt": "Square true-transparent-background task pictogram for a child's tactile toy-factory game. One large simple centered composition occupying84%canvas, readable at90px. Soft stylized3D painted product illustration, thick rounded forms, muted teal/ochre/coral kit palette, clean silhouette, softstudio light, slightthreequarter overhead view. No words, letters, numbers, border, speechbubble outline, scene, ground shadow or tiny decoration. Do not render checkerboard. One large thick steel metal coil at LEFT with obvious rolled concentric center, an ochre curved arrow points from coil toward the start of a SHORT small teal slatted conveyor on RIGHT. Goal: put metal roll onto productionline. Coil is hero, conveyor halfsize; no tools or clutter.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-c69e30eb-aeee-448f-bcfb-50fd4a8ae075.png",
+      "calls": 1
+    },
+    {
+      "id": "factory-bubble-gray-toy",
+      "prompt": "Square true-transparent-background task pictogram for a child's tactile toy-factory game. One large simple centered composition occupying84%canvas, readable at90px. Soft stylized3D painted product illustration, thick rounded forms, muted teal/ochre/coral kit palette, clean silhouette, softstudio light, slightthreequarter overhead view. No words, letters, numbers, border, speechbubble outline, scene, ground shadow or tiny decoration. Do not render checkerboard. Before-and-after paintgoal: TWO identical stout seated toy BEARS with roundears and simple face side-by-side. Left bear clearly neutral GRAY, right bear bright CORAL/PINK. One thick ochre arrow points left-to-right between them. These are identical models changing bodycolor, not different species. No paintbrush, spraygun, words, symbols or scenery.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-f4465e4d-4125-4857-9c5f-7f11803fdd81.png",
+      "calls": 1
+    }
+  ]
+}

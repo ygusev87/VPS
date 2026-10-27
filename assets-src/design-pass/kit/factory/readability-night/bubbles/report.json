@@ -1,0 +1,127 @@
+{
+  "createdAt": "2026-10-27T13:28:17.018Z",
+  "method": "Only format/resize encoding, no semantic pixel edits or background removal. Source transparent as generated.",
+  "totalBytes": 164838,
+  "items": [
+    {
+      "id": "factory-bubble-dark-lamp",
+      "publicPath": "public/textures/kit/factory/factory-bubble-dark-lamp.webp",
+      "bytes": 12432,
+      "sha256": "7cd3c238a46c4d16e812ace799a92c81fa8981f72344cf4541bab82337113c02",
+      "sourceSha256": "56023b761db8f982e5b0455ea31c13147b00607f91f538e6dd6a753b010d12f6",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "occupiedFraction": 0.4030609130859375,
+      "edgeOpaquePixels": 0
+    },
+    {
+      "id": "factory-bubble-empty-belt",
+      "publicPath": "public/textures/kit/factory/factory-bubble-empty-belt.webp",
+      "bytes": 15116,
+      "sha256": "3b47886b932253858c88561e3f63ca86c3a760eb13ef935613d8e6b81ca25984",
+      "sourceSha256": "1bd52ac948eeaf33fe1531d1db0c9fcddbbb153296c2c9d89ff032b4fbea3259",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "occupiedFraction": 0.36798095703125,
+      "edgeOpaquePixels": 0
+    },
+    {
+      "id": "factory-bubble-gears",
+      "publicPath": "public/textures/kit/factory/factory-bubble-gears.webp",
+      "bytes": 19694,
+      "sha256": "3fc683c96ba261172e699fa03260bf1ad36cfff9010b4129db7c8927680adcc4",
+      "sourceSha256": "d711f28d60c91d1076a451195e6742b87b82fb39fafaffd4bfe26246a0b25d85",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "occupiedFraction": 0.446075439453125,
+      "edgeOpaquePixels": 0
+    },
+    {
+      "id": "factory-bubble-gears-fast",
+      "publicPath": "public/textures/kit/factory/factory-bubble-gears-fast.webp",
+      "bytes": 20262,
+      "sha256": "ae1264bba5ee3dc226976645de783efc30fd9ec5c93c31ad234d51275bd4b5bc",
+      "sourceSha256": "aefea3da5c64c0f69e4d67972f3e8891674273aaf26a0731d5a3457fc65e632d",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "occupiedFraction": 0.3948974609375,
+      "edgeOpaquePixels": 0
+    },
+    {
+      "id": "factory-bubble-two-hands",
+      "publicPath": "public/textures/kit/factory/factory-bubble-two-hands.webp",
+      "bytes": 15508,
+      "sha256": "54f9356991c29183215b69276606757e01eab813c81eddfb091e69e44aaa68c3",
+      "sourceSha256": "140259220f4be5bb9c1b7443712bcc788a7b5d0fd276df643dca55eabc65b7e8",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "occupiedFraction": 0.4414825439453125,
+      "edgeOpaquePixels": 0
+    },
+    {
+      "id": "factory-bubble-triangle-plug",
+      "publicPath": "public/textures/kit/factory/factory-bubble-triangle-plug.webp",
+      "bytes": 12666,
+      "sha256": "f51821c10b09ec1246f051b05bede7132b63c258167e949c80d2c45a61bc233d",
+      "sourceSha256": "6b5c9c0caa590e85af5e87d765017edcd91524d84f58682eeb4d4ded5f3eb05b",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "occupiedFraction": 0.3162078857421875,
+      "edgeOpaquePixels": 0
+    },
+    {
+      "id": "factory-bubble-square-plug",
+      "publicPath": "public/textures/kit/factory/factory-bubble-square-plug.webp",
+      "bytes": 14520,
+      "sha256": "8b45556a1010e18a2fcbbb84ec2df20595933e6c1ae81912a05476cb3c32d3bd",
+      "sourceSha256": "08ceef107e912552a02a919287a1d42afcbab849459439d31939d9c5e67f2d6b",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "occupiedFraction": 0.3568115234375,
+      "edgeOpaquePixels": 0
+    },
+    {
+      "id": "factory-bubble-box-lorry",
+      "publicPath": "public/textures/kit/factory/factory-bubble-box-lorry.webp",
+      "bytes": 18276,
+      "sha256": "6cf4fa85b00cdf3536ff7a2997e2896788192a8f8959e2129ee4e127ee5e2910",
+      "sourceSha256": "5b44379a3b0f815a299ea6ac35bc30739f42282f336a2b8543200a271312e804",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "occupiedFraction": 0.389801025390625,
+      "edgeOpaquePixels": 0
+    },
+    {
+      "id": "factory-bubble-coil",
+      "publicPath": "public/textures/kit/factory/factory-bubble-coil.webp",
+      "bytes": 18766,
+      "sha256": "dd1ef10c9698b3b787669ecdc4295859fa0ca9f0bfa54c7957106c11328f90f4",
+      "sourceSha256": "5a517e5df3466a5adf6075176b1722b13ec0106f291ac4699ac5ef09d376da77",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "occupiedFraction": 0.3704833984375,
+      "edgeOpaquePixels": 2
+    },
+    {
+      "id": "factory-bubble-gray-toy",
+      "publicPath": "public/textures/kit/factory/factory-bubble-gray-toy.webp",
+      "bytes": 17598,
+      "sha256": "55af9b70dbca27abab341f2bd6ae211531ceaedda3a579d47f8a6b3f8c17602e",
+      "sourceSha256": "7793d2ca3a9a5140d619ae7d6067d27908d75f41285da99152bd9b614405f51d",
+      "width": 256,
+      "height": 256,
+      "hasAlpha": true,
+      "occupiedFraction": 0.4034576416015625,
+      "edgeOpaquePixels": 0
+    }
+  ]
+}
