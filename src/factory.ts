@@ -292,7 +292,7 @@ export class FactoryMap extends StoryMap {
     const barrels = [[-38, 20.5], [38, 12], [-30, 24], [4, 24]] as const;
     card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.6 })), () => [[-38, 19], [-38, 22], [38, 12], [-30, 24], [4, 24]].forEach(([x, z]) => hall.add(barrel(x, z))));
     // Yellow and black safety lines round every station.
-    for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.5, LATHE.z - 2, 11, 9], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11]] as const) {
+    for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.3, LATHE.z - 1, 8, 6], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11]] as const) {
       const strip = kitPieces('factory', 'hazard-strip', true);
       if (this.kit && strip.length) {
         const [x0, x1, z0, z1] = [cx - w / 2, cx + w / 2, cz - d / 2, cz + d / 2];

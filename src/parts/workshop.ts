@@ -60,7 +60,8 @@ export class WireBox extends Part {
     const lamp = mesh(new THREE.SphereGeometry(0.1, 14, 10), this.lamp, false);
     lamp.position.set(half.x * 0.7, PLATE_TOP + 0.5, -half.z - 0.14);
     this.body.add(plate, tray, door, stripe, lamp);
-    const body = sculpt(this, 'factory-cabinet', { width: w * TILE + 0.5 }, new THREE.Vector3(0, PLATE_TOP, -0.1), [tray, door, stripe]);
+    // The sculpted cabinet is the low tray; the open door with its stripe and lamp stays code-built.
+    const body = sculpt(this, 'factory-cabinet', { width: w * TILE + 0.5 }, new THREE.Vector3(0, PLATE_TOP, -0.1), [tray]);
     this.grid.tiles.forEach((t, i) => {
       const g = this.tileMesh(t.shape === 'blank' ? [] : ([0, 1, 2, 3] as Side[]).filter((s) => opens({ shape: t.shape, turns: 0 }, s)));
       g.position.copy(this.cellAt(i));
@@ -74,7 +75,7 @@ export class WireBox extends Part {
     const outRow = Math.floor(this.grid.out.cell / w);
     this.addTerminal('a', 'none', -half.x - 0.5, -half.z + (inRow + 0.5) * TILE);
     this.addTerminal('b', 'none', half.x + 0.5, -half.z + (outRow + 0.5) * TILE);
-    this.pickable(plate, ...(body ? [body] : [tray, door]), ...this.tiles);
+    this.pickable(plate, door, ...(body ? [body] : [tray]), ...this.tiles);
     this.closed = flow(this.grid).done;
   }
 
