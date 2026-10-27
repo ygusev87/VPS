@@ -65,7 +65,7 @@
   "creditCeiling": null,
   "authorization": "Owner allows necessary existing Studio credits for project models and justified iterations; no top-ups/purchases/API.",
   "assetQA": "All8 accepted; geometry reports and native390/1024 evidence retained.",
-  "gameQA": "7 accepted including cabinet obstruction fix a416f5c; rail-cart integration pending.",
+  "gameQA": "7 accepted; rail-cart851bfd2 static loaded view accepted at390/1024 in m0465, motion/unload/reload confirmation pending.",
   "physicalDeviceTest": false,
   "assetCommits": [
     "1577818",
@@ -74,5 +74,14 @@
     "1a4aa2a",
     "08f7251",
     "7a17cee"
-  ]
+  ],
+  "mainValidation": {
+    "commit": "851bfd2",
+    "tests": 88,
+    "testFiles": 17,
+    "typecheck": "passed",
+    "date": "2026-10-27",
+    "errors": [],
+    "warnings": []
+  }
 }

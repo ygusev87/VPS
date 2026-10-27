@@ -113,9 +113,27 @@
       ],
       "integrationNotes": "Wagon localY+.08 on cartY.16; four exact wheel groups rotateZ, no child double rotation; preserve coil world transform when attaching bed; keep wheels on rail during travel.",
       "handoff": "m0464",
-      "gameReview": "pending Claude motion/unload review"
+      "gameReview": "Static loaded game view accepted in m0465; movement/unload/reload confirmation pending Claude.",
+      "integrationCommit": "851bfd2",
+      "additionalMainBrowserQA": {
+        "url": "http://127.0.0.1:5195/?factory",
+        "method": "Actual game; UI pan/zoom only, no hidden state mutation.",
+        "frames": [
+          "integration-main/factory-cart-main-1024.png",
+          "integration-main/factory-cart-main-390.png"
+        ],
+        "errors": [],
+        "warnings": [],
+        "scope": "Static loaded cart; wheels sit on rails. Full motion/unload/reload not replayed by main."
+      },
+      "runtimeChecks": [
+        "Exactly four named wheel groups rotate on local Z; geometry children excluded.",
+        "Wagon offset +.08 and fixed cart Y preserve rail-height contact, without cart bob.",
+        "load-coil reparented with bed.attach after updateMatrixWorld.",
+        "Factory hides bed at x>3.5 and restores at x<-3.5."
+      ]
     }
   ],
   "physicalDeviceTest": false,
-  "validation": "Main verification after integration and lever49d36e2:88tests passed, typecheck passed; two actual game native frames390x844/1024x768, no browser errors/warnings. Other prepared native asset frames reviewed from worker."
+  "validation": "Main after final integration851bfd2:88 tests/17 files passed, typecheck passed (2026-10-27 10:07 Asia/Bangkok); static native390x844/1024x768 reviewed; no browser errors/warnings. Motion/unload confirmation pending Claude."
 }

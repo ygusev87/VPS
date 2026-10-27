@@ -17,7 +17,7 @@ On 27 October 2026 the owner approved the required existing Tripo Studio credits
 
 Total: **852412 bytes, 28548 triangles**. Each model uses one material, a 512-pixel WebP texture and Meshopt. All eight have passed geometry checks and native 390×844 / 1024×768 visual review. Exact hashes and delivery metadata are in `release.json`; detailed acceptance is in `primary-release.json` and `secondary-main-review.json`. The worker's final rail-cart checks report 88 tests and TypeScript passing. Main independently reviewed the actual lathe/motor game view at both sizes; frames are in `integration-main/`.
 
-Seven models are accepted in the game. The lever's square STOP glow and crane relocation are accepted (49d36e2 / d20eed9). Cabinet lamp and hint obstructions are fixed and accepted (a416f5c, m0463). Rail-cart was handed to Claude in m0464; its moving/loaded/unloaded game review remains.
+Seven models are accepted in the game. The lever's square STOP glow and crane relocation are accepted (49d36e2 / d20eed9). Cabinet lamp and hint obstructions are fixed and accepted (a416f5c, m0463). Rail-cart is integrated in 851bfd2; main accepted its static loaded game view at both native sizes in m0465. Motion, unload and reload confirmation remains with Claude. All 88 tests and TypeScript passed again after this integration. Main game screenshots, including the cart, barrels and complete factory, are in `integration-main/`.
 
 ## Integration details
 
