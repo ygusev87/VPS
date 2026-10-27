@@ -1,0 +1,20 @@
+{
+  "reviewed": true,
+  "targetXYZ": [
+    2.8,
+    2.8,
+    2.4
+  ],
+  "height": 2.6,
+  "rotationY": 0,
+  "targetTriangles": 4000,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "uniform-height",
+  "floorSnap": 0.001,
+  "scaleNote": "Reference reconstruction is broad. Uniform height2.6 retains human-compatible door proportions and keeps full width below4; original2.8 preliminary height would yield width4.15. No independent-axis distortion."
+}

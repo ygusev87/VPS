@@ -1,0 +1,106 @@
+{
+  "name": "factory-foreman-booth",
+  "source": "assets-src/raw/factory-props-2026-10-27/factory-foreman-booth.glb",
+  "sourceSha256": "1c6b67a03fb625002c6ae056fd28a297a966d5ad92ebe5fa28c456d7c7ed9eeb",
+  "sourceBytes": 842748,
+  "sourceTriangles": 3030,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.3358154296875
+    ],
+    "max": [
+      0.5,
+      0.67529296875,
+      0.3358154296875
+    ]
+  },
+  "bytes": 95272,
+  "sha256": "8a167c0c8a471e7d2b7688cc73f8510799c005d5127728d3904b491ff30ffe5c",
+  "triangles": 3030,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -1.9250904321670532,
+      0.000018996093243073275,
+      -1.2929308493514922
+    ],
+    "max": [
+      1.9250904321670532,
+      2.599980908539325,
+      1.2929308493514922
+    ]
+  },
+  "size": [
+    3.8501808643341064,
+    2.5999619124460818,
+    2.5858616987029843
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      2.8,
+      2.8,
+      2.4
+    ],
+    "height": 2.6,
+    "rotationY": 0,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-height",
+    "floorSnap": 0.001,
+    "scaleNote": "Reference reconstruction is broad. Uniform height2.6 retains human-compatible door proportions and keeps full width below4; original2.8 preliminary height would yield width4.15. No independent-axis distortion."
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform scale to agreed height; preserve proportions; preliminary width/depth are not hard limits; centreXZ0; baseY0",
+    "Simplification not applied: source already within triangle budget",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.001 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true,
+  "structure": {
+    "nodeCount": 1,
+    "meshCount": 1,
+    "primitiveCount": 1,
+    "details": "structure.json"
+  }
+}

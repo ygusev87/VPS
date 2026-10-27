@@ -1,0 +1,10 @@
+{
+  "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-c069876c-a110-43e6-bf5f-b7fbfda59373.png",
+  "path": "assets-src/design-pass/kit/factory/background-life/models/factory-box-trolley/refs/factory-box-trolley.png",
+  "sha256": "d9a15ded0ba94d98a4cf34c35bc7b9fed17fb97ffce02020ad9e1cd1943eea94",
+  "bytes": 1509832,
+  "tool": "built-in image_gen",
+  "attempts": 1,
+  "edited": false,
+  "visualReview": "PASS: complete toy silhouette, correct major components, no text/ground plate. Trolley hidden fourth wheel requires raw mesh verification."
+}

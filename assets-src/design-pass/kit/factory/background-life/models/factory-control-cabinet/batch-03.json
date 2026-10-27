@@ -1,5 +1,5 @@
 {
-  "status": "active-owner-directed-next-batch",
+  "status": "six-ready-for-integration",
   "authorization": "Direct user: Бери следующую партию моделей и продолжай без дополнительных разрешений и остановок. Standing project Tripo upload/generation approval applies. Existing credits only; no purchases/API/topups.",
   "source": "factory/background-life/manifest.json queued six and coordination m0497; no duplicate existing accepted assets",
   "items": [
@@ -9,7 +9,19 @@
         1.2,
         2.1,
         0.6
-      ]
+      ],
+      "status": "READY",
+      "publicPath": "public/models/factory-control-cabinet.glb",
+      "bytes": 70512,
+      "triangles": 3150,
+      "actualXYZ": [
+        1.2533859717062636,
+        2.0999999046325684,
+        0.9861994852286129
+      ],
+      "sha256": "78a76cb20e763c830a5b1ea3492bdb4452ff961ac80e7140de0af5b61a58b001",
+      "nodeCount": 4,
+      "readme": "factory-control-cabinet/README.md"
     },
     {
       "id": "factory-lockers",
@@ -17,7 +29,19 @@
         1.8,
         2,
         0.6
-      ]
+      ],
+      "status": "READY",
+      "publicPath": "public/models/factory-lockers.glb",
+      "bytes": 90380,
+      "triangles": 3027,
+      "actualXYZ": [
+        1.9769280068361461,
+        2,
+        0.9917294839320048
+      ],
+      "sha256": "301300368da5c8777aee51046cf00261789de33579646f5c96abaad39b94b1e8",
+      "nodeCount": 1,
+      "readme": "factory-lockers/README.md"
     },
     {
       "id": "factory-fire-extinguisher",
@@ -25,7 +49,19 @@
         0.45,
         1.1,
         0.4
-      ]
+      ],
+      "status": "READY",
+      "publicPath": "public/models/factory-fire-extinguisher.glb",
+      "bytes": 73140,
+      "triangles": 3862,
+      "actualXYZ": [
+        0.6609668407062698,
+        1.100000023841858,
+        0.3999908531167253
+      ],
+      "sha256": "858fe9596ba115ccdee115802a0bb10b5325be1a816c6a24fbb639f0f8109a90",
+      "nodeCount": 1,
+      "readme": "factory-fire-extinguisher/README.md"
     },
     {
       "id": "factory-box-trolley",
@@ -33,7 +69,19 @@
         1.2,
         1.3,
         1.6
-      ]
+      ],
+      "status": "READY",
+      "publicPath": "public/models/factory-box-trolley.glb",
+      "bytes": 84968,
+      "triangles": 3544,
+      "actualXYZ": [
+        1.1281106158884988,
+        1.2078005490196952,
+        1.600000023841858
+      ],
+      "sha256": "a389222462a07917bb2d99fb726215e9a323938575bc5674a309f5b3b52213ad",
+      "nodeCount": 1,
+      "readme": "factory-box-trolley/README.md"
     },
     {
       "id": "factory-loading-ramp",
@@ -41,7 +89,19 @@
         3.6,
         1.2,
         3.8
-      ]
+      ],
+      "status": "READY",
+      "publicPath": "public/models/factory-loading-ramp.glb",
+      "bytes": 71256,
+      "triangles": 3490,
+      "actualXYZ": [
+        2.2153813009765306,
+        1.058113332466621,
+        3.799999952316284
+      ],
+      "sha256": "b8c6f94a5a114ec92d6314ab368a3b0f3c623ad641fb073b08f0a15f8b4e4ab7",
+      "nodeCount": 1,
+      "readme": "factory-loading-ramp/README.md"
     },
     {
       "id": "factory-foreman-booth",
@@ -49,11 +109,52 @@
         2.8,
         2.8,
         2.4
-      ]
+      ],
+      "status": "READY",
+      "publicPath": "public/models/factory-foreman-booth.glb",
+      "bytes": 95272,
+      "triangles": 3030,
+      "actualXYZ": [
+        3.8501808643341064,
+        2.5999619124460818,
+        2.5858616987029843
+      ],
+      "sha256": "8a167c0c8a471e7d2b7688cc73f8510799c005d5127728d3904b491ff30ffe5c",
+      "nodeCount": 1,
+      "readme": "factory-foreman-booth/README.md"
     }
   ],
   "scope": "Own six model folders, matching six publicGLB, raw/factory-props-2026-10-27, models/progress.md. Common manifest/layout/kit/src remain main/integrator.",
   "contract": "<=4000tri, target<=150000B, one OPAQUE512WebP material,Meshopt,front+Z/baseY0/centreXZ0; uniform-fit actual sizes; no ground plate/skins. Control-cabinet lamp-red/lamp-amber/lamp-green separate mesh nodes sharing atlas, runtime material clones for independent emissive blinking. Other five static.",
   "qa": "SourceSHA/order price-balance ledger; actual-node/bounds/material report; native390/1024; floor contacts; trolley four wheels; ramp open path and deck; cabinet lens extraction must not remove door/support geometry.",
-  "scaleClarification": "Tall props fitted uniformly by target height, report actual XYZ for placement; preliminary width/depth may exceed targets and must not be anisotropically forced. Trolley/ramp use uniform contain."
+  "scaleClarification": "Cabinet, lockers, extinguisher fit intended height uniformly, actual width/depth recorded. Booth uses height2.6 rather than preliminary2.8 to keep width3.85 below4 and retain proportions. Trolley/ramp uniformly contain originalXYZ. Do not rescale axes independently.",
+  "completionDate": "2026-10-27",
+  "studioCredits": {
+    "start": 4725,
+    "end": 4575,
+    "spent": 150,
+    "orders": 6,
+    "attemptsEach": 1,
+    "purchases": 0
+  },
+  "totalBytes": 485528,
+  "totalTriangles": 20103,
+  "validation": {
+    "testFiles": 17,
+    "tests": 88,
+    "typecheck": "PASS",
+    "nativeViewports": [
+      [
+        390,
+        844
+      ],
+      [
+        1024,
+        768
+      ]
+    ],
+    "browserErrors": 0,
+    "browserWarnings": 0,
+    "overflow": 0
+  }
 }

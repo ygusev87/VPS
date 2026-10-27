@@ -1,0 +1,105 @@
+{
+  "name": "factory-loading-ramp",
+  "source": "assets-src/raw/factory-props-2026-10-27/factory-loading-ramp.glb",
+  "sourceSha256": "bc20b71ea9610c2810fbf2d1131685647eb0237fc5b663d3d2c52f96a65c34fd",
+  "sourceBytes": 641072,
+  "sourceTriangles": 3490,
+  "sourceBounds": {
+    "min": [
+      -0.29150390625,
+      0,
+      -0.5
+    ],
+    "max": [
+      0.29150390625,
+      0.2784423232078552,
+      0.5
+    ]
+  },
+  "bytes": 71256,
+  "sha256": "b8c6f94a5a114ec92d6314ab368a3b0f3c623ad641fb073b08f0a15f8b4e4ab7",
+  "triangles": 3490,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -1.1076906504882653,
+      -1.6270019779107692e-05,
+      -1.899999976158142
+    ],
+    "max": [
+      1.1076906504882653,
+      1.058097062446842,
+      1.899999976158142
+    ]
+  },
+  "size": [
+    2.2153813009765306,
+    1.058113332466621,
+    3.799999952316284
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      3.6,
+      1.2,
+      3.8
+    ],
+    "height": 1.2,
+    "rotationY": 0,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-contain",
+    "floorSnap": 0.001
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform contain in target XYZ envelope; preserve proportions; centreXZ0; baseY0",
+    "Simplification not applied: source already within triangle budget",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.001 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true,
+  "structure": {
+    "nodeCount": 1,
+    "meshCount": 1,
+    "primitiveCount": 1,
+    "details": "structure.json"
+  }
+}

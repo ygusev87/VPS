@@ -1,0 +1,85 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":84968,\"triangles\":3544,\"materials\":1,\"bounds\":{\"min\":[-0.5640553079442494,0.000005999332010286906,-0.800000011920929],\"max\":[0.5640553079442494,1.2078065483517055,0.800000011920929]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":84968,\"triangles\":3544,\"materials\":1,\"bounds\":{\"min\":[-0.5640553079442494,0.000005999332010286906,-0.800000011920929],\"max\":[0.5640553079442494,1.2078065483517055,0.800000011920929]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":84968,\"triangles\":3544,\"materials\":1,\"bounds\":{\"min\":[-0.5640553079442494,0.000005999332010286906,-0.800000011920929],\"max\":[0.5640553079442494,1.2078065483517055,0.800000011920929]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":84968,\"triangles\":3544,\"materials\":1,\"bounds\":{\"min\":[-0.5640553079442494,0.000005999332010286906,-0.800000011920929],\"max\":[0.5640553079442494,1.2078065483517055,0.800000011920929]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":84968,\"triangles\":3544,\"materials\":1,\"bounds\":{\"min\":[-0.5640553079442494,0.000005999332010286906,-0.800000011920929],\"max\":[0.5640553079442494,1.2078065483517055,0.800000011920929]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualPass": true,
+  "notes": [
+    "Native 1024x768 front/oblique/back/bottom and native390x844 reviewed.",
+    "Source proportions and all triangles retained; four trolley wheels and open ramp deck visible."
+  ]
+}

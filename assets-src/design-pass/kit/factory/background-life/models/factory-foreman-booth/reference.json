@@ -1,0 +1,10 @@
+{
+  "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-5d78bd55-0ec7-4b11-bb84-678201b63cf1.png",
+  "path": "assets-src/design-pass/kit/factory/background-life/models/factory-foreman-booth/refs/factory-foreman-booth.png",
+  "sha256": "e63370c68917d29c1335dc29f46dcb8f36280f85f801f9848031f4334c2d99fc",
+  "bytes": 1454373,
+  "tool": "built-in image_gen",
+  "attempts": 1,
+  "edited": false,
+  "visualReview": "PASS: complete toy silhouette, correct major components, no text/ground plate. Trolley hidden fourth wheel requires raw mesh verification."
+}

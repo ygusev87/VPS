@@ -1,0 +1,86 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":95272,\"triangles\":3030,\"materials\":1,\"bounds\":{\"min\":[-1.9250904321670532,0.000018996093243073275,-1.2929308493514922],\"max\":[1.9250904321670532,2.599980908539325,1.2929308493514922]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":95272,\"triangles\":3030,\"materials\":1,\"bounds\":{\"min\":[-1.9250904321670532,0.000018996093243073275,-1.2929308493514922],\"max\":[1.9250904321670532,2.599980908539325,1.2929308493514922]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":95272,\"triangles\":3030,\"materials\":1,\"bounds\":{\"min\":[-1.9250904321670532,0.000018996093243073275,-1.2929308493514922],\"max\":[1.9250904321670532,2.599980908539325,1.2929308493514922]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":95272,\"triangles\":3030,\"materials\":1,\"bounds\":{\"min\":[-1.9250904321670532,0.000018996093243073275,-1.2929308493514922],\"max\":[1.9250904321670532,2.599980908539325,1.2929308493514922]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":95272,\"triangles\":3030,\"materials\":1,\"bounds\":{\"min\":[-1.9250904321670532,0.000018996093243073275,-1.2929308493514922],\"max\":[1.9250904321670532,2.599980908539325,1.2929308493514922]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualPass": true,
+  "notes": [
+    "Native1024 front/oblique/back/bottom and390x844 reviewed.",
+    "Generated booth has two closed coral doors on opposing facades; both static.",
+    "Windows opaque. Uniform height2.6 yields width3.85; no anisotropic scaling."
+  ]
+}

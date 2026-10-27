@@ -1,0 +1,10 @@
+{
+  "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-b5cdd4c8-0e49-4023-9f81-f10f2dea5d12.png",
+  "path": "assets-src/design-pass/kit/factory/background-life/models/factory-loading-ramp/refs/factory-loading-ramp.png",
+  "sha256": "da17a981256a5730ba842642087500baa09e6e560bbef9046d8ad02985b10da0",
+  "bytes": 1472369,
+  "tool": "built-in image_gen",
+  "attempts": 1,
+  "edited": false,
+  "visualReview": "PASS: complete toy silhouette, correct major components, no text/ground plate. Trolley hidden fourth wheel requires raw mesh verification."
+}
