@@ -1,0 +1,70 @@
+{
+  "createdAt": "2026-10-27T14:29:41.798989+00:00",
+  "status": "accepted-for-integration",
+  "assets": [
+    "factory-floor-tyre-tracks",
+    "factory-floor-arrow",
+    "factory-floor-cable-channel",
+    "factory-floor-grate",
+    "factory-floor-hazard-corner"
+  ],
+  "totalBytes": 169256,
+  "method": "Five independent built-in image_gen calls; full source resize and WebP encoding only. Main inspected final WebP alpha and native IAB Three.js fixture on existing factory-floor-a. Source alpha not painted or erased.",
+  "frames": [
+    "qa/details-1180-light.jpg",
+    "qa/details-1180-dark-tilt.jpg",
+    "qa/details-390-dark-tilt.jpg",
+    "qa/details-390-light.jpg"
+  ],
+  "viewports": [
+    [
+      1180,
+      820
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "coverage": [
+    "light overhead at both native viewports",
+    "dark inclined at both native viewports"
+  ],
+  "result": "PASS: five distinct assets readable at native viewports, no rectangular transparent-background artifacts or visible clipped borders. Tyre tracks intentionally subdued on dark floor; arrow, cable cover, grate and hazard corner remain legible.",
+  "consoleErrorsWarnings": [],
+  "horizontalOverflow": false,
+  "verticalOverflow": false,
+  "alphaNote": "Tyre tracks and cable channel each have two border pixels of alpha1/255, retained and disclosed. Other three have zero nontransparent border pixels. No visible cut at tested opacity.",
+  "material": {
+    "type": "MeshBasicMaterial",
+    "mapColourSpace": "SRGBColorSpace",
+    "color": "white",
+    "transparent": true,
+    "depthWrite": false,
+    "depthTest": true,
+    "side": "FrontSide",
+    "alphaTest": 0,
+    "orientation": "PlaneGeometry XY rotatedX=-pi/2 onto XZ, normal+Y; UalongX, image-up toward-Z. Rotate arrow/corner around Y as needed.",
+    "fixtureOffsetAboveFloor": 0.015,
+    "opacity": [
+      0.4,
+      0.8,
+      1,
+      1,
+      0.8
+    ],
+    "size": "report.json dimensions refer to full transparent canvas, including padding. Place above actual floor, avoid task outlines and wiring guidance. No collision, shadow or pick target."
+  },
+  "limitations": [
+    "Fixture evidence only; full map placement, overlap with existing decals, gameplay and physical iPad/PWA not verified.",
+    "Tyre tracks and cable channel have finished ends and transparent padding. They are independent strips, not seamless repeat textures.",
+    "Grate is a painted six-slot recess, not a physical opening. Prompt requested seven slots; exact count is not a functional constraint.",
+    "Cable strip and grate are static painted details, not electrical sockets or interactive objects."
+  ],
+  "generation": "generation.json records exact prompts/source paths; report.json includes source/output hashes. No Tripo or paid API orders.",
+  "projectChecks": {
+    "tests": "88/88 in17files PASS",
+    "typecheck": "PASS",
+    "runStartedBangkok": "2026-10-27 21:29:53"
+  }
+}

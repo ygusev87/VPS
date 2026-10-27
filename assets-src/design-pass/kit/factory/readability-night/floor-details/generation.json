@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-27",
+  "tool": "built-in image_gen",
+  "items": [
+    {
+      "name": "factory-floor-tyre-tracks",
+      "width": 512,
+      "height": 171,
+      "opacity": 0.4,
+      "worldSize": [
+        5,
+        1.667
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: isolated flat transparent floor decal for a hand-painted children's factory game. Strict orthographic TOP DOWN; image plane parallel to floor. Genuine transparent alpha background, no floor tile, no surrounding floor, no rectangular backdrop, no perspective, no words, no letters, no logos or UI. Clear simple shapes with modest wear, softly hand-painted surface. Keep every mark entirely inside image with transparent padding on ALL four edges. Two parallel muted dark charcoal rubber tire tracks left-to-right, with recognisable repeated broad diagonal tread bars and subtle gaps, slightly uneven and faded. A short 3:1 wide segment, both track bands end softly before the left and right image edge. Only the two worn print bands, no wheels, vehicle, mud blobs, dust cloud, footprint, arrows. Tracks separated by a transparent central lane.",
+      "transparent_background": true,
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-4f6a90f2-8ca9-4a72-9795-c9cc7d9b7cf3.png",
+      "sourceCopy": "source/factory-floor-tyre-tracks.png"
+    },
+    {
+      "name": "factory-floor-arrow",
+      "width": 512,
+      "height": 512,
+      "opacity": 0.8,
+      "worldSize": [
+        1.7,
+        1.7
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: isolated flat transparent floor decal for a hand-painted children's factory game. Strict orthographic TOP DOWN; image plane parallel to floor. Genuine transparent alpha background, no floor tile, no surrounding floor, no rectangular backdrop, no perspective, no words, no letters, no logos or UI. Clear simple shapes with modest wear, softly hand-painted surface. Keep every mark entirely inside image with transparent padding on ALL four edges. A single large warm off-white industrial floor direction arrow pointing straight UP in the image: broad triangular arrowhead and thick straight rectangular shaft, smoothly connected. Light chips and worn translucent pinholes but continuous legible silhouette. Square canvas. Flat painted marking, no outline or shadow, no 3D thickness. One arrow only, not a cluster.",
+      "transparent_background": true,
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-bdc42ec2-131c-4302-a0cb-b57d7e8797f4.png",
+      "sourceCopy": "source/factory-floor-arrow.png"
+    },
+    {
+      "name": "factory-floor-cable-channel",
+      "width": 512,
+      "height": 171,
+      "opacity": 1,
+      "worldSize": [
+        3.6,
+        1.2
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: isolated flat transparent floor decal for a hand-painted children's factory game. Strict orthographic TOP DOWN; image plane parallel to floor. Genuine transparent alpha background, no floor tile, no surrounding floor, no rectangular backdrop, no perspective, no words, no letters, no logos or UI. Clear simple shapes with modest wear, softly hand-painted surface. Keep every mark entirely inside image with transparent padding on ALL four edges. One long narrow low-profile closed steel cable channel viewed directly from above, extending horizontally across a 3:1 canvas. Cool charcoal-slate metal lid with three modular flat cover sections, subtle thin seams, a few broad simple screw heads along the side rims, gently worn corners. Realistic painted metal in the same friendly style, no cables visible outside, no raised perspective side faces, no cast shadow. Complete isolated short section with simple flush ends, about 15% transparent padding above/below and 5% at each end.",
+      "transparent_background": true,
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-67d79352-d08a-410a-bfc6-73cd30963277.png",
+      "sourceCopy": "source/factory-floor-cable-channel.png"
+    },
+    {
+      "name": "factory-floor-grate",
+      "width": 512,
+      "height": 512,
+      "opacity": 1,
+      "worldSize": [
+        1.6,
+        1.6
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: isolated flat transparent floor decal for a hand-painted children's factory game. Strict orthographic TOP DOWN; image plane parallel to floor. Genuine transparent alpha background, no floor tile, no surrounding floor, no rectangular backdrop, no perspective, no words, no letters, no logos or UI. Clear simple shapes with modest wear, softly hand-painted surface. Keep every mark entirely inside image with transparent padding on ALL four edges. One square flush steel floor drain grate: thick muted gray-blue border, small rounded corners, a readable set of seven evenly spaced parallel dark slots, two modest round fasteners. Wear and dull metal shading very subtle, top surface flat. The slots are dark recessed painted bars within the grate, not holes cut through the entire image. No protruding handle, border outside the grate, floor around it or perspective. Square canvas with transparent margins.",
+      "transparent_background": true,
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-2331156d-a904-4f0e-96b1-d25efef25fef.png",
+      "sourceCopy": "source/factory-floor-grate.png"
+    },
+    {
+      "name": "factory-floor-hazard-corner",
+      "width": 512,
+      "height": 512,
+      "opacity": 0.8,
+      "worldSize": [
+        1.6,
+        1.6
+      ],
+      "prompt": "Use case: stylized-concept. Asset type: isolated flat transparent floor decal for a hand-painted children's factory game. Strict orthographic TOP DOWN; image plane parallel to floor. Genuine transparent alpha background, no floor tile, no surrounding floor, no rectangular backdrop, no perspective, no words, no letters, no logos or UI. Clear simple shapes with modest wear, softly hand-painted surface. Keep every mark entirely inside image with transparent padding on ALL four edges. One industrial floor corner marking shaped as a clean thick L with a square right angle, equal horizontal and vertical arms. Painted safety yellow and charcoal-black diagonal stripes consistently follow both arms. Slight scuffing and chipped paint with sparse transparent holes, but simple readable solid L silhouette. Open empty centre and remaining canvas are transparent. Square canvas. No metal object, no 3D bevel or cast shadow; flat paint only.",
+      "transparent_background": true,
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-144287ae-1e96-4fcd-92e9-4c2ea9007e44.png",
+      "sourceCopy": "source/factory-floor-hazard-corner.png"
+    }
+  ]
+}

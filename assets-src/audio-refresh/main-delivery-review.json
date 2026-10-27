@@ -1,0 +1,34 @@
+{
+  "createdAt": "2026-10-27T14:31:58.812725+00:00",
+  "status": "technical-delivery-verified-awaiting-listening-and-runtime-review",
+  "manifest": "research/production-v4/delivery-manifest.json",
+  "manifestSha256": "c337e83038a1319ab4c6bb157885bf0018e1eb3835cd5f81621d2fc1f9ad185f",
+  "sourceVoiceSha256": "d44168754aef3b48c2b8094ae316aa398d0d79222508be949e4293cdeff88a9e",
+  "files": 455,
+  "distinctPhraseIds": 380,
+  "allCompleteAndTechnicalPassed": true,
+  "mainChecks": "Independent file/SHA verification of all455 ready files completed before handoff; fresh importer dry-run also validates each file SHA and current first-variant text. No real import run by main.",
+  "dryRun": {
+    "taken": 455,
+    "variants": 75,
+    "stale": [],
+    "notReady": 0,
+    "unknown": [],
+    "phrasesWithTakes": 30,
+    "status": "technically-validated-awaiting-listening"
+  },
+  "runtimeExpectedFilesMissing": [],
+  "runtimeExpectedFileBytes": 9290980,
+  "reportedDurationSeconds": 1505.043,
+  "reportedReadyBytes": 24564015,
+  "workerLedger": {
+    "creditsReported": 7744.0,
+    "accountCreditsRemaining": 31846,
+    "accountBalanceDecrease": 8154,
+    "creditReportingDifference": 410.0
+  },
+  "humanQA": "Pending listening. No main claim of pronunciation, accent or intonation approval.",
+  "scope": "Research/production kept untracked and unchanged by main. Claude owns src/public integration. m0546 reports455 imported and all-map tap tests underway.",
+  "performance": "Claude reports cold decode5–15ms and32MiB budget; main has not reproduced timing or validated physical iPad.",
+  "sfx": "Separate non-speech batch, not included in455. Direct owner messages inspected authorize Elevenv4 speech and temporary TTS key; no new SFX order authorized by this review."
+}

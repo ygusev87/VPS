@@ -1,0 +1,167 @@
+{
+  "encoding": "Full-source resize and WebP90/alpha100 only; no repaint, erasure, colour change or alpha multiplier baked into assets.",
+  "status": "PASS",
+  "totalBytes": 169256,
+  "items": [
+    {
+      "name": "factory-floor-tyre-tracks",
+      "publicPath": "public/textures/kit/factory/factory-floor-tyre-tracks.webp",
+      "bytes": 42718,
+      "sha256": "ffb1a103f295d9570553b18124112505f700066c0bfecf64bf18b1f3d235be6f",
+      "sourceSha256": "dc7be13ca70f4ae418e3bfb74dc05fb281e384fca4de65c051293bc3101e068b",
+      "width": 512,
+      "height": 171,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero": 53812,
+        "partial": 30260,
+        "opaque": 3480,
+        "borderNonzero": 2,
+        "borderMax": 1,
+        "borderPolicy": "Allow only alpha1/255 noise on border, preserve and disclose; no visible cut at suggested opacity",
+        "bounds": [
+          18,
+          0,
+          492,
+          150
+        ]
+      },
+      "suggestedOpacity": 0.4,
+      "worldSize": [
+        5,
+        1.667
+      ],
+      "pass": true
+    },
+    {
+      "name": "factory-floor-arrow",
+      "publicPath": "public/textures/kit/factory/factory-floor-arrow.webp",
+      "bytes": 31576,
+      "sha256": "101620c0ac3c43b65fa5952a186d63cfb508d0635a162f0b2dbac0675caca1d4",
+      "sourceSha256": "374af8191d03729f20895b8d3aa3006449f070f2e1d07c2707cf82d7165456f3",
+      "width": 512,
+      "height": 512,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero": 195335,
+        "partial": 65830,
+        "opaque": 979,
+        "borderNonzero": 0,
+        "borderMax": 0,
+        "borderPolicy": "Allow only alpha1/255 noise on border, preserve and disclose; no visible cut at suggested opacity",
+        "bounds": [
+          66,
+          8,
+          492,
+          507
+        ]
+      },
+      "suggestedOpacity": 0.8,
+      "worldSize": [
+        1.7,
+        1.7
+      ],
+      "pass": true
+    },
+    {
+      "name": "factory-floor-cable-channel",
+      "publicPath": "public/textures/kit/factory/factory-floor-cable-channel.webp",
+      "bytes": 8688,
+      "sha256": "dbfc619d845f09fbc47fce998363ba32f7d0110bc411cf142d3b4bfc1c7de453",
+      "sourceSha256": "c4deebdd8a78f7ff56b4403ab919baffb75624233d821e70a73503bf6602c8ad",
+      "width": 512,
+      "height": 171,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero": 49406,
+        "partial": 37079,
+        "opaque": 1067,
+        "borderNonzero": 2,
+        "borderMax": 1,
+        "borderPolicy": "Allow only alpha1/255 noise on border, preserve and disclose; no visible cut at suggested opacity",
+        "bounds": [
+          12,
+          0,
+          500,
+          166
+        ]
+      },
+      "suggestedOpacity": 1,
+      "worldSize": [
+        3.6,
+        1.2
+      ],
+      "pass": true
+    },
+    {
+      "name": "factory-floor-grate",
+      "publicPath": "public/textures/kit/factory/factory-floor-grate.webp",
+      "bytes": 43340,
+      "sha256": "e5b04fb9a26948ae25afc055f62e528895c69ad1f439be25f16cb6c21c868375",
+      "sourceSha256": "68ed6b987e3b1370e1ff645411837dc9a856de8f6ed246596f449c540cf3c3ce",
+      "width": 512,
+      "height": 512,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero": 138525,
+        "partial": 122658,
+        "opaque": 961,
+        "borderNonzero": 0,
+        "borderMax": 0,
+        "borderPolicy": "Allow only alpha1/255 noise on border, preserve and disclose; no visible cut at suggested opacity",
+        "bounds": [
+          39,
+          2,
+          510,
+          501
+        ]
+      },
+      "suggestedOpacity": 1,
+      "worldSize": [
+        1.6,
+        1.6
+      ],
+      "pass": true
+    },
+    {
+      "name": "factory-floor-hazard-corner",
+      "publicPath": "public/textures/kit/factory/factory-floor-hazard-corner.webp",
+      "bytes": 42934,
+      "sha256": "ae53439159b3a40689e1b3bafe5f8b006f4688c307b7a456a03929ac0b530c2d",
+      "sourceSha256": "89d7e4577ff8f0a65915229fed9178aa8de5510a40fceabeab55c5f4073d032e",
+      "width": 512,
+      "height": 512,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero": 198172,
+        "partial": 62694,
+        "opaque": 1278,
+        "borderNonzero": 0,
+        "borderMax": 0,
+        "borderPolicy": "Allow only alpha1/255 noise on border, preserve and disclose; no visible cut at suggested opacity",
+        "bounds": [
+          20,
+          13,
+          496,
+          496
+        ]
+      },
+      "suggestedOpacity": 0.8,
+      "worldSize": [
+        1.6,
+        1.6
+      ],
+      "pass": true
+    }
+  ]
+}
