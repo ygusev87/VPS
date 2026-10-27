@@ -526,12 +526,13 @@ export class FactoryMap extends StoryMap {
       hall.add(leg);
     }
     // The evening line, along the south of the hall.
-    const [b0, b1] = [EVE_START - 0.4, EVE_STATIONS[3] + 2];
+    // It ends where the second lorry's bed begins (its last boxes go straight in).
+    const [b0, b1] = [EVE_START - 0.4, EVE_STATIONS[3] + 0.4];
     const belt2 = mesh(new THREE.BoxGeometry(b1 - b0, 0.3, 1.4), mat('#3a3f4b', 0.7));
     belt2.position.set((b0 + b1) / 2, 0.35, EVE_Z);
     hall.add(belt2);
     this.beltDeck(b1 - b0, (b0 + b1) / 2, EVE_Z, 'evening');
-    for (let x = EVE_START; x <= EVE_STATIONS[3] + 2; x += 2) {
+    for (let x = EVE_START; x <= EVE_STATIONS[3]; x += 2) {
       const leg = mesh(new THREE.BoxGeometry(0.12, 0.35, 1.3), mat('#8a90a0', 0.4, 0.5), false);
       leg.position.set(x, 0.12, EVE_Z);
       hall.add(leg);
@@ -1000,8 +1001,35 @@ export class FactoryMap extends StoryMap {
     this.toys = this.toys.filter((t) => t.stage < STATIONS.length);
   }
 
+  /** The boxes already in a lorry, standing in its open bed (up to three), so the loading is seen to fill it. */
+  private cargo(lorry: Critter, n: number) {
+    let held = lorry.group.userData.cargo as THREE.Object3D[] | undefined;
+    if (!held) {
+      // The bed: behind the cab, along the lorry's length (+z is its nose), at the height of its floor
+      // (measured where the lorry stands now).
+      lorry.group.updateWorldMatrix(true, true);
+      const box = new THREE.Box3().setFromObject(lorry.group.children[0]);
+      const size = box.getSize(new THREE.Vector3());
+      const local = lorry.group.worldToLocal(box.getCenter(new THREE.Vector3()));
+      const along = hasModel('factory-delivery-lorry') ? 'z' : 'x';
+      const len = along === 'z' ? Math.max(size.x, size.z) : size.x;
+      held = [0, 1, 2].map((i) => {
+        const b = model('factory-product-box', { width: 0.8 }) ?? giftBox();
+        const t = -0.35 + i * 0.2;
+        b.position.set(along === 'x' ? local.x - t * len * (along === 'x' ? -1 : 1) : local.x, size.y * 0.42, along === 'z' ? local.z + t * len : local.z);
+        b.visible = false;
+        lorry.group.add(b);
+        return b;
+      });
+      lorry.group.userData.cargo = held;
+    }
+    held.forEach((b, i) => (b.visible = i < n));
+  }
+
   /** Loaded up, the lorry hoots and drives off out of the hall. */
   private updateLorry(dt: number) {
+    this.cargo(this.lorry, Math.min(3, this.loaded));
+    this.cargo(this.lorry2, Math.min(3, this.loaded2));
     // Full (three boxes), it drives off.
     if (this.loaded >= 3) this.drivenOff = Math.min(1, this.drivenOff + dt * 0.15);
     const p = this.lorry.group.position;
