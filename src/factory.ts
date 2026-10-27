@@ -12,7 +12,7 @@ import * as THREE from 'three';
 import { groundMaterial, type GroundPlan } from './ground';
 import { grassMaterial, hasKit, kitPieces, patches, ribbons, standees } from './kit';
 import { type Hint } from './hints';
-import { model, type Fit } from './parts/assets';
+import { hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind, Terminal } from './parts/base';
 import type { Substation } from './parts/city';
 import { Gear, PaintBooth, PaintTank } from './parts/factory';
@@ -790,7 +790,8 @@ export class FactoryMap extends StoryMap {
     // The second line.
     if (this.eveBlanks > 0 && this.eveToys.length < 8 && !this.eveToys.some((t) => t.x < EVE_START + 1.5)) {
       this.eveBlanks--;
-      const m = toyMesh();
+      // The evening's bears are pressed out of the steel coil: grey till the paint.
+      const m = toyMesh('steel');
       m.position.set(EVE_START, 0.75, EVE_Z);
       this.scenery.add(m);
       this.eveToys.push({ m, x: EVE_START, stage: 0 });
@@ -805,7 +806,7 @@ export class FactoryMap extends StoryMap {
       if (t.x >= next - 0.01 && t.stage < EVE_STATIONS.length && works[t.stage]?.()) {
         this.evePassed[t.stage]++;
         t.stage++;
-        dressToy(t.m, t.stage === 1 ? 2 : t.stage === 3 ? 4 : 0);
+        if (t.stage === 1) dressToy(t.m, 'painted');
         this.hooks.chime();
         if (t.stage === EVE_STATIONS.length) {
           this.loaded2++;
@@ -886,7 +887,9 @@ export class FactoryMap extends StoryMap {
       if (t.x >= next - 0.01 && t.stage < STATIONS.length && works[t.stage]?.()) {
         this.passed[t.stage]++;
         t.stage++;
-        dressToy(t.m, t.stage + 1);
+        dressToy(t.m, (['turned', 'stamped', 'painted', 'boxed'] as const)[t.stage - 1]);
+        // Painted, it goes into its box on the way to the hoist.
+        if (t.stage === 3) dressToy(t.m, 'boxed');
         this.hooks.chime();
         if (t.stage === STATIONS.length) {
           this.loaded++;
@@ -954,40 +957,91 @@ function rack(x: number, z: number): THREE.Group {
 
 // ───────────────────────── Stand-ins ─────────────────────────
 
-/** A toy on the line: a plain stamped shape, then painted, then boxed with a bow. */
-function toyMesh(): THREE.Group {
+/** What a toy on the line looks like by now: the blank, the turned bear, its star, its paint, its box. */
+type ToyLook = 'blank' | 'turned' | 'stamped' | 'painted' | 'boxed' | 'steel';
+
+/**
+ * The toy the line makes, a teddy bear: a wooden blank from the cart, turned
+ * into a bear on the lathe, stamped with a star by the press, painted by the
+ * robot, boxed for the lorry. Codex's models where they are made
+ * (factory-toy-blank, factory-toy-bear, factory-gift-box), else stand-ins.
+ */
+function toyMesh(look: ToyLook = 'blank'): THREE.Group {
   const g = new THREE.Group();
-  const body = mesh(new THREE.SphereGeometry(0.28, 14, 10), mat('#e8e4dc', 0.6));
-  body.name = 'body';
-  const ears = [-0.16, 0.16].map((x) => {
-    const e = mesh(new THREE.SphereGeometry(0.1, 10, 8), mat('#e8e4dc', 0.6));
-    e.position.set(x, 0.25, 0);
-    e.name = 'ear';
-    return e;
-  });
-  const box = mesh(new THREE.BoxGeometry(0.7, 0.6, 0.7), mat('#c9a27a', 0.8));
+  const wood = '#d9a86c';
+  const blank = model('factory-toy-blank', { height: 0.55 }) ?? mesh(new THREE.CylinderGeometry(0.22, 0.22, 0.55, 14), mat(wood, 0.7));
+  if (!hasModel('factory-toy-blank')) blank.position.y = 0.05;
+  blank.name = 'blank';
+  const bear = model('factory-toy-bear', { height: 0.7 }) ?? teddy(wood);
+  bear.position.y = -0.3;
+  bear.name = 'bear';
+  const star = mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.03, 5), mat('#ffd23f', 0.4, 0.3));
+  star.rotation.x = Math.PI / 2;
+  star.position.set(0, 0.0, 0.2);
+  star.name = 'star';
+  const box = model('factory-gift-box', { width: 0.75 }) ?? giftBox();
+  box.position.y = -0.3;
   box.name = 'box';
-  box.visible = false;
-  const bow = mesh(new THREE.TorusGeometry(0.12, 0.04, 6, 14), mat('#d8483c', 0.4));
-  bow.position.y = 0.34;
-  bow.name = 'bow';
-  bow.visible = false;
-  g.add(body, ...ears, box, bow);
+  g.add(blank, bear, star, box);
+  dressToy(g, look);
   return g;
 }
 
-/** What each station leaves on the toy: paint (2), a lift off the line (3), a box with a bow (4). */
-function dressToy(g: THREE.Group, stage: number) {
-  if (stage === 2) {
-    const color = ['#ff5fa8', '#5fc8ff', '#ffd23f', '#7dff6b'][Math.floor(Math.random() * 4)];
-    g.traverse((o) => (o.name === 'body' || o.name === 'ear') && ((o as THREE.Mesh).material = mat(color, 0.45)));
-  }
-  if (stage === 4) {
-    g.traverse((o) => {
-      if (o.name === 'box' || o.name === 'bow') o.visible = true;
-      if (o.name === 'body' || o.name === 'ear') o.visible = false;
-    });
-  }
+/** Show a toy as it is after a station (a fresh colour for the paint). */
+function dressToy(g: THREE.Group, look: ToyLook) {
+  const shown: Record<string, ToyLook[]> = {
+    blank: ['blank'],
+    bear: ['turned', 'stamped', 'painted', 'steel'],
+    star: ['stamped', 'painted'],
+    box: ['boxed'],
+  };
+  for (const c of g.children) c.visible = shown[c.name]?.includes(look) ?? false;
+  const bear = g.getObjectByName('bear');
+  if (!bear) return;
+  const tint = look === 'painted' ? ['#ff5fa8', '#5fc8ff', '#ffd23f', '#7dff6b'][Math.floor(Math.random() * 4)] : look === 'steel' ? '#b9c0c9' : null;
+  if (!tint && look !== 'turned') return;
+  bear.traverse((o) => {
+    const m = o as THREE.Mesh;
+    if (!m.isMesh) return;
+    const was = m.material as THREE.MeshStandardMaterial;
+    // A painted model keeps its painted detail, tinted; a stand-in takes the colour itself.
+    if (was.map) {
+      const c = was.clone();
+      c.color.set(tint ?? '#ffffff');
+      c.metalness = look === 'steel' ? 0.6 : was.metalness;
+      m.material = c;
+    } else m.material = mat(tint ?? '#d9a86c', 0.5, look === 'steel' ? 0.7 : 0);
+  });
+}
+
+/** A stand-in teddy: body, head, ears, snout, paws. */
+function teddy(color: string): THREE.Group {
+  const g = new THREE.Group();
+  const m = mat(color, 0.6);
+  const ball = (r: number, x: number, y: number, z: number) => {
+    const b = mesh(new THREE.SphereGeometry(r, 14, 10), m);
+    b.position.set(x, y, z);
+    g.add(b);
+  };
+  ball(0.22, 0, 0.28, 0);
+  ball(0.17, 0, 0.58, 0);
+  ball(0.07, -0.12, 0.72, 0);
+  ball(0.07, 0.12, 0.72, 0);
+  ball(0.07, 0, 0.55, 0.15);
+  for (const x of [-0.2, 0.2]) ball(0.08, x, 0.32, 0.05);
+  for (const x of [-0.12, 0.12]) ball(0.09, x, 0.08, 0.06);
+  return g;
+}
+
+/** A stand-in gift box with a bow. */
+function giftBox(): THREE.Group {
+  const g = new THREE.Group();
+  const box = mesh(new THREE.BoxGeometry(0.7, 0.6, 0.7), mat('#c9a27a', 0.8));
+  box.position.y = 0.3;
+  const bow = mesh(new THREE.TorusGeometry(0.12, 0.04, 6, 14), mat('#d8483c', 0.4));
+  bow.position.y = 0.64;
+  g.add(box, bow);
+  return g;
 }
 
 /** A painted frame of yellow and black stripes on the floor. */
