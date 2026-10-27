@@ -1,0 +1,56 @@
+{
+  "checkedAt": "2026-10-27T12:20:01.732733+00:00",
+  "status": "fruit-and-bike-static-pass; playground-placement-valid-with-lawn-and-flower-integration-gates",
+  "source": "frozen full-game source snapshot at http://127.0.0.1:5338, assets read from repository; no game-state or camera injection; UI pan/zoom only",
+  "sourceSha256": "eccfc55b9114f9ef1b3aa227a4a73b57cd00b5bd0710d86bf85b845307f7b875",
+  "decorSha256": "dcd7d53a9440f66d0f681bd8bddba7590f34a6c7108c3ac101890cc5a5400cef",
+  "lifeSha256": "d76b81e9a04fd28318c0f860f057298f0646f8d7dc5706bda6d6997be6b1c49b",
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "overflow": 0,
+  "consoleErrors": 0,
+  "consoleWarnings": 0,
+  "frames": [
+    "overview-1024.jpg",
+    "fruit-1024.jpg",
+    "fruit-390.jpg",
+    "bike-1024.jpg",
+    "bike-390.jpg",
+    "playground-1024.jpg",
+    "playground-390.jpg"
+  ],
+  "observations": {
+    "fruit": "Yaw0 shows fruit trays; paving meets flower-kiosk apron, body gap2.6. No visible neighbour overlap in both native frames.",
+    "bike": "Two static bicycles and rack clear of removed plants, school entrance and crossing; nearest conservative anchor margin.837. Native both sizes pass.",
+    "playground": "Slide, swing and feet visible with clear road gap1.9 and conservative child-anchor margin.535; own PLAZA is hidden by park-lawn and flowers occupy interior. Full integration remains gated."
+  },
+  "requiredClaudeFix": {
+    "pad": [
+      4,
+      3.5,
+      9.5,
+      7.5
+    ],
+    "render": "Cut park-lawn over every PLAZA and expose connected paving; preserve existing fountain ring and paths.",
+    "flowers": "Exclude padded placed prop footprints/PLAZAS from sowFlowers and any park cards; snapshot src/city.ts lines753-764 only exclude needs, critters, parts and lanes.",
+    "verify": "New native390/1024 playground frames with clear ground; route/touch/playthrough separately by runtime owner."
+  },
+  "checks": {
+    "tests": "88/88 in17files passed2026-10-27 19:18:59 Asia/Bangkok",
+    "typecheck": "pass",
+    "preflight": "remaining-layout-preflight.json: measured GLB bounds, all3issues[]; conservative source calculation, not moving gameplay evidence"
+  },
+  "limitations": [
+    "Only new3placements reviewed; oldacceptedassets unchanged.",
+    "Snapshot freezes prior city/life source while Claude may edit concurrently; this is not acceptance of his newer uncommitted changes.",
+    "No complete14-task playthrough, no moving pedestrian collision observation, no physical iPad/PWA."
+  ]
+}

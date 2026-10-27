@@ -105,7 +105,9 @@
         "depth": 1.6,
         "uniform": true
       },
-      "mainReview": "remaining-props-main-review.json"
+      "mainReview": "remaining-props-main-review.json",
+      "placementStatus": "static-pass",
+      "placementReview": "qa/three-props-integration/review.json"
     },
     {
       "id": "city-street-bin",
@@ -170,7 +172,9 @@
         "depth": 1.6,
         "uniform": true
       },
-      "mainReview": "remaining-props-main-review.json"
+      "mainReview": "remaining-props-main-review.json",
+      "placementStatus": "static-pass",
+      "placementReview": "qa/three-props-integration/review.json"
     },
     {
       "id": "city-poster-column",
@@ -219,7 +223,9 @@
         "depth": 2.8,
         "uniform": true
       },
-      "mainReview": "remaining-props-main-review.json"
+      "mainReview": "remaining-props-main-review.json",
+      "placementStatus": "awaiting-park-lawn-and-flower-mask",
+      "placementReview": "qa/three-props-integration/review.json"
     },
     {
       "id": "city-postbox",
@@ -400,5 +406,6 @@
   ],
   "remainingPropsProposal": "remaining-layout-proposal.json",
   "remainingPropsPreflight": "remaining-layout-preflight.json",
-  "remainingReferences": "references/remaining/index.html"
+  "remainingReferences": "references/remaining/index.html",
+  "placementReview": "qa/three-props-integration/review.json"
 }

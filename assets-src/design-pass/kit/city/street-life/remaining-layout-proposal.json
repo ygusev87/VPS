@@ -1,7 +1,7 @@
 {
-  "status": "proposal-only-not-runtime-placement",
+  "status": "first-three-placed; fruit-bike-static-pass; playground-lawn-flower-gate; five-models-await-main-acceptance",
   "task": "city-street-life",
-  "scope": "Eight remaining model types; nine candidate placements. No Tripo orders dispatched. Preserve existing interactive toys through shell replacements.",
+  "scope": "Eight remaining model types, nine placements. Three models accepted and placed in city-decor; other five still in the active worker batch. Interactive toys remain shell replacements.",
   "routeClearance": {
     "radius": 0.85,
     "basis": "Conservative rounded half-diagonal of largest accepted city pedestrian footprint (dog-walker); root routes and turning sweeps still require runtime review."
@@ -19,15 +19,27 @@
         -26,
         -22.4
       ],
-      "yaw": 1.5707963267948966,
+      "yaw": 0,
       "pad": [
-        -27.4,
-        -24.1,
-        -23.3,
-        -20.7
+        -27.5,
+        -24.5,
+        -23,
+        -20.5
       ],
-      "mode": "static-proposal",
-      "note": "Service side +X after rotation, toward west ring pavement. Keep frontage independent of flower kiosk."
+      "mode": "static-placed",
+      "note": "Service side +Z faces the standard game camera and connected flower-kiosk apron; body gap to the flower kiosk is about2.6. This supersedes the proposed +X frontage.",
+      "actualXYZ": [
+        2.179267168045044,
+        2.0768448700382276,
+        1.5999826124350605
+      ],
+      "modelSha256": "3ffb69ac79bd94c27a9afa2d5b11e560871994bb4a016351d7b1a7083e97c9be",
+      "runtimeFit": {
+        "depth": 1.6,
+        "heightAlternative": 2.0768448700382276,
+        "uniformOnly": true
+      },
+      "nativeReview": "qa/three-props-integration/review.json"
     },
     {
       "id": "city-bike-rack",
@@ -46,10 +58,22 @@
         5,
         -20,
         9,
-        -16.4
+        -16
       ],
-      "mode": "static-proposal",
-      "note": "Two bikes fixed to rack, no moving wheels, no rider. Access from +Z toward ring. Must not obscure school laser or children."
+      "mode": "static-placed",
+      "note": "Two bikes fixed to rack, no moving wheels, no rider. Access from +Z toward ring. Must not obscure school laser or children.",
+      "actualXYZ": [
+        1.703339695930481,
+        1.05573064011512,
+        1.599996719292101
+      ],
+      "modelSha256": "2cc74edf2bfc1a849fd6ec7ee7d20ae077ed32c504b46714d6371f13c2bf217c",
+      "runtimeFit": {
+        "depth": 1.6,
+        "heightAlternative": 1.05573064011512,
+        "uniformOnly": true
+      },
+      "nativeReview": "qa/three-props-integration/review.json"
     },
     {
       "id": "city-poster-column",
@@ -126,13 +150,25 @@
       ],
       "yaw": 0,
       "pad": [
-        4.3,
-        3.8,
-        9.1,
+        4,
+        3.5,
+        9.5,
         7.5
       ],
-      "mode": "static-proposal",
-      "note": "Slide plus one small stationary swing, no child mesh or broad baseplate. Leave south inner walkway clear. Existing task children remain unchanged; random flowers must exclude footprint."
+      "mode": "static-placed",
+      "note": "Slide plus one small stationary swing, no child mesh or broad baseplate. Leave south inner walkway clear. Existing task children remain unchanged; random flowers must exclude footprint.",
+      "actualXYZ": [
+        2.9991629123687744,
+        1.4636559383431216,
+        2.7999936720564342
+      ],
+      "modelSha256": "d967d613770cf2ec5ce9a397876dee5d66dff32f8e13dc8ae499ce671b30ad04",
+      "runtimeFit": {
+        "depth": 2.8,
+        "heightAlternative": 1.4636559383431216,
+        "uniformOnly": true
+      },
+      "nativeReview": "qa/three-props-integration/review.json"
     },
     {
       "id": "city-street-bin",
@@ -216,7 +252,7 @@
     "PLAZAS are paving, not collision objects; exclude only measured props plus pedestrian turning envelope from walking routes; ensure frontage remains reachable.",
     "Do not automatically delete the listed nearby greenery. Main will remove or relocate explicit items after model acceptance.",
     "Park items require lawn overlay and random flower masking. Do not reopen old accepted model QA.",
-    "No independent worker start: current factory batch must finish before a new concrete Tripo batch card.",
-    "Bike rack candidate requires relocating exactly two bushes and one flower cluster listed in preflight; no changes made yet. Shop bin proximity to club is only a square-envelope estimate, so inspect actual building before declaring a collision."
+    "Bike rack plaza: exactly two bushes and one flower cluster were removed from city-decor; see placement change record. Shop bin proximity to club is only a square-envelope estimate, so inspect actual building before declaring a collision.",
+    "Worker-batch-02 is active; no parallel Tripo operator. Three measured bodies now placed; accepted model QA is not repeated."
   ]
 }

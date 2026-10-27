@@ -1,0 +1,66 @@
+{
+  "status": "fruit-and-bike-static-pass; playground-placement-valid-with-lawn-and-flower-integration-gates",
+  "models": {
+    "city-fruit-stall": {
+      "size": [
+        2.179267168045044,
+        2.0768448700382276,
+        1.5999826124350605
+      ],
+      "sha256": "3ffb69ac79bd94c27a9afa2d5b11e560871994bb4a016351d7b1a7083e97c9be",
+      "fit": {
+        "depth": 1.6
+      }
+    },
+    "city-bike-rack": {
+      "size": [
+        1.703339695930481,
+        1.05573064011512,
+        1.599996719292101
+      ],
+      "sha256": "2cc74edf2bfc1a849fd6ec7ee7d20ae077ed32c504b46714d6371f13c2bf217c",
+      "fit": {
+        "depth": 1.6
+      }
+    },
+    "city-playground": {
+      "size": [
+        2.9991629123687744,
+        1.4636559383431216,
+        2.7999936720564342
+      ],
+      "sha256": "d967d613770cf2ec5ce9a397876dee5d66dff32f8e13dc8ae499ce671b30ad04",
+      "fit": {
+        "depth": 2.8
+      }
+    }
+  },
+  "removedCityDecorRows": [
+    "    [6.163, -16.97, 0, 0.9],\n",
+    "    [5.72, -19.178, 1.571, 0.98],\n",
+    "    [7.013, -17.85, 6.071, 0.96],\n"
+  ],
+  "newPlazas": {
+    "city-fruit-stall": [
+      -27.5,
+      -24.5,
+      -23,
+      -20.5
+    ],
+    "city-bike-rack": [
+      5,
+      -20,
+      9,
+      -16
+    ],
+    "city-playground": [
+      4,
+      3.5,
+      9.5,
+      7.5
+    ]
+  },
+  "reason": "Actual accepted GLB proportions, explicit paving pads on .5 grid, removal only of three existing plants under bike apron. No runtime logic changes.",
+  "fruitOrientation": "Yaw0 instead of proposedPI/2: show fruit trays to standard camera, retain2.6 body gap before flower kiosk.",
+  "nativeReview": "qa/three-props-integration/review.json"
+}
