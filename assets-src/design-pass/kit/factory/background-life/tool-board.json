@@ -1,0 +1,59 @@
+{
+  "asset": "factory-tool-board",
+  "path": "public/textures/kit/factory/factory-tool-board.webp",
+  "bytes": 39884,
+  "sha256": "f5d5ebc35c6a6793054242a27205fcd51a8b913b8a075738fc588d24e7a8cccb",
+  "sourceSize": [
+    1555,
+    1011
+  ],
+  "size": [
+    512,
+    333
+  ],
+  "aspect": 1.5375375375375375,
+  "nativeAlpha": true,
+  "alpha": {
+    "transparent": 42222,
+    "opaque": 1354,
+    "visibleThresholdForMeasurementOnly": 128,
+    "bbox": [
+      10,
+      35,
+      502,
+      290
+    ]
+  },
+  "transform": "proportional Lanczos resize to512 wide and WebP encoding; no painting, crop, masking, alpha thresholding or colour corrections",
+  "worldPlaneSize": [
+    2,
+    1.30078125
+  ],
+  "visibleWorldY": [
+    0.267578125,
+    1.263671875
+  ],
+  "proposedMount": {
+    "position": [
+      -12,
+      0.75,
+      -25.38
+    ],
+    "rotationY": 0,
+    "normal": [
+      0,
+      0,
+      1
+    ]
+  },
+  "clearance": {
+    "wallInnerZ": -25.4,
+    "planeOffset": 0.02,
+    "pipeLowerY": 2.02,
+    "visibleToPipe": 0.756328125,
+    "windowsLowerY": 2.6,
+    "wholePlaneToPipe": 0.619609375,
+    "projectedGapAtGameAngle": 0.09624069459965484
+  },
+  "acceptance": "asset packaging; standalone visual QA pending, actual game placement pending Claude"
+}

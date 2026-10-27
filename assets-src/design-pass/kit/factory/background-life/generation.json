@@ -1,0 +1,10 @@
+{
+  "asset": "factory-tool-board",
+  "method": "built-in image_gen",
+  "calls": 1,
+  "prompt": "Use case: stylized-concept. Create a production-ready game texture of ONE wall-mounted workshop tool board for the friendly toy factory in the children's game Electro-table. This is a strictly front orthographic elevation, perfectly straight-on: rectangular board edges parallel to image borders, no perspective or isometric angle, no visible wall or floor. Board width:height is exactly 20:13, centered and almost filling a landscape canvas with a small even transparent margin. A muted warm ivory perforated metal board with a slim rounded dark teal steel frame, four simple mounting screws, and a restrained orange accent matches a factory with teal steel and orange racks. Arrange only seven very readable mounted tools: two open-ended steel spanners of different sizes at the left, a short stout hammer, sturdy pliers, two distinct screwdrivers with orange and teal handles, and one circular coiled extension lead at the right. Clear space between tools, large simplified shapes that remain recognizable at a small game scale. Render as a high-quality miniature tactile clay-and-painted-metal toy prop, bevelled chunky edges, mild material wear, subtle ambient occlusion immediately under each tool, soft even neutral illumination, modest saturation. Every tool wholly inside the frame and attached to the pegboard, no floating items. The board itself is opaque; genuine transparent alpha outside its rectangular silhouette. No cast shadow outside board, no wall, no floor, no backdrop, no text, letters, digits, logo, people, weapons, fire, motion or duplicate board. Do not add extra rows of tiny tools. This is the final front-face image to map onto a vertical wall plane, not an angled product photo.",
+  "source": "assets-src/design-pass/kit/factory/background-life/sources/factory-tool-board-v1.png",
+  "sha256": "2061462a2451adcedfe068d5cac9073a30380b69730bdc3ba533031308ce57cd",
+  "tripoOrders": 0,
+  "note": "Front view accepted visually; actual board aspect differs from requested20:13. Preserve native image aspect including alpha."
+}

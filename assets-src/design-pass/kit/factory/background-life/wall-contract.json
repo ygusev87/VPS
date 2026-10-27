@@ -1,0 +1,49 @@
+{
+  "schemaVersion": 1,
+  "status": "proposal-awaiting-runtime-integration",
+  "source": "factory.ts buildHall",
+  "coordinateSystem": {
+    "plane": "XY",
+    "normal": "+Z before rotation",
+    "position": "plane centre including transparent canvas",
+    "rotationY": "radians",
+    "size": "full image rectangle; preserve width/height ratio",
+    "sides": "front only; do not billboard or tilt toward camera"
+  },
+  "walls": [
+    {
+      "asset": "factory-tool-board",
+      "kit": "factory",
+      "position": [
+        -12,
+        0.75,
+        -25.38
+      ],
+      "size": [
+        2,
+        1.30078125
+      ],
+      "rotationY": 0
+    }
+  ],
+  "material": {
+    "colorSpace": "sRGB",
+    "alphaTest": 0.5,
+    "transparent": false,
+    "depthWrite": true,
+    "depthTest": true,
+    "side": "FrontSide",
+    "castShadow": false,
+    "receiveShadow": false,
+    "shading": "Basic or equivalent unlit art, no recolour"
+  },
+  "integration": [
+    "Load via shared kitPieces/cache and retain ordinary map cleanup.",
+    "PlaneGeometry(width,height) is vertical XY; do not use ground decals/dressing/cards, whose camera alignment is different.",
+    "Rear wall centre -25.7 and thickness .6 -> inner face -25.4; plane -25.38 leaves .02 depth separation.",
+    "Suggested x=-12 avoids valve centres -22,-4,14 and current clock x0. Verify in full game before accepting.",
+    "Static and non-interactive. It must not enter pointer part/terminal hit tests.",
+    "No runtime/source change made by Codex; Claude owns loader/material lifecycle and full-scene acceptance.",
+    "First QA at width2.4/centreY1 showed pipe visually hiding the top edge without physical collision. Final width2/centreY.75 leaves a projected gap; verify with the actual game camera."
+  ]
+}

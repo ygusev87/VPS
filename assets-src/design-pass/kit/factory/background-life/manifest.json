@@ -1,0 +1,256 @@
+{
+  "task": "factory-background-life",
+  "request": "m0497",
+  "status": "authoring; first-wall-card-ready",
+  "sourceSha256": "89f9536164c05093a11c28e485ba52da0400d120b516745dbcc1a5cd815b180a",
+  "referenceFrame": {
+    "path": "assets-src/design-pass/kit/factory-whole-check.jpg",
+    "limitation": "provided whole-map image is a composition reference, not evidence of current accepted GLB versions"
+  },
+  "reuse": [
+    {
+      "asset": "rack-steel-card",
+      "decision": "retain existing accepted card; add placements only where measured clear"
+    },
+    {
+      "asset": "pallet-card",
+      "decision": "reuse for stock piles; new variants only for visually distinct silhouette"
+    },
+    {
+      "asset": "barrels-card",
+      "decision": "reuse accepted barrels; do not repeat old image correction"
+    },
+    {
+      "asset": "forklift-card",
+      "decision": "retain until new moving GLB accepted; remove old static copy if same location is reused"
+    },
+    {
+      "asset": "procedural crate",
+      "decision": "keep current seven placements; add a separate loaded cart if needed"
+    }
+  ],
+  "notEquivalent": [
+    {
+      "asset": "public/models/factory-cabinet.glb",
+      "reason": "Accepted 2.5×0.12×2.5 shallow wiring-game rim, not a tall control cabinet. Do not resize it vertically or replace the accepted wiring-box asset."
+    }
+  ],
+  "newModels": [
+    {
+      "id": "factory-forklift",
+      "targetXYZ": [
+        1.6,
+        2.2,
+        3.4
+      ],
+      "front": "+Z",
+      "groundY": 0,
+      "movingNode": "forks",
+      "contractNext": "measure carriage pivot and a collision-free vertical travel; do not claim independent forks on an unsplit mesh",
+      "status": "queued"
+    },
+    {
+      "id": "factory-worker-foreman",
+      "description": "white hard hat, blue work jacket, clipboard",
+      "height": 1.65,
+      "front": "+Z",
+      "groundY": 0,
+      "rig": false,
+      "status": "queued"
+    },
+    {
+      "id": "factory-worker-technician",
+      "description": "yellow hard hat, teal overalls, compact tool pouch",
+      "height": 1.6,
+      "front": "+Z",
+      "groundY": 0,
+      "rig": false,
+      "status": "queued"
+    },
+    {
+      "id": "factory-worker-loader",
+      "description": "orange vest, navy trousers, different broad silhouette",
+      "height": 1.65,
+      "front": "+Z",
+      "groundY": 0,
+      "rig": false,
+      "status": "queued"
+    },
+    {
+      "id": "factory-worker-inspector",
+      "description": "red hard hat, cream shirt, slim silhouette and gloves",
+      "height": 1.6,
+      "front": "+Z",
+      "groundY": 0,
+      "rig": false,
+      "status": "queued"
+    },
+    {
+      "id": "factory-control-cabinet",
+      "targetXYZ": [
+        1.2,
+        2.1,
+        0.6
+      ],
+      "movingNodes": [
+        "lamp-red",
+        "lamp-amber",
+        "lamp-green"
+      ],
+      "status": "queued"
+    },
+    {
+      "id": "factory-lockers",
+      "targetXYZ": [
+        1.8,
+        2,
+        0.6
+      ],
+      "status": "queued"
+    },
+    {
+      "id": "factory-fire-extinguisher",
+      "targetXYZ": [
+        0.45,
+        1.1,
+        0.4
+      ],
+      "status": "queued"
+    },
+    {
+      "id": "factory-box-trolley",
+      "targetXYZ": [
+        1.2,
+        1.3,
+        1.6
+      ],
+      "status": "queued"
+    },
+    {
+      "id": "factory-loading-ramp",
+      "targetXYZ": [
+        3.6,
+        1.2,
+        3.8
+      ],
+      "status": "queued"
+    },
+    {
+      "id": "factory-foreman-booth",
+      "targetXYZ": [
+        2.8,
+        2.8,
+        2.4
+      ],
+      "status": "queued"
+    }
+  ],
+  "wallCards": [
+    {
+      "id": "factory-tool-board",
+      "displaySize": [
+        2,
+        1.30078125
+      ],
+      "status": "accepted-for-runtime-integration",
+      "position": [
+        -12,
+        0.75,
+        -25.38
+      ],
+      "report": "tool-board.json",
+      "qa": "qa/review.json"
+    },
+    {
+      "id": "factory-safety-signs",
+      "displaySize": [
+        0.8,
+        0.8
+      ],
+      "status": "queued",
+      "note": "toy pictograms, not a claim of industrial sign compliance"
+    },
+    {
+      "id": "factory-wall-clock",
+      "displaySize": [
+        0.8,
+        0.8
+      ],
+      "status": "queued",
+      "note": "static face; if moving hands required retain existing code hands"
+    }
+  ],
+  "placementContract": {
+    "proposedSourceFile": "src/factory-decor.ts",
+    "floor": "DecorGroup[] consumed via dressing with actual task/line keepouts",
+    "walls": "separate WallDecor data: asset,positionXYZ,sizeXY,rotationY; vertical front-facing +Z, not floor dressing",
+    "movement": "Claude owns routes, workers and fork/lamp animation",
+    "sourceFacts": {
+      "hall": [
+        80,
+        52
+      ],
+      "backWallZ": -25.7,
+      "windowsY": [
+        2.6,
+        4.2
+      ],
+      "backPipeY": 2.2,
+      "columnRowsZ": [
+        -16,
+        8
+      ],
+      "conveyorsZ": [
+        -2.2,
+        13
+      ]
+    },
+    "candidateZones": [
+      {
+        "id": "central-vehicle-corridor",
+        "extentXZ": [
+          -18,
+          3,
+          26,
+          6
+        ],
+        "purpose": "candidate forklift route corridor between production lines, north of z8 columns",
+        "status": "needs swept bounds plus current keepouts, not approved route"
+      },
+      {
+        "id": "back-wall-low-band",
+        "extentXZ": [
+          -25,
+          -25.4,
+          25,
+          -24.7
+        ],
+        "heightRange": [
+          0.3,
+          1.8
+        ],
+        "purpose": "wall tools, lockers, safety signs below pipe/windows; inspect views over machine tops",
+        "status": "candidate only"
+      },
+      {
+        "id": "east-stock",
+        "extentXZ": [
+          34,
+          4,
+          38,
+          22
+        ],
+        "purpose": "loading ramp / trolley / crates around existing stock, preserve truck exits and barrels",
+        "status": "candidate only; individual obstacles not yet resolved"
+      }
+    ],
+    "wallContract": "wall-contract.json"
+  },
+  "pipeline": {
+    "operator": "existing model worker only, currently six city pedestrians",
+    "generationOrdersPlaced": 0,
+    "mainScope": "inventory, future references/cards, placement data and acceptance",
+    "limits": "no invented credit cap; live price/balance before each future Studio order; no purchases/API/topups"
+  },
+  "next": "Claude integrates first wall tool-board; main prepares remaining wall signs/clock and forklift/worker contracts while city people finish."
+}

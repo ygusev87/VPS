@@ -1,0 +1,41 @@
+{
+  "asset": "factory-tool-board",
+  "sha256": "f5d5ebc35c6a6793054242a27205fcd51a8b913b8a075738fc588d24e7a8cccb",
+  "status": "accepted-for-runtime-integration",
+  "browser": "IAB",
+  "nativeViewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "frames": [
+    "qa/factory-wall-1024.jpg",
+    "qa/factory-wall-front-1024.jpg",
+    "qa/factory-wall-390.jpg",
+    "qa/factory-wall-front-390.jpg"
+  ],
+  "views": [
+    "front",
+    "game orientation Y:Z=1:.78"
+  ],
+  "visual": [
+    "Seven tools clearly separated; no missing item or text artifact.",
+    "Native alpha retained; ivory board contrasts with warm factory wall.",
+    "Final placement has a visible gap below the pipe in both views.",
+    "First candidate width2.4,centreY1 was visually occluded by the pipe. Changed only placement/size towidth2,centreY.75; no regenerated pixels."
+  ],
+  "consoleErrors": 0,
+  "consoleWarnings": 0,
+  "horizontalOverflow": false,
+  "checks": {
+    "testFiles": 17,
+    "tests": 88,
+    "typecheck": "PASS"
+  },
+  "scope": "Standalone wall excerpt reproduces factory back-wall,window,pipe dimensions and kit texture; not full factory gameplay or physical iPad/PWA acceptance."
+}
