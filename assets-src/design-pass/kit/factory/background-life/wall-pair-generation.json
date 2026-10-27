@@ -1,0 +1,18 @@
+[
+  {
+    "asset": "factory-safety-signs",
+    "method": "built-in image_gen",
+    "calls": 1,
+    "prompt": "Use case: stylized-concept. Production game asset for a friendly miniature toy factory, strictly front orthographic view. ONE horizontal wall safety pictogram plaque with rounded rectangular ivory metal backplate, slim dark teal frame, subtle bevels, four unobtrusive corner screws. Exactly THREE equal blue circular badges arranged in one horizontal row: left a bold clear white hard-hat silhouette; middle a bold clear white pair of work gloves; right a bold clear white pair of work boots. Each pictogram is large, simple, instantly readable, cleanly separated, with no hands or feet wearing them. Board has width:height about 3:1; landscape canvas, centered, narrow transparent margin. Consistent stylized tactile clay/painted metal game aesthetic with soft evenly distributed light and restrained surface detail. The sign surface is opaque, actual transparent alpha outside. No external cast shadow, wall, floor, perspective, extra pictograms, text, numbers, letters, logos or complex illustration. These are decorative toy-game pictograms, not a real industrial certification document.",
+    "source": "sources/factory-safety-signs-v1.png",
+    "sha256": "85ac7d6fea2d6342c2566ad3a1396b6d63c0d2fa4d3793b731727cc2d1b47904"
+  },
+  {
+    "asset": "factory-wall-clock",
+    "method": "built-in image_gen",
+    "calls": 1,
+    "prompt": "Use case: stylized-concept. Production game asset: ONE round wall clock front plate for a friendly miniature toy factory, strictly straight-on orthographic front view on a square canvas. Perfect circular face centred exactly at the centre of the image, circle occupies about 90 percent of canvas width and height. Chunky rounded dark teal painted metal rim with a very thin restrained orange inner ring, warm ivory opaque face. Exactly twelve bold dark teal hour marks evenly spaced around the dial; 12,3,6,9 marks are modestly longer, other eight marks shorter. NO NUMERALS and NO CLOCK HANDS, NO CENTRAL HUB or hole: the large central face is completely blank ivory because the game will overlay an animated hand at the exact image centre. No bells, legs, post, wire, key or extra prop. Tactile miniature clay/painted metal game aesthetic, subtle bevel and very mild ambient shading at the INNER rim only; soft even light without angular directional shadow. True transparent alpha outside the circular silhouette; no wall, floor, cast shadow, text, logos, decoration or perspective. Preserve a simple very readable clock face at small game scale.",
+    "source": "sources/factory-wall-clock-v1.png",
+    "sha256": "eab250faebc4310f57d5e3b2cd62679bc312543c09882fb6cb3f9f3a9508d980"
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "status": "assets-and-mount-contract-accepted-for-integration",
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "frames": [
+    "wall-signs-1024.jpg",
+    "wall-clock-old-1024.jpg",
+    "wall-clock-new-1024.jpg",
+    "wall-clock-ring-1024.jpg",
+    "wall-clock-ring-390.jpg",
+    "wall-clock-new-390.jpg",
+    "wall-signs-390.jpg"
+  ],
+  "browserErrors": 0,
+  "browserWarnings": 0,
+  "horizontalOverflow": false,
+  "visual": [
+    "Three readable signs: helmet/gloves/boots, no extra text or artefacts.",
+    "Clock has12hourmarks and blank centre; existing code hand remains separate.",
+    "Both new placements clear of pipe/window bounds.",
+    "Old source clock coordinates reproduced behind the wall; new attachment visible in idle and ring phase."
+  ],
+  "scope": "Isolated wall fragment using current source dimensions; full game placement, tap, sound, map switch and physical iPad/PWA pending Claude.",
+  "geometryReport": "../wall-pair.json",
+  "tests": {
+    "testFiles": 17,
+    "tests": 88,
+    "typecheck": "PASS",
+    "verifiedLocalTime": "2026-10-27 18:03 Bangkok"
+  }
+}

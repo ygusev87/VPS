@@ -10,5 +10,7 @@
   "forklift-card",
   "pallet-card",
   "barrels-card",
-  "factory-tool-board"
+  "factory-tool-board",
+  "factory-safety-signs",
+  "factory-wall-clock"
 ]

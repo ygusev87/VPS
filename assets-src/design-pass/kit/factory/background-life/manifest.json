@@ -164,20 +164,34 @@
     {
       "id": "factory-safety-signs",
       "displaySize": [
-        0.8,
-        0.8
+        2.4,
+        0.8015625
       ],
-      "status": "queued",
-      "note": "toy pictograms, not a claim of industrial sign compliance"
+      "status": "accepted-for-runtime-integration",
+      "note": "toy pictograms, not a claim of industrial sign compliance",
+      "position": [
+        -8,
+        0.9,
+        -25.38
+      ],
+      "report": "wall-pair.json",
+      "qa": "qa/wall-pair-review.json"
     },
     {
       "id": "factory-wall-clock",
       "displaySize": [
-        0.8,
-        0.8
+        1.4,
+        1.4
       ],
-      "status": "queued",
-      "note": "static face; if moving hands required retain existing code hands"
+      "status": "accepted-for-runtime-integration",
+      "note": "static face; if moving hands required retain existing code hands",
+      "position": [
+        0,
+        3.4,
+        -25.3
+      ],
+      "report": "wall-pair.json",
+      "qa": "qa/wall-pair-review.json"
     }
   ],
   "placementContract": {
@@ -252,5 +266,5 @@
     "mainScope": "inventory, future references/cards, placement data and acceptance",
     "limits": "no invented credit cap; live price/balance before each future Studio order; no purchases/API/topups"
   },
-  "next": "Main remaining wall signs/clock and city prop references; accept worker factory READY one by one."
+  "next": "Claude integrates all3wall assets, preserving clock interaction; main next city props placement/references; accept factory worker READY."
 }

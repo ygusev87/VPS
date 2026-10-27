@@ -1,0 +1,137 @@
+{
+  "status": "accepted-for-runtime-integration",
+  "assets": [
+    {
+      "id": "factory-safety-signs",
+      "width": 2.4,
+      "centre": [
+        -8,
+        0.9,
+        -25.38
+      ],
+      "interactive": false,
+      "file": "public/textures/kit/factory/factory-safety-signs.webp",
+      "bytes": 19360,
+      "sha256": "d03ceba9b986135c73c4e9417b7c68a6c245bdd16015e946d47f5c0ff5f8e7d7",
+      "sourceSize": [
+        2172,
+        724
+      ],
+      "sizePixels": [
+        512,
+        171
+      ],
+      "sizeWorld": [
+        2.4,
+        0.8015625
+      ],
+      "visibleWorldY": [
+        0.56953125,
+        1.23984375
+      ],
+      "nativeAlpha": true,
+      "transparentPixels": 16131,
+      "visibleBBoxThreshold128": [
+        11,
+        13,
+        501,
+        156
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "rotationY": 0,
+      "wallSeparation": 0.019999999999999574,
+      "transform": "Proportional 512-wide resize and WebP90, alphaQuality100; no drawing, masking, crop or alpha thresholding.",
+      "projectedGapBelowPipe": 0.11089574917790751
+    },
+    {
+      "id": "factory-wall-clock",
+      "width": 1.4,
+      "centre": [
+        0,
+        3.4,
+        -25.3
+      ],
+      "interactive": true,
+      "file": "public/textures/kit/factory/factory-wall-clock.webp",
+      "bytes": 41924,
+      "sha256": "0df8c041974c3ccee763d1f4ab15aa9a1aab35b25907424d4a67494d7faa4698",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sizePixels": [
+        512,
+        512
+      ],
+      "sizeWorld": [
+        1.4,
+        1.4
+      ],
+      "visibleWorldY": [
+        2.7191406249999996,
+        4.0835937499999995
+      ],
+      "nativeAlpha": true,
+      "transparentPixels": 63723,
+      "visibleBBoxThreshold128": [
+        6,
+        6,
+        506,
+        505
+      ],
+      "normal": [
+        0,
+        0,
+        1
+      ],
+      "rotationY": 0,
+      "wallSeparation": 0.09999999999999787,
+      "transform": "Proportional 512-wide resize and WebP90, alphaQuality100; no drawing, masking, crop or alpha thresholding."
+    }
+  ],
+  "clockIntegration": {
+    "replace": "Existing factory clock dial/rim only; retain parts.face and parts.hand ownership plus tap/sound/rest behaviour.",
+    "frame": "Plane XY 1.4 square centred at face origin, unlit sRGB alphaTest.5; hand localZ.08 as before.",
+    "mount": "Factory clock rootZ=-25.30, face.position.y and face.userData.y0=3.4. Avoid creating a duplicate static WALL_DECOR clock.",
+    "oldPositionEvidence": "factory.ts addToy clock rootZ=-25.6; life.ts dial frontZ+.06, hand frontZ+.095, rim frontZ+.07, bells radius.17 -> all behind wall innerZ=-25.4. This is source/reproduction evidence, not an observation of live gameplay.",
+    "animation": "Keep game-clock hand and face shake/jump; source image has no hands. Old decorative post can be omitted for a wall mounting. Existing bells optional; do not regress interaction.",
+    "scope": "Factory only; do not change other maps clocks without checking their layout."
+  },
+  "geometryAudit": {
+    "sampledPhases": 181,
+    "stepSeconds": 0.01,
+    "sampledWorldY": [
+      2.561303402985737,
+      4.347772721976755
+    ],
+    "continuousEnvelope": {
+      "halfSizeBeforeAnimation": 0.8,
+      "rotationBound": 0.12,
+      "positiveJumpBound": 0.08,
+      "worldY": [
+        2.5099833254857713,
+        4.370016674514228
+      ],
+      "absX": 0.8900166745142285,
+      "windowGapX": [
+        -1.5,
+        1.5
+      ],
+      "windowClearance": 0.6099833254857715,
+      "wallTopClearance": 0.6299833254857719,
+      "pipeUpperY": 2.38,
+      "pipeClearance": 0.1299833254857714
+    },
+    "includes": "1.4 clock plane, current hand and optional old bells",
+    "clockPlaneInFrontOfWall": 0.1,
+    "sourceHashes": {
+      "src/factory.ts": "89f9536164c05093a11c28e485ba52da0400d120b516745dbcc1a5cd815b180a",
+      "src/life.ts": "d76b81e9a04fd28318c0f860f057298f0646f8d7dc5706bda6d6997be6b1c49b"
+    },
+    "limitation": "source-derived bounds and isolated wall rendering; no actual gameplay/raycast/sound/interaction test"
+  }
+}

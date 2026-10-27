@@ -24,6 +24,20 @@
         1.30078125
       ],
       "rotationY": 0
+    },
+    {
+      "asset": "factory-safety-signs",
+      "kit": "factory",
+      "position": [
+        -8,
+        0.9,
+        -25.38
+      ],
+      "size": [
+        2.4,
+        0.8015625
+      ],
+      "rotationY": 0
     }
   ],
   "material": {
@@ -45,5 +59,6 @@
     "Static and non-interactive. It must not enter pointer part/terminal hit tests.",
     "No runtime/source change made by Codex; Claude owns loader/material lifecycle and full-scene acceptance.",
     "First QA at width2.4/centreY1 showed pipe visually hiding the top edge without physical collision. Final width2/centreY.75 leaves a projected gap; verify with the actual game camera."
-  ]
+  ],
+  "interactiveClockContract": "wall-pair.json#clockIntegration; replace existing factory clock face, do not spawn another static WALL_DECOR clock"
 }
