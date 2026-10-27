@@ -10,7 +10,7 @@
 // another lever, lifts the finished boxes into the lorry.
 import * as THREE from 'three';
 import { groundMaterial, type GroundPlan } from './ground';
-import { grassMaterial, hasKit, kitPieces, patches, ribbons, standees } from './kit';
+import { grassMaterial, hasKit, kitPieces, patches, ribbons, standees, tiledRects, toned } from './kit';
 import { type Hint } from './hints';
 import { hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind, Terminal } from './parts/base';
@@ -212,6 +212,7 @@ export class FactoryMap extends StoryMap {
 
   protected build() {
     this.buildBoard();
+    this.buildYard();
     this.buildHall();
     this.placeParts();
     this.buildCritters();
@@ -393,6 +394,54 @@ export class FactoryMap extends StoryMap {
   }
 
   // ───────────────────────── Building ─────────────────────────
+
+  /**
+   * The world outside the hall, so it does not stand on bare paper: grass all
+   * round, a concrete apron along the walls, the road the lorries leave by, and
+   * a wood at the edge (the farm's and the city's painted pieces).
+   */
+  private buildYard() {
+    const grass = kitPieces('farm', 'grass-main', true)[0];
+    if (!this.kit || !grass) return;
+    const [OW, OD] = [W + 44, D + 40];
+    const ground = mesh(new THREE.PlaneGeometry(OW, OD).rotateX(-Math.PI / 2), grassMaterial(grass, null, [], 8, '#b4a4d0'), false);
+    ground.position.y = -0.3;
+    ground.receiveShadow = true;
+    ground.userData.noAO = true;
+    this.scenery.add(ground);
+    // Concrete apron round the walls.
+    const pave = kitPieces('city', 'paving-main', true)[0];
+    if (pave) {
+      const ring: { x0: number; z0: number; x1: number; z1: number }[] = [
+        { x0: -W / 2 - 3, z0: -D / 2 - 3, x1: W / 2 + 3, z1: -D / 2 },
+        { x0: -W / 2 - 3, z0: D / 2, x1: W / 2 + 3, z1: D / 2 + 3 },
+        { x0: -W / 2 - 3, z0: -D / 2, x1: -W / 2, z1: D / 2 },
+        { x0: W / 2, z0: -D / 2, x1: W / 2 + 3, z1: D / 2 },
+      ];
+      this.scenery.add(toned(tiledRects(ring, pave, 5, -0.29, 1), '#c8c4c0'));
+    }
+    // The road the lorries drive off on: out of the south side past the day lorry, along to the east.
+    const road = kitPieces('city', 'road-strip', true)[0];
+    if (road) this.scenery.add(ribbons([{ pts: [[LORRY.x, D / 2], [LORRY.x, D / 2 + 9], [W / 2 + 22, D / 2 + 9]], w: 5 }, { pts: [[W / 2, LORRY2.z], [W / 2 + 22, LORRY2.z]], w: 5 }], road, 7 / 6, 14, -0.28, 2, 0.3));
+    // A wood round it all (cards: little cost), clear of the road.
+    const oak = kitPieces('farm', 'tree-oak-card');
+    const pine = kitPieces('farm', 'tree-pine-card');
+    if (oak.length && pine.length) {
+      let seed = 23;
+      const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
+      const wood: { x: number; z: number; size: number }[] = [];
+      const firs: { x: number; z: number; size: number }[] = [];
+      const onRoad = (x: number, z: number) => (Math.abs(x - LORRY.x) < 4.5 && z > D / 2) || (Math.abs(z - (D / 2 + 9)) < 4.5 && x > LORRY.x - 4) || (Math.abs(z - LORRY2.z) < 4.5 && x > W / 2);
+      const tree = (x: number, z: number) => {
+        if (onRoad(x, z)) return;
+        (rnd() < 0.4 ? firs : wood).push({ x, z, size: (rnd() < 0.4 ? 3.2 : 4) * (0.85 + rnd() * 0.3) });
+      };
+      for (let x = -W / 2 - 12; x < W / 2 + 12; x += 2.6) for (const z of [-D / 2 - 6, -D / 2 - 9, D / 2 + 6.5, D / 2 + 13]) tree(x + (rnd() - 0.5) * 1.2, z + (rnd() - 0.5) * 1.2);
+      for (let z = -D / 2 - 4; z < D / 2 + 4; z += 2.6) for (const x of [-W / 2 - 6, -W / 2 - 9.5, W / 2 + 6.5, W / 2 + 10]) tree(x + (rnd() - 0.5) * 1.2, z + (rnd() - 0.5) * 1.2);
+      const shade = kitPieces('farm', 'blob-shadow')[0] ?? null;
+      this.scenery.add(standees(wood, oak, shade), standees(firs, pine, shade));
+    }
+  }
 
   private buildBoard() {
     const plan: GroundPlan = {

@@ -478,10 +478,17 @@ function mapDone(name: MapName) {
 async function startMap(name: MapName, fresh = false) {
   hud.hideMapDone();
   const def = MAPS[name];
-  // The city's lawns borrow the farm's painted flowers and shrubs.
-  await Promise.all([loadModels(def.models), loadGround(), loadKit(name), name === 'city' ? loadKit('farm', ['tuft-card', 'flower-card', 'shrub-card', 'blob-shadow']) : null]);
+  // The city's lawns borrow the farm's painted flowers and shrubs; the factory's yard the farm's grass and trees and the city's paving and road.
+  await Promise.all([
+    loadModels(def.models),
+    loadGround(),
+    loadKit(name),
+    name === 'city' ? loadKit('farm', ['tuft-card', 'flower-card', 'shrub-card', 'blob-shadow']) : null,
+    name === 'factory' ? loadKit('farm', ['grass-main', 'tree-oak-card', 'tree-pine-card', 'bush-card', 'blob-shadow']) : null,
+    name === 'factory' ? loadKit('city', ['paving-main', 'road-strip', 'kerb-strip']) : null,
+  ]);
   leaveMap();
-  forgetKits(name === 'city' ? ['city', 'farm'] : [name]);
+  forgetKits(name === 'city' ? ['city', 'farm'] : name === 'factory' ? ['factory', 'farm', 'city'] : [name]);
   // A view asked for by the map just left is not this one's.
   mapFocus = null;
   level = def.level;
