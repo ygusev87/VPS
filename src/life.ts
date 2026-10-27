@@ -103,7 +103,7 @@ export class Life {
   }
 
   /** A thing placed to be tapped. */
-  addToy(kind: ToyKind, x: number, z: number, yaw = 0, body?: THREE.Object3D) {
+  addToy(kind: ToyKind, x: number, z: number, yaw = 0, body?: THREE.Object3D): { root: THREE.Group; parts: Record<string, THREE.Object3D> } {
     const { root, parts } = TOY_BUILDERS[kind](body);
     root.position.set(x, 0, z);
     root.rotation.y = yaw;
@@ -115,6 +115,7 @@ export class Life {
     });
     this.scenery.add(root);
     this.toys.push({ kind, root, t: -1, parts, home: new THREE.Vector3(x, 0, z) });
+    return { root, parts };
   }
 
   /** Where the toys stand (kept clear of the dressing). */

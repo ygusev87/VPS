@@ -24,7 +24,9 @@ import { StoryMap, blob, v, type Critter, type MapProgress, type NeedSpec, type 
 import type { PhraseId } from './voice';
 
 /** Model files the factory needs (each falls back to a code-built stand-in). */
-export const FACTORY_MODELS = ['pole', 'child', 'kitten', 'flower-cluster', ...WORKSHOP_MODELS];
+/** Codex's hall crew: the foreman, and the station workers in turn (whole figures facing +z, moved by code). */
+const CREW = ['factory-worker-technician', 'factory-worker-loader', 'factory-worker-inspector'];
+export const FACTORY_MODELS = ['pole', 'child', 'kitten', 'flower-cluster', 'factory-worker-foreman', ...CREW, ...WORKSHOP_MODELS];
 
 /** What the drawers offer in the factory: the levers and the gears (a middle one that fits nowhere). */
 export const FACTORY_TRAY: { kind: PartKind; count: number }[] = [
@@ -190,9 +192,62 @@ export class FactoryMap extends StoryMap {
     this.placeParts();
     this.buildCritters();
     this.buildNeeds();
-    this.life.addToy('clock', 0, -D / 2 + 0.4, 0);
+    this.wallClock();
     this.life.addToy('soda', -W / 2 + 2.5, -20, Math.PI / 2);
-    for (const [x, z] of [[-12, 7], [12, 7], [20, 20], [-20, 20]] as const) this.life.addExtra(worker('#3f86d6', '#f2c230'), x, z, 0, 'stroll', 'hammer', 4);
+    // People about the hall on the yellow walkways, each its own stretch and back, clear of the stations.
+    const ways = this.aisleRuns();
+    for (let i = 0; i < 4; i++) {
+      const way = ways[(i * 3) % Math.max(1, ways.length)];
+      if (!way) break;
+      // Modelled facing +z; the hall's life walks things nose along +x.
+      const made = model(CREW[i % CREW.length], { height: 1.6 });
+      const who = new THREE.Group();
+      if (made) made.rotation.y = Math.PI / 2;
+      who.add(made ?? worker('#3f86d6', '#f2c230'));
+      this.life.addWalker(who, way, 'hammer');
+    }
+  }
+
+  /**
+   * The clock on the back wall between the windows, above the pipe (Codex's wall
+   * contract): its painted face over the code dial, hand and bells still the toy's.
+   */
+  private wallClock() {
+    const { root, parts } = this.life.addToy('clock', 0, -D / 2 + 0.7, 0);
+    const face = parts.face;
+    face.position.y = face.userData.y0 = 3.4;
+    // No post on the wall; the painted dial and rim take the place of the code ones.
+    root.children.filter((c) => c !== face).forEach((c) => (c.visible = false));
+    const dial = kitPieces('factory', 'factory-wall-clock')[0];
+    if (dial) {
+      face.children.slice(0, 2).forEach((c) => (c.visible = false));
+      const pic = new THREE.Mesh(new THREE.PlaneGeometry(1.4, 1.4), new THREE.MeshBasicMaterial({ map: dial, alphaTest: 0.5 }));
+      pic.position.z = 0.061;
+      face.add(pic);
+    }
+  }
+
+  /** Straight stretches of the yellow walkways to walk: cut where a station, a pole, a lever or someone at work is near. */
+  private aisleRuns(): THREE.Vector3[][] {
+    const busy = [
+      ...this.needs.flatMap((n) => [n.spot, ...n.more.map((m) => m.spot)]),
+      ...[...this.critters.values()].map((c) => c.home),
+      ...this.world.parts.map((p) => p.root.position),
+    ];
+    const runs: THREE.Vector3[][] = [];
+    for (const z of [1.2, 10]) {
+      let run: THREE.Vector3[] = [];
+      const close = () => {
+        if (run.length > 1 && run[0].distanceTo(run[run.length - 1]) >= 6) runs.push(run.filter((_, i) => i % 7 === 0 || i === run.length - 1));
+        run = [];
+      };
+      for (let x = -36; x <= 36; x += 0.5) {
+        if (busy.some((b) => Math.hypot(b.x - x, b.z - z) < 2.4)) close();
+        else run.push(v(x, z));
+      }
+      close();
+    }
+    return runs.sort((a, b) => b[0].distanceTo(b[b.length - 1]) - a[0].distanceTo(a[a.length - 1]));
   }
 
   protected saveExtra() {
@@ -212,7 +267,8 @@ export class FactoryMap extends StoryMap {
   }
 
   protected critterModel(base: string, fit: Fit, name: string): THREE.Object3D {
-    return model(MODEL_OF[base] ?? base, fit) ?? STAND_INS[base]?.() ?? blob(name);
+    const crew = base === 'foreman' ? 'factory-worker-foreman' : base === 'worker' ? CREW[Number(name.slice(6) || 0) % CREW.length] : null;
+    return (crew && model(crew, { height: 1.6 })) || (model(MODEL_OF[base] ?? base, fit) ?? STAND_INS[base]?.() ?? blob(name));
   }
 
   /** Dim till the wiring box lets the power through; in the evening the store is dark again till its own lights are on. */
@@ -288,6 +344,14 @@ export class FactoryMap extends StoryMap {
       const valve = mesh(new THREE.TorusGeometry(0.3, 0.07, 8, 16), mat('#e8483f', 0.4));
       valve.position.set(x, 2.2, -D / 2 + 1.35);
       hall.add(valve);
+    }
+    // Codex's painted things on the back wall (wall-contract.json): a tool board and the safety signs.
+    for (const [name, w, h, x, y] of [['factory-tool-board', 2, 1.30078125, -12, 0.75], ['factory-safety-signs', 2.4, 0.8015625, -8, 0.9]] as const) {
+      const pic = kitPieces('factory', name)[0];
+      if (!pic) continue;
+      const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: pic, alphaTest: 0.5 }));
+      m.position.set(x, y, -25.38);
+      this.scenery.add(m);
     }
     // Tall things hide the floor just north of them from the camera (about 0.78 of their height):
     // pillars and lamps keep clear of every station, its character and its hint bubble.
