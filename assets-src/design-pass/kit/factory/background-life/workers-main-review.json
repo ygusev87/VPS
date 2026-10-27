@@ -1,0 +1,65 @@
+{
+  "reviewedAt": "2026-10-27T11:21:25.933944+00:00",
+  "status": "accepted-for-integration",
+  "workerCommits": [
+    "b062aa3",
+    "022f972"
+  ],
+  "mainAudit": "workers-main-audit.json",
+  "totalBytes": 331992,
+  "totalTriangles": 15291,
+  "visualEvidence": [
+    "models/factory-worker-foreman/qa/1024-view0.jpg",
+    "models/factory-worker-foreman/qa/1024-view6.jpg",
+    "models/factory-worker-foreman/qa/390-view0.jpg",
+    "models/factory-worker-technician/qa/1024-view0.jpg",
+    "models/factory-worker-technician/qa/1024-view6.jpg",
+    "models/factory-worker-technician/qa/390-view0.jpg",
+    "models/factory-worker-loader/qa/1024-view0.jpg",
+    "models/factory-worker-loader/qa/1024-view6.jpg",
+    "models/factory-worker-loader/qa/390-view0.jpg",
+    "models/factory-worker-inspector/qa/1024-view0.jpg",
+    "models/factory-worker-inspector/qa/1024-view6.jpg",
+    "models/factory-worker-inspector/qa/390-view0.jpg"
+  ],
+  "visualFindings": [
+    "All four figures have distinct silhouettes, intact helmets, two arms and two legs.",
+    "Foreman clipboard, technician tool pouch, loader broad vest/gloves and inspector slim cream/red outfit remain readable in native mobile frames.",
+    "No visible holes, detached parts or silhouette defect in the twelve reviewed frames."
+  ],
+  "contract": {
+    "front": "+Z",
+    "baseY": 0,
+    "centerXZ": [
+      0,
+      0
+    ],
+    "fitting": "Uniform by measured height: foreman/loader 1.65, technician/inspector 1.6. Do not force common width.",
+    "rig": false,
+    "motion": "Static sculpted poses. Whole-root position/heading only; no independent limb animation. Use actual complete footprint for routes and turns.",
+    "integrationOwner": "Claude; preserve machine work areas, terminals, conveyor and forklift route."
+  },
+  "localEdits": "Worker baked transforms, rotated and uniformly scaled source; documented sole snaps .5mm/.5mm/5mm/2mm, original atlas WebP512, Meshopt. Not untouched raw meshes.",
+  "cost": {
+    "workers": 100,
+    "attemptsEach": 1,
+    "workerLedgerStart": 5025,
+    "workerLedgerEnd": 4925,
+    "forkliftSeparatePaidOrder": 25,
+    "factoryBatchOrdersTotalToDate": 125,
+    "latestKnownBalance": 4925,
+    "balanceIsHistorical": true
+  },
+  "validation": {
+    "npmTest": "88 tests in 17 files PASS at 18:19 Bangkok",
+    "typecheck": "PASS",
+    "browser": "Worker native 1024/390 frames independently inspected by main; not new main browser captures.",
+    "independentGeometry": "Actual compressed public GLBs decoded and bounded by main.",
+    "contacts": "Worker contact reports reviewed, not independently recalculated."
+  },
+  "limitations": [
+    "No full factory runtime integration/occlusion/routes accepted yet.",
+    "Forklift is still pending; this acceptance does not cover it.",
+    "No physical iPad/PWA check."
+  ]
+}

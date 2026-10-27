@@ -1,0 +1,225 @@
+{
+  "createdAt": "2026-10-27T11:20:46.125Z",
+  "status": "PASS",
+  "method": "Main independently decoded committed public GLBs with Meshopt, calculated transformed bounds/counts and decoded embedded WebP dimensions; matched worker SHA/bytes. Contact analysis and original browser capture belong to worker.",
+  "totalBytes": 331992,
+  "totalTriangles": 15291,
+  "items": [
+    {
+      "name": "factory-worker-foreman",
+      "publicPath": "public/models/factory-worker-foreman.glb",
+      "sha256": "e846cd0aacb5c8b4b7888d66eb153c908ac6dcb33b7ba7c56f4c4e20627bfffd",
+      "bytes": 78952,
+      "triangles": 3867,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.46007339036740824,
+          0,
+          -0.3944601218675743
+        ],
+        "max": [
+          0.46007339036740824,
+          1.649999976158142,
+          0.3944601218675743
+        ]
+      },
+      "size": [
+        0.9201467807348165,
+        1.649999976158142,
+        0.7889202437351486
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.0005,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "name": "factory-worker-technician",
+      "publicPath": "public/models/factory-worker-technician.glb",
+      "sha256": "48a73b88d2a99a8e641d9a029b8f5ce7123c29b3b742fcea4cfd3b3647adf8d5",
+      "bytes": 84836,
+      "triangles": 3771,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.43309427812937895,
+          0,
+          -0.35796991408382395
+        ],
+        "max": [
+          0.43309427812937895,
+          1.600000023841858,
+          0.35796991408382395
+        ]
+      },
+      "size": [
+        0.8661885562587579,
+        1.600000023841858,
+        0.7159398281676479
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.0005,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "name": "factory-worker-loader",
+      "publicPath": "public/models/factory-worker-loader.glb",
+      "sha256": "c81f83d890c8616e8c28e590e229dab44efb0d23ec185130d6cea2ebd4c20172",
+      "bytes": 85512,
+      "triangles": 3712,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.5706541560048873,
+          0,
+          -0.3650524865614323
+        ],
+        "max": [
+          0.5706541560048873,
+          1.649999976158142,
+          0.3650524865614323
+        ]
+      },
+      "size": [
+        1.1413083120097747,
+        1.649999976158142,
+        0.7301049731228646
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.005,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "name": "factory-worker-inspector",
+      "publicPath": "public/models/factory-worker-inspector.glb",
+      "sha256": "551ba0432e7a0722d01d8f96191254da01b6fb1fcf2db294dc55c2414edc4102",
+      "bytes": 82692,
+      "triangles": 3941,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.3226905166038673,
+          0,
+          -0.31451155594242397
+        ],
+        "max": [
+          0.3226905166038673,
+          1.600000023841858,
+          0.31451155594242397
+        ]
+      },
+      "size": [
+        0.6453810332077345,
+        1.600000023841858,
+        0.6290231118848479
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.002,
+        "contactAuditIndependentlyRepeated": false
+      }
+    }
+  ]
+}
