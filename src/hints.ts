@@ -13,7 +13,7 @@ import type { PhraseId } from './voice';
 import type { Wire } from './wires';
 import { activeAt, partIdOf, type World } from './world';
 
-export type Problem = 'short' | 'reversed' | 'bypass' | 'useSwitch' | 'beside';
+export type Problem = 'short' | 'reversed' | 'bypass' | 'useSwitch' | 'beside' | 'wrong';
 
 export type Hint =
   | { type: 'connect'; from: Terminal; to: Terminal; phrase: PhraseId }
@@ -72,8 +72,10 @@ const reversedPhrase = (p: Part): PhraseId => (p.kind === 'led' ? 'reversed' : p
  * whose removal fixes it, so the fix reads as "undo that step"; once it is
  * off, the regular hints show where that end should go instead.
  */
-export function problemHint(world: World): Hint | null {
+export function problemHint(world: World, keep?: Set<Wire>): Hint | null {
   const r = world.result;
+  // Of several wires that would do, one the task does not want (see plannedWires); else the newest.
+  const newestOf = (ws: Wire[]) => ws.filter((w) => !keep?.has(w)).at(-1) ?? ws.at(-1);
   if (!r) return null;
   const touching = (p: Part) => world.wires.filter((w) => p.terminals.some((t) => w.touches(t)));
 
@@ -81,8 +83,8 @@ export function problemHint(world: World): Hint | null {
   if (r.shorted.size) {
     const battery = world.parts.find((p) => [...r.shorted].some((id) => partIdOf(id) === p.id)) ?? null;
     const wire =
-      world.latestCulprit((res) => res.shorted.size === 0) ??
-      (battery ? touching(battery).at(-1) : undefined) ??
+      world.culprit((res) => res.shorted.size === 0, world.wires, keep) ??
+      (battery ? newestOf(touching(battery)) : undefined) ??
       null;
     if (wire) return { type: 'tapWire', wire, at: battery, problem: 'short', phrase: batteriesFight(world) ? 'batteryFight' : 'short', u: clearSpot(world, wire) };
   }
@@ -90,7 +92,7 @@ export function problemHint(world: World): Hint | null {
   // 2. LED or buzzer the wrong way round inside a working loop.
   for (const p of world.parts) {
     if (!isPolar(p) || !p.state.reversed) continue;
-    const wire = world.latestCulprit((res) => !res.elements.get(p.id)?.reversed, touching(p)) ?? touching(p).at(-1);
+    const wire = world.culprit((res) => !res.elements.get(p.id)?.reversed, touching(p), keep) ?? newestOf(touching(p));
     if (wire) return { type: 'tapWire', wire, at: p, problem: 'reversed', phrase: reversedPhrase(p), u: clearSpot(world, wire) };
   }
 
@@ -110,7 +112,9 @@ export function problemHint(world: World): Hint | null {
       if (src.some((q) => world.wired(a, q.plus))) wrong = b;
       else if (src.some((q) => world.wired(a, q.minus))) wrong = a;
     }
-    const wire = world.wiresAt(wrong).at(-1);
+    // A plain gadget: whichever wire on its legs leaves the most working once it is off (see World.culprit).
+    const legs = world.wires.filter((w) => w.touches(a) || w.touches(b));
+    const wire = (isPolar(p) ? null : world.culprit((_, off) => !world.wired(a, b, off), legs, keep)) ?? newestOf(world.wiresAt(wrong));
     if (wire) return { type: 'tapWire', wire, at: p, problem: 'bypass', phrase: 'bypass', u: clearSpot(world, wire) };
   }
 
@@ -129,7 +133,7 @@ export function problemHint(world: World): Hint | null {
       if (!shut.shorted.size) continue;
       const newest = (t: Terminal) => Math.max(-1, ...world.wiresAt(t).map((w) => world.wires.indexOf(w)));
       const t = newest(sw.terminal('a')) > newest(sw.terminal('b')) ? sw.terminal('a') : sw.terminal('b');
-      const wire = world.wiresAt(t).at(-1);
+      const wire = newestOf(world.wiresAt(t).filter((w) => !keep?.has(w))) ?? newestOf(world.wiresAt(sw.terminal('a')).concat(world.wiresAt(sw.terminal('b'))));
       if (wire) return { type: 'tapWire', wire, at: sw, problem: 'beside', phrase: 'switchBeside', u: clearSpot(world, wire) };
     }
   }
@@ -265,21 +269,101 @@ export function sandboxHint(world: World): Hint | null {
         [p.terminal('a'), p.terminal('b')],
         [p.terminal('b'), p.terminal('a')],
       ] as const) {
-        if (world.wiresAt(off).length) continue;
-        const toPlus = world.wired(on, plus);
-        const toMinus = world.wired(on, minus);
-        if (toPlus === toMinus) continue;
+        // Followed through buttons and switches as if pressed: a lamp wired through a button is started too.
+        const near = reach(world, on);
+        // Both legs on one side of a switch: pressing it would run current round the gadget, not through it.
+        if (near.has(off)) {
+          const legs = world.wires.filter((w) => near.has(w.a) && w.b && near.has(w.b));
+          const wire = world.culprit((_, cut) => !reach(world, on, cut).has(off), legs);
+          if (wire) return { type: 'tapWire', wire, at: p, problem: 'bypass', phrase: 'bypass', u: clearSpot(world, wire) };
+          continue;
+        }
+        // Which pole this side leads to: straight (or through a button), else through other gadgets in a row with it.
+        const side = poleOf(world, on, p, plus, minus);
+        if (!side) continue;
+        const toPlus = side === 'plus';
+        const far = reach(world, off);
+        // The other side already goes somewhere: straight to a pole, or round through gadgets to the other pole.
+        const other = poleOf(world, off, p, plus, minus);
+        if (far.has(plus) || far.has(minus) || other === (toPlus ? 'minus' : 'plus')) continue;
         // A polar part already started the wrong way: undo that wire first.
         if (isPolar(p) && (on.key === 'a') !== toPlus) {
           const wire = world.wiresAt(on).at(-1);
           if (wire) return { type: 'tapWire', wire, at: p, problem: 'reversed', phrase: reversedPhrase(p), u: clearSpot(world, wire) };
         }
+        // Finish from the loose end: the gadget's free leg, or the free post of a button already wired to it.
+        const end = looseEnd(world, p, off, far);
+        if (!end) {
+          // No loose end: a button with both posts on this one side does nothing. Free one of its posts.
+          const wire = world.wires.filter((w) => far.has(w.a) && w.b && far.has(w.b) && (passes(w.a.part) || passes(w.b.part))).at(-1);
+          if (wire) return { type: 'tapWire', wire, at: p, problem: 'bypass', phrase: 'bypass', u: clearSpot(world, wire) };
+          continue;
+        }
         const phrase: PhraseId = src instanceof ButtonPanel ? 'toPair' : toPlus ? 'toMinus' : 'toPlus';
-        return { type: 'connect', from: off, to: toPlus ? minus : plus, phrase };
+        return { type: 'connect', from: end, to: toPlus ? minus : plus, phrase };
       }
     }
   }
+  // A gadget with wires on it (straight or through a button) that reach no source yet: on to "+" from its "+" side.
+  const { part: src, plus, minus } = srcs[0];
+  for (let i = loads.length - 1; i >= 0; i--) {
+    const p = loads[i];
+    if (Math.abs(p.state.level) > 0.05 || !p.terminals.some((t) => world.wiresAt(t).length)) continue;
+    const [a, b] = [p.terminal('a'), p.terminal('b')];
+    const near = reach(world, a);
+    if (near.has(b) || srcs.some((q) => poleOf(world, a, p, q.plus, q.minus) || poleOf(world, b, p, q.plus, q.minus))) continue;
+    const phrase: PhraseId = src instanceof ButtonPanel ? 'toPair' : 'toPlus';
+    const fromA = looseEnd(world, p, a, near);
+    if (fromA) return { type: 'connect', from: fromA, to: plus, phrase };
+    const fromB = looseEnd(world, p, b, reach(world, b));
+    if (fromB) return { type: 'connect', from: fromB, to: minus, phrase: src instanceof ButtonPanel ? 'toPair' : 'toMinus' };
+  }
   return magnetHint(world) ?? crankHint(world) ?? beamHint(world) ?? switchHint(world);
+}
+
+/**
+ * Which pole one leg of a gadget leads to: straight by wires (or through a
+ * button), else on through other gadgets wired in a row with it. Null when
+ * neither or both.
+ */
+function poleOf(world: World, leg: Terminal, p: Part, plus: Terminal, minus: Terminal): 'plus' | 'minus' | null {
+  for (const side of [reach(world, leg), reach(world, leg, undefined, p)]) {
+    const toPlus = side.has(plus);
+    const toMinus = side.has(minus);
+    if (toPlus !== toMinus) return toPlus ? 'plus' : 'minus';
+    if (toPlus) return null;
+  }
+  return null;
+}
+
+/** Where a side of a gadget can still take a wire: its own leg if bare, else the free post of a button on that side. */
+function looseEnd(world: World, p: Part, leg: Terminal, side: Set<Terminal>): Terminal | undefined {
+  return world.wiresAt(leg).length ? [...side].find((t) => t.part !== p && passes(t.part) && !world.wiresAt(t).length) : leg;
+}
+
+/** A part that only opens and closes a way (a switch, a button, a sensor): current can pass it. */
+const passes = (p: Part) => {
+  const els = p.elements();
+  return p.terminals.length === 2 && els.length === 1 && els[0].kind === 'switch';
+};
+
+/** The posts joined to `t` by wires, or through switch-like parts as if they were pressed (`cut` wires left out). */
+function reach(world: World, t: Terminal, cut?: Set<Wire>, besides?: Part): Set<Terminal> {
+  const seen = new Set([t]);
+  const stack = [t];
+  // With `besides`, through the other gadgets too (lamps in a row): which pole a side leads to, not what is joined.
+  const through = (q: Part) => passes(q) || (!!besides && q !== besides && q.terminals.length === 2 && LOADS.includes(q.kind));
+  while (stack.length) {
+    const x = stack.pop()!;
+    const next: Terminal[] = through(x.part) ? [...x.part.terminals] : [];
+    for (const w of world.wires) {
+      if (!w.b || cut?.has(w)) continue;
+      if (w.a === x) next.push(w.b);
+      else if (w.b === x) next.push(w.a);
+    }
+    for (const o of next) if (!seen.has(o)) seen.add(o), stack.push(o);
+  }
+  return seen;
 }
 
 /**
@@ -327,26 +411,46 @@ function crankHint(world: World): Hint | null {
   return null;
 }
 
-export function levelHint(world: World, level: Level, trayLeft: (k: PartKind) => number): Hint | null {
-  if (level.goal(world)) return null;
+/**
+ * The wires a task's plan wants (each joining two posts of one planned
+ * junction): when a problem has several possible culprits, these stay.
+ */
+export function plannedWires(world: World, level: Level): Set<Wire> {
+  const plans = taskPlans(world, level);
+  if (!plans || 'drag' in plans) return new Set();
+  const pairs = plans.flatMap(({ src, chain }) => loopPlan(world, src, chain));
+  const stray = new Set(strayWires(world, pairs));
+  const posts = new Set(pairs.flat());
+  return new Set(world.wires.filter((w) => w.b && posts.has(w.a) && posts.has(w.b) && !stray.has(w)));
+}
+
+/** Each loop of the task with its parts on the table, or what to bring first (null: nothing to plan). */
+function taskPlans(world: World, level: Level): { src: Part; chain: Part[] }[] | { drag: PartKind } | null {
   const loops = level.loops ?? (level.chain.length ? [['battery' as PartKind, ...level.chain]] : []);
   if (!loops.length) return null;
-
   // Every part of every loop on the table first (sources may serve several loops).
   const used = new Set<Part>();
   const plans: { src: Part; chain: Part[] }[] = [];
   for (const [srcKind, ...kinds] of loops) {
     const src = world.parts.find((q) => q.kind === srcKind);
-    if (!src) return trayLeft(srcKind) > 0 ? { type: 'drag', kind: srcKind, to: freeSpot(world), phrase: 'drag' } : null;
+    if (!src) return { drag: srcKind };
     const chain: Part[] = [];
     for (const kind of kinds) {
       const p = world.parts.find((q) => q.kind === kind && !used.has(q));
-      if (!p) return trayLeft(kind) > 0 ? { type: 'drag', kind, to: freeSpot(world), phrase: 'drag' } : null;
+      if (!p) return { drag: kind };
       used.add(p);
       chain.push(p);
     }
     plans.push({ src, chain });
   }
+  return plans;
+}
+
+export function levelHint(world: World, level: Level, trayLeft: (k: PartKind) => number): Hint | null {
+  if (level.goal(world)) return null;
+  const plans = taskPlans(world, level);
+  if (!plans) return null;
+  if ('drag' in plans) return trayLeft(plans.drag) > 0 ? { type: 'drag', kind: plans.drag, to: freeSpot(world), phrase: 'drag' } : null;
 
   // A switch task where the lamp was wired straight to the battery: that wire goes.
   for (const { src, chain } of plans) {
@@ -355,12 +459,24 @@ export function levelHint(world: World, level: Level, trayLeft: (k: PartKind) =>
     const lit = chain.find((p) => p !== sw && activeAt(p.kind, p.state.level));
     if (!lit) continue;
     const touching = world.wires.filter((w) => lit.terminals.some((t) => w.touches(t)));
-    const direct = touching.find((w) => src.terminals.some((t) => w.touches(t))) ?? touching.at(-1);
+    // Of its wires straight to the battery, the one the plan has going through the switch instead.
+    const keep = plannedWires(world, level);
+    const straight = touching.filter((w) => src.terminals.some((t) => w.touches(t)));
+    const direct = straight.find((w) => !keep.has(w)) ?? straight[0] ?? touching.at(-1);
     if (direct) return { type: 'tapWire', wire: direct, at: lit, problem: 'useSwitch', phrase: 'useSwitch', u: clearSpot(world, direct) };
   }
 
-  for (const { src, chain } of plans) {
-    const missing = loopPlan(world, src, chain).find(([a, b]) => !world.wired(a, b));
+  // A wire between posts the plan keeps apart (a leg on the wrong pole, a lamp joined to the wrong lamp):
+  // adding the next planned wire would only make a short or a bypass of it, so it goes first.
+  const wanted = plans.map(({ src, chain }) => loopPlan(world, src, chain));
+  const wrong = strayWires(world, wanted.flat());
+  if (wrong.length) {
+    const wire = wrong.at(-1)!;
+    return { type: 'tapWire', wire, at: wire.a.part, problem: 'wrong', phrase: 'wrongWire', u: clearSpot(world, wire) };
+  }
+
+  for (const k of plans.keys()) {
+    const missing = wanted[k].find(([a, b]) => !world.wired(a, b));
     if (missing) return { type: 'connect', from: missing[0], to: missing[1], phrase: 'connect' };
   }
   return magnetHint(world) ?? crankHint(world) ?? beamHint(world) ?? switchHint(world);
@@ -375,7 +491,7 @@ function loopPlan(world: World, src: Part, chain: Part[]): [Terminal, Terminal][
   const flexible = chain.map((p) => !isPolar(p));
   const n = chain.length;
   let best: [Terminal, Terminal][] = [];
-  let bestScore = -1;
+  let bestScore = -Infinity;
   for (let mask = 0; mask < 1 << n; mask++) {
     let ok = true;
     const pairs: [Terminal, Terminal][] = [];
@@ -391,13 +507,35 @@ function loopPlan(world: World, src: Part, chain: Part[]): [Terminal, Terminal][
     }
     if (!ok) continue;
     pairs.push([prev, src.terminal('b')]);
-    const score = pairs.filter(([a, b]) => world.wired(a, b)).length;
+    // Agreeing with the child's wires counts for it, a wire against it (between posts it keeps apart) against.
+    const score = pairs.filter(([a, b]) => world.wired(a, b)).length * 2 - strayWires(world, pairs).length;
     if (score > bestScore) {
       bestScore = score;
       best = pairs;
     }
   }
   return best;
+}
+
+/**
+ * Wires joining posts of the plan that it keeps apart: each planned pair is
+ * one junction, and a wire between two different junctions is in the way.
+ * Wires to parts outside the plan are the child's own business.
+ */
+function strayWires(world: World, pairs: [Terminal, Terminal][]): Wire[] {
+  const node = new Map<Terminal, number>();
+  const root = (i: number): number => (joins[i] === i ? i : (joins[i] = root(joins[i])));
+  const joins: number[] = [];
+  const id = (t: Terminal) => {
+    let i = node.get(t);
+    if (i === undefined) node.set(t, (i = joins.push(joins.length) - 1));
+    return i;
+  };
+  for (const [a, b] of pairs) {
+    const [i, j] = [id(a), id(b)];
+    joins[root(i)] = root(j);
+  }
+  return world.wires.filter((w) => w.b && node.has(w.a) && node.has(w.b) && root(node.get(w.a)!) !== root(node.get(w.b)!));
 }
 
 /**

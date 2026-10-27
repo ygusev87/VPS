@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 import './style.css';
 import { Sfx } from './audio';
-import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, problemHint, sandboxHint, type Hint } from './hints';
+import { freeSpot, hintKey, partsOnScreen, isProblem, levelHint, plannedWires, problemHint, sandboxHint, type Hint } from './hints';
 import { Fx } from './fx';
 import { CITY_MODELS, CITY_TRAY, CityMap } from './city';
 import { FACTORY_MODELS, FACTORY_TRAY, FactoryMap } from './factory';
@@ -778,12 +778,13 @@ function updateHint(dt: number) {
   hintTimer -= dt;
   if (hintTimer > 0) return;
   hintTimer = 0.25;
-  const problem = problemHint(world);
+  // Free play is the child's own experiment: nudge later than in missions.
+  const free = level === FREE_PLAY || !!level.sandbox;
+  // In a task, a problem's culprit is never a wire its plan wants while another would do.
+  const problem = problemHint(world, map || free ? undefined : plannedWires(world, level));
   if (problem) return setHint(problem);
   if (won) return setHint(null);
   const idle = performance.now() - lastTouch;
-  // Free play is the child's own experiment: nudge later than in missions.
-  const free = level === FREE_PLAY || !!level.sandbox;
   const wait = QUICK_HINTS ? 300 : free ? (hintShownOnce ? 9000 : 4000) : hintShownOnce ? 6000 : 1600;
   const raw = map ? map.hint(trayLeft) : free ? sandboxHint(world) : levelHint(world, level, trayLeft);
   // Never ask for a wire the posts can't take (shaped sockets join only their own shape).
@@ -1266,7 +1267,7 @@ if (import.meta.env.PROD && !import.meta.env.VITE_MODELS_AS_JS && 'serviceWorker
   input,
   hud,
   voice,
-  hints: { problemHint, sandboxHint, levelHint },
+  hints: { problemHint, sandboxHint, levelHint, plannedWires },
   /** Why the view is where it is (for tests chasing a hint off screen). */
   get viewDebug() {
     return { mapFocus: !!mapFocus, hintLook, currentKey, sinceTouch: Math.round(performance.now() - lastTouch), viewAsks, busy: input.busy };

@@ -195,14 +195,15 @@ export class World {
   }
 
   /** Are two terminals joined by wires alone (ignoring parts in between)? */
-  wired(t1: Terminal, t2: Terminal, without?: Wire): boolean {
+  wired(t1: Terminal, t2: Terminal, without?: Wire | Set<Wire>): boolean {
+    const off = (w: Wire) => (without instanceof Set ? without.has(w) : w === without);
     if (t1 === t2) return true;
     const seen = new Set<Terminal>([t1]);
     const stack = [t1];
     while (stack.length) {
       const t = stack.pop()!;
       for (const w of this.wires) {
-        if (!w.b || w === without) continue;
+        if (!w.b || off(w)) continue;
         const o = w.a === t ? w.b : w.b === t ? w.a : null;
         if (o && !seen.has(o)) {
           if (o === t2) return true;
@@ -214,10 +215,10 @@ export class World {
     return false;
   }
 
-  elements(extra: { skipWire?: Wire } = {}): CircuitElement[] {
+  elements(extra: { skipWire?: Wire; skip?: Set<Wire> } = {}): CircuitElement[] {
     const els: CircuitElement[] = this.parts.flatMap((p) => p.elements());
     for (const w of this.wires) {
-      if (w.b && w !== extra.skipWire) els.push({ id: w.id, kind: 'wire', a: w.a.id, b: w.b.id });
+      if (w.b && w !== extra.skipWire && !extra.skip?.has(w)) els.push({ id: w.id, kind: 'wire', a: w.a.id, b: w.b.id });
     }
     return els;
   }
@@ -261,15 +262,53 @@ export class World {
   }
 
   /**
-   * The newest wire whose removal alone makes `fixed` true — "undo the step
-   * that broke it". Wires are kept in the order they were connected.
+   * The wire to take off so `fixed` comes true. Not simply the newest that
+   * would do: a child often makes the mistake early and a good wire last, and
+   * taking the good one off only brings the hint back for it. So: sets of one,
+   * two or three wires whose removal fixes it, and of those the set that leaves
+   * the most gadgets working (a bigger set only when it leaves more working),
+   * the newest on a tie; from the set, a wire joining a part to itself first,
+   * then its newest. Wires in `keep` (a task's planned ones) go only when
+   * nothing else will do. Null when nothing this small fixes it.
    */
-  latestCulprit(fixed: (r: CircuitResult, without: Wire) => boolean, among: Wire[] = this.wires): Wire | null {
-    for (let i = among.length - 1; i >= 0; i--) {
-      const w = among[i];
-      if (w.b && fixed(solveCircuit(this.elements({ skipWire: w })), w)) return w;
+  culprit(fixed: (r: CircuitResult, without: Set<Wire>) => boolean, among: Wire[] = this.wires, keep?: Set<Wire>): Wire | null {
+    const cand = among.filter((w) => w.b);
+    const most = cand.length > 30 ? 1 : cand.length > 14 ? 2 : 3;
+    const order = (w: Wire) => this.wires.indexOf(w);
+    // Gadgets that run without these wires, as wired now and with every switch pressed.
+    const working = (res: CircuitResult) => this.parts.filter((p) => activeAt(p.kind, res.elements.get(p.id)?.level ?? 0)).length;
+    let best: Wire[] | null = null;
+    let bestKept = Infinity;
+    let bestWorking = -1;
+    let bestNewest = -1;
+    for (let size = 1; size <= most; size++) {
+      const tryPick = (set: Wire[]) => {
+        const skip = new Set(set);
+        const r = solveCircuit(this.elements({ skip }));
+        if (!fixed(r, skip)) return;
+        const pressed = solveCircuit(this.elements({ skip }).map((e) => (e.kind === 'switch' ? { ...e, closed: true } : e)));
+        const w = working(r) + (pressed.shorted.size ? 0 : working(pressed));
+        const newest = Math.max(...set.map(order));
+        // Wires the task's plan wants (`keep`) are the last to go, whatever else.
+        const kept = keep ? set.filter((x) => keep.has(x)).length : 0;
+        if (kept < bestKept || (kept === bestKept && (w > bestWorking || (w === bestWorking && set.length === best?.length && newest > bestNewest)))) {
+          best = set;
+          bestKept = kept;
+          bestWorking = w;
+          bestNewest = newest;
+        }
+      };
+      const pick = (from: number, set: Wire[]) => {
+        if (set.length === size) return tryPick(set);
+        for (let i = from; i < cand.length; i++) pick(i + 1, [...set, cand[i]]);
+      };
+      pick(0, []);
     }
-    return null;
+    if (!best) return null;
+    const set = best as Wire[];
+    const free = keep ? set.filter((w) => !keep.has(w)) : set;
+    const from = free.length ? free : set;
+    return from.find((w) => w.a.part === w.b!.part) ?? from.reduce((a, b) => (order(b) > order(a) ? b : a));
   }
 
   update(dt: number) {
