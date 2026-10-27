@@ -580,6 +580,16 @@ export class Stage {
     // The compiled shaders are what we came for: give back the throwaway parts' geometry
     // (an iPad has little video memory). Shared pieces simply upload again when next drawn.
     g.traverse((o) => (o as THREE.Mesh).geometry?.dispose());
+    // And the textures only one throwaway part had (its own label, its own canvas): a texture
+    // two parts share comes from a cache and stays; materials stay too, they hold the shaders.
+    const uses = new Map<THREE.Texture, number>();
+    const textures = (o: THREE.Object3D) => {
+      const m = (o as THREE.Mesh).material;
+      return (Array.isArray(m) ? m : m ? [m] : []).flatMap((mat) => Object.values(mat).filter((v): v is THREE.Texture => v instanceof THREE.Texture));
+    };
+    g.traverse((o) => textures(o).forEach((t) => uses.set(t, (uses.get(t) ?? 0) + 1)));
+    this.scene.traverse((o) => textures(o).forEach((t) => uses.delete(t)));
+    for (const [t, n] of uses) if (n === 1) t.dispose();
   }
 
   /** Screen point → point on the horizontal plane at height y. */

@@ -264,6 +264,8 @@ export function sandboxHint(world: World): Hint | null {
   for (let i = loads.length - 1; i >= 0; i--) {
     const p = loads[i];
     if (p.state.level !== 0 && Math.abs(p.state.level) > 0.05) continue;
+    // Gadgets with other posts (a panel of keys, a socket board) are not a two-legged load.
+    if (!p.terminals.some((t) => t.key === 'a') || !p.terminals.some((t) => t.key === 'b')) continue;
     for (const { part: src, plus, minus } of srcs) {
       for (const [on, off] of [
         [p.terminal('a'), p.terminal('b')],
@@ -309,6 +311,7 @@ export function sandboxHint(world: World): Hint | null {
   for (let i = loads.length - 1; i >= 0; i--) {
     const p = loads[i];
     if (Math.abs(p.state.level) > 0.05 || !p.terminals.some((t) => world.wiresAt(t).length)) continue;
+    if (!p.terminals.some((t) => t.key === 'a') || !p.terminals.some((t) => t.key === 'b')) continue;
     const [a, b] = [p.terminal('a'), p.terminal('b')];
     const near = reach(world, a);
     if (near.has(b) || srcs.some((q) => poleOf(world, a, p, q.plus, q.minus) || poleOf(world, b, p, q.plus, q.minus))) continue;
