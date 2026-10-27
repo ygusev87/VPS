@@ -103,7 +103,8 @@
         "secondary/qa/rail-cart-1024-back.jpg",
         "secondary/qa/rail-cart-390-loaded.jpg",
         "secondary/qa/rail-cart-390-unloaded.jpg",
-        "secondary/rail-cart-qa.json"
+        "secondary/rail-cart-qa.json",
+        "../../factory-cart-end-check.png"
       ],
       "checks": [
         "Main visually inspected all5 native frames.",
@@ -113,7 +114,7 @@
       ],
       "integrationNotes": "Wagon localY+.08 on cartY.16; four exact wheel groups rotateZ, no child double rotation; preserve coil world transform when attaching bed; keep wheels on rail during travel.",
       "handoff": "m0464",
-      "gameReview": "Static loaded game view accepted in m0465; movement/unload/reload confirmation pending Claude.",
+      "gameReview": "Accepted: main reviewed loaded game views at390/1024 and Claude unloaded end-of-track frame2e4a12f; animation and full factory robot6/6 reported by Claude m0466.",
       "integrationCommit": "851bfd2",
       "additionalMainBrowserQA": {
         "url": "http://127.0.0.1:5195/?factory",
@@ -131,9 +132,23 @@
         "Wagon offset +.08 and fixed cart Y preserve rail-height contact, without cart bob.",
         "load-coil reparented with bed.attach after updateMatrixWorld.",
         "Factory hides bed at x>3.5 and restores at x<-3.5."
-      ]
+      ],
+      "integratorValidation": {
+        "source": "Claude m0466",
+        "factoryTasks": "6/6",
+        "farmTasks": "17/17",
+        "cityTasks": "14/14",
+        "nativeViewports": [
+          "390x844",
+          "1024x768"
+        ],
+        "overflow": false,
+        "errors": [],
+        "motion": "Four wheels rotate about local Z, load-coil hides at unloading.",
+        "mainIndependentReplay": false
+      }
     }
   ],
   "physicalDeviceTest": false,
-  "validation": "Main after final integration851bfd2:88 tests/17 files passed, typecheck passed (2026-10-27 10:07 Asia/Bangkok); static native390x844/1024x768 reviewed; no browser errors/warnings. Motion/unload confirmation pending Claude."
+  "validation": "Main after integration851bfd2:88 tests/17 files passed, typecheck passed (2026-10-27 10:07 Asia/Bangkok); static native390x844/1024x768 reviewed, no browser errors/warnings. Main reviewed unloaded end frame2e4a12f; motion and full stories verified by integrator per m0466, not independently replayed by main."
 }

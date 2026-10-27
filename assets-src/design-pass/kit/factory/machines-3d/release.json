@@ -65,7 +65,7 @@
   "creditCeiling": null,
   "authorization": "Owner allows necessary existing Studio credits for project models and justified iterations; no top-ups/purchases/API.",
   "assetQA": "All8 accepted; geometry reports and native390/1024 evidence retained.",
-  "gameQA": "7 accepted; rail-cart851bfd2 static loaded view accepted at390/1024 in m0465, motion/unload/reload confirmation pending.",
+  "gameQA": "All8 accepted: native static cart390/1024 and unloaded end frame2e4a12f reviewed by main; motion and factory6/6, farm17/17, city14/14 reported by Claude m0466.",
   "physicalDeviceTest": false,
   "assetCommits": [
     "1577818",
@@ -83,5 +83,7 @@
     "date": "2026-10-27",
     "errors": [],
     "warnings": []
-  }
+  },
+  "integrationCommit": "851bfd2",
+  "integrationEvidenceCommit": "2e4a12f"
 }
