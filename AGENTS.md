@@ -232,8 +232,11 @@
   Если модель не загрузилась — деталь собирается из примитивов (запасной вариант). Звуки — синтез WebAudio
   (`src/audio.ts`; песенки шкатулки — народные/общественное достояние: Twinkle Twinkle, Mary Had a Little Lamb,
   Old MacDonald, Row Your Boat, London Bridge, Itsy Bitsy Spider, Jingle Bells, Frère Jacques). Голос — записанные клипы `public/voice/<id>.mp3`
-  (Higgsfield `text2speech_v2`/ElevenLabs, голос «Elena», как делать — `assets-src/README.md`),
-  играются через WebAudio; без клипа — `speechSynthesis` ru-RU (`src/voice.ts`).
+  (озвучка 27.10: ElevenLabs v4, пять голосов по ролям — рассказчик, малыши, животные, мастера/водители, бабушка; запись
+  ведёт Codex в `assets-src/audio-refresh/research/production-v4/`, в игру переносит `node scripts/import-voice.mjs`: берёт
+  только клипы с текстом как в `src/voice.ts`, жмёт в моно 24 кГц 48 кбит/с; дубли похвал — `<id>--v02.mp3`…, их число —
+  `public/voice/variants.json`, игра чередует их без повтора подряд). Звукоподражания животных («Му-у!») — не речь, а будущие
+  звуки животных. Играются через WebAudio; без клипа — `speechSynthesis` ru-RU (`src/voice.ts`).
 - **Анимация животных (решение владельца):** мелкие и плохо заметные (куры, утки, гуси, кролики, котёнок, стадо в массе) —
   только кодом: всё тело (`Life`, походки) и изгиб вершин без скелета (`src/bend.ts`: голова к траве, взгляд на игрока,
   хвост, дыхание). Крупные и те, кто просит помощи, — скелет из Tripo (только rig, без покупных анимаций) и движения
