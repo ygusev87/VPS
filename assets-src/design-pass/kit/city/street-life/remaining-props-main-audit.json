@@ -1,0 +1,171 @@
+{
+  "createdAt": "2026-10-27T12:00:09.584Z",
+  "status": "PASS",
+  "method": "Main independently decoded committed public GLBs with Meshopt, calculated transformed bounds/counts and decoded embedded WebP dimensions; matched worker SHA/bytes. Contact analysis and original browser capture belong to worker.",
+  "totalBytes": 286928,
+  "totalTriangles": 10635,
+  "items": [
+    {
+      "name": "city-fruit-stall",
+      "publicPath": "public/models/city-fruit-stall.glb",
+      "sha256": "3ffb69ac79bd94c27a9afa2d5b11e560871994bb4a016351d7b1a7083e97c9be",
+      "bytes": 96604,
+      "triangles": 3284,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -1.089633584022522,
+          0.0000015800260524390097,
+          -0.7999913062175302
+        ],
+        "max": [
+          1.089633584022522,
+          2.07684645006428,
+          0.7999913062175302
+        ]
+      },
+      "size": [
+        2.179267168045044,
+        2.0768448700382276,
+        1.5999826124350605
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.009,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "name": "city-bike-rack",
+      "publicPath": "public/models/city-bike-rack.glb",
+      "sha256": "2cc74edf2bfc1a849fd6ec7ee7d20ae077ed32c504b46714d6371f13c2bf217c",
+      "bytes": 99320,
+      "triangles": 3688,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -0.8516698479652405,
+          0.000009864955257343766,
+          -0.7999983596460505
+        ],
+        "max": [
+          0.8516698479652405,
+          1.0557405050703774,
+          0.7999983596460505
+        ]
+      },
+      "size": [
+        1.703339695930481,
+        1.05573064011512,
+        1.599996719292101
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.006,
+        "contactAuditIndependentlyRepeated": false
+      }
+    },
+    {
+      "name": "city-playground",
+      "publicPath": "public/models/city-playground.glb",
+      "sha256": "d967d613770cf2ec5ce9a397876dee5d66dff32f8e13dc8ae499ce671b30ad04",
+      "bytes": 91004,
+      "triangles": 3663,
+      "materials": [
+        {
+          "alpha": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "width": 512,
+          "height": 512,
+          "format": "webp"
+        }
+      ],
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "bounds": {
+        "min": [
+          -1.4995814561843872,
+          -0.00002234659389366289,
+          -1.3999968360282171
+        ],
+        "max": [
+          1.4995814561843872,
+          1.463633591749228,
+          1.3999968360282171
+        ]
+      },
+      "size": [
+        2.9991629123687744,
+        1.4636559383431216,
+        2.7999936720564342
+      ],
+      "skins": 0,
+      "animations": 0,
+      "passed": true,
+      "workerEvidence": {
+        "qaChecks": 5,
+        "qaConsole": [],
+        "contactPass": true,
+        "floorSnap": 0.075,
+        "contactAuditIndependentlyRepeated": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "checkedAt": "2026-10-27T12:00:47.352422+00:00",
+  "items": [
+    {
+      "name": "city-fruit-stall",
+      "status": "accepted-for-integration",
+      "workerCommit": "808e8d3",
+      "sha256": "3ffb69ac79bd94c27a9afa2d5b11e560871994bb4a016351d7b1a7083e97c9be",
+      "bytes": 96604,
+      "triangles": 3284,
+      "size": [
+        2.179267168045044,
+        2.0768448700382276,
+        1.5999826124350605
+      ],
+      "mainNumericAudit": "remaining-props-main-audit.json",
+      "visualFrames": [
+        "1024-view0.jpg",
+        "1024-view6.jpg",
+        "1024-view7.jpg",
+        "390-view0.jpg"
+      ],
+      "visualResult": "Three produce trays, open striped canopy, four supports and intact underside; original atlas looks consistent at both native sizes.",
+      "floorContacts": "Worker confirmed four contacts,9mm snap; main read report and inspected underside, did not repeat contact grouping.",
+      "runtimeFit": {
+        "depth": 1.6,
+        "heightAlternative": 2.0768448700382276,
+        "uniformOnly": true
+      },
+      "placementProposal": {
+        "x": -26,
+        "z": -22.4,
+        "yaw": 1.5707963267948966
+      },
+      "limitations": [
+        "Full city placement/routes/lawn masking not yet accepted.",
+        "Physical iPad/PWA not checked."
+      ]
+    },
+    {
+      "name": "city-bike-rack",
+      "status": "accepted-for-integration",
+      "workerCommit": "886c071",
+      "sha256": "2cc74edf2bfc1a849fd6ec7ee7d20ae077ed32c504b46714d6371f13c2bf217c",
+      "bytes": 99320,
+      "triangles": 3688,
+      "size": [
+        1.703339695930481,
+        1.05573064011512,
+        1.599996719292101
+      ],
+      "mainNumericAudit": "remaining-props-main-audit.json",
+      "visualFrames": [
+        "1024-view0.jpg",
+        "1024-view6.jpg",
+        "390-view0.jpg"
+      ],
+      "visualResult": "Two whole static bicycles, four wheels, rack and coloured frames preserved; drivetrain omitted intentionally in the approved toy reference.",
+      "floorContacts": "Worker wheel-specific UV/rubber analysis confirms 4 tyres; main reviewed it, did not repeat numerical wheel contact grouping.",
+      "runtimeFit": {
+        "depth": 1.6,
+        "heightAlternative": 1.05573064011512,
+        "uniformOnly": true
+      },
+      "placementProposal": {
+        "x": 7,
+        "z": -18.5,
+        "yaw": 0
+      },
+      "limitations": [
+        "Full city placement/routes/lawn masking not yet accepted.",
+        "Physical iPad/PWA not checked."
+      ]
+    },
+    {
+      "name": "city-playground",
+      "status": "accepted-for-integration",
+      "workerCommit": "886c071",
+      "sha256": "d967d613770cf2ec5ce9a397876dee5d66dff32f8e13dc8ae499ce671b30ad04",
+      "bytes": 91004,
+      "triangles": 3663,
+      "size": [
+        2.9991629123687744,
+        1.4636559383431216,
+        2.7999936720564342
+      ],
+      "mainNumericAudit": "remaining-props-main-audit.json",
+      "visualFrames": [
+        "1024-view0.jpg",
+        "1024-view6.jpg",
+        "390-view0.jpg"
+      ],
+      "visualResult": "Connected slide, ladder, A-frame and single stationary swing; rods and seat preserved, no broad ground plate.",
+      "floorContacts": "Worker checked9 supports+slide end; lower75mm flattened to remove up to71.55mm source gaps, normals recomputed. Main reviewed report/images; 98 central-window rays are worker evidence, not full-volume certification.",
+      "runtimeFit": {
+        "depth": 2.8,
+        "heightAlternative": 1.4636559383431216,
+        "uniformOnly": true
+      },
+      "placementProposal": {
+        "x": 6.7,
+        "z": 5.7,
+        "yaw": 0
+      },
+      "limitations": [
+        "Full city placement/routes/lawn masking not yet accepted.",
+        "Physical iPad/PWA not checked."
+      ]
+    }
+  ],
+  "validation": {
+    "tests": 88,
+    "testFiles": 17,
+    "typecheck": "PASS",
+    "time": "2026-10-27 18:57 Asia/Bangkok"
+  },
+  "totalBytes": 286928,
+  "totalTriangles": 10635
+}
