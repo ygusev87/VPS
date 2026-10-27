@@ -1124,6 +1124,8 @@ function frame(now: number) {
     }
   }
   world.update(dt);
+  // The factory hall's background sound (none elsewhere).
+  sfx.setHall(map instanceof FactoryMap ? map.hallSound : 0);
 
   if (!won && level !== FREE_PLAY) {
     // Real time, not the frame-capped dt: on a busy device a lit LED still counts after half a second.

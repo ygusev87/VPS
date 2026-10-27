@@ -382,6 +382,11 @@ export class FactoryMap extends StoryMap {
     return (crew && model(crew, { height: 1.6 })) || (model(MODEL_OF[base] ?? base, fit) ?? STAND_INS[base]?.() ?? blob(name));
   }
 
+  /** How loud the hall's background is: a murmur while dark, the line running once there is power. */
+  get hallSound(): number {
+    return this.phase === 'evening' ? (this.eveLit ? 0.8 : 0.35) : this.lit ? 0.8 : 0.3;
+  }
+
   /** Dim till the wiring box lets the power through; in the evening the store is dark again till its own lights are on. */
   protected darkness() {
     if (this.phase === 'evening') return this.eveLit ? 0.1 : DIM;

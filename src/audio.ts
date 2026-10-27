@@ -5,6 +5,9 @@ export class Sfx {
   private ctx: Ctx | null = null;
   private master: GainNode | null = null;
   private fanNoise: { src: AudioBufferSourceNode; gain: GainNode; filter: BiquadFilterNode } | null = null;
+  /** The factory hall's low hum (machines, ventilation), and when its next distant clank comes. */
+  private hall: { src: AudioBufferSourceNode; gain: GainNode; hum: OscillatorNode; humGain: GainNode } | null = null;
+  private clankAt = 0;
   private buzz: { osc: OscillatorNode; gain: GainNode } | null = null;
   muted = false;
   /** Called whenever a new audio graph is made, e.g. to route the voice through it. */
@@ -65,6 +68,7 @@ export class Sfx {
     this.ctx = null;
     this.master = null;
     this.fanNoise = null;
+    this.hall = null;
     this.buzz = null;
     this.waterNode = null;
     this.engine = null;
@@ -228,6 +232,49 @@ export class Sfx {
     const l = Math.min(1, finite(level));
     this.fanNoise.gain.gain.setTargetAtTime(l * 0.09, ctx.currentTime, 0.15);
     this.fanNoise.filter.frequency.setTargetAtTime(300 + l * 900, ctx.currentTime, 0.2);
+  }
+
+  /**
+   * The factory hall's background, 0..1: a low rumble of machines and air,
+   * with a distant clank of metal now and then while the line runs (above ½).
+   * 0 fades it away (another map, the table).
+   */
+  setHall(level: number) {
+    const ctx = this.ctx;
+    if (!ctx || !this.master) return;
+    if (!this.hall) {
+      if (level <= 0) return;
+      const src = ctx.createBufferSource();
+      src.buffer = this.noiseBuffer(ctx);
+      src.loop = true;
+      const filter = ctx.createBiquadFilter();
+      filter.type = 'lowpass';
+      filter.frequency.value = 220;
+      const gain = ctx.createGain();
+      gain.gain.value = 0;
+      src.connect(filter).connect(gain).connect(this.master);
+      src.start();
+      // Mains hum under it, very faint.
+      const hum = ctx.createOscillator();
+      hum.frequency.value = 100;
+      const humGain = ctx.createGain();
+      humGain.gain.value = 0;
+      hum.connect(humGain).connect(this.master);
+      hum.start();
+      this.hall = { src, gain, hum, humGain };
+    }
+    const l = Math.min(1, Math.max(0, finite(level)));
+    this.hall.gain.gain.setTargetAtTime(l * 0.07, ctx.currentTime, 0.8);
+    this.hall.humGain.gain.setTargetAtTime(l * 0.006, ctx.currentTime, 0.8);
+    const now = ctx.currentTime;
+    if (l > 0.5 && now > this.clankAt) {
+      if (this.clankAt) {
+        // Far off: quieter and duller than a part's own clank.
+        this.tone(1300 + Math.random() * 500, 0.1, 'triangle', 0.02);
+        this.noise(0.05, 0.03, 2600);
+      }
+      this.clankAt = now + 4 + Math.random() * 6;
+    }
   }
 
   /** Buzzer part: beep-beep while on. */
