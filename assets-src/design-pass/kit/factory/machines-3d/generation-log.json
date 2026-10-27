@@ -3,10 +3,10 @@
   "ownerAuthorized": true,
   "authorizedScope": "8 factory bodies from prepared primary/secondary refs",
   "creditBudget": 200,
-  "creditUsed": 25,
+  "creditUsed": 100,
   "service": "Tripo Studio",
   "balanceBefore": 5600,
-  "balanceAfter": 5575,
+  "balanceAfter": 5500,
   "orders": [
     {
       "name": "safety-press",
@@ -28,6 +28,74 @@
       },
       "output": "public/models/safety-press.glb",
       "outputSha256": "19e547fade4084ab248223382a8465da46c500a0a7ee96222523c83043b772d0"
+    },
+    {
+      "name": "lathe",
+      "id": "aae5a303-e19c-4a66-9d08-58ed5376103f",
+      "url": "https://studio.tripo3d.ai/ru/workspace/generate/aae5a303-e19c-4a66-9d08-58ed5376103f",
+      "credits": 25,
+      "status": "qa-passed",
+      "source": "assets-src/design-pass/kit/factory/machines-primary/concepts/lathe-v2.png",
+      "sourceSha256": "29ae559e9cc0d2e78f1c4f0b12311bc3e1cb1d537a2c52aae4fd8515bb8d8993",
+      "balanceBefore": 5575,
+      "balanceAfter": 5550,
+      "settings": {
+        "model": "H3.1",
+        "targetTriangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "pbr": false,
+        "ultra": false,
+        "parts": false
+      },
+      "output": "public/models/lathe.glb",
+      "outputSha256": "89c2383176dfebd1064c7e456bf3a2fc06d81f3dec0022e38ea3a4a61d51defa"
+    },
+    {
+      "name": "factory-cabinet",
+      "id": "83d62bba-41c8-4649-95b3-59f673294b88",
+      "url": "https://studio.tripo3d.ai/ru/workspace/generate/83d62bba-41c8-4649-95b3-59f673294b88",
+      "credits": 25,
+      "status": "qa-passed",
+      "source": "assets-src/design-pass/kit/factory/machines-primary/concepts/factory-cabinet-v2.png",
+      "sourceSha256": "2ef5f81694b930cd766078d2a91b458e0519f0a210dea54d5c7158126aceb53b",
+      "balanceBefore": 5550,
+      "balanceAfter": 5525,
+      "settings": {
+        "model": "H3.1",
+        "targetTriangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "pbr": false,
+        "ultra": false,
+        "parts": false
+      },
+      "output": "public/models/factory-cabinet.glb",
+      "outputSha256": "7df3ae6b6a938e0a98d3d0720799ac2618c51a36f5e3d38d64a1a8f1a38bb499"
+    },
+    {
+      "name": "hoist",
+      "id": "24c0e3b0-ae76-446b-92a8-470e91b7c602",
+      "url": "https://studio.tripo3d.ai/ru/workspace/generate/24c0e3b0-ae76-446b-92a8-470e91b7c602",
+      "credits": 25,
+      "status": "four-results-rejected-local-repair",
+      "source": "assets-src/design-pass/kit/factory/machines-primary/concepts/hoist.png",
+      "sourceSha256": "d8b432be56af6965a8df39f00c392a6e900d117b95b670081c0ed09538571c1e",
+      "balanceBefore": 5525,
+      "balanceAfter": 5500,
+      "settings": {
+        "model": "H3.1",
+        "targetTriangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "pbr": false,
+        "ultra": false,
+        "parts": false
+      },
+      "rejectionReason": "Studio visibly shows collapsed stretched triangular sheets instead of tower",
+      "freeRetriesUsed": 3
     }
-  ]
+  ],
+  "parallelSecondaryBudget": 100,
+  "secondaryLog": "secondary/generation-log.json (owned by second chat)"
 }

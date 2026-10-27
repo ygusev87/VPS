@@ -1,0 +1,20 @@
+{
+  "lathe": {
+    "intersectionCount": 0,
+    "ringIntersections": 0,
+    "ringRadialClearance": 0.09193705653929782,
+    "minimumSpindleRadialClearance": 0.008272715745055143,
+    "sweptRadius": 0.19,
+    "workpieceModelX": [
+      -0.55,
+      0.95
+    ],
+    "method": "X-clipped triangle projection distance from spindle axis. Workpiece radius 0.16 plus 0.03 overspeed vibration for all rotation angles. Ring checked separately at X 0.17..0.23."
+  },
+  "cabinet": {
+    "maximumRuntimeY": 0.28000701791607496,
+    "tileSlabMinimumY": 0.3,
+    "verticalClearance": 0.019992982083925026,
+    "method": "Maximum transformed body Y is below all tile bottom vertices, independent of tile rotation angle."
+  }
+}

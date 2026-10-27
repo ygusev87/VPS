@@ -1,0 +1,56 @@
+{
+  "name": "factory-cabinet",
+  "source": "assets-src/raw/factory-2026-10-27/factory-cabinet.glb",
+  "sourceSha256": "a4ef3162db6d451255dbc542bbaac4eaf9233829f0872ece03a1dbe85a4970ba",
+  "outputSha256": "7df3ae6b6a938e0a98d3d0720799ac2618c51a36f5e3d38d64a1a8f1a38bb499",
+  "sourceBytes": 894112,
+  "bytes": 90648,
+  "cutTriangles": 3434,
+  "triangles": 3434,
+  "bounds": {
+    "min": [
+      -1.25,
+      -0.000007020598283988266,
+      -1.25
+    ],
+    "max": [
+      1.25,
+      0.12000701791607497,
+      1.25
+    ]
+  },
+  "materials": 1,
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "placement": [
+    0,
+    0.16,
+    -0.1
+  ],
+  "fit": {
+    "width": 2.5
+  },
+  "bore": null,
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  }
+}

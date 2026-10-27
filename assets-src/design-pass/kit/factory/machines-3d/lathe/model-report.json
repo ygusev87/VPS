@@ -1,0 +1,63 @@
+{
+  "name": "lathe",
+  "source": "assets-src/raw/factory-2026-10-27/lathe.glb",
+  "sourceSha256": "9bcca7d2a9d0cdfd51fdb6f1982f3782b88e6b784268159019776eb912fc605d",
+  "outputSha256": "89c2383176dfebd1064c7e456bf3a2fc06d81f3dec0022e38ea3a4a61d51defa",
+  "sourceBytes": 950212,
+  "bytes": 110232,
+  "cutTriangles": 4545,
+  "triangles": 3900,
+  "bounds": {
+    "min": [
+      -1.2999999523162842,
+      -0.000001493830609100577,
+      -0.4750175307194089
+    ],
+    "max": [
+      1.2999999523162842,
+      1.100001517672467,
+      0.4750175307194089
+    ]
+  },
+  "materials": 1,
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "placement": [
+    0.1,
+    0.16,
+    0.2
+  ],
+  "fit": {
+    "width": 2.6
+  },
+  "bore": {
+    "axis": "X",
+    "centreYZ": [
+      0.75,
+      0
+    ],
+    "radius": 0.2
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  }
+}
