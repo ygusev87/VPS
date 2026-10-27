@@ -1,0 +1,96 @@
+{
+  "name": "city-icecream-kiosk",
+  "source": "assets-src/raw/city-street-life-2026-10-27/city-icecream-kiosk.glb",
+  "sourceSha256": "b4b5681c06a3b663365e2d00cb626e6863d56503fbeee99bb715cc8bc8ba0790",
+  "sourceBytes": 759684,
+  "sourceTriangles": 3526,
+  "sourceBounds": {
+    "min": [
+      -0.49951171875,
+      0,
+      -0.5
+    ],
+    "max": [
+      0.49951171875,
+      0.9132080078125,
+      0.5
+    ]
+  },
+  "bytes": 85388,
+  "sha256": "d3bc60629630c1ae50a5ab3e270211017dcae7826e426fea336a305f004ed0d7",
+  "triangles": 3090,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -1.4000213629566332,
+      0,
+      -1.0999938962981048
+    ],
+    "max": [
+      1.4000213629566332,
+      3,
+      1.0999938962981048
+    ]
+  },
+  "size": [
+    2.8000427259132663,
+    3,
+    2.1999877925962097
+  ],
+  "contract": {
+    "reviewed": true,
+    "size": [
+      2.8,
+      3,
+      2.2
+    ],
+    "rotationY": 0,
+    "targetTriangles": 3000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "rawOrientationReview": "Native GLTFLoader view3 (+Z) shows icecream emblem centered on front. No rotation required."
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Normalize XYZ; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}

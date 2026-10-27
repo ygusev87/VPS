@@ -1,0 +1,17 @@
+{
+  "reviewed": true,
+  "size": [
+    2.8,
+    3,
+    2.2
+  ],
+  "rotationY": 0,
+  "targetTriangles": 3000,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "rawOrientationReview": "Native GLTFLoader view3 (+Z) shows icecream emblem centered on front. No rotation required."
+}

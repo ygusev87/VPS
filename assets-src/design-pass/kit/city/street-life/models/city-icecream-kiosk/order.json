@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-27",
+  "service": "Tripo Studio",
+  "taskId": "61b5b0ba-6f7b-4e47-a788-7744efa191b1",
+  "cost": 25,
+  "balanceBefore": 5275,
+  "balanceAfter": 5250,
+  "status": "complete",
+  "settings": {
+    "model": "H3.1",
+    "triangles": 4000,
+    "texture": "2K",
+    "delight": true,
+    "ultra": false,
+    "aiEnhancement": false,
+    "pbr": false
+  },
+  "approval": "assets-src/design-pass/kit/factory/machines-3d/evening-paint/authorization.json",
+  "attempts": 1,
+  "sourceBytes": 759684,
+  "sourceSha256": "b4b5681c06a3b663365e2d00cb626e6863d56503fbeee99bb715cc8bc8ba0790"
+}

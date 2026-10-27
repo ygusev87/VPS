@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85388,\"triangles\":3090,\"materials\":1,\"bounds\":{\"min\":[-1.4000213629566332,0,-1.0999938962981048],\"max\":[1.4000213629566332,3,1.0999938962981048]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85388,\"triangles\":3090,\"materials\":1,\"bounds\":{\"min\":[-1.4000213629566332,0,-1.0999938962981048],\"max\":[1.4000213629566332,3,1.0999938962981048]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85388,\"triangles\":3090,\"materials\":1,\"bounds\":{\"min\":[-1.4000213629566332,0,-1.0999938962981048],\"max\":[1.4000213629566332,3,1.0999938962981048]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85388,\"triangles\":3090,\"materials\":1,\"bounds\":{\"min\":[-1.4000213629566332,0,-1.0999938962981048],\"max\":[1.4000213629566332,3,1.0999938962981048]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85388,\"triangles\":3090,\"materials\":1,\"bounds\":{\"min\":[-1.4000213629566332,0,-1.0999938962981048],\"max\":[1.4000213629566332,3,1.0999938962981048]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualReview": "PASS: front emblem +Z, parasol and supports intact, no ground/platform, textures decoded, native 1024x768 and390x844",
+  "integration": "Standalone GLTFLoader; game placement and physical iPad pending integrator"
+}
