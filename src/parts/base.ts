@@ -165,12 +165,22 @@ export function fits(a: Terminal, b: Terminal) {
   return a.shape === b.shape;
 }
 
+// One cap per shape, so the table's batch draws all caps of a shape at once.
+const caps = new Map<PlugShape, THREE.BufferGeometry>();
+function capGeo(shape: PlugShape) {
+  let g = caps.get(shape);
+  if (!g) caps.set(shape, (g = shape === 'round' ? new THREE.CylinderGeometry(0.24, 0.24, 0.12, 28) : shape === 'square' ? new THREE.BoxGeometry(0.42, 0.12, 0.42) : new THREE.CylinderGeometry(0.3, 0.3, 0.12, 3)));
+  return g;
+}
+
 export class Terminal {
   readonly id: string;
   readonly post = new THREE.Group();
   /** A shaped socket (see PlugShape), or a plain post. */
   shape: PlugShape | undefined;
-  private collar!: THREE.Mesh;
+  /** The post's two meshes: drawn by the table's shared batch (src/terminals.ts) once the part is on the table. */
+  metal!: THREE.Mesh;
+  collar!: THREE.Mesh;
   private ring: THREE.Mesh;
   private ringMat: THREE.MeshBasicMaterial;
   private highlight: Highlight = 'none';
@@ -191,6 +201,7 @@ export class Terminal {
     const ring = new THREE.Mesh(collarGeo, collarMat(collarColor));
     ring.position.y = 0.09;
     metal.receiveShadow = ring.receiveShadow = true;
+    this.metal = metal;
     this.collar = ring;
     this.post.add(metal, ring);
 
@@ -204,11 +215,15 @@ export class Terminal {
     this.post.position.copy(local).setY(PLATE_TOP);
   }
 
+  /** Hand the post's meshes over to the shared batch (they stay as hidden stand-ins for its place and look). */
+  batched() {
+    this.metal.visible = this.collar.visible = false;
+  }
+
   /** Make it a shaped socket: a big coloured cap of its shape round the post. */
   shaped(shape: PlugShape) {
     this.shape = shape;
-    const geo = shape === 'round' ? new THREE.CylinderGeometry(0.24, 0.24, 0.12, 28) : shape === 'square' ? new THREE.BoxGeometry(0.42, 0.12, 0.42) : new THREE.CylinderGeometry(0.3, 0.3, 0.12, 3);
-    this.collar.geometry = geo;
+    this.collar.geometry = capGeo(shape);
     this.collar.material = collarMat(PLUG_COLOR[shape]);
     this.collar.position.y = 0.06;
     return this;

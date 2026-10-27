@@ -120,6 +120,8 @@ export class World {
   addPart(kind: PartKind, x: number, z: number, opts: { locked?: boolean; closed?: boolean; appear?: boolean; color?: LightColor } = {}): Part {
     const part = createPart(kind, opts.color);
     part.trimShadows();
+    // Its posts are drawn by the table's shared batch (src/terminals.ts).
+    for (const t of part.terminals) t.batched();
     part.locked = !!opts.locked;
     part.closed = !!opts.closed;
     part.root.position.set(x, 0, z);

@@ -10,6 +10,7 @@ import { FARM_MODELS, FARM_TRAY, FARM_TRAY_TWO, FarmMap } from './farm';
 import type { MapHooks, MapProgress, StoryMap } from './storymap';
 import { loadGround } from './ground';
 import { forgetKits, loadKit } from './kit';
+import { TerminalBatch } from './terminals';
 import { Hud, MAPS as HUD_MAPS } from './hud';
 import { Input } from './input';
 import { chainWorks, FREE_PLAY, LEVELS, type Level } from './levels';
@@ -51,6 +52,8 @@ await Promise.race([
 const canvas = document.getElementById('stage') as HTMLCanvasElement;
 const stage = new Stage(canvas);
 const world = new World(stage);
+const posts = new TerminalBatch();
+stage.world.add(posts.root);
 const sfx = new Sfx();
 const fx = new Fx();
 stage.scene.add(fx.group);
@@ -301,6 +304,7 @@ const shelf = new Shelf(album, {
 
 /** A small picture of the parts on the table, as they are on screen now. */
 function tablePicture(): string {
+  posts.update(world.parts);
   stage.render();
   const box = { x0: Infinity, y0: Infinity, x1: -Infinity, y1: -Infinity };
   for (const c of partsOnScreen(world)) {
@@ -1203,6 +1207,7 @@ function frame(now: number) {
   fx.resize(stage.renderer.domElement.height, stage.camera.fov);
   fx.update(dt);
   hud.updateFx(dt);
+  posts.update(world.parts);
   stage.render();
   perf.tick(now);
   requestAnimationFrame(frame);
