@@ -1,0 +1,500 @@
+{
+  "generatedAt": "2026-10-27T11:15:52.135Z",
+  "status": "proposal-with-explicit-integration-gates",
+  "sourceSha256": "eccfc55b9114f9ef1b3aa227a4a73b57cd00b5bd0710d86bf85b845307f7b875",
+  "decorSha256": "fe4b3584a83c3507db4a349a6dccf43581868647636eff25ae337d3df2835047",
+  "checks": [
+    "rotated target AABBs vs axis-aligned road/canal/harbor box",
+    "named anchor and protected-line distance using half-diagonal +1.6",
+    "new pairwise and accepted prop body AABB gaps",
+    "pavement line envelope expanded by .85 for turning pedestrians",
+    "nearby DECOR square estimates"
+  ],
+  "limitations": [
+    "Not measured final models or rendered occlusion.",
+    "Pavement analysis is a conservative full-segment check, not the final filtered walker paths.",
+    "Named anchors do not capture all instantiated parts or touch zones.",
+    "Footprint clearance does not prove frontage connection; pads require integration.",
+    "Mailbox inherited position fails conservative anchor margin; report intentionally remains gated.",
+    "No full game, physical iPad or PWA acceptance.",
+    "Toy AABBs here cover static shells only. Bin route exclusion must include original .84 lid and full hinge sweep, mailbox flag/letter clearance must be separately verified."
+  ],
+  "items": [
+    {
+      "index": 0,
+      "id": "city-fruit-stall",
+      "position": [
+        -26,
+        -22.4
+      ],
+      "mode": "static-proposal",
+      "rotatedAabb": [
+        -26.8,
+        -23.6,
+        -25.2,
+        -21.2
+      ],
+      "anchorRadius": 3.042,
+      "nearestPoint": {
+        "name": "HOUSE_POLE",
+        "distance": 8.022,
+        "margin": 4.98
+      },
+      "nearestProtectedLine": {
+        "name": "PARK_WAY",
+        "margin": 13.42
+      },
+      "roadGap": 6.579,
+      "canalGap": 60.6,
+      "nearestProposedProp": {
+        "id": "city-postbox",
+        "index": 8,
+        "gap": 10.43
+      },
+      "nearestAcceptedProp": {
+        "id": "city-flower-kiosk",
+        "gap": 2.2
+      },
+      "pedestrianEnvelope": [
+        -27.65,
+        -24.45,
+        -24.35,
+        -20.35
+      ],
+      "potentialUnfilteredPedestrianLines": [],
+      "nearbyDecor": [],
+      "issues": []
+    },
+    {
+      "index": 1,
+      "id": "city-bike-rack",
+      "position": [
+        7,
+        -18.5
+      ],
+      "mode": "static-proposal",
+      "rotatedAabb": [
+        5.75,
+        -19.3,
+        8.25,
+        -17.7
+      ],
+      "anchorRadius": 3.084,
+      "nearestPoint": {
+        "name": "schoolChild0",
+        "distance": 3.606,
+        "margin": 0.521
+      },
+      "nearestProtectedLine": {
+        "name": "schoolLaser",
+        "margin": 7.511
+      },
+      "roadGap": 2.7,
+      "canalGap": 27.15,
+      "nearestProposedProp": {
+        "id": "city-street-bin",
+        "index": 6,
+        "gap": 12.272
+      },
+      "nearestAcceptedProp": {
+        "id": "city-icecream-kiosk",
+        "gap": 26.187
+      },
+      "pedestrianEnvelope": [
+        4.9,
+        -20.15,
+        9.1,
+        -16.85
+      ],
+      "potentialUnfilteredPedestrianLines": [],
+      "nearbyDecor": [
+        {
+          "model": "bush-lite",
+          "position": [
+            6.163,
+            -16.97
+          ],
+          "estimatedSize": 1.62,
+          "gap": 0
+        },
+        {
+          "model": "bush-lite",
+          "position": [
+            5.72,
+            -19.178
+          ],
+          "estimatedSize": 1.764,
+          "gap": 0
+        },
+        {
+          "model": "flower-cluster",
+          "position": [
+            7.013,
+            -17.85
+          ],
+          "estimatedSize": 0.499,
+          "gap": 0
+        }
+      ],
+      "issues": [
+        "existing-decor-estimate-overlap"
+      ]
+    },
+    {
+      "index": 2,
+      "id": "city-poster-column",
+      "position": [
+        43,
+        -18.5
+      ],
+      "mode": "static-proposal",
+      "rotatedAabb": [
+        42.55,
+        -18.95,
+        43.45,
+        -18.05
+      ],
+      "anchorRadius": 2.236,
+      "nearestPoint": {
+        "name": "BINS",
+        "distance": 4.472,
+        "margin": 2.236
+      },
+      "nearestProtectedLine": {
+        "name": "RACCOON_PATH",
+        "margin": 3.725
+      },
+      "roadGap": 15.05,
+      "canalGap": 3.95,
+      "nearestProposedProp": {
+        "id": "city-street-bin",
+        "index": 7,
+        "gap": 8.071
+      },
+      "nearestAcceptedProp": {
+        "id": "city-icecream-kiosk",
+        "gap": 53.778
+      },
+      "pedestrianEnvelope": [
+        41.7,
+        -19.8,
+        44.3,
+        -17.2
+      ],
+      "potentialUnfilteredPedestrianLines": [],
+      "nearbyDecor": [],
+      "issues": []
+    },
+    {
+      "index": 3,
+      "id": "city-drinking-fountain",
+      "position": [
+        10,
+        6
+      ],
+      "mode": "static-proposal",
+      "rotatedAabb": [
+        9.65,
+        5.65,
+        10.35,
+        6.35
+      ],
+      "anchorRadius": 2.095,
+      "nearestPoint": {
+        "name": "WIND_SPOT",
+        "distance": 3.606,
+        "margin": 1.511
+      },
+      "nearestProtectedLine": {
+        "name": "KITTEN_WAY",
+        "margin": 21.763
+      },
+      "roadGap": 2.65,
+      "canalGap": 25.05,
+      "nearestProposedProp": {
+        "id": "city-playground",
+        "index": 5,
+        "gap": 1.05
+      },
+      "nearestAcceptedProp": {
+        "id": "city-icecream-kiosk",
+        "gap": 15.25
+      },
+      "pedestrianEnvelope": [
+        8.8,
+        4.8,
+        11.2,
+        7.2
+      ],
+      "potentialUnfilteredPedestrianLines": [],
+      "nearbyDecor": [],
+      "issues": []
+    },
+    {
+      "index": 4,
+      "id": "city-flower-planter",
+      "position": [
+        -10,
+        -6.6
+      ],
+      "mode": "static-proposal",
+      "rotatedAabb": [
+        -10.45,
+        -7.05,
+        -9.55,
+        -6.15
+      ],
+      "anchorRadius": 2.236,
+      "nearestPoint": {
+        "name": "KITTEN",
+        "distance": 3.195,
+        "margin": 0.959
+      },
+      "nearestProtectedLine": {
+        "name": "KITTEN_WAY",
+        "margin": 0.959
+      },
+      "roadGap": 1.95,
+      "canalGap": 44.95,
+      "nearestProposedProp": {
+        "id": "city-playground",
+        "index": 5,
+        "gap": 17.752
+      },
+      "nearestAcceptedProp": {
+        "id": "city-icecream-kiosk",
+        "gap": 12.105
+      },
+      "pedestrianEnvelope": [
+        -11.3,
+        -7.9,
+        -8.7,
+        -5.3
+      ],
+      "potentialUnfilteredPedestrianLines": [],
+      "nearbyDecor": [],
+      "issues": []
+    },
+    {
+      "index": 5,
+      "id": "city-playground",
+      "position": [
+        6.7,
+        5.7
+      ],
+      "mode": "static-proposal",
+      "rotatedAabb": [
+        4.8,
+        4.3,
+        8.6,
+        7.1
+      ],
+      "anchorRadius": 3.96,
+      "nearestPoint": {
+        "name": "child2",
+        "distance": 4.187,
+        "margin": 0.227
+      },
+      "nearestProtectedLine": {
+        "name": "KITTEN_WAY",
+        "margin": 16.591
+      },
+      "roadGap": 1.9,
+      "canalGap": 26.8,
+      "nearestProposedProp": {
+        "id": "city-drinking-fountain",
+        "index": 3,
+        "gap": 1.05
+      },
+      "nearestAcceptedProp": {
+        "id": "city-icecream-kiosk",
+        "gap": 10.4
+      },
+      "pedestrianEnvelope": [
+        3.95,
+        3.45,
+        9.45,
+        7.95
+      ],
+      "potentialUnfilteredPedestrianLines": [],
+      "nearbyDecor": [],
+      "issues": []
+    },
+    {
+      "index": 6,
+      "id": "city-street-bin",
+      "position": [
+        15.2,
+        -6.8
+      ],
+      "mode": "existing-interactive-shell",
+      "rotatedAabb": [
+        14.725,
+        -7.275,
+        15.675,
+        -6.325
+      ],
+      "anchorRadius": 2.137,
+      "nearestPoint": {
+        "name": "FERRIS_SPOT",
+        "distance": 9.038,
+        "margin": 6.9
+      },
+      "nearestProtectedLine": {
+        "name": "schoolLaser",
+        "margin": 10.96
+      },
+      "roadGap": 1.325,
+      "canalGap": 19.725,
+      "nearestProposedProp": {
+        "id": "city-playground",
+        "index": 5,
+        "gap": 12.264
+      },
+      "nearestAcceptedProp": {
+        "id": "city-icecream-kiosk",
+        "gap": 23.718
+      },
+      "pedestrianEnvelope": [
+        13.875,
+        -8.125,
+        16.525,
+        -5.475
+      ],
+      "potentialUnfilteredPedestrianLines": [
+        {
+          "points": [
+            [
+              -20,
+              -8.1
+            ],
+            [
+              20,
+              -8.1
+            ]
+          ]
+        },
+        {
+          "points": [
+            [
+              16.1,
+              -12
+            ],
+            [
+              16.1,
+              12
+            ]
+          ]
+        }
+      ],
+      "nearbyDecor": [],
+      "issues": [
+        "pedestrian-envelope-crosses-unfiltered-pavement-line"
+      ]
+    },
+    {
+      "index": 7,
+      "id": "city-street-bin",
+      "position": [
+        52,
+        -17
+      ],
+      "mode": "existing-interactive-shell",
+      "rotatedAabb": [
+        51.502,
+        -17.498,
+        52.498,
+        -16.502
+      ],
+      "anchorRadius": 2.137,
+      "nearestPoint": {
+        "name": "SHOPKEEPER",
+        "distance": 4.924,
+        "margin": 2.787
+      },
+      "nearestProtectedLine": {
+        "name": "RACCOON_PATH",
+        "margin": 7.552
+      },
+      "roadGap": 13.502,
+      "canalGap": 12.902,
+      "nearestProposedProp": {
+        "id": "city-poster-column",
+        "index": 2,
+        "gap": 8.071
+      },
+      "nearestAcceptedProp": {
+        "id": "city-icecream-kiosk",
+        "gap": 61.339
+      },
+      "pedestrianEnvelope": [
+        50.652,
+        -18.348,
+        53.348,
+        -15.652
+      ],
+      "potentialUnfilteredPedestrianLines": [],
+      "nearbyDecor": [
+        {
+          "model": "club",
+          "position": [
+            48.5,
+            -13
+          ],
+          "estimatedSize": 7,
+          "gap": 0.002
+        }
+      ],
+      "issues": [
+        "existing-decor-estimate-overlap"
+      ]
+    },
+    {
+      "index": 8,
+      "id": "city-postbox",
+      "position": [
+        -37.45,
+        -22.75
+      ],
+      "mode": "existing-interactive-shell",
+      "rotatedAabb": [
+        -37.67,
+        -23.05,
+        -37.23,
+        -22.45
+      ],
+      "anchorRadius": 1.972,
+      "nearestPoint": {
+        "name": "BASKET",
+        "distance": 1.722,
+        "margin": -0.25
+      },
+      "nearestProtectedLine": {
+        "name": "PARK_WAY",
+        "margin": 13.914
+      },
+      "roadGap": 11.45,
+      "canalGap": 72.63,
+      "nearestProposedProp": {
+        "id": "city-fruit-stall",
+        "index": 0,
+        "gap": 10.43
+      },
+      "nearestAcceptedProp": {
+        "id": "city-flower-kiosk",
+        "gap": 10.465
+      },
+      "pedestrianEnvelope": [
+        -38.52,
+        -23.9,
+        -36.38,
+        -21.6
+      ],
+      "potentialUnfilteredPedestrianLines": [],
+      "nearbyDecor": [],
+      "issues": [
+        "named-anchor-clearance"
+      ]
+    }
+  ]
+}

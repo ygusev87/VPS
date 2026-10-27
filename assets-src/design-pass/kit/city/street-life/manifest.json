@@ -7,7 +7,7 @@
       "manifest/layout/border concept",
       "src/city-decor.ts after model acceptance"
     ],
-    "modelWorker": "first three models only, sole Tripo operator",
+    "modelWorker": "Sole Tripo operator; only exact active batch. Current factory batch outside this city manifest.",
     "claude": [
       "src/city.ts CITY_MODELS/life",
       "pedestrian routes and runtime integration"
@@ -97,12 +97,28 @@
       "id": "city-street-bin",
       "label": "Уличная урна",
       "targetXYZ": [
+        0.76,
+        0.9,
+        0.76
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-street-bin.glb",
+      "preliminaryTargetXYZ": [
         0.65,
         0.95,
         0.65
       ],
-      "status": "queued",
-      "publicPath": "public/models/city-street-bin.glb"
+      "integrationContract": {
+        "supersedesPreliminaryTarget": [
+          0.65,
+          0.95,
+          0.65
+        ],
+        "reason": "Keep existing .76 body envelope, .84 lid and cat animation. Factory/farm toys are outside this city-specific change.",
+        "animationOwner": "Claude",
+        "movingGeometry": "existing procedural lid/cat, no generated cap",
+        "requiredQA": "Closed/open/halfway lid and cat on native 390/1024; continuous hinge sweep; verify top opening, rest and tap/sound."
+      }
     },
     {
       "id": "city-flower-planter",
@@ -163,12 +179,28 @@
       "id": "city-postbox",
       "label": "Городской почтовый ящик",
       "targetXYZ": [
+        0.44,
+        1.22,
+        0.6
+      ],
+      "status": "queued",
+      "publicPath": "public/models/city-postbox.glb",
+      "preliminaryTargetXYZ": [
         0.65,
         1.1,
         0.5
       ],
-      "status": "queued",
-      "publicPath": "public/models/city-postbox.glb"
+      "integrationContract": {
+        "supersedesPreliminaryTarget": [
+          0.65,
+          1.1,
+          0.5
+        ],
+        "reason": "Existing flag pivot is x=.24: shell width .44 leaves .02 nominal separation; keep current body and letter envelope instead of stretching a wider solid shell.",
+        "animationOwner": "Claude",
+        "movingGeometry": "existing procedural flag/letter, generated shell only",
+        "requiredQA": "Flag sweep and letter emergence, clear surrounding basket/house/route. Existing position is a known clearance concern."
+      }
     }
   ],
   "pedestrians": [
@@ -318,5 +350,7 @@
     "Flowers/shelter placement statically accepted; park PLAZA and walking footprint fixes pending.",
     "Remaining8props not generated.",
     "No physical iPad/PWA or performance result."
-  ]
+  ],
+  "remainingPropsProposal": "remaining-layout-proposal.json",
+  "remainingPropsPreflight": "remaining-layout-preflight.json"
 }

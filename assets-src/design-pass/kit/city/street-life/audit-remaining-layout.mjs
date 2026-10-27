@@ -1,0 +1,56 @@
+import fs from 'node:fs';
+import path from 'node:path';
+import crypto from 'node:crypto';
+import { stripTypeScriptTypes } from 'node:module';
+import { Vector3 } from 'three';
+const root=process.cwd();
+const out=path.join(root,'assets-src/design-pass/kit/city/street-life');
+const source=fs.readFileSync('src/city.ts','utf8');
+const decorSource=fs.readFileSync('src/city-decor.ts','utf8');
+const excerpt=source.slice(source.indexOf('const W ='),source.indexOf('/** What each one says'));
+const names=[...excerpt.matchAll(/const (\w+)\s*=/g)].map(m=>m[1]);
+const v=(x,z)=>new Vector3(x,0,z);
+const c=new Function('v',excerpt+`\nreturn {${names.join(',')}};`)(v);
+const decorNames=[...decorSource.matchAll(/export const (\w+)/g)].map(m=>m[1]);
+const dec=new Function(stripTypeScriptTypes(decorSource.replace(/export const/g,'const'))+`\nreturn {${decorNames.join(',')}};`)();
+const planBody=source.slice(source.indexOf('function cityPlan()'),source.indexOf('/** White dashes'));
+const plan=new Function('v','SOIL','PATHS','MEADOW',stripTypeScriptTypes(excerpt+'\n'+planBody)+'\nreturn cityPlan();')(v,dec.SOIL,dec.PATHS,dec.MEADOW);
+
+const layout=JSON.parse(fs.readFileSync(path.join(out,'remaining-layout-proposal.json'),'utf8'));
+const keep=Object.entries(c).filter(([,p])=>p instanceof Vector3).map(([name,p])=>({name,x:p.x,z:p.z}));
+const add=(name,p,dx,dz)=>keep.push({name,x:p.x+dx,z:p.z+dz});
+add('pigeon',c.FOUNTAIN,-2.2,3.2);add('pigeon2',c.FOUNTAIN,-3.4,2.4);
+add('child',c.FERRIS_SPOT,-4.5,4.5);add('child2',c.FERRIS_SPOT,-3,5.5);
+add('child6',c.MUSIC_SPOT,2.5,-1.5);add('child7',c.MUSIC_SPOT,4,-2);
+add('firefighter',c.ENGINE_SPOT,3,-1);add('cat',c.BURNING,-1,0);
+for(let i=0;i<3;i++)add(`schoolChild${i}`,c.SCHOOL_DOOR,-2+i*1.6,4);
+const paths=['RACCOON_PATH','KITTEN_WAY','WASH_WAY','PARK_WAY','BOAT_WAY'].map(name=>({name,points:c[name].map(p=>[p.x,p.z])}));
+paths.push({name:'schoolLaser',points:[c.LASER_SPOT,c.MIRROR_SPOT,c.SCHOOL_SENSOR].map(p=>[p.x,p.z])});
+const round=x=>Math.round(x*1000)/1000;
+const distance=(p,a,b)=>{const dx=b[0]-a[0],dz=b[1]-a[1],t=Math.max(0,Math.min(1,((p[0]-a[0])*dx+(p[1]-a[1])*dz)/(dx*dx+dz*dz||1)));return Math.hypot(p[0]-a[0]-dx*t,p[1]-a[1]-dz*t)};
+const gap=(a,b)=>Math.hypot(Math.max(a[0]-b[2],b[0]-a[2],0),Math.max(a[1]-b[3],b[1]-a[3],0));
+const bounds=(p,xyz,yaw=0)=>{const x=Math.abs(Math.cos(yaw))*xyz[0]/2+Math.abs(Math.sin(yaw))*xyz[2]/2,z=Math.abs(Math.sin(yaw))*xyz[0]/2+Math.abs(Math.cos(yaw))*xyz[2]/2;return[p[0]-x,p[1]-z,p[0]+x,p[1]+z]};
+const lanes=plan.lanes.flatMap(l=>l.pts.slice(1).map((b,i)=>{const a=l.pts[i];return [Math.min(a[0],b[0])-l.w/2,Math.min(a[1],b[1])-l.w/2,Math.max(a[0],b[0])+l.w/2,Math.max(a[1],b[1])+l.w/2]}));
+const pavementLines=plan.lanes.flatMap(l=>l.pts.slice(1).flatMap((b,i)=>{const a=l.pts[i],len=Math.hypot(b[0]-a[0],b[1]-a[1]),ux=(b[0]-a[0])/len,uz=(b[1]-a[1])/len;return[-1,1].map(side=>{const off=(l.w/2+.9)*side;return{points:[[a[0]-uz*off,a[1]+ux*off],[b[0]-uz*off,b[1]+ux*off]]}})}));
+const first3=JSON.parse(fs.readFileSync(path.join(out,'layout-proposal.json'),'utf8')).items;
+const first3Bounds=first3.map(p=>({id:p.id,bounds:bounds(p.position,p.xyz,p.yaw)}));
+const reports=layout.items.map((p,index)=>{
+ const b=bounds(p.position,p.targetXYZ,p.yaw),r=1.6+Math.hypot(p.targetXYZ[0],p.targetXYZ[2])/2;
+ const nearest=keep.map(k=>({...k,distance:Math.hypot(p.position[0]-k.x,p.position[1]-k.z)})).sort((a,b)=>a.distance-b.distance)[0];
+ const line=paths.map(l=>({name:l.name,distance:Math.min(...l.points.slice(1).map((v,i)=>distance(p.position,l.points[i],v)))})).sort((a,b)=>a.distance-b.distance)[0];
+ const roadGap=Math.min(...lanes.map(l=>gap(b,l)));
+ // Conservative square envelope for existing static dressing, including houses; actual GLB QA remains required.
+ const nearby=[];for(const g of dec.DECOR)for(const [x,z,yaw,scale] of g.items){const size=(g.fit.width??g.fit.height??1)*scale,db=bounds([x,z],[size,size,size]);if(gap(b,db)<.2)nearby.push({model:g.model,position:[x,z],estimatedSize:round(size),gap:round(gap(b,db))});}
+ const pedestrianRadius=layout.routeClearance.radius,expanded=[b[0]-pedestrianRadius,b[1]-pedestrianRadius,b[2]+pedestrianRadius,b[3]+pedestrianRadius];
+ const routeHits=pavementLines.filter(l=>{const[a,b]=l.points;return gap(expanded,[Math.min(a[0],b[0]),Math.min(a[1],b[1]),Math.max(a[0],b[0]),Math.max(a[1],b[1])])===0});
+ const sibling=layout.items.flatMap((q,j)=>j===index?[]:[{id:q.id,index:j,gap:round(gap(b,bounds(q.position,q.targetXYZ,q.yaw)))}]).sort((a,b)=>a.gap-b.gap)[0];
+ const first=first3Bounds.map(q=>({id:q.id,gap:round(gap(b,q.bounds))})).sort((a,b)=>a.gap-b.gap)[0];
+ const canalGap=gap(b,[c.CANAL.x-c.CANAL.w/2,c.CANAL.z0,c.CANAL.x+c.CANAL.w/2,c.CANAL.z1]);
+ const harborBox=[c.HARBOR.x-c.HARBOR.rx,c.HARBOR.z-c.HARBOR.rz,c.HARBOR.x+c.HARBOR.rx,c.HARBOR.z+c.HARBOR.rz];
+ const issues=[];if(nearest.distance<=r)issues.push('named-anchor-clearance');if(line.distance<=r)issues.push('protected-line-clearance');if(roadGap<=0)issues.push('road-overlap');if(canalGap===0||gap(b,harborBox)===0)issues.push('water-overlap');if(routeHits.length)issues.push('pedestrian-envelope-crosses-unfiltered-pavement-line');if(nearby.length)issues.push('existing-decor-estimate-overlap');
+ return{index,id:p.id,position:p.position,mode:p.mode,rotatedAabb:b.map(round),anchorRadius:round(r),nearestPoint:{name:nearest.name,distance:round(nearest.distance),margin:round(nearest.distance-r)},nearestProtectedLine:{name:line.name,margin:round(line.distance-r)},roadGap:round(roadGap),canalGap:round(canalGap),nearestProposedProp:sibling,nearestAcceptedProp:first,pedestrianEnvelope:expanded.map(round),potentialUnfilteredPedestrianLines:routeHits,nearbyDecor:nearby,issues};
+});
+const report={generatedAt:new Date().toISOString(),status:'proposal-with-explicit-integration-gates',sourceSha256:crypto.createHash('sha256').update(source).digest('hex'),decorSha256:crypto.createHash('sha256').update(decorSource).digest('hex'),checks:['rotated target AABBs vs axis-aligned road/canal/harbor box','named anchor and protected-line distance using half-diagonal +1.6','new pairwise and accepted prop body AABB gaps','pavement line envelope expanded by .85 for turning pedestrians','nearby DECOR square estimates'],limitations:['Not measured final models or rendered occlusion.','Pavement analysis is a conservative full-segment check, not the final filtered walker paths.','Named anchors do not capture all instantiated parts or touch zones.','Footprint clearance does not prove frontage connection; pads require integration.','Mailbox inherited position fails conservative anchor margin; report intentionally remains gated.','No full game, physical iPad or PWA acceptance.','Toy AABBs cover static shells only; include original .84 bin lid and hinge sweep, verify mailbox flag and letter separately.'],items:reports};
+fs.writeFileSync(path.join(out,'remaining-layout-preflight.json'),JSON.stringify(report,null,2)+'\n');
+fs.writeFileSync(path.join(out,'remaining-layout-inputs.json'),JSON.stringify({plan:{lanes:plan.lanes,field:plan.field,width:plan.width,depth:plan.depth},keep,paths,buildings:dec.DECOR.filter(g=>(g.fit.width??0)>4),first3,layout},null,2)+'\n');
+console.log(JSON.stringify(reports.map(({id,position,nearestPoint,roadGap,issues})=>({id,position,anchorMargin:nearestPoint.margin,roadGap,issues})),null,2));
