@@ -386,10 +386,12 @@ export class FactoryMap extends StoryMap {
     // Yellow and black safety lines round every station.
     for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.3, LATHE.z - 1, 8, 6], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11], [EVE_BOX.x + 1.5, EVE_BOX.z + 0.5, 11, 7], [-32, 18, 10, 6], [-8, 19, 11, 6], [GRINDER.x - 1.3, GRINDER.z + 0.5, 8, 6], [WELDER.x - 1, WELDER.z + 2, 10, 9]] as const) {
       const strip = kitPieces('factory', 'hazard-strip', true);
+      // Frames stay inside the hall's walls.
+      const m = 1;
+      const [x0, x1, z0, z1] = [Math.max(-W / 2 + m, cx - w / 2), Math.min(W / 2 - m, cx + w / 2), Math.max(-D / 2 + m, cz - d / 2), Math.min(D / 2 - m, cz + d / 2)];
       if (this.kit && strip.length) {
-        const [x0, x1, z0, z1] = [cx - w / 2, cx + w / 2, cz - d / 2, cz + d / 2];
         hall.add(ribbons([{ pts: [[x0, z0], [x1, z0], [x1, z1], [x0, z1], [x0, z0]], w: 0.3 }], strip[0], 1.12, 4.36, 0.0075, 2, 0.5));
-      } else hall.add(hazard(cx, cz, w, d));
+      } else hall.add(hazard((x0 + x1) / 2, (z0 + z1) / 2, x1 - x0, z1 - z0));
     }
     const pallets = [[36, -14, 3], [38.2, -14, 2], [36, -10.5, 2]] as const;
     card('pallet-card', pallets.map(([x, z]) => ({ x, z, size: 2.6 })), () => pallets.forEach(([x, z, n]) => hall.add(stack(x, z, n))));
