@@ -1,0 +1,69 @@
+{
+  "sha256": "ebb84cbe49f5e2a7b90c4c3c9b434929de412a25a0437a6b037789685f5ce9e9",
+  "bounds": {
+    "min": [
+      -7.5,
+      0.000007629627368999081,
+      -0.6218909268471328
+    ],
+    "max": [
+      7.5,
+      6.499992370372631,
+      0.6218909268471328
+    ]
+  },
+  "method": "Decoded final Meshopt GLB, actual model(width15) centering; SAT triangle intersection with conservative continuous swept AABBs. All x travel and hook heights covered, no temporal sampling.",
+  "volumes": [
+    {
+      "name": "trolley full X travel at proposed Y5.5",
+      "min": [
+        -6.15,
+        5.225,
+        -0.6
+      ],
+      "max": [
+        6.15,
+        5.775,
+        0.6
+      ],
+      "intersections": 0
+    },
+    {
+      "name": "hook conservative full motion AABB",
+      "min": [
+        -5.86,
+        0.34,
+        -0.08
+      ],
+      "max": [
+        5.86,
+        4.96,
+        0.08
+      ],
+      "intersections": 0
+    },
+    {
+      "name": "cable conservative full motion AABB",
+      "min": [
+        -5.54,
+        0.9,
+        -0.04
+      ],
+      "max": [
+        5.54,
+        5.45,
+        0.04
+      ],
+      "intersections": 0
+    }
+  ],
+  "centralBeamMinY": 5.800271614734337,
+  "trolleyTopY": 5.775,
+  "verticalClearance": 0.025271614734336367,
+  "oldTrolleyAtY5_7": {
+    "intersectingTriangles": 221,
+    "expectedFailure": true
+  },
+  "pass": true,
+  "limits": "Requires integration trolley centreY5.5 as proposed m0476; payload and neighbouring factory machines not covered."
+}

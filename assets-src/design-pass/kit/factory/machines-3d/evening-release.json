@@ -1,0 +1,73 @@
+{
+  "task": "factory-machines-evening",
+  "models": [
+    {
+      "name": "robot-arm",
+      "path": "public/models/robot-arm.glb",
+      "bytes": 119108,
+      "triangles": 3922,
+      "sha256": "f18d66e7fd898968e5d15749d8a647997086d7fc146c4d11cfff8ce65d4d1842",
+      "report": "robot-arm/model-report.json",
+      "assetQA": "accepted",
+      "gameQA": "pending Claude integration"
+    },
+    {
+      "name": "grinder",
+      "path": "public/models/grinder.glb",
+      "bytes": 104888,
+      "triangles": 3800,
+      "sha256": "60f83ae983fd7710eb17ef20db4b9d2d2f9d6355a2b30618526d8580a32f1f05",
+      "report": "grinder/model-report.json",
+      "assetQA": "accepted",
+      "gameQA": "pending Claude integration"
+    },
+    {
+      "name": "gantry-crane",
+      "path": "public/models/gantry-crane.glb",
+      "bytes": 99268,
+      "triangles": 2915,
+      "sha256": "ebb84cbe49f5e2a7b90c4c3c9b434929de412a25a0437a6b037789685f5ce9e9",
+      "report": "gantry-crane/model-report.json",
+      "assetQA": "accepted",
+      "gameQA": "pending Claude integration"
+    },
+    {
+      "name": "paint-tank",
+      "path": "public/models/paint-tank.glb",
+      "bytes": 95868,
+      "triangles": 3907,
+      "sha256": "5f24446ff4dc2b6e122a5cfb137de2845b946fc137f1a423d93eff9f0a289e06",
+      "report": "evening-paint/paint-tank-report.json",
+      "assetQA": "accepted",
+      "gameQA": "pending Claude integration"
+    },
+    {
+      "name": "paint-booth",
+      "path": "public/models/paint-booth.glb",
+      "bytes": 119544,
+      "triangles": 2948,
+      "sha256": "4486faa0fb39a629e332b7026c1a06924a6fc94fd75d57eef1dade9bcb189d90",
+      "report": "evening-paint/paint-booth-report.json",
+      "assetQA": "accepted",
+      "gameQA": "pending Claude integration"
+    }
+  ],
+  "totalBytes": 538676,
+  "totalTriangles": 17492,
+  "studioCredits": {
+    "mainRobot": 25,
+    "mainGrinder": 25,
+    "mainGantry": 25,
+    "workerPaintPair": 50,
+    "boothFreeRetry": 0,
+    "total": 125,
+    "observedBalanceAfterGantry": 5275,
+    "spendingCap": null
+  },
+  "note": "Prior eight-model batch separately accepted, not repeated. Existing Studio credits authorized by owner as necessary;125 is actual spend for this batch, not a cap.",
+  "repositoryChecks": {
+    "tests": 88,
+    "files": 17,
+    "typecheck": "PASS"
+  }
+}

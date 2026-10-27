@@ -1,0 +1,21 @@
+{
+  "id": "d7332085-4543-4c52-b161-8a75e26e3791",
+  "url": "https://studio.tripo3d.ai/ru/workspace/generate/yellow-steel-frame-gantry-with-teal-base-metal-bolts-and-beams-d7332085-4543-4c52-b161-8a75e26e3791",
+  "credits": 25,
+  "balanceBefore": 5300,
+  "balanceAfter": 5275,
+  "reference": "reference.png",
+  "referenceSha256": "f23f92647b7628781096511e2f7ebfc5cdc0ed5fe209f6f7890053184607aee5",
+  "sourceSha256": "d62e719d5242ad64a91625952935f9b516751710b7bd16adab9530f9f293080d",
+  "settings": {
+    "model": "H3.1",
+    "targetTriangles": 4000,
+    "texture": "2K",
+    "delight": true,
+    "pbr": false,
+    "ultra": false,
+    "parts": false
+  },
+  "status": "optimized-native-qa-passed-awaiting-integration",
+  "authorization": "Owner necessary existing Studio credits and model uploads within project; assigned m0468, dimensions corrected m0473; no purchases"
+}

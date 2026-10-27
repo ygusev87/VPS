@@ -1,0 +1,57 @@
+{
+  "sha256": "ebb84cbe49f5e2a7b90c4c3c9b434929de412a25a0437a6b037789685f5ce9e9",
+  "loader": "actual loadModels/model and Gantry class; source unchanged by Codex",
+  "nativeScreenshotSizes": {
+    "gantry-left-1024.jpg": [
+      1024,
+      768
+    ],
+    "gantry-trolley-1024.jpg": [
+      1024,
+      768
+    ],
+    "gantry-trolley-old-overlap-1024.jpg": [
+      1024,
+      768
+    ],
+    "gantry-right-front-1024.jpg": [
+      1024,
+      768
+    ],
+    "gantry-left-390.jpg": [
+      390,
+      844
+    ],
+    "gantry-trolley-390.jpg": [
+      390,
+      844
+    ],
+    "gantry-back-390.jpg": [
+      390,
+      844
+    ]
+  },
+  "visuallyInspected": [
+    "gantry-left-1024.jpg",
+    "gantry-trolley-1024.jpg",
+    "gantry-right-front-1024.jpg",
+    "gantry-left-390.jpg",
+    "gantry-trolley-390.jpg",
+    "gantry-back-390.jpg"
+  ],
+  "comparisonOnly": [
+    "gantry-trolley-old-overlap-1024.jpg"
+  ],
+  "browserErrors": [],
+  "browserWarnings": [],
+  "proposedTrolleyCentreY": 5.5,
+  "runtimeEditPending": "Claude m0476: trolley centreY5.7 -> 5.5",
+  "geometry": "all motion sweeps pass, vertical clearance 0.02527",
+  "repositoryChecks": {
+    "tests": 88,
+    "files": 17,
+    "typecheck": "PASS"
+  },
+  "fullFactoryIntegration": "pending Claude",
+  "physicalIPad": "not tested"
+}

@@ -1,0 +1,104 @@
+{
+  "sourceSha256": "d62e719d5242ad64a91625952935f9b516751710b7bd16adab9530f9f293080d",
+  "outputSha256": "ebb84cbe49f5e2a7b90c4c3c9b434929de412a25a0437a6b037789685f5ce9e9",
+  "bytes": 99268,
+  "triangles": 2915,
+  "bounds": {
+    "min": [
+      -7.5,
+      0.000007629627368999081,
+      -0.6218909268471328
+    ],
+    "max": [
+      7.5,
+      6.499992370372631,
+      0.6218909268471328
+    ]
+  },
+  "mapping": {
+    "lowerAbsX": [
+      [
+        0,
+        0
+      ],
+      [
+        0.4,
+        6.45
+      ],
+      [
+        0.4397583,
+        6.7
+      ],
+      [
+        0.4553375,
+        7
+      ],
+      [
+        0.47091675,
+        7.3
+      ],
+      [
+        0.5,
+        7.5
+      ]
+    ],
+    "y": [
+      [
+        0,
+        0
+      ],
+      [
+        0.02,
+        0.2
+      ],
+      [
+        0.28,
+        5.5
+      ],
+      [
+        0.298,
+        5.8
+      ],
+      [
+        0.3677978515625,
+        6.5
+      ]
+    ],
+    "zScale": 9.16,
+    "upperZScale": 8.9
+  },
+  "materials": 1,
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "fit": {
+    "width": 15
+  },
+  "placement": [
+    0,
+    0,
+    0
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "processing": "Original generated frame/atlas, locally warped to exact gameplay dimensions. No trolley, cable, hook, control box or terminals in GLB."
+}

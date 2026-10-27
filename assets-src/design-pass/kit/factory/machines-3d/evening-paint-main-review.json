@@ -1,0 +1,36 @@
+{
+  "commits": {
+    "paint-tank": "5511218",
+    "paint-booth": "4f48e47"
+  },
+  "reviewer": "main codex",
+  "checks": {
+    "paint-tank": {
+      "sha256": "5f24446ff4dc2b6e122a5cfb137de2845b946fc137f1a423d93eff9f0a289e06",
+      "bytes": 95868,
+      "matchesWorkerReport": true,
+      "geometryPass": true
+    },
+    "paint-booth": {
+      "sha256": "4486faa0fb39a629e332b7026c1a06924a6fc94fd75d57eef1dade9bcb189d90",
+      "bytes": 119544,
+      "matchesWorkerReport": true,
+      "geometryPass": true
+    }
+  },
+  "visuals": [
+    "paint-tank-390.jpg",
+    "paint-tank-1024-outlet.jpg",
+    "paint-booth-390.jpg",
+    "paint-booth-1024-through-minus-x.jpg",
+    "paint-booth-1024-bottom.jpg"
+  ],
+  "verdict": "asset QA accepted for integration; runtime acceptance pending",
+  "findings": [
+    "Tank outlet +X is visibly open; base/texture/silhouette accepted.",
+    "Booth walls and roof retained; no floor; through opening accepted.",
+    "Worker geometric reports confirm tank bore and full 1.4×1.0 X tunnel; public SHA match report."
+  ],
+  "workerChecks": "88 tests/typecheck PASS; no unnecessary rerun of accepted assets",
+  "physicalIPad": "not tested"
+}
