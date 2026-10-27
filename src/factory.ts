@@ -452,20 +452,35 @@ export class FactoryMap extends StoryMap {
       s.position.set(x, 0.6, 0);
       hall.add(s);
     }
-    for (let x = -36; x <= 36; x += 8) {
-      const win = mesh(new THREE.BoxGeometry(5, 1.6, 0.1), glass, false);
-      win.position.set(x, 3.4, -D / 2 + 0.65);
-      hall.add(win);
-    }
-    // A pipe along the back wall with red valves.
-    const pipe = mesh(new THREE.CylinderGeometry(0.18, 0.18, W - 4, 12), mat('#9aa3ad', 0.35, 0.7));
-    pipe.rotation.z = Math.PI / 2;
-    pipe.position.set(0, 2.2, -D / 2 + 1);
-    hall.add(pipe);
-    for (const x of [-22, -4, 14]) {
-      const valve = mesh(new THREE.TorusGeometry(0.3, 0.07, 8, 16), mat('#e8483f', 0.4));
-      valve.position.set(x, 2.2, -D / 2 + 1.35);
-      hall.add(valve);
+    // The back wall: Codex's painted wall (brick, framed windows, pipes, a teal band) when the kit has it,
+    // one picture to every 20 (4 × its height of 5); else code windows, a pipe and its valves.
+    const wallPic = this.kit ? kitPieces('factory', 'factory-wall-back', true)[0] : undefined;
+    if (wallPic) {
+      const t = wallPic.clone();
+      t.wrapS = THREE.RepeatWrapping;
+      t.repeat.set((W - 1.2) / 20, 1);
+      t.needsUpdate = true;
+      // Lit like the rest of the hall (not unlit): dark before the lights come on, like everything else.
+      const face = new THREE.Mesh(new THREE.PlaneGeometry(W - 1.2, 5), new THREE.MeshStandardMaterial({ map: t, roughness: 0.95 }));
+      face.receiveShadow = true;
+      face.position.set(0, 2.5, -D / 2 + 0.61);
+      this.scenery.add(face);
+    } else {
+      for (let x = -36; x <= 36; x += 8) {
+        const win = mesh(new THREE.BoxGeometry(5, 1.6, 0.1), glass, false);
+        win.position.set(x, 3.4, -D / 2 + 0.65);
+        hall.add(win);
+      }
+      // A pipe along the back wall with red valves.
+      const pipe = mesh(new THREE.CylinderGeometry(0.18, 0.18, W - 4, 12), mat('#9aa3ad', 0.35, 0.7));
+      pipe.rotation.z = Math.PI / 2;
+      pipe.position.set(0, 2.2, -D / 2 + 1);
+      hall.add(pipe);
+      for (const x of [-22, -4, 14]) {
+        const valve = mesh(new THREE.TorusGeometry(0.3, 0.07, 8, 16), mat('#e8483f', 0.4));
+        valve.position.set(x, 2.2, -D / 2 + 1.35);
+        hall.add(valve);
+      }
     }
     // Codex's painted things on the back wall (wall-contract.json): a tool board and the safety signs.
     for (const [name, w, h, x, y] of [['factory-tool-board', 2, 1.30078125, -12, 0.75], ['factory-safety-signs', 2.4, 0.8015625, -8, 0.9]] as const) {
