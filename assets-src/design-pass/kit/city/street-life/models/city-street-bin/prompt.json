@@ -1,0 +1,21 @@
+{
+  "id": "city-street-bin",
+  "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, soft rounded bevels, clean coherent chunky geometry, warm cream, turquoise, coral and golden-yellow accents matching a miniature toy-town kiosk. Elevated three-quarter front-right view, whole object centred with generous white margin, plain pure white background, soft even neutral studio light, minimal contact shadow. No people, animals, readable text, logos, pavement, grass, diorama, surrounding props or broad ground plate. Simple robust forms suitable for fewer than 4000 triangles and one baked opaque texture; no glass or transparency. Subject: the STATIC OPEN BODY ONLY of a miniature street trash bin; a hinged lid and a cat will be added later by game code, so they MUST NOT appear. Overall width:height:depth .76:.9:.76, a round slightly tapered cylinder, top diameter .76 and base diameter .64. Teal painted metal shell with eight broad shallow vertical ribs, cream rolled upper rim, small low coral foot ring flush with bottom. The top is a WIDE visibly empty circular opening with at least .56 inner diameter relative to .76 exterior, thick walls and a dark visible interior descending deep into the bin, no plate sealing the opening. NO LID anywhere in frame, NO HANDLE above rim, NO CAT, no contents, no side apertures. No black opaque disk pretending to be hollow; show inner side wall and depth. Leave rear rim uncluttered for a coded hinge. One grounded body only.",
+  "method": "built-in image_gen",
+  "useCase": "stylized-concept",
+  "calls": 1,
+  "source": "refs/city-street-bin.png",
+  "sha256": "f54d5b9c1ca3d8c8fc1ba4fca4747a26825f009469c429e1e46917a9717d0385",
+  "bytes": 1491738,
+  "pixelSize": [
+    1295,
+    1214
+  ],
+  "visualReview": "accepted-as-reference-not-3d-geometry",
+  "reviewNotes": "Open shell only: image suggests depth but does not prove geometric openness. Require real unobstructed top opening >=.56 after fitting; preserve coded .84 lid/cat.",
+  "targetXYZ": [
+    0.76,
+    0.9,
+    0.76
+  ]
+}

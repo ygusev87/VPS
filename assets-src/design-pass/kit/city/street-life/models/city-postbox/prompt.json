@@ -1,0 +1,21 @@
+{
+  "id": "city-postbox",
+  "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, soft rounded bevels, clean coherent chunky geometry, warm cream, turquoise, coral and golden-yellow accents matching a miniature toy-town kiosk. Elevated three-quarter front-right view, whole object centred with generous white margin, plain pure white background, soft even neutral studio light, minimal contact shadow. No people, animals, readable text, logos, pavement, grass, diorama, surrounding props or broad ground plate. Simple robust forms suitable for fewer than 4000 triangles and one baked opaque texture; no glass or transparency. Subject: the STATIC BODY AND POST ONLY of a small toy mailbox, without flag or letter; those are animated later in code. Overall width:height:depth approximately .44:1.22:.60, a narrow warm wooden square support post holds a dark turquoise rural-style elongated mailbox with rounded semicircular roof and flat lower box, closed cream front door facing camera, coral trim outline, a single simple circular brass knob. Post rises from ground to the underside of the mailbox; the box upper silhouette is about the top third of total height. Mailbox width less than its front-to-back depth. Narrow side walls entirely clean and empty so a coded flag can be attached at the right. NO FLAG, no flagpole, NO LETTER, no envelope symbol, no printed words, no mail slot, no broad foot, no ground patch, no second mailbox. One coherent grounded object.",
+  "method": "built-in image_gen",
+  "useCase": "stylized-concept",
+  "calls": 1,
+  "source": "refs/city-postbox.png",
+  "sha256": "22c5d06ff5708a76080e7e9db688c0cdcaeda2be5379baf4db07c99e3e5a1f55",
+  "bytes": 1261153,
+  "pixelSize": [
+    1024,
+    1536
+  ],
+  "visualReview": "accepted-as-reference-not-3d-geometry",
+  "reviewNotes": "Shell/post only, no flag or letter. Native assembly must preserve coded flag pivot (.24,.95,.1) and letter; geometry cannot fill their motion clearance.",
+  "targetXYZ": [
+    0.44,
+    1.22,
+    0.6
+  ]
+}

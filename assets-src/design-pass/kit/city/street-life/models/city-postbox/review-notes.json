@@ -1,0 +1,6 @@
+{
+  "visual": "Static shell/post only, no generated flag or letter; front door+Z, back has smaller painted door treatment; no ground plate.",
+  "contacts": "Single post base meetsY0 within.0001",
+  "geometry": "Dimensional XYZ fit to .44\u00d71.22\u00d7.6 (not uniform); source normals transformed via inverse transpose; bottom1mm snap only; no triangles cut or added",
+  "additionalQA": "shell-clearance.json: continuous flag rotation0..-pi/2 has >=.0069595 lateral separation in sweptY/Z region; original pivot(.24,.95,.1). Letter emergence intersection intentionally retained; letter fully beyond shell atf>.06529 by conservative sphere bound. Own native assembly preserves geometry and motion from src/life.ts."
+}

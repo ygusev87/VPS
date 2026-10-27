@@ -1,0 +1,36 @@
+{
+  "common": {
+    "maxTriangles": 4000,
+    "targetMaxBytes": 150000,
+    "materials": 1,
+    "alphaMode": "OPAQUE",
+    "texture": "512 WebP",
+    "compression": "Meshopt",
+    "front": "+Z",
+    "baseY": 0,
+    "centerXZ": [
+      0,
+      0
+    ],
+    "skins": 0,
+    "animations": 0,
+    "groundPlate": false
+  },
+  "item": {
+    "id": "city-postbox",
+    "label": "\u041f\u043e\u0447\u0442\u043e\u0432\u044b\u0439 \u044f\u0449\u0438\u043a \u0443 \u0431\u0430\u0431\u0443\u0448\u043a\u0438 \u2014 \u0437\u0430\u043c\u0435\u043d\u0430 \u043a\u043e\u0440\u043f\u0443\u0441\u0430",
+    "reference": "assets-src/design-pass/kit/city/street-life/references/remaining/refs/city-postbox.png",
+    "referenceSha256": "22c5d06ff5708a76080e7e9db688c0cdcaeda2be5379baf4db07c99e3e5a1f55",
+    "targetXYZ": [
+      0.44,
+      1.22,
+      0.6
+    ],
+    "scope": [
+      "models/city-postbox/",
+      "public/models/city-postbox.glb"
+    ],
+    "requirements": "Shell/post only, no flag or letter. Native assembly must preserve coded flag pivot (.24,.95,.1) and letter; geometry cannot fill their motion clearance."
+  },
+  "specialQA": "Static shell/post only, no generated flag/letter. Original flag pivot(.24,.95,.1), rotateZ0..-pi/2, preserve original code. Check lateral shell clearance through sweep in own QA fixture; letter starts emerging near(.35,1.05,0). Document intentional letter emergence instead of claiming zero overlaps everywhere. If source proportions obstruct, preserve candidate and report exact blocker before destructive cuts."
+}

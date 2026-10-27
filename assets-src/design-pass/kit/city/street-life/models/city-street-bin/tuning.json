@@ -1,0 +1,26 @@
+{
+  "reviewed": true,
+  "targetXYZ": [
+    0.76,
+    0.9,
+    0.76
+  ],
+  "height": 0.9,
+  "rotationY": 0,
+  "targetTriangles": 4000,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "dimensional-fit",
+  "floorSnap": 0.001,
+  "recomputeNormals": true,
+  "bottomFit": {
+    "height": 0.05,
+    "blendEnd": 0.15,
+    "diameter": 0.64
+  },
+  "smoothAcrossUVSeams": true
+}

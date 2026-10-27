@@ -140,3 +140,34 @@ public/models/city-poster-column.glb:80,476bytes,3592tri,oneOPAQUE/512WebP/Mesho
 ## READY — city-drinking-fountain
 
 public/models/city-drinking-fountain.glb:73,952bytes,3808tri,oneOPAQUE/512WebP/Meshopt;SHA `6ddb7af396a093f641e47b679106db914f1b90c60d31c7adab68411c983b2421`. ActualXYZ0.698590 × 0.919343 × 0.699993;uniform contain in target envelope [0.7, 1, 0.7]. Front+Z,centreXZ0,baseY0±.0001. Single connected base reachesY0; all four accent corners remain attached. Uniform containment, rotation0, bottom1mm flattened only Native390/1024 four views PASS,0errors/overflow,validator0errors/warnings,88tests/TypeScriptPASS. basin.json: three rim rays sit at least0.07724 above centre, proving actual concavity; no plumbing functionality claimed. Tripo25credits4800→4775,one attempt. Ready individually; rest ofcard continues.
+
+## READY — city-street-bin
+
+public/models/city-street-bin.glb:85,484bytes,3536tri,oneOPAQUE/512WebP/Meshopt;SHA `178e7322c967191c2a9252ff33113c617c87b0400fd182bed2cef105feac29d1`. ActualXYZ0.760002 × 0.900000 × 0.760002;dimensional fit to coded shell envelope [0.76, 0.9, 0.76]. Front+Z,centreXZ0,baseY0±.0001. One connected bottom ring/base meetsY0 within.0001. Dimensional XYZ fit (not uniform), bottom diameter fit.64 in Y0..05 with linear blend to unmodified profile byY.15, bottom1mm snap; recomputed area-weighted smooth normals across UV seams; no triangles cut or added Native390/1024 four views PASS,0errors/overflow,validator0errors/warnings,88tests/TypeScriptPASS. shell-clearance.json: entire free cylinder aboveY.5 diameter.58253; cat radial clearance.02085. Continuous lid sweep certified with inflated convex planes: contact limited to top12.1mm rim atangles0..0.26rad, no deeper collision and no contact beyond.26; contact narrower than original coded shell baseline. Own native assembly preserves exact geometry/pivots/motion from src/life.ts. See assembly.mjs and assembly screenshots. Tripo25credits4775→4750,one attempt. Ready individually; rest ofcard continues.
+
+## READY — city-postbox
+
+public/models/city-postbox.glb:67,388bytes,3501tri,oneOPAQUE/512WebP/Meshopt;SHA `2352c8426f5b526c22c8c757a5864a0dd2c947a6f71b4f524cc981c6576e5fe6`. ActualXYZ0.440015 × 1.220000 × 0.600003;dimensional fit to coded shell envelope [0.44, 1.22, 0.6]. Front+Z,centreXZ0,baseY0±.0001. Single post base meetsY0 within.0001. Dimensional XYZ fit to .44×1.22×.6 (not uniform); source normals transformed via inverse transpose; bottom1mm snap only; no triangles cut or added Native390/1024 four views PASS,0errors/overflow,validator0errors/warnings,88tests/TypeScriptPASS. shell-clearance.json: continuous flag rotation0..-pi/2 has >=.0069595 lateral separation in sweptY/Z region; original pivot(.24,.95,.1). Letter emergence intersection intentionally retained; letter fully beyond shell atf>.06529 by conservative sphere bound. Own native assembly preserves geometry and motion from src/life.ts. Tripo25credits4750→4725,one attempt. Ready individually; rest ofcard continues.
+
+## COMPLETE — city remaining batch 02 — 2026-10-27
+
+All eight individually READY. Local assets and QA complete; final placement/manifest/runtime acceptance remains main + Claude. No new orders beyond this card. All use one node, mesh, primitive, OPAQUE material,512 WebP,Meshopt; no skins/animations. Node matrices and transformed bounds now recorded in each structure.json (no binary changes to first six).
+
+| Model | Bytes | Triangles | Actual XYZ |
+|---|---:|---:|---|
+| city-fruit-stall | 96604 | 3284 | 2.179267 × 2.076845 × 1.599983 |
+| city-bike-rack | 99320 | 3688 | 1.703340 × 1.055731 × 1.599997 |
+| city-playground | 91004 | 3663 | 2.999163 × 1.463656 × 2.799994 |
+| city-flower-planter | 93316 | 3820 | 0.900000 × 0.831883 × 0.894122 |
+| city-poster-column | 80476 | 3592 | 0.900011 × 1.732300 × 0.896628 |
+| city-drinking-fountain | 73952 | 3808 | 0.698590 × 0.919343 × 0.699993 |
+| city-street-bin | 85484 | 3536 | 0.760002 × 0.900000 × 0.760002 |
+| city-postbox | 67388 | 3501 | 0.440015 × 1.220000 × 0.600003 |
+
+Eight Studio orders,one attempt each,25 included credits each: total200; observed ledger4925→4725. No retries or new reference generation. Approved source images/SHA and prompts retained; source GLB SHA/bytes, order task IDs, settings/screenshots and all local edits in own model folders.
+
+Last local checks:17files/88tests PASS,TypeScript PASS; native GLTFLoader1024×768 four views and390×844 for every model,zero warnings/errors/overflow. Browser byte counts match final GLB reports. Shell assembly fixtures additionally tested closed/mid/open at1024 and open at390. Native browser QA is not physical iPad acceptance.
+
+Shell handoff: bin .76×.9×.76, bottom .64; free cylinder diameter.58253 aboveY.5; cat radial gap.02085. Continuous lid certificate records intentional top12.1mm rim contact only near closed pose(0..0.26rad), fully clear afterwards. Postbox .44×1.22×.6 with continuous flag separation>=.0069595 and unchanged pivot/motion; initial letter emergence overlap is intentional. Both shell sources dimensionally fitted, not uniformly fitted; no cuts.
+
+Original six retain uniform proportions and their measured dimensions: do not force preliminary card heights. These committed models do not imply full city integration or final game approval.

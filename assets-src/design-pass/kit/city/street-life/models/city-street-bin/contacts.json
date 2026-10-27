@@ -1,0 +1,22 @@
+{
+  "name": "city-street-bin",
+  "limit": 0.03,
+  "groups": [
+    {
+      "vertices": 116,
+      "min": [
+        -0.3186681638046438,
+        0,
+        -0.3191213636583567
+      ],
+      "max": [
+        0.32133242961131947,
+        0.029457990491336017,
+        0.32087922975760663
+      ]
+    }
+  ],
+  "pass_": true,
+  "tolerance": 0.0001,
+  "review": "One connected bottom ring/base meetsY0 within.0001"
+}

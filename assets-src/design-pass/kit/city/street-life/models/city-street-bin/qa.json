@@ -1,0 +1,147 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85484,\"triangles\":3536,\"materials\":1,\"bounds\":{\"min\":[-0.38000121067378445,0,-0.38000121067378445],\"max\":[0.38000121067378445,0.8999999761581421,0.38000121067378445]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85484,\"triangles\":3536,\"materials\":1,\"bounds\":{\"min\":[-0.38000121067378445,0,-0.38000121067378445],\"max\":[0.38000121067378445,0.8999999761581421,0.38000121067378445]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85484,\"triangles\":3536,\"materials\":1,\"bounds\":{\"min\":[-0.38000121067378445,0,-0.38000121067378445],\"max\":[0.38000121067378445,0.8999999761581421,0.38000121067378445]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85484,\"triangles\":3536,\"materials\":1,\"bounds\":{\"min\":[-0.38000121067378445,0,-0.38000121067378445],\"max\":[0.38000121067378445,0.8999999761581421,0.38000121067378445]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85484,\"triangles\":3536,\"materials\":1,\"bounds\":{\"min\":[-0.38000121067378445,0,-0.38000121067378445],\"max\":[0.38000121067378445,0.8999999761581421,0.38000121067378445]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "assemblyChecks": [
+    {
+      "data": {
+        "assembly": "{\"kind\":\"city-street-bin\",\"k\":0}",
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85484,\"triangles\":3536,\"materials\":1,\"bounds\":{\"min\":[-0.38000121067378445,0,-0.38000121067378445],\"max\":[0.38000121067378445,0.8999999761581421,0.38000121067378445]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "assembly": "{\"kind\":\"city-street-bin\",\"k\":0.125}",
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85484,\"triangles\":3536,\"materials\":1,\"bounds\":{\"min\":[-0.38000121067378445,0,-0.38000121067378445],\"max\":[0.38000121067378445,0.8999999761581421,0.38000121067378445]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "assembly": "{\"kind\":\"city-street-bin\",\"k\":0.6}",
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85484,\"triangles\":3536,\"materials\":1,\"bounds\":{\"min\":[-0.38000121067378445,0,-0.38000121067378445],\"max\":[0.38000121067378445,0.8999999761581421,0.38000121067378445]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "assembly": "{\"kind\":\"city-street-bin\",\"k\":0.6}",
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":85484,\"triangles\":3536,\"materials\":1,\"bounds\":{\"min\":[-0.38000121067378445,0,-0.38000121067378445],\"max\":[0.38000121067378445,0.8999999761581421,0.38000121067378445]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualPass": true
+}

@@ -1,0 +1,34 @@
+{
+  "flag": {
+    "method": "Continuous analytic bound: stick/cloth localY>=0 and localX>=-.02. For theta0..pi/2, worldX=.24+x*cos(theta)+y*sin(theta)>=.22. All flag points lie Y>=.93 and Z.08..3; clip entire shell triangles to that region and bound their maxX.",
+    "pivot": [
+      0.24,
+      0.95,
+      0.1
+    ],
+    "range": [
+      0,
+      -1.5707963267948966
+    ],
+    "shellMaxXInSweepRegion": 0.2130404554036714,
+    "flagMinX": 0.22,
+    "minimumSeparation": 0.0069595445963286096,
+    "pass": true
+  },
+  "letter": {
+    "method": "Original emergence is intentional: letter halfwidth.17 starts atX.35 so enters shell envelope toX.18; then follows original position/rotation formulas. Do not claim zero overlaps during emergence. Later motion is clear of shell by conservative bounding sphere.",
+    "initialCentre": [
+      0.35,
+      1.05,
+      0
+    ],
+    "halfExtents": [
+      0.17,
+      0.01,
+      0.12
+    ],
+    "boundingRadius": 0.2083266665599966,
+    "fullyBeyondShellAtF": 0.06528888879999718
+  },
+  "pass": true
+}

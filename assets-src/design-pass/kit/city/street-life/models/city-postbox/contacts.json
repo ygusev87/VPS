@@ -1,0 +1,22 @@
+{
+  "name": "city-postbox",
+  "limit": 0.03,
+  "groups": [
+    {
+      "vertices": 67,
+      "min": [
+        -0.08554185814178906,
+        0,
+        -0.05009643966475612
+      ],
+      "max": [
+        0.0867146844884556,
+        0.028780786221372368,
+        0.050505998071528564
+      ]
+    }
+  ],
+  "pass_": true,
+  "tolerance": 0.0001,
+  "review": "Single post base meetsY0 within.0001"
+}

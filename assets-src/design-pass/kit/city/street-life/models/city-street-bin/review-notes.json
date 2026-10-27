@@ -1,0 +1,6 @@
+{
+  "visual": "Open shell only, no generated lid or cat; exterior top .76/bottom .64/height .9; no ground plate.",
+  "contacts": "One connected bottom ring/base meetsY0 within.0001",
+  "geometry": "Dimensional XYZ fit (not uniform), bottom diameter fit.64 in Y0..05 with linear blend to unmodified profile byY.15, bottom1mm snap; recomputed area-weighted smooth normals across UV seams; no triangles cut or added",
+  "additionalQA": "shell-clearance.json: entire free cylinder aboveY.5 diameter.58253; cat radial clearance.02085. Continuous lid sweep certified with inflated convex planes: contact limited to top12.1mm rim atangles0..0.26rad, no deeper collision and no contact beyond.26; contact narrower than original coded shell baseline. Own native assembly preserves exact geometry/pivots/motion from src/life.ts. See assembly.mjs and assembly screenshots."
+}

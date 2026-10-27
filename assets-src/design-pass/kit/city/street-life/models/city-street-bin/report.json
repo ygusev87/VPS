@@ -1,0 +1,113 @@
+{
+  "name": "city-street-bin",
+  "source": "assets-src/raw/city-remaining-2026-10-27/city-street-bin.glb",
+  "sourceSha256": "ca04e3f37353e32830da5c6ab6c9c63026fb6a4b71eac61c7d58b1f4ddb0d38d",
+  "sourceBytes": 711232,
+  "sourceTriangles": 3536,
+  "sourceBounds": {
+    "min": [
+      -0.498260498046875,
+      0,
+      -0.5
+    ],
+    "max": [
+      0.498260498046875,
+      0.94622802734375,
+      0.5
+    ]
+  },
+  "bytes": 85484,
+  "sha256": "178e7322c967191c2a9252ff33113c617c87b0400fd182bed2cef105feac29d1",
+  "triangles": 3536,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.38000121067378445,
+      0,
+      -0.38000121067378445
+    ],
+    "max": [
+      0.38000121067378445,
+      0.8999999761581421,
+      0.38000121067378445
+    ]
+  },
+  "size": [
+    0.7600024213475689,
+    0.8999999761581421,
+    0.7600024213475689
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      0.76,
+      0.9,
+      0.76
+    ],
+    "height": 0.9,
+    "rotationY": 0,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "dimensional-fit",
+    "floorSnap": 0.001,
+    "recomputeNormals": true,
+    "bottomFit": {
+      "height": 0.05,
+      "blendEnd": 0.15,
+      "diameter": 0.64
+    },
+    "smoothAcrossUVSeams": true
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Dimensional fit to coded shell XYZ envelope; centreXZ0; baseY0; recompute area-weighted normals welded across UV seams; no removed triangles",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.001 (soles/wheel contact only)",
+    "Bottom XZ diameter.64 in Y0..05 band; linear blend to original byY.15; no cuts",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true,
+  "structure": {
+    "nodeCount": 1,
+    "meshCount": 1,
+    "primitiveCount": 1,
+    "details": "structure.json"
+  }
+}

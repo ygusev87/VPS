@@ -1,0 +1,36 @@
+{
+  "common": {
+    "maxTriangles": 4000,
+    "targetMaxBytes": 150000,
+    "materials": 1,
+    "alphaMode": "OPAQUE",
+    "texture": "512 WebP",
+    "compression": "Meshopt",
+    "front": "+Z",
+    "baseY": 0,
+    "centerXZ": [
+      0,
+      0
+    ],
+    "skins": 0,
+    "animations": 0,
+    "groundPlate": false
+  },
+  "item": {
+    "id": "city-street-bin",
+    "label": "\u0423\u0440\u043d\u0430 \u0443 \u043c\u0430\u0433\u0430\u0437\u0438\u043d\u0430 \u2014 \u0437\u0430\u043c\u0435\u043d\u0430 \u043a\u043e\u0440\u043f\u0443\u0441\u0430",
+    "reference": "assets-src/design-pass/kit/city/street-life/references/remaining/refs/city-street-bin.png",
+    "referenceSha256": "f54d5b9c1ca3d8c8fc1ba4fca4747a26825f009469c429e1e46917a9717d0385",
+    "targetXYZ": [
+      0.76,
+      0.9,
+      0.76
+    ],
+    "scope": [
+      "models/city-street-bin/",
+      "public/models/city-street-bin.glb"
+    ],
+    "requirements": "Open shell only: image suggests depth but does not prove geometric openness. Require real unobstructed top opening >=.56 after fitting; preserve coded .84 lid/cat."
+  },
+  "specialQA": "Open shell only. Exterior .76 diameter at top/.64 at bottom, height .9. Actual free top opening diameter >=.56, interior must not have false cap. Check geometry/rays through opening in the cat emergence volume. Existing coded lid diameter .84, hinge (0,.92,-.4), rotateX0..-1.9. Reconstruct matching moving parts from src/life.ts in own QA fixture, without editing src. Check lid continuous sweep and cat pop-up; identify intentional closed rim contact separately. No generated lid/cat."
+}
