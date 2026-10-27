@@ -1,0 +1,111 @@
+{
+  "checkedAt": "2026-10-27T12:44:56.090761+00:00",
+  "status": "three-new-static-placements-pass;icecream-paving-fix-pass;existing-flower-mask-and-runtime-gates-remain",
+  "source": "Frozen full-game snapshot at http://127.0.0.1:5341. UI-only city selection, mute, pan and wheel zoom; no game-state or camera injection. Server and tab closed after capture.",
+  "sourceSha256": "fd1c0ce78ceeb9944f6c11ff333ad6b7e10343f72d5dd7ed2c417bb0db5a4f08",
+  "decorSha256": "179c3f582520298bc838281d34c1926d1f4b6a950d31dc9143a1b0547da3deb0",
+  "lifeSha256": "12eb24b5b98d2c5e878495252c974faf130f6f56c39a7f016dd8c3dfa9fc6e41",
+  "lifeSource": "1cf03f0 committed, avoiding unrelated in-progress factory edits",
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "frames": [
+    "overview-1024.jpg",
+    "poster-1024.jpg",
+    "poster-390.jpg",
+    "fountain-1024.jpg",
+    "fountain-390.jpg",
+    "planter-1024.jpg",
+    "planter-390.jpg",
+    "icecream-fix-1024.jpg",
+    "icecream-fix-390.jpg"
+  ],
+  "consoleErrors": 0,
+  "consoleWarnings": 0,
+  "overflow": 0,
+  "fonts": {
+    "viteAllowed": "/Users/gusev/gameios",
+    "computedH1": "Fira Sans Condensed, system-ui, sans-serif",
+    "serverFontWarnings": 0
+  },
+  "viewportProcedure": "Portrait frames captured after the real resize/auto-frame completed, then zoomed using the game UI. Stable final frames, no transient resize view.",
+  "placements": {
+    "city-flower-planter": {
+      "position": [
+        -10,
+        -6.6
+      ],
+      "fit": {
+        "width": 0.9
+      },
+      "paving": false,
+      "nativeStatic": "pass",
+      "anchorMargin": 0.961,
+      "roadGap": 1.953,
+      "observation": "Pot and flowers readable on grass beside park ring at both sizes; no visible neighbour overlap."
+    },
+    "city-poster-column": {
+      "position": [
+        43,
+        -18.5
+      ],
+      "fit": {
+        "width": 0.9
+      },
+      "plaza": [
+        42,
+        -19.5,
+        44,
+        -17.5
+      ],
+      "nativeStatic": "pass",
+      "anchorMargin": 2.237,
+      "roadGap": 15.052,
+      "observation": "Music poster and body readable at both sizes; nearby tree does not cover the front graphic."
+    },
+    "city-drinking-fountain": {
+      "position": [
+        10,
+        6
+      ],
+      "fit": {
+        "depth": 0.7
+      },
+      "sharedPlaygroundPlaza": [
+        4,
+        3.5,
+        11,
+        7.5
+      ],
+      "nativeStatic": "pass",
+      "anchorMargin": 1.511,
+      "roadGap": 2.65,
+      "observation": "Fountain readable beside slide on one shared apron. Existing random flowers still appear on paving; already reported m0516."
+    }
+  },
+  "targetedFixReview": {
+    "m0504": "PASS: icecream paving and kerb visible at native1024 and390, including a readable portrait closeup. Independent check of Claude1cf03f0 fix.",
+    "playgroundPaving": "PASS: current1cf03f0 paving is visible under playground and fountain. Old pre1cf03f0 screenshots do not describe this fixed state.",
+    "m0516": "Still pending: sowFlowers/park planting exclusion not implemented in this source; flowers visible on shared playground apron. No new duplicate defect.",
+    "m0503": "Not independently accepted for complete moving routes/turning sweeps."
+  },
+  "checks": {
+    "tests": "88/88 in17files passed2026-10-27 19:30:59 Asia/Bangkok",
+    "typecheck": "pass",
+    "preflight": "All six static batch02 placements use measured GLB bounds and have issues[]. Margins are conservative source calculations, not observed moving collision results.",
+    "codeChange": "3 DECOR groups; extend playground apron once and add one poster apron;7PLAZAS total; no additional greenery removed."
+  },
+  "limitations": [
+    "Static geometry/readability acceptance only; no complete14-task playthrough or route collision sweep.",
+    "Interactive bin/postbox body replacement belongs to Claude and is not accepted by these frames.",
+    "No physical iPad/PWA, performance measurement or audio/touch acceptance.",
+    "Accepted source GLB/contact/ray QA not repeated."
+  ]
+}

@@ -819,9 +819,9 @@
     }
   ],
   "layout": {
-    "status": "first-three-placed; fruit-bike-static-pass; playground-lawn-flower-gate; five-models-await-main-acceptance",
+    "status": "all-eight-assets-measured;six-static-batch02-placements-pass;interactive-and-runtime-gates-remain",
     "task": "city-street-life",
-    "scope": "Eight remaining model types, nine placements. Three models accepted and placed in city-decor; other five still in the active worker batch. Interactive toys remain shell replacements.",
+    "scope": "Eight accepted model types, nine locations. Six static batch02 types placed in city-decor; two existing interactive shell types remain with Claude.",
     "routeClearance": {
       "radius": 0.85,
       "basis": "Conservative rounded half-diagonal of largest accepted city pedestrian footprint (dog-walker); root routes and turning sweeps still require runtime review."
@@ -859,7 +859,8 @@
           "heightAlternative": 2.0768448700382276,
           "uniformOnly": true
         },
-        "nativeReview": "qa/three-props-integration/review.json"
+        "nativeReview": "qa/three-props-integration/review.json",
+        "sha256": "3ffb69ac79bd94c27a9afa2d5b11e560871994bb4a016351d7b1a7083e97c9be"
       },
       {
         "id": "city-bike-rack",
@@ -893,7 +894,8 @@
           "heightAlternative": 1.05573064011512,
           "uniformOnly": true
         },
-        "nativeReview": "qa/three-props-integration/review.json"
+        "nativeReview": "qa/three-props-integration/review.json",
+        "sha256": "2cc74edf2bfc1a849fd6ec7ee7d20ae077ed32c504b46714d6371f13c2bf217c"
       },
       {
         "id": "city-poster-column",
@@ -914,8 +916,19 @@
           44,
           -17.5
         ],
-        "mode": "static-proposal",
-        "note": "Pictorial music/theatre posters only; no small readable text. Connection to club paving requires Claude review."
+        "mode": "static-placed",
+        "note": "Pictorial music/theatre posters only; no small readable text. Connection to club paving requires Claude review.",
+        "actualXYZ": [
+          0.9000114110055527,
+          1.7322999238967896,
+          0.8966279094604191
+        ],
+        "sha256": "cab75686b6f4e99cabb447409207d3395c77f02587b18c8468c0cc4f1b9f20a5",
+        "runtimeFit": {
+          "width": 0.9,
+          "uniformOnly": true
+        },
+        "nativeReview": "qa/final-props-integration/review.json"
       },
       {
         "id": "city-drinking-fountain",
@@ -931,13 +944,25 @@
         ],
         "yaw": 0,
         "pad": [
-          9.3,
-          5.3,
-          10.7,
-          6.9
+          4,
+          3.5,
+          11,
+          7.5
         ],
-        "mode": "static-proposal",
-        "note": "Static dry basin/spout; no new water interaction required. Park overlay must cover lawn before acceptance."
+        "mode": "static-placed",
+        "note": "Dry decorative fountain; common apron extended east to11, no duplicate overlay or internal kerb.",
+        "actualXYZ": [
+          0.6985904661490098,
+          0.9193426966667175,
+          0.6999933145890053
+        ],
+        "sha256": "6ddb7af396a093f641e47b679106db914f1b90c60d31c7adab68411c983b2421",
+        "runtimeFit": {
+          "depth": 0.7,
+          "uniformOnly": true
+        },
+        "sharedPadWith": "city-playground",
+        "nativeReview": "qa/final-props-integration/review.json"
       },
       {
         "id": "city-flower-planter",
@@ -953,8 +978,19 @@
         ],
         "yaw": 0,
         "pad": null,
-        "mode": "static-proposal",
-        "note": "One planter for first placement; no mass duplication. Keep kitten route and inner ring walkway free."
+        "mode": "static-placed",
+        "note": "One planter for first placement; no mass duplication. Keep kitten route and inner ring walkway free.",
+        "actualXYZ": [
+          0.8999999761581421,
+          0.8318826648122091,
+          0.8941221113887753
+        ],
+        "sha256": "b70711c1692b29deb98645ba99a95a0fb7809a419ee885079450b43e4f26e068",
+        "runtimeFit": {
+          "width": 0.9,
+          "uniformOnly": true
+        },
+        "nativeReview": "qa/final-props-integration/review.json"
       },
       {
         "id": "city-playground",
@@ -972,7 +1008,7 @@
         "pad": [
           4,
           3.5,
-          9.5,
+          11,
           7.5
         ],
         "mode": "static-placed",
@@ -988,7 +1024,9 @@
           "heightAlternative": 1.4636559383431216,
           "uniformOnly": true
         },
-        "nativeReview": "qa/three-props-integration/review.json"
+        "nativeReview": "qa/three-props-integration/review.json",
+        "sha256": "d967d613770cf2ec5ce9a397876dee5d66dff32f8e13dc8ae499ce671b30ad04",
+        "pavingFollowupReview": "qa/final-props-integration/review.json"
       },
       {
         "id": "city-street-bin",
@@ -1005,7 +1043,17 @@
         "yaw": 0.3,
         "pad": null,
         "mode": "existing-interactive-shell",
-        "note": "Replace only bin body in city-specific integration, preserve lid/cat/tap/sound/rest. Existing moving lid diameter .84; open top inner diameter >=.56 at y=.9. No cap or generated cat. Existing placement requires pedestrian route exclusion."
+        "note": "Replace only bin body in city-specific integration, preserve lid/cat/tap/sound/rest. Existing moving lid diameter .84; open top inner diameter >=.56 at y=.9. No cap or generated cat. Existing placement requires pedestrian route exclusion.",
+        "actualXYZ": [
+          0.7600024213475689,
+          0.8999999761581421,
+          0.7600024213475689
+        ],
+        "sha256": "178e7322c967191c2a9252ff33113c617c87b0400fd182bed2cef105feac29d1",
+        "runtimeFit": {
+          "height": 0.9,
+          "uniformOnly": true
+        }
       },
       {
         "id": "city-street-bin",
@@ -1022,7 +1070,17 @@
         "yaw": -0.4,
         "pad": null,
         "mode": "existing-interactive-shell",
-        "note": "Same asset, same current root coordinate/yaw. Preserve procedural lid/cat. No additional static bin beside the toy."
+        "note": "Same asset, same current root coordinate/yaw. Preserve procedural lid/cat. No additional static bin beside the toy.",
+        "actualXYZ": [
+          0.7600024213475689,
+          0.8999999761581421,
+          0.7600024213475689
+        ],
+        "sha256": "178e7322c967191c2a9252ff33113c617c87b0400fd182bed2cef105feac29d1",
+        "runtimeFit": {
+          "height": 0.9,
+          "uniformOnly": true
+        }
       },
       {
         "id": "city-postbox",
@@ -1039,7 +1097,17 @@
         "yaw": 0,
         "pad": null,
         "mode": "existing-interactive-shell",
-        "note": "Preserve flag pivot (.24,.95,.1), rotateZ 0..-pi/2, and flying letter; shell only, no generated flag/letter. Existing center is close to BASKET: review or relocate root before acceptance, do not hide failing clearance."
+        "note": "Preserve flag pivot (.24,.95,.1), rotateZ 0..-pi/2, and flying letter; shell only, no generated flag/letter. Existing center is close to BASKET: review or relocate root before acceptance, do not hide failing clearance.",
+        "actualXYZ": [
+          0.44001465920333543,
+          1.2200000286102295,
+          0.6000030659216239
+        ],
+        "sha256": "2352c8426f5b526c22c8c757a5864a0dd2c947a6f71b4f524cc981c6576e5fe6",
+        "runtimeFit": {
+          "height": 1.22,
+          "uniformOnly": true
+        }
       }
     ],
     "contracts": {
@@ -1067,13 +1135,12 @@
       }
     },
     "integrationGates": [
-      "All positions provisional until actual GLB dimensions and native in-game occlusion review.",
       "Do not add bin/postbox shells to DECOR: replace the matching city Life toy body without duplicate geometry. Other maps keep existing toys.",
       "PLAZAS are paving, not collision objects; exclude only measured props plus pedestrian turning envelope from walking routes; ensure frontage remains reachable.",
       "Do not automatically delete the listed nearby greenery. Main will remove or relocate explicit items after model acceptance.",
-      "Park items require lawn overlay and random flower masking. Do not reopen old accepted model QA.",
       "Bike rack plaza: exactly two bushes and one flower cluster were removed from city-decor; see placement change record. Shop bin proximity to club is only a square-envelope estimate, so inspect actual building before declaring a collision.",
-      "Worker-batch-02 is active; no parallel Tripo operator. Three measured bodies now placed; accepted model QA is not repeated."
+      "All eight assets accepted; six static batch02 placements independently reviewed at native390/1024. Interactive shells and moving routes remain separate acceptance.",
+      "Paving overlay verified on Claude1cf03f0; m0504 closed. Random flower masking remains open as m0516. No accepted asset QA repeated."
     ]
   }
 }

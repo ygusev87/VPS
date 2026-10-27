@@ -1,8 +1,8 @@
 {
-  "generatedAt": "2026-10-27T12:12:52.253Z",
+  "generatedAt": "2026-10-27T12:30:41.155Z",
   "status": "proposal-with-explicit-integration-gates",
-  "sourceSha256": "eccfc55b9114f9ef1b3aa227a4a73b57cd00b5bd0710d86bf85b845307f7b875",
-  "decorSha256": "dcd7d53a9440f66d0f681bd8bddba7590f34a6c7108c3ac101890cc5a5400cef",
+  "sourceSha256": "fd1c0ce78ceeb9944f6c11ff333ad6b7e10343f72d5dd7ed2c417bb0db5a4f08",
+  "decorSha256": "179c3f582520298bc838281d34c1926d1f4b6a950d31dc9143a1b0547da3deb0",
   "checks": [
     "rotated measured/target AABBs vs axis-aligned road/canal/harbor box",
     "named anchor and protected-line distance using half-diagonal +1.6",
@@ -11,7 +11,7 @@
     "nearby DECOR square estimates"
   ],
   "limitations": [
-    "Three models use independently measured accepted GLB dimensions; remaining models use targets. No rendered occlusion or moving toy sweep in this script.",
+    "All eight models use independently measured accepted GLB dimensions. No rendered occlusion or moving toy sweep in this script.",
     "Pavement analysis is a conservative full-segment check, not the final filtered walker paths.",
     "Named anchors do not capture all instantiated parts or touch zones.",
     "Footprint clearance does not prove frontage connection; pads require integration.",
@@ -33,7 +33,7 @@
         -26,
         -22.4
       ],
-      "mode": "static-placed-pending-review",
+      "mode": "static-placed",
       "rotatedAabb": [
         -27.09,
         -23.2,
@@ -84,7 +84,7 @@
         7,
         -18.5
       ],
-      "mode": "static-placed-pending-review",
+      "mode": "static-placed",
       "rotatedAabb": [
         6.148,
         -19.3,
@@ -126,33 +126,33 @@
       "index": 2,
       "id": "city-poster-column",
       "dimensions": [
-        0.9,
-        2.2,
-        0.9
+        0.9000114110055527,
+        1.7322999238967896,
+        0.8966279094604191
       ],
-      "dimensionsBasis": "target-envelope",
+      "dimensionsBasis": "measured-accepted-GLB",
       "position": [
         43,
         -18.5
       ],
-      "mode": "static-proposal",
+      "mode": "static-placed-pending-native-review",
       "rotatedAabb": [
         42.55,
-        -18.95,
+        -18.948,
         43.45,
-        -18.05
+        -18.052
       ],
-      "anchorRadius": 2.236,
+      "anchorRadius": 2.235,
       "nearestPoint": {
         "name": "BINS",
         "distance": 4.472,
-        "margin": 2.236
+        "margin": 2.237
       },
       "nearestProtectedLine": {
         "name": "RACCOON_PATH",
-        "margin": 3.725
+        "margin": 3.726
       },
-      "roadGap": 15.05,
+      "roadGap": 15.052,
       "canalGap": 3.95,
       "nearestProposedProp": {
         "id": "city-street-bin",
@@ -165,9 +165,9 @@
       },
       "pedestrianEnvelope": [
         41.7,
-        -19.8,
+        -19.798,
         44.3,
-        -17.2
+        -17.202
       ],
       "potentialUnfilteredPedestrianLines": [],
       "nearbyDecor": [],
@@ -177,23 +177,23 @@
       "index": 3,
       "id": "city-drinking-fountain",
       "dimensions": [
-        0.7,
-        1,
-        0.7
+        0.6985904661490098,
+        0.9193426966667175,
+        0.6999933145890053
       ],
-      "dimensionsBasis": "target-envelope",
+      "dimensionsBasis": "measured-accepted-GLB",
       "position": [
         10,
         6
       ],
-      "mode": "static-proposal",
+      "mode": "static-placed-pending-native-review",
       "rotatedAabb": [
-        9.65,
+        9.651,
         5.65,
-        10.35,
+        10.349,
         6.35
       ],
-      "anchorRadius": 2.095,
+      "anchorRadius": 2.094,
       "nearestPoint": {
         "name": "WIND_SPOT",
         "distance": 3.606,
@@ -201,23 +201,23 @@
       },
       "nearestProtectedLine": {
         "name": "KITTEN_WAY",
-        "margin": 21.763
+        "margin": 21.764
       },
       "roadGap": 2.65,
-      "canalGap": 25.05,
+      "canalGap": 25.051,
       "nearestProposedProp": {
         "id": "city-playground",
         "index": 5,
-        "gap": 1.45
+        "gap": 1.451
       },
       "nearestAcceptedProp": {
         "id": "city-icecream-kiosk",
-        "gap": 15.25
+        "gap": 15.251
       },
       "pedestrianEnvelope": [
-        8.8,
+        8.801,
         4.8,
-        11.2,
+        11.199,
         7.2
       ],
       "potentialUnfilteredPedestrianLines": [],
@@ -228,48 +228,48 @@
       "index": 4,
       "id": "city-flower-planter",
       "dimensions": [
-        0.9,
-        0.85,
-        0.9
+        0.8999999761581421,
+        0.8318826648122091,
+        0.8941221113887753
       ],
-      "dimensionsBasis": "target-envelope",
+      "dimensionsBasis": "measured-accepted-GLB",
       "position": [
         -10,
         -6.6
       ],
-      "mode": "static-proposal",
+      "mode": "static-placed-pending-native-review",
       "rotatedAabb": [
         -10.45,
-        -7.05,
+        -7.047,
         -9.55,
-        -6.15
+        -6.153
       ],
-      "anchorRadius": 2.236,
+      "anchorRadius": 2.234,
       "nearestPoint": {
         "name": "KITTEN",
         "distance": 3.195,
-        "margin": 0.959
+        "margin": 0.961
       },
       "nearestProtectedLine": {
         "name": "KITTEN_WAY",
-        "margin": 0.959
+        "margin": 0.961
       },
-      "roadGap": 1.95,
+      "roadGap": 1.953,
       "canalGap": 44.95,
       "nearestProposedProp": {
         "id": "city-playground",
         "index": 5,
-        "gap": 18.077
+        "gap": 18.079
       },
       "nearestAcceptedProp": {
         "id": "city-icecream-kiosk",
-        "gap": 12.105
+        "gap": 12.108
       },
       "pedestrianEnvelope": [
         -11.3,
-        -7.9,
+        -7.897,
         -8.7,
-        -5.3
+        -5.303
       ],
       "potentialUnfilteredPedestrianLines": [],
       "nearbyDecor": [],
@@ -288,7 +288,7 @@
         6.7,
         5.7
       ],
-      "mode": "static-placed-pending-review",
+      "mode": "static-placed",
       "rotatedAabb": [
         5.2,
         4.3,
@@ -310,7 +310,7 @@
       "nearestProposedProp": {
         "id": "city-drinking-fountain",
         "index": 3,
-        "gap": 1.45
+        "gap": 1.451
       },
       "nearestAcceptedProp": {
         "id": "city-icecream-kiosk",
@@ -330,11 +330,11 @@
       "index": 6,
       "id": "city-street-bin",
       "dimensions": [
-        0.76,
-        0.9,
-        0.76
+        0.7600024213475689,
+        0.8999999761581421,
+        0.7600024213475689
       ],
-      "dimensionsBasis": "target-envelope",
+      "dimensionsBasis": "measured-accepted-GLB",
       "position": [
         15.2,
         -6.8
@@ -408,11 +408,11 @@
       "index": 7,
       "id": "city-street-bin",
       "dimensions": [
-        0.76,
-        0.9,
-        0.76
+        0.7600024213475689,
+        0.8999999761581421,
+        0.7600024213475689
       ],
-      "dimensionsBasis": "target-envelope",
+      "dimensionsBasis": "measured-accepted-GLB",
       "position": [
         52,
         -17
@@ -471,11 +471,11 @@
       "index": 8,
       "id": "city-postbox",
       "dimensions": [
-        0.44,
-        1.22,
-        0.6
+        0.44001465920333543,
+        1.2200000286102295,
+        0.6000030659216239
       ],
-      "dimensionsBasis": "target-envelope",
+      "dimensionsBasis": "measured-accepted-GLB",
       "position": [
         -37.45,
         -22.75

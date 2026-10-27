@@ -1,13 +1,13 @@
 {
   "task": "city-street-life",
   "request": "m0492",
-  "status": "all11cityprops-and6people-assets-accepted;6props-placed;runtime-integration-review-pending",
+  "status": "all11cityprops-and6people-assets-accepted;9static-props-placed;interactive-and-runtime-review-pending",
   "owners": {
     "main": [
       "manifest/layout/border concept",
       "src/city-decor.ts after model acceptance"
     ],
-    "modelWorker": "Batch02 complete and idle; no active orders or next dispatch.",
+    "modelWorker": "Citybatch02 complete. Existing worker now on owner-directed factory batch03; no duplicate city orders.",
     "claude": [
       "src/city.ts CITY_MODELS/life",
       "pedestrian routes and runtime integration"
@@ -58,7 +58,9 @@
         2.2
       ],
       "status": "accepted-for-integration",
-      "publicPath": "public/models/city-icecream-kiosk.glb"
+      "publicPath": "public/models/city-icecream-kiosk.glb",
+      "placementStatus": "static-paving-fix-pass",
+      "placementReview": "qa/final-props-integration/review.json"
     },
     {
       "id": "city-flower-kiosk",
@@ -173,7 +175,9 @@
         "width": 0.9,
         "uniform": true
       },
-      "mainReview": "remaining-props-main-review.json"
+      "mainReview": "remaining-props-main-review.json",
+      "placementStatus": "static-pass",
+      "placementReview": "qa/final-props-integration/review.json"
     },
     {
       "id": "city-bike-rack",
@@ -225,7 +229,9 @@
         "width": 0.9,
         "uniform": true
       },
-      "mainReview": "remaining-props-main-review.json"
+      "mainReview": "remaining-props-main-review.json",
+      "placementStatus": "static-pass",
+      "placementReview": "qa/final-props-integration/review.json"
     },
     {
       "id": "city-drinking-fountain",
@@ -250,7 +256,9 @@
         "depth": 0.7,
         "uniform": true
       },
-      "mainReview": "remaining-props-main-review.json"
+      "mainReview": "remaining-props-main-review.json",
+      "placementStatus": "static-pass",
+      "placementReview": "qa/final-props-integration/review.json"
     },
     {
       "id": "city-playground",
@@ -276,8 +284,9 @@
         "uniform": true
       },
       "mainReview": "remaining-props-main-review.json",
-      "placementStatus": "awaiting-park-lawn-and-flower-mask",
-      "placementReview": "qa/three-props-integration/review.json"
+      "placementStatus": "static-and-paving-pass;flower-mask-pending-m0516",
+      "placementReview": "qa/three-props-integration/review.json",
+      "pavingFollowupReview": "qa/final-props-integration/review.json"
     },
     {
       "id": "city-postbox",
@@ -472,13 +481,13 @@
     }
   },
   "acceptanceLimitations": [
-    "Asset QA accepted for first3props and6people; full game movement remains with Claude.",
-    "Flowers/shelter placement statically accepted; park PLAZA and walking footprint fixes pending.",
-    "Remaining8props not generated.",
+    "All11props and6people accepted as assets;9static props placed. Full game movement remains with Claude.",
+    "m0504 icecream paving independently passed on1cf03f0 at native390/1024. Random flower masking still pending m0516.",
+    "City-only bin/postbox integration, moving routes and complete playthrough not independently accepted.",
     "No physical iPad/PWA or performance result."
   ],
   "remainingPropsProposal": "remaining-layout-proposal.json",
   "remainingPropsPreflight": "remaining-layout-preflight.json",
   "remainingReferences": "references/remaining/index.html",
-  "placementReview": "qa/three-props-integration/review.json"
+  "placementReview": "qa/final-props-integration/review.json"
 }

@@ -14,6 +14,9 @@ export const DECOR: DecorGroup[] = [
   { model: 'city-fruit-stall', fit: { depth: 1.6 }, items: [[-26, -22.4, 0, 1]] },
   { model: 'city-bike-rack', fit: { depth: 1.6 }, items: [[7, -18.5, 0, 1]] },
   { model: 'city-playground', fit: { depth: 2.8 }, items: [[6.7, 5.7, 0, 1]] },
+  { model: 'city-flower-planter', fit: { width: 0.9 }, items: [[-10, -6.6, 0, 1]] },
+  { model: 'city-poster-column', fit: { width: 0.9 }, items: [[43, -18.5, 0, 1]] },
+  { model: 'city-drinking-fountain', fit: { depth: 0.7 }, items: [[10, 6, 0, 1]] },
   { model: 'bakery', fit: { width: 7, rotateY: -Math.PI / 2 }, items: [[-12, -27, 0, 1]] },
   { model: 'school', fit: { width: 9, rotateY: -Math.PI / 2 }, items: [[11, -27.754, 0, 1]] },
   { model: 'grandma-house', fit: { width: 6.2, rotateY: -Math.PI / 2 }, items: [[-44, -27, 0, 1]] },
@@ -449,5 +452,7 @@ export const PLAZAS: { x0: number; z0: number; x1: number; z1: number }[] = [
   { x0: -15.5, z0: 22, x1: -10.5, z1: 25 },
   { x0: -27.5, z0: -24.5, x1: -23, z1: -20.5 },
   { x0: 5, z0: -20, x1: 9, z1: -16 },
-  { x0: 4, z0: 3.5, x1: 9.5, z1: 7.5 },
+  // One shared apron for the playground and drinking fountain, avoiding overlapping kerbs.
+  { x0: 4, z0: 3.5, x1: 11, z1: 7.5 },
+  { x0: 42, z0: -19.5, x1: 44, z1: -17.5 },
 ];
