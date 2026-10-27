@@ -9,7 +9,7 @@
       "sha256": "f18d66e7fd898968e5d15749d8a647997086d7fc146c4d11cfff8ce65d4d1842",
       "report": "robot-arm/model-report.json",
       "assetQA": "accepted",
-      "gameQA": "pending Claude integration"
+      "gameQA": "accepted static integration; functional playthrough reported by Claude m0481"
     },
     {
       "name": "grinder",
@@ -19,7 +19,7 @@
       "sha256": "60f83ae983fd7710eb17ef20db4b9d2d2f9d6355a2b30618526d8580a32f1f05",
       "report": "grinder/model-report.json",
       "assetQA": "accepted",
-      "gameQA": "pending Claude integration"
+      "gameQA": "accepted static integration; functional playthrough reported by Claude m0481"
     },
     {
       "name": "gantry-crane",
@@ -29,7 +29,7 @@
       "sha256": "ebb84cbe49f5e2a7b90c4c3c9b434929de412a25a0437a6b037789685f5ce9e9",
       "report": "gantry-crane/model-report.json",
       "assetQA": "accepted",
-      "gameQA": "pending Claude integration"
+      "gameQA": "changes requested: east support intersects conveyor; see evening-integration/review.json"
     },
     {
       "name": "paint-tank",
@@ -39,7 +39,7 @@
       "sha256": "5f24446ff4dc2b6e122a5cfb137de2845b946fc137f1a423d93eff9f0a289e06",
       "report": "evening-paint/paint-tank-report.json",
       "assetQA": "accepted",
-      "gameQA": "pending Claude integration"
+      "gameQA": "accepted static integration; functional playthrough reported by Claude m0481"
     },
     {
       "name": "paint-booth",
@@ -49,7 +49,7 @@
       "sha256": "4486faa0fb39a629e332b7026c1a06924a6fc94fd75d57eef1dade9bcb189d90",
       "report": "evening-paint/paint-booth-report.json",
       "assetQA": "accepted",
-      "gameQA": "pending Claude integration"
+      "gameQA": "accepted static integration; functional playthrough reported by Claude m0481"
     }
   ],
   "totalBytes": 538676,
@@ -69,5 +69,6 @@
     "tests": 88,
     "files": 17,
     "typecheck": "PASS"
-  }
+  },
+  "integrationReview": "evening-integration/review.json"
 }

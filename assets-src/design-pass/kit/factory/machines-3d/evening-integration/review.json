@@ -1,0 +1,122 @@
+{
+  "reviewer": "codex-main",
+  "date": "2026-10-27",
+  "integrationCommit": "08530984379d07d426ee37ad773a9de10ada6b1b",
+  "sourceHead": "6b644c3",
+  "url": "http://127.0.0.1:5195/?factory",
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "method": "Native IAB screenshots; only map UI, pan and zoom. No game-state injection. Static visual review plus source inspection.",
+  "screenshots": [
+    {
+      "path": "paint-1024.jpg",
+      "sha256": "af333e8b24c4da059db001c3ef578a0b44dec1c2ddee6c37c457737828925186",
+      "bytes": 133825
+    },
+    {
+      "path": "grinder-1024.jpg",
+      "sha256": "a79846b62be69e603aa1a21fdeafd0c5a4b441277ba7184dddceb1342d34e473",
+      "bytes": 131425
+    },
+    {
+      "path": "robot-1024.jpg",
+      "sha256": "c038355a2fc8cd4125ff023a3f3277b576d4a536c4636d0e9689ad3e409f5db4",
+      "bytes": 127525
+    },
+    {
+      "path": "robot-390.jpg",
+      "sha256": "a097aa577bbbbf0fd1432f33ef1ad96cc4f904ede296676d5e1dc05b4659d75a",
+      "bytes": 51719
+    },
+    {
+      "path": "grinder-390.jpg",
+      "sha256": "ee15c7da26dde509dd5d5f2f99b77839797e7b51b026a57d61054468bfcbe118",
+      "bytes": 50122
+    },
+    {
+      "path": "paint-390.jpg",
+      "sha256": "ed89dc8f79a9170e458969f811d28844df24ae69f6db119212e8834ea7a75eb3",
+      "bytes": 49847
+    },
+    {
+      "path": "crane-390.jpg",
+      "sha256": "8d5728511fe08333aed7eae15ee4736bf719bee149f2d92b7104410c1896daa3",
+      "bytes": 53343
+    },
+    {
+      "path": "crane-1024.jpg",
+      "sha256": "04041d8ef49d96312007eafce78dc00213a59f7466151bbc0548a55d06c25fe5",
+      "bytes": 144637
+    },
+    {
+      "path": "overview-1024.jpg",
+      "sha256": "ce5a941a94d94eec10ec2f0ea85ee6e270d98410f1cca91f6493b7bd6db38e94",
+      "bytes": 113526
+    }
+  ],
+  "claudeEvidence": {
+    "message": "m0481",
+    "images": [
+      "assets-src/design-pass/kit/factory-evening.jpg",
+      "assets-src/design-pass/kit/factory-evening-crane.jpg",
+      "assets-src/design-pass/kit/factory-two-shifts.png"
+    ],
+    "reportedPlaythrough": {
+      "factory": "12/12",
+      "farm": "17/17",
+      "city": "14/14",
+      "lab": "16/16"
+    },
+    "independentlyRepeated": false
+  },
+  "models": {
+    "robot-arm": "accepted static integration: group pivots and loader offset match contract; visible arm, base and terminals",
+    "grinder": "accepted static integration: correct width and placement; stone and gauge are readable",
+    "paint-tank": "accepted static integration: body on base, pump and top wheel readable",
+    "paint-booth": "accepted static integration: body spans conveyor; original asset tunnel geometry unchanged",
+    "gantry-crane": "changes requested: east support intersects conveyor and moving blank route"
+  },
+  "gantryAccepted": {
+    "modelWidth": 15,
+    "trolleyCentreY": 5.5,
+    "beamBottomY": 5.8002716,
+    "trolleyTopY": 5.775,
+    "clearance": 0.0252716,
+    "note": "Requested trolley height is implemented. This does not validate the payload or the full map conveyor path."
+  },
+  "findings": [
+    {
+      "id": "gantry-east-leg-on-belt",
+      "priority": "P2",
+      "owner": "claude",
+      "file": "src/factory.ts",
+      "evidence": "crane-1024.jpg and crane-390.jpg",
+      "details": "GANTRY_AT=(-24,13), east leg at local x=7 gives world(-17,13). Evening belt spans world x[-19.5,33], z[12.3,13.7], y[0.2,0.5]. Blanks start(-18.5,0.75,13) and advance to x=-4 for paint; they cross the solid east support. Screenshot shows its foot and post on the belt.",
+      "requestedOutcome": "Place the support outside the conveyor and blank path while preserving the hook-to-line transfer. Send static close-up and moving/loaded pass at the former crossing. Preserve accepted model geometry unless a model change is agreed."
+    }
+  ],
+  "console": {
+    "errors": 0,
+    "warnings": 0
+  },
+  "limitations": [
+    "No full powered story independently repeated.",
+    "No moving blank crossing visually observed; collision follows from source coordinates and static screenshot.",
+    "No physical iPad, PWA or FPS certification.",
+    "Local version label remains 47f981b; provenance uses current source commit and the loaded twelve-station map."
+  ],
+  "voiceNote": "Current voice.ts SHA256 428bf5b1e2092215589e0d5c65a921a7d59e1e072246472a066fc267f0f2e3ed still matches the completed research inventory; integration commit did not invalidate that snapshot.",
+  "repositoryChecks": {
+    "tests": 88,
+    "files": 17,
+    "typecheck": "PASS"
+  }
+}
