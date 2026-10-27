@@ -1,0 +1,93 @@
+{
+  "date": "2026-10-27",
+  "reviewer": "main Codex",
+  "scope": "Secondary model asset acceptance; final game integration separately reviewed with Claude.",
+  "models": [
+    {
+      "name": "lever-box",
+      "assetCommit": "1a4aa2a",
+      "file": "public/models/lever-box.glb",
+      "sha256": "35e6bb74a3101d992071e37381a031914a126693a8e0ccd2edbf232fc7ee751e",
+      "bytes": 82708,
+      "verdict": "accepted",
+      "triangles": 3900,
+      "reviewedEvidence": [
+        "secondary/lever-box-report.json",
+        "secondary/lever-box-geometry.json",
+        "secondary/lever-box-qa.json",
+        "secondary/qa/lever-box-1024-default.jpg",
+        "secondary/qa/lever-box-390-pose1.jpg",
+        "secondary/qa/lever-box-390-pose2.jpg"
+      ],
+      "checks": [
+        "Actual public SHA matches worker report.",
+        "Main visually inspected all three native frames.",
+        "QA pivot, rod transform and dimensions match runtime in src/parts/workshop.ts.",
+        "45-angle geometric sweep reports zero intersections; reviewed validation method."
+      ],
+      "integrationNotes": "Width1.5, at(0,.16,0), code lever pivot(0,.51,-.35). Painted ◀■▶ already present; avoid duplicate opaque runtime markers and preserve state feedback.",
+      "handoff": "m0455",
+      "gameReview": "Accepted main m0461 after Claude game screenshot review.",
+      "integrationFixes": "Claude49d36e2 square STOP glow and d20eed9 moved crane; all three state screenshots accepted."
+    },
+    {
+      "name": "shaft-motor",
+      "assetCommit": "08f7251",
+      "file": "public/models/shaft-motor.glb",
+      "sha256": "7527ad1bc4f9813ec9fecbf4509436ef0d6ee4b74e0450482645b1ea04c26214",
+      "bytes": 93824,
+      "verdict": "accepted",
+      "triangles": 3579,
+      "reviewedEvidence": [
+        "secondary/shaft-motor-report.json",
+        "secondary/shaft-motor-geometry.json",
+        "secondary/shaft-motor-qa.json",
+        "secondary/qa/shaft-motor-390-shaft.jpg",
+        "secondary/qa/shaft-motor-1024-bore.jpg"
+      ],
+      "checks": [
+        "Actual public SHA matches worker report.",
+        "Main visually inspected both native frames.",
+        "Geometry validator and placement compared with src/parts/workshop.ts and source contract."
+      ],
+      "integrationNotes": "Width1.1 at(0,.16,-.1); bore modelXZ(0,-.25),R.105; code shaftR.08 fits. Existing gear/shaft/collar anchors unchanged.",
+      "gameReview": "Accepted main m0461 after Claude game screenshot review.",
+      "additionalMainBrowserQA": {
+        "url": "http://127.0.0.1:5195/?factory",
+        "method": "Actual game, UI-only pan/zoom; no hidden state mutation.",
+        "frames": [
+          "integration-main/lathe-motor-1024.png",
+          "integration-main/lathe-motor-390.png"
+        ],
+        "errors": [],
+        "warnings": [],
+        "scope": "Static assembled pair; full powered story not replayed by main."
+      }
+    },
+    {
+      "name": "socket-board",
+      "assetCommit": "08f7251",
+      "file": "public/models/socket-board.glb",
+      "sha256": "f0a9dae890374cad60411db48796932c0c1af89020c5fa3943dc42bea8ed4eb9",
+      "bytes": 104804,
+      "verdict": "accepted",
+      "triangles": 3115,
+      "reviewedEvidence": [
+        "secondary/socket-board-report.json",
+        "secondary/socket-board-geometry.json",
+        "secondary/socket-board-qa.json",
+        "secondary/qa/socket-board-1024-terminals.jpg",
+        "secondary/qa/socket-board-390-terminals.jpg"
+      ],
+      "checks": [
+        "Actual public SHA matches worker report.",
+        "Main visually inspected both native frames.",
+        "Geometry validator and placement compared with src/parts/workshop.ts and source contract."
+      ],
+      "integrationNotes": "Width2.6 at(0,.16,-.8); measured overall2.6x1.100003x.238282, panel2.6x.998794x.206662,feet~.1; front clearance to nearest runtime row .54086 after radius allowance. All8 active terminals remain code.",
+      "gameReview": "Accepted main m0461 after Claude game screenshot review."
+    }
+  ],
+  "physicalDeviceTest": false,
+  "validation": "Main verification after integration and lever49d36e2:88tests passed, typecheck passed; two actual game native frames390x844/1024x768, no browser errors/warnings. Other prepared native asset frames reviewed from worker."
+}
