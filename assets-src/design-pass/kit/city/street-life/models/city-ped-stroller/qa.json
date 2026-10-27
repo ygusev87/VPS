@@ -1,0 +1,82 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":84508,\"triangles\":3830,\"materials\":1,\"bounds\":{\"min\":[-0.30645466932070375,0,-0.7054902903673563],\"max\":[0.30645466932070375,1.600000023841858,0.7054902903673563]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":84508,\"triangles\":3830,\"materials\":1,\"bounds\":{\"min\":[-0.30645466932070375,0,-0.7054902903673563],\"max\":[0.30645466932070375,1.600000023841858,0.7054902903673563]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":84508,\"triangles\":3830,\"materials\":1,\"bounds\":{\"min\":[-0.30645466932070375,0,-0.7054902903673563],\"max\":[0.30645466932070375,1.600000023841858,0.7054902903673563]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":84508,\"triangles\":3830,\"materials\":1,\"bounds\":{\"min\":[-0.30645466932070375,0,-0.7054902903673563],\"max\":[0.30645466932070375,1.600000023841858,0.7054902903673563]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":84508,\"triangles\":3830,\"materials\":1,\"bounds\":{\"min\":[-0.30645466932070375,0,-0.7054902903673563],\"max\":[0.30645466932070375,1.600000023841858,0.7054902903673563]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualReview": "PASS:2arms/2legs,4wheels,continuous handle,6ground contacts,clear face,front heading+Z. Static grouped asset; no rig.",
+  "integration": "Native GLTFLoader only;city integration and physical iPad pending."
+}

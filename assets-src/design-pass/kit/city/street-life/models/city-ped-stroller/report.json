@@ -1,0 +1,96 @@
+{
+  "name": "city-ped-stroller",
+  "source": "assets-src/raw/city-street-people-2026-10-27/city-ped-stroller.glb",
+  "sourceSha256": "f8897a20a109980100c251d936462dd69ffcd0ce4b6d062007f3442b605d2043",
+  "sourceBytes": 726180,
+  "sourceTriangles": 3830,
+  "sourceBounds": {
+    "min": [
+      -0.2845459580421448,
+      0,
+      -0.4111633002758026
+    ],
+    "max": [
+      0.2845459580421448,
+      1,
+      0.4111633002758026
+    ]
+  },
+  "bytes": 84508,
+  "sha256": "85c8c331ee92c8f90c8d130f871a04664c56949aafcb0ac58e35f6481d821096",
+  "triangles": 3830,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.30645466932070375,
+      0,
+      -0.7054902903673563
+    ],
+    "max": [
+      0.30645466932070375,
+      1.600000023841858,
+      0.7054902903673563
+    ]
+  },
+  "size": [
+    0.6129093386414075,
+    1.600000023841858,
+    1.4109805807347127
+  ],
+  "contract": {
+    "reviewed": true,
+    "height": 1.6,
+    "rotationY": -0.4063,
+    "targetTriangles": 3900,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform",
+    "groundContacts": [],
+    "rawOrientationReview": "Four wheel contact centres identify forward vector(+.1303,+.3028)XZ, normalized by Y rotation−.4063. Native face check required. Six separate low components:2soles+4wheels,original minY0..0.00435; snap bottom5mm toground.",
+    "floorSnap": 0.005
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform scale by total height; preserve anatomy; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.005 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}
