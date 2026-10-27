@@ -13,6 +13,7 @@
 // ring the alarm; in the morning a laser beam round a mirror onto a light
 // sensor rings the school bell.
 import * as THREE from 'three';
+import * as CITY_DECOR from './city-decor';
 import { DECOR, FENCES, MEADOW, PATHS, PONDS, SOIL } from './city-decor';
 import { dressing, toSegment } from './decor';
 import { boardEdge, flowers, groundMaterial, onLane, pond, tiledMaterial, type GroundPlan } from './ground';
@@ -443,6 +444,8 @@ export class CityMap extends StoryMap {
       ...[...this.critters.values()].filter((c) => !c.roams).map((c) => P(c.home.x, c.home.z, 1.2)),
       P(SUBSTATION.x, SUBSTATION.z, 2.6), P(BINS.x, BINS.z, 1.6), P(COUNTER.x, COUNTER.z, 1.8),
       { x0: SITE.x - 4.2, z0: SITE.z - 3.6, x1: SITE.x + 4.2, z1: SITE.z + 3.6 },
+      // Paved pads Codex lays under kiosks, the tram shelter and the like (city-decor's PLAZAS, when it has them).
+      ...((CITY_DECOR as { PLAZAS?: Rect[] }).PLAZAS ?? []),
     ];
     // Buildings stand on an apron, with a path from it straight to the nearest road.
     for (const g of DECOR) {
@@ -706,8 +709,13 @@ export class CityMap extends StoryMap {
     this.life.addToy('trashcan', 15.2, -6.8, 0.3);
     this.life.addToy('trashcan', 52, -17, -0.4);
     this.life.addToy('hydrant', 8, -16.4, 0);
-    const walkers: [number, number, string, string][] = [[-25, -17, '#3f86d6', '#7a4a2a'], [25, 17, '#ff8fb1', '#f2c230'], [-10, 18, '#5cb85c', '#3a2a1a'], [10, -18, '#b388ff', '#d9dde3'], [45, -17, '#f2c230', '#7a4a2a'], [-46, 3.8, '#ff8f2a', '#5a3a2a']];
-    for (const [x, z, body, hair] of walkers) this.life.addExtra(person(body, hair, 1.25), x, z, 0, 'stroll', 'passerby', 3);
+    // Townsfolk walking the pavements, each its own stretch and back (clear of the tasks, the poles and the people waiting).
+    const looks: [string, string][] = [['#3f86d6', '#7a4a2a'], ['#ff8fb1', '#f2c230'], ['#5cb85c', '#3a2a1a'], ['#b388ff', '#d9dde3'], ['#f2c230', '#7a4a2a'], ['#ff8f2a', '#5a3a2a'], ['#e8483f', '#3a2a1a'], ['#1aa3a1', '#d9dde3']];
+    const ways = pavementRuns(this.plan, keep);
+    looks.forEach(([body, hair], i) => {
+      const way = ways[(i * 5) % ways.length];
+      if (way) this.life.addWalker(person(body, hair, 1.25), way, 'passerby');
+    });
     this.life.addFlutters([v(8, 4), v(-8, -4), v(-40, 20), v(14, -26)], [v(-12, 2), v(6, 4)]);
     const houses = DECOR.filter((g) => g.model.startsWith('house')).flatMap((g) => g.items).slice(0, 4);
     for (const [x, z] of houses) this.life.addSmoke(v(x + 1, z).setY(3.6));
@@ -1212,6 +1220,51 @@ function cityPlan(): GroundPlan {
     // The painted city of its target (assets-src/design-pass/variants/city-a.png).
     painted: 'city',
   };
+}
+
+/**
+ * Straight stretches of pavement to walk: along each side of the roads and the
+ * tram street, cut where a crossing road, the canal, a task's ring, a pole or
+ * someone standing is in the way; the longest first, as points 3–4 apart.
+ */
+function pavementRuns(plan: GroundPlan, keep: THREE.Vector3[]): THREE.Vector3[][] {
+  const runs: THREE.Vector3[][] = [];
+  const blocked = (x: number, z: number) =>
+    Math.abs(x) > W / 2 - 1.5 || Math.abs(z) > D / 2 - 1.5 ||
+    onLane(plan, x, z, 0.3) ||
+    (Math.abs(x - CANAL.x) < CANAL.w / 2 + 1 && z < CANAL.z1 + 1) ||
+    ((x - HARBOR.x) / (HARBOR.rx + 1)) ** 2 + ((z - HARBOR.z) / (HARBOR.rz + 1)) ** 2 < 1 ||
+    keep.some((k) => Math.hypot(x - k.x, z - k.z) < 1.8);
+  for (const { pts, w } of plan.lanes) {
+    if (w < 4) continue;
+    for (let i = 1; i < pts.length; i++) {
+      const [ax, az] = pts[i - 1];
+      const [bx, bz] = pts[i];
+      const len = Math.hypot(bx - ax, bz - az);
+      const [ux, uz] = [(bx - ax) / len, (bz - az) / len];
+      for (const side of [-1, 1]) {
+        // The middle of the pavement: past the kerb, before the lawn.
+        const off = w / 2 + 0.9;
+        const [ox, oz] = [-uz * off * side, ux * off * side];
+        let run: THREE.Vector3[] = [];
+        const close = () => {
+          if (run.length > 1 && run[0].distanceTo(run[run.length - 1]) >= 6) runs.push(run);
+          run = [];
+        };
+        for (let d = -off; d <= len + off; d += 0.5) {
+          const x = ax + ux * d + ox;
+          const z = az + uz * d + oz;
+          if (blocked(x, z)) close();
+          else run.push(v(x, z));
+        }
+        close();
+      }
+    }
+  }
+  // Points every ~3.5 along the stretch (where a walker may stop), the longest stretches first.
+  return runs
+    .sort((a, b) => b[0].distanceTo(b[b.length - 1]) - a[0].distanceTo(a[a.length - 1]))
+    .map((r) => r.filter((_, i) => i % 7 === 0 || i === r.length - 1));
 }
 
 /** White dashes down the middle of every road, zebras at the crossings (unless the kit's roads have them), rails on the tram line. */

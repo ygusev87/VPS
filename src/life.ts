@@ -34,6 +34,10 @@ interface Extra {
   pose: Pose | null;
   /** Its own clock for grazing and looking about. */
   cycle: number;
+  /** A passer-by's way (pavement points), walked to its end and back; `leg` is the point it heads for. */
+  route?: THREE.Vector3[];
+  leg: number;
+  dir: number;
 }
 
 export type ToyKind = 'mouse' | 'frog' | 'scarecrow' | 'mailbox' | 'well' | 'trashcan' | 'hydrant' | 'clock' | 'soda';
@@ -81,7 +85,18 @@ export class Life {
       }
     });
     this.scenery.add(group);
-    this.extras.push({ group, home: new THREE.Vector3(x, 0, z), roam, gait, sound, target: new THREE.Vector3(x, 0, z), wait: this.rnd() * 4, step: 0, flee: 0, jump: 0, pose, cycle: this.rnd() * 20 });
+    this.extras.push({ group, home: new THREE.Vector3(x, 0, z), roam, gait, sound, target: new THREE.Vector3(x, 0, z), wait: this.rnd() * 4, step: 0, flee: 0, jump: 0, pose, cycle: this.rnd() * 20, leg: 0, dir: 1 });
+  }
+
+  /** A passer-by walking a way along the pavements and back, stopping now and then; startled, steps aside and walks on. */
+  addWalker(model: THREE.Object3D, route: THREE.Vector3[], sound: PhraseId | null) {
+    // Somewhere along the way to begin with, so the town does not start with everyone at a corner.
+    const at = Math.floor(this.rnd() * route.length);
+    this.addExtra(model, route[at].x, route[at].z, 0, 'stroll', sound, 1.5);
+    const e = this.extras[this.extras.length - 1];
+    e.route = route.map((p) => p.clone().setY(0));
+    e.leg = at;
+    e.dir = this.rnd() < 0.5 ? 1 : -1;
   }
 
   /** A thing placed to be tapped. */
@@ -244,6 +259,17 @@ export class Life {
       p.addScaledVector(to.normalize(), Math.min(dist, speed * dt));
       const yaw = Math.atan2(-to.z, to.x);
       e.group.rotation.y += Math.atan2(Math.sin(yaw - e.group.rotation.y), Math.cos(yaw - e.group.rotation.y)) * Math.min(1, dt * 6);
+    } else if (dist <= 0.05 && e.route) {
+      // On to the next point of the way (turning back at its ends); a pause now and then, as people do.
+      if (e.wait <= 0) e.wait = this.rnd() < 0.3 ? 1 + this.rnd() * 3 : 0.01;
+      e.wait -= dt;
+      if (e.wait <= 0) {
+        if (e.route[e.leg].distanceTo(p.clone().setY(0)) < 0.1) {
+          if (!e.route[e.leg + e.dir]) e.dir = -e.dir;
+          e.leg += e.dir;
+        }
+        e.target.copy(e.route[e.leg]);
+      }
     } else if (dist <= 0.05) {
       if (e.wait <= 0) e.wait = (e.gait === 'stroll' ? 0.5 : 2) + this.rnd() * (e.gait === 'graze' ? 8 : 4);
       e.wait -= dt;
