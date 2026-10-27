@@ -1,0 +1,66 @@
+{
+  "source": "Claude m0468;src/parts/factory.ts RobotArm",
+  "nodes": {
+    "foot": {
+      "parent": "scene",
+      "origin": [
+        0,
+        0,
+        0
+      ],
+      "dimensions": {
+        "diameter": 0.9,
+        "height": 0.25
+      },
+      "animated": false
+    },
+    "turret": {
+      "parent": "scene",
+      "origin": [
+        0,
+        0.25,
+        0
+      ],
+      "rotationAxis": "Y",
+      "range": [
+        -1.4,
+        1.4
+      ],
+      "column": [
+        0.2,
+        1,
+        0.2
+      ]
+    },
+    "arm": {
+      "parent": "turret",
+      "origin": [
+        0,
+        1,
+        0
+      ],
+      "rotationAxis": "Z",
+      "range": [
+        -0.7,
+        -0.3
+      ],
+      "length": 0.9,
+      "direction": "+X"
+    },
+    "claw": {
+      "parent": "arm",
+      "origin": [
+        0.9,
+        0,
+        0
+      ],
+      "fingerLength": 0.25,
+      "fingerDirection": "-Y"
+    }
+  },
+  "runtimeScale": 1.5,
+  "triangleBudget": 4000,
+  "renderReference": "assets-src/design-pass/variants/factory-industrial-b.png",
+  "imageTool": "built-in imagegen",
+  "remaining": "Claude integration and whole-factory gameplay acceptance"
+}

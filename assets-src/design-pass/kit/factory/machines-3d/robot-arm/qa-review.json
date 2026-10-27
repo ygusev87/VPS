@@ -1,0 +1,26 @@
+{
+  "status": "asset-accepted-for-integration",
+  "sha256": "f18d66e7fd898968e5d15749d8a647997086d7fc146c4d11cfff8ce65d4d1842",
+  "screenshots": [
+    "robot-back-1024.png",
+    "robot-eighth-390.png",
+    "robot-home-1024.png",
+    "robot-home-390.png",
+    "robot-left-1024.png",
+    "robot-left-390.png",
+    "robot-loader-1024.png",
+    "robot-loader-390.png",
+    "robot-right-1024.png",
+    "robot-right-390.png"
+  ],
+  "visual": "Bearing covers closed across sampled poses, no loose cap, stable foot, claw clear of base. Back of column and both ends inspected.",
+  "browserWarnings": 0,
+  "browserErrors": 0,
+  "runtimeLoader": "src/parts/assets.ts loadModels/model; inner root position reset required",
+  "motion": "128 samples; see motion-review.json, intentional bearing-seat overlaps excluded",
+  "remaining": "Claude integration and gameplay acceptance; physical iPad/PWA",
+  "checks": {
+    "vitest": "88/88, 17 files",
+    "typecheck": "PASS"
+  }
+}

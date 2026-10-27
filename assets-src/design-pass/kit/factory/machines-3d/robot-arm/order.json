@@ -1,0 +1,21 @@
+{
+  "id": "5f5275c9-963b-4181-a3b9-6a1a0cc027b9",
+  "url": "https://studio.tripo3d.ai/ru/workspace/generate/5f5275c9-963b-4181-a3b9-6a1a0cc027b9",
+  "credits": 25,
+  "balanceBefore": 5400,
+  "balanceAfter": 5375,
+  "reference": "reference.png",
+  "referenceSha256": "aa65fca093e9c6b8aff9ce1fd909b187d94c76c29216ebccb571afc30128d5f2",
+  "settings": {
+    "model": "H3.1",
+    "targetTriangles": 4000,
+    "texture": "2K",
+    "delight": true,
+    "pbr": false,
+    "ultra": false,
+    "parts": false
+  },
+  "status": "exported-optimized-motion-qa",
+  "authorization": "Owner necessary existing credits within project, no numeric ceiling",
+  "rawSha256": "70626751dd6ad33c85e5bb4f740629f2b7a596d18e3c99f34d943e5d26ee4650"
+}

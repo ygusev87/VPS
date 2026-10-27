@@ -1,0 +1,133 @@
+{
+  "source": "assets-src/raw/factory-evening-2026-10-27/robot-arm.glb",
+  "sourceSha256": "70626751dd6ad33c85e5bb4f740629f2b7a596d18e3c99f34d943e5d26ee4650",
+  "outputSha256": "f18d66e7fd898968e5d15749d8a647997086d7fc146c4d11cfff8ce65d4d1842",
+  "bytes": 119108,
+  "triangles": 3922,
+  "originalPartTriangles": {
+    "foot": 1215,
+    "turret": 1357,
+    "arm": 1685,
+    "claw": 475
+  },
+  "bounds": {
+    "min": [
+      -0.44999998807907104,
+      0.0000014761413068137275,
+      -0.4500001797281863
+    ],
+    "max": [
+      0.9762741372454699,
+      1.3903558176671047,
+      0.4500001797281863
+    ]
+  },
+  "nodes": [
+    {
+      "name": "foot",
+      "parent": "scene",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "mesh": false
+    },
+    {
+      "name": "foot-geometry",
+      "parent": "foot",
+      "translation": [
+        0.00004139542579650879,
+        0.125,
+        0
+      ],
+      "mesh": true
+    },
+    {
+      "name": "turret",
+      "parent": "scene",
+      "translation": [
+        0,
+        0.25,
+        0
+      ],
+      "mesh": false
+    },
+    {
+      "name": "turret-geometry",
+      "parent": "turret",
+      "translation": [
+        0.0009809881448745728,
+        0.45500001355132674,
+        0.0002199709415435791
+      ],
+      "mesh": true
+    },
+    {
+      "name": "arm",
+      "parent": "turret",
+      "translation": [
+        0,
+        1,
+        0
+      ],
+      "mesh": false
+    },
+    {
+      "name": "arm-geometry",
+      "parent": "arm",
+      "translation": [
+        0.34165091812610626,
+        -0.006024740636348724,
+        0.00009403377771377563
+      ],
+      "mesh": true
+    },
+    {
+      "name": "claw",
+      "parent": "arm",
+      "translation": [
+        0.9,
+        0,
+        0
+      ],
+      "mesh": false
+    },
+    {
+      "name": "claw-geometry",
+      "parent": "claw",
+      "translation": [
+        -0.006355930119752884,
+        -0.10356871783733368,
+        -0.00010468438267707825
+      ],
+      "mesh": true
+    }
+  ],
+  "materials": 1,
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "method": "Original Studio mesh and atlas; rigid CSG clipping with cut caps, local proportions normalized per segment; no skin/animation clips. Joint overlaps intentional at bearing seats."
+}
