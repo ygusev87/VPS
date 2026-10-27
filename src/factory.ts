@@ -82,6 +82,9 @@ const LORRY = v(32.5, -2.5);
  */
 const CRANE_Z = 24.5;
 
+/** Where the foreman and the four workers stand (by their stations). */
+const WORKER_SPOTS = [v(PANEL.x + 4, PANEL.z - 0.5), v(CART.x + 2, CART.z + 4.5), v(LATHE.x + 2.5, LATHE.z - 3.5), v(PRESS.x + 3.5, PRESS.z - 3), v(ROBOT.x + 3, ROBOT.z - 4)];
+
 /** How much bigger than a table part the factory's own machines are. */
 const MACHINE_SCALE = 1.5;
 
@@ -232,8 +235,13 @@ export class FactoryMap extends StoryMap {
       valve.position.set(x, 2.2, -D / 2 + 1.35);
       hall.add(valve);
     }
+    // Tall things hide the floor just north of them from the camera (about 0.78 of their height):
+    // pillars and lamps keep clear of every station, its character and its hint bubble.
+    const busy = [PANEL, BOX, PANEL_POLE, CART, CART_LEVER, CART_POLE, LATHE, MOTOR, LATHE_POLE, PRESS, PRESS_POLE, ROBOT, BOARD, ROBOT_POLE, HOIST, HOIST_LEVER, HOIST_POLE, ...WORKER_SPOTS];
+    const hides = (x: number, z: number, h: number) => busy.some((b) => Math.abs(b.x - x) < 2.6 && b.z < z + 1 && b.z > z - h * 0.78 - 2);
     for (let x = -30; x <= 30; x += 15) {
       for (const z of [-16, 8]) {
+        if (hides(x, z, 5) || busy.some((b) => Math.hypot(b.x - x, b.z - z) < 5)) continue;
         const pillar = mesh(new THREE.BoxGeometry(0.8, 5, 0.8), mat('#f2c230', 0.6));
         pillar.position.set(x, 2.5, z);
         hall.add(pillar);
@@ -242,6 +250,7 @@ export class FactoryMap extends StoryMap {
     // Lamps hanging over the hall: dark till the box lets the power through.
     for (let x = -30; x <= 30; x += 15) {
       for (const z of [-19, -9, 4]) {
+        if (hides(x, z, 4.6)) continue;
         const bulb = new THREE.MeshStandardMaterial({ color: '#f7f2dc', emissive: '#ffe9a8', emissiveIntensity: 0, roughness: 0.3 });
         const shade = mesh(new THREE.ConeGeometry(0.55, 0.4, 16, 1, true), mat('#e8e4dc', 0.5));
         shade.position.set(x, 4.6, z);
@@ -335,8 +344,9 @@ export class FactoryMap extends StoryMap {
   }
 
   private buildCritters() {
-    this.critter('foreman', { height: 1.6 }, v(PANEL.x + 4, PANEL.z + 1), 1.6, 0.4);
-    const workers: [string, THREE.Vector3][] = [['worker', v(CART.x + 2, CART.z + 4.5)], ['worker2', v(LATHE.x + 2.5, LATHE.z - 3.5)], ['worker3', v(PRESS.x + 3.5, PRESS.z - 3)], ['worker4', v(ROBOT.x + 3, ROBOT.z - 4)]];
+    const [foreman, ...rest] = WORKER_SPOTS;
+    this.critter('foreman', { height: 1.6 }, foreman, 1.6, 0.4);
+    const workers: [string, THREE.Vector3][] = ['worker', 'worker2', 'worker3', 'worker4'].map((n, i) => [n, rest[i]]);
     for (const [name, at] of workers) this.critter(name, { height: 1.5 }, at, 1.5, 0.3);
     this.lorry = this.critter('lorry', { width: 5 }, LORRY, 2.2, Math.PI);
     this.lorry.roams = true;
