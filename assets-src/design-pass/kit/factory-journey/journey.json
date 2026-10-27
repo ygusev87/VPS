@@ -1,0 +1,558 @@
+[
+ {
+  "shot": "001.png",
+  "what": {
+   "done": 0,
+   "cur": "foreman",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "wireBox"
+  },
+  "said": []
+ },
+ {
+  "shot": "002.png",
+  "what": {
+   "done": 1,
+   "cur": "worker",
+   "hint": "drag",
+   "phrase": "placeHere",
+   "kind": "reverser"
+  },
+  "said": [
+   "boxHappy",
+   "boxHappy",
+   "cartAsk",
+   "factoryMove"
+  ]
+ },
+ {
+  "shot": "003.png",
+  "what": {
+   "done": 1,
+   "cur": "worker",
+   "hint": "connect",
+   "phrase": "leverWire"
+  },
+  "said": [
+   "reverser",
+   "reverser"
+  ]
+ },
+ {
+  "shot": "004.png",
+  "what": {
+   "done": 1,
+   "cur": "worker",
+   "hint": "connect",
+   "phrase": "leverWire"
+  },
+  "said": [
+   "leverWire",
+   "leverWire"
+  ]
+ },
+ {
+  "shot": "005.png",
+  "what": {
+   "done": 1,
+   "cur": "worker",
+   "hint": "tap",
+   "phrase": "cartGo",
+   "kind": "reverser"
+  },
+  "said": []
+ },
+ {
+  "shot": "006.png",
+  "what": {
+   "done": 1,
+   "cur": "worker",
+   "hint": "tap",
+   "phrase": "cartBack",
+   "kind": "reverser"
+  },
+  "said": []
+ },
+ {
+  "shot": "007.png",
+  "what": {
+   "done": 2,
+   "cur": "worker2",
+   "hint": "drag",
+   "phrase": "placeHere",
+   "kind": "bigGear"
+  },
+  "said": [
+   "cartHappy",
+   "cartHappy",
+   "latheAsk"
+  ]
+ },
+ {
+  "shot": "008.png",
+  "what": {
+   "done": 2,
+   "cur": "worker2",
+   "hint": "drag",
+   "phrase": "placeHere",
+   "kind": "smallGear"
+  },
+  "said": [
+   "bigGear",
+   "bigGear"
+  ]
+ },
+ {
+  "shot": "009.png",
+  "what": {
+   "done": 3,
+   "cur": "worker3",
+   "hint": "tap",
+   "phrase": "twoHands",
+   "kind": "safetyPress"
+  },
+  "said": [
+   "smallGear",
+   "smallGear",
+   "latheHappy",
+   "latheHappy",
+   "press2Ask"
+  ]
+ },
+ {
+  "shot": "010.png",
+  "what": {
+   "done": 4,
+   "cur": "worker4",
+   "hint": "connect",
+   "phrase": "plugShape"
+  },
+  "said": [
+   "press2Happy",
+   "press2Happy",
+   "plugAsk"
+  ]
+ },
+ {
+  "shot": "011.png",
+  "what": {
+   "done": 4,
+   "cur": "worker4",
+   "hint": "connect",
+   "phrase": "plugShape"
+  },
+  "said": []
+ },
+ {
+  "shot": "012.png",
+  "what": {
+   "done": 5,
+   "cur": "lorry",
+   "hint": "drag",
+   "phrase": "placeHere",
+   "kind": "reverser"
+  },
+  "said": [
+   "plugHappy",
+   "plugHappy",
+   "hoistAsk"
+  ]
+ },
+ {
+  "shot": "013.png",
+  "what": {
+   "done": 5,
+   "cur": "lorry",
+   "hint": "connect",
+   "phrase": "leverWire"
+  },
+  "said": [
+   "reverser"
+  ]
+ },
+ {
+  "shot": "014.png",
+  "what": {
+   "done": 5,
+   "cur": "lorry",
+   "hint": "connect",
+   "phrase": "leverWire"
+  },
+  "said": [
+   "leverWire"
+  ]
+ },
+ {
+  "shot": "015.png",
+  "what": {
+   "done": 5,
+   "cur": "lorry",
+   "hint": "tap",
+   "phrase": "hoistUp",
+   "kind": "reverser"
+  },
+  "said": []
+ },
+ {
+  "shot": "016.png",
+  "what": {
+   "done": 5,
+   "cur": "lorry",
+   "hint": "tap",
+   "phrase": "hoistDown",
+   "kind": "reverser"
+  },
+  "said": []
+ },
+ {
+  "shot": "017.png",
+  "what": {
+   "done": 6,
+   "cur": "worker5",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "bigWireBox"
+  },
+  "said": [
+   "hoistHappy",
+   "hoistHappy",
+   "eveningShift",
+   "eveningShift"
+  ]
+ },
+ {
+  "shot": "018.png",
+  "what": {
+   "done": 6,
+   "cur": "worker5",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "bigWireBox"
+  },
+  "said": []
+ },
+ {
+  "shot": "019.png",
+  "what": {
+   "done": 6,
+   "cur": "worker5",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "bigWireBox"
+  },
+  "said": []
+ },
+ {
+  "shot": "020.png",
+  "what": {
+   "done": 6,
+   "cur": "worker5",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "bigWireBox"
+  },
+  "said": [
+   "turnTile",
+   "turnTile"
+  ]
+ },
+ {
+  "shot": "021.png",
+  "what": {
+   "done": 6,
+   "cur": "worker5",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "bigWireBox"
+  },
+  "said": []
+ },
+ {
+  "shot": "022.png",
+  "what": {
+   "done": 6,
+   "cur": "worker5",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "bigWireBox"
+  },
+  "said": []
+ },
+ {
+  "shot": "023.png",
+  "what": {
+   "done": 6,
+   "cur": "worker5",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "bigWireBox"
+  },
+  "said": [
+   "turnTile"
+  ]
+ },
+ {
+  "shot": "024.png",
+  "what": {
+   "done": 6,
+   "cur": "worker5",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "bigWireBox"
+  },
+  "said": [
+   "turnTile"
+  ]
+ },
+ {
+  "shot": "025.png",
+  "what": {
+   "done": 6,
+   "cur": "worker5",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "bigWireBox"
+  },
+  "said": []
+ },
+ {
+  "shot": "026.png",
+  "what": {
+   "done": 6,
+   "cur": "worker5",
+   "hint": "tap",
+   "phrase": "turnTile",
+   "kind": "bigWireBox"
+  },
+  "said": []
+ },
+ {
+  "shot": "027.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "drag",
+   "phrase": "placeHere",
+   "kind": "reverser"
+  },
+  "said": [
+   "storeHappy",
+   "storeHappy",
+   "gantryAsk",
+   "gantryAsk"
+  ]
+ },
+ {
+  "shot": "028.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "drag",
+   "phrase": "placeHere",
+   "kind": "reverser"
+  },
+  "said": [
+   "reverser"
+  ]
+ },
+ {
+  "shot": "029.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "connect",
+   "phrase": "leverWire"
+  },
+  "said": [
+   "reverser",
+   "snapOk",
+   "snapOk"
+  ]
+ },
+ {
+  "shot": "030.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "connect",
+   "phrase": "leverWire"
+  },
+  "said": []
+ },
+ {
+  "shot": "031.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "connect",
+   "phrase": "leverWire"
+  },
+  "said": []
+ },
+ {
+  "shot": "032.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "connect",
+   "phrase": "leverWire"
+  },
+  "said": [
+   "leverWire"
+  ]
+ },
+ {
+  "shot": "033.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "tap",
+   "phrase": "craneDown",
+   "kind": "reverser"
+  },
+  "said": []
+ },
+ {
+  "shot": "034.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "tap",
+   "phrase": "craneUp",
+   "kind": "reverser"
+  },
+  "said": [
+   "craneUp",
+   "craneUp"
+  ]
+ },
+ {
+  "shot": "035.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "tap",
+   "phrase": "craneToLine",
+   "kind": "reverser"
+  },
+  "said": []
+ },
+ {
+  "shot": "036.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "tap",
+   "phrase": "craneDown",
+   "kind": "reverser"
+  },
+  "said": [
+   "craneDown",
+   "craneDown"
+  ]
+ },
+ {
+  "shot": "037.png",
+  "what": {
+   "done": 7,
+   "cur": "worker6",
+   "hint": "tap",
+   "phrase": "craneUp",
+   "kind": "reverser"
+  },
+  "said": []
+ },
+ {
+  "shot": "038.png",
+  "what": {
+   "done": 8,
+   "cur": "worker7",
+   "hint": "tap",
+   "phrase": "turnPipe",
+   "kind": "pipeBox"
+  },
+  "said": [
+   "gantryHappy",
+   "gantryHappy",
+   "paintAsk2",
+   "paintAsk2"
+  ]
+ },
+ {
+  "shot": "039.png",
+  "what": {
+   "done": 8,
+   "cur": "worker7",
+   "hint": "tap",
+   "phrase": "turnPipe",
+   "kind": "pipeBox"
+  },
+  "said": []
+ },
+ {
+  "shot": "040.png",
+  "what": {
+   "done": 9,
+   "cur": "worker8",
+   "hint": "drag",
+   "phrase": "placeHere",
+   "kind": "smallGear"
+  },
+  "said": [
+   "paintHappy2",
+   "paintHappy2",
+   "grinderAsk",
+   "grinderAsk"
+  ]
+ },
+ {
+  "shot": "041.png",
+  "what": {
+   "done": 9,
+   "cur": "worker8",
+   "hint": "drag",
+   "phrase": "placeHere",
+   "kind": "bigGear"
+  },
+  "said": [
+   "smallGear"
+  ]
+ },
+ {
+  "shot": "042.png",
+  "what": {
+   "done": 10,
+   "cur": "worker9",
+   "hint": "connect",
+   "phrase": "plugShape"
+  },
+  "said": [
+   "bigGear",
+   "grinderHappy",
+   "grinderHappy",
+   "welderAsk",
+   "welderAsk"
+  ]
+ },
+ {
+  "shot": "043.png",
+  "what": {
+   "done": 10,
+   "cur": "worker9",
+   "hint": "connect",
+   "phrase": "plugShape"
+  },
+  "said": []
+ },
+ {
+  "shot": "044.png",
+  "what": {
+   "end": true
+  },
+  "said": [
+   "welderHappy",
+   "welderHappy"
+  ]
+ }
+]
