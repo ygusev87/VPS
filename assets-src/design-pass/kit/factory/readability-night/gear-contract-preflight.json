@@ -1,0 +1,106 @@
+{
+  "createdAt": "2026-10-27T13:42:15.280795+00:00",
+  "task": "factory-readability-night",
+  "request": [
+    "m0528",
+    "m0529"
+  ],
+  "status": "preflight-only-no-order-no-dispatch",
+  "sourceSHA": {
+    "src/parts/factory.ts": "853e315e8cf2d3c28f49cd8f8bd7ae52f4a54e84a23b3d8c3c7f0575904e6aec",
+    "src/parts/mech.ts": "74886b941f819264e1b78fb4ae6b6faa4e0b6641a273b779ef071795f6432973",
+    "src/parts/kit.ts": "32edbaa0e6375aea7c96994014cba9e91d7690a1bb2887c32cad3cf9f52b6509",
+    "src/factory.ts": "9a0c1632d079d7b9091ad29798f747445c4d23ced9ceff0b67d5e18d41f7f881"
+  },
+  "finding": "Values0.4/0.6/1.0 are gearR radii, not widths/diameters. Gear constructor chooses small/regular/big nominaldiameter0.8/1.2/2.0. A generated asset fitted towidth0.4/.6/1.0 would be halfsize.",
+  "items": [
+    {
+      "kind": "smallGear",
+      "logicalRadius": 0.4,
+      "nominalDiameter": 0.8,
+      "currentTeeth": 6,
+      "currentToothRadialDepth": 0.072,
+      "hubDiameter": 0.24,
+      "hubHeight": 0.2,
+      "wheelNominalThickness": 0.12,
+      "wheelBevelSize": 0.01,
+      "wheelBevelThickness": 0.01,
+      "codeColor": "brass #d9ad4c",
+      "plateWidth": 1.0,
+      "pickRadius": 0.6000000000000001
+    },
+    {
+      "kind": "gear",
+      "logicalRadius": 0.6,
+      "nominalDiameter": 1.2,
+      "currentTeeth": 8,
+      "currentToothRadialDepth": 0.08,
+      "hubDiameter": 0.36,
+      "hubHeight": 0.2,
+      "wheelNominalThickness": 0.12,
+      "wheelBevelSize": 0.01,
+      "wheelBevelThickness": 0.01,
+      "codeColor": "steel #8d97a3",
+      "plateWidth": 1.4,
+      "pickRadius": 0.8
+    },
+    {
+      "kind": "bigGear",
+      "logicalRadius": 1.0,
+      "nominalDiameter": 2.0,
+      "currentTeeth": 14,
+      "currentToothRadialDepth": 0.08,
+      "hubDiameter": 0.6,
+      "hubHeight": 0.2,
+      "wheelNominalThickness": 0.12,
+      "wheelBevelSize": 0.01,
+      "wheelBevelThickness": 0.01,
+      "codeColor": "copper #c4553f",
+      "plateWidth": 2.2,
+      "pickRadius": 1.2
+    }
+  ],
+  "axisContract": {
+    "localRotationAxis": "+Y",
+    "wheelRootCentre": [
+      0,
+      0,
+      0
+    ],
+    "runtimeGearAtLocalY": 0.51,
+    "partsRetainedInCode": [
+      "plate",
+      "peg",
+      "pickable registration",
+      "turnGears/fitGear/tap reset"
+    ],
+    "hubYRange": [
+      -0.1,
+      0.1
+    ],
+    "workingPairAxleSeparation": 1.4,
+    "actualMeshBounds": "not recomputed; values above fromsource. Bevel extends nominalradius, exacttips/envelope require geometry audit."
+  },
+  "logic": {
+    "ratio": "turnOut=-turnIn*gearRin/gearRout",
+    "axisTolerance": 0.25,
+    "meshTolerance": 0.35,
+    "sourceMeshing": "logical radial tolerance, not a tooth contact solver",
+    "smallBigSpeedRatio": 0.4,
+    "smallBigToothCountRatio": 0.42857142857142855,
+    "relativeMismatch": 0.0714285714285714,
+    "warning": "Existing6/14 toothcount ratio differs from logical.4ratio by7.142857%; a realistic generated toothed pair withthese counts cannot remain visually phase-locked throughout manyrevolutions solelyunderthis ratio. This is mathematical/source finding, not observed gameplay collision."
+  },
+  "proposal": {
+    "immediate": "Keep currentacceptedruntime/source unchanged whilefourpriority04modelsfinish. No random independentTripo gear orders yet. Currentfactory.ts already uses metal roughness.35/metalness.65, so inspect visualgain before spending.",
+    "conservativeReplacement": "If only art replacement is desired, keep current clearances/axis envelopes and declare approximate decorative teeth, do notpromise mechanical phase correctness. Preserve distinct brass/steel/copper sizes.",
+    "mechanicallyConsistentOption": "Choose one common module and toothcounts proportional2:3:5 (e.g.10/15/25) together with pitchradiiratio.4:.6:1, addendum/dedendum and centre distances. Cannot assume outerradii remainidentical; recheckshaft/motor/grinder gaps andallphase angularoffset beforeauthorising. SeparatecontractneedsClaude runtimeownership agreement."
+  },
+  "neededBeforeNextCard": [
+    "Claude confirm cosmeticreplacement or physicallycoherentteeth/phase requirement",
+    "Freeze radius versuspitchradius andouterenvelope,thickness,axle/pivot andallowedphase offset",
+    "Measure actual current small/big sweptclearances againstshaftmotor/lathe/grinder beforeenvelopeexpansion",
+    "Afterfourpriority04READY andavailableCodexreserve, issueexactcard; noordersfromthispreflight"
+  ],
+  "validation": "Source algebra only. No GLB changed/generated, no browser/gameplay claim; no Studio credits used."
+}
