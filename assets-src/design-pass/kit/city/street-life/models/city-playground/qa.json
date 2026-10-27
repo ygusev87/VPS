@@ -1,0 +1,85 @@
+{
+  "visualPass": true,
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":91004,\"triangles\":3663,\"materials\":1,\"bounds\":{\"min\":[-1.4995814561843872,-0.00002234659389366289,-1.3999968360282171],\"max\":[1.4995814561843872,1.463633591749228,1.3999968360282171]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":91004,\"triangles\":3663,\"materials\":1,\"bounds\":{\"min\":[-1.4995814561843872,-0.00002234659389366289,-1.3999968360282171],\"max\":[1.4995814561843872,1.463633591749228,1.3999968360282171]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":91004,\"triangles\":3663,\"materials\":1,\"bounds\":{\"min\":[-1.4995814561843872,-0.00002234659389366289,-1.3999968360282171],\"max\":[1.4995814561843872,1.463633591749228,1.3999968360282171]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":91004,\"triangles\":3663,\"materials\":1,\"bounds\":{\"min\":[-1.4995814561843872,-0.00002234659389366289,-1.3999968360282171],\"max\":[1.4995814561843872,1.463633591749228,1.3999968360282171]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":91004,\"triangles\":3663,\"materials\":1,\"bounds\":{\"min\":[-1.4995814561843872,-0.00002234659389366289,-1.3999968360282171],\"max\":[1.4995814561843872,1.463633591749228,1.3999968360282171]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "notes": [
+    "One stationary swing and slide, connected supports, open paths; no ground plate.",
+    "All10 low contact groups (9feet+slide end) grounded by flattening bottom75mm only; normals recomputed."
+  ]
+}

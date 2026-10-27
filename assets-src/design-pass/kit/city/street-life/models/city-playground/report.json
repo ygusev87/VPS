@@ -1,0 +1,103 @@
+{
+  "name": "city-playground",
+  "source": "assets-src/raw/city-remaining-2026-10-27/city-playground.glb",
+  "sourceSha256": "7c75f551b25950035c7fa1cceb06a0eb56d9be65a6763207bfe112b5dfcb3980",
+  "sourceBytes": 745020,
+  "sourceTriangles": 3663,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.4667969346046448
+    ],
+    "max": [
+      0.5,
+      0.488006591796875,
+      0.4667969346046448
+    ]
+  },
+  "bytes": 91004,
+  "sha256": "d967d613770cf2ec5ce9a397876dee5d66dff32f8e13dc8ae499ce671b30ad04",
+  "triangles": 3663,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -1.4995814561843872,
+      -0.00002234659389366289,
+      -1.3999968360282171
+    ],
+    "max": [
+      1.4995814561843872,
+      1.463633591749228,
+      1.3999968360282171
+    ]
+  },
+  "size": [
+    2.9991629123687744,
+    1.4636559383431216,
+    2.7999936720564342
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      3.8,
+      2.5,
+      2.8
+    ],
+    "height": 2.5,
+    "rotationY": 0,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-contain",
+    "floorSnap": 0.075,
+    "rawReview": "Raw front+Z verified in native oblique; intact connected toy structure",
+    "recomputeNormals": true,
+    "localContactCorrection": "Source9 foot groups+slide had gaps up to71.55mm; flatten only bottom75mm vertices toY0, preserving all higher geometry and global proportions"
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform contain in target XYZ envelope; preserve proportions; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Recompute normals after local foot grounding",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.075 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}

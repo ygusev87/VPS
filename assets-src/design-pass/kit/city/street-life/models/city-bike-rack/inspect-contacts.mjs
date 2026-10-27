@@ -1,0 +1,9 @@
+import fs from 'node:fs/promises';import path from 'node:path';import {fileURLToPath} from 'node:url';import {NodeIO} from '@gltf-transform/core';import {ALL_EXTENSIONS} from '@gltf-transform/extensions';import {MeshoptDecoder} from 'meshoptimizer';import * as T from 'three';
+const dir=path.dirname(fileURLToPath(import.meta.url)),name=path.basename(dir),io=new NodeIO().registerExtensions(ALL_EXTENSIONS).registerDependencies({'meshopt.decoder':MeshoptDecoder});await MeshoptDecoder.ready;
+const file=process.argv[2]||path.join(dir,'candidate',name+'.glb'),doc=await io.read(file),limit=Number(process.argv[3]||.24),points=[],edges=[];
+for(const n of doc.getRoot().listNodes()){if(!n.getMesh())continue;const m=new T.Matrix4().fromArray(n.getWorldMatrix());for(const p of n.getMesh().listPrimitives()){const a=p.getAttribute('POSITION'),offset=points.length;for(let i=0;i<a.getCount();i++)points.push(new T.Vector3(...a.getElement(i,[])).applyMatrix4(m).toArray());const ix=p.getIndices().getArray();for(let i=0;i<ix.length;i+=3)for(let j=0;j<3;j++)edges.push([ix[i+j]+offset,ix[i+(j+1)%3]+offset]);}}
+const parent=points.map((_,i)=>i),same=new Map();const root=i=>parent[i]===i?i:(parent[i]=root(parent[i]));const join=(a,b)=>parent[root(a)]=root(b);
+points.forEach((p,i)=>{if(p[1]>limit)return;const key=p.map(v=>Math.round(v*1e5)).join(',');if(same.has(key))join(i,same.get(key));else same.set(key,i)});
+for(const[a,b]of edges)if(points[a][1]<=limit&&points[b][1]<=limit)join(a,b);
+const groups=new Map();points.forEach((p,i)=>{if(p[1]>limit)return;const k=root(i);if(!groups.has(k))groups.set(k,[]);groups.get(k).push(p)});
+const result=[...groups.values()].filter(v=>v.length>=3).map(v=>({vertices:v.length,min:[0,1,2].map(a=>Math.min(...v.map(p=>p[a]))),max:[0,1,2].map(a=>Math.max(...v.map(p=>p[a])))})).sort((a,b)=>a.min[0]-b.min[0]);console.log(JSON.stringify({name,limit,groups:result},null,2));

@@ -1,0 +1,22 @@
+{
+  "reviewed": true,
+  "targetXYZ": [
+    3.8,
+    2.5,
+    2.8
+  ],
+  "height": 2.5,
+  "rotationY": 0,
+  "targetTriangles": 4000,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "uniform-contain",
+  "floorSnap": 0.075,
+  "rawReview": "Raw front+Z verified in native oblique; intact connected toy structure",
+  "recomputeNormals": true,
+  "localContactCorrection": "Source9 foot groups+slide had gaps up to71.55mm; flatten only bottom75mm vertices toY0, preserving all higher geometry and global proportions"
+}

@@ -1,0 +1,100 @@
+{
+  "name": "city-bike-rack",
+  "source": "assets-src/raw/city-remaining-2026-10-27/city-bike-rack.glb",
+  "sourceSha256": "f828fc422fbc23ed8c2be4a16b9a3757f94756dd7a56217fa600af4004e0fbe3",
+  "sourceBytes": 820476,
+  "sourceTriangles": 3688,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.4696655571460724
+    ],
+    "max": [
+      0.5,
+      0.61981201171875,
+      0.4696655571460724
+    ]
+  },
+  "bytes": 99320,
+  "sha256": "2cc74edf2bfc1a849fd6ec7ee7d20ae077ed32c504b46714d6371f13c2bf217c",
+  "triangles": 3688,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.8516698479652405,
+      0.000009864955257343766,
+      -0.7999983596460505
+    ],
+    "max": [
+      0.8516698479652405,
+      1.0557405050703774,
+      0.7999983596460505
+    ]
+  },
+  "size": [
+    1.703339695930481,
+    1.05573064011512,
+    1.599996719292101
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      2.5,
+      1.3,
+      1.6
+    ],
+    "height": 1.3,
+    "rotationY": 0,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-contain",
+    "floorSnap": 0.006,
+    "rawReview": "Raw front+Z verified in native oblique; intact connected toy structure"
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform contain in target XYZ envelope; preserve proportions; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.006 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}

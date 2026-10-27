@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-27",
+  "service": "Tripo Studio",
+  "taskId": "61749ad9-4f83-4668-a454-41d3765f82fd",
+  "cost": 25,
+  "balanceBefore": 4900,
+  "balanceAfter": 4875,
+  "status": "complete and exported",
+  "attempts": 1,
+  "settings": {
+    "model": "H3.1",
+    "triangles": 4000,
+    "texture": "2K",
+    "delight": true,
+    "ultra": false,
+    "aiEnhancement": false,
+    "pbr": false
+  },
+  "sourceSha256": "f828fc422fbc23ed8c2be4a16b9a3757f94756dd7a56217fa600af4004e0fbe3",
+  "sourceBytes": 820476
+}

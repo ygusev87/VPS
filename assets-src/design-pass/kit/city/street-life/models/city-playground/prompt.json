@@ -1,0 +1,21 @@
+{
+  "id": "city-playground",
+  "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, softly rounded bevels, clean coherent chunky geometry, warm cream with turquoise, coral and golden-yellow accents, matching a friendly cream pastel toy-town kiosk. Elevated three-quarter view showing the whole front and right side. Center object with generous white margins, plain pure white studio background, soft even neutral light, minimal contact shadow. No people, animals, readable text, numbers, logos, pavement, grass, diorama, broad baseplate or separate decorative props. Make the object reconstructible under 4000 triangles with one baked opaque texture; no glass or translucent materials. Subject: ONE compact playground set consisting of a small slide and one small swing attached side by side, overall width:height:depth about 3.8:2.5:2.8. Left side a short rounded coral slide chute facing forward, cream ladder behind, sturdy turquoise platform with two safe rounded side rails. Right side a simple turquoise A-frame supporting exactly one golden-yellow swing seat on TWO thick dark teal rods; seat level and stationary. Two A-shaped side supports with paired feet reaching one ground plane, rigid connected top beam. All visible supports physically coherent and chunky, widely separated openings so silhouette reads from above. No person, no toddler, no ropes, thin chains, broad ground plate, fence or landscaping. The slide and swing share one compact play structure but their paths do not intersect.",
+  "method": "built-in image_gen",
+  "useCase": "stylized-concept",
+  "calls": 1,
+  "source": "refs/city-playground.png",
+  "sha256": "cf6dcc6c2d2e7ee81638d0c545198d288c329ac71e19775e1f009849a4c28e6c",
+  "bytes": 1384387,
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "visualReview": "accepted-as-reference-not-3d-geometry",
+  "reviewNotes": "Connected slide and one stationary swing. Source shows a large set; fit actual GLB uniformly to declared bounds and verify every foot. No animated seat requested.",
+  "targetXYZ": [
+    3.8,
+    2.5,
+    2.8
+  ]
+}

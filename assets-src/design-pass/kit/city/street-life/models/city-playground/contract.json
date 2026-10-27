@@ -1,0 +1,36 @@
+{
+  "common": {
+    "maxTriangles": 4000,
+    "targetMaxBytes": 150000,
+    "materials": 1,
+    "alphaMode": "OPAQUE",
+    "texture": "512 WebP",
+    "compression": "Meshopt",
+    "front": "+Z",
+    "baseY": 0,
+    "centerXZ": [
+      0,
+      0
+    ],
+    "skins": 0,
+    "animations": 0,
+    "groundPlate": false
+  },
+  "item": {
+    "id": "city-playground",
+    "label": "\u041d\u0435\u0431\u043e\u043b\u044c\u0448\u0430\u044f \u043f\u043b\u043e\u0449\u0430\u0434\u043a\u0430 \u0432 \u043f\u0430\u0440\u043a\u0435",
+    "reference": "assets-src/design-pass/kit/city/street-life/references/remaining/refs/city-playground.png",
+    "referenceSha256": "cf6dcc6c2d2e7ee81638d0c545198d288c329ac71e19775e1f009849a4c28e6c",
+    "targetXYZ": [
+      3.8,
+      2.5,
+      2.8
+    ],
+    "scope": [
+      "models/city-playground/",
+      "public/models/city-playground.glb"
+    ],
+    "requirements": "Connected slide and one stationary swing. Source shows a large set; fit actual GLB uniformly to declared bounds and verify every foot. No animated seat requested."
+  },
+  "specialQA": "Separate openings of slide and swing, intact frame connections, no floating supports or seat; stationary toy scene. Full target includes slide tip and swing feet."
+}

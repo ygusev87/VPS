@@ -1,0 +1,21 @@
+{
+  "id": "city-bike-rack",
+  "prompt": "Use case: stylized-concept. ONE isolated production reference for a low-poly 3D prop in a cheerful children's miniature town. Tactile handpainted clay/plastic, softly rounded bevels, clean coherent chunky geometry, warm cream with turquoise, coral and golden-yellow accents, matching a friendly cream pastel toy-town kiosk. Elevated three-quarter view showing the whole front and right side. Center object with generous white margins, plain pure white studio background, soft even neutral light, minimal contact shadow. No people, animals, readable text, numbers, logos, pavement, grass, diorama, broad baseplate or separate decorative props. Make the object reconstructible under 4000 triangles with one baked opaque texture; no glass or translucent materials. Subject: a compact bicycle parking rack holding exactly TWO small cheerful city bicycles side by side, one coral and one turquoise. Overall width:height:depth about 2.5:1.3:1.6. The rack is a low simple dark teal metal rail with sturdy wheel slots; both bicycles securely docked and static. Each bicycle has exactly two circular thick rubber tires on a common ground plane, simple solid cream disc-style wheel centres rather than thin spoke webs, coherent thick frame triangles, thick front fork, one curved handlebar and one saddle. Clear separation between the two bicycles, visible silhouette of both. Bikes parallel, facing front, viewed three-quarter from front-right. No rider, basket, pannier, cables, chains or floating pieces. Low-poly toy engineering with robust broad tubes, not a photoreal fragile bicycle.",
+  "method": "built-in image_gen",
+  "useCase": "stylized-concept",
+  "calls": 1,
+  "source": "refs/city-bike-rack.png",
+  "sha256": "d4b80d68c174c31a872847a8cf9992b5996551b59aeee1a3d0506bfda80549db",
+  "bytes": 1621073,
+  "pixelSize": [
+    1536,
+    1024
+  ],
+  "visualReview": "accepted-as-reference-not-3d-geometry",
+  "reviewNotes": "Two bicycles / four wheels, chunky disc centres and one rack. Reference uses simplified toy bikes without a visible drivetrain; accepted as static toy design. Do not add thin spokes or chains. All four wheels must share ground plane.",
+  "targetXYZ": [
+    2.5,
+    1.3,
+    1.6
+  ]
+}

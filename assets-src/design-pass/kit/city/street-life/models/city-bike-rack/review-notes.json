@@ -1,0 +1,6 @@
+{
+  "visual": "Two toy bicycles, four opaque disc wheels, complete handlebars/saddles/frames and one rack; no thin spokes/chains or ground plate.",
+  "contacts": "Four tyres verified separately by dark-rubber UV samples in four wheel regions; all4 minY within.0001. Generic low-surface grouping contains7 connected groups because of wheel/rack attachment; four rack feet also grounded.",
+  "geometry": "Bottom6mm flattened to remove source tyre gaps up to5.42mm, no cuts/new geometry or independent wheel motion.",
+  "additionalQA": "wheel-contacts.json proves each tyre rather than substituting rack contacts."
+}

@@ -1,0 +1,6 @@
+{
+  "visual": "One slide and one stationary swing, both rods intact, connected toy frame and ladder; no ground plate.",
+  "contacts": "10 grounded low-surface groups:9 support feet andslide end; all within.0001.",
+  "geometry": "Source gaps up to71.55mm corrected by flattening vertices only inbottom75mm; all higher geometry unchanged, normals recomputed. No split, added support or whole-model anisotropic scaling.",
+  "additionalQA": "98/98 front-to-back rays pass two declared central opening windows; side boundary identified inopenings.json. This is static geometry, no swing animation requested."
+}

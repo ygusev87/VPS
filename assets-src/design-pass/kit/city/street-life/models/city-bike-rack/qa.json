@@ -1,0 +1,84 @@
+{
+  "visualPass": true,
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":99320,\"triangles\":3688,\"materials\":1,\"bounds\":{\"min\":[-0.8516698479652405,0.000009864955257343766,-0.7999983596460505],\"max\":[0.8516698479652405,1.0557405050703774,0.7999983596460505]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":99320,\"triangles\":3688,\"materials\":1,\"bounds\":{\"min\":[-0.8516698479652405,0.000009864955257343766,-0.7999983596460505],\"max\":[0.8516698479652405,1.0557405050703774,0.7999983596460505]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":99320,\"triangles\":3688,\"materials\":1,\"bounds\":{\"min\":[-0.8516698479652405,0.000009864955257343766,-0.7999983596460505],\"max\":[0.8516698479652405,1.0557405050703774,0.7999983596460505]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":99320,\"triangles\":3688,\"materials\":1,\"bounds\":{\"min\":[-0.8516698479652405,0.000009864955257343766,-0.7999983596460505],\"max\":[0.8516698479652405,1.0557405050703774,0.7999983596460505]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":99320,\"triangles\":3688,\"materials\":1,\"bounds\":{\"min\":[-0.8516698479652405,0.000009864955257343766,-0.7999983596460505],\"max\":[0.8516698479652405,1.0557405050703774,0.7999983596460505]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "notes": [
+    "Two bikes, four opaque wheel discs, rack; no added chains/spokes. Static group."
+  ]
+}
