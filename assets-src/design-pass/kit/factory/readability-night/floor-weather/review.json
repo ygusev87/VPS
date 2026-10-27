@@ -1,0 +1,55 @@
+{
+  "createdAt": "2026-10-27T14:15:56.497333+00:00",
+  "status": "accepted-for-integration",
+  "method": "Main generated four independent bitmap assets with built-in image_gen, inspected emitted images, decoded final WebP alpha, then inspected native IAB Three.js fixture on existing factory-floor-a texture. Source alpha unchanged except resize/encoding.",
+  "assets": [
+    "factory-floor-oil-a",
+    "factory-floor-oil-b",
+    "factory-floor-oil-c",
+    "factory-floor-dust"
+  ],
+  "totalBytes": 240962,
+  "frames": [
+    "qa/weather-1180-light.jpg",
+    "qa/weather-1180-dark.jpg",
+    "qa/weather-390-dark.jpg",
+    "qa/weather-390-light-tilt.jpg"
+  ],
+  "viewports": [
+    [
+      1180,
+      820
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "coverage": [
+    "1180 light overhead",
+    "1180 dark overhead",
+    "390 dark overhead",
+    "390 light inclined"
+  ],
+  "result": "PASS: distinct puddle, smear, ring and dust; floor grid visible through stains; no rectangular backgrounds, visible coloured edge fringe or clipped borders at suggested opacity. Dust intentionally subtle on light floor.",
+  "consoleErrorsWarnings": [],
+  "horizontalOverflow": false,
+  "alphaNote": "Oil assets have zero nontransparent border pixels. Dust has four black edge pixels alpha1/255; preserved, not erased. At opacity.22 they are at most.000863 effective alpha. Gate allows only alpha1 noise; does not falsely claim a completely zero-alpha border.",
+  "material": {
+    "type": "MeshBasicMaterial",
+    "mapColourSpace": "SRGBColorSpace",
+    "color": "white",
+    "transparent": true,
+    "depthWrite": false,
+    "depthTest": true,
+    "side": "FrontSide",
+    "alphaTest": 0,
+    "orientation": "PlaneGeometry XY rotatedX=-pi/2 onto floorXZ, normal+Y. UalongX; image top points toward-Z.",
+    "fixtureOffsetAboveFloor": 0.015,
+    "layout": "Sizes in report refer to full transparent canvas. Claude chooses positions/scale/Yoffset relative to actual floor, stays clear of task outlines and wiring cues. No physical obstacle, shadow or pick target.",
+    "opacity": "oilA.42/oilB.40/oilC.38/dust.22 tested under linear Three.js blending; do not use alphaTest.5 because feathered marks disappear."
+  },
+  "integration": "Full game map placement, stacking with existing decals, mobile gameplay and physical iPad/PWA remain for integration review.",
+  "generation": "generation.json holds exact4prompts/source paths, source hashes in report.json; no Tripo or paidAPI orders.",
+  "next": "Remaining5requested decals: tyre strip, arrows, cable channel, grate/hatch, yellow-black corner. No regeneration of accepted four without defect."
+}

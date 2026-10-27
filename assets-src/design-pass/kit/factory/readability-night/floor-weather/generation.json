@@ -1,0 +1,62 @@
+{
+  "createdAt": "2026-10-27",
+  "tool": "built-in image_gen",
+  "items": [
+    {
+      "name": "factory-floor-oil-a",
+      "width": 512,
+      "height": 512,
+      "prompt": "Use case: stylized-concept. Asset type: one isolated transparent top-down floor decal for a hand-painted children's toy factory game. Strict orthographic overhead view, no perspective. Muted believable industrial wear, painterly brush texture, subtle irregular edges. This is only the stain/scuff itself with genuine transparent alpha around it and within sparse gaps, no drawn floor, no rectangle, no background colour, no shadow, no text, no border, no interface. Leave generous fully transparent padding on every edge, all marks fully inside canvas. Primary request: one modest asymmetrical round oil spill with three small nearby droplets. Dark warm umber and charcoal centre, muted slate-teal oily sheen on one small area, low-key soft edges, mostly translucent thinner rim. Broad compact organically scalloped silhouette, a little faded rubbed edge. Square canvas. Do not render shiny raised liquid or a hole; it lies flat.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-06fb2ece-cb7a-44b4-92c3-750790b50cb8.png",
+      "opacity": 0.42,
+      "worldSize": [
+        2.8,
+        2.8
+      ],
+      "transparent_background": true,
+      "sourceCopy": "source/factory-floor-oil-a.png"
+    },
+    {
+      "name": "factory-floor-oil-b",
+      "width": 512,
+      "height": 171,
+      "prompt": "Use case: stylized-concept. Asset type: one isolated transparent top-down floor decal for a hand-painted children's toy factory game. Strict orthographic overhead view, no perspective. Muted believable industrial wear, painterly brush texture, subtle irregular edges. This is only the stain/scuff itself with genuine transparent alpha around it and within sparse gaps, no drawn floor, no rectangle, no background colour, no shadow, no text, no border, no interface. Leave generous fully transparent padding on every edge, all marks fully inside canvas. Primary request: one long thin diagonal-to-horizontal smeared oil streak, elongated about 3:1 with two separated short drips trailing on the right. Warm charcoal-brown, dull, semitransparent sparse dry-brush scuffs in centre and soft feathered edges; it lies flat. Wide 3:1 canvas. Distinct from a round puddle, no tire tread marks or arrow.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-01740c42-5aee-4c6e-934c-e4be24096ef5.png",
+      "opacity": 0.4,
+      "worldSize": [
+        5,
+        1.6666666666666667
+      ],
+      "transparent_background": true,
+      "sourceCopy": "source/factory-floor-oil-b.png"
+    },
+    {
+      "name": "factory-floor-oil-c",
+      "width": 512,
+      "height": 512,
+      "prompt": "Use case: stylized-concept. Asset type: one isolated transparent top-down floor decal for a hand-painted children's toy factory game. Strict orthographic overhead view, no perspective. Muted believable industrial wear, painterly brush texture, subtle irregular edges. This is only the stain/scuff itself with genuine transparent alpha around it and within sparse gaps, no drawn floor, no rectangle, no background colour, no shadow, no text, no border, no interface. Leave generous fully transparent padding on every edge, all marks fully inside canvas. Primary request: one old partly wiped circular oil ring from a machine base, incomplete uneven broken ring with a small darker pooled crescent and a few tiny irregular flecks. Centre mostly transparent, natural imperfect shape; warm black-brown and muted gray-blue, translucent feathered smears. Square canvas. A flat stain, not a physical gasket, tire, crater or perfectly geometric circle.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-59eb6b21-43f6-436b-9ce1-bb9960fd5e2a.png",
+      "opacity": 0.38,
+      "worldSize": [
+        2.8,
+        2.8
+      ],
+      "transparent_background": true,
+      "sourceCopy": "source/factory-floor-oil-c.png"
+    },
+    {
+      "name": "factory-floor-dust",
+      "width": 512,
+      "height": 512,
+      "prompt": "Use case: stylized-concept. Asset type: one isolated transparent top-down floor decal for a hand-painted children's toy factory game. Strict orthographic overhead view, no perspective. Muted believable industrial wear, painterly brush texture, subtle irregular edges. This is only the stain/scuff itself with genuine transparent alpha around it and within sparse gaps, no drawn floor, no rectangle, no background colour, no shadow, no text, no border, no interface. Leave generous fully transparent padding on every edge, all marks fully inside canvas. Primary request: a broad soft irregular cluster of pale beige-gray factory dust and worn powder scuffs, dispersed wispy brush strokes and several fine curved rubbing marks. No oil, no dark centre, no shoe prints. Delicate semitransparent pigment, approximately 15 to 40 percent opacity in most painted areas, seamlessly fading to zero alpha around every edge. Airy uneven compact patch, square canvas.",
+      "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-b5ac3912-3901-4d25-9c95-5d49bf5375c3.png",
+      "opacity": 0.22,
+      "worldSize": [
+        3.4,
+        3.4
+      ],
+      "transparent_background": true,
+      "sourceCopy": "source/factory-floor-dust.png"
+    }
+  ]
+}

@@ -1,0 +1,135 @@
+{
+  "encoding": "Full-source resize and WebP90/alpha100 only; no repaint, erasure, colour change or alpha multiplier baked into assets.",
+  "status": "PASS",
+  "totalBytes": 240962,
+  "items": [
+    {
+      "name": "factory-floor-oil-a",
+      "publicPath": "public/textures/kit/factory/factory-floor-oil-a.webp",
+      "bytes": 43342,
+      "sha256": "f876d0cfa89353a80a4635c292ebd44e05fcc2f91599da5c618a6aa29e4fd575",
+      "sourceSha256": "76e06f14d45ffe10f67b3ab462135ce09af726921fe6a0b8b39dc9f70e115ca1",
+      "width": 512,
+      "height": 512,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero": 197671,
+        "partial": 63945,
+        "opaque": 528,
+        "borderNonzero": 0,
+        "borderMax": 0,
+        "borderPolicy": "Allow only alpha1/255 noise on border, preserve and disclose; no visible cut at suggested opacity",
+        "bounds": [
+          30,
+          17,
+          490,
+          501
+        ]
+      },
+      "suggestedOpacity": 0.42,
+      "worldSize": [
+        2.8,
+        2.8
+      ],
+      "pass": true
+    },
+    {
+      "name": "factory-floor-oil-b",
+      "publicPath": "public/textures/kit/factory/factory-floor-oil-b.webp",
+      "bytes": 23082,
+      "sha256": "04662eb8e0d24a2aef7f0f2f275cf3b2a2ff3ab19ca06b6ff3df5a6bf6c6255e",
+      "sourceSha256": "6a9de78d866484dda2910a53fd3c2c2ff134a4edc269e86ee725c604caf9396a",
+      "width": 512,
+      "height": 171,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero": 67682,
+        "partial": 19601,
+        "opaque": 269,
+        "borderNonzero": 0,
+        "borderMax": 0,
+        "borderPolicy": "Allow only alpha1/255 noise on border, preserve and disclose; no visible cut at suggested opacity",
+        "bounds": [
+          3,
+          13,
+          499,
+          155
+        ]
+      },
+      "suggestedOpacity": 0.4,
+      "worldSize": [
+        5,
+        1.6666666666666667
+      ],
+      "pass": true
+    },
+    {
+      "name": "factory-floor-oil-c",
+      "publicPath": "public/textures/kit/factory/factory-floor-oil-c.webp",
+      "bytes": 57252,
+      "sha256": "1361147668280330545fdcba9080d1ab62aac3390d70027dcd4fca03a5c7f17b",
+      "sourceSha256": "8a22414cb039164bd0369f425e73f96da57b44eb710cff8ed72844d333a70270",
+      "width": 512,
+      "height": 512,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero": 214360,
+        "partial": 47445,
+        "opaque": 339,
+        "borderNonzero": 0,
+        "borderMax": 0,
+        "borderPolicy": "Allow only alpha1/255 noise on border, preserve and disclose; no visible cut at suggested opacity",
+        "bounds": [
+          29,
+          21,
+          499,
+          504
+        ]
+      },
+      "suggestedOpacity": 0.38,
+      "worldSize": [
+        2.8,
+        2.8
+      ],
+      "pass": true
+    },
+    {
+      "name": "factory-floor-dust",
+      "publicPath": "public/textures/kit/factory/factory-floor-dust.webp",
+      "bytes": 117286,
+      "sha256": "6c618855f0074cd191d23e6a797a4903e4490d61b1332ca1624c32c790ba4498",
+      "sourceSha256": "9947fb82e75f0f0275f254af18f7421f7c9cb2407efaa3481d41d6fc9743ae4b",
+      "width": 512,
+      "height": 512,
+      "hasAlpha": true,
+      "alpha": {
+        "min": 0,
+        "max": 255,
+        "zero": 132625,
+        "partial": 129512,
+        "opaque": 7,
+        "borderNonzero": 4,
+        "borderMax": 1,
+        "borderPolicy": "Allow only alpha1/255 noise on border, preserve and disclose; no visible cut at suggested opacity",
+        "bounds": [
+          8,
+          0,
+          510,
+          507
+        ]
+      },
+      "suggestedOpacity": 0.22,
+      "worldSize": [
+        3.4,
+        3.4
+      ],
+      "pass": true
+    }
+  ]
+}
