@@ -8,6 +8,7 @@ import { isPolar, sandboxHint, type Hint } from './hints';
 import { model, type Fit } from './parts/assets';
 import { MAP_BOARD, type Part, type PartKind, type Terminal } from './parts/base';
 import { mat, mesh } from './parts/kit';
+import { kitPieces } from './kit';
 import type { Stage } from './stage';
 import { bendable, type Pose } from './bend';
 import { Life } from './life';
@@ -61,8 +62,8 @@ export interface Critter {
   /** Never shows a speech bubble (the fox does not ask for help). */
   mute?: boolean;
   mood: 'calm' | 'asking' | 'happy';
-  /** The part pictured in the speech bubble now. */
-  bubbleKind?: PartKind;
+  /** The part (or painted picture) in the speech bubble now. */
+  bubbleKind?: string;
   /** Which way it faces when it stands still. */
   face?: number;
   /** Tapped again and again: a twirl (1..0), a somersault (1..0). */
@@ -108,6 +109,11 @@ export interface Need extends Slot {
   more: Slot[];
   /** Sticker earned (defaults to the character's name). */
   sticker?: string;
+  /**
+   * A painted picture of the trouble for the bubble (a piece of the map's kit,
+   * e.g. a dark lamp, a box going into a lorry), in place of the part's snapshot.
+   */
+  picture?: string;
   /**
    * Whose need comes first (a character's name): a line of work waits for the
    * station before it, and its worker calls out once that one is done.
@@ -227,6 +233,8 @@ export abstract class StoryMap {
   private gone = false;
   /** The child picked whom to help (a tap, a part on a ring): a new view does not undo it. */
   private picked = false;
+  /** Story time till the next station along the line calls out (no hints before it does). */
+  private calling = 0;
   private nextAt = -1;
 
   /** Board size, world units, centred on the origin. */
@@ -735,15 +743,20 @@ export abstract class StoryMap {
       if (!mine.length) continue;
       c.mood = mine.some((n) => this.isNow(n) && !n.done) ? 'asking' : mine.some((n) => n.done) ? 'happy' : 'calm';
       const ask = mine.find((n) => this.isNow(n) && !n.done);
-      if (ask) this.picture(c, ask.icon);
+      if (ask) this.picture(c, ask.icon, ask.picture);
     }
   }
 
-  /** Show this part in the character's speech bubble. */
-  private picture(c: Critter, kind: PartKind) {
-    if (c.bubbleKind === kind) return;
-    c.bubbleKind = kind;
-    (c.bubble.material as THREE.SpriteMaterial).map = bubbleTexture(kind);
+  /** The map's painted kit (src/kit.ts) the bubbles' pictures come from. */
+  protected readonly kitName: string = '';
+
+  /** Show this part (or the need's painted picture of its trouble, when the kit has it) in the character's speech bubble. */
+  private picture(c: Critter, kind: PartKind, painted?: string) {
+    const pic = painted && this.kitName ? kitPieces(this.kitName, painted)[0] : undefined;
+    const key = pic ? painted! : kind;
+    if (c.bubbleKind === key) return;
+    c.bubbleKind = key;
+    (c.bubble.material as THREE.SpriteMaterial).map = bubbleTexture(kind, pic?.image as HTMLImageElement | HTMLCanvasElement | undefined, key);
     (c.bubble.material as THREE.SpriteMaterial).needsUpdate = true;
   }
 
@@ -795,6 +808,8 @@ export abstract class StoryMap {
 
   /** The next helpful nudge: bring the part a waiting character asks for. */
   hint(trayLeft: (k: PartKind) => number): Hint | null {
+    // The next station along the line has not called yet: no hand before its worker has said why.
+    if (this.calling > this.time) return null;
     const drag = (n: Need): Hint | null => {
       for (const s of slots(n)) {
         if (!s.kinds.length) continue;
@@ -859,7 +874,7 @@ export abstract class StoryMap {
       }
       if (!waiting) continue;
       // The bubble shows the next part still missing from the chain.
-      if (n.more.length) this.picture(n.critter, (slots(n).find((s) => s.kinds.length && !s.ready) ?? n).icon);
+      if (n.more.length) this.picture(n.critter, (slots(n).find((s) => s.kinds.length && !s.ready) ?? n).icon, n.picture);
       n.held = n.met() ? n.held + dt : 0;
       if (n.held > 0.8) {
         n.done = true;
@@ -882,6 +897,7 @@ export abstract class StoryMap {
         // Next along the line: its worker calls once the thanks are said, and the view goes to them.
         const next = this.needs.find((x) => x.after === n.critter.name && !x.done && this.isNow(x));
         if (next) {
+          this.calling = this.time + 4.6;
           setTimeout(() => {
             if (this.gone || next.done) return;
             this.focused = next;
@@ -1024,14 +1040,14 @@ const bubbleCache = new Map<string, THREE.Texture>();
 /** Needs with nothing to bring from the drawers show a picture of who waits instead. */
 const EMOJI: Partial<Record<PartKind, string>> = { gate: '🚜', substation: '🚋' };
 /** A speech bubble with a picture of the part a character is asking for. */
-function bubbleTexture(kind: PartKind): THREE.Texture {
-  const hit = bubbleCache.get(kind);
+function bubbleTexture(kind: PartKind, painted?: HTMLImageElement | HTMLCanvasElement, key: string = kind): THREE.Texture {
+  const hit = bubbleCache.get(key);
   if (hit) return hit;
   const c = document.createElement('canvas');
   c.width = 256;
   c.height = 226;
   const ctx = c.getContext('2d')!;
-  const draw = (img?: HTMLImageElement) => {
+  const draw = (img?: HTMLImageElement | HTMLCanvasElement) => {
     ctx.clearRect(0, 0, 256, 226);
     ctx.fillStyle = '#ffffff';
     ctx.strokeStyle = '#18213d';
@@ -1057,14 +1073,14 @@ function bubbleTexture(kind: PartKind): THREE.Texture {
   };
   const tex = new THREE.CanvasTexture(c);
   tex.colorSpace = THREE.SRGBColorSpace;
-  draw();
-  const src = EMOJI[kind] ? '' : thumb(kind, true);
+  draw(painted);
+  const src = painted || EMOJI[kind] ? '' : thumb(kind, true);
   if (src) {
     const img = new Image();
     img.onload = () => draw(img);
     img.src = src;
   }
-  bubbleCache.set(kind, tex);
+  bubbleCache.set(key, tex);
   return tex;
 }
 
