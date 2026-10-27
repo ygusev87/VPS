@@ -26,7 +26,21 @@ import type { PhraseId } from './voice';
 /** Model files the factory needs (each falls back to a code-built stand-in). */
 /** Codex's hall crew: the foreman, and the station workers in turn (whole figures facing +z, moved by code). */
 const CREW = ['factory-worker-technician', 'factory-worker-loader', 'factory-worker-inspector'];
-export const FACTORY_MODELS = ['pole', 'child', 'kitten', 'flower-cluster', 'factory-worker-foreman', ...CREW, ...WORKSHOP_MODELS];
+/** Codex's hall furniture (static, but the cabinet's lamps light up): where the empty floor was. */
+const PROPS: [string, Fit, number, number, number][] = [
+  ['factory-foreman-booth', { height: 2.6 }, 34, 5.6, 0],
+  ['factory-loading-ramp', { depth: 3.8 }, 37.4, -10, -Math.PI / 2],
+  ['factory-lockers', { height: 2 }, 22, -24.4, 0],
+  ['factory-lockers', { height: 2 }, 27.5, -24.4, 0],
+  ['factory-fire-extinguisher', { height: 1.1 }, -6.4, -24.9, 0],
+  ['factory-fire-extinguisher', { height: 1.1 }, -38.9, 0.2, Math.PI / 2],
+  ['factory-fire-extinguisher', { height: 1.1 }, 38.9, 9, -Math.PI / 2],
+  ['factory-box-trolley', { depth: 1.6 }, 10, 5.4, 0.3],
+  ['factory-box-trolley', { depth: 1.6 }, -12, 5.6, -0.25],
+  ['factory-control-cabinet', { height: 2.1 }, -38.6, -7.5, Math.PI / 2],
+  ['factory-control-cabinet', { height: 2.1 }, 38.6, 19.5, -Math.PI / 2],
+];
+export const FACTORY_MODELS = ['pole', 'child', 'kitten', 'flower-cluster', 'factory-worker-foreman', ...CREW, ...WORKSHOP_MODELS, ...new Set(PROPS.map(([m]) => m)), 'factory-product-bear', 'factory-product-billet', 'factory-product-box', 'factory-delivery-lorry'];
 
 /** What the drawers offer in the factory: the levers and the gears (a middle one that fits nowhere). */
 export const FACTORY_TRAY: { kind: PartKind; count: number }[] = [
@@ -129,7 +143,7 @@ const EVE_STATIONS = [BOOTH.x, GRINDER.x, WELDER.x, LORRY2.x - 3];
 const LINE_START = -27;
 
 const VOICES: Record<string, PhraseId> = { foreman: 'shopHello', worker: 'hammer', lorry: 'beep', cat: 'meow' };
-const MODEL_OF: Record<string, string> = { cat: 'kitten' };
+const MODEL_OF: Record<string, string> = { cat: 'kitten', lorry: 'factory-delivery-lorry' };
 
 export class FactoryMap extends StoryMap {
   protected readonly width = W;
@@ -201,6 +215,7 @@ export class FactoryMap extends StoryMap {
     this.buildNeeds();
     this.layBuilding();
     this.wallClock();
+    this.placeProps();
     this.life.addToy('soda', -W / 2 + 2.5, -20, Math.PI / 2);
     // People about the hall on the yellow walkways, each its own stretch and back, clear of the stations.
     const ways = this.aisleRuns();
@@ -235,6 +250,29 @@ export class FactoryMap extends StoryMap {
     this.layChain(pole(TANK_POLE), [this.tank, this.booth]);
     this.layChain(pole(GRIND_POLE), [this.gmotor]);
   }
+
+  /** Codex's furniture of the hall; a control cabinet's lamps go green once the hall has power. */
+  private placeProps() {
+    for (const [name, fit, x, z, yaw] of PROPS) {
+      const m = model(name, fit);
+      if (!m) continue;
+      m.position.set(x, 0, z);
+      m.rotation.y = yaw;
+      m.traverse((o) => {
+        if (!(o as THREE.Mesh).isMesh) return;
+        o.castShadow = o.receiveShadow = true;
+        // Each lamp its own material (the model shares one), so each can light alone.
+        if (/^lamp-/.test(o.name)) {
+          const lamp = o as THREE.Mesh;
+          lamp.material = (lamp.material as THREE.MeshStandardMaterial).clone();
+          this.cabinetLamps.push({ m: lamp.material as THREE.MeshStandardMaterial, color: o.name.slice(5) });
+        }
+      });
+      this.scenery.add(m);
+    }
+  }
+
+  private cabinetLamps: { m: THREE.MeshStandardMaterial; color: string }[] = [];
 
   /** A lever put on its place gets its supply from the station's pole at once; the child wires it on to the motor. */
   private layLevers() {
@@ -731,6 +769,12 @@ export class FactoryMap extends StoryMap {
       this.gearTaps.set(g, g.taps);
     }
     if (this.lathe.speed === 'ok') this.turned += dt;
+    // The cabinets: red while the hall is dark, green once it has power, amber blinking at the turn of the shift.
+    for (const l of this.cabinetLamps) {
+      const on = l.color === 'red' ? !this.lit : l.color === 'green' ? this.lit : this.phase === 'evening' && !this.eveLit && Math.sin(this.time * 6) > 0;
+      l.m.emissive.set(l.color === 'red' ? '#ff3b2f' : l.color === 'green' ? '#4cff6a' : '#ffb020');
+      l.m.emissiveIntensity = THREE.MathUtils.damp(l.m.emissiveIntensity, on ? 2.2 : 0, 8, dt);
+    }
     this.layLevers();
     this.autoHoist();
     this.updateCart();
@@ -964,22 +1008,22 @@ type ToyLook = 'blank' | 'turned' | 'stamped' | 'painted' | 'boxed' | 'steel';
  * The toy the line makes, a teddy bear: a wooden blank from the cart, turned
  * into a bear on the lathe, stamped with a star by the press, painted by the
  * robot, boxed for the lorry. Codex's models where they are made
- * (factory-toy-blank, factory-toy-bear, factory-gift-box), else stand-ins.
+ * (factory-product-billet, -bear, -box), else stand-ins.
  */
 function toyMesh(look: ToyLook = 'blank'): THREE.Group {
   const g = new THREE.Group();
   const wood = '#d9a86c';
-  const blank = model('factory-toy-blank', { height: 0.55 }) ?? mesh(new THREE.CylinderGeometry(0.22, 0.22, 0.55, 14), mat(wood, 0.7));
-  if (!hasModel('factory-toy-blank')) blank.position.y = 0.05;
+  const blank = model('factory-product-billet', { height: 0.55 }) ?? mesh(new THREE.CylinderGeometry(0.22, 0.22, 0.55, 14), mat(wood, 0.7));
+  if (!hasModel('factory-product-billet')) blank.position.y = 0.05;
   blank.name = 'blank';
-  const bear = model('factory-toy-bear', { height: 0.7 }) ?? teddy(wood);
+  const bear = model('factory-product-bear', { height: 0.7 }) ?? teddy(wood);
   bear.position.y = -0.3;
   bear.name = 'bear';
   const star = mesh(new THREE.CylinderGeometry(0.11, 0.11, 0.03, 5), mat('#ffd23f', 0.4, 0.3));
   star.rotation.x = Math.PI / 2;
   star.position.set(0, 0.0, 0.2);
   star.name = 'star';
-  const box = model('factory-gift-box', { width: 0.75 }) ?? giftBox();
+  const box = model('factory-product-box', { width: 0.75 }) ?? giftBox();
   box.position.y = -0.3;
   box.name = 'box';
   g.add(blank, bear, star, box);
