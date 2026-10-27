@@ -1,5 +1,5 @@
 {
-  "reviewedAt": "2026-10-27T11:37:52.191161+00:00",
+  "reviewedAt": "2026-10-27T11:59:31.627281+00:00",
   "status": "candidate-preserved-not-accepted-for-runtime",
   "workerCommit": "66567d0",
   "candidate": "assets-src/design-pass/kit/factory/background-life/models/factory-forklift/static-candidate.glb",
@@ -11,7 +11,7 @@
     "Inspected native 1024 oblique/front and390 static frames"
   ],
   "staticVisual": "Four wheels, two blades and open cabin readable. Source diagonal mast webbing visible; not silently removed.",
-  "articulation": "No independent closed carriage; no forks group, pivot or accepted travel. Local split experiment is rejected, not an animated asset.",
+  "articulation": "Main experimental two-group GLB now has closed oriented edge topology after constrained caps; not accepted: rail/carriage penetration remains. Public asset not emitted.",
   "sourceRequest": "Claude m0497 requested forks node if possible, otherwise background driving with pallet. Static-only alternative requires explicit integration decision; main has not published the candidate.",
   "workerEvidence": {
     "triangles": 3590,
@@ -74,7 +74,7 @@
     },
     "independentContactOrSweptCheckByMain": false
   },
-  "next": "Main can investigate a reviewed local interface remesh; Claude can clarify whether fixed forks meet the intended background-driving action. Preserve source and candidate while city batch runs independently.",
+  "next": "Claude decision on fixed forks for background driving is pending. If lift is required, rebuild the carriage/rail interface with clearance; capping alone is insufficient. Main can independently prepare the remaining factory prop brief while city worker continues.",
   "tripo": {
     "paidOrders": 1,
     "cost": 25,
@@ -85,5 +85,49 @@
     "No articulation acceptance.",
     "No pallet contact/cargo sweep or full factory route accepted.",
     "No physical iPad/PWA."
-  ]
+  ],
+  "mainRemesh": {
+    "path": "assets-src/design-pass/kit/factory/background-life/models/factory-forklift/main-remesh",
+    "bytes": 104516,
+    "sha256": "944e61d87753d10c12621525274f07d4734b155599f6edee042181f45c43f9e2",
+    "triangles": 3638,
+    "topology": {
+      "body": {
+        "triangles": 3462,
+        "nonManifoldEdges": 0,
+        "nonManifoldDetails": [],
+        "inconsistentEdges": 0,
+        "degenerateTriangles": 0,
+        "maxSourceMatchError": 2.6097899344042493e-05
+      },
+      "forks": {
+        "triangles": 176,
+        "nonManifoldEdges": 0,
+        "nonManifoldDetails": [],
+        "inconsistentEdges": 0,
+        "degenerateTriangles": 0,
+        "maxSourceMatchError": 1.0084269347741793e-05
+      }
+    },
+    "continuousContactPairs": 303,
+    "penetrationWitness": {
+      "lift": 0.2,
+      "samplesInside": 6,
+      "deepest": {
+        "depth": 0.026482716110852605,
+        "worldPoint": [
+          0.4698560275488275,
+          0.8189286782814955,
+          0.7074840842866937
+        ],
+        "restPoint": [
+          0.4698560275488275,
+          0.6189286782814954,
+          0.7074840842866937
+        ]
+      }
+    },
+    "acceptedTravel": null,
+    "publicUnchanged": true
+  }
 }

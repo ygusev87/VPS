@@ -1,0 +1,7455 @@
+{
+  "createdAt": "2026-10-27T11:54:40.987Z",
+  "sha256": "944e61d87753d10c12621525274f07d4734b155599f6edee042181f45c43f9e2",
+  "method": "Decoded final Meshopt experimental GLB, welded edge topology. Continuous triangle/triangle separating-axis time intervals for forks translation Y +0.001…+0.65; no temporal sampling. Counts include rail/bearing surface contacts and crossings; no unreviewed exclusions.",
+  "topology": {
+    "body": {
+      "triangles": 3462,
+      "nonManifoldEdges": 0,
+      "nonManifoldDetails": [],
+      "inconsistentEdges": 0,
+      "degenerateTriangles": 0,
+      "maxSourceMatchError": 0.000026097899344042493
+    },
+    "forks": {
+      "triangles": 176,
+      "nonManifoldEdges": 0,
+      "nonManifoldDetails": [],
+      "inconsistentEdges": 0,
+      "degenerateTriangles": 0,
+      "maxSourceMatchError": 0.000010084269347741793
+    }
+  },
+  "requestedTravel": [
+    0,
+    0.65
+  ],
+  "checkedTravel": [
+    0.001,
+    0.65
+  ],
+  "contactPairs": 303,
+  "groups": {
+    "tripo_part_13 -> tripo_part_1": 6,
+    "tripo_part_13 -> cap": 12,
+    "tripo_part_1 -> tripo_part_1": 86,
+    "tripo_part_1 -> cap": 55,
+    "cap -> tripo_part_1": 95,
+    "cap -> cap": 49
+  },
+  "contacts": [
+    {
+      "movingSourceId": 65,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 36,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.28456567303240354,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7995008488622871,
+          0.7307453568786393
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 65,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 37,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.28456567303240354,
+        0.6412116506998895
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8183328897414888,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 65,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3458,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.23218161787333547,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7954741273783974,
+          0.7052427874806708
+        ],
+        "max": [
+          0.5662627929162946,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 65,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3459,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.19230187363420728,
+        0.6395162558774882
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4631136446017045,
+          0.6197626444450264,
+          0.7024362846282628
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 65,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3460,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.19230187363420728,
+        0.6301139363921782
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42239901626459697,
+          0.6197626444450264,
+          0.7012974139055466
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 65,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3461,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.26398931566295564,
+        0.6391851249732311
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.6206574714414462,
+          0.7012974139055466
+        ],
+        "max": [
+          0.4631136446017045,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 66,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 36,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18907852762404392,
+        0.3148180175145846
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7995008488622871,
+          0.7307453568786393
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 66,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 37,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18343682147153997,
+        0.3035380730544825
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8183328897414888,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 66,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3458,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.1827930965383213,
+        0.3148180175145846
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7954741273783974,
+          0.7052427874806708
+        ],
+        "max": [
+          0.5662627929162946,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 66,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3459,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.15253640370053276,
+        0.23218262821537666
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4631136446017045,
+          0.6197626444450264,
+          0.7024362846282628
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 66,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3460,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.15253640370053276,
+        0.2639898974325933
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42239901626459697,
+          0.6197626444450264,
+          0.7012974139055466
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 66,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3461,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.1537933701520627,
+        0.3035380730544825
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.6206574714414462,
+          0.7012974139055466
+        ],
+        "max": [
+          0.4631136446017045,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 67,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 36,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.6412114289011526,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7995008488622871,
+          0.7307453568786393
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 67,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 37,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.6391849242026142,
+        0.6433797877280274
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8183328897414888,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 67,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3458,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.6395160555894421,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7954741273783974,
+          0.7052427874806708
+        ],
+        "max": [
+          0.5662627929162946,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 67,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3459,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.6301133926913379,
+        0.6433797877280274
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4631136446017045,
+          0.6197626444450264,
+          0.7024362846282628
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 67,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3460,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.6296114136965905,
+        0.6433797877280274
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42239901626459697,
+          0.6197626444450264,
+          0.7012974139055466
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 67,
+      "movingLabel": "tripo_part_13",
+      "movingCap": false,
+      "fixedSourceId": 3461,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.6296114136965905,
+        0.6433797877280274
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.6206574714414462,
+          0.7012974139055466
+        ],
+        "max": [
+          0.4631136446017045,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 86,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 83,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0012754304456403173
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.3901445704390962,
+          0.7072116463678846,
+          0.7047547000280783
+        ],
+        "max": [
+          -0.2566119782006107,
+          1.1993664943988547,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 86,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 84,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0012754304456403173
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.2571000656532034,
+          0.3286184789734823,
+          0.6709953178904164
+        ],
+        "max": [
+          -0.2548629981621536,
+          1.1993664943988547,
+          0.7090661391926469
+        ]
+      }
+    },
+    {
+      "movingSourceId": 86,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 103,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.005725960125174013,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.3901445704390962,
+          0.7994195009535217,
+          0.7047547000280783
+        ],
+        "max": [
+          -0.2571000656532034,
+          1.5479829574131887,
+          0.7189905840620319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 86,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 104,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.005725960125174013,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.41369479002669385,
+          0.7994195009535217,
+          0.6987349547794348
+        ],
+        "max": [
+          -0.38839559040063903,
+          1.652148954587347,
+          0.7189905840620319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 88,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 1,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.08396355936826369
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4565651379460858,
+          0.809710011412351,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 88,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.07938077077903015,
+        0.08396355936826369
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 88,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 104,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.009478414294607454,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.41369479002669385,
+          0.7994195009535217,
+          0.6987349547794348
+        ],
+        "max": [
+          -0.38839559040063903,
+          1.652148954587347,
+          0.7189905840620319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 88,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.07938077077903015,
+        0.08285897423425544
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 88,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.08285897423425544
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 89,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.07984235150244054
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 89,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.08016364205367071
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 89,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.08016364205367071
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 91,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.07881574944987325
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 91,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.06793407229613575,
+        0.07984909417358892
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 91,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.009244231094454018,
+        0.07984909417358892
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 91,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3443,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.07690439052212505
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5623987672499358,
+          0.8038122880268559,
+          0.7259865042158604
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8818249325329222,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 94,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0679343313337185
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 94,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.07124220074571207
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 94,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.07124220074571207
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 94,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3443,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.009245306736484432
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5623987672499358,
+          0.8038122880268559,
+          0.7259865042158604
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8818249325329222,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 90,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.07904327780661669
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 90,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.07881554927703284,
+        0.07984909417358892
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 90,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.07690410466956035,
+        0.07984909417358892
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 90,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3443,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.07904327780661669
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5623987672499358,
+          0.8038122880268559,
+          0.7259865042158604
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8818249325329222,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 98,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 11,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.10112491196239688
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7451197718525842,
+          0.6303620374620744
+        ],
+        "max": [
+          -0.5233110970881372,
+          0.8038122880268559,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 98,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 9,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.03384239861225824,
+        0.1274036440410629
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7854683346002471,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5623987672499358,
+          0.8853228926098364,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 98,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.06108624804074403,
+        0.17394688366085134
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 98,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.12369232047745314,
+        0.1853324029766731
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 98,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.1421894678254191,
+        0.1853324029766731
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 108,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 22,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.23645832305481987,
+        0.2759802748959782
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6830754823420857
+        ],
+        "max": [
+          0.5662627929162946,
+          0.900616299457741,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 108,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 24,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.274243906383299,
+        0.2759802748959782
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.8922374648548996,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5565417178188233,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 108,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3454,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.23645832305481987,
+        0.2755752581672925
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 122,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 63,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1802199840769172,
+        0.18253432360236194
+      ],
+      "fixedBounds": {
+        "min": [
+          0.26275374531240214,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.3974658822279867,
+          1.5438748880205337,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 122,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 64,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1802199840769172,
+        0.2008376411846928
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2552290637515981,
+          0.7995008488622871,
+          0.6855565935594321
+        ],
+        "max": [
+          0.3956762282351468,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 122,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 115,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.2008376411846928
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.6855565935594321
+        ],
+        "max": [
+          0.26275374531240214,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 122,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3449,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.18051421581525287
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.7061782884314736
+        ],
+        "max": [
+          0.3974658822279867,
+          0.7995008488622871,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 123,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 115,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.003267056146223229
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.6855565935594321
+        ],
+        "max": [
+          0.26275374531240214,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 138,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 10,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.17255069853128072,
+        0.17358601771863522
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.5233110970881372,
+          0.8038122880268559,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 138,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2526184338953003,
+        0.26497971119556263
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 138,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.26496025655630795,
+        0.2654314477354927
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 138,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.2637547228749193,
+        0.2654314477354927
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 138,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3443,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.2526184338953003,
+        0.2649604566903405
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5623987672499358,
+          0.8038122880268559,
+          0.7259865042158604
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8818249325329222,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 138,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3444,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17279485194231284,
+        0.17358601771863522
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7925862766172239,
+          0.7065036800665354
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.809710011412351,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 138,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3445,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17255069853128072,
+        0.17293327012263535
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.809710011412351,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 1,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2562432961841762,
+        0.26910562599915716
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4565651379460858,
+          0.809710011412351,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2685398722207692,
+        0.26910562599915716
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 11,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.17054146130126652,
+        0.18559180228814515
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7451197718525842,
+          0.6303620374620744
+        ],
+        "max": [
+          -0.5233110970881372,
+          0.8038122880268559,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 9,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18209513520876386,
+        0.1910854478395796
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7854683346002471,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5623987672499358,
+          0.8853228926098364,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 10,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.17054146130126652,
+        0.18559180228814515
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.5233110970881372,
+          0.8038122880268559,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18559159999623784,
+        0.26497971119556263
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2626417236251252,
+        0.2717179818790725
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.26843904561523774,
+        0.2689174169258653
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.2562432961841762,
+        0.2689174169258653
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.2205386934627893,
+        0.2717179818790725
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3443,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.18559159999623784,
+        0.2637550553408269
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5623987672499358,
+          0.8038122880268559,
+          0.7259865042158604
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8818249325329222,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3444,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17293305126162375,
+        0.18662021774626414
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7925862766172239,
+          0.7065036800665354
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.809710011412351,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 140,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3445,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17089419107065085,
+        0.17410973889667805
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.809710011412351,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 0,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18377979039650233,
+        0.23011510771766466
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4530265039147887,
+          0.7994195009535217,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.8992740589631111,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 1,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.19166166140373414,
+        0.27842277115490627
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4565651379460858,
+          0.809710011412351,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2685398722207692,
+        0.27842277115490627
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 11,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1540381337680724,
+        0.18209533894278082
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7451197718525842,
+          0.6303620374620744
+        ],
+        "max": [
+          -0.5233110970881372,
+          0.8038122880268559,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 9,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18113780485553085,
+        0.19907865462879562
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7854683346002471,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5623987672499358,
+          0.8853228926098364,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 10,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1540381337680724,
+        0.17089452669129157
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.5233110970881372,
+          0.8038122880268559,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.19108520424641326,
+        0.2641006909081897
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2626417236251252,
+        0.27910948299693367
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.26843904561523774,
+        0.2713657275781551
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.19166166140373414,
+        0.27002209040521485
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3441,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.19166166140373414,
+        0.21522851982787414
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.19166166140373414,
+        0.27910948299693367
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3443,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.18662001141733023,
+        0.220539160747164
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5623987672499358,
+          0.8038122880268559,
+          0.7259865042158604
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8818249325329222,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3444,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17410943772276466,
+        0.19166186236284877
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7925862766172239,
+          0.7065036800665354
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.809710011412351,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3445,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.1656546916389897,
+        0.19166186236284877
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.809710011412351,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3446,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.1656546916389897,
+        0.19166186236284877
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5233110970881372,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.809710011412351,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 142,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3447,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.18265739957741214
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5233110970881372,
+          0.6157765969155193,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.7994195009535217,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 144,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 64,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.002045782639330383
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2552290637515981,
+          0.7995008488622871,
+          0.6855565935594321
+        ],
+        "max": [
+          0.3956762282351468,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 144,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 115,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.003267056146223229
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.6855565935594321
+        ],
+        "max": [
+          0.26275374531240214,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 145,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 115,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.003267056146223229
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.6855565935594321
+        ],
+        "max": [
+          0.26275374531240214,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 146,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 42,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.268439600843144,
+        0.2739635507847713
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8705582471689074,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 146,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 35,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.268439600843144,
+        0.2688327335527044
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.8705582471689074,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          0.920424515242128,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 146,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 43,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.26430991850357494,
+        0.2739635507847713
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8183328897414888,
+          0.7022735888107319
+        ],
+        "max": [
+          0.45713457330744395,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 146,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 36,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18907852762404392,
+        0.2685213037697721
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7995008488622871,
+          0.7307453568786393
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 146,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 37,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1826897254673441,
+        0.19625466906111536
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8183328897414888,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 146,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3457,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.26760653038599763,
+        0.2688327335527044
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.7954741273783974,
+          0.655539215224981
+        ],
+        "max": [
+          0.5662627929162946,
+          0.920424515242128,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 146,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3458,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.18244036466222022,
+        0.2685213037697721
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7954741273783974,
+          0.7052427874806708
+        ],
+        "max": [
+          0.5662627929162946,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 146,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3459,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.1439957245102154,
+        0.1827932969775481
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4631136446017045,
+          0.6197626444450264,
+          0.7024362846282628
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 146,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3460,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.09956279949901307,
+        0.15379392832520203
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42239901626459697,
+          0.6197626444450264,
+          0.7012974139055466
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 146,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3461,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.09956279949901307,
+        0.18343702148172716
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.6206574714414462,
+          0.7012974139055466
+        ],
+        "max": [
+          0.4631136446017045,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 18,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.0054164332598890365,
+        0.17621629154082225
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5196911151480748,
+          0.6197626444450264,
+          0.6876309652329509
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7954741273783974,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 22,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.17621609131959753,
+        0.27837816892875306
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6830754823420857
+        ],
+        "max": [
+          0.5662627929162946,
+          0.900616299457741,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 24,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2755750569506605,
+        0.27837816892875306
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.8922374648548996,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5565417178188233,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 23,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.17621609131959753,
+        0.17817020229537872
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5565417178188233,
+          0.7954741273783974,
+          0.6136450422107746
+        ],
+        "max": [
+          0.5725265818912342,
+          0.900616299457741,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 26,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1761532157246965,
+        0.1762303385004186
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5193250495586302,
+          0.7859970960072225,
+          0.6136450422107746
+        ],
+        "max": [
+          0.5725265818912342,
+          0.8026734173041397,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 28,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.17469678812642087,
+        0.17621629154082225
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5193250495586302,
+          0.7203493336335047,
+          0.6229593777644187
+        ],
+        "max": [
+          0.5662627929162946,
+          0.7954741273783974,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 42,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2645797966713225,
+        0.4006156912376737
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8705582471689074,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 35,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2645797966713225,
+        0.279128869186852
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.8705582471689074,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          0.920424515242128,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 43,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.20165325431368147,
+        0.4006156912376737
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8183328897414888,
+          0.7022735888107319
+        ],
+        "max": [
+          0.45713457330744395,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 36,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.19625444150997118,
+        0.2643110771050373
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7995008488622871,
+          0.7307453568786393
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 37,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18230704771860137,
+        0.20165345453490618
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8183328897414888,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 44,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18683273531304026,
+        0.34685298839102646
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7022735888107319
+        ],
+        "max": [
+          0.45713457330744395,
+          1.0819407880959282,
+          0.7307453568786393
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3454,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17621609131959753,
+        0.2772119403043977
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3455,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17621609131959753,
+        0.17673474818079266
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4587208575283702,
+          0.7954741273783974,
+          0.588020450949658
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3456,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17621609131959753,
+        0.1771280197050896
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.7954741273783974,
+          0.588020450949658
+        ],
+        "max": [
+          0.5662627929162946,
+          0.920424515242128,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3457,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17621609131959753,
+        0.279128869186852
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.7954741273783974,
+          0.655539215224981
+        ],
+        "max": [
+          0.5662627929162946,
+          0.920424515242128,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3458,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17621609131959753,
+        0.267606847238487
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7954741273783974,
+          0.7052427874806708
+        ],
+        "max": [
+          0.5662627929162946,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3459,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.1824405648224264
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4631136446017045,
+          0.6197626444450264,
+          0.7024362846282628
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3460,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.1439961123150035
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42239901626459697,
+          0.6197626444450264,
+          0.7012974139055466
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 147,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3461,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.04095370544364328,
+        0.18268992555467536
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.6206574714414462,
+          0.7012974139055466
+        ],
+        "max": [
+          0.4631136446017045,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 18,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.1746975164444785
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5196911151480748,
+          0.6197626444450264,
+          0.6876309652329509
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7954741273783974,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 22,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.17816926006534897,
+        0.27837816892875306
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6830754823420857
+        ],
+        "max": [
+          0.5662627929162946,
+          0.900616299457741,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 24,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.27656468018160996,
+        0.27837816892875306
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.8922374648548996,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5565417178188233,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 23,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1757860097138449,
+        0.18978250676616717
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5565417178188233,
+          0.7954741273783974,
+          0.6136450422107746
+        ],
+        "max": [
+          0.5725265818912342,
+          0.900616299457741,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 26,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.17519509960033494,
+        0.1762303385004186
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5193250495586302,
+          0.7859970960072225,
+          0.6136450422107746
+        ],
+        "max": [
+          0.5725265818912342,
+          0.8026734173041397,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 28,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1625118859619961,
+        0.1761534168047787
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5193250495586302,
+          0.7203493336335047,
+          0.6229593777644187
+        ],
+        "max": [
+          0.5662627929162946,
+          0.7954741273783974,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 41,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.4595303578685214,
+        0.4615360491337906
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8597796492574853,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          1.0819407880959282,
+          0.7022735888107319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 42,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2604453465983912,
+        0.4615360491337906
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8705582471689074,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 35,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2604453465983912,
+        0.28104814303348574
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.8705582471689074,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          0.920424515242128,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 43,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.3468512811607204,
+        0.4615360491337906
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8183328897414888,
+          0.7022735888107319
+        ],
+        "max": [
+          0.45713457330744395,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 37,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1813559802642207,
+        0.18683299356809596
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8183328897414888,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 44,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1821278196568028,
+        0.4615360491337906
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7022735888107319
+        ],
+        "max": [
+          0.45713457330744395,
+          1.0819407880959282,
+          0.7307453568786393
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 45,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.3943769377543865,
+        0.6023689819234948
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7007686524985712
+        ],
+        "max": [
+          0.42203295067515245,
+          1.6704115601051903,
+          0.7126861211327093
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 200,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.4596425014057702,
+        0.6023689819234948
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4188603822332999,
+          0.8597796492574853,
+          0.5965213074156475
+        ],
+        "max": [
+          0.42699517310984486,
+          1.6704115601051903,
+          0.7022735888107319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3454,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17673442738118852,
+        0.2772119403043977
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3455,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17645937135305753,
+        0.17934950162356192
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4587208575283702,
+          0.7954741273783974,
+          0.588020450949658
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3456,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17645937135305753,
+        0.18315444658845795
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.7954741273783974,
+          0.588020450949658
+        ],
+        "max": [
+          0.5662627929162946,
+          0.920424515242128,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3457,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17712754150849605,
+        0.28104814303348574
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.7954741273783974,
+          0.655539215224981
+        ],
+        "max": [
+          0.5662627929162946,
+          0.920424515242128,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3459,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.005496138618169527
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4631136446017045,
+          0.6197626444450264,
+          0.7024362846282628
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3460,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.04095424373943891
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42239901626459697,
+          0.6197626444450264,
+          0.7012974139055466
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 148,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3461,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.18230724774882348
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.6206574714414462,
+          0.7012974139055466
+        ],
+        "max": [
+          0.4631136446017045,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 149,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 63,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.26275374531240214,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.3974658822279867,
+          1.5438748880205337,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 149,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 64,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2552290637515981,
+          0.7995008488622871,
+          0.6855565935594321
+        ],
+        "max": [
+          0.3956762282351468,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 149,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 118,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.011175139453242867,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3956762282351468,
+          0.7988093916377808,
+          0.7007686524985712
+        ],
+        "max": [
+          0.4188603822332999,
+          1.6704115601051903,
+          0.7141503834904874
+        ]
+      }
+    },
+    {
+      "movingSourceId": 150,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 115,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.003267056146223229
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.6855565935594321
+        ],
+        "max": [
+          0.26275374531240214,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 151,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 0,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18259293122642586,
+        0.18955635114035677
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4530265039147887,
+          0.7994195009535217,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.8992740589631111,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 151,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 83,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.24895159063751982
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.3901445704390962,
+          0.7072116463678846,
+          0.7047547000280783
+        ],
+        "max": [
+          -0.2566119782006107,
+          1.1993664943988547,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 151,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 84,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0013120406996819452
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.2571000656532034,
+          0.3286184789734823,
+          0.6709953178904164
+        ],
+        "max": [
+          -0.2548629981621536,
+          1.1993664943988547,
+          0.7090661391926469
+        ]
+      }
+    },
+    {
+      "movingSourceId": 151,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 103,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18259293122642586,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.3901445704390962,
+          0.7994195009535217,
+          0.7047547000280783
+        ],
+        "max": [
+          -0.2571000656532034,
+          1.5479829574131887,
+          0.7189905840620319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 151,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 104,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18259293122642586,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.41369479002669385,
+          0.7994195009535217,
+          0.6987349547794348
+        ],
+        "max": [
+          -0.38839559040063903,
+          1.652148954587347,
+          0.7189905840620319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 151,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 105,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18259293122642586,
+        0.23382433141818337
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.42642573774848674,
+          0.7994195009535217,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.3901445704390962,
+          1.652148954587347,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 151,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3438,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.18259323308437123
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.3933984867897142,
+          0.6157765969155193,
+          0.7090661391926469
+        ],
+        "max": [
+          -0.2566119782006107,
+          0.7994195009535217,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 151,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3446,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.18259293122642586,
+        0.18377999889370691
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5233110970881372,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.809710011412351,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 151,
+      "movingLabel": "tripo_part_1",
+      "movingCap": false,
+      "fixedSourceId": 3447,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.18265739957741214
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5233110970881372,
+          0.6157765969155193,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.7994195009535217,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 152,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 0,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.0017475121136714294,
+        0.18955635114035677
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4530265039147887,
+          0.7994195009535217,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.8992740589631111,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 152,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 83,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.24895159063751982
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.3901445704390962,
+          0.7072116463678846,
+          0.7047547000280783
+        ],
+        "max": [
+          -0.2566119782006107,
+          1.1993664943988547,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 152,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 84,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0013120406996819452
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.2571000656532034,
+          0.3286184789734823,
+          0.6709953178904164
+        ],
+        "max": [
+          -0.2548629981621536,
+          1.1993664943988547,
+          0.7090661391926469
+        ]
+      }
+    },
+    {
+      "movingSourceId": 152,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 103,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.00197280166553249,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.3901445704390962,
+          0.7994195009535217,
+          0.7047547000280783
+        ],
+        "max": [
+          -0.2571000656532034,
+          1.5479829574131887,
+          0.7189905840620319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 152,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 104,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.00197280166553249,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.41369479002669385,
+          0.7994195009535217,
+          0.6987349547794348
+        ],
+        "max": [
+          -0.38839559040063903,
+          1.652148954587347,
+          0.7189905840620319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 152,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 105,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.00197280166553249,
+        0.23382433141818337
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.42642573774848674,
+          0.7994195009535217,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.3901445704390962,
+          1.652148954587347,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 152,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3438,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.0020027947077373154
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.3933984867897142,
+          0.6157765969155193,
+          0.7090661391926469
+        ],
+        "max": [
+          -0.2566119782006107,
+          0.7994195009535217,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 152,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3446,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.0017475121136714294,
+        0.004664894499164492
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5233110970881372,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.809710011412351,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 152,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3447,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.004664894499164492
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5233110970881372,
+          0.6157765969155193,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.7994195009535217,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 154,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.07984235150244054
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 154,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.07567591589880185
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 155,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.0733495861780637,
+        0.07984235150244054
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 155,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.07567591589880185
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 155,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.024621363490511344
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 156,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.0733495861780637,
+        0.07984235150244054
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 156,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.02462052758940427,
+        0.07538973884298324
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 156,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.06659543372352691
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 157,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.07538948785064739,
+        0.07984235150244054
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 157,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.07767983809340814
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 157,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.08354718114939884
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 157,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.06659516810009865,
+        0.07885527302932409
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 157,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.07885527302932409
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 157,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.08354718114939884
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 158,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.07867288344613371,
+        0.07984235150244054
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 158,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 11,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0022947886862721926
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7451197718525842,
+          0.6303620374620744
+        ],
+        "max": [
+          -0.5233110970881372,
+          0.8038122880268559,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 158,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 9,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.015094612098880921
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7854683346002471,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5623987672499358,
+          0.8853228926098364,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 158,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0825975830508914
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 158,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.07767963770189244,
+        0.09388160112480314
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 158,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.07867288344613371,
+        0.07976370928658534
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 158,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.07976370928658534
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 158,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.09388160112480314
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 159,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.07886466451526424,
+        0.08225056330608549
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 159,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 11,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.033842620932037534
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7451197718525842,
+          0.6303620374620744
+        ],
+        "max": [
+          -0.5233110970881372,
+          0.8038122880268559,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 159,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 9,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.00229458476991825,
+        0.06108651364160777
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7854683346002471,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5623987672499358,
+          0.8853228926098364,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 159,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.015094367405655862,
+        0.12369254095348836
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 159,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.08259738181788985,
+        0.14878331325861158
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 159,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.07886466451526424,
+        0.1033378357515141
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 159,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.1033378357515141
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 159,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.14878331325861158
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 160,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 0,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.08330308895593273
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4530265039147887,
+          0.7994195009535217,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.8992740589631111,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 160,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 1,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.11490121006639334
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4565651379460858,
+          0.809710011412351,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 160,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.07984214004520043,
+        0.11651636475956584
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 160,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 104,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.009478414294607454,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.41369479002669385,
+          0.7994195009535217,
+          0.6987349547794348
+        ],
+        "max": [
+          -0.38839559040063903,
+          1.652148954587347,
+          0.7189905840620319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 160,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.08225028897833148,
+        0.1295539564194706
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 160,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.1295539564194706
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 160,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3441,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.09779026027713272
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 160,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.1421897503665801
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 161,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 0,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.2053324321274349
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4530265039147887,
+          0.7994195009535217,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.8992740589631111,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 161,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 1,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.08330256210933397,
+        0.23989606869946717
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4565651379460858,
+          0.809710011412351,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 161,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1149009943244524,
+        0.23989606869946717
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 161,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 104,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.009478414294607454,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.41369479002669385,
+          0.7994195009535217,
+          0.6987349547794348
+        ],
+        "max": [
+          -0.38839559040063903,
+          1.652148954587347,
+          0.7189905840620319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 161,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.1165161483812919,
+        0.2085228332380575
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 161,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.06207545618165859,
+        0.17214184865996718
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 161,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3441,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.06207545618165859,
+        0.1438173852277107
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 161,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.09778960101166888,
+        0.1438173852277107
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 161,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3446,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.004664894499164492
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5233110970881372,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.809710011412351,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 161,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3447,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.004664894499164492
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5233110970881372,
+          0.6157765969155193,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.7994195009535217,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 0,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.18955558121711785,
+        0.23011510771766466
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4530265039147887,
+          0.7994195009535217,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.8992740589631111,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 1,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.2053317243277743,
+        0.27842277115490627
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4565651379460858,
+          0.809710011412351,
+          0.6966605831059158
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 2,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.20852255044621262,
+        0.27842277115490627
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.4612019687457164,
+          0.8879666996447135,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.42642573774848674,
+          0.8992740589631111,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 11,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.18113800845862116
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7451197718525842,
+          0.6303620374620744
+        ],
+        "max": [
+          -0.5233110970881372,
+          0.8038122880268559,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 9,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.10112459903132848,
+        0.19907865462879562
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5680117729547517,
+          0.7854683346002471,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5623987672499358,
+          0.8853228926098364,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 10,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.16817666832106376
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.5233110970881372,
+          0.8038122880268559,
+          0.7283862675244412
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 8,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.12740331529830007,
+        0.2641006909081897
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8038122880268559,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.5479188394896857,
+          0.8853228926098364,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 6,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.17394657497967564,
+        0.27910948299693367
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8818249325329222,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.543282008690055,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3439,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.17214148340895546,
+        0.2713657275781551
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.8853228926098364,
+          0.5937961524720048
+        ],
+        "max": [
+          -0.4565651379460858,
+          0.8895529838656399,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3440,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.12679947604325453,
+        0.27002209040521485
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.8879666996447135,
+          0.7426221515583948
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3441,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.12679947604325453,
+        0.21522851982787414
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5649205524216646,
+          0.809710011412351,
+          0.6082760802322549
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3442,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.1421894678254191,
+        0.27910948299693367
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5479188394896857,
+          0.809710011412351,
+          0.6587117836668337
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.9216854078279924,
+          0.741157889200617
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3445,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.16817666832106376
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.6248739611818009,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.4530265039147887,
+          0.809710011412351,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3446,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.18111689316104357
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5233110970881372,
+          0.7451197718525842,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.809710011412351,
+          0.7259865042158604
+        ]
+      }
+    },
+    {
+      "movingSourceId": 162,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3447,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.18111689316104357
+      ],
+      "fixedBounds": {
+        "min": [
+          -0.5233110970881372,
+          0.6157765969155193,
+          0.6916983606712235
+        ],
+        "max": [
+          -0.3901445704390962,
+          0.7994195009535217,
+          0.7173636258867229
+        ]
+      }
+    },
+    {
+      "movingSourceId": 163,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 63,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.011282516739972626
+      ],
+      "fixedBounds": {
+        "min": [
+          0.26275374531240214,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.3974658822279867,
+          1.5438748880205337,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 163,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 64,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2552290637515981,
+          0.7995008488622871,
+          0.6855565935594321
+        ],
+        "max": [
+          0.3956762282351468,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 163,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 115,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.002024386707473359,
+        0.4675900100190509
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.6855565935594321
+        ],
+        "max": [
+          0.26275374531240214,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 163,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 118,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.009309452743298112,
+        0.05391069926627406
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3956762282351468,
+          0.7988093916377808,
+          0.7007686524985712
+        ],
+        "max": [
+          0.4188603822332999,
+          1.6704115601051903,
+          0.7141503834904874
+        ]
+      }
+    },
+    {
+      "movingSourceId": 164,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 63,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.15232670652157235,
+        0.18253432360236194
+      ],
+      "fixedBounds": {
+        "min": [
+          0.26275374531240214,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.3974658822279867,
+          1.5438748880205337,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 164,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 64,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1775679223587685,
+        0.3093609005181541
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2552290637515981,
+          0.7995008488622871,
+          0.6855565935594321
+        ],
+        "max": [
+          0.3956762282351468,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 164,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 115,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.0032457085021465066,
+        0.3093609005181541
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.6855565935594321
+        ],
+        "max": [
+          0.26275374531240214,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 164,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3449,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.18051421581525287
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.7061782884314736
+        ],
+        "max": [
+          0.3974658822279867,
+          0.7995008488622871,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 165,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 63,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.15232670652157235,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.26275374531240214,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.3974658822279867,
+          1.5438748880205337,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 165,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 64,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1775679223587685,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2552290637515981,
+          0.7995008488622871,
+          0.6855565935594321
+        ],
+        "max": [
+          0.3956762282351468,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 165,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 115,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.0032457085021465066,
+        0.46757462791764376
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.6855565935594321
+        ],
+        "max": [
+          0.26275374531240214,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 165,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3449,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.1701156575730956
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.7061782884314736
+        ],
+        "max": [
+          0.3974658822279867,
+          0.7995008488622871,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 166,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 63,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.26275374531240214,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.3974658822279867,
+          1.5438748880205337,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 166,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 64,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.4675690026325104,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2552290637515981,
+          0.7995008488622871,
+          0.6855565935594321
+        ],
+        "max": [
+          0.3956762282351468,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 166,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 115,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.0032457085021465066,
+        0.4675900100190509
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.6855565935594321
+        ],
+        "max": [
+          0.26275374531240214,
+          1.7018525268430367,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 166,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 118,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.009309452743298112,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3956762282351468,
+          0.7988093916377808,
+          0.7007686524985712
+        ],
+        "max": [
+          0.4188603822332999,
+          1.6704115601051903,
+          0.7141503834904874
+        ]
+      }
+    },
+    {
+      "movingSourceId": 166,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3449,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.1701156575730956
+      ],
+      "fixedBounds": {
+        "min": [
+          0.2549036721165363,
+          0.6563692033894786,
+          0.7061782884314736
+        ],
+        "max": [
+          0.3974658822279867,
+          0.7995008488622871,
+          0.718380474746291
+        ]
+      }
+    },
+    {
+      "movingSourceId": 167,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 41,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.4572516567361953,
+        0.45964304856884636
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8597796492574853,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          1.0819407880959282,
+          0.7022735888107319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 167,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 42,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.45915764339556486,
+        0.4595309356185935
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8705582471689074,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 167,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 37,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.18212803099513455
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8183328897414888,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 167,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 44,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.3943965142100738
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7022735888107319
+        ],
+        "max": [
+          0.45713457330744395,
+          1.0819407880959282,
+          0.7307453568786393
+        ]
+      }
+    },
+    {
+      "movingSourceId": 167,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 45,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.015240375815102802,
+        0.6153308326098541
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7007686524985712
+        ],
+        "max": [
+          0.42203295067515245,
+          1.6704115601051903,
+          0.7126861211327093
+        ]
+      }
+    },
+    {
+      "movingSourceId": 167,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 118,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.053505991059565,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3956762282351468,
+          0.7988093916377808,
+          0.7007686524985712
+        ],
+        "max": [
+          0.4188603822332999,
+          1.6704115601051903,
+          0.7141503834904874
+        ]
+      }
+    },
+    {
+      "movingSourceId": 167,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 200,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.4572516567361953,
+        0.6153308326098541
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4188603822332999,
+          0.8597796492574853,
+          0.5965213074156475
+        ],
+        "max": [
+          0.42699517310984486,
+          1.6704115601051903,
+          0.7022735888107319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 167,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3461,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.18135618181741953
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.6206574714414462,
+          0.7012974139055466
+        ],
+        "max": [
+          0.4631136446017045,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 168,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 22,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0536422190757107
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6830754823420857
+        ],
+        "max": [
+          0.5662627929162946,
+          0.900616299457741,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 168,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 24,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0536422190757107
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.8922374648548996,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5565417178188233,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 168,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 23,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0536422190757107
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5565417178188233,
+          0.7954741273783974,
+          0.6136450422107746
+        ],
+        "max": [
+          0.5725265818912342,
+          0.900616299457741,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 168,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 25,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.0536422190757107
+      ],
+      "fixedBounds": {
+        "min": [
+          0.548162883215982,
+          0.8026734173041397,
+          0.6136450422107746
+        ],
+        "max": [
+          0.5725265818912342,
+          0.9055378479380507,
+          0.6830754823420857
+        ]
+      }
+    },
+    {
+      "movingSourceId": 169,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 22,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.09558051898374689
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6830754823420857
+        ],
+        "max": [
+          0.5662627929162946,
+          0.900616299457741,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 169,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 24,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.09558051898374689
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.8922374648548996,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5565417178188233,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 169,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 23,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.08154145437845704
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5565417178188233,
+          0.7954741273783974,
+          0.6136450422107746
+        ],
+        "max": [
+          0.5725265818912342,
+          0.900616299457741,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 169,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 25,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.08154145437845704
+      ],
+      "fixedBounds": {
+        "min": [
+          0.548162883215982,
+          0.8026734173041397,
+          0.6136450422107746
+        ],
+        "max": [
+          0.5725265818912342,
+          0.9055378479380507,
+          0.6830754823420857
+        ]
+      }
+    },
+    {
+      "movingSourceId": 169,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3454,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.08863174039085703
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 170,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 22,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.09558051898374689
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6830754823420857
+        ],
+        "max": [
+          0.5662627929162946,
+          0.900616299457741,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 170,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 24,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.07768567466477526,
+        0.09558051898374689
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.8922374648548996,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5565417178188233,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 170,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3454,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.08863174039085703
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 171,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 22,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.08829847072392927
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6830754823420857
+        ],
+        "max": [
+          0.5662627929162946,
+          0.900616299457741,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 171,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 24,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.07768567466477526,
+        0.08829847072392927
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.8922374648548996,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5565417178188233,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 171,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3454,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.08205844780784669
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 172,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 22,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.09985670420111617
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6830754823420857
+        ],
+        "max": [
+          0.5662627929162946,
+          0.900616299457741,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 172,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 24,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.08205818309815677,
+        0.09985670420111617
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.8922374648548996,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5565417178188233,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 172,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3454,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.09842010163043881
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 173,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 22,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.20722479639561867
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6830754823420857
+        ],
+        "max": [
+          0.5662627929162946,
+          0.900616299457741,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 173,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 24,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.09841989921382793,
+        0.20722479639561867
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.8922374648548996,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5565417178188233,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 173,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3454,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.20259717985433218
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 18,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.16767636047505236
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5196911151480748,
+          0.6197626444450264,
+          0.6876309652329509
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7954741273783974,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 22,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.16631965815532437,
+        0.27794872856857306
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6830754823420857
+        ],
+        "max": [
+          0.5662627929162946,
+          0.900616299457741,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 24,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.20259682793449446,
+        0.27794872856857306
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.8922374648548996,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5565417178188233,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 23,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.16767579761004742,
+        0.18978250676616717
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5565417178188233,
+          0.7954741273783974,
+          0.6136450422107746
+        ],
+        "max": [
+          0.5725265818912342,
+          0.900616299457741,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 26,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.16767579761004742,
+        0.1757862103375501
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5193250495586302,
+          0.7859970960072225,
+          0.6136450422107746
+        ],
+        "max": [
+          0.5725265818912342,
+          0.8026734173041397,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 28,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.1625118859619961,
+        0.17519530100330344
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5193250495586302,
+          0.7203493336335047,
+          0.6229593777644187
+        ],
+        "max": [
+          0.5662627929162946,
+          0.7954741273783974,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 42,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.15625856092277243,
+        0.4592242752987795
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8705582471689074,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 35,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.15625856092277243,
+        0.28104814303348574
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.8705582471689074,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          0.920424515242128,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 43,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.12098304127177262,
+        0.44113113439753066
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8183328897414888,
+          0.7022735888107319
+        ],
+        "max": [
+          0.45713457330744395,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 36,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.1562591237877774
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7995008488622871,
+          0.7307453568786393
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 37,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.13034753676118987
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8183328897414888,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 44,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.12098304127177262,
+        0.44113113439753066
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7022735888107319
+        ],
+        "max": [
+          0.45713457330744395,
+          1.0819407880959282,
+          0.7307453568786393
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3454,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.16631965815532437,
+        0.2765648813270282
+      ],
+      "fixedBounds": {
+        "min": [
+          0.5426718993743141,
+          0.7954741273783974,
+          0.6184852427823189
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7429068692390739
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3455,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.16767579761004742,
+        0.17934950162356192
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4587208575283702,
+          0.7954741273783974,
+          0.588020450949658
+        ],
+        "max": [
+          0.5662627929162946,
+          0.9055378479380507,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3456,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.16767579761004742,
+        0.18315444658845795
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.7954741273783974,
+          0.588020450949658
+        ],
+        "max": [
+          0.5662627929162946,
+          0.920424515242128,
+          0.7052427874806708
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3457,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.15625856092277243,
+        0.28104814303348574
+      ],
+      "fixedBounds": {
+        "min": [
+          0.45497885372515956,
+          0.7954741273783974,
+          0.655539215224981
+        ],
+        "max": [
+          0.5662627929162946,
+          0.920424515242128,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3458,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.16767636047505236
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4555889630409004,
+          0.7954741273783974,
+          0.7052427874806708
+        ],
+        "max": [
+          0.5662627929162946,
+          0.8846721093397129,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 174,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 3459,
+      "fixedLabel": "rail-cap",
+      "fixedCap": true,
+      "travelInterval": [
+        0.001,
+        0.16767636047505236
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4631136446017045,
+          0.6197626444450264,
+          0.7024362846282628
+        ],
+        "max": [
+          0.5960361275244491,
+          0.7995008488622871,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 175,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 41,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.4543043181775813,
+        0.45915913897791
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8597796492574853,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          1.0819407880959282,
+          0.7022735888107319
+        ]
+      }
+    },
+    {
+      "movingSourceId": 175,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 42,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.4288594050665765,
+        0.4592242752987795
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8705582471689074,
+          0.588020450949658
+        ],
+        "max": [
+          0.4587208575283702,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 175,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 43,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.4288594050665765,
+        0.45430576117455174
+      ],
+      "fixedBounds": {
+        "min": [
+          0.42203295067515245,
+          0.8183328897414888,
+          0.7022735888107319
+        ],
+        "max": [
+          0.45713457330744395,
+          1.0819407880959282,
+          0.7425408036496295
+        ]
+      }
+    },
+    {
+      "movingSourceId": 175,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 37,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.13034753676118987
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7126861211327093
+        ],
+        "max": [
+          0.4631136446017045,
+          0.8183328897414888,
+          0.7696296572685242
+        ]
+      }
+    },
+    {
+      "movingSourceId": 175,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 44,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.001,
+        0.45430576117455174
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7022735888107319
+        ],
+        "max": [
+          0.45713457330744395,
+          1.0819407880959282,
+          0.7307453568786393
+        ]
+      }
+    },
+    {
+      "movingSourceId": 175,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 45,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.015240375815102802,
+        0.6153308326098541
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3974658822279867,
+          0.7988093916377808,
+          0.7007686524985712
+        ],
+        "max": [
+          0.42203295067515245,
+          1.6704115601051903,
+          0.7126861211327093
+        ]
+      }
+    },
+    {
+      "movingSourceId": 175,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 118,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.053505991059565,
+        0.65
+      ],
+      "fixedBounds": {
+        "min": [
+          0.3956762282351468,
+          0.7988093916377808,
+          0.7007686524985712
+        ],
+        "max": [
+          0.4188603822332999,
+          1.6704115601051903,
+          0.7141503834904874
+        ]
+      }
+    },
+    {
+      "movingSourceId": 175,
+      "movingLabel": "rail-cap",
+      "movingCap": true,
+      "fixedSourceId": 200,
+      "fixedLabel": "tripo_part_1",
+      "fixedCap": false,
+      "travelInterval": [
+        0.4543043181775813,
+        0.6153308326098541
+      ],
+      "fixedBounds": {
+        "min": [
+          0.4188603822332999,
+          0.8597796492574853,
+          0.5965213074156475
+        ],
+        "max": [
+          0.42699517310984486,
+          1.6704115601051903,
+          0.7022735888107319
+        ]
+      }
+    }
+  ],
+  "penetration": [
+    {
+      "lift": 0.001,
+      "samplesInside": 9,
+      "deepest": {
+        "depth": 0.0009410984180243613,
+        "worldPoint": [
+          -0.5467643883749417,
+          0.803030650731818,
+          0.7202900462459609
+        ],
+        "restPoint": [
+          -0.5467643883749417,
+          0.802030650731818,
+          0.7202900462459609
+        ]
+      }
+    },
+    {
+      "lift": 0.05,
+      "samplesInside": 13,
+      "deepest": {
+        "depth": 0.023937475077959926,
+        "worldPoint": [
+          -0.5337455480870009,
+          0.8324724542849371,
+          0.7080628472427748
+        ],
+        "restPoint": [
+          -0.5337455480870009,
+          0.7824724542849371,
+          0.7080628472427748
+        ]
+      }
+    },
+    {
+      "lift": 0.1,
+      "samplesInside": 12,
+      "deepest": {
+        "depth": 0.025416118038817454,
+        "worldPoint": [
+          -0.52332781487754,
+          0.8451256124982742,
+          0.691691173278226
+        ],
+        "restPoint": [
+          -0.52332781487754,
+          0.7451256124982742,
+          0.691691173278226
+        ]
+      }
+    },
+    {
+      "lift": 0.2,
+      "samplesInside": 6,
+      "deepest": {
+        "depth": 0.026482716110852605,
+        "worldPoint": [
+          0.4698560275488275,
+          0.8189286782814955,
+          0.7074840842866937
+        ],
+        "restPoint": [
+          0.4698560275488275,
+          0.6189286782814954,
+          0.7074840842866937
+        ]
+      }
+    },
+    {
+      "lift": 0.3,
+      "samplesInside": 4,
+      "deepest": {
+        "depth": 0.010979728203357794,
+        "worldPoint": [
+          0.4223908127024007,
+          0.9206516622541969,
+          0.7012906554118482
+        ],
+        "restPoint": [
+          0.4223908127024007,
+          0.620651662254197,
+          0.7012906554118482
+        ]
+      }
+    },
+    {
+      "lift": 0.4,
+      "samplesInside": 4,
+      "deepest": {
+        "depth": 0.004819153041594025,
+        "worldPoint": [
+          0.4223908127024007,
+          1.020651662254197,
+          0.7012906554118482
+        ],
+        "restPoint": [
+          0.4223908127024007,
+          0.620651662254197,
+          0.7012906554118482
+        ]
+      }
+    },
+    {
+      "lift": 0.5,
+      "samplesInside": 3,
+      "deepest": {
+        "depth": 0.002983940832520027,
+        "worldPoint": [
+          0.3478434829800379,
+          1.190509016297971,
+          0.7125266396971481
+        ],
+        "restPoint": [
+          0.3478434829800379,
+          0.690509016297971,
+          0.7125266396971481
+        ]
+      }
+    },
+    {
+      "lift": 0.65,
+      "samplesInside": 3,
+      "deepest": {
+        "depth": 0.0008757646903328107,
+        "worldPoint": [
+          0.3478434829800379,
+          1.340509016297971,
+          0.7125266396971481
+        ],
+        "restPoint": [
+          0.3478434829800379,
+          0.690509016297971,
+          0.7125266396971481
+        ]
+      }
+    }
+  ],
+  "acceptedTravel": null,
+  "status": "CLOSED_GEOMETRY_BUT_MOTION_CONTACTS_REQUIRE_REVIEW",
+  "limits": "Containment witnesses are sampled, not an all-volume proof; continuous SAT covers triangle surfaces. External pallet/full-map routes not certified. Rail/bearing penetrations are not accepted."
+}

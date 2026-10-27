@@ -1,0 +1,29 @@
+{
+  "checkedAt": "2026-10-27T11:59:31.627281+00:00",
+  "status": "EXPERIMENT_REJECTED_FOR_MOTION",
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "poses": [
+    0,
+    0.2,
+    0.65
+  ],
+  "browserErrors": 0,
+  "browserWarnings": 0,
+  "overflow": false,
+  "scope": "Main observed actual experimental GLB through local UI, atlas and two rigid groups visible; native screenshots do not certify clearance. Pink marker only identifies the sampled penetrating point at lift .2.",
+  "frames": [
+    "qa/1024-rest.jpg",
+    "qa/1024-witness.jpg",
+    "qa/1024-raised.jpg",
+    "qa/390-raised.jpg"
+  ]
+}
