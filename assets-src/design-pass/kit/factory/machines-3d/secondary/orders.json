@@ -1,0 +1,96 @@
+{
+  "date": "2026-10-27",
+  "service": "Tripo Studio",
+  "budgetIncludedCredits": 100,
+  "maximumOrders": 4,
+  "observedInitialBalance": 5500,
+  "ownerAuthorization": {
+    "thread": "01a16ded-c4fb-7140-b5ed-bbd17857db93",
+    "turn": "01a17af6-1387-7242-b22d-71ee45bdd63e",
+    "item": "01a17af6-13e6-7af2-9bc2-82c12ae1b6ea"
+  },
+  "orders": [
+    {
+      "name": "lever-box",
+      "taskId": "4d0f9802-79df-4a0a-94f0-e4189d3b28c9",
+      "url": "https://studio.tripo3d.ai/ru/workspace/generate/4d0f9802-79df-4a0a-94f0-e4189d3b28c9",
+      "credits": 25,
+      "balanceBefore": 5500,
+      "balanceAfter": 5475,
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "pbr": false,
+        "ultra": false
+      },
+      "status": "downloaded",
+      "raw": "assets-src/raw/factory-2026-10-27/lever-box.glb",
+      "rawSha256": "268bf5d5ad874e38968fd92c49cf721e244369fbeebd876b3692b8160d305d3c",
+      "rawBytes": 860132
+    },
+    {
+      "name": "rail-cart",
+      "taskId": "4e453d99-065d-49f7-81b1-6f62fcd05c91",
+      "url": "https://studio.tripo3d.ai/ru/workspace/generate/4e453d99-065d-49f7-81b1-6f62fcd05c91",
+      "credits": 25,
+      "balanceBefore": 5475,
+      "balanceAfter": 5450,
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "pbr": false,
+        "ultra": false
+      },
+      "status": "downloaded",
+      "raw": "assets-src/raw/factory-2026-10-27/rail-cart.glb",
+      "rawSha256": "cdba6e9e1bfe8e37814aa81d983273d3220823babb9ac8ad2e40acc08590c843",
+      "rawBytes": 1089020
+    },
+    {
+      "name": "socket-board",
+      "taskId": "bd79dfb9-cb45-4506-9f46-2a59db58ed2b",
+      "url": "https://studio.tripo3d.ai/ru/workspace/generate/bd79dfb9-cb45-4506-9f46-2a59db58ed2b",
+      "credits": 25,
+      "balanceBefore": 5450,
+      "balanceAfter": 5425,
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "pbr": false,
+        "ultra": false
+      },
+      "status": "downloaded",
+      "raw": "assets-src/raw/factory-2026-10-27/socket-board.glb",
+      "rawSha256": "6bfda001463e90ef9e7b1d3a1630090254c41d02e58afc73d70b09619180afc6",
+      "rawBytes": 1195500
+    },
+    {
+      "name": "shaft-motor",
+      "taskId": "055f56f8-bddd-43f5-b61a-2105caf7a7c8",
+      "url": "https://studio.tripo3d.ai/ru/workspace/generate/055f56f8-bddd-43f5-b61a-2105caf7a7c8",
+      "credits": 25,
+      "balanceBefore": 5425,
+      "balanceAfter": 5400,
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "pbr": false,
+        "ultra": false
+      },
+      "status": "downloaded",
+      "raw": "assets-src/raw/factory-2026-10-27/shaft-motor.glb",
+      "rawSha256": "f3cabf3babba86eb589688a15bcee0d7d09ec423781f18a322092328ecbda5fd",
+      "rawBytes": 846312
+    }
+  ],
+  "creditsSpent": 100,
+  "observedFinalBalance": 5400
+}

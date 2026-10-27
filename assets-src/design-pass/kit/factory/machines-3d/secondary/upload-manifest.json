@@ -1,0 +1,37 @@
+{
+  "destination": "https://studio.tripo3d.ai",
+  "purpose": "Four approved factory image-to-3D models using H3.1, max 25 included credits each",
+  "files": [
+    {
+      "name": "lever-box",
+      "path": "assets-src/design-pass/kit/factory/machines-secondary/concepts/lever-box.png",
+      "bytes": 1960515,
+      "sha256": "8d098ff7b4ed2f2d70a272420e5a0cb4672c4f08b5f34507329ecd08afad38dd"
+    },
+    {
+      "name": "rail-cart",
+      "path": "assets-src/design-pass/kit/factory/machines-secondary/concepts/rail-cart.png",
+      "bytes": 2039164,
+      "sha256": "fad568767d420bf025ca9d498151e8f7d724ec81146ae2f68050aa463fe71126"
+    },
+    {
+      "name": "socket-board",
+      "path": "assets-src/design-pass/kit/factory/machines-secondary/concepts/socket-board.png",
+      "bytes": 1856621,
+      "sha256": "ae068b1e54f08a83bd75c036f0214adfbad3825e32596981843f3977e82e362a"
+    },
+    {
+      "name": "shaft-motor",
+      "path": "assets-src/design-pass/kit/factory/machines-secondary/concepts/shaft-motor.png",
+      "bytes": 1651500,
+      "sha256": "fd437cb79701a5e7b6edc89a4793ac87b6edf5e7796d3ac68950f888e48c6216"
+    }
+  ],
+  "uploadStatus": "explicitly-authorized",
+  "creditsSpent": 0,
+  "uploadAuthorization": {
+    "thread": "01a16ded-c4fb-7140-b5ed-bbd17857db93",
+    "userMessage": "01a17b1a-c6cb-7a13-af83-1de6e72a2eee",
+    "answer": "Да, разрешаю загрузить эти четыре PNG в Tripo Studio"
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "name": "lever-box",
+  "source": "assets-src/raw/factory-2026-10-27/lever-box.glb",
+  "sourceSha256": "268bf5d5ad874e38968fd92c49cf721e244369fbeebd876b3692b8160d305d3c",
+  "sourceBytes": 860132,
+  "sourceTriangles": 3652,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.3513182997703552
+    ],
+    "max": [
+      0.5,
+      0.31964111328125,
+      0.3513182997703552
+    ]
+  },
+  "outputSha256": "35e6bb74a3101d992071e37381a031914a126693a8e0ccd2edbf232fc7ee751e",
+  "bytes": 82708,
+  "cutTriangles": 4881,
+  "triangles": 3900,
+  "materials": 1,
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "bounds": {
+    "min": [
+      -0.75,
+      -0.0000030488707153941697,
+      -0.5499969481490524
+    ],
+    "max": [
+      0.75,
+      0.40000305483117987,
+      0.5499969481490524
+    ]
+  },
+  "nodes": [
+    {
+      "name": "lever-box-body",
+      "translation": [
+        0,
+        0.20000000298023224,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        0.75,
+        0.75,
+        0.75
+      ],
+      "bounds": {
+        "min": [
+          -0.75,
+          -0.0000030488707153941697,
+          -0.5499969481490524
+        ],
+        "max": [
+          0.75,
+          0.40000305483117987,
+          0.5499969481490524
+        ]
+      }
+    }
+  ],
+  "details": {
+    "placement": [
+      0,
+      0.16,
+      0
+    ],
+    "fit": {
+      "width": 1.5
+    },
+    "pivotPartLocal": [
+      0,
+      0.51,
+      -0.35
+    ],
+    "bore": {
+      "axisXZ": [
+        0,
+        -0.35
+      ],
+      "radius": 0.095
+    },
+    "stickSweep": {
+      "angles": [
+        -0.55,
+        0.55
+      ],
+      "samples": 13,
+      "clearanceRadius": 0.073,
+      "runtimeRadius": 0.06
+    }
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  }
+}

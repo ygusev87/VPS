@@ -1,0 +1,16 @@
+{
+  "name": "lever-box",
+  "loader": "Three.js GLTFLoader with MeshoptDecoder, WebP decoded through ImageLoader",
+  "fallback": false,
+  "bytes": 82708,
+  "triangles": 3900,
+  "materials": 1,
+  "viewports": [[1024, 768], [390, 844]],
+  "screenshots": ["qa/lever-box-1024-default.jpg", "qa/lever-box-390-pose1.jpg", "qa/lever-box-390-pose2.jpg"],
+  "screenshotsVisuallyInspected": 3,
+  "browserErrors": [],
+  "horizontalOverflow": false,
+  "geometryReport": "lever-box-geometry.json",
+  "physicalIPadTest": "not performed",
+  "gameIntegrationQA": "pending integrator"
+}
