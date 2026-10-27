@@ -888,7 +888,14 @@ export class FactoryMap extends StoryMap {
     this.eveToys = this.eveToys.filter((t) => t.stage < EVE_STATIONS.length);
     // The second lorry waits for the evening; full, it drives off.
     // The evening's last station done and a box aboard: the second lorry drives off (the end of the shift).
-    if (this.needs.find((n) => n.critter.name === 'worker9')?.done && this.loaded2 > 0) this.drivenOff2 = Math.min(1, this.drivenOff2 + dt * 0.15);
+    if (this.needs.find((n) => n.critter.name === 'worker9')?.done && this.loaded2 > 0) {
+      // Off it goes, with its own sticker (the shift's finale is not a station of its own).
+      if (this.drivenOff2 === 0) {
+        this.hooks.say('lorry2Happy');
+        this.hooks.helped?.('lorry2', this.lorry2.group.position.clone().setY(2.2));
+      }
+      this.drivenOff2 = Math.min(1, this.drivenOff2 + dt * 0.15);
+    }
     const p = this.lorry2.group.position;
     p.set(LORRY2.x + this.drivenOff2 * 20, 0, LORRY2.z);
     this.lorry2.home.copy(p);
