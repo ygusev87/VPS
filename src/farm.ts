@@ -424,6 +424,11 @@ export class FarmMap extends StoryMap {
     return FARM_VOICES[base] ?? null;
   }
 
+  /** The animals' own sound before they ask (the tractor and the hive just ask). */
+  protected cryOf(base: string): PhraseId | null {
+    return base === 'tractor' || base === 'beehive' ? null : (FARM_VOICES[base] ?? null);
+  }
+
   /**
    * The fox walks on its paws (its rigged model, when that is there); the
    * cow, horse, pig, goat and dog asking for help have a skeleton for their

@@ -503,6 +503,29 @@ export class FactoryMap extends StoryMap {
         const at: [number, number][] = [[-37, -23], [37, -23], [-37, 23], [37, 23], [-20, -23.5], [5, -23.5], [28, -23.5], [-38, 8], [38, -2], [38, 14], ...[LATHE, PRESS, ROBOT, HOIST, GRINDER, WELDER, BOOTH].map((p): [number, number] => [p.x + 1.2, p.z - 1.4])];
         at.forEach(([x, z], i) => g.add(floorDecal(dust, 3.4, 3.4, x, z, i * 2.3, 0.22)));
       }
+      // Marks of work on the floor (Codex's floor details, each where it would be in a real shop).
+      const piece = (n: string) => kitPieces('factory', `factory-floor-${n}`)[0];
+      const tyres = piece('tyre-tracks');
+      // Tyre tracks where the forklift and the lorries drive.
+      if (tyres) for (const [x, z, turn] of [[-6, 5.6, 0], [8, 6.6, 0.08], [30.5, -18.5, 0.4], [LORRY.x, 4.5, Math.PI / 2], [36, -6, Math.PI / 2]] as const) g.add(floorDecal(tyres, 5, 1.667, x, z, turn, 0.4));
+      // Arrows down the walkways, the way the line runs (+x).
+      const arrow = piece('arrow');
+      if (arrow) for (const [x, z] of [[-24, 1.2], [-4, 1.2], [16, 1.2], [-20, 10], [2, 10], [24, 10]] as const) g.add(floorDecal(arrow, 1.3, 1.3, x, z, -Math.PI / 2, 0.8));
+      // Cable channels under the stations' supply, from the pole towards the machine.
+      const channel = piece('cable-channel');
+      if (channel)
+        for (const [a, b] of [[LATHE_POLE, MOTOR], [PRESS_POLE, PRESS], [ROBOT_POLE, BOARD], [TANK_POLE, TANK], [GRIND_POLE, GMOTOR], [WELD_POLE, BOARD2], [EVE_BOX_POLE, EVE_BOX]] as const) {
+          const len = Math.hypot(b.x - a.x, b.z - a.z) - 2.2;
+          if (len < 1.5) continue;
+          const mid = a.clone().lerp(b, 0.45);
+          g.add(floorDecal(channel, Math.min(len, 4.6), 1.1, mid.x, mid.z, -Math.atan2(b.z - a.z, b.x - a.x), 1));
+        }
+      // Drains in the floor, clear of the stations.
+      const grate = piece('grate');
+      if (grate) for (const [x, z] of [[5.5, 7.4], [-6.5, 3.6], [36.5, 2.6], [-2, 24.4], [-37.6, 3]] as const) g.add(floorDecal(grate, 1.5, 1.5, x, z, 0, 1));
+      // The forklift's parking box: painted corners round it.
+      const corner = piece('hazard-corner');
+      if (corner) for (const [dx, dz, turn] of [[-2.4, -2.6, 0], [2.4, -2.6, -Math.PI / 2], [2.4, 2.6, Math.PI], [-2.4, 2.6, Math.PI / 2]] as const) g.add(floorDecal(corner, 1.4, 1.4, 33 + dx, -18 + dz, turn, 0.8));
       this.scenery.add(g);
     } else if (this.kit && oil.length) this.scenery.add(patches(spots, oil, 0.007, 1));
   }

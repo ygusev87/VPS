@@ -25,7 +25,8 @@ export type Phase = 'day' | 'evening' | 'night' | 'morning' | 'done';
 export const NIGHT: Record<Phase, number> = { day: 0, evening: 0.72, night: 1, morning: 0, done: 0 };
 
 export interface MapHooks {
-  say(id: PhraseId): void;
+  /** Say a phrase; with `then`, that one right after it (an animal's own sound, then its words). */
+  say(id: PhraseId, then?: PhraseId): void;
   /** Confetti and a cheer at a point on the table. */
   cheer(at: THREE.Vector3): void;
   /** Everyone on the map is happy. */
@@ -288,6 +289,18 @@ export abstract class StoryMap {
   protected cleanup() {}
   /** The model a character is drawn with (or a stand-in). */
   /** What a character says when it is poked again (a moo, an oink), by its kind. */
+  /** An animal's own sound before its words when it asks (none for people and machines). */
+  protected cryOf(_base: string): PhraseId | null {
+    return null;
+  }
+
+  /** A character asks: its own sound first if it is an animal, then the words. */
+  private askOut(n: Need) {
+    const cry = this.cryOf(n.critter.name.replace(/\d+$/, ''));
+    if (cry) this.hooks.say(cry, n.ask);
+    else this.hooks.say(n.ask);
+  }
+
   protected voiceOf(_base: string): PhraseId | null {
     return null;
   }
@@ -405,7 +418,7 @@ export abstract class StoryMap {
   replay() {
     const n = this.current();
     if (!n) return this.hooks.say(this.intro);
-    this.hooks.say(n.ask);
+    this.askOut(n);
     this.refocus();
   }
 
@@ -797,7 +810,7 @@ export abstract class StoryMap {
       return true;
     }
     if (!need.done) {
-      this.hooks.say(need.ask);
+      this.askOut(need);
       // Tapping a character brings its ring into view too.
       this.focused = need;
       this.picked = true;
@@ -902,7 +915,7 @@ export abstract class StoryMap {
             if (this.gone || next.done) return;
             this.focused = next;
             this.picked = true;
-            this.hooks.say(next.ask);
+            this.askOut(next);
             this.hooks.focus?.(this.view(next));
           }, 4200);
         } else if (!this.toldToLook && this.needs.some((x) => !x.done && this.isNow(x))) {
