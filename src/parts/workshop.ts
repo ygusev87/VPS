@@ -170,6 +170,8 @@ export class Reverser extends Part {
   pos: -1 | 0 | 1 = 0;
   private lever = new THREE.Group();
   private marks: THREE.MeshStandardMaterial[] = [];
+  /** The arrows are glow over a sculpted lid (not a second painted set). */
+  private overlay = false;
 
   constructor() {
     super();
@@ -181,7 +183,7 @@ export class Reverser extends Part {
       const m = new THREE.MeshStandardMaterial({ color, emissive: color, emissiveIntensity: 0.1, roughness: 0.4 });
       this.marks.push(m);
       const s = mesh(shape, m, false);
-      s.position.set(x, PLATE_TOP + 0.36, 0.3);
+      s.position.set(x, PLATE_TOP + 0.415, 0.3);
       this.body.add(s);
     };
     const arrow = (dir: number) => {
@@ -205,6 +207,9 @@ export class Reverser extends Part {
     this.lever.position.set(0, PLATE_TOP + 0.35, -0.35);
     this.body.add(plate, box, this.lever);
     const body = sculpt(this, 'lever-box', { width: 1.5 }, new THREE.Vector3(0, PLATE_TOP, 0), [box]);
+    // The sculpted lid has its own painted arrows: ours only light up over the chosen one.
+    if (body) for (const m of this.marks) Object.assign(m, { transparent: true, opacity: 0, depthWrite: false });
+    this.overlay = !!body;
     this.addTerminal('p', 'plus', -1.05, -0.45);
     this.addTerminal('n', 'minus', -1.05, 0.45);
     this.addTerminal('a', 'none', 1.05, -0.45);
@@ -241,7 +246,11 @@ export class Reverser extends Part {
 
   protected animate(dt: number) {
     this.lever.rotation.z = damp(this.lever.rotation.z, -this.pos * 0.55, 14, dt);
-    this.marks.forEach((m, i) => (m.emissiveIntensity = damp(m.emissiveIntensity, i - 1 === this.pos ? 1.8 : 0.1, 10, dt)));
+    this.marks.forEach((m, i) => {
+      const on = i - 1 === this.pos;
+      m.emissiveIntensity = damp(m.emissiveIntensity, on ? 1.8 : 0.1, 10, dt);
+      if (this.overlay) m.opacity = damp(m.opacity, on ? 0.85 : 0, 10, dt);
+    });
   }
 }
 

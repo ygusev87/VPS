@@ -75,6 +75,13 @@ const HOIST_LEVER = v(20.5, -11);
 const HOIST_POLE = v(25, -13);
 const LORRY = v(32.5, -2.5);
 
+/**
+ * The overhead crane over the stock, at the hall's south side: from the
+ * camera a high beam hides a strip of floor north of it, so nothing the
+ * child works at stands there.
+ */
+const CRANE_Z = 24.5;
+
 /** How much bigger than a table part the factory's own machines are. */
 const MACHINE_SCALE = 1.5;
 
@@ -266,17 +273,17 @@ export class FactoryMap extends StoryMap {
     const yellow = mat('#f2c230', 0.55, 0.2);
     for (const x of [-W / 2 + 2, W / 2 - 2]) {
       const leg = mesh(new THREE.BoxGeometry(0.7, 6, 0.7), yellow);
-      leg.position.set(x, 3, 14);
+      leg.position.set(x, 3, CRANE_Z);
       hall.add(leg);
     }
     const beam = mesh(new THREE.BoxGeometry(W - 3, 0.7, 1), yellow);
-    beam.position.set(0, 6.2, 14);
+    beam.position.set(0, 6.2, CRANE_Z);
     const trolley = mesh(new THREE.BoxGeometry(1.4, 0.6, 1.4), mat('#2b3242', 0.4, 0.4));
-    trolley.position.set(8, 5.6, 14);
+    trolley.position.set(8, 5.6, CRANE_Z);
     const chain = mesh(new THREE.CylinderGeometry(0.05, 0.05, 3, 6), mat('#9aa3ad', 0.3, 0.8), false);
-    chain.position.set(8, 3.8, 14);
+    chain.position.set(8, 3.8, CRANE_Z);
     const hook = mesh(new THREE.TorusGeometry(0.3, 0.08, 8, 14, Math.PI * 1.5), mat('#2b3242', 0.4, 0.5));
-    hook.position.set(8, 2.2, 14);
+    hook.position.set(8, 2.2, CRANE_Z);
     hall.add(beam, trolley, chain, hook);
     // The stock: racks of steel bars and coils under the crane, crates and barrels.
     // The kit's painted stock (cards) when it has it, else the code-built stand-ins.
