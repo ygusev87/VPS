@@ -1,0 +1,93 @@
+{
+  "status": "STATIC_CANDIDATE_ONLY",
+  "productionLoader": true,
+  "staticVisualReview": true,
+  "articulationReady": false,
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"productionLoader\":true,\"motionValidated\":false,\"staticCandidate\":true,\"bytes\":100228,\"triangles\":3590,\"materials\":1,\"bounds\":{\"min\":[-0.8026510967334705,0,-1.895939193098733],\"max\":[0.8026510967334705,2.200000000000001,1.895939193098733]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"productionLoader\":true,\"motionValidated\":false,\"staticCandidate\":true,\"bytes\":100228,\"triangles\":3590,\"materials\":1,\"bounds\":{\"min\":[-0.8026510967334705,0,-1.895939193098733],\"max\":[0.8026510967334705,2.200000000000001,1.895939193098733]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"productionLoader\":true,\"motionValidated\":false,\"staticCandidate\":true,\"bytes\":100228,\"triangles\":3590,\"materials\":1,\"bounds\":{\"min\":[-0.8026510967334705,0,-1.895939193098733],\"max\":[0.8026510967334705,2.200000000000001,1.895939193098733]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"productionLoader\":true,\"motionValidated\":false,\"staticCandidate\":true,\"bytes\":100228,\"triangles\":3590,\"materials\":1,\"bounds\":{\"min\":[-0.8026510967334705,0,-1.895939193098733],\"max\":[0.8026510967334705,2.200000000000001,1.895939193098733]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"productionLoader\":true,\"motionValidated\":false,\"staticCandidate\":true,\"bytes\":100228,\"triangles\":3590,\"materials\":1,\"bounds\":{\"min\":[-0.8026510967334705,0,-1.895939193098733],\"max\":[0.8026510967334705,2.200000000000001,1.895939193098733]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "repositoryChecks": {
+    "date": "2026-10-27",
+    "vitest": {
+      "files": 17,
+      "tests": 88,
+      "passed": true
+    },
+    "typecheck": true
+  }
+}

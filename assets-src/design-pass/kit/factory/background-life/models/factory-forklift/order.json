@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-27",
+  "service": "Tripo Studio",
+  "taskId": "372aea25-6fce-4259-a030-4aaef5ef9daa",
+  "cost": 25,
+  "balanceBefore": 5050,
+  "balanceAfter": 5025,
+  "status": "complete and exported",
+  "settings": {
+    "model": "H3.1",
+    "triangles": 4000,
+    "texture": "2K",
+    "delight": true,
+    "ultra": false,
+    "aiEnhancement": false,
+    "pbr": false
+  },
+  "attempts": 1,
+  "source": "assets-src/raw/factory-background-2026-10-27/factory-forklift.glb",
+  "sourceBytes": 857804,
+  "sourceSha256": "a15001ecf4bf3d9e3f557eb29a2f671e523a3eccc4c9f171f79a7853a636acc1"
+}

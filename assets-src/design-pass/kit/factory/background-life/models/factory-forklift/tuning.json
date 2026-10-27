@@ -1,0 +1,16 @@
+{
+  "reviewed": true,
+  "height": 2.2,
+  "rotationY": 1.5707963267948966,
+  "targetTriangles": 3900,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "uniform",
+  "floorSnap": 0.007,
+  "rawOrientationReview": "Raw forks point-X; native front/side reviewed. RotateY+pi/2 to+Z. Motion requires separate measurement.",
+  "articulationStatus": "BLOCKED: carriage and mast share a closed surface; independent forks group not validated"
+}

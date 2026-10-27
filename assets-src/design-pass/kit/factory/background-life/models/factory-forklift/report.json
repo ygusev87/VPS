@@ -1,0 +1,108 @@
+{
+  "name": "factory-forklift",
+  "source": "assets-src/raw/factory-background-2026-10-27/factory-forklift.glb",
+  "sourceSha256": "a15001ecf4bf3d9e3f557eb29a2f671e523a3eccc4c9f171f79a7853a636acc1",
+  "sourceBytes": 857804,
+  "sourceTriangles": 3590,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.211669921875
+    ],
+    "max": [
+      0.5,
+      0.5802001953125,
+      0.211669921875
+    ]
+  },
+  "bytes": 100228,
+  "sha256": "eb5b5415248c1d86ce1160da4d6b4fd064a393dc7682936abc36bafcbae802bc",
+  "triangles": 3590,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.8026333481558156,
+      2.4347530568347153e-05,
+      -1.8958972692489624
+    ],
+    "max": [
+      0.8026333481558156,
+      2.1999757001531473,
+      1.8958972692489624
+    ]
+  },
+  "size": [
+    1.605266696311631,
+    2.1999513526225787,
+    3.791794538497925
+  ],
+  "contract": {
+    "reviewed": true,
+    "height": 2.2,
+    "rotationY": 1.5707963267948966,
+    "targetTriangles": 3900,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform",
+    "floorSnap": 0.007,
+    "rawOrientationReview": "Raw forks point-X; native front/side reviewed. RotateY+pi/2 to+Z. Motion requires separate measurement.",
+    "articulationStatus": "BLOCKED: carriage and mast share a closed surface; independent forks group not validated"
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform scale by total height; preserve anatomy; centreXZ0; baseY0",
+    "Simplify within error.001",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.007 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "staticBudgetPass": true,
+  "pass": false,
+  "releaseStatus": "BLOCKED_ARTICULATION",
+  "motionValidated": false,
+  "repositoryChecks": {
+    "date": "2026-10-27",
+    "vitest": {
+      "files": 17,
+      "tests": 88,
+      "passed": true
+    },
+    "typecheck": true
+  }
+}

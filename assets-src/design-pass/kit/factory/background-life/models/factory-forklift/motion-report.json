@@ -1,0 +1,135 @@
+{
+  "status": "BLOCKED_ARTICULATION",
+  "staticCandidate": "assets-src/design-pass/kit/factory/background-life/models/factory-forklift/static-candidate.glb",
+  "candidateSha256": "eb5b5415248c1d86ce1160da4d6b4fd064a393dc7682936abc36bafcbae802bc",
+  "publishedAsRuntimeModel": false,
+  "front": "+Z",
+  "height": 2.2,
+  "scale": "uniform",
+  "size": [
+    1.605266696311631,
+    2.1999513526225787,
+    3.791794538497925
+  ],
+  "candidateBounds": {
+    "min": [
+      -0.8026333481558156,
+      2.4347530568347153e-05,
+      -1.8958972692489624
+    ],
+    "max": [
+      0.8026333481558156,
+      2.1999757001531473,
+      1.8958972692489624
+    ]
+  },
+  "requestedTravelY": [
+    0,
+    0.65
+  ],
+  "acceptedTravelY": null,
+  "forksGroupPresent": false,
+  "pivot": null,
+  "motionValidated": false,
+  "sweptCollisionCheck": "not run: no closed independent carriage group passed geometry validation",
+  "railBearingContact": "not certified: carriage shares mesh surface with fixed mast",
+  "sourceTopology": {
+    "triangles": 3590,
+    "connectedComponents": 1,
+    "closedManifold": true
+  },
+  "segmentation": {
+    "parts": 47,
+    "forkBlades": [
+      "tripo_part_12",
+      "tripo_part_13"
+    ],
+    "fusedMastCarriage": "tripo_part_1",
+    "fusedPartTriangles": 321,
+    "fusedPartBounds": {
+      "min": [
+        -0.629091926316274,
+        0.18531974152015834,
+        0.48004944245739534
+      ],
+      "max": [
+        0.6329110191918262,
+        2.1756995581737852,
+        0.7857720874069667
+      ]
+    }
+  },
+  "forkEndpointsRest": [
+    {
+      "sourcePart": "tripo_part_12",
+      "bounds": {
+        "min": [
+          -0.5132598202779823,
+          0.08412570227027667,
+          0.7588102816231197
+        ],
+        "max": [
+          -0.298981882741821,
+          0.7256574794866401,
+          1.8958973280033664
+        ]
+      },
+      "tipCentroid": [
+        -0.39690773348945746,
+        0.1322984578818641,
+        1.8860768637351848
+      ],
+      "tipBandZ": 0.02
+    },
+    {
+      "sourcePart": "tripo_part_13",
+      "bounds": {
+        "min": [
+          0.2990403624602225,
+          0.08482000060816854,
+          0.7579422391943247
+        ],
+        "max": [
+          0.5059122815524406,
+          0.7255417630969914,
+          1.8931200216475121
+        ]
+      },
+      "tipCentroid": [
+        0.3845177412914493,
+        0.13385071220878356,
+        1.8878962532005163
+      ],
+      "tipBandZ": 0.02
+    }
+  ],
+  "localSplitAttempt": {
+    "sourceTrianglesSelected": 152,
+    "interfaces": 2,
+    "boundaryVertexCounts": [
+      13,
+      15
+    ],
+    "failedExpectedCapTriangles": 11,
+    "failedActualCapTriangles": 10,
+    "uncoveredEdges": [
+      [
+        114,
+        111
+      ]
+    ],
+    "result": "Rejected; no moving GLB emitted. Requires reviewed local remesh or replacement carriage/rail interface, not whole-mast motion."
+  },
+  "visualNotes": [
+    "Four tyres, both parallel blades and their gap, seat/steering and open operator cage present.",
+    "Fixed mast has source diagonal webbing visible head-on; retained in static candidate, not silently removed.",
+    "Split-diagnostic raised screenshot is a triangle-selection experiment with open seams, not a validated animation."
+  ],
+  "floorContacts": {
+    "groups": 4,
+    "maxMinimumY": 2.4347530568347153e-05,
+    "tolerance": 0.0001,
+    "passed": true
+  },
+  "fallback": "Candidate preserved per worker-batch-01. Integrator may review external fork assembly or remesh. No assumption that this authorizes deleting the mast."
+}

@@ -1,0 +1,19 @@
+{
+  "service": "Tripo Studio",
+  "sourceTaskId": "372aea25-6fce-4259-a030-4aaef5ef9daa",
+  "mode": "Detailed 15+",
+  "attempts": 1,
+  "priceShown": 0,
+  "regularPriceShown": 40,
+  "trial": true,
+  "balanceBefore": 4925,
+  "balanceAfter": 4925,
+  "cost": 0,
+  "status": "complete and exported",
+  "note": "Saved UI label reverted to Balance, but exported geometry contains detailed part labels.",
+  "source": "assets-src/raw/factory-background-2026-10-27/factory-forklift-segmented.glb",
+  "sourceBytes": 1425228,
+  "sourceSha256": "0bbe55dd2194fcdcd08b31f8d713c0b98bce229e3038c8145acbcc90a5b71173",
+  "exportedParts": 47,
+  "triangles": 3590
+}
