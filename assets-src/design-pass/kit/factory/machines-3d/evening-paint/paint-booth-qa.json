@@ -1,0 +1,46 @@
+{
+  "name": "paint-booth",
+  "sha256": "4486faa0fb39a629e332b7026c1a06924a6fc94fd75d57eef1dade9bcb189d90",
+  "bytes": 119544,
+  "triangles": 2948,
+  "materials": 1,
+  "loader": "GLTFLoader + MeshoptDecoder, WebP through ImageLoader",
+  "fallback": false,
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "screenshots": [
+    "qa/paint-booth-1024.jpg",
+    "qa/paint-booth-1024-through-minus-x.jpg",
+    "qa/paint-booth-1024-through-plus-x.jpg",
+    "qa/paint-booth-1024-bottom.jpg",
+    "qa/paint-booth-390.jpg"
+  ],
+  "screenshotsVisuallyInspected": 5,
+  "horizontalOverflow": false,
+  "verticalOverflow": false,
+  "browserErrors": [],
+  "geometryPass": true,
+  "tunnel": {
+    "axis": "X",
+    "minimumClearWidthZ": 1.4,
+    "minimumClearHeightY": 1.0,
+    "obstructingTriangles": 0,
+    "attachedFloorTriangles": 0,
+    "unobstructedRays": 49
+  },
+  "physicalIPadTest": "not performed",
+  "gameIntegrationQA": "pending integrator",
+  "repositoryChecks": {
+    "testFilesPassed": 17,
+    "testsPassed": 88,
+    "typecheck": "pass"
+  }
+}

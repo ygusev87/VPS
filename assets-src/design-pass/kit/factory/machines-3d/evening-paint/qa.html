@@ -14,7 +14,7 @@ const renderer=new T.WebGLRenderer({antialias:true});renderer.setPixelRatio(1);r
 const scene=new T.Scene();scene.background=new T.Color('#ece7df');scene.environment=new T.PMREMGenerator(renderer).fromScene(new RoomEnvironment(),.04).texture;
 const camera=new T.OrthographicCamera(-1,1,1,-1,.01,100),probe=new T.Group();scene.add(probe);probe.visible=false;
 let asset,bounds,stats,view=0;
-const dirs=[[3,2.6,4],[-6,0,0],[6,0,0],[0,0,6],[0,0,-6],[.001,6,.001],[-3,2.6,-4],[3,-2.6,4]];
+const dirs=[name==='paint-booth'?[5,2.6,3]:[3,2.6,4],[-6,0,0],[6,0,0],[0,0,6],[0,0,-6],[.001,6,.001],[-3,2.6,-4],[3,-2.6,4]];
 function draw(){
   status.textContent=`${name} · ${raw?'RAW':candidate?'CANDIDATE':'FINAL'} · ${stats.triangles} tri · ${stats.materials} mat\nBBox ${bounds.getSize(new T.Vector3()).toArray().map(v=>v.toFixed(3)).join(' × ')} · ракурс ${view}`;
   const height=Math.max(100,innerHeight-document.querySelector('header').offsetHeight);renderer.setSize(innerWidth,height);

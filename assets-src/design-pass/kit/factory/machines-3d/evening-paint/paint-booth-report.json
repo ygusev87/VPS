@@ -1,0 +1,78 @@
+{
+  "name": "paint-booth",
+  "source": "assets-src/raw/factory-evening-2026-10-27/paint-booth.glb",
+  "sourceSha256": "315cd5806086189df8fa027f0ff3358740f0fffb1a4eb300f68893814ee367cb",
+  "sourceBytes": 1136116,
+  "sourceTriangles": 2858,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.32183837890625
+    ],
+    "max": [
+      0.5,
+      0.8302001953125,
+      0.32183837890625
+    ]
+  },
+  "outputSha256": "4486faa0fb39a629e332b7026c1a06924a6fc94fd75d57eef1dade9bcb189d90",
+  "bytes": 119544,
+  "cutTriangles": 2948,
+  "triangles": 2948,
+  "materials": 1,
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "bounds": {
+    "min": [
+      -1.100000023841858,
+      0.0000170014524502049,
+      -0.8000152765946017
+    ],
+    "max": [
+      1.100000023841858,
+      1.7999926256582892,
+      0.8000152765946017
+    ]
+  },
+  "contract": {
+    "reviewed": true,
+    "rotationY": 1.5707963267948966,
+    "size": [
+      2.2,
+      1.8,
+      1.6
+    ],
+    "cutUV": [
+      0.02,
+      0.02
+    ],
+    "tunnelAxis": "X",
+    "clearWidthZ": 1.4,
+    "clearHeightY": 1,
+    "floorY": 0,
+    "orientationNote": "Raw tunnel along Z, rotated +90 degrees around Y to place opening along X."
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  }
+}

@@ -30,8 +30,8 @@
     }
   },
   "paint-booth": {
-    "reviewed": false,
-    "rotationY": 0,
+    "reviewed": true,
+    "rotationY": 1.5707963267948966,
     "size": [
       2.2,
       1.8,
@@ -44,6 +44,7 @@
     "tunnelAxis": "X",
     "clearWidthZ": 1.4,
     "clearHeightY": 1.0,
-    "floorY": 0
+    "floorY": 0,
+    "orientationNote": "Raw tunnel along Z, rotated +90 degrees around Y to place opening along X."
   }
 }

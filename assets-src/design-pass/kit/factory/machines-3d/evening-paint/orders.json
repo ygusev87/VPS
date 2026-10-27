@@ -37,11 +37,11 @@
         "ultra": false,
         "aiEnhancement": false
       },
-      "status": "free retry generating",
+      "status": "downloaded after free retry",
       "observedBalanceAfter": 5300,
       "raw": "assets-src/raw/factory-evening-2026-10-27/paint-booth.glb",
-      "rawBytes": 640124,
-      "rawSha256": "8595f20749d89cb4fd0c804a8c7e4fa8a00a2b4861f7c8eee061f741b6f7446c",
+      "rawBytes": 1136116,
+      "rawSha256": "315cd5806086189df8fa027f0ff3358740f0fffb1a4eb300f68893814ee367cb",
       "attempts": [
         {
           "attempt": 1,
@@ -55,7 +55,9 @@
           "kind": "Studio Free Retry",
           "additionalCredits": 0,
           "observedBalance": 5300,
-          "status": "generating"
+          "status": "downloaded",
+          "rawSha256": "315cd5806086189df8fa027f0ff3358740f0fffb1a4eb300f68893814ee367cb",
+          "rawBytes": 1136116
         }
       ]
     }
