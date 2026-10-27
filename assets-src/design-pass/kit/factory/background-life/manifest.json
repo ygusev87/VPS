@@ -47,7 +47,7 @@
       "groundY": 0,
       "movingNode": "forks",
       "contractNext": "measure carriage pivot and a collision-free vertical travel; do not claim independent forks on an unsplit mesh",
-      "status": "queued"
+      "status": "delegated-worker-batch-01"
     },
     {
       "id": "factory-worker-foreman",
@@ -56,7 +56,7 @@
       "front": "+Z",
       "groundY": 0,
       "rig": false,
-      "status": "queued"
+      "status": "delegated-worker-batch-01"
     },
     {
       "id": "factory-worker-technician",
@@ -65,7 +65,7 @@
       "front": "+Z",
       "groundY": 0,
       "rig": false,
-      "status": "queued"
+      "status": "delegated-worker-batch-01"
     },
     {
       "id": "factory-worker-loader",
@@ -74,7 +74,7 @@
       "front": "+Z",
       "groundY": 0,
       "rig": false,
-      "status": "queued"
+      "status": "delegated-worker-batch-01"
     },
     {
       "id": "factory-worker-inspector",
@@ -83,7 +83,7 @@
       "front": "+Z",
       "groundY": 0,
       "rig": false,
-      "status": "queued"
+      "status": "delegated-worker-batch-01"
     },
     {
       "id": "factory-control-cabinet",
@@ -247,10 +247,10 @@
     "wallContract": "wall-contract.json"
   },
   "pipeline": {
-    "operator": "existing model worker only, currently six city pedestrians",
+    "operator": "existing model worker: factory-forklift + four factory workers, after accepted city six",
     "generationOrdersPlaced": 0,
     "mainScope": "inventory, future references/cards, placement data and acceptance",
     "limits": "no invented credit cap; live price/balance before each future Studio order; no purchases/API/topups"
   },
-  "next": "Claude integrates first wall tool-board; main prepares remaining wall signs/clock and forklift/worker contracts while city people finish."
+  "next": "Main remaining wall signs/clock and city prop references; accept worker factory READY one by one."
 }

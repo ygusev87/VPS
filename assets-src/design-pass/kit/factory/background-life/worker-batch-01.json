@@ -1,0 +1,74 @@
+{
+  "request": "m0497",
+  "task": "factory-background-life",
+  "scope": [
+    "models/factory-forklift/",
+    "models/factory-worker-foreman/",
+    "models/factory-worker-technician/",
+    "models/factory-worker-loader/",
+    "models/factory-worker-inspector/",
+    "models/progress.md",
+    "matching five public/models GLB",
+    "assets-src/raw/factory-background-2026-10-27/"
+  ],
+  "common": {
+    "trianglesMax": 4000,
+    "materials": 1,
+    "texture": "512 WebP",
+    "compression": "Meshopt",
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "runtimeOwner": "Claude",
+    "scale": "uniform by agreed total height; report actual XYZ, do not distort to preliminary width",
+    "style": "friendly tactile toy proportions, distinct silhouettes; match newly accepted city people; no logos or writing"
+  },
+  "forklift": {
+    "id": "factory-forklift",
+    "targetXYZ": [
+      1.6,
+      2.2,
+      3.4
+    ],
+    "heightReference": "top of protective overhead frame, forks lowered",
+    "forks": "two thick separate parallel blades pointing+Z, connected by one carriage, clear gap between blades for pallet; use one transform group named forks if reliable segmentation possible",
+    "body": "four grounded tyres, compact yellow/teal painted body, seat/steering, open operator cage, fixed vertical mast; no character inside",
+    "hierarchy": "body fixed and forks transform group holding carriage and both blades; movement changes group translationY, not quantized vertex buffers",
+    "requestedTravelY": [
+      0,
+      0.65
+    ],
+    "travelStatus": "provisional target, worker must measure feasible range and actual local pivot before accepting",
+    "proof": "Final normalized GLB with actual game loader; lower/mid/upper native frames and swept-volume bounds/collision checks vs fixed body and floor. Identify intentional rail-bearing contact separately; do not claim every triangle disjoint. Fork endpoints and group pivot in report.",
+    "fallback": "If raw topology cannot be split cleanly, report concrete constraint and preserve candidate. Do not label a fused mesh articulated or erase the mast. Claude can animate an external fork assembly only after reviewing the measured contract."
+  },
+  "workers": [
+    {
+      "id": "factory-worker-foreman",
+      "height": 1.65,
+      "appearance": "white hard hat, blue work jacket, clipboard, calm broad face"
+    },
+    {
+      "id": "factory-worker-technician",
+      "height": 1.6,
+      "appearance": "yellow hard hat, teal overalls, compact tool pouch, distinct face and silhouette"
+    },
+    {
+      "id": "factory-worker-loader",
+      "height": 1.65,
+      "appearance": "orange vest, navy trousers, sturdy broad silhouette, hard hat"
+    },
+    {
+      "id": "factory-worker-inspector",
+      "height": 1.6,
+      "appearance": "red hard hat, cream shirt, slim silhouette, gloves"
+    }
+  ],
+  "workerGeometry": "static calm step poses, two arms/two legs, intact accessories, no skeleton/animation. No moving individual limbs or source-width stretching; ground-contact checks with actual shoe soles.",
+  "release": "one by one READY with SHA/bytes/triangles/actualXYZ/contact/motion reports and native390/1024; own explicit commits, no push",
+  "studio": "standing project upload/generation authorization applies; single existing worker is sole operator, live price/balance before every order, actual spend ledger, appropriate free retries first. No new credit caps; no purchases/API/topups/subscriptions. Stop after these five.",
+  "codexReserve": "usage first; share currentremaining, warn at25%, finishsafe/pause before15%; no paidcredits/resets"
+}
