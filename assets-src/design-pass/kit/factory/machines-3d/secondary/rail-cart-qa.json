@@ -1,0 +1,36 @@
+{
+  "name": "rail-cart",
+  "sha256": "f2f5e36894b66f14fedd2da54e6f6ea5f9c2f82da222372ca6de6f85660019df",
+  "loader": "GLTFLoader with MeshoptDecoder; WebP via ImageLoader",
+  "fallback": false,
+  "bytes": 112308,
+  "triangles": 3929,
+  "materials": 1,
+  "viewports": [[390, 844], [1024, 768]],
+  "screenshots": [
+    "qa/rail-cart-1024-loaded.jpg",
+    "qa/rail-cart-1024-unloaded.jpg",
+    "qa/rail-cart-1024-back.jpg",
+    "qa/rail-cart-390-loaded.jpg",
+    "qa/rail-cart-390-unloaded.jpg"
+  ],
+  "screenshotsVisuallyInspected": 5,
+  "browserErrors": [],
+  "horizontalOverflow": false,
+  "geometryReport": "rail-cart-geometry.json",
+  "geometryPass": true,
+  "loadedState": {"coilVisible": true, "phase": 0},
+  "unloadedState": {"coilVisible": false, "phase": 1},
+  "wheelAnimation": {
+    "axis": "localZ",
+    "exactParentGroups": ["wheel-rear-left", "wheel-rear-right", "wheel-front-left", "wheel-front-right"],
+    "phase1ParentAngles": [1.413716694115407, 1.413716694115407, 1.413716694115407, 1.413716694115407],
+    "phase1GeometryChildAngles": [0, 0, 0, 0],
+    "doubleRotation": false
+  },
+  "validation": {"errors": 0, "warnings": 0, "info": "Validator does not inspect EXT_meshopt_compression; native GLTFLoader decoded it successfully."},
+  "repositoryChecks": {"testFilesPassed": 17, "testsPassed": 88, "typecheck": "pass"},
+  "physicalIPadTest": "not performed",
+  "gameIntegrationQA": "pending integrator",
+  "finalGlbUnchangedAfterMainReview": true
+}
