@@ -1,0 +1,5 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Create one complete freestanding object for a children's 3D factory game. Friendly tactile matte painted plastic/clay, chunky softened edges, simple robust toy geometry, turquoise/teal, warm golden yellow and small coral accents, clean gently varied surface. White studio background, soft even light, no floor or ground plate, no cast-shadow geometry, no text, labels, logos, watermarks or humans. Entire object in frame with margin, front-left three-quarter product view showing front and side. Intended for 4000-triangle image-to-3D reconstruction. A joined bank of THREE tall worker storage lockers, overall width1.8 height2.0 depth0.6. Three closed vertical doors side by side, alternating turquoise, warm cream and muted coral panels with dark teal surrounding case, short common raised plinth. One broad inset handle per door, three short chunky vent slots painted near each door top, no tiny perforations. Connected single silhouette, no separate loose parts, no open doors or objects outside.",
+  "transparent_background": false
+}

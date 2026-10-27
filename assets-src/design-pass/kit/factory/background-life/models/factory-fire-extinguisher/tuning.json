@@ -1,0 +1,19 @@
+{
+  "reviewed": true,
+  "targetXYZ": [
+    0.45,
+    1.1,
+    0.4
+  ],
+  "height": 1.1,
+  "rotationY": 0,
+  "targetTriangles": 4000,
+  "front": "+Z",
+  "baseY": 0,
+  "centreXZ": [
+    0,
+    0
+  ],
+  "scaleMode": "uniform-height",
+  "floorSnap": 0.001
+}

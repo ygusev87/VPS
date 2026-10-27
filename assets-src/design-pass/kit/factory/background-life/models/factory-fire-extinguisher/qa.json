@@ -1,0 +1,85 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":73140,\"triangles\":3862,\"materials\":1,\"bounds\":{\"min\":[-0.3304834203531349,0,-0.19999542655836264],\"max\":[0.3304834203531349,1.100000023841858,0.19999542655836264]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":73140,\"triangles\":3862,\"materials\":1,\"bounds\":{\"min\":[-0.3304834203531349,0,-0.19999542655836264],\"max\":[0.3304834203531349,1.100000023841858,0.19999542655836264]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":73140,\"triangles\":3862,\"materials\":1,\"bounds\":{\"min\":[-0.3304834203531349,0,-0.19999542655836264],\"max\":[0.3304834203531349,1.100000023841858,0.19999542655836264]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":73140,\"triangles\":3862,\"materials\":1,\"bounds\":{\"min\":[-0.3304834203531349,0,-0.19999542655836264],\"max\":[0.3304834203531349,1.100000023841858,0.19999542655836264]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":73140,\"triangles\":3862,\"materials\":1,\"bounds\":{\"min\":[-0.3304834203531349,0,-0.19999542655836264],\"max\":[0.3304834203531349,1.100000023841858,0.19999542655836264]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualPass": true,
+  "notes": [
+    "Native 1024x768 views 0/3/6/7 and 390x844 view0 reviewed.",
+    "Public GLB loaded with Meshopt GLTFLoader and WebP image workaround."
+  ]
+}

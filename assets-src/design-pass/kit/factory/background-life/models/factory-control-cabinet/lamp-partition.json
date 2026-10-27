@@ -1,0 +1,67 @@
+{
+  "method": "Partition original triangles by reviewed front-lens XYZ regions and source atlas colour at triangle centroid. Every original triangle retained exactly once; no new cap, no removed door, no repositioning. Nodes are for material/emissive blinking only, not physical lens detachment.",
+  "groups": {
+    "body": {
+      "triangles": 3058,
+      "bounds": {
+        "min": [
+          -0.6267059445381165,
+          0,
+          -0.49308469891548157
+        ],
+        "max": [
+          0.6267059445381165,
+          2.0999999046325684,
+          0.49308469891548157
+        ]
+      }
+    },
+    "lamp-red": {
+      "triangles": 31,
+      "bounds": {
+        "min": [
+          -0.3763183653354645,
+          1.5406494140625,
+          0.3470626473426819
+        ],
+        "max": [
+          -0.17566224932670593,
+          1.7279754877090454,
+          0.39692223072052
+        ]
+      }
+    },
+    "lamp-amber": {
+      "triangles": 33,
+      "bounds": {
+        "min": [
+          -0.09330254793167114,
+          1.536259412765503,
+          0.34799185395240784
+        ],
+        "max": [
+          0.09788473695516586,
+          1.7291290760040283,
+          0.39826804399490356
+        ]
+      }
+    },
+    "lamp-green": {
+      "triangles": 28,
+      "bounds": {
+        "min": [
+          0.18199080228805542,
+          1.5421555042266846,
+          0.3484404385089874
+        ],
+        "max": [
+          0.3735946714878082,
+          1.7283599376678467,
+          0.3987807035446167
+        ]
+      }
+    }
+  },
+  "originalTriangles": 3150,
+  "partitionTriangles": 3150
+}

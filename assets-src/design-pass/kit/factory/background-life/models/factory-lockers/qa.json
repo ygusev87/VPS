@@ -1,0 +1,86 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":90380,\"triangles\":3027,\"materials\":1,\"bounds\":{\"min\":[-0.9884640034180731,0,-0.4958647419660024],\"max\":[0.9884640034180731,2,0.4958647419660024]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":90380,\"triangles\":3027,\"materials\":1,\"bounds\":{\"min\":[-0.9884640034180731,0,-0.4958647419660024],\"max\":[0.9884640034180731,2,0.4958647419660024]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":90380,\"triangles\":3027,\"materials\":1,\"bounds\":{\"min\":[-0.9884640034180731,0,-0.4958647419660024],\"max\":[0.9884640034180731,2,0.4958647419660024]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":90380,\"triangles\":3027,\"materials\":1,\"bounds\":{\"min\":[-0.9884640034180731,0,-0.4958647419660024],\"max\":[0.9884640034180731,2,0.4958647419660024]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":90380,\"triangles\":3027,\"materials\":1,\"bounds\":{\"min\":[-0.9884640034180731,0,-0.4958647419660024],\"max\":[0.9884640034180731,2,0.4958647419660024]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualPass": true,
+  "notes": [
+    "Native 1024x768 views 0/3/6/7 and 390x844 view0 reviewed.",
+    "Public GLB loaded with Meshopt GLTFLoader and WebP image workaround.",
+    "Generated rear repeats the three locker doors; static bank can be placed against wall, rear is not blank."
+  ]
+}

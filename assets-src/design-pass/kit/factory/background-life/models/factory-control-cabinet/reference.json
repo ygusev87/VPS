@@ -1,0 +1,10 @@
+{
+  "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-b1666911-51e3-431a-bda2-b4924a892086.png",
+  "path": "assets-src/design-pass/kit/factory/background-life/models/factory-control-cabinet/refs/factory-control-cabinet.png",
+  "sha256": "a55d94f007c960a09f153a3b0d580671db6525e1202da370b7c2403047eacc91",
+  "bytes": 1687023,
+  "tool": "built-in image_gen",
+  "attempts": 1,
+  "edited": false,
+  "visualReview": "PASS: requested silhouette and parts; no writing; complete object."
+}

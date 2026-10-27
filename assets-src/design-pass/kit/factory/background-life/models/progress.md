@@ -35,3 +35,19 @@ Four workers READY individually; forklift static candidate retained with concret
 Commits: foreman+technician b062aa3; loader+inspector022f972. Common manifest/kit/runtime and city assets untouched by this chat. Integration remains main/Claude. Standing authorization for other project references and included-credit generation remains in force; no repeated permission question.
 
 Final validation:17 test files/88 tests PASS; TypeScript PASS (2026-10-27). Static forklift uses real game loader, both native sizes verified. No articulated motion claim.
+
+## ACTIVE — next factory batch03 — owner directly requested continuation
+
+2026-10-27: existing sole model operator takes six queued props: control-cabinet/lockers/fire-extinguisher/box-trolley/loading-ramp/foreman-booth. Preparing refs in each own models/<id>/refs; common main manifest/layout/ref folders/src/kit untouched. Detailed contract in models/factory-control-cabinet/batch-03.json. New Studio orders not yet placed. Do not duplicate these six orders. Prior forklift/workers and citybatch02 stay closed.
+
+## READY — factory-control-cabinet
+
+`public/models/factory-control-cabinet.glb`: 70,512 bytes, 3150 triangles; actual XYZ 1.253386 × 2.100000 × 0.986199; SHA `78a76cb20e763c830a5b1ea3492bdb4452ff961ac80e7140de0af5b61a58b001`. 4 mesh nodes, one OPAQUE material, 512 WebP, Meshopt, no skin/animation. Four grounded feet and a complete cabinet body. Three raised lens faces are partitioned into lamp-red, lamp-amber, lamp-green; body has 3058 triangles and lenses have 31/33/28. All 3150 source triangles are retained exactly once. Clone each lamp mesh material before changing emissive; all four nodes share one source material. For example: const lens = scene.getObjectByName("lamp-red"); lens.material = lens.material.clone(); lens.material.emissive.set("#ff240d"); lens.material.emissiveIntensity = 1.5; Clone amber and green materials likewise. Set intensity 0 to turn off. Do not move lamp nodes: boundaries are cut from the connected source surface for lighting only. Cabinet consumes four mesh draw calls; no door or switch animation. Native 390/1024 and four views PASS; validator and browser errors/warnings zero; 88 tests / TypeScript PASS. Full evidence and placement contract in own README.
+
+## READY — factory-lockers
+
+`public/models/factory-lockers.glb`: 90,380 bytes, 3027 triangles; actual XYZ 1.976928 × 2.000000 × 0.991729; SHA `301300368da5c8777aee51046cf00261789de33579646f5c96abaad39b94b1e8`. 1 mesh nodes, one OPAQUE material, 512 WebP, Meshopt, no skin/animation. Three colored closed doors on four grounded feet. The generated rear repeats the doors; it is not a plain back panel. Suitable as a static locker bank, including wall placement. Single static mesh. No doors may open; no interior or detached handles. Native 390/1024 and four views PASS; validator and browser errors/warnings zero; 88 tests / TypeScript PASS. Full evidence and placement contract in own README.
+
+## READY — factory-fire-extinguisher
+
+`public/models/factory-fire-extinguisher.glb`: 73,140 bytes, 3862 triangles; actual XYZ 0.660967 × 1.100000 × 0.399991; SHA `858fe9596ba115ccdee115802a0bb10b5325be1a816c6a24fbb639f0f8109a90`. 1 mesh nodes, one OPAQUE material, 512 WebP, Meshopt, no skin/animation. Continuous canister, thick attached hose, pressure gauge and broad handle. One connected base ring contacts the floor. Single static mesh; no moving handle or removable hose. The wider footprint includes the hose and handle. Native 390/1024 and four views PASS; validator and browser errors/warnings zero; 88 tests / TypeScript PASS. Full evidence and placement contract in own README.

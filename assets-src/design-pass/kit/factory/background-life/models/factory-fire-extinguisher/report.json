@@ -1,0 +1,105 @@
+{
+  "name": "factory-fire-extinguisher",
+  "source": "assets-src/raw/factory-props-2026-10-27/factory-fire-extinguisher.glb",
+  "sourceSha256": "15ff157b3cb8c4c61d5a0abcf5a71920bdb26a8aed89e431c70af126c16720eb",
+  "sourceBytes": 605720,
+  "sourceTriangles": 3862,
+  "sourceBounds": {
+    "min": [
+      -0.300445556640625,
+      0,
+      -0.1818084716796875
+    ],
+    "max": [
+      0.300445556640625,
+      1,
+      0.1818084716796875
+    ]
+  },
+  "bytes": 73140,
+  "sha256": "858fe9596ba115ccdee115802a0bb10b5325be1a816c6a24fbb639f0f8109a90",
+  "triangles": 3862,
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "bounds": {
+    "min": [
+      -0.3304834203531349,
+      0,
+      -0.19999542655836264
+    ],
+    "max": [
+      0.3304834203531349,
+      1.100000023841858,
+      0.19999542655836264
+    ]
+  },
+  "size": [
+    0.6609668407062698,
+    1.100000023841858,
+    0.3999908531167253
+  ],
+  "contract": {
+    "reviewed": true,
+    "targetXYZ": [
+      0.45,
+      1.1,
+      0.4
+    ],
+    "height": 1.1,
+    "rotationY": 0,
+    "targetTriangles": 4000,
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": [
+      0,
+      0
+    ],
+    "scaleMode": "uniform-height",
+    "floorSnap": 0.001
+  },
+  "localChanges": [
+    "Bake source transforms",
+    "Rotate to front+Z",
+    "Uniform scale to agreed height; preserve proportions; preliminary width/depth are not hard limits; centreXZ0; baseY0",
+    "Simplification not applied: source already within triangle budget",
+    "Set roughness.72 metallic0 and OPAQUE",
+    "Floor snap band 0.001 (soles/wheel contact only)",
+    "Resize texture512 WebP quality88",
+    "Meshopt compression position16bits"
+  ],
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true,
+  "structure": {
+    "nodeCount": 1,
+    "meshCount": 1,
+    "primitiveCount": 1,
+    "details": "structure.json"
+  }
+}

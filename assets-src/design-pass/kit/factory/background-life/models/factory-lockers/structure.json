@@ -1,0 +1,66 @@
+{
+  "sha256": "301300368da5c8777aee51046cf00261789de33579646f5c96abaad39b94b1e8",
+  "bytes": 90380,
+  "scenes": 1,
+  "nodeCount": 1,
+  "meshCount": 1,
+  "primitiveCount": 1,
+  "skins": 0,
+  "animations": 0,
+  "nodes": [
+    {
+      "name": "factory-lockers",
+      "children": [],
+      "mesh": "factory-lockers",
+      "primitives": 1,
+      "localMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "worldMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1
+      ],
+      "transformedBounds": {
+        "min": [
+          -0.9884640034180731,
+          0,
+          -0.4958647419660024
+        ],
+        "max": [
+          0.9884640034180731,
+          2,
+          0.4958647419660024
+        ]
+      }
+    }
+  ]
+}

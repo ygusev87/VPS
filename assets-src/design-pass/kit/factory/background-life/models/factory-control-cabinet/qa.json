@@ -1,0 +1,99 @@
+{
+  "checks": [
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":70512,\"triangles\":3150,\"materials\":1,\"bounds\":{\"min\":[-0.6266929858531318,0,-0.49309974261430645],\"max\":[0.6266929858531318,2.0999999046325684,0.49309974261430645]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":3,\"probeVisible\":false}",
+        "stats": "{\"bytes\":70512,\"triangles\":3150,\"materials\":1,\"bounds\":{\"min\":[-0.6266929858531318,0,-0.49309974261430645],\"max\":[0.6266929858531318,2.0999999046325684,0.49309974261430645]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":6,\"probeVisible\":false}",
+        "stats": "{\"bytes\":70512,\"triangles\":3150,\"materials\":1,\"bounds\":{\"min\":[-0.6266929858531318,0,-0.49309974261430645],\"max\":[0.6266929858531318,2.0999999046325684,0.49309974261430645]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":7,\"probeVisible\":false}",
+        "stats": "{\"bytes\":70512,\"triangles\":3150,\"materials\":1,\"bounds\":{\"min\":[-0.6266929858531318,0,-0.49309974261430645],\"max\":[0.6266929858531318,2.0999999046325684,0.49309974261430645]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "data": {
+        "loaded": "true",
+        "state": "{\"view\":0,\"probeVisible\":false}",
+        "stats": "{\"bytes\":70512,\"triangles\":3150,\"materials\":1,\"bounds\":{\"min\":[-0.6266929858531318,0,-0.49309974261430645],\"max\":[0.6266929858531318,2.0999999046325684,0.49309974261430645]}}"
+      },
+      "overflow": [
+        false,
+        false
+      ],
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "logs": [],
+  "visualPass": true,
+  "notes": [
+    "Native 1024x768 views 0/3/6/7 and 390x844 view0 reviewed.",
+    "Public GLB loaded with Meshopt GLTFLoader and WebP image workaround."
+  ],
+  "lampChecks": {
+    "nodes": [
+      "lamp-red",
+      "lamp-amber",
+      "lamp-green"
+    ],
+    "independentEmissiveReviewed": true,
+    "materialClonedPerLens": true,
+    "screenshots": [
+      "1024-lamp-red.jpg",
+      "1024-lamp-amber.jpg",
+      "1024-lamp-green.jpg"
+    ]
+  }
+}

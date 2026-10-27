@@ -1,0 +1,59 @@
+{
+  "status": "active-owner-directed-next-batch",
+  "authorization": "Direct user: Бери следующую партию моделей и продолжай без дополнительных разрешений и остановок. Standing project Tripo upload/generation approval applies. Existing credits only; no purchases/API/topups.",
+  "source": "factory/background-life/manifest.json queued six and coordination m0497; no duplicate existing accepted assets",
+  "items": [
+    {
+      "id": "factory-control-cabinet",
+      "targetXYZ": [
+        1.2,
+        2.1,
+        0.6
+      ]
+    },
+    {
+      "id": "factory-lockers",
+      "targetXYZ": [
+        1.8,
+        2,
+        0.6
+      ]
+    },
+    {
+      "id": "factory-fire-extinguisher",
+      "targetXYZ": [
+        0.45,
+        1.1,
+        0.4
+      ]
+    },
+    {
+      "id": "factory-box-trolley",
+      "targetXYZ": [
+        1.2,
+        1.3,
+        1.6
+      ]
+    },
+    {
+      "id": "factory-loading-ramp",
+      "targetXYZ": [
+        3.6,
+        1.2,
+        3.8
+      ]
+    },
+    {
+      "id": "factory-foreman-booth",
+      "targetXYZ": [
+        2.8,
+        2.8,
+        2.4
+      ]
+    }
+  ],
+  "scope": "Own six model folders, matching six publicGLB, raw/factory-props-2026-10-27, models/progress.md. Common manifest/layout/kit/src remain main/integrator.",
+  "contract": "<=4000tri, target<=150000B, one OPAQUE512WebP material,Meshopt,front+Z/baseY0/centreXZ0; uniform-fit actual sizes; no ground plate/skins. Control-cabinet lamp-red/lamp-amber/lamp-green separate mesh nodes sharing atlas, runtime material clones for independent emissive blinking. Other five static.",
+  "qa": "SourceSHA/order price-balance ledger; actual-node/bounds/material report; native390/1024; floor contacts; trolley four wheels; ramp open path and deck; cabinet lens extraction must not remove door/support geometry.",
+  "scaleClarification": "Tall props fitted uniformly by target height, report actual XYZ for placement; preliminary width/depth may exceed targets and must not be anisotropically forced. Trolley/ramp use uniform contain."
+}
