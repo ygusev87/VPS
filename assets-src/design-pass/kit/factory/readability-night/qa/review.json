@@ -1,0 +1,44 @@
+{
+  "snapshot": "/private/tmp/electro-factory-night-amuk0ljm",
+  "head": "fb92d01d16fd7a5e7e1cb22be2865e6109708ad0",
+  "sourceSHA": {
+    "src/factory.ts": "d27109107d9c1e7002d7dbaba553a74a3f51ce7973a9ac98ffadcccec9315ed7",
+    "src/life.ts": "6c354ac16b959650cdbe23479feedd818615f4bfe27f12faa86f450eb480aa99",
+    "src/parts/workshop.ts": "f6a648f3f08758a5939d3b4eef0847cde3a3cd058ecd73b4300bf3bc569b16f0",
+    "src/stage.ts": "d9d1e7402b9e32fb3d44fe9b903cc87a30b176a31012d4aaa1114cb55eb8a8dc",
+    "src/storymap.ts": "8a1b467fd2e6ae05b43f893e4f82de70f9ccf72dd2f526f9145bdd58205b9b8c",
+    "src/voice.ts": "740483df02728595d31867d4d5dcf27eefc4ce4436ec6c3573ffe2dd8769a31d"
+  },
+  "checkedAt": "2026-10-27T13:10:07.278121+00:00",
+  "viewport": [
+    1180,
+    820
+  ],
+  "frames": [
+    "default-1180.jpg",
+    "overview-1180.jpg",
+    "wirebox-1180.jpg",
+    "lathe-press-1180.jpg",
+    "hoist-lorry-1180.jpg",
+    "cart-crane-1180.jpg",
+    "lever-cart-1180.jpg",
+    "lever-right-1180.jpg",
+    "farm-default-1180.jpg",
+    "farm-overview-1180.jpg"
+  ],
+  "overflow": 0,
+  "interaction": "UI only: map selection, show-all, pan, wheel zoom; placed1reverser from drawer and tapped forward once; no source/game-state injection",
+  "console": {
+    "newAfterConfigRepair": 0,
+    "initialHarnessError": "__BUILD__ missing in temporary snapshot config; repaired/reloaded before review captures"
+  },
+  "limitations": [
+    "No complete12task run or evening phase activation",
+    "No physical iPad/PWA/audio/performance proof",
+    "Farm observed only for composition comparison; accepted assets not retested",
+    "Vite watched linked assets-src and logged unrelated reloads during session; screenshots were inspected after visible page stabilization. No typography or persistent-state regression claim."
+  ],
+  "temporaryServer": "5343/session4163 stopped",
+  "temporaryTab": "36 closed",
+  "sourceScope": "Frozen working-tree sources at listed SHA; HEAD is reference only, not a claim that uncommitted Claude edits were absent."
+}

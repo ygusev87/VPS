@@ -1,0 +1,7 @@
+{
+  "tool": "built-in image_gen",
+  "prompt": "Use case: stylized-concept. Asset type: seamless horizontal top-surface texture tile for the conveyor belt in a tactile children's factory game. Create a 3:1 wide rectangle filled edge-to-edge, strictly orthographic TOP DOWN, no perspective. The belt travels along image X (left to right). Broad charcoal rubber deck across central 80% of image height, clearly spaced muted slate-gray transverse rib/slat bars running vertically in the picture across the deck, each robust and soft edged. Thin worn teal metal edging along the top and bottom, a very thin warm golden-yellow safety stripe just inside each edge. Subtle hand-painted tactile shading and gentle roughness, readable when reduced to a 512px texture. Perfectly repetitive rhythm; left and right edges seamlessly match to repeat along a long conveyor. No end caps, no wheels, legs, supports, floor, surroundings, boxes, people, arrows, text, hazard diagonal stripes, labels or cast shadows. All pixels opaque. No lighting gradient along X; almost uniform gentle ambient light. This is a flat material tile, not a rendered whole conveyor or a product illustration.",
+  "transparent_background": false,
+  "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-1e0c66d3-aa40-44a9-bb72-441708cb1ba2.png",
+  "usage": "New conveyor surface candidate; geometry and runtime owned by Claude; no old accepted image overwritten."
+}

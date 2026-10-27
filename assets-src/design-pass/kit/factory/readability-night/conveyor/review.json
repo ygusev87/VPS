@@ -1,0 +1,53 @@
+{
+  "status": "asset-and-fixture-accepted-for-integration",
+  "checkedAt": "2026-10-27T13:18:26.202402+00:00",
+  "viewports": [
+    [
+      1180,
+      820
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "frames": [
+    "angle-1180.jpg",
+    "top-1180.jpg",
+    "angle-390.jpg",
+    "top-390.jpg"
+  ],
+  "browserErrors": 0,
+  "browserWarnings": 0,
+  "horizontalOverflow": 0,
+  "visual": "Three adjacent repeats on3D plane and repeated strip inspected; no obvious seam. Numeric border difference inreport is not exact seamlessness proof.",
+  "limitations": [
+    "Separate material fixture, not full factory integration",
+    "No physical iPad/PWA/FPS measurement"
+  ],
+  "contract": {
+    "surface": "existing conveyor top; no independent new conveyor geometry required",
+    "tileWorld": [
+      4.2,
+      1.4
+    ],
+    "repeatU": "beltLength/4.2",
+    "repeatV": 1,
+    "uAxis": "worldX",
+    "vAxis": "worldZ",
+    "planeTopY": 0.502,
+    "colorSpace": "sRGB",
+    "material": "MeshBasicMaterial white; opaque, FrontSide, depthTest/depthWrite",
+    "shadow": false,
+    "interactive": false,
+    "animation": "Texture may stay static per owner environment-as-kit request; preserve product motion and game logic",
+    "integration": "Claude ownsfactory.ts; apply to both belts with fresh texture repeat per length; verify gantry/hopper joins, existing height and map lighting."
+  },
+  "temporaryTab": "37 closed",
+  "temporaryServer": "5345/session60273 stopped",
+  "validation": {
+    "tests": "88/17 PASS",
+    "typecheck": "PASS",
+    "time": "2026-10-27 20:18 Bangkok"
+  }
+}

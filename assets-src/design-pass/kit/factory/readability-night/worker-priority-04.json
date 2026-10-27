@@ -1,0 +1,96 @@
+{
+  "task": "factory-readability-night",
+  "request": [
+    "m0521",
+    "m0522"
+  ],
+  "status": "dispatched-active",
+  "operator": "existing model worker only; no parallel Studio orders",
+  "authorization": "Standing owner project Studio upload/generation authorization; owner requested next models directly, main priority based on Claude delegated m0521/m0522. Existing credits only; no purchases/topups/API. Codex usage reserve15% mandatory.",
+  "scope": [
+    "assets-src/design-pass/kit/factory/readability-night/models/<these3ids>/",
+    "corresponding3public/models/*.glb",
+    "assets-src/raw/factory-interactive-2026-10-27/",
+    "own progress.md only"
+  ],
+  "excluded": [
+    "src",
+    "kit.json",
+    "main REPORT/qa",
+    "common coordination read/ack",
+    "accepted workshop13 and crew/city GLB"
+  ],
+  "contract": {
+    "front": "+Z",
+    "baseY": 0,
+    "centreXZ": 0,
+    "uniformOnly": true,
+    "trianglesMax": 4000,
+    "material": "one OPAQUE512WebP atlas per GLB; Meshopt",
+    "bytesTarget": 150000,
+    "scale": "Report actualXYZ; fit agreed dominant dimension, never silently stretch source.",
+    "qa": [
+      "source/ledger/actualSHA/bytes/tri/bounds/material",
+      "native1180/390 through real loader",
+      "floor contacts and wheel pivots",
+      "no invisible solid cargo lid; prove open usable cargo volume",
+      "separate nodes must represent genuinely separated geometry; do not label fused geometry as animated"
+    ]
+  },
+  "items": [
+    {
+      "id": "factory-delivery-lorry",
+      "priority": 1,
+      "why": "Current live truck is a closed primitive white box, concealing the loading objective. One model reused for both day/evening trucks.",
+      "targetXYZ": [
+        1.9,
+        2.2,
+        5
+      ],
+      "fit": "uniform depth5",
+      "design": "Friendly red/teal cab at +Z, open rear cargo bed toward -Z. Clearly separate cab, windscreen, door, chunky four tyres. Three boxes must visibly fit in open bed, no canopy or closed van. Low side walls. No cargo generated into truck.",
+      "nodes": [
+        "body",
+        "wheel-front-left",
+        "wheel-front-right",
+        "wheel-rear-left",
+        "wheel-rear-right"
+      ],
+      "wheelAxes": "localX, actual axle-centre pivots; four tyre contacts onY0; independent rotations without body intersections except intended axle seating",
+      "cargoRequirement": "Usable interior at leastX[-.70,.70],Z[-2.0,.40], all above actual flat deck; no triangles crossing space above deck up todeck+.8 except outer side rails. Report deckY and measured freeBox; candidate three cargo anchorsZ[-1.6,-.8,0],X0,boxbottom=deckY; verify with .7x.65x.7 cargo probes. Adjust anchors based actual surface; do not claim placeholder coordinates measured.",
+      "integration": "Claude rotates +Z asset to existing +X-facing truck convention and retains overall root/yaw/driveoff. Report fit transform and wheel axes. No source edits byworker."
+    },
+    {
+      "id": "factory-product-bunny",
+      "priority": 2,
+      "targetXYZ": [
+        0.55,
+        0.75,
+        0.5
+      ],
+      "fit": "uniform height.75",
+      "design": "Recognizable simple toy bunny, stout seated body, two unmistakable long ears, flat stable underside; neutral warm ivory/wood finish, dark eyes and nose, no baked brightly colored body so runtime tint can distinguish before/after paint. Matte tactile detail visible from overhead. Not a plain ball with tiny ear balls. No plinth.",
+      "nodes": [
+        "product"
+      ],
+      "motion": "Whole product travels; no rig or moving ears. Atlas neutral body; document tint limits."
+    },
+    {
+      "id": "factory-product-box",
+      "priority": 3,
+      "targetXYZ": [
+        0.7,
+        0.65,
+        0.7
+      ],
+      "fit": "uniform contain",
+      "design": "Finished toy parcel: sturdy rounded ochre cardboard box, broad teal ribbon and a large simple star seal; bow low and integrated, no thin floating loops. Flat underside. No writing. Readable distinct finished state from unboxed bunny.",
+      "nodes": [
+        "package"
+      ],
+      "motion": "Whole package travels and occupies cargo anchors; no opening/rig needed."
+    }
+  ],
+  "delivery": "READY individually to own progress with exactfile/SHA/bounds and nativeimages; local commits only own explicit paths; no push. After these3 stop until new concrete card or owner instruction. Existing batch03 must be completed or its blocker saved first. Reserve15% takes precedence over overnight scope.",
+  "dispatch": "Existing model chat01a17696-ff06-7a43-886e-af0ed6098802 after batch03 confirmed completed, cursor97. Shared Codex24% atdispatch; reserve15%."
+}

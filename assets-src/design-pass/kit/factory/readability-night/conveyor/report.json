@@ -1,0 +1,13 @@
+{
+  "sourceSha256": "51e246f791c0e4c6af5928318105801454147089ad23348c015273f225f646ac",
+  "publicPath": "public/textures/kit/factory/factory-conveyor-deck.webp",
+  "sha256": "b8cf3a8754cb1ddf626935a668733cf3b5a9636128fa07f4c33fd145bfb30901",
+  "bytes": 9088,
+  "width": 512,
+  "height": 171,
+  "hasAlpha": false,
+  "encoding": "Only resize2172x724 to512x171 and WebP90; no repaint/crop",
+  "leftRightEdgeRgbMeanAbsoluteDifference": 2.865497076023392,
+  "leftRightEdgeRgbMaxDifference": 32,
+  "seamNote": "Numeric edge difference measures border discontinuity, not complete perceptual seamlessness; native repeat preview required."
+}
