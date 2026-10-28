@@ -1105,8 +1105,10 @@ function frame(now: number) {
     // The hand drifted off screen (the view moved after it appeared) and the child has
     // left the table alone a while: bring it back into view — once for each hint, and again
     // if something has taken the view away since (a result shown, then the view going back).
+    // A child who is looking round the map themself is left to it: only a long rest from the table brings the hand back.
+    const exploring = stage.ownLook > hintLookAt && performance.now() - lastTouch < 40000;
     const again = hintLook === currentKey && performance.now() - hintLookAt > 8000;
-    if (!mapFocus && currentHint && (hintLook !== currentKey || again) && performance.now() - lastTouch > 5000 && !input.busy) {
+    if (!mapFocus && currentHint && !exploring && (hintLook !== currentKey || again) && performance.now() - lastTouch > 5000 && !input.busy) {
       const pts = hintPoints(currentHint);
       if (pts.some((p) => !stage.inView(p))) {
         hintLook = currentKey;

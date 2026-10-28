@@ -31,17 +31,17 @@ const PROP_SOUND: Record<string, PhraseId> = { 'factory-control-cabinet': 'beep'
 
 /** Codex's hall furniture (static, but the cabinet's lamps light up): where the empty floor was. */
 const PROPS: [string, Fit, number, number, number][] = [
-  ['factory-foreman-booth', { height: 2.6 }, 34, 5.6, 0],
-  ['factory-loading-ramp', { depth: 3.8 }, 37.4, -10, -Math.PI / 2],
-  ['factory-lockers', { height: 2 }, 22, -24.4, 0],
-  ['factory-lockers', { height: 2 }, 27.5, -24.4, 0],
-  ['factory-fire-extinguisher', { height: 1.1 }, -6.4, -24.9, 0],
-  ['factory-fire-extinguisher', { height: 1.1 }, -38.9, 0.2, Math.PI / 2],
-  ['factory-fire-extinguisher', { height: 1.1 }, 38.9, 9, -Math.PI / 2],
-  ['factory-box-trolley', { depth: 1.6 }, 10, 5.4, 0.3],
-  ['factory-box-trolley', { depth: 1.6 }, -12, 5.6, -0.25],
-  ['factory-control-cabinet', { height: 2.1 }, -38.6, -7.5, Math.PI / 2],
-  ['factory-control-cabinet', { height: 2.1 }, 38.6, 19.5, -Math.PI / 2],
+  ['factory-foreman-booth', { height: 2.6 }, 45.9, 7.56, 0],
+  ['factory-loading-ramp', { depth: 3.8 }, 50.49, -13.5, -Math.PI / 2],
+  ['factory-lockers', { height: 2 }, 29.7, -32.94, 0],
+  ['factory-lockers', { height: 2 }, 37.12, -32.94, 0],
+  ['factory-fire-extinguisher', { height: 1.1 }, -8.64, -33.62, 0],
+  ['factory-fire-extinguisher', { height: 1.1 }, -52.52, 0.27, Math.PI / 2],
+  ['factory-fire-extinguisher', { height: 1.1 }, 52.52, 12.15, -Math.PI / 2],
+  ['factory-box-trolley', { depth: 1.6 }, 13.5, 7.29, 0.3],
+  ['factory-box-trolley', { depth: 1.6 }, -16.2, 7.56, -0.25],
+  ['factory-control-cabinet', { height: 2.1 }, -52.11, -10.12, Math.PI / 2],
+  ['factory-control-cabinet', { height: 2.1 }, 52.11, 26.33, -Math.PI / 2],
 ];
 export const FACTORY_MODELS = ['pole', 'child', 'kitten', 'flower-cluster', 'factory-worker-foreman', ...CREW, ...WORKSHOP_MODELS, ...new Set(PROPS.map(([m]) => m)), 'factory-product-bear', 'factory-product-billet', 'factory-product-box', 'factory-delivery-lorry'];
 
@@ -56,46 +56,57 @@ export const FACTORY_TRAY: { kind: PartKind; count: number }[] = [
 ];
 
 /** Bumped whenever the factory is laid out anew (a save on another layout starts it afresh). */
-export const FACTORY_LAYOUT = 5;
+export const FACTORY_LAYOUT = 6;
 
 export interface FactoryProgress extends MapProgress {
   loaded: number;
   loaded2?: number;
 }
 
-const W = 80;
-const D = 52;
+/**
+ * How far apart the stations stand (owner 28.10: the hall was crowded, decor hid machines). Every place in
+ * the hall is written at the old size and spread by K; machines, their parts and their offsets keep their size.
+ */
+const K = 1.35;
+/** A place in the hall, spread. */
+const at = (x: number, z: number) => v(x * K, z * K);
+/** Places in the hall spread (the first two numbers of each: x and z; the rest, a size or a turn, kept). */
+function spread<T extends readonly number[]>(list: readonly T[]): T[] {
+  return list.map((p) => p.map((n, i) => (i < 2 ? n * K : n)) as unknown as T);
+}
+const W = 108;
+const D = 70;
 /** The line the toys travel along, from the cart's end to the hoist. */
-const LINE_Z = -2.2;
+const LINE_Z = -2.2 * K;
 /** How dark the hall is till its lights are switched on. */
 const DIM = 0.55;
 
 // 1. The wiring box between a pole and the hall's panel: wire it in, then turn its tiles.
-const PANEL = v(-34, -17);
-const BOX = v(-29.5, -12.5);
-const PANEL_POLE = v(-36, -10);
+const PANEL = at(-34, -17);
+const BOX = at(-29.5, -12.5);
+const PANEL_POLE = at(-36, -10);
 // 2. The rail cart from the stock to the line's start, and its lever.
-const CART = v(-31, 5.5);
-const CART_LEVER = v(-35.5, 11);
-const CART_POLE = v(-38, 7);
+const CART = at(-31, 5.5);
+const CART_LEVER = at(-35.5, 11);
+const CART_POLE = at(-38, 7);
 // 3. The lathe, its bare-shaft motor and the two shafts that take gears (1.4 apart: a small and a big gear fit).
-const LATHE = v(-17, -8);
+const LATHE = at(-17, -8);
 const LATHE_SHAFT = v(LATHE.x + LATHE_SHAFT_AT.x, LATHE.z + LATHE_SHAFT_AT.z);
 const MOTOR_SHAFT = v(LATHE_SHAFT.x - 1.4, LATHE_SHAFT.z);
 const MOTOR = v(MOTOR_SHAFT.x, MOTOR_SHAFT.z + 0.35);
-const LATHE_POLE = v(-23, -12);
+const LATHE_POLE = at(-23, -12);
 // 4. The two-hand press beside the line.
-const PRESS = v(-3.5, -7);
-const PRESS_POLE = v(-3.5, -12.5);
+const PRESS = at(-3.5, -7);
+const PRESS_POLE = at(-3.5, -12.5);
 // 5. The robot with triangle plugs and the board of shaped sockets.
-const ROBOT = v(11, -6.5);
-const BOARD = v(9.5, -12.5);
-const ROBOT_POLE = v(4.5, -14);
+const ROBOT = at(11, -6.5);
+const BOARD = at(9.5, -12.5);
+const ROBOT_POLE = at(4.5, -14);
 // 6. The hoist that lifts boxes into the lorry, and its lever.
-const HOIST = v(24, -6);
-const HOIST_LEVER = v(20.5, -11);
-const HOIST_POLE = v(25, -13);
-const LORRY = v(32.5, -2.5);
+const HOIST = at(24, -6);
+const HOIST_LEVER = at(20.5, -11);
+const HOIST_POLE = at(25, -13);
+const LORRY = at(32.5, -2.5);
 
 /** Where the foreman and the four workers stand (by their stations). */
 // The cart's worker north of the rails: south of them the evening gantry's beam hides people and their bubbles.
@@ -110,40 +121,40 @@ const LEVER_SCALE = 1.7;
 const STATIONS = [LATHE.x, PRESS.x, ROBOT.x, HOIST.x];
 
 // The evening shift: a second line along the south of the hall, z = EVE_Z.
-const EVE_Z = 13;
+const EVE_Z = 13 * K;
 /** E1. The store's lights: a big 3×3 wiring box between a pole and the store's own panel. */
-const EVE_BOX = v(-21, 19);
-const EVE_PANEL = v(-16.5, 22);
-const EVE_BOX_POLE = v(-25, 21.5);
+const EVE_BOX = at(-21, 19);
+const EVE_PANEL = at(-16.5, 22);
+const EVE_BOX_POLE = at(-25, 21.5);
 /** E2. The gantry crane over the line's start: a coil from the stand at its west end to the line at its east end, on two levers. */
-const GANTRY_AT = v(-24, EVE_Z);
-const MOVE_LEVER = v(-34.5, 18);
-const LIFT_LEVER = v(-29.6, 18);
-const CRANE_POLE = v(-37.5, 21);
+const GANTRY_AT = v(-24 * K, EVE_Z);
+const MOVE_LEVER = at(-34.5, 18);
+const LIFT_LEVER = at(-29.6, 18);
+const CRANE_POLE = at(-37.5, 21);
 /** Where the hook leaves a coil (the trolley's east end): a hopper there feeds the line. */
 const DROP = v(GANTRY_AT.x + 5.5, EVE_Z);
 /** Where the evening's blanks get on the line: just past the gantry's east leg (the belt never runs through it). */
 const EVE_START = GANTRY_AT.x + 8.2;
 /** E3. Paint: a pump tank, a 3×3 box of pipe tiles, the booth over the line. */
-const TANK = v(-11.5, 18);
-const PIPES = v(-6.5, 18.5);
-const BOOTH = v(-4, EVE_Z);
-const TANK_POLE = v(-14.5, 21.5);
+const TANK = at(-11.5, 18);
+const PIPES = at(-6.5, 18.5);
+const BOOTH = v(-4 * K, EVE_Z);
+const TANK_POLE = at(-14.5, 21.5);
 /** E4. The grinder: it wants to turn fast — the big gear on the motor, the small one on the stone. */
-const GRINDER = v(7, 17.5);
+const GRINDER = at(7, 17.5);
 const GRIND_SHAFT = v(GRINDER.x + LATHE_SHAFT_AT.x, GRINDER.z + LATHE_SHAFT_AT.z);
 const GMOTOR_SHAFT = v(GRIND_SHAFT.x - 1.4, GRIND_SHAFT.z);
 const GMOTOR = v(GMOTOR_SHAFT.x, GMOTOR_SHAFT.z + 0.35);
-const GRIND_POLE = v(1, 21.5);
+const GRIND_POLE = at(1, 21.5);
 /** E5. The welding robot: square plugs, its own board of sockets. */
-const WELDER = v(18, 16.5);
-const BOARD2 = v(15.5, 21);
-const WELD_POLE = v(10.5, 22);
-const LORRY2 = v(33, EVE_Z);
+const WELDER = at(18, 16.5);
+const BOARD2 = at(15.5, 21);
+const WELD_POLE = at(10.5, 22);
+const LORRY2 = v(33 * K, EVE_Z);
 /** Where each evening station stands on its line. */
 const EVE_STATIONS = [BOOTH.x, GRINDER.x, WELDER.x, LORRY2.x - 3];
 /** Where new blanks get on the line (from the cart). */
-const LINE_START = -27;
+const LINE_START = -27 * K;
 
 const VOICES: Record<string, PhraseId> = { foreman: 'shopHello', worker: 'hammer', lorry: 'beep', cat: 'meow' };
 const MODEL_OF: Record<string, string> = { cat: 'kitten', lorry: 'factory-delivery-lorry' };
@@ -151,6 +162,8 @@ const MODEL_OF: Record<string, string> = { cat: 'kitten', lorry: 'factory-delive
 export class FactoryMap extends StoryMap {
   protected readonly width = W;
   protected readonly depth = D;
+  /** The yard round the hall, and the road the lorries leave by, are in reach of the view up close too. */
+  protected readonly roam = 16;
   readonly layout = FACTORY_LAYOUT;
   protected readonly intro = 'factoryIntro';
   protected readonly kitName = 'factory';
@@ -169,7 +182,8 @@ export class FactoryMap extends StoryMap {
   private hoist!: Lift;
   /** The hall's lights are on (the box lets the power through). */
   private lit = false;
-  private lamps: { glow: THREE.Sprite; bulb: THREE.MeshStandardMaterial; pool: THREE.Mesh }[] = [];
+  /** Pools of lamplight on the floor (the lamps themselves hung as white blots over the stations: none). */
+  private lamps: THREE.Mesh[] = [];
   /** Toys on the line: how far along (x) and what has been done to them. */
   private toys: { m: THREE.Group; x: number; stage: number }[] = [];
   /** Toys gone through each station of the day line (lathe, press, robot, hoist) and of the evening's (paint, grinder, welder, end). */
@@ -201,7 +215,7 @@ export class FactoryMap extends StoryMap {
   private welder!: Part;
   private board2!: SocketBoard;
   private eveLit = false;
-  private eveLamps: { glow: THREE.Sprite; bulb: THREE.MeshStandardMaterial; pool: THREE.Mesh }[] = [];
+  private eveLamps: THREE.Mesh[] = [];
   private eveToys: { m: THREE.Group; x: number; stage: number }[] = [];
   private eveBlanks = 0;
   private ground = 0;
@@ -346,13 +360,13 @@ export class FactoryMap extends StoryMap {
       ...this.world.parts.map((p) => p.root.position),
     ];
     const runs: THREE.Vector3[][] = [];
-    for (const z of [1.2, 10]) {
+    for (const z of [1.2 * K, 10 * K]) {
       let run: THREE.Vector3[] = [];
       const close = () => {
         if (run.length > 1 && run[0].distanceTo(run[run.length - 1]) >= 6) runs.push(run.filter((_, i) => i % 7 === 0 || i === run.length - 1));
         run = [];
       };
-      for (let x = -36; x <= 36; x += 0.5) {
+      for (let x = -W / 2 + 4; x <= W / 2 - 4; x += 0.5) {
         if (busy.some((b) => Math.hypot(b.x - x, b.z - z) < 2.4)) close();
         else run.push(v(x, z));
       }
@@ -454,9 +468,9 @@ export class FactoryMap extends StoryMap {
       depth: D,
       // Yellow walkways along the line, to the panel and round the stock.
       lanes: [
-        { pts: [[-37, 1.2], [37, 1.2]], w: 1.6 },
-        { pts: [[-32, 1.2], [-32, -8]], w: 1.4 },
-        { pts: [[-37, 10], [37, 10]], w: 1.4 },
+        { pts: spread([[-37, 1.2], [37, 1.2]]), w: 1.6 },
+        { pts: spread([[-32, 1.2], [-32, -8]]), w: 1.4 },
+        { pts: spread([[-37, 10], [37, 10]]), w: 1.4 },
       ],
       field: { x0: 0, z0: 0, x1: 0, z1: 0 },
       mud: [],
@@ -484,9 +498,9 @@ export class FactoryMap extends StoryMap {
       { x: LORRY.x + 0.4, z: LORRY.z + 1.2, size: 2.2 }, { x: LORRY2.x - 0.6, z: LORRY2.z + 0.8, size: 2 },
       { x: CART.x - 2.5, z: CART.z + 0.9, size: 1.2 }, { x: CART.x + 3.2, z: CART.z - 0.7, size: 1 },
       { x: GANTRY_AT.x - 5.5, z: EVE_Z + 1.6, size: 1.5 }, { x: DROP.x + 0.8, z: EVE_Z - 1.4, size: 1.2 },
-      { x: 36.2, z: -7.5, size: 1.8 }, { x: 34, z: -16, size: 1.4 },
+      ...spread([[36.2, -7.5, 1.8], [34, -16, 1.4]] as const).map(([x, z, size]) => ({ x, z, size })),
       // Grime along the walkways where people and trolleys go.
-      { x: -14, z: 1.6, size: 1 }, { x: 6, z: 0.8, size: 0.9 }, { x: 27, z: 1.4, size: 1.1 }, { x: -26, z: 9.6, size: 1 }, { x: 12, z: 10.3, size: 0.9 },
+      ...spread([[-14, 1.6, 1], [6, 0.8, 0.9], [27, 1.4, 1.1], [-26, 9.6, 1], [12, 10.3, 0.9]] as const).map(([x, z, size]) => ({ x, z, size })),
     ];
     const stains = ['a', 'c'].map((v) => kitPieces('factory', `factory-floor-oil-${v}`)[0]).filter(Boolean);
     if (this.kit && stains.length) {
@@ -496,21 +510,21 @@ export class FactoryMap extends StoryMap {
       const streak = kitPieces('factory', 'factory-floor-oil-b')[0];
       // Streaks where things drive: along the cart's rails, out of the lorries' places, along the belt's feet.
       if (streak)
-        for (const [x, z, turn] of [[CART.x - 1, CART.z + 1.2, 0], [LORRY.x, LORRY.z + 4, Math.PI / 2], [LORRY2.x - 4, LORRY2.z + 1.5, 0], [-6, LINE_Z + 1.1, 0], [14, EVE_Z - 1.2, 0]] as const) g.add(floorDecal(streak, 5, 1.667, x, z, turn, 0.4));
+        for (const [x, z, turn] of [[CART.x - 1, CART.z + 1.2, 0], [LORRY.x, LORRY.z + 4, Math.PI / 2], [LORRY2.x - 4, LORRY2.z + 1.5, 0], [-6 * K, LINE_Z + 1.1, 0], [14 * K, EVE_Z - 1.2, 0]] as const) g.add(floorDecal(streak, 5, 1.667, x, z, turn, 0.4));
       const dust = kitPieces('factory', 'factory-floor-dust')[0];
       // Dust along the walls, in the corners and round the machines' feet.
       if (dust) {
-        const at: [number, number][] = [[-37, -23], [37, -23], [-37, 23], [37, 23], [-20, -23.5], [5, -23.5], [28, -23.5], [-38, 8], [38, -2], [38, 14], ...[LATHE, PRESS, ROBOT, HOIST, GRINDER, WELDER, BOOTH].map((p): [number, number] => [p.x + 1.2, p.z - 1.4])];
-        at.forEach(([x, z], i) => g.add(floorDecal(dust, 3.4, 3.4, x, z, i * 2.3, 0.22)));
+        const dusty: [number, number][] = [...spread([[-37, -23], [37, -23], [-37, 23], [37, 23], [-20, -23.5], [5, -23.5], [28, -23.5], [-38, 8], [38, -2], [38, 14]] as [number, number][]), ...[LATHE, PRESS, ROBOT, HOIST, GRINDER, WELDER, BOOTH].map((p): [number, number] => [p.x + 1.2, p.z - 1.4])];
+        dusty.forEach(([x, z], i) => g.add(floorDecal(dust, 3.4, 3.4, x, z, i * 2.3, 0.22)));
       }
       // Marks of work on the floor (Codex's floor details, each where it would be in a real shop).
       const piece = (n: string) => kitPieces('factory', `factory-floor-${n}`)[0];
       const tyres = piece('tyre-tracks');
-      // Tyre tracks where the forklift and the lorries drive.
-      if (tyres) for (const [x, z, turn] of [[-6, 5.6, 0], [8, 6.6, 0.08], [30.5, -18.5, 0.4], [LORRY.x, 4.5, Math.PI / 2], [36, -6, Math.PI / 2]] as const) g.add(floorDecal(tyres, 5, 1.667, x, z, turn, 0.4));
+      // Tyre tracks where the trolleys and the lorries drive.
+      if (tyres) for (const [x, z, turn] of [...spread([[-6, 5.6, 0], [8, 6.6, 0.08], [36, -6, Math.PI / 2]] as const), [LORRY.x, 4.5 * K, Math.PI / 2] as const]) g.add(floorDecal(tyres, 5, 1.667, x, z, turn, 0.4));
       // Arrows down the walkways, the way the line runs (+x).
       const arrow = piece('arrow');
-      if (arrow) for (const [x, z] of [[-24, 1.2], [-4, 1.2], [16, 1.2], [-20, 10], [2, 10], [24, 10]] as const) g.add(floorDecal(arrow, 1.3, 1.3, x, z, -Math.PI / 2, 0.8));
+      if (arrow) for (const [x, z] of spread([[-24, 1.2], [-4, 1.2], [16, 1.2], [-20, 10], [2, 10], [24, 10]] as const)) g.add(floorDecal(arrow, 1.3, 1.3, x, z, -Math.PI / 2, 0.8));
       // Cable channels under the stations' supply, from the pole towards the machine.
       const channel = piece('cable-channel');
       if (channel)
@@ -522,10 +536,7 @@ export class FactoryMap extends StoryMap {
         }
       // Drains in the floor, clear of the stations.
       const grate = piece('grate');
-      if (grate) for (const [x, z] of [[5.5, 7.4], [-6.5, 3.6], [36.5, 2.6], [-2, 24.4], [-37.6, 3]] as const) g.add(floorDecal(grate, 1.5, 1.5, x, z, 0, 1));
-      // The forklift's parking box: painted corners round it.
-      const corner = piece('hazard-corner');
-      if (corner) for (const [dx, dz, turn] of [[-2.4, -2.6, 0], [2.4, -2.6, -Math.PI / 2], [2.4, 2.6, Math.PI], [-2.4, 2.6, Math.PI / 2]] as const) g.add(floorDecal(corner, 1.4, 1.4, 33 + dx, -18 + dz, turn, 0.8));
+      if (grate) for (const [x, z] of spread([[5.5, 7.4], [-6.5, 3.6], [36.5, 2.6], [-2, 24.4], [-37.6, 3]] as const)) g.add(floorDecal(grate, 1.5, 1.5, x, z, 0, 1));
       this.scenery.add(g);
     } else if (this.kit && oil.length) this.scenery.add(patches(spots, oil, 0.007, 1));
   }
@@ -576,71 +587,45 @@ export class FactoryMap extends StoryMap {
       }
     }
     // Codex's painted things on the back wall (wall-contract.json): a tool board and the safety signs.
-    for (const [name, w, h, x, y] of [['factory-tool-board', 2, 1.30078125, -12, 0.75], ['factory-safety-signs', 2.4, 0.8015625, -8, 0.9]] as const) {
+    for (const [name, w, h, x, y] of [['factory-tool-board', 2, 1.30078125, -12 * K, 0.75], ['factory-safety-signs', 2.4, 0.8015625, -8 * K, 0.9]] as const) {
       const pic = kitPieces('factory', name)[0];
       if (!pic) continue;
       const m = new THREE.Mesh(new THREE.PlaneGeometry(w, h), new THREE.MeshBasicMaterial({ map: pic, alphaTest: 0.5 }));
-      m.position.set(x, y, -25.38);
+      m.position.set(x, y, -D / 2 + 0.62);
       this.scenery.add(m);
     }
     // Tall things hide the floor just north of them from the camera (about 0.78 of their height):
     // pillars and lamps keep clear of every station, its character and its hint bubble.
     const busy = [PANEL, BOX, PANEL_POLE, CART, CART_LEVER, CART_POLE, LATHE, MOTOR, LATHE_POLE, PRESS, PRESS_POLE, ROBOT, BOARD, ROBOT_POLE, HOIST, HOIST_LEVER, HOIST_POLE, ...WORKER_SPOTS];
     const hides = (x: number, z: number, h: number) => busy.some((b) => Math.abs(b.x - x) < 2.6 && b.z < z + 1 && b.z > z - h * 0.78 - 2);
-    for (let x = -30; x <= 30; x += 15) {
-      for (const z of [-16, 8]) {
+    for (const [x, z] of spread([-30, -15, 0, 15, 30].flatMap((x) => [[x, -16], [x, 8]]))) {
+      {
         if (hides(x, z, 5) || busy.some((b) => Math.hypot(b.x - x, b.z - z) < 5)) continue;
         const pillar = mesh(new THREE.BoxGeometry(0.8, 5, 0.8), mat('#f2c230', 0.6));
         pillar.position.set(x, 2.5, z);
         hall.add(pillar);
       }
     }
-    // Lamps hanging over the hall: dark till the box lets the power through.
-    for (let x = -30; x <= 30; x += 15) {
-      for (const z of [-19, -9, 4]) {
-        if (hides(x, z, 4.6)) continue;
-        const bulb = new THREE.MeshStandardMaterial({ color: '#f7f2dc', emissive: '#ffe9a8', emissiveIntensity: 0, roughness: 0.3 });
-        const shade = mesh(new THREE.ConeGeometry(0.55, 0.4, 16, 1, true), mat('#e8e4dc', 0.5));
-        shade.position.set(x, 4.6, z);
-        const b = mesh(new THREE.SphereGeometry(0.25, 12, 8), bulb, false);
-        b.position.set(x, 4.35, z);
-        const cord = mesh(new THREE.CylinderGeometry(0.02, 0.02, 1.5, 6), mat('#2a2f3a', 0.6), false);
-        cord.position.set(x, 5.6, z);
-        const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowFor('rgba(255,235,170,0.9)'), transparent: true, depthWrite: false, opacity: 0 }));
-        glow.scale.setScalar(3.2);
-        glow.position.set(x, 4.2, z);
-        const pool = mesh(new THREE.CircleGeometry(3.2, 28).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: glowFor('rgba(255,240,190,0.55)'), transparent: true, opacity: 0, depthWrite: false }), false);
-        pool.position.set(x, 0.02, z);
-        pool.renderOrder = 2;
-        this.lamps.push({ glow, bulb, pool });
-        hall.add(shade, cord);
-        this.scenery.add(b, glow, pool);
-      }
-    }
-    // The store's own lamps, dark till the evening shift's box lets the power through.
-    for (let x = -28; x <= 28; x += 14) {
-      const z = 16;
-      const bulb = new THREE.MeshStandardMaterial({ color: '#f7f2dc', emissive: '#ffe9a8', emissiveIntensity: 0, roughness: 0.3 });
-      const shade = mesh(new THREE.ConeGeometry(0.55, 0.4, 16, 1, true), mat('#e8e4dc', 0.5));
-      shade.position.set(x, 4.6, z);
-      const b = mesh(new THREE.SphereGeometry(0.25, 12, 8), bulb, false);
-      b.position.set(x, 4.35, z);
-      const glow = new THREE.Sprite(new THREE.SpriteMaterial({ map: glowFor('rgba(255,235,170,0.9)'), transparent: true, depthWrite: false, opacity: 0 }));
-      glow.scale.setScalar(3.2);
-      glow.position.set(x, 4.2, z);
-      const pool = mesh(new THREE.CircleGeometry(3.2, 28).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: glowFor('rgba(255,240,190,0.55)'), transparent: true, opacity: 0, depthWrite: false }), false);
-      pool.position.set(x, 0.02, z + 3.5);
-      pool.renderOrder = 2;
-      this.eveLamps.push({ glow, bulb, pool });
-      hall.add(shade);
-      this.scenery.add(b, glow, pool);
-    }
+    // Light on the floor once the box lets the power through (the lamps under the roof are not drawn:
+    // seen from above they were only white blots over the stations).
+    const pool = (x: number, z: number) => {
+      const m = mesh(new THREE.CircleGeometry(3.2, 28).rotateX(-Math.PI / 2), new THREE.MeshBasicMaterial({ map: glowFor('rgba(255,240,190,0.55)'), transparent: true, opacity: 0, depthWrite: false }), false);
+      m.position.set(x, 0.02, z);
+      m.renderOrder = 2;
+      this.scenery.add(m);
+      return m;
+    };
+    for (const [x, z] of spread([-30, -15, 0, 15, 30].flatMap((x) => [[x, -19], [x, -9], [x, 4]]))) if (!hides(x, z, 4.6)) this.lamps.push(pool(x, z));
+    // The store's own light, dark till the evening shift's box lets the power through.
+    for (const [x, z] of spread([-28, -14, 0, 14, 28].map((x) => [x, 19.5]))) this.eveLamps.push(pool(x, z));
     // The conveyor line the toys ride along.
-    const belt = mesh(new THREE.BoxGeometry(57, 0.3, 1.4), mat('#3a3f4b', 0.7));
-    belt.position.set(1.5, 0.35, LINE_Z);
+    // From where the cart tips its blanks on to just past the hoist.
+    const [d0, d1] = [LINE_START, HOIST.x + 6];
+    const belt = mesh(new THREE.BoxGeometry(d1 - d0, 0.3, 1.4), mat('#3a3f4b', 0.7));
+    belt.position.set((d0 + d1) / 2, 0.35, LINE_Z);
     hall.add(belt);
-    this.beltDeck(57, 1.5, LINE_Z, 'day');
-    for (let x = -26; x <= 29; x += 2) {
+    this.beltDeck(d1 - d0, (d0 + d1) / 2, LINE_Z, 'day');
+    for (let x = d0 + 1; x <= d1 - 1; x += 2) {
       const leg = mesh(new THREE.BoxGeometry(0.12, 0.35, 1.3), mat('#8a90a0', 0.4, 0.5), false);
       leg.position.set(x, 0.12, LINE_Z);
       hall.add(leg);
@@ -675,23 +660,27 @@ export class FactoryMap extends StoryMap {
       if (maps.length) this.scenery.add(standees(spots, maps, shade));
       else fallback();
     };
-    const racks = [[-30, 25], [-2, 25.2], [24, 25]] as const;
+    // Nothing of the stock stands near a station, its pole, its lever or the rails: it hid them, or stood on them.
+    const stations = [...busy, EVE_BOX, EVE_PANEL, EVE_BOX_POLE, MOVE_LEVER, LIFT_LEVER, CRANE_POLE, TANK, PIPES, TANK_POLE, GRINDER, GMOTOR, GRIND_POLE, WELDER, BOARD2, WELD_POLE, LORRY, LORRY2];
+    const clear = ([x, z]: readonly number[]) => stations.every((b) => Math.hypot(b.x - x, b.z - z) > 5) && !(Math.abs(z - CART.z) < 3 && x < CART.x + 10);
+    // Racks of steel along the back wall: tall, they hide only the wall behind them (by the south wall they hid the evening line).
+    const racks = spread([[-21, -23.4], [3, -23.4], [13, -23.4]] as const).filter(clear);
     card('rack-steel-card', racks.map(([x, z]) => ({ x, z, size: 5.5 })), () => racks.forEach(([x, z]) => hall.add(rack(x, z))));
     // Loose goods by the walls: painted pallets of boxes (plain code crates only without the kit).
-    const goods = [[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [37, 22, 1], [-14, 25, 0.9], [16, 25, 1]] as const;
+    const goods = spread([[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [37, 22, 1], [-4, 25, 0.9], [26, 25, 1]] as const).filter(clear);
     card('pallet-card', goods.map(([x, z, k]) => ({ x, z, size: 2.4 * k })), () => goods.forEach(([x, z, k]) => hall.add(crate(x, z, k))));
     // Storage bays in the middle aisle, between the pillars: marked out on the floor, stacked with pallets and drums.
-    const bays = [[-22.5, 5.6], [22.5, 5.6]] as const;
+    const bays = spread([[-16, 5.6], [22.5, 5.6]] as const).filter(clear);
     const tape = kitPieces('factory', 'hazard-strip', true);
     for (const [x, z] of bays) {
       if (this.kit && tape.length) hall.add(ribbons([{ pts: [[x - 3.2, z - 1.9], [x + 3.2, z - 1.9], [x + 3.2, z + 1.9], [x - 3.2, z + 1.9], [x - 3.2, z - 1.9]], w: 0.22 }], tape[0], 1.12, 4.36, 0.0075, 2, 0.5));
     }
     card('pallet-card', bays.flatMap(([x, z]) => [{ x: x - 1.6, z: z + 0.2, size: 2.5 }, { x: x + 0.6, z: z - 0.3, size: 2.2 }]), () => bays.forEach(([x, z]) => hall.add(stack(x, z, 2))));
     card('barrels-card', bays.map(([x, z]) => ({ x: x + 2.3, z: z + 0.5, size: 2 })), () => bays.forEach(([x, z]) => hall.add(barrel(x + 2.3, z))));
-    const barrels = [[-38, 25], [38, 8], [10, 25]] as const;
-    card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.6 })), () => [[-38, 25], [38, 8], [10, 25]].forEach(([x, z]) => hall.add(barrel(x, z))));
+    const barrels = spread([[-38, 25], [38, 8], [3, 25]] as const).filter(clear);
+    card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.6 })), () => barrels.forEach(([x, z]) => hall.add(barrel(x, z))));
     // Yellow and black safety lines round every station.
-    for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.3, LATHE.z - 1, 8, 6], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11], [EVE_BOX.x + 1.5, EVE_BOX.z + 0.5, 11, 7], [-32, 18, 10, 6], [-8, 19, 11, 6], [GRINDER.x - 1.3, GRINDER.z + 0.5, 8, 6], [WELDER.x - 1, WELDER.z + 2, 10, 9]] as const) {
+    for (const [cx, cz, w, d] of [[PANEL.x + 2, PANEL.z + 3, 9, 9], [CART.x - 2, CART.z + 2, 17, 9], [LATHE.x - 1.3, LATHE.z - 1, 8, 6], [PRESS.x, PRESS.z - 2.5, 9, 9], [ROBOT.x - 1, ROBOT.z - 3, 10, 11], [HOIST.x - 1, HOIST.z - 3, 9, 11], [EVE_BOX.x + 1.5, EVE_BOX.z + 0.5, 11, 7], [-32 * K, 18 * K, 10, 6], [-8 * K, 19 * K, 11, 6], [GRINDER.x - 1.3, GRINDER.z + 0.5, 8, 6], [WELDER.x - 1, WELDER.z + 2, 10, 9]] as const) {
       const strip = kitPieces('factory', 'hazard-strip', true);
       // Frames stay inside the hall's walls.
       const m = 1;
@@ -700,9 +689,9 @@ export class FactoryMap extends StoryMap {
         hall.add(ribbons([{ pts: [[x0, z0], [x1, z0], [x1, z1], [x0, z1], [x0, z0]], w: 0.3 }], strip[0], 1.12, 4.36, 0.0075, 2, 0.5));
       } else hall.add(hazard((x0 + x1) / 2, (z0 + z1) / 2, x1 - x0, z1 - z0));
     }
-    const pallets = [[36, -14, 3], [38.2, -14, 2], [36, -10.5, 2]] as const;
+    const pallets = spread([[36, -14, 3], [38.2, -14, 2], [36, -10.5, 2]] as const).filter(clear);
     card('pallet-card', pallets.map(([x, z]) => ({ x, z, size: 2.6 })), () => pallets.forEach(([x, z, n]) => hall.add(stack(x, z, n))));
-    card('forklift-card', [{ x: 33, z: -18, size: 4 }], () => hall.add(forklift(33, -18)));
+    // No forklift in its box: a still picture of one, seen at another angle than the hall, looked wrong.
     this.scenery.add(bakeGroup(hall));
   }
 
@@ -760,10 +749,10 @@ export class FactoryMap extends StoryMap {
     this.lorry = this.critter('lorry', lorryFit, LORRY, 2.2, made ? 0 : Math.PI);
     this.lorry.roams = true;
     // The evening shift's people, by their stations, and the second lorry.
-    for (const [name, at] of [['worker5', v(EVE_BOX.x + 4.5, EVE_BOX.z + 2)], ['worker6', v(-27, 20.5)], ['worker7', v(-2, 20.5)], ['worker8', v(GRINDER.x + 3, GRINDER.z + 3)], ['worker9', v(WELDER.x + 3.5, WELDER.z + 4)]] as const) this.critter(name, { height: 1.5 }, at, 1.5, 0.3);
+    for (const [name, at] of [['worker5', v(EVE_BOX.x + 4.5, EVE_BOX.z + 2)], ['worker6', v(-27 * K, 20.5 * K)], ['worker7', v(-2 * K, 20.5 * K)], ['worker8', v(GRINDER.x + 3, GRINDER.z + 3)], ['worker9', v(WELDER.x + 3.5, WELDER.z + 4)]] as const) this.critter(name, { height: 1.5 }, at, 1.5, 0.3);
     this.lorry2 = this.critter('lorry2', lorryFit, LORRY2, 2.2, made ? Math.PI / 2 : Math.PI);
     this.lorry2.roams = true;
-    const cat = this.critter('cat', { height: 0.6 }, v(-35.5, -21.5), 0.6, 0.5);
+    const cat = this.critter('cat', { height: 0.6 }, at(-35.5, -21.5), 0.6, 0.5);
     cat.base = 1.05;
   }
 
@@ -917,11 +906,8 @@ export class FactoryMap extends StoryMap {
     if (lit && !this.lit) this.hooks.chime();
     this.lit = lit;
     this.lamps.forEach((l, i) => {
-      const on = this.lit && this.phaseT * 3 > i * 0.15 ? 1 : 0;
-      l.bulb.emissiveIntensity = THREE.MathUtils.damp(l.bulb.emissiveIntensity, on * 2.5, 6, dt);
-      l.glow.material.opacity = THREE.MathUtils.damp(l.glow.material.opacity, on * 0.6, 6, dt);
-      const pm = l.pool.material as THREE.MeshBasicMaterial;
-      pm.opacity = THREE.MathUtils.damp(pm.opacity, on * 0.8, 6, dt);
+      const pm = l.material as THREE.MeshBasicMaterial;
+      pm.opacity = THREE.MathUtils.damp(pm.opacity, this.lit && this.phaseT * 3 > i * 0.15 ? 0.8 : 0, 6, dt);
     });
     // A tap on a gear on its shaft sends it back into the drawer (to try the other one).
     for (const g of this.world.parts) {
@@ -965,11 +951,8 @@ export class FactoryMap extends StoryMap {
     if (lit && !this.eveLit) this.hooks.chime();
     this.eveLit = lit;
     for (const l of this.eveLamps) {
-      const on = this.eveLit ? 1 : 0;
-      l.bulb.emissiveIntensity = THREE.MathUtils.damp(l.bulb.emissiveIntensity, on * 2.5, 6, dt);
-      l.glow.material.opacity = THREE.MathUtils.damp(l.glow.material.opacity, on * 0.6, 6, dt);
-      const pm = l.pool.material as THREE.MeshBasicMaterial;
-      pm.opacity = THREE.MathUtils.damp(pm.opacity, on * 0.8, 6, dt);
+      const pm = l.material as THREE.MeshBasicMaterial;
+      pm.opacity = THREE.MathUtils.damp(pm.opacity, this.eveLit ? 0.8 : 0, 6, dt);
     }
     // The gantry: the hook right down at the stand takes the coil, right down at the line's start leaves it there.
     const g = this.gantry;
@@ -1363,32 +1346,6 @@ function stack(x: number, z: number, n: number): THREE.Group {
     g.add(b, tape);
   }
   g.position.set(x, 0, z);
-  return g;
-}
-
-/** A little forklift. */
-function forklift(x: number, z: number): THREE.Group {
-  const g = new THREE.Group();
-  const body = mesh(new THREE.BoxGeometry(1.8, 0.9, 1.2), mat('#f2c230', 0.45));
-  body.position.y = 0.75;
-  const cab = mesh(new THREE.BoxGeometry(0.9, 0.9, 1.1), mat('#2a3148', 0.4));
-  cab.position.set(-0.3, 1.65, 0);
-  const mast = mesh(new THREE.BoxGeometry(0.12, 2.2, 1), mat('#5a6a7a', 0.4, 0.4));
-  mast.position.set(1, 1.1, 0);
-  for (const zz of [-0.35, 0.35]) {
-    const fork = mesh(new THREE.BoxGeometry(1.1, 0.06, 0.12), mat('#5a6a7a', 0.4, 0.4));
-    fork.position.set(1.6, 0.3, zz);
-    g.add(fork);
-  }
-  for (const [wx, wz] of [[-0.6, -0.6], [-0.6, 0.6], [0.6, -0.6], [0.6, 0.6]]) {
-    const w = mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.2, 12), mat('#2a2f3a', 0.6));
-    w.rotation.x = Math.PI / 2;
-    w.position.set(wx, 0.3, wz);
-    g.add(w);
-  }
-  g.add(body, cab, mast);
-  g.position.set(x, 0, z);
-  g.rotation.y = 0.6;
   return g;
 }
 

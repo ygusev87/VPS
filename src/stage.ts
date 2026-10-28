@@ -461,10 +461,14 @@ export class Stage {
     this.placeCamera();
   }
 
+  /** When the child last moved the view themself (a pan, a pinch, the wheel, the zoom buttons). */
+  ownLook = 0;
+
   /** Keep the table point `anchor` under screen point (x, y). */
   panTo(anchor: THREE.Vector3, x: number, y: number) {
     const p = this.screenToPlane(x, y);
     if (!p) return;
+    this.ownLook = performance.now();
     this.setView(this.target.clone().add(anchor).sub(p), this.distance);
   }
 
@@ -481,6 +485,7 @@ export class Stage {
   }
 
   zoomBy(factor: number) {
+    this.ownLook = performance.now();
     this.goalDistance = THREE.MathUtils.clamp(this.goalDistance * factor, MIN_DIST, MAX_DIST);
   }
 

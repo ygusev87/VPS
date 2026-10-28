@@ -243,6 +243,8 @@ export abstract class StoryMap {
   /** Board size, world units, centred on the origin. */
   protected abstract readonly width: number;
   protected abstract readonly depth: number;
+  /** How much further than the board's corners the view may roam (to what lies outside it, like the factory's road). */
+  protected readonly roam: number = 0;
   /** Bumped whenever the map is laid out anew (a save on another layout is dropped). */
   abstract readonly layout: number;
   /** The map's hints are all there is (no general wiring hints for the rest of the board). */
@@ -337,7 +339,7 @@ export abstract class StoryMap {
     this.stage.world.add(this.scenery);
     this.stage.showGrid(false);
     // The view may roam to the map's corners, and parts may stand anywhere on its board.
-    this.stage.limit = Math.hypot(this.width / 2, this.depth / 2);
+    this.stage.limit = Math.hypot(this.width / 2, this.depth / 2) + this.roam;
     MAP_BOARD.half = { x: this.width / 2, z: this.depth / 2 };
     this.build();
     // Sprites faded right out (bubbles, hearts, spray, smoke) cost a draw each: they are hidden instead.
