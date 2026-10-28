@@ -1072,6 +1072,7 @@ export class FarmMap extends StoryMap {
       if (ringing && s > 3) {
         this.foxRun = s;
         this.foxChased = true;
+        this.hooks.cue?.('fox');
         this.critters.get('dog')!.hop = 1;
         this.hooks.look?.(at.clone());
         return;

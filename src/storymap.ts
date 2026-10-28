@@ -27,6 +27,8 @@ export const NIGHT: Record<Phase, number> = { day: 0, evening: 0.72, night: 1, m
 export interface MapHooks {
   /** Say a phrase; with `then`, that one right after it (an animal's own sound, then its words). */
   say(id: PhraseId, then?: PhraseId): void;
+  /** An animal's own sound that goes with no words (the fox yelps); nothing until it is recorded. */
+  cue?(name: string): void;
   /** Confetti and a cheer at a point on the table. */
   cheer(at: THREE.Vector3): void;
   /** Everyone on the map is happy. */

@@ -5,5 +5,123 @@
    "animal-cow--v03"
   ],
   "intro": []
+ },
+ "oink": {
+  "takes": [
+   "animal-pig",
+   "animal-pig--v02",
+   "animal-pig--v03"
+  ],
+  "intro": []
+ },
+ "baa": {
+  "takes": [
+   "animal-sheep",
+   "animal-sheep--v02",
+   "animal-sheep--v03",
+   "animal-sheep--v04"
+  ],
+  "intro": []
+ },
+ "maa": {
+  "takes": [
+   "animal-goat",
+   "animal-goat--v02",
+   "animal-goat--v03"
+  ],
+  "intro": []
+ },
+ "honk": {
+  "takes": [
+   "animal-goose",
+   "animal-goose--v02",
+   "animal-goose--v03"
+  ],
+  "intro": []
+ },
+ "meow": {
+  "takes": [
+   "animal-cat",
+   "animal-cat--v02",
+   "animal-cat--v03"
+  ],
+  "intro": []
+ },
+ "neigh": {
+  "takes": [
+   "animal-horse",
+   "animal-horse--v02",
+   "animal-horse--v03"
+  ],
+  "intro": []
+ },
+ "peep": {
+  "takes": [
+   "animal-chick",
+   "animal-chick--v02"
+  ],
+  "intro": []
+ },
+ "crow": {
+  "takes": [
+   "animal-rooster",
+   "animal-rooster--v02"
+  ],
+  "intro": []
+ },
+ "munch": {
+  "takes": [
+   "animal-rabbit",
+   "animal-rabbit--v03"
+  ],
+  "intro": []
+ },
+ "crowCaw": {
+  "takes": [
+   "animal-crow",
+   "animal-crow--v02",
+   "animal-crow--v03"
+  ],
+  "intro": [],
+  "cue": true
+ },
+ "coo": {
+  "takes": [
+   "animal-pigeon",
+   "animal-pigeon--v02"
+  ],
+  "intro": []
+ },
+ "fox": {
+  "takes": [
+   "animal-fox"
+  ],
+  "intro": []
+ },
+ "yap": {
+  "takes": [
+   "animal-puppy--v02",
+   "animal-puppy--v03"
+  ],
+  "intro": []
+ },
+ "buzz": {
+  "takes": [
+   "animal-bee--v02"
+  ],
+  "intro": []
+ },
+ "ribbit": {
+  "takes": [
+   "animal-frog--v02"
+  ],
+  "intro": []
+ },
+ "squeak": {
+  "takes": [
+   "animal-mouse--v02"
+  ],
+  "intro": [],
+  "cue": true
  }
 }

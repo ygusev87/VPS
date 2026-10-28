@@ -3,8 +3,10 @@
 // passed the technical check and that the owner picked by ear go to
 // public/sfx/<clip>.mp3 as they are (already mono 24 kHz, trimmed, levelled);
 // public/sfx/sfx.json says which game sound each one stands for (plan.json
-// `legacyVoiceId`: 'moo' → animal-cow) and which are short enough to come
-// before an animal's words.
+// `legacyVoiceId`: 'moo' → animal-cow), which are short enough to come before
+// an animal's words, and which only go with a line that is still said (`cue`:
+// the crow's caw before 'Ой, шляпа улетела!'); a family new to the game (the
+// fox) is keyed by its own name for the map to play.
 //   node scripts/import-sfx.mjs [--dry]
 import { createHash } from 'node:crypto';
 import { copyFileSync, existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
@@ -17,7 +19,10 @@ const dry = process.argv.includes('--dry');
 
 const plan = JSON.parse(readFileSync(join(SRC, 'plan.json'), 'utf8'));
 const manifest = JSON.parse(readFileSync(join(SRC, 'animal-sfx-manifest.json'), 'utf8'));
-const soundOf = new Map(plan.families.filter((f) => f.legacyVoiceId).map((f) => [f.id, f.legacyVoiceId]));
+// What each family stands for in the game, and whether its line is still said.
+const soundOf = new Map(
+  plan.families.map((f) => [f.id, f.mappingMode === 'new-sfx-hook' ? { id: f.id.replace(/^animal-/, '') } : f.legacyVoiceId ? { id: f.legacyVoiceId, cue: f.mappingMode.startsWith('preserve-spoken-line') } : null]),
+);
 
 const report = { taken: [], notPicked: [], notReady: [], unmapped: [] };
 const sounds = {};
@@ -43,7 +48,7 @@ for (const c of [...manifest.clips].sort((a, b) => a.variant - b.variant)) {
     continue;
   }
   if (!dry) copyFileSync(src, join(OUT, `${c.id}.mp3`));
-  const s = (sounds[sound] ??= { takes: [], intro: [] });
+  const s = (sounds[sound.id] ??= { takes: [], intro: [], ...(sound.cue ? { cue: true } : {}) });
   s.takes.push(c.id);
   if (c.introEligible) s.intro.push(c.id);
   report.taken.push(c.id);

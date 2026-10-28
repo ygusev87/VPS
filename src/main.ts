@@ -501,6 +501,7 @@ async function startMap(name: MapName, fresh = false) {
   hud.setLevel(level, progress.done);
   const m = (map = def.make({
     say: (id, then) => (then ? voice.sayThen(id, then) : voice.say(id, 0)),
+    cue: (name) => voice.cue(name),
     chime: () => sfx.star(),
     cheer: (at) => {
       const s = stage.project(at);

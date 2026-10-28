@@ -450,7 +450,7 @@ export class Voice {
   /** Takes beyond the first, per phrase (praise said a few different ways). */
   private takes = new Map<PhraseId, string[]>();
   /** The take of each phrase said last (the next time, another one). */
-  private lastTake = new Map<PhraseId, string>();
+  private lastTake = new Map<string, string>();
   /** A take picked while it was still being decoded: said as soon as it is ready. */
   private chosen = new Map<PhraseId, string>();
   /** Decoded clips, least recently said first; their sound takes far more memory than the MP3s, so only some stay. */
@@ -474,9 +474,9 @@ export class Voice {
     });
     void fetchSounds().then((sounds) => {
       for (const [id, s] of Object.entries(sounds)) {
-        if (!(id in PHRASES) || !s.takes?.length) continue;
+        if (!s.takes?.length) continue;
         for (const t of s.takes) this.raw.set(`sfx:${t}`, fetchSound(t));
-        this.sounds.set(id as PhraseId, { takes: s.takes.map((t) => `sfx:${t}`), intro: (s.intro ?? []).map((t) => `sfx:${t}`) });
+        this.sounds.set(id, { takes: s.takes.map((t) => `sfx:${t}`), intro: (s.intro ?? []).map((t) => `sfx:${t}`), cue: !!s.cue });
       }
     });
     if (!('speechSynthesis' in window)) return;
@@ -506,7 +506,7 @@ export class Voice {
    * a time in the background: decoding many at once on a touch made an iPad stutter.
    */
   prepare(ids: PhraseId[]) {
-    const keys = ids.flatMap((id) => this.sounds.get(id)?.takes ?? [id]);
+    const keys = ids.flatMap((id) => [...(this.sounds.get(id)?.takes ?? []), id]);
     this.ahead = [...new Set([...keys.filter((id) => this.raw.has(id)), ...this.ahead])];
     this.batch = 0;
     if (this.pumping || !this.ctx) return;
@@ -574,10 +574,23 @@ export class Voice {
   /** Say a phrase; the same phrase is not repeated within `cooldown` ms. */
   say(id: PhraseId, cooldown = 6000) {
     if (!this.enabled) return;
+    const sound = this.sounds.get(id);
     // An animal's own sound (a recorded moo), not words.
-    if (this.sounds.has(id)) return this.cry(id);
+    if (sound && !sound.cue) return void this.cry(id);
     const now = performance.now();
     if (this.last && this.last.id === id && now - this.last.at < cooldown) return;
+    // A line that goes with a sound (the crow caws, then 'my hat flew off'): the sound first, the words right after.
+    if (sound) {
+      this.last = { id, at: now };
+      void this.cry(id).then((s) => setTimeout(() => this.enabled && this.words(id), s ? s * 1000 + 100 : 0));
+      return;
+    }
+    this.words(id);
+  }
+
+  /** Say the words of a phrase now (its recorded clip, or else the synthesiser). */
+  private words(id: PhraseId) {
+    const now = performance.now();
     this.last = { id, at: now };
     this.saidAt = now;
     this.stop();
@@ -595,7 +608,7 @@ export class Voice {
           this.last = null;
           // The take that was chosen, now decoded: that one, not a new pick.
           this.chosen.set(id, take);
-          this.say(id, 0);
+          this.words(id);
         } else this.speak(id);
       });
       return;
@@ -633,7 +646,7 @@ export class Voice {
   }
 
   /** Recorded animal sounds (public/sfx, sfx.json): the takes of each sound and those short enough to come before words. */
-  private sounds = new Map<PhraseId, { takes: string[]; intro: string[] }>();
+  private sounds = new Map<string, { takes: string[]; intro: string[]; cue: boolean }>();
   private introAt = -1e9;
   private cryAt = -1e9;
   private crying: AudioBufferSourceNode | null = null;
@@ -643,18 +656,24 @@ export class Voice {
    * never the same take twice running; over any words being said (it is quiet
    * and short, and a tap that made no sound would feel broken).
    */
-  private cry(id: PhraseId) {
+  private async cry(id: string): Promise<number | null> {
     const now = performance.now();
-    if (now - this.cryAt < 1500) return;
+    if (now - this.cryAt < 1500) return null;
     this.cryAt = now;
     const takes = this.sounds.get(id)!.takes;
     const fresh = takes.filter((t) => t !== this.lastTake.get(id));
     const take = fresh[Math.floor(Math.random() * fresh.length)] ?? takes[0];
     this.lastTake.set(id, take);
-    void this.decode(take).then((clip) => {
-      // Too late to belong to the tap any more.
-      if (clip && this.enabled && performance.now() - now < 500) this.play(take, clip);
-    });
+    const clip = await this.decode(take);
+    // Too late to belong to the tap any more.
+    if (!clip || !this.enabled || performance.now() - now > 500) return null;
+    this.play(take, clip);
+    return clip.duration;
+  }
+
+  /** A sound of its own for something on the map, not tied to a phrase (the fox yelps as it runs off); none until recorded. */
+  cue(name: string) {
+    if (this.enabled && this.sounds.has(name)) void this.cry(name);
   }
 
   private play(take: string, clip: AudioBuffer) {
@@ -733,7 +752,7 @@ async function fetchTakes(): Promise<Record<string, number>> {
 }
 
 /** The recorded animal sounds (public/sfx/sfx.json; none on an older build or the preview host). */
-async function fetchSounds(): Promise<Record<string, { takes: string[]; intro?: string[] }>> {
+async function fetchSounds(): Promise<Record<string, { takes: string[]; intro?: string[]; cue?: boolean }>> {
   try {
     if (import.meta.env.VITE_MODELS_AS_JS) return {};
     const r = await fetch(`${import.meta.env.BASE_URL}sfx/sfx.json`);
