@@ -1,0 +1,66 @@
+{
+  "public/models/tractor.glb": {
+    "bytes": 249536,
+    "sha256": "e501ac8f4218bc576a66164855493aea48cd9f75a16479368e3d863769d59c9f"
+  },
+  "assets-src/design-pass/kit/farm/tablet-feedback-20261028/tractor-retopology-20261028/candidate/tractor.glb": {
+    "bytes": 249536,
+    "sha256": "e501ac8f4218bc576a66164855493aea48cd9f75a16479368e3d863769d59c9f"
+  },
+  "public/models/pigsty.glb": {
+    "bytes": 187896,
+    "sha256": "a0ae622d6266b7b4274bdacbaf30b75316539c61b50069737de35f48a6294c98"
+  },
+  "public/models/kitten.glb": {
+    "bytes": 116136,
+    "sha256": "b64d165bee1ec6eaf8bbeb2a21dfded68dae49d46bf094bd98aa2eaf4f877315"
+  },
+  "public/textures/kit/farm/farmhouse-card-a.webp": {
+    "bytes": 170044,
+    "sha256": "73accefd0a3db4e577c333ac8e33bd1d97e6f43d132a6ba6cdb9f4eeffc93dca"
+  },
+  "public/textures/kit/farm/kit.json": {
+    "bytes": 696,
+    "sha256": "78d3f79956ba336d4743f1925bd97c692c11d8addb22dfe63676026f47c14193"
+  },
+  "src/farm.ts": {
+    "bytes": 71515,
+    "sha256": "19f0a87bd51bd3afd5218e1da1630706104d220a2c0356d0d270c057e3b48776"
+  },
+  "src/farm-decor.ts": {
+    "bytes": 31466,
+    "sha256": "2dbaddb74906c561b0fc8a7db6eee4e2a5ffb6fbcf19bdf7923a83107a797b81"
+  },
+  "src/storymap.ts": {
+    "bytes": 51367,
+    "sha256": "06f952ffe37bbe4c7b79fbabf760d23eb11206201df6d2a43cb08fab7c963f06"
+  },
+  "src/parts/assets.ts": {
+    "bytes": 7944,
+    "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+  },
+  "src/stage.ts": {
+    "bytes": 34829,
+    "sha256": "d9d1e7402b9e32fb3d44fe9b903cc87a30b176a31012d4aaa1114cb55eb8a8dc"
+  },
+  "src/kit.ts": {
+    "bytes": 27443,
+    "sha256": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770"
+  },
+  "src/ground.ts": {
+    "bytes": 27479,
+    "sha256": "b6ccce54740c2450de32b4938708a5faca3acf3a02dcbfde35e51b14dec9d17a"
+  },
+  "src/life.ts": {
+    "bytes": 34084,
+    "sha256": "e8d358ce912847f6411f6859b3ecb916e5240de873ba2b00ab2c24162abf771e"
+  },
+  "src/decor.ts": {
+    "bytes": 5416,
+    "sha256": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342"
+  },
+  "assets-src/design-pass/kit/farm/tablet-feedback-20261028/runtime-main-review/fixture.html": {
+    "bytes": 7155,
+    "sha256": "b5177daf178a96aae9d98bec480c0ca43d1fcfc5f9a13551ed6f3bf725f753d6"
+  }
+}

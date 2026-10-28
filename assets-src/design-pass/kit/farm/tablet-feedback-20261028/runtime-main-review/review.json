@@ -1,0 +1,97 @@
+{
+  "status": "ACCEPTED_PUBLIC_AND_TARGETED_RUNTIME",
+  "decision": "Claude m0585 rev1203 explicitly accepts 13416 triangles; no optimization to 8000 requested. Main replaces only owned public tractor and commits locally.",
+  "runtimeCommits": [
+    "90f7bd97552ed25cd82fb1e95f33b816abb78fb3",
+    "a623c47223ff55d7729333b7c6f6f2cb3830da45"
+  ],
+  "publicTractor": {
+    "bytes": 249536,
+    "sha256": "e501ac8f4218bc576a66164855493aea48cd9f75a16479368e3d863769d59c9f"
+  },
+  "triangles": 13416,
+  "meshes": 5,
+  "assetGeometryReview": "../tractor-main-review/review.json; immutable candidate SHA proves same previously audited geometry. Historical audit asserted old public source and is not rerun after promotion.",
+  "browser": {
+    "states": 11,
+    "nativeJPEG": 10,
+    "sizes": [
+      [
+        1024,
+        768
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "quality": 2,
+    "dpr": 1,
+    "consoleErrorsWarnings": 0,
+    "overflow": false,
+    "real": "loadModels, loadKit, loadGround, FarmMap.start, Stage including postprocessing; actual updateTractor and Life.update",
+    "wheelRadius": [
+      0.4828424939725943,
+      0.4809869685964537,
+      0.9226310007019256,
+      0.9246024964140751
+    ],
+    "halfSecondDistance": 1.3000000000000007,
+    "halfSecondPhases": [
+      2.6923893738188416,
+      2.7027759271596734,
+      1.4090140034433887,
+      1.4060096149878958
+    ],
+    "maxBodyLocalDelta": 1.1234667099445444e-14,
+    "maxWheelPhaseError": 3.907985046680551e-14,
+    "houseAnchor": [
+      -34.74,
+      5.681,
+      -28.346
+    ],
+    "fallbackAnchor": [
+      -34.312,
+      8.535,
+      -25.961
+    ],
+    "pathBounds": {
+      "bounds": {
+        "min": [
+          25.200000762939453,
+          0.006000000052154064,
+          -23
+        ],
+        "max": [
+          28.799999237060547,
+          0.006000000052154064,
+          -19.200000762939453
+        ]
+      },
+      "order": -1,
+      "tone": "c8d4f0"
+    }
+  },
+  "validation": {
+    "tests": "88/88; 17/17 files; 2026-10-28 17:57:45 Asia/Bangkok",
+    "typecheck": "PASS same batch"
+  },
+  "limitations": [
+    "Tractor timer is directly started in fixture and actual updateTractor called at 1/60 steps; gate remains closed in fixture. This is not an electrical input or gate clearance test.",
+    "Real map construction and Stage rendering, but no game HUD, user save restore, full 17-stage journey, physical iPad, PWA or FPS benchmark.",
+    "Asset ground deviations and flat reconstructed inner rings remain as documented in tractor-main-review. Box3 half-height radius is an approximate rolling radius, no suspension or exact no-slip claim.",
+    "Full global collision, wheel cuts and self-intersection audits were not repeated: same candidate bytes as accepted geometry.",
+    "Publication performed/reported by Claude separately; main does not push or verify live deployment."
+  ],
+  "cleanup": {
+    "serverPort": 5361,
+    "serverSession": 92659,
+    "serverStopped": true,
+    "tabsClosed": [
+      "6",
+      "7",
+      "8"
+    ],
+    "viewportReset": true
+  }
+}

@@ -1,0 +1,40 @@
+<!doctype html><html lang="ru"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Ферма · точечная runtime-приёмка</title><style>body{margin:0;font:13px system-ui;background:#ece0ca;color:#263e31}header{height:104px;padding:8px;box-sizing:border-box}select,button{padding:6px;margin:2px}canvas{display:block;width:100%;height:calc(100vh - 104px)}#status{font-size:11px}@media(max-width:600px){header{height:132px}canvas{height:calc(100vh - 132px)}}</style><header><b>Ферма · реальный FarmMap / Stage</b><br><select id="view" aria-label="Участок"><option value="tractor">Трактор</option><option value="house">Дом и дым</option><option value="pigsty">Вход свинарника</option><option value="kitten">Котёнок на сеновале</option></select><select id="zoom" aria-label="Масштаб"><option value="1">Общий вид</option><option value="2">Ближе ×2</option></select><button id="step">Шаг 0,5 с</button><button id="loop">Движение 5 с</button><button id="reset">Сброс трактора</button><div id="status">Загрузка…</div></header><canvas></canvas><script type="module">
+import * as T from 'three';
+import {Stage} from '/src/stage.ts';
+import {World} from '/src/world.ts';
+import {FarmMap,FARM_MODELS} from '/src/farm.ts';
+import {loadModels,hasModel} from '/src/parts/assets.ts';
+import {loadKit,kitPieces} from '/src/kit.ts';
+import {loadGround,groundPicture} from '/src/ground.ts';
+const query=new URLSearchParams(location.search),fallback=query.has('fallback');
+let zoom=1;
+let view=query.get('view')||'tractor',stage,map,world,steps=[],totalDistance=0,bodyBaseline,tractorRest,loaded=false;
+document.querySelector('#view').value=view;
+function bodyVertices(){const vs=[];map.tractor.updateMatrixWorld(true);const inv=map.tractor.matrixWorld.clone().invert();map.tractor.traverse(o=>{if(o.isMesh&&o.name==='tractor-body'){const a=o.geometry.attributes.position;for(let i=0;i<a.count;i++)vs.push(new T.Vector3().fromBufferAttribute(a,i).applyMatrix4(o.matrixWorld).applyMatrix4(inv));}});return vs;}
+function bbox(o){const b=new T.Box3().setFromObject(o);return {min:b.min.toArray(),max:b.max.toArray()};}
+function diagnostic(){
+ const houseTexture=kitPieces('farm','farmhouse-card')[0],pathTexture=kitPieces('farm','path-strip',true)[0];const houseCards=[],paths=[],hiddenGroups=[];
+ map.scenery.updateMatrixWorld(true);
+ map.scenery.traverse(o=>{if(o.isMesh&&houseTexture&&o.material?.map===houseTexture)houseCards.push({bounds:bbox(o),parentY:o.parent.position.y,visible:o.visible});if(o.isMesh&&o.material?.map===pathTexture&&o.renderOrder===-1)paths.push({bounds:bbox(o),order:o.renderOrder,tone:o.material.color.getHexString()});if(o.isGroup&&!o.visible){const b=bbox(o);if(b.min[0]<-30&&b.max[0]>-40)hiddenGroups.push(b);}});
+ const body=bodyVertices(),d={loaded,view,zoom,fallback,groundLoaded:!!groundPicture('pig-mud.webp'),viewport:[innerWidth,innerHeight],overflow:document.documentElement.scrollWidth>innerWidth,quality:stage.quality,pixelRatio:stage.renderer.getPixelRatio(),allFarmModelsLoaded:FARM_MODELS.every(hasModel),missing:FARM_MODELS.filter(m=>!hasModel(m)),tractor:{position:map.tractor.position.toArray(),heading:map.tractor.rotation.y,time:map.tractorT,totalDistance,bodyMaxLocalDelta:Math.max(0,...body.map((v,i)=>v.distanceTo(bodyBaseline[i]))),bodyVertices:body.length,wheels:map.wheels.map(w=>({name:w.node.name,radius:w.r,phase:w.node.rotation.x,expected:totalDistance/w.r,error:Math.abs(w.node.rotation.x-totalDistance/w.r),pivot:w.node.getWorldPosition(new T.Vector3()).toArray()})),steps},house:{cards:houseCards,hiddenGroups,smoke:map.life.smoke.map(p=>({at:p.at.toArray(),position:p.s.position.toArray(),phase:p.t,opacity:p.s.material.opacity,visible:p.s.visible}))},pigstyPaths:paths};
+ document.body.dataset.result=JSON.stringify(d);document.querySelector('#status').textContent=`${view} · ${innerWidth}×${innerHeight} · колёс ${map.wheels.length} · путь ${totalDistance.toFixed(3)} · корпус Δ ${d.tractor.bodyMaxLocalDelta.toExponential(1)} · дым ${d.house.smoke.length}`;
+}
+function frame(){stage.checkSize();let pts;if(view==='tractor'){const p=map.tractor.position;pts=[new T.Vector3(p.x-3,0,p.z-4),new T.Vector3(p.x+3,0,p.z+3)];}else if(view==='house')pts=[new T.Vector3(-46,0,-38),new T.Vector3(-31,0,-18)];else if(view==='pigsty')pts=[new T.Vector3(20,0,-33),new T.Vector3(35,0,-14)];else pts=[new T.Vector3(-25,0,-22),new T.Vector3(-17,0,-12)];stage.frame(pts,true,view==='tractor'?105:70);stage.setDistance(stage.distance/zoom);stage.render();diagnostic();}
+function advance(seconds){
+ if(map.tractorT<0)map.tractorT=0;
+ const start=map.tractor.position.clone(),before=map.wheels.map(w=>w.node.rotation.x);let moved=0,minSignDot=1;
+ for(let i=0;i<Math.round(seconds*60);i++){const was=map.tractor.position.clone();map.updateTractor(1/60);const dp=map.tractor.position.clone().sub(was).setY(0);const distance=dp.length();totalDistance+=distance;moved+=distance;map.tractor.updateMatrixWorld(true);if(distance>1e-8){const w=map.wheels[0],axis=new T.Vector3(1,0,0).transformDirection(w.node.parent.matrixWorld),bottom=axis.cross(new T.Vector3(0,-1,0));minSignDot=Math.min(minSignDot,bottom.normalize().dot(dp.normalize().negate()));}map.life.update(1/60,0,stage.camera.position);}
+ steps.push({seconds,start:start.toArray(),end:map.tractor.position.toArray(),distance:moved,phaseDeltas:map.wheels.map((w,i)=>w.node.rotation.x-before[i]),minRollingOppositionDot:minSignDot});frame();
+}
+try{
+ await loadGround();
+ if(fallback){const files=await(await fetch('/textures/kit/farm/kit.json')).json();await loadKit('farm',files.map(f=>f.replace(/-[a-d]$/,'')).filter(f=>f!=='farmhouse-card'));}else await loadKit('farm');
+ await loadModels(FARM_MODELS);
+ stage=new Stage(document.querySelector('canvas'));world=new World(stage);map=new FarmMap(stage,world,{say(){},cheer(){},done(){},chime(){}});map.start();map.update(0);
+ // This fixture exercises the actual map builders, Life smoke and updateTractor directly.
+ // It does not simulate the electrical gate solution or a full story journey.
+ map.life.update(0,0,stage.camera.position);map.scenery.traverse(o=>{if(o.isSprite)o.visible=o.material.opacity>0.005;});
+ tractorRest={position:map.tractor.position.clone(),rotation:map.tractor.rotation.clone()};bodyBaseline=bodyVertices();loaded=true;
+ document.querySelector('#zoom').onchange=e=>{zoom=+e.target.value;frame()};document.querySelector('#view').onchange=e=>{view=e.target.value;frame()};document.querySelector('#step').onclick=()=>advance(.5);document.querySelector('#loop').onclick=()=>advance(5);document.querySelector('#reset').onclick=()=>{map.tractor.position.copy(tractorRest.position);map.tractor.rotation.copy(tractorRest.rotation);map.tractorT=-1;map.wheels.forEach(w=>w.node.rotation.x=0);totalDistance=0;steps=[];frame()};addEventListener('resize',frame);frame();
+}catch(e){document.body.dataset.error=e.stack;document.querySelector('#status').textContent=e.message;console.error(e)}
+</script></html>
