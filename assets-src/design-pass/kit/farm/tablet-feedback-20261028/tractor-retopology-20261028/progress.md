@@ -1,6 +1,6 @@
 # Tractor attachment retopology · 2026-10-28
 
-**READY_EXPERIMENTAL_ABOVE_TARGET**. Candidate-only delivery complete, pending local commit recording. No public replacement, external generation, API calls or purchases.
+**READY_EXPERIMENTAL_ABOVE_TARGET**. Candidate-only delivery complete. Asset and QA commit: `2ca8d29` (local `dev`, not pushed). No public replacement, external generation, API calls or purchases.
 
 - Candidate: [candidate/tractor.glb](candidate/tractor.glb), SHA-256 e501ac8f4218bc576a66164855493aea48cd9f75a16479368e3d863769d59c9f.
 - 13,416 triangles (source 13,556; target 8,000 missed), 249,536 bytes. Exterior tread preserved; reconstructed inner walls are visibly planar/dark. Experimental review candidate only.
