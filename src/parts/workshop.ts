@@ -14,7 +14,7 @@ import { flow, hintTile, makePuzzle, opens, turn, type Side, type TileGrid } fro
 const TILE = 1;
 
 /** The sculpted bodies of the factory's machines (Codex's GLBs, loaded with the factory). */
-export const WORKSHOP_MODELS = ['factory-cabinet', 'lever-box', 'rail-cart', 'lathe', 'shaft-motor', 'safety-press', 'socket-board', 'hoist', 'grinder', 'gantry-crane', 'paint-tank', 'paint-booth', 'robot-arm'];
+export const WORKSHOP_MODELS = ['factory-cabinet', 'lever-box', 'rail-cart', 'lathe', 'shaft-motor', 'safety-press', 'socket-board', 'hoist', 'grinder', 'gantry-crane', 'paint-tank', 'paint-booth', 'robot-arm', 'factory-gear-small', 'factory-gear-medium', 'factory-gear-big'];
 
 /**
  * Swap code-built stand-ins for a sculpted body when its model has loaded:

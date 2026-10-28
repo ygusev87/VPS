@@ -51,6 +51,17 @@ function gearMesh(r: number, color: string): THREE.Group {
   return g;
 }
 
+/**
+ * Codex's metal gear (the factory's, public/models/factory-gear-*.glb), when
+ * loaded: made at its true size round its own axle (radius 0.4/0.6/1, the hub
+ * at the middle), so it goes in as it is — not fitted and stood on the floor.
+ */
+function gearModel(size: 'small' | 'medium' | 'big'): THREE.Group | null {
+  const g = model(`factory-gear-${size}`, {});
+  g?.children[0].position.set(0, 0, 0);
+  return g;
+}
+
 /** A motor with a gear on top: with power it turns, and every gear meshed with it follows. */
 export class GearMotor extends Part implements Geared {
   readonly kind: PartKind = 'gearMotor';
@@ -110,7 +121,7 @@ export class Gear extends Part implements Geared {
     const plate = basePlate(this.gearR * 2 + 0.2, this.gearR * 2 + 0.2);
     const peg = mesh(new THREE.CylinderGeometry(0.07, 0.07, 0.4, 10), mat(C.metal, 0.3, 0.8));
     peg.position.set(0, PLATE_TOP + 0.2, 0);
-    this.wheel = gearMesh(this.gearR, size === 'small' ? '#d9ad4c' : size ? '#c4553f' : '#8d97a3');
+    this.wheel = gearModel(size === 'small' ? 'small' : size ? 'big' : 'medium') ?? gearMesh(this.gearR, size === 'small' ? '#d9ad4c' : size ? '#c4553f' : '#8d97a3');
     this.wheel.position.set(0, GEAR_Y, 0);
     this.body.add(plate, peg, this.wheel);
     this.pickable(plate, this.wheel);
