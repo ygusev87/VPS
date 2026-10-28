@@ -10,7 +10,7 @@
 // another lever, lifts the finished boxes into the lorry.
 import * as THREE from 'three';
 import { groundMaterial, type GroundPlan } from './ground';
-import { grassMaterial, hasKit, kitPieces, patches, ribbons, standees, tiledRects, toned } from './kit';
+import { cards, grassMaterial, hasKit, kitPieces, patches, ribbons, standees, tiledRects, toned } from './kit';
 import { type Hint } from './hints';
 import { hasModel, model, type Fit } from './parts/assets';
 import type { Part, PartKind, Terminal } from './parts/base';
@@ -153,6 +153,33 @@ const WELD_POLE = at(10.5, 22);
 const LORRY2 = v(33 * K, EVE_Z);
 /** Where each evening station stands on its line. */
 const EVE_STATIONS = [BOOTH.x, GRINDER.x, WELDER.x, LORRY2.x - 3];
+
+/**
+ * Stock painted by Codex from the game's own camera (m0594): where in the
+ * picture its front feet stand (`at`, px of the whole WebP), how wide the
+ * thing itself is there (`span`, px) and how deep it is for its size (for
+ * the short shadow back and to the right).
+ */
+/** Storage bays in the middle aisle (before spreading by K). */
+const BAYS = [[-16, 5.6], [22.5, 5.6]] as const;
+
+const PAINTED: Record<string, { piece: string; at: [number, number]; span: number; deep: number }> = {
+  'rack-steel-card': { piece: 'factory-rack-painted', at: [512.5, 604], span: 869, deep: 1.4 / 5.5 },
+  'pallet-card': { piece: 'factory-pallet-painted', at: [384.5, 519], span: 489, deep: 1.7 / 2.4 },
+  'barrels-card': { piece: 'factory-barrels-painted', at: [384, 526], span: 428, deep: 2.3 / 2.6 },
+};
+
+/** Painted stock on its spots (`size`: the thing's own width): the cards stand on its front feet, with a short shadow. */
+function painted(spots: { x: number; z: number; size: number }[], map: THREE.Texture, kind: (typeof PAINTED)[string], shade: THREE.Texture | null): THREE.Group {
+  const img = map.image as HTMLImageElement;
+  const [iw, ih] = [img.width, img.height];
+  const g = cards(spots.map((s) => ({ ...s, size: (s.size * iw) / kind.span })), [map]);
+  // Once per kind: the feet, not the picture's bottom edge, at the spot.
+  for (const m of g.children as THREE.Mesh[]) m.geometry.translate(0.5 - kind.at[0] / iw, (kind.at[1] / ih - 1) * (ih / iw), 0);
+  if (shade) g.add(patches(spots.map((s) => ({ x: s.x + s.size * 0.08, z: s.z - s.size * kind.deep * 0.25, size: s.size * 0.55 })), [shade], 0.009, 3));
+  return g;
+}
+
 /** Where new blanks get on the line (from the cart). */
 const LINE_START = -27 * K;
 
@@ -600,7 +627,8 @@ export class FactoryMap extends StoryMap {
     const hides = (x: number, z: number, h: number) => busy.some((b) => Math.abs(b.x - x) < 2.6 && b.z < z + 1 && b.z > z - h * 0.78 - 2);
     for (const [x, z] of spread([-30, -15, 0, 15, 30].flatMap((x) => [[x, -16], [x, 8]]))) {
       {
-        if (hides(x, z, 5) || busy.some((b) => Math.hypot(b.x - x, b.z - z) < 5)) continue;
+        // Nor in front of a storage bay: it hid the drums.
+        if (hides(x, z, 5) || busy.some((b) => Math.hypot(b.x - x, b.z - z) < 5) || spread(BAYS).some(([bx, bz]) => Math.abs(bx - x) < 4.5 && z > bz - 2 && z < bz + 7)) continue;
         const pillar = mesh(new THREE.BoxGeometry(0.8, 5, 0.8), mat('#f2c230', 0.6));
         pillar.position.set(x, 2.5, z);
         hall.add(pillar);
@@ -656,9 +684,14 @@ export class FactoryMap extends StoryMap {
     // The kit's painted stock (cards) when it has it, else the code-built stand-ins.
     const shade = kitPieces('farm', 'blob-shadow')[0] ?? null;
     const card = (name: string, spots: { x: number; z: number; size: number }[], fallback: () => void) => {
-      const maps = this.kit ? kitPieces('factory', name) : [];
-      if (maps.length) this.scenery.add(standees(spots, maps, shade));
-      else fallback();
+      const kind = PAINTED[name];
+      const art = this.kit && kind ? kitPieces('factory', kind.piece) : [];
+      if (art.length && kind) this.scenery.add(painted(spots, art[0], kind, shade));
+      else {
+        const maps = this.kit ? kitPieces('factory', name) : [];
+        if (maps.length) this.scenery.add(standees(spots, maps, shade));
+        else fallback();
+      }
     };
     // Nothing of the stock stands near a station, its pole, its lever or the rails: it hid them, or stood on them.
     const stations = [...busy, EVE_BOX, EVE_PANEL, EVE_BOX_POLE, MOVE_LEVER, LIFT_LEVER, CRANE_POLE, TANK, PIPES, TANK_POLE, GRINDER, GMOTOR, GRIND_POLE, WELDER, BOARD2, WELD_POLE, LORRY, LORRY2];
@@ -670,13 +703,14 @@ export class FactoryMap extends StoryMap {
     const goods = spread([[-36, -22, 1], [-34, -22, 0.8], [36, -22, 1.1], [34, -21, 0.9], [37, 22, 1], [-4, 25, 0.9], [26, 25, 1]] as const).filter(clear);
     card('pallet-card', goods.map(([x, z, k]) => ({ x, z, size: 2.4 * k })), () => goods.forEach(([x, z, k]) => hall.add(crate(x, z, k))));
     // Storage bays in the middle aisle, between the pillars: marked out on the floor, stacked with pallets and drums.
-    const bays = spread([[-16, 5.6], [22.5, 5.6]] as const).filter(clear);
+    const bays = spread(BAYS).filter(clear);
     const tape = kitPieces('factory', 'hazard-strip', true);
     for (const [x, z] of bays) {
       if (this.kit && tape.length) hall.add(ribbons([{ pts: [[x - 3.2, z - 1.9], [x + 3.2, z - 1.9], [x + 3.2, z + 1.9], [x - 3.2, z + 1.9], [x - 3.2, z - 1.9]], w: 0.22 }], tape[0], 1.12, 4.36, 0.0075, 2, 0.5));
     }
-    card('pallet-card', bays.flatMap(([x, z]) => [{ x: x - 1.6, z: z + 0.2, size: 2.5 }, { x: x + 0.6, z: z - 0.3, size: 2.2 }]), () => bays.forEach(([x, z]) => hall.add(stack(x, z, 2))));
-    card('barrels-card', bays.map(([x, z]) => ({ x: x + 2.3, z: z + 0.5, size: 2 })), () => bays.forEach(([x, z]) => hall.add(barrel(x + 2.3, z))));
+    // Side by side inside the tape; painted stock stands on its front feet, so the spots are near the front line.
+    card('pallet-card', bays.flatMap(([x, z]) => [{ x: x - 2, z: z + 1, size: 2.2 }, { x: x + 0.25, z: z + 0.8, size: 2 }]), () => bays.forEach(([x, z]) => hall.add(stack(x, z, 2))));
+    card('barrels-card', bays.map(([x, z]) => ({ x: x + 2.35, z: z + 1.2, size: 1.6 })), () => bays.forEach(([x, z]) => hall.add(barrel(x + 2.3, z))));
     const barrels = spread([[-38, 25], [38, 8], [3, 25]] as const).filter(clear);
     card('barrels-card', barrels.map(([x, z]) => ({ x, z, size: 2.6 })), () => barrels.forEach(([x, z]) => hall.add(barrel(x, z))));
     // Yellow and black safety lines round every station.
