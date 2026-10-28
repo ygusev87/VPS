@@ -1,0 +1,2490 @@
+{
+  "states": [
+    {
+      "name": "rt-01-booth-old",
+      "loaded": true,
+      "view": "booth",
+      "version": "new",
+      "shadow": "old",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 92.21777804402154,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-02-booth-new",
+      "loaded": true,
+      "view": "booth",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 92.21777804402154,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-03-lockers-new",
+      "loaded": true,
+      "view": "lockers",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 92.21777804402143,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-04-lockers-old",
+      "loaded": true,
+      "view": "lockers",
+      "version": "new",
+      "shadow": "old",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 92.21777804402143,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-05-rack-west-B",
+      "loaded": true,
+      "view": "rack0",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 93.47862716591192,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-06-rack-west-A",
+      "loaded": true,
+      "view": "rack0",
+      "version": "old",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 93.47862716591192,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-07-rack-center-B",
+      "loaded": true,
+      "view": "rack1",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 93.47862716591192,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-08-rack-east-B",
+      "loaded": true,
+      "view": "rack2",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 93.47862716591192,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-09-rack-east-anchors",
+      "loaded": true,
+      "view": "rack2",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 93.47862716591192,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-10-ramp-shadow",
+      "loaded": true,
+      "view": "ramp",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 92.21777804402154,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-11-bay-shadow",
+      "loaded": true,
+      "view": "bay",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        1024,
+        768
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 92.21777804402154,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-12-rack-mobile-B",
+      "loaded": true,
+      "view": "rack0",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        390,
+        844
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 36.892536815082906,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-13-rack-mobile-A",
+      "loaded": true,
+      "view": "rack0",
+      "version": "old",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        390,
+        844
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 36.892536815082906,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-14-booth-mobile-shadow",
+      "loaded": true,
+      "view": "booth",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        390,
+        844
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 44.88845788025293,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-15-booth-mobile-tap",
+      "loaded": true,
+      "view": "booth",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        390,
+        844
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 44.88845788025293,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [
+        {
+          "event": "say",
+          "id": "hammer"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "event": "pointer",
+          "xy": [
+            193,
+            516
+          ],
+          "hitName": "factory-foreman-booth",
+          "accepted": true
+        },
+        {
+          "event": "life-update",
+          "dt": 0.175
+        }
+      ],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0.12,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            -0.038548588222782676,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-16-booth-mobile-rest",
+      "loaded": true,
+      "view": "booth",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        390,
+        844
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 44.88845788025293,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [
+        {
+          "event": "say",
+          "id": "hammer"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "event": "pointer",
+          "xy": [
+            193,
+            516
+          ],
+          "hitName": "factory-foreman-booth",
+          "accepted": true
+        },
+        {
+          "event": "life-update",
+          "dt": 0.175
+        },
+        {
+          "event": "life-update",
+          "dt": 1.7
+        }
+      ],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-17-lockers-mobile",
+      "loaded": true,
+      "view": "lockers",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        390,
+        844
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 56.946115162857694,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [
+        {
+          "event": "say",
+          "id": "hammer"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "event": "pointer",
+          "xy": [
+            193,
+            516
+          ],
+          "hitName": "factory-foreman-booth",
+          "accepted": true
+        },
+        {
+          "event": "life-update",
+          "dt": 0.175
+        },
+        {
+          "event": "life-update",
+          "dt": 1.7
+        }
+      ],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-18-lockers-mobile-tap",
+      "loaded": true,
+      "view": "lockers",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        390,
+        844
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 56.946115162857694,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [
+        {
+          "event": "say",
+          "id": "hammer"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "event": "pointer",
+          "xy": [
+            193,
+            516
+          ],
+          "hitName": "factory-foreman-booth",
+          "accepted": true
+        },
+        {
+          "event": "life-update",
+          "dt": 0.175
+        },
+        {
+          "event": "life-update",
+          "dt": 1.7
+        },
+        {
+          "event": "say",
+          "id": "hammer"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "event": "pointer",
+          "xy": [
+            195,
+            500
+          ],
+          "hitName": "factory-lockers",
+          "accepted": true
+        },
+        {
+          "event": "life-update",
+          "dt": 0.175
+        }
+      ],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0.12,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            -0.038548588222782676,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-19-lockers-mobile-rest",
+      "loaded": true,
+      "view": "lockers",
+      "version": "new",
+      "shadow": "new",
+      "fallback": false,
+      "viewport": [
+        390,
+        844
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 56.946115162857694,
+      "rackBReady": true,
+      "rackCount": 3,
+      "anchors": [
+        {
+          "spot": {
+            "x": -28.350000381469727,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            -28.350000381469727,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 4.050000190734863,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            4.050000190734863,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        },
+        {
+          "spot": {
+            "x": 17.549999237060547,
+            "z": -31.59000015258789,
+            "size": 5.500000138301402
+          },
+          "world": [
+            17.549999237060547,
+            1.0162939529173511e-16,
+            -31.59000015258789
+          ],
+          "error": 1.0162939529173511e-16
+        }
+      ],
+      "shadowGroups": 11,
+      "shadowInstances": 29,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [
+        {
+          "event": "say",
+          "id": "hammer"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "event": "pointer",
+          "xy": [
+            193,
+            516
+          ],
+          "hitName": "factory-foreman-booth",
+          "accepted": true
+        },
+        {
+          "event": "life-update",
+          "dt": 0.175
+        },
+        {
+          "event": "life-update",
+          "dt": 1.7
+        },
+        {
+          "event": "say",
+          "id": "hammer"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "event": "pointer",
+          "xy": [
+            195,
+            500
+          ],
+          "hitName": "factory-lockers",
+          "accepted": true
+        },
+        {
+          "event": "life-update",
+          "dt": 0.175
+        },
+        {
+          "event": "life-update",
+          "dt": 1.7
+        }
+      ],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    },
+    {
+      "name": "rt-20-rack-fallback",
+      "loaded": true,
+      "view": "rack0",
+      "version": "new",
+      "shadow": "new",
+      "fallback": true,
+      "viewport": [
+        390,
+        844
+      ],
+      "quality": 2,
+      "pixelRatio": 1,
+      "overflow": false,
+      "allModelsLoaded": true,
+      "ppu": 36.892536815082906,
+      "rackBReady": false,
+      "rackCount": 3,
+      "anchors": [],
+      "shadowGroups": 10,
+      "shadowInstances": 26,
+      "originalPickablesPreserved": true,
+      "addedPickablesAllNoRaycast": true,
+      "addedPickables": 4,
+      "events": [],
+      "roots": [
+        {
+          "kind": "booth",
+          "position": [
+            45.9,
+            0,
+            7.56
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "lockers",
+          "position": [
+            29.7,
+            0,
+            -32.94
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ]
+        },
+        {
+          "kind": "ramp",
+          "position": [
+            50.49,
+            0,
+            -13.5
+          ],
+          "rotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ]
+        }
+      ],
+      "shadowFormula": {
+        "x": 0.45,
+        "backDepth": 0.5,
+        "size": 1.35,
+        "y": 0.009,
+        "order": 3
+      },
+      "scope": "actual FactoryMap; fixture-only artwork/shadow replacement; native clicks use Life raycast, not general Input"
+    }
+  ],
+  "console": []
+}

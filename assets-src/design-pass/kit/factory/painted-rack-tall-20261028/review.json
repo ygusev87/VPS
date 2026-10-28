@@ -1,0 +1,118 @@
+{
+  "status": "asset ready; runtime integration and shadow choice for Claude",
+  "tool": "builtin imagegen",
+  "calls": 1,
+  "TripoOrPaidAPI": 0,
+  "derivedProcessing": "full-canvas LANCZOS 1448x1086 ->1024x768; WebP quality90/alpha100/method6; no crop, mask, repaint or synthetic raster",
+  "public": {
+    "path": "public/textures/kit/factory/factory-rack-tall-a.webp",
+    "bytes": 192972,
+    "sha256": "62c230548c0c3ae849d4cdbbd8c2ddbe9940e91e9ba606012967eb8d1b29fcb1",
+    "image": [
+      1024,
+      768
+    ],
+    "alpha115Bbox": [
+      39,
+      49,
+      985,
+      685
+    ],
+    "alpha115Components": [
+      460928
+    ],
+    "edgeMaxAlpha": [
+      1,
+      0,
+      1,
+      0
+    ]
+  },
+  "visual": {
+    "threeReadableTiers": true,
+    "sameVisibleWidth": 5.5,
+    "planeVisibleHeightB": 3.697674418604651,
+    "planeVisibleHeightA": 2.7468354430379747,
+    "heightNote": "2D card plane height measured at equal visible width, not vertical world height or exact guide reconstruction",
+    "footLinePx": [
+      512,
+      684.5
+    ],
+    "footTolerancePx": 1,
+    "shelfContents": "top bundled flat bars, middle pipes, bottom two hollow coils",
+    "alphaArtifacts": "minor low-alpha source edges retained; runtime alphaTest .45 removes them"
+  },
+  "browser": {
+    "states": 20,
+    "nativeScreenshots": 20,
+    "sizes": [
+      [
+        1024,
+        768
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "allModelsLoaded": true,
+    "overflow": false,
+    "console": [],
+    "quality": 2,
+    "pixelRatio": 1,
+    "maxAnchorError": 1.0162939529173511e-16,
+    "originalPickablesPreserved": true,
+    "addedPickablesAllNoRaycast": true,
+    "nativeFixtureClicks": [
+      "booth 193,516 -> factory-foreman-booth, Life.tap accepted",
+      "lockers 195,500 -> factory-lockers, Life.tap accepted"
+    ],
+    "step": ".175 seconds -> root y .12 / z rotation -.038548588222782676, then1.7 seconds -> rest",
+    "fallback": "fresh fallback=1 bypasses B only, keeps A visible at all3 spots; not simulated network error"
+  },
+  "shadow": {
+    "proposal": {
+      "asset": "farm/blob-shadow",
+      "x": "s.x + s.size*.45",
+      "z": "s.z - s.size*kind.deep*.5",
+      "size": "s.size*1.35",
+      "y": 0.009,
+      "renderOrder": 3,
+      "material": "unchanged patches Standard; opacity1, no new texture/color or shader",
+      "replace": "replace old shadow group; no stacked old/new shadows; all new prop art meshes raycast noop",
+      "animation": "keep in same Life prop root as current art; decorative approximation moves with the prop",
+      "scope": "tested all current painted kinds via fixture, not true light-projected 3D silhouettes or global route/occlusion proof"
+    },
+    "trial1Rejected": {
+      "x": 0.25,
+      "backDepth": 0.35,
+      "size": 1.05,
+      "reason": "too little shadow visible beside booth"
+    },
+    "acceptedForClaudeReview": {
+      "x": 0.45,
+      "backDepth": 0.5,
+      "size": 1.35
+    },
+    "activeGroups": 10,
+    "activeInstances": 26,
+    "drawCountNote": "same one shadow batch per existing painted group; fixture holds hidden old/new alternatives, no performance benchmark",
+    "limits": "soft blob approximation, no hard light-projected outline; does not reproduce old GLB shadows; global neighbour overlap and iPad still for integration"
+  },
+  "tests": {
+    "npmTest": "88/88 in17files PASS",
+    "typecheck": "PASS",
+    "startedBangkok": "2026-10-28 21:08:33"
+  },
+  "limits": [
+    "fixture uses actual FactoryMap/World/Stage/Life with own substitution and pointer raycast; not general Input",
+    "no full11-station journey, electrical chain, physical iPad/PWA/FPS/VRAM audit",
+    "3 wall slots seen at1024, one wall slot/booth/lockers at390; not full-map route/occluder proof",
+    "src/GLBs/oldtextures untouched; local only, no push"
+  ],
+  "cleanup": {
+    "server5365": "stopped",
+    "tab13": "closed",
+    "viewport": "reset"
+  }
+}

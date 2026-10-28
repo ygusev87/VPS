@@ -1,0 +1,38 @@
+{
+  "file": "public/textures/kit/factory/factory-rack-tall-a.webp",
+  "piece": "factory-rack-tall",
+  "meaning": "separate taller variant B; preserve factory-rack-painted-a unchanged",
+  "image": [
+    1024,
+    768
+  ],
+  "at": [
+    512,
+    684.5
+  ],
+  "span": 946,
+  "deep": 0.2545454545454545,
+  "referenceWidth": 5.5,
+  "referenceDepth": 1.4,
+  "fullWidth": 5.953488372093023,
+  "unitGeometryTranslate": [
+    0,
+    -0.08154296875000003,
+    0
+  ],
+  "formula": "cards(spots with size=S*1024/946,[texture]); translate unit geometry once (0,-0.08154296875,0). Preserve all spot x/z and size S. No new pick/collider.",
+  "fallback": "try factory-rack-tall; if missing keep current factory-rack-painted A, then existing old fallback chain",
+  "anchor": "center between front foot plates; central pixel is transparent. Selected front line +/-1 pixel, not physical collision proof",
+  "shadowProposal": {
+    "asset": "farm/blob-shadow",
+    "x": "s.x + s.size*.45",
+    "z": "s.z - s.size*kind.deep*.5",
+    "size": "s.size*1.35",
+    "y": 0.009,
+    "renderOrder": 3,
+    "material": "unchanged patches Standard; opacity1, no new texture/color or shader",
+    "replace": "replace old shadow group; no stacked old/new shadows; all new prop art meshes raycast noop",
+    "animation": "keep in same Life prop root as current art; decorative approximation moves with the prop",
+    "scope": "tested all current painted kinds via fixture, not true light-projected 3D silhouettes or global route/occlusion proof"
+  }
+}

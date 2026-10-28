@@ -1,0 +1,75 @@
+{
+  "baseline": "a7d7735",
+  "runtimeAndExistingAssets": [
+    {
+      "path": "src/factory.ts",
+      "sha256": "dc3cc98e735ed77cfd6a6d66f542c5ebc3ecfa156a91c63df87865b81c0bf9d2",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "src/life.ts",
+      "sha256": "e8d358ce912847f6411f6859b3ecb916e5240de873ba2b00ab2c24162abf771e",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "src/stage.ts",
+      "sha256": "d2e4abf2b80b07e3b49ed98ca60c0813d66e6f63739086fd16972bbbd667c183",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "src/kit.ts",
+      "sha256": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "src/world.ts",
+      "sha256": "77a456eb771692960e988bef024e0252a4e6d2ec9ebba560837b63745496229e",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "src/parts/assets.ts",
+      "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "src/parts/workshop.ts",
+      "sha256": "e36e7b697dae9b6710c63a837e617cfd349272f94f7bd6775c3a2c60e9fb778b",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "public/textures/kit/factory/factory-rack-painted-a.webp",
+      "sha256": "eae2b2760b516e1282a754d55904176ba2057718dcd24889160fc5f47f7bb1e2",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "public/textures/kit/factory/factory-lockers-painted-a.webp",
+      "sha256": "b967db40f4a9bd4dcd6821029423aa0f13aa829d00b8ee660738e62c4c0b6645",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "public/textures/kit/factory/factory-booth-painted-a.webp",
+      "sha256": "0c268ed7dd226e3658fd69639c0b232290685a47c94127a119adbd7a8688003b",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "public/textures/kit/factory/factory-ramp-painted-a.webp",
+      "sha256": "5f2139d5897eabf63e3bae7799b4ecf07a29439fd73234fd6106a858e2fd65f5",
+      "matchesA7d7735": true
+    },
+    {
+      "path": "public/textures/kit/farm/blob-shadow.webp",
+      "sha256": "5298638d609d06aaf0dfa57d42db4478b18f5d564fcdbc24502ab0b63dab6d4c",
+      "matchesA7d7735": true
+    }
+  ],
+  "generation": "builtin imagegen, one edit using geometry-guide.jpg",
+  "source": {
+    "file": "rack-source.png",
+    "sha256": "004e2b9922c17d8f707d5d7788693618f4eeaaf98919bdc3c5be8a6520aca7a5",
+    "size": [
+      1448,
+      1086
+    ]
+  },
+  "guide": "orthographic 5.5 wide / 4.2 high / 1.4 deep, reference only; generated painted silhouette is not an exact physical projection"
+}

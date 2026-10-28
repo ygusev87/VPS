@@ -1,0 +1,15 @@
+{
+  "source": "Claude m0598 /a7d7735",
+  "viewed": [
+    "props-booth.jpg",
+    "props-lockers.jpg",
+    "booth-tap.png"
+  ],
+  "conclusion": "static integration accepted; ground position preserved; short shadows too weak, addressed by separate formula trial",
+  "notIndependentlyRepeated": [
+    "general Input",
+    "11stations",
+    "publication"
+  ],
+  "laterM0601": "Claude reports true general Input1024 clicks on both lockers with jump; read1250, source report only"
+}
