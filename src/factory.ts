@@ -160,34 +160,40 @@ const EVE_STATIONS = [BOOTH.x, GRINDER.x, WELDER.x, LORRY2.x - 3];
  * thing itself is there (`span`, px) and how deep it is for its size (for
  * the short shadow back and to the right).
  */
+type Painted = { piece: string; at: [number, number]; span: number; deep: number };
+/** For each old card, the painted pictures that replace it, the best first (the tall three-tier rack, then the low one). */
+const PAINTED: Record<string, Painted[]> = {
+  'rack-steel-card': [
+    { piece: 'factory-rack-tall', at: [512, 684.5], span: 946, deep: 1.4 / 5.5 },
+    { piece: 'factory-rack-painted', at: [512.5, 604], span: 869, deep: 1.4 / 5.5 },
+  ],
+  'pallet-card': [{ piece: 'factory-pallet-painted', at: [384.5, 519], span: 489, deep: 1.7 / 2.4 }],
+  'barrels-card': [{ piece: 'factory-barrels-painted', at: [384, 526], span: 428, deep: 2.3 / 2.6 }],
+};
+
 /** Storage bays in the middle aisle (before spreading by K). */
 const BAYS = [[-16, 5.6], [22.5, 5.6]] as const;
-
-const PAINTED: Record<string, { piece: string; at: [number, number]; span: number; deep: number }> = {
-  'rack-steel-card': { piece: 'factory-rack-painted', at: [512.5, 604], span: 869, deep: 1.4 / 5.5 },
-  'pallet-card': { piece: 'factory-pallet-painted', at: [384.5, 519], span: 489, deep: 1.7 / 2.4 },
-  'barrels-card': { piece: 'factory-barrels-painted', at: [384, 526], span: 428, deep: 2.3 / 2.6 },
-};
 
 /**
  * The props Codex painted from the camera (m0597): `size` is the model's own
  * width as it stands, `front` how far its front feet stand south of its
  * middle. The model stays under the picture, unseen, for the tap and its jump.
  */
-const PROP_ART: Record<string, (typeof PAINTED)[string] & { size: number; front: number }> = {
+const PROP_ART: Record<string, Painted & { size: number; front: number }> = {
   'factory-lockers': { piece: 'factory-lockers-painted', at: [384.5, 516.5], span: 475, deep: 0.5016517953626232, size: 1.9769280068361461, front: 0.4958647419660024 },
   'factory-foreman-booth': { piece: 'factory-booth-painted', at: [513, 694.5], span: 710, deep: 0.6716208380382702, size: 3.8502372666877576, front: 1.2929497898495053 },
   'factory-loading-ramp': { piece: 'factory-ramp-painted', at: [522.5, 651.5], span: 879, deep: 0.5829950865199744, size: 3.8, front: 1.1076906643879516 },
 };
 
 /** Painted stock on its spots (`size`: the thing's own width): the cards stand on its front feet, with a short shadow. */
-function painted(spots: { x: number; z: number; size: number }[], map: THREE.Texture, kind: (typeof PAINTED)[string], shade: THREE.Texture | null): THREE.Group {
+function painted(spots: { x: number; z: number; size: number }[], map: THREE.Texture, kind: Painted, shade: THREE.Texture | null): THREE.Group {
   const img = map.image as HTMLImageElement;
   const [iw, ih] = [img.width, img.height];
   const g = cards(spots.map((s) => ({ ...s, size: (s.size * iw) / kind.span })), [map]);
   // Once per kind: the feet, not the picture's bottom edge, at the spot.
   for (const m of g.children as THREE.Mesh[]) m.geometry.translate(0.5 - kind.at[0] / iw, (kind.at[1] / ih - 1) * (ih / iw), 0);
-  if (shade) g.add(patches(spots.map((s) => ({ x: s.x + s.size * 0.08, z: s.z - s.size * kind.deep * 0.25, size: s.size * 0.55 })), [shade], 0.009, 3));
+  // A soft shadow back and to the right, away from the sun, big enough to hold the thing down on the floor.
+  if (shade) g.add(patches(spots.map((s) => ({ x: s.x + s.size * 0.45, z: s.z - s.size * kind.deep * 0.5, size: s.size * 1.35 })), [shade], 0.009, 3));
   return g;
 }
 
@@ -711,9 +717,8 @@ export class FactoryMap extends StoryMap {
     // The kit's painted stock (cards) when it has it, else the code-built stand-ins.
     const shade = kitPieces('farm', 'blob-shadow')[0] ?? null;
     const card = (name: string, spots: { x: number; z: number; size: number }[], fallback: () => void) => {
-      const kind = PAINTED[name];
-      const art = this.kit && kind ? kitPieces('factory', kind.piece) : [];
-      if (art.length && kind) this.scenery.add(painted(spots, art[0], kind, shade));
+      const kind = this.kit ? PAINTED[name]?.find((k) => hasKit('factory', k.piece)) : undefined;
+      if (kind) this.scenery.add(painted(spots, kitPieces('factory', kind.piece)[0], kind, shade));
       else {
         const maps = this.kit ? kitPieces('factory', name) : [];
         if (maps.length) this.scenery.add(standees(spots, maps, shade));
