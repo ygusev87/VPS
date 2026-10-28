@@ -1,0 +1,389 @@
+{
+  "status": "GEOMETRY_PASS_EXPERIMENTAL",
+  "sourceSha256": "c5011b89177f9830e62a96bd7a71ddd0cdaadd0edc7931fdca1660e4e61d4802",
+  "candidateSha256": "e501ac8f4218bc576a66164855493aea48cd9f75a16479368e3d863769d59c9f",
+  "publicUnchanged": true,
+  "bytes": 249536,
+  "triangles": 13416,
+  "exactUnchangedSourceFaces": 11382,
+  "changedSourceFaces": 2174,
+  "sourceTriangles": 13556,
+  "textureHashes": [
+    {
+      "slot": "getBaseColorTexture",
+      "sha256": "41a60a8d101515af1e8a02f038f227ba9cd1116a1f6e7c95ff38436cc05540c4"
+    },
+    {
+      "slot": "getNormalTexture",
+      "sha256": "d89224e2cdc903bd1e0b2c37b2d98959196ca2c57b6b21eb00df4241a0234d18"
+    },
+    {
+      "slot": "getMetallicRoughnessTexture",
+      "sha256": "28297fed0ef13f91c0a78f3f65f07328912e64452ef292262dcdc81a98c932a4"
+    }
+  ],
+  "bounds": {
+    "before": {
+      "min": [
+        -0.31517365231673905,
+        -0.38006224844627584,
+        -0.5
+      ],
+      "max": [
+        0.3154608274952669,
+        0.38042848918609823,
+        0.5
+      ]
+    },
+    "after": {
+      "min": [
+        -0.31517365231673905,
+        -0.38006224844627584,
+        -0.5
+      ],
+      "max": [
+        0.3154608274952669,
+        0.38042848918609823,
+        0.5
+      ]
+    },
+    "maxError": 0
+  },
+  "bodyTopology": {
+    "triangles": 6564,
+    "openEdges": 0,
+    "nonManifoldEdges": 6,
+    "inconsistentEdges": 0,
+    "badVertexFans": 12,
+    "components": 1,
+    "minArea": 0.000003221886839516498,
+    "signedVolume": 0.03498211003460718,
+    "nonManifoldDetails": [
+      {
+        "key": "504686,-567034,3393353|510179,-537736,3461104",
+        "incidence": 4
+      },
+      {
+        "key": "-278419,-1404004,2826319|-280250,-1496780,2820826",
+        "incidence": 4
+      },
+      {
+        "key": "-500594,-512711,3518479|-518294,-559099,3388470",
+        "incidence": 4
+      },
+      {
+        "key": "-467634,46999,2853786|-507308,14649,2821436",
+        "incidence": 4
+      },
+      {
+        "key": "-855829,-1181066,3126621|-857050,-1107211,3019196",
+        "incidence": 4
+      },
+      {
+        "key": "-467634,46999,2853786|-509749,95828,2816553",
+        "incidence": 4
+      }
+    ]
+  },
+  "bodyNonManifoldEdgesInherited": true,
+  "wheels": [
+    {
+      "name": "wheel-front-right",
+      "topology": {
+        "triangles": 826,
+        "openEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentEdges": 0,
+        "badVertexFans": 0,
+        "components": 1,
+        "minArea": 2.493768398749893e-7,
+        "signedVolume": 0.002524989115103756,
+        "nonManifoldDetails": []
+      },
+      "pivotRaw": [
+        0.2530504756168526,
+        -0.247856065396256,
+        0.36869411297952204
+      ],
+      "pivotInSourceNode": [
+        0.5058137760551774,
+        -0.49607837153233436,
+        0.7373882259590441
+      ],
+      "radiusRaw": 0.12811547600007162,
+      "radiusAtFit": 0.48683880880027214,
+      "xRange": [
+        0.21999892985434769,
+        0.2861020213793576
+      ],
+      "continuousBodyClearanceRaw": {
+        "gap": 0.32776846035402774,
+        "x": [
+          0.22594078077794408,
+          0.22668351214339363
+        ],
+        "wheelRadius": 0.1270716392683187,
+        "bodyRadius": 0.4548400996223464
+      },
+      "continuousBodyClearanceAtFit": 1.2455201493453054,
+      "floorAtPhases": [
+        {
+          "degrees": 0,
+          "minY": 0.01954100161748108
+        },
+        {
+          "degrees": 45,
+          "minY": 0.020367445683303353
+        },
+        {
+          "degrees": 90,
+          "minY": 0.030094302194280817
+        },
+        {
+          "degrees": 180,
+          "minY": 0.01954100161748108
+        },
+        {
+          "degrees": 270,
+          "minY": 0.03009430219428103
+        }
+      ],
+      "lowestPointOverFullTurnAtFit": 0.015544686789803308
+    },
+    {
+      "name": "wheel-front-left",
+      "topology": {
+        "triangles": 798,
+        "openEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentEdges": 0,
+        "badVertexFans": 0,
+        "components": 1,
+        "minArea": 0.0000024197515883159147,
+        "signedVolume": 0.0025263667350338536,
+        "nonManifoldDetails": []
+      },
+      "pivotRaw": [
+        -0.2533355224909998,
+        -0.24694051011197607,
+        0.3688467055269021
+      ],
+      "pivotInSourceNode": [
+        -0.5069582201605274,
+        -0.4942472609637745,
+        0.7376934110538041
+      ],
+      "radiusRaw": 0.12794701748863688,
+      "radiusAtFit": 0.4861986664568201,
+      "xRange": [
+        -0.2866693644661577,
+        -0.22000168051584182
+      ],
+      "continuousBodyClearanceRaw": {
+        "gap": 0.32815153503525085,
+        "x": [
+          -0.22899058172262599,
+          -0.22824150662206064
+        ],
+        "wheelRadius": 0.12703301067080244,
+        "bodyRadius": 0.45518454570605327
+      },
+      "continuousBodyClearanceAtFit": 1.246975833133953,
+      "floorAtPhases": [
+        {
+          "degrees": 0,
+          "minY": 0.024875637073885445
+        },
+        {
+          "degrees": 45,
+          "minY": 0.022452497776426127
+        },
+        {
+          "degrees": 90,
+          "minY": 0.03392132328257097
+        },
+        {
+          "degrees": 180,
+          "minY": 0.024875637073885237
+        },
+        {
+          "degrees": 270,
+          "minY": 0.03392132328257097
+        }
+      ],
+      "lowestPointOverFullTurnAtFit": 0.019663939213519
+    },
+    {
+      "name": "wheel-rear-right",
+      "topology": {
+        "triangles": 2618,
+        "openEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentEdges": 0,
+        "badVertexFans": 0,
+        "components": 1,
+        "minArea": 3.8612950946372385e-10,
+        "signedVolume": 0.015970050464359304,
+        "nonManifoldDetails": []
+      },
+      "pivotRaw": [
+        0.2552325490443864,
+        -0.13689839456889918,
+        -0.26275673696096685
+      ],
+      "pivotInSourceNode": [
+        0.510177922910245,
+        -0.27416302987762076,
+        -0.5255134739219337
+      ],
+      "radiusRaw": 0.2438544029189307,
+      "radiusAtFit": 0.9266467310919366,
+      "xRange": [
+        0.195004270593506,
+        0.3154608274952669
+      ],
+      "continuousBodyClearanceRaw": {
+        "gap": 0.007636224591667795,
+        "x": [
+          0.21595323701120356,
+          0.21670141438326418
+        ],
+        "wheelRadius": 0.24317940529019855,
+        "bodyRadius": 0.25081562988186634
+      },
+      "continuousBodyClearanceAtFit": 0.02901765344833762,
+      "floorAtPhases": [
+        {
+          "degrees": 0,
+          "minY": 0.0013916440321056433
+        },
+        {
+          "degrees": 45,
+          "minY": 0.011898704088739475
+        },
+        {
+          "degrees": 90,
+          "minY": 0.02249824518570512
+        },
+        {
+          "degrees": 180,
+          "minY": 0.0013916440321056433
+        },
+        {
+          "degrees": 270,
+          "minY": 0.022498245185705333
+        }
+      ],
+      "lowestPointOverFullTurnAtFit": -0.0026240863579052864
+    },
+    {
+      "name": "wheel-rear-left",
+      "topology": {
+        "triangles": 2610,
+        "openEdges": 0,
+        "nonManifoldEdges": 0,
+        "inconsistentEdges": 0,
+        "badVertexFans": 0,
+        "components": 1,
+        "minArea": 5.802463890667331e-9,
+        "signedVolume": 0.015962694895907122,
+        "nonManifoldDetails": []
+      },
+      "pivotRaw": [
+        -0.25509033678586956,
+        -0.1367458020215192,
+        -0.26248207037568283
+      ],
+      "pivotInSourceNode": [
+        -0.510467848750267,
+        -0.2738578447828608,
+        -0.5249641407513657
+      ],
+      "radiusRaw": 0.24454217823023408,
+      "radiusAtFit": 0.9292602772748895,
+      "xRange": [
+        -0.31517365231673905,
+        -0.19500702125500013
+      ],
+      "continuousBodyClearanceRaw": {
+        "gap": 0.0068390535017002485,
+        "x": [
+          -0.23008672100594257,
+          -0.22934034441549697
+        ],
+        "wheelRadius": 0.24392887763827945,
+        "bodyRadius": 0.2507679311399797
+      },
+      "continuousBodyClearanceAtFit": 0.025988403306460944,
+      "floorAtPhases": [
+        {
+          "degrees": 0,
+          "minY": 0
+        },
+        {
+          "degrees": 45,
+          "minY": 0.0173987604292812
+        },
+        {
+          "degrees": 90,
+          "minY": 0.022498245185705333
+        },
+        {
+          "degrees": 180,
+          "minY": 2.1094237467877973e-16
+        },
+        {
+          "degrees": 270,
+          "minY": 0.02249824518570512
+        }
+      ],
+      "lowestPointOverFullTurnAtFit": -0.004657780860814175
+    }
+  ],
+  "wheelPairClearances": [
+    {
+      "a": "wheel-front-right",
+      "b": "wheel-front-left",
+      "axial": 0.4400006103701895,
+      "radial": -0.25513430925910274
+    },
+    {
+      "a": "wheel-front-right",
+      "b": "wheel-rear-right",
+      "axial": -0.09109775078585158,
+      "radial": 0.2691555227037987
+    },
+    {
+      "a": "wheel-front-right",
+      "b": "wheel-rear-left",
+      "axial": 0.4150059511093478,
+      "radial": 0.26822366478441373
+    },
+    {
+      "a": "wheel-front-left",
+      "b": "wheel-rear-right",
+      "axial": 0.4150059511093478,
+      "radial": 0.26931649055399853
+    },
+    {
+      "a": "wheel-front-left",
+      "b": "wheel-rear-left",
+      "axial": -0.09166234321115757,
+      "radial": 0.2683843463889284
+    },
+    {
+      "a": "wheel-rear-right",
+      "b": "wheel-rear-left",
+      "axial": 0.39001129184850614,
+      "radial": -0.4880823738631457
+    }
+  ],
+  "method": "Independent NodeIO/Meshopt decode. Oriented cyclic triangle signatures compare all raw attributes outside worker-declared source mask; exact source root TRS/material/texture comparisons. Geometric weld tolerance 1e-7; closed edges plus connected cyclic vertex links. Continuous rotation uses clipped triangles in X slabs <=0.00075, maximum tyre radius and minimum projected convex body-polygon radius. The reported slab gap is radial separation within shared axial slabs, not the global Euclidean surface distance (especially at front axles). Pair separation uses disjoint axial intervals or swept YZ circles.",
+  "limits": [
+    "Candidate above 8000 tri target; public unchanged.",
+    "Main did not repeat worker reconstructed-triangle self-intersection audit.",
+    "Body is not globally manifold.",
+    "Ground-contact extrema are measured, not a suspension or perfect-rolling proof.",
+    "No gameplay, physical iPad, PWA or performance proof."
+  ]
+}

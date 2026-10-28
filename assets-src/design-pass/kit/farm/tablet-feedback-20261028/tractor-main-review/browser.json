@@ -1,0 +1,617 @@
+{
+  "browser": "Codex native in-app browser",
+  "fixture": "real src/parts/assets.ts loadModels/model; candidate only, DAY lights without Stage postprocessing",
+  "captures": [
+    {
+      "file": "01-game-0-1024.jpg",
+      "state": {
+        "loaded": true,
+        "source": "candidate",
+        "modelLoader": "real loadModels/model; experimental asset relative model name",
+        "view": "game",
+        "phase": 0,
+        "viewport": [
+          1024,
+          768
+        ],
+        "overflow": false,
+        "triangles": 13416,
+        "meshes": 5,
+        "runtimeClonedMaterials": 5,
+        "bodyVertices": 6212,
+        "bodyMaxMovement": 0,
+        "wheels": [
+          {
+            "name": "wheel-front-right",
+            "phase": 0,
+            "pivot": [
+              -0.9610461745048366,
+              0.5023834955900753,
+              -1.401037629322184
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-front-left",
+            "phase": 0,
+            "pivot": [
+              0.9632206183050023,
+              0.505862605670339,
+              -1.4016174810022275
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-right",
+            "phase": 0,
+            "pivot": [
+              -0.9693380535294654,
+              0.9240226447340312,
+              0.9984756004516739
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-left",
+            "phase": 0,
+            "pivot": [
+              0.9698889126255071,
+              0.9246024964140751,
+              0.9974318674275949
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          }
+        ],
+        "fit": {
+          "depth": 3.8,
+          "rotateY": 3.141592653589793
+        },
+        "drawCalls": 7
+      }
+    },
+    {
+      "file": "02-rear-45-1024.jpg",
+      "state": {
+        "loaded": true,
+        "source": "candidate",
+        "modelLoader": "real loadModels/model; experimental asset relative model name",
+        "view": "rear",
+        "phase": 45,
+        "viewport": [
+          1024,
+          768
+        ],
+        "overflow": false,
+        "triangles": 13416,
+        "meshes": 5,
+        "runtimeClonedMaterials": 5,
+        "bodyVertices": 6212,
+        "bodyMaxMovement": 0,
+        "wheels": [
+          {
+            "name": "wheel-front-right",
+            "phase": 0.7853981633974483,
+            "pivot": [
+              -0.9610461745048366,
+              0.5023834955900753,
+              -1.401037629322184
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-front-left",
+            "phase": 0.7853981633974483,
+            "pivot": [
+              0.9632206183050023,
+              0.505862605670339,
+              -1.4016174810022275
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-right",
+            "phase": 0.7853981633974483,
+            "pivot": [
+              -0.9693380535294654,
+              0.9240226447340312,
+              0.9984756004516739
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-left",
+            "phase": 0.7853981633974483,
+            "pivot": [
+              0.9698889126255071,
+              0.9246024964140751,
+              0.9974318674275949
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          }
+        ],
+        "fit": {
+          "depth": 3.8,
+          "rotateY": 3.141592653589793
+        },
+        "drawCalls": 7
+      }
+    },
+    {
+      "file": "03-under-90-1024.jpg",
+      "state": {
+        "loaded": true,
+        "source": "candidate",
+        "modelLoader": "real loadModels/model; experimental asset relative model name",
+        "view": "under",
+        "phase": 90,
+        "viewport": [
+          1024,
+          768
+        ],
+        "overflow": false,
+        "triangles": 13416,
+        "meshes": 5,
+        "runtimeClonedMaterials": 5,
+        "bodyVertices": 6212,
+        "bodyMaxMovement": 0,
+        "wheels": [
+          {
+            "name": "wheel-front-right",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9610461745048366,
+              0.5023834955900753,
+              -1.401037629322184
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-front-left",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9632206183050023,
+              0.505862605670339,
+              -1.4016174810022275
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-right",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9693380535294654,
+              0.9240226447340312,
+              0.9984756004516739
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-left",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9698889126255071,
+              0.9246024964140751,
+              0.9974318674275949
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          }
+        ],
+        "fit": {
+          "depth": 3.8,
+          "rotateY": 3.141592653589793
+        },
+        "drawCalls": 5
+      }
+    },
+    {
+      "file": "04-original-under-1024.jpg",
+      "state": {
+        "loaded": true,
+        "source": "originals",
+        "modelLoader": "real loadModels/model; experimental asset relative model name",
+        "view": "under",
+        "phase": 90,
+        "viewport": [
+          1024,
+          768
+        ],
+        "overflow": false,
+        "triangles": 13556,
+        "meshes": 1,
+        "runtimeClonedMaterials": 1,
+        "bodyVertices": 0,
+        "bodyMaxMovement": 0,
+        "wheels": [],
+        "fit": {
+          "depth": 3.8,
+          "rotateY": 3.141592653589793
+        },
+        "drawCalls": 1
+      }
+    },
+    {
+      "file": "05-mask-under-90-1024.jpg",
+      "state": {
+        "loaded": true,
+        "source": "mask",
+        "modelLoader": "real loadModels/model; experimental asset relative model name",
+        "view": "under",
+        "phase": 90,
+        "viewport": [
+          1024,
+          768
+        ],
+        "overflow": false,
+        "triangles": 13416,
+        "meshes": 14,
+        "runtimeClonedMaterials": 14,
+        "bodyVertices": 0,
+        "bodyMaxMovement": 0,
+        "wheels": [
+          {
+            "name": "wheel-front-right",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9610469923139442,
+              0.5023850158566616,
+              -1.4010361299765912
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-front-right_1",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9610469923139442,
+              0.5023850158566616,
+              -1.4010361299765912
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473535e-16
+            ]
+          },
+          {
+            "name": "wheel-front-right_2",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9610469923139442,
+              0.5023850158566616,
+              -1.4010361299765912
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473535e-16
+            ]
+          },
+          {
+            "name": "wheel-front-right_3",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9610469923139442,
+              0.5023850158566616,
+              -1.4010361299765912
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473535e-16
+            ]
+          },
+          {
+            "name": "wheel-front-left",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9632255827774935,
+              0.5058641363913977,
+              -1.4016159833990471
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-front-left_1",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9632255827774935,
+              0.5058641363913977,
+              -1.4016159833990471
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-front-left_2",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9632255827774935,
+              0.5058641363913977,
+              -1.4016159833990471
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-front-left_3",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9632255827774935,
+              0.5058641363913977,
+              -1.4016159833990471
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-right",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9693388962550656,
+              0.9240254319955593,
+              0.9984843101598034
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-right_1",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9693388962550656,
+              0.9240254319955593,
+              0.9984843101598034
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-right_2",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9693388962550656,
+              0.9240254319955593,
+              0.9984843101598034
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-right_3",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9693388962550656,
+              0.9240254319955593,
+              0.9984843101598034
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-left",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9698938971357371,
+              0.9246052854180153,
+              0.9974405739993827
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-left_1",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9698938971357371,
+              0.9246052854180153,
+              0.9974405739993827
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-left_2",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9698938971357371,
+              0.9246052854180153,
+              0.9974405739993827
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-left_3",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9698938971357371,
+              0.9246052854180153,
+              0.9974405739993827
+            ],
+            "worldAxis": [
+              -1,
+              0,
+              -1.2246467991473532e-16
+            ]
+          }
+        ],
+        "fit": {
+          "depth": 3.8,
+          "rotateY": 3.141592653589793
+        },
+        "drawCalls": 14
+      }
+    },
+    {
+      "file": "06-front-90-390.jpg",
+      "state": {
+        "loaded": true,
+        "source": "candidate",
+        "modelLoader": "real loadModels/model; experimental asset relative model name",
+        "view": "front",
+        "phase": 90,
+        "viewport": [
+          390,
+          844
+        ],
+        "overflow": false,
+        "triangles": 13416,
+        "meshes": 5,
+        "runtimeClonedMaterials": 5,
+        "bodyVertices": 6212,
+        "bodyMaxMovement": 0,
+        "wheels": [
+          {
+            "name": "wheel-front-right",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9610461745048366,
+              0.5023834955900753,
+              -1.401037629322184
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-front-left",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9632206183050023,
+              0.505862605670339,
+              -1.4016174810022275
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-right",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              -0.9693380535294654,
+              0.9240226447340312,
+              0.9984756004516739
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          },
+          {
+            "name": "wheel-rear-left",
+            "phase": 1.5707963267948966,
+            "pivot": [
+              0.9698889126255071,
+              0.9246024964140751,
+              0.9974318674275949
+            ],
+            "worldAxis": [
+              -0.9999999999999999,
+              0,
+              -1.224646799147353e-16
+            ]
+          }
+        ],
+        "fit": {
+          "depth": 3.8,
+          "rotateY": 3.141592653589793
+        },
+        "drawCalls": 7
+      }
+    }
+  ],
+  "logs": [],
+  "physicalIpad": false
+}

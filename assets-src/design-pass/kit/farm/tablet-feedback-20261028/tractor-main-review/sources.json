@@ -1,0 +1,26 @@
+{
+  "public/models/tractor.glb": {
+    "bytes": 240008,
+    "sha256": "c5011b89177f9830e62a96bd7a71ddd0cdaadd0edc7931fdca1660e4e61d4802"
+  },
+  "public/models/kitten.glb": {
+    "bytes": 116136,
+    "sha256": "b64d165bee1ec6eaf8bbeb2a21dfded68dae49d46bf094bd98aa2eaf4f877315"
+  },
+  "src/parts/assets.ts": {
+    "bytes": 7944,
+    "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+  },
+  "src/farm.ts": {
+    "bytes": 69446,
+    "sha256": "b55f33f5f8358cc41f4f565337ae5a4517218d7e3847b7f8774b0fc285d2f0da"
+  },
+  "src/stage.ts": {
+    "bytes": 34829,
+    "sha256": "d9d1e7402b9e32fb3d44fe9b903cc87a30b176a31012d4aaa1114cb55eb8a8dc"
+  },
+  "assets-src/design-pass/kit/farm/tablet-feedback-20261028/tractor-retopology-20261028/candidate/tractor.glb": {
+    "bytes": 249536,
+    "sha256": "e501ac8f4218bc576a66164855493aea48cd9f75a16479368e3d863769d59c9f"
+  }
+}

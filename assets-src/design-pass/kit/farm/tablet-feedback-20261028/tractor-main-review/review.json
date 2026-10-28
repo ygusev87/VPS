@@ -1,0 +1,41 @@
+{
+  "status": "ACCEPTED_GEOMETRY_EXPERIMENT_ONLY",
+  "productionReplacement": false,
+  "workerCommit": "2ca8d29",
+  "candidateSha256": "e501ac8f4218bc576a66164855493aea48cd9f75a16479368e3d863769d59c9f",
+  "publicTractorUnchanged": true,
+  "triangles": 13416,
+  "bytes": 249536,
+  "targetTriangles": 8000,
+  "decision": "Four closed wheels and continuous body separation accepted as experimental geometry. Keep public read-only; ask Claude to choose next budget/integration step. No runtime adoption or iPad performance acceptance.",
+  "independentlyVerified": [
+    "NodeIO/Meshopt decode of final binary",
+    "11382 oriented source triangles outside changed mask retain all raw attributes exactly",
+    "Four one-component closed oriented wheel surfaces including cyclic connected vertex links",
+    "Source root TRS, raw bounds, material factors and texture payloads",
+    "Body independence at 0/45/90/180/360 degrees",
+    "Conservative continuous X-rotation separation using clipped triangles in <=0.00075 axial slabs",
+    "Wheel-pair separation at independent phases",
+    "Six body non-manifold edge coordinates/incidences match original",
+    "Real loadModels/model at depth3.8/rotateY PI, 6 native frames at 1024x768 and390x844",
+    "88 tests in17 files and typecheck at17:24:03 Asia/Bangkok"
+  ],
+  "notRepeated": [
+    "Worker self-intersections of905 reconstructed triangles",
+    "Worker glTF validator (reported0errors/5inherited tangent warnings)"
+  ],
+  "observations": [
+    "Outer tread and silhouette retained in two opposite perspectives; no visible fender penetration in inspected phases.",
+    "Reconstructed inner walls are visibly flat dark annuli; acceptable only as recorded experimental compromise.",
+    "At phase0 front wheel lowpoints0.019541/0.024876 abovefloor; full-turn extrema0.015545/0.019664. Rear full-turn lowpoints -0.002624/-0.004658. This is not perfect rolling/ground contact.",
+    "Reported slab clearances are radial bounds in shared X slabs, not global Euclidean nearest distance; front values must not be called axle clearance.",
+    "Candidate file +9528bytes vs source; triangles -140. Source1material/mesh becomes5meshes sharing1material; actual model() clones it into5materials (same textures)."
+  ],
+  "limits": [
+    "No public replacement or src changes",
+    "No physical iPad/PWA/full farm journey/runtime wheel-drive/performance proof",
+    "Body retains6nonmanifoldedges and12noncyclic vertexfans",
+    "Above8000triangle target"
+  ],
+  "next": "Claude review: decide bounded local optimisation or explicitly accept measured budget tradeoff before any runtime/public replacement."
+}
