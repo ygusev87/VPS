@@ -1,0 +1,54 @@
+{
+  "status": "asset and actual-map fixture accepted; runtime integration requested from Claude",
+  "states": 17,
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "instances": {
+    "rack": 3,
+    "pallet": 14,
+    "barrels": 5
+  },
+  "instancedGroups": {
+    "cards": 3,
+    "shadows": 3
+  },
+  "allModelsLoaded": true,
+  "overflow": false,
+  "console": [],
+  "maximumAnalyticAnchorError": 3.414112318932833e-17,
+  "ppu": {
+    "rack": [
+      39.256,
+      93.068
+    ],
+    "pallet": [
+      63.591,
+      93.395
+    ],
+    "barrels": [
+      69.12,
+      93.473
+    ]
+  },
+  "testRun": {
+    "when": "2026-10-28 20:06:25 Asia/Bangkok",
+    "vitest": "88/88,17 files",
+    "typecheck": "PASS"
+  },
+  "limits": [
+    "Fixture constructs actual FactoryMap/World/Stage with public loadModels/loadKit; only stock visuals substituted in fixture; src unchanged.",
+    "No full gameplay/input/wires/11-station journey, physical iPad, PWA, FPS or VRAM measurement.",
+    "Column in front of first storage bay still partially occludes drums/pallets as in baseline; no placement change or full route/occlusion acceptance.",
+    "Footpoint mapping is mathematically exact up to floating precision; painted support edge selection about +/-1 delivered pixel, not 3D physical collision validation.",
+    "Camera fixed; reference is orthographic, Stage is perspective. No claim of arbitrary rotating-view correctness.",
+    "No perfect global dimension preservation inside generated art; reference depths are authored footprint guidance."
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "baselineCommit": "b14f88af49ee7d7f50aeea790783db1e93de2de8",
+  "generation": {
+    "builtinImagegenCalls": 4,
+    "tripoOrders": 0,
+    "paidApiCalls": 0,
+    "accepted": {
+      "rack": "second attempt, strict guide only",
+      "pallet": "first attempt",
+      "barrels": "first attempt"
+    },
+    "postprocessing": "Full-canvas LANCZOS resize, WebP quality90 alpha100 method6. No crop, paint, recolour or synthesized mask."
+  },
+  "assets": [
+    {
+      "kind": "rack",
+      "size": [
+        1024,
+        768
+      ],
+      "bytes": 131944,
+      "sha256": "eae2b2760b516e1282a754d55904176ba2057718dcd24889160fc5f47f7bb1e2",
+      "sourceSha256": "797f56691a87a47b4f4fcb9dc7bc8c7ddf111180e85e4d48047df11a638de86b",
+      "bboxAlpha115": [
+        78,
+        171,
+        947,
+        605
+      ],
+      "borderMaxAlpha": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "kind": "pallet",
+      "size": [
+        768,
+        576
+      ],
+      "bytes": 71116,
+      "sha256": "47fbbc8eb3f6faa2a1f34f448e2029df61be1a113590d7632ac3a4e7359ff328",
+      "sourceSha256": "da35ed556a6e103147a6dfa4cf4e8364c64c23a2de5a98c765a46520e6dd14f6",
+      "bboxAlpha115": [
+        140,
+        59,
+        629,
+        520
+      ],
+      "borderMaxAlpha": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "kind": "barrels",
+      "size": [
+        768,
+        576
+      ],
+      "bytes": 55422,
+      "sha256": "737acb70abc164fbee0e08f19c7cdc532be92268d09510773e2cb28f03e72160",
+      "sourceSha256": "9888a4b33cee4da294e97fb5cb369b10381024b369a9040b69352670e089b4b0",
+      "bboxAlpha115": [
+        170,
+        53,
+        598,
+        527
+      ],
+      "borderMaxAlpha": [
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "runtime": [
+    {
+      "path": "src/factory.ts",
+      "sha256": "0258f7742c35fa5048e1704fe241b40c1ff7674a3cea19a12eea1750100d4747",
+      "equalsBaseline": true
+    },
+    {
+      "path": "src/kit.ts",
+      "sha256": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770",
+      "equalsBaseline": true
+    },
+    {
+      "path": "src/stage.ts",
+      "sha256": "d2e4abf2b80b07e3b49ed98ca60c0813d66e6f63739086fd16972bbbd667c183",
+      "equalsBaseline": true
+    },
+    {
+      "path": "src/world.ts",
+      "sha256": "77a456eb771692960e988bef024e0252a4e6d2ec9ebba560837b63745496229e",
+      "equalsBaseline": true
+    },
+    {
+      "path": "src/parts/workshop.ts",
+      "sha256": "e36e7b697dae9b6710c63a837e617cfd349272f94f7bd6775c3a2c60e9fb778b",
+      "equalsBaseline": true
+    },
+    {
+      "path": "src/parts/assets.ts",
+      "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+      "equalsBaseline": true
+    }
+  ],
+  "oldTextures": [
+    {
+      "path": "public/textures/kit/factory/rack-steel-card.webp",
+      "sha256": "00f778d3059e363807882c0620a9522a1250b2dadcf8fbeca3817b46fedab2a6",
+      "equalsBaseline": true
+    },
+    {
+      "path": "public/textures/kit/factory/pallet-card.webp",
+      "sha256": "aaa314e1740efbab36788a9cbb8a5ade6ea817e2f227e1a976639ed342f0529d",
+      "equalsBaseline": true
+    },
+    {
+      "path": "public/textures/kit/factory/barrels-card.webp",
+      "sha256": "aedc4abe59b48a0e6a2aeb00170d56cfb01e05f378a2df3c0418a83384259d86",
+      "equalsBaseline": true
+    }
+  ]
+}

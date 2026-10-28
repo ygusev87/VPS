@@ -1,0 +1,123 @@
+{
+  "plane": "existing cards() normal normalize(0,1,.78), yaw0",
+  "pixelCoordinates": "top-left origin, full delivered canvas; support-line center, not crop bounds",
+  "anchorMeaning": "middle of front support line: between the two rack feet, central pallet foot, between front drum contact curves",
+  "formula": {
+    "fullCanvasWidth": "visibleWidth * imageWidth / alpha115BboxWidth",
+    "geometryTranslateX": ".5 - anchorX/imageWidth",
+    "geometryTranslateY": "(anchorY/imageHeight - 1) * imageHeight/imageWidth",
+    "application": "after cards(spots with fullCanvasWidth, [texture]) translate its unit geometry by these offsets before first render. Instance x/z stay original, y=0. Batch same kind together. Never crop/resize canvas to fit."
+  },
+  "fallback": "leave old card/old standees when new texture unavailable, no simultaneous old and new",
+  "shadow": {
+    "asset": "farm/blob-shadow",
+    "function": "patches",
+    "spot": "x + visibleWidth*.08, z - referenceDepth*visibleWidth/referenceWidth*.25",
+    "size": "visibleWidth*.55",
+    "y": 0.009,
+    "renderOrder": 3,
+    "note": "one instanced group per type; replaces old large standees shadow, does not stack with it. Sprite soft alpha shadow mostly discarded by alphaTest .45."
+  },
+  "assets": [
+    {
+      "kind": "rack",
+      "file": "public/textures/kit/factory/factory-rack-painted-a.webp",
+      "kitPiece": "factory-rack-painted",
+      "replacesPiece": "rack-steel-card",
+      "imageSize": [
+        1024,
+        768
+      ],
+      "anchorPx": [
+        512.5,
+        604
+      ],
+      "anchorUV": [
+        0.50048828125,
+        0.7864583333333334
+      ],
+      "visibleWidth": 5.5,
+      "referenceFloorDepth": 1.4,
+      "fullCanvasWidthAtReference": 6.481012658227848,
+      "fullCanvasHeightAtReference": 4.860759493670886,
+      "unitGeometryTranslate": [
+        -0.00048828125,
+        -0.16015624999999997,
+        0
+      ],
+      "places": "existing LAYOUT6 racks (backwall only)",
+      "sizesInFixture": [
+        5.5
+      ]
+    },
+    {
+      "kind": "pallet",
+      "file": "public/textures/kit/factory/factory-pallet-painted-a.webp",
+      "kitPiece": "factory-pallet-painted",
+      "replacesPiece": "pallet-card",
+      "imageSize": [
+        768,
+        576
+      ],
+      "anchorPx": [
+        384.5,
+        519
+      ],
+      "anchorUV": [
+        0.5006510416666666,
+        0.9010416666666666
+      ],
+      "visibleWidth": 2.4,
+      "referenceFloorDepth": 1.7,
+      "fullCanvasWidthAtReference": 3.7693251533742327,
+      "fullCanvasHeightAtReference": 2.8269938650306745,
+      "unitGeometryTranslate": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "places": "existing LAYOUT6 goods/bays/pallets",
+      "sizesInFixture": [
+        1.92,
+        2.16,
+        2.2,
+        2.4,
+        2.5,
+        2.6,
+        2.64
+      ]
+    },
+    {
+      "kind": "barrels",
+      "file": "public/textures/kit/factory/factory-barrels-painted-a.webp",
+      "kitPiece": "factory-barrels-painted",
+      "replacesPiece": "barrels-card",
+      "imageSize": [
+        768,
+        576
+      ],
+      "anchorPx": [
+        384,
+        526
+      ],
+      "anchorUV": [
+        0.5,
+        0.9131944444444444
+      ],
+      "visibleWidth": 2.6,
+      "referenceFloorDepth": 2.3,
+      "fullCanvasWidthAtReference": 4.6654205607476635,
+      "fullCanvasHeightAtReference": 3.4990654205607474,
+      "unitGeometryTranslate": [
+        0.0,
+        -0.06510416666666669,
+        0
+      ],
+      "places": "existing LAYOUT6 bays/barrels",
+      "sizesInFixture": [
+        2,
+        2.6
+      ]
+    }
+  ]
+}

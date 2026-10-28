@@ -1,0 +1,31 @@
+{
+  "source": "Claude m0592 read1222, b14f88a",
+  "frames": [
+    {
+      "file": "lever-fwd.png",
+      "sha256": "57c3c24e51d3874b2cec7d52c2f1650699df9b27f437edff5939e62106ad4568",
+      "size": [
+        1024,
+        768
+      ]
+    },
+    {
+      "file": "lathe-1.png",
+      "sha256": "e0b3b1bfe7869a634a1dccf25f297f11c8ac13bc8c482a47b14e10df62e655db",
+      "size": [
+        1024,
+        768
+      ]
+    },
+    {
+      "file": "grinder-6.png",
+      "sha256": "10bd1c8319232a0633f8d1bb60df6b39d604418bf0698ea9850fe347b9b75cb6",
+      "size": [
+        1024,
+        768
+      ]
+    }
+  ],
+  "result": "Original 1024x768 static frames and diff visually reviewed, no new static defect; dynamic green opacity .6 accepted.",
+  "limits": "Mouse taps and 11/11 are Claude report, not repeated by main. Needle motion/electrical state and 390 runtime not independently proven by these frames."
+}

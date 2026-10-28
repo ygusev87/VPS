@@ -1,0 +1,1388 @@
+{
+  "instances": [
+    {
+      "kind": "rack",
+      "x": -28.350000381469727,
+      "z": -31.59000015258789,
+      "size": 5.5,
+      "canvasWidth": 6.481012658227848,
+      "canvasHeight": 4.860759493670886,
+      "geometryAnchorOffset": [
+        -0.00048828125,
+        -0.16015624999999997,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        -28.350000381469727,
+        -31.59000015258789
+      ],
+      "anchorWorld": [
+        -28.350000381469727,
+        0,
+        -31.59000015258789
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "rack",
+      "x": 4.050000190734863,
+      "z": -31.59000015258789,
+      "size": 5.5,
+      "canvasWidth": 6.481012658227848,
+      "canvasHeight": 4.860759493670886,
+      "geometryAnchorOffset": [
+        -0.00048828125,
+        -0.16015624999999997,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        4.050000190734863,
+        -31.59000015258789
+      ],
+      "anchorWorld": [
+        4.050000190734863,
+        0,
+        -31.59000015258789
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "rack",
+      "x": 17.549999237060547,
+      "z": -31.59000015258789,
+      "size": 5.5,
+      "canvasWidth": 6.481012658227848,
+      "canvasHeight": 4.860759493670886,
+      "geometryAnchorOffset": [
+        -0.00048828125,
+        -0.16015624999999997,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        17.549999237060547,
+        -31.59000015258789
+      ],
+      "anchorWorld": [
+        17.549999237060547,
+        0,
+        -31.59000015258789
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "pallet",
+      "x": -48.599998474121094,
+      "z": -29.700000762939453,
+      "size": 2.4000000953674316,
+      "canvasWidth": 3.7693253031537575,
+      "canvasHeight": 2.826993977365318,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        -48.599998474121094,
+        -29.700000762939453
+      ],
+      "anchorWorld": [
+        -48.599998474121094,
+        -3.414112318932833e-17,
+        -29.700000762939453
+      ],
+      "anchorError": 3.414112318932833e-17
+    },
+    {
+      "kind": "pallet",
+      "x": -45.900001525878906,
+      "z": -29.700000762939453,
+      "size": 1.9199999570846558,
+      "canvasWidth": 3.0154600552986004,
+      "canvasHeight": 2.2615950414739503,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        -45.900001525878906,
+        -29.700000762939453
+      ],
+      "anchorWorld": [
+        -45.900001525878906,
+        0,
+        -29.700000762939453
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "pallet",
+      "x": 48.599998474121094,
+      "z": -29.700000762939453,
+      "size": 2.640000104904175,
+      "canvasWidth": 4.146257833469133,
+      "canvasHeight": 3.10969337510185,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        48.599998474121094,
+        -29.700000762939453
+      ],
+      "anchorWorld": [
+        48.599998474121094,
+        0,
+        -29.700000762939453
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "pallet",
+      "x": 45.900001525878906,
+      "z": -28.350000381469727,
+      "size": 2.1600000858306885,
+      "canvasWidth": 3.392392772838382,
+      "canvasHeight": 2.544294579628786,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        45.900001525878906,
+        -28.350000381469727
+      ],
+      "anchorWorld": [
+        45.900001525878906,
+        -3.414112318932833e-17,
+        -28.350000381469727
+      ],
+      "anchorError": 3.414112318932833e-17
+    },
+    {
+      "kind": "pallet",
+      "x": 49.95000076293945,
+      "z": 29.700000762939453,
+      "size": 2.4000000953674316,
+      "canvasWidth": 3.7693253031537575,
+      "canvasHeight": 2.826993977365318,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        49.95000076293945,
+        29.700000762939453
+      ],
+      "anchorWorld": [
+        49.95000076293945,
+        -3.414112318932833e-17,
+        29.700000762939453
+      ],
+      "anchorError": 3.414112318932833e-17
+    },
+    {
+      "kind": "pallet",
+      "x": -5.400000095367432,
+      "z": 33.75,
+      "size": 2.1600000858306885,
+      "canvasWidth": 3.392392772838382,
+      "canvasHeight": 2.544294579628786,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        -5.400000095367432,
+        33.75
+      ],
+      "anchorWorld": [
+        -5.400000095367432,
+        -3.414112318932833e-17,
+        33.75
+      ],
+      "anchorError": 3.414112318932833e-17
+    },
+    {
+      "kind": "pallet",
+      "x": 35.099998474121094,
+      "z": 33.75,
+      "size": 2.4000000953674316,
+      "canvasWidth": 3.7693253031537575,
+      "canvasHeight": 2.826993977365318,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        35.099998474121094,
+        33.75
+      ],
+      "anchorWorld": [
+        35.099998474121094,
+        -3.414112318932833e-17,
+        33.75
+      ],
+      "anchorError": 3.414112318932833e-17
+    },
+    {
+      "kind": "pallet",
+      "x": -21,
+      "z": 7.260000228881836,
+      "size": 2.200000047683716,
+      "canvasWidth": 3.455214798816143,
+      "canvasHeight": 2.5914110991121073,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        -21,
+        7.260000228881836
+      ],
+      "anchorWorld": [
+        -21,
+        0,
+        7.260000228881836
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "pallet",
+      "x": 30.975000381469727,
+      "z": 7.260000228881836,
+      "size": 2.200000047683716,
+      "canvasWidth": 3.455214798816143,
+      "canvasHeight": 2.5914110991121073,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        30.975000381469727,
+        7.260000228881836
+      ],
+      "anchorWorld": [
+        30.975000381469727,
+        0,
+        7.260000228881836
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "pallet",
+      "x": -23.200000762939453,
+      "z": 7.760000228881836,
+      "size": 2.5,
+      "canvasWidth": 3.9263803680981595,
+      "canvasHeight": 2.94478527607362,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        -23.200000762939453,
+        7.760000228881836
+      ],
+      "anchorWorld": [
+        -23.200000762939453,
+        3.414112318932833e-17,
+        7.760000228881836
+      ],
+      "anchorError": 3.414112318932833e-17
+    },
+    {
+      "kind": "pallet",
+      "x": 28.774999618530273,
+      "z": 7.760000228881836,
+      "size": 2.5,
+      "canvasWidth": 3.9263803680981595,
+      "canvasHeight": 2.94478527607362,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        28.774999618530273,
+        7.760000228881836
+      ],
+      "anchorWorld": [
+        28.774999618530273,
+        3.414112318932833e-17,
+        7.760000228881836
+      ],
+      "anchorError": 3.414112318932833e-17
+    },
+    {
+      "kind": "pallet",
+      "x": 48.599998474121094,
+      "z": -18.899999618530273,
+      "size": 2.5999999046325684,
+      "canvasWidth": 4.0834354330425615,
+      "canvasHeight": 3.062576574781921,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        48.599998474121094,
+        -18.899999618530273
+      ],
+      "anchorWorld": [
+        48.599998474121094,
+        0,
+        -18.899999618530273
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "pallet",
+      "x": 51.56999969482422,
+      "z": -18.899999618530273,
+      "size": 2.5999999046325684,
+      "canvasWidth": 4.0834354330425615,
+      "canvasHeight": 3.062576574781921,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        51.56999969482422,
+        -18.899999618530273
+      ],
+      "anchorWorld": [
+        51.56999969482422,
+        0,
+        -18.899999618530273
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "pallet",
+      "x": 48.599998474121094,
+      "z": -14.175000190734863,
+      "size": 2.5999999046325684,
+      "canvasWidth": 4.0834354330425615,
+      "canvasHeight": 3.062576574781921,
+      "geometryAnchorOffset": [
+        -0.0006510416666666297,
+        -0.07421875000000003,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        48.599998474121094,
+        -14.175000190734863
+      ],
+      "anchorWorld": [
+        48.599998474121094,
+        0,
+        -14.175000190734863
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "barrels",
+      "x": -19.299999237060547,
+      "z": 8.0600004196167,
+      "size": 2,
+      "canvasWidth": 3.588785046728972,
+      "canvasHeight": 2.691588785046729,
+      "geometryAnchorOffset": [
+        0,
+        -0.06510416666666669,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        -19.299999237060547,
+        8.0600004196167
+      ],
+      "anchorWorld": [
+        -19.299999237060547,
+        0,
+        8.0600004196167
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "barrels",
+      "x": 32.67499923706055,
+      "z": 8.0600004196167,
+      "size": 2,
+      "canvasWidth": 3.588785046728972,
+      "canvasHeight": 2.691588785046729,
+      "geometryAnchorOffset": [
+        0,
+        -0.06510416666666669,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        32.67499923706055,
+        8.0600004196167
+      ],
+      "anchorWorld": [
+        32.67499923706055,
+        0,
+        8.0600004196167
+      ],
+      "anchorError": 0
+    },
+    {
+      "kind": "barrels",
+      "x": 51.29999923706055,
+      "z": 10.800000190734863,
+      "size": 2.5999999046325684,
+      "canvasWidth": 4.665420389621057,
+      "canvasHeight": 3.4990652922157928,
+      "geometryAnchorOffset": [
+        0,
+        -0.06510416666666669,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        51.29999923706055,
+        10.800000190734863
+      ],
+      "anchorWorld": [
+        51.29999923706055,
+        -3.414112318932833e-17,
+        10.800000190734863
+      ],
+      "anchorError": 3.414112318932833e-17
+    },
+    {
+      "kind": "barrels",
+      "x": -51.29999923706055,
+      "z": 33.75,
+      "size": 2.5999999046325684,
+      "canvasWidth": 4.665420389621057,
+      "canvasHeight": 3.4990652922157928,
+      "geometryAnchorOffset": [
+        0,
+        -0.06510416666666669,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        -51.29999923706055,
+        33.75
+      ],
+      "anchorWorld": [
+        -51.29999923706055,
+        -3.414112318932833e-17,
+        33.75
+      ],
+      "anchorError": 3.414112318932833e-17
+    },
+    {
+      "kind": "barrels",
+      "x": 4.050000190734863,
+      "z": 33.75,
+      "size": 2.5999999046325684,
+      "canvasWidth": 4.665420389621057,
+      "canvasHeight": 3.4990652922157928,
+      "geometryAnchorOffset": [
+        0,
+        -0.06510416666666669,
+        0
+      ],
+      "groupY": 0,
+      "cardSpot": [
+        4.050000190734863,
+        33.75
+      ],
+      "anchorWorld": [
+        4.050000190734863,
+        -3.414112318932833e-17,
+        33.75
+      ],
+      "anchorError": 3.414112318932833e-17
+    }
+  ],
+  "states": [
+    {
+      "loaded": true,
+      "view": "rack",
+      "version": "old",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 93.06818243635439,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "rack",
+        "x": -28.350000381469727,
+        "z": -31.59000015258789,
+        "size": 5.5,
+        "canvasWidth": 6.481012658227848,
+        "canvasHeight": 4.860759493670886,
+        "geometryAnchorOffset": [
+          -0.00048828125,
+          -0.16015624999999997,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -28.350000381469727,
+          -31.59000015258789
+        ],
+        "anchorWorld": [
+          -28.350000381469727,
+          0,
+          -31.59000015258789
+        ],
+        "anchorError": 0
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-rack-old-1024.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "rack",
+      "version": "new",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 93.06818243635439,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "rack",
+        "x": -28.350000381469727,
+        "z": -31.59000015258789,
+        "size": 5.5,
+        "canvasWidth": 6.481012658227848,
+        "canvasHeight": 4.860759493670886,
+        "geometryAnchorOffset": [
+          -0.00048828125,
+          -0.16015624999999997,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -28.350000381469727,
+          -31.59000015258789
+        ],
+        "anchorWorld": [
+          -28.350000381469727,
+          0,
+          -31.59000015258789
+        ],
+        "anchorError": 0
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-rack-new-1024.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "pallet",
+      "version": "old",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 93.39454888674118,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "pallet",
+        "x": -48.599998474121094,
+        "z": -29.700000762939453,
+        "size": 2.4000000953674316,
+        "canvasWidth": 3.7693253031537575,
+        "canvasHeight": 2.826993977365318,
+        "geometryAnchorOffset": [
+          -0.0006510416666666297,
+          -0.07421875000000003,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -48.599998474121094,
+          -29.700000762939453
+        ],
+        "anchorWorld": [
+          -48.599998474121094,
+          -3.414112318932833e-17,
+          -29.700000762939453
+        ],
+        "anchorError": 3.414112318932833e-17
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-pallet-old-1024.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "pallet",
+      "version": "new",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 93.39454888674118,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "pallet",
+        "x": -48.599998474121094,
+        "z": -29.700000762939453,
+        "size": 2.4000000953674316,
+        "canvasWidth": 3.7693253031537575,
+        "canvasHeight": 2.826993977365318,
+        "geometryAnchorOffset": [
+          -0.0006510416666666297,
+          -0.07421875000000003,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -48.599998474121094,
+          -29.700000762939453
+        ],
+        "anchorWorld": [
+          -48.599998474121094,
+          -3.414112318932833e-17,
+          -29.700000762939453
+        ],
+        "anchorError": 3.414112318932833e-17
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-pallet-new-1024.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "barrels",
+      "version": "old",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 93.47285426517021,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "barrels",
+        "x": -19.299999237060547,
+        "z": 8.0600004196167,
+        "size": 2,
+        "canvasWidth": 3.588785046728972,
+        "canvasHeight": 2.691588785046729,
+        "geometryAnchorOffset": [
+          0,
+          -0.06510416666666669,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -19.299999237060547,
+          8.0600004196167
+        ],
+        "anchorWorld": [
+          -19.299999237060547,
+          0,
+          8.0600004196167
+        ],
+        "anchorError": 0
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-barrels-old-1024.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "barrels",
+      "version": "new",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 93.47285426517021,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "barrels",
+        "x": -19.299999237060547,
+        "z": 8.0600004196167,
+        "size": 2,
+        "canvasWidth": 3.588785046728972,
+        "canvasHeight": 2.691588785046729,
+        "geometryAnchorOffset": [
+          0,
+          -0.06510416666666669,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -19.299999237060547,
+          8.0600004196167
+        ],
+        "anchorWorld": [
+          -19.299999237060547,
+          0,
+          8.0600004196167
+        ],
+        "anchorError": 0
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-barrels-new-1024.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "rack",
+      "version": "old",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 39.25595858236153,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "rack",
+        "x": -28.350000381469727,
+        "z": -31.59000015258789,
+        "size": 5.5,
+        "canvasWidth": 6.481012658227848,
+        "canvasHeight": 4.860759493670886,
+        "geometryAnchorOffset": [
+          -0.00048828125,
+          -0.16015624999999997,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -28.350000381469727,
+          -31.59000015258789
+        ],
+        "anchorWorld": [
+          -28.350000381469727,
+          0,
+          -31.59000015258789
+        ],
+        "anchorError": 0
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-rack-old-390.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "rack",
+      "version": "new",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 39.25595858236153,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "rack",
+        "x": -28.350000381469727,
+        "z": -31.59000015258789,
+        "size": 5.5,
+        "canvasWidth": 6.481012658227848,
+        "canvasHeight": 4.860759493670886,
+        "geometryAnchorOffset": [
+          -0.00048828125,
+          -0.16015624999999997,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -28.350000381469727,
+          -31.59000015258789
+        ],
+        "anchorWorld": [
+          -28.350000381469727,
+          0,
+          -31.59000015258789
+        ],
+        "anchorError": 0
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-rack-new-390.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "pallet",
+      "version": "old",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 63.59133540400575,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "pallet",
+        "x": -48.599998474121094,
+        "z": -29.700000762939453,
+        "size": 2.4000000953674316,
+        "canvasWidth": 3.7693253031537575,
+        "canvasHeight": 2.826993977365318,
+        "geometryAnchorOffset": [
+          -0.0006510416666666297,
+          -0.07421875000000003,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -48.599998474121094,
+          -29.700000762939453
+        ],
+        "anchorWorld": [
+          -48.599998474121094,
+          -3.414112318932833e-17,
+          -29.700000762939453
+        ],
+        "anchorError": 3.414112318932833e-17
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-pallet-old-390.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "pallet",
+      "version": "new",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 63.59133540400575,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "pallet",
+        "x": -48.599998474121094,
+        "z": -29.700000762939453,
+        "size": 2.4000000953674316,
+        "canvasWidth": 3.7693253031537575,
+        "canvasHeight": 2.826993977365318,
+        "geometryAnchorOffset": [
+          -0.0006510416666666297,
+          -0.07421875000000003,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -48.599998474121094,
+          -29.700000762939453
+        ],
+        "anchorWorld": [
+          -48.599998474121094,
+          -3.414112318932833e-17,
+          -29.700000762939453
+        ],
+        "anchorError": 3.414112318932833e-17
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-pallet-new-390.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "barrels",
+      "version": "old",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 69.12020166079765,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "barrels",
+        "x": -19.299999237060547,
+        "z": 8.0600004196167,
+        "size": 2,
+        "canvasWidth": 3.588785046728972,
+        "canvasHeight": 2.691588785046729,
+        "geometryAnchorOffset": [
+          0,
+          -0.06510416666666669,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -19.299999237060547,
+          8.0600004196167
+        ],
+        "anchorWorld": [
+          -19.299999237060547,
+          0,
+          8.0600004196167
+        ],
+        "anchorError": 0
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-barrels-old-390.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "barrels",
+      "version": "new",
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 69.12020166079765,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "barrels",
+        "x": -19.299999237060547,
+        "z": 8.0600004196167,
+        "size": 2,
+        "canvasWidth": 3.588785046728972,
+        "canvasHeight": 2.691588785046729,
+        "geometryAnchorOffset": [
+          0,
+          -0.06510416666666669,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -19.299999237060547,
+          8.0600004196167
+        ],
+        "anchorWorld": [
+          -19.299999237060547,
+          0,
+          8.0600004196167
+        ],
+        "anchorError": 0
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-barrels-new-390.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "whole",
+      "version": "old",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 6.66342304807074,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-whole-old-1024.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "whole",
+      "version": "new",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 6.66342304807074,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": false,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-whole-new-1024.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "rack",
+      "version": "new",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 93.06818243635439,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": true,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "rack",
+        "x": -28.350000381469727,
+        "z": -31.59000015258789,
+        "size": 5.5,
+        "canvasWidth": 6.481012658227848,
+        "canvasHeight": 4.860759493670886,
+        "geometryAnchorOffset": [
+          -0.00048828125,
+          -0.16015624999999997,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -28.350000381469727,
+          -31.59000015258789
+        ],
+        "anchorWorld": [
+          -28.350000381469727,
+          0,
+          -31.59000015258789
+        ],
+        "anchorError": 0
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-rack-anchor-1024.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "pallet",
+      "version": "new",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 93.39454888674118,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": true,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "pallet",
+        "x": -48.599998474121094,
+        "z": -29.700000762939453,
+        "size": 2.4000000953674316,
+        "canvasWidth": 3.7693253031537575,
+        "canvasHeight": 2.826993977365318,
+        "geometryAnchorOffset": [
+          -0.0006510416666666297,
+          -0.07421875000000003,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -48.599998474121094,
+          -29.700000762939453
+        ],
+        "anchorWorld": [
+          -48.599998474121094,
+          -3.414112318932833e-17,
+          -29.700000762939453
+        ],
+        "anchorError": 3.414112318932833e-17
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-pallet-anchor-1024.jpg"
+    },
+    {
+      "loaded": true,
+      "view": "barrels",
+      "version": "new",
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "quality": 2,
+      "pixelRatio": 1,
+      "ppu": 93.47285426517021,
+      "allModelsLoaded": true,
+      "missingModels": [],
+      "anchorsVisible": true,
+      "cardBatches": [
+        {
+          "instances": 3
+        },
+        {
+          "instances": 14
+        },
+        {
+          "instances": 5
+        }
+      ],
+      "selected": {
+        "kind": "barrels",
+        "x": -19.299999237060547,
+        "z": 8.0600004196167,
+        "size": 2,
+        "canvasWidth": 3.588785046728972,
+        "canvasHeight": 2.691588785046729,
+        "geometryAnchorOffset": [
+          0,
+          -0.06510416666666669,
+          0
+        ],
+        "groupY": 0,
+        "cardSpot": [
+          -19.299999237060547,
+          8.0600004196167
+        ],
+        "anchorWorld": [
+          -19.299999237060547,
+          0,
+          8.0600004196167
+        ],
+        "anchorError": 0
+      },
+      "sourceMode": "actual FactoryMap with only fixture substitutions; no gameplay Input or electrical run",
+      "file": "stock-barrels-anchor-1024.jpg"
+    }
+  ],
+  "logs": []
+}
