@@ -707,6 +707,7 @@ export abstract class StoryMap {
     bubble.scale.set(1.7, 1.5, 1);
     bubble.position.set(group.position.x, height + 1.1, group.position.z);
     bubble.renderOrder = 12;
+    bubble.userData.critter = name;
     this.scenery.add(bubble);
     const hearts: THREE.Sprite[] = [];
     for (let i = 0; i < 3; i++) {
@@ -796,6 +797,8 @@ export abstract class StoryMap {
     this.scenery.traverse((o) => {
       if ((o as THREE.Mesh).isMesh && o.userData.critter) meshes.push(o);
     });
+    // The speech bubble is the character too: a child taps the picture it is asking with.
+    for (const c of this.critters.values()) if ((c.bubble.material as THREE.SpriteMaterial).opacity > 0.5) meshes.push(c.bubble);
     const hit = this.stage.raycast(x, y, meshes)[0];
     if (!hit) return false;
     if (hit.object.userData.life) return this.life.tap(hit.object);

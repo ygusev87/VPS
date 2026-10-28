@@ -956,9 +956,9 @@ sfx.onBand = (who, note) => {
 let bandSong = 0;
 let bandTipSaid = false;
 let bandAlone = 0;
-/** Once one instrument plays by itself for a while, suggest joining more. */
+/** Once one instrument plays by itself for a while, suggest joining more (only where the drawers have more: not on a map's lullaby). */
 function watchBand(dt: number, players: number) {
-  bandAlone = players === 1 && !troubled() ? bandAlone + dt : 0;
+  bandAlone = players === 1 && !troubled() && !map && (level === FREE_PLAY || !!level.sandbox) ? bandAlone + dt : 0;
   if (bandAlone > 8 && !bandTipSaid) {
     bandTipSaid = true;
     voice.say('bandTip', 0);

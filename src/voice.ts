@@ -590,6 +590,8 @@ export class Voice {
     this.last = { id, at: now };
     this.saidAt = now;
     this.stop();
+    // Anything said or stopped after this (a newer hint, another map) cancels what is still to come of these words.
+    const turn = this.turn;
     const take = this.pickTake(id);
     const clip = this.clips.get(take);
     // Said now: the most recently used, the last to be let go.
@@ -599,7 +601,7 @@ export class Voice {
       const asked = this.last;
       void this.decode(take).then((c) => {
         // Something else was said meanwhile, or the sound was turned off.
-        if (this.last !== asked || !this.enabled) return;
+        if (this.last !== asked || this.turn !== turn || !this.enabled) return;
         if (c) {
           this.last = null;
           // The take that was chosen, now decoded: that one, not a new pick.
@@ -617,7 +619,7 @@ export class Voice {
       this.playing = src;
       this.endsAt = now + clip.duration * 1000;
       // Its sound right after it, unless other words cut it short (stop() also ends a clip: then it is no longer `playing`).
-      if (this.sounds.get(id)?.cue) src.onended = () => this.playing === src && this.enabled && void this.cry(id);
+      if (this.sounds.get(id)?.cue) src.onended = () => this.playing === src && this.enabled && void this.cry(id, turn);
       return;
     }
     this.speak(id);
@@ -655,9 +657,11 @@ export class Voice {
   /**
    * An animal's sound on a tap: one at a time, not more often than every 1.5 s,
    * never the same take twice running; over any words being said (it is quiet
-   * and short, and a tap that made no sound would feel broken).
+   * and short, and a tap that made no sound would feel broken). The sound
+   * that follows words (`turn`) is dropped if anything was said or stopped
+   * while it was decoding.
    */
-  private async cry(id: string): Promise<number | null> {
+  private async cry(id: string, turn?: number): Promise<number | null> {
     const now = performance.now();
     if (now - this.cryAt < 1500) return null;
     this.cryAt = now;
@@ -667,7 +671,7 @@ export class Voice {
     this.lastTake.set(id, take);
     const clip = await this.decode(take);
     // Too late to belong to the tap any more.
-    if (!clip || !this.enabled || performance.now() - now > 500) return null;
+    if (!clip || !this.enabled || performance.now() - now > 500 || (turn !== undefined && this.turn !== turn)) return null;
     this.play(take, clip);
     return clip.duration;
   }

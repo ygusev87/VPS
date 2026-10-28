@@ -154,7 +154,8 @@ const GOATS = v(-14.5, 2);
 // The bees south-west: the pump's ring is placed so it pours into the flower bed.
 const BED = v(-18.1, 16.8);
 const HIVE = v(-16, 21.5);
-const BED_PUMP = v(BED.x - 1.9, BED.z + 0.2);
+// The pump's plate (1.8 wide) stands clear of the bed (2.6 wide); its spout still pours over the bed's edge.
+const BED_PUMP = v(BED.x - 2.35, BED.z + 0.2);
 // The horses' paddock east.
 const HORSE = v(42.5, 9.5);
 const HORSE_FAN = v(39, 13);
@@ -345,7 +346,8 @@ export class FarmMap extends StoryMap {
       const rnd = () => ((seed = (seed * 16807) % 2147483647) - 1) / 2147483646;
       const spots: { x: number; z: number; size: number }[] = [];
       // Rows running north-south inside the tractor's round, a little furrow between them.
-      for (let x = f.x0 + 1.6; x < f.x1 - 1.3; x += 1.05)
+      const r = tractorRound();
+      for (let x = r.x0 + 1.2; x < r.x1 - 1.2; x += 1.05)
         for (let z = f.z0 + 1.4; z < f.z1 - 0.9; z += 0.42) spots.push({ x: x + (rnd() - 0.5) * 0.08, z: z + (rnd() - 0.5) * 0.08, size: 0.8 + rnd() * 0.15 });
       // Back rows first, so the nearer cards cover the farther ones.
       spots.sort((a, b) => a.z - b.z);
@@ -357,14 +359,19 @@ export class FarmMap extends StoryMap {
   private buildPlaces() {
     const still = new THREE.Group();
     // Trough in the pig pen: a wooden box with water that rises.
-    const troughBox = mesh(new THREE.BoxGeometry(2, 0.45, 0.8), mat('#9a6a3e', 0.7));
-    troughBox.position.set(TROUGH.x, 0.22, TROUGH.z);
-    const inner = mesh(new THREE.BoxGeometry(1.8, 0.4, 0.6), mat('#5a3a22', 0.8));
-    inner.position.set(TROUGH.x, 0.27, TROUGH.z);
-    this.trough = mesh(new THREE.BoxGeometry(1.78, 1, 0.58), new THREE.MeshStandardMaterial({ color: '#4fb3e8', roughness: 0.05, transparent: true, opacity: 0.85 }), false);
-    this.trough.position.set(TROUGH.x, 0.08, TROUGH.z);
+    // Hollow (a dark floor low down, four walls), so the water shows as it rises inside.
+    const wood = mat('#9a6a3e', 0.7);
+    const floor = mesh(new THREE.BoxGeometry(1.9, 0.12, 0.7), mat('#5a3a22', 0.8));
+    floor.position.set(TROUGH.x, 0.06, TROUGH.z);
+    still.add(floor);
+    for (const [w, d, x, z] of [[2, 0.1, 0, 0.35], [2, 0.1, 0, -0.35], [0.1, 0.8, 0.95, 0], [0.1, 0.8, -0.95, 0]]) {
+      const wall = mesh(new THREE.BoxGeometry(w, 0.45, d), wood);
+      wall.position.set(TROUGH.x + x, 0.225, TROUGH.z + z);
+      still.add(wall);
+    }
+    this.trough = mesh(new THREE.BoxGeometry(1.8, 1, 0.6), new THREE.MeshStandardMaterial({ color: '#4fb3e8', roughness: 0.05, transparent: true, opacity: 0.85 }), false);
+    this.trough.position.set(TROUGH.x, 0.12, TROUGH.z);
     this.trough.scale.y = 0.001;
-    still.add(troughBox, inner);
     this.scenery.add(this.trough);
     // Flour sacks by the mill appear one by one while it turns.
     for (let i = 0; i < 3; i++) {
@@ -482,7 +489,14 @@ export class FarmMap extends StoryMap {
     this.critter('beehive', { height: 1.3 }, HIVE, 1.3, 0);
     this.critter('horse', { width: 3.0 }, HORSE, 2.4, 0.2);
     this.critter('puppy', { height: 0.8 }, PUPPY, 0.8, Math.PI);
-    this.critter('nest', { width: 1.3 }, NEST, 0.5, 0);
+    // The eggs lie in the nest: a tapped nest hops with them, not through them.
+    const nest = this.critter('nest', { width: 1.3 }, NEST, 0.5, 0);
+    for (const e of this.eggs) {
+      e.position.x -= NEST.x;
+      e.position.z -= NEST.z;
+      e.traverse((o) => (o.userData.critter = 'nest'));
+      nest.group.add(e);
+    }
     ['chick', 'chick2', 'chick3'].forEach((name, i) => {
       const c = this.critter(name, { height: 0.45 }, v(NEST.x + Math.cos(i * 2.1) * 0.9, NEST.z + Math.sin(i * 2.1) * 0.9), 0.45, i * 2);
       c.group.visible = false;
@@ -596,27 +610,21 @@ export class FarmMap extends StoryMap {
       const shade = kitPieces('farm', 'blob-shadow')[0] ?? null;
       this.scenery.add(standees(wood, oak, shade), standees(firs, pine, shade));
     }
+    // A bush card at a building's side or front stands up into its doorway (the camera looks from the south): none there.
+    const buildings = YARDS.flatMap((name) => {
+      const i = [...drawn].indexOf(name);
+      return i < 0 ? [] : [new THREE.Box3().setFromObject(group.children[i])];
+    });
+    const atDoor = (x: number, z: number) => buildings.some((b) => x > b.min.x - 1.2 && x < b.max.x + 1.2 && z > b.min.z && z < b.max.z + 2.5);
     for (const g of carded) {
       const { card, wide } = CARDS[g.model];
       const tall = g.fit.height ?? (g.fit.width ?? 2) / wide;
-      const items = tall > 4 ? g.items : g.items.filter(([x, z, , s]) => !inTheWay(x, z, 1.6 + (tall * wide * s) / 2));
+      const items = tall > 4 ? g.items : g.items.filter(([x, z, , s]) => !inTheWay(x, z, 1.6 + (tall * wide * s) / 2) && !atDoor(x, z));
       this.scenery.add(standees(items.map(([x, z, , s]) => ({ x, z, size: tall * wide * s })), kitPieces('farm', card), kitPieces('farm', 'blob-shadow')[0] ?? null));
       drawn.add(g.model);
     }
     this.life.setFences(FENCES);
     this.scenery.add(group);
-    // Trodden earth in front of the doors (the kit's yards), under the buildings' fronts.
-    const yard = this.kit ? kitPieces('farm', 'yard-dirt') : [];
-    if (yard.length) {
-      const fronts = YARDS.flatMap((name) => {
-        const i = [...drawn].indexOf(name);
-        if (i < 0) return [];
-        const box = new THREE.Box3().setFromObject(group.children[i]);
-        const w = Math.min(6, (box.max.x - box.min.x) * 0.55);
-        return [{ x: (box.min.x + box.max.x) / 2, z: box.max.z + w * 0.15, size: w }];
-      });
-      this.scenery.add(patches(fronts, yard, 0.007, 1));
-    }
     // Butterflies over the garden and the flowers, fireflies by the pond at night; smoke from the house.
     this.life.addFlutters([v(4, 21), v(-18, 19), v(13, 26), v(-40, 22), v(44, -24), v(-10, 0)], [POND, v(-35, 14)]);
     const house = DECOR.find((g) => (g.model === 'house' || g.model === 'farmhouse') && drawn.has(g.model));
@@ -943,8 +951,10 @@ export class FarmMap extends StoryMap {
     // The trough fills while a pump pours into it.
     const pouring = this.world.parts.some((p) => p instanceof Pump && p.pumping && p.outlet().distanceTo(TROUGH) < 1.6);
     this.troughLevel = Math.min(1, Math.max(0, this.troughLevel + dt * (pouring ? 0.25 : -0.01)));
-    this.trough.scale.y = Math.max(0.001, this.troughLevel * 0.34);
-    this.trough.position.y = 0.08 + this.troughLevel * 0.17;
+    // From the floor (0.12) to just under the rim (0.4).
+    this.trough.visible = this.troughLevel > 0.01;
+    this.trough.scale.y = Math.max(0.001, this.troughLevel * 0.28);
+    this.trough.position.y = 0.12 + this.troughLevel * 0.14;
     // The mill grinds flour while its sails turn.
     const milling = this.world.parts.some((p) => p.kind === 'windmill' && isActive(p) && p.root.position.distanceTo(MILL) < 2.5);
     if (milling) this.millLevel = Math.min(1, this.millLevel + dt * 0.18);
@@ -1159,13 +1169,36 @@ function wheatField() {
  * and the tractor works its border.
  */
 function fieldLoop(a: number): THREE.Vector3 {
-  const f = wheatField();
-  const rx = (f.x1 - f.x0) / 2 - 0.4;
-  const rz = (f.z1 - f.z0) / 2 - 0.4;
+  const f = tractorRound();
   const c = Math.cos(a);
   const s = Math.sin(a);
   const k = 2 / 5;
-  return v((f.x0 + f.x1) / 2 + Math.sign(c) * Math.abs(c) ** k * rx, (f.z0 + f.z1) / 2 + Math.sign(s) * Math.abs(s) ** k * rz);
+  return v((f.x0 + f.x1) / 2 + Math.sign(c) * Math.abs(c) ** k * (f.x1 - f.x0) / 2, (f.z0 + f.z1) / 2 + Math.sign(s) * Math.abs(s) ** k * (f.z1 - f.z0) / 2);
+}
+
+/**
+ * The rectangle the tractor's middle keeps to: just inside the field, and far
+ * enough from the fence round it (half the tractor's length) that it never
+ * drives through the rails.
+ */
+function tractorRound() {
+  const f = wheatField();
+  const c = v((f.x0 + f.x1) / 2, (f.z0 + f.z1) / 2);
+  let [w, e, n, s] = [-Infinity, Infinity, -Infinity, Infinity];
+  for (const line of FENCES)
+    for (let i = 1; i < line.length; i++) {
+      const [[ax, az], [bx, bz]] = [line[i - 1], line[i]];
+      if (Math.abs(ax - bx) < 0.01 && c.z > Math.min(az, bz) && c.z < Math.max(az, bz)) {
+        if (ax > c.x) e = Math.min(e, ax);
+        else w = Math.max(w, ax);
+      }
+      if (Math.abs(az - bz) < 0.01 && c.x > Math.min(ax, bx) && c.x < Math.max(ax, bx)) {
+        if (az > c.z) s = Math.min(s, az);
+        else n = Math.max(n, az);
+      }
+    }
+  const room = 2.1;
+  return { x0: Math.max(f.x0 + 0.4, w + room), x1: Math.min(f.x1 - 0.4, e - room), z0: Math.max(f.z0 + 0.4, n + room), z1: Math.min(f.z1 - 0.4, s - room) };
 }
 
 /** Where the paths, the fields, the mud and the meadows lie (from the dressing; painted by src/ground.ts). */
