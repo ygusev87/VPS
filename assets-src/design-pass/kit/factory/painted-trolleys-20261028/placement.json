@@ -1,0 +1,75 @@
+{
+  "definitions": {
+    "east": {
+      "model": "factory-box-trolley",
+      "fit": {
+        "depth": 1.6
+      },
+      "yaw": 0.3,
+      "piece": "factory-trolley-east-painted",
+      "image": [
+        768,
+        576
+      ],
+      "span": 309,
+      "at": [
+        384,
+        528
+      ],
+      "size": 1.4233069544023904,
+      "depth": 1.8619178599774484,
+      "deep": 1.3081632561538485,
+      "frontOffsetZ": 0.9309589299887242,
+      "fullWidth": 3.537539614825359,
+      "unitGeometryTranslate": [
+        0,
+        -0.0625,
+        0
+      ],
+      "spots": [
+        [
+          13.5,
+          7.29
+        ]
+      ],
+      "scaleBasis": "Full canvas world width1024/orthographic guide ppu; alpha span reports visible width. No fit to conservative rotated Box3.",
+      "originalActualVertexWidth": 1.3973024307535844
+    },
+    "west": {
+      "model": "factory-box-trolley",
+      "fit": {
+        "depth": 1.6
+      },
+      "yaw": -0.25,
+      "piece": "factory-trolley-west-painted",
+      "image": [
+        768,
+        576
+      ],
+      "span": 305,
+      "at": [
+        384,
+        528
+      ],
+      "size": 1.3885693360786842,
+      "depth": 1.8293589034260047,
+      "deep": 1.317441524808627,
+      "frontOffsetZ": 0.9146794517130024,
+      "fullWidth": 3.4964631151096044,
+      "unitGeometryTranslate": [
+        0,
+        -0.0625,
+        0
+      ],
+      "spots": [
+        [
+          -16.2,
+          7.56
+        ]
+      ],
+      "scaleBasis": "Full canvas world width1024/orthographic guide ppu; alpha span reports visible width. No fit to conservative rotated Box3.",
+      "originalActualVertexWidth": 1.358298590125969
+    }
+  },
+  "anchorMeaning": "Projected virtual ground point x=0,z=conservativeBox.maxZ. This is intentionally below the drawn wheels and is not a wheel-contact pixel. Image center follows the source projection; no crop."
+}

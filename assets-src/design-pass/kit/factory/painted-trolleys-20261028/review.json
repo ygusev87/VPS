@@ -1,0 +1,89 @@
+{
+  "status": "ready-for-Claude-integration",
+  "assetsBytes": 82748,
+  "states": 20,
+  "nativeScreenshots": 20,
+  "viewports": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "render": "Actual FactoryMap/World/Stage/Life,q2,DPR1,public loadModels/loadKit",
+  "consoleWarningsErrors": [],
+  "allModelsLoaded": true,
+  "horizontalOverflow": false,
+  "proxyAudit": {
+    "raysPerState": 121,
+    "states": 20,
+    "firstHitMismatches": 0,
+    "originalMeshUUIDsUnchangedAcrossFirst18SameInstanceStates": true
+  },
+  "maxInheritedAnchorError": 1.5965069143188435e-08,
+  "nativePointerClicks": [
+    {
+      "side": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "xy": [
+        195,
+        510
+      ],
+      "target": "original factory-box-trolley GLB",
+      "accepted": true
+    },
+    {
+      "side": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "xy": [
+        195,
+        510
+      ],
+      "target": "original factory-box-trolley GLB",
+      "accepted": true
+    }
+  ],
+  "life": {
+    "actualMethods": "Life.tap then Life.update",
+    "afterPoint175": {
+      "rootShiftX": 0.1913417161825457,
+      "rootY": 0.12,
+      "rotationZ": -0.03854858822278267
+    },
+    "afterPoint7": "rootShiftX=.5 for both; art inherits holder transform",
+    "afterFurther1Point7": "rootShiftX=0/rootY=0/rotationZ=0",
+    "soundHook": "chime",
+    "note": "Fixed dt states, no continuous motion recording or wheel rotation. Existing static wheels are painted, not animated."
+  },
+  "fallback": "Fresh query fallback=1 gives no new texture to fixture; both original GLB render with original depth/cast. Not networkfailure.",
+  "tests": {
+    "vitest": "88/88 in17files PASS",
+    "typecheck": "PASS",
+    "startedAtBangkok": "2026-10-28 21:58:02",
+    "exitCode": 0
+  },
+  "limitations": [
+    "Not general Input or story11",
+    "No physical iPad/PWA/FPS/VRAM",
+    "No physical wheel/ground collision or rolling model",
+    "Virtual projected front-ground anchor, not an actual wheel contact pixel",
+    "Interpretation of source shape, not exact old perspective contour; visible width about+1.9%/+2.2% versus precise old world vertexX bounds"
+  ],
+  "cleanup": {
+    "vitePort": 5367,
+    "session": 28493,
+    "server": "stopped",
+    "tab": 15,
+    "tabStatus": "closed",
+    "viewport": "reset"
+  }
+}

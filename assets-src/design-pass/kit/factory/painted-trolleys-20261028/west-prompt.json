@@ -1,0 +1,8 @@
+{
+  "tool": "builtin imagegen",
+  "prompt": "Use case: sketch-to-render. Asset type: transparent painted game sprite. Edit this exact geometry-reference screenshot into a detailed hand-painted industrial trolley loaded with three cardboard shipping boxes. Preserve this exact camera angle, full-canvas framing, proportions, orientation, platform shape, yellow rear handle, box arrangement and four black caster wheels. Do not rotate, mirror, straighten or change the view. Keep the three boxes in their existing positions, including the small top box and broad lower boxes. Refine materials: teal enamel steel platform with small worn edges and neat rounded metal corners, warm yellow tubular steel handle, textured kraft cardboard with folded seams and cream packing tape, dark rubber wheels with restrained orange hubs. Handmade illustrated miniature with clear readable edges and subtle brush texture; match a detailed painted factory scene. Lighting from upper left. Keep all four wheels where the reference puts them; naturally hidden wheels stay hidden. Keep the opening under the handle genuinely transparent. Transparent background outside the object, no floor, no cast shadow. No text, shipping labels, logos, arrows, added cargo, people or extra objects. Keep the reference entire 4:3 canvas and margins; do not crop or recenter. Refine materials without changing the silhouette or camera.",
+  "referenced_image_paths": [
+    "west-guide.jpg"
+  ],
+  "transparent_background": true
+}

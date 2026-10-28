@@ -1,0 +1,17 @@
+{
+  "message": "m0606",
+  "readRevision": 1270,
+  "commit": "bfd5192",
+  "inspected": [
+    "cab-west.jpg",
+    "cab-east.jpg",
+    "src/factory.ts diff bfd5192"
+  ],
+  "conclusion": "Static appearance and exact material/placement contract accepted. Thin lamp visibility is acknowledged and explicitly deferred by Claude. No image regeneration.",
+  "notIndependentlyRepeated": [
+    "general Input taps",
+    "11-stage journey",
+    "publication",
+    "iPad/PWA"
+  ]
+}

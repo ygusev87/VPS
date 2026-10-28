@@ -1,0 +1,122 @@
+{
+  "recordedAt": "2026-10-28T14:59:37.656936+00:00",
+  "baselineCommit": "bfd5192",
+  "runtimeAndModel": [
+    {
+      "path": "src/factory.ts",
+      "bytes": 81426,
+      "sha256": "e2445056b88f88d75443cb1bc1588b942bc97c358e468f6c6f3c2ccd62b75f02",
+      "byteEqualTo": "bfd5192"
+    },
+    {
+      "path": "src/life.ts",
+      "bytes": 34084,
+      "sha256": "e8d358ce912847f6411f6859b3ecb916e5240de873ba2b00ab2c24162abf771e",
+      "byteEqualTo": "bfd5192"
+    },
+    {
+      "path": "src/stage.ts",
+      "bytes": 35021,
+      "sha256": "d2e4abf2b80b07e3b49ed98ca60c0813d66e6f63739086fd16972bbbd667c183",
+      "byteEqualTo": "bfd5192"
+    },
+    {
+      "path": "src/kit.ts",
+      "bytes": 27443,
+      "sha256": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770",
+      "byteEqualTo": "bfd5192"
+    },
+    {
+      "path": "src/world.ts",
+      "bytes": 13770,
+      "sha256": "77a456eb771692960e988bef024e0252a4e6d2ec9ebba560837b63745496229e",
+      "byteEqualTo": "bfd5192"
+    },
+    {
+      "path": "src/parts/assets.ts",
+      "bytes": 7944,
+      "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+      "byteEqualTo": "bfd5192"
+    },
+    {
+      "path": "src/parts/workshop.ts",
+      "bytes": 39500,
+      "sha256": "e36e7b697dae9b6710c63a837e617cfd349272f94f7bd6775c3a2c60e9fb778b",
+      "byteEqualTo": "bfd5192"
+    },
+    {
+      "path": "public/models/factory-box-trolley.glb",
+      "bytes": 84968,
+      "sha256": "a389222462a07917bb2d99fb726215e9a323938575bc5674a309f5b3b52213ad",
+      "byteEqualTo": "bfd5192"
+    }
+  ],
+  "newAssets": [
+    {
+      "kind": "west",
+      "size": [
+        768,
+        576
+      ],
+      "bytes": 41102,
+      "sha256": "233b4ebe112b243a3c4078ee50e93095efa381b16e7cda3bfa09de472ee932e2",
+      "sourceSha256": "b63ca13efba79a9111eaa942cf21c2e827eb52eff8987112065c93dc245744fb",
+      "bboxAlpha115": [
+        234,
+        72,
+        539,
+        500
+      ],
+      "borderMaxAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "connectedComponentsAlpha115": [
+        81263
+      ],
+      "sourceSize": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "kind": "east",
+      "size": [
+        768,
+        576
+      ],
+      "bytes": 41646,
+      "sha256": "ee170c3c46e86ef0846aa032d859af5d2cd75f8d90459910b2b3283f2c0f499c",
+      "sourceSha256": "7dc4ed6e1f82b5d5b3b4651537cd131015344b57f83c72ade5d20238595680bb",
+      "bboxAlpha115": [
+        226,
+        65,
+        535,
+        506
+      ],
+      "borderMaxAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "connectedComponentsAlpha115": [
+        78651
+      ],
+      "sourceSize": [
+        1448,
+        1086
+      ]
+    }
+  ],
+  "generation": {
+    "builtinImagegenCalls": 2,
+    "TripoCalls": 0,
+    "paidAPICalls": 0,
+    "accepted": "attempt1 for each side",
+    "postprocessing": "Full-canvas LANCZOS resize to768x576, WebP quality90 alpha_quality100 method6; no crop/painting/mask"
+  },
+  "references": "Actual public model() depth1.6 and yaw+.3/-.25, orthographic VIEW normalize(0,1,.78). Guides retain conservative Box3 framing, but also export precise vertex bounds. Final full card width derives from guide ppu."
+}

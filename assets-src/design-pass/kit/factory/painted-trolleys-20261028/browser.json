@@ -1,0 +1,4314 @@
+{
+  "states": [
+    {
+      "name": "trolley-01-east-new-1024",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 92.48119436949264,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 5,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          13.5,
+          6.038778460639685e-17,
+          8.220958926677703
+        ],
+        "artInheritedTransform": [
+          0.955336489125606,
+          0,
+          0.29552020666133955,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.29552020666133955,
+          0,
+          0.955336489125606,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 3.311020790874864e-09,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "4eb6551d-d4cc-439a-a512-59ca3474c098"
+        ],
+        "restAnchorError": 3.311020790874864e-09,
+        "rootPosition": [
+          13.5,
+          0,
+          7.29
+        ],
+        "rootRotation": [
+          0,
+          0.3,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 13.5,
+        "z": 7.29
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        456.9846718186778
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-02-east-old-1024",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 92.48119436949264,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 5,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          13.5,
+          6.038778460639685e-17,
+          8.220958926677703
+        ],
+        "artInheritedTransform": [
+          0.955336489125606,
+          0,
+          0.29552020666133955,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.29552020666133955,
+          0,
+          0.955336489125606,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 3.311020790874864e-09,
+        "kind": "east",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "4eb6551d-d4cc-439a-a512-59ca3474c098"
+        ],
+        "restAnchorError": 3.311020790874864e-09,
+        "rootPosition": [
+          13.5,
+          0,
+          7.29
+        ],
+        "rootRotation": [
+          0,
+          0.3,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 13.5,
+        "z": 7.29
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        456.9846718186778
+      ],
+      "version": "old",
+      "view": "east",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-03-west-old-1024",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 92.46848441550536,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 6,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -16.2,
+          5.96865869098581e-17,
+          8.474679467678069
+        ],
+        "artInheritedTransform": [
+          0.9689124217106448,
+          0,
+          -0.24740395925452296,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0.24740395925452296,
+          0,
+          0.9689124217106448,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 1.596506749024229e-08,
+        "kind": "west",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+        ],
+        "restAnchorError": 1.596506749024229e-08,
+        "rootPosition": [
+          -16.2,
+          0,
+          7.56
+        ],
+        "rootRotation": [
+          0,
+          -0.25,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -16.2,
+        "z": 7.56
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        456.9816967422276
+      ],
+      "version": "old",
+      "view": "west",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-04-west-new-1024",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 92.46848441550536,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 6,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -16.2,
+          5.96865869098581e-17,
+          8.474679467678069
+        ],
+        "artInheritedTransform": [
+          0.9689124217106448,
+          0,
+          -0.24740395925452296,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0.24740395925452296,
+          0,
+          0.9689124217106448,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 1.596506749024229e-08,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+        ],
+        "restAnchorError": 1.596506749024229e-08,
+        "rootPosition": [
+          -16.2,
+          0,
+          7.56
+        ],
+        "rootRotation": [
+          0,
+          -0.25,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -16.2,
+        "z": 7.56
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        456.9816967422276
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-05-west-new-close",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 186.19924398744377,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 24,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -16.2,
+          5.96865869098581e-17,
+          8.474679467678069
+        ],
+        "artInheritedTransform": [
+          0.9689124217106448,
+          0,
+          -0.24740395925452296,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0.24740395925452296,
+          0,
+          0.9689124217106448,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 1.596506749024229e-08,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+        ],
+        "restAnchorError": 1.596506749024229e-08,
+        "rootPosition": [
+          -16.2,
+          0,
+          7.56
+        ],
+        "rootRotation": [
+          0,
+          -0.25,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -16.2,
+        "z": 7.56
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        479.6472700788366
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 180
+    },
+    {
+      "name": "trolley-06-west-old-close",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 186.19924398744377,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 24,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -16.2,
+          5.96865869098581e-17,
+          8.474679467678069
+        ],
+        "artInheritedTransform": [
+          0.9689124217106448,
+          0,
+          -0.24740395925452296,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0.24740395925452296,
+          0,
+          0.9689124217106448,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 1.596506749024229e-08,
+        "kind": "west",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+        ],
+        "restAnchorError": 1.596506749024229e-08,
+        "rootPosition": [
+          -16.2,
+          0,
+          7.56
+        ],
+        "rootRotation": [
+          0,
+          -0.25,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -16.2,
+        "z": 7.56
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        479.6472700788366
+      ],
+      "version": "old",
+      "view": "west",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 180
+    },
+    {
+      "name": "trolley-07-east-old-close",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 186.2255848135502,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 20,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          13.5,
+          6.038778460639685e-17,
+          8.220958926677703
+        ],
+        "artInheritedTransform": [
+          0.955336489125606,
+          0,
+          0.29552020666133955,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.29552020666133955,
+          0,
+          0.955336489125606,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 3.311020790874864e-09,
+        "kind": "east",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "4eb6551d-d4cc-439a-a512-59ca3474c098"
+        ],
+        "restAnchorError": 3.311020790874864e-09,
+        "rootPosition": [
+          13.5,
+          0,
+          7.29
+        ],
+        "rootRotation": [
+          0,
+          0.3,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 13.5,
+        "z": 7.29
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        479.65385044873943
+      ],
+      "version": "old",
+      "view": "east",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 180
+    },
+    {
+      "name": "trolley-08-east-new-close",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 186.2255848135502,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 20,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          13.5,
+          6.038778460639685e-17,
+          8.220958926677703
+        ],
+        "artInheritedTransform": [
+          0.955336489125606,
+          0,
+          0.29552020666133955,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.29552020666133955,
+          0,
+          0.955336489125606,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 3.311020790874864e-09,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "4eb6551d-d4cc-439a-a512-59ca3474c098"
+        ],
+        "restAnchorError": 3.311020790874864e-09,
+        "rootPosition": [
+          13.5,
+          0,
+          7.29
+        ],
+        "rootRotation": [
+          0,
+          0.3,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 13.5,
+        "z": 7.29
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        479.65385044873943
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 180
+    },
+    {
+      "name": "trolley-09-east-rest-390",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 66.74463107192827,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 6,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          13.5,
+          6.038778460639685e-17,
+          8.220958926677703
+        ],
+        "artInheritedTransform": [
+          0.955336489125606,
+          0,
+          0.29552020666133955,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.29552020666133955,
+          0,
+          0.955336489125606,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 3.311020790874864e-09,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "4eb6551d-d4cc-439a-a512-59ca3474c098"
+        ],
+        "restAnchorError": 3.311020790874864e-09,
+        "rootPosition": [
+          13.5,
+          0,
+          7.29
+        ],
+        "rootRotation": [
+          0,
+          0.3,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 13.5,
+        "z": 7.29
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        509.9963623829416
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-10-east-tap-390",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "4eb6551d-d4cc-439a-a512-59ca3474c098",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.691536973467825,
+            0.13060275227673543,
+            8.220898526521367
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            2.6300373012246026e-19,
+            0.29552020666133955,
+            0,
+            -4.3368086899420185e-18,
+            1,
+            1.734723475976807e-18,
+            0,
+            -0.2955202066613395,
+            1.734723475976807e-18,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.3110206679609823e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 0.23182643239296655,
+          "rootPosition": [
+            13.691341716182546,
+            0.12,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            -0.03854858822278267,
+            "XYZ"
+          ],
+          "rootShiftX": 0.1913417161825457,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 66.74463107192827,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 7,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          13.691536973467825,
+          0.13060275227673543,
+          8.220898526521367
+        ],
+        "artInheritedTransform": [
+          0.955336489125606,
+          2.6300373012246026e-19,
+          0.29552020666133955,
+          0,
+          -4.3368086899420185e-18,
+          1,
+          1.734723475976807e-18,
+          0,
+          -0.2955202066613395,
+          1.734723475976807e-18,
+          0.955336489125606,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 3.3110206679609823e-09,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "4eb6551d-d4cc-439a-a512-59ca3474c098"
+        ],
+        "restAnchorError": 0.23182643239296655,
+        "rootPosition": [
+          13.691341716182546,
+          0.12,
+          7.29
+        ],
+        "rootRotation": [
+          0,
+          0.3,
+          -0.03854858822278267,
+          "XYZ"
+        ],
+        "rootShiftX": 0.1913417161825457,
+        "x": 13.5,
+        "z": 7.29
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        509.9963623829416
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-11-east-shift-half-390",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "4eb6551d-d4cc-439a-a512-59ca3474c098",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            14.000001877907916,
+            0.00103999687987747,
+            8.220958345772713
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            -2.9923630890381425e-19,
+            0.2955202066613395,
+            0,
+            1.626303258728257e-19,
+            1,
+            -2.1684043449710093e-19,
+            0,
+            -0.2955202066613396,
+            0,
+            0.9553364891256062,
+            0,
+            1.7763568394002505e-15,
+            6.938893903907228e-18,
+            1.7763568394002505e-15,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311019304121381e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 0.5000029594965338,
+          "rootPosition": [
+            14,
+            1.4695761589768237e-17,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            -0.0037802051400392792,
+            "XYZ"
+          ],
+          "rootShiftX": 0.5,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 66.74463107192827,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 7,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          14.000001877907916,
+          0.00103999687987747,
+          8.220958345772713
+        ],
+        "artInheritedTransform": [
+          0.955336489125606,
+          -2.9923630890381425e-19,
+          0.2955202066613395,
+          0,
+          1.626303258728257e-19,
+          1,
+          -2.1684043449710093e-19,
+          0,
+          -0.2955202066613396,
+          0,
+          0.9553364891256062,
+          0,
+          1.7763568394002505e-15,
+          6.938893903907228e-18,
+          1.7763568394002505e-15,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 3.311019304121381e-09,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "4eb6551d-d4cc-439a-a512-59ca3474c098"
+        ],
+        "restAnchorError": 0.5000029594965338,
+        "rootPosition": [
+          14,
+          1.4695761589768237e-17,
+          7.29
+        ],
+        "rootRotation": [
+          0,
+          0.3,
+          -0.0037802051400392792,
+          "XYZ"
+        ],
+        "rootShiftX": 0.5,
+        "x": 13.5,
+        "z": 7.29
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        509.9963623829416
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-12-east-return-390",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "4eb6551d-d4cc-439a-a512-59ca3474c098",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 66.74463107192827,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 6,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          13.5,
+          6.038778460639685e-17,
+          8.220958926677703
+        ],
+        "artInheritedTransform": [
+          0.955336489125606,
+          0,
+          0.29552020666133955,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.29552020666133955,
+          0,
+          0.955336489125606,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 3.311020790874864e-09,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "4eb6551d-d4cc-439a-a512-59ca3474c098"
+        ],
+        "restAnchorError": 3.311020790874864e-09,
+        "rootPosition": [
+          13.5,
+          0,
+          7.29
+        ],
+        "rootRotation": [
+          0,
+          0.3,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 13.5,
+        "z": 7.29
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        509.9963623829416
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-13-east-old-390",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "4eb6551d-d4cc-439a-a512-59ca3474c098",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 66.74463107192827,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 6,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          13.5,
+          6.038778460639685e-17,
+          8.220958926677703
+        ],
+        "artInheritedTransform": [
+          0.955336489125606,
+          0,
+          0.29552020666133955,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -0.29552020666133955,
+          0,
+          0.955336489125606,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 3.311020790874864e-09,
+        "kind": "east",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "4eb6551d-d4cc-439a-a512-59ca3474c098"
+        ],
+        "restAnchorError": 3.311020790874864e-09,
+        "rootPosition": [
+          13.5,
+          0,
+          7.29
+        ],
+        "rootRotation": [
+          0,
+          0.3,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 13.5,
+        "z": 7.29
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        509.9963623829416
+      ],
+      "version": "old",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-14-west-rest-390",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "4eb6551d-d4cc-439a-a512-59ca3474c098",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 67.11864190617314,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 6,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -16.2,
+          5.96865869098581e-17,
+          8.474679467678069
+        ],
+        "artInheritedTransform": [
+          0.9689124217106448,
+          0,
+          -0.24740395925452296,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0.24740395925452296,
+          0,
+          0.9689124217106448,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 1.596506749024229e-08,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+        ],
+        "restAnchorError": 1.596506749024229e-08,
+        "rootPosition": [
+          -16.2,
+          0,
+          7.56
+        ],
+        "rootRotation": [
+          0,
+          -0.25,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -16.2,
+        "z": 7.56
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        510.0822111699751
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-15-west-tap-390",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "4eb6551d-d4cc-439a-a512-59ca3474c098",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "c1a41018-3b9f-4939-ac71-a441c35a3d6e",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.008821173387894,
+            0.1112787951420571,
+            8.474637875142207
+          ],
+          "artInheritedTransform": [
+            0.968912421710645,
+            -1.809474133571999e-18,
+            -0.24740395925452296,
+            0,
+            -8.673617379884035e-19,
+            1.0000000000000002,
+            0,
+            0,
+            0.247403959254523,
+            -1.734723475976807e-18,
+            0.9689124217106448,
+            0,
+            0,
+            -5.551115123125783e-17,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.5965068703530405e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 0.2212065001794946,
+          "rootPosition": [
+            -16.008658283817454,
+            0.12,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            -0.03854858822278267,
+            "XYZ"
+          ],
+          "rootShiftX": 0.1913417161825457,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 67.11864190617314,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 8,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -16.008821173387894,
+          0.1112787951420571,
+          8.474637875142207
+        ],
+        "artInheritedTransform": [
+          0.968912421710645,
+          -1.809474133571999e-18,
+          -0.24740395925452296,
+          0,
+          -8.673617379884035e-19,
+          1.0000000000000002,
+          0,
+          0,
+          0.247403959254523,
+          -1.734723475976807e-18,
+          0.9689124217106448,
+          0,
+          0,
+          -5.551115123125783e-17,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 1.5965068703530405e-08,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+        ],
+        "restAnchorError": 0.2212065001794946,
+        "rootPosition": [
+          -16.008658283817454,
+          0.12,
+          7.56
+        ],
+        "rootRotation": [
+          0,
+          -0.25,
+          -0.03854858822278267,
+          "XYZ"
+        ],
+        "rootShiftX": 0.1913417161825457,
+        "x": -16.2,
+        "z": 7.56
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        510.0822111699751
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-16-west-shift-half-390",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "4eb6551d-d4cc-439a-a512-59ca3474c098",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "c1a41018-3b9f-4939-ac71-a441c35a3d6e",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -15.70000156660794,
+            -0.0008554407010840925,
+            8.474679067657389
+          ],
+          "artInheritedTransform": [
+            0.968912421710645,
+            -2.1936747126845043e-19,
+            -0.247403959254523,
+            0,
+            -1.3552527156068805e-19,
+            1.0000000000000002,
+            0,
+            0,
+            0.247403959254523,
+            -2.1684043449710093e-19,
+            0.968912421710645,
+            0,
+            -1.7763568394002505e-15,
+            0,
+            1.7763568394002505e-15,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.5965069143188435e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 0.4999991651727576,
+          "rootPosition": [
+            -15.7,
+            1.4695761589768237e-17,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            -0.0037802051400392792,
+            "XYZ"
+          ],
+          "rootShiftX": 0.5,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 67.11864190617314,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 5,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -15.70000156660794,
+          -0.0008554407010840925,
+          8.474679067657389
+        ],
+        "artInheritedTransform": [
+          0.968912421710645,
+          -2.1936747126845043e-19,
+          -0.247403959254523,
+          0,
+          -1.3552527156068805e-19,
+          1.0000000000000002,
+          0,
+          0,
+          0.247403959254523,
+          -2.1684043449710093e-19,
+          0.968912421710645,
+          0,
+          -1.7763568394002505e-15,
+          0,
+          1.7763568394002505e-15,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 1.5965069143188435e-08,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+        ],
+        "restAnchorError": 0.4999991651727576,
+        "rootPosition": [
+          -15.7,
+          1.4695761589768237e-17,
+          7.56
+        ],
+        "rootRotation": [
+          0,
+          -0.25,
+          -0.0037802051400392792,
+          "XYZ"
+        ],
+        "rootShiftX": 0.5,
+        "x": -16.2,
+        "z": 7.56
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        510.0822111699751
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-17-west-return-390",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "4eb6551d-d4cc-439a-a512-59ca3474c098",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "c1a41018-3b9f-4939-ac71-a441c35a3d6e",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 67.11864190617314,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 6,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -16.2,
+          5.96865869098581e-17,
+          8.474679467678069
+        ],
+        "artInheritedTransform": [
+          0.9689124217106448,
+          0,
+          -0.24740395925452296,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0.24740395925452296,
+          0,
+          0.9689124217106448,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 1.596506749024229e-08,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+        ],
+        "restAnchorError": 1.596506749024229e-08,
+        "rootPosition": [
+          -16.2,
+          0,
+          7.56
+        ],
+        "rootRotation": [
+          0,
+          -0.25,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -16.2,
+        "z": 7.56
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        510.0822111699751
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-18-west-old-390",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "4eb6551d-d4cc-439a-a512-59ca3474c098",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "c1a41018-3b9f-4939-ac71-a441c35a3d6e",
+          "hitName": "factory-box-trolley",
+          "xy": [
+            195,
+            510
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 0.525,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            6.038778460639685e-17,
+            8.220958926677703
+          ],
+          "artInheritedTransform": [
+            0.955336489125606,
+            0,
+            0.29552020666133955,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -0.29552020666133955,
+            0,
+            0.955336489125606,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 3.311020790874864e-09,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "4eb6551d-d4cc-439a-a512-59ca3474c098"
+          ],
+          "restAnchorError": 3.311020790874864e-09,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            5.96865869098581e-17,
+            8.474679467678069
+          ],
+          "artInheritedTransform": [
+            0.9689124217106448,
+            0,
+            -0.24740395925452296,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0.24740395925452296,
+            0,
+            0.9689124217106448,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 1.596506749024229e-08,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+          ],
+          "restAnchorError": 1.596506749024229e-08,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 67.11864190617314,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 6,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -16.2,
+          5.96865869098581e-17,
+          8.474679467678069
+        ],
+        "artInheritedTransform": [
+          0.9689124217106448,
+          0,
+          -0.24740395925452296,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0.24740395925452296,
+          0,
+          0.9689124217106448,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 1.596506749024229e-08,
+        "kind": "west",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "c1a41018-3b9f-4939-ac71-a441c35a3d6e"
+        ],
+        "restAnchorError": 1.596506749024229e-08,
+        "rootPosition": [
+          -16.2,
+          0,
+          7.56
+        ],
+        "rootRotation": [
+          0,
+          -0.25,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -16.2,
+        "z": 7.56
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        510.0822111699751
+      ],
+      "version": "old",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-19-east-fallback-390",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": true,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            0,
+            8.220958929988724
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "735b118b-0c2a-4ca9-9f13-5334ab30d88c"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            0,
+            8.474679451713001
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "268473b1-4a28-4132-875c-b48c726a8c43"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 66.74463107192827,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 6,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          13.5,
+          0,
+          8.220958929988724
+        ],
+        "artInheritedTransform": null,
+        "artReady": false,
+        "artVisible": false,
+        "cardRaycastDisabled": false,
+        "inheritedAnchorError": 0,
+        "kind": "east",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "735b118b-0c2a-4ca9-9f13-5334ab30d88c"
+        ],
+        "restAnchorError": 0,
+        "rootPosition": [
+          13.5,
+          0,
+          7.29
+        ],
+        "rootRotation": [
+          0,
+          0.3,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 13.5,
+        "z": 7.29
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        509.9963623829416
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "name": "trolley-20-west-fallback-390",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": true,
+      "instances": [
+        {
+          "anchorWorld": [
+            13.5,
+            0,
+            8.220958929988724
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "735b118b-0c2a-4ca9-9f13-5334ab30d88c"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            13.5,
+            0,
+            7.29
+          ],
+          "rootRotation": [
+            0,
+            0.3,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 13.5,
+          "z": 7.29
+        },
+        {
+          "anchorWorld": [
+            -16.2,
+            0,
+            8.474679451713001
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "268473b1-4a28-4132-875c-b48c726a8c43"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            -16.2,
+            0,
+            7.56
+          ],
+          "rootRotation": [
+            0,
+            -0.25,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -16.2,
+          "z": 7.56
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 67.11864190617314,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 6,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -16.2,
+          0,
+          8.474679451713001
+        ],
+        "artInheritedTransform": null,
+        "artReady": false,
+        "artVisible": false,
+        "cardRaycastDisabled": false,
+        "inheritedAnchorError": 0,
+        "kind": "west",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "268473b1-4a28-4132-875c-b48c726a8c43"
+        ],
+        "restAnchorError": 0,
+        "rootPosition": [
+          -16.2,
+          0,
+          7.56
+        ],
+        "rootRotation": [
+          0,
+          -0.25,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -16.2,
+        "z": 7.56
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        510.0822111699751
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    }
+  ],
+  "consoleWarningsErrors": [],
+  "notes": "Actual FactoryMap/World/Stage/Life; two native pointer events to fixture raycast. Fixed dt actual Life.update; no general Input, journey or motion recording"
+}
