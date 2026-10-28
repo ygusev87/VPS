@@ -175,6 +175,9 @@ const PAINTED: Record<string, Painted[]> = {
   'barrels-card': [{ piece: 'factory-barrels-painted', at: [384, 526], span: 428, deep: 2.3 / 2.6 }],
 };
 
+/** The yellow pillar Codex painted from the camera, standing on the middle of its front face (calibrated to the close view). */
+const PILLAR_ART: Painted = { piece: 'factory-pillar-painted', at: [512, 638.7198594871395], span: 116, deep: 1 };
+
 /** Storage bays in the middle aisle (before spreading by K). */
 const BAYS = [[-16, 5.6], [22.5, 5.6]] as const;
 
@@ -675,14 +678,23 @@ export class FactoryMap extends StoryMap {
     // pillars and lamps keep clear of every station, its character and its hint bubble.
     const busy = [PANEL, BOX, PANEL_POLE, CART, CART_LEVER, CART_POLE, LATHE, MOTOR, LATHE_POLE, PRESS, PRESS_POLE, ROBOT, BOARD, ROBOT_POLE, HOIST, HOIST_LEVER, HOIST_POLE, ...WORKER_SPOTS];
     const hides = (x: number, z: number, h: number) => busy.some((b) => Math.abs(b.x - x) < 2.6 && b.z < z + 1 && b.z > z - h * 0.78 - 2);
+    // Codex's painted pillar when the kit has it: the box stays, unseen, only to cast its real long shadow.
+    const pillarArt = this.kit ? kitPieces('factory', 'factory-pillar-painted')[0] : undefined;
+    const pillars = new THREE.Group();
+    const pillarMat = pillarArt ? Object.assign(mat('#f2c230', 0.6).clone(), { colorWrite: false, depthWrite: false }) : mat('#f2c230', 0.6);
+    const pillarSpots: { x: number; z: number; size: number }[] = [];
     for (const [x, z] of spread([-30, -15, 0, 15, 30].flatMap((x) => [[x, -16], [x, 8]]))) {
-      {
-        // Nor in front of a storage bay: it hid the drums.
-        if (hides(x, z, 5) || busy.some((b) => Math.hypot(b.x - x, b.z - z) < 5) || spread(BAYS).some(([bx, bz]) => Math.abs(bx - x) < 4.5 && z > bz - 2 && z < bz + 7)) continue;
-        const pillar = mesh(new THREE.BoxGeometry(0.8, 5, 0.8), mat('#f2c230', 0.6));
-        pillar.position.set(x, 2.5, z);
-        hall.add(pillar);
-      }
+      // Nor in front of a storage bay: it hid the drums.
+      if (hides(x, z, 5) || busy.some((b) => Math.hypot(b.x - x, b.z - z) < 5) || spread(BAYS).some(([bx, bz]) => Math.abs(bx - x) < 4.5 && z > bz - 2 && z < bz + 7)) continue;
+      const pillar = mesh(new THREE.BoxGeometry(0.8, 5, 0.8), pillarMat);
+      pillar.position.set(x, 2.5, z);
+      (pillarArt ? pillars : hall).add(pillar);
+      pillarSpots.push({ x, z: z + 0.4, size: 1.1956678022719618 });
+    }
+    if (pillarArt) {
+      pillars.add(painted(pillarSpots, pillarArt, PILLAR_ART, null));
+      pillars.traverse((o) => (o.raycast = () => {}));
+      this.scenery.add(pillars);
     }
     // Light on the floor once the box lets the power through (the lamps under the roof are not drawn:
     // seen from above they were only white blots over the stations).
