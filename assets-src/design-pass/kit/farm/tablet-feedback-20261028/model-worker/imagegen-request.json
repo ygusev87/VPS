@@ -1,0 +1,11 @@
+{
+  "tool": "image_gen.imagegen",
+  "referenced_image_paths": [
+    "/Users/gusev/gameios/assets-src/design-pass/kit/farm/tablet-feedback-20261028/model-worker/textures/kitten-atlas-0.png"
+  ],
+  "transparent_background": false,
+  "prompt": "Use case: precise-object-edit. Production base-color UV atlas edit for the EXISTING toy kitten mesh. Change fur COLORS ONLY: orange/ginger fur becomes light-to-medium cool neutral grey; cream fur patches become clean soft white; dark ginger tabby stripes become restrained darker grey. Keep soft painted shading. This is a flat UV TEXTURE ATLAS, not a request to render a cat. CRITICAL: preserve EXACT island boundaries, positions, scale, orientation, padding and square framing. Eyes/pupils/irises/nose/mouth/whisker marks/pink inner ears must stay at exactly the same pixel coordinates and retain the ORIGINAL color, shape and size. Do not move/redraw/add/remove facial features or UV islands. No layout rearrangement, no cat render, no text/borders/labels. Keep opaque. Output 1024×1024 as exact 2× coordinates of input 512×512 for later downsampling. White-grey coat should read clearly on orange hay.",
+  "output": "textures/kitten-grey-source.png",
+  "outputSha256": "d5665b7e538f17ed5b421e22c34eb56716e785db7bfb3ebf746a5ebc8acb1fe9",
+  "note": "This is the exact submitted tool prompt. kitten-edit-prompt.txt is the expanded preparation brief. Visual face preservation is confirmed; pixel-identical face paint is not claimed."
+}

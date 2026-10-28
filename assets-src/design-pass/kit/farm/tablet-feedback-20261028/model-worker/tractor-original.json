@@ -1,0 +1,146 @@
+{
+  "name": "tractor",
+  "bytes": 240008,
+  "sha256": "c5011b89177f9830e62a96bd7a71ddd0cdaadd0edc7931fdca1660e4e61d4802",
+  "triangles": 13556,
+  "bounds": {
+    "min": [
+      -0.31517365231673905,
+      -0.38006224844627584,
+      -0.5
+    ],
+    "max": [
+      0.3154608274952669,
+      0.38042848918609823,
+      0.5
+    ]
+  },
+  "nodes": [
+    {
+      "name": "tripo_node_142d7f40-cce4-4fae-94a5-f7838cb4ee32",
+      "translation": [
+        0.00014358758926391602,
+        0.00018312036991119385,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "matrix": [
+        0.5,
+        0,
+        0,
+        0,
+        0,
+        0.5,
+        0,
+        0,
+        0,
+        0,
+        0.5,
+        0,
+        0.00014358758926391602,
+        0.00018312036991119385,
+        0,
+        1
+      ],
+      "mesh": "tripo_mesh_142d7f40-cce4-4fae-94a5-f7838cb4ee32",
+      "primitives": [
+        {
+          "vertices": 10619,
+          "triangles": 13556,
+          "attributes": [
+            "NORMAL",
+            "POSITION",
+            "TEXCOORD_0"
+          ]
+        }
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": 10459,
+      "triangles": 13556,
+      "vertices": 10619,
+      "bounds": {
+        "min": [
+          -0.31517365231673905,
+          -0.38006224844627584,
+          -0.5
+        ],
+        "max": [
+          0.3154608274952669,
+          0.38042848918609823,
+          0.5
+        ]
+      },
+      "centre": [
+        0.00014358758926391602,
+        0.00018312036991119385,
+        0
+      ],
+      "centroid": [
+        0.0032223746636236,
+        -0.08547430734083201,
+        -0.02058253031942811
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "file": "textures/tractor-atlas-0.webp",
+      "bytes": 56478,
+      "sha256": "41a60a8d101515af1e8a02f038f227ba9cd1116a1f6e7c95ff38436cc05540c4",
+      "mime": "image/webp",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "file": "textures/tractor-atlas-1.webp",
+      "bytes": 12736,
+      "sha256": "28297fed0ef13f91c0a78f3f65f07328912e64452ef292262dcdc81a98c932a4",
+      "mime": "image/webp",
+      "size": [
+        256,
+        256
+      ]
+    },
+    {
+      "file": "textures/tractor-atlas-2.webp",
+      "bytes": 2336,
+      "sha256": "d89224e2cdc903bd1e0b2c37b2d98959196ca2c57b6b21eb00df4241a0234d18",
+      "mime": "image/webp",
+      "size": [
+        256,
+        256
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "tripo_material_142d7f40-cce4-4fae-94a5-f7838cb4ee32",
+      "alpha": "OPAQUE",
+      "metallic": 1,
+      "roughness": 1,
+      "doubleSided": false
+    }
+  ],
+  "skins": 0,
+  "animations": [],
+  "extensions": [
+    "EXT_meshopt_compression",
+    "EXT_texture_webp",
+    "KHR_mesh_quantization"
+  ]
+}

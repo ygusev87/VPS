@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-28",
+  "status": "KITTEN_READY_TRACTOR_BLOCKED",
+  "kitten": {
+    "status": "public replaced after local QA",
+    "path": "public/models/kitten.glb",
+    "sha256": "b64d165bee1ec6eaf8bbeb2a21dfded68dae49d46bf094bd98aa2eaf4f877315",
+    "bytes": 116136,
+    "triangles": 7764,
+    "bounds": {
+      "min": [
+        -0.45823541978209786,
+        -0.5,
+        -0.3643604846339305
+      ],
+      "max": [
+        0.45823541978209786,
+        0.5,
+        0.3643604846339305
+      ]
+    },
+    "geometryAndTransforms": "exactly preserved",
+    "report": "kitten-report.json",
+    "browserQA": "kitten-browser-qa.json",
+    "preview": "qa/kitten-before-after.jpg"
+  },
+  "tractor": {
+    "status": "unchanged; safe four-wheel separation not certified",
+    "path": "public/models/tractor.glb",
+    "sha256": "c5011b89177f9830e62a96bd7a71ddd0cdaadd0edc7931fdca1660e4e61d4802",
+    "report": "tractor-report.json",
+    "evidence": [
+      "qa/tractor-sections.png",
+      "qa/tractor-inner-sections.png",
+      "qa/tractor-segmentation-diagnostic.jpg"
+    ]
+  },
+  "validation": {
+    "tests": "17 files / 88 tests passed",
+    "typecheck": "passed",
+    "mobile": "Native in-app browser at390\u00d7844; no physical iPad test"
+  },
+  "serviceSpend": {
+    "tripo": 0,
+    "api": 0,
+    "purchases": 0,
+    "builtinImageEdits": 1
+  },
+  "scope": "No src, shared kit, other public files, coordination cursor or push."
+}

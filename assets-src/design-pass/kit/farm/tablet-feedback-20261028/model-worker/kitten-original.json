@@ -1,0 +1,173 @@
+{
+  "name": "kitten",
+  "bytes": 111316,
+  "sha256": "f0fc67190048cbb9b37b668f6ea98f3f0875d2dce0aa741c636258f943edc6c4",
+  "triangles": 7764,
+  "bounds": {
+    "min": [
+      -0.45823541978209786,
+      -0.5,
+      -0.3643604846339305
+    ],
+    "max": [
+      0.45823541978209786,
+      0.5,
+      0.3643604846339305
+    ]
+  },
+  "nodes": [
+    {
+      "name": "tripo_node_ede3d0c7-7596-4630-9937-8eff925e5e79",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        0.5,
+        0.5,
+        0.5
+      ],
+      "matrix": [
+        0.5,
+        0,
+        0,
+        0,
+        0,
+        0.5,
+        0,
+        0,
+        0,
+        0,
+        0.5,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "mesh": "tripo_mesh_ede3d0c7-7596-4630-9937-8eff925e5e79",
+      "primitives": [
+        {
+          "vertices": 4978,
+          "triangles": 7764,
+          "attributes": [
+            "POSITION",
+            "NORMAL",
+            "TEXCOORD_0"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "FarmOrientation",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "components": [
+    {
+      "id": 4859,
+      "triangles": 7764,
+      "vertices": 4978,
+      "bounds": {
+        "min": [
+          -0.45823541978209786,
+          -0.5,
+          -0.3643604846339305
+        ],
+        "max": [
+          0.45823541978209786,
+          0.5,
+          0.3643604846339305
+        ]
+      },
+      "centre": [
+        0,
+        0,
+        0
+      ],
+      "centroid": [
+        0.05515206267297799,
+        -0.1758319202838363,
+        -0.03713174112216318
+      ]
+    }
+  ],
+  "textures": [
+    {
+      "file": "textures/kitten-atlas-0.webp",
+      "bytes": 20496,
+      "sha256": "7419180b2027675835d3507cdd07f578561881ae6eed2618bad5979cb0b57ae5",
+      "mime": "image/webp",
+      "size": [
+        512,
+        512
+      ]
+    },
+    {
+      "file": "textures/kitten-atlas-1.webp",
+      "bytes": 8442,
+      "sha256": "b13fd07fe3b937bc014e6185d2f78b72dfa8812965c86a35e5fec138cdfcf2c5",
+      "mime": "image/webp",
+      "size": [
+        256,
+        256
+      ]
+    }
+  ],
+  "materials": [
+    {
+      "name": "tripo_material_ede3d0c7-7596-4630-9937-8eff925e5e79",
+      "alpha": "OPAQUE",
+      "metallic": 1,
+      "roughness": 1,
+      "doubleSided": false
+    }
+  ],
+  "skins": 0,
+  "animations": [],
+  "extensions": [
+    "EXT_meshopt_compression",
+    "EXT_texture_webp",
+    "KHR_mesh_quantization"
+  ]
+}

@@ -1,0 +1,886 @@
+{
+  "checks": [
+    {
+      "loaded": "true",
+      "result": {
+        "bounds": {
+          "max": [
+            0.3436765648365734,
+            0.75,
+            0.27327036347544786
+          ],
+          "min": [
+            -0.3436765648365734,
+            0,
+            -0.27327036347544786
+          ]
+        },
+        "loft": false,
+        "name": "kitten",
+        "nodes": [
+          {
+            "name": "",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "",
+            "position": [
+              0,
+              0.375,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.75,
+              0.75,
+              0.75
+            ]
+          },
+          {
+            "name": "FarmOrientation",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "tripo_node_ede3d0c7-7596-4630-9937-8eff925e5e79",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.5,
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "overflow": false,
+        "phase": 0,
+        "source": "originals",
+        "stats": {
+          "materials": 1,
+          "triangles": 7764
+        },
+        "view": 0,
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      "file": "qa/kitten-originals-1180-view0.jpg"
+    },
+    {
+      "loaded": "true",
+      "result": {
+        "bounds": {
+          "max": [
+            0.3436765648365734,
+            0.75,
+            0.27327036347544786
+          ],
+          "min": [
+            -0.3436765648365734,
+            0,
+            -0.27327036347544786
+          ]
+        },
+        "loft": false,
+        "name": "kitten",
+        "nodes": [
+          {
+            "name": "",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "",
+            "position": [
+              0,
+              0.375,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.75,
+              0.75,
+              0.75
+            ]
+          },
+          {
+            "name": "FarmOrientation",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "tripo_node_ede3d0c7-7596-4630-9937-8eff925e5e79",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.5,
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "overflow": false,
+        "phase": 0,
+        "source": "candidate",
+        "stats": {
+          "materials": 1,
+          "triangles": 7764
+        },
+        "view": 4,
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      "file": "qa/kitten-candidate-1180-view4.jpg"
+    },
+    {
+      "loaded": "true",
+      "result": {
+        "bounds": {
+          "max": [
+            0.3436765648365734,
+            0.75,
+            0.27327036347544786
+          ],
+          "min": [
+            -0.3436765648365734,
+            0,
+            -0.27327036347544786
+          ]
+        },
+        "loft": false,
+        "name": "kitten",
+        "nodes": [
+          {
+            "name": "",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "",
+            "position": [
+              0,
+              0.375,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.75,
+              0.75,
+              0.75
+            ]
+          },
+          {
+            "name": "FarmOrientation",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "tripo_node_ede3d0c7-7596-4630-9937-8eff925e5e79",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.5,
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "overflow": false,
+        "phase": 0,
+        "source": "candidate",
+        "stats": {
+          "materials": 1,
+          "triangles": 7764
+        },
+        "view": 2,
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      "file": "qa/kitten-candidate-1180-view2.jpg"
+    },
+    {
+      "loaded": "true",
+      "result": {
+        "bounds": {
+          "max": [
+            0.8999855448416978,
+            2.7,
+            0.6195941490928321
+          ],
+          "min": [
+            -0.8999855448416978,
+            0,
+            -0.5851441852981004
+          ]
+        },
+        "loft": true,
+        "name": "kitten",
+        "nodes": [
+          {
+            "name": "",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "",
+            "position": [
+              0,
+              0.375,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.75,
+              0.75,
+              0.75
+            ]
+          },
+          {
+            "name": "FarmOrientation",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "tripo_node_ede3d0c7-7596-4630-9937-8eff925e5e79",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.5,
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "overflow": false,
+        "phase": 0,
+        "source": "originals",
+        "stats": {
+          "materials": 1,
+          "triangles": 7764
+        },
+        "view": 0,
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      "file": "qa/kitten-originals-1180-loft.jpg"
+    },
+    {
+      "loaded": "true",
+      "result": {
+        "bounds": {
+          "max": [
+            0.8999855448416978,
+            2.7,
+            0.6195941490928321
+          ],
+          "min": [
+            -0.8999855448416978,
+            0,
+            -0.5851441852981004
+          ]
+        },
+        "loft": true,
+        "name": "kitten",
+        "nodes": [
+          {
+            "name": "",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "",
+            "position": [
+              0,
+              0.375,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.75,
+              0.75,
+              0.75
+            ]
+          },
+          {
+            "name": "FarmOrientation",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "tripo_node_ede3d0c7-7596-4630-9937-8eff925e5e79",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.5,
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "overflow": false,
+        "phase": 0,
+        "source": "candidate",
+        "stats": {
+          "materials": 1,
+          "triangles": 7764
+        },
+        "view": 0,
+        "viewport": [
+          1180,
+          820
+        ]
+      },
+      "file": "qa/kitten-candidate-1180-loft.jpg"
+    },
+    {
+      "loaded": "true",
+      "result": {
+        "bounds": {
+          "max": [
+            0.8999855448416978,
+            2.7,
+            0.6195941490928321
+          ],
+          "min": [
+            -0.8999855448416978,
+            0,
+            -0.5851441852981004
+          ]
+        },
+        "loft": true,
+        "name": "kitten",
+        "nodes": [
+          {
+            "name": "",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "",
+            "position": [
+              0,
+              0.375,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.75,
+              0.75,
+              0.75
+            ]
+          },
+          {
+            "name": "FarmOrientation",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "tripo_node_ede3d0c7-7596-4630-9937-8eff925e5e79",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.5,
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "overflow": false,
+        "phase": 0,
+        "source": "originals",
+        "stats": {
+          "materials": 1,
+          "triangles": 7764
+        },
+        "view": 0,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "file": "qa/kitten-originals-390-loft.jpg"
+    },
+    {
+      "loaded": "true",
+      "result": {
+        "bounds": {
+          "max": [
+            0.8999855448416978,
+            2.7,
+            0.6195941490928321
+          ],
+          "min": [
+            -0.8999855448416978,
+            0,
+            -0.5851441852981004
+          ]
+        },
+        "loft": true,
+        "name": "kitten",
+        "nodes": [
+          {
+            "name": "",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "",
+            "position": [
+              0,
+              0.375,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.75,
+              0.75,
+              0.75
+            ]
+          },
+          {
+            "name": "FarmOrientation",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              1,
+              1,
+              1
+            ]
+          },
+          {
+            "name": "tripo_node_ede3d0c7-7596-4630-9937-8eff925e5e79",
+            "position": [
+              0,
+              0,
+              0
+            ],
+            "rotation": [
+              0,
+              0,
+              0,
+              "XYZ"
+            ],
+            "scale": [
+              0.5,
+              0.5,
+              0.5
+            ]
+          }
+        ],
+        "overflow": false,
+        "phase": 0,
+        "source": "candidate",
+        "stats": {
+          "materials": 1,
+          "triangles": 7764
+        },
+        "view": 0,
+        "viewport": [
+          390,
+          844
+        ]
+      },
+      "file": "qa/kitten-candidate-390-loft.jpg"
+    }
+  ],
+  "public": {
+    "loaded": "true",
+    "result": {
+      "bounds": {
+        "max": [
+          0.8999855448416978,
+          2.7,
+          0.6195941490928321
+        ],
+        "min": [
+          -0.8999855448416978,
+          0,
+          -0.5851441852981004
+        ]
+      },
+      "loft": true,
+      "name": "kitten",
+      "nodes": [
+        {
+          "name": "",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "",
+          "position": [
+            0,
+            0.375,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "scale": [
+            0.75,
+            0.75,
+            0.75
+          ]
+        },
+        {
+          "name": "FarmOrientation",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "scale": [
+            1,
+            1,
+            1
+          ]
+        },
+        {
+          "name": "tripo_node_ede3d0c7-7596-4630-9937-8eff925e5e79",
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "rotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "scale": [
+            0.5,
+            0.5,
+            0.5
+          ]
+        }
+      ],
+      "overflow": false,
+      "phase": 0,
+      "source": "public",
+      "stats": {
+        "materials": 1,
+        "triangles": 7764
+      },
+      "view": 0,
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    "runtimeLoader": "src/parts/assets.ts"
+  },
+  "visualReview": "PASS",
+  "logs": []
+}

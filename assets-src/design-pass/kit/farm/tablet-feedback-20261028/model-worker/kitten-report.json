@@ -1,0 +1,118 @@
+{
+  "status": "RELEASED_AFTER_LOCAL_QA",
+  "sourceSha256": "f0fc67190048cbb9b37b668f6ea98f3f0875d2dce0aa741c636258f943edc6c4",
+  "outputSha256": "b64d165bee1ec6eaf8bbeb2a21dfded68dae49d46bf094bd98aa2eaf4f877315",
+  "sourceBytes": 111316,
+  "outputBytes": 116136,
+  "triangles": 7764,
+  "bounds": {
+    "min": [
+      -0.45823541978209786,
+      -0.5,
+      -0.3643604846339305
+    ],
+    "max": [
+      0.45823541978209786,
+      0.5,
+      0.3643604846339305
+    ]
+  },
+  "exactStructureAndTransforms": true,
+  "exactBounds": true,
+  "preservedBinaryRanges": [
+    {
+      "view": 1,
+      "kind": "view",
+      "sha256": "b13fd07fe3b937bc014e6185d2f78b72dfa8812965c86a35e5fec138cdfcf2c5",
+      "unchanged": true
+    },
+    {
+      "view": 2,
+      "kind": "meshopt",
+      "sha256": "80876d0306047a2fa00b39577763d979780532fd724f6eef293b3f425adff6ad",
+      "unchanged": true
+    },
+    {
+      "view": 3,
+      "kind": "meshopt",
+      "sha256": "f7c583d22036fdd4617ace12e92aa705d1dcd74ec3e105f19c8a79162477167c",
+      "unchanged": true
+    },
+    {
+      "view": 4,
+      "kind": "meshopt",
+      "sha256": "9e95dd3e3cec560c2fd53a64df8926a02be18c3c0546f6a7c8e34c3488702bd7",
+      "unchanged": true
+    },
+    {
+      "view": 5,
+      "kind": "meshopt",
+      "sha256": "93bf793d769d557179aa67b1777966572f2c9a86a98b5b1450885ace9dc611c6",
+      "unchanged": true
+    }
+  ],
+  "textures": [
+    {
+      "slots": [
+        "baseColorTexture"
+      ],
+      "size": [
+        512,
+        512
+      ],
+      "mime": "image/webp",
+      "sha256": "278080a7f2dd63a58c1fa2e2958fc140425480d5d91df976ee52c97cef5d2ea0"
+    },
+    {
+      "slots": [
+        "metallicRoughnessTexture"
+      ],
+      "size": [
+        256,
+        256
+      ],
+      "mime": "image/webp",
+      "sha256": "b13fd07fe3b937bc014e6185d2f78b72dfa8812965c86a35e5fec138cdfcf2c5"
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "fit": {
+    "height": 0.75,
+    "yaw": -0.6,
+    "loft": [
+      -21.3,
+      -16.25
+    ],
+    "loftTop": 1.95,
+    "localOffset": [
+      0.3,
+      0.2
+    ]
+  },
+  "provenance": {
+    "tool": "built-in image_gen",
+    "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-a323c54e-4c5a-41c0-94bd-d9602caff236.png",
+    "sourceSha256": "d5665b7e538f17ed5b421e22c34eb56716e785db7bfb3ebf746a5ebc8acb1fe9",
+    "processing": "Generated atlas resized to512\u00d7512 and encoded WebP quality88; only base-color image buffer replaced. Compressed geometry and ORM byte ranges copied verbatim.",
+    "prompt": "kitten-edit-prompt.txt",
+    "cost": "No Tripo/API/purchase; built-in image edit only"
+  },
+  "pass": true,
+  "visualReview": "PASS: face/eyes recognizable, grey-white coat visibly separated from orange hay at390\u00d7844; same model silhouette and seated placement."
+}
