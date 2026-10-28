@@ -1175,6 +1175,7 @@ export class CityMap extends StoryMap {
     if (ringing && s > 3) {
       this.raccoonRun = s;
       this.raccoonChased = true;
+      this.hooks.cue?.('raccoon');
       this.dominoReset = 4;
       this.hooks.look?.(at.clone());
       return;

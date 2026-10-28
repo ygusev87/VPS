@@ -42,8 +42,7 @@
  "meow": {
   "takes": [
    "animal-cat",
-   "animal-cat--v02",
-   "animal-cat--v03"
+   "animal-cat--v02"
   ],
   "intro": []
  },
@@ -98,6 +97,14 @@
   ],
   "intro": []
  },
+ "quack": {
+  "takes": [
+   "animal-duck--r02",
+   "animal-duck--r02-v02",
+   "animal-duck--r02-v03"
+  ],
+  "intro": []
+ },
  "yap": {
   "takes": [
    "animal-puppy--v02",
@@ -123,5 +130,32 @@
   ],
   "intro": [],
   "cue": true
+ },
+ "cluck": {
+  "takes": [
+   "animal-hen--r02-v02",
+   "animal-hen--r02-v03"
+  ],
+  "intro": []
+ },
+ "woof": {
+  "takes": [
+   "animal-dog--r02-v02",
+   "animal-dog--r02-v03"
+  ],
+  "intro": []
+ },
+ "raccoon": {
+  "takes": [
+   "animal-raccoon--r02-v02",
+   "animal-raccoon--r02-v03"
+  ],
+  "intro": []
+ },
+ "purr": {
+  "takes": [
+   "animal-cat--v03"
+  ],
+  "intro": []
  }
 }

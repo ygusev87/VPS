@@ -303,6 +303,11 @@ export abstract class StoryMap {
     else this.hooks.say(n.ask);
   }
 
+  /** A happy animal's own sound once it is helped (the kitten purrs), by its kind. */
+  protected happyCue(base: string): string | null {
+    return base === 'kitten' || base === 'cat' ? 'purr' : null;
+  }
+
   protected voiceOf(_base: string): PhraseId | null {
     return null;
   }
@@ -895,6 +900,8 @@ export abstract class StoryMap {
         n.done = true;
         n.critter.hop = 1;
         this.hooks.say(n.thanks);
+        const happy = this.happyCue(n.critter.name.replace(/\d+$/, ''));
+        if (happy) this.hooks.cue?.(happy);
         this.hooks.chime();
         const top = n.critter.group.position.clone().setY(n.critter.height);
         this.hooks.cheer(top);

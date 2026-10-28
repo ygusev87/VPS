@@ -48,7 +48,9 @@ for (const c of [...manifest.clips].sort((a, b) => a.variant - b.variant)) {
     continue;
   }
   if (!dry) copyFileSync(src, join(OUT, `${c.id}.mp3`));
-  const s = (sounds[sound.id] ??= { takes: [], intro: [], ...(sound.cue ? { cue: true } : {}) });
+  // The kitten's purr is not a meow: a sound of its own, for when it is happy.
+  const key = c.purpose === 'purr' ? 'purr' : sound.id;
+  const s = (sounds[key] ??= { takes: [], intro: [], ...(sound.cue ? { cue: true } : {}) });
   s.takes.push(c.id);
   if (c.introEligible) s.intro.push(c.id);
   report.taken.push(c.id);
