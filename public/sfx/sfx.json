@@ -1,0 +1,9 @@
+{
+ "moo": {
+  "takes": [
+   "animal-cow",
+   "animal-cow--v03"
+  ],
+  "intro": []
+ }
+}

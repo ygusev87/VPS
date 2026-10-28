@@ -472,6 +472,13 @@ export class Voice {
         this.takes.set(id as PhraseId, keys);
       }
     });
+    void fetchSounds().then((sounds) => {
+      for (const [id, s] of Object.entries(sounds)) {
+        if (!(id in PHRASES) || !s.takes?.length) continue;
+        for (const t of s.takes) this.raw.set(`sfx:${t}`, fetchSound(t));
+        this.sounds.set(id as PhraseId, { takes: s.takes.map((t) => `sfx:${t}`), intro: (s.intro ?? []).map((t) => `sfx:${t}`) });
+      }
+    });
     if (!('speechSynthesis' in window)) return;
     const pick = () => {
       const voices = speechSynthesis.getVoices().filter((v) => v.lang.toLowerCase().startsWith('ru'));
@@ -499,7 +506,8 @@ export class Voice {
    * a time in the background: decoding many at once on a touch made an iPad stutter.
    */
   prepare(ids: PhraseId[]) {
-    this.ahead = [...new Set([...ids.filter((id) => this.raw.has(id)), ...this.ahead])];
+    const keys = ids.flatMap((id) => this.sounds.get(id)?.takes ?? [id]);
+    this.ahead = [...new Set([...keys.filter((id) => this.raw.has(id)), ...this.ahead])];
     this.batch = 0;
     if (this.pumping || !this.ctx) return;
     this.pumping = true;
@@ -566,6 +574,8 @@ export class Voice {
   /** Say a phrase; the same phrase is not repeated within `cooldown` ms. */
   say(id: PhraseId, cooldown = 6000) {
     if (!this.enabled) return;
+    // An animal's own sound (a recorded moo), not words.
+    if (this.sounds.has(id)) return this.cry(id);
     const now = performance.now();
     if (this.last && this.last.id === id && now - this.last.at < cooldown) return;
     this.last = { id, at: now };
@@ -597,10 +607,6 @@ export class Voice {
       src.start();
       this.playing = src;
       this.endsAt = now + clip.duration * 1000;
-      // A phrase waiting for this one (sayThen): right after it, unless something else is said meanwhile.
-      const follow = this.follow?.after === id ? this.follow : null;
-      this.follow = null;
-      if (follow) src.onended = () => this.playing === src && this.say(follow.then, 0);
       return;
     }
     this.speak(id);
@@ -608,19 +614,63 @@ export class Voice {
 
   /**
    * Say `first` (an animal's own sound), then `then` right after it — only if
-   * `first` has a recording: a sound said by the robot voice would be worse than none.
+   * that sound has a short whole take (≤ 0.8 s), and not more than once in 10 s:
+   * the words are what matters, a long moo would only hold them up.
    */
   sayThen(first: PhraseId, then: PhraseId) {
     if (!this.enabled) return;
-    void (this.raw.get(first) ?? Promise.resolve(null)).then((buf) => {
-      if (!buf || !this.ctx) return this.say(then, 0);
-      this.follow = { after: first, then };
-      this.say(first, 0);
+    const intro = this.sounds.get(first)?.intro ?? [];
+    const now = performance.now();
+    if (!intro.length || now - this.introAt < 10000) return this.say(then, 0);
+    this.introAt = now;
+    const take = intro[Math.floor(Math.random() * intro.length)];
+    void this.decode(take).then((clip) => {
+      if (!clip || !this.enabled) return this.say(then, 0);
+      this.play(take, clip);
+      this.saidAt = performance.now() + clip.duration * 1000;
+      setTimeout(() => this.say(then, 0), clip.duration * 1000 + 100);
     });
   }
 
-  /** What to say once the clip now playing ends (see sayThen). */
-  private follow: { after: PhraseId; then: PhraseId } | null = null;
+  /** Recorded animal sounds (public/sfx, sfx.json): the takes of each sound and those short enough to come before words. */
+  private sounds = new Map<PhraseId, { takes: string[]; intro: string[] }>();
+  private introAt = -1e9;
+  private cryAt = -1e9;
+  private crying: AudioBufferSourceNode | null = null;
+
+  /**
+   * An animal's sound on a tap: one at a time, not more often than every 1.5 s,
+   * never the same take twice running; over any words being said (it is quiet
+   * and short, and a tap that made no sound would feel broken).
+   */
+  private cry(id: PhraseId) {
+    const now = performance.now();
+    if (now - this.cryAt < 1500) return;
+    this.cryAt = now;
+    const takes = this.sounds.get(id)!.takes;
+    const fresh = takes.filter((t) => t !== this.lastTake.get(id));
+    const take = fresh[Math.floor(Math.random() * fresh.length)] ?? takes[0];
+    this.lastTake.set(id, take);
+    void this.decode(take).then((clip) => {
+      // Too late to belong to the tap any more.
+      if (clip && this.enabled && performance.now() - now < 500) this.play(take, clip);
+    });
+  }
+
+  private play(take: string, clip: AudioBuffer) {
+    if (!this.ctx || !this.out) return;
+    this.keep(take, clip);
+    try {
+      this.crying?.stop();
+    } catch {
+      // Already finished.
+    }
+    const src = this.ctx.createBufferSource();
+    src.buffer = clip;
+    src.connect(this.out);
+    src.start();
+    this.crying = src;
+  }
 
   /** Which take to say: the one decoded and ready, or else another than last time (praise varies). */
   private pickTake(id: PhraseId): string {
@@ -679,6 +729,26 @@ async function fetchTakes(): Promise<Record<string, number>> {
     return r.ok ? ((await r.json()) as Record<string, number>) : {};
   } catch {
     return {};
+  }
+}
+
+/** The recorded animal sounds (public/sfx/sfx.json; none on an older build or the preview host). */
+async function fetchSounds(): Promise<Record<string, { takes: string[]; intro?: string[] }>> {
+  try {
+    if (import.meta.env.VITE_MODELS_AS_JS) return {};
+    const r = await fetch(`${import.meta.env.BASE_URL}sfx/sfx.json`);
+    return r.ok ? await r.json() : {};
+  } catch {
+    return {};
+  }
+}
+
+async function fetchSound(id: string): Promise<ArrayBuffer | null> {
+  try {
+    const r = await fetch(`${import.meta.env.BASE_URL}sfx/${id}.mp3`);
+    return r.ok ? await r.arrayBuffer() : null;
+  } catch {
+    return null;
   }
 }
 
