@@ -29,19 +29,23 @@ const CREW = ['factory-worker-technician', 'factory-worker-loader', 'factory-wor
 /** What the hall's furniture says when tapped. */
 const PROP_SOUND: Record<string, PhraseId> = { 'factory-control-cabinet': 'beep', 'factory-foreman-booth': 'hammer', 'factory-lockers': 'hammer' };
 
-/** Codex's hall furniture (static, but the cabinet's lamps light up): where the empty floor was. */
-const PROPS: [string, Fit, number, number, number][] = [
+/**
+ * Codex's hall furniture (static, but the cabinet's lamps light up): model,
+ * fit, x, z, turn, and which of its painted views it takes (`PROP_ART`) when
+ * it has one for each way it stands turned.
+ */
+const PROPS: [string, Fit, number, number, number, string?][] = [
   ['factory-foreman-booth', { height: 2.6 }, 45.9, 7.56, 0],
   ['factory-loading-ramp', { depth: 3.8 }, 50.49, -13.5, -Math.PI / 2],
   ['factory-lockers', { height: 2 }, 29.7, -32.94, 0],
   ['factory-lockers', { height: 2 }, 37.12, -32.94, 0],
-  ['factory-fire-extinguisher', { height: 1.1 }, -8.64, -33.62, 0],
-  ['factory-fire-extinguisher', { height: 1.1 }, -52.52, 0.27, Math.PI / 2],
-  ['factory-fire-extinguisher', { height: 1.1 }, 52.52, 12.15, -Math.PI / 2],
-  ['factory-box-trolley', { depth: 1.6 }, 13.5, 7.29, 0.3],
-  ['factory-box-trolley', { depth: 1.6 }, -16.2, 7.56, -0.25],
-  ['factory-control-cabinet', { height: 2.1 }, -52.11, -10.12, Math.PI / 2],
-  ['factory-control-cabinet', { height: 2.1 }, 52.11, 26.33, -Math.PI / 2],
+  ['factory-fire-extinguisher', { height: 1.1 }, -8.64, -33.62, 0, 'north'],
+  ['factory-fire-extinguisher', { height: 1.1 }, -52.52, 0.27, Math.PI / 2, 'west'],
+  ['factory-fire-extinguisher', { height: 1.1 }, 52.52, 12.15, -Math.PI / 2, 'east'],
+  ['factory-box-trolley', { depth: 1.6 }, 13.5, 7.29, 0.3, 'east'],
+  ['factory-box-trolley', { depth: 1.6 }, -16.2, 7.56, -0.25, 'west'],
+  ['factory-control-cabinet', { height: 2.1 }, -52.11, -10.12, Math.PI / 2, 'west'],
+  ['factory-control-cabinet', { height: 2.1 }, 52.11, 26.33, -Math.PI / 2, 'east'],
 ];
 export const FACTORY_MODELS = ['pole', 'child', 'kitten', 'flower-cluster', 'factory-worker-foreman', ...CREW, ...WORKSHOP_MODELS, ...new Set(PROPS.map(([m]) => m)), 'factory-product-bear', 'factory-product-billet', 'factory-product-box', 'factory-delivery-lorry'];
 
@@ -183,11 +187,14 @@ const PROP_ART: Record<string, Painted & { size: number; front: number }> = {
   'factory-lockers': { piece: 'factory-lockers-painted', at: [384.5, 516.5], span: 475, deep: 0.5016517953626232, size: 1.9769280068361461, front: 0.4958647419660024 },
   'factory-foreman-booth': { piece: 'factory-booth-painted', at: [513, 694.5], span: 710, deep: 0.6716208380382702, size: 3.8502372666877576, front: 1.2929497898495053 },
   'factory-loading-ramp': { piece: 'factory-ramp-painted', at: [522.5, 651.5], span: 879, deep: 0.5829950865199744, size: 3.8, front: 1.1076906643879516 },
-  // Painted once for each half of the hall, as they stand turned there (`@west`: west of the middle): the cabinet's lamps stay live, over the picture.
+  // Painted once for each way they stand turned (the view named in PROPS): the cabinet's lamps stay live, over the picture.
   'factory-control-cabinet@west': { piece: 'factory-cabinet-west-painted', at: [370, 533], span: 227, deep: 1.2533860286263623 / 0.9861995300149544, size: 0.9861995300149544, front: 0.6266930143131811 },
   'factory-control-cabinet@east': { piece: 'factory-cabinet-east-painted', at: [392, 531], span: 216, deep: 1.2533860286263623 / 0.9861995300149544, size: 0.9861995300149544, front: 0.6266930143131811 },
   'factory-box-trolley@west': { piece: 'factory-trolley-west-painted', at: [384, 528], span: 305, deep: 1.317441524808627, size: 1.3885693360786842, front: 0.9146794517130024 },
   'factory-box-trolley@east': { piece: 'factory-trolley-east-painted', at: [384, 528], span: 309, deep: 1.3081632561538485, size: 1.4233069544023904, front: 0.9309589299887242 },
+  'factory-fire-extinguisher@north': { piece: 'factory-extinguisher-north-painted', at: [384, 528], span: 324, deep: 0.5974008410945029, size: 0.6695518602121999, front: 0.1999954222235786 },
+  'factory-fire-extinguisher@west': { piece: 'factory-extinguisher-west-painted', at: [384, 528], span: 164, deep: 1.6151981011963252, size: 0.40921718883314867, front: 0.3304834131900999 },
+  'factory-fire-extinguisher@east': { piece: 'factory-extinguisher-east-painted', at: [384, 528], span: 166, deep: 1.5957378831096225, size: 0.4142076423555041, front: 0.3304834131900999 },
 };
 
 /** Painted stock on its spots (`size`: the thing's own width): the cards stand on its front feet, with a short shadow. */
@@ -337,7 +344,7 @@ export class FactoryMap extends StoryMap {
 
   /** Codex's furniture of the hall; a control cabinet's lamps go green once the hall has power. */
   private placeProps() {
-    for (const [name, fit, x, z, yaw] of PROPS) {
+    for (const [name, fit, x, z, yaw, view] of PROPS) {
       const m = model(name, fit);
       if (!m) continue;
       m.position.set(x, 0, z);
@@ -353,7 +360,7 @@ export class FactoryMap extends StoryMap {
         }
       });
       this.scenery.add(m);
-      const art = PROP_ART[name] ?? PROP_ART[`${name}@${x < 0 ? 'west' : 'east'}`];
+      const art = PROP_ART[view ? `${name}@${view}` : name];
       const pic = art && this.kit ? kitPieces('factory', art.piece)[0] : undefined;
       if (art && pic) {
         // Unseen (the picture is the look), but still there to be tapped and to jump; the lamps draw over the picture.
