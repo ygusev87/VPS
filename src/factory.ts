@@ -169,6 +169,17 @@ const PAINTED: Record<string, { piece: string; at: [number, number]; span: numbe
   'barrels-card': { piece: 'factory-barrels-painted', at: [384, 526], span: 428, deep: 2.3 / 2.6 },
 };
 
+/**
+ * The props Codex painted from the camera (m0597): `size` is the model's own
+ * width as it stands, `front` how far its front feet stand south of its
+ * middle. The model stays under the picture, unseen, for the tap and its jump.
+ */
+const PROP_ART: Record<string, (typeof PAINTED)[string] & { size: number; front: number }> = {
+  'factory-lockers': { piece: 'factory-lockers-painted', at: [384.5, 516.5], span: 475, deep: 0.5016517953626232, size: 1.9769280068361461, front: 0.4958647419660024 },
+  'factory-foreman-booth': { piece: 'factory-booth-painted', at: [513, 694.5], span: 710, deep: 0.6716208380382702, size: 3.8502372666877576, front: 1.2929497898495053 },
+  'factory-loading-ramp': { piece: 'factory-ramp-painted', at: [522.5, 651.5], span: 879, deep: 0.5829950865199744, size: 3.8, front: 1.1076906643879516 },
+};
+
 /** Painted stock on its spots (`size`: the thing's own width): the cards stand on its front feet, with a short shadow. */
 function painted(spots: { x: number; z: number; size: number }[], map: THREE.Texture, kind: (typeof PAINTED)[string], shade: THREE.Texture | null): THREE.Group {
   const img = map.image as HTMLImageElement;
@@ -331,6 +342,22 @@ export class FactoryMap extends StoryMap {
         }
       });
       this.scenery.add(m);
+      const art = PROP_ART[name];
+      const pic = art && this.kit ? kitPieces('factory', art.piece)[0] : undefined;
+      if (art && pic) {
+        // Unseen (the picture is the look), but still there to be tapped and to jump.
+        m.traverse((o) => {
+          const mesh = o as THREE.Mesh;
+          if (!mesh.isMesh) return;
+          Object.assign(mesh.material as THREE.Material, { colorWrite: false, depthWrite: false });
+          mesh.castShadow = false;
+        });
+        const card = painted([{ x: 0, z: art.front, size: art.size }], pic, art, kitPieces('farm', 'blob-shadow')[0] ?? null);
+        // The picture faces the camera however the model is turned; taps go through it to the model.
+        card.rotation.y = -yaw;
+        card.traverse((o) => (o.raycast = () => {}));
+        m.add(card);
+      }
       // A tap on it: it answers (the cabinet blinks all its lamps, the trolley rolls a little and back).
       const lamps = this.cabinetLamps.slice(-3);
       const trick =
