@@ -1,0 +1,65 @@
+{
+  "status": "ready-for-Claude-runtime-integration",
+  "scope": "3 painted props, 4 instances; fixture uses actual FactoryMap/Stage/Life with own substitutions, no src edits",
+  "states": 30,
+  "nativeScreenshots": 21,
+  "viewportSizes": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "quality": 2,
+  "DPR": 1,
+  "console": [],
+  "overflow": false,
+  "maxRestAnchorWorldError": 2.755998451675623e-08,
+  "anchorToleranceNote": "Numeric anchor checks use instance matrices; selected painted support line is visual, about ±1 output pixel, not exact GLB silhouette/collision equivalence. Orthographic guide vs perspective Stage changes apparent roof width.",
+  "proxyGrid": {
+    "raysPerState": 121,
+    "states": 9,
+    "mismatches": 0,
+    "scope": "selected prop original mesh list versus its current descendants; not full Input occlusion audit"
+  },
+  "tap": {
+    "threeNativePointerHits": "original factory-lockers/foreman-booth/loading-ramp meshes",
+    "accepted": 3,
+    "callbacks": [
+      "lockers hammer+chime",
+      "booth hammer+chime",
+      "ramp chime"
+    ],
+    "advanceSeconds": [
+      0.175,
+      1.7
+    ],
+    "peakRootY": 0.12,
+    "peakRootRotationZ": -0.038548588222782676,
+    "returnedToRest": true,
+    "timing": "actual Life.update with fixture dt, no real-time motion recording; audio hook IDs recorded, no listening claim"
+  },
+  "fallback": "Fresh fixture fallback=1 deliberately supplies no new textures; all four original GLBs remain visible, depth writing and shadow casting; not an induced network failure.",
+  "checks": {
+    "npm test": "88/88 across 17 files, 2026-10-28 20:38:13 Asia/Bangkok",
+    "npm run typecheck": "PASS",
+    "build.py": "byte-exact reproduction PASS",
+    "runtimeAndModels": "10 files equal df0d2b3"
+  },
+  "limitations": [
+    "Not runtime integration: Claude owns src/factory.ts",
+    "Not full Input/wires/story 11-station journey",
+    "No iPad/PWA/FPS/VRAM proof",
+    "No geometric collision/drive validation for ramp",
+    "Short shadow follows original prop root during brief tap wobble",
+    "Existing nearby pallet overlaps behind ramp in the baseline too; layout unchanged"
+  ],
+  "lifecycle": {
+    "server": "5364 stopped after QA",
+    "tab": "12 closed after QA",
+    "viewport": "reset after QA"
+  }
+}

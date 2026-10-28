@@ -1,0 +1,152 @@
+{
+  "baseCommit": "df0d2b362a4ec1718fa70847a8f4807d19e5125e",
+  "inputs": [
+    {
+      "path": "src/factory.ts",
+      "sha256": "76583ae334f2d29b74aaebe32f03bfbbb3644f26c4c7c71be8628ca439bc2f56",
+      "equalsBaseDf0d2b3": true
+    },
+    {
+      "path": "src/kit.ts",
+      "sha256": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770",
+      "equalsBaseDf0d2b3": true
+    },
+    {
+      "path": "src/stage.ts",
+      "sha256": "d2e4abf2b80b07e3b49ed98ca60c0813d66e6f63739086fd16972bbbd667c183",
+      "equalsBaseDf0d2b3": true
+    },
+    {
+      "path": "src/life.ts",
+      "sha256": "e8d358ce912847f6411f6859b3ecb916e5240de873ba2b00ab2c24162abf771e",
+      "equalsBaseDf0d2b3": true
+    },
+    {
+      "path": "src/world.ts",
+      "sha256": "77a456eb771692960e988bef024e0252a4e6d2ec9ebba560837b63745496229e",
+      "equalsBaseDf0d2b3": true
+    },
+    {
+      "path": "src/parts/assets.ts",
+      "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+      "equalsBaseDf0d2b3": true
+    },
+    {
+      "path": "src/parts/workshop.ts",
+      "sha256": "e36e7b697dae9b6710c63a837e617cfd349272f94f7bd6775c3a2c60e9fb778b",
+      "equalsBaseDf0d2b3": true
+    },
+    {
+      "path": "public/models/factory-lockers.glb",
+      "sha256": "301300368da5c8777aee51046cf00261789de33579646f5c96abaad39b94b1e8",
+      "equalsBaseDf0d2b3": true
+    },
+    {
+      "path": "public/models/factory-foreman-booth.glb",
+      "sha256": "8a167c0c8a471e7d2b7688cc73f8510799c005d5127728d3904b491ff30ffe5c",
+      "equalsBaseDf0d2b3": true
+    },
+    {
+      "path": "public/models/factory-loading-ramp.glb",
+      "sha256": "b8c6f94a5a114ec92d6314ab368a3b0f3c623ad641fb073b08f0a15f8b4e4ab7",
+      "equalsBaseDf0d2b3": true
+    }
+  ],
+  "outputs": [
+    {
+      "kind": "lockers",
+      "size": [
+        768,
+        576
+      ],
+      "bytes": 52856,
+      "sha256": "b967db40f4a9bd4dcd6821029423aa0f13aa829d00b8ee660738e62c4c0b6645",
+      "sourceSha256": "21856504167068d6e657f8d78a18d181e843b75f95b81b2f6a346a99d1d927e3",
+      "bboxAlpha115": [
+        147,
+        63,
+        622,
+        517
+      ],
+      "borderMaxAlpha": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "path": "public/textures/kit/factory/factory-lockers-painted-a.webp",
+      "source": "lockers-source.png",
+      "prompt": "lockers.prompt.json",
+      "sourceSize": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "kind": "booth",
+      "size": [
+        1024,
+        768
+      ],
+      "bytes": 113570,
+      "sha256": "0c268ed7dd226e3658fd69639c0b232290685a47c94127a119adbd7a8688003b",
+      "sourceSha256": "8aff9e0d7bffec4ebfb85c8c9cf157cb2dd7969e984ad4e3120da8a0954e31e2",
+      "bboxAlpha115": [
+        158,
+        68,
+        868,
+        695
+      ],
+      "borderMaxAlpha": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "path": "public/textures/kit/factory/factory-booth-painted-a.webp",
+      "source": "booth-source.png",
+      "prompt": "booth.prompt.json",
+      "sourceSize": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "kind": "ramp",
+      "size": [
+        1024,
+        768
+      ],
+      "bytes": 156598,
+      "sha256": "5f2139d5897eabf63e3bae7799b4ecf07a29439fd73234fd6106a858e2fd65f5",
+      "sourceSha256": "0fcd637874cd9ef54b45177e0c8e2bbf78c4e5a5ca70713b0931e87219c51ec0",
+      "bboxAlpha115": [
+        83,
+        137,
+        962,
+        652
+      ],
+      "borderMaxAlpha": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "path": "public/textures/kit/factory/factory-ramp-painted-a.webp",
+      "source": "ramp-source.png",
+      "prompt": "ramp.prompt.json",
+      "sourceSize": [
+        1448,
+        1086
+      ]
+    }
+  ],
+  "totalBytes": 323024,
+  "generation": {
+    "tool": "builtin imagegen",
+    "calls": 3,
+    "tripoCalls": 0,
+    "paidApiCalls": 0,
+    "postprocess": "Full canvas LANCZOS resize, WebP quality90 alpha_quality100 method6; no crop, repaint, mask or recolor"
+  }
+}

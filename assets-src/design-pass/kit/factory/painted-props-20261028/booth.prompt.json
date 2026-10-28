@@ -1,0 +1,9 @@
+{
+  "kind": "booth",
+  "tool": "builtin imagegen",
+  "prompt": "Use case: sketch-to-render. Edit the supplied exact game-camera geometry reference into a detailed painted industrial game sprite. Preserve the exact silhouette, viewpoint, proportions, framing and floor contact line from the reference. Keep the 4:3 canvas. Camera is directly in front, zero camera yaw, looking down 52 degrees above horizontal; top planes are large, horizontal front edges remain horizontal, vertical edges remain vertical. This is not a generic isometric view. Refine the lumpy toy geometry into crisp fabricated industrial construction within the same silhouette. Rich hand-painted material detail, readable at tablet scale, muted teal blue and warm ochre industrial palette, small edge wear, bolts and seams, natural highlights from upper left. No text, logos, people, environment or floor slab. Remove the beige background completely: genuine transparent alpha around the entire isolated object. No broad cast shadow; only a tiny soft contact shadow. Do not rotate, crop, enlarge, or lower the camera. Subject: small foreman's enclosed office booth. Preserve roof footprint and its large visible rectangular top plane exactly. Roof warm muted ochre with shallow sheet-metal seams, small fastening bolts and subtle mottling. Teal steel frame, warm light gray wall panels, closed muted brick-red front door at left and wide blue-gray opaque reflective window at right, with a simple thin mullion. Keep door/window in their exact existing locations. Add realistic hinges, small door pull, panel joints, fine roof rim and worn foot trim. Window should remain opaque, only suggesting dim interior, no hole or transparent wall. NO additional furniture outside, NO new annex or chimney.",
+  "references": [
+    "booth-guide.jpg"
+  ],
+  "transparent_background": true
+}

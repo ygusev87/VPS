@@ -1,0 +1,9 @@
+{
+  "kind": "ramp",
+  "tool": "builtin imagegen",
+  "prompt": "Use case: sketch-to-render. Edit the supplied exact game-camera geometry reference into a detailed painted industrial game sprite. Preserve the exact silhouette, viewpoint, proportions, framing and floor contact line from the reference. Keep the 4:3 canvas. Camera is directly in front, zero camera yaw, looking down 52 degrees above horizontal; top planes are large, horizontal front edges remain horizontal, vertical edges remain vertical. This is not a generic isometric view. Refine the lumpy toy geometry into crisp fabricated industrial construction within the same silhouette. Rich hand-painted material detail, readable at tablet scale, muted teal blue and warm ochre industrial palette, small edge wear, bolts and seams, natural highlights from upper left. No text, logos, people, environment or floor slab. Remove the beige background completely: genuine transparent alpha around the entire isolated object. No broad cast shadow; only a tiny soft contact shadow. Do not rotate, crop, enlarge, or lower the camera. Subject: a single industrial mobile loading wedge ramp, oriented exactly as the reference: low end at the LEFT, high horizontal landing at the RIGHT, sloped deck rising from left to right, yellow edge curbs along both long edges, teal steel deck/body, red rectangular stopper at lower right. Preserve the asymmetrical silhouette and visible triangular near side. Upgrade the surface to dark teal steel with subtle diamond tread texture and five muted yellow traction bars across the slope at the existing positions, fine welds/bolts, worn yellow edge curbs, structural triangular side braces. Low left toe touches the floor, high end remains right. No wheels, railing, pallets or people. The deck is opaque. Do NOT mirror the ramp or rotate it into a three-quarter view.",
+  "references": [
+    "ramp-guide.jpg"
+  ],
+  "transparent_background": true
+}

@@ -1,0 +1,114 @@
+{
+  "definitions": {
+    "lockers": {
+      "model": "factory-lockers",
+      "fit": {
+        "height": 2
+      },
+      "yaw": 0,
+      "piece": "factory-lockers-painted",
+      "image": [
+        768,
+        576
+      ],
+      "span": 475,
+      "at": [
+        384.5,
+        516.5
+      ],
+      "size": 1.9769280068361461,
+      "depth": 0.9917294839320048,
+      "deep": 0.5016517953626232,
+      "frontOffsetZ": 0.4958647419660024,
+      "fullWidth": 3.1963804405266534,
+      "unitGeometryTranslate": [
+        -0.0006510416666666297,
+        -0.07747395833333337,
+        0
+      ],
+      "spots": [
+        [
+          29.7,
+          -32.94
+        ],
+        [
+          37.12,
+          -32.94
+        ]
+      ],
+      "anchorMeaning": "center of front ground line (original fitted world AABB maxZ); central pixel can be transparent",
+      "proxy": "original GLB material colorWrite=false/depthWrite=false/castShadow=false, mesh remains raycastable; artwork raycast disabled; same Life prop root"
+    },
+    "booth": {
+      "model": "factory-foreman-booth",
+      "fit": {
+        "height": 2.6
+      },
+      "yaw": 0,
+      "piece": "factory-booth-painted",
+      "image": [
+        1024,
+        768
+      ],
+      "span": 710,
+      "at": [
+        513,
+        694.5
+      ],
+      "size": 3.8502372666877576,
+      "depth": 2.5858995796990105,
+      "deep": 0.6716208380382702,
+      "frontOffsetZ": 1.2929497898495053,
+      "fullWidth": 5.5530182550538925,
+      "unitGeometryTranslate": [
+        -0.0009765625,
+        -0.07177734375,
+        0
+      ],
+      "spots": [
+        [
+          45.9,
+          7.56
+        ]
+      ],
+      "anchorMeaning": "center of front ground line (original fitted world AABB maxZ); central pixel can be transparent",
+      "proxy": "original GLB material colorWrite=false/depthWrite=false/castShadow=false, mesh remains raycastable; artwork raycast disabled; same Life prop root"
+    },
+    "ramp": {
+      "model": "factory-loading-ramp",
+      "fit": {
+        "depth": 3.8
+      },
+      "yaw": -1.5707963267948966,
+      "piece": "factory-ramp-painted",
+      "image": [
+        1024,
+        768
+      ],
+      "span": 879,
+      "at": [
+        522.5,
+        651.5
+      ],
+      "size": 3.8000000000000003,
+      "depth": 2.215381328775903,
+      "deep": 0.5829950865199744,
+      "frontOffsetZ": 1.1076906643879516,
+      "fullWidth": 4.426848691695108,
+      "unitGeometryTranslate": [
+        -0.01025390625,
+        -0.11376953125000003,
+        0
+      ],
+      "spots": [
+        [
+          50.49,
+          -13.5
+        ]
+      ],
+      "anchorMeaning": "center of front ground line (original fitted world AABB maxZ); central pixel can be transparent",
+      "proxy": "original GLB material colorWrite=false/depthWrite=false/castShadow=false, mesh remains raycastable; artwork raycast disabled; same Life prop root"
+    }
+  },
+  "contract": "cards and short shadow in group rotated -yaw, attached to the EXISTING model holder already rotated yaw; spots local x=0,z=frontOffsetZ. Do not apply yaw twice. Preserve life.addProp root and sound/jump/wobble; disable only artwork raycast."
+}
