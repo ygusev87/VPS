@@ -1,0 +1,12 @@
+{
+  "files": {
+    "src/factory.ts": "2048feff88ab9e34df907fe737b7231a3ee8734509f33907521cea52bc02fdaf",
+    "src/kit.ts": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770",
+    "src/stage.ts": "d2e4abf2b80b07e3b49ed98ca60c0813d66e6f63739086fd16972bbbd667c183",
+    "src/life.ts": "e8d358ce912847f6411f6859b3ecb916e5240de873ba2b00ab2c24162abf771e",
+    "src/world.ts": "77a456eb771692960e988bef024e0252a4e6d2ec9ebba560837b63745496229e",
+    "src/parts/kit.ts": "32edbaa0e6375aea7c96994014cba9e91d7690a1bb2887c32cad3cf9f52b6509",
+    "src/storymap.ts": "a9eb74690bc8ba99eadd0a2ad7b61c486e85ca90eb5e119f553b579145bf1894"
+  },
+  "baselineCommit": "34560bd"
+}

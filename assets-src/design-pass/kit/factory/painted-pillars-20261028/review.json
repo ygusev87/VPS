@@ -1,0 +1,111 @@
+{
+  "status": "asset candidate accepted; runtime integration pending Claude",
+  "builtinImagegenCalls": 2,
+  "acceptedAttempt": "perspective-source",
+  "rejectedAttempt": "orthographic silhouette visibly too short in Stage",
+  "tripoCalls": 0,
+  "apiCalls": 0,
+  "asset": {
+    "path": "public/textures/kit/factory/factory-pillar-painted-a.webp",
+    "bytes": 15768,
+    "size": [
+      1024,
+      768
+    ],
+    "sha256": "ac74d73946040fe0447aa733d89582af1a3a700027b1a6b33bdd3191e16c1e49",
+    "sourceSize": [
+      1448,
+      1086
+    ],
+    "sourceSha256": "b8fded89dcdfdaba51fb9f3c505b5ce934660615e02277781ea5540026054f87",
+    "alpha115Components": [
+      41011
+    ],
+    "bbox115": [
+      455,
+      231,
+      571,
+      640
+    ],
+    "borderAlpha": 0
+  },
+  "qa": {
+    "states": 22,
+    "nativeFrames": 22,
+    "columns": [
+      {
+        "x": -20.25,
+        "z": -21.6,
+        "originalTriangles": 12
+      },
+      {
+        "x": 0,
+        "z": -21.6,
+        "originalTriangles": 12
+      },
+      {
+        "x": 0,
+        "z": 10.8,
+        "originalTriangles": 12
+      },
+      {
+        "x": 20.25,
+        "z": -21.6,
+        "originalTriangles": 12
+      },
+      {
+        "x": 20.25,
+        "z": 10.8,
+        "originalTriangles": 12
+      },
+      {
+        "x": 40.5,
+        "z": -21.6,
+        "originalTriangles": 12
+      },
+      {
+        "x": 40.5,
+        "z": 10.8,
+        "originalTriangles": 12
+      }
+    ],
+    "allModelsLoaded": true,
+    "console": [],
+    "overflow": false,
+    "anchorMaxError": 7.629394502828291e-07,
+    "shadowProxyTriangles": 84,
+    "shadowProxyAttributesExact": true,
+    "otherBakedGeometryUnchanged": true,
+    "pickablesUnchanged": 54,
+    "shadowImageCheck": {
+      "region": [
+        580,
+        450,
+        790,
+        525
+      ],
+      "oldVsNewMeanRGB": [
+        0.0,
+        0.0,
+        0.0
+      ],
+      "newShadowOnVsOffMeanRGB": [
+        69.71580952380953,
+        69.05752380952381,
+        64.52336507936508
+      ],
+      "scope": "One native frame crop inside shadow, not full-image shadow equivalence."
+    }
+  },
+  "limits": [
+    "Full appearance uses a fixed perspective sprite calibrated at gameplay zoom; silhouette width/top face not mathematically identical to original at every zoom",
+    "No generalInput/story11/iPad/PWA/FPS/VRAM/global routes or occlusion proof",
+    "Freshfallback omits texture, not network failure"
+  ],
+  "processing": "Full-canvas resize LANCZOS1024x768/WebP90 alpha100 method6 only; no painting/mask/crop",
+  "validation": {
+    "tests": "88/88 in17files",
+    "typecheck": "PASS",
+    "time": "2026-10-28T22:34:53+07:00"
+  }
+}

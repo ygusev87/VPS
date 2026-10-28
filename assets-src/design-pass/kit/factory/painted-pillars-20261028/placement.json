@@ -1,0 +1,29 @@
+{
+  "piece": "factory-pillar-painted",
+  "image": [
+    1024,
+    768
+  ],
+  "span": 116,
+  "at": [
+    512,
+    638.7198594871395
+  ],
+  "size": 1.1956678022719618,
+  "fullWidth": 10.554860599366284,
+  "depth": 0.8,
+  "front": 0.4,
+  "translate": [
+    0,
+    -0.12625013721959036,
+    0
+  ],
+  "originalDimensions": [
+    0.8,
+    5,
+    0.8
+  ],
+  "shadow": "Keep exact original box only as shadow caster, no blob. Do not put hidden material in bakeGroup before bake: it discards flags. Set flags after separate bake or attach shadow proxy outside hall.",
+  "guidePPUAtAnchor": 97.0169137109666,
+  "scaleBasis": "Perspective guide from actual Stage1024x768 at nominal92PPU; true floor anchor projected512,638.719859. Exact original contour not claimed at every zoom."
+}

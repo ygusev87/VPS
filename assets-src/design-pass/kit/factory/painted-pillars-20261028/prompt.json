@@ -1,0 +1,8 @@
+{
+  "tool": "builtin image_gen",
+  "prompt": "Use case: style-transfer. Asset type: transparent hand-painted factory column sprite. Input image is the exact perspective game screenshot and mandatory outline/placement reference. Keep ONLY the tall yellow column in its exact original pixel position and perspective shape. Remove EVERYTHING else, including all floor, shadows, surrounding scene, header, controls, text and background, to true transparency. Preserve this entire 1024x768 canvas, no crop, no recenter, no enlargement. The column top begins around y232, its flat ground base ends around y639; top width about102px (x461..563), base width about78px (x473..551). Preserve the perspective taper and the top-face transition at around y340. Paint this yellow enamel steel column with attractive crisp hand-painted highlights, restrained subtle edge shading and sparse fine wear, matching the warm children\u2019s factory game. Same silhouette and exact visible height are mandatory. No pedestal, cap, added parts, hazard stripes, symbols, label, text, shadow or surrounding objects. No checkerboard. Keep the painted top face distinguishable from the front. All outside pixels genuinely transparent. Do not use orthographic parallel edges: follow the actual perspective reference.",
+  "referenced_image_paths": [
+    "/Users/gusev/gameios/assets-src/design-pass/kit/factory/painted-pillars-20261028/perspective-guide.jpg"
+  ],
+  "transparent_background": true
+}

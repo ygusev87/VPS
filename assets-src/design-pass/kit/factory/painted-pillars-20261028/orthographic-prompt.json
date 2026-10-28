@@ -1,0 +1,8 @@
+{
+  "tool": "builtin image_gen",
+  "prompt": "Use case: style-transfer. Asset type: transparent hand-painted factory game scenery sprite. Input image is the exact camera, scale and registration reference: a straight yellow rectangular steel column 0.8 wide, 5 tall, 0.8 deep seen from above in the fixed game camera. Paint this same single vertical rectangular pillar in warm golden yellow enamel with refined hand-painted highlights, restrained fine surface wear and subtle edge shading. Preserve the exact straight outline, dimensions and placement in this 4:3 canvas: left/right edges at43.25%/56.75%, top8.33%, bottom91.67%, the top surface ends at22.5% of canvas height. Only a front face and top face are visible; do not rotate to invent a side face. It must stay a thin tall structural column, no pedestal, no foot wider than shaft, no cap, no signs, no stripes or hazard bands, no machinery, no text. Keep the base flat at the same bottom edge. True transparent background everywhere outside the column; no beige, checkerboard, ground, cast shadow. Crisp attractive illustrated shading that fits a warm children\u2019s engineering game, realistic straight proportions, no excessive grime. Precise outline registration is more important than decorative additions.",
+  "referenced_image_paths": [
+    "/Users/gusev/gameios/assets-src/design-pass/kit/factory/painted-pillars-20261028/guide.jpg"
+  ],
+  "transparent_background": true
+}

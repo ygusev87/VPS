@@ -1,0 +1,3128 @@
+{
+  "states": [
+    {
+      "label": "pillar-final-1024-0-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            2476.5925026470736,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -5193.030209788321,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            4441.185005294147,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -10898.060419576645,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            6405.777507941221,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -16603.090629364964,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "0",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-0-old",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": false,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": false,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            2476.5925026470736,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -5193.030209788321,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            4441.185005294147,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -10898.060419576645,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            6405.777507941221,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -16603.090629364964,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "old",
+      "view": "0",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-1-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -1452.5925026470736,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            512,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            2476.5925026470736,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -5193.030209788321,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            4441.185005294147,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -10898.060419576645,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "1",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-2-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -326.007508882833,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            512,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            1350.007508882833,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            2476.5925026470736,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            2188.015017765666,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            4441.185005294147,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "2",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-2-old",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": false,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": false,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -326.007508882833,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            512,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            1350.007508882833,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            2476.5925026470736,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            2188.015017765666,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            4441.185005294147,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "old",
+      "view": "2",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-3-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -3417.1850052941472,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -1452.5925026470736,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            6217.030209788321,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            512,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            2476.5925026470736,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -5193.030209788321,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "3",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-4-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -1164.015017765666,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -326.007508882833,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -1452.5925026470736,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            512,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            1350.007508882833,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            2476.5925026470736,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "4",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-5-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -5381.777507941221,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -3417.1850052941472,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            11922.060419576645,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -1452.5925026470736,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            6217.030209788321,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            512,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "5",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-6-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -2002.0225266484983,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -1164.015017765666,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -3417.1850052941472,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -326.007508882833,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -1452.5925026470736,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            512,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "6",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-6-old",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": false,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": false,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -2002.0225266484983,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -1164.015017765666,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -3417.1850052941472,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -326.007508882833,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -1452.5925026470736,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            -534.7621176852625
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            512,
+            638.7198594871396
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "old",
+      "view": "6",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-all-old",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": false,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": false,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            203.7025663554806,
+            327.55840769259726
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            409.2341887851602,
+            327.55840769259726
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            392.4152756788139,
+            611.5476407219378
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            614.7658112148398,
+            327.55840769259726
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            631.5847243211861,
+            611.5476407219378
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            820.2974336445194,
+            327.55840769259726
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            870.7541729635584,
+            611.5476407219378
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": null,
+      "quality": 2,
+      "shadow": "real",
+      "version": "old",
+      "view": "all",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-all-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            203.7025663554806,
+            327.55840769259726
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            409.2341887851602,
+            327.55840769259726
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            392.4152756788139,
+            611.5476407219378
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            614.7658112148398,
+            327.55840769259726
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            631.5847243211861,
+            611.5476407219378
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            820.2974336445194,
+            327.55840769259726
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            870.7541729635584,
+            611.5476407219378
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": null,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "all",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-no-shadow",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": false,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            2476.5925026470736,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -5193.030209788321,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            4441.185005294147,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -10898.060419576645,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            6405.777507941221,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -16603.090629364964,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "none",
+      "version": "new",
+      "view": "0",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-1024-anchor",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            512,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            2476.5925026470736,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -5193.030209788321,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            4441.185005294147,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -10898.060419576645,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            6405.777507941221,
+            638.7198594871395
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -16603.090629364964,
+            -7350.1705256785135
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 95.43300684775,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "0",
+      "viewport": [
+        1024,
+        768
+      ]
+    },
+    {
+      "label": "pillar-final-390-0-old",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": false,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": false,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            195,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            1172.4280086528092,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            2882.2302911915126,
+            4162.506133988058
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            2149.8560173056185,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            5569.460582383025,
+            4162.506133988058
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            3127.2840259584277,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            8256.690873574538,
+            4162.506133988058
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 47.89185083455598,
+      "quality": 2,
+      "shadow": "real",
+      "version": "old",
+      "view": "0",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "label": "pillar-final-390-0-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            195,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            1172.4280086528092,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            2882.2302911915126,
+            4162.506133988058
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            2149.8560173056185,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            5569.460582383025,
+            4162.506133988058
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            3127.2840259584277,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            8256.690873574538,
+            4162.506133988058
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 47.89185083455598,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "0",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "label": "pillar-final-390-2-old",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": false,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": false,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -402.3515338510624,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            195,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            195,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            792.3515338510623,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            1172.4280086528092,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            1389.7030677021246,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            2149.8560173056185,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 47.89185083455598,
+      "quality": 2,
+      "shadow": "real",
+      "version": "old",
+      "view": "2",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "label": "pillar-final-390-2-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -402.3515338510624,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            195,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            195,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            792.3515338510623,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            1172.4280086528092,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            1389.7030677021246,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            2149.8560173056185,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 47.89185083455598,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "2",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "label": "pillar-final-390-6-old",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": false,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": false,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -1597.0546015531872,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -999.7030677021248,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -1759.8560173056185,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -402.3515338510624,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -782.4280086528092,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            195,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            195,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 47.89185083455598,
+      "quality": 2,
+      "shadow": "real",
+      "version": "old",
+      "view": "6",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "label": "pillar-final-390-6-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -1597.0546015531872,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -999.7030677021248,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -1759.8560173056185,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            -402.3515338510624,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            -782.4280086528092,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            195,
+            -196.98215273375905
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            195,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 47.89185083455598,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "6",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "label": "pillar-final-390-all-new",
+      "allModelsLoaded": true,
+      "artReady": true,
+      "artVisible": true,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": true,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "cardCastShadow": [
+        false
+      ],
+      "columns": [
+        {
+          "anchor": [
+            -20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            55.31227476425918,
+            445.8657624188043
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            148.43742492141973,
+            445.8657624188043
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            0,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            145.4325986819419,
+            567.7638116615282
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            241.56257507858027,
+            445.8657624188043
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            20.25,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            244.5674013180581,
+            567.7638116615282
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            -21.200000762939453
+          ],
+          "anchorError": 7.629394502828291e-7,
+          "projected": [
+            334.68772523574086,
+            445.8657624188043
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "anchor": [
+            40.5,
+            0,
+            11.199999809265137
+          ],
+          "anchorError": 1.907348643470641e-7,
+          "projected": [
+            343.7022039541743,
+            567.7638116615282
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": false,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": null,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "all",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "label": "pillar-final-390-fallback",
+      "allModelsLoaded": true,
+      "artReady": false,
+      "artVisible": false,
+      "buckets": [
+        {
+          "keptTriangles": 0,
+          "originalTriangles": 84,
+          "proxyCast": true,
+          "proxyColorWrite": false,
+          "proxyDepthWrite": false,
+          "proxyVisible": false,
+          "removedTriangles": 84,
+          "shadowAttributesExact": true,
+          "unaffectedAttributesExact": true
+        }
+      ],
+      "columns": [
+        {
+          "projected": [
+            195,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": -20.25,
+          "z": -21.6
+        },
+        {
+          "projected": [
+            1172.4280086528092,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": -21.6
+        },
+        {
+          "projected": [
+            2882.2302911915126,
+            4162.506133988058
+          ],
+          "triangles": 12,
+          "x": 0,
+          "z": 10.8
+        },
+        {
+          "projected": [
+            2149.8560173056185,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": -21.6
+        },
+        {
+          "projected": [
+            5569.460582383025,
+            4162.506133988058
+          ],
+          "triangles": 12,
+          "x": 20.25,
+          "z": 10.8
+        },
+        {
+          "projected": [
+            3127.2840259584277,
+            595.857591742773
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": -21.6
+        },
+        {
+          "projected": [
+            8256.690873574538,
+            4162.506133988058
+          ],
+          "triangles": 12,
+          "x": 40.5,
+          "z": 10.8
+        }
+      ],
+      "dpr": 1,
+      "fallback": true,
+      "limits": "actual FactoryMap; fixture extracts only exact original pillar triangles after bake, no src changes; not Input/story/iPad/global occlusion",
+      "loaded": true,
+      "overflow": false,
+      "pickables": 54,
+      "ppu": 47.89185083455598,
+      "quality": 2,
+      "shadow": "real",
+      "version": "new",
+      "view": "0",
+      "viewport": [
+        390,
+        844
+      ]
+    }
+  ],
+  "console": []
+}

@@ -1,0 +1,12 @@
+{
+  "commit": "34560bd",
+  "message": "m0614",
+  "readRevision": 1293,
+  "observed": [
+    "three before/after extinguishers in original comparison",
+    "cabinet west and trolley east recheck original",
+    "diff explicit PROPS view strings + exact contract values"
+  ],
+  "decision": "accepted no new static defect",
+  "limits": "GeneralInput1024/story11/tests/publication are Claude report, not independently repeated"
+}
