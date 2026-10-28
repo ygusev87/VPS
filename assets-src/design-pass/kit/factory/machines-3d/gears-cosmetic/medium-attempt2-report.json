@@ -1,0 +1,325 @@
+{
+  "name": "factory-gear-medium",
+  "sourceSha256": "075fdd9e1692c7551f381405ed163af944025544180f096531d457ceaa6e6368",
+  "sourceBytes": 422924,
+  "sourceTriangles": 3850,
+  "sourceBounds": {
+    "min": [
+      -0.499969482421875,
+      0,
+      -0.5
+    ],
+    "max": [
+      0.499969482421875,
+      0.14471435546875,
+      0.5
+    ]
+  },
+  "sourceOrigin": [
+    0,
+    0.0469198115170002,
+    0
+  ],
+  "rotation": {},
+  "uniformScale": 1.1847331652264586,
+  "sourceRadial": 0.506400949690069,
+  "pivot": [
+    0,
+    0,
+    0
+  ],
+  "axis": "+Y",
+  "floorNormalized": false,
+  "bytes": 52344,
+  "sha256": "45404f9f2ff462b5ac62241f975e4ff754bf988380b5705043ef735faaf12bf3",
+  "triangles": 3850,
+  "bounds": {
+    "min": [
+      -0.5923304199048255,
+      -0.05559006761372404,
+      -0.5923665761947632
+    ],
+    "max": [
+      0.5923304199048255,
+      0.11586305927098112,
+      0.5923665761947632
+    ]
+  },
+  "size": [
+    1.184660839809651,
+    0.17145312688470515,
+    1.1847331523895264
+  ],
+  "structure": [
+    {
+      "name": "gear-pivot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "worldMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "gear",
+      "translation": [
+        0,
+        0.03013649582862854,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        0.5923665761947632,
+        0.5923665761947632,
+        0.5923665761947632
+      ],
+      "worldMatrix": [
+        0.5923665761947632,
+        0,
+        0,
+        0,
+        0,
+        0.5923665761947632,
+        0,
+        0,
+        0,
+        0,
+        0.5923665761947632,
+        0,
+        0,
+        0.03013649582862854,
+        0,
+        1
+      ]
+    }
+  ],
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "mime": "image/webp",
+      "size": [
+        512,
+        512
+      ]
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "containment": {
+    "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+    "tolerance": 1e-7,
+    "maxRadial": 0.5999428131900135,
+    "minY": -0.05559006761372404,
+    "maxY": 0.11586305927098112,
+    "slabs": [
+      {
+        "minY": -0.099,
+        "maxY": -0.069,
+        "radius": 0.179,
+        "maxRadius": 0,
+        "clippedTriangles": 0,
+        "violations": 0
+      },
+      {
+        "minY": -0.069,
+        "maxY": 0.069,
+        "radius": 0.6,
+        "maxRadius": 0.5999428131900135,
+        "clippedTriangles": 3683,
+        "violations": 0
+      },
+      {
+        "minY": 0.069,
+        "maxY": 0.084,
+        "radius": 0.42,
+        "maxRadius": 0.14290295049646534,
+        "clippedTriangles": 158,
+        "violations": 0
+      },
+      {
+        "minY": 0.084,
+        "maxY": 0.099,
+        "radius": 0.179,
+        "maxRadius": 0.14295171250447508,
+        "clippedTriangles": 131,
+        "violations": 0
+      }
+    ],
+    "violationCount": 184,
+    "examples": [
+      {
+        "triangle": 1036,
+        "reason": "outside vertical union",
+        "lo": 0.051577175761701115,
+        "hi": 0.10116552741129478
+      },
+      {
+        "triangle": 1037,
+        "reason": "outside vertical union",
+        "lo": 0.08404552412578067,
+        "hi": 0.10570314179847962
+      },
+      {
+        "triangle": 1038,
+        "reason": "outside vertical union",
+        "lo": 0.08404552412578067,
+        "hi": 0.10570314179847962
+      },
+      {
+        "triangle": 1039,
+        "reason": "outside vertical union",
+        "lo": 0.08950512390637756,
+        "hi": 0.10987919328628717
+      },
+      {
+        "triangle": 1040,
+        "reason": "outside vertical union",
+        "lo": 0.10570314179847962,
+        "hi": 0.11045769392529083
+      },
+      {
+        "triangle": 1041,
+        "reason": "outside vertical union",
+        "lo": 0.10116552741129478,
+        "hi": 0.11045769392529083
+      },
+      {
+        "triangle": 1042,
+        "reason": "outside vertical union",
+        "lo": 0.10987919328628717,
+        "hi": 0.11154238262342266
+      },
+      {
+        "triangle": 1043,
+        "reason": "outside vertical union",
+        "lo": 0.11045769392529083,
+        "hi": 0.11259091503161676
+      },
+      {
+        "triangle": 1181,
+        "reason": "outside vertical union",
+        "lo": 0.08453363403993999,
+        "hi": 0.10508848486953824
+      },
+      {
+        "triangle": 1182,
+        "reason": "outside vertical union",
+        "lo": 0.08950512390637756,
+        "hi": 0.10987919328628717
+      },
+      {
+        "triangle": 1183,
+        "reason": "outside vertical union",
+        "lo": 0.10508848486953824,
+        "hi": 0.10987919328628717
+      },
+      {
+        "triangle": 1184,
+        "reason": "outside vertical union",
+        "lo": 0.10854141055859125,
+        "hi": 0.11154238262342266
+      },
+      {
+        "triangle": 1185,
+        "reason": "outside vertical union",
+        "lo": 0.10282871674843025,
+        "hi": 0.10854141055859125
+      },
+      {
+        "triangle": 1186,
+        "reason": "outside vertical union",
+        "lo": 0.08453363403993999,
+        "hi": 0.10508848486953824
+      },
+      {
+        "triangle": 1187,
+        "reason": "outside vertical union",
+        "lo": 0.10282871674843025,
+        "hi": 0.10854141055859125
+      },
+      {
+        "triangle": 1188,
+        "reason": "outside vertical union",
+        "lo": 0.10817984765921397,
+        "hi": 0.11154238262342266
+      },
+      {
+        "triangle": 1189,
+        "reason": "outside vertical union",
+        "lo": 0.10282871674843025,
+        "hi": 0.10817984765921397
+      },
+      {
+        "triangle": 1190,
+        "reason": "outside vertical union",
+        "lo": 0.06909489823653023,
+        "hi": 0.1032083577927764
+      },
+      {
+        "triangle": 1191,
+        "reason": "outside vertical union",
+        "lo": 0.06909489823653023,
+        "hi": 0.10282871674843025
+      },
+      {
+        "triangle": 1200,
+        "reason": "outside vertical union",
+        "lo": 0.06909489823653023,
+        "hi": 0.1032083577927764
+      }
+    ],
+    "pass": false
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": false
+}

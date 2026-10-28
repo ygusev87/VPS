@@ -1,0 +1,42 @@
+[
+  {
+    "name": "factory-gear-small",
+    "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-da3f2c3b-f59f-4835-b81b-71f56192dc49.png",
+    "file": "assets-src/design-pass/kit/factory/machines-3d/gears-cosmetic/refs/factory-gear-small.png",
+    "sha256": "d8dd7d3d57502288a8221e63191955e8c3e039bb507731ca7463e62888afa36d",
+    "tool": "built-in image_gen",
+    "visualReview": "isolated bevelled gear with open spokes and shallow hub; approved as source"
+  },
+  {
+    "name": "factory-gear-medium",
+    "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-d5cff2c6-846d-4d83-bab0-fff59b94677c.png",
+    "file": "assets-src/design-pass/kit/factory/machines-3d/gears-cosmetic/refs/factory-gear-medium.png",
+    "sha256": "90f6c0871b6f1ab292cbefac06ab28bbc98cca297e8212a0124f738deadadce9",
+    "tool": "built-in image_gen",
+    "visualReview": "isolated bevelled gear with open spokes and shallow hub; approved as source"
+  },
+  {
+    "name": "factory-gear-big",
+    "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-34705a83-b928-4550-964b-4c0140a16706.png",
+    "file": "assets-src/design-pass/kit/factory/machines-3d/gears-cosmetic/refs/factory-gear-big.png",
+    "sha256": "7c93783601421f62b1949502e0f41d0b7c187542ca99ba05cd03c327773ea135",
+    "tool": "built-in image_gen",
+    "visualReview": "isolated bevelled gear with open spokes and shallow hub; approved as source"
+  },
+  {
+    "name": "factory-gear-big-flat",
+    "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-9e3a8699-fc3e-4189-95aa-4eb9c3302779.png",
+    "file": "assets-src/design-pass/kit/factory/machines-3d/gears-cosmetic/refs/factory-gear-big-flat.png",
+    "sha256": "3ddc0c63ac7e494e9f1a954314fa1b5c3fa0d8a8abae3eaefffbd53b07cb4801",
+    "tool": "built-in image_gen edit",
+    "role": "flat-profile alternative; original retained"
+  },
+  {
+    "name": "factory-gear-medium-flat",
+    "source": "/Users/gusev/.codex/generated_images/01a17696-ff06-7a43-886e-af0ed6098802/exec-bcc2d5ce-080c-4390-aaa8-8b18b5bc4df9.png",
+    "file": "assets-src/design-pass/kit/factory/machines-3d/gears-cosmetic/refs/factory-gear-medium-flat.png",
+    "sha256": "a4e59308b56358ccab8cb63df9fc382a545d407adae4aa038ea40ec2b56a2435",
+    "tool": "built-in image_gen edit",
+    "role": "flat-profile alternative; original retained"
+  }
+]

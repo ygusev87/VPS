@@ -1,0 +1,15 @@
+{
+  "mode": "built-in image_gen edit",
+  "date": "2026-10-28",
+  "reason": "Raised collars in initial medium and big reconstructions exceeded the exact cylinder union at nominal radial fit; flatter reference preserves teeth/spoke silhouette without squashing a GLB.",
+  "items": [
+    {
+      "name": "factory-gear-medium",
+      "prompt": "Use case: precise-object-edit. Edit this isolated gear reference for an exact thin 3D asset. Preserve the number of teeth, open spoke layout, colour, bevels, camera and white backdrop. Remove the raised central collar completely: the central hub must be exactly flush with the flat spoke and rim top face, with a simple round through-bore. The whole wheel, including the centre, is ONE constant thin slab. No bulge on either face. Outer diameter120units, total thickness8units (6.7percent). No new components, text, shaft or base. Holes open all the way through. The thickness is the only design change."
+    },
+    {
+      "name": "factory-gear-big",
+      "prompt": "Use case: precise-object-edit. Edit this isolated gear reference for an exact thin 3D asset. Preserve the number of teeth, open spoke layout, colour, bevels, camera and white backdrop. Remove the raised central collar completely: the central hub must be exactly flush with the flat spoke and rim top face, with a simple round through-bore. The whole wheel, including the centre, is ONE constant thin slab. No bulge on either face. Outer diameter200units, total thickness8units (4percent). No new components, text, shaft or base. Holes open all the way through. The thickness is the only design change."
+    }
+  ]
+}

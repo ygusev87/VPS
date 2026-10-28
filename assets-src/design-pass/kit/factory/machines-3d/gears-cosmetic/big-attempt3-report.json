@@ -1,0 +1,331 @@
+{
+  "name": "factory-gear-big",
+  "sourceSha256": "b5044a70d78b4ed6e8c039a5fd830a5f7f6289b904d8150340ef5682f90060dc",
+  "sourceBytes": 458232,
+  "sourceTriangles": 3898,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.2170257717370987
+    ],
+    "max": [
+      0.5,
+      0.80572509765625,
+      0.2170257717370987
+    ]
+  },
+  "sourceOrigin": [
+    -0.00001880310365143245,
+    0.18110467482491488,
+    -0.3613204112255508
+  ],
+  "rotation": {},
+  "quaternion": [
+    -0.5294306853945036,
+    0,
+    0.000029645434005615773,
+    0.8483531979569914
+  ],
+  "uniformScale": 1.996786979377425,
+  "sourceRadial": 0.5007795074423876,
+  "pivot": [
+    0,
+    0,
+    0
+  ],
+  "axis": "+Y",
+  "floorNormalized": false,
+  "bytes": 52360,
+  "sha256": "5ed82e6e2056fa5938cd3842da8502abb6d10fa4e6ac50ffed04eb9804d8c976",
+  "triangles": 3898,
+  "bounds": {
+    "min": [
+      -0.9983939528465271,
+      -0.07359849904044617,
+      -0.8725853546147352
+    ],
+    "max": [
+      0.9983938336372375,
+      0.07393478844626893,
+      0.8725853546147352
+    ]
+  },
+  "size": [
+    1.9967877864837646,
+    0.1475332874867151,
+    1.7451707092294704
+  ],
+  "structure": [
+    {
+      "name": "gear-pivot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "worldMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "gear",
+      "translation": [
+        -5.960464477539063e-8,
+        0.00016814470291137695,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        0.9983938932418823,
+        0.9983938932418823,
+        0.9983938932418823
+      ],
+      "worldMatrix": [
+        0.9983938932418823,
+        0,
+        0,
+        0,
+        0,
+        0.9983938932418823,
+        0,
+        0,
+        0,
+        0,
+        0.9983938932418823,
+        0,
+        -5.960464477539063e-8,
+        0.00016814470291137695,
+        0,
+        1
+      ]
+    }
+  ],
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "mime": "image/webp",
+      "size": [
+        512,
+        512
+      ]
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "containment": {
+    "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+    "tolerance": 1e-7,
+    "maxRadial": 0.9999497839712596,
+    "minY": -0.07359849904044617,
+    "maxY": 0.07393478844626893,
+    "slabs": [
+      {
+        "minY": -0.099,
+        "maxY": -0.069,
+        "radius": 0.299,
+        "maxRadius": 0.8893011529634166,
+        "clippedTriangles": 100,
+        "violations": 100
+      },
+      {
+        "minY": -0.069,
+        "maxY": 0.069,
+        "radius": 1,
+        "maxRadius": 0.9999497839712596,
+        "clippedTriangles": 3586,
+        "violations": 0
+      },
+      {
+        "minY": 0.069,
+        "maxY": 0.084,
+        "radius": 0.7,
+        "maxRadius": 0.9862413624277496,
+        "clippedTriangles": 722,
+        "violations": 330
+      },
+      {
+        "minY": 0.084,
+        "maxY": 0.099,
+        "radius": 0.299,
+        "maxRadius": 0,
+        "clippedTriangles": 0,
+        "violations": 0
+      }
+    ],
+    "violationCount": 432,
+    "examples": [
+      {
+        "triangle": 13,
+        "slab": 2,
+        "radius": 0.9810333016642827,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 14,
+        "slab": 2,
+        "radius": 0.9314191628098651,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 15,
+        "slab": 2,
+        "radius": 0.9169097388377563,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 16,
+        "slab": 2,
+        "radius": 0.8747762434929642,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 41,
+        "slab": 2,
+        "radius": 0.8551905914129065,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 42,
+        "slab": 2,
+        "radius": 0.8486177197040712,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 44,
+        "slab": 2,
+        "radius": 0.8485143835316681,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 50,
+        "slab": 2,
+        "radius": 0.8827012845908182,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 51,
+        "slab": 2,
+        "radius": 0.8827012845908182,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 86,
+        "slab": 2,
+        "radius": 0.9741545490639939,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 87,
+        "slab": 2,
+        "radius": 0.973938203349172,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 88,
+        "slab": 2,
+        "radius": 0.9739082560152537,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 89,
+        "slab": 2,
+        "radius": 0.9180321221317985,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 90,
+        "slab": 2,
+        "radius": 0.8868609356710093,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 114,
+        "slab": 2,
+        "radius": 0.8588469745003691,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 122,
+        "slab": 2,
+        "radius": 0.8686043657976323,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 132,
+        "slab": 2,
+        "radius": 0.9847720487754887,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 133,
+        "slab": 2,
+        "radius": 0.9858681994522666,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 134,
+        "slab": 2,
+        "radius": 0.9858681994522666,
+        "allowed": 0.7
+      },
+      {
+        "triangle": 135,
+        "slab": 2,
+        "radius": 0.9835871240054191,
+        "allowed": 0.7
+      }
+    ],
+    "pass": false
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": false
+}

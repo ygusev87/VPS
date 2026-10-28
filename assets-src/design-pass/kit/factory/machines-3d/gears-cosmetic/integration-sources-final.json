@@ -1,0 +1,37 @@
+{
+  "public/models/shaft-motor.glb": {
+    "expected": "7527ad1bc4f9813ec9fecbf4509436ef0d6ee4b74e0450482645b1ea04c26214",
+    "actual": "7527ad1bc4f9813ec9fecbf4509436ef0d6ee4b74e0450482645b1ea04c26214",
+    "unchanged": true
+  },
+  "public/models/lathe.glb": {
+    "expected": "89c2383176dfebd1064c7e456bf3a2fc06d81f3dec0022e38ea3a4a61d51defa",
+    "actual": "89c2383176dfebd1064c7e456bf3a2fc06d81f3dec0022e38ea3a4a61d51defa",
+    "unchanged": true
+  },
+  "public/models/grinder.glb": {
+    "expected": "60f83ae983fd7710eb17ef20db4b9d2d2f9d6355a2b30618526d8580a32f1f05",
+    "actual": "60f83ae983fd7710eb17ef20db4b9d2d2f9d6355a2b30618526d8580a32f1f05",
+    "unchanged": true
+  },
+  "src/parts/assets.ts": {
+    "expected": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+    "actual": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+    "unchanged": true
+  },
+  "src/parts/workshop.ts": {
+    "expected": "d04f9d29ed21a83cec8433144a69243f39fd8314f94ea5a35ba6d1ef2e240155",
+    "actual": "d04f9d29ed21a83cec8433144a69243f39fd8314f94ea5a35ba6d1ef2e240155",
+    "unchanged": true
+  },
+  "src/parts/factory.ts": {
+    "expected": "853e315e8cf2d3c28f49cd8f8bd7ae52f4a54e84a23b3d8c3c7f0575904e6aec",
+    "actual": "853e315e8cf2d3c28f49cd8f8bd7ae52f4a54e84a23b3d8c3c7f0575904e6aec",
+    "unchanged": true
+  },
+  "assets-src/design-pass/kit/factory/readability-night/gears/lathe-fix-20261028/worker-brief.md": {
+    "expected": "9588edb4960f5de4bdb568b7919dcd5d4ff1b04bbd3fd4719c5b9eec4c643a6c",
+    "actual": "9588edb4960f5de4bdb568b7919dcd5d4ff1b04bbd3fd4719c5b9eec4c643a6c",
+    "unchanged": true
+  }
+}

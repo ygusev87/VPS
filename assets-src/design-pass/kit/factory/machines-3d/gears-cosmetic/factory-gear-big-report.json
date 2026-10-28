@@ -1,0 +1,229 @@
+{
+  "name": "factory-gear-big",
+  "sourceSha256": "a9b695bd3f8ef838875ede10299355ce7bd54c0af63b339e6524c7aefb06782d",
+  "sourceBytes": 458748,
+  "sourceTriangles": 3876,
+  "sourceFile": "big-attempt1.glb",
+  "cleanup": {
+    "method": "Planar clipping of excess raised hub, retaining all lower source vertices; triangulated cap with original bore hole. No global or local nonuniform squash.",
+    "capTextureUV": [
+      0.5315065963993406,
+      0.798790757676978
+    ],
+    "capTextureMethod": "Single existing red atlas texel to avoid stretching unrelated UV islands across the new surface",
+    "cutY": 0.097,
+    "allowedHubRadius": 0.299,
+    "removedTriangles": 154,
+    "clippedTriangles": 100,
+    "capTriangles": 100,
+    "loopVertexCounts": [
+      65,
+      35
+    ],
+    "capArea": 0.122656073490142,
+    "expectedArea": 0.12265607349014196,
+    "boundaryCoveragePass": true,
+    "retainedVertexDeformation": 0,
+    "sourceTriangles": 3876,
+    "outputTriangles": 3874
+  },
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.4984130859375
+    ],
+    "max": [
+      0.5,
+      0.10251618176698685,
+      0.4984130859375
+    ]
+  },
+  "sourceOrigin": [
+    0,
+    0.02713717520236969,
+    0
+  ],
+  "rotation": {},
+  "quaternion": null,
+  "uniformScale": 1.9811392438325,
+  "sourceRadial": 0.5047348403767944,
+  "pivot": [
+    0,
+    0,
+    0
+  ],
+  "axis": "+Y",
+  "floorNormalized": false,
+  "bytes": 53680,
+  "sha256": "767fa4e0e940b9b30552971c2d31d7a0b645f463255aa107d87ab4dacddf4342",
+  "triangles": 3874,
+  "bounds": {
+    "min": [
+      -0.9905696511268616,
+      -0.05377664832253852,
+      -0.9874256573612683
+    ],
+    "max": [
+      0.9905696511268616,
+      0.09701412958879867,
+      0.9874256573612683
+    ]
+  },
+  "size": [
+    1.9811393022537231,
+    0.1507907779113372,
+    1.9748513147225366
+  ],
+  "structure": [
+    {
+      "name": "gear-pivot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "worldMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "gear",
+      "translation": [
+        0,
+        0.021618740633130074,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        0.9905696511268616,
+        0.9905696511268616,
+        0.9905696511268616
+      ],
+      "worldMatrix": [
+        0.9905696511268616,
+        0,
+        0,
+        0,
+        0,
+        0.9905696511268616,
+        0,
+        0,
+        0,
+        0,
+        0.9905696511268616,
+        0,
+        0,
+        0.021618740633130074,
+        0,
+        1
+      ]
+    }
+  ],
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "mime": "image/webp",
+      "size": [
+        512,
+        512
+      ]
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "containment": {
+    "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+    "tolerance": 1e-7,
+    "maxRadial": 0.999937862959202,
+    "minY": -0.05377664832253852,
+    "maxY": 0.09701412958879867,
+    "slabs": [
+      {
+        "minY": -0.099,
+        "maxY": -0.069,
+        "radius": 0.299,
+        "maxRadius": 0,
+        "clippedTriangles": 0,
+        "violations": 0
+      },
+      {
+        "minY": -0.069,
+        "maxY": 0.069,
+        "radius": 1,
+        "maxRadius": 0.999937862959202,
+        "clippedTriangles": 3695,
+        "violations": 0
+      },
+      {
+        "minY": 0.069,
+        "maxY": 0.084,
+        "radius": 0.7,
+        "maxRadius": 0.21267469273082734,
+        "clippedTriangles": 170,
+        "violations": 0
+      },
+      {
+        "minY": 0.084,
+        "maxY": 0.099,
+        "radius": 0.299,
+        "maxRadius": 0.21240951916264375,
+        "clippedTriangles": 170,
+        "violations": 0
+      }
+    ],
+    "violationCount": 0,
+    "examples": [],
+    "pass": true
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}

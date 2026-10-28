@@ -1,0 +1,160 @@
+{
+  "status": "READY_FOR_INTEGRATION",
+  "date": "2026-10-28",
+  "scope": "Exactly three cosmetic gear assets; runtime code unchanged",
+  "totalBytes": 158640,
+  "totalTriangles": 11528,
+  "credits": {
+    "includedSpent": 125,
+    "start": 4475,
+    "end": 4350,
+    "paidOrders": 5,
+    "freeRetries": 3
+  },
+  "models": [
+    {
+      "name": "factory-gear-small",
+      "bytes": 53020,
+      "triangles": 3812,
+      "sha256": "eaeafcd8600dc3cc7f923d0a41d4122899cbabf6542101606749f2306a3e27fb",
+      "sourceSha256": "5e151218c04e0963a13e21f5f570e150285c521928df0e80940f358825c0a709",
+      "sourceFile": "factory-gear-small.glb",
+      "sourceOrigin": [
+        0,
+        0.04623604565858841,
+        0
+      ],
+      "uniformScale": 0.7902958486869801,
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "axis": "+Y",
+      "floorNormalized": false,
+      "bounds": {
+        "min": [
+          -0.3951479196548462,
+          -0.03653591298847953,
+          -0.3829197635670135
+        ],
+        "max": [
+          0.3951479196548462,
+          0.08072896846919814,
+          0.3829197635670135
+        ]
+      },
+      "size": [
+        0.7902958393096924,
+        0.11726488145767766,
+        0.765839527134027
+      ],
+      "cleanup": null
+    },
+    {
+      "name": "factory-gear-medium",
+      "bytes": 51940,
+      "triangles": 3842,
+      "sha256": "a5e9a120882493db6212140b0635079c67fafdfac5a953f50314844b740cfcf8",
+      "sourceSha256": "eed7ddfeaf59ba8d0d24906bcfd6680be6d921fb33a4c2a7a977407c9f82e982",
+      "sourceFile": "factory-gear-medium.glb",
+      "sourceOrigin": [
+        0,
+        0.04297447204589844,
+        0
+      ],
+      "uniformScale": 1.1881924478926447,
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "axis": "+Y",
+      "floorNormalized": false,
+      "bounds": {
+        "min": [
+          -0.5940962433815002,
+          -0.051068039764634386,
+          -0.5923556739255041
+        ],
+        "max": [
+          0.5940962433815002,
+          0.05126293950246932,
+          0.5923556739255041
+        ]
+      },
+      "size": [
+        1.1881924867630005,
+        0.1023309792671037,
+        1.1847113478510083
+      ],
+      "cleanup": null
+    },
+    {
+      "name": "factory-gear-big",
+      "bytes": 53680,
+      "triangles": 3874,
+      "sha256": "767fa4e0e940b9b30552971c2d31d7a0b645f463255aa107d87ab4dacddf4342",
+      "sourceSha256": "a9b695bd3f8ef838875ede10299355ce7bd54c0af63b339e6524c7aefb06782d",
+      "sourceFile": "big-attempt1.glb",
+      "sourceOrigin": [
+        0,
+        0.02713717520236969,
+        0
+      ],
+      "uniformScale": 1.9811392438325,
+      "pivot": [
+        0,
+        0,
+        0
+      ],
+      "axis": "+Y",
+      "floorNormalized": false,
+      "bounds": {
+        "min": [
+          -0.9905696511268616,
+          -0.05377664832253852,
+          -0.9874256573612683
+        ],
+        "max": [
+          0.9905696511268616,
+          0.09701412958879867,
+          0.9874256573612683
+        ]
+      },
+      "size": [
+        1.9811393022537231,
+        0.1507907779113372,
+        1.9748513147225366
+      ],
+      "cleanup": {
+        "method": "Planar clipping of excess raised hub, retaining all lower source vertices; triangulated cap with original bore hole. No global or local nonuniform squash.",
+        "capTextureUV": [
+          0.5315065963993406,
+          0.798790757676978
+        ],
+        "capTextureMethod": "Single existing red atlas texel to avoid stretching unrelated UV islands across the new surface",
+        "cutY": 0.097,
+        "allowedHubRadius": 0.299,
+        "removedTriangles": 154,
+        "clippedTriangles": 100,
+        "capTriangles": 100,
+        "loopVertexCounts": [
+          65,
+          35
+        ],
+        "capArea": 0.122656073490142,
+        "expectedArea": 0.12265607349014196,
+        "boundaryCoveragePass": true,
+        "retainedVertexDeformation": 0,
+        "sourceTriangles": 3876,
+        "outputTriangles": 3874
+      }
+    }
+  ],
+  "qa": "qa.json",
+  "bodySweep": "body-clearance.json",
+  "provenance": "ledger.json",
+  "preview": "qa/batch-preview.jpg",
+  "integrationSourceHashesUnchanged": true
+}

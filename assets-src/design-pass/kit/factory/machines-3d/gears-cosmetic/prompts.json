@@ -1,0 +1,27 @@
+{
+  "mode": "built-in image_gen",
+  "date": "2026-10-28",
+  "items": [
+    {
+      "name": "factory-gear-small",
+      "r": 0.4,
+      "teeth": 6,
+      "color": "#d9ad4c",
+      "prompt": "Use case: stylized-concept. Asset type: isolated reference for image-to-3D of one cosmetic toy factory gear. Render one complete gear lying flat in XZ, with vertical central rotation axis Y, on a plain white background. Orthographic three-quarter view from 30 degrees off the top axis: mostly top view, enough edge visible to judge thinness. Soft even diffuse studio lighting, clean matte painted metal, softly bevelled edges, readable simple geometric form matching friendly coral/teal workshop toys. All holes must be real open spaces, white visible through them. No stand, base, ground plane, shaft, bearing, bolts, text, logo, other objects, cast ground shadow, disconnected parts, dramatic reflections or grime. Gear must be radially symmetric about the bore; both faces centred around the same thin rim plane. Rim and spokes form one flat thin wheel. A small shallow central hub with a round through bore only; no protruding axle. Small brass golden-yellow gear #d9ad4c. Exactly six wide rounded trapezoid teeth, evenly spaced at 60 degrees. Three equally spaced broad flat radial spokes joining the hub and toothed rim, with three clear generous rounded openings. Outer diameter80 units, rim thickness10 units, total central hub height16 units, hub diameter20 units, bore diameter8 units. Teeth are substantial, no tiny serrations. Spokes do not rise above the rim."
+    },
+    {
+      "name": "factory-gear-medium",
+      "r": 0.6,
+      "teeth": 8,
+      "color": "#8d97a3",
+      "prompt": "Use case: stylized-concept. Asset type: isolated reference for image-to-3D of one cosmetic toy factory gear. Render one complete gear lying flat in XZ, with vertical central rotation axis Y, on a plain white background. Orthographic three-quarter view from 30 degrees off the top axis: mostly top view, enough edge visible to judge thinness. Soft even diffuse studio lighting, clean matte painted metal, softly bevelled edges, readable simple geometric form matching friendly coral/teal workshop toys. All holes must be real open spaces, white visible through them. No stand, base, ground plane, shaft, bearing, bolts, text, logo, other objects, cast ground shadow, disconnected parts, dramatic reflections or grime. Gear must be radially symmetric about the bore; both faces centred around the same thin rim plane. Rim and spokes form one flat thin wheel. A small shallow central hub with a round through bore only; no protruding axle. Medium steel blue-grey gear #8d97a3. Exactly eight wide rounded trapezoid teeth, evenly spaced at45degrees. Four equally spaced broad flat radial spokes joining the hub and toothed rim, with four clear generous rounded openings. Outer diameter120 units, rim thickness10 units, total central hub height16 units, hub diameter30 units, bore diameter10 units. Teeth are substantial, no tiny serrations. Spokes do not rise above the rim."
+    },
+    {
+      "name": "factory-gear-big",
+      "r": 1,
+      "teeth": 14,
+      "color": "#c4553f",
+      "prompt": "Use case: stylized-concept. Asset type: isolated reference for image-to-3D of one cosmetic toy factory gear. Render one complete gear lying flat in XZ, with vertical central rotation axis Y, on a plain white background. Orthographic three-quarter view from 30 degrees off the top axis: mostly top view, enough edge visible to judge thinness. Soft even diffuse studio lighting, clean matte painted metal, softly bevelled edges, readable simple geometric form matching friendly coral/teal workshop toys. All holes must be real open spaces, white visible through them. No stand, base, ground plane, shaft, bearing, bolts, text, logo, other objects, cast ground shadow, disconnected parts, dramatic reflections or grime. Gear must be radially symmetric about the bore; both faces centred around the same thin rim plane. Rim and spokes form one flat thin wheel. A small shallow central hub with a round through bore only; no protruding axle. Large copper coral-red gear #c4553f. Exactly fourteen wide rounded trapezoid teeth evenly spaced around the perimeter. Six equally spaced broad flat radial spokes joining the hub and toothed rim, with six clear generous rounded openings. Outer diameter200 units, rim thickness10 units, total central hub height16 units, hub diameter50 units, bore diameter14 units. This gear is distinctly a THIN sheet-like wheel, rim thickness only5percent of its outer diameter, not a thick donut. Spokes do not rise above the rim."
+    }
+  ]
+}

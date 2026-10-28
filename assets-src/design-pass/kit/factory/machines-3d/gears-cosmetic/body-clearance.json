@@ -1,0 +1,186 @@
+{
+  "method": "Continuous Y sweep of decoded released gear clipped-slab radial maxima. Body triangles decoded and fitted as in production loader then clipped to sweep slabs. Intended code shaft/peg seating excluded; accepted body GLBs included.",
+  "checks": [
+    {
+      "body": "lathe",
+      "gear": "big",
+      "width": 2.6,
+      "at": [
+        0.1,
+        0.16,
+        0.2
+      ],
+      "axis": [
+        -2.45,
+        0.51,
+        -0.45
+      ],
+      "bodySha256": "89c2383176dfebd1064c7e456bf3a2fc06d81f3dec0022e38ea3a4a61d51defa",
+      "gearSha256": "767fa4e0e940b9b30552971c2d31d7a0b645f463255aa107d87ab4dacddf4342",
+      "volumes": [
+        {
+          "y": [
+            0.441,
+            0.579
+          ],
+          "sweptRadius": 0.999937862959202,
+          "minimumBodyRadius": 1.2968859126468983,
+          "clearance": 0.2969480496876964,
+          "intersections": 0
+        },
+        {
+          "y": [
+            0.579,
+            0.594
+          ],
+          "sweptRadius": 0.21267469273082734,
+          "minimumBodyRadius": 1.3064239542250946,
+          "clearance": 1.0937492614942672,
+          "intersections": 0
+        },
+        {
+          "y": [
+            0.594,
+            0.609
+          ],
+          "sweptRadius": 0.21240951916264375,
+          "minimumBodyRadius": 1.3146947758194398,
+          "clearance": 1.102285256656796,
+          "intersections": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "body": "grinder",
+      "gear": "small",
+      "width": 2.6,
+      "at": [
+        0.1,
+        0.16,
+        0.2
+      ],
+      "axis": [
+        -2.45,
+        0.51,
+        -0.45
+      ],
+      "bodySha256": "60f83ae983fd7710eb17ef20db4b9d2d2f9d6355a2b30618526d8580a32f1f05",
+      "gearSha256": "eaeafcd8600dc3cc7f923d0a41d4122899cbabf6542101606749f2306a3e27fb",
+      "volumes": [
+        {
+          "y": [
+            0.441,
+            0.579
+          ],
+          "sweptRadius": 0.3999506803001512,
+          "minimumBodyRadius": 1.3833820931417322,
+          "clearance": 0.9834314128415811,
+          "intersections": 0
+        },
+        {
+          "y": [
+            0.579,
+            0.594
+          ],
+          "sweptRadius": 0.08479064672410538,
+          "minimumBodyRadius": 1.383411189592342,
+          "clearance": 1.2986205428682367,
+          "intersections": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "body": "shaft-motor",
+      "gear": "small",
+      "width": 1.1,
+      "at": [
+        0,
+        0.16,
+        -0.1
+      ],
+      "axis": [
+        0,
+        0.51,
+        -0.35
+      ],
+      "bodySha256": "7527ad1bc4f9813ec9fecbf4509436ef0d6ee4b74e0450482645b1ea04c26214",
+      "gearSha256": "eaeafcd8600dc3cc7f923d0a41d4122899cbabf6542101606749f2306a3e27fb",
+      "volumes": [
+        {
+          "y": [
+            0.441,
+            0.579
+          ],
+          "sweptRadius": 0.3999506803001512,
+          "minimumBodyRadius": null,
+          "clearance": null,
+          "intersections": 0
+        },
+        {
+          "y": [
+            0.579,
+            0.594
+          ],
+          "sweptRadius": 0.08479064672410538,
+          "minimumBodyRadius": null,
+          "clearance": null,
+          "intersections": 0
+        }
+      ],
+      "pass": true
+    },
+    {
+      "body": "shaft-motor",
+      "gear": "big",
+      "width": 1.1,
+      "at": [
+        0,
+        0.16,
+        -0.1
+      ],
+      "axis": [
+        0,
+        0.51,
+        -0.35
+      ],
+      "bodySha256": "7527ad1bc4f9813ec9fecbf4509436ef0d6ee4b74e0450482645b1ea04c26214",
+      "gearSha256": "767fa4e0e940b9b30552971c2d31d7a0b645f463255aa107d87ab4dacddf4342",
+      "volumes": [
+        {
+          "y": [
+            0.441,
+            0.579
+          ],
+          "sweptRadius": 0.999937862959202,
+          "minimumBodyRadius": null,
+          "clearance": null,
+          "intersections": 0
+        },
+        {
+          "y": [
+            0.579,
+            0.594
+          ],
+          "sweptRadius": 0.21267469273082734,
+          "minimumBodyRadius": null,
+          "clearance": null,
+          "intersections": 0
+        },
+        {
+          "y": [
+            0.594,
+            0.609
+          ],
+          "sweptRadius": 0.21240951916264375,
+          "minimumBodyRadius": null,
+          "clearance": null,
+          "intersections": 0
+        }
+      ],
+      "pass": true
+    }
+  ],
+  "pass": true
+}

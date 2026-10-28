@@ -1,0 +1,207 @@
+{
+  "name": "factory-gear-medium",
+  "sourceSha256": "eed7ddfeaf59ba8d0d24906bcfd6680be6d921fb33a4c2a7a977407c9f82e982",
+  "sourceBytes": 416936,
+  "sourceTriangles": 3842,
+  "sourceFile": "factory-gear-medium.glb",
+  "cleanup": null,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.49853515625
+    ],
+    "max": [
+      0.5,
+      0.08611297607421875,
+      0.49853515625
+    ]
+  },
+  "sourceOrigin": [
+    0,
+    0.04297447204589844,
+    0
+  ],
+  "rotation": {},
+  "quaternion": null,
+  "uniformScale": 1.1881924478926447,
+  "sourceRadial": 0.504926622841325,
+  "pivot": [
+    0,
+    0,
+    0
+  ],
+  "axis": "+Y",
+  "floorNormalized": false,
+  "bytes": 51940,
+  "sha256": "a5e9a120882493db6212140b0635079c67fafdfac5a953f50314844b740cfcf8",
+  "triangles": 3842,
+  "bounds": {
+    "min": [
+      -0.5940962433815002,
+      -0.051068039764634386,
+      -0.5923556739255041
+    ],
+    "max": [
+      0.5940962433815002,
+      0.05126293950246932,
+      0.5923556739255041
+    ]
+  },
+  "size": [
+    1.1881924867630005,
+    0.1023309792671037,
+    1.1847113478510083
+  ],
+  "structure": [
+    {
+      "name": "gear-pivot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "worldMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "gear",
+      "translation": [
+        0,
+        0.00009744986891746521,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        0.5940962433815002,
+        0.5940962433815002,
+        0.5940962433815002
+      ],
+      "worldMatrix": [
+        0.5940962433815002,
+        0,
+        0,
+        0,
+        0,
+        0.5940962433815002,
+        0,
+        0,
+        0,
+        0,
+        0.5940962433815002,
+        0,
+        0,
+        0.00009744986891746521,
+        0,
+        1
+      ]
+    }
+  ],
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "mime": "image/webp",
+      "size": [
+        512,
+        512
+      ]
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "containment": {
+    "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+    "tolerance": 1e-7,
+    "maxRadial": 0.599942905550662,
+    "minY": -0.051068039764634386,
+    "maxY": 0.05126293950246932,
+    "slabs": [
+      {
+        "minY": -0.099,
+        "maxY": -0.069,
+        "radius": 0.179,
+        "maxRadius": 0,
+        "clippedTriangles": 0,
+        "violations": 0
+      },
+      {
+        "minY": -0.069,
+        "maxY": 0.069,
+        "radius": 0.6,
+        "maxRadius": 0.599942905550662,
+        "clippedTriangles": 3842,
+        "violations": 0
+      },
+      {
+        "minY": 0.069,
+        "maxY": 0.084,
+        "radius": 0.42,
+        "maxRadius": 0,
+        "clippedTriangles": 0,
+        "violations": 0
+      },
+      {
+        "minY": 0.084,
+        "maxY": 0.099,
+        "radius": 0.179,
+        "maxRadius": 0,
+        "clippedTriangles": 0,
+        "violations": 0
+      }
+    ],
+    "violationCount": 0,
+    "examples": [],
+    "pass": true
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}

@@ -1,0 +1,37 @@
+{
+  "factory-gear-small": {
+    "reviewed": true,
+    "radius": 0.4,
+    "rotation": {},
+    "origin": [
+      0,
+      0.04623604565858841,
+      0
+    ],
+    "originMethod": "XZ bounds centre; rim midplane from vertices beyond70percent source radial max"
+  },
+  "factory-gear-medium": {
+    "reviewed": true,
+    "radius": 0.6,
+    "rotation": {},
+    "origin": [
+      0,
+      0.04297447204589844,
+      0
+    ],
+    "originMethod": "XZ bounds centre; rim midplane from outer70percent"
+  },
+  "factory-gear-big": {
+    "reviewed": true,
+    "radius": 1,
+    "rotation": {},
+    "origin": [
+      0,
+      0.02713717520236969,
+      0
+    ],
+    "originMethod": "Original upright-normal source; XZ bounds centre and rim midplane",
+    "source": "big-attempt1.glb",
+    "trimHubY": 0.097
+  }
+}

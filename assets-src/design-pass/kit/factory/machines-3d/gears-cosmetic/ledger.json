@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-28",
+  "initialBalance": 4475,
+  "orders": [
+    {
+      "name": "factory-gear-small",
+      "quote": 25,
+      "balanceBefore": 4475,
+      "status": "complete exported",
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "ultra": false,
+        "aiEnhancement": false,
+        "pbr": false
+      },
+      "taskId": "b023388e-a64f-428d-9924-78a61a2019b6",
+      "balanceAfter": 4450,
+      "cost": 25,
+      "selectedForRelease": true,
+      "releaseSource": "raw/factory-gear-small.glb"
+    },
+    {
+      "name": "factory-gear-medium",
+      "quote": 25,
+      "balanceBefore": 4450,
+      "status": "complete exported",
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "ultra": false,
+        "aiEnhancement": false,
+        "pbr": false
+      },
+      "taskId": "fadb24c2-f591-4910-ad7d-90a3ebf46ea8",
+      "balanceAfter": 4425,
+      "cost": 25,
+      "geometry": "rejected: hub exceeds +.099 at radial fit",
+      "selectedForRelease": false
+    },
+    {
+      "name": "factory-gear-big",
+      "quote": 25,
+      "balanceBefore": 4425,
+      "status": "complete exported",
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "ultra": false,
+        "aiEnhancement": false,
+        "pbr": false
+      },
+      "taskId": "9b4912b9-cfa2-4ee1-a62f-5e5540d4f052",
+      "balanceAfter": 4400,
+      "cost": 25,
+      "selectedForRelease": true,
+      "releaseSource": "raw/big-attempt1.glb",
+      "localCleanup": "Hub clipped at Y=.097 after uniform radial fit; bore preserved. See factory-gear-big-report.json."
+    },
+    {
+      "name": "factory-gear-medium",
+      "attempt": 2,
+      "type": "free retry",
+      "quote": 0,
+      "balanceBefore": 4400,
+      "parentTaskId": "fadb24c2-f591-4910-ad7d-90a3ebf46ea8",
+      "status": "complete exported",
+      "taskId": "fadb24c2-f591-4910-ad7d-90a3ebf46ea8",
+      "balanceAfter": 4400,
+      "cost": 0,
+      "selectedForRelease": false,
+      "geometry": "rejected: hub exceeds +.099"
+    },
+    {
+      "name": "factory-gear-big",
+      "attempt": 2,
+      "type": "free retry",
+      "quote": 0,
+      "balanceBefore": 4400,
+      "parentTaskId": "9b4912b9-cfa2-4ee1-a62f-5e5540d4f052",
+      "status": "complete exported",
+      "taskId": "9b4912b9-cfa2-4ee1-a62f-5e5540d4f052",
+      "balanceAfter": 4400,
+      "cost": 0,
+      "selectedForRelease": false,
+      "geometry": "rejected: hub exceeds +.099"
+    },
+    {
+      "name": "factory-gear-medium",
+      "attempt": 3,
+      "type": "flat reference correction",
+      "reference": "refs/factory-gear-medium-flat.png",
+      "quote": 25,
+      "balanceBefore": 4400,
+      "status": "complete exported",
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "ultra": false,
+        "aiEnhancement": false,
+        "pbr": false
+      },
+      "taskId": "8a4faed3-e31b-4521-b092-5ba0871e3953",
+      "balanceAfter": 4375,
+      "cost": 25,
+      "selectedForRelease": true,
+      "releaseSource": "raw/factory-gear-medium.glb"
+    },
+    {
+      "name": "factory-gear-big",
+      "attempt": 3,
+      "type": "flat reference correction",
+      "reference": "refs/factory-gear-big-flat.png",
+      "quote": 25,
+      "balanceBefore": 4375,
+      "status": "complete exported",
+      "settings": {
+        "model": "H3.1",
+        "triangles": 4000,
+        "texture": "2K",
+        "delight": true,
+        "ultra": false,
+        "aiEnhancement": false,
+        "pbr": false
+      },
+      "taskId": "1d1ff040-6571-4831-8c7e-5a1b4fae7c45",
+      "balanceAfter": 4350,
+      "cost": 25,
+      "selectedForRelease": false,
+      "geometry": "rejected: tilted thick rim after rigid alignment"
+    },
+    {
+      "name": "factory-gear-big",
+      "attempt": 4,
+      "type": "free retry of flat reference",
+      "quote": 0,
+      "balanceBefore": 4350,
+      "parentTaskId": "1d1ff040-6571-4831-8c7e-5a1b4fae7c45",
+      "status": "complete exported",
+      "taskId": "1d1ff040-6571-4831-8c7e-5a1b4fae7c45",
+      "balanceAfter": 4350,
+      "cost": 0,
+      "selectedForRelease": false,
+      "geometry": "rejected: thick elliptical wheel after rigid alignment"
+    }
+  ],
+  "totalCost": 125,
+  "currentBalance": 4350,
+  "finalBalanceVerified": "2026-10-28, Tripo Studio native accessibility text: 4350; free retry counter ×2"
+}

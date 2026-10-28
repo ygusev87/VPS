@@ -1,0 +1,207 @@
+{
+  "name": "factory-gear-small",
+  "sourceSha256": "5e151218c04e0963a13e21f5f570e150285c521928df0e80940f358825c0a709",
+  "sourceBytes": 439676,
+  "sourceTriangles": 3812,
+  "sourceFile": "factory-gear-small.glb",
+  "cleanup": null,
+  "sourceBounds": {
+    "min": [
+      -0.5,
+      0,
+      -0.4845276176929474
+    ],
+    "max": [
+      0.5,
+      0.1483917236328125,
+      0.4845276176929474
+    ]
+  },
+  "sourceOrigin": [
+    0,
+    0.04623604565858841,
+    0
+  ],
+  "rotation": {},
+  "quaternion": null,
+  "uniformScale": 0.7902958486869801,
+  "sourceRadial": 0.5060763012541294,
+  "pivot": [
+    0,
+    0,
+    0
+  ],
+  "axis": "+Y",
+  "floorNormalized": false,
+  "bytes": 53020,
+  "sha256": "eaeafcd8600dc3cc7f923d0a41d4122899cbabf6542101606749f2306a3e27fb",
+  "triangles": 3812,
+  "bounds": {
+    "min": [
+      -0.3951479196548462,
+      -0.03653591298847953,
+      -0.3829197635670135
+    ],
+    "max": [
+      0.3951479196548462,
+      0.08072896846919814,
+      0.3829197635670135
+    ]
+  },
+  "size": [
+    0.7902958393096924,
+    0.11726488145767766,
+    0.765839527134027
+  ],
+  "structure": [
+    {
+      "name": "gear-pivot",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        1,
+        1,
+        1
+      ],
+      "worldMatrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "gear",
+      "translation": [
+        0,
+        0.022096527740359306,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "scale": [
+        0.3951479196548462,
+        0.3951479196548462,
+        0.3951479196548462
+      ],
+      "worldMatrix": [
+        0.3951479196548462,
+        0,
+        0,
+        0,
+        0,
+        0.3951479196548462,
+        0,
+        0,
+        0,
+        0,
+        0.3951479196548462,
+        0,
+        0,
+        0.022096527740359306,
+        0,
+        1
+      ]
+    }
+  ],
+  "materials": 1,
+  "alphaModes": [
+    "OPAQUE"
+  ],
+  "textures": [
+    {
+      "mime": "image/webp",
+      "size": [
+        512,
+        512
+      ]
+    }
+  ],
+  "skins": 0,
+  "animations": 0,
+  "containment": {
+    "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+    "tolerance": 1e-7,
+    "maxRadial": 0.3999506803001512,
+    "minY": -0.03653591298847953,
+    "maxY": 0.08072896846919814,
+    "slabs": [
+      {
+        "minY": -0.099,
+        "maxY": -0.069,
+        "radius": 0.119,
+        "maxRadius": 0,
+        "clippedTriangles": 0,
+        "violations": 0
+      },
+      {
+        "minY": -0.069,
+        "maxY": 0.069,
+        "radius": 0.4,
+        "maxRadius": 0.3999506803001512,
+        "clippedTriangles": 3682,
+        "violations": 0
+      },
+      {
+        "minY": 0.069,
+        "maxY": 0.084,
+        "radius": 0.27999999999999997,
+        "maxRadius": 0.08479064672410538,
+        "clippedTriangles": 228,
+        "violations": 0
+      },
+      {
+        "minY": 0.084,
+        "maxY": 0.099,
+        "radius": 0.119,
+        "maxRadius": 0,
+        "clippedTriangles": 0,
+        "violations": 0
+      }
+    ],
+    "violationCount": 0,
+    "examples": [],
+    "pass": true
+  },
+  "validation": {
+    "numErrors": 0,
+    "numWarnings": 0,
+    "numInfos": 1,
+    "numHints": 0,
+    "messages": [
+      {
+        "code": "UNSUPPORTED_EXTENSION",
+        "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+        "severity": 2,
+        "pointer": "/extensionsUsed/0"
+      }
+    ],
+    "truncated": false
+  },
+  "pass": true
+}
