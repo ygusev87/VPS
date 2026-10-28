@@ -579,12 +579,8 @@ export class Voice {
     if (sound && !sound.cue) return void this.cry(id);
     const now = performance.now();
     if (this.last && this.last.id === id && now - this.last.at < cooldown) return;
-    // A line that goes with a sound (the crow caws, then 'my hat flew off'): the sound first, the words right after.
-    if (sound) {
-      this.last = { id, at: now };
-      void this.cry(id).then((s) => setTimeout(() => this.enabled && this.words(id), s ? s * 1000 + 100 : 0));
-      return;
-    }
+    // A line that goes with a sound (the mouse squeaks, the crow caws) is said at once — words first, never held
+    // up — and the sound follows when the recorded line ends (see words).
     this.words(id);
   }
 
@@ -620,6 +616,8 @@ export class Voice {
       src.start();
       this.playing = src;
       this.endsAt = now + clip.duration * 1000;
+      // Its sound right after it, unless other words cut it short (stop() also ends a clip: then it is no longer `playing`).
+      if (this.sounds.get(id)?.cue) src.onended = () => this.playing === src && this.enabled && void this.cry(id);
       return;
     }
     this.speak(id);
@@ -637,11 +635,14 @@ export class Voice {
     if (!intro.length || now - this.introAt < 10000) return this.say(then, 0);
     this.introAt = now;
     const take = intro[Math.floor(Math.random() * intro.length)];
+    // Anything said or stopped meanwhile (a newer hint, another map) takes the place of these words.
+    const turn = this.turn;
     void this.decode(take).then((clip) => {
+      if (this.turn !== turn) return;
       if (!clip || !this.enabled) return this.say(then, 0);
       this.play(take, clip);
       this.saidAt = performance.now() + clip.duration * 1000;
-      setTimeout(() => this.say(then, 0), clip.duration * 1000 + 100);
+      setTimeout(() => this.turn === turn && this.enabled && this.say(then, 0), clip.duration * 1000 + 100);
     });
   }
 
@@ -728,7 +729,11 @@ export class Voice {
     return 'speechSynthesis' in window && speechSynthesis.speaking;
   }
 
+  /** Counts the times talk was stopped (every new phrase stops the last): words waiting for their turn check it. */
+  private turn = 0;
+
   stop() {
+    this.turn++;
     try {
       this.playing?.stop();
     } catch {
