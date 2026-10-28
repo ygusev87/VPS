@@ -1,0 +1,11 @@
+{
+  "commit": "89dc70a",
+  "message": "m0610",
+  "readRevision": 1280,
+  "observed": [
+    "two original before/after/tap comparison images",
+    "src/factory.ts diff: precise parameters; side by x<0 matches all current cabinets/trolleys"
+  ],
+  "decision": "accepted: no new static defect",
+  "limits": "Input1024 shift/rest, story11, tests and publication reported by Claude; not repeated independently"
+}

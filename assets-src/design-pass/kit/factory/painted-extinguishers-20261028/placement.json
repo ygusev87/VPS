@@ -1,0 +1,110 @@
+{
+  "definitions": {
+    "north": {
+      "model": "factory-fire-extinguisher",
+      "fit": {
+        "height": 1.1
+      },
+      "yaw": 0,
+      "piece": "factory-extinguisher-north-painted",
+      "image": [
+        768,
+        576
+      ],
+      "span": 324,
+      "at": [
+        384,
+        528
+      ],
+      "size": 0.6695518602121999,
+      "depth": 0.3999908444471572,
+      "deep": 0.5974008410945029,
+      "frontOffsetZ": 0.1999954222235786,
+      "fullWidth": 1.587085890873363,
+      "unitGeometryTranslate": [
+        0,
+        -0.0625,
+        0
+      ],
+      "spots": [
+        [
+          -8.64,
+          -33.62
+        ]
+      ],
+      "scaleBasis": "Full canvas world width1024/orthographic guide ppu; alpha span reports visible width.",
+      "originalActualVertexWidth": 0.6609668263801997
+    },
+    "west": {
+      "model": "factory-fire-extinguisher",
+      "fit": {
+        "height": 1.1
+      },
+      "yaw": 1.5707963267948966,
+      "piece": "factory-extinguisher-west-painted",
+      "image": [
+        768,
+        576
+      ],
+      "span": 164,
+      "at": [
+        384,
+        528
+      ],
+      "size": 0.40921718883314867,
+      "depth": 0.6609668263801998,
+      "deep": 1.6151981011963252,
+      "frontOffsetZ": 0.3304834131900999,
+      "fullWidth": 1.916334152584501,
+      "unitGeometryTranslate": [
+        0,
+        -0.0625,
+        0
+      ],
+      "spots": [
+        [
+          -52.52,
+          0.27
+        ]
+      ],
+      "scaleBasis": "Full canvas world width1024/orthographic guide ppu; alpha span reports visible width.",
+      "originalActualVertexWidth": 0.3999908444471572
+    },
+    "east": {
+      "model": "factory-fire-extinguisher",
+      "fit": {
+        "height": 1.1
+      },
+      "yaw": -1.5707963267948966,
+      "piece": "factory-extinguisher-east-painted",
+      "image": [
+        768,
+        576
+      ],
+      "span": 166,
+      "at": [
+        384,
+        528
+      ],
+      "size": 0.4142076423555041,
+      "depth": 0.6609668263801998,
+      "deep": 1.5957378831096225,
+      "frontOffsetZ": 0.3304834131900999,
+      "fullWidth": 1.916334152584501,
+      "unitGeometryTranslate": [
+        0,
+        -0.0625,
+        0
+      ],
+      "spots": [
+        [
+          52.52,
+          12.15
+        ]
+      ],
+      "scaleBasis": "Full canvas world width1024/orthographic guide ppu; alpha span reports visible width.",
+      "originalActualVertexWidth": 0.3999908444471572
+    }
+  },
+  "anchorMeaning": "Virtual ground point x0,zBox.maxZ projected from guide(512,704) to (384,528). For side views it is below the drawn base; do not recenter to opaque bottom."
+}

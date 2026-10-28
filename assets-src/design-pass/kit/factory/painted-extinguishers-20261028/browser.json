@@ -1,0 +1,6489 @@
+{
+  "states": [
+    {
+      "label": "fire-1024-north-old",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 91.91751923300968,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 1,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -8.64,
+          2.7092448079602306e-17,
+          -33.42000457167625
+        ],
+        "artInheritedTransform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.100165705902327e-9,
+        "kind": "north",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "25a4b2ff-25d7-4436-977c-16521217b780"
+        ],
+        "restAnchorError": 6.100165705902327e-9,
+        "rootPosition": [
+          -8.64,
+          0,
+          -33.62
+        ],
+        "rootRotation": [
+          0,
+          0,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -8.64,
+        "z": -33.62
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        459.92846554684456
+      ],
+      "version": "old",
+      "view": "north",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-1024-north-new",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 91.91751923300968,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 1,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -8.64,
+          2.7092448079602306e-17,
+          -33.42000457167625
+        ],
+        "artInheritedTransform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.100165705902327e-9,
+        "kind": "north",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "25a4b2ff-25d7-4436-977c-16521217b780"
+        ],
+        "restAnchorError": 6.100165705902327e-9,
+        "rootPosition": [
+          -8.64,
+          0,
+          -33.62
+        ],
+        "rootRotation": [
+          0,
+          0,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -8.64,
+        "z": -33.62
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        459.92846554684456
+      ],
+      "version": "new",
+      "view": "north",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-1024-north-close",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 184.66790429975003,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 4,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -8.64,
+          2.7092448079602306e-17,
+          -33.42000457167625
+        ],
+        "artInheritedTransform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.100165705902327e-9,
+        "kind": "north",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "25a4b2ff-25d7-4436-977c-16521217b780"
+        ],
+        "restAnchorError": 6.100165705902327e-9,
+        "rootPosition": [
+          -8.64,
+          0,
+          -33.62
+        ],
+        "rootRotation": [
+          0,
+          0,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -8.64,
+        "z": -33.62
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512,
+        485.4977181772357
+      ],
+      "version": "new",
+      "view": "north",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 180
+    },
+    {
+      "label": "fire-1024-west-old",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 91.91751923300968,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 1,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -52.52,
+          3.271289880516126e-17,
+          0.6004834067821503
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.407949615372388e-9,
+        "kind": "west",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "14b9f617-4256-43af-b6a1-030ed9766d3c"
+        ],
+        "restAnchorError": 6.407949615372388e-9,
+        "rootPosition": [
+          -52.52,
+          0,
+          0.27
+        ],
+        "rootRotation": [
+          0,
+          1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -52.52,
+        "z": 0.27
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512.0000000000007,
+        459.928465546845
+      ],
+      "version": "old",
+      "view": "west",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-1024-west-new",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 91.91751923300968,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 1,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -52.52,
+          3.271289880516126e-17,
+          0.6004834067821503
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.407949615372388e-9,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "14b9f617-4256-43af-b6a1-030ed9766d3c"
+        ],
+        "restAnchorError": 6.407949615372388e-9,
+        "rootPosition": [
+          -52.52,
+          0,
+          0.27
+        ],
+        "rootRotation": [
+          0,
+          1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -52.52,
+        "z": 0.27
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512.0000000000007,
+        459.928465546845
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-1024-west-close",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 185.01598914861347,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 4,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -52.52,
+          3.271289880516126e-17,
+          0.6004834067821503
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.407949615372388e-9,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "14b9f617-4256-43af-b6a1-030ed9766d3c"
+        ],
+        "restAnchorError": 6.407949615372388e-9,
+        "rootPosition": [
+          -52.52,
+          0,
+          0.27
+        ],
+        "rootRotation": [
+          0,
+          1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -52.52,
+        "z": 0.27
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        512.0000000000014,
+        485.5965309113608
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 180
+    },
+    {
+      "label": "fire-1024-east-old",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 91.91751923300971,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 1,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          52.52,
+          3.271289880516126e-17,
+          12.48048340678215
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.40794972639469e-9,
+        "kind": "east",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "77a05393-edb5-48b5-9363-ba61298840b4"
+        ],
+        "restAnchorError": 6.40794972639469e-9,
+        "rootPosition": [
+          52.52,
+          0,
+          12.15
+        ],
+        "rootRotation": [
+          0,
+          -1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 52.52,
+        "z": 12.15
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        511.9999999999993,
+        459.9284655468453
+      ],
+      "version": "old",
+      "view": "east",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-1024-east-new",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 91.91751923300971,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 1,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          52.52,
+          3.271289880516126e-17,
+          12.48048340678215
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.40794972639469e-9,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "77a05393-edb5-48b5-9363-ba61298840b4"
+        ],
+        "restAnchorError": 6.40794972639469e-9,
+        "rootPosition": [
+          52.52,
+          0,
+          12.15
+        ],
+        "rootRotation": [
+          0,
+          -1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 52.52,
+        "z": 12.15
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        511.9999999999993,
+        459.9284655468453
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-1024-east-close",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 185.01598914861353,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          52.52,
+          3.271289880516126e-17,
+          12.48048340678215
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.40794972639469e-9,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "77a05393-edb5-48b5-9363-ba61298840b4"
+        ],
+        "restAnchorError": 6.40794972639469e-9,
+        "rootPosition": [
+          52.52,
+          0,
+          12.15
+        ],
+        "rootRotation": [
+          0,
+          -1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 52.52,
+        "z": 12.15
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        511.99999999999864,
+        485.5965309113605
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        1024,
+        768
+      ],
+      "zoom": 180
+    },
+    {
+      "label": "fire-390-north-old",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 82.30623983472526,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 2,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -8.64,
+          2.7092448079602306e-17,
+          -33.42000457167625
+        ],
+        "artInheritedTransform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.100165705902327e-9,
+        "kind": "north",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "25a4b2ff-25d7-4436-977c-16521217b780"
+        ],
+        "restAnchorError": 6.100165705902327e-9,
+        "rootPosition": [
+          -8.64,
+          0,
+          -33.62
+        ],
+        "rootRotation": [
+          0,
+          0,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -8.64,
+        "z": -33.62
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        516.3362667701396
+      ],
+      "version": "old",
+      "view": "north",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-north-new",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 82.30623983472526,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 2,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -8.64,
+          2.7092448079602306e-17,
+          -33.42000457167625
+        ],
+        "artInheritedTransform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.100165705902327e-9,
+        "kind": "north",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "25a4b2ff-25d7-4436-977c-16521217b780"
+        ],
+        "restAnchorError": 6.100165705902327e-9,
+        "rootPosition": [
+          -8.64,
+          0,
+          -33.62
+        ],
+        "rootRotation": [
+          0,
+          0,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -8.64,
+        "z": -33.62
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        516.3362667701396
+      ],
+      "version": "new",
+      "view": "north",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-north-tap",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "25a4b2ff-25d7-4436-977c-16521217b780",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            516
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            0.12000000000000002,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 0.12000000000000018,
+          "rootPosition": [
+            -8.64,
+            0.12,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            -0.03854858822278267,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 82.30623983472526,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -8.64,
+          0.12000000000000002,
+          -33.42000457167625
+        ],
+        "artInheritedTransform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.100165705902327e-9,
+        "kind": "north",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "25a4b2ff-25d7-4436-977c-16521217b780"
+        ],
+        "restAnchorError": 0.12000000000000018,
+        "rootPosition": [
+          -8.64,
+          0.12,
+          -33.62
+        ],
+        "rootRotation": [
+          0,
+          0,
+          -0.03854858822278267,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -8.64,
+        "z": -33.62
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        516.3362667701396
+      ],
+      "version": "new",
+      "view": "north",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-north-rest",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "25a4b2ff-25d7-4436-977c-16521217b780",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            516
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 82.30623983472526,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 2,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -8.64,
+          2.7092448079602306e-17,
+          -33.42000457167625
+        ],
+        "artInheritedTransform": [
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.100165705902327e-9,
+        "kind": "north",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "25a4b2ff-25d7-4436-977c-16521217b780"
+        ],
+        "restAnchorError": 6.100165705902327e-9,
+        "rootPosition": [
+          -8.64,
+          0,
+          -33.62
+        ],
+        "rootRotation": [
+          0,
+          0,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -8.64,
+        "z": -33.62
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        516.3362667701396
+      ],
+      "version": "new",
+      "view": "north",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-west-old",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "25a4b2ff-25d7-4436-977c-16521217b780",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            516
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 84.01253342629909,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -52.52,
+          3.271289880516126e-17,
+          0.6004834067821503
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.407949615372388e-9,
+        "kind": "west",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "14b9f617-4256-43af-b6a1-030ed9766d3c"
+        ],
+        "restAnchorError": 6.407949615372388e-9,
+        "rootPosition": [
+          -52.52,
+          0,
+          0.27
+        ],
+        "rootRotation": [
+          0,
+          1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -52.52,
+        "z": 0.27
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195.0000000000006,
+        516.7895137174664
+      ],
+      "version": "old",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-west-new",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "25a4b2ff-25d7-4436-977c-16521217b780",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            516
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 84.01253342629909,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -52.52,
+          3.271289880516126e-17,
+          0.6004834067821503
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.407949615372388e-9,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "14b9f617-4256-43af-b6a1-030ed9766d3c"
+        ],
+        "restAnchorError": 6.407949615372388e-9,
+        "rootPosition": [
+          -52.52,
+          0,
+          0.27
+        ],
+        "rootRotation": [
+          0,
+          1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -52.52,
+        "z": 0.27
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195.0000000000006,
+        516.7895137174664
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-west-tap",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "25a4b2ff-25d7-4436-977c-16521217b780",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            516
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "14b9f617-4256-43af-b6a1-030ed9766d3c",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            517
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            0.13273651381910548,
+            0.6002378890649465
+          ],
+          "artInheritedTransform": [
+            2.2204460492503136e-16,
+            -9.26101469351831e-34,
+            1,
+            0,
+            0,
+            1.0000000000000002,
+            0,
+            0,
+            -1.0000000000000002,
+            6.938893903907228e-18,
+            2.2204460492503136e-16,
+            0,
+            -5.551115123125783e-17,
+            0,
+            -7.105427357601002e-15,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949585519251e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 0.13273674089318907,
+          "rootPosition": [
+            -52.52,
+            0.12,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            -0.03854858822278267,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 84.01253342629909,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -52.52,
+          0.13273651381910548,
+          0.6002378890649465
+        ],
+        "artInheritedTransform": [
+          2.2204460492503136e-16,
+          -9.26101469351831e-34,
+          1,
+          0,
+          0,
+          1.0000000000000002,
+          0,
+          0,
+          -1.0000000000000002,
+          6.938893903907228e-18,
+          2.2204460492503136e-16,
+          0,
+          -5.551115123125783e-17,
+          0,
+          -7.105427357601002e-15,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.407949585519251e-9,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "14b9f617-4256-43af-b6a1-030ed9766d3c"
+        ],
+        "restAnchorError": 0.13273674089318907,
+        "rootPosition": [
+          -52.52,
+          0.12,
+          0.27
+        ],
+        "rootRotation": [
+          0,
+          1.5707963267948966,
+          -0.03854858822278267,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -52.52,
+        "z": 0.27
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195.0000000000006,
+        516.7895137174664
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-west-rest",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "25a4b2ff-25d7-4436-977c-16521217b780",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            516
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "14b9f617-4256-43af-b6a1-030ed9766d3c",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            517
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 84.01253342629909,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -52.52,
+          3.271289880516126e-17,
+          0.6004834067821503
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          -1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.407949615372388e-9,
+        "kind": "west",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "14b9f617-4256-43af-b6a1-030ed9766d3c"
+        ],
+        "restAnchorError": 6.407949615372388e-9,
+        "rootPosition": [
+          -52.52,
+          0,
+          0.27
+        ],
+        "rootRotation": [
+          0,
+          1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -52.52,
+        "z": 0.27
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195.0000000000006,
+        516.7895137174664
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-east-old",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "25a4b2ff-25d7-4436-977c-16521217b780",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            516
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "14b9f617-4256-43af-b6a1-030ed9766d3c",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            517
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": false,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 84.01253342629903,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          52.52,
+          3.271289880516126e-17,
+          12.48048340678215
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": false,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.40794972639469e-9,
+        "kind": "east",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "77a05393-edb5-48b5-9363-ba61298840b4"
+        ],
+        "restAnchorError": 6.40794972639469e-9,
+        "rootPosition": [
+          52.52,
+          0,
+          12.15
+        ],
+        "rootRotation": [
+          0,
+          -1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 52.52,
+        "z": 12.15
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        194.9999999999994,
+        516.7895137174664
+      ],
+      "version": "old",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-east-new",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "25a4b2ff-25d7-4436-977c-16521217b780",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            516
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "14b9f617-4256-43af-b6a1-030ed9766d3c",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            517
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 84.01253342629903,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          52.52,
+          3.271289880516126e-17,
+          12.48048340678215
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.40794972639469e-9,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "77a05393-edb5-48b5-9363-ba61298840b4"
+        ],
+        "restAnchorError": 6.40794972639469e-9,
+        "rootPosition": [
+          52.52,
+          0,
+          12.15
+        ],
+        "rootRotation": [
+          0,
+          -1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 52.52,
+        "z": 12.15
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        194.9999999999994,
+        516.7895137174664
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-east-tap",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "25a4b2ff-25d7-4436-977c-16521217b780",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            516
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "14b9f617-4256-43af-b6a1-030ed9766d3c",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            517
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "77a05393-edb5-48b5-9363-ba61298840b4",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            517
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            0.10726348618089458,
+            12.480237889064949
+          ],
+          "artInheritedTransform": [
+            2.2204460492503136e-16,
+            -9.26101469351831e-34,
+            -1,
+            0,
+            0,
+            1.0000000000000002,
+            0,
+            0,
+            1.0000000000000002,
+            -6.938893903907228e-18,
+            2.2204460492503136e-16,
+            0,
+            0,
+            -1.1102230246251563e-16,
+            -7.105427357601002e-15,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949588193434e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 0.10726376718060482,
+          "rootPosition": [
+            52.52,
+            0.12,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            -0.03854858822278267,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 84.01253342629903,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          52.52,
+          0.10726348618089458,
+          12.480237889064949
+        ],
+        "artInheritedTransform": [
+          2.2204460492503136e-16,
+          -9.26101469351831e-34,
+          -1,
+          0,
+          0,
+          1.0000000000000002,
+          0,
+          0,
+          1.0000000000000002,
+          -6.938893903907228e-18,
+          2.2204460492503136e-16,
+          0,
+          0,
+          -1.1102230246251563e-16,
+          -7.105427357601002e-15,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.407949588193434e-9,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "77a05393-edb5-48b5-9363-ba61298840b4"
+        ],
+        "restAnchorError": 0.10726376718060482,
+        "rootPosition": [
+          52.52,
+          0.12,
+          12.15
+        ],
+        "rootRotation": [
+          0,
+          -1.5707963267948966,
+          -0.03854858822278267,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 52.52,
+        "z": 12.15
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        194.9999999999994,
+        516.7895137174664
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-east-rest",
+      "allModelsLoaded": true,
+      "events": [
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "25a4b2ff-25d7-4436-977c-16521217b780",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            516
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "14b9f617-4256-43af-b6a1-030ed9766d3c",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            517
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        },
+        {
+          "event": "chime"
+        },
+        {
+          "accepted": true,
+          "event": "pointer",
+          "hit": "77a05393-edb5-48b5-9363-ba61298840b4",
+          "hitName": "factory-fire-extinguisher",
+          "xy": [
+            195,
+            517
+          ]
+        },
+        {
+          "dt": 0.175,
+          "event": "life-update"
+        },
+        {
+          "dt": 1.7,
+          "event": "life-update"
+        }
+      ],
+      "fallback": false,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            2.7092448079602306e-17,
+            -33.42000457167625
+          ],
+          "artInheritedTransform": [
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.100165705902327e-9,
+          "kind": "north",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "25a4b2ff-25d7-4436-977c-16521217b780"
+          ],
+          "restAnchorError": 6.100165705902327e-9,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            3.271289880516126e-17,
+            0.6004834067821503
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            -1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.407949615372388e-9,
+          "kind": "west",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "14b9f617-4256-43af-b6a1-030ed9766d3c"
+          ],
+          "restAnchorError": 6.407949615372388e-9,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            3.271289880516126e-17,
+            12.48048340678215
+          ],
+          "artInheritedTransform": [
+            2.220446049250313e-16,
+            0,
+            -1,
+            0,
+            0,
+            1,
+            0,
+            0,
+            1,
+            0,
+            2.220446049250313e-16,
+            0,
+            0,
+            0,
+            0,
+            1
+          ],
+          "artReady": true,
+          "artVisible": true,
+          "cardRaycastDisabled": true,
+          "inheritedAnchorError": 6.40794972639469e-9,
+          "kind": "east",
+          "originalCastShadow": [
+            false
+          ],
+          "originalColorWrite": [
+            false
+          ],
+          "originalDepthWrite": [
+            false
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "77a05393-edb5-48b5-9363-ba61298840b4"
+          ],
+          "restAnchorError": 6.40794972639469e-9,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 84.01253342629903,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          52.52,
+          3.271289880516126e-17,
+          12.48048340678215
+        ],
+        "artInheritedTransform": [
+          2.220446049250313e-16,
+          0,
+          -1,
+          0,
+          0,
+          1,
+          0,
+          0,
+          1,
+          0,
+          2.220446049250313e-16,
+          0,
+          0,
+          0,
+          0,
+          1
+        ],
+        "artReady": true,
+        "artVisible": true,
+        "cardRaycastDisabled": true,
+        "inheritedAnchorError": 6.40794972639469e-9,
+        "kind": "east",
+        "originalCastShadow": [
+          false
+        ],
+        "originalColorWrite": [
+          false
+        ],
+        "originalDepthWrite": [
+          false
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "77a05393-edb5-48b5-9363-ba61298840b4"
+        ],
+        "restAnchorError": 6.40794972639469e-9,
+        "rootPosition": [
+          52.52,
+          0,
+          12.15
+        ],
+        "rootRotation": [
+          0,
+          -1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 52.52,
+        "z": 12.15
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        194.9999999999994,
+        516.7895137174664
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-north-fallback",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": true,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            0,
+            -33.42000457777642
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "north",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "eaad2bae-d29b-4668-b7d8-2db39b847840"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            0,
+            0.6004834131900999
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "a0ec2299-1afa-43f5-8f9e-eef49700cded"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            0,
+            12.4804834131901
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "26c84a42-4c75-4b26-9631-4671aad2b891"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 82.30623983472526,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 2,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -8.64,
+          0,
+          -33.42000457777642
+        ],
+        "artInheritedTransform": null,
+        "artReady": false,
+        "artVisible": false,
+        "cardRaycastDisabled": false,
+        "inheritedAnchorError": 0,
+        "kind": "north",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "eaad2bae-d29b-4668-b7d8-2db39b847840"
+        ],
+        "restAnchorError": 0,
+        "rootPosition": [
+          -8.64,
+          0,
+          -33.62
+        ],
+        "rootRotation": [
+          0,
+          0,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -8.64,
+        "z": -33.62
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195,
+        516.3362667701396
+      ],
+      "version": "new",
+      "view": "north",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-west-fallback",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": true,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            0,
+            -33.42000457777642
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "north",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "eaad2bae-d29b-4668-b7d8-2db39b847840"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            0,
+            0.6004834131900999
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "a0ec2299-1afa-43f5-8f9e-eef49700cded"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            0,
+            12.4804834131901
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "26c84a42-4c75-4b26-9631-4671aad2b891"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 84.01253342629909,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          -52.52,
+          0,
+          0.6004834131900999
+        ],
+        "artInheritedTransform": null,
+        "artReady": false,
+        "artVisible": false,
+        "cardRaycastDisabled": false,
+        "inheritedAnchorError": 0,
+        "kind": "west",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "a0ec2299-1afa-43f5-8f9e-eef49700cded"
+        ],
+        "restAnchorError": 0,
+        "rootPosition": [
+          -52.52,
+          0,
+          0.27
+        ],
+        "rootRotation": [
+          0,
+          1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": -52.52,
+        "z": 0.27
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        195.0000000000006,
+        516.7895137174664
+      ],
+      "version": "new",
+      "view": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    },
+    {
+      "label": "fire-390-east-fallback",
+      "allModelsLoaded": true,
+      "events": [],
+      "fallback": true,
+      "instances": [
+        {
+          "anchorWorld": [
+            -8.64,
+            0,
+            -33.42000457777642
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "north",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "eaad2bae-d29b-4668-b7d8-2db39b847840"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            -8.64,
+            0,
+            -33.62
+          ],
+          "rootRotation": [
+            0,
+            0,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -8.64,
+          "z": -33.62
+        },
+        {
+          "anchorWorld": [
+            -52.52,
+            0,
+            0.6004834131900999
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "west",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "a0ec2299-1afa-43f5-8f9e-eef49700cded"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            -52.52,
+            0,
+            0.27
+          ],
+          "rootRotation": [
+            0,
+            1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": -52.52,
+          "z": 0.27
+        },
+        {
+          "anchorWorld": [
+            52.52,
+            0,
+            12.4804834131901
+          ],
+          "artInheritedTransform": null,
+          "artReady": false,
+          "artVisible": false,
+          "cardRaycastDisabled": false,
+          "inheritedAnchorError": 0,
+          "kind": "east",
+          "originalCastShadow": [
+            true
+          ],
+          "originalColorWrite": [
+            true
+          ],
+          "originalDepthWrite": [
+            true
+          ],
+          "originalMeshCount": 1,
+          "proxyUUIDs": [
+            "26c84a42-4c75-4b26-9631-4671aad2b891"
+          ],
+          "restAnchorError": 0,
+          "rootPosition": [
+            52.52,
+            0,
+            12.15
+          ],
+          "rootRotation": [
+            0,
+            -1.5707963267948966,
+            0,
+            "XYZ"
+          ],
+          "rootShiftX": 0,
+          "x": 52.52,
+          "z": 12.15
+        }
+      ],
+      "loaded": true,
+      "missingModels": [],
+      "overflow": false,
+      "pixelRatio": 1,
+      "ppu": 84.01253342629903,
+      "proxyAudit": {
+        "mismatch": 0,
+        "originalHits": 3,
+        "rays": 121
+      },
+      "quality": 2,
+      "selected": {
+        "anchorWorld": [
+          52.52,
+          0,
+          12.4804834131901
+        ],
+        "artInheritedTransform": null,
+        "artReady": false,
+        "artVisible": false,
+        "cardRaycastDisabled": false,
+        "inheritedAnchorError": 0,
+        "kind": "east",
+        "originalCastShadow": [
+          true
+        ],
+        "originalColorWrite": [
+          true
+        ],
+        "originalDepthWrite": [
+          true
+        ],
+        "originalMeshCount": 1,
+        "proxyUUIDs": [
+          "26c84a42-4c75-4b26-9631-4671aad2b891"
+        ],
+        "restAnchorError": 0,
+        "rootPosition": [
+          52.52,
+          0,
+          12.15
+        ],
+        "rootRotation": [
+          0,
+          -1.5707963267948966,
+          0,
+          "XYZ"
+        ],
+        "rootShiftX": 0,
+        "x": 52.52,
+        "z": 12.15
+      },
+      "sourceMode": "actual FactoryMap and Life; fixture-only substitution and pointer raycast; not general Input/story electrical journey",
+      "tapCenter": [
+        194.9999999999994,
+        516.7895137174664
+      ],
+      "version": "new",
+      "view": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "zoom": 92
+    }
+  ],
+  "console": []
+}

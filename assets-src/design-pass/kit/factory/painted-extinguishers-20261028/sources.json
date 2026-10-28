@@ -1,0 +1,13 @@
+{
+  "baselineCommit": "89dc70a",
+  "files": {
+    "src/factory.ts": "22d4dd63ff097f3465f7cfce270be9dbf6110b8694e301f4c21fbf1d37874ca9",
+    "src/kit.ts": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770",
+    "src/stage.ts": "d2e4abf2b80b07e3b49ed98ca60c0813d66e6f63739086fd16972bbbd667c183",
+    "src/life.ts": "e8d358ce912847f6411f6859b3ecb916e5240de873ba2b00ab2c24162abf771e",
+    "src/world.ts": "77a456eb771692960e988bef024e0252a4e6d2ec9ebba560837b63745496229e",
+    "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+    "src/storymap.ts": "a9eb74690bc8ba99eadd0a2ad7b61c486e85ca90eb5e119f553b579145bf1894",
+    "public/models/factory-fire-extinguisher.glb": "858fe9596ba115ccdee115802a0bb10b5325be1a816c6a24fbb639f0f8109a90"
+  }
+}

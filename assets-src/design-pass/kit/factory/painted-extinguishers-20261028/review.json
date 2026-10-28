@@ -1,0 +1,138 @@
+{
+  "status": "accepted asset candidate; runtime integration pending Claude",
+  "builtinImagegenCalls": 3,
+  "tripoCalls": 0,
+  "apiCalls": 0,
+  "processing": "Full-canvas LANCZOS768x576 / WebP90 alpha100 method6; no crop/paint/mask",
+  "assets": [
+    {
+      "kind": "north",
+      "path": "public/textures/kit/factory/factory-extinguisher-north-painted-a.webp",
+      "size": [
+        768,
+        576
+      ],
+      "bytes": 27932,
+      "sha256": "a7bd202bc013ed447a73e6298a97dff13d9ceab86e19028b2aa14c1ab4619bc5",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "sourceSha256": "d7f447336a3008ee6b645801d0cbdb7215c2e94514bc756852e4b3414acd88a3",
+      "alpha115": {
+        "components": [
+          90461
+        ],
+        "bbox": [
+          223,
+          99,
+          547,
+          519
+        ]
+      }
+    },
+    {
+      "kind": "west",
+      "path": "public/textures/kit/factory/factory-extinguisher-west-painted-a.webp",
+      "size": [
+        768,
+        576
+      ],
+      "bytes": 17218,
+      "sha256": "0851d7a3667f0e05817a0d1505bf6687d786fd3566dc8d12c497da944d8c68f2",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "sourceSha256": "c30eaa345949b9b93335e2449fd080f8147c4e15abe3b41ae2536dbe0efbe8b1",
+      "alpha115": {
+        "components": [
+          50751
+        ],
+        "bbox": [
+          302,
+          60,
+          466,
+          480
+        ]
+      }
+    },
+    {
+      "kind": "east",
+      "path": "public/textures/kit/factory/factory-extinguisher-east-painted-a.webp",
+      "size": [
+        768,
+        576
+      ],
+      "bytes": 15372,
+      "sha256": "448b71746af9e0d5634933b92e66bf3eccc037f85da22fe1846dbbff1b0f5e6a",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "sourceSha256": "e29de1e528d8c2730d8b9e8820a484de4f16135dffd560dcb795395c8bef4da8",
+      "alpha115": {
+        "components": [
+          48307
+        ],
+        "bbox": [
+          301,
+          119,
+          467,
+          489
+        ]
+      }
+    }
+  ],
+  "totalBytes": 60522,
+  "originalGLB": {
+    "bytes": 73140,
+    "sha256": "858fe9596ba115ccdee115802a0bb10b5325be1a816c6a24fbb639f0f8109a90",
+    "meshes": 1,
+    "materials": 1,
+    "triangles": 3862,
+    "extensions": [
+      "EXT_meshopt_compression",
+      "EXT_texture_webp",
+      "KHR_materials_volume",
+      "KHR_mesh_quantization"
+    ]
+  },
+  "qa": {
+    "states": 24,
+    "nativeFrames": 24,
+    "viewport": [
+      [
+        1024,
+        768
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "scene": "actual FactoryMap/World/Stage/Life/publicloadKit",
+    "quality": 2,
+    "dpr": 1,
+    "console": [],
+    "overflow": false,
+    "allModelsLoaded": true,
+    "proxyRaysPerState": 121,
+    "proxyMismatches": 0,
+    "nativeTaps": 3,
+    "sameInstanceUUIDStates": 21,
+    "inheritedAnchorErrorMax": 6.40794972639469e-09,
+    "fallback": "Fresh page omits new textures only; not simulated network failure"
+  },
+  "limits": [
+    "Fixture pointer raycast→actual Life.tap, not general Input",
+    "Fixed dt .175 and1.7, not continuous motion recording",
+    "No story11/electrical/iPad/PWA/FPS/VRAM/listening/global occlusion proof"
+  ],
+  "runtimeSourcesUnchanged": true,
+  "validation": {
+    "tests": "88/88,17files",
+    "typecheck": "PASS",
+    "time": "2026-10-28T22:17:21+07:00"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "tool": "builtin image_gen",
+  "transparent_background": true,
+  "referenced_image_paths": [
+    "/Users/gusev/gameios/assets-src/design-pass/kit/factory/painted-extinguishers-20261028/east-guide.jpg"
+  ],
+  "prompt": "Use case: style-transfer. Asset type: transparent hand-painted game prop sprite. Input image 1 is the exact geometric framing/camera reference. Paint this same single toy fire extinguisher as a crisp, richly shaded illustrated sprite for a warm children’s factory game. Keep the exact silhouette, object scale and pixel placement in this 4:3 canvas, including the same top and bottom positions; do not enlarge or recenter. Keep the reference camera orientation and every visible part: red cylinder, teal base and teal squeeze handle, black hose/nozzle with small brass collars, cream blank label, small gauge only where visible. Preserve this east view exactly; do not rotate to show the front or invent hidden features. Smooth hand-painted highlights and restrained edge shading, readable at small game scale, slightly toy-like realistic proportions. All gaps and the entire background must be truly transparent, no beige background, no checkerboard, no ground plane, no cast shadow. No writing, logo, watermark, extra icons, markings, people or other objects. Preserve the blank label. This is a replacement sprite, so precise registration with the reference is more important than changing proportions."
+}
