@@ -1,0 +1,278 @@
+{
+  "createdAt": "2026-10-28T04:23:33.039Z",
+  "method": "Independent decoded world-space GLB triangle clipping in each constant-radius Y slab. Boundaries handled separately for horizontal faces. Entire Y rotation preserves radius; this proves union containment, not tooth meshing or full-scene collisions.",
+  "models": [
+    {
+      "name": "small",
+      "file": "public/models/factory-gear-small.glb",
+      "sha256": "eaeafcd8600dc3cc7f923d0a41d4122899cbabf6542101606749f2306a3e27fb",
+      "matchesWorkerSHA": true,
+      "bytes": 53020,
+      "triangles": 3812,
+      "bounds": {
+        "min": [
+          -0.3951479196548462,
+          -0.03653591298847953,
+          -0.3829197635670135
+        ],
+        "max": [
+          0.3951479196548462,
+          0.08072896846919814,
+          0.3829197635670135
+        ]
+      },
+      "radialMax": 0.3999506803001512,
+      "slabs": [
+        {
+          "lo": -0.099,
+          "hi": -0.069,
+          "radius": 0.119,
+          "maxRadius": 0,
+          "count": 0,
+          "violations": 0
+        },
+        {
+          "lo": -0.069,
+          "hi": 0.069,
+          "radius": 0.4,
+          "maxRadius": 0.3999506803001512,
+          "count": 3682,
+          "violations": 0
+        },
+        {
+          "lo": 0.069,
+          "hi": 0.084,
+          "radius": 0.27999999999999997,
+          "maxRadius": 0.08479064672410538,
+          "count": 228,
+          "violations": 0
+        },
+        {
+          "lo": 0.084,
+          "hi": 0.099,
+          "radius": 0.119,
+          "maxRadius": 0,
+          "count": 0,
+          "violations": 0
+        }
+      ],
+      "violationCount": 0,
+      "examples": [],
+      "materials": [
+        {
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "skins": 0,
+      "animations": 0,
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "validation": {
+        "errors": 0,
+        "warnings": 0,
+        "infos": 1
+      },
+      "cap": null,
+      "pass": true
+    },
+    {
+      "name": "medium",
+      "file": "public/models/factory-gear-medium.glb",
+      "sha256": "a5e9a120882493db6212140b0635079c67fafdfac5a953f50314844b740cfcf8",
+      "matchesWorkerSHA": true,
+      "bytes": 51940,
+      "triangles": 3842,
+      "bounds": {
+        "min": [
+          -0.5940962433815002,
+          -0.051068039764634386,
+          -0.5923556739255041
+        ],
+        "max": [
+          0.5940962433815002,
+          0.05126293950246932,
+          0.5923556739255041
+        ]
+      },
+      "radialMax": 0.599942905550662,
+      "slabs": [
+        {
+          "lo": -0.099,
+          "hi": -0.069,
+          "radius": 0.179,
+          "maxRadius": 0,
+          "count": 0,
+          "violations": 0
+        },
+        {
+          "lo": -0.069,
+          "hi": 0.069,
+          "radius": 0.6,
+          "maxRadius": 0.599942905550662,
+          "count": 3842,
+          "violations": 0
+        },
+        {
+          "lo": 0.069,
+          "hi": 0.084,
+          "radius": 0.42,
+          "maxRadius": 0,
+          "count": 0,
+          "violations": 0
+        },
+        {
+          "lo": 0.084,
+          "hi": 0.099,
+          "radius": 0.179,
+          "maxRadius": 0,
+          "count": 0,
+          "violations": 0
+        }
+      ],
+      "violationCount": 0,
+      "examples": [],
+      "materials": [
+        {
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "skins": 0,
+      "animations": 0,
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "validation": {
+        "errors": 0,
+        "warnings": 0,
+        "infos": 1
+      },
+      "cap": null,
+      "pass": true
+    },
+    {
+      "name": "big",
+      "file": "public/models/factory-gear-big.glb",
+      "sha256": "767fa4e0e940b9b30552971c2d31d7a0b645f463255aa107d87ab4dacddf4342",
+      "matchesWorkerSHA": true,
+      "bytes": 53680,
+      "triangles": 3874,
+      "bounds": {
+        "min": [
+          -0.9905696511268616,
+          -0.05377664832253852,
+          -0.9874256573612683
+        ],
+        "max": [
+          0.9905696511268616,
+          0.09701412958879867,
+          0.9874256573612683
+        ]
+      },
+      "radialMax": 0.999937862959202,
+      "slabs": [
+        {
+          "lo": -0.099,
+          "hi": -0.069,
+          "radius": 0.299,
+          "maxRadius": 0,
+          "count": 0,
+          "violations": 0
+        },
+        {
+          "lo": -0.069,
+          "hi": 0.069,
+          "radius": 1,
+          "maxRadius": 0.999937862959202,
+          "count": 3695,
+          "violations": 0
+        },
+        {
+          "lo": 0.069,
+          "hi": 0.084,
+          "radius": 0.7,
+          "maxRadius": 0.21267469273082734,
+          "count": 170,
+          "violations": 0
+        },
+        {
+          "lo": 0.084,
+          "hi": 0.099,
+          "radius": 0.299,
+          "maxRadius": 0.21240951916264375,
+          "count": 170,
+          "violations": 0
+        }
+      ],
+      "violationCount": 0,
+      "examples": [],
+      "materials": [
+        {
+          "alphaMode": "OPAQUE",
+          "doubleSided": false
+        }
+      ],
+      "textures": [
+        {
+          "mime": "image/webp",
+          "size": [
+            512,
+            512
+          ]
+        }
+      ],
+      "skins": 0,
+      "animations": 0,
+      "extensions": [
+        "EXT_meshopt_compression",
+        "EXT_texture_webp",
+        "KHR_materials_volume",
+        "KHR_mesh_quantization"
+      ],
+      "validation": {
+        "errors": 0,
+        "warnings": 0,
+        "infos": 1
+      },
+      "cap": {
+        "triangles": 100,
+        "wrongWinding": 0,
+        "coversOriginTriangles": 0,
+        "area": 0.12265388232318253,
+        "edgesNearCap": 200,
+        "edgesWithIncidenceOtherThanTwo": 0,
+        "scope": "Only decoded cap region; not a global mesh watertightness assertion."
+      },
+      "pass": true
+    }
+  ],
+  "pass": true,
+  "bytes": 158640,
+  "triangles": 11528
+}

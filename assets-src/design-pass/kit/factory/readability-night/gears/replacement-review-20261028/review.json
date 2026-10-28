@@ -1,0 +1,77 @@
+{
+  "createdAt": "2026-10-28T04:24:37.067693+00:00",
+  "status": "cosmetic-gear-assets-accepted-for-Claude-integration",
+  "workerCommits": [
+    "c5a0e9d",
+    "54ce440"
+  ],
+  "priorMainShaftReview": "eb08a59",
+  "axis": [
+    -2.45,
+    0.51,
+    -0.45
+  ],
+  "pairSeparation": 1.4,
+  "totalBytes": 158640,
+  "totalTriangles": 11528,
+  "independentNumericAudit": "audit.json",
+  "independentBrowser": "browser.json",
+  "sources": "sources.json",
+  "checks": {
+    "decodedTriangleSlabContainment": "PASS all three, continuous Y rotation",
+    "metadataBudgetsAndSHA": "PASS all three",
+    "bigHubCap": "PASS 100 upward triangles; zero near-cap edges with incidence other than two; no cap triangle covers bore origin; decoded cap area .1226538823",
+    "bodyClearance": "Inference from independently accepted larger cylinders in eb08a59 plus newly verified subset containment and unchanged source/body hashes; not a repeat global collision test",
+    "nativeBrowser": "8 original PNG at 1180x820 and 390x844; actual loadModels/model and production constructors; all loaded, no overflow, 0 captured warnings/errors"
+  },
+  "processing": {
+    "smallAndMedium": "Worker provenance: uniform normalization, WebP/compression",
+    "big": "Worker source big-attempt1.glb; locally shortened hub above Y .097, capped annulus while keeping bore. Not untouched Tripo; main independently checked decoded local cap topology/winding and containment."
+  },
+  "integration": {
+    "files": [
+      "public/models/factory-gear-small.glb",
+      "public/models/factory-gear-medium.glb",
+      "public/models/factory-gear-big.glb"
+    ],
+    "logicalRadii": [
+      0.4,
+      0.6,
+      1
+    ],
+    "pivot": [
+      0,
+      0,
+      0
+    ],
+    "axis": "+Y",
+    "plane": "XZ",
+    "loader": "Already final scale: model(name, {}), reset only returned holder.children[0].position to (0,0,0) to undo generic scene floor/centering. Preserve nested quantized node transforms. No width/depth/height fitting. Keep code plate, axle, picking, gearR and ratio.",
+    "runtimeOwner": "Claude"
+  },
+  "cost": {
+    "basis": "Worker ledger and native Studio evidence; main did not operate Studio",
+    "includedCredits": 125,
+    "before": 4475,
+    "after": 4350,
+    "newMainOrders": 0
+  },
+  "limits": [
+    "Diagnostic fixtures, not full map placement or full gameplay acceptance.",
+    "Cosmetic 6/8/14 teeth; no physical tooth phase or gear-pair no-overlap claim.",
+    "Intentional axle/bearing contact excluded; arbitrary neighbours, terminals, wrong-size gears and picking/snap in the full game not accepted here.",
+    "Big cap check is local, not a global watertightness assertion.",
+    "No physical iPad, Safari/PWA or performance claim."
+  ],
+  "cleanup": {
+    "server5356Stopped": true,
+    "tab45Closed": true,
+    "viewportReset": true
+  },
+  "validation": {
+    "tests": "88/88 passed, 17 files",
+    "typecheck": "passed",
+    "checkedAtBangkok": "2026-10-28 11:24:46"
+  },
+  "next": "Claude integrates these three models preserving the pivot and existing mechanics, then provides focused actual-game frames/interaction check."
+}

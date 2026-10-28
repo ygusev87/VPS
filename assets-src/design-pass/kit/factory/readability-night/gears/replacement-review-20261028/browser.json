@@ -1,0 +1,1067 @@
+{
+  "records": [
+    {
+      "file": "lathe-1180-phase0.png",
+      "loaded": "true",
+      "result": {
+        "assemblyBounds": {
+          "max": [
+            2.5200000286102293,
+            2.7891574865296387,
+            1.3174999952316284
+          ],
+          "min": [
+            -5.1099999904632565,
+            -2.9802321721561503e-10,
+            -2.1550000429153444
+          ]
+        },
+        "axis": [
+          -2.45,
+          0.51,
+          -0.45
+        ],
+        "gearChecks": [
+          {
+            "axis": [
+              -2.45,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.999937862959202,
+              "maxY": 0.09701412958879864,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.053776648322538534,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.299,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3695,
+                  "maxRadius": 0.999937862959202,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 1,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.21267469273082737,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.7,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.21240951916264367,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.299,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 1,
+            "rotationY": 0
+          },
+          {
+            "axis": [
+              -3.85,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.3999506803001512,
+              "maxY": 0.08072896846919819,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.03653591298847952,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.119,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3682,
+                  "maxRadius": 0.3999506803001512,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 0.4,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 228,
+                  "maxRadius": 0.08479064672410534,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.27999999999999997,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.119,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 0.4,
+            "rotationY": 0
+          }
+        ],
+        "kind": "lathe",
+        "modelsLoaded": true,
+        "motorAxis": [
+          -3.85,
+          0.51,
+          -0.45
+        ],
+        "overflow": false,
+        "phaseDegrees": 0,
+        "separation": 1.4,
+        "view": 0,
+        "viewport": [
+          1180,
+          820
+        ]
+      }
+    },
+    {
+      "file": "lathe-1180-phase45.png",
+      "loaded": "true",
+      "result": {
+        "assemblyBounds": {
+          "max": [
+            2.5200000286102293,
+            2.7891574865296387,
+            1.3174999952316284
+          ],
+          "min": [
+            -5.1099999904632565,
+            -2.9802321721561503e-10,
+            -2.1550000429153444
+          ]
+        },
+        "axis": [
+          -2.45,
+          0.51,
+          -0.45
+        ],
+        "gearChecks": [
+          {
+            "axis": [
+              -2.45,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.999937862959202,
+              "maxY": 0.09701412958879864,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.053776648322538534,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.299,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3695,
+                  "maxRadius": 0.999937862959202,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 1,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.21267469273082729,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.7,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.21240951916264375,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.299,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 1,
+            "rotationY": 0.7853981633974483
+          },
+          {
+            "axis": [
+              -3.85,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.3999506803001514,
+              "maxY": 0.08072896846919819,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.03653591298847952,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.119,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3682,
+                  "maxRadius": 0.3999506803001514,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 0.4,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 228,
+                  "maxRadius": 0.08479064672410547,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.27999999999999997,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.119,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 0.4,
+            "rotationY": -1.9634954084936207
+          }
+        ],
+        "kind": "lathe",
+        "modelsLoaded": true,
+        "motorAxis": [
+          -3.85,
+          0.51,
+          -0.45
+        ],
+        "overflow": false,
+        "phaseDegrees": 45,
+        "separation": 1.4,
+        "view": 0,
+        "viewport": [
+          1180,
+          820
+        ]
+      }
+    },
+    {
+      "file": "lathe-1180-phase90-top.png",
+      "loaded": "true",
+      "result": {
+        "assemblyBounds": {
+          "max": [
+            2.5200000286102293,
+            2.7891574865296387,
+            1.3174999952316284
+          ],
+          "min": [
+            -5.1099999904632565,
+            -2.9802321721561503e-10,
+            -2.1550000429153444
+          ]
+        },
+        "axis": [
+          -2.45,
+          0.51,
+          -0.45
+        ],
+        "gearChecks": [
+          {
+            "axis": [
+              -2.45,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.9999378629592018,
+              "maxY": 0.09701412958879864,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.053776648322538534,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.299,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3695,
+                  "maxRadius": 0.9999378629592018,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 1,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.21267469273082745,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.7,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.2124095191626436,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.299,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 1,
+            "rotationY": 1.5707963267948966
+          },
+          {
+            "axis": [
+              -3.85,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.3999506803001509,
+              "maxY": 0.08072896846919819,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.03653591298847952,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.119,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3682,
+                  "maxRadius": 0.3999506803001509,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 0.4,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 228,
+                  "maxRadius": 0.08479064672410533,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.27999999999999997,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.119,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 0.4,
+            "rotationY": -3.9269908169872414
+          }
+        ],
+        "kind": "lathe",
+        "modelsLoaded": true,
+        "motorAxis": [
+          -3.85,
+          0.51,
+          -0.45
+        ],
+        "overflow": false,
+        "phaseDegrees": 90,
+        "separation": 1.4,
+        "view": 1,
+        "viewport": [
+          1180,
+          820
+        ]
+      }
+    },
+    {
+      "file": "lathe-390-phase45.png",
+      "loaded": "true",
+      "result": {
+        "assemblyBounds": {
+          "max": [
+            2.5200000286102293,
+            2.7891574865296387,
+            1.3174999952316284
+          ],
+          "min": [
+            -5.1099999904632565,
+            -2.9802321721561503e-10,
+            -2.1550000429153444
+          ]
+        },
+        "axis": [
+          -2.45,
+          0.51,
+          -0.45
+        ],
+        "gearChecks": [
+          {
+            "axis": [
+              -2.45,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.999937862959202,
+              "maxY": 0.09701412958879864,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.053776648322538534,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.299,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3695,
+                  "maxRadius": 0.999937862959202,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 1,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.21267469273082729,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.7,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.21240951916264375,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.299,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 1,
+            "rotationY": 0.7853981633974483
+          },
+          {
+            "axis": [
+              -3.85,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.3999506803001514,
+              "maxY": 0.08072896846919819,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.03653591298847952,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.119,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3682,
+                  "maxRadius": 0.3999506803001514,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 0.4,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 228,
+                  "maxRadius": 0.08479064672410547,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.27999999999999997,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.119,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 0.4,
+            "rotationY": -1.9634954084936207
+          }
+        ],
+        "kind": "lathe",
+        "modelsLoaded": true,
+        "motorAxis": [
+          -3.85,
+          0.51,
+          -0.45
+        ],
+        "overflow": false,
+        "phaseDegrees": 45,
+        "separation": 1.4,
+        "view": 0,
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "file": "grinder-390-phase90.png",
+      "loaded": "true",
+      "result": {
+        "assemblyBounds": {
+          "max": [
+            2.5200000286102293,
+            2.7891574865296387,
+            1.3174999952316284
+          ],
+          "min": [
+            -5.389999961853027,
+            -2.9802321721561503e-10,
+            -2.1550000429153444
+          ]
+        },
+        "axis": [
+          -2.45,
+          0.51,
+          -0.45
+        ],
+        "gearChecks": [
+          {
+            "axis": [
+              -2.45,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.39995068030015096,
+              "maxY": 0.08072896846919819,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.03653591298847952,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.119,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3682,
+                  "maxRadius": 0.39995068030015096,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 0.4,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 228,
+                  "maxRadius": 0.08479064672410529,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.27999999999999997,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.119,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 0.4,
+            "rotationY": 1.5707963267948966
+          },
+          {
+            "axis": [
+              -3.85,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.999937862959202,
+              "maxY": 0.09701412958879864,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.053776648322538534,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.299,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3695,
+                  "maxRadius": 0.999937862959202,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 1,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.21267469273082737,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.7,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.21240951916264367,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.299,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 1,
+            "rotationY": -0.6283185307179586
+          }
+        ],
+        "kind": "grinder",
+        "modelsLoaded": true,
+        "motorAxis": [
+          -3.85,
+          0.51,
+          -0.45
+        ],
+        "overflow": false,
+        "phaseDegrees": 90,
+        "separation": 1.4,
+        "view": 0,
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    },
+    {
+      "file": "grinder-1180-phase45-rear.png",
+      "loaded": "true",
+      "result": {
+        "assemblyBounds": {
+          "max": [
+            2.5200000286102293,
+            2.7891574865296387,
+            1.3174999952316284
+          ],
+          "min": [
+            -5.389999961853027,
+            -2.9802321721561503e-10,
+            -2.1550000429153444
+          ]
+        },
+        "axis": [
+          -2.45,
+          0.51,
+          -0.45
+        ],
+        "gearChecks": [
+          {
+            "axis": [
+              -2.45,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.3999506803001511,
+              "maxY": 0.08072896846919819,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.03653591298847952,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.119,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3682,
+                  "maxRadius": 0.3999506803001511,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 0.4,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 228,
+                  "maxRadius": 0.08479064672410538,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.27999999999999997,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.119,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 0.4,
+            "rotationY": 0.7853981633974483
+          },
+          {
+            "axis": [
+              -3.85,
+              0.51,
+              -0.45
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.9999378629592024,
+              "maxY": 0.09701412958879864,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.053776648322538534,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.299,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3695,
+                  "maxRadius": 0.9999378629592024,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 1,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.2126746927308272,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.7,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 170,
+                  "maxRadius": 0.21240951916264375,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.299,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 1,
+            "rotationY": -0.3141592653589793
+          }
+        ],
+        "kind": "grinder",
+        "modelsLoaded": true,
+        "motorAxis": [
+          -3.85,
+          0.51,
+          -0.45
+        ],
+        "overflow": false,
+        "phaseDegrees": 45,
+        "separation": 1.4,
+        "view": 2,
+        "viewport": [
+          1180,
+          820
+        ]
+      }
+    },
+    {
+      "file": "medium-1180.png",
+      "loaded": "true",
+      "result": {
+        "assemblyBounds": {
+          "max": [
+            0.9800000190734864,
+            0.5612629395024693,
+            1.0850000381469729
+          ],
+          "min": [
+            -0.9800000190734864,
+            -2.9802321721561503e-10,
+            -1.0850000381469729
+          ]
+        },
+        "axis": [
+          0,
+          0.51,
+          0
+        ],
+        "gearChecks": [
+          {
+            "axis": [
+              0,
+              0.51,
+              0
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.599942905550662,
+              "maxY": 0.051262939502469296,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.051068039764634365,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.179,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3842,
+                  "maxRadius": 0.599942905550662,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 0.6,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.42,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.179,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 0.6,
+            "rotationY": 0
+          }
+        ],
+        "kind": "medium",
+        "modelsLoaded": true,
+        "motorAxis": [
+          0,
+          0.51,
+          0
+        ],
+        "overflow": false,
+        "phaseDegrees": 0,
+        "separation": 0,
+        "view": 0,
+        "viewport": [
+          1180,
+          820
+        ]
+      }
+    },
+    {
+      "file": "medium-390.png",
+      "loaded": "true",
+      "result": {
+        "assemblyBounds": {
+          "max": [
+            0.9800000190734864,
+            0.5612629395024693,
+            1.0850000381469729
+          ],
+          "min": [
+            -0.9800000190734864,
+            -2.9802321721561503e-10,
+            -1.0850000381469729
+          ]
+        },
+        "axis": [
+          0,
+          0.51,
+          0
+        ],
+        "gearChecks": [
+          {
+            "axis": [
+              0,
+              0.51,
+              0
+            ],
+            "containment": {
+              "examples": [],
+              "maxRadial": 0.599942905550662,
+              "maxY": 0.051262939502469296,
+              "method": "Decode world-space vertices; clip each triangle at every cylinder Y boundary; check all resulting convex polygon radial maxima. Continuous Y rotation preserves radius.",
+              "minY": -0.051068039764634365,
+              "pass": true,
+              "slabs": [
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": -0.069,
+                  "minY": -0.099,
+                  "radius": 0.179,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 3842,
+                  "maxRadius": 0.599942905550662,
+                  "maxY": 0.069,
+                  "minY": -0.069,
+                  "radius": 0.6,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": 0.084,
+                  "minY": 0.069,
+                  "radius": 0.42,
+                  "violations": 0
+                },
+                {
+                  "clippedTriangles": 0,
+                  "maxRadius": 0,
+                  "maxY": 0.099,
+                  "minY": 0.084,
+                  "radius": 0.179,
+                  "violations": 0
+                }
+              ],
+              "tolerance": 1e-7,
+              "violationCount": 0
+            },
+            "logicalRadius": 0.6,
+            "rotationY": 0
+          }
+        ],
+        "kind": "medium",
+        "modelsLoaded": true,
+        "motorAxis": [
+          0,
+          0.51,
+          0
+        ],
+        "overflow": false,
+        "phaseDegrees": 0,
+        "separation": 0,
+        "view": 0,
+        "viewport": [
+          390,
+          844
+        ]
+      }
+    }
+  ],
+  "logs": []
+}
