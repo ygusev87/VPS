@@ -1,0 +1,68 @@
+{
+  "createdAt": "2026-10-28T03:33:03.396989+00:00",
+  "request": "m0558",
+  "runtimeFixCommit": "02be7ce",
+  "status": "moved-shaft-body-contact-accepted",
+  "sourceStableDuringReview": true,
+  "axis": [
+    -2.45,
+    0.51,
+    -0.45
+  ],
+  "pairSeparation": 1.4,
+  "numericBodyChecksPass": true,
+  "minimumRimClearance": {
+    "lathe": 0.2866646746522741,
+    "grinder": 0.9728171104298265
+  },
+  "browser": {
+    "type": "Codex in-app browser",
+    "sizes": [
+      [
+        1180,
+        820
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "pixelRatio": 1,
+    "models": [
+      "lathe",
+      "grinder",
+      "shaft-motor"
+    ],
+    "actualLoader": "loadModels/model then Lathe/ShaftMotor/Gear constructors",
+    "consoleWarningsAndErrors": 0,
+    "frames": [
+      "qa/grinder-1180.png",
+      "qa/grinder-390.png",
+      "qa/lathe-1180.png",
+      "qa/lathe-390.png",
+      "qa/lathe-side-1180.png",
+      "qa/lathe-top-1180.png",
+      "qa/lathe-top90-1180.png"
+    ],
+    "observed": "Complete assemblies visible. Shaft axis and motor distance rendered in status. Lathe oblique/top0/top90/rear-side and both portrait assemblies visually clear of machine bodies."
+  },
+  "reviewOfClaudeFrames": "The four gear-fix frames show procedural stand-ins (block motor and lathe). They illustrate moved placement but are not used as GLB contact evidence; independent native-loader frames attached here. Version text on those frames alone is not proof of stale runtime.",
+  "limits": [
+    "Diagnostic fixture, not a second full factory journey.",
+    "No new full-map placement, neighbour, terminal, wrong-gear or tooth-phase acceptance.",
+    "Shaft/hub bearing contact is intentional.",
+    "Grinder stone and lathe spindle unchanged; not re-audited.",
+    "No physical iPad/PWA/performance claim."
+  ],
+  "next": "Send bounded three-gear cosmetic asset task, retaining logical radii and code plate/peg/pick/snap/ratio. Main has made no Studio orders.",
+  "validation": {
+    "tests": "88/88, 17 files",
+    "typecheck": "passed",
+    "checkedAtBangkok": "2026-10-28 10:33:40",
+    "portraitScrollWidth": 390,
+    "portraitViewportWidth": 390,
+    "temporaryServerStopped": true,
+    "temporaryTabClosed": true,
+    "viewportReset": true
+  }
+}

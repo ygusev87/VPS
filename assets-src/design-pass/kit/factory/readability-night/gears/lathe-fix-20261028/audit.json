@@ -1,0 +1,426 @@
+{
+  "createdAt": "2026-10-28T03:27:55.258Z",
+  "status": "runtime-shaft-fix-audit-no-order",
+  "request": [
+    "m0551",
+    "m0558"
+  ],
+  "runtimeFixCommit": "02be7ce",
+  "sourceSHA": {
+    "src/parts/factory.ts": "853e315e8cf2d3c28f49cd8f8bd7ae52f4a54e84a23b3d8c3c7f0575904e6aec",
+    "src/parts/mech.ts": "74886b941f819264e1b78fb4ae6b6faa4e0b6641a273b779ef071795f6432973",
+    "src/parts/workshop.ts": "d04f9d29ed21a83cec8433144a69243f39fd8314f94ea5a35ba6d1ef2e240155",
+    "src/parts/kit.ts": "32edbaa0e6375aea7c96994014cba9e91d7690a1bb2887c32cad3cf9f52b6509",
+    "src/factory.ts": "dda60e84d0a9239f88ebc163bc44be18d667bad150373905cbcc1853cb8baffd"
+  },
+  "items": [
+    {
+      "kind": "smallGear",
+      "logicalRadius": 0.4,
+      "teeth": 6,
+      "parts": [
+        {
+          "name": "spoke0",
+          "radius": 0.28217902239181925,
+          "y": [
+            0.055000000335276134,
+            0.08499999966472388
+          ]
+        },
+        {
+          "name": "spoke1",
+          "radius": 0.28217902239181925,
+          "y": [
+            0.055000000335276134,
+            0.08499999966472388
+          ]
+        },
+        {
+          "name": "spoke2",
+          "radius": 0.2821790223918193,
+          "y": [
+            0.055000000335276134,
+            0.08499999966472388
+          ]
+        },
+        {
+          "name": "rim",
+          "radius": 0.41056498271190567,
+          "y": [
+            -0.07000000029802331,
+            0.06999999284744271
+          ]
+        },
+        {
+          "name": "hub",
+          "radius": 0.12000000131803537,
+          "y": [
+            -0.10000000149011612,
+            0.10000000149011612
+          ]
+        }
+      ],
+      "phaseZeroBounds": {
+        "min": [
+          -0.397472083568573,
+          -0.10000000149011612,
+          -0.4105498790740967
+        ],
+        "max": [
+          0.397472083568573,
+          0.10000000149011612,
+          0.4105498790740967
+        ]
+      },
+      "fullRotationRadius": 0.41056498271190567,
+      "replacementLimits": {
+        "rim": {
+          "radius": 0.4,
+          "y": [
+            -0.069,
+            0.069
+          ]
+        },
+        "upperSpokes": {
+          "radius": 0.27999999999999997,
+          "y": [
+            0.069,
+            0.084
+          ]
+        },
+        "hub": {
+          "radius": 0.119,
+          "y": [
+            -0.099,
+            0.099
+          ]
+        }
+      },
+      "note": "Contract limits intentionally inside current swept component cylinders; exact triangle acceptance must split across Y slabs. Single bounding box containment is insufficient."
+    },
+    {
+      "kind": "gear",
+      "logicalRadius": 0.6,
+      "teeth": 8,
+      "parts": [
+        {
+          "name": "spoke0",
+          "radius": 0.4214557972023788,
+          "y": [
+            0.055000000335276134,
+            0.08499999966472388
+          ]
+        },
+        {
+          "name": "spoke1",
+          "radius": 0.4214557972023788,
+          "y": [
+            0.055000000335276134,
+            0.08499999966472388
+          ]
+        },
+        {
+          "name": "spoke2",
+          "radius": 0.4214557972023788,
+          "y": [
+            0.055000000335276134,
+            0.08499999966472388
+          ]
+        },
+        {
+          "name": "rim",
+          "radius": 0.6103893944508719,
+          "y": [
+            -0.07000000029802335,
+            0.06999999284744275
+          ]
+        },
+        {
+          "name": "hub",
+          "radius": 0.18000000715255737,
+          "y": [
+            -0.10000000149011612,
+            0.10000000149011612
+          ]
+        }
+      ],
+      "phaseZeroBounds": {
+        "min": [
+          -0.5993087887763977,
+          -0.10000000149011612,
+          -0.5993087887763977
+        ],
+        "max": [
+          0.5993087887763977,
+          0.10000000149011612,
+          0.5993087887763977
+        ]
+      },
+      "fullRotationRadius": 0.6103893944508719,
+      "replacementLimits": {
+        "rim": {
+          "radius": 0.6,
+          "y": [
+            -0.069,
+            0.069
+          ]
+        },
+        "upperSpokes": {
+          "radius": 0.42,
+          "y": [
+            0.069,
+            0.084
+          ]
+        },
+        "hub": {
+          "radius": 0.179,
+          "y": [
+            -0.099,
+            0.099
+          ]
+        }
+      },
+      "note": "Contract limits intentionally inside current swept component cylinders; exact triangle acceptance must split across Y slabs. Single bounding box containment is insufficient."
+    },
+    {
+      "kind": "bigGear",
+      "logicalRadius": 1,
+      "teeth": 14,
+      "parts": [
+        {
+          "name": "spoke0",
+          "radius": 0.700874441908913,
+          "y": [
+            0.055000000335276134,
+            0.08499999966472388
+          ]
+        },
+        {
+          "name": "spoke1",
+          "radius": 0.7008744419089131,
+          "y": [
+            0.055000000335276134,
+            0.08499999966472388
+          ]
+        },
+        {
+          "name": "spoke2",
+          "radius": 0.7008744419089131,
+          "y": [
+            0.055000000335276134,
+            0.08499999966472388
+          ]
+        },
+        {
+          "name": "rim",
+          "radius": 1.0102108050961072,
+          "y": [
+            -0.07000000029802345,
+            0.06999999284744285
+          ]
+        },
+        {
+          "name": "hub",
+          "radius": 0.30000001192092896,
+          "y": [
+            -0.10000000149011612,
+            0.10000000149011612
+          ]
+        }
+      ],
+      "phaseZeroBounds": {
+        "min": [
+          -1.0042307376861572,
+          -0.10000000149011612,
+          -1.0102051496505737
+        ],
+        "max": [
+          1.0042307376861572,
+          0.10000000149011612,
+          1.0102051496505737
+        ]
+      },
+      "fullRotationRadius": 1.0102108050961072,
+      "replacementLimits": {
+        "rim": {
+          "radius": 1,
+          "y": [
+            -0.069,
+            0.069
+          ]
+        },
+        "upperSpokes": {
+          "radius": 0.7,
+          "y": [
+            0.069,
+            0.084
+          ]
+        },
+        "hub": {
+          "radius": 0.299,
+          "y": [
+            -0.099,
+            0.099
+          ]
+        }
+      },
+      "note": "Contract limits intentionally inside current swept component cylinders; exact triangle acceptance must split across Y slabs. Single bounding box containment is insufficient."
+    }
+  ],
+  "bodyChecks": [
+    {
+      "model": "lathe",
+      "sha256": "89c2383176dfebd1064c7e456bf3a2fc06d81f3dec0022e38ea3a4a61d51defa",
+      "kind": "bigGear",
+      "fit": {
+        "id": "lathe",
+        "width": 2.6,
+        "at": [
+          0.1,
+          0.16,
+          0.2
+        ],
+        "axis": [
+          -2.45,
+          0.51,
+          -0.45
+        ],
+        "gears": [
+          "bigGear"
+        ]
+      },
+      "volumes": [
+        {
+          "name": "rim",
+          "radius": 1.0102108050961072,
+          "y": [
+            0.43999999970197656,
+            0.5799999928474429
+          ],
+          "minimumSurfaceRadius": 1.2968754797483812,
+          "clearance": 0.2866646746522741,
+          "intersectingTriangleCount": 0
+        },
+        {
+          "name": "spoke0",
+          "radius": 0.700874441908913,
+          "y": [
+            0.5650000003352762,
+            0.5949999996647239
+          ],
+          "minimumSurfaceRadius": 1.2988516620066455,
+          "clearance": 0.5979772200977325,
+          "intersectingTriangleCount": 0
+        },
+        {
+          "name": "hub",
+          "radius": 0.30000001192092896,
+          "y": [
+            0.4099999985098839,
+            0.6100000014901161
+          ],
+          "minimumSurfaceRadius": 1.2965626576175961,
+          "clearance": 0.9965626456966672,
+          "intersectingTriangleCount": 0
+        }
+      ],
+      "witness": {
+        "bodyTriangleIndex": 60,
+        "pointPartLocal": [
+          -1.1925489961078397,
+          0.43,
+          -0.13308919071461373
+        ],
+        "radiusFromGearAxis": 1.2967711780539082,
+        "hubGuaranteedInteriorRadius": 0.2942355841209691,
+        "radialInteriorMargin": -1.002535593932939,
+        "verticalInteriorMargin": 0.01999999999999999,
+        "meaning": "Closest sampled clipped body edge to the hub axis. Only positive radialInteriorMargin AND verticalInteriorMargin would prove overlap; negative radialInteriorMargin is not overlap."
+      },
+      "pass": true
+    },
+    {
+      "model": "grinder",
+      "sha256": "60f83ae983fd7710eb17ef20db4b9d2d2f9d6355a2b30618526d8580a32f1f05",
+      "kind": "smallGear",
+      "fit": {
+        "id": "grinder",
+        "width": 2.6,
+        "at": [
+          0.1,
+          0.16,
+          0.2
+        ],
+        "axis": [
+          -2.45,
+          0.51,
+          -0.45
+        ],
+        "gears": [
+          "smallGear"
+        ]
+      },
+      "volumes": [
+        {
+          "name": "rim",
+          "radius": 0.41056498271190567,
+          "y": [
+            0.4399999997019767,
+            0.5799999928474427
+          ],
+          "minimumSurfaceRadius": 1.3833820931417322,
+          "clearance": 0.9728171104298265,
+          "intersectingTriangleCount": 0
+        },
+        {
+          "name": "spoke0",
+          "radius": 0.28217902239181925,
+          "y": [
+            0.5650000003352762,
+            0.5949999996647239
+          ],
+          "minimumSurfaceRadius": 1.3834065626232959,
+          "clearance": 1.1012275402314766,
+          "intersectingTriangleCount": 0
+        },
+        {
+          "name": "hub",
+          "radius": 0.12000000131803537,
+          "y": [
+            0.4099999985098839,
+            0.6100000014901161
+          ],
+          "minimumSurfaceRadius": 1.3636042327244835,
+          "clearance": 1.2436042314064482,
+          "intersectingTriangleCount": 0
+        }
+      ],
+      "witness": null,
+      "pass": true
+    }
+  ],
+  "bodyChecksPass": true,
+  "method": "Current gearGeometry/gearMesh executed with installed Three.js. Max vertex radial norm bounds every triangle under arbitrary rotation about Y. Mesh-body surfaces clipped to each rim/spoke/hub Y slab and convex XZ projection tested against continuous cylindrical sweep. Source helper material/shadow behavior does not change geometry.",
+  "scope": "Only moved-axis big lathe and small grinder body clearances; no gameplay, neighbouring machine/terminal/dial/plate/shaft full assembly, tooth phase, wrong-size gear or physical iPad proof. Existing shaft/hub bearing overlap is intentional and excluded from body-only test.",
+  "replacementContract": {
+    "pivot": [
+      0,
+      0,
+      0
+    ],
+    "axis": "+Y",
+    "orientation": "Flat on XZ. Special exception to ground-Y0 convention: centre pivotY0; geometry extends below pivot. Do not floor-normalize.",
+    "fitting": "Use uniform scale from actual decoded radial maximum, not phase-zero AABB width. Preserve axis centre and node quantization transforms. Runtime code retains plate/peg/pickables and gearAtY.51.",
+    "body": "One static gear mesh, no shaft/stand/base, no skeleton or animation. Rim/upper decoration/hub must each remain within listed cylindrical union in all phases. Target nominal outer radii .4/.6/1; no bevel expansion beyond hard limits.",
+    "appearance": "Small brass #d9ad4c, medium steel #8d97a3, big copper #c4553f; painted metal, clear tooth silhouette, distinct readable spoke pattern.",
+    "budget": {
+      "trianglesMax": 4000,
+      "bytesTargetMax": 150000,
+      "materials": 1,
+      "texture": "512 WebP OPAQUE + Meshopt"
+    },
+    "mechanics": "Cosmetic replacement accepted by Claude m0537. Existing6/8/14 teeth and logical radius ratio are approximate: not phase-locked mechanical meshing. No no-intersection promise for gear pairs."
+  },
+  "next": "Review the numeric result and actual GLB native-loader fixture, then prepare a bounded cosmetic gear task. No model generation or public change from this audit.",
+  "cost": 0
+}
