@@ -1,0 +1,129 @@
+{
+  "recordedAt": "2026-10-28T14:39:14.552038+00:00",
+  "baselineCommit": "ab54058",
+  "runtimeAndExistingAssets": [
+    {
+      "path": "src/factory.ts",
+      "bytes": 80550,
+      "sha256": "fdc8251ee18f350972ea8b9ed47217498af562bd7d60259849dda241b6de93e1",
+      "byteEqualTo": "ab54058"
+    },
+    {
+      "path": "src/life.ts",
+      "bytes": 34084,
+      "sha256": "e8d358ce912847f6411f6859b3ecb916e5240de873ba2b00ab2c24162abf771e",
+      "byteEqualTo": "ab54058"
+    },
+    {
+      "path": "src/stage.ts",
+      "bytes": 35021,
+      "sha256": "d2e4abf2b80b07e3b49ed98ca60c0813d66e6f63739086fd16972bbbd667c183",
+      "byteEqualTo": "ab54058"
+    },
+    {
+      "path": "src/kit.ts",
+      "bytes": 27443,
+      "sha256": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770",
+      "byteEqualTo": "ab54058"
+    },
+    {
+      "path": "src/world.ts",
+      "bytes": 13770,
+      "sha256": "77a456eb771692960e988bef024e0252a4e6d2ec9ebba560837b63745496229e",
+      "byteEqualTo": "ab54058"
+    },
+    {
+      "path": "src/parts/assets.ts",
+      "bytes": 7944,
+      "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+      "byteEqualTo": "ab54058"
+    },
+    {
+      "path": "src/parts/workshop.ts",
+      "bytes": 39500,
+      "sha256": "e36e7b697dae9b6710c63a837e617cfd349272f94f7bd6775c3a2c60e9fb778b",
+      "byteEqualTo": "ab54058"
+    },
+    {
+      "path": "public/models/factory-control-cabinet.glb",
+      "bytes": 70512,
+      "sha256": "78a76cb20e763c830a5b1ea3492bdb4452ff961ac80e7140de0af5b61a58b001",
+      "byteEqualTo": "ab54058"
+    },
+    {
+      "path": "public/textures/kit/factory/factory-rack-tall-a.webp",
+      "bytes": 192972,
+      "sha256": "62c230548c0c3ae849d4cdbbd8c2ddbe9940e91e9ba606012967eb8d1b29fcb1",
+      "byteEqualTo": "ab54058"
+    }
+  ],
+  "newAssets": [
+    {
+      "kind": "west",
+      "size": [
+        768,
+        576
+      ],
+      "bytes": 23832,
+      "sha256": "854b73a0444d1b0aaf6e7af493c86137a68d7fe4e22a69a9239357fb87ce3525",
+      "sourceSha256": "ca7e90d753209d176f706861e8517ddc10cb1cbd798082b1aa1b45629569ed15",
+      "bboxAlpha115": [
+        271,
+        34,
+        498,
+        533
+      ],
+      "borderMaxAlpha": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "connectedComponentsAlpha115": [
+        96562
+      ],
+      "sourceSize": [
+        1448,
+        1086
+      ]
+    },
+    {
+      "kind": "east",
+      "size": [
+        768,
+        576
+      ],
+      "bytes": 23130,
+      "sha256": "d8ff1d7eed00972ff6c96ddd7be4f6c01e1c1e61d8382ac5463bd4a9a1d3fc6f",
+      "sourceSha256": "b2cad888dab595d9135a5c86a6640cd8ef8fec7aaae90ca44320d25802144bfa",
+      "bboxAlpha115": [
+        272,
+        52,
+        488,
+        531
+      ],
+      "borderMaxAlpha": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "connectedComponentsAlpha115": [
+        85812
+      ],
+      "sourceSize": [
+        1448,
+        1086
+      ]
+    }
+  ],
+  "generation": {
+    "builtinImagegenCalls": 4,
+    "TripoCalls": 0,
+    "paidAPICalls": 0,
+    "accepted": "attempt 2 per side",
+    "rejected": "attempt 1 invented/misregistered round lamp sockets; stored as *-rejected-sockets.png",
+    "postprocessing": "Full-canvas LANCZOS resize to768x576,WebP quality90 alpha_quality100 method6; no crop/painting/mask"
+  },
+  "references": "Real model() fit height2.1 and +/-PI/2, body-only orthographic screenshot at VIEW normalize(0,1,.78). Actual runtime Stage perspective checked separately."
+}

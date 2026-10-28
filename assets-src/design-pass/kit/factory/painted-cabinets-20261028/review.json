@@ -1,0 +1,100 @@
+{
+  "status": "ready-for-Claude-integration",
+  "assetsBytes": 46962,
+  "nativeScreenshots": 20,
+  "states": 20,
+  "viewportSizes": [
+    [
+      1024,
+      768
+    ],
+    [
+      390,
+      844
+    ]
+  ],
+  "renderer": "actual FactoryMap/World/Stage/Life, q2,DPR1",
+  "ppuRanges": [
+    74.50413455128279,
+    185.68038945628155
+  ],
+  "consoleWarningsErrors": [],
+  "horizontalOverflow": false,
+  "allFactoryModelsLoaded": true,
+  "proxyAudit": {
+    "raysPerState": 121,
+    "states": 20,
+    "mismatches": 0,
+    "method": "Original 4 GLB meshes first ray hit versus whole holder descendants; all added card/shadow raycast disabled"
+  },
+  "lampTransformsUnchanged": true,
+  "lampMaterialIdentity": "original cloned material UUIDs unchanged across all old/new/power/tap states in first fixture instance; FactoryMap.cabinetLamps still references them",
+  "maxRestAnchorError": 3.98298105608319e-09,
+  "nativePointerClicks": [
+    {
+      "side": "west",
+      "viewport": [
+        390,
+        844
+      ],
+      "xy": [
+        195,
+        491
+      ],
+      "target": "original GLB body",
+      "accepted": true
+    },
+    {
+      "side": "east",
+      "viewport": [
+        390,
+        844
+      ],
+      "xy": [
+        195,
+        491
+      ],
+      "target": "original GLB body",
+      "accepted": true
+    }
+  ],
+  "life": {
+    "afterPoint175": {
+      "rootY": 0.12,
+      "rotationZ": -0.03854858822278267
+    },
+    "afterFurther1Point7": "rootY0 rotationZ0; native screenshot",
+    "events": [
+      "beep",
+      "chime"
+    ],
+    "eastTapFlashRedIntensity": [
+      1.6576686722726903,
+      0.40877606180355935
+    ],
+    "note": "Discrete fixed-dt updates; not motion recording or listening review"
+  },
+  "power": "Actual FactoryMap.tick; fixture sets hum/box.closed/phase/time. Red2.1996/green0.0003 initially; green2.1993/red0.0007 with power; amber2.1993 then0.0007 in evening. All-off is diagnostic direct intensity zero only. Not an electrical circuit journey.",
+  "fallback": "Fresh query fallback=1 with no new texture handed to fixture: two visible original GLB bodies/lamps, original depth/cast state, no artwork; not a real failed network request",
+  "tests": {
+    "vitest": "88/88 in17files PASS",
+    "typecheck": "PASS",
+    "startedAtBangkok": "2026-10-28 21:37:34",
+    "exitCode": 0
+  },
+  "limitations": [
+    "No general Input, story11, wiring or physical iPad/PWA run",
+    "No measured FPS/VRAM claim",
+    "Lamps overlay with depthTest=false/order30; adjacent wall views checked, complete moving-occluder audit belongs to Claude",
+    "Orthographic reference vs perspective Stage: artwork is an interpreted silhouette, not exact original 3D reconstruction",
+    "Art floor support selected at center of front feet line, visually +/-1px; no new collider or pick footprint"
+  ],
+  "cleanup": {
+    "vitePort": 5366,
+    "session": 3825,
+    "server": "stopped",
+    "browserTab": 14,
+    "tab": "closed",
+    "viewport": "reset"
+  }
+}

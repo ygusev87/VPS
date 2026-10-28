@@ -1,0 +1,16 @@
+{
+  "commit": "ab54058",
+  "source": "m0604/read1259",
+  "viewed": [
+    "sh-rackB.jpg",
+    "sh-booth.jpg"
+  ],
+  "conclusion": "no new static defect; correct ordered fallback B/A then standees and exact shadow formula verified in diff",
+  "notRepeated": [
+    "full11",
+    "generalInput",
+    "physicaliPad",
+    "publication"
+  ],
+  "note": "composite originals2056x768; tool preview downscaled2048, retained originals"
+}

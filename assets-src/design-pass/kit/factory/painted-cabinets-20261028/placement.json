@@ -1,0 +1,70 @@
+{
+  "definitions": {
+    "west": {
+      "model": "factory-control-cabinet",
+      "fit": {
+        "height": 2.1
+      },
+      "yaw": 1.5707963267948966,
+      "piece": "factory-cabinet-west-painted",
+      "image": [
+        768,
+        576
+      ],
+      "span": 227,
+      "at": [
+        370,
+        533
+      ],
+      "size": 0.9861995300149544,
+      "depth": 1.2533860286263623,
+      "deep": 1.2709253964127891,
+      "frontOffsetZ": 0.6266930143131811,
+      "fullWidth": 3.336569335028568,
+      "unitGeometryTranslate": [
+        0.018229166666666685,
+        -0.05598958333333334,
+        0
+      ],
+      "spots": [
+        [
+          -52.11,
+          -10.12
+        ]
+      ]
+    },
+    "east": {
+      "model": "factory-control-cabinet",
+      "fit": {
+        "height": 2.1
+      },
+      "yaw": -1.5707963267948966,
+      "piece": "factory-cabinet-east-painted",
+      "image": [
+        768,
+        576
+      ],
+      "span": 216,
+      "at": [
+        392,
+        531
+      ],
+      "size": 0.9861995300149544,
+      "depth": 1.2533860286263623,
+      "deep": 1.2709253964127891,
+      "frontOffsetZ": 0.6266930143131811,
+      "fullWidth": 3.5064872178309487,
+      "unitGeometryTranslate": [
+        -0.01041666666666663,
+        -0.05859375,
+        0
+      ],
+      "spots": [
+        [
+          52.11,
+          26.33
+        ]
+      ]
+    }
+  }
+}

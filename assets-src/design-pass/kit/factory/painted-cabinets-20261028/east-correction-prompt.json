@@ -1,0 +1,8 @@
+{
+  "tool": "builtin imagegen",
+  "transparent_background": true,
+  "references": [
+    "east-rejected-sockets.png"
+  ],
+  "prompt": "Use case: precise-object-edit. Correct only the narrow LEFT edge of this exact existing cabinet sprite. REMOVE ALL protruding circular lamp sockets, all round dark cylinders or round indicator buttons on that thin edge. Replace them with a flat uninterrupted narrow muted brass/teal metal mounting strip. There must be ZERO drawn circular lamp sockets, ZERO bulbs, ZERO round indicator buttons anywhere on that side strip. The game will overlay its three animated 3D bulbs later at exact coordinates, so leave this narrow strip plain. Keep the handle and any nonround toggle projections, broad teal panels, every screw on the broad teal side panels, upper and lower panel proportions, feet and scratches unchanged. Keep exact existing canvas size, transparent background, framing, cabinet scale, position, silhouette of the broad body, and all handle/feet locations. Do not rotate, mirror, crop, reframe, widen or shrink any part. Only remove the round lamp/socket protrusions from that thin side strip. No new lamps, circles, dark holes, glow, labels or symbols."
+}
