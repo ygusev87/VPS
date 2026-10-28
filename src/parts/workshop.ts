@@ -8,6 +8,7 @@ import type { CircuitElement, CircuitResult, ElementKind } from '../circuit/solv
 import { Part, type PartKind, type PlugShape } from './base';
 import { model, type Fit } from './assets';
 import { basePlate, damp, mat, mesh, PLATE_TOP } from './kit';
+import { kitPieces } from '../kit';
 import type { Geared } from './factory';
 import { flow, hintTile, makePuzzle, opens, turn, type Side, type TileGrid } from './tiles';
 
@@ -232,6 +233,39 @@ export class Reverser extends Part {
     this.addTerminal('a', 'none', 1.05, -0.45);
     this.addTerminal('b', 'none', 1.05, 0.45);
     this.pickable(plate, body ?? box, this.lever);
+    const art = kitPieces('factory', 'factory-lever-body')[0];
+    if (body && art) this.paint(body, art);
+  }
+
+  /**
+   * Codex's painted lid (painted from the game's own camera, so it stands
+   * as the model did but sharp): the model stays, unseen, to be picked, to
+   * cast the shadow and for the wires to go round; the lever and the glowing
+   * arrows draw over it.
+   */
+  private paint(body: THREE.Group, art: THREE.Texture) {
+    this.footprint();
+    // Unseen, but it still casts its real shadow (and so stands on the plate).
+    body.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (m.isMesh) m.material = Object.assign((m.material as THREE.Material).clone(), { colorWrite: false, depthWrite: false });
+    });
+    const w = 2.22;
+    const card = mesh(new THREE.PlaneGeometry(w, (w * 683) / 1024), new THREE.MeshBasicMaterial({ map: art, alphaTest: 0.45 }), false);
+    card.position.set(0, 0.508, 0.1324);
+    card.lookAt(new THREE.Vector3(0, 1, 0.78).normalize().add(card.position));
+    this.body.add(card);
+    this.lever.traverse((o) => {
+      const m = o as THREE.Mesh;
+      if (!m.isMesh) return;
+      m.material = Object.assign((m.material as THREE.Material).clone(), { transparent: true, depthTest: false, depthWrite: false });
+      m.renderOrder = 30;
+      m.userData.noAO = true;
+    });
+    for (const m of this.marks) m.depthTest = false;
+    this.body.traverse((o) => {
+      if ((o as THREE.Mesh).isMesh && this.marks.includes((o as THREE.Mesh).material as THREE.MeshStandardMaterial)) o.renderOrder = 31;
+    });
   }
 
   elements(): CircuitElement[] {
@@ -620,6 +654,20 @@ export class Lathe extends Part implements Geared {
     dial.position.set(-0.7, PLATE_TOP + 1.95, 0.45);
     dial.rotation.x = -0.55;
     dial.scale.setScalar(2.4);
+    // Codex's painted gauge face (rim, glass, scale) instead of the plain disc, facing the camera square on.
+    const painted = kitPieces('factory', 'factory-speed-dial')[0];
+    if (painted) {
+      // Where the painted scale's centre and radius are in the picture (measured by Codex): the needle's axis goes there.
+      const [u, v, w] = [0.4995853789836984, 0.5006905631406122, 0.7470006454358555];
+      const art = mesh(new THREE.PlaneGeometry(w, w).translate((0.5 - u) * w, (v - 0.5) * w, 0), new THREE.MeshBasicMaterial({ map: painted, alphaTest: 0.45 }), false);
+      art.position.z = -0.03;
+      face.removeFromParent();
+      rim.removeFromParent();
+      dial.add(art);
+      dial.rotation.x = -Math.atan2(1, 0.78);
+      // The green band lets the painted ticks show through.
+      this.band.material = Object.assign((this.band.material as THREE.Material).clone(), { transparent: true, opacity: 0.6, depthWrite: false });
+    }
     const stand = mesh(new THREE.CylinderGeometry(0.05, 0.05, 1.2, 10), mat('#2b3242', 0.5, 0.4));
     stand.position.set(-0.7, PLATE_TOP + 1.2, 0.35);
     this.body.add(plate, bed, head, tail, this.spindle, shaft, stand, dial);
