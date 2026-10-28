@@ -1,0 +1,43 @@
+{
+  "candidateSha256": "e501ac8f4218bc576a66164855493aea48cd9f75a16479368e3d863769d59c9f",
+  "method": "Disjoint axial intervals or disjoint YZ bounding circles prove separation for every independent wheel phase.",
+  "pairs": [
+    {
+      "a": "wheel-front-right",
+      "b": "wheel-front-left",
+      "axialGap": 0.4400006103701895,
+      "radialGap": -0.25513430925910274
+    },
+    {
+      "a": "wheel-front-right",
+      "b": "wheel-rear-right",
+      "axialGap": -0.09109775078585158,
+      "radialGap": 0.2691555227037987
+    },
+    {
+      "a": "wheel-front-right",
+      "b": "wheel-rear-left",
+      "axialGap": 0.4150059511093478,
+      "radialGap": 0.26822366478441373
+    },
+    {
+      "a": "wheel-front-left",
+      "b": "wheel-rear-right",
+      "axialGap": 0.4150059511093478,
+      "radialGap": 0.26931649055399853
+    },
+    {
+      "a": "wheel-front-left",
+      "b": "wheel-rear-left",
+      "axialGap": -0.09166234321115757,
+      "radialGap": 0.2683843463889284
+    },
+    {
+      "a": "wheel-rear-right",
+      "b": "wheel-rear-left",
+      "axialGap": 0.39001129184850614,
+      "radialGap": -0.4880823738631457
+    }
+  ],
+  "pass": true
+}

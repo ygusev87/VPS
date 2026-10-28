@@ -1,0 +1,42 @@
+{
+  "candidateSha256": "e501ac8f4218bc576a66164855493aea48cd9f75a16479368e3d863769d59c9f",
+  "method": "Check every reconstructed triangle against its own part, including coplanar overlap; retained/retained source pairs are excluded. Shared boundary points/edges are allowed; positive-area overlaps and proper crossings fail.",
+  "results": [
+    {
+      "part": "tractor-body",
+      "newTriangles": 148,
+      "intersections": 0,
+      "examples": [],
+      "pass": true
+    },
+    {
+      "part": "wheel-front-right",
+      "newTriangles": 91,
+      "intersections": 0,
+      "examples": [],
+      "pass": true
+    },
+    {
+      "part": "wheel-front-left",
+      "newTriangles": 96,
+      "intersections": 0,
+      "examples": [],
+      "pass": true
+    },
+    {
+      "part": "wheel-rear-right",
+      "newTriangles": 287,
+      "intersections": 0,
+      "examples": [],
+      "pass": true
+    },
+    {
+      "part": "wheel-rear-left",
+      "newTriangles": 283,
+      "intersections": 0,
+      "examples": [],
+      "pass": true
+    }
+  ],
+  "pass": true
+}

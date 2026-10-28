@@ -1,0 +1,266 @@
+{
+  "status": "PASS_EXPERIMENTAL_ABOVE_TARGET",
+  "candidateSha256": "e501ac8f4218bc576a66164855493aea48cd9f75a16479368e3d863769d59c9f",
+  "sourceSha256": "c5011b89177f9830e62a96bd7a71ddd0cdaadd0edc7931fdca1660e4e61d4802",
+  "bytes": 249536,
+  "totalTriangles": 13416,
+  "targetTriangles": 8000,
+  "sourceTriangles": 13556,
+  "checks": {
+    "sweepAndSurfaceReportsMatchFinalBinary": true,
+    "decodedGeometryMatchesCheckedReconstruction": true,
+    "retainedSourceVertexAttributesExact": true,
+    "bodyHasNoNewNonManifoldEdges": true,
+    "fourClosedConsistentlyOrientedWheels": true,
+    "wheelPairsClearAtEveryRotation": true,
+    "pivotsLocalPositiveXAndBodyIndependent": true,
+    "sourceRootAndBoundsPreserved": true,
+    "originalAtlasAndMaterialPreserved": true,
+    "publicTractorUnchanged": true,
+    "decodedGltfValidatorZeroErrorsOnlyInheritedTangentWarnings": true
+  },
+  "preserved": [
+    {
+      "part": "tractor-body",
+      "originalFacesWithByteExactPositionNormalUV": 6416
+    },
+    {
+      "part": "wheel-front-right",
+      "originalFacesWithByteExactPositionNormalUV": 594
+    },
+    {
+      "part": "wheel-front-left",
+      "originalFacesWithByteExactPositionNormalUV": 569
+    },
+    {
+      "part": "wheel-rear-right",
+      "originalFacesWithByteExactPositionNormalUV": 1898
+    },
+    {
+      "part": "wheel-rear-left",
+      "originalFacesWithByteExactPositionNormalUV": 1905
+    }
+  ],
+  "bodyTopology": {
+    "triangles": 6564,
+    "edges": 9840,
+    "openEdges": 0,
+    "nonManifoldEdges": 6,
+    "sameDirectionEdges": 0,
+    "degenerate": 0
+  },
+  "inheritedNonManifold": [
+    {
+      "edge": "504686,-567034,3393353|510179,-537736,3461104",
+      "candidateIncidence": 4,
+      "sourceIncidence": 4
+    },
+    {
+      "edge": "-278419,-1404004,2826319|-280250,-1496780,2820826",
+      "candidateIncidence": 4,
+      "sourceIncidence": 4
+    },
+    {
+      "edge": "-500594,-512711,3518479|-518294,-559099,3388470",
+      "candidateIncidence": 4,
+      "sourceIncidence": 4
+    },
+    {
+      "edge": "-467634,46999,2853786|-507308,14649,2821436",
+      "candidateIncidence": 4,
+      "sourceIncidence": 4
+    },
+    {
+      "edge": "-855829,-1181066,3126621|-857050,-1107211,3019196",
+      "candidateIncidence": 4,
+      "sourceIncidence": 4
+    },
+    {
+      "edge": "-467634,46999,2853786|-509749,95828,2816553",
+      "candidateIncidence": 4,
+      "sourceIncidence": 4
+    }
+  ],
+  "wheelTopology": [
+    {
+      "name": "wheel-front-right",
+      "triangles": 826,
+      "edges": 1239,
+      "openEdges": 0,
+      "nonManifoldEdges": 0,
+      "sameDirectionEdges": 0,
+      "degenerate": 0,
+      "signedVolume": 0.002524989115103756,
+      "minimumTriangleArea": 2.493768398749893e-7
+    },
+    {
+      "name": "wheel-front-left",
+      "triangles": 798,
+      "edges": 1197,
+      "openEdges": 0,
+      "nonManifoldEdges": 0,
+      "sameDirectionEdges": 0,
+      "degenerate": 0,
+      "signedVolume": 0.0025263667350338536,
+      "minimumTriangleArea": 0.0000024197515883159147
+    },
+    {
+      "name": "wheel-rear-right",
+      "triangles": 2618,
+      "edges": 3927,
+      "openEdges": 0,
+      "nonManifoldEdges": 0,
+      "sameDirectionEdges": 0,
+      "degenerate": 0,
+      "signedVolume": 0.015970050464359304,
+      "minimumTriangleArea": 3.8612950946372385e-10
+    },
+    {
+      "name": "wheel-rear-left",
+      "triangles": 2610,
+      "edges": 3915,
+      "openEdges": 0,
+      "nonManifoldEdges": 0,
+      "sameDirectionEdges": 0,
+      "degenerate": 0,
+      "signedVolume": 0.015962694895907122,
+      "minimumTriangleArea": 5.802463890667331e-9
+    }
+  ],
+  "textureSlots": [
+    {
+      "slot": "getBaseColorTexture",
+      "sourceSha256": "41a60a8d101515af1e8a02f038f227ba9cd1116a1f6e7c95ff38436cc05540c4",
+      "candidateSha256": "41a60a8d101515af1e8a02f038f227ba9cd1116a1f6e7c95ff38436cc05540c4"
+    },
+    {
+      "slot": "getNormalTexture",
+      "sourceSha256": "d89224e2cdc903bd1e0b2c37b2d98959196ca2c57b6b21eb00df4241a0234d18",
+      "candidateSha256": "d89224e2cdc903bd1e0b2c37b2d98959196ca2c57b6b21eb00df4241a0234d18"
+    },
+    {
+      "slot": "getMetallicRoughnessTexture",
+      "sourceSha256": "28297fed0ef13f91c0a78f3f65f07328912e64452ef292262dcdc81a98c932a4",
+      "candidateSha256": "28297fed0ef13f91c0a78f3f65f07328912e64452ef292262dcdc81a98c932a4"
+    }
+  ],
+  "bounds": {
+    "before": {
+      "min": [
+        -0.31517365231673905,
+        -0.38006224844627584,
+        -0.5
+      ],
+      "max": [
+        0.3154608274952669,
+        0.38042848918609823,
+        0.5
+      ]
+    },
+    "after": {
+      "min": [
+        -0.31517365231673905,
+        -0.38006224844627584,
+        -0.5
+      ],
+      "max": [
+        0.3154608274952669,
+        0.38042848918609823,
+        0.5
+      ]
+    },
+    "maxDifference": 0
+  },
+  "validator": {
+    "compressed": {
+      "numErrors": 0,
+      "numWarnings": 5,
+      "numInfos": 1,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/0"
+        },
+        {
+          "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+          "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+          "severity": 1,
+          "pointer": "/meshes/0/primitives/0/material"
+        },
+        {
+          "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+          "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+          "severity": 1,
+          "pointer": "/meshes/1/primitives/0/material"
+        },
+        {
+          "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+          "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+          "severity": 1,
+          "pointer": "/meshes/2/primitives/0/material"
+        },
+        {
+          "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+          "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+          "severity": 1,
+          "pointer": "/meshes/3/primitives/0/material"
+        },
+        {
+          "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+          "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+          "severity": 1,
+          "pointer": "/meshes/4/primitives/0/material"
+        }
+      ],
+      "truncated": false
+    },
+    "decoded": {
+      "numErrors": 0,
+      "numWarnings": 5,
+      "numInfos": 0,
+      "numHints": 0,
+      "messages": [
+        {
+          "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+          "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+          "severity": 1,
+          "pointer": "/meshes/0/primitives/0/material"
+        },
+        {
+          "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+          "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+          "severity": 1,
+          "pointer": "/meshes/1/primitives/0/material"
+        },
+        {
+          "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+          "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+          "severity": 1,
+          "pointer": "/meshes/2/primitives/0/material"
+        },
+        {
+          "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+          "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+          "severity": 1,
+          "pointer": "/meshes/3/primitives/0/material"
+        },
+        {
+          "code": "MESH_PRIMITIVE_GENERATED_TANGENT_SPACE",
+          "message": "Material requires a tangent space but the mesh primitive does not provide it. Runtime-generated tangent space may be non-portable across implementations.",
+          "severity": 1,
+          "pointer": "/meshes/4/primitives/0/material"
+        }
+      ],
+      "truncated": false
+    }
+  },
+  "limits": [
+    "13,416 > 8,000 target; experimental candidate only.",
+    "Body retains six original non-manifold geometric edges outside the reconstructed attachments.",
+    "Hidden wheel inner walls are planar reconstructed caps with existing atlas samples.",
+    "No physical iPad or production integration test in this candidate-only task."
+  ]
+}

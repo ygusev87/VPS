@@ -1,0 +1,8 @@
+{
+  "sourceFaceIds": [
+    5912,
+    8136,
+    8138
+  ],
+  "reason": "Three tiny source faces at the rear support/fender joins intersected the first reconstructed body patch. Include them in the local replacement mask; outside body stays unchanged."
+}
