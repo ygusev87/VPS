@@ -1,0 +1,383 @@
+{
+  "states": [
+    {
+      "file": "01-public-game-1180.jpg",
+      "approach": {
+        "fullBounds": {
+          "x": [
+            25.2,
+            28.8
+          ],
+          "z": [
+            -23,
+            -19.2
+          ]
+        },
+        "length": 8.8,
+        "mud": {
+          "rx": 5.6,
+          "rz": 3.3,
+          "x": 28,
+          "z": -17.1
+        },
+        "northFenceGap": [
+          24.456,
+          29.584
+        ],
+        "order": -1,
+        "overlap": 0.3,
+        "points": [
+          [
+            27,
+            -22.7
+          ],
+          [
+            27,
+            -19.5
+          ]
+        ],
+        "renderedWithActualFenceHelper": true,
+        "tone": "#c8d4f0",
+        "w": 1,
+        "wide": 3.6,
+        "y": 0.006
+      },
+      "drawCalls": 9,
+      "fresh": true,
+      "loaded": true,
+      "modelFit": {
+        "rotateY": -1.5707963267948966,
+        "width": 10,
+        "world": [
+          27,
+          0,
+          -26.5
+        ]
+      },
+      "modelSource": "pigsty",
+      "overflow": false,
+      "pathOn": true,
+      "view": "game",
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "file": "02-original-game-1180.jpg",
+      "approach": {
+        "fullBounds": {
+          "x": [
+            25.2,
+            28.8
+          ],
+          "z": [
+            -23,
+            -19.2
+          ]
+        },
+        "length": 8.8,
+        "mud": {
+          "rx": 5.6,
+          "rz": 3.3,
+          "x": 28,
+          "z": -17.1
+        },
+        "northFenceGap": [
+          24.456,
+          29.584
+        ],
+        "order": -1,
+        "overlap": 0.3,
+        "points": [
+          [
+            27,
+            -22.7
+          ],
+          [
+            27,
+            -19.5
+          ]
+        ],
+        "renderedWithActualFenceHelper": true,
+        "tone": "#c8d4f0",
+        "w": 1,
+        "wide": 3.6,
+        "y": 0.006
+      },
+      "drawCalls": 7,
+      "fresh": false,
+      "loaded": true,
+      "modelFit": {
+        "rotateY": -1.5707963267948966,
+        "width": 10,
+        "world": [
+          27,
+          0,
+          -26.5
+        ]
+      },
+      "modelSource": "pigsty",
+      "overflow": false,
+      "pathOn": false,
+      "view": "game",
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "file": "03-public-front-1180.jpg",
+      "approach": {
+        "fullBounds": {
+          "x": [
+            25.2,
+            28.8
+          ],
+          "z": [
+            -23,
+            -19.2
+          ]
+        },
+        "length": 8.8,
+        "mud": {
+          "rx": 5.6,
+          "rz": 3.3,
+          "x": 28,
+          "z": -17.1
+        },
+        "northFenceGap": [
+          24.456,
+          29.584
+        ],
+        "order": -1,
+        "overlap": 0.3,
+        "points": [
+          [
+            27,
+            -22.7
+          ],
+          [
+            27,
+            -19.5
+          ]
+        ],
+        "renderedWithActualFenceHelper": true,
+        "tone": "#c8d4f0",
+        "w": 1,
+        "wide": 3.6,
+        "y": 0.006
+      },
+      "drawCalls": 10,
+      "fresh": true,
+      "loaded": true,
+      "modelFit": {
+        "rotateY": -1.5707963267948966,
+        "width": 10,
+        "world": [
+          27,
+          0,
+          -26.5
+        ]
+      },
+      "modelSource": "pigsty",
+      "overflow": false,
+      "pathOn": true,
+      "view": "front",
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "file": "04-public-yard-1180.jpg",
+      "approach": {
+        "fullBounds": {
+          "x": [
+            25.2,
+            28.8
+          ],
+          "z": [
+            -23,
+            -19.2
+          ]
+        },
+        "length": 8.8,
+        "mud": {
+          "rx": 5.6,
+          "rz": 3.3,
+          "x": 28,
+          "z": -17.1
+        },
+        "northFenceGap": [
+          24.456,
+          29.584
+        ],
+        "order": -1,
+        "overlap": 0.3,
+        "points": [
+          [
+            27,
+            -22.7
+          ],
+          [
+            27,
+            -19.5
+          ]
+        ],
+        "renderedWithActualFenceHelper": true,
+        "tone": "#c8d4f0",
+        "w": 1,
+        "wide": 3.6,
+        "y": 0.006
+      },
+      "drawCalls": 10,
+      "fresh": true,
+      "loaded": true,
+      "modelFit": {
+        "rotateY": -1.5707963267948966,
+        "width": 10,
+        "world": [
+          27,
+          0,
+          -26.5
+        ]
+      },
+      "modelSource": "pigsty",
+      "overflow": false,
+      "pathOn": true,
+      "view": "yard",
+      "viewport": [
+        1180,
+        820
+      ]
+    },
+    {
+      "file": "05-public-game-390.jpg",
+      "approach": {
+        "fullBounds": {
+          "x": [
+            25.2,
+            28.8
+          ],
+          "z": [
+            -23,
+            -19.2
+          ]
+        },
+        "length": 8.8,
+        "mud": {
+          "rx": 5.6,
+          "rz": 3.3,
+          "x": 28,
+          "z": -17.1
+        },
+        "northFenceGap": [
+          24.456,
+          29.584
+        ],
+        "order": -1,
+        "overlap": 0.3,
+        "points": [
+          [
+            27,
+            -22.7
+          ],
+          [
+            27,
+            -19.5
+          ]
+        ],
+        "renderedWithActualFenceHelper": true,
+        "tone": "#c8d4f0",
+        "w": 1,
+        "wide": 3.6,
+        "y": 0.006
+      },
+      "drawCalls": 10,
+      "fresh": true,
+      "loaded": true,
+      "modelFit": {
+        "rotateY": -1.5707963267948966,
+        "width": 10,
+        "world": [
+          27,
+          0,
+          -26.5
+        ]
+      },
+      "modelSource": "pigsty",
+      "overflow": false,
+      "pathOn": true,
+      "view": "game",
+      "viewport": [
+        390,
+        844
+      ]
+    },
+    {
+      "file": "06-public-yard-1024.jpg",
+      "approach": {
+        "fullBounds": {
+          "x": [
+            25.2,
+            28.8
+          ],
+          "z": [
+            -23,
+            -19.2
+          ]
+        },
+        "length": 8.8,
+        "mud": {
+          "rx": 5.6,
+          "rz": 3.3,
+          "x": 28,
+          "z": -17.1
+        },
+        "northFenceGap": [
+          24.456,
+          29.584
+        ],
+        "order": -1,
+        "overlap": 0.3,
+        "points": [
+          [
+            27,
+            -22.7
+          ],
+          [
+            27,
+            -19.5
+          ]
+        ],
+        "renderedWithActualFenceHelper": true,
+        "tone": "#c8d4f0",
+        "w": 1,
+        "wide": 3.6,
+        "y": 0.006
+      },
+      "drawCalls": 10,
+      "fresh": true,
+      "loaded": true,
+      "modelFit": {
+        "rotateY": -1.5707963267948966,
+        "width": 10,
+        "world": [
+          27,
+          0,
+          -26.5
+        ]
+      },
+      "modelSource": "pigsty",
+      "overflow": false,
+      "pathOn": true,
+      "view": "yard",
+      "viewport": [
+        1024,
+        768
+      ]
+    }
+  ],
+  "console": []
+}

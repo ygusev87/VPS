@@ -1,0 +1,14 @@
+{
+  "generator": "builtin image_gen",
+  "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-31a67f5b-df72-4734-a352-eff5be8c09f7.png",
+  "prompt": "Use case: stylized-concept. Asset type: opaque top-down albedo texture for the existing floor inside a pig shelter in a warm illustrated children's farm game.\nCreate one square 1024x1024 production texture: packed medium warm-brown earth with scattered short dry golden straw, small rubbed patches, subtle soft granular soil and a few tiny irregular stones. Friendly clean farmyard, not dirty waste. Most of the image is readable brown earth, straw covers only about ten percent, clustered lightly with plenty of calm soil between it. Hand-painted storybook mobile farm style, soft natural color variation, no black outline, no glossy plastic.\nCamera orthographic directly from above, evenly diffuse lit: no perspective, no horizon, no directional lighting gradient, no shadows of buildings or objects. Flat albedo texture, full square edge-to-edge. Uniform medium brown value so it will not become a bright cream slab under game light. No large recognizable object, no animals, no manure, no grass, no door, no walls, no border, no text. Subtly repeatable edges, no vignette or fade, opaque background. Use crisp but restrained detail that remains clean when reduced to512pixels.",
+  "sourcePixels": [
+    1254,
+    1254
+  ],
+  "outputPixels": [
+    512,
+    512
+  ],
+  "conversion": "full resize WebP85 RGB; no painting/crop"
+}

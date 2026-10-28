@@ -1,0 +1,19 @@
+{
+  "pass": true,
+  "kitten": {
+    "originalSHA": "f0fc67190048cbb9b37b668f6ea98f3f0875d2dce0aa741c636258f943edc6c4",
+    "publicSHA": "b64d165bee1ec6eaf8bbeb2a21dfded68dae49d46bf094bd98aa2eaf4f877315",
+    "publicBytes": 116136,
+    "exactDecodedGeometry": true,
+    "materialExceptBaseImageExact": true,
+    "baseImageChanged": true,
+    "triangles": 7764
+  },
+  "tractor": {
+    "publicSHA": "c5011b89177f9830e62a96bd7a71ddd0cdaadd0edc7931fdca1660e4e61d4802",
+    "publicUnchanged": true,
+    "bytes": 240008,
+    "acceptedForWheelAnimation": false
+  },
+  "limits": "Independent decode/hash checks; worker native screenshots reviewed separately. No repeat of worker section/collision calculations and no full farm/iPad acceptance."
+}

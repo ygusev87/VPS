@@ -1,0 +1,34 @@
+{
+  "src/parts/assets.ts": {
+    "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+    "bytes": 7944
+  },
+  "src/kit.ts": {
+    "sha256": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770",
+    "bytes": 27443
+  },
+  "src/farm-decor.ts": {
+    "sha256": "2dbaddb74906c561b0fc8a7db6eee4e2a5ffb6fbcf19bdf7923a83107a797b81",
+    "bytes": 31466
+  },
+  "src/farm.ts": {
+    "sha256": "b55f33f5f8358cc41f4f565337ae5a4517218d7e3847b7f8774b0fc285d2f0da",
+    "bytes": 69446
+  },
+  "src/decor.ts": {
+    "sha256": "03dd3ce06d8d300997e49e92f74b336eb9ede203846e0575b53820e4917f9342",
+    "bytes": 5416
+  },
+  "public/models/pigsty.glb": {
+    "sha256": "a0ae622d6266b7b4274bdacbaf30b75316539c61b50069737de35f48a6294c98",
+    "bytes": 187896
+  },
+  "public/textures/kit/farm/path-strip-a.webp": {
+    "sha256": "e15fbdcc25555d45560c4d772ae1637ffc3374af0fbbdea12e7d6ec15e9b9571",
+    "bytes": 212852
+  },
+  "public/textures/farm/pig-mud.webp": {
+    "sha256": "7acaad5bd638c192e22b191f7a177c96eef103643ded11459fc036737b37a436",
+    "bytes": 125268
+  }
+}

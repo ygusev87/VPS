@@ -1,0 +1,13 @@
+{
+  "status": "KITTEN_ACCEPTED_TRACTOR_NOT_RELEASED",
+  "workerCommit": "a021a85",
+  "independentAudit": "audit.json",
+  "visualEvidenceRead": [
+    "../model-worker/qa/kitten-public-390-loft.jpg",
+    "../model-worker/qa/kitten-candidate-1180-view2.jpg"
+  ],
+  "visual": "White-grey kitten contrasts with orange hayloft, face readable; rear view has no new geometric deformation.",
+  "scope": "Main independent decode + inspected worker originals; main did not rerun worker browser fixture.",
+  "tractor": "Public unchanged; no final wheel nodes or accepted rotation. Worker topology-followup reduces rear seams to2/3components, stillbranched; detailed cuts/sweeps not independently rerun.",
+  "next": "Existing model worker received separate local experimental retopology card; newfolder tractor-retopology-20261028, public read-only until acceptance, no Tripo/API/spend."
+}

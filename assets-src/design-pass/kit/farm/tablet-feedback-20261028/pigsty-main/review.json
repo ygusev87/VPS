@@ -1,0 +1,51 @@
+{
+  "status": "ACCEPTED_ASSET_AND_LOCAL_APPROACH_FIXTURE",
+  "date": "2026-10-28",
+  "runtimeIntegration": "pending Claude: short approach only; public floor file ready",
+  "audit": "audit.json",
+  "publicSHA": "a0ae622d6266b7b4274bdacbaf30b75316539c61b50069737de35f48a6294c98",
+  "publicBytes": 187896,
+  "sourceTriangles": 2891,
+  "deliveredTriangles": 2891,
+  "floorTriangles": 74,
+  "materialsBefore": 1,
+  "materialsAfter": 2,
+  "additionalDrawCallsForPigsty": 1,
+  "newTexture": {
+    "size": [
+      512,
+      512
+    ],
+    "format": "WebP",
+    "bytes": 84126
+  },
+  "browser": "browser.json",
+  "nativeFrames": 6,
+  "viewports": [
+    [
+      1180,
+      820
+    ],
+    [
+      390,
+      844
+    ],
+    [
+      1024,
+      768
+    ]
+  ],
+  "visual": "Cream floor and adjoining right slope now brown earth with sparse straw. Cream pillars, entrance arch and rear wall remain original. Approach connects threshold through north fence gap to existing mud with no hard rectangular end.",
+  "tests": {
+    "vitest": "88/88 in17files",
+    "typecheck": "PASS",
+    "time": "2026-10-28 16:34:34 Asia/Bangkok"
+  },
+  "provenance": "One built-in imagegen earth/straw texture, full resize512x512 and WebP85. No Tripo/API or purchases. Original atlas remains exact.",
+  "limits": [
+    "Source geometry, normals, body UVs, transforms and oriented triangle multiset exactly preserved; this is not global watertightness proof.",
+    "Fixture uses actual loadModels/model, fences, grass/path kit and mud/ovalMask; scene DAY lighting with no full Stage postprocess.",
+    "Nearby pigs in the fixture are static stand-ins; no full17-station map or physical iPad/PWA claim.",
+    "Approach runtime is specified but not edited by main."
+  ]
+}

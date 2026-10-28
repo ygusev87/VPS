@@ -1,0 +1,71 @@
+{
+  "asset": "public/models/pigsty.glb",
+  "modelFit": {
+    "width": 10,
+    "rotateY": -1.5707963267948966,
+    "position": [
+      27,
+      0,
+      -26.5
+    ]
+  },
+  "worldBounds": {
+    "min": [
+      22,
+      0,
+      -30.95921201208533
+    ],
+    "max": [
+      32,
+      5.735953856013673,
+      -22.04078798791467
+    ]
+  },
+  "approach": {
+    "fullBounds": {
+      "x": [
+        25.2,
+        28.8
+      ],
+      "z": [
+        -23,
+        -19.2
+      ]
+    },
+    "length": 8.8,
+    "mud": {
+      "rx": 5.6,
+      "rz": 3.3,
+      "x": 28,
+      "z": -17.1
+    },
+    "northFenceGap": [
+      24.456,
+      29.584
+    ],
+    "order": -1,
+    "overlap": 0.3,
+    "points": [
+      [
+        27,
+        -22.7
+      ],
+      [
+        27,
+        -19.5
+      ]
+    ],
+    "renderedWithActualFenceHelper": true,
+    "tone": "#c8d4f0",
+    "w": 1,
+    "wide": 3.6,
+    "y": 0.006
+  },
+  "integration": "Add this one short ribbons lane separately in farm layKit after path-strip is ready. Reuse path-strip-a and existing tone. Preserve other PATHS, mud decal, all fences, objects, interactions. Render order -1 lets existing mud (order0) cover the southern end softly. No kit entry needed for the embedded floor texture.",
+  "runtimeCode": "toned(ribbons([{pts:[[27,-22.7],[27,-19.5]],w:1}],kitPieces('farm','path-strip',true)[0],3.6,8.8,.006,-1,.3),'#c8d4f0')",
+  "fenceClearanceFullCanvasX": {
+    "left": 0.744,
+    "right": 0.784
+  },
+  "limits": "Local fixture using actual fences and mud coordinates; no full game interaction or moving-pig collision acceptance."
+}

@@ -1,0 +1,81 @@
+{
+  "pass": true,
+  "sourceSHA": "5afc12715208e2193fd4e34e02d8173661b0c876d6ad510335ae80c223b40582",
+  "candidateSHA": "a0ae622d6266b7b4274bdacbaf30b75316539c61b50069737de35f48a6294c98",
+  "candidateBytes": 187896,
+  "topology": {
+    "orientedTriangleMultisetExactModuloCyclicRotation": true,
+    "triangleCountBefore": 2891,
+    "triangleCountAfter": 2891,
+    "positionArraysExact": true,
+    "normalArraysExact": true,
+    "nodeWorldMatricesExact": true,
+    "bodyUVExact": true,
+    "originalAtlasBytesExact": true,
+    "floorTriangles": 74,
+    "bodyTriangles": 2817,
+    "floorUVMin": [
+      0.003646217519417405,
+      0.006156795658171177
+    ],
+    "floorUVMax": [
+      0.9952744841575623,
+      0.9984264373779297
+    ]
+  },
+  "materials": [
+    {
+      "name": "tripo_material_9641502d-4787-4794-a85d-9bd5f3dcebd9",
+      "alpha": "OPAQUE"
+    },
+    {
+      "name": "pigsty-earth-straw-floor",
+      "alpha": "OPAQUE"
+    }
+  ],
+  "textures": [
+    {
+      "mime": "image/webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 37822,
+      "sha": "2f816d610f39166f9dd26a6f60cf7bcaa0ca279e8f9f5f9cec5c1ef2c1c59907"
+    },
+    {
+      "mime": "image/webp",
+      "size": [
+        512,
+        512
+      ],
+      "bytes": 84126,
+      "sha": "327f2d9ed113c6714370465e0e2ad0e3cf5c1145c04e4a13d5bf172efa6243bb"
+    }
+  ],
+  "extensions": [
+    "EXT_meshopt_compression",
+    "EXT_texture_webp",
+    "KHR_materials_volume",
+    "KHR_mesh_quantization"
+  ],
+  "validation": {
+    "before": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "after": {
+      "errors": 0,
+      "warnings": 0,
+      "messages": [
+        {
+          "code": "UNSUPPORTED_EXTENSION",
+          "message": "Cannot validate an extension as it is not supported by the validator: 'EXT_meshopt_compression'.",
+          "severity": 2,
+          "pointer": "/extensionsUsed/0"
+        }
+      ]
+    }
+  },
+  "limitations": "Exact source triangle/position/node preservation proves no new geometric cuts or changed model bounds; not a claim that the original model is globally watertight or collision-free."
+}
