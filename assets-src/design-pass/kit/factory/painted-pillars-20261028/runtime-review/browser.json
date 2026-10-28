@@ -1,0 +1,645 @@
+{
+  "states": [
+    {
+      "name": "pillar-runtime-1024-mid",
+      "ready": true,
+      "fallback": false,
+      "view": "mid",
+      "viewport": [
+        1024,
+        768
+      ],
+      "allModelsLoaded": true,
+      "quality": 2,
+      "dpr": 1,
+      "overflow": false,
+      "boxes": [
+        {
+          "position": [
+            -20.25,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            0,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            0,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            20.25,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            20.25,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            40.5,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            40.5,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        }
+      ],
+      "cards": [
+        {
+          "count": 7,
+          "cast": false,
+          "noAO": true,
+          "alpha": 0.45
+        }
+      ],
+      "pickables": 54,
+      "cart": {
+        "position": [
+          -41.85,
+          0,
+          7.425000000000001
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.5
+        ]
+      },
+      "limits": "actual current FactoryMap/Stage, static runtime inspection, no modifications of sprites/boxes/floor; not general Input or story journey"
+    },
+    {
+      "name": "pillar-runtime-1024-all",
+      "ready": true,
+      "fallback": false,
+      "view": "all",
+      "viewport": [
+        1024,
+        768
+      ],
+      "allModelsLoaded": true,
+      "quality": 2,
+      "dpr": 1,
+      "overflow": false,
+      "boxes": [
+        {
+          "position": [
+            -20.25,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            0,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            0,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            20.25,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            20.25,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            40.5,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            40.5,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        }
+      ],
+      "cards": [
+        {
+          "count": 7,
+          "cast": false,
+          "noAO": true,
+          "alpha": 0.45
+        }
+      ],
+      "pickables": 54,
+      "cart": {
+        "position": [
+          -41.85,
+          0,
+          7.425000000000001
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.5
+        ]
+      },
+      "limits": "actual current FactoryMap/Stage, static runtime inspection, no modifications of sprites/boxes/floor; not general Input or story journey"
+    },
+    {
+      "name": "pillar-runtime-1024-cart-existing",
+      "ready": true,
+      "fallback": false,
+      "view": "cart",
+      "viewport": [
+        1024,
+        768
+      ],
+      "allModelsLoaded": true,
+      "quality": 2,
+      "dpr": 1,
+      "overflow": false,
+      "boxes": [
+        {
+          "position": [
+            -20.25,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            0,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            0,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            20.25,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            20.25,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            40.5,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            40.5,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        }
+      ],
+      "cards": [
+        {
+          "count": 7,
+          "cast": false,
+          "noAO": true,
+          "alpha": 0.45
+        }
+      ],
+      "pickables": 54,
+      "cart": {
+        "position": [
+          -41.85,
+          0,
+          7.425000000000001
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.5
+        ]
+      },
+      "limits": "actual current FactoryMap/Stage, static runtime inspection, no modifications of sprites/boxes/floor; not general Input or story journey"
+    },
+    {
+      "name": "pillar-runtime-390-cart-existing",
+      "ready": true,
+      "fallback": false,
+      "view": "cart",
+      "viewport": [
+        390,
+        844
+      ],
+      "allModelsLoaded": true,
+      "quality": 2,
+      "dpr": 1,
+      "overflow": false,
+      "boxes": [
+        {
+          "position": [
+            -20.25,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            0,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            0,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            20.25,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            20.25,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            40.5,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            40.5,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        }
+      ],
+      "cards": [
+        {
+          "count": 7,
+          "cast": false,
+          "noAO": true,
+          "alpha": 0.45
+        }
+      ],
+      "pickables": 54,
+      "cart": {
+        "position": [
+          -41.85,
+          0,
+          7.425000000000001
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.5
+        ]
+      },
+      "limits": "actual current FactoryMap/Stage, static runtime inspection, no modifications of sprites/boxes/floor; not general Input or story journey"
+    },
+    {
+      "name": "pillar-runtime-390-mid",
+      "ready": true,
+      "fallback": false,
+      "view": "mid",
+      "viewport": [
+        390,
+        844
+      ],
+      "allModelsLoaded": true,
+      "quality": 2,
+      "dpr": 1,
+      "overflow": false,
+      "boxes": [
+        {
+          "position": [
+            -20.25,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            0,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            0,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            20.25,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            20.25,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            40.5,
+            2.5,
+            -21.6
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        },
+        {
+          "position": [
+            40.5,
+            2.5,
+            10.8
+          ],
+          "cast": true,
+          "visible": true,
+          "color": false,
+          "depth": false,
+          "tri": 12
+        }
+      ],
+      "cards": [
+        {
+          "count": 7,
+          "cast": false,
+          "noAO": true,
+          "alpha": 0.45
+        }
+      ],
+      "pickables": 54,
+      "cart": {
+        "position": [
+          -41.85,
+          0,
+          7.425000000000001
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.5
+        ]
+      },
+      "limits": "actual current FactoryMap/Stage, static runtime inspection, no modifications of sprites/boxes/floor; not general Input or story journey"
+    },
+    {
+      "name": "pillar-runtime-390-fallback",
+      "ready": true,
+      "fallback": true,
+      "view": "mid",
+      "viewport": [
+        390,
+        844
+      ],
+      "allModelsLoaded": true,
+      "quality": 2,
+      "dpr": 1,
+      "overflow": false,
+      "boxes": [],
+      "cards": [],
+      "pickables": 54,
+      "cart": {
+        "position": [
+          -41.85,
+          0,
+          7.425000000000001
+        ],
+        "scale": [
+          1.5,
+          1.5,
+          1.5
+        ]
+      },
+      "limits": "actual current FactoryMap/Stage, static runtime inspection, no modifications of sprites/boxes/floor; not general Input or story journey"
+    }
+  ],
+  "console": []
+}

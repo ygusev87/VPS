@@ -1,0 +1,46 @@
+{
+  "message": "m0617",
+  "readRevision": 1303,
+  "commit": "220cd34c6042bae13dec2d27591b061acc1ed376",
+  "observed": [
+    "Original before/after close pillar and whole map comparisons",
+    "Code preserves original filtered spots and box size .8x5x.8",
+    "Separate unbaked group preserves colorWrite=false/depthWrite=false; castShadow=true via mesh(); visible=true",
+    "Card batch uses exact at/span/S/front; no blob; group raycast noop",
+    "No new texture retains original hall path",
+    "Current FactoryMap/Stage renders seven hidden unbaked true casters and one 7-instance card batch; no main replacement logic"
+  ],
+  "decision": "accepted: original Claude comparisons, diff, six independent native runtime states",
+  "limits": [
+    "Claude reports publication, story11/11 and 88 tests; main has not independently repeated those journeys or publication",
+    "Production has seven separate caster meshes, not the single merged caster used in asset fixture; no measured FPS claim"
+  ],
+  "mainQA": {
+    "states": 6,
+    "viewports": [
+      [
+        1024,
+        768
+      ],
+      [
+        390,
+        844
+      ]
+    ],
+    "console": 0,
+    "overflow": false,
+    "modelsLoaded": true,
+    "q": 2,
+    "dpr": 1,
+    "columns": 7,
+    "casterTriangles": 84,
+    "cardBatchInstances": 7,
+    "pickables": 54,
+    "fallback": "fresh loadKit excludes pillar piece; old baked visible geometry and shadow observed, not simulated network failure"
+  },
+  "tests": {
+    "vitest": "88/88 tests in 17 files",
+    "typecheck": "PASS",
+    "time": "2026-10-28 22:51:02 Asia/Bangkok"
+  }
+}
