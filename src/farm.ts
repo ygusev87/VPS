@@ -112,6 +112,11 @@ const r2 = (n: number) => Math.round(n * 100) / 100;
 /** Bumped whenever the farm is laid out anew: a farm saved on an older layout would have its parts in the wrong places. */
 /** Where the smoke leaves a house model (fitted model space, from assets-src/farm-v3/buildings/anchors.json). */
 const CHIMNEY: Record<string, [number, number, number]> = { farmhouse: [4.188, 8.535, -0.461] };
+/**
+ * The painted farmhouse (kit 'farmhouse-card', Codex house-main/placement.json): a card in place of the
+ * model, its foot `spot` and its chimney top measured from the house's spot (the card never turns).
+ */
+const HOUSE_CARD = { spot: [0, 4.638, 11.406, -0.156], chimney: [3.76, 5.681, -2.846] } as const;
 
 export const FARM_LAYOUT = 4;
 
@@ -318,6 +323,8 @@ export class FarmMap extends StoryMap {
     const strip = kitPieces('farm', 'path-strip', true);
     // The painted path is wider than the lane it marks (a child's path reads better broad), its shoulders wider still.
     if (strip.length) this.scenery.add(toned(ribbons(plan.lanes, strip[0], PATH_WIDE, 8.8), PATH_TONE));
+    // A short path out of the pigsty's doorway into its yard's mud (under the mud, which softens its end).
+    if (strip.length) this.scenery.add(toned(ribbons([{ pts: [[27, -22.7], [27, -19.5]], w: 1 }], strip[0], PATH_WIDE, 8.8, 0.006, -1), PATH_TONE));
     const patch = kitPieces('farm', 'path-patch');
     if (patch.length) this.scenery.add(toned(patches(laneEnds(plan.lanes).map((j) => ({ x: j.x, z: j.z, size: j.w * PATH_WIDE * 0.56 })), patch), PATH_TONE));
     const soil = kitPieces('farm', 'bed-soil');
@@ -616,6 +623,17 @@ export class FarmMap extends StoryMap {
       return i < 0 ? [] : [new THREE.Box3().setFromObject(group.children[i])];
     });
     const atDoor = (x: number, z: number) => buildings.some((b) => x > b.min.x - 1.2 && x < b.max.x + 1.2 && z > b.min.z && z < b.max.z + 2.5);
+    // The painted farmhouse stands in for the model (which still holds its ground for the dressing round it).
+    const houseCard = this.kit ? kitPieces('farm', 'farmhouse-card') : [];
+    const farmhouse = DECOR.find((g) => g.model === 'farmhouse');
+    if (houseCard.length && farmhouse && drawn.has('farmhouse')) {
+      const [x, z] = farmhouse.items[0];
+      const [dx, dz, size, dy] = HOUSE_CARD.spot;
+      group.children[[...drawn].indexOf('farmhouse')].visible = false;
+      const card = cards([{ x: x + dx, z: z + dz, size }], houseCard);
+      card.position.y = dy;
+      this.scenery.add(card);
+    }
     for (const g of carded) {
       const { card, wide } = CARDS[g.model];
       const tall = g.fit.height ?? (g.fit.width ?? 2) / wide;
@@ -631,7 +649,10 @@ export class FarmMap extends StoryMap {
     if (house) {
       const [x, z, yaw, s] = house.items[0];
       const pipe = CHIMNEY[house.model];
-      if (pipe) {
+      if (house.model === 'farmhouse' && !group.children[[...drawn].indexOf('farmhouse')].visible) {
+        const [cx, cy, cz] = HOUSE_CARD.chimney;
+        this.life.addSmoke(new THREE.Vector3(x + cx, cy, z + cz));
+      } else if (pipe) {
         // The measured top of the chimney, turned and scaled with the house.
         this.life.addSmoke(new THREE.Vector3(pipe[0], pipe[1], pipe[2]).multiplyScalar(s).applyAxisAngle(new THREE.Vector3(0, 1, 0), yaw).add(v(x, z)));
       } else {

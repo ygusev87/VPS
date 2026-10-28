@@ -254,7 +254,7 @@
 - Команды: `npm run dev`, `npm test` (vitest), `npm run build`, `npm run typecheck`.
 - Публикация: GitHub Pages через `.github/workflows/deploy.yml` при пуше в `main` —
   https://ygusev87.github.io/VPS/ (репозиторий публичный). На iPad: Safari → «На экран "Домой"» + Гид-доступ.
-  Пуш в `main` = публикация, поэтому `main` двигает только Claude и только по просьбе владельца («выкладывай»),
+  Пуш в `main` = публикация, поэтому `main` двигает только Claude и сам решает, когда выкладывать (решение владельца 28.10: разрешения не спрашивать),
   перемоткой вперёд до `dev` без переключения веток: `npm test && npm run build`, затем
   `git fetch && git merge-base --is-ancestor origin/main dev && git push origin dev:main && git fetch`.
   Если `main` на GitHub ушёл вперёд — договориться в канале, когда влить его в `dev`.
