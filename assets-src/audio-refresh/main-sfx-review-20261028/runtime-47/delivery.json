@@ -1,0 +1,419 @@
+{
+  "manifestSHA": "63299333c0211b3eb89d0877b9073f99c9be4c8e2e567dd34bf09656f18a8ec1",
+  "selectionSHA": "9117f90f75e20d48b19c941959cdc9a364df7b2ae58e59ae16599b21d875cb65",
+  "runtimeMapSHA": "df5ece7c8f61f6dc9d0abf9a1f901a409600e22bacdabfa6daa7d0a9f1b57a3d",
+  "selected": 47,
+  "families": 21,
+  "mapGroups": 22,
+  "mapClips": 47,
+  "selectionMatches": true,
+  "mapMatches": true,
+  "publicChecks": [
+    {
+      "id": "animal-cow",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-cow--v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-pig",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-pig--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-pig--v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-sheep",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-sheep--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-sheep--v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-sheep--v04",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-goat",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-goat--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-goat--v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-goose",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-goose--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-goose--v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-cat",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-cat--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-cat--v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-puppy--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-puppy--v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-horse",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-horse--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-horse--v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-chick",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-chick--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-rooster",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-rooster--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-bee--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-rabbit",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-rabbit--v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-frog--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-crow",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-crow--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-crow--v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-pigeon",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-pigeon--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-mouse--v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-fox",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-hen--r02-v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-hen--r02-v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-duck--r02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-duck--r02-v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-duck--r02-v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-dog--r02-v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-dog--r02-v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-raccoon--r02-v02",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    },
+    {
+      "id": "animal-raccoon--r02-v03",
+      "technicalQA": "passed",
+      "sourceSHA": true,
+      "publicSHA": true
+    }
+  ],
+  "newR02Checks": [
+    {
+      "id": "animal-hen--r02",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-hen--r02-v02",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-hen--r02-v03",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-duck--r02",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-duck--r02-v02",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-duck--r02-v03",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-dog--r02",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-dog--r02-v02",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-dog--r02-v03",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-raccoon--r02",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-raccoon--r02-v02",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    },
+    {
+      "id": "animal-raccoon--r02-v03",
+      "SHA": true,
+      "sourceSHA": true,
+      "decode": true,
+      "format": true
+    }
+  ],
+  "dry": {
+    "taken": 47,
+    "notPicked": 26,
+    "notReady": 0,
+    "unmapped": 0
+  },
+  "allIntroDisabled": true,
+  "meow": {
+    "takes": [
+      "animal-cat",
+      "animal-cat--v02"
+    ],
+    "intro": []
+  },
+  "purr": {
+    "takes": [
+      "animal-cat--v03"
+    ],
+    "intro": []
+  },
+  "cueSpeech": {
+    "crowCaw": {
+      "takes": [
+        "animal-crow",
+        "animal-crow--v02",
+        "animal-crow--v03"
+      ],
+      "intro": [],
+      "cue": true
+    },
+    "squeak": {
+      "takes": [
+        "animal-mouse--v02"
+      ],
+      "intro": [],
+      "cue": true
+    }
+  }
+}

@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-28",
+  "reviewer": "codex-main",
+  "integrationCommit": "dace06bd27e91ec82e3a8807e449555f99073efc",
+  "checkoutAtReview": "d587a52f5ab680b2470b309731a68fc221708084",
+  "status": "accepted-targeted-runtime-gear-integration",
+  "method": "Actual Gear constructors, loadModels, fitGear, turnGears and Gear.update. No visual replacement in fixture. Browser UI buttons drive fixture.",
+  "snap": {
+    "offsetXZ": [
+      0.13,
+      0.07
+    ],
+    "latheAndGrinderAllSnapped": true,
+    "shaftAxis": [
+      -2.45,
+      0.51,
+      -0.45
+    ],
+    "motorAxis": [
+      -3.85,
+      0.51,
+      -0.45
+    ],
+    "axisSeparation": 1.4
+  },
+  "rotation": {
+    "dtSeconds": 0.5,
+    "lathe": {
+      "bigRad": -0.4,
+      "smallRad": 1,
+      "turnBig": -0.8,
+      "turnSmall": 2
+    },
+    "grinder": {
+      "smallRad": -2.5,
+      "bigRad": 1,
+      "turnSmall": -5,
+      "turnBig": 2
+    },
+    "mediumStandalone": {
+      "rad": 1,
+      "turn": 2
+    }
+  },
+  "load": {
+    "fallbackMeshesEachSize": 5,
+    "loadedWheelMeshesEachSize": 1,
+    "sceneOffset": [
+      0,
+      0,
+      0
+    ],
+    "sceneScale": [
+      1,
+      1,
+      1
+    ],
+    "logicalRadii": [
+      0.4,
+      0.6,
+      1
+    ]
+  },
+  "nativeBrowser": {
+    "viewports": [
+      [
+        1180,
+        820
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        1024,
+        768
+      ]
+    ],
+    "states": 7,
+    "consoleErrorsWarnings": 0,
+    "horizontalOverflow": false
+  },
+  "claudeFramesRead": [
+    "assets-src/design-pass/kit/factory-journey/gear-glb/factory-02-b-done.jpg",
+    "assets-src/design-pass/kit/factory-journey/gear-glb/factory-09-b-done.jpg"
+  ],
+  "checks": {
+    "npmTest": "88/88,17 files,2026-10-28 14:00:41 Asia/Bangkok",
+    "typecheck": "pass"
+  },
+  "limits": [
+    "Motor drive is stubbed to 2 in fixture; this does not independently test electrical supply, finger drag or full-map completion.",
+    "Fallback is a constructor-before-preload check, not a full table lifecycle check.",
+    "Native screenshots are static states of real updates; no video or physical iPad/PWA claim.",
+    "Cosmetic teeth; gear-pair phase/overlap and global body clearances not re-audited. Prior geometry acceptance remains the source.",
+    "Gear.update runs here, but other assembly parts are not advanced, so lathe speed gauge is not part of the verdict."
+  ],
+  "cleanup": {
+    "server5357": "stopped",
+    "tab2": "closed",
+    "viewport": "reset"
+  }
+}

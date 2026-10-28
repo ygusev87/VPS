@@ -1,0 +1,29 @@
+{
+  "sourceSHA": "0d50057be03cebacbd8dc46b3b116d46345ca35a961b9643b7312d3568e1bc81",
+  "scenarios": [
+    {
+      "action": "new-hint",
+      "events": [
+        {
+          "id": "connect",
+          "at": 10100
+        },
+        {
+          "id": "squeak",
+          "at": 10590
+        }
+      ],
+      "lateSqueak": true
+    },
+    {
+      "action": "stop",
+      "events": [
+        {
+          "id": "squeak",
+          "at": 10590
+        }
+      ],
+      "lateSqueak": true
+    }
+  ]
+}

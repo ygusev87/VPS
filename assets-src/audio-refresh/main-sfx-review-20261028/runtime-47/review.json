@@ -1,0 +1,22 @@
+{
+  "date": "2026-10-28",
+  "reviewer": "codex-main",
+  "status": "delivery-accepted-runtime-fixes-requested",
+  "deliveryCommit": "d587a52",
+  "voiceSourceSHA": "0d50057be03cebacbd8dc46b3b116d46345ca35a961b9643b7312d3568e1bc81",
+  "filesSelected": 47,
+  "families": 21,
+  "runtimeKeys": 22,
+  "pendingOwnerChoices": 0,
+  "newR02Decode": "12/12 mono24k64kbps; SHA ready/raw sources pass",
+  "old61Decode": "accepted earlier; not repeated",
+  "findings": [
+    "m0571: delayed cue speech survives a new hint and Voice.stop; words() can interrupt current speech.",
+    "m0572: crowCaw cue delays speech by .96/.99/1.05 s despite no intro-eligible takes and <=.8 s intro contract."
+  ],
+  "mainEdits": "review files only; no imports, public files or owner choices changed",
+  "limits": [
+    "No independent human listening, game audio mix or physical iPad verification.",
+    "Claude reported factory11/farm17/city14 finger passes; main did not repeat these."
+  ]
+}

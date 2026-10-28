@@ -1,0 +1,11 @@
+{
+  "src/parts/factory.ts": "5b5e14f520f4e3b0e7a5f0a1d98bd03c6a959ac84f80a2f4c278a596c8692bd8",
+  "src/parts/workshop.ts": "50ee496541b7a9a2d5706761372c983f0539dba300edc80cd47bd824ef53c530",
+  "src/parts/assets.ts": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+  "src/factory.ts": "dda60e84d0a9239f88ebc163bc44be18d667bad150373905cbcc1853cb8baffd",
+  "public/models/factory-gear-small.glb": "eaeafcd8600dc3cc7f923d0a41d4122899cbabf6542101606749f2306a3e27fb",
+  "public/models/factory-gear-medium.glb": "a5e9a120882493db6212140b0635079c67fafdfac5a953f50314844b740cfcf8",
+  "public/models/factory-gear-big.glb": "767fa4e0e940b9b30552971c2d31d7a0b645f463255aa107d87ab4dacddf4342",
+  "public/models/lathe.glb": "89c2383176dfebd1064c7e456bf3a2fc06d81f3dec0022e38ea3a4a61d51defa",
+  "public/models/grinder.glb": "60f83ae983fd7710eb17ef20db4b9d2d2f9d6355a2b30618526d8580a32f1f05"
+}
