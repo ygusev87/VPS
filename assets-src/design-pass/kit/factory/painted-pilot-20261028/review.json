@@ -1,0 +1,109 @@
+{
+  "status": "READY_FOR_CLAUDE_RUNTIME_REVIEW",
+  "assets": [
+    {
+      "name": "factory-lever-body-a",
+      "path": "public/textures/kit/factory/factory-lever-body-a.webp",
+      "bytes": 145360,
+      "sha256": "006699fecd3f8f5c8f0136e99f735251c62c59a7bb16be5c9db954647f5f9d6d",
+      "size": [
+        1024,
+        683
+      ],
+      "source": "assets-src/design-pass/kit/factory/painted-pilot-20261028/lever/lever-attempt3.png",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceBytes": 2525742,
+      "sourceSha256": "0bfa975de75a93fc515117f858f813d89ecec48d38fc29b3963f0cb827a11645",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha115BBox": [
+        132,
+        85,
+        895,
+        603
+      ],
+      "operations": [
+        "full-canvas LANCZOS resize",
+        "WebP quality90 alpha_quality100 method6"
+      ],
+      "rebuiltByteIdentical": true
+    },
+    {
+      "name": "factory-speed-dial-a",
+      "path": "public/textures/kit/factory/factory-speed-dial-a.webp",
+      "bytes": 33964,
+      "sha256": "9eb1eb152fdc0db98b3ecb5810ce864b36f3440b09af457ae57231e0586a9993",
+      "size": [
+        512,
+        512
+      ],
+      "source": "assets-src/design-pass/kit/factory/painted-pilot-20261028/dial/dial-attempt3.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBytes": 1757075,
+      "sourceSha256": "52ad29713d31c9d197cca17e68b8c5c52a9316dfc743d372a3f327a249c019af",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha115BBox": [
+        26,
+        25,
+        486,
+        489
+      ],
+      "operations": [
+        "full-canvas LANCZOS resize",
+        "WebP quality90 alpha_quality100 method6"
+      ],
+      "rebuiltByteIdentical": true
+    }
+  ],
+  "checks": {
+    "publicLoadKit": true,
+    "leverNativeStates": 10,
+    "dialNativeStates": 8,
+    "consoleWarningsErrors": 0,
+    "horizontalOverflow": false,
+    "leverStatesPhone": [
+      0,
+      -1,
+      1,
+      0
+    ],
+    "leverTerminalsIdenticalAcrossStates": true,
+    "leverCachedFootprintIdenticalAcrossStates": true,
+    "dialTickCount": 55,
+    "dialMaxTickAngleErrorDegrees": 0.2822212034227789,
+    "dialCircleRadialResidualMaxPx": 2.859821887560969,
+    "npmTest": "88/88 tests, 17/17 files PASS 2026-10-28 19:06:44 Asia/Bangkok",
+    "typecheck": "PASS same run",
+    "srcAndExistingModelsEqual57b5e55": true,
+    "rebuildBytesIdentical": true
+  },
+  "scope": "Real Reverser/Lathe update and controls, public loadKit/loadModels, Stage postprocess q2 DPR1, fixed camera. Fixture only; runtime integration belongs to Claude.",
+  "limits": [
+    "No full FactoryMap/Input/wires/electrical task or 11-station journey",
+    "No iPad/PWA/FPS/VRAM proof",
+    "Lever overlay depthTest=false requires full-scene occlusion review",
+    "Painted dial outline has up to 2.86 pixel circle-fit residual; not mathematically exact",
+    "Guide is orthographic while Stage uses perspective; registered for fixture camera/size, full-map framing remains to check",
+    "Soft alpha shadow is mostly discarded at alphaTest=.45",
+    "No whole-workshop static replacement or floor remake yet"
+  ],
+  "next": "Claude integrate pilot conditionally on ready images, preserve old fallback/controls/footprint, send targeted native lever taps and slow/fast dial states; then decide next static batch.",
+  "cleanup": {
+    "serverPort": 5362,
+    "server": "stopped",
+    "tab9": "closed",
+    "tab10": "closed",
+    "viewport": "reset"
+  }
+}

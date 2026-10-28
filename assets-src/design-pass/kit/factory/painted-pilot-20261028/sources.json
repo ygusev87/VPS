@@ -1,0 +1,210 @@
+{
+  "createdAt": "2026-10-28T19:08:05.196496+07:00",
+  "baseRevision": "57b5e55",
+  "publicAssets": [
+    {
+      "name": "factory-lever-body-a",
+      "path": "public/textures/kit/factory/factory-lever-body-a.webp",
+      "bytes": 145360,
+      "sha256": "006699fecd3f8f5c8f0136e99f735251c62c59a7bb16be5c9db954647f5f9d6d",
+      "size": [
+        1024,
+        683
+      ],
+      "source": "assets-src/design-pass/kit/factory/painted-pilot-20261028/lever/lever-attempt3.png",
+      "sourceSize": [
+        1536,
+        1024
+      ],
+      "sourceBytes": 2525742,
+      "sourceSha256": "0bfa975de75a93fc515117f858f813d89ecec48d38fc29b3963f0cb827a11645",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha115BBox": [
+        132,
+        85,
+        895,
+        603
+      ],
+      "operations": [
+        "full-canvas LANCZOS resize",
+        "WebP quality90 alpha_quality100 method6"
+      ],
+      "rebuiltByteIdentical": true
+    },
+    {
+      "name": "factory-speed-dial-a",
+      "path": "public/textures/kit/factory/factory-speed-dial-a.webp",
+      "bytes": 33964,
+      "sha256": "9eb1eb152fdc0db98b3ecb5810ce864b36f3440b09af457ae57231e0586a9993",
+      "size": [
+        512,
+        512
+      ],
+      "source": "assets-src/design-pass/kit/factory/painted-pilot-20261028/dial/dial-attempt3.png",
+      "sourceSize": [
+        1254,
+        1254
+      ],
+      "sourceBytes": 1757075,
+      "sourceSha256": "52ad29713d31c9d197cca17e68b8c5c52a9316dfc743d372a3f327a249c019af",
+      "alphaExtrema": [
+        0,
+        255
+      ],
+      "alpha115BBox": [
+        26,
+        25,
+        486,
+        489
+      ],
+      "operations": [
+        "full-canvas LANCZOS resize",
+        "WebP quality90 alpha_quality100 method6"
+      ],
+      "rebuiltByteIdentical": true
+    }
+  ],
+  "sourceFiles": [
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/dial/dial-attempt1.png",
+      "bytes": 2019110,
+      "sha256": "d63559c985e0ed943568fab952cfb66aca8a5c5ea7ed47b7199791196db636af"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/dial/dial-attempt2.png",
+      "bytes": 1839860,
+      "sha256": "1333943044daf20f4155111acfc050d622821a20700ca6cf00aa89e174e2cafa"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/dial/dial-attempt3.png",
+      "bytes": 1757075,
+      "sha256": "52ad29713d31c9d197cca17e68b8c5c52a9316dfc743d372a3f327a249c019af"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/dial/geometry-guide.jpg",
+      "bytes": 48086,
+      "sha256": "96357f44da9309de6960b5a75831d19aa14e3dc81b50527c6526ae180eec99a0"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/dial/guide.html",
+      "bytes": 7485,
+      "sha256": "46b02d6e3cc65e9f94c24f3e01ce88db4c59e4294a5917b6ec8d5afc5ac8fdfc"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/dial/prompt-attempt1.json",
+      "bytes": 1590,
+      "sha256": "06b9eedc45327ccc2f1768e0391808694c2c750f3a968eef11674d1776ce0077"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/dial/prompt-attempt2.json",
+      "bytes": 1017,
+      "sha256": "4c9ea040a4a3ceb0a8f1fdbc07f1e661287ad23a481cb3df4a4156bad392922c"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/dial/prompt-attempt3.json",
+      "bytes": 1312,
+      "sha256": "5c6523f2b12e5faa4fc94d8650658be1b91cfbd81b837be14f534c3d13523ab6"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/lever/geometry-guide.jpg",
+      "bytes": 24312,
+      "sha256": "c3eea867654b3df140ad89a950f84245bd64da093facc48f6a444cc76f9faee1"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/lever/guide.html",
+      "bytes": 2001,
+      "sha256": "47964e1805d030d2551bffc0b43d5c21df048759c568227a2418117ea7fb4cd8"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/lever/lever-attempt1.png",
+      "bytes": 2544130,
+      "sha256": "6fa315a8f7a5c5e74b7e9ae577c872a333ae2b022ee5c569d6abe61bcf851287"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/lever/lever-attempt2.png",
+      "bytes": 2446907,
+      "sha256": "9667aafee9014b2eb9993d0b0ecef0b552043c8745e36e9fc7d350d3be2478d6"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/lever/lever-attempt3.png",
+      "bytes": 2525742,
+      "sha256": "0bfa975de75a93fc515117f858f813d89ecec48d38fc29b3963f0cb827a11645"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/lever/prompt-attempt1.json",
+      "bytes": 2134,
+      "sha256": "86172628af7829e4acb746ddca55933c0201d5dd92d082c1de785e5f2571c92e"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/lever/prompt-attempt2.json",
+      "bytes": 1817,
+      "sha256": "3b901d0ff25414324f3523d18dfaa6960566e375be2022e128800d831da263f8"
+    },
+    {
+      "path": "assets-src/design-pass/kit/factory/painted-pilot-20261028/lever/prompt-attempt3.json",
+      "bytes": 1740,
+      "sha256": "35f057a6c8ad0f70149896b4a3d060a96c2253dae2cbafb86d76415c5dad5575"
+    }
+  ],
+  "runtimeReadOnly": [
+    {
+      "path": "src/parts/workshop.ts",
+      "sha256": "50ee496541b7a9a2d5706761372c983f0539dba300edc80cd47bd824ef53c530",
+      "equals57b5e55": true
+    },
+    {
+      "path": "src/parts/base.ts",
+      "sha256": "08fb8ed91aa434b9cda34186b9988eed05490cca7508608b5509752d1dcaba10",
+      "equals57b5e55": true
+    },
+    {
+      "path": "src/parts/assets.ts",
+      "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f",
+      "equals57b5e55": true
+    },
+    {
+      "path": "src/stage.ts",
+      "sha256": "d2e4abf2b80b07e3b49ed98ca60c0813d66e6f63739086fd16972bbbd667c183",
+      "equals57b5e55": true
+    },
+    {
+      "path": "src/kit.ts",
+      "sha256": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770",
+      "equals57b5e55": true
+    },
+    {
+      "path": "public/models/lever-box.glb",
+      "sha256": "35e6bb74a3101d992071e37381a031914a126693a8e0ccd2edbf232fc7ee751e",
+      "equals57b5e55": true
+    },
+    {
+      "path": "public/models/lathe.glb",
+      "sha256": "89c2383176dfebd1064c7e456bf3a2fc06d81f3dec0022e38ea3a4a61d51defa",
+      "equals57b5e55": true
+    },
+    {
+      "path": "public/models/grinder.glb",
+      "sha256": "60f83ae983fd7710eb17ef20db4b9d2d2f9d6355a2b30618526d8580a32f1f05",
+      "equals57b5e55": true
+    }
+  ],
+  "generation": {
+    "provider": "builtin imagegen",
+    "calls": 6,
+    "leverAttempts": 3,
+    "dialAttempts": 3,
+    "acceptedAttempt": 3,
+    "newTripoOrders": 0,
+    "externalPaidAPI": false
+  },
+  "rejected": {
+    "lever1": "Shape and symbols did not register to existing controls",
+    "lever2": "Top/front projection and symbols still misregistered",
+    "dial1": "240 degree scale instead of 270",
+    "dial2": "240 degree scale instead of 270"
+  },
+  "sourceGuideNote": "Code-rendered geometry guides were references for imagegen; final raster art is imagegen output, then only resize/WebP."
+}

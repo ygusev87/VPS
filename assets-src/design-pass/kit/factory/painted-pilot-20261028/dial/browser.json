@@ -1,0 +1,382 @@
+{
+  "states": [
+    {
+      "file": "dial-01-stop1024.jpg",
+      "loaded": true,
+      "version": "card",
+      "kind": "lathe",
+      "speed": 0,
+      "actualShown": 0,
+      "needleRadians": 2.356194490192345,
+      "needleVisualAngleDegrees": 225,
+      "want": "slow",
+      "bandGeometry": {
+        "innerRadius": 0.16,
+        "outerRadius": 0.28,
+        "thetaSegments": 32,
+        "phiSegments": 1,
+        "thetaStart": 2.827433388230814,
+        "thetaLength": 0.7068583470577035
+      },
+      "bandOpacity": 0.42,
+      "axis": [
+        -0.7,
+        2.11,
+        0.45
+      ],
+      "axisScreen": [
+        469.92954901625126,
+        339.8303699522836
+      ],
+      "dialRotationX": -0.9083700329617455,
+      "scale": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "artWidth": 0.7470006454358555,
+      "centerUV": [
+        0.4995853789836984,
+        0.5006905631406122
+      ],
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "ppu": 92.00000000000011,
+      "close": false
+    },
+    {
+      "file": "dial-02-slow1024.jpg",
+      "loaded": true,
+      "version": "card",
+      "kind": "lathe",
+      "speed": 1,
+      "actualShown": 0.9999938557876467,
+      "needleRadians": 1.5708011524479943,
+      "needleVisualAngleDegrees": 180.00027648955597,
+      "want": "slow",
+      "bandGeometry": {
+        "innerRadius": 0.16,
+        "outerRadius": 0.28,
+        "thetaSegments": 32,
+        "phiSegments": 1,
+        "thetaStart": 2.827433388230814,
+        "thetaLength": 0.7068583470577035
+      },
+      "bandOpacity": 0.42,
+      "axis": [
+        -0.7,
+        2.11,
+        0.45
+      ],
+      "axisScreen": [
+        469.92954901625126,
+        339.8303699522836
+      ],
+      "dialRotationX": -0.9083700329617455,
+      "scale": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "artWidth": 0.7470006454358555,
+      "centerUV": [
+        0.4995853789836984,
+        0.5006905631406122
+      ],
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "ppu": 92.00000000000011,
+      "close": false
+    },
+    {
+      "file": "dial-03-old1024.jpg",
+      "loaded": true,
+      "version": "old",
+      "kind": "lathe",
+      "speed": 1,
+      "actualShown": 0.9999938557876467,
+      "needleRadians": 1.5708011524479943,
+      "needleVisualAngleDegrees": 180.00027648955597,
+      "want": "slow",
+      "bandGeometry": {
+        "innerRadius": 0.16,
+        "outerRadius": 0.28,
+        "thetaSegments": 32,
+        "phiSegments": 1,
+        "thetaStart": 2.827433388230814,
+        "thetaLength": 0.7068583470577035
+      },
+      "bandOpacity": 1,
+      "axis": [
+        -0.7,
+        2.11,
+        0.45
+      ],
+      "axisScreen": [
+        469.92954901625126,
+        339.8303699522836
+      ],
+      "dialRotationX": -0.55,
+      "scale": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "artWidth": 0.7470006454358555,
+      "centerUV": [
+        0.4995853789836984,
+        0.5006905631406122
+      ],
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "ppu": 92.00000000000011,
+      "close": false
+    },
+    {
+      "file": "dial-04-fast1024.jpg",
+      "loaded": true,
+      "version": "card",
+      "kind": "grinder",
+      "speed": 4.5,
+      "actualShown": 4.499978495219016,
+      "needleRadians": -1.1780803552806827,
+      "needleVisualAngleDegrees": 22.500967715144327,
+      "want": "fast",
+      "bandGeometry": {
+        "innerRadius": 0.16,
+        "outerRadius": 0.28,
+        "thetaSegments": 32,
+        "phiSegments": 1,
+        "thetaStart": -0.7853981633974483,
+        "thetaLength": 1.8849555921538759
+      },
+      "bandOpacity": 0.42,
+      "axis": [
+        -0.7,
+        2.11,
+        0.45
+      ],
+      "axisScreen": [
+        469.92954901625126,
+        339.8303699522836
+      ],
+      "dialRotationX": -0.9083700329617455,
+      "scale": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "artWidth": 0.7470006454358555,
+      "centerUV": [
+        0.4995853789836984,
+        0.5006905631406122
+      ],
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "ppu": 92.00000000000011,
+      "close": false
+    },
+    {
+      "file": "dial-05-end1024.jpg",
+      "loaded": true,
+      "version": "card",
+      "kind": "grinder",
+      "speed": 6,
+      "actualShown": 5.9999907835493405,
+      "needleRadians": -2.356187251608924,
+      "needleVisualAngleDegrees": 315.00041474027967,
+      "want": "fast",
+      "bandGeometry": {
+        "innerRadius": 0.16,
+        "outerRadius": 0.28,
+        "thetaSegments": 32,
+        "phiSegments": 1,
+        "thetaStart": -0.7853981633974483,
+        "thetaLength": 1.8849555921538759
+      },
+      "bandOpacity": 0.42,
+      "axis": [
+        -0.7,
+        2.11,
+        0.45
+      ],
+      "axisScreen": [
+        469.92954901625126,
+        339.8303699522836
+      ],
+      "dialRotationX": -0.9083700329617455,
+      "scale": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "artWidth": 0.7470006454358555,
+      "centerUV": [
+        0.4995853789836984,
+        0.5006905631406122
+      ],
+      "viewport": [
+        1024,
+        768
+      ],
+      "overflow": false,
+      "ppu": 92.00000000000011,
+      "close": false
+    },
+    {
+      "file": "dial-06-fast390.jpg",
+      "loaded": true,
+      "version": "card",
+      "kind": "grinder",
+      "speed": 4.5,
+      "actualShown": 4.5000092162619065,
+      "needleRadians": -1.1781044835313468,
+      "needleVisualAngleDegrees": 22.49958526821422,
+      "want": "fast",
+      "bandGeometry": {
+        "innerRadius": 0.16,
+        "outerRadius": 0.28,
+        "thetaSegments": 32,
+        "phiSegments": 1,
+        "thetaStart": -0.7853981633974483,
+        "thetaLength": 1.8849555921538759
+      },
+      "bandOpacity": 0.42,
+      "axis": [
+        -0.7,
+        2.11,
+        0.45
+      ],
+      "axisScreen": [
+        171.0076852532345,
+        436.4446524392098
+      ],
+      "dialRotationX": -0.9083700329617455,
+      "scale": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "artWidth": 0.7470006454358555,
+      "centerUV": [
+        0.4995853789836984,
+        0.5006905631406122
+      ],
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "ppu": 55.71539498739713,
+      "close": false
+    },
+    {
+      "file": "dial-07-slow390.jpg",
+      "loaded": true,
+      "version": "card",
+      "kind": "lathe",
+      "speed": 1,
+      "actualShown": 1.0000215045733554,
+      "needleRadians": 1.5707794371424786,
+      "needleVisualAngleDegrees": 179.99903229419897,
+      "want": "slow",
+      "bandGeometry": {
+        "innerRadius": 0.16,
+        "outerRadius": 0.28,
+        "thetaSegments": 32,
+        "phiSegments": 1,
+        "thetaStart": 2.827433388230814,
+        "thetaLength": 0.7068583470577035
+      },
+      "bandOpacity": 0.42,
+      "axis": [
+        -0.7,
+        2.11,
+        0.45
+      ],
+      "axisScreen": [
+        171.0076852532345,
+        436.4446524392098
+      ],
+      "dialRotationX": -0.9083700329617455,
+      "scale": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "artWidth": 0.7470006454358555,
+      "centerUV": [
+        0.4995853789836984,
+        0.5006905631406122
+      ],
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "ppu": 55.71539498739713,
+      "close": false
+    },
+    {
+      "file": "dial-08-old390.jpg",
+      "loaded": true,
+      "version": "old",
+      "kind": "lathe",
+      "speed": 1,
+      "actualShown": 1.0000215045733554,
+      "needleRadians": 1.5707794371424786,
+      "needleVisualAngleDegrees": 179.99903229419897,
+      "want": "slow",
+      "bandGeometry": {
+        "innerRadius": 0.16,
+        "outerRadius": 0.28,
+        "thetaSegments": 32,
+        "phiSegments": 1,
+        "thetaStart": 2.827433388230814,
+        "thetaLength": 0.7068583470577035
+      },
+      "bandOpacity": 1,
+      "axis": [
+        -0.7,
+        2.11,
+        0.45
+      ],
+      "axisScreen": [
+        171.0076852532345,
+        436.4446524392098
+      ],
+      "dialRotationX": -0.55,
+      "scale": [
+        2.4,
+        2.4,
+        2.4
+      ],
+      "artWidth": 0.7470006454358555,
+      "centerUV": [
+        0.4995853789836984,
+        0.5006905631406122
+      ],
+      "viewport": [
+        390,
+        844
+      ],
+      "overflow": false,
+      "ppu": 55.71539498739713,
+      "close": false
+    }
+  ],
+  "logs": [],
+  "scope": "real Lathe/Stage and public loadKit; turn injected in fixture; not gear/electrical story, full map or iPad"
+}

@@ -1,0 +1,171 @@
+{
+  "camera": {
+    "VIEW": [
+      0,
+      1,
+      0.78
+    ],
+    "normalize": true,
+    "yaw": 0,
+    "fovDegrees": 26,
+    "fixtureStage": "q2, DPR1, 6 renders per state for cached GTAO refresh"
+  },
+  "lever": {
+    "attachTo": "Reverser.body",
+    "fullCanvasWidth": 2.22,
+    "fullCanvasHeight": 1.4807226562500002,
+    "position": [
+      0,
+      0.508,
+      0.1324
+    ],
+    "normal": [
+      0,
+      1,
+      0.78
+    ],
+    "normalizeNormal": true,
+    "material": {
+      "type": "MeshBasicMaterial",
+      "colorSpace": "sRGB",
+      "alphaTest": 0.45,
+      "side": "FrontSide",
+      "depthTest": true,
+      "depthWrite": true,
+      "noAO": false
+    },
+    "hideOnly": "sculpted lever-box holder, only when texture is ready",
+    "preserve": {
+      "plate": [
+        2.6,
+        1.9
+      ],
+      "pivot": [
+        0,
+        0.51,
+        -0.35
+      ],
+      "leverZAngles": [
+        0.55,
+        0,
+        -0.55
+      ],
+      "posPointY": 0.56,
+      "posPointZ": 0.3,
+      "posPointX": [
+        -0.5,
+        0,
+        0.5
+      ],
+      "terminals": [
+        {
+          "key": "p",
+          "at": [
+            -1.05,
+            0.16,
+            -0.45
+          ]
+        },
+        {
+          "key": "n",
+          "at": [
+            -1.05,
+            0.16,
+            0.45
+          ]
+        },
+        {
+          "key": "a",
+          "at": [
+            1.05,
+            0.16,
+            -0.45
+          ]
+        },
+        {
+          "key": "b",
+          "at": [
+            1.05,
+            0.16,
+            0.45
+          ]
+        }
+      ],
+      "footprint": {
+        "x0": -0.75,
+        "x1": 0.75,
+        "z0": -0.5499969481490524,
+        "z1": 0.5499969481490524
+      }
+    },
+    "cacheFootprintBeforeCard": true,
+    "movingLeverOverlay": {
+      "transparent": true,
+      "depthTest": false,
+      "depthWrite": false,
+      "renderOrder": 30,
+      "noAO": true
+    },
+    "existingMarksOverlay": {
+      "depthTest": false,
+      "renderOrder": 31,
+      "preserveDynamicOpacity": true
+    },
+    "pickNote": "Keep existing gameplay proxies/controlAt/tap; card canvas must not expand footprint or intercept unrelated picks. Fixture used a local raycast to the card and actual controlAt/tap; full Input is untested."
+  },
+  "dial": {
+    "attachTo": "existing Lathe dial group",
+    "axis": [
+      -0.7,
+      2.11,
+      0.45
+    ],
+    "groupScale": 2.4,
+    "groupRotationX": -0.9083700329617455,
+    "fullCanvasWidth": 0.7470006454358555,
+    "geometryTranslateFormula": [
+      "(.5-u)*width",
+      "(v-.5)*width",
+      0
+    ],
+    "centerUV": [
+      0.4995853789836984,
+      0.5006905631406122
+    ],
+    "artLocalZ": -0.03,
+    "material": {
+      "type": "MeshBasicMaterial",
+      "colorSpace": "sRGB",
+      "alphaTest": 0.45,
+      "depthTest": true,
+      "depthWrite": true,
+      "noAO": false
+    },
+    "hideOnly": [
+      "old face",
+      "old rim"
+    ],
+    "preserve": [
+      "stand",
+      "needle and hub",
+      "needle animate formula",
+      "setWant and green band geometry"
+    ],
+    "greenBandMaterial": {
+      "transparent": true,
+      "opacity": 0.42,
+      "depthWrite": false
+    },
+    "fallback": {
+      "groupRotationX": -0.55,
+      "oldFaceRimVisible": true,
+      "originalBandMaterial": true
+    },
+    "scaleArc": [
+      225,
+      315
+    ],
+    "arcSweepDegrees": 270,
+    "ticks": 55
+  }
+}
