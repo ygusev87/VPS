@@ -543,6 +543,12 @@ export class ShaftMotor extends Part implements Geared {
   }
 }
 
+/**
+ * Where a lathe's gear shaft stands (on its plate): out at the left end, clear of
+ * the machine — the big gear (radius 1) on a shaft at the back cut into the bed.
+ */
+export const LATHE_SHAFT_AT = { x: -2.45, z: -0.45 };
+
 /** How fast a lathe wants to turn (radians a second at its shaft), by what it makes. */
 export const LATHE_SPEED = { slow: [0.5, 1.4], fast: [3.6, 9] } as const;
 
@@ -570,7 +576,9 @@ export class Lathe extends Part implements Geared {
   constructor(grinder = false) {
     super();
     this.kind = grinder ? 'grinder' : 'lathe';
-    const plate = basePlate(3.2, 1.7);
+    // The plate runs on to the left under the gear shaft.
+    const plate = basePlate(4.6, 1.7);
+    plate.position.x = -0.7;
     const bed = mesh(new THREE.BoxGeometry(2.4, 0.3, 0.6), mat('#8d97a3', 0.4, 0.6));
     bed.position.set(0.3, PLATE_TOP + 0.15, 0.2);
     const head = mesh(new THREE.BoxGeometry(0.6, 0.7, 0.6), mat('#2f8f8c', 0.45, 0.3));
@@ -591,9 +599,9 @@ export class Lathe extends Part implements Geared {
     }
     this.spindle.add(wood, ring);
     this.spindle.position.set(0.3, PLATE_TOP + 0.75, 0.2);
-    // The shaft at the back left takes the gear; the dial stands on the head.
+    // The shaft at the left end takes the gear; the dial stands on the head.
     const shaft = mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.5, 12), mat('#c9ced6', 0.25, 0.9));
-    shaft.position.set(-1.1, PLATE_TOP + 0.25, -0.45);
+    shaft.position.set(LATHE_SHAFT_AT.x, PLATE_TOP + 0.25, LATHE_SHAFT_AT.z);
     // The speed dial: big, on a post above the head and tipped to the camera, so the needle in the green is seen from afar.
     const dial = new THREE.Group();
     const face = mesh(new THREE.CylinderGeometry(0.3, 0.3, 0.05, 32), mat('#f6eddd', 0.6));
@@ -634,7 +642,7 @@ export class Lathe extends Part implements Geared {
   }
 
   gearAt(out = new THREE.Vector3()) {
-    return this.root.localToWorld(out.set(-1.1, SHAFT_Y, -0.45));
+    return this.root.localToWorld(out.set(LATHE_SHAFT_AT.x, SHAFT_Y, LATHE_SHAFT_AT.z));
   }
 
   /** How it is turning: 'still', 'slow', 'fast' (too fast) or 'ok'. */

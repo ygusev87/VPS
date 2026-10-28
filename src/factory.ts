@@ -19,7 +19,7 @@ import { Gear, PaintBooth, PaintTank } from './parts/factory';
 import { bakeGroup, mat, mesh } from './parts/kit';
 import { glowFor } from './parts/models';
 import type { Lift } from './parts/more';
-import { Gantry, Lathe, RailCart, Reverser, SafetyPress, ShaftMotor, SocketBoard, WireBox, WORKSHOP_MODELS } from './parts/workshop';
+import { Gantry, Lathe, LATHE_SHAFT_AT, RailCart, Reverser, SafetyPress, ShaftMotor, SocketBoard, WireBox, WORKSHOP_MODELS } from './parts/workshop';
 import { StoryMap, blob, v, type Critter, type MapProgress, type NeedSpec, type Phase } from './storymap';
 import type { PhraseId } from './voice';
 
@@ -56,7 +56,7 @@ export const FACTORY_TRAY: { kind: PartKind; count: number }[] = [
 ];
 
 /** Bumped whenever the factory is laid out anew (a save on another layout starts it afresh). */
-export const FACTORY_LAYOUT = 4;
+export const FACTORY_LAYOUT = 5;
 
 export interface FactoryProgress extends MapProgress {
   loaded: number;
@@ -80,7 +80,7 @@ const CART_LEVER = v(-35.5, 11);
 const CART_POLE = v(-38, 7);
 // 3. The lathe, its bare-shaft motor and the two shafts that take gears (1.4 apart: a small and a big gear fit).
 const LATHE = v(-17, -8);
-const LATHE_SHAFT = v(LATHE.x - 1.1, LATHE.z - 0.45);
+const LATHE_SHAFT = v(LATHE.x + LATHE_SHAFT_AT.x, LATHE.z + LATHE_SHAFT_AT.z);
 const MOTOR_SHAFT = v(LATHE_SHAFT.x - 1.4, LATHE_SHAFT.z);
 const MOTOR = v(MOTOR_SHAFT.x, MOTOR_SHAFT.z + 0.35);
 const LATHE_POLE = v(-23, -12);
@@ -131,7 +131,7 @@ const BOOTH = v(-4, EVE_Z);
 const TANK_POLE = v(-14.5, 21.5);
 /** E4. The grinder: it wants to turn fast — the big gear on the motor, the small one on the stone. */
 const GRINDER = v(7, 17.5);
-const GRIND_SHAFT = v(GRINDER.x - 1.1, GRINDER.z - 0.45);
+const GRIND_SHAFT = v(GRINDER.x + LATHE_SHAFT_AT.x, GRINDER.z + LATHE_SHAFT_AT.z);
 const GMOTOR_SHAFT = v(GRIND_SHAFT.x - 1.4, GRIND_SHAFT.z);
 const GMOTOR = v(GMOTOR_SHAFT.x, GMOTOR_SHAFT.z + 0.35);
 const GRIND_POLE = v(1, 21.5);
