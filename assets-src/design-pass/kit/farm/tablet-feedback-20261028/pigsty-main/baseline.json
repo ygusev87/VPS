@@ -1,0 +1,10 @@
+{
+  "status": "defect-confirmed-awaiting-entrance-fix",
+  "frame": "baseline-1180.jpg",
+  "model": "public/models/pigsty.glb",
+  "sha256": "5afc12715208e2193fd4e34e02d8173661b0c876d6ad510335ae80c223b40582",
+  "actualHelper": "model(pigsty,{width:10,rotateY:-pi/2}), world(27,0,-26.5)",
+  "observation": "Wide pale floor is part of the model and projects beyond the open doorway. Grass currently reaches this edge. Ground path alone cannot remove pale interior geometry.",
+  "next": "Prepare a targeted entrance/floor asset after mapping visible doorway/floor bounds; keep barn/coop unchanged. Await requested current full-map close frame from Claude for path placement.",
+  "limits": "Independent local fixture baseline; not full farm map or physical tablet."
+}

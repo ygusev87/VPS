@@ -1,0 +1,11 @@
+{
+  "prompt": "Use case: style-transfer / precise-object-edit.\nCreate the final transparent farmhouse sprite for an existing children's farm game by redrawing the farmhouse in reference 2. Reference 1 is STYLE and CAMERA reference only: use the small cream house at the upper left, not the entire farm scene. Reference 2 is the farmhouse identity: retain warm cream walls, broad red terracotta gabled roof with a small front dormer, teal door and shutters, porch steps, two front windows, one brick chimney on the upper-right roof, modest flower boxes. Make the details much sharper and more painterly than a low-resolution 3D texture: individually readable roof tiles, wood frames and shutters, subtle warm plaster.\nCamera: orthographic game camera looking straight at the south/front facade from 52 degrees above the ground, zero horizontal azimuth. Roof ridge is horizontal in image; front wall is straight left-to-right; visible roof top is substantial, no large side wall, no wide-angle/perspective. Match the small house in the farm style reference. One complete compact cottage only, entire silhouette including chimney and steps visible, centered, about 92% canvas width and height, small transparent safety margin.\nStyle: warm, lush storybook farm illustration, softly modeled volume, polished hand-painted mobile-game asset, clear chunky details, no black outlines, no photorealism, no plastic clay softness. Light from lower left/southwest; shaded faces to upper right. Natural cream, teal, red terracotta, warm brown steps.\nBackground: genuine transparent alpha. No terrain island, grass, landscaping, cast ground shadow, scenery, people, animals, fences, icons, text, border or watermark. No smoke, fog, chimney plume, steam or glow: smoke will be animated separately by the game. Keep the chimney opening clearly visible for an animation anchor. Flowers may be only in attached window boxes. Deliver one production sprite.",
+  "generator": "builtin image_gen",
+  "source": "/Users/gusev/.codex/generated_images/01a16ded-c4fb-7140-b5ed-bbd17857db93/exec-f6646f8d-e7e4-43c2-9b14-3f40881d7ad7.png",
+  "references": [
+    "assets-src/design-pass/variants/farm-a.png",
+    "assets-src/farm-v3/buildings/farmhouse-v1.png"
+  ],
+  "transparent_background": true,
+  "created": "2026-10-28"
+}

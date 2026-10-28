@@ -1,0 +1,48 @@
+{
+  "chimneyLocalToOldHouse": [
+    3.7596006144393215,
+    5.681455178722974,
+    -2.8457473959970514
+  ],
+  "chimneyWorld": [
+    -34.74039938556068,
+    5.681455178722974,
+    -28.34574739599705
+  ],
+  "fullCanvasWidth": 11.40552995391705,
+  "material": "actual cards(): MeshStandardMaterial, alphaTest .45, DoubleSide",
+  "normal": [
+    0,
+    0.7885023060177911,
+    0.6150317986938771
+  ],
+  "origin": [
+    -38.5,
+    -0.1559411302485718,
+    -20.86190597423866
+  ],
+  "smokeBaked": false,
+  "sourceChimneyPixel": [
+    1120,
+    42
+  ],
+  "sourceGroundPixel": [
+    675,
+    1135
+  ],
+  "up": [
+    0,
+    0.6150317986938771,
+    -0.7885023060177911
+  ],
+  "oldFallbackChimneyLocal": [
+    4.188,
+    8.535,
+    -0.461
+  ],
+  "cardLocalSpotToOldHouse": [
+    0,
+    -0.1559411302485718,
+    4.63809402576134
+  ]
+}

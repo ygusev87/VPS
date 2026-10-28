@@ -1,0 +1,57 @@
+[
+  {
+    "path": "assets-src/design-pass/kit/farm/tablet-feedback-20261028/house-main/farmhouse-card-source.png",
+    "bytes": 1831148,
+    "sha256": "c53b2d120f37f17016851e17b966522bfcd777383e506544bf1d8d734841160e"
+  },
+  {
+    "path": "assets-src/design-pass/kit/farm/tablet-feedback-20261028/house-main/farmhouse-card-a.webp",
+    "bytes": 170044,
+    "sha256": "73accefd0a3db4e577c333ac8e33bd1d97e6f43d132a6ba6cdb9f4eeffc93dca"
+  },
+  {
+    "path": "public/textures/kit/farm/farmhouse-card-a.webp",
+    "bytes": 170044,
+    "sha256": "73accefd0a3db4e577c333ac8e33bd1d97e6f43d132a6ba6cdb9f4eeffc93dca"
+  },
+  {
+    "path": "src/kit.ts",
+    "bytes": 27443,
+    "sha256": "5ef0e240ba15a3c3eab1dc383efd2976c705c4be8826131cbb60c346f302b770"
+  },
+  {
+    "path": "src/stage.ts",
+    "bytes": 34829,
+    "sha256": "d9d1e7402b9e32fb3d44fe9b903cc87a30b176a31012d4aaa1114cb55eb8a8dc"
+  },
+  {
+    "path": "src/parts/assets.ts",
+    "bytes": 7944,
+    "sha256": "9f6983134a886554e38b342f90987149417fe1875c43fc46a6aa5c67f442ce1f"
+  },
+  {
+    "path": "src/farm-decor.ts",
+    "bytes": 31466,
+    "sha256": "2dbaddb74906c561b0fc8a7db6eee4e2a5ffb6fbcf19bdf7923a83107a797b81"
+  },
+  {
+    "path": "public/models/farmhouse.glb",
+    "bytes": 84820,
+    "sha256": "02e0ef29270a0488a07d686095de4d4485f9f16d6593e0b1fcad2883d488bb1d"
+  },
+  {
+    "path": "public/models/barn.glb",
+    "bytes": 166436,
+    "sha256": "62f9dbe2a6d572e35e5e54c77597aa9df5c1ef159190db9ee249684680adc506"
+  },
+  {
+    "path": "public/models/coop.glb",
+    "bytes": 146336,
+    "sha256": "68b4ee6350758fd266a7d55930891ce6926da1c6eb3f60345dc507c579ec9192"
+  },
+  {
+    "path": "public/models/pigsty.glb",
+    "bytes": 84380,
+    "sha256": "5afc12715208e2193fd4e34e02d8173661b0c876d6ad510335ae80c223b40582"
+  }
+]

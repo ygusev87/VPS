@@ -1,0 +1,74 @@
+{
+  "status": "accepted-for-runtime-integration",
+  "createdBangkok": "2026-10-28 16:08",
+  "asset": "public/textures/kit/farm/farmhouse-card-a.webp",
+  "bytes": 170044,
+  "sha256": "73accefd0a3db4e577c333ac8e33bd1d97e6f43d132a6ba6cdb9f4eeffc93dca",
+  "sourcePixels": [
+    1350,
+    1165
+  ],
+  "runtimePixels": [
+    1024,
+    884
+  ],
+  "method": "One built-in imagegen edit with existing farmhouse and farm-a references. Full-canvas resize and WebP quality90 alpha100 only; no local painting, removal or crop. Original retained.",
+  "alpha": {
+    "threshold": 115,
+    "visibleBBox": [
+      19,
+      16,
+      1006,
+      861
+    ],
+    "connectedComponentsAtThreshold": 1,
+    "visibleComponentPixels": 643572,
+    "sourceBorderMaxAlpha": [
+      0,
+      1,
+      1,
+      0
+    ],
+    "note": "Very faint alpha1 source boundary pixels preserved; cards alphaTest .45 removes them. No visible detached fragments at native viewports."
+  },
+  "nativeQA": {
+    "viewports": [
+      [
+        1180,
+        820
+      ],
+      [
+        390,
+        844
+      ],
+      [
+        1024,
+        768
+      ]
+    ],
+    "houseFrames": 8,
+    "savedChecks": 9,
+    "consoleWarningsErrors": [],
+    "horizontalOverflow": false,
+    "actualRuntimeHelpers": [
+      "loadModels/model",
+      "cards",
+      "loadKit/kitPieces for final390/1024"
+    ],
+    "result": "Readable roof tiles, shutters, windows and porch. Front step aligned to previous model front at world z=-21.06183050019837. Chimney marker matches opening. Existing barn/coop remain unchanged.",
+    "lights": "Stage DAY intensities hemi .4/sun3/rim1.1/env.75; same VIEW(0,1,.78), Neutral tone mapping. Separate fixture without full Stage postprocessing, map furniture or smoke animation.",
+    "checks": "Initial comparisons used byte-identical candidate WebP with actual cards(); final 390/1024 loaded public asset through loadKit/kitPieces."
+  },
+  "projectChecks": {
+    "tests": "88/88, 17 files PASS",
+    "typecheck": "PASS",
+    "timeBangkok": "2026-10-28 16:07:49"
+  },
+  "limitations": [
+    "Runtime farmhouse replacement and conditional smoke anchor still belong to Claude.",
+    "No full-map overlap, actual animated smoke, physical iPad/PWA or gameplay acceptance.",
+    "New house is a camera-facing painted card; keep fixed camera and existing gameplay/exclusion placement.",
+    "Old farmhouse GLB retained for fallback; old fallback chimney must remain paired with old model."
+  ],
+  "changes": "Own house asset, kit entry, fixture and acceptance only. No runtime edits; no new Tripo/API orders."
+}
