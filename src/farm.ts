@@ -209,6 +209,8 @@ export class FarmMap extends StoryMap {
   troughLevel = 0;
   private tractor!: THREE.Group;
   private tractorT = -1;
+  /** The tractor's wheels that turn (the model's `wheel-*` nodes, pivoted on their axles along X), each with its radius. */
+  private wheels: { node: THREE.Object3D; r: number }[] = [];
   private fox!: Critter;
   /** Plays the fox's walk, as fast as the fox is going (none without the rigged model). */
   private foxMixer: THREE.AnimationMixer | null = null;
@@ -423,6 +425,10 @@ export class FarmMap extends StoryMap {
     this.scenery.add(bakeGroup(still));
     // The tractor waits on the road above the gate, facing it.
     this.tractor = <THREE.Group>this.add('tractor', { depth: 3.8, rotateY: Math.PI }, TRACTOR_AT.x, TRACTOR_AT.z, () => boxHouse('#3f8a4f', '#2a3148', 2.2, 1.2, 1.4), Math.PI);
+    this.tractor.updateMatrixWorld(true);
+    this.tractor.traverse((o) => {
+      if (o.name.startsWith('wheel-')) this.wheels.push({ node: o, r: new THREE.Box3().setFromObject(o).getSize(new THREE.Vector3()).y / 2 });
+    });
   }
 
   /** The power sources and the gate are part of the map: they cannot be moved. */
@@ -1028,6 +1034,7 @@ export class FarmMap extends StoryMap {
     this.tractorT += dt;
     const t = this.tractorT;
     const p = this.tractor.position;
+    const was = p.clone();
     if (t < 4) {
       p.set(TRACTOR_AT.x, 0, TRACTOR_AT.z + t * 2.6);
       this.tractor.rotation.y = Math.PI;
@@ -1039,6 +1046,9 @@ export class FarmMap extends StoryMap {
       p.lerp(target, Math.min(1, dt * 2));
     }
     p.y = Math.abs(Math.sin(t * 14)) * 0.03;
+    // The wheels roll the way it went: the big back ones turn slower than the small front ones.
+    const went = Math.hypot(p.x - was.x, p.z - was.z);
+    for (const w of this.wheels) w.node.rotation.x += went / w.r;
   }
 
   private updateFox(dt: number) {
