@@ -1,0 +1,2089 @@
+{
+  "createdAt": "2026-10-28T03:45:12.354133+00:00",
+  "status": "technical-delivery-verified-awaiting-owner-listening",
+  "manifest": "research/sfx-animals/animal-sfx-manifest.json",
+  "manifestSha256": "aa8242e7e19dd932efd79930ec0f7ddaa90736f8b3d51e08d732e8073b566f2a",
+  "selectionSha256": "633d6fbf54dc73d9237c79c4ed4d2970dc24db98701c4ea59bbd8c4987035565",
+  "readyFiles": 61,
+  "families": 21,
+  "readyBytes": 474044,
+  "rawFiles": 88,
+  "uniqueReadyHashes": 61,
+  "uniqueRawHashes": 88,
+  "allFilesHashAndDecodeAndFormatPassed": true,
+  "zipHashMatches": true,
+  "ownerSelected": [
+    "animal-cow",
+    "animal-cow--v03"
+  ],
+  "pendingListening": 58,
+  "listeningStates": {
+    "owner-approved": 2,
+    "not-selected-by-owner": 1,
+    "pending": 58
+  },
+  "notSelected": 59,
+  "allIntroDisabled": true,
+  "workerReportedDurationSeconds": 53.86,
+  "workerReportedDurationRange": [
+    0.33,
+    1.72
+  ],
+  "workerReportedMaxTruePeakDb": -8.33,
+  "workerDurationAdvisories": [
+    {
+      "id": "animal-hen",
+      "duration": 1.6,
+      "target": 0.9
+    },
+    {
+      "id": "animal-hen--v02",
+      "duration": 1.7,
+      "target": 0.9
+    },
+    {
+      "id": "animal-hen--v03",
+      "duration": 1.72,
+      "target": 0.9
+    },
+    {
+      "id": "animal-dog--v03",
+      "duration": 0.77,
+      "target": 0.7
+    },
+    {
+      "id": "animal-horse",
+      "duration": 1.4,
+      "target": 1.3
+    },
+    {
+      "id": "animal-horse--v02",
+      "duration": 1.65,
+      "target": 1.3
+    },
+    {
+      "id": "animal-horse--v03",
+      "duration": 1.7,
+      "target": 1.3
+    },
+    {
+      "id": "animal-crow--v02",
+      "duration": 0.89,
+      "target": 0.8
+    },
+    {
+      "id": "animal-crow--v03",
+      "duration": 0.95,
+      "target": 0.8
+    },
+    {
+      "id": "animal-pigeon",
+      "duration": 0.97,
+      "target": 0.9
+    },
+    {
+      "id": "animal-pigeon--v02",
+      "duration": 1.3,
+      "target": 0.9
+    },
+    {
+      "id": "animal-pigeon--v03",
+      "duration": 1.66,
+      "target": 0.9
+    },
+    {
+      "id": "animal-mouse--v02",
+      "duration": 0.49,
+      "target": 0.4
+    }
+  ],
+  "budgetAccountingReported": {
+    "initialBalance": 31846,
+    "balanceAfter": 31252,
+    "spentCredits": 594,
+    "reservedCredits": 616,
+    "remainingCredits": 206,
+    "remainingCreditsConservative": 184
+  },
+  "selectedPublicHashes": {
+    "animal-cow": true,
+    "animal-cow--v03": true
+  },
+  "runtimeMap": {
+    "moo": {
+      "takes": [
+        "animal-cow",
+        "animal-cow--v03"
+      ],
+      "intro": []
+    }
+  },
+  "issues": [],
+  "mainScope": "Independent read-only SHA checks of88 raw and61 ready; decoded all61 and ffprobe MP3/mono24k/64kbps. No generation, no source or runtime edits. No new listening approval; loudness/duration values are worker measurements, not repeated by main. No iPad or runtime mix acceptance.",
+  "rawChecks": [
+    {
+      "id": "raw/animal-cow-candidate01.wav",
+      "file": "raw/animal-cow-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "91fe08f900f860a91b9fb12e0d65662b4a38d78e5829fd1473c9ecda260fb58c",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cow-candidate02.wav",
+      "file": "raw/animal-cow-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "e33d0f27dc56597781ad50e45d26593cee7a63bc68f561bd41255209ec60794d",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cow-candidate03.wav",
+      "file": "raw/animal-cow-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "4ffa5742f724e9dcf69836ddb68eafe7daa545f62e63df53ae348ace342edaf4",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cow-candidate04.wav",
+      "file": "raw/animal-cow-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "7d46f23945017934b687afab598cfcf7c793b64c2cf4c088e08dd146c43c4248",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-pig-main-candidate01.wav",
+      "file": "raw/animal-pig-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "e8f82fd1e47aec4861ad9dfca36eb245e2f27d9119e2171e5f2b49b7ba41d433",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-pig-main-candidate02.wav",
+      "file": "raw/animal-pig-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "a727eaa24fbfa8dcf2db08a81e182f6bb9b5687b316eeff784bbe5bb4e1bf8b9",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-pig-main-candidate03.wav",
+      "file": "raw/animal-pig-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "4fb295364c88ed7ec27e255dd9bb37f16a5c65f7d0f6cdbfbb974ccd0896ea6c",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-pig-main-candidate04.wav",
+      "file": "raw/animal-pig-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "27f5f2936d281d9d8306a9cdf77ed3e25e3edf9fd63930c4a4e9bf3c1a487a3c",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-sheep-main-candidate01.wav",
+      "file": "raw/animal-sheep-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "7cf58bb537224605bcd695d043ee140379dce5ad438e4215c90df38b0acbfb36",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-sheep-main-candidate02.wav",
+      "file": "raw/animal-sheep-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "2c9299d0cbb674e3a51a472e437a9668184f594cb79d3b76f8b3fd954a35f080",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-sheep-main-candidate03.wav",
+      "file": "raw/animal-sheep-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "a535a8fd57f38d1f729ef67603bdefe83fc26c6a16cfc0a2af1279cfdf89acbc",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-sheep-main-candidate04.wav",
+      "file": "raw/animal-sheep-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "c6ebcbc123864cc6cf1f161d7ebafeef8a53a12979b01f76e3ce6429c235eb25",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-goat-main-candidate01.wav",
+      "file": "raw/animal-goat-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "444feb009697635616bbb106aadc8118799568be290c4b46dbbf22ef9133c194",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-goat-main-candidate02.wav",
+      "file": "raw/animal-goat-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "713e4d8bf7c6170c3a97738d888adec06450c9fc6d26d1e3c63aefe2d29a9d2c",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-goat-main-candidate03.wav",
+      "file": "raw/animal-goat-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "d83a872f3d11fffb8fd32c114a670fd07b26a6c762a4959a224e5643ff606b8f",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-goat-main-candidate04.wav",
+      "file": "raw/animal-goat-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "caac856e9277e401851997c483a593d63b3e3f38802352e39ea1d90efca6e756",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-hen-main-candidate01.wav",
+      "file": "raw/animal-hen-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "2a982d2cdf8b55b61da007f1700827611b5b376dbe2b16d42fe19b6759e18781",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-hen-main-candidate02.wav",
+      "file": "raw/animal-hen-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "878a6554b21397965327504d194905f1990bb761c330facce4ca9050b0b8aff0",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-hen-main-candidate03.wav",
+      "file": "raw/animal-hen-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "9f39235e0121c1b930a2ed9eb4878d838a9c65485ce5bcb868822092d33f015f",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-hen-main-candidate04.wav",
+      "file": "raw/animal-hen-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "60ae1d9eec9ce133c2ad704871c4eb1cfdd547ef59b9ea9f765981ee3d142a7d",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-duck-main-candidate01.wav",
+      "file": "raw/animal-duck-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "8a8c2ca875f5c6dc2384ff4551a5add46fea2bc6901506b82e0e07acbc6bf7f8",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-duck-main-candidate02.wav",
+      "file": "raw/animal-duck-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "d35c31161b69d60c3c1f40ede4a94f915ecf781a223557220ff309524e1c32e5",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-duck-main-candidate03.wav",
+      "file": "raw/animal-duck-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "f7eec405584e84a58632f3b616573d9c399dc6a90be54ce8b6ff00932e49e799",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-duck-main-candidate04.wav",
+      "file": "raw/animal-duck-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "6f74b0d1ceb8f98d92ca08d699dd4bab11e50f363e736acbacb247ebdd97fe12",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-goose-main-candidate01.wav",
+      "file": "raw/animal-goose-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "bca36ec84a8ca23781acef732f94c9fc2f231b23e2e58e1d225b1ab596c7e5ac",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-goose-main-candidate02.wav",
+      "file": "raw/animal-goose-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "a9e973f4b70e4dbe3eb326341b5c97f8a20f7bd1b661202246de95f44ac75cfb",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-goose-main-candidate03.wav",
+      "file": "raw/animal-goose-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "b30d09c78ca1202083c9487931c5e5ae6031db756ebd3d77531dd3a1866fe0bd",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-goose-main-candidate04.wav",
+      "file": "raw/animal-goose-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "54e7a8f5b11f09b47574af1fbdc3c517013c1eb445c32bd3f606cf8fa9803fbb",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cat-meow-candidate01.wav",
+      "file": "raw/animal-cat-meow-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "ac2b2e116564953bf72b0c3a3cf21a121e3e68a188854f76c7cf291c16703caa",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cat-meow-candidate02.wav",
+      "file": "raw/animal-cat-meow-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "900d05279b26e9cbbac4f7aa17b13bdd3525508f3ef1d44f3916f188891dfcac",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cat-meow-candidate03.wav",
+      "file": "raw/animal-cat-meow-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "f184fe7660b943df9c7acb54d12c000d911a7141202ef57d868bbcae171280f1",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cat-meow-candidate04.wav",
+      "file": "raw/animal-cat-meow-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "de0f8ae6fd6fb9e2de480f03ff334dee26c236304589b38a547e39a95f8a619c",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cat-purr-candidate01.wav",
+      "file": "raw/animal-cat-purr-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "51816a907c467f871d4dc0fe9fb0a037aa28f9d2294a0c83b8b10774ef93df24",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cat-purr-candidate02.wav",
+      "file": "raw/animal-cat-purr-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "ce709d03fe605f446530baf8aed8d244818b3759e5cbd79400dc8ead4fb117da",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cat-purr-candidate03.wav",
+      "file": "raw/animal-cat-purr-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "87ad546e525319b16234cbcf225052b1c61a5cd0861368bd730e8f8b2706f429",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-cat-purr-candidate04.wav",
+      "file": "raw/animal-cat-purr-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "52499c537bd96722551eb7687300fe4275163c4241d9a0b1109b01c4fc376cf3",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-dog-main-candidate01.wav",
+      "file": "raw/animal-dog-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "d90b827464f4c5db90f3f918105daf7cc99cb16fccafaf767593e57379925df7",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-dog-main-candidate02.wav",
+      "file": "raw/animal-dog-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "e0d5c8cdf79fc452e36122bbf5662be503f5e0e60c5ddb21dd33330fa66a56b2",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-dog-main-candidate03.wav",
+      "file": "raw/animal-dog-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "971f84bdd1a93b29d667dc7e58f18606b1ab1eb26ef614da0d6abf82f54d1117",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-dog-main-candidate04.wav",
+      "file": "raw/animal-dog-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "1609a799984a3f21142d4e23a2dcfd088ca9c37527259a84af1ddcec8ebca471",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-puppy-main-candidate01.wav",
+      "file": "raw/animal-puppy-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "abae5e7413d930511b4b0002e9c3fb324d907d0b58be23251319187372a54316",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-puppy-main-candidate02.wav",
+      "file": "raw/animal-puppy-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "35a0da49dcbc66a36e574c319344db35aea8eff6f9695eb479924503c93befea",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-puppy-main-candidate03.wav",
+      "file": "raw/animal-puppy-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "7c82083bb9e3ee0abbe46f48efcd986f36b6216c74904d7784601c59e0c478bc",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-puppy-main-candidate04.wav",
+      "file": "raw/animal-puppy-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "130f494db9e13d7daaffde4b2e98f20e2671fa6cc5e4f7efbb50e8065ef6d00f",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-horse-main-candidate01.wav",
+      "file": "raw/animal-horse-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "a0f7597861415822b6d41497e9bc2fb17a69fb4585b2b31d58da0248c32a7587",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-horse-main-candidate02.wav",
+      "file": "raw/animal-horse-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "1f23b5d1b20ca252b657aeca6a17356e22b4c3aaf16a760afce990cc0e8cfe94",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-horse-main-candidate03.wav",
+      "file": "raw/animal-horse-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "54b9b739f34c681dee61bc0bb6cf5eab95b3f04d9c5e5f90680eaa7a7fb5a916",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-horse-main-candidate04.wav",
+      "file": "raw/animal-horse-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "89731b2bd4911930fc107645ad4e5fadefc8fe11128cb2eb7920bf3b688059c5",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-chick-main-candidate01.wav",
+      "file": "raw/animal-chick-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "707a8687301e8e2a4d1041c08fe115215cbddbbb1b2d55ab892d20c753081b09",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-chick-main-candidate02.wav",
+      "file": "raw/animal-chick-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "3385e0938756ba37d89c6a6d8a618d2c4e09bf7dd1d121913f94b5ad6602a6cb",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-chick-main-candidate03.wav",
+      "file": "raw/animal-chick-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "50421c80cb4b7c2ba3453b614247da4c6d2bf2cc951b461bf26c6535107810fa",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-chick-main-candidate04.wav",
+      "file": "raw/animal-chick-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "5bd38f5a4650ff0f182864164059664b4a20e714308617eb8592ed064d0762b1",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-rooster-main-candidate01.wav",
+      "file": "raw/animal-rooster-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "37fffc4e55cdb8678bd6d511dceb8a1513be423f6674efc295e0a1a7eaefb583",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-rooster-main-candidate02.wav",
+      "file": "raw/animal-rooster-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "611e13728c48c38b6df7211cdfd37e126056dfbdd104c4c2b640f7b1baa67be5",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-rooster-main-candidate03.wav",
+      "file": "raw/animal-rooster-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "7316fa07048e06d7c4c3b0bb7731bb3979eb678068b46eb83d520a43464d0912",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-rooster-main-candidate04.wav",
+      "file": "raw/animal-rooster-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "34bbe78fd70caed5e063314d2af043593ea5820db40c118343f2b7d79fdba7ba",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-bee-main-candidate01.wav",
+      "file": "raw/animal-bee-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "064e9ee2fe15088aa84f81680f659f53434139e1385ac677ac906ae5f876c5ee",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-bee-main-candidate02.wav",
+      "file": "raw/animal-bee-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "9c283ed0bf360e5261750335b7aafc0719d61dde627e8d1c655b8f235ffe2d79",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-bee-main-candidate03.wav",
+      "file": "raw/animal-bee-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "6159c745cb831883919180ada1344b4b07c2564949919dd4820563741cfad2cb",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-bee-main-candidate04.wav",
+      "file": "raw/animal-bee-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "b263ac7ff29523457e4390d518c401653f6bb137fab341087a8b053ed829abf4",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-rabbit-main-candidate01.wav",
+      "file": "raw/animal-rabbit-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "46b2663d3f9086bb9d2c13202545d42008c7cb88d2b3f07649bf559dcc277de5",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-rabbit-main-candidate02.wav",
+      "file": "raw/animal-rabbit-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "3357071cd21ca865b1129801b1b2cb95b1a79bd6134a4333e784dee4a5424b17",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-rabbit-main-candidate03.wav",
+      "file": "raw/animal-rabbit-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "3bedf845b39ad78c9d3ca71093e1111a8c001e8a0cfb046f10988037472a68fc",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-rabbit-main-candidate04.wav",
+      "file": "raw/animal-rabbit-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "5f8711e91f06f9e6f1f0bef8297d94dd33d681cc610a0f910cc23b5d44e957d9",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-frog-main-candidate01.wav",
+      "file": "raw/animal-frog-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "2362b5ae0901c5c50dfcd6d71ec6f4e3285f3c78b2badc868203d351a840f67f",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-frog-main-candidate02.wav",
+      "file": "raw/animal-frog-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "fc14425249fe9906fb91801df11a6454ef19cc326b0314c5c82ce38b2b377cc4",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-frog-main-candidate03.wav",
+      "file": "raw/animal-frog-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "de3003f3009270bb2c6e177b8f3bd6fe088c0a53643d5a30efec7936cee525db",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-frog-main-candidate04.wav",
+      "file": "raw/animal-frog-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "5af49b4c2a3a766bb6fc05c9b69a74828ebd8cff67c185dedfcf2e17d38e34a1",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-crow-main-candidate01.wav",
+      "file": "raw/animal-crow-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "15e15aa8b76c3a9289e0803686272c288fa478246a748ef0e7acd6a3be042323",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-crow-main-candidate02.wav",
+      "file": "raw/animal-crow-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "dfb3ddf555858d744e1c4ac55c75139a0a05da4fbb7f2424243d628ceef47d3b",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-crow-main-candidate03.wav",
+      "file": "raw/animal-crow-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "4fc653ec9529e7edf46964db92eabd70c79e7388ca922adece50ee0bd5c0964d",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-crow-main-candidate04.wav",
+      "file": "raw/animal-crow-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "17e86c1d0292f75ddafccd5ca06f8fac8a689d3635771fc2edfb316906f75fe2",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-pigeon-main-candidate01.wav",
+      "file": "raw/animal-pigeon-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "ecbc70b2ca5f6e0b8f6875a1a0d10c2bfbe3595c1623292679928b9b552090af",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-pigeon-main-candidate02.wav",
+      "file": "raw/animal-pigeon-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "dd61c6beec2216e9722530f62b47670735171a5cea47e60a972acde6f91e7370",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-pigeon-main-candidate03.wav",
+      "file": "raw/animal-pigeon-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "034721799ec28d77b2764df8d0f68ccfac207a2564cd3b74e8a075b8bdc11ad1",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-pigeon-main-candidate04.wav",
+      "file": "raw/animal-pigeon-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "7634f8abc5af80a2a958002cfb1987bf8601a121ecb067ca1a9b7fc32cbb1ad6",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-mouse-main-candidate01.wav",
+      "file": "raw/animal-mouse-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "4f3ab49921050c77364a46a9d15b8b7b02cafeb27d8668d67952d3f1f36d6284",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-mouse-main-candidate02.wav",
+      "file": "raw/animal-mouse-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "e8fd9bb3cb4c0d173a19383340c909d4b977b488ff350dfe223574c99ef6884a",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-mouse-main-candidate03.wav",
+      "file": "raw/animal-mouse-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "d86d76672f7edf103611ab989448e64294b727c072eccbf62e5209c04945f74a",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-mouse-main-candidate04.wav",
+      "file": "raw/animal-mouse-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "04f4927b937ccf5cf89d6e985d477cf01751515a352c06c9a98ea19bb7dc6200",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-fox-main-candidate01.wav",
+      "file": "raw/animal-fox-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "2b8b41baa8cf738b890c8b6d3694269a3aa567e4472a0b2f07daf4bc824a5d12",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-fox-main-candidate02.wav",
+      "file": "raw/animal-fox-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "04611a411dda65898801ff0a2f0dd90e16d5138ea13a3b601602485c2cdb51dd",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-fox-main-candidate03.wav",
+      "file": "raw/animal-fox-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "d27ed29ec4667521e0cdc6955e9148de47bbfb62e31b865df77fde541c144408",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-fox-main-candidate04.wav",
+      "file": "raw/animal-fox-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "a1f39f8eb358e7ace46e0a88e8c8848c9a488b8e500e5745ec17be02f3fbc168",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-raccoon-main-candidate01.wav",
+      "file": "raw/animal-raccoon-main-candidate01.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "727a88df6afb34c1ad336e18964dc7f5a81d552536b03c59e5f50e37268eee61",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-raccoon-main-candidate02.wav",
+      "file": "raw/animal-raccoon-main-candidate02.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "7f1132d7abf3b34ffbe18448ec47537a5eda51ca80fb263efe171af94ec83b65",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-raccoon-main-candidate03.wav",
+      "file": "raw/animal-raccoon-main-candidate03.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "a10160b19c681365ddb1f6a416053985a254615c63f2767e3203a02632d8d955",
+      "hashMatches": true
+    },
+    {
+      "id": "raw/animal-raccoon-main-candidate04.wav",
+      "file": "raw/animal-raccoon-main-candidate04.wav",
+      "exists": true,
+      "bytes": 384078,
+      "sha256": "8801c6b9cc27085765dde98760b21c25b0a929e32b723473a19496c9d7fb7d86",
+      "hashMatches": true
+    }
+  ],
+  "clipChecks": [
+    {
+      "id": "animal-cow",
+      "file": "ready/animal-cow.mp3",
+      "exists": true,
+      "bytes": 9644,
+      "sha256": "c18fcd0854d4249bd32c409a2dbc38c6125a1f2c0f883f67554c31efcabad789",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-cow--v02",
+      "file": "ready/animal-cow--v02.mp3",
+      "exists": true,
+      "bytes": 7340,
+      "sha256": "1b30214a093780cb6fa2a2a64e305e79c3db8b52cd002aa6b92594ed06b270c7",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-cow--v03",
+      "file": "ready/animal-cow--v03.mp3",
+      "exists": true,
+      "bytes": 11564,
+      "sha256": "392c08c94fba7ef7ce136b1622f2d1dfd4e932768534d06552eb989455218bbe",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-pig",
+      "file": "ready/animal-pig.mp3",
+      "exists": true,
+      "bytes": 4076,
+      "sha256": "859eb12c7b84b1ace13d3764fe9075d06856e201e56360a3da58c8f978372950",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-pig--v02",
+      "file": "ready/animal-pig--v02.mp3",
+      "exists": true,
+      "bytes": 7148,
+      "sha256": "9a5f8a0ddf8212c107cb03e8e079e48b4576459becbf4c87c5fee11cc2b6a23f",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-pig--v03",
+      "file": "ready/animal-pig--v03.mp3",
+      "exists": true,
+      "bytes": 7532,
+      "sha256": "cbf7e5662b4c35e12187363114f9bb3bb889e1a457fdc9f51eb43eaf95ddb29b",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-sheep",
+      "file": "ready/animal-sheep.mp3",
+      "exists": true,
+      "bytes": 9068,
+      "sha256": "fccf04574f62253a860dc1a3d320c60afef6973da3c94d538bf985b833929d12",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-sheep--v02",
+      "file": "ready/animal-sheep--v02.mp3",
+      "exists": true,
+      "bytes": 8876,
+      "sha256": "a9a3cb474b91abaac3a31001c0a16917668e065e8ea546c0f1311b142564cf73",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-sheep--v03",
+      "file": "ready/animal-sheep--v03.mp3",
+      "exists": true,
+      "bytes": 8876,
+      "sha256": "752bd2e5a1c8ff6fdd1732753e363ee6b7a00143d3e663ff8be6b78b900dcc83",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-sheep--v04",
+      "file": "ready/animal-sheep--v04.mp3",
+      "exists": true,
+      "bytes": 7916,
+      "sha256": "b25a96269cdcbcddb40181cf8dcac682f08042e1c70d3988b615bc70adf650eb",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-goat",
+      "file": "ready/animal-goat.mp3",
+      "exists": true,
+      "bytes": 8492,
+      "sha256": "a120fb40fe56cf25317db60c38f1c6d29cb6d163878c3d973db2304efde5d66f",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-goat--v02",
+      "file": "ready/animal-goat--v02.mp3",
+      "exists": true,
+      "bytes": 8300,
+      "sha256": "218e95e23416407eb7c66d6d99562f69009ed103af2416c290b544de2ebeb544",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-goat--v03",
+      "file": "ready/animal-goat--v03.mp3",
+      "exists": true,
+      "bytes": 8108,
+      "sha256": "aabc6e3313364a7eb7c168a0a31ecdbd52c93eee02b48787867df3d08b8d3101",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-hen",
+      "file": "ready/animal-hen.mp3",
+      "exists": true,
+      "bytes": 13484,
+      "sha256": "b30e92d47daded76e58787783bafd16ae41458d1f7567d52e253c6523d90ffcf",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-hen--v02",
+      "file": "ready/animal-hen--v02.mp3",
+      "exists": true,
+      "bytes": 14252,
+      "sha256": "12c929ab645580894b0f3f2ae654f326241c4b6ad943225cecf4b59d26622dba",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-hen--v03",
+      "file": "ready/animal-hen--v03.mp3",
+      "exists": true,
+      "bytes": 14444,
+      "sha256": "96646d0159b366d67516cec1339ef30f53ea87b4a6962bb81370c27239392087",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-duck",
+      "file": "ready/animal-duck.mp3",
+      "exists": true,
+      "bytes": 7148,
+      "sha256": "2081fc9cdf38ded8a6126d647575fea0ed911c8f6db6dc9c5c2414a7d35f8a1f",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-duck--v02",
+      "file": "ready/animal-duck--v02.mp3",
+      "exists": true,
+      "bytes": 6956,
+      "sha256": "045545038055f0aa1eb8d31dc0e06327668b2c5fefd5235d30af85f21561886a",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-duck--v03",
+      "file": "ready/animal-duck--v03.mp3",
+      "exists": true,
+      "bytes": 6956,
+      "sha256": "80972596a5f3f704baf80f2eecbf7e40a57b48c3fcd62d337cad24b93544814f",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-goose",
+      "file": "ready/animal-goose.mp3",
+      "exists": true,
+      "bytes": 7148,
+      "sha256": "72c7a92e9a75c60659ff797d2b50e931e0c58d8ec95f24851771cba4e3f29ca0",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-goose--v02",
+      "file": "ready/animal-goose--v02.mp3",
+      "exists": true,
+      "bytes": 5036,
+      "sha256": "ddfd72b618274840e56b89b6b5ded2a0a7d0cdcce7d042c6f68047d99f160ffc",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-goose--v03",
+      "file": "ready/animal-goose--v03.mp3",
+      "exists": true,
+      "bytes": 4844,
+      "sha256": "9b0d8c5ea494903028af932db50fccb95e12b463bee1ab05004bc070572abb41",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-cat",
+      "file": "ready/animal-cat.mp3",
+      "exists": true,
+      "bytes": 7916,
+      "sha256": "146a7255e5c5f959bad5f6bb8001b73e978cbd0f295bbb9fda00edabdad50878",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-cat--v02",
+      "file": "ready/animal-cat--v02.mp3",
+      "exists": true,
+      "bytes": 7532,
+      "sha256": "e9b4f5dfd691118a508ffee753e0092eebf9a6eb6b5709108a5a32772dd13599",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-cat--v03",
+      "file": "ready/animal-cat--v03.mp3",
+      "exists": true,
+      "bytes": 8492,
+      "sha256": "01b926d83328028306d19267dff246ce6cef0a8e96bc17ad82da5e24784b42a3",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-dog",
+      "file": "ready/animal-dog.mp3",
+      "exists": true,
+      "bytes": 5996,
+      "sha256": "f4577a4f30b5f5b59ebbe77d1413daa185c5e6d745115f146d5e85a4b3411810",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-dog--v02",
+      "file": "ready/animal-dog--v02.mp3",
+      "exists": true,
+      "bytes": 6572,
+      "sha256": "f101488b23d5a23f784c9353e590fc37c3e55777f7717b7ce35b0f3c7acecc1e",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-dog--v03",
+      "file": "ready/animal-dog--v03.mp3",
+      "exists": true,
+      "bytes": 6956,
+      "sha256": "d26549f9bd7a9822dc3cacc90806af8906501323478b26f90c38113e80f5cebc",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-puppy",
+      "file": "ready/animal-puppy.mp3",
+      "exists": true,
+      "bytes": 5036,
+      "sha256": "144f0dc6d00c80708bd61f84f877f8021e493c4c2e6a96cd44112427e324a8ac",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-puppy--v02",
+      "file": "ready/animal-puppy--v02.mp3",
+      "exists": true,
+      "bytes": 3692,
+      "sha256": "bd3795aae67bfeeefa5eb9b04cbd5c41a4386d70cce673196aaa574683f54571",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-puppy--v03",
+      "file": "ready/animal-puppy--v03.mp3",
+      "exists": true,
+      "bytes": 3308,
+      "sha256": "eef508881bdb359ff9e48a33e0a3ee7abb1334028f60dfef81b320240af42ef1",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-horse",
+      "file": "ready/animal-horse.mp3",
+      "exists": true,
+      "bytes": 11948,
+      "sha256": "67384500f45e9f8b57fd2d21fdd15ee402577e18d7dc84c3e7517b9d906a0c25",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-horse--v02",
+      "file": "ready/animal-horse--v02.mp3",
+      "exists": true,
+      "bytes": 13868,
+      "sha256": "71b962428bb4867c3a30cbdfd2eb89156d5b898a1b3dea12880dc72f422035d3",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-horse--v03",
+      "file": "ready/animal-horse--v03.mp3",
+      "exists": true,
+      "bytes": 14252,
+      "sha256": "0910b7da6e31739849d05885f5811130d80337981a752ec21c9a2419a02f2289",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-chick",
+      "file": "ready/animal-chick.mp3",
+      "exists": true,
+      "bytes": 5228,
+      "sha256": "2ccdfb3d7ab4533eb01c8faaa3b65e979ffd8cfd0619a17ab556cac41f31a9f0",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-chick--v02",
+      "file": "ready/animal-chick--v02.mp3",
+      "exists": true,
+      "bytes": 5036,
+      "sha256": "adab1c8c5bc2fec00fe900c30d0b44d63289a107041cafad6d350f7d4ff54547",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-chick--v03",
+      "file": "ready/animal-chick--v03.mp3",
+      "exists": true,
+      "bytes": 4652,
+      "sha256": "c2e006fdb5f8d1ffd3fc9aed6ae19cf4f289578a5eef31b7f37f0cdf0a5fe67f",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-rooster",
+      "file": "ready/animal-rooster.mp3",
+      "exists": true,
+      "bytes": 13676,
+      "sha256": "66ca735a0212a2c240821d262c4270c3f06da405092ab42d825353c0328d732e",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-rooster--v02",
+      "file": "ready/animal-rooster--v02.mp3",
+      "exists": true,
+      "bytes": 13676,
+      "sha256": "2e374ea898c5565fca0ddabd749f1977edf5db5f4d7bbc66640f9846cfe9cb8f",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-bee",
+      "file": "ready/animal-bee.mp3",
+      "exists": true,
+      "bytes": 8492,
+      "sha256": "fef288cd2b84fc32ca135a8fd683249ccac901e7f235b2435247cf156c66fbf4",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-bee--v02",
+      "file": "ready/animal-bee--v02.mp3",
+      "exists": true,
+      "bytes": 7724,
+      "sha256": "f719310d476f21489889166220cd6daf2e20b876abb54241e2caac292b6e2958",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-rabbit",
+      "file": "ready/animal-rabbit.mp3",
+      "exists": true,
+      "bytes": 5996,
+      "sha256": "14fa35a453a422435be7037eb5f75f886d054274c7abf77a74517e07c979e368",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-rabbit--v02",
+      "file": "ready/animal-rabbit--v02.mp3",
+      "exists": true,
+      "bytes": 5804,
+      "sha256": "f652a655f3427bd94b70b2f320e165b870d694129d543935d0c15b4b19d0668d",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-rabbit--v03",
+      "file": "ready/animal-rabbit--v03.mp3",
+      "exists": true,
+      "bytes": 4652,
+      "sha256": "ebcde2651d93fb34b00f02c0ad5c6cde7a936082ffb0ad0ee34aab3e239531aa",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-frog",
+      "file": "ready/animal-frog.mp3",
+      "exists": true,
+      "bytes": 6188,
+      "sha256": "f57e6f7131aea8e1dd615b4ce18e7278892bb84629c518d619bc7a2d6a0a0d0e",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-frog--v02",
+      "file": "ready/animal-frog--v02.mp3",
+      "exists": true,
+      "bytes": 5036,
+      "sha256": "087551f40b9c3d0c93b59d4bf614943cebf5c1ed11644e6d87ee5c77d784577f",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-frog--v03",
+      "file": "ready/animal-frog--v03.mp3",
+      "exists": true,
+      "bytes": 4076,
+      "sha256": "99eea2314c92ff8f912bde31a1cc4eebab10513b29ab261068201b129146ce26",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-crow",
+      "file": "ready/animal-crow.mp3",
+      "exists": true,
+      "bytes": 7532,
+      "sha256": "61f20f4bc92e45e9c990a4e98a1639b9afdddf4012e8d42f9739fb66bc685b57",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-crow--v02",
+      "file": "ready/animal-crow--v02.mp3",
+      "exists": true,
+      "bytes": 7916,
+      "sha256": "3cd887c78a087587573595373e1e7fb5d019594471ab87f9573f8f8db5e2e658",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-crow--v03",
+      "file": "ready/animal-crow--v03.mp3",
+      "exists": true,
+      "bytes": 8300,
+      "sha256": "4d343f1d5800f355d55494523b7296268dffe11b596fd9d6e8a6f00aeae5f42d",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-pigeon",
+      "file": "ready/animal-pigeon.mp3",
+      "exists": true,
+      "bytes": 8492,
+      "sha256": "44b7b0d096be115122eeb8f0edfc3782939dc5e181b5bb6a8266145d7a21138e",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-pigeon--v02",
+      "file": "ready/animal-pigeon--v02.mp3",
+      "exists": true,
+      "bytes": 11180,
+      "sha256": "c8472e710571858f014c02236e8b7ef2519f6814f03a87fb0933362fbea546c4",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-pigeon--v03",
+      "file": "ready/animal-pigeon--v03.mp3",
+      "exists": true,
+      "bytes": 14060,
+      "sha256": "85552981ceaaf2a54204b1e37ad14958907898810ab036320d76ec676c7df611",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-mouse",
+      "file": "ready/animal-mouse.mp3",
+      "exists": true,
+      "bytes": 3500,
+      "sha256": "85ecca9f95a30feeb306b2b58c46aed6c67f76403c8d30a0a199f799710d87ae",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-mouse--v02",
+      "file": "ready/animal-mouse--v02.mp3",
+      "exists": true,
+      "bytes": 4652,
+      "sha256": "bd07a11606bed11724e53939161b4a7425e3b32f1e5fab659edf85f5d16992a6",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-fox",
+      "file": "ready/animal-fox.mp3",
+      "exists": true,
+      "bytes": 6380,
+      "sha256": "b7e20fd34c581004d3dcb606f7e632d7bdf35c438a7e0935aa7b5cb6dd57036f",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-fox--v02",
+      "file": "ready/animal-fox--v02.mp3",
+      "exists": true,
+      "bytes": 4844,
+      "sha256": "a8b818611b5d05b0abcedc03fbe21d973359a4978ff5c169ad30ee645c892225",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-fox--v03",
+      "file": "ready/animal-fox--v03.mp3",
+      "exists": true,
+      "bytes": 3884,
+      "sha256": "ee8949c5e76baf08760ceb5b47f780e3d33620febc99205db3e76e27db1ccd4e",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-raccoon",
+      "file": "ready/animal-raccoon.mp3",
+      "exists": true,
+      "bytes": 6956,
+      "sha256": "ab52b4c544ec83ca079facbf0e53342f2e2d7594eaba54f983037ee21a9776ee",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-raccoon--v02",
+      "file": "ready/animal-raccoon--v02.mp3",
+      "exists": true,
+      "bytes": 6188,
+      "sha256": "340671e99590ddcce790de7fa504f0372d8f45a5739c0d9c549b2478c4a01373",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    },
+    {
+      "id": "animal-raccoon--v03",
+      "file": "ready/animal-raccoon--v03.mp3",
+      "exists": true,
+      "bytes": 7148,
+      "sha256": "019ed0b14200235e92a8c9d2a300ed3b2bf700e91ea98c1f208ae24aa6f62b93",
+      "hashMatches": true,
+      "streams": [
+        {
+          "codec_name": "mp3",
+          "sample_rate": "24000",
+          "channels": 1,
+          "bit_rate": "64000"
+        }
+      ],
+      "decodes": true,
+      "decodeError": "",
+      "formatPass": true,
+      "sourceHashMatches": true
+    }
+  ],
+  "importerDryRun": {
+    "taken": [
+      "animal-cow",
+      "animal-cow--v03"
+    ],
+    "notPicked": 59,
+    "notReady": 0,
+    "unmapped": 0,
+    "realImportByMain": false
+  },
+  "browserCheck": {
+    "url": "http://127.0.0.1:8773/sfx-plan",
+    "loadedAudio": 61,
+    "audioErrors": 0,
+    "consoleWarningsOrErrors": 0,
+    "viewportWidth": 390,
+    "viewportHeight": 844,
+    "documentClientWidth": 375,
+    "documentScrollWidth": 375,
+    "filter": "Курица",
+    "durationAdvisoriesVisible": true,
+    "selectedUnchanged": [
+      "animal-cow",
+      "animal-cow--v03"
+    ],
+    "selectionSaveNotInvoked": true,
+    "playbackNotAuditionedByMain": true,
+    "screenshots": [
+      "review-390.png",
+      "review-390-detail.png"
+    ],
+    "cleanup": "Temporary tab44 closed, viewport reset; existing server unchanged."
+  },
+  "validation": {
+    "tests": "88 passed,17 files",
+    "typecheck": "passed",
+    "at": "2026-10-28 10:47 Asia/Bangkok"
+  }
+}
