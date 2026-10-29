@@ -14,3 +14,6 @@ coordination/*
 
 # Local Tripo CLI task/cache context; never publish account metadata.
 .tripo/
+
+# Черновики, кадры проверок, временные файлы агентов (вместо /tmp и ~/Downloads)
+.scratch/
